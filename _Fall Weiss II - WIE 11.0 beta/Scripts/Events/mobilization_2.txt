@@ -20,7 +20,7 @@
 ;        With all other fields satisfied will this be:
 ;        0 = Single check regardless if #TRIGGER is satisfied
 ;        1 = Multiple check until #TRIGGER is satisfied
-;        2 = Reoccuring check until end of game
+;        2 = Reoccurring check until end of game
 ;                       OR
 ;        Once the #DATE field is satisfied:
 ;        3 = Event fires once if all other fields are satisfied, else it will not fire.  Either way, event will be removed never to be looked at again
@@ -717,7 +717,7 @@
 ;
 {
 #NAME= More than 18 Axis Units Near Warsaw From January 1941 (USSR->Allies)
-#POPUP=
+#POPUP= The USSR grows uneasy over the build up of Axis troops along its Polish border
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -738,6 +738,7 @@
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 ; 19 Axis units are within 10 hexes of Warsaw
 #CONDITION_POSITION= 188,76 [10,10] [19,19] [1] [0]
+#PRIVATE= 1
 }
 
 ;REMOVE1941
@@ -929,7 +930,7 @@
 ; 30-45% increase in Finnish activation towards Axis
 {
 #NAME= Soviet Naval Aggression in the Baltic (Finland->Axis)
-#POPUP= Soviet Naval Manouevers Alert Finnish Defence Forces
+#POPUP= Soviet Naval Manuevers Alert Finnish Defence Forces
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -948,7 +949,7 @@
 ; Set variable conditions:
 ; 1st Line - USSR politically aligned with Allies (not fully active) and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; Soviets have 1 Amphibious unit within 2-3 hexes wrange of Helsinki port
+; Soviets have 1 Amphibious unit within 2-3 hexes range of Helsinki port
 #CONDITION_POSITION= 196,52 [2,3] [1,1] [2] [116] <47,48>
 }
 
@@ -958,7 +959,7 @@
 ; 30-45% increase in Finnish activation towards Axis
 {
 #NAME= Soviet Naval Aggression in the Baltic (Finland->Axis)
-#POPUP= Soviet Naval Manouevers Alert Finnish Defence Forces
+#POPUP= Soviet Naval Manuevers Alert Finnish Defence Forces
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -978,7 +979,7 @@
 ; 1st Line - USSR politically aligned with Allies (fully active) and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; Soviets have 1 Amphibious unit within 2-3 hexes wrange of Helsinki port
+; Soviets have 1 Amphibious unit within 2-3 hexes range of Helsinki port
 #CONDITION_POSITION= 196,52 [2,3] [1,1] [2] [116] <47,48>
 }
 
@@ -1718,7 +1719,7 @@
 ; 2nd Line - Germany politically aligned with Axis and not surrendered
 ; 3rd Line - France politically aligned with Allies and surrendered
 ; 4th Line - Italy politically aligned with Axis and not surrendered
-; 5th Line - Yugoslavia politially aligned with Axis but not fully mobilized
+; 5th Line - Yugoslavia politically aligned with Axis but not fully mobilized
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
@@ -1967,7 +1968,7 @@
 #MOBILIZATION= [5,5] [2]
 ; Set variable conditions:
 ; 1st Line - Russia politically aligned Allied and not active
-; 2nd Line - Turkey politcally aligned with Axis and Not Active
+; 2nd Line - Turkey politically aligned with Axis and Not Active
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 111 [1] [0] [0]
 ; dummy condition position
