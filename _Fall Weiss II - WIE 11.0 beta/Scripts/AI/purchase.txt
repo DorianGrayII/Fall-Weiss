@@ -1,0 +1,4073 @@
+﻿;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; PURCHASE SCRIPT (Handle AI Purchasing)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; USAGE:
+;
+; Basic structure of an AI purchasing event:
+; { 
+; #NAME= Event name (this will be shown as a selectable event under an OPTIONS screen within the game)
+; #POPUP= Event popup text (this will be displayed when the event occurs)
+; #FLAG= Will this be a default event for the campaign? (values range [0, 1]; True= 1; False= 0)
+; #TYPE= Values range [0, 3];
+;        With all other fields satisfied will this be:
+;        0 = Single check regardless if #TRIGGER is satisfied
+;        1 = Multiple check until #TRIGGER is satisfied
+;        2 = Reoccuring check until end of game
+;                       OR
+;        Once the #DATE field is satisfied:
+;        3 = Event fires once if all other fields are satisfied, else it will not fire.  Either way, event will be removed never to be looked at again
+; #LEVEL= What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;         Values: [0, 4]; Green= 0; Novice= 1; Intermediate= 2; Veteran= 3; Expert= 4
+; #GV= Does the event activate based on the Global Variable values assigned?
+;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
+;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
+;      Example A) #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;      Example B) #GV= 4[71,100] will trigger 30% per game
+; #LINK= Does the event activate based on the Link values assigned?
+;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
+;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
+;        Example A) #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
+;        Example B) #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
+;        Example C) #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
+; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
+; #COUNTRY_ID= Country ID associated with this event
+; #SKIP_FUNDS_CHECK= Should we skip the applicable funds check? (values range [0, 1]; True= 1; False= 0)
+;
+; #UNIT_ID_0= HQ
+; #UNIT_ID_1= Garrison
+; #UNIT_ID_2= Brigade
+; #UNIT_ID_3= Division
+; #UNIT_ID_4= Corps
+; #UNIT_ID_5= Army
+; #UNIT_ID_6= Mechanized
+; #UNIT_ID_7= Special Forces
+; #UNIT_ID_8= Engineers
+; #UNIT_ID_9= Paratroops
+; #UNIT_ID_10= Cavalry Brigade
+; #UNIT_ID_11= Cavalry Division
+; #UNIT_ID_12= Cavalry Corps
+; #UNIT_ID_13= Partisans
+; #UNIT_ID_14= Pillbox
+; #UNIT_ID_15= Anti-Air
+; #UNIT_ID_16= Rocket Artillery
+; #UNIT_ID_17= Artillery
+; #UNIT_ID_18= Heavy Artillery
+; #UNIT_ID_19= Rail Gun
+; #UNIT_ID_20= Coastal Gun
+; #UNIT_ID_21= Rockets
+; #UNIT_ID_22= Reconnaissance
+; #UNIT_ID_23= Armored Train
+; #UNIT_ID_24= Anti-Tank
+; #UNIT_ID_25= Light Tanks
+; #UNIT_ID_26= Tanks
+; #UNIT_ID_27= Heavy Tanks
+; #UNIT_ID_28= Airships
+; #UNIT_ID_29= Fighters
+; #UNIT_ID_30= Tactical Bombers
+; #UNIT_ID_31= Medium Bombers
+; #UNIT_ID_32= Strategic Bombers
+; #UNIT_ID_33= Maritime Bombers
+; #UNIT_ID_34= Kamikazes
+; #UNIT_ID_35= Dreadnought
+; #UNIT_ID_36= Battleship
+; #UNIT_ID_37= Battle Cruiser
+; #UNIT_ID_38= Heavy Cruiser
+; #UNIT_ID_39= Light Cruiser
+; #UNIT_ID_40= Destroyer
+; #UNIT_ID_41= Escort Carrier
+; #UNIT_ID_42= Carrier
+; #UNIT_ID_43= Sub
+; #UNIT_ID_44= Motor Torpedo Boat
+; #UNIT_ID_45= Mulberry
+
+; Will these unit types be purchased by the AI?
+; Format: % chance assigned to this purchase [max_units]
+;
+; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
+; #FRIENDLY_POSITION= Positions that must be under friendly control in order for event to occur
+; #VARIABLE_CONDITION= Under what variable conditions will this event occur
+;                      Format: country_id [political_alignment] [min_activation%] [surrendered_flag]
+; #TACTICAL_CONDITION= Tactical map position (resource) that currently MUST NOT be threatened for event to
+;                      occur, i.e. plan owner should have tactical advantage over this position
+;                      Format: x,y [tactical_flag]
+; #ACTIVATE_POSITION= Condition positions that will serve to ACTIVATE the event.
+;                     Looks at distance as well as a selected number of Axis/Allied units as specified by 'alignment' flag
+;                     Format: x,y [min_range, max_range] [min_units, max_units] [alignment]
+; #CANCEL_POSITION= Condition positions that will serve to CANCEL the event.
+;                   Looks at distance as well as a selected number of Axis/Allied units as specified by 'alignment' flag
+;                   Format: x,y [min_range, max_range] [min_units, max_units] [alignment]
+; }
+;
+; NOTES:
+;
+; Each event must be preceded by a '{' and end with a '}'
+;
+; Purchase Plan identity is determined by #COUNTRY_ID.  A country can only have a single plan based on this
+; criteria and will be assigned the first valid plan regardless of duplicate script entries (even if the 
+; remaining control '#' values are different).
+; Note:  This will also allow you to set up a variety of plans with the same identity but different
+; control '#' parameters where the first 'event' satisfied will be the fist plan assigned (for added variability).
+;
+; Unit type purchase lines are read one line at a time so there is no need to set a total sum of unit
+; purchase percentages equal to 100%, i.e. each line is read and the % chance of purchasing the unit is
+; based on the % chance assigned to the particular unit type.
+; Note:  Even if the % chance is successful the #COUNTRY_ID in question needs sufficient funds to make the
+; final purchase.  If no unit type is successfully determined to be purchased then the AI will make no
+; purchases for that particular event.
+;
+; #FRIENDLY_POSITION - First position must refer to a land tile, subsequent positions can refer to either land or coastal tiles.
+; Note:  More than one #FRIENDLY_POSITION can be set.  #FRIENDLY_POSITION refers to the current side associated with this 
+;        plan.  Each #FRIENDLY_POSITION will be read using AND logic.
+;
+;        For all AI scripts that use the #FRIENDLY_POSITION field, the AI picks available units closest to and connected to
+;        the first #FRIENDLY_POSITION, within #RANGE, and then sends them to the nearest available position for the script; 
+;        e.g., a city for a GUARD script, a port for a TRANSPORT script, etc.  All AI scripts require that the first 
+;        #FRIENDLY_POSITION be a land tile, with the exception of Fleet scripts.
+;
+; #VARIABLE_CONDITION - More than one #VARIABLE_CONDITION can be set.  Under #VARIABLE_CONDITION you can also list 
+; countries that have not yet fully entered the war.  For example by listing an activation % less than 100% you
+; are providing a check where the #VARIABLE_CONDITION country must meet a minimum activation % (but is
+; not yet at 100%) in order for the event to occur.  To check for a fully activated country simply
+; list the activation % at 100%.  Each #VARIABLE_CONDITION line will be read using AND logic.
+;
+; More than one #TACTICAL_CONDITION can be set.  #TACTICAL_CONDITION refers to the current side, i.e.
+; country associated with this plan having tactical superiority over the specified map position.
+; Tactical superiority can be fine tuned via the TACTICAL_ID flag.  Each #TACTICAL_CONDITION line will
+; be read using AND logic.
+; Note:  TACTICAL_ID= SEA implies that the port or city in question has an adjacent enemy unit in order for it
+;        to be threatened.  For example a land locked city can never be threated by SEA so this can be used as a
+;        dummy position.
+;
+; More than one #ACTIVATE_POSITION can be set.  Distance or range checks will be based on the
+; specified x,y position.  For example if the x,y position is a coastal tile then range checks will
+; be made on sea tiles, otherwise if it is a land tile range checks will be made on land tiles only.
+; Each #ACTIVATE_POSITION line will be read using OR logic.
+; Note: Once a plan has been properly activated then all references to #ACTIAVATE_POSITION are removed
+;       from the plan as these conditions have been satisfied.  Use #CANCEL_POSITION to set the CANCEL conditions
+;       based on unit positions for the event.
+;
+; More than one #CANCEL_POSITION can be set.  Distance or range checks will be based on the
+; specified x,y position.  For example if the x,y position is a coastal tile then range checks will
+; be made on sea tiles, otherwise if it is a land tile range checks will be made on land tiles only.
+; Each #CANCEL_POSITION line will be read using OR logic.
+;
+; Use the reference values provided for #COUNTRY_ID and not the country names
+; Use the reference values provided for TACTICAL_ID and not tactical names
+; Use the reference values provided for POLITICAL ALIGNMENT and not names
+; Use the reference values provided for SURRENDER flags and not names
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; COUNTRY ID REFERENCE VALUES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Country IDs
+; #COUNTRY_ID_0= Neutral
+; #COUNTRY_ID_1= Abyssinia
+; #COUNTRY_ID_2= Afghanistan
+; #COUNTRY_ID_3= Albania
+; #COUNTRY_ID_4= Algeria
+; #COUNTRY_ID_5= Argentina
+; #COUNTRY_ID_6= Australia
+; #COUNTRY_ID_7= Austria
+; #COUNTRY_ID_8= Baltic States
+; #COUNTRY_ID_9= Belgian Congo
+; #COUNTRY_ID_10= Belgium
+; #COUNTRY_ID_11= Benelux
+; #COUNTRY_ID_12= Bhutan
+; #COUNTRY_ID_13= Black
+; #COUNTRY_ID_14= Bolivia
+; #COUNTRY_ID_15= Borneo
+; #COUNTRY_ID_16= Brazil
+; #COUNTRY_ID_17= British Somaliland
+; #COUNTRY_ID_18= Brunei
+; #COUNTRY_ID_19= Bulgaria
+; #COUNTRY_ID_20= Burma
+; #COUNTRY_ID_21= Canada
+; #COUNTRY_ID_22= Chile
+; #COUNTRY_ID_23= China
+; #COUNTRY_ID_24= Colombia
+; #COUNTRY_ID_25= Communist China
+; #COUNTRY_ID_26= Costa Rica
+; #COUNTRY_ID_27= Croatia
+; #COUNTRY_ID_28= Cuba
+; #COUNTRY_ID_29= Curaçao
+; #COUNTRY_ID_30= Czechoslovakia
+; #COUNTRY_ID_31= Denmark
+; #COUNTRY_ID_32= Dominican Republic
+; #COUNTRY_ID_33= Dutch East Indies
+; #COUNTRY_ID_34= Dutch Guiana
+; #COUNTRY_ID_35= Ecuador
+; #COUNTRY_ID_36= Egypt
+; #COUNTRY_ID_37= El Salvador
+; #COUNTRY_ID_38= Estonia
+; #COUNTRY_ID_39= Finland
+; #COUNTRY_ID_40= France
+; #COUNTRY_ID_41= Free City of Danzig
+; #COUNTRY_ID_42= French Equatorial Africa
+; #COUNTRY_ID_43= French Somaliland
+; #COUNTRY_ID_44= French West Africa
+; #COUNTRY_ID_45= Germany
+; #COUNTRY_ID_46= Greece
+; #COUNTRY_ID_47= Greenland
+; #COUNTRY_ID_48= Guatemala
+; #COUNTRY_ID_49= Haiti
+; #COUNTRY_ID_50= Honduras
+; #COUNTRY_ID_51= Hong Kong
+; #COUNTRY_ID_52= Hungary
+; #COUNTRY_ID_53= Iceland
+; #COUNTRY_ID_54= India
+; #COUNTRY_ID_55= Indochina
+; #COUNTRY_ID_56= Iraq
+; #COUNTRY_ID_57= Ireland
+; #COUNTRY_ID_58= Italian East Africa
+; #COUNTRY_ID_59= Italy
+; #COUNTRY_ID_60= Japan
+; #COUNTRY_ID_61= Latvia
+; #COUNTRY_ID_62= Liberia
+; #COUNTRY_ID_63= Libya
+; #COUNTRY_ID_64= Lithuania
+; #COUNTRY_ID_65= Luxembourg
+; #COUNTRY_ID_66= Malaya
+; #COUNTRY_ID_67= Manchukuo
+; #COUNTRY_ID_68= Mexico
+; #COUNTRY_ID_69= Mongolia
+; #COUNTRY_ID_70= Morocco
+; #COUNTRY_ID_71= Nanjing
+; #COUNTRY_ID_72= Nepal
+; #COUNTRY_ID_73= Netherlands
+; #COUNTRY_ID_74= New Zealand
+; #COUNTRY_ID_75= Newfoundland
+; #COUNTRY_ID_76= Nicaragua
+; #COUNTRY_ID_77= Nigeria
+; #COUNTRY_ID_78= Norway
+; #COUNTRY_ID_79= Palestine
+; #COUNTRY_ID_80= Panama
+; #COUNTRY_ID_81= Paraguay
+; #COUNTRY_ID_82= Persia
+; #COUNTRY_ID_83= Peru
+; #COUNTRY_ID_84= Philippines
+; #COUNTRY_ID_85= Poland
+; #COUNTRY_ID_86= Polynesia
+; #COUNTRY_ID_87= Portugal
+; #COUNTRY_ID_88= Portuguese East Africa
+; #COUNTRY_ID_89= Portuguese Timor
+; #COUNTRY_ID_90= Portuguese West Africa
+; #COUNTRY_ID_91= Red
+; #COUNTRY_ID_92= Rhodesia
+; #COUNTRY_ID_93= Romania
+; #COUNTRY_ID_94= Sarawak
+; #COUNTRY_ID_95= Saudi Arabia
+; #COUNTRY_ID_96= Slovakia
+; #COUNTRY_ID_97= Solomons
+; #COUNTRY_ID_98= South Africa
+; #COUNTRY_ID_99= Spain
+; #COUNTRY_ID_100= Spanish Guinea
+; #COUNTRY_ID_101= Spanish Republic
+; #COUNTRY_ID_102= Sudan
+; #COUNTRY_ID_103= Sweden
+; #COUNTRY_ID_104= Switzerland
+; #COUNTRY_ID_105= Syria
+; #COUNTRY_ID_106= Tannu Tuva
+; #COUNTRY_ID_107= Thailand
+; #COUNTRY_ID_108= Tibet
+; #COUNTRY_ID_109= Transjordan
+; #COUNTRY_ID_110= Tunisia
+; #COUNTRY_ID_111= Turkey
+; #COUNTRY_ID_112= UK
+; #COUNTRY_ID_113= Ukraine
+; #COUNTRY_ID_114= Uruguay
+; #COUNTRY_ID_115= USA
+; #COUNTRY_ID_116= USSR
+; #COUNTRY_ID_117= Venezuela
+; #COUNTRY_ID_118= Vichy France
+; #COUNTRY_ID_119= Yemen
+; #COUNTRY_ID_120= Yugoslavia
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; TACTICAL ID REFERENCE VALUES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; ANY= 0
+; LAND= 1
+; AIR= 2
+; NAVAL= 3
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; POLITICAL ALIGNMENT REFERENCE VALUES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; NEUTRAL= 0
+; AXIS= 1
+; ALLIED= 2
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; SURRENDERED FLAG REFERENCE VALUES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; NOT_SURRENDERED= 0
+; SURRENDERED= 1
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; ALLIED SCRIPTS - UK
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+{
+#NAME= UK (1944)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 10 [1]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 25 [1]
+; Division
+#UNIT_ID_3= 25 [1]
+; Corps
+#UNIT_ID_4= 25 [3]
+; Army
+#UNIT_ID_5= 25 [3]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 10 [1]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 10 [1]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 10 [1]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 10 [1]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 10 [1]
+; Tanks
+#UNIT_ID_26= 10 [1]
+; Heavy Tanks
+#UNIT_ID_27= 10 [1]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 10 [1]
+; Tactical Bombers
+#UNIT_ID_30= 10 [1]
+; Medium Bombers
+#UNIT_ID_31= 10 [1]
+; Strategic Bombers
+#UNIT_ID_32= 10 [1]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 10 [3]
+; Battle Cruiser
+#UNIT_ID_37= 10 [3]
+; Heavy Cruiser
+#UNIT_ID_38= 10 [3]
+; Light Cruiser
+#UNIT_ID_39= 10 [3]
+; Destroyer
+#UNIT_ID_40= 10 [3]
+; Escort Carrier
+#UNIT_ID_41= 10 [3]
+; Carrier
+#UNIT_ID_42= 10 [3]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1944/01/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - London
+#FRIENDLY_POSITION= 147,77
+; Set variable conditions:
+; 1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Set tactical conditions:
+; 1st Line - London not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= UK (Sep 1942 - 1944)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 25 [1]
+; Division
+#UNIT_ID_3= 10 [1]
+; Corps
+#UNIT_ID_4= 40 [3]
+; Army
+#UNIT_ID_5= 10 [1]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 10 [1]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 10 [1]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 10 [1]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 10 [1]
+; Tanks
+#UNIT_ID_26= 10 [1]
+; Heavy Tanks
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 0 [0]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1942/09/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - London
+#FRIENDLY_POSITION= 147,77
+; Set variable conditions:
+; 1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Set tactical conditions:
+; 1st Line - London not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= UK (1942 - Sep 1942)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 0 [0]
+; Division
+#UNIT_ID_3= 0 [0]
+; Corps
+#UNIT_ID_4= 10 [1]
+; Army
+#UNIT_ID_5= 0 [0]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 10 [1]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 0 [0]
+; Tanks
+#UNIT_ID_26= 0 [0]
+; Heavy Tanks
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 10 [2]
+; Tactical Bombers
+#UNIT_ID_30= 40 [2]
+; Medium Bombers
+#UNIT_ID_31= 40 [2]
+; Strategic Bombers
+#UNIT_ID_32= 40 [2]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1942/01/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - London
+#FRIENDLY_POSITION= 147,77
+; Set variable conditions:
+; 1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Set tactical conditions:
+; 1st Line - London not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= UK (February 1940 - 1942)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 10 [1]
+; Division
+#UNIT_ID_3= 10 [1]
+; Corps
+#UNIT_ID_4= 25 [3]
+; Army
+#UNIT_ID_5= 10 [1]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 10 [1]
+; Tanks
+#UNIT_ID_26= 0 [0]
+; Heavy Tanks
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 0 [0]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1940/02/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - London
+#FRIENDLY_POSITION= 147,77
+; Set variable conditions:
+; 1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Set tactical conditions:
+; 1st Line - London not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= UK (1939 - February 1940)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 10 [1]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 15 [2]
+; Division
+#UNIT_ID_3= 10 [1]
+; Corps
+#UNIT_ID_4= 75 [2]
+; Army
+#UNIT_ID_5= 25 [2]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 10 [1]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 0 [0]
+; Tanks
+#UNIT_ID_26= 0 [0]
+; Heavy Tanks
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 0 [0]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1939/09/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - London
+#FRIENDLY_POSITION= 147,77
+; Set variable conditions:
+; 1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Set tactical conditions:
+; 1st Line - London not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= UK - Holding Manchester (1939 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 25 [3]
+; Division
+#UNIT_ID_3= 10 [3]
+; Corps
+#UNIT_ID_4= 25 [3]
+; Army
+#UNIT_ID_5= 10 [3]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 0 [0]
+; Tanks
+#UNIT_ID_26= 10 [1]
+; Heavy Tanks
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 0 [0]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1939/01/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Manchester
+#FRIENDLY_POSITION= 142,72
+; Set variable conditions:
+; 1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Set tactical conditions:
+; 1st Line - London not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= UK - Holding Ottawa (1939 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 15 [1]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 15 [1]
+; Division
+#UNIT_ID_3= 15 [1]
+; Corps
+#UNIT_ID_4= 25 [3]
+; Army
+#UNIT_ID_5= 20 [3]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 0 [0]
+; Tanks
+#UNIT_ID_26= 10 [1]
+; Heavy Tanks
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 25 [1]
+; Tactical Bombers
+#UNIT_ID_30= 25 [1]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 10 [1]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 10 [1]
+; Light Cruiser
+#UNIT_ID_39= 10 [1]
+; Destroyer
+#UNIT_ID_40= 10 [1]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 10 [1]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1939/01/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Ottawa
+#FRIENDLY_POSITION= 6,93
+; Set variable conditions:
+; 1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Set tactical conditions:
+; 1st Line - London not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; ALLIED SCRIPTS - France
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+{
+#NAME= France (1940 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 40
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 5 [1]
+; Division
+#UNIT_ID_3= 10 [1]
+; Corps
+#UNIT_ID_4= 25 [2]
+; Army
+#UNIT_ID_5= 25 [2]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 5 [1]
+; Tanks
+#UNIT_ID_26= 15 [1]
+; Heavy Tanks
+#UNIT_ID_27= 15 [1]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 0 [0]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1940/01/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Paris
+#FRIENDLY_POSITION= 151,84
+; Set variable conditions:
+; 1st Line - France politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; Set tactical conditions:
+; 1st Line - Paris not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 151,84 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; ALLIED SCRIPTS - USA
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+{
+#NAME= USA (1944 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 10 [1]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 25 [2]
+; Division
+#UNIT_ID_3= 0 [0]
+; Corps
+#UNIT_ID_4= 25 [3]
+; Army
+#UNIT_ID_5= 10 [2]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 10 [1]
+; Engineers
+#UNIT_ID_8= 10 [1]
+; Paratroops
+#UNIT_ID_9= 10 [1]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 10 [1]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 10 [1]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 15 [2]
+; Tanks
+#UNIT_ID_26= 15 [1]
+; Heavy Tanks
+#UNIT_ID_27= 15 [1]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 10 [1]
+; Tactical Bombers
+#UNIT_ID_30= 10 [1]
+; Medium Bombers
+#UNIT_ID_31= 10 [1]
+; Strategic Bombers
+#UNIT_ID_32= 10 [1]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 10 [3]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 10 [3]
+; Light Cruiser
+#UNIT_ID_39= 10 [3]
+; Destroyer
+#UNIT_ID_40= 10 [3]
+; Escort Carrier
+#UNIT_ID_41= 10 [3]
+; Carrier
+#UNIT_ID_42= 10 [3]
+; Sub
+#UNIT_ID_43= 10 [3]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1944/01/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Washington D.C.
+#FRIENDLY_POSITION= 4,108
+; Set variable conditions:
+; 1st Line - USA politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Set tactical conditions:
+; 1st Line - Washington D.C. not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA (1943 - 1944)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 10 [1]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 0 [0]
+; Division
+#UNIT_ID_3= 0 [0]
+; Corps
+#UNIT_ID_4= 40 [3]
+; Army
+#UNIT_ID_5= 10 [1]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 10 [1]
+; Engineers
+#UNIT_ID_8= 10 [1]
+; Paratroops
+#UNIT_ID_9= 10 [1]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 10 [1]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 10 [1]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 10 [1]
+; Tanks
+#UNIT_ID_26= 10 [1]
+; Heavy Tanks
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 10 [1]
+; Tactical Bombers
+#UNIT_ID_30= 10 [1]
+; Medium Bombers
+#UNIT_ID_31= 10 [1]
+; Strategic Bombers
+#UNIT_ID_32= 10 [1]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 10 [1]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 10 [1]
+; Light Cruiser
+#UNIT_ID_39= 10 [1]
+; Destroyer
+#UNIT_ID_40= 10 [1]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1943/01/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Washington D.C.
+#FRIENDLY_POSITION= 4,108
+; Set variable conditions:
+; 1st Line - USA politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Set tactical conditions:
+; 1st Line - Washington D.C. not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA (Sept 1942 - 1943) (Post-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 10 [1]
+; Division
+#UNIT_ID_3= 0 [0]
+; Corps
+#UNIT_ID_4= 0 [0]
+; Army
+#UNIT_ID_5= 0 [0]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 10 [1]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 10 [1]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 0 [0]
+; Tanks
+#UNIT_ID_26= 0 [0]
+; Heavy Tanks
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 10 [1]
+; Tactical Bombers
+#UNIT_ID_30= 40 [1]
+; Medium Bombers
+#UNIT_ID_31= 40 [1]
+; Strategic Bombers
+#UNIT_ID_32= 40 [1]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1942/09/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Washington D.C.
+#FRIENDLY_POSITION= 4,108
+; Set variable conditions:
+; 1st Line - USA politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Set tactical conditions:
+; 1st Line - Washington D.C. not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA (March 1940 - Sep 1942) (Post-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 0 [0]
+; Division
+#UNIT_ID_3= 5 [1]
+; Corps
+#UNIT_ID_4= 25 [3]
+; Army
+#UNIT_ID_5= 10 [1]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 10 [1]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 10 [1]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 10 [1]
+; Tanks
+#UNIT_ID_26= 10 [1]
+; Heavy Tanks
+#UNIT_ID_27= 10 [1]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 0 [0]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1940/03/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Washington D.C.
+#FRIENDLY_POSITION= 4,108
+; Set variable conditions:
+; 1st Line - USA politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Set tactical conditions:
+; 1st Line - Washington D.C. not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA (Sep 1942 - 1943) (Pre-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 0 [0]
+; Division
+#UNIT_ID_3= 0 [0]
+; Corps
+#UNIT_ID_4= 0 [0]
+; Army
+#UNIT_ID_5= 0 [0]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 0 [0]
+; Tanks
+#UNIT_ID_26= 0 [0]
+; Heavy Tanks
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 40 [1]
+; Tactical Bombers
+#UNIT_ID_30= 10 [1]
+; Medium Bombers
+#UNIT_ID_31= 10 [1]
+; Strategic Bombers
+#UNIT_ID_32= 40 [1]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1942/09/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Washington D.C.
+#FRIENDLY_POSITION= 4,108
+; Set variable conditions:
+; 1st Line - USA politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; Set tactical conditions:
+; 1st Line - Washington D.C. not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+; Set activate position
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA (March 1940 - Sep 1942) (Pre-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 5 [1]
+; Division
+#UNIT_ID_3= 0 [0]
+; Corps
+#UNIT_ID_4= 25 [3]
+; Army
+#UNIT_ID_5= 10 [1]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 0 [0]
+; Tanks
+#UNIT_ID_26= 10 [1]
+; Heavy Tanks
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 0 [0]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1940/03/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Washington D.C.
+#FRIENDLY_POSITION= 4,108
+; Set variable conditions:
+; 1st Line - USA politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; Set tactical conditions:
+; 1st Line - Washington D.C. not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; ALLIED SCRIPTS - USSR
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+{
+#NAME= USSR (1943 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 10 [1]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 10 [2]
+; Division
+#UNIT_ID_3= 10 [2]
+; Corps
+#UNIT_ID_4= 40 [3]
+; Army
+#UNIT_ID_5= 40 [2]
+; Mechanized
+#UNIT_ID_6= 25 [2]
+; Special Forces
+#UNIT_ID_7= 10 [1]
+; Engineers
+#UNIT_ID_8= 10 [1]
+; Paratroops
+#UNIT_ID_9= 10 [1]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 10 [1]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 25 [2]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 10 [1]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 10 [1]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 10 [1]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 25 [1]
+; Tanks
+#UNIT_ID_26= 25 [2]
+; Heavy Tanks
+#UNIT_ID_27= 25 [2]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 25 [2]
+; Tactical Bombers
+#UNIT_ID_30= 25 [2]
+; Medium Bombers
+#UNIT_ID_31= 25 [2]
+; Strategic Bombers
+#UNIT_ID_32= 10 [1]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1943/01/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Perm
+#FRIENDLY_POSITION= 257,58
+; Set variable conditions:
+; 1st Line - USSR politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Set tactical conditions:
+; 1st Line - Perm not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR (1942 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 25 [1]
+; Division
+#UNIT_ID_3= 25 [1]
+; Corps
+#UNIT_ID_4= 40 [3]
+; Army
+#UNIT_ID_5= 40 [2]
+; Mechanized
+#UNIT_ID_6= 25 [1]
+; Special Forces
+#UNIT_ID_7= 10 [1]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 10 [1]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 25 [2]
+; Anti-Air
+#UNIT_ID_15= 10 [1]
+; Rocket Artillery
+#UNIT_ID_16= 10 [1]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 10 [1]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 25 [2]
+; Tanks
+#UNIT_ID_26= 25 [2]
+; Heavy Tanks
+#UNIT_ID_27= 25 [2]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 0 [0]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1942/01/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Perm
+#FRIENDLY_POSITION= 257,58
+; Set variable conditions:
+; 1st Line - USSR politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Set tactical conditions:
+; 1st Line - Perm not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR (1939 - 1942) (Post-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 25 [2]
+; Division
+#UNIT_ID_3= 25 [2]
+; Corps
+#UNIT_ID_4= 25 [2]
+; Army
+#UNIT_ID_5= 25 [2]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 10 [1]
+; Tanks
+#UNIT_ID_26= 10 [1]
+; Heavy Tanks
+#UNIT_ID_27= 10 [1]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 0 [0]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1939/09/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Perm
+#FRIENDLY_POSITION= 257,58
+; Set variable conditions:
+; 1st Line - USSR politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Set tactical conditions:
+; 1st Line - Perm not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR (1939 - 1942) (Pre-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 15 [2]
+; Division
+#UNIT_ID_3= 0 [0]
+; Corps
+#UNIT_ID_4= 15 [2]
+; Army
+#UNIT_ID_5= 10 [2]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 0 [0]
+; Tanks
+#UNIT_ID_26= 10 [1]
+; Heavy Tanks
+#UNIT_ID_27= 10 [1]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 0 [0]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1939/09/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Perm
+#FRIENDLY_POSITION= 257,58
+; Set variable conditions:
+; 1st Line - USSR politically aligned with Allies (not fully active) and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Set tactical conditions:
+; 1st Line - Perm not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; AXIS SCRIPTS - Germany
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+{
+#NAME= Germany (1944 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 10 [1]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 50 [3]
+; Division
+#UNIT_ID_3= 25 [1]
+; Corps
+#UNIT_ID_4= 25 [1]
+; Army
+#UNIT_ID_5= 25 [2]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 10 [1]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 10 [1]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 10 [1]
+; Rocket Artillery
+#UNIT_ID_16= 10 [1]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 10 [1]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 25 [2]
+; Tanks
+#UNIT_ID_26= 25 [1]
+; Heavy Tanks
+#UNIT_ID_27= 25 [1]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 10 [1]
+; Tactical Bombers
+#UNIT_ID_30= 10 [1]
+; Medium Bombers
+#UNIT_ID_31= 10 [1]
+; Strategic Bombers
+#UNIT_ID_32= 10 [1]
+; Maritime Bombers
+#UNIT_ID_33= 10 [1]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 10 [3]
+; Battle Cruiser
+#UNIT_ID_37= 10 [3]
+; Heavy Cruiser
+#UNIT_ID_38= 10 [3]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 10 [3]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 10 [3]
+; Sub
+#UNIT_ID_43= 10 [3]
+; Motor Torpedo Boat
+#UNIT_ID_44= 10 [3]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1944/01/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Berlin
+#FRIENDLY_POSITION= 173,74
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Set tactical conditions:
+; 1st Line - Berlin not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany (1943 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 50 [3]
+; Division
+#UNIT_ID_3= 15 [1]
+; Corps
+#UNIT_ID_4= 25 [1]
+; Army
+#UNIT_ID_5= 25 [2]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 10 [1]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 10 [1]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 10 [1]
+; Rocket Artillery
+#UNIT_ID_16= 10 [1]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 10 [1]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 25 [2]
+; Tanks
+#UNIT_ID_26= 25 [1]
+; Heavy Tanks
+#UNIT_ID_27= 25 [1]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 10 [1]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 10 [1]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 10 [3]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1943/01/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Berlin
+#FRIENDLY_POSITION= 173,74
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Set tactical conditions:
+; 1st Line - Berlin not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany (September 1941 - 1943)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 10 [2]
+; Division
+#UNIT_ID_3= 10 [2]
+; Corps
+#UNIT_ID_4= 50 [1]
+; Army
+#UNIT_ID_5= 25 [2]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 10 [1]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 10 [1]
+; Rocket Artillery
+#UNIT_ID_16= 10 [1]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 10 [1]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 50 [1]
+; Tanks
+#UNIT_ID_26= 25 [1]
+; Heavy Tanks
+#UNIT_ID_27= 50 [1]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 25 [1]
+; Tactical Bombers
+#UNIT_ID_30= 10 [1]
+; Medium Bombers
+#UNIT_ID_31= 10 [1]
+; Strategic Bombers
+#UNIT_ID_32= 10 [1]
+; Maritime Bombers
+#UNIT_ID_33= 10 [1]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 10 [1]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1941/09/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Berlin
+#FRIENDLY_POSITION= 173,74
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Set tactical conditions:
+; 1st Line - Berlin not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany (1941 - September 1941)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 0 [0]
+; Division
+#UNIT_ID_3= 10 [1]
+; Corps
+#UNIT_ID_4= 50 [1]
+; Army
+#UNIT_ID_5= 10 [1]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 10 [1]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 10 [1]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 10 [1]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 30 [1]
+; Tanks
+#UNIT_ID_26= 50 [1]
+; Heavy Tanks
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 25 [1]
+; Tactical Bombers
+#UNIT_ID_30= 10 [1]
+; Medium Bombers
+#UNIT_ID_31= 10 [1]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1941/01/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Berlin
+#FRIENDLY_POSITION= 173,74
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Set tactical conditions:
+; 1st Line - Berlin not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany (1940 - 1941)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 10 [1]
+; Division
+#UNIT_ID_3= 5 [1]
+; Corps
+#UNIT_ID_4= 50 [1]
+; Army
+#UNIT_ID_5= 10 [1]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 50 [1]
+; Tanks
+#UNIT_ID_26= 50 [1]
+; Heavy Tanks
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 50 [1]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 10 [1]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1940/09/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Berlin
+#FRIENDLY_POSITION= 173,74
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Set tactical conditions:
+; 1st Line - Berlin not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany (1939 - 1940)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 0 [0]
+; Division
+#UNIT_ID_3= 5 [1]
+; Corps
+#UNIT_ID_4= 25 [2]
+; Army
+#UNIT_ID_5= 25 [2]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 25 [2]
+; Tanks
+#UNIT_ID_26= 0 [0]
+; Heavy Tanks
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 10 [1]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 10 [1]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1939/09/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Berlin
+; 2nd Line - Frankfurt
+; 3rd Line - Dusseldorf
+#FRIENDLY_POSITION= 173,74
+#FRIENDLY_POSITION= 164,81
+#FRIENDLY_POSITION= 160,78
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Set tactical conditions:
+; 1st Line - Berlin not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; AXIS SCRIPTS - Italy
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+{
+#NAME= Italy (1943 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 10 [1]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 5 [1]
+; Division
+#UNIT_ID_3= 10 [1]
+; Corps
+#UNIT_ID_4= 50 [1]
+; Army
+#UNIT_ID_5= 25 [2]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 10 [1]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 10 [1]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 10 [1]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 10 [1]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 10 [1]
+; Tanks
+#UNIT_ID_26= 0 [0]
+; Heavy Tanks
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 10 [1]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 10 [1]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 10 [3]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 10 [3]
+; Light Cruiser
+#UNIT_ID_39= 10 [3]
+; Destroyer
+#UNIT_ID_40= 10 [3]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 10 [3]
+; Sub
+#UNIT_ID_43= 10 [1]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1943/01/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Rome
+#FRIENDLY_POSITION= 171,101
+; Set variable conditions:
+; 1st Line - Italy politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Set tactical conditions:
+; 1st Line - Rome not tactically threatened
+#TACTICAL_CONDITION= 171,101 [1]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Italy (September 1941 - 1943)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 10 [1]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 50 [2]
+; Division
+#UNIT_ID_3= 10 [1]
+; Corps
+#UNIT_ID_4= 50 [2]
+; Army
+#UNIT_ID_5= 25 [2]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 10 [1]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 10 [1]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 10 [1]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 50 [2]
+; Tanks
+#UNIT_ID_26= 25 [2]
+; Heavy Tanks
+#UNIT_ID_27= 50 [2]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 10 [2]
+; Tactical Bombers
+#UNIT_ID_30= 10 [2]
+; Medium Bombers
+#UNIT_ID_31= 10 [2]
+; Strategic Bombers
+#UNIT_ID_32= 10 [2]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1941/09/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Rome
+#FRIENDLY_POSITION= 171,101
+; Set variable conditions:
+; 1st Line - Italy politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Set tactical conditions:
+; 1st Line - Rome not tactically threatened
+#TACTICAL_CONDITION= 171,101 [1]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Italy (1941 - September 1941)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 25 [2]
+; Division
+#UNIT_ID_3= 10 [1]
+; Corps
+#UNIT_ID_4= 30 [2]
+; Army
+#UNIT_ID_5= 5 [2]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 5 [2]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 50 [2]
+; Tanks
+#UNIT_ID_26= 20 [2]
+; Heavy Tanks
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 10 [1]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1941/01/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Rome
+#FRIENDLY_POSITION= 171,101
+; Set variable conditions:
+; 1st Line - Italy politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Set tactical conditions:
+; 1st Line - Rome not tactically threatened
+#TACTICAL_CONDITION= 171,101 [1]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Italy (1939 - 1941)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 5 [1]
+; Division
+#UNIT_ID_3= 5 [1]
+; Corps
+#UNIT_ID_4= 25 [2]
+; Army
+#UNIT_ID_5= 25 [2]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 5 [1]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 10 [1]
+; Tanks
+#UNIT_ID_26= 20 [2]
+; Heavy Tanks
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 10 [1]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1939/09/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Berlin
+#FRIENDLY_POSITION= 171,101
+; Set variable conditions:
+; 1st Line - Italy politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Set tactical conditions:
+; 1st Line - Italy not tactically threatened
+#TACTICAL_CONDITION= 171,101 [1]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Italy (1939 - 1941) (Pre-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 5 [1]
+; Division
+#UNIT_ID_3= 5 [1]
+; Corps
+#UNIT_ID_4= 25 [2]
+; Army
+#UNIT_ID_5= 25 [2]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 5 [1]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 10 [1]
+; Tanks
+#UNIT_ID_26= 20 [1]
+; Heavy Tanks
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 0 [0]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1939/09/01
+#DESTINATION_RESOURCE=
+;STRATEGIC_ Set friendly positions:
+; 1st Line - Rome
+#FRIENDLY_POSITION= 171,101
+; Set variable conditions:
+; 1st Line - Rome politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+; Set tactical conditions:
+; 1st Line - Rome not tactically threatened
+#TACTICAL_CONDITION= 171,101 [1]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Finland
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 39
+#TRIGGER= 100
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 25 [1]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Brigade
+#UNIT_ID_2= 10 [1]
+; Division
+#UNIT_ID_3= 0 [0]
+; Corps
+#UNIT_ID_4= 10 [1]
+; Army
+#UNIT_ID_5= 10 [1]
+; Mechanized
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 10 [1]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Light Tanks
+#UNIT_ID_25= 0 [0]
+; Tanks
+#UNIT_ID_26= 0 [0]
+; Heavy Tanks
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 10 [1]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1939/09/01
+#DESTINATION_RESOURCE=
+; Set friendly positions:
+; 1st Line - Berlin
+#FRIENDLY_POSITION= 195,51
+; Set variable conditions:
+; 1st Line - Italy politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 39 [1] [100] [0]
+; Set tactical conditions:
+; 1st Line - Italy not tactically threatened
+#TACTICAL_CONDITION= 195,51 [1]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}

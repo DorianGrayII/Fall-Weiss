@@ -1,0 +1,1475 @@
+﻿;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; STRENGTH EVENTS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; USAGE:
+;
+; Basic structure for a strength event:
+; { 
+; #NAME= Event name (this will be shown as a selectable event under an OPTIONS screen within the game)
+; #POPUP= Event popup text (this will be displayed when the event occurs)
+; #IMAGE= Event image that will be displayed when event occurs
+;         PNG images must be 736x418 or 368x418 pixels, see 'Extras' folder for sample images and frames
+;         Multiple pictures can be used by using a ',' to separate them
+;         Format: picture1.png, picture2.png, picture3.png, picture4.png
+; #SOUND= Event sound that will be displayed when event occurs
+;         Multiple sounds can be used by using a ',' to separate them
+;         Format: sound1.mp3, sound2.mp3, sound3.mp3, sound4.mp3
+; #FLAG= Will this be a default event for the campaign? (values range [0, 1]; True= 1; False= 0)
+; #TYPE= Values range [0, 3];
+;        With all other fields satisfied will this be:
+;        0 = Single check regardless if #TRIGGER is satisfied
+;        1 = Multiple check until #TRIGGER is satisfied
+;        2 = Reoccuring check until end of game
+;                       OR
+;        Once the #DATE field is satisfied:
+;        3 = Event fires once if all other fields are satisfied, else it will not fire.  Either way, event will be removed never to be looked at again
+; #AI= Values range [0, 4]
+;      0 = Event fires whenever all fields are satisfied for any game type
+;      1 = Event fires whenever all fields are satisfied, for AI games only, and only on the Axis AI turn
+;      2 = Event fires whenever all fields are satisfied, for AI games only, and only on the Allied AI turn
+;      3 = Event fires whenever all fields are satisfied, for AI and Multiplayer games only, and only on the Axis AI or on the Allied Multiplayer turns
+;      4 = Event fires whenever all fields are satisfied, for AI and Multiplayer games only, and only on the Allied AI or on the Axis Multiplayer turns
+; #LEVEL= What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;         Values: [0, 4]; Green= 0; Novice= 1; Intermediate= 2; Veteran= 3; Expert= 4
+; #GV= Does the event activate based on the Global Variable values assigned?
+;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
+;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
+;      Example A) #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;      Example B) #GV= 4[71,100] will trigger 30% per game
+; #LINK= Does the event activate based on the Link values assigned?
+;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
+;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
+;        Example A) #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
+;        Example B) #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
+;        Example C) #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
+; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
+; #COUNTRY_ID= Country ID that will be owner of strength event
+; #FLAG_ID= Flag ID that will be shown in the popup for this event
+; #SEASON_FLAG= Season flag can be used to limit event to a particular season
+; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
+; #VARIABLE_CONDITION= Under what variable conditions will this event occur
+;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
+; #CONDITION_POSITION= Map positions that will serve to trigger the event as well as distance and
+;                      number of Axis/Allied unit ranges as specified by 'alignment' flag
+;                      Format: x,y [min_range, max_range] [min_units, max_units] [alignment] [aligned_country_id]
+; #MAP_POSITION= Map positions that will be the source of strength/morale loss for units of 'alignment' in range
+;                Format: x,y [min_range, max_range] [min_strength_loss, max_strength_loss] [min_morale_adjustment, max_morale_adjustment] [alignment] [aligned_country_id]
+; }
+;
+; NOTES:
+;
+; Each event must be preceded by a '{' and end with a '}'
+;
+; Triggering of the strength event will be dependant on #DATE and the applicable #SEASON_FLAG.
+;
+; Under #VARIABLE_CONDITION you can also list countries that have not yet fully entered the war.
+; For example by listing an mobilization % less than 100% you are providing a check where the
+; #VARIABLE_CONDITION country must meet a minimum mobilization % in order for the event to occur.
+; Each #VARIABLE_CONDITION line will be read using AND logic.
+;
+; More than one #CONDITION_POSITION can be set. Distance or range checks will be based on the 
+; specified x,y position. For example if the x,y position is a coastal hex then range checks will
+; be made on sea hexes, otherwise if it is a land hex range checks will be made on land hexes only.
+; If the 'aligned_country_id' flag is set to 0 then it will check for any Axis or Allied country as
+; determined by the alignment flag.
+; Each #CONDITION_POSITION line will be read using OR logic.
+;
+; More than one #MAP_POSITION can be set. Distance or range checks will be based on the
+; specified x,y position. For example if the x,y position is a coastal hex then range checks will
+; be made on sea hexes, otherwise if it is a land hex range checks will be made on land hexes only.
+; If the 'aligned_country_id' flag is set to 0 then it will check for any Axis or Allied country as
+; determined by the alignment flag.
+;
+; Use the reference values provided for #COUNTRY_ID and not the country names
+; Use the reference values provided for #SEASON_FLAG and not season names
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; COUNTRY ID REFERENCE VALUES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Country IDs
+; #COUNTRY_ID_0= Neutral
+; #COUNTRY_ID_1= Abyssinia
+; #COUNTRY_ID_2= Afghanistan
+; #COUNTRY_ID_3= Albania
+; #COUNTRY_ID_4= Algeria
+; #COUNTRY_ID_5= Argentina
+; #COUNTRY_ID_6= Australia
+; #COUNTRY_ID_7= Austria
+; #COUNTRY_ID_8= Baltic States
+; #COUNTRY_ID_9= Belgian Congo
+; #COUNTRY_ID_10= Belgium
+; #COUNTRY_ID_11= Benelux
+; #COUNTRY_ID_12= Bhutan
+; #COUNTRY_ID_13= Black
+; #COUNTRY_ID_14= Bolivia
+; #COUNTRY_ID_15= Borneo
+; #COUNTRY_ID_16= Brazil
+; #COUNTRY_ID_17= British Somaliland
+; #COUNTRY_ID_18= Brunei
+; #COUNTRY_ID_19= Bulgaria
+; #COUNTRY_ID_20= Burma
+; #COUNTRY_ID_21= Canada
+; #COUNTRY_ID_22= Chile
+; #COUNTRY_ID_23= China
+; #COUNTRY_ID_24= Colombia
+; #COUNTRY_ID_25= Communist China
+; #COUNTRY_ID_26= Costa Rica
+; #COUNTRY_ID_27= Croatia
+; #COUNTRY_ID_28= Cuba
+; #COUNTRY_ID_29= Curaçao
+; #COUNTRY_ID_30= Czechoslovakia
+; #COUNTRY_ID_31= Denmark
+; #COUNTRY_ID_32= Dominican Republic
+; #COUNTRY_ID_33= Dutch East Indies
+; #COUNTRY_ID_34= Dutch Guiana
+; #COUNTRY_ID_35= Ecuador
+; #COUNTRY_ID_36= Egypt
+; #COUNTRY_ID_37= El Salvador
+; #COUNTRY_ID_38= Estonia
+; #COUNTRY_ID_39= Finland
+; #COUNTRY_ID_40= France
+; #COUNTRY_ID_41= Free City of Danzig
+; #COUNTRY_ID_42= French Equatorial Africa
+; #COUNTRY_ID_43= French Somaliland
+; #COUNTRY_ID_44= French West Africa
+; #COUNTRY_ID_45= Germany
+; #COUNTRY_ID_46= Greece
+; #COUNTRY_ID_47= Greenland
+; #COUNTRY_ID_48= Guatemala
+; #COUNTRY_ID_49= Haiti
+; #COUNTRY_ID_50= Honduras
+; #COUNTRY_ID_51= Hong Kong
+; #COUNTRY_ID_52= Hungary
+; #COUNTRY_ID_53= Iceland
+; #COUNTRY_ID_54= India
+; #COUNTRY_ID_55= Indochina
+; #COUNTRY_ID_56= Iraq
+; #COUNTRY_ID_57= Ireland
+; #COUNTRY_ID_58= Italian East Africa
+; #COUNTRY_ID_59= Italy
+; #COUNTRY_ID_60= Japan
+; #COUNTRY_ID_61= Latvia
+; #COUNTRY_ID_62= Liberia
+; #COUNTRY_ID_63= Libya
+; #COUNTRY_ID_64= Lithuania
+; #COUNTRY_ID_65= Luxembourg
+; #COUNTRY_ID_66= Malaya
+; #COUNTRY_ID_67= Manchukuo
+; #COUNTRY_ID_68= Mexico
+; #COUNTRY_ID_69= Mongolia
+; #COUNTRY_ID_70= Morocco
+; #COUNTRY_ID_71= Nanjing
+; #COUNTRY_ID_72= Nepal
+; #COUNTRY_ID_73= Netherlands
+; #COUNTRY_ID_74= New Zealand
+; #COUNTRY_ID_75= Newfoundland
+; #COUNTRY_ID_76= Nicaragua
+; #COUNTRY_ID_77= Nigeria
+; #COUNTRY_ID_78= Norway
+; #COUNTRY_ID_79= Palestine
+; #COUNTRY_ID_80= Panama
+; #COUNTRY_ID_81= Paraguay
+; #COUNTRY_ID_82= Persia
+; #COUNTRY_ID_83= Peru
+; #COUNTRY_ID_84= Philippines
+; #COUNTRY_ID_85= Poland
+; #COUNTRY_ID_86= Polynesia
+; #COUNTRY_ID_87= Portugal
+; #COUNTRY_ID_88= Portuguese East Africa
+; #COUNTRY_ID_89= Portuguese Timor
+; #COUNTRY_ID_90= Portuguese West Africa
+; #COUNTRY_ID_91= Red
+; #COUNTRY_ID_92= Rhodesia
+; #COUNTRY_ID_93= Romania
+; #COUNTRY_ID_94= Sarawak
+; #COUNTRY_ID_95= Saudi Arabia
+; #COUNTRY_ID_96= Slovakia
+; #COUNTRY_ID_97= Solomons
+; #COUNTRY_ID_98= South Africa
+; #COUNTRY_ID_99= Spain
+; #COUNTRY_ID_100= Spanish Guinea
+; #COUNTRY_ID_101= Spanish Republic
+; #COUNTRY_ID_102= Sudan
+; #COUNTRY_ID_103= Sweden
+; #COUNTRY_ID_104= Switzerland
+; #COUNTRY_ID_105= Syria
+; #COUNTRY_ID_106= Tannu Tuva
+; #COUNTRY_ID_107= Thailand
+; #COUNTRY_ID_108= Tibet
+; #COUNTRY_ID_109= Transjordan
+; #COUNTRY_ID_110= Tunisia
+; #COUNTRY_ID_111= Turkey
+; #COUNTRY_ID_112= UK
+; #COUNTRY_ID_113= Ukraine
+; #COUNTRY_ID_114= Uruguay
+; #COUNTRY_ID_115= USA
+; #COUNTRY_ID_116= USSR
+; #COUNTRY_ID_117= Venezuela
+; #COUNTRY_ID_118= Vichy France
+; #COUNTRY_ID_119= Yemen
+; #COUNTRY_ID_120= Yugoslavia
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; SEASON FLAG REFERENCE VALUES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; ALL_SEASONS= 0
+; SPRING= 1
+; SUMMER= 2
+; FALL= 3
+; WINTER= 4
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; POLITICAL ALIGNMENT/DIRECTION REFERENCE VALUES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; AXIS= 1
+; ALLIED= 2
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;REMOVE1943
+{
+#NAME= O.S.S. Agents Co-ordinate Attacks On Vichy Forces In Algeria
+#POPUP= <<TAG_1>>
+#IMAGE=
+#SOUND= coup.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 308[1]
+#COUNTRY_ID= 115
+#FLAG_ID= 4
+#TRIGGER= 50
+#SEASON_FLAG= 0
+#DATE= 1942/01/01
+#MAP_POSITION= 131,119 [2,2] [0,0] [-35,-60] [1] [4]
+#MAP_POSITION= 145,115 [2,2] [0,0] [-35,-60] [1] [4]
+#MAP_POSITION= 152,113 [2,2] [0,0] [-35,-60] [1] [4]
+; 1st Line - Algeria politically aligned with the Axis and not surrendered
+#VARIABLE_CONDITION= 4 [1] [100] [0]
+; A US unit is within 3 hexes of Casablanca
+#CONDITION_POSITION= 131,119 [3,3] [1,1] [2] [115]
+; A US unit is within 3 hexes of Oran
+#CONDITION_POSITION= 145,115 [3,3] [1,1] [2] [115]
+; A US unit is within 3 hexes of Algiers
+#CONDITION_POSITION= 152,113 [3,3] [1,1] [2] [115]
+}
+
+{
+#NAME= Comrade Stalin Vows To Stay In Moscow And Lead Its Defence!
+#POPUP= Comrade Stalin Vows To Stay In Moscow And Lead Its Defence!
+#IMAGE= stalininmoscow.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 408[1]
+#COUNTRY_ID= 116
+#FLAG_ID= 116
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 221,65 [50,50] [0,0] [25,25] [2] [116]
+; 1st Line - USSR politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+;Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Panic Spreads As News Spreads That Comrade Stalin Has Left Moscow
+#POPUP= Panic Spreads As News Spreads That Comrade Stalin Has Left Moscow
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 408[1]
+#COUNTRY_ID= 116
+#FLAG_ID= 116
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 221,65 [50,50] [0,0] [-40,-40] [2] [116]
+; 1st Line - USSR politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; An Axis unit is in Moscow
+#CONDITION_POSITION= 221,65 [0,0] [1,1] [1] [0]
+}
+
+;REMOVE1941
+{
+#NAME= Ill Prepared For Winter, The Red Army Suffers In The Cold
+#POPUP= Ill Prepared For Winter, The Red Army Suffers In The Cold
+#IMAGE=
+#SOUND= winter.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 409[0]
+#COUNTRY_ID= 116
+#FLAG_ID= 116
+#TRIGGER= 75
+#SEASON_FLAG= 4
+#DATE= 1941/12/21
+#MAP_POSITION= 221,65 [25,25] [0,0] [-10,-25] [2] [116]
+; 1st Line - USSR politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+;Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1941
+{
+#NAME= DE 411 - Ill Prepared For Winter, The Red Army Suffers In The Cold
+#POPUP= Ill Prepared For Winter, The Red Army Suffers In The Cold
+#IMAGE=
+#SOUND= winter.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 411[0]
+#COUNTRY_ID= 116
+#FLAG_ID= 116
+#TRIGGER= 75
+#SEASON_FLAG= 4
+#DATE= 1941/12/21
+#MAP_POSITION= 221,65 [25,25] [0,0] [-10,-25] [2] [116]
+; 1st Line - USSR politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+;Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1942
+{
+#NAME= Political Commissars Read Order 270 To All Red Army Units
+#POPUP= Political Commissars Read Order 270 To All Red Army Units
+#IMAGE= order270.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 407[1]
+#COUNTRY_ID= 116
+#FLAG_ID= 116
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 221,65 [50,50] [0,0] [25,25] [2] [116]
+; 1st Line - USSR politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+;Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1942
+{
+#NAME= The Road Of Life Provides Food And Fuel To The Defenders Of Leningrad (Pop Up)
+#POPUP= The Road Of Life Provides Food And Fuel To The Defenders Of Leningrad
+#IMAGE= roadoflife1.png, roadoflife2.png, roadoflife3.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 455[1]
+#COUNTRY_ID= 116
+#FLAG_ID= 116
+#TRIGGER= 100
+#SEASON_FLAG= 4
+#DATE= 1939/09/01
+#MAP_POSITION= 206,52 [2,2] [0,0] [1,1] [2] [116]
+; 1st Line - USSR politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1942
+{
+#NAME= The Road Of Life Provides Food And Fuel To The Defenders Of Leningrad (Continious)
+#POPUP=
+#IMAGE= 
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 455[1]
+#COUNTRY_ID= 116
+#FLAG_ID= 116
+#TRIGGER= 100
+#SEASON_FLAG= 4
+#DATE= 1939/09/01
+#MAP_POSITION= 206,52 [2,2] [0,0] [10,15] [2] [116]
+; 1st Line - USSR politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1942
+{
+#NAME= The Road Of Life (Summer)
+#POPUP= 
+#IMAGE= 
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 455[1]
+#COUNTRY_ID= 116
+#FLAG_ID= 116
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 206,52 [2,2] [0,0] [15,25] [2] [116]
+; 1st Line - USSR politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1942
+{
+#NAME= Axis Declaration Of War On The USSR
+#POPUP= The Axis Attack Causes Shockwaves In The USSR
+#IMAGE=
+#SOUND= coup.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 1005[1]
+#COUNTRY_ID= 45
+#FLAG_ID= 116
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 194,75 [50,50] [0,0] [-35,-35] [2] [116]
+; 1st Line - USSR politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Ukrainian Nationalists Attack Red Army Units Near Kiev
+#POPUP= Ukrainian Nationalists Attack Red Army Units Near Kiev
+#IMAGE=
+#SOUND= coup.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#FLAG_ID= 113
+#TRIGGER= 35
+#SEASON_FLAG= 0
+#DATE= 1943/01/01
+#MAP_POSITION= 207,80 [5,8] [0,1] [-10,-25] [2] [116]
+; 1st Line - USSR politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; 3 Soviet units are within 5 hexes of Kiev
+#CONDITION_POSITION= 207,80 [5,5] [3,3] [2] [116]
+}
+
+;REMOVE1941
+{
+#NAME= German Morale Is Boosted As The Maginot Line Is Outflanked
+#POPUP= German Morale Is Boosted As The Maginot Line Is Outflanked
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#FLAG_ID= 45
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 154,83 [6,6] [0,0] [25,50] [1] [0]
+; 1st Line - USA politically aligned with the Allies but not fully mobilized
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; 2nd Line - France politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; 2 Axis units are within 2 hexes of Reims
+#CONDITION_POSITION= 154,83 [2,2] [2,2] [1] [0]
+; 3 Axis units are within 3 hexes of Amiens
+#CONDITION_POSITION= 151,81 [3,3] [2,2] [1] [0]
+}
+
+;REMOVE1941
+{
+#NAME= AXIS AI: German Morale Is Boosted As The Maginot Line Is Outflanked (AI Boost 1)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 1
+#LEVEL= 2
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#FLAG_ID= 45
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 154,83 [6,6] [0,0] [10,10] [1] [0]
+; 1st Line - USA politically aligned with the Allies but not fully mobilized
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; 2nd Line - France politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; 2 Axis units are within 2 hexes of Reims
+#CONDITION_POSITION= 154,83 [2,2] [2,2] [1] [0]
+; 3 Axis units are within 3 hexes of Amiens
+#CONDITION_POSITION= 151,81 [3,3] [2,2] [1] [0]
+}
+
+;REMOVE1941
+{
+#NAME= AXIS AI: German Morale Is Boosted As The Maginot Line Is Outflanked (AI Boost 2)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 1
+#LEVEL= 4
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#FLAG_ID= 45
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 154,83 [6,6] [0,0] [10,10] [1] [0]
+; 1st Line - USA politically aligned with the Allies but not fully mobilized
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; 2nd Line - France politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; 2 Axis units are within 2 hexes of Reims
+#CONDITION_POSITION= 154,83 [2,2] [2,2] [1] [0]
+; 3 Axis units are within 3 hexes of Amiens
+#CONDITION_POSITION= 151,81 [3,3] [2,2] [1] [0]
+}
+
+;REMOVE1941
+{
+#NAME= The German Advance Spreads Fear Through French Forces
+#POPUP= The German Advance Spreads Fear Through French Forces
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#FLAG_ID= 40
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 153,80 [8,10] [0,0] [-30,-40] [2] [40]
+; 1st Line - USA politically aligned with the Allies but not fully mobilized
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; 2nd Line - France politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; 2 Axis units are within 2 hexes of Reims
+#CONDITION_POSITION= 154,83 [2,2] [2,2] [1] [0]
+; 3 Axis units are within 3 hexes of Amiens
+#CONDITION_POSITION= 151,81 [3,3] [2,2] [1] [0]
+}
+
+;REMOVE1941
+{
+#NAME= AXIS AI: The German Advance Spreads Fear Through French Forces (AI Boost 1)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 1
+#LEVEL= 2
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#FLAG_ID= 40
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 153,80 [8,10] [0,0] [-10,-10] [2] [40]
+; 1st Line - USA politically aligned with the Allies but not fully mobilized
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; 2nd Line - France politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; 2 Axis units are within 2 hexes of Reims
+#CONDITION_POSITION= 154,83 [2,2] [2,2] [1] [0]
+; 3 Axis units are within 3 hexes of Amiens
+#CONDITION_POSITION= 151,81 [3,3] [2,2] [1] [0]
+}
+
+;REMOVE1941
+{
+#NAME= AXIS AI: The German Advance Spreads Fear Through French Forces (AI Boost 2)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 1
+#LEVEL= 4
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#FLAG_ID= 40
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 153,80 [8,10] [0,0] [-10,-10] [2] [40]
+; 1st Line - USA politically aligned with the Allies but not fully mobilized
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; 2nd Line - France politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; 2 Axis units are within 2 hexes of Reims
+#CONDITION_POSITION= 154,83 [2,2] [2,2] [1] [0]
+; 3 Axis units are within 3 hexes of Amiens
+#CONDITION_POSITION= 151,81 [3,3] [2,2] [1] [0]
+}
+
+;REMOVE1941
+{
+#NAME= French Troops Panic As The Maginot Line Is Outflanked
+#POPUP= French Troops Panic As The Maginot Line Is Outflanked
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#FLAG_ID= 40
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 151,84 [8,10] [0,0] [-30,-30] [2] [40]
+; 1st Line - Belgium politically aligned with the Allies and surrendered
+#VARIABLE_CONDITION= 10 [2] [100] [1]
+; 2nd Line - USA politically aligned with the Allies but not fully mobilized
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; 3rd Line - France politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; 2 Axis units are within 2 hexes of Nancy
+#CONDITION_POSITION= 158,85 [2,2] [2,2] [1] [0]
+; 2 Axis units are within 3 hexes of Epinal
+#CONDITION_POSITION= 159,86 [3,3] [2,2] [1] [0]
+}
+
+;REMOVE1940
+{
+#NAME= Anti-War Propaganda Spreads Disaffection In The French Army
+#POPUP= Anti-War Propaganda Spreads Disaffection In The French Army
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 202[0]
+#COUNTRY_ID= 45
+#FLAG_ID= 40
+#TRIGGER= 15
+#SEASON_FLAG= 0
+#DATE= 1939/10/01
+#MAP_POSITION= 151,84 [11,11] [0,0] [-15,-30] [2] [40]
+; 1st Line - France politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; 2nd Line - USSR politically aligned with the Allies but not fully mobilized
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+;Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; GERMANY MINOR DECISION EVENTS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+{
+#NAME= DE 603 - Franco's War Entry Causes Unrest
+#POPUP= General Aranda Launches A Coup Against Franco's Decision To Enter The War
+#IMAGE=
+#SOUND= coup.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 603[1]
+#COUNTRY_ID= 112
+#FLAG_ID= 99
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 139,104 [10,15] [0,0] [10,25] [1] [99]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+;Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 603 - Franco Crushes His Opponents
+#POPUP= Franco Crushes Aranda's Coup Attempt
+#IMAGE=
+#SOUND= combat1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 603[1]
+#COUNTRY_ID= 112
+#FLAG_ID= 99
+#TRIGGER= 50
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 139,104 [10,15] [0,1] [0,0] [1] [99]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 99 [1] [100] [0]
+;Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; GERMAN DECISION EVENTS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;REMOVE1940
+{
+#NAME= DE 643 - Norwegian Batteries In Oslofjord Inflict Casualties On The German Invasion Force
+#POPUP= Norwegian Batteries In Oslofjord Inflict Casualties On The German Invasion Force
+#IMAGE= bluchersinking.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 643[1]
+#COUNTRY_ID= 112
+#FLAG_ID= 78
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/04/14
+#MAP_POSITION= 167,52 [0,1] [1,4] [-15,-40] [1] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+;Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1940
+{
+#NAME= DE 644 - Norwegian Batteries In Oslofjord Inflict Casualties On The German Invasion Force
+#POPUP= Norwegian Batteries In Oslofjord Inflict Casualties On The German Invasion Force
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 644[1]
+#COUNTRY_ID= 112
+#FLAG_ID= 78
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/04/14
+#MAP_POSITION= 167,52 [0,1] [1,4] [15,40] [1] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+;Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 655 - Warsaw Rising
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 655[1]
+#COUNTRY_ID= 112
+#FLAG_ID= 85
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1944/08/01
+#MAP_POSITION= 188,76 [0,0] [3,4] [0,0] [1] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+;Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1941
+{
+#NAME= Greek Morale Suffers As Allegations Of Corruption And Bribery Come To Light
+#POPUP= Greek Morale Suffers As Allegations Of Corruption And Bribery Come To Light
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 6[1,30]
+#LINK= 703[1]
+#COUNTRY_ID= 59
+#FLAG_ID= 46
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/01/01
+#MAP_POSITION= 191,106 [6,6] [0,0] [-15,-30] [2] [46]
+#VARIABLE_CONDITION= 46 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+;Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1941
+{
+#NAME= Greek Morale Is Boosted By The Presence Of British Troops In Greece
+#POPUP= Greek Morale Is Boosted By The Presence Of British Troops In Greece
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 46
+#FLAG_ID= 46
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/01/01
+#MAP_POSITION= 191,106 [6,6] [0,0] [15,30] [2] [46]
+#VARIABLE_CONDITION= 46 [2] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; A British unit is in Greece
+#CONDITION_POSITION= 191,106 [6,6] [1,1] [2] [112]
+}
+
+;REMOVE1941
+{
+#NAME= Greek Morale Is Boosted By The Presence Of British Or US Troops In Greece (Continuous)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#FLAG_ID= 46
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/01/01
+#MAP_POSITION= 191,106 [6,6] [0,0] [5,10] [2] [46]
+#VARIABLE_CONDITION= 46 [2] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; A British unit is in Greece
+#CONDITION_POSITION= 191,106 [6,6] [1,1] [2] [112]
+; A US unit is in Greece
+#CONDITION_POSITION= 191,106 [6,6] [1,1] [2] [115]
+}
+
+;AMEND1941
+{
+#NAME= Italian Human Torpedoes Attack Allied Shipping At Gibraltar!
+#POPUP= Italian Human Torpedoes Attack Allied Shipping At Gibraltar!
+#IMAGE= humantorpedo.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,50]
+#LINK= 704[1]
+#COUNTRY_ID= 59
+#FLAG_ID= 59
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1940/08/01
+#MAP_POSITION= 137,114 [0,0] [0,5] [-15,-30] [2] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Allied shipping is in the port
+#CONDITION_POSITION= 137,114 [0,0] [1,1] [2] [0]
+}
+
+;AMEND1941
+{
+#NAME= Italian Human Torpedoes Attack Allied Shipping At Gibraltar!
+#POPUP= Italian Human Torpedoes Attack Allied Shipping At Gibraltar!
+#IMAGE= humantorpedo.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[51,100]
+#LINK= 704[1]
+#COUNTRY_ID= 59
+#FLAG_ID= 59
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1940/08/01
+#MAP_POSITION= 137,113 [0,0] [0,5] [-15,-30] [2] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Allied shipping is in the port
+#CONDITION_POSITION= 137,113 [0,0] [1,1] [2] [0]
+}
+
+;AMEND1941
+{
+#NAME= Italian Human Torpedoes Attack Allied Shipping At Malta!
+#POPUP= Italian Human Torpedoes Attack Allied Shipping At Malta!
+#IMAGE= humantorpedo.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,50]
+#LINK= 704[1]
+#COUNTRY_ID= 59
+#FLAG_ID= 59
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1940/08/01
+#MAP_POSITION= 175,115 [0,0] [0,5] [-15,-30] [2] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Allied shipping is in the port
+#CONDITION_POSITION= 175,115 [0,0] [1,1] [2] [0]
+}
+
+;AMEND1941
+{
+#NAME= Italian Human Torpedoes Attack Allied Shipping At Malta!
+#POPUP= Italian Human Torpedoes Attack Allied Shipping At Malta!
+#IMAGE= humantorpedo.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[51,100]
+#LINK= 704[1]
+#COUNTRY_ID= 59
+#FLAG_ID= 59
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1940/08/01
+#MAP_POSITION= 176,115 [0,0] [0,5] [-15,-30] [2] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Allied shipping is in the port
+#CONDITION_POSITION= 176,115 [0,0] [1,1] [2] [0]
+}
+
+;AMEND1941
+{
+#NAME= Italian Human Torpedoes Attack Allied Shipping At Algiers!
+#POPUP= Italian Human Torpedoes Attack Allied Shipping At Algiers!
+#IMAGE= humantorpedo.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+#LINK= 704[1]
+#COUNTRY_ID= 59
+#FLAG_ID= 59
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1940/08/01
+#MAP_POSITION= 152,112 [0,0] [0,5] [-15,-30] [2] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Allied shipping is in the port
+#CONDITION_POSITION= 152,112 [0,0] [1,1] [2] [0]
+}
+
+;AMEND1941
+{
+#NAME= Italian Human Torpedoes Attack Allied Shipping At Tunis!
+#POPUP= Italian Human Torpedoes Attack Allied Shipping At Tunis!
+#IMAGE= humantorpedo.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+#LINK= 704[1]
+#COUNTRY_ID= 59
+#FLAG_ID= 59
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1940/08/01
+#MAP_POSITION= 167,111 [0,0] [0,5] [-15,-30] [2] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Allied shipping is in the port
+#CONDITION_POSITION= 167,111 [0,0] [1,1] [2] [0]
+}
+
+;AMEND1941
+{
+#NAME= Italian Human Torpedoes Attack Allied Shipping At Tripoli!
+#POPUP= Italian Human Torpedoes Attack Allied Shipping At Tripoli!
+#IMAGE= humantorpedo.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+#LINK= 704[1]
+#COUNTRY_ID= 59
+#FLAG_ID= 59
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1940/08/01
+#MAP_POSITION= 172,120 [0,0] [0,5] [-15,-30] [2] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Allied shipping is in the port
+#CONDITION_POSITION= 172,120 [0,0] [1,1] [2] [0]
+}
+
+;AMEND1941
+{
+#NAME= Italian Human Torpedoes Attack Allied Shipping At Benghazi!
+#POPUP= Italian Human Torpedoes Attack Allied Shipping At Benghazi!
+#IMAGE= humantorpedo.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+#LINK= 704[1]
+#COUNTRY_ID= 59
+#FLAG_ID= 59
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1940/08/01
+#MAP_POSITION= 185,122 [0,0] [0,5] [-15,-30] [2] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Allied shipping is in the port
+#CONDITION_POSITION= 185,122 [0,0] [1,1] [2] [0]
+}
+
+;AMEND1941
+{
+#NAME= Italian Human Torpedoes Attack Allied Shipping At Alexandria!
+#POPUP= Italian Human Torpedoes Attack Allied Shipping At Alexandria!
+#IMAGE= humantorpedo.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+#LINK= 704[1]
+#COUNTRY_ID= 59
+#FLAG_ID= 59
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1940/08/01
+#MAP_POSITION= 205,123 [0,0] [0,5] [-15,-30] [2] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Allied shipping is in the port
+#CONDITION_POSITION= 205,123 [0,0] [1,1] [2] [0]
+}
+
+;AMEND1941
+{
+#NAME= Italian Human Torpedoes Attack Allied Shipping At Port Said!
+#POPUP= Italian Human Torpedoes Attack Allied Shipping At Port Said!
+#IMAGE= humantorpedo.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+#LINK= 704[1]
+#COUNTRY_ID= 59
+#FLAG_ID= 59
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1940/08/01
+#MAP_POSITION= 209,122 [0,0] [0,5] [-15,-30] [2] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Allied shipping is in the port
+#CONDITION_POSITION= 209,122 [0,0] [1,1] [2] [0]
+}
+
+;AMEND1941
+{
+#NAME= Italian Human Torpedoes Attack Allied Shipping At Tobruk!
+#POPUP= Italian Human Torpedoes Attack Allied Shipping At Tobruk!
+#IMAGE= humantorpedo.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+#LINK= 704[1]
+#COUNTRY_ID= 59
+#FLAG_ID= 59
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1940/08/01
+#MAP_POSITION= 195,121 [0,0] [0,5] [-15,-30] [2] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Allied shipping is in the port
+#CONDITION_POSITION= 195,121 [0,0] [1,1] [2] [0]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; EVENTS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;REMOVE1942
+;
+; Soviet Winter Reduces Unit Strength
+{
+#NAME= Soviet Winter
+#POPUP= Soviet Winter Strikes
+#IMAGE= sovietwinter.png
+#SOUND= winter.ogg
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 116
+#FLAG_ID= 116
+#TRIGGER= 100
+#SEASON_FLAG= 4
+#DATE= 1941/12/21
+#MAP_POSITION= 209,68 [8,8] [0,1] [-10,-45] [1] [0]
+#MAP_POSITION= 227,35 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [45]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [45]
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [45]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [52]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [52]
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [52]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [59]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [59]
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [59]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [19]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [19]
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [19]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [93]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [93]
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [93]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [96]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [96]
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [96]
+#MAP_POSITION= 201,71 [5,5] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 207,80 [5,5] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 211,90 [5,5] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 213,86 [8,8] [1,2] [-10,-45] [1] [0]
+#MAP_POSITION= 216,90 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 218,82 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 220,65 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 225,54 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 225,88 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 233,64 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 224,77 [8,8] [0,2] [-10,-45] [1] [0]
+; 1st Line - USSR politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+;Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1941
+; Taranto Raid
+{
+#NAME= ALLIED AI: Taranto Raid (50%)
+#POPUP= Fairey Swordfish Raid La Regia Marina In Taranto
+#IMAGE= taranto.png
+#SOUND= taranto.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 2
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#FLAG_ID= 112
+#TRIGGER= 50
+#SEASON_FLAG= 0
+#DATE= 1940/11/11
+#MAP_POSITION= 180,105 [1,1] [1,3] [-50,-75] [1] [0]
+; 1st Line - Italy politically aligned with the Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; 2nd Line - UK politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+;Allied units in Malta
+#CONDITION_POSITION= 175,114 [0,0] [1,1] [2] [0]
+}
+
+;REMOVE1941
+{
+#NAME= Greek Morale Suffers As Prime Minister Alexandros Koryzis Commits Suicide
+#POPUP= Greek Morale Suffers As Prime Minister Alexandros Koryzis Commits Suicide
+#IMAGE= greekmorale.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#FLAG_ID= 46
+#TRIGGER= 50
+#SEASON_FLAG= 0
+#DATE= 1941/02/01
+#MAP_POSITION= 191,106 [6,6] [0,0] [-15,-30] [2] [46]
+#VARIABLE_CONDITION= 46 [2] [100] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; 1 Axis unit within range of Athens
+#CONDITION_POSITION= 193,109 [3,3] [1,1] [1] [0]
+}
+
+{
+#NAME= Egyptian Nationalists Rise Up Against The British As The Axis Approach Cairo
+#POPUP= Egyptian Nationalists Rise Up Against The British As The Axis Approach Cairo
+#IMAGE=
+#SOUND= coup.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#FLAG_ID= 36
+#TRIGGER= 50
+#SEASON_FLAG= 0
+#DATE= 1940/01/01
+#MAP_POSITION= 208,126 [1,3] [0,1] [-10,-30] [2] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Axis within range of Cairo
+#CONDITION_POSITION= 208,126 [3,3] [1,2] [1] [0]
+}
+
+{
+#NAME= Freedom Action Of Bavaria Launch A Rising Against The Nazis (Historical)
+#POPUP= Freedom Action Of Bavaria Launch A Rising Against The Nazis
+#IMAGE= freedomactionbavaria.png
+#SOUND= coup.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#FLAG_ID= 45
+#TRIGGER= 50
+#SEASON_FLAG= 0
+#DATE= 1942/01/01
+#MAP_POSITION= 169,86 [1,1] [0,2] [-30,-50] [1] [45]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Allies within range of Berlin
+#CONDITION_POSITION= 173,74 [3,3] [3,3] [2] [0]
+}
+
+{
+#NAME= German Bombers Raid Warsaw (AI Helper)
+#POPUP= German Bombers Raid The Polish Defenders Near Warsaw
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 1
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 85
+#FLAG_ID= 45
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 188,76 [1,1] [3,4] [0,0] [2] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 85 [2] [100] [0]
+;Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; Soviet Winter Reduces Unit Strength
+{
+#NAME= Soviet Winter
+#POPUP= Soviet Winter Again Strikes The Axis
+#IMAGE= sovietwinter.png
+#SOUND= winter.ogg
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 427[0]
+#COUNTRY_ID= 116
+#FLAG_ID= 116
+#TRIGGER= 25
+#SEASON_FLAG= 4
+#DATE= 1942/12/25
+#MAP_POSITION= 209,68 [8,8] [0,1] [-10,-45] [1] [0]
+#MAP_POSITION= 227,35 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [45]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [45]
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [45]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [52]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [52]
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [52]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [59]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [59]
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [59]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [19]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [19]
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [19]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [93]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [93]
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [93]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [96]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [96]
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [96]
+#MAP_POSITION= 201,71 [5,5] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 207,80 [5,5] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 211,90 [5,5] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 213,86 [8,8] [1,2] [-10,-45] [1] [0]
+#MAP_POSITION= 216,90 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 218,82 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 220,65 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 225,54 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 225,88 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 233,64 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 224,77 [8,8] [0,2] [-10,-45] [1] [0]
+; 1st Line - USSR politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+;Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}

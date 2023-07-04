@@ -1,0 +1,1945 @@
+﻿;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; CONVOY EVENTS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; USAGE:
+;
+; Basic structure for a convoy event:
+; { 
+; #NAME= Event name (this will be shown as a selectable event under an OPTIONS screen within the game)
+; #POPUP= Event popup text (this will be displayed when the event occurs)
+; #IMAGE= Event image that will be displayed when event occurs
+;         PNG images must be 736x418 or 368x418 pixels, see 'Extras' folder for sample images and frames
+;         Multiple pictures can be used by using a ',' to separate them
+;         Format: picture1.png, picture2.png, picture3.png, picture4.png
+; #SOUND= Event sound that will be displayed when event occurs
+;         Multiple sounds can be used by using a ',' to separate them
+;         Format: sound1.mp3, sound2.mp3, sound3.mp3, sound4.mp3
+; #FLAG= Will this be a default event for the campaign? (values range [0, 1]; True= 1; False= 0)
+; #TYPE= Values range [0, 2];
+;        With all other fields satisfied will this be:
+;        0 = Single check regardless if #TRIGGER is satisfied
+;        1 = Multiple check until #TRIGGER is satisfied
+;        2 = Reoccuring check until end of game
+; #AI= Values range [0, 4]
+;      0 = Event fires whenever all fields are satisfied for any game type
+;      1 = Event fires whenever all fields are satisfied, for AI games only, and only on the Axis AI turn
+;      2 = Event fires whenever all fields are satisfied, for AI games only, and only on the Allied AI turn
+;      3 = Event fires whenever all fields are satisfied, for AI and Multiplayer games only, and only on the Axis AI or on the Allied Multiplayer turns
+;      4 = Event fires whenever all fields are satisfied, for AI and Multiplayer games only, and only on the Allied AI or on the Axis Multiplayer turns
+; #LEVEL= What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;         Values: [0, 4]; Green= 0; Novice= 1; Intermediate= 2; Veteran= 3; Expert= 4
+; #GV= Does the event activate based on the Global Variable values assigned?
+;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
+;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
+;      Example A) #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;      Example B) #GV= 4[71,100] will trigger 30% per game
+; #LINK= Does the event activate based on the Link values assigned?
+;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
+;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
+;        Example A) #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
+;        Example B) #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
+;        Example C) #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
+; #SENDER_ID= Country ID that will be owner of convoy event
+; #RECIPIENT_ID= Country ID that will receive benefit of the convoy
+; #SENDER_ID_TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
+; #RECIPIENT_ID_TRIGGER= Trigger percentange that the event will occur (values range [0, 100])
+; #PERCENTAGE= Percentage of MPP transferable via convoy to #RECIPIENT_ID ([0, 100])
+; #MAX_PERCENTAGE= Max percentage of MPP of transferable via convoy to #RECIPIENT_ID ([0, #PERCENTAGE])
+; #SPRING_REDUCTION= Reduction percentage for this season (values range [0, 100])
+; #SUMMER_REDUCTION= Reduction percentage for this season (values range [0, 100])
+; #FALL_REDUCTION= Reduction percentage for this season (values range [0, 100])
+; #WINTER_REDUCTION= Reduction percentage for this season (values range [0, 100])
+; #SOURCE_PORT= Source port for the convoy (Format: x,y)
+; #DESTINATION_PORT= Destination port for the convoy (Format: x,y)
+; #WAYPOINT= Convoy waypoint at sea
+; } 
+;
+; EXAMPLE:
+;
+; NOTES:
+;
+; Each event must be preceded by a '{' and end with a '}'
+;
+; #POPUP string (if given) will only appear on first mobilization of convoy
+;
+; #SENDER_ID and #RECIPIENT_ID must have a similar leanings, i.e. both Axis or both Allied.
+;
+; If #SENDER_ID is a minor, i.e. [Albania, Yugoslavia], then #RECIPIENT_ID must be it's parent ID
+; or its occupier ID. Also only one convoy can exist from a minor #SENDER_ID to #RECIPIENT_ID.
+;
+; The #SENDER_ID_TRIGGER value for convoys will be directly related to #SENDER_ID's
+; mobilization percentage. For example a #SENDER_ID_TRIGGER value of 30 means that the
+; convoy will not be available until #SENDER_ID has an mobilization percentage >= 30%. The same
+; logic applies for #RECIPIENT_ID_TRIGGER.
+;
+; #SOURCE_PORT must belong to #SENDER_ID. The total amount of MPP available will be dependant
+; upon the amount of MPP belonging to #SENDER_ID. After this, the #MAX_PERCENTAGE value caps the
+; max amount transferable, while the #PERCENTAGE value is the current transfer amount.
+;
+; #DESTINATION_PORT must belong to #RECIPIENT_ID.
+;
+; If either the #SOURCE_PORT or #DESTINATION_PORT are captured by enemy forces the supply convoy
+; is suspended.
+;
+; The seasonal reduction values represent the operational percentage during these seasons. For
+; example setting a value of #SPRING= 75 means that the supply convoy is running at 75% of it's
+; potential maximum during the spring
+;
+; #WAYPOINT represents the path of the convoy in proper directional order from #SOURCE_PORT to
+; #DESTINATION_PORT. A waypoint does not specify the #SOURCE_PORT or #DESTINATION_PORT only the
+; the points between each port. While a waypoint must be a sea hex it can include intermediary
+; ports along it's path.
+;
+; More than one #WAYPOINT can be set.
+;
+; Use the reference values provided for #SENDER_ID and not the country names
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; COUNTRY ID REFERENCE VALUES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Country IDs
+; #COUNTRY_ID_0= Neutral
+; #COUNTRY_ID_1= Abyssinia
+; #COUNTRY_ID_2= Afghanistan
+; #COUNTRY_ID_3= Albania
+; #COUNTRY_ID_4= Algeria
+; #COUNTRY_ID_5= Argentina
+; #COUNTRY_ID_6= Australia
+; #COUNTRY_ID_7= Austria
+; #COUNTRY_ID_8= Baltic States
+; #COUNTRY_ID_9= Belgian Congo
+; #COUNTRY_ID_10= Belgium
+; #COUNTRY_ID_11= Benelux
+; #COUNTRY_ID_12= Bhutan
+; #COUNTRY_ID_13= Black
+; #COUNTRY_ID_14= Bolivia
+; #COUNTRY_ID_15= Borneo
+; #COUNTRY_ID_16= Brazil
+; #COUNTRY_ID_17= British Somaliland
+; #COUNTRY_ID_18= Brunei
+; #COUNTRY_ID_19= Bulgaria
+; #COUNTRY_ID_20= Burma
+; #COUNTRY_ID_21= Canada
+; #COUNTRY_ID_22= Chile
+; #COUNTRY_ID_23= China
+; #COUNTRY_ID_24= Colombia
+; #COUNTRY_ID_25= Communist China
+; #COUNTRY_ID_26= Costa Rica
+; #COUNTRY_ID_27= Croatia
+; #COUNTRY_ID_28= Cuba
+; #COUNTRY_ID_29= Curaçao
+; #COUNTRY_ID_30= Czechoslovakia
+; #COUNTRY_ID_31= Denmark
+; #COUNTRY_ID_32= Dominican Republic
+; #COUNTRY_ID_33= Dutch East Indies
+; #COUNTRY_ID_34= Dutch Guiana
+; #COUNTRY_ID_35= Ecuador
+; #COUNTRY_ID_36= Egypt
+; #COUNTRY_ID_37= El Salvador
+; #COUNTRY_ID_38= Estonia
+; #COUNTRY_ID_39= Finland
+; #COUNTRY_ID_40= France
+; #COUNTRY_ID_41= Free City of Danzig
+; #COUNTRY_ID_42= French Equatorial Africa
+; #COUNTRY_ID_43= French Somaliland
+; #COUNTRY_ID_44= French West Africa
+; #COUNTRY_ID_45= Germany
+; #COUNTRY_ID_46= Greece
+; #COUNTRY_ID_47= Greenland
+; #COUNTRY_ID_48= Guatemala
+; #COUNTRY_ID_49= Haiti
+; #COUNTRY_ID_50= Honduras
+; #COUNTRY_ID_51= Hong Kong
+; #COUNTRY_ID_52= Hungary
+; #COUNTRY_ID_53= Iceland
+; #COUNTRY_ID_54= India
+; #COUNTRY_ID_55= Indochina
+; #COUNTRY_ID_56= Iraq
+; #COUNTRY_ID_57= Ireland
+; #COUNTRY_ID_58= Italian East Africa
+; #COUNTRY_ID_59= Italy
+; #COUNTRY_ID_60= Japan
+; #COUNTRY_ID_61= Latvia
+; #COUNTRY_ID_62= Liberia
+; #COUNTRY_ID_63= Libya
+; #COUNTRY_ID_64= Lithuania
+; #COUNTRY_ID_65= Luxembourg
+; #COUNTRY_ID_66= Malaya
+; #COUNTRY_ID_67= Manchukuo
+; #COUNTRY_ID_68= Mexico
+; #COUNTRY_ID_69= Mongolia
+; #COUNTRY_ID_70= Morocco
+; #COUNTRY_ID_71= Nanjing
+; #COUNTRY_ID_72= Nepal
+; #COUNTRY_ID_73= Netherlands
+; #COUNTRY_ID_74= New Zealand
+; #COUNTRY_ID_75= Newfoundland
+; #COUNTRY_ID_76= Nicaragua
+; #COUNTRY_ID_77= Nigeria
+; #COUNTRY_ID_78= Norway
+; #COUNTRY_ID_79= Palestine
+; #COUNTRY_ID_80= Panama
+; #COUNTRY_ID_81= Paraguay
+; #COUNTRY_ID_82= Persia
+; #COUNTRY_ID_83= Peru
+; #COUNTRY_ID_84= Philippines
+; #COUNTRY_ID_85= Poland
+; #COUNTRY_ID_86= Polynesia
+; #COUNTRY_ID_87= Portugal
+; #COUNTRY_ID_88= Portuguese East Africa
+; #COUNTRY_ID_89= Portuguese Timor
+; #COUNTRY_ID_90= Portuguese West Africa
+; #COUNTRY_ID_91= Red
+; #COUNTRY_ID_92= Rhodesia
+; #COUNTRY_ID_93= Romania
+; #COUNTRY_ID_94= Sarawak
+; #COUNTRY_ID_95= Saudi Arabia
+; #COUNTRY_ID_96= Slovakia
+; #COUNTRY_ID_97= Solomons
+; #COUNTRY_ID_98= South Africa
+; #COUNTRY_ID_99= Spain
+; #COUNTRY_ID_100= Spanish Guinea
+; #COUNTRY_ID_101= Spanish Republic
+; #COUNTRY_ID_102= Sudan
+; #COUNTRY_ID_103= Sweden
+; #COUNTRY_ID_104= Switzerland
+; #COUNTRY_ID_105= Syria
+; #COUNTRY_ID_106= Tannu Tuva
+; #COUNTRY_ID_107= Thailand
+; #COUNTRY_ID_108= Tibet
+; #COUNTRY_ID_109= Transjordan
+; #COUNTRY_ID_110= Tunisia
+; #COUNTRY_ID_111= Turkey
+; #COUNTRY_ID_112= UK
+; #COUNTRY_ID_113= Ukraine
+; #COUNTRY_ID_114= Uruguay
+; #COUNTRY_ID_115= USA
+; #COUNTRY_ID_116= USSR
+; #COUNTRY_ID_117= Venezuela
+; #COUNTRY_ID_118= Vichy France
+; #COUNTRY_ID_119= Yemen
+; #COUNTRY_ID_120= Yugoslavia
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; UK DECISION EVENTS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+
+{
+#NAME= US Lend Lease To The UK if Sealion is successful and the USSR has surrendered
+#POPUP= US Begins Lend-Lease Convoys To The UK Via Nova Scotia
+#IMAGE=
+#SOUND= convoy.ogg 
+#FLAG= 1
+#TYPE= 2 
+#AI= 0 
+#LEVEL= 0 
+; Set global variable condition to always trigger (dummy value) 
+#GV= 1[1,100] 
+; Set link value to always trigger (dummy value)
+#LINK= 370[1]
+#SENDER_ID= 115
+#RECIPIENT_ID= 112 
+#SENDER_ID_TRIGGER= 100 
+#RECIPIENT_ID_TRIGGER= 100 
+#PERCENTAGE= 0
+#MAX_PERCENTAGE= 25 
+#SPRING_REDUCTION= 100 
+#SUMMER_REDUCTION= 100 
+#FALL_REDUCTION= 100 
+#WINTER_REDUCTION= 75 
+#SOURCE_PORT= 6,112
+#DESTINATION_PORT= 25,96
+#WAYPOINT= 20,105 
+#WAYPOINT= 20,99 
+}
+
+; DE 105 - Canadian Supply Convoys To Egypt
+{
+#NAME= Canadian Supply Convoys To Egypt
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 105[1]
+#SENDER_ID= 21
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 80
+#RECIPIENT_ID_TRIGGER= 80
+#PERCENTAGE= 75
+#MAX_PERCENTAGE= 75
+#SPRING_REDUCTION= 75
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 75
+#WINTER_REDUCTION= 50
+#SOURCE_PORT= 30,96
+#DESTINATION_PORT= 210,127
+#WAYPOINT= 86,124
+#WAYPOINT= 87,137
+#WAYPOINT= 217,137
+}
+
+; DE 103 - Canadian Supply Convoys To The UK
+{
+#NAME= Canadian Supply Convoys To The UK
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 103[1]
+#SENDER_ID= 21
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 80
+#RECIPIENT_ID_TRIGGER= 80
+#PERCENTAGE= 75
+#MAX_PERCENTAGE= 75
+#SPRING_REDUCTION= 75
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 75
+#WINTER_REDUCTION= 50
+#SOURCE_PORT= 30,96
+#DESTINATION_PORT= 140,72
+#WAYPOINT= 38,92
+#WAYPOINT= 50,92
+#WAYPOINT= 53,90
+#WAYPOINT= 53,66
+#WAYPOINT= 86,50
+#WAYPOINT= 104,50
+#WAYPOINT= 129,64
+}
+
+; DE 164 re DE103 - Canadian Supply Convoys To The UK
+{
+#NAME= Canadian Supply Convoys To The UK
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 164[1]
+#SENDER_ID= 21
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 80
+#RECIPIENT_ID_TRIGGER= 80
+#PERCENTAGE= 75
+#MAX_PERCENTAGE= 75
+#SPRING_REDUCTION= 75
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 75
+#WINTER_REDUCTION= 50
+#SOURCE_PORT= 30,96
+#DESTINATION_PORT= 137,65
+#WAYPOINT= 38,92
+#WAYPOINT= 50,92
+#WAYPOINT= 53,90
+#WAYPOINT= 53,66
+#WAYPOINT= 86,50
+#WAYPOINT= 104,50
+#WAYPOINT= 129,64
+}
+
+;DE 105 - Mediterranean/Far East convoys to the UK:
+{
+#NAME= Mediterranean/Far East Convoys To Canada
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 105[0]
+#SENDER_ID= 36
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 100
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 80
+#MAX_PERCENTAGE= 80
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 210,127
+#DESTINATION_PORT= 25,96
+#WAYPOINT= 219,137
+#WAYPOINT= 87,137
+}
+
+; DE 103 - Mediterranean/Far East Convoys To The UK
+{
+#NAME= Mediterranean/Far East Convoys To The UK
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 103[1]
+#SENDER_ID= 36
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 100
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 80
+#MAX_PERCENTAGE= 80
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 210,127
+#DESTINATION_PORT= 140,72
+#WAYPOINT= 219,137
+#WAYPOINT= 103,137
+#WAYPOINT= 103,131
+#WAYPOINT= 81,98
+#WAYPOINT= 124,78
+#WAYPOINT= 130,78
+}
+
+; DE 164 re DE 103 - Mediterranean/Far East Convoys To The UK
+{
+#NAME= Mediterranean/Far East Convoys To The UK
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 164[1]
+#SENDER_ID= 36
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 100
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 80
+#MAX_PERCENTAGE= 80
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 210,127
+#DESTINATION_PORT= 137,65
+#WAYPOINT= 219,137
+#WAYPOINT= 103,137
+#WAYPOINT= 103,131
+#WAYPOINT= 81,98
+#WAYPOINT= 124,78
+#WAYPOINT= 130,78
+#WAYPOINT= 137,69
+#WAYPOINT= 137,68
+}
+
+;DE 161 - Mediterranean/Far East convoys to the UK (DE 103[0]; DE 161[1]:
+{
+#NAME= Mediterranean/Far East Convoys To The UK
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 161[1]
+#SENDER_ID= 36
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 100
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 80
+#MAX_PERCENTAGE= 80
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 210,127
+#DESTINATION_PORT= 140,72
+#WAYPOINT= 219,137
+#WAYPOINT= 103,137
+#WAYPOINT= 103,131
+#WAYPOINT= 81,98
+#WAYPOINT= 124,78
+#WAYPOINT= 130,78
+}
+
+;DE 165 re DE 161 - Mediterranean/Far East convoys to the UK if Malta or Gibraltar Fall (DE 103[0]; DE 161[1]:
+{
+#NAME= Mediterranean/Far East Convoys To The UK
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 165[1]
+#SENDER_ID= 36
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 100
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 80
+#MAX_PERCENTAGE= 80
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 210,127
+#DESTINATION_PORT= 137,65
+#WAYPOINT= 219,137
+#WAYPOINT= 103,137
+#WAYPOINT= 103,131
+#WAYPOINT= 81,98
+#WAYPOINT= 124,78
+#WAYPOINT= 130,78
+#WAYPOINT= 137,69
+#WAYPOINT= 137,68
+}
+
+;DE 105 - Middle East convoys to the UK:
+{
+#NAME= Middle East Convoys To Egypt
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 105[1]
+#SENDER_ID= 56
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 20
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 80
+#MAX_PERCENTAGE= 80
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 242,127
+#DESTINATION_PORT= 210,127
+#WAYPOINT= 246,130
+#WAYPOINT= 255,133
+#WAYPOINT= 257,132
+#WAYPOINT= 261,137
+#WAYPOINT= 217,137
+}
+
+;DE 105 - Middle East convoys to the UK:
+{
+#NAME= Middle East Convoys To Canada
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 105[0]
+#SENDER_ID= 56
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 20
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 80
+#MAX_PERCENTAGE= 80
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 242,127
+#DESTINATION_PORT= 25,96
+#WAYPOINT= 246,130
+#WAYPOINT= 255,133
+#WAYPOINT= 257,132
+#WAYPOINT= 261,137
+#WAYPOINT= 83,137
+}
+
+;DE 103 - Middle East convoys to the UK:
+{
+#NAME= Middle East Convoys To The UK
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 103[1]
+#SENDER_ID= 56
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 20
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 80
+#MAX_PERCENTAGE= 80
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 242,127
+#DESTINATION_PORT= 140,72
+#WAYPOINT= 246,130
+#WAYPOINT= 255,133
+#WAYPOINT= 257,132
+#WAYPOINT= 261,137
+#WAYPOINT= 101,137
+#WAYPOINT= 101,131
+#WAYPOINT= 79,98
+#WAYPOINT= 124,78
+#WAYPOINT= 130,78
+}
+
+; DE 164 re DE 103 - Middle East Convoys To The UK
+{
+#NAME= Middle East Convoys To The UK
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 164[1]
+#SENDER_ID= 56
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 20
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 80
+#MAX_PERCENTAGE= 80
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 242,127
+#DESTINATION_PORT= 137,65
+#WAYPOINT= 246,130
+#WAYPOINT= 255,133
+#WAYPOINT= 257,132
+#WAYPOINT= 261,137
+#WAYPOINT= 101,137
+#WAYPOINT= 101,131
+#WAYPOINT= 79,98
+#WAYPOINT= 124,78
+#WAYPOINT= 130,78
+#WAYPOINT= 137,69
+#WAYPOINT= 137,68
+}
+
+; DE 105 - South American and Caribbean convoys to Egypt:
+{
+#NAME= South American and Caribbean Convoys To Egypt
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 105[1]
+#SENDER_ID= 54
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 1
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 72
+#MAX_PERCENTAGE= 72
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 0,137
+#DESTINATION_PORT= 210,127
+#WAYPOINT= 1,137
+#WAYPOINT= 217,137
+}
+
+; DE 105 - South American and Caribbean convoys to Canada:
+{
+#NAME= South American and Caribbean Convoys To Canada
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 105[0]
+#SENDER_ID= 54
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 1
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 72
+#MAX_PERCENTAGE= 72
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 0,137
+#DESTINATION_PORT= 25,96
+#WAYPOINT= 19,99
+#WAYPOINT= 27,99
+#WAYPOINT= 30,98
+}
+
+; DE 103 - South American and Caribbean Convoys To The UK (British Empire)
+{
+#NAME= South American and Caribbean Convoys To The UK
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 103[1]
+#SENDER_ID= 54
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 1
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 72
+#MAX_PERCENTAGE= 72
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 0,137
+#DESTINATION_PORT= 140,72
+#WAYPOINT= 19,99
+#WAYPOINT= 27,99
+#WAYPOINT= 37,94
+#WAYPOINT= 51,94
+#WAYPOINT= 56,92
+#WAYPOINT= 56,68
+#WAYPOINT= 66,63
+#WAYPOINT= 85,53
+#WAYPOINT= 104,53
+#WAYPOINT= 128,65
+}
+
+; DE 164 re DE 103 - South American and Caribbean Convoys To The UK (British Empire)
+{
+#NAME= South American and Caribbean Convoys To The UK
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 164[1]
+#SENDER_ID= 54
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 1
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 72
+#MAX_PERCENTAGE= 72
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 0,137
+#DESTINATION_PORT= 137,65
+#WAYPOINT= 19,99
+#WAYPOINT= 27,99
+#WAYPOINT= 37,94
+#WAYPOINT= 51,94
+#WAYPOINT= 56,92
+#WAYPOINT= 56,68
+#WAYPOINT= 66,63
+#WAYPOINT= 85,53
+#WAYPOINT= 104,53
+#WAYPOINT= 128,65
+}
+
+;DE 103 - US supply convoy to the UK; Historical date March 11, 1941
+{
+#NAME= US Lend Lease To The UK
+#POPUP= US Lend Lease To The UK Begins
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 103[1]
+#SENDER_ID= 115
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 40
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 20
+#MAX_PERCENTAGE= 30
+#SPRING_REDUCTION= 75
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 75
+#WINTER_REDUCTION= 50
+#SOURCE_PORT= 17,99
+#DESTINATION_PORT= 140,72
+#WAYPOINT= 27,98
+#WAYPOINT= 37,93
+#WAYPOINT= 51,93
+#WAYPOINT= 55,91
+#WAYPOINT= 55,82
+#WAYPOINT= 55,76
+#WAYPOINT= 55,67
+#WAYPOINT= 66,62
+#WAYPOINT= 85,52
+#WAYPOINT= 104,52
+}
+
+; DE 164 re DE 103 - US supply convoy to the UK; Historical date March 11, 1941
+{
+#NAME= US Lend Lease To The UK
+#POPUP= US Lend Lease To The UK Begins
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 164[1]
+#SENDER_ID= 115
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 40
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 20
+#MAX_PERCENTAGE= 30
+#SPRING_REDUCTION= 75
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 75
+#WINTER_REDUCTION= 50
+#SOURCE_PORT= 17,99
+#DESTINATION_PORT= 137,65
+#WAYPOINT= 27,98
+#WAYPOINT= 37,93
+#WAYPOINT= 51,93
+#WAYPOINT= 55,91
+#WAYPOINT= 55,82
+#WAYPOINT= 55,76
+#WAYPOINT= 55,67
+#WAYPOINT= 66,62
+#WAYPOINT= 85,52
+#WAYPOINT= 104,52
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; EVENTS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;REMOVE1940
+;
+;Canadian supply convoys to the UK:
+{
+#NAME= Canadian Supply Convoys To The UK
+#POPUP= Canadian Supply Convoys To The UK Begin
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SENDER_ID= 21
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 100
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 75
+#MAX_PERCENTAGE= 75
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 75
+#SOURCE_PORT= 30,96
+#DESTINATION_PORT= 140,72
+#WAYPOINT= 38,92
+#WAYPOINT= 50,92
+#WAYPOINT= 115,59
+#WAYPOINT= 119,59
+}
+
+; DE 163 - Canadian supply convoys to the UK:
+{
+#NAME= Canadian Supply Convoys To The UK
+#POPUP= Canadian Supply Convoys To The UK Begin
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 163[1]
+#SENDER_ID= 21
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 100
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 75
+#MAX_PERCENTAGE= 75
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 75
+#SOURCE_PORT= 30,96
+#DESTINATION_PORT= 137,65
+#WAYPOINT= 38,92
+#WAYPOINT= 50,92
+#WAYPOINT= 115,59
+#WAYPOINT= 119,59
+}
+
+; South American and Caribbean convoys to the UK:
+{
+#NAME= South American and Caribbean Convoys To The UK (British Empire)
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SENDER_ID= 54
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 1
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 72
+#MAX_PERCENTAGE= 72
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 0,137
+#DESTINATION_PORT= 140,72
+#WAYPOINT= 130,78
+}
+
+; DE 163 - South American and Caribbean convoys to the UK:
+{
+#NAME= South American and Caribbean Convoys To The UK (British Empire)
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 163[1]
+#SENDER_ID= 54
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 1
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 72
+#MAX_PERCENTAGE= 72
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 0,137
+#DESTINATION_PORT= 137,65
+#WAYPOINT= 130,78
+#WAYPOINT= 137,69
+#WAYPOINT= 137,68
+}
+
+; Middle East convoys to the UK:
+{
+#NAME= Middle East Convoys To The UK
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SENDER_ID= 56
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 20
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 100
+#MAX_PERCENTAGE= 100
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 242,127
+#DESTINATION_PORT= 140,72
+#WAYPOINT= 246,130
+#WAYPOINT= 255,133
+#WAYPOINT= 257,132
+#WAYPOINT= 261,137
+#WAYPOINT= 103,137
+#WAYPOINT= 103,100
+#WAYPOINT= 112,83
+#WAYPOINT= 121,78
+#WAYPOINT= 130,78
+}
+
+; DE 163 - Middle East convoys to the UK:
+{
+#NAME= Middle East Convoys To The UK
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 163[1]
+#SENDER_ID= 56
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 20
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 100
+#MAX_PERCENTAGE= 100
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 242,127
+#DESTINATION_PORT= 137,65
+#WAYPOINT= 246,130
+#WAYPOINT= 255,133
+#WAYPOINT= 257,132
+#WAYPOINT= 261,137
+#WAYPOINT= 103,137
+#WAYPOINT= 103,100
+#WAYPOINT= 112,83
+#WAYPOINT= 121,78
+#WAYPOINT= 130,78
+#WAYPOINT= 137,69
+#WAYPOINT= 137,68
+}
+
+;US supply convoy to the UK; Historical date March 11, 1941
+{
+#NAME= US Lend Lease To The UK
+#POPUP= US Lend Lease To The UK Begins
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 350[1]
+#SENDER_ID= 115
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 40
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 20
+#MAX_PERCENTAGE= 30
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 75
+#SOURCE_PORT= 17,99
+#DESTINATION_PORT= 140,72
+#WAYPOINT= 27,98
+#WAYPOINT= 37,93
+#WAYPOINT= 51,93
+#WAYPOINT= 116,61
+#WAYPOINT= 118,61
+}
+
+; DE 166 re DE 350 - US supply convoy to the UK; Historical date March 11, 1941
+{
+#NAME= US Lend Lease To The UK
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 166[1]
+#SENDER_ID= 115
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 40
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 20
+#MAX_PERCENTAGE= 30
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 75
+#SOURCE_PORT= 17,99
+#DESTINATION_PORT= 137,65
+#WAYPOINT= 27,98
+#WAYPOINT= 37,93
+#WAYPOINT= 51,93
+#WAYPOINT= 116,61
+#WAYPOINT= 118,61
+}
+
+;US supply convoy to the UK; Historical date November 4, 1939
+{
+#NAME= US Lend Lease To The UK
+#POPUP= US Congress Passes The Cash And Carry Bill Enabling The Export Of Arms To The UK
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 351[1]
+#SENDER_ID= 115
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 25
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 10
+#MAX_PERCENTAGE= 15
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 75
+#SOURCE_PORT= 17,99
+#DESTINATION_PORT= 140,72
+#WAYPOINT= 27,98
+#WAYPOINT= 37,93
+#WAYPOINT= 51,93
+#WAYPOINT= 116,61
+#WAYPOINT= 118,61
+}
+
+; DE 167 re DE 351 - US supply convoy to the UK; Historical date November 4, 1939
+{
+#NAME= US Lend Lease To The UK
+#POPUP= US Congress Passes The Cash And Carry Bill Enabling The Export Of Arms To The UK
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 167[1]
+#SENDER_ID= 115
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 25
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 10
+#MAX_PERCENTAGE= 15
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 75
+#SOURCE_PORT= 17,99
+#DESTINATION_PORT= 137,65
+#WAYPOINT= 27,98
+#WAYPOINT= 37,93
+#WAYPOINT= 51,93
+#WAYPOINT= 116,61
+#WAYPOINT= 118,61
+}
+
+;Historical date September 1941
+{
+#NAME= DE 162 - UK Arctic Convoys To The USSR via Murmansk
+#POPUP= UK Starts Arctic Supply Convoys To The USSR
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 162[1]
+#SENDER_ID= 112
+#RECIPIENT_ID= 116
+#SENDER_ID_TRIGGER= 100
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 20
+#MAX_PERCENTAGE= 40
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 137,65
+#DESTINATION_PORT= 212,16
+#WAYPOINT= 135,66
+#WAYPOINT= 133,66
+#WAYPOINT= 133,59
+#WAYPOINT= 135,56
+#WAYPOINT= 136,54
+#WAYPOINT= 141,40
+#WAYPOINT= 145,38
+#WAYPOINT= 151,28
+#WAYPOINT= 157,20
+#WAYPOINT= 161,10
+#WAYPOINT= 180,01
+#WAYPOINT= 204,01
+#WAYPOINT= 212,05
+}
+
+;AMENDED
+{
+#NAME= UK Arctic Convoys To The USSR via Archangelsk
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 170[1]
+#SENDER_ID= 112
+#RECIPIENT_ID= 116
+#SENDER_ID_TRIGGER= 100
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 20
+#MAX_PERCENTAGE= 40
+#SPRING_REDUCTION= 75
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 75
+#WINTER_REDUCTION= 0
+#SOURCE_PORT= 137,65
+#DESTINATION_PORT= 226,35
+#WAYPOINT= 135,66
+#WAYPOINT= 133,66
+#WAYPOINT= 133,59
+#WAYPOINT= 135,56
+#WAYPOINT= 136,54
+#WAYPOINT= 141,40
+#WAYPOINT= 145,38
+#WAYPOINT= 151,28
+#WAYPOINT= 157,20
+#WAYPOINT= 161,10
+#WAYPOINT= 180,01
+#WAYPOINT= 204,01
+#WAYPOINT= 212,05
+#WAYPOINT= 220,09
+#WAYPOINT= 228,13
+}
+
+; DE 365 - US supply convoy to the USSR via Murmansk if UK government transferred to Egypt/Canada:
+{
+#NAME= DE 365 - US Arctic Convoys To The USSR
+#POPUP= US Starts Arctic Supply Convoys To The USSR
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 365[1]
+#SENDER_ID= 115
+#RECIPIENT_ID= 116
+#SENDER_ID_TRIGGER= 100
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 0
+#MAX_PERCENTAGE= 20
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 17,99
+#DESTINATION_PORT= 212,16
+#WAYPOINT= 27,98
+#WAYPOINT= 37,93
+#WAYPOINT= 51,93
+#WAYPOINT= 112,63
+#WAYPOINT= 117,49
+#WAYPOINT= 124,46
+#WAYPOINT= 145,35
+#WAYPOINT= 151,28
+#WAYPOINT= 157,20
+#WAYPOINT= 161,10
+#WAYPOINT= 194,1
+#WAYPOINT= 204,1
+#WAYPOINT= 212,5
+}
+
+; DE 366 - US supply convoy to the USSR via Murmansk if UK government transferred to Egypt/Canada:
+{
+#NAME= DE 366 - US Arctic Convoys To The USSR
+#POPUP= US Starts Arctic Supply Convoys To The USSR
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 366[1]
+#SENDER_ID= 115
+#RECIPIENT_ID= 116
+#SENDER_ID_TRIGGER= 100
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 0
+#MAX_PERCENTAGE= 20
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 17,99
+#DESTINATION_PORT= 212,16
+#WAYPOINT= 27,98
+#WAYPOINT= 37,93
+#WAYPOINT= 51,93
+#WAYPOINT= 112,63
+#WAYPOINT= 117,49
+#WAYPOINT= 124,46
+#WAYPOINT= 145,35
+#WAYPOINT= 151,28
+#WAYPOINT= 157,20
+#WAYPOINT= 161,10
+#WAYPOINT= 194,1
+#WAYPOINT= 204,1
+#WAYPOINT= 212,5
+}
+
+;US supply convoy to the USSR if UK government transferred to Egypt/Canada:
+{
+#NAME= DE 105 - US Arctic Convoys To The USSR
+#POPUP= US Starts Arctic Supply Convoys To The USSR
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 105[1]
+#SENDER_ID= 115
+#RECIPIENT_ID= 116
+#SENDER_ID_TRIGGER= 100
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 0
+#MAX_PERCENTAGE= 20
+#SPRING_REDUCTION= 75
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 75
+#WINTER_REDUCTION= 0
+#SOURCE_PORT= 17,99
+#DESTINATION_PORT= 226,35
+#WAYPOINT= 27,98
+#WAYPOINT= 37,93
+#WAYPOINT= 51,93
+#WAYPOINT= 112,63
+#WAYPOINT= 117,49
+#WAYPOINT= 124,46
+#WAYPOINT= 145,35
+#WAYPOINT= 151,28
+#WAYPOINT= 157,20
+#WAYPOINT= 161,10
+#WAYPOINT= 194,1
+#WAYPOINT= 210,1
+#WAYPOINT= 220,9
+#WAYPOINT= 228,13
+}
+
+;US supply convoy to the USSR if UK government transferred to Egypt/Canada:
+{
+#NAME= DE 105 - US Arctic Convoys To The USSR
+#POPUP= US Starts Arctic Supply Convoys To The USSR
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 105[0]
+#SENDER_ID= 115
+#RECIPIENT_ID= 116
+#SENDER_ID_TRIGGER= 100
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 0
+#MAX_PERCENTAGE= 20
+#SPRING_REDUCTION= 75
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 75
+#WINTER_REDUCTION= 0
+#SOURCE_PORT= 17,99
+#DESTINATION_PORT= 226,35
+#WAYPOINT= 27,98
+#WAYPOINT= 37,93
+#WAYPOINT= 51,93
+#WAYPOINT= 112,63
+#WAYPOINT= 117,49
+#WAYPOINT= 124,46
+#WAYPOINT= 145,35
+#WAYPOINT= 151,28
+#WAYPOINT= 157,20
+#WAYPOINT= 161,10
+#WAYPOINT= 194,1
+#WAYPOINT= 210,1
+#WAYPOINT= 220,9
+#WAYPOINT= 228,13
+}
+
+; Mediterranean/Far East Convoys To The UK
+{
+#NAME= Mediterranean/Far East Convoys To The UK
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SENDER_ID= 36
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 100
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 80
+#MAX_PERCENTAGE= 80
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 205,123
+#DESTINATION_PORT= 140,72
+#WAYPOINT= 175,115
+#WAYPOINT= 164,110
+#WAYPOINT= 150,111
+#WAYPOINT= 143,114
+#WAYPOINT= 137,114
+#WAYPOINT= 129,114
+#WAYPOINT= 124,112
+#WAYPOINT= 124,82
+}
+
+;Norwegian supply convoys to UK:
+{
+#NAME= Norwegian Supply Shipments To UK
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SENDER_ID= 78
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 20
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 50
+#MAX_PERCENTAGE= 50
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 180,19
+#DESTINATION_PORT= 139,59
+#WAYPOINT= 171,22
+#WAYPOINT= 142,37
+#WAYPOINT= 142,40
+#WAYPOINT= 142,57
+}
+
+;Replacement Script
+{
+#NAME= Saudi Arabian Convoys To The USA
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SENDER_ID= 95
+#RECIPIENT_ID= 115
+#SENDER_ID_TRIGGER= 40
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 80
+#MAX_PERCENTAGE= 80
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 245,131
+#DESTINATION_PORT= 10,105
+#WAYPOINT= 255,133
+#WAYPOINT= 257,132
+#WAYPOINT= 261,137
+#WAYPOINT= 14,137
+#WAYPOINT= 14,107
+}
+
+;Swedish supply convoys to Germany:
+{
+#NAME= Swedish Iron Ore Shipments To Germany
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SENDER_ID= 103
+#RECIPIENT_ID= 45
+#SENDER_ID_TRIGGER= 0
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 32
+#MAX_PERCENTAGE= 32
+#SPRING_REDUCTION= 75
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 75
+#WINTER_REDUCTION= 0
+#SOURCE_PORT= 191,30
+#DESTINATION_PORT= 175,71
+#WAYPOINT= 190,37
+#WAYPOINT= 188,39
+#WAYPOINT= 183,43
+#WAYPOINT= 182,49
+#WAYPOINT= 184,52
+#WAYPOINT= 185,54
+#WAYPOINT= 180,65
+#WAYPOINT= 179,68
+}
+
+; DE 635 - Norwegian supply convoys to Germany:
+{
+#NAME= Norwegian Supply Shipments To Germany
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 635[1]
+#SENDER_ID= 78
+#RECIPIENT_ID= 45
+#SENDER_ID_TRIGGER= 0
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 49
+#MAX_PERCENTAGE= 49
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 163,58
+#DESTINATION_PORT= 163,71
+#WAYPOINT= 163,61
+}
+
+; DE 636 - Swedish supply convoys to Germany:
+{
+#NAME= Swedish Iron Ore Shipments To Germany
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 635[1]
+#SENDER_ID= 103
+#RECIPIENT_ID= 45
+#SENDER_ID_TRIGGER= 0
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 45
+#MAX_PERCENTAGE= 45
+#SPRING_REDUCTION= 75
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 75
+#WINTER_REDUCTION= 0
+#SOURCE_PORT= 191,30
+#DESTINATION_PORT= 175,71
+#WAYPOINT= 190,37
+#WAYPOINT= 188,39
+#WAYPOINT= 183,43
+#WAYPOINT= 182,49
+#WAYPOINT= 184,52
+#WAYPOINT= 185,54
+#WAYPOINT= 180,65
+#WAYPOINT= 179,68
+}
+
+; DE 636 - Norwegian supply convoys to Germany:
+{
+#NAME= Norwegian Supply Shipments To Germany
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 636[1]
+#SENDER_ID= 78
+#RECIPIENT_ID= 45
+#SENDER_ID_TRIGGER= 0
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 49
+#MAX_PERCENTAGE= 49
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 163,58
+#DESTINATION_PORT= 163,71
+#WAYPOINT= 163,61
+}
+
+; DE 636 - Swedish supply convoys to Germany:
+{
+#NAME= Swedish Iron Ore Shipments To Germany
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 636[1]
+#SENDER_ID= 103
+#RECIPIENT_ID= 45
+#SENDER_ID_TRIGGER= 0
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 45
+#MAX_PERCENTAGE= 45
+#SPRING_REDUCTION= 75
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 75
+#WINTER_REDUCTION= 0
+#SOURCE_PORT= 191,30
+#DESTINATION_PORT= 175,71
+#WAYPOINT= 190,37
+#WAYPOINT= 188,39
+#WAYPOINT= 183,43
+#WAYPOINT= 182,49
+#WAYPOINT= 184,52
+#WAYPOINT= 185,54
+#WAYPOINT= 180,65
+#WAYPOINT= 179,68
+}
+
+; DE 668 - Norwegian supply convoys to Germany:
+{
+#NAME= Norwegian Supply Shipments To Germany
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 668[1]
+#SENDER_ID= 78
+#RECIPIENT_ID= 45
+#SENDER_ID_TRIGGER= 0
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 49
+#MAX_PERCENTAGE= 49
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 163,58
+#DESTINATION_PORT= 163,71
+#WAYPOINT= 163,61
+}
+
+; DE 668 - Swedish supply convoys to Germany:
+{
+#NAME= Swedish Iron Ore Shipments To Germany
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 668[1]
+#SENDER_ID= 103
+#RECIPIENT_ID= 45
+#SENDER_ID_TRIGGER= 0
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 45
+#MAX_PERCENTAGE= 45
+#SPRING_REDUCTION= 75
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 75
+#WINTER_REDUCTION= 0
+#SOURCE_PORT= 191,30
+#DESTINATION_PORT= 175,71
+#WAYPOINT= 190,37
+#WAYPOINT= 188,39
+#WAYPOINT= 183,43
+#WAYPOINT= 182,49
+#WAYPOINT= 184,52
+#WAYPOINT= 185,54
+#WAYPOINT= 180,65
+#WAYPOINT= 179,68
+}
+
+;Norwegian supply convoys to Germany:
+{
+#NAME= Norwegian Supply Shipments To Germany
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SENDER_ID= 78
+#RECIPIENT_ID= 45
+#SENDER_ID_TRIGGER= 0
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 69
+#MAX_PERCENTAGE= 69
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 180,19
+#DESTINATION_PORT= 163,71
+#WAYPOINT= 173,21
+#WAYPOINT= 172,24
+#WAYPOINT= 170,27
+#WAYPOINT= 168,31
+#WAYPOINT= 166,33
+#WAYPOINT= 162,37
+#WAYPOINT= 158,41
+#WAYPOINT= 155,57
+#WAYPOINT= 161,60
+#WAYPOINT= 161,69
+}
+
+;Turned off
+;Finnish supply convoys to Germany:
+{
+#NAME= Finnish Supply Shipments To Germany
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 0
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SENDER_ID= 39
+#RECIPIENT_ID= 45
+#SENDER_ID_TRIGGER= 100
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 50
+#MAX_PERCENTAGE= 100
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 196,52
+#DESTINATION_PORT= 186,69
+#WAYPOINT= 187,59
+#WAYPOINT= 185,60
+#WAYPOINT= 185,68
+}
+
+;
+{
+#NAME= German Supply Shipments To Finland (Pact)
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 847[1]
+#SENDER_ID= 45
+#RECIPIENT_ID= 39
+#SENDER_ID_TRIGGER= 100
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 3
+#MAX_PERCENTAGE= 5
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 186,69
+#DESTINATION_PORT= 196,52
+#WAYPOINT= 185,68
+#WAYPOINT= 185,60
+#WAYPOINT= 187,59
+#WAYPOINT= 187,55
+#WAYPOINT= 192,53
+#WAYPOINT= 193,53
+}
+
+;
+{
+#NAME= German Supply Shipments To Finland (No Pact)
+#POPUP=
+#IMAGE=
+#SOUND= convoy.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 847[0]
+#SENDER_ID= 45
+#RECIPIENT_ID= 39
+#SENDER_ID_TRIGGER= 100
+#RECIPIENT_ID_TRIGGER= 100
+#PERCENTAGE= 2
+#MAX_PERCENTAGE= 3
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 100
+#SOURCE_PORT= 186,69
+#DESTINATION_PORT= 196,52
+#WAYPOINT= 185,68
+#WAYPOINT= 185,60
+#WAYPOINT= 187,59
+#WAYPOINT= 187,55
+#WAYPOINT= 192,53
+#WAYPOINT= 193,53
+}

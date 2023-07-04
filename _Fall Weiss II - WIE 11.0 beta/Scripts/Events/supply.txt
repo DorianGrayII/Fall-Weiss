@@ -1,0 +1,2290 @@
+﻿;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; SUPPLY EVENTS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; USAGE:
+;
+; Basic structure for a supply event:
+; { 
+; #NAME= Event name (this will be shown as a selectable event under an OPTIONS screen within the game)
+; #POPUP= Event popup text (this will be displayed when the event occurs)
+; #IMAGE= Event image that will be displayed when event occurs
+;         PNG images must be 736x418 or 368x418 pixels, see 'Extras' folder for sample images and frames
+;         Multiple pictures can be used by using a ',' to separate them
+;         Format: picture1.png, picture2.png, picture3.png, picture4.png
+; #SOUND= Event sound that will be displayed when event occurs
+;         Multiple sounds can be used by using a ',' to separate them
+;         Format: sound1.mp3, sound2.mp3, sound3.mp3, sound4.mp3
+; #FLAG= Will this be a default event for the campaign? (values range [0, 1]; True= 1; False= 0)
+; #TYPE= Values range [0, 3];
+;        With all other fields satisfied will this be:
+;        0 = Single check regardless if #TRIGGER is satisfied
+;        1 = Multiple check until #TRIGGER is satisfied
+;        2 = Reoccuring check until end of game
+;                       OR
+;        Once the #DATE field is satisfied:
+;        3 = Event fires once if all other fields are satisfied, else it will not fire.  Either way, event will be removed never to be looked at again
+; #AI= Values range [0, 4]
+;      0 = Event fires whenever all fields are satisfied for any game type
+;      1 = Event fires whenever all fields are satisfied, for AI games only, and only on the Axis AI turn
+;      2 = Event fires whenever all fields are satisfied, for AI games only, and only on the Allied AI turn
+;      3 = Event fires whenever all fields are satisfied, for AI and Multiplayer games only, and only on the Axis AI or on the Allied Multiplayer turns
+;      4 = Event fires whenever all fields are satisfied, for AI and Multiplayer games only, and only on the Allied AI or on the Axis Multiplayer turns
+; #LEVEL= What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;         Values: [0, 4]; Green= 0; Novice= 1; Intermediate= 2; Veteran= 3; Expert= 4
+; #GV= Does the event activate based on the Global Variable values assigned?
+;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
+;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
+;      Example A) #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;      Example B) #GV= 4[71,100] will trigger 30% per game
+; #LINK= Does the event activate based on the Link values assigned?
+;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
+;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
+;        Example A) #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
+;        Example B) #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
+;        Example C) #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
+; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
+; #COUNTRY_ID= Country ID that will be owner of supply event
+; #FLAG_ID= Flag ID that will be shown in the popup for this event
+; #SEASON_FLAG= Season flag can be used to limit event to a particular season
+; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
+; #SOURCE_POSITION= Map position that could also trigger the event (Format: x,y [unit_id])
+; #DESTINATION_RESOURCE= Resource positions that will be affected by event as well as the
+;			 resource strength reduction range (Format: x,y [min, max])
+; #VARIABLE_CONDITION= Under what variable conditions will this event occur
+;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
+; }
+;
+; NOTES:
+;
+; Each event must be preceded by a '{' and end with a '}'
+;
+; #SOURCE_POSITION will trigger the event if and only if the unit located there, as specified by
+; unit_id, matches #COUNTRY_ID.
+;
+; A #SOURCE_POSITION does not have to be specified and can be left blank. In this case the
+; triggering of the supply event will be dependant on #DATE and the applicable #SEASON_FLAG.
+; More than one #SOURCE_POSITION can be set and will be read using OR logic.
+;
+; #DESTINATION_RESOURCE's will only be effected if they are under enemy control relative to #COUNTRY_ID.
+; Enemy or occupier must also be fully active.
+; More than one #DESTINATION_RESOURCE can be set.
+;
+; Under #VARIABLE_CONDITION you can also list countries that have not yet fully entered the war.
+; For example by listing an mobilization % less than 100% you are providing a check where the
+; #VARIABLE_CONDITION country must meet a minimum mobilization % in order for the event to occur.
+; Each #VARIABLE_CONDITION line will be read using AND logic.
+;
+; Use the reference values provided for #COUNTRY_ID and not the country names
+; Use the reference values provided for UNIT ID's and not unit id names
+; Use the reference values provided for #SEASON_FLAG and not season names
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; COUNTRY ID REFERENCE VALUES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Country IDs
+; #COUNTRY_ID_0= Neutral
+; #COUNTRY_ID_1= Abyssinia
+; #COUNTRY_ID_2= Afghanistan
+; #COUNTRY_ID_3= Albania
+; #COUNTRY_ID_4= Algeria
+; #COUNTRY_ID_5= Argentina
+; #COUNTRY_ID_6= Australia
+; #COUNTRY_ID_7= Austria
+; #COUNTRY_ID_8= Baltic States
+; #COUNTRY_ID_9= Belgian Congo
+; #COUNTRY_ID_10= Belgium
+; #COUNTRY_ID_11= Benelux
+; #COUNTRY_ID_12= Bhutan
+; #COUNTRY_ID_13= Black
+; #COUNTRY_ID_14= Bolivia
+; #COUNTRY_ID_15= Borneo
+; #COUNTRY_ID_16= Brazil
+; #COUNTRY_ID_17= British Somaliland
+; #COUNTRY_ID_18= Brunei
+; #COUNTRY_ID_19= Bulgaria
+; #COUNTRY_ID_20= Burma
+; #COUNTRY_ID_21= Canada
+; #COUNTRY_ID_22= Chile
+; #COUNTRY_ID_23= China
+; #COUNTRY_ID_24= Colombia
+; #COUNTRY_ID_25= Communist China
+; #COUNTRY_ID_26= Costa Rica
+; #COUNTRY_ID_27= Croatia
+; #COUNTRY_ID_28= Cuba
+; #COUNTRY_ID_29= Curaçao
+; #COUNTRY_ID_30= Czechoslovakia
+; #COUNTRY_ID_31= Denmark
+; #COUNTRY_ID_32= Dominican Republic
+; #COUNTRY_ID_33= Dutch East Indies
+; #COUNTRY_ID_34= Dutch Guiana
+; #COUNTRY_ID_35= Ecuador
+; #COUNTRY_ID_36= Egypt
+; #COUNTRY_ID_37= El Salvador
+; #COUNTRY_ID_38= Estonia
+; #COUNTRY_ID_39= Finland
+; #COUNTRY_ID_40= France
+; #COUNTRY_ID_41= Free City of Danzig
+; #COUNTRY_ID_42= French Equatorial Africa
+; #COUNTRY_ID_43= French Somaliland
+; #COUNTRY_ID_44= French West Africa
+; #COUNTRY_ID_45= Germany
+; #COUNTRY_ID_46= Greece
+; #COUNTRY_ID_47= Greenland
+; #COUNTRY_ID_48= Guatemala
+; #COUNTRY_ID_49= Haiti
+; #COUNTRY_ID_50= Honduras
+; #COUNTRY_ID_51= Hong Kong
+; #COUNTRY_ID_52= Hungary
+; #COUNTRY_ID_53= Iceland
+; #COUNTRY_ID_54= India
+; #COUNTRY_ID_55= Indochina
+; #COUNTRY_ID_56= Iraq
+; #COUNTRY_ID_57= Ireland
+; #COUNTRY_ID_58= Italian East Africa
+; #COUNTRY_ID_59= Italy
+; #COUNTRY_ID_60= Japan
+; #COUNTRY_ID_61= Latvia
+; #COUNTRY_ID_62= Liberia
+; #COUNTRY_ID_63= Libya
+; #COUNTRY_ID_64= Lithuania
+; #COUNTRY_ID_65= Luxembourg
+; #COUNTRY_ID_66= Malaya
+; #COUNTRY_ID_67= Manchukuo
+; #COUNTRY_ID_68= Mexico
+; #COUNTRY_ID_69= Mongolia
+; #COUNTRY_ID_70= Morocco
+; #COUNTRY_ID_71= Nanjing
+; #COUNTRY_ID_72= Nepal
+; #COUNTRY_ID_73= Netherlands
+; #COUNTRY_ID_74= New Zealand
+; #COUNTRY_ID_75= Newfoundland
+; #COUNTRY_ID_76= Nicaragua
+; #COUNTRY_ID_77= Nigeria
+; #COUNTRY_ID_78= Norway
+; #COUNTRY_ID_79= Palestine
+; #COUNTRY_ID_80= Panama
+; #COUNTRY_ID_81= Paraguay
+; #COUNTRY_ID_82= Persia
+; #COUNTRY_ID_83= Peru
+; #COUNTRY_ID_84= Philippines
+; #COUNTRY_ID_85= Poland
+; #COUNTRY_ID_86= Polynesia
+; #COUNTRY_ID_87= Portugal
+; #COUNTRY_ID_88= Portuguese East Africa
+; #COUNTRY_ID_89= Portuguese Timor
+; #COUNTRY_ID_90= Portuguese West Africa
+; #COUNTRY_ID_91= Red
+; #COUNTRY_ID_92= Rhodesia
+; #COUNTRY_ID_93= Romania
+; #COUNTRY_ID_94= Sarawak
+; #COUNTRY_ID_95= Saudi Arabia
+; #COUNTRY_ID_96= Slovakia
+; #COUNTRY_ID_97= Solomons
+; #COUNTRY_ID_98= South Africa
+; #COUNTRY_ID_99= Spain
+; #COUNTRY_ID_100= Spanish Guinea
+; #COUNTRY_ID_101= Spanish Republic
+; #COUNTRY_ID_102= Sudan
+; #COUNTRY_ID_103= Sweden
+; #COUNTRY_ID_104= Switzerland
+; #COUNTRY_ID_105= Syria
+; #COUNTRY_ID_106= Tannu Tuva
+; #COUNTRY_ID_107= Thailand
+; #COUNTRY_ID_108= Tibet
+; #COUNTRY_ID_109= Transjordan
+; #COUNTRY_ID_110= Tunisia
+; #COUNTRY_ID_111= Turkey
+; #COUNTRY_ID_112= UK
+; #COUNTRY_ID_113= Ukraine
+; #COUNTRY_ID_114= Uruguay
+; #COUNTRY_ID_115= USA
+; #COUNTRY_ID_116= USSR
+; #COUNTRY_ID_117= Venezuela
+; #COUNTRY_ID_118= Vichy France
+; #COUNTRY_ID_119= Yemen
+; #COUNTRY_ID_120= Yugoslavia
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; UNIT ID REFERENCE VALUES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; #UNIT_ID_-1= Any Unit
+;
+; #UNIT_ID_0= HQ
+; #UNIT_ID_1= Garrison
+; #UNIT_ID_2= Brigade
+; #UNIT_ID_3= Division
+; #UNIT_ID_4= Corps
+; #UNIT_ID_5= Army
+; #UNIT_ID_6= Mechanized
+; #UNIT_ID_7= Special Forces
+; #UNIT_ID_8= Engineers
+; #UNIT_ID_9= Paratroops
+; #UNIT_ID_10= Cavalry Brigade
+; #UNIT_ID_11= Cavalry Division
+; #UNIT_ID_12= Cavalry Corps
+; #UNIT_ID_13= Partisans
+; #UNIT_ID_14= Pillbox
+; #UNIT_ID_15= Anti-Air
+; #UNIT_ID_16= Rocket Artillery
+; #UNIT_ID_17= Artillery
+; #UNIT_ID_18= Heavy Artillery
+; #UNIT_ID_19= Rail Gun
+; #UNIT_ID_20= Coastal Gun
+; #UNIT_ID_21= Rockets
+; #UNIT_ID_22= Reconnaissance
+; #UNIT_ID_23= Armored Train
+; #UNIT_ID_24= Anti-Tank
+; #UNIT_ID_25= Light Tanks
+; #UNIT_ID_26= Medium Tanks
+; #UNIT_ID_27= Tanks
+; #UNIT_ID_28= Airships
+; #UNIT_ID_29= Fighters
+; #UNIT_ID_30= Tactical Bombers
+; #UNIT_ID_31= Medium Bombers
+; #UNIT_ID_32= Strategic Bombers
+; #UNIT_ID_33= Maritime Bombers
+; #UNIT_ID_34= Kamikazes
+; #UNIT_ID_35= Dreadnought
+; #UNIT_ID_36= Battleship
+; #UNIT_ID_37= Battle Cruiser
+; #UNIT_ID_38= Heavy Cruiser
+; #UNIT_ID_39= Light Cruiser
+; #UNIT_ID_40= Destroyer
+; #UNIT_ID_41= Escort Carrier
+; #UNIT_ID_42= Carrier
+; #UNIT_ID_43= Sub
+; #UNIT_ID_44= Motor Torpedo Boat
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; POLITICAL ALIGNMENT/DIRECTION REFERENCE VALUES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; NEUTRAL= 0
+; AXIS= 1
+; ALLIED= 2
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; SEASON FLAG REFERENCE VALUES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; ALL_SEASONS= 0
+; SPRING= 1
+; SUMMER= 2
+; FALL= 3
+; WINTER= 4
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+{
+#NAME= Norwegian Forces Damage The Rail Network As They Retire Into The Hinterland
+#POPUP= Norwegian Forces Damage The Rail Network As They Retire Into The Hinterland
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 643[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 78
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/04/14
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 167,48 [1,3]
+#DESTINATION_RESOURCE= 174,28 [1,3]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 78 [2] [100] [1]
+}
+
+{
+#NAME= Norwegian Forces Damage The Rail Network As They Retire Into The Hinterland
+#POPUP= Norwegian Forces Damage The Rail Network As They Retire Into The Hinterland
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 644[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 78
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/04/14
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 167,48 [1,3]
+#DESTINATION_RESOURCE= 174,28 [1,3]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 78 [2] [100] [1]
+}
+
+{
+#NAME= Dutch Railway Workers Strike As Allied Forces Approach The Netherlands
+#POPUP= Dutch Railway Workers Strike As Allied Forces Approach The Netherlands
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 108[1]
+#COUNTRY_ID= 10
+#ALIGNMENT_ID= 0
+#FLAG_ID= 73
+#TRIGGER= 50
+#SEASON_FLAG= 0
+#DATE= 1940/01/20
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 156,77 [1,4]
+#DESTINATION_RESOURCE= 155,76 [1,4]
+#DESTINATION_RESOURCE= 156,75 [1,4]
+#VARIABLE_CONDITION= 10 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+}
+
+{
+#NAME= Dutch Railway Workers Strike As Allied Forces Approach The Netherlands
+#POPUP= Dutch Railway Workers Strike As Allied Forces Approach The Netherlands
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 108[0]
+#COUNTRY_ID= 10
+#ALIGNMENT_ID= 0
+#FLAG_ID= 73
+#TRIGGER= 25
+#SEASON_FLAG= 0
+#DATE= 1940/01/20
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 156,77 [1,4]
+#DESTINATION_RESOURCE= 155,76 [1,4]
+#DESTINATION_RESOURCE= 156,75 [1,4]
+#VARIABLE_CONDITION= 10 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+}
+
+{
+#NAME= Fighting Breaks Out In Greece Between Monarchists And Communists
+#POPUP= Fighting Breaks Out In Greece Between Monarchists And Communists
+#IMAGE= greekcivilwar.png
+#SOUND=
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#ALIGNMENT_ID= 0
+#FLAG_ID= 46
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1944/12/09
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 193,109 [1,4]
+#DESTINATION_RESOURCE= 191,106 [1,4]
+#DESTINATION_RESOURCE= 192,104 [1,4]
+#VARIABLE_CONDITION= 46 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+{
+#NAME= Fighting Breaks Out In Greece Between Monarchists And Communists
+#POPUP= H.G. Wells Blames Churchill For Infighting In Greece And Calls On Him To Resign
+#IMAGE= hgwells.png
+#SOUND=
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1944/12/20
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 193,109 [1,2]
+#DESTINATION_RESOURCE= 191,106 [1,2]
+#DESTINATION_RESOURCE= 192,104 [1,2]
+#VARIABLE_CONDITION= 46 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1941
+{
+#NAME= French Refugee Event
+#POPUP= Refugees Block Roads Affecting Allied Supply In Northern France
+#IMAGE= refugee1.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#ALIGNMENT_ID= 0
+#FLAG_ID= 40
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 153,80 [2,4]
+#DESTINATION_RESOURCE= 151,79 [2,4]
+#DESTINATION_RESOURCE= 153,78 [2,4]
+#DESTINATION_RESOURCE= 155,81 [2,4]
+#DESTINATION_RESOURCE= 151,81 [2,4]
+#DESTINATION_RESOURCE= 154,83 [2,4]
+; 1st Line - Belgium politically aligned with the Allies and surrendered
+#VARIABLE_CONDITION= 10 [2] [100] [1]
+; 2nd Line - USA politically aligned with the Allies but not fully mobilized
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; 3rd Line - France politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+}
+
+;REMOVE1942
+{
+#NAME= Workers Launch A General Strike In Amsterdam Against The Occupation
+#POPUP= Workers Launch A General Strike In Amsterdam Against The Occupation
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 73
+#ALIGNMENT_ID= 0
+#FLAG_ID= 73
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1941/02/25
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 156,75 [2,3]
+; 1st Line - Netherlands politically aligned with the Allies and surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [1]
+}
+
+;REMOVE1944
+{
+#NAME= Workers Launch A General Strike In The Southern Netherlands
+#POPUP= Workers Launch A General Strike In The Southern Netherlands
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 73
+#ALIGNMENT_ID= 0
+#FLAG_ID= 73
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1943/04/29
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 157,79 [2,3]
+; 1st Line - Netherlands politically aligned with the Allies and surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [1]
+}
+
+;REMOVE1944
+{
+#NAME= DE 750 - Insurrection Against The Axis In Naples As Allied Forces Approach!
+#POPUP= Insurrection Against The Axis In Naples As Allied Forces Approach!
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 750[1]
+#COUNTRY_ID= 115
+#ALIGNMENT_ID= 0
+#FLAG_ID= 59
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1942/01/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 175,103 [1,3]
+; 1st Line - USA politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+}
+
+;REMOVE1944
+{
+#NAME= Strikes Break Out In Turin
+#POPUP= Strikes Break Out In Turin
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 91
+#TRIGGER= 35
+#SEASON_FLAG= 0
+#DATE= 1943/01/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 162,94 [2,4]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1944
+{
+#NAME= Workers Go On Strike In Milan
+#POPUP= Workers Go On Strike In Milan
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 91
+#TRIGGER= 35
+#SEASON_FLAG= 0
+#DATE= 1943/01/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 164,93 [2,4]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1944
+{
+#NAME= Trotsykist Agitators Are Blamed As Miners Strike In Wales And Yorkshire
+#POPUP= Trotsykist Agitators Are Blamed As Miners Strike In Wales And Yorkshire
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#ALIGNMENT_ID= 0
+#FLAG_ID= 91
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1944/02/03
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 139,76 [2,4]
+#DESTINATION_RESOURCE= 144,72 [2,4]
+; 1st Line - UK politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1942
+{
+#NAME= 100,000 Miners Strike For Higher Pay In Northern France
+#POPUP= 100,000 Miners Strike For Higher Pay In Northern France
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 40
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1941/05/27
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 153,81 [2,4]
+; 1st Line - UK politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; 2nd Line - France politically aligned with the Allies and surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; UK DECISION EVENTS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;REMOVE1941
+; Effect of reduced supply in Baghdad
+{
+#NAME= DE 106 - Baghdad Supply Reduction
+#POPUP= Allied Economic Sanctions Target Iraq
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 106[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 56
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 237,124 [5,5]
+#DESTINATION_RESOURCE= 240,125 [5,5]
+#DESTINATION_RESOURCE= 239,122 [5,5]
+#DESTINATION_RESOURCE= 237,121 [5,5]
+#DESTINATION_RESOURCE= 234,122 [5,5]
+#DESTINATION_RESOURCE= 234,120 [5,5]
+#DESTINATION_RESOURCE= 231,119 [5,5]
+#DESTINATION_RESOURCE= 232,118 [5,5]
+#DESTINATION_RESOURCE= 225,120 [5,5]
+#DESTINATION_RESOURCE= 231,114 [5,5]
+; Iraq politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 56 [1] [100] [0]
+}
+
+{
+#NAME= DE 313 - Danish Workers Go On Strike To Disrupt German Communications
+#POPUP= The Danish Freedom Council Calls A General Strike To Disrupt German Communications
+#IMAGE= danishstrike.png
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 355[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 31
+#TRIGGER= 45
+#SEASON_FLAG= 0
+#DATE= 1944/01/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 171,65 [2,4]
+#DESTINATION_RESOURCE= 171,66 [2,4]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+}
+
+;REMOVE1944
+{
+#NAME= DE 108 - Danish Workers Strike Against The German Occupation
+#POPUP= Danish Workers Strike Against The German Occupation
+#IMAGE= copenhagen_strike.png
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 108[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 31
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1943/06/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 171,65 [1,3]
+#DESTINATION_RESOURCE= 171,66 [1,3]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+}
+
+{
+#NAME= DE 114 - British Commandos Raid Norway - Stavanger
+#POPUP= British Commandos Raid Stavanger In Norway
+#IMAGE= commando8.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 114[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1942/03/01
+#SOURCE_POSITION= 147,77 [-1]
+#DESTINATION_RESOURCE= 158,55 [2,3]
+#DESTINATION_RESOURCE= 157,55 [2,4]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+{
+#NAME= DE 114 - British Commandos Raid Norway - Bergen
+#POPUP= British Commandos Raid Bergen In Norway
+#IMAGE= commando7.png
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 114[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1942/03/01
+#SOURCE_POSITION= 147,77 [-1]
+#DESTINATION_RESOURCE= 157,50 [2,3]
+#DESTINATION_RESOURCE= 156,51 [2,4]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+{
+#NAME= DE 114 - British Commandos Raid Norway - Trondheim
+#POPUP= British Commandos Raid Trondheim In Norway
+#IMAGE= commando6.png
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 114[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1942/03/01
+#SOURCE_POSITION= 147,77 [-1]
+#DESTINATION_RESOURCE= 167,39 [2,3]
+#DESTINATION_RESOURCE= 167,40 [2,3]
+#DESTINATION_RESOURCE= 166,41 [2,4]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+{
+#NAME= DE 114 - British Commandos Raid Norway - Narvik
+#POPUP= British Commandos Raid Narvik In Norway
+#IMAGE= commando5.png
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 114[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1942/03/01
+#SOURCE_POSITION= 147,77 [-1]
+#DESTINATION_RESOURCE= 181,18 [2,3]
+#DESTINATION_RESOURCE= 180,19 [2,3]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+{
+#NAME= DE 114 - British Commandos Raid France - Calais
+#POPUP= British Commandos Raid Calais
+#IMAGE= commando4.png
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 114[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1942/03/01
+#SOURCE_POSITION= 147,77 [-1]
+#DESTINATION_RESOURCE= 151,79 [2,3]
+#DESTINATION_RESOURCE= 150,80 [2,4]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+{
+#NAME= DE 114 - British Commandos Raid France - St Malo
+#POPUP= British Commandos Raid St Malo
+#IMAGE= commando3.png
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 114[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1942/03/01
+#SOURCE_POSITION= 147,77 [-1]
+#DESTINATION_RESOURCE= 141,85 [2,3]
+#DESTINATION_RESOURCE= 142,85 [2,3]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+{
+#NAME= DE 114 - British Commandos Raid Belgium - Ostend
+#POPUP= British Commandos Raid The Belgian Coast
+#IMAGE= commando1.png
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 114[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1942/03/01
+#SOURCE_POSITION= 147,77 [-1]
+#DESTINATION_RESOURCE= 153,78 [2,3]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+{
+#NAME= DE 114 - British Commandos Raid Spain - Corruna
+#POPUP= British Commandos Raid The Spanish Coast
+#IMAGE= commando2.png
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 114[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1942/03/01
+#SOURCE_POSITION= 147,77 [-1]
+#DESTINATION_RESOURCE= 130,98 [2,3]
+#DESTINATION_RESOURCE= 130,97 [2,3]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1943
+{
+#NAME= DE 114 - Cockleshell Heroes: British Royal Marines Attack Shipping At Bordeaux
+#POPUP= Cockleshell Heroes: British Royal Marines Attack Shipping At Bordeaux
+#IMAGE= frankton.png
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 114[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1942/12/07
+#SOURCE_POSITION= 147,77 [-1]
+#DESTINATION_RESOURCE= 145,93 [2,5]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1941
+{
+#NAME= DE 118 - French Bombers Attack Gibraltar In Response To The Attack On Mers-El-Kebir
+#POPUP= French Bombers Attack Gibraltar In Response To The Attack On Mers-El-Kebir
+#IMAGE= frenchbombergib.png, gibraltaratwar.png
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 118[1]
+#COUNTRY_ID= 45
+#ALIGNMENT_ID= 0
+#FLAG_ID= 118
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/01/20
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 137,113 [0,2]
+#DESTINATION_RESOURCE= 137,114 [0,2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+}
+
+{
+#NAME= DE 156 - The SAS Attack Axis Supply Lines And Rear Areas Near Tobruk
+#POPUP= The SAS Attack Axis Supply Lines And Rear Areas Near Tobruk
+#IMAGE= sas6.png, sas7.png
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 156[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1941/08/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 194,122 [1,3]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+{
+#NAME= DE 157 - The SAS Attack Axis Supply Lines And Rear Areas Near Benghazi
+#POPUP= The SAS Attack Axis Supply Lines And Rear Areas Near Benghazi
+#IMAGE= sas1.png, sas2.png
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 157[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1941/08/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 186,122 [1,3]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+{
+#NAME= DE 158 - The SAS Attack Axis Supply Lines And Rear Areas Near Tripoli
+#POPUP= The SAS Attack Axis Supply Lines And Rear Areas Near Tripoli
+#IMAGE= sas3.png
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 158[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1941/08/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 172,121 [1,3]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+{
+#NAME= DE 159 - The SAS Attack Axis Supply Lines And Rear Areas Near El Agheila
+#POPUP= The SAS Attack Axis Supply Lines And Rear Areas Near El Agheila
+#IMAGE= sas4.png
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 159[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1941/08/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 184,126 [1,3]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+{
+#NAME= DE 160 - The SAS Attack Axis Supply Lines And Rear Areas Near Mersa Matruh
+#POPUP= The SAS Attack Axis Supply Lines And Rear Areas Near Mersa Matruh
+#IMAGE= sas5.png
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 160[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1941/08/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 200,124 [1,3]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; US DECISION EVENTS - Spanish Republican Resistance
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+{
+#NAME= DE 309 - Spanish Republicans Carry Out Guerrilla Attacks On Installations In Asturias
+#POPUP= Spanish Republicans Carry Out Guerrilla Attacks On Installations In Asturias
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 361[1]
+#COUNTRY_ID= 115
+#ALIGNMENT_ID= 0
+#FLAG_ID= 101
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1943/01/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 135,97 [1,4]
+#DESTINATION_RESOURCE= 135,98 [1,4]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+}
+
+{
+#NAME= DE 309 - Spanish Republicans Launch Attacks On Installations Near Granada
+#POPUP= Spanish Republicans Launch Attacks On Installations Near Granada
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 362[1]
+#COUNTRY_ID= 115
+#ALIGNMENT_ID= 0
+#FLAG_ID= 101
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1943/01/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 140,112 [1,4]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+}
+
+{
+#NAME= DE 309 - Spanish Republicans Carry Out Guerrilla Attacks On Installations Near Córdoba
+#POPUP= Spanish Republicans Carry Out Guerrilla Attacks On Installations Near Córdoba
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 363[1]
+#COUNTRY_ID= 115
+#ALIGNMENT_ID= 0
+#FLAG_ID= 101
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1943/01/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 137,110 [1,4]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+}
+
+{
+#NAME= DE 309 - Spanish Republicans Attack Installations In Catalonia
+#POPUP= Spanish Republicans Attack Installations In Catalonia
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 364[1]
+#COUNTRY_ID= 115
+#ALIGNMENT_ID= 0
+#FLAG_ID= 101
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1943/01/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 150,102 [1,4]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; SOVIET DECISION EVENTS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;REMOVE1942
+{
+#NAME= DE 402 - Industry In The Ukraine Is Disrupted By The Transfer To The Urals
+#POPUP= Industry In The Ukraine Is Disrupted By The Transfer To The Urals
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 402[1]
+#COUNTRY_ID= 45
+#ALIGNMENT_ID= 0
+#FLAG_ID= 116
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 212,87 [3,3]
+#DESTINATION_RESOURCE= 213,86 [3,3]
+#DESTINATION_RESOURCE= 216,90 [3,3]
+#DESTINATION_RESOURCE= 223,85 [3,3]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; GERMAN DECISION EVENTS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;REMOVE1940
+;
+; Reykjavik reduced to 0 so Germans cannot immediately operate to Iceland
+; after Danish Annexation
+{
+#NAME= DE 601 - Iceland Supply Reduction (One Time)
+#POPUP= Demonstrations Against Denmark's Annexation Cause Disruption In Reykjavik
+#IMAGE= coup.ogg
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 601[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 53
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/04/14
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 103,36 [10,10]
+#DESTINATION_RESOURCE= 104,37 [10,10]
+; Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; Warsaw Rising
+{
+#NAME= DE 655 - Warsaw Rising
+#POPUP= Warsaw Rising: The Polish Home Army Attacks The German Occupier
+#IMAGE= warsaw_uprising_1944.png, polish_home_army1.png, polish_home_army2.png, polish_home_army3.png, polish_home_army4.png
+#SOUND= battle2.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 655[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 85
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1944/08/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 188,76 [5,8]
+; Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; Operation Tempest
+{
+#NAME= DE 655 - Operation Tempest
+#POPUP= Operation Tempest Is Launched To Support The Warsaw Rising
+#IMAGE= polish_home_army5.png, polish_home_army6.png
+#SOUND= battle2.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 655[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 85
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1944/08/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 195,78 [1,3]
+#DESTINATION_RESOURCE= 193,71 [1,3]
+#DESTINATION_RESOURCE= 192,73 [1,3]
+; Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; UK
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Malta limits Axis supply in the Mediterranean
+{ 
+#NAME= Malta Effect (Tripoli, Sirte, El Agheila, Benghazi, Derna)
+#POPUP= Malta Hinders Axis Supply In the Mediterranean (Tripoli, El Agheila, Benghazi)
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 15
+#SEASON_FLAG= 0
+#DATE= 1940/08/01
+#SOURCE_POSITION= 175,114 [-1]
+#DESTINATION_RESOURCE= 172,121 [1,2]
+#DESTINATION_RESOURCE= 172,120 [1,2]
+#DESTINATION_RESOURCE= 179,124 [1,2]
+#DESTINATION_RESOURCE= 184,126 [1,2]
+#DESTINATION_RESOURCE= 186,122 [1,2]
+#DESTINATION_RESOURCE= 185,122 [1,2]
+#DESTINATION_RESOURCE= 191,120 [1,2]
+#DESTINATION_RESOURCE= 188,124 [1,2]
+#DESTINATION_RESOURCE= 190,122 [1,2]
+#DESTINATION_RESOURCE= 192,122 [1,2]
+#DESTINATION_RESOURCE= 175,121 [1,2]
+#DESTINATION_RESOURCE= 177,123 [1,2]
+;Set variable conditions:
+; 1st Line - UK politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; 2nd Line - Egypt politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+}
+
+; Malta limits Axis supply in the Mediterranean
+{ 
+#NAME= Malta Effect (Tobruk, Bardia, Sidi Barrani, Mersa Matruh, El Alamein, Alexandria)
+#POPUP= Malta Hinders Axis Supply In the Mediterranean (Tobruk, El Alamein, Alexandria)
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 20
+#SEASON_FLAG= 0
+#DATE= 1940/07/01
+#SOURCE_POSITION= 175,114 [-1]
+#DESTINATION_RESOURCE= 195,121 [1,2]
+#DESTINATION_RESOURCE= 194,122 [1,2]
+#DESTINATION_RESOURCE= 205,123 [1,2]
+#DESTINATION_RESOURCE= 206,124 [1,2]
+#DESTINATION_RESOURCE= 209,122 [1,2]
+#DESTINATION_RESOURCE= 209,123 [1,2]
+#DESTINATION_RESOURCE= 191,120 [1,2]
+#DESTINATION_RESOURCE= 196,123 [1,2]
+#DESTINATION_RESOURCE= 198,123 [1,2]
+#DESTINATION_RESOURCE= 200,124 [1,2]
+#DESTINATION_RESOURCE= 204,125 [1,2]
+;Set variable conditions:
+; 1st Line - UK politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; 2nd Line - Egypt politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+}
+
+;REMOVE1942
+; Raid on St Nazaire
+{ 
+#NAME= Raid on St Nazaire - St Nazaire damaged
+#POPUP= HMS Campbeltown Badly Damages The Normandie Dock At St Nazaire!
+#IMAGE= campbeltown1.png, campbeltown2.png, campbeltown3.png, campbeltown4.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,50]
+; Set link value to always trigger (dummy value)
+#LINK= 113[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1942/03/28
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 142,89 [8,10]
+;Set variable conditions:
+; 1st Line - UK politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1942
+; Raid on St Nazaire - first message
+{ 
+#NAME= Raid on St Nazaire - St Nazaire destroyed
+#POPUP= HMS Campbeltown Destroys The Normandie Dock: St Nazaire Is Out Of Action!
+#IMAGE= campbeltown1.png, campbeltown2.png, campbeltown3.png, campbeltown4.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[51,100]
+; Set link value to always trigger (dummy value)
+#LINK= 113[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1942/03/28
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 142,89 [10,10]
+;Set variable conditions:
+; 1st Line - UK politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1942
+; Raid on St Nazaire - continuous
+{ 
+#NAME= Raid on St Nazaire - St Nazaire destroyed
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[51,100]
+; Set link value to always trigger (dummy value)
+#LINK= 113[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1942/03/28
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 142,89 [10,10]
+;Set variable conditions:
+; 1st Line - UK politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Germany
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Fall of Gibraltar
+{
+#NAME= Fall Of Gibraltar (German Occupied)
+#POPUP= Axis Control Of Gibraltar Hinders Allied Supply In the Mediterranean
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 676[1]
+#COUNTRY_ID= 45
+#ALIGNMENT_ID= 0
+#FLAG_ID= 45
+#TRIGGER= 25
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#SOURCE_POSITION=
+; Several ports removed so that Amphibious Operations are still possible
+#DESTINATION_RESOURCE= 144,115 [1,2]
+#DESTINATION_RESOURCE= 145,115 [1,2]
+#DESTINATION_RESOURCE= 152,112 [1,2]
+#DESTINATION_RESOURCE= 152,113 [1,2]
+#DESTINATION_RESOURCE= 167,111 [1,2]
+#DESTINATION_RESOURCE= 167,112 [1,2]
+#DESTINATION_RESOURCE= 172,120 [1,2]
+#DESTINATION_RESOURCE= 172,121 [1,2]
+#DESTINATION_RESOURCE= 185,122 [1,2]
+#DESTINATION_RESOURCE= 186,122 [1,2]
+#DESTINATION_RESOURCE= 175,114 [1,2]
+#DESTINATION_RESOURCE= 175,115 [1,2]
+#DESTINATION_RESOURCE= 176,115 [1,2]
+#DESTINATION_RESOURCE= 194,122 [1,2]
+#DESTINATION_RESOURCE= 195,121 [1,2]
+#DESTINATION_RESOURCE= 205,123 [1,2]
+;Set variable conditions:
+; 1st Line - Germany politically aligned with the Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= US East Coast Shipping Disrupted By Axis Raiders (Continuous)
+#POPUP= The Presence Of Axis Vessels Disrupts US Coastal Shipping
+#IMAGE=
+#SOUND= sub_movement.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#ALIGNMENT_ID= 0
+#FLAG_ID= 115
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/08/01
+#SOURCE_POSITION= 7,112 [-1]
+#SOURCE_POSITION= 7,111 [-1]
+#SOURCE_POSITION= 11,105 [-1]
+#SOURCE_POSITION= 11,106 [-1]
+#SOURCE_POSITION= 12,106 [-1]
+#SOURCE_POSITION= 16,104 [-1]
+#SOURCE_POSITION= 16,103 [-1]
+#SOURCE_POSITION= 18,100 [-1]
+#SOURCE_POSITION= 18,99 [-1]
+#DESTINATION_RESOURCE= 0,103 [1,2]
+#DESTINATION_RESOURCE= 0,104 [1,2]
+; 1st Line - Germany politically aligned with Axis and not surrendered
+; 2nd Line - USA politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+}
+
+{
+#NAME= Canadian Shipping Near Sydney Mines Disrupted By Axis Raiders (Continuous)
+#POPUP= Axis Vessels Disrupt Merchant Shipping Near The Sydney Mines
+#IMAGE=
+#SOUND= sub_movement.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#ALIGNMENT_ID= 0
+#FLAG_ID= 21
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#SOURCE_POSITION= 37,89 [-1]
+#SOURCE_POSITION= 38,90 [-1]
+#SOURCE_POSITION= 38,91 [-1]
+#DESTINATION_RESOURCE= 36,91 [1,2]
+; 1st Line - Germany politically aligned with Axis and not surrendered
+; 2nd Line - Canada politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 21 [2] [100] [0]
+}
+
+{
+#NAME= Canadian Shipping Near Halifax Disrupted By Axis Raiders (Continuous)
+#POPUP= Axis Raiders Disrupt Production At The Springhill Mines And Halifax
+#IMAGE=
+#SOUND= sub_movement.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#ALIGNMENT_ID= 0
+#FLAG_ID= 21
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#SOURCE_POSITION= 29,96 [-1]
+#SOURCE_POSITION= 30,97 [-1]
+#SOURCE_POSITION= 31,96 [-1]
+#DESTINATION_RESOURCE= 30,95 [1,2]
+#DESTINATION_RESOURCE= 29,92 [1,2]
+; 1st Line - Germany politically aligned with Axis and not surrendered
+; 2nd Line - Canada politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 21 [2] [100] [0]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Italy
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Fall of Gibraltar
+{
+#NAME= Fall Of Gibraltar (Italian Occupied)
+#POPUP= Axis Control Of Gibraltar Hinders Allied Supply In the Mediterranean
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 59
+#ALIGNMENT_ID= 0
+#FLAG_ID= 59
+#TRIGGER= 25
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#SOURCE_POSITION= 136,114 [-1]
+; Several ports removed though Amphibious Operations are still possible
+#DESTINATION_RESOURCE= 144,115 [1,2]
+#DESTINATION_RESOURCE= 145,115 [1,2]
+#DESTINATION_RESOURCE= 152,112 [1,2]
+#DESTINATION_RESOURCE= 152,113 [1,2]
+#DESTINATION_RESOURCE= 167,111 [1,2]
+#DESTINATION_RESOURCE= 167,112 [1,2]
+#DESTINATION_RESOURCE= 172,120 [1,2]
+#DESTINATION_RESOURCE= 172,121 [1,2]
+#DESTINATION_RESOURCE= 185,122 [1,2]
+#DESTINATION_RESOURCE= 186,122 [1,2]
+#DESTINATION_RESOURCE= 175,114 [1,2]
+#DESTINATION_RESOURCE= 175,115 [1,2]
+#DESTINATION_RESOURCE= 176,115 [1,2]
+#DESTINATION_RESOURCE= 194,122 [1,2]
+#DESTINATION_RESOURCE= 195,121 [1,2]
+#DESTINATION_RESOURCE= 205,123 [1,2]
+;Set variable conditions:
+; 1st Line - Italy politically aligned with the Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+}
+
+; Pro-Allied Italian Resistance Activity (Post Surrender)
+{
+#NAME= Italian Partisans (Pro-Allied After Italy Surrenders)
+#POPUP= Italian Pro-Allied Resistance Activity Hinders Axis Supply
+#IMAGE= partisans_in_milan.png, partisans_in_bologna.png
+#SOUND= battle2.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 115
+#ALIGNMENT_ID= 0
+#FLAG_ID= 59
+#TRIGGER= 8
+#SEASON_FLAG= 0
+#DATE= 1943/08/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 164,93 [1,3]
+#DESTINATION_RESOURCE= 169,95 [1,3]
+;Set variable conditions:
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [1]
+}
+
+{
+#NAME= Oil Shortages Hamper Axis Economies
+#POPUP= Oil Shortages Hamper Axis Economies
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 871[1]
+#COUNTRY_ID= 116
+#ALIGNMENT_ID= 0
+#FLAG_ID= 45
+#TRIGGER= 15
+#SEASON_FLAG= 0
+#DATE= 1943/01/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 161,77 [2,5]
+#DESTINATION_RESOURCE= 162,78 [2,5]
+#DESTINATION_RESOURCE= 161,83 [2,5]
+#DESTINATION_RESOURCE= 174,82 [2,5]
+#DESTINATION_RESOURCE= 160,79 [2,3]
+#DESTINATION_RESOURCE= 173,79 [2,3]
+#DESTINATION_RESOURCE= 180,79 [2,3]
+#DESTINATION_RESOURCE= 168,83 [2,3]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= Oil Shortages Hamper Axis Economies
+#POPUP= Oil Shortages Hamper Axis Economies
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 381[1]
+#COUNTRY_ID= 116
+#ALIGNMENT_ID= 0
+#FLAG_ID= 45
+#TRIGGER= 10
+#SEASON_FLAG= 0
+#DATE= 1943/01/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 161,77 [2,5]
+#DESTINATION_RESOURCE= 162,78 [2,5]
+#DESTINATION_RESOURCE= 161,83 [2,5]
+#DESTINATION_RESOURCE= 174,82 [2,5]
+#DESTINATION_RESOURCE= 160,79 [2,3]
+#DESTINATION_RESOURCE= 173,79 [2,3]
+#DESTINATION_RESOURCE= 180,79 [2,3]
+#DESTINATION_RESOURCE= 168,83 [2,3]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; Malta limits Axis supply in the Mediterranean
+{
+#NAME= Malta AF Effect (Tripoli, Tobruk)
+#POPUP= Allied Navy Hinders Axis Reinforcing North Africa
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 59
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/03
+#SOURCE_POSITION= 175,114 [-1]
+#DESTINATION_RESOURCE= 172,120 [5,5]
+#DESTINATION_RESOURCE= 185,122 [5,5]
+#DESTINATION_RESOURCE= 195,121 [5,5]
+; Italy politically aligned with Axis, Fully Active and not surrendered
+; UK politically aligned with Allies, Fully Active and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+; Supply Line 1940 North Africa
+{
+#NAME= Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
+#POPUP= Italian Supply Line Are Severely Stretched East Of Tobruk
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 832[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 59
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/07/01
+#SOURCE_POSITION= 206,124 [-1]
+#DESTINATION_RESOURCE= 196,123 [3,4]
+#DESTINATION_RESOURCE= 198,123 [4,4]
+#DESTINATION_RESOURCE= 200,124 [5,5]
+; Italy politically aligned with Axis, Fully Active and not surrendered
+; UK politically aligned with Allies, Fully Active and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+; Supply Line 1940 North Africa
+{
+#NAME= Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
+#POPUP= Italian Supply Line Are Severely Stretched East Of Tobruk
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 832[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 59
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/09/15
+#SOURCE_POSITION= 206,124 [-1]
+#DESTINATION_RESOURCE= 196,123 [3,4]
+#DESTINATION_RESOURCE= 198,123 [4,4]
+#DESTINATION_RESOURCE= 200,124 [5,5]
+; Italy politically aligned with Axis, Fully Active and not surrendered
+; UK politically aligned with Allies, Fully Active and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+; Supply Line 1940 North Africa
+{
+#NAME= Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
+#POPUP= Italian Supply Line Are Severely Stretched East Of Tobruk
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 832[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 59
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/12/01
+#SOURCE_POSITION= 206,124 [-1]
+#DESTINATION_RESOURCE= 196,123 [3,4]
+#DESTINATION_RESOURCE= 198,123 [4,4]
+#DESTINATION_RESOURCE= 200,124 [5,5]
+; Italy politically aligned with Axis, Fully Active and not surrendered
+; UK politically aligned with Allies, Fully Active and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+; South Atlantic Raiders
+{
+#NAME= South Atlantic Raiders
+#POPUP= Graf Spee Disrupts South Atlantic Convoys
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 854[0]
+#COUNTRY_ID= 45
+#ALIGNMENT_ID= 0
+#FLAG_ID= 54
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/01/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 0,2 [5,5]
+; Germany politically aligned with Axis, Fully Active and not surrendered
+; UK politically aligned with Allies, Fully Active and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+
+; The Port of Kiel Is Stripped Of Kriegsmarine Personnel
+{ 
+#NAME= The Port of Kiel Is Stripped Of Kriegsmarine Personnel
+#POPUP= The Port of Kiel Is Stripped Of Kriegsmarine Personnel
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 950[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 45
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1944/01/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 167,69 [10,10]
+;Set variable conditions:
+; 1st Line - UK politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+; The Port of Stettin Is Stripped Of Kriegsmarine Personnel
+{ 
+#NAME= The Port of Stettin Is Stripped Of Kriegsmarine Personnel
+#POPUP= The Port of Stettin Is Stripped Of Kriegsmarine Personnel
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 951[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 45
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1944/01/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 175,71 [10,10]
+;Set variable conditions:
+; 1st Line - UK politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+; Protests At Helsinki
+{
+#NAME= Helsinki Protests
+#POPUP= Demonstrations Against War With The Western Allies Disrupt Supply In Helsinki 
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 847[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 39
+#TRIGGER= 5
+#SEASON_FLAG= 0
+#DATE= 1940/01/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 195,51 [2,4]
+; Finland politically aligned with Axis, Fully Active and not surrendered
+; UK politically aligned with Allies, Fully Active and not surrendered
+#VARIABLE_CONDITION= 39 [1] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+{
+#NAME= Supply Shortages Hamper Spanish Economies
+#POPUP= Supply Shortages Hamper Spanish Economies
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 890[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 99
+#TRIGGER= 10
+#SEASON_FLAG= 0
+#DATE= 1939/09/03
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 141,98 [7,9]
+#DESTINATION_RESOURCE= 143,99 [7,9]
+#DESTINATION_RESOURCE= 145,101 [7,9]
+#DESTINATION_RESOURCE= 145,106 [7,9]
+#VARIABLE_CONDITION= 99 [1] [100] [0]
+}
+
+; Replacement Script
+; Crete limits Axis supply in the Mediterranean
+{ 
+#NAME= Crete Effect (Tobruk, Bardia, Sidi Barrani, Mersa Matruh, El Alamein, Alexandria)
+#POPUP= Crete Hinders Axis Supply In the Mediterranean (Tobruk, El Alamein, Alexandria)
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 20
+#SEASON_FLAG= 0
+#DATE= 1940/06/01
+#SOURCE_POSITION= 196,116 [-1]
+#DESTINATION_RESOURCE= 195,121 [1,3]
+#DESTINATION_RESOURCE= 194,122 [1,3]
+#DESTINATION_RESOURCE= 205,123 [1,3]
+#DESTINATION_RESOURCE= 206,124 [1,3]
+#DESTINATION_RESOURCE= 209,122 [1,3]
+#DESTINATION_RESOURCE= 209,123 [1,3]
+#DESTINATION_RESOURCE= 191,120 [1,3]
+#DESTINATION_RESOURCE= 196,123 [1,3]
+#DESTINATION_RESOURCE= 198,123 [1,3]
+#DESTINATION_RESOURCE= 200,124 [1,3]
+#DESTINATION_RESOURCE= 204,125 [1,3]
+;Set variable conditions:
+; 1st Line - UK politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; 2nd Line - Egypt politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+}
+
+; Allies In Egypt Support Greece
+{
+#NAME= Allies In Egypt Support Greece
+#POPUP= Greek Expedition Disrupts Allied Supply In Egypt
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 838[1]
+#COUNTRY_ID= 45
+#ALIGNMENT_ID= 0
+#FLAG_ID= 36
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/03
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 206,124 [3,4]
+#DESTINATION_RESOURCE= 204,125 [2,3]
+#DESTINATION_RESOURCE= 205,123 [3,4]
+#DESTINATION_RESOURCE= 206,123 [2,3]
+; Germany politically aligned with Axis, Fully Active and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; Stop Greece From Reinforcing Yugoslavia
+{
+#NAME= Stop Greece From Reinforcing Yugoslavia
+#POPUP=
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 838[1]
+#COUNTRY_ID= 45
+#ALIGNMENT_ID= 0
+#FLAG_ID= 120
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/03
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 189,101 [3,3]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 120 [2] [100] [0]
+#VARIABLE_CONDITION= 46 [2] [100] [0]
+}
+
+; Maikop Oil Fields - first message
+{ 
+#NAME= Maikop Oil Fields Destroyed
+#POPUP= German Engineers Find The Maikop Oil Fields In Irreparable Ruin
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 429[1]
+#COUNTRY_ID= 116
+#ALIGNMENT_ID= 0
+#FLAG_ID= 45
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/01/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 225,95 [10,10]
+;Set variable conditions:
+; 1st Line - UK politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; Maikop Oil Fields - continuous
+{ 
+#NAME= Maikop Oil Fields Destroyed
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 429[1]
+#COUNTRY_ID= 116
+#ALIGNMENT_ID= 0
+#FLAG_ID= 45
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/01/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 225,95 [10,10]
+;Set variable conditions:
+; 1st Line - UK politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; Stalingrad Supply - continuous
+{ 
+#NAME= Stalingrad Supply Reduction
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 530[1]
+#COUNTRY_ID= 116
+#ALIGNMENT_ID= 0
+#FLAG_ID= 45
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/01/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 234,85 [10,10]
+;Set variable conditions:
+; 1st Line - Germany politically aligned with the Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= Soviet Strategic Bombers Raid Berlin
+#POPUP= Soviet Strategic Bombers Raid Berlin
+#IMAGE=
+#SOUND= explosion1.ogg
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 116
+#ALIGNMENT_ID= 0
+#FLAG_ID= 45
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1941/08/13
+#SOURCE_POSITION= 206,52 [-1]
+#DESTINATION_RESOURCE= 173,74 [1,2]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= Soviet Bombers Operating From Crimea Attack The Ploesti Oil Fields In Romania
+#POPUP= Soviet Bombers Operating From Crimea Attack The Ploesti Oil Fields In Romania
+#IMAGE=
+#SOUND= explosion1.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 116
+#ALIGNMENT_ID= 0
+#FLAG_ID= 116
+#TRIGGER= 25
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#SOURCE_POSITION= 212,96 [-1]
+#DESTINATION_RESOURCE= 198,94 [1,2]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 93 [1] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+}
+
+{
+#NAME= British Strategic Bombers Launch Night Raids On Berlin (1)
+#POPUP= British Strategic Bombers Launch Night Raids On Berlin
+#IMAGE=
+#SOUND= explosion1.ogg
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/08/26
+#SOURCE_POSITION= 147,77 [-1]
+#DESTINATION_RESOURCE= 173,74 [1,2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= British Strategic Bombers Continue Night Raids On Berlin (2)
+#POPUP= British Strategic Bombers Continue Night Raids On Berlin
+#IMAGE=
+#SOUND= explosion1.ogg
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/09/09
+#SOURCE_POSITION= 147,77 [-1]
+#DESTINATION_RESOURCE= 173,74 [1,2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= British Strategic Bombers Continue Night Raids On Berlin (3)
+#POPUP= British Strategic Bombers Continue Night Raids On Berlin
+#IMAGE=
+#SOUND= explosion1.ogg
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/09/23
+#SOURCE_POSITION= 147,77 [-1]
+#DESTINATION_RESOURCE= 173,74 [1,2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= The Allies Attack Narvik (Supply Reduction)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 128[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 78
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/03
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 181,18 [1,4]
+#DESTINATION_RESOURCE= 180,19 [1,4]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 78 [2] [100] [1]
+}
+

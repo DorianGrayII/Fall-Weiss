@@ -1,0 +1,3839 @@
+﻿;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; MOBILIZATION #3 (Based on a set date and variable political conditions)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; USAGE:
+;
+; Basic structure for a mobilization event:
+; {
+; #NAME= Event name (this will be shown as a selectable event under an OPTIONS screen within the game)
+; #POPUP= Event popup text (this will be displayed when the event occurs)
+; #IMAGE= Event image that will be displayed when event occurs
+;         PNG images must be 736x418 or 368x418 pixels, see 'Extras' folder for sample images and frames
+;         Multiple pictures can be used by using a ',' to separate them
+;         Format: picture1.png, picture2.png, picture3.png, picture4.png
+; #SOUND= Event sound that will be displayed when event occurs
+;         Multiple sounds can be used by using a ',' to separate them
+;         Format: sound1.mp3, sound2.mp3, sound3.mp3, sound4.mp3
+; #FLAG= Will this be a default event for the campaign? (values range [0, 1]; True= 1; False= 0)
+; #TYPE= Values range [0, 3];
+;        With all other fields satisfied will this be:
+;        0 = Single check regardless if #TRIGGER is satisfied
+;        1 = Multiple check until #TRIGGER is satisfied
+;        2 = Reoccuring check until end of game
+;                       OR
+;        Once the #DATE field is satisfied:
+;        3 = Event fires once if all other fields are satisfied, else it will not fire.  Either way, event will be removed never to be looked at again
+; #AI= Values range [0, 4]
+;      0 = Event fires whenever all fields are satisfied for any game type
+;      1 = Event fires whenever all fields are satisfied, for AI games only, and only on the Axis AI turn
+;      2 = Event fires whenever all fields are satisfied, for AI games only, and only on the Allied AI turn
+;      3 = Event fires whenever all fields are satisfied, for AI and Multiplayer games only, and only on the Axis AI or on the Allied Multiplayer turns
+;      4 = Event fires whenever all fields are satisfied, for AI and Multiplayer games only, and only on the Allied AI or on the Axis Multiplayer turns
+; #LEVEL= What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;         Values: [0, 4]; Green= 0; Novice= 1; Intermediate= 2; Veteran= 3; Expert= 4
+; #GV= Does the event activate based on the Global Variable values assigned?
+;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
+;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
+;      Example A) #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;      Example B) #GV= 4[71,100] will trigger 30% per game
+; #LINK= Does the event activate based on the Link values assigned?
+;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
+;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
+;        Example A) #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
+;        Example B) #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
+;        Example C) #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
+; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
+; #COUNTRY_ID= Country ID associated with this event
+; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
+; #MOBILIZATION= The mobilization percentage increase/decrease for this event for #COUNTRY_ID
+;                Format: [min%, max%] [political_direction]
+; #VARIABLE_CONDITION= Under what variable conditions will this event occur
+;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
+; }
+;
+; NOTES:
+;
+; Each event must be preceded by a '{' and end with a '}'
+;
+; The #MOBILIZATION value can be set to reflect a random range of potential increase or decrease
+; towards either the Axis or Allies side. This is done by setting the 'political_direction' flag
+; under #MOBILIZATION as either Axis or Allied, i.e. [1] or [2]. For example if the US is currently
+; leaning towards the Allies then you can set an #MOBILIZATION event to decrease their current
+; mobilization percentage by setting the 'political_direction' flag as Axis.
+;
+; Under #VARIABLE_CONDITION you can also list countries that have not yet fully entered the war. 
+; For example by listing an mobilization % less than 100% you are providing a check where the
+; #VARIABLE_CONDITION country must meet a minimum mobilization % in order for the event to occur.
+;
+; More than one #VARIABLE_CONDITION can be set. Each #VARIABLE_CONDITION line will be read using
+; AND logic.
+;
+; Use the reference values provided for #COUNTRY_ID and not the country names
+; Use the reference values provided for POLITICAL ALIGNMENT and not names
+; Use the reference values provided for SURRENDER flags and not names
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; COUNTRY ID REFERENCE VALUES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Country IDs
+; #COUNTRY_ID_0= Neutral
+; #COUNTRY_ID_1= Abyssinia
+; #COUNTRY_ID_2= Afghanistan
+; #COUNTRY_ID_3= Albania
+; #COUNTRY_ID_4= Algeria
+; #COUNTRY_ID_5= Argentina
+; #COUNTRY_ID_6= Australia
+; #COUNTRY_ID_7= Austria
+; #COUNTRY_ID_8= Baltic States
+; #COUNTRY_ID_9= Belgian Congo
+; #COUNTRY_ID_10= Belgium
+; #COUNTRY_ID_11= Benelux
+; #COUNTRY_ID_12= Bhutan
+; #COUNTRY_ID_13= Black
+; #COUNTRY_ID_14= Bolivia
+; #COUNTRY_ID_15= Borneo
+; #COUNTRY_ID_16= Brazil
+; #COUNTRY_ID_17= British Somaliland
+; #COUNTRY_ID_18= Brunei
+; #COUNTRY_ID_19= Bulgaria
+; #COUNTRY_ID_20= Burma
+; #COUNTRY_ID_21= Canada
+; #COUNTRY_ID_22= Chile
+; #COUNTRY_ID_23= China
+; #COUNTRY_ID_24= Colombia
+; #COUNTRY_ID_25= Communist China
+; #COUNTRY_ID_26= Costa Rica
+; #COUNTRY_ID_27= Croatia
+; #COUNTRY_ID_28= Cuba
+; #COUNTRY_ID_29= Curaçao
+; #COUNTRY_ID_30= Czechoslovakia
+; #COUNTRY_ID_31= Denmark
+; #COUNTRY_ID_32= Dominican Republic
+; #COUNTRY_ID_33= Dutch East Indies
+; #COUNTRY_ID_34= Dutch Guiana
+; #COUNTRY_ID_35= Ecuador
+; #COUNTRY_ID_36= Egypt
+; #COUNTRY_ID_37= El Salvador
+; #COUNTRY_ID_38= Estonia
+; #COUNTRY_ID_39= Finland
+; #COUNTRY_ID_40= France
+; #COUNTRY_ID_41= Free City of Danzig
+; #COUNTRY_ID_42= French Equatorial Africa
+; #COUNTRY_ID_43= French Somaliland
+; #COUNTRY_ID_44= French West Africa
+; #COUNTRY_ID_45= Germany
+; #COUNTRY_ID_46= Greece
+; #COUNTRY_ID_47= Greenland
+; #COUNTRY_ID_48= Guatemala
+; #COUNTRY_ID_49= Haiti
+; #COUNTRY_ID_50= Honduras
+; #COUNTRY_ID_51= Hong Kong
+; #COUNTRY_ID_52= Hungary
+; #COUNTRY_ID_53= Iceland
+; #COUNTRY_ID_54= India
+; #COUNTRY_ID_55= Indochina
+; #COUNTRY_ID_56= Iraq
+; #COUNTRY_ID_57= Ireland
+; #COUNTRY_ID_58= Italian East Africa
+; #COUNTRY_ID_59= Italy
+; #COUNTRY_ID_60= Japan
+; #COUNTRY_ID_61= Latvia
+; #COUNTRY_ID_62= Liberia
+; #COUNTRY_ID_63= Libya
+; #COUNTRY_ID_64= Lithuania
+; #COUNTRY_ID_65= Luxembourg
+; #COUNTRY_ID_66= Malaya
+; #COUNTRY_ID_67= Manchukuo
+; #COUNTRY_ID_68= Mexico
+; #COUNTRY_ID_69= Mongolia
+; #COUNTRY_ID_70= Morocco
+; #COUNTRY_ID_71= Nanjing
+; #COUNTRY_ID_72= Nepal
+; #COUNTRY_ID_73= Netherlands
+; #COUNTRY_ID_74= New Zealand
+; #COUNTRY_ID_75= Newfoundland
+; #COUNTRY_ID_76= Nicaragua
+; #COUNTRY_ID_77= Nigeria
+; #COUNTRY_ID_78= Norway
+; #COUNTRY_ID_79= Palestine
+; #COUNTRY_ID_80= Panama
+; #COUNTRY_ID_81= Paraguay
+; #COUNTRY_ID_82= Persia
+; #COUNTRY_ID_83= Peru
+; #COUNTRY_ID_84= Philippines
+; #COUNTRY_ID_85= Poland
+; #COUNTRY_ID_86= Polynesia
+; #COUNTRY_ID_87= Portugal
+; #COUNTRY_ID_88= Portuguese East Africa
+; #COUNTRY_ID_89= Portuguese Timor
+; #COUNTRY_ID_90= Portuguese West Africa
+; #COUNTRY_ID_91= Red
+; #COUNTRY_ID_92= Rhodesia
+; #COUNTRY_ID_93= Romania
+; #COUNTRY_ID_94= Sarawak
+; #COUNTRY_ID_95= Saudi Arabia
+; #COUNTRY_ID_96= Slovakia
+; #COUNTRY_ID_97= Solomons
+; #COUNTRY_ID_98= South Africa
+; #COUNTRY_ID_99= Spain
+; #COUNTRY_ID_100= Spanish Guinea
+; #COUNTRY_ID_101= Spanish Republic
+; #COUNTRY_ID_102= Sudan
+; #COUNTRY_ID_103= Sweden
+; #COUNTRY_ID_104= Switzerland
+; #COUNTRY_ID_105= Syria
+; #COUNTRY_ID_106= Tannu Tuva
+; #COUNTRY_ID_107= Thailand
+; #COUNTRY_ID_108= Tibet
+; #COUNTRY_ID_109= Transjordan
+; #COUNTRY_ID_110= Tunisia
+; #COUNTRY_ID_111= Turkey
+; #COUNTRY_ID_112= UK
+; #COUNTRY_ID_113= Ukraine
+; #COUNTRY_ID_114= Uruguay
+; #COUNTRY_ID_115= USA
+; #COUNTRY_ID_116= USSR
+; #COUNTRY_ID_117= Venezuela
+; #COUNTRY_ID_118= Vichy France
+; #COUNTRY_ID_119= Yemen
+; #COUNTRY_ID_120= Yugoslavia
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; POLITICAL ALIGNMENT REFERENCE VALUES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; NEUTRAL= 0
+; AXIS= 1
+; ALLIED= 2
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; SURRENDERED FLAG REFERENCE VALUES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; NOT_SURRENDERED= 0
+; SURRENDERED= 1
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; DECISION EVENTS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;REMOVE1941 (implement effect first)
+;
+{
+#NAME= DE 100 - UK Supports the Free French (Vichy France->Axis)
+#POPUP= Vichy France Distances Itself From Britain's Support For General De Gaulle
+#IMAGE=
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 100[1]
+#COUNTRY_ID= 118
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 5% mobilization increase towards Axis
+#MOBILIZATION= [5,5] [1]
+; Set variable conditions:
+; 1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1941 (implement effect first)
+;
+{
+#NAME= DE 100 - UK Supports the Free French (Algeria->Axis)
+#POPUP=
+#IMAGE=
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 100[1]
+#COUNTRY_ID= 4
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 5% mobilization increase towards Axis
+#MOBILIZATION= [5,5] [1]
+; Set variable conditions:
+; 1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1941 (implement effect first)
+;
+{
+#NAME= DE 100 - UK Supports the Free French (Syria->Axis)
+#POPUP=
+#IMAGE=
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 100[1]
+#COUNTRY_ID= 105
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 5% mobilization increase towards Axis
+#MOBILIZATION= [5,5] [1]
+; Set variable conditions:
+; 1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1941 (implement effect first)
+;
+{
+#NAME= DE 100 - UK Supports the Free French (Tunisia->Axis)
+#POPUP=
+#IMAGE=
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 100[1]
+#COUNTRY_ID= 110
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 5% mobilization increase towards Axis
+#MOBILIZATION= [5,5] [1]
+; Set variable conditions:
+; 1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1941
+;
+{
+#NAME= DE 100 - UK Recognizes Vichy France (USA->Axis)
+#POPUP= The British Recognition Of Vichy France Strengthens Isolationists In The USA
+#IMAGE=
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 100[0]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 3-5% mobilization increase towards Axis
+#MOBILIZATION= [3,5] [1]
+; Set variable conditions:
+; 1st Line - USA politically aligned with Allies but not fully mobilized
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+}
+
+;REMOVE1941 (implement effect first)
+;
+; Allied Mers-El-Kebir attack on Pro-Vichy Fleet
+{
+#NAME= DE 118 - Attack On Mers-El-Kebir (Vichy France->Axis)
+#POPUP= Operation Catapult - The Royal Navy Attacks The Vichy Fleet At Mers-El-Kebir
+#IMAGE= mers_el_kebir_1.png, mers_el_kebir_2.png
+#SOUND= ship_sinking.ogg, war1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 118[1]
+#COUNTRY_ID= 118
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 30-35% mobilization increase towards Axis
+#MOBILIZATION= [30,35] [1]
+; Set variable conditions:
+; 1st Line - France politically aligned with Allies and surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+}
+
+;REMOVE1941 (implement effect first)
+;
+{
+#NAME= DE 118 - Attack On Mers-El-Kebir (Vichy France->Axis)
+#POPUP= Admiral Darlan Orders The Partial Mobilization Of The Vichy French Fleet
+#IMAGE=
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 118[1]
+#COUNTRY_ID= 118
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 5-15% mobilization increase towards Axis
+#MOBILIZATION= [5,15] [1]
+; Set variable conditions:
+; 1st Line - France politically aligned with Allies and surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+}
+
+;REMOVE1941 (implement effect first)
+;
+; Allied Mers-El-Kebir attack on Pro-Vichy Fleet
+{
+#NAME= DE 118 - Attack On Mers-El-Kebir (Algeria->Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 118[1]
+#COUNTRY_ID= 4
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 35-55% mobilization increase towards Axis
+#MOBILIZATION= [35,55] [1]
+; Set variable conditions:
+; 1st Line - France politically aligned with Allies and surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+}
+
+;REMOVE1941 (implement effect first)
+;
+; Allied Mers-El-Kebir attack on Pro-Vichy Fleet
+{
+#NAME= DE 118 - Attack On Mers-El-Kebir (Tunisia->Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 118[1]
+#COUNTRY_ID= 110
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 35-55% mobilization increase towards Axis
+#MOBILIZATION= [35,55] [1]
+; Set variable conditions:
+; 1st Line - France politically aligned with Allies and surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+}
+
+;REMOVE1941 (implement effect first)
+;
+; Event for Vichy French mobilization following
+; the UK's failure to take Dakar
+{
+#NAME= DE 119 - UK Fails To Capture Dakar (Vichy France->Axis)
+#POPUP= Vichy France Protests Against The Attack On Dakar
+#IMAGE=
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 119[1]
+#COUNTRY_ID= 118
+#TRIGGER= 20
+#DATE= 1939/09/03
+; 5-8% mobilization increase towards Axis
+#MOBILIZATION= [5,8] [1]
+; Set variable conditions:
+; 1st Line - France politically aligned with Allies and surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+}
+
+;REMOVE1941 (implement effect first)
+;
+; Event for Vichy Algerian mobilization following
+; the UK's failure to take Dakar
+{
+#NAME= DE 119 - UK Fails To Capture Dakar (Vichy Algeria->Axis)
+#POPUP= Vichy Algeria Protests Against The Attack On Dakar
+#IMAGE=
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 119[1]
+#COUNTRY_ID= 4
+#TRIGGER= 20
+#DATE= 1939/09/03
+; 5-8% mobilization increase towards Axis
+#MOBILIZATION= [5,8] [1]
+; Set variable conditions:
+; 1st Line - France politically aligned with Allies and surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+}
+
+;REMOVE1941 (implement effect first)
+;
+; Event for Vichy Tunisia's mobilization following
+; the UK's failure to take Dakar
+{
+#NAME= DE 119 - UK Fails To Capture Dakar (Vichy Tunisia->Axis)
+#POPUP= Tunisia Protests Against The Attack On Dakar
+#IMAGE=
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 119[1]
+#COUNTRY_ID= 110
+#TRIGGER= 20
+#DATE= 1939/09/03
+; 5-8% mobilization increase towards Axis
+#MOBILIZATION= [5,8] [1]
+; Set variable conditions:
+; 1st Line - France politically aligned with Allies and surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+}
+
+;REMOVE1941
+;
+; Yugoslavian Coup:
+; Historical date of event was 1941/03/27
+{
+#NAME= DE 104 - Pro-Allied Coup In Yugoslavia (Yugoslavia->Allies)
+#POPUP= Pro-Allied Coup In Yugoslavia
+#IMAGE= yugoslavcoup.png
+#SOUND= liberation.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 104[1]
+#COUNTRY_ID= 120
+#TRIGGER= 100
+#DATE= 1939/09/03
+;200-200% mobilization increase towards Allies
+#MOBILIZATION= [200,200] [2]
+;Set variable conditions:
+;1st Line - UK politically aligned with Allies (fully active) and NOT surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1941 (Implement result first)
+;
+; Greek response to Pro-Allied Coup in Yugoslavia
+{
+#NAME= DE 104 - Pro-Allied Mobilization In Greece (Greece->Allies)
+#POPUP= Greece Mobilizes In Response To The Coup In Yugoslavia
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 104[1]
+#COUNTRY_ID= 46
+#TRIGGER= 50
+#DATE= 1939/09/03
+;30-40% mobilization increase towards Allies
+#MOBILIZATION= [30,40] [2]
+;Set variable conditions:
+;1st Line - UK politically aligned with Allies (fully active) and NOT surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1941
+;
+; Event for Yugoslavian mobilization if the UK
+; doesn't support a pro-Allied coup there
+; Historical date of event was 1941/03/27
+{
+#NAME= DE 104 - Yugoslavia Signs The Tripartite Pact (Yugoslavia->Axis)
+#POPUP= Yugoslavia Signs The Tripartite Pact And Joins The Axis
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 104[0]
+#COUNTRY_ID= 120
+#TRIGGER= 100
+#DATE= 1939/09/03
+;200% mobilization increase towards Axis
+#MOBILIZATION= [200,200] [1]
+;Set variable conditions:
+;1st Line - UK politically aligned with Allies (fully active) and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1941
+;
+{
+#NAME= DE 106 - Syria Reacts To Annexation Of Basra (Syria->Axis)
+#POPUP= Syria Leans Towards The Axis
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 106[1]
+#COUNTRY_ID= 105
+#TRIGGER= 50
+#DATE= 1939/09/03
+;5-8% mobilization increase towards Axis
+#MOBILIZATION= [5,8] [1]
+;Set variable conditions:
+;1st Line - UK politically aligned with Allies (fully active) and NOT surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1941
+;
+{
+#NAME= DE 624 - German Pressure On Syria Moves It Towards The Axis (Syria->Axis)
+#POPUP= German Pressure On Syria Moves It Towards The Axis
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 624[1]
+#COUNTRY_ID= 105
+#TRIGGER= 100
+#DATE= 1939/09/03
+;10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+;Set variable conditions:
+;1st Line - UK politically aligned with Allies (fully active) and NOT surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1941
+;
+; Iraq Joins The Axis
+{
+#NAME= DE 106 - Pro-Axis Coup in Iraq (Iraq->Axis)
+#POPUP= Pro-Axis Coup in Iraq
+#IMAGE=
+#SOUND= coup.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 106[1]
+#LEVEL= 0
+#COUNTRY_ID= 56
+#TRIGGER= 75
+#DATE= 1939/09/03
+; 200% mobilization increase towards Axis
+#MOBILIZATION= [200,200] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+;REMOVE1941
+;
+; Iraq Joins The Axis
+{
+#NAME= DE 107 - Pro-Axis Coup in Iraq (Iraq->Axis)
+#POPUP= Pro-Axis Coup in Iraq
+#IMAGE=
+#SOUND= coup.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 106[0]
+#LEVEL= 0
+#COUNTRY_ID= 56
+#TRIGGER= 75
+#DATE= 1939/09/03
+; 200% mobilization increase towards Axis
+#MOBILIZATION= [200,200] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+;REMOVE1944
+;
+{
+#NAME= DE 116 - Portugal Leases the Azores to the UK (Portugal->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 116[1]
+#COUNTRY_ID= 87
+#TRIGGER= 100
+#DATE= 1943/10/15
+;8-12% mobilization increase towards Allies
+#MOBILIZATION= [8,12] [2]
+;Set variable conditions:
+;1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1944
+;
+{
+#NAME= DE 117 - Portugal Leases the Azores to the UK (Portugal->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 117[1]
+#COUNTRY_ID= 87
+#TRIGGER= 100
+#DATE= 1943/10/15
+;8-12% mobilization increase towards Allies
+#MOBILIZATION= [8,12] [2]
+;Set variable conditions:
+;1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1940
+;
+{
+#NAME= DE 123 - Isolationists In The USA Gain Ground Due To Dismay At The British Decision (USA->Axis)
+#POPUP= Isolationists In The USA Gain Ground As British Resolve To Assist Their French Ally Appears Weak
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 123[0]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1939/09/01
+;5-8% mobilization increase towards Axis
+#MOBILIZATION= [5,8] [1]
+;Set variable conditions:
+;1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1940
+;
+{
+#NAME= DE 124 - Irish Prime Minister De Valera Protests The Occupation Of Irish Ports (Ireland->Axis)
+#POPUP= Irish Prime Minister De Valera Protests The Occupation Of Irish Ports
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 124[1]
+#COUNTRY_ID= 57
+#TRIGGER= 100
+#DATE= 1939/10/25
+;10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+;Set variable conditions:
+;1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1940
+;
+{
+#NAME= DE 124 - The British Occupation of Irish Ports Causes Anger in some quarters (USA->Axis)
+#POPUP= The British Occupation of Irish Ports Causes Some Anger In The USA
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 124[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1939/10/25
+;4-6% mobilization increase towards Axis
+#MOBILIZATION= [4,6] [1]
+;Set variable conditions:
+;1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1941
+;
+{
+#NAME= DE 125 - Irish Prime Minister De Valera Protests The Occupation Of Limerick (Ireland->Axis)
+#POPUP= Irish Prime Minister De Valera Protests The Occupation Of Limerick
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 125[1]
+#COUNTRY_ID= 57
+#TRIGGER= 100
+#DATE= 1941/04/04
+;18-25% mobilization increase towards Axis
+#MOBILIZATION= [18,25] [1]
+;Set variable conditions:
+;1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1941
+;
+{
+#NAME= DE 125 - The British Occupation of Limerick Causes Some Anger In The USA (USA->Axis)
+#POPUP= The British Occupation of Limerick Causes Some Anger In The USA
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 125[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1941/04/04
+;4-6% mobilization increase towards Axis
+#MOBILIZATION= [4,6] [1]
+;Set variable conditions:
+;1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1940
+;
+{
+#NAME= DE 202 - French Communist Party Banned (USSR->Axis)
+#POPUP= The USSR Views The Banning Of The French Communist Party As A Hostile Move
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 202[1]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/11/01
+;2-3% activation increase towards Axis
+#MOBILIZATION= [2,3] [1]
+;Set variable conditions:
+;1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+;REMOVE1940 (implement first)
+;
+; Event for decreased USSR activation:
+{
+#NAME= DE 401 - USSR Attacks Finland in the Winter War (USSR->Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 401[1]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/11/30
+;3-5% activation increase towards Axis
+#MOBILIZATION= [3,5] [1]
+;Set variable conditions:
+;1st Line - USSR politically aligned with Allies but not fully mobilized
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+;REMOVE1940 (implement first)
+;
+; Event for decreased Swedish activation:
+{
+#NAME= DE 401 - USSR Attacks Finland in the Winter War (Sweden->Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 401[1]
+#LEVEL= 0
+#COUNTRY_ID= 103
+#TRIGGER= 100
+#DATE= 1939/11/30
+;3-5% activation increase towards Axis
+#MOBILIZATION= [3,5] [1]
+;Set variable conditions:
+;1st Line - USSR politically aligned with Allies but not fully mobilized
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+;REMOVE1940 (implement first)
+;
+; Event for decreased USSR activation:
+{
+#NAME= DE 406 - USSR Invades Poland (USSR->Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 406[1]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/09/17
+;5-5% activation increase towards Axis
+#MOBILIZATION= [5,5] [1]
+;Set variable conditions:
+;1st Line - USSR politically aligned with Allies but not fully mobilized
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+;Replacement Script
+;
+; Event for decreased USSR activation:
+{
+#NAME= DE 204 - Frustrated By Anglo-French Interference In Finland, Stalin Grows Colder Towards The West
+#POPUP= Frustrated By Anglo-French Interference In Finland, Stalin Grows Colder Towards The West
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 8[1,50]
+#LINK= 204[1]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1940/03/12
+;4-6% activation increase towards Axis
+#MOBILIZATION= [4,6] [1]
+;Set variable conditions:
+;1st Line - USSR politically aligned with Allies but not fully mobilized
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+; Replacement Script
+; Anglo-French Expidition To Finland
+{
+#NAME= DE 204 - Anglo-French Expidition To Finland (Finland->Allies)
+#POPUP= Finland Reduces Pro-Axis Leaning In Response To Allied Support
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 8[1,50]
+#LINK= 204[1]
+#COUNTRY_ID= 39
+#TRIGGER= 100
+#DATE= 1940/03/12
+; 10-15% mobilization increase towards Allies
+#MOBILIZATION= [10,15] [2]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 39 [1] [0] [0]
+}
+
+;REMOVE1941
+;
+; Event for increased Romanian activation:
+{
+#NAME= DE 418 - The USSR Seizes Bessarabia (Romania->Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 418[1]
+#LEVEL= 0
+#COUNTRY_ID= 93
+#TRIGGER= 100
+#DATE= 1940/06/28
+;10-10% activation increase towards Axis
+#MOBILIZATION= [10,10] [1]
+;Set variable conditions:
+;1st Line - USSR politically aligned with Allies but not fully mobilized
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+;REMOVE1941
+;
+; Event for decreased USSR activation:
+{
+#NAME= DE 412 - The USSR Accepts the German Offer of a Revised Borders and Friendship Treaty (USSR->Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 412[1]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/09/28
+;3-5% activation increase towards Axis
+#MOBILIZATION= [3,5] [1]
+;Set variable conditions:
+;1st Line - USSR politically aligned with Allies but not fully mobilized
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+;REMOVE1941
+;
+; Event for decreased USSR activation:
+{
+#NAME= DE 413 - The USSR Accepts the German Offer of a Revised Borders and Friendship Treaty (USSR->Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 413[1]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/09/28
+;5-8% activation increase towards Axis
+#MOBILIZATION= [5,8] [1]
+;Set variable conditions:
+;1st Line - USSR politically aligned with Allies but not fully mobilized
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+;REMOVE1940
+;
+; Event for increased USSR activation:
+{
+#NAME= DE 600 - Poland Surrendered To Axis (USSR->Allies)
+#POPUP= Stalin Is Furious At The Betrayal Of The German-Soviet Non-Aggression Pact
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 600[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/09/01
+;20-30% activation increase towards Allies
+#MOBILIZATION= [20,30] [2]
+;Set variable conditions:
+;1st Line - Poland politically aligned with Allies and surrendered
+#VARIABLE_CONDITION= 85 [2] [100] [1]
+}
+
+;REMOVE1941
+;
+; Event for increased USSR activation:
+{
+#NAME= DE 610 - Lithuania Annexed By Germany (USSR->Allies)
+#POPUP= Stalin Is Alarmed At The German Annexation Of Lithuania
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 610[1]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1940/03/01
+;7-10% activation increase towards Allies
+#MOBILIZATION= [7,10] [2]
+;Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+;REMOVE1941
+;
+; Event for increased USSR activation:
+{
+#NAME= DE 632 - Lithuania Annexed By Germany (USSR->Allies)
+#POPUP= Stalin Is Alarmed At The German Annexation Of Lithuania
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#GV= 1[1,100]
+#LINK= 632[1]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1940/03/01
+;7-10% activation increase towards Allies
+#MOBILIZATION= [7,10] [2]
+;Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+;REMOVE1941
+;
+; Event for increased USSR activation:
+{
+#NAME= DE 633 - Lithuania Annexed By Germany (USSR->Allies)
+#POPUP= Stalin Is Alarmed At The German Annexation Of Lithuania
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#GV= 1[1,100]
+#LINK= 633[1]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1940/03/01
+;7-10% activation increase towards Allies
+#MOBILIZATION= [7,10] [2]
+;Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+;REMOVE1941
+;
+; Event for increased USSR activation:
+{
+#NAME= DE 634 - Lithuania Annexed By Germany (USSR->Allies)
+#POPUP= Stalin Is Alarmed At The German Annexation Of Lithuania
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#GV= 1[1,100]
+#LINK= 634[1]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1940/03/01
+;7-10% activation increase towards Allies
+#MOBILIZATION= [7,10] [2]
+;Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+;REMOVE1940
+;
+; Event for increased USA activation:
+{
+#NAME= DE 643 - Germany Invades Norway (USA->Allies)
+#POPUP= The USA Protests Germany's Aggression
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 643[1]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1940/04/25
+;3-5% activation increase towards Allies
+#MOBILIZATION= [3,5] [2]
+;Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+;REMOVE1940
+;
+; Event for increased USA activation:
+{
+#NAME= DE 644 - Germany Invades Norway (USA->Allies)
+#POPUP= The USA Protests Germany's Aggression
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 644[1]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1940/04/25
+;3-5% activation increase towards Allies
+#MOBILIZATION= [3,5] [2]
+;Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; UK MINOR EVENTS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+
+;REMOVE1944
+;
+{
+#NAME= Italy Surrenders (Portugal->Allies)
+#POPUP= Italy's Surrender Forces Portugal To Reconsider Its Position
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 87
+#TRIGGER= 100
+#DATE= 1940/01/01
+;15-25% mobilization increase towards Allies
+#MOBILIZATION= [15,25] [2]
+;Set variable conditions:
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [1]
+}
+
+;AMEND1940
+;
+{
+#NAME= Denmark Occupied By Axis (Iceland->Allies)
+#POPUP= British Royal Marines Occupy Iceland
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 126[1]
+#LEVEL= 0
+#COUNTRY_ID= 53
+#TRIGGER= 100
+#DATE= 1940/05/10
+;100% mobilization increase towards Allies
+#MOBILIZATION= [100,100] [2]
+;Set variable conditions:
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; USA EVENTS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;REMOVE1942
+;
+; Event for increased US mobilization when Spain joins the Axis
+{
+#NAME= Isolationists In The USA Lose Ground As Spain Joins The Axis (USA->Allies)
+#POPUP= Isolationists In The USA Lose Ground As Spain Joins The Axis
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 603[1]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1939/09/01
+;8-15% mobilization increase towards Allies
+#MOBILIZATION= [8,15] [2]
+;Set variable conditions:
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+;REMOVE1942
+;
+; Event for increased US mobilization:
+{
+#NAME= 1941 (USA->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1941/01/01
+;1-2% mobilization increase towards Allies
+#MOBILIZATION= [1,2] [2]
+;Set variable conditions:
+;1st Line - UK politically aligned with Allies and not surrendered AND
+;2nd Line - USSR politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+}
+
+;REMOVE1942
+;
+; Event for increased US mobilization:
+{
+#NAME= 1941 (USA->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1941/06/22
+;4-6% mobilization increase towards Allies
+#MOBILIZATION= [4,6] [2]
+;Set variable conditions:
+;1st Line - UK politically aligned with Allies and not surrendered AND
+;2nd Line - USSR politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+}
+
+;REMOVE1942
+;
+; Event for increased US activation:
+{
+#NAME= 1942 (USA->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1942/01/01
+;1-2% activation increase towards Allies
+#MOBILIZATION= [1,2] [2]
+;Set variable conditions:
+;1st Line - UK politically aligned with Allies and not surrendered AND
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1942
+;
+; Event for increased US mobilization (Pearl Harbor):
+{
+#NAME= Pearl Harbor Attack (USA->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1941/12/07
+;25-30% mobilization increase towards Allies
+#MOBILIZATION= [25,30] [2]
+;Set variable conditions:
+;1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;REMOVE1942
+;
+; Event for increased US mobilization (UK Surrendered to Axis):
+{
+#NAME= UK Surrenders To Axis (USA->Allies)
+#POPUP= USA Intensifies War Preparation After The Fall Of The UK
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1940/01/01
+;10-20% mobilization increase towards Allies
+#MOBILIZATION= [10,20] [2]
+;Set variable conditions:
+;1st Line - UK politically aligned with Allies and surrendered AND
+;2nd Line - USSR politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [1]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+}
+
+;REMOVE1941
+;
+; Event for increased US mobilization:
+{
+#NAME= Greece Surrendered To Axis (USA->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1939/09/03
+;3-5% mobilization increase towards Allies
+#MOBILIZATION= [3,5] [2]
+;Set variable conditions:
+;1st Line - UK politically aligned with Allies and not surrendered AND
+;2nd Line - Greece politically aligned with Allies and surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 46 [2] [100] [1]
+}
+
+;REMOVE1941
+;
+; Event for increased US mobilization:
+{
+#NAME= Yugoslavia Surrendered To Axis (USA->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1939/09/03
+;3-5% mobilization increase towards Allies
+#MOBILIZATION= [3,5] [2]
+;Set variable conditions:
+;1st Line - UK politically aligned with Allies and not surrendered AND
+;2nd Line - Yugoslavia politically aligned with Allies and surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 120 [2] [100] [1]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; USSR EVENTS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;REMOVE1942
+;
+; Event for increased USSR mobilization:
+{
+#NAME= 1939-40 (USSR->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/12/08
+;3-7% mobilization increase towards Allies
+#MOBILIZATION= [3,7] [2]
+;Set variable conditions:
+;1st Line - Poland politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 85 [2] [100] [0]
+}
+
+;REMOVE1942
+;
+; Event for increased USSR mobilization:
+{
+#NAME= 1941 (USSR->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 90
+#DATE= 1941/01/01
+;1-2% mobilization increase towards Allies
+#MOBILIZATION= [1,2] [2]
+;Set variable conditions:
+;1st Line - Poland politically aligned with Allies and surrendered
+#VARIABLE_CONDITION= 85 [2] [100] [1]
+}
+
+;REMOVE1941
+;
+; Event for increased USSR mobilization:
+{
+#NAME= Post Historical Barbarossa Date (USSR->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1941/06/22
+;1-3% mobilization increase towards Allies
+#MOBILIZATION= [1,3] [2]
+;Set variable conditions:
+;1st Line - USSR still not fully active (dummy condition)
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+;REMOVE1941
+;
+; Event for increased USSR mobilization:
+{
+#NAME= 1942 (USSR->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1942/01/01
+;3-5% mobilization increase towards Allies
+#MOBILIZATION= [3,5] [2]
+;Set variable conditions:
+;1st Line - USSR still not fully active (dummy condition)
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+;REMOVE1941
+;
+; Baltic States Allied:
+{
+#NAME= Baltic States Surrendered To Axis (USSR->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/09/01
+;1-3% mobilization increase towards Allies
+#MOBILIZATION= [1,3] [2]
+;Set variable conditions:
+;1st Line - Latvia politically aligned with Allies
+#VARIABLE_CONDITION= 61 [2] [100] [0]
+}
+
+;REMOVE1941
+;
+; Baltic States Allied:
+{
+#NAME= Baltic States Surrendered To Axis (USSR->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/09/01
+;1-3% mobilization increase towards Allies
+#MOBILIZATION= [1,3] [2]
+;Set variable conditions:
+;1st Line - Lithuania politically aligned with Allies
+#VARIABLE_CONDITION= 64 [2] [100] [0]
+}
+
+;REMOVE1941
+;
+; Event for increased USSR mobilization:
+{
+#NAME= Baltic States Surrendered To Axis (USSR->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/09/01
+;1-3% mobilization increase towards Allies
+#MOBILIZATION= [1,3] [2]
+;Set variable conditions:
+;1st Line - Latvia politically aligned with Allies and surrendered
+#VARIABLE_CONDITION= 61 [2] [100] [1]
+}
+
+;REMOVE1941
+;
+; Event for increased USSR mobilization:
+{
+#NAME= Baltic States Surrendered To Axis (USSR->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/09/01
+;1-3% mobilization increase towards Allies
+#MOBILIZATION= [1,3] [2]
+;Set variable conditions:
+;1st Line - Lithuania politically aligned with Allies and surrendered
+#VARIABLE_CONDITION= 64 [2] [100] [1]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; GERMAN MINOR EVENTS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;Replacement Script
+;
+; Event for increased Spanish mobilization:
+{
+#NAME= Franco Swings Towards The Axis On The Fall Of France (Spain->Axis)
+#POPUP= Franco Swings Towards The Axis On The Fall Of France
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#DATE= 1939/09/01
+;10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; Set variable conditions:
+; 1st Line - France politically aligned with Allies and surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+}
+
+; Event for decreased Spanish mobilization:
+{
+#NAME= Franco's Enthusiasm For The Axis Weakens Slightly As France Is Liberated (Spain->Allies)
+#POPUP= Franco's Enthusiasm For The Axis Weakens Slightly As France Is Liberated
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 250[1]
+#LEVEL= 0
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#DATE= 1939/09/01
+;8-15% mobilization increase towards Allies
+#MOBILIZATION= [8,15] [2]
+; Set variable conditions:
+; 1st Line - France politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+}
+
+;REMOVE1944 after implementing
+;
+; Event for decreased Spanish mobilization:
+{
+#NAME= Italy's Surrender Reduces Franco's Enthusiasm For The Axis (Spain->Allies)
+#POPUP= Italy's Surrender Reduces Franco's Enthusiasm For The Axis
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#DATE= 1939/09/01
+;8-15% mobilization increase towards Allies
+#MOBILIZATION= [8,15] [2]
+; Set variable conditions:
+; 1st Line - Italy politically aligned with Axis and surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [1]
+}
+
+;REMOVE1941
+;
+; Event for increased Italian mobilization:
+{
+#NAME= 1940 (Italy->Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#DATE= 1940/08/01
+;3-5% mobilization increase towards Axis
+#MOBILIZATION= [3,5] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+;REMOVE1941
+;
+; Event for increased Italian mobilization (2):
+{
+#NAME= 1940 (Italy->Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#DATE= 1940/01/01
+;10-10% mobilization increase towards Axis
+#MOBILIZATION= [10,10] [1]
+; Set variable conditions:
+; 1st Line - Italy politically aligned with Axis and over 90% Mobilization
+#VARIABLE_CONDITION= 59 [1] [90] [0]
+}
+
+{
+#NAME= Bulgaria's Surrender Cools Turkish Enthusiasm For The Axis (Turkey->Allies)
+#POPUP= Bulgaria's Surrender Cools Turkish Enthusiasm For The Axis
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/01
+;8-15% mobilization increase towards Allies
+#MOBILIZATION= [8,15] [2]
+; Set variable conditions:
+; 1st Line - Bulgaria politically aligned with Axis and surrendered
+#VARIABLE_CONDITION= 19 [1] [100] [1]
+}
+
+{
+#NAME= Bulgaria's Change Of Allegiance Moves Turkey Away From The Axis (Turkey->Allies)
+#POPUP= Bulgaria's Change Of Allegiance Moves Turkey Away From The Axis
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 665[1]
+#LEVEL= 0
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/01
+;8-15% mobilization increase towards Allies
+#MOBILIZATION= [8,15] [2]
+; Set variable conditions:
+; 1st Line - Bulgaria politically aligned with Axis and surrendered
+#VARIABLE_CONDITION= 19 [2] [100] [0]
+}
+
+;REMOVE1944 after implementing
+;
+{
+#NAME= Italy's Surrender Strengthens Pro-Allied Forces In Turkey (Turkey->Allies)
+#POPUP= Italy's Surrender Strengthens Pro-Allied Forces In Turkey
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/01
+;8-15% mobilization increase towards Allies
+#MOBILIZATION= [8,15] [2]
+; Set variable conditions:
+; 5th Line - Italy politically aligned with Axis and surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [1]
+}
+
+{
+#NAME= Romania's Surrender Weakens Turkey's Relationship With The Axis (Turkey->Allies)
+#POPUP= Romania's Surrender Weakens Turkey's Relationship With The Axis
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/01
+;8-15% mobilization increase towards Allies
+#MOBILIZATION= [8,15] [2]
+; Set variable conditions:
+; 5th Line - Romania politically aligned with Axis and surrendered
+#VARIABLE_CONDITION= 93 [1] [100] [1]
+}
+
+{
+#NAME= Romania's Change Of Allegiance Pushes Turkey Away From The Axis (Turkey->Allies)
+#POPUP= Romania's Change Of Allegiance Pushes Turkey Away From The Axis
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 664[1]
+#LEVEL= 0
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/01
+;8-15% mobilization increase towards Allies
+#MOBILIZATION= [8,15] [2]
+; Set variable conditions:
+; 5th Line - Romania politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 93 [2] [100] [0]
+}
+
+{
+#NAME= Hungary's Surrender Moves Turkey Away From The Axis (Turkey->Allies)
+#POPUP= Hungary's Surrender Moves Turkey Away From The Axis
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/01
+;8-15% mobilization increase towards Allies
+#MOBILIZATION= [8,15] [2]
+; Set variable conditions:
+; 5th Line - Hungary politically aligned with Axis and surrendered
+#VARIABLE_CONDITION= 52 [1] [100] [1]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; AXIS AI EVENTS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;REMOVE1941
+;
+{
+#NAME= AXIS AI: Turkey Swayed by Axis Victories (Turkey->Axis)
+#POPUP= The Prime Minister of Turkey Visits Berlin
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 1
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 111
+; 25% chance per game
+#TRIGGER= 25
+#DATE= 1941/02/26
+;20-90% mobilization increase towards Axis
+#MOBILIZATION= [20,90] [1]
+;Set variable conditions:
+;1st Line - Egypt politically aligned with Allies and surrendered AND
+;2nd Line - Vichy Syria politically aligned with Allies and surrendered AND
+;3rd Line - Iraq politically aligned with Axis and not surrendered 
+#VARIABLE_CONDITION= 36 [2] [100] [1]
+#VARIABLE_CONDITION= 105 [2] [100] [1]
+#VARIABLE_CONDITION= 56 [1] [100] [0]
+}
+
+{
+#NAME= DE 825 - UK Blockades (Turkey>Axis)
+#POPUP= Turkey Ends Trade Agreement With Germany After Allies Threaten Blockades
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 825[1]
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 15-20% mobilization increase towards Allies
+#MOBILIZATION= [15,20] [1]
+; Set variable conditions:
+; 1st Line - Spain politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= DE 844 - Germany Declares War On Switzerland (Switzerland>Allies)
+#POPUP= Germany Declares War On Switzerland
+#IMAGE=
+#SOUND= war1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 844[1]
+#COUNTRY_ID= 104
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 200% mobilization increase towards Allies
+#MOBILIZATION= [200,200] [2]
+; Set variable conditions:
+; 1st Line - Spain politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 104 [2] [0] [0]
+}
+
+{
+#NAME= DE 835 - Greece Severes Ties With Germany (Greece>Allies)
+#POPUP= Greece Severes Economic Ties With Germany
+#IMAGE=
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 835[1]
+#COUNTRY_ID= 46
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 25-30% mobilization increase towards Allies
+#MOBILIZATION= [25,30] [2]
+; Set variable conditions:
+; 1st Line - Spain politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 46 [1] [0] [0]
+}
+
+{
+#NAME= DE 836 - Greece Leans Axis (Greece>Axis)
+#POPUP= Von Ribbentrop Travels To Greece
+#IMAGE=
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 836[1]
+#COUNTRY_ID= 46
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 5-15% mobilization increase towards Axis
+#MOBILIZATION= [5,15] [1]
+; Set variable conditions:
+; 1st Line - Spain politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 46 [2] [0] [0]
+}
+
+{
+#NAME= DE 800 - The Anglo-Portuguese Alliance (Spain->Axis)
+#POPUP= Franco Orders Troop Deployment Along The Portuguese Border
+#IMAGE=
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 800[1]
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 30-40% mobilization increase towards Axis
+#MOBILIZATION= [30,40] [1]
+; Set variable conditions:
+; 1st Line - Spain politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 99 [1] [1] [0]
+}
+
+{
+#NAME= DE 805 - UK Strengthens Portugal (Spain->Axis)
+#POPUP= Franco Alerted By Portugese Military Build Up
+#IMAGE=
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 805[1]
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 3-5% mobilization increase towards Axis
+#MOBILIZATION= [3,5] [1]
+; Set variable conditions:
+; 1st Line - Spain politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 99 [1] [1] [0]
+}
+
+{
+#NAME= DE 900 - German Exports To Spain (Spain->Axis)
+#POPUP= Franco Welcomes Axis Assistance In Recovering From Civil War
+#IMAGE=
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 900[1]
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 2-5% mobilization increase towards Axis
+#MOBILIZATION= [3,6] [1]
+; Set variable conditions:
+; 1st Line - Spain politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 99 [1] [1] [0]
+}
+
+{
+#NAME= DE 801 - Italian Exports To Spain (Spain->Axis)
+#POPUP= Mussolini Promises Civil Aid To Franco
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 801[1]
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 3-5% mobilization increase towards Axis
+#MOBILIZATION= [3,6] [1]
+; Set variable conditions:
+; 1st Line - Spain politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 99 [1] [1] [0]
+}
+
+{
+#NAME= The Anglo-Portuguese Alliance (Portugal->Allies)
+#POPUP= Portugal Honors The Anglo-Portuguese Alliance
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 800[1]
+#LEVEL= 0
+#COUNTRY_ID= 87
+#TRIGGER= 100
+#DATE= 1939/09/01
+;200% mobilization increase towards Allies
+#MOBILIZATION= [200,200] [2]
+;Set variable conditions:
+#VARIABLE_CONDITION= 87 [2] [0] [0]
+}
+
+{
+#NAME= The Spanish Blue Division (Spain->Allies)
+#POPUP= 
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 902[1]
+#LEVEL= 0
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#DATE= 1939/09/01
+;3-6% mobilization increase towards Allies
+#MOBILIZATION= [3,6] [2]
+;Set variable conditions:
+#VARIABLE_CONDITION= 99 [1] [20] [0]
+}
+
+{
+#NAME= DE 903 - German Exports To Spain (Spain->Axis)
+#POPUP= German Military Exports Begin To Arrive In Spain
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 903[1]
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 10% mobilization increase towards Axis
+#MOBILIZATION= [10,10] [1]
+; Set variable conditions:
+; 1st Line - Spain politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 99 [1] [1] [0]
+}
+
+{
+#NAME= DE 803 - UK Threatens To Blockade Imports To Spain (Portugal->Axis)
+#POPUP= Portugese Population Is Angered By Threats Of Blockades Against The Iberian Peninsula
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 803[1]
+#COUNTRY_ID= 87
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 3-5% mobilization increase towards Axis
+#MOBILIZATION= [3,5] [1]
+; Set variable conditions:
+; 1st Line - Portugal politically aligned with Axis not fully active and not surrendered
+; 2nd Line - USA politically aligned with Allies not fully active and not surrendered
+; 3rd Line - Spain politically aligned with the Axis not fully active and not surrendered
+#VARIABLE_CONDITION= 115 [2] [1] [0]
+#VARIABLE_CONDITION= 99 [1] [1] [0]
+}
+
+{
+#NAME= DE 803 - UK Threatens To Blockade Imports To Spain (Spain->Allies)
+#POPUP= Franco Reduces Axis Leaning In Response To Possible Blockades
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 803[1]
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 5-10% mobilization increase towards Allies
+#MOBILIZATION= [5,10] [2]
+; Set variable conditions:
+; 1st Line - Spain politically aligned with Axis not fully active and not surrendered
+#VARIABLE_CONDITION= 99 [1] [1] [0]
+}
+
+{
+#NAME= DE 803 - UK Threatens To Blockade Imports To Spain (USA->Axis)
+#POPUP= USA Reacts Negatively To Threats Against International Shipping
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 803[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 3-5% mobilization increase towards Axis
+#MOBILIZATION= [3,5] [1]
+; Set variable conditions:
+; 1st Line - USA politically aligned with Allies not fully active and not surrendered
+#VARIABLE_CONDITION= 115 [2] [1] [0]
+}
+
+{
+#NAME= DE 804 - UK Condemns The Spanish Blue Division (Spain->Axis)
+#POPUP= 
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 804[1]
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 3-5% mobilization increase towards Axis
+#MOBILIZATION= [3,5] [1]
+; Set variable conditions:
+; 1st Line - Spain politically aligned with Axis not fully active and not surrendered
+#VARIABLE_CONDITION= 99 [1] [1] [0]
+}
+
+{
+#NAME= DE 904 - Ribbentrop Travels To Portugal (Portugal->Axis)
+#POPUP= 
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 904[1]
+#COUNTRY_ID= 87
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= DE 905 - Ribbentrop Travels To Switzerland (Switzerland->Axis)
+#POPUP= 
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 905[1]
+#COUNTRY_ID= 104
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 15-20% mobilization increase towards Axis
+#MOBILIZATION= [15,20] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= DE 906 - Portugal and Germany Trade Agreement (Portugal->Axis)
+#POPUP= Germany Reaches Trade Agreement With Portugal
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 906[1]
+#COUNTRY_ID= 87
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 3-5% mobilization increase towards Axis
+#MOBILIZATION= [3,5] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= DE 908 - Spanish Debt Repayment (Spain->Allies)
+#POPUP= Germany Reaches A Trade Agreement With Spain
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 908[1]
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 8-12% mobilization increase towards Allies
+#MOBILIZATION= [8,12] [2]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= DE 806 - Italian Military Exports To Spain (Spain->Axis)
+#POPUP= Italian Military Exports Begin To Arrive In Spain
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 806[1]
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 2-4% mobilization increase towards Axis
+#MOBILIZATION= [2,4] [1]
+; Set variable conditions:
+; 1st Line - Italy politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+}
+
+{
+#NAME= DE 910 - Treaty of Friendship (Turkey->Axis)
+#POPUP= Germany Signs A Treaty Of Friendship With Turkey
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 910[1]
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 2-4% mobilization increase towards Axis
+#MOBILIZATION= [2,4] [1]
+; Set variable conditions:
+; 1st Line - Turkey politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 111 [2] [0] [0]
+}
+
+{
+#NAME= DE 911 - Germany and Turkey Trade Agreement (Turkey->Axis)
+#POPUP=  Germany Reaches A Trade Agreement With Turkey
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 911[1]
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 2-4% mobilization increase towards Axis
+#MOBILIZATION= [2,4] [1]
+; Set variable conditions:
+; 1st Line - Turkey politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; UK Military Exports To Turkey
+{
+#NAME= DE 807 - UK Military Exports to Turkey (Turkey->Allies)
+#POPUP= Allied Military Exports Begin To Arrive In Turkey
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 807[1]
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 4-6% mobilization increase towards Allies
+#MOBILIZATION= [4,6] [2]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; USA Military Exports To Turkey 
+{
+#NAME= DE 808 - USA Military Exports to Turkey (Turkey->Allies)
+#POPUP=  USA Directs Military Supplies To Turkey Through Lend Lease 
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 808[1]
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 4-6% mobilization increase towards Allies
+#MOBILIZATION= [2,4] [2]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; USA Military Exports To Turkey
+{
+#NAME= DE 809 - USA Military Exports to Turkey (Turkey->Allies)
+#POPUP=  USA Commits Further Military Aid To Turkey
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 809[1]
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 10-15% mobilization increase towards Allies
+#MOBILIZATION= [10,15] [2]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; Aircraft Delivery To Sweden
+{
+#NAME= DE 811 - USA Military Exports To Sweden (Sweden->Axis)
+#POPUP= 
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 811[0]
+#COUNTRY_ID= 103
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 4-6% mobilization increase towards Axis
+#MOBILIZATION= [4,6] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; Aircraft Delivery To Sweden
+{
+#NAME= DE 812 - Italy Military Exports To Sweden (Sweden->Axis)
+#POPUP= Sweden Improves Axis Relations After Purchasing Military Aircraft From From Italy
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 812[1]
+#COUNTRY_ID= 103
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 4-6% mobilization increase towards Axis
+#MOBILIZATION= [4,6] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; Swedish Convoy
+{
+#NAME= DE 813 - Allies Intervene To Stop Swedish Convoys (Sweden->Allies)
+#POPUP= The Allies Intervene To Sway Sweden To End Convoys To Germany
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 813[1]
+#COUNTRY_ID= 103
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 1% mobilization increase towards Allies (one time)
+#MOBILIZATION= [1,1] [2]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 103 [1] [0] [0]
+}
+
+; Swedish Convoy
+{
+#NAME= DE 813 - Allies Intervene To Stop Swedish Convoys (Sweden->Allies)
+#POPUP= 
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 813[1]
+#COUNTRY_ID= 103
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 3-6% mobilization increase towards Allies
+#MOBILIZATION= [1,5] [2]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 103 [1] [0] [0]
+}
+
+
+; UK Delegates To Switzerland
+{
+#NAME= DE 820 - UK Delegates To Switzerland (Switzerland->Allies)
+#POPUP= Allied Political Pressure Exposes Axis Corruption In Switzerland
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 820[1]
+#COUNTRY_ID= 104
+#TRIGGER= 25
+#DATE= 1942/03/01
+; 5-10% mobilization increase towards Allies
+#MOBILIZATION= [5,10] [2]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 104 [1] [0] [0]
+}
+
+; UK Delegates To Portugal
+{
+#NAME= DE 821 - UK Delegates To Portugal (Portugal->Allies)
+#POPUP= Portugal Leans Towards The Allies But Maintains Trade With Germany
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 821[1]
+#COUNTRY_ID= 87
+#TRIGGER= 50
+#DATE= 1942/04/01
+; 1-10% mobilization increase towards Allies
+#MOBILIZATION= [1,10] [2]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; UK Payments to Switzerland
+{
+#NAME= DE 822 - UK Payments To Switzerland (Switzerland->Allies)
+#POPUP= Allied Intervention Leads to Switzerland Ending Axis Relations
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 822[1]
+#COUNTRY_ID= 104
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 30-40% mobilization increase towards Allies
+#MOBILIZATION= [30,40] [2]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= DE 922 -  Germany: Imports From Switzerland (Switzerland->Axis)
+#POPUP= Switzerland Begins Exporting War Materials To Germany
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 922[1]
+#COUNTRY_ID= 104
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 6-10% mobilization increase towards Axis
+#MOBILIZATION= [6,10] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= DE 918 -  Germany: Non-Aggression Pact - Lutzow (USSR->Allies)
+#POPUP= Stalin Is Wary Of Germany Not Honouring The Sale Of Naval Assets
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 918[1]
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 6-8% mobilization increase towards Allies
+#MOBILIZATION= [4,6] [2]
+; Set variable conditions:
+; 1st Line - USSR politically aligned with Allies, not fully active and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+
+; Naval Asset Delivery To Sweden
+{
+#NAME= DE 827 - Italian Naval Exports To Sweden (Sweden->Axis)
+#POPUP= Sweden Improves Axis Relations After Purchasing Naval Assets From Italy
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 827[1]
+#COUNTRY_ID= 103
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 4-6% mobilization increase towards Axis
+#MOBILIZATION= [4,6] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; Sweden Permits German Forces Transit
+{
+#NAME= DE 927 - Sweden Permits German Forces Transit (Sweden->Allies)
+#POPUP= Sweden Is Pressured To Allow German Forces To Rail From Norway To Finland
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 927[1]
+#COUNTRY_ID= 103
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 4-6% mobilization increase towards Allies
+#MOBILIZATION= [4,6] [2]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; Lend Lease to Saudi Arabia
+{
+#NAME= DE 829 - Lend Lease to Saudi Arabia (Saudi Arabia->Allies)
+#POPUP= USA Extends Lend Lease To Saudi Arabia
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 829[1]
+#COUNTRY_ID= 95
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 1% mobilization increase towards Allies
+#MOBILIZATION= [1,1] [2]
+; Set variable conditions:
+; 1st Line - USA politically aligned with Allies and not surrendered
+; 2nd Line - Saudi Arabia aligned with Allies not fully active and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 95 [2] [0] [0]
+}
+
+; Lend Lease to Saudi Arabia
+{
+#NAME= DE 829 - Lend Lease to Saudi Arabia (Saudi Arabia->Allies)
+#POPUP= Saudia Arabia Aligns Closely With USA, Oil Exports Begin
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 829[1]
+#COUNTRY_ID= 95
+#TRIGGER= 5
+#DATE= 1939/09/03
+; 40% mobilization increase towards Allies
+#MOBILIZATION= [40,40] [2]
+; Set variable conditions:
+; 1st Line - USA politically aligned with Allies and not surrendered
+; 2nd Line - Saudi Arabia aligned with Allies not fully active and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 95 [2] [0] [0]
+}
+
+{
+#NAME= Portugal Protests Against Germany's Invasion of Poland
+#POPUP=  Portugal Protests Against Germany's Invasion of Poland
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 999[1]
+#LEVEL= 0
+#COUNTRY_ID= 87
+#TRIGGER= 100
+#DATE= 1939/09/03
+;2-4% activation increase towards Allies
+#MOBILIZATION= [2,4] [2]
+;Set variable conditions:
+;1st Line - German politically aligned with Axis, Fully Active and Not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= Portugal Protests Against Germany's Invasion of Poland
+#POPUP=  Portugal Protests Against Germany's Invasion of Poland
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 999[0]
+#LEVEL= 0
+#COUNTRY_ID= 87
+#TRIGGER= 100
+#DATE= 1939/09/03
+;2-4% activation increase towards Allies
+#MOBILIZATION= [2,4] [2]
+;Set variable conditions:
+;1st Line - German politically aligned with Axis, Fully Active and Not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= Turkey Signs Mutual Pact With France And Britain To Protect Neutrality
+#POPUP= Turkey Signs Mutual Pact With France And Britain To Protect Neutrality
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 999[1]
+#LEVEL= 0
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/03
+;8,10% activation increase towards Allies
+#MOBILIZATION= [8,10] [2]
+;Set variable conditions:
+;1st Line - German Active And Fully Mobilized
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= Turkey Signs Mutual Pact With France And Britain To Protect Neutrality
+#POPUP= Turkey Signs Mutual Pact With France And Britain To Protect Neutrality
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 999[0]
+#LEVEL= 0
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/03
+;8,10% activation increase towards Allies
+#MOBILIZATION= [8,10] [2]
+;Set variable conditions:
+;1st Line - German Active And Fully Mobilized
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= Vichy French Population Protest Vichy Collaboration Policy
+#POPUP= Vichy French Population Protest Vichy Collaboration Policy
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 912[0]
+#LEVEL= 0
+#COUNTRY_ID= 118
+#TRIGGER= 2
+#DATE= 1941/06/15
+;10-15% activation increase towards Allies
+#MOBILIZATION= [10,15] [2]
+;Set variable conditions:
+;1st Line - Germany Active and Fully Mobilized
+;2nd Line - Vichy France Axis Leaning and Not Fully Mobilized
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 118 [1] [0] [0]
+}
+
+{
+#NAME= Vichy Collaboration Policy
+#POPUP= 
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 912[0]
+#LEVEL= 0
+#COUNTRY_ID= 118
+#TRIGGER= 2
+#DATE= 1939/09/03
+;1% activation increase towards Axis
+#MOBILIZATION= [1,1] [1]
+;Set variable conditions:
+;1st Line - Germany Active and Fully Mobilized
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 118 [0] [0] [0]
+}
+
+; Event for increased Turkey mobilization
+{
+#NAME= DE 600 - The Turkish Government Is Upset Over Terms Of Ribbentrop-Molotov Pact (Turkey>Allies)
+#POPUP= The Turkish Government Is Upset Over Terms Of The Ribbentrop-Molotov Pact
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 600[1]
+#LEVEL= 0
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/01
+;3-5% mobilization increase towards Allies
+#MOBILIZATION= [3,5] [2]
+;Set variable conditions:
+;1st Line - Poland politically aligned with Allies and surrendered
+#VARIABLE_CONDITION= 85 [2] [100] [1]
+}
+
+{
+#NAME= Greece Joins The Axis
+#POPUP= Germany Permits Territorial Concessions to Greece
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 917[1]
+#LEVEL= 0
+#COUNTRY_ID= 46
+#TRIGGER= 100
+#DATE= 1939/09/03
+;1% activation increase towards Axis
+#MOBILIZATION= [1,1] [1]
+;Set variable conditions:
+;1st Line - German fully mobilized
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= Bulgaria Cedes Territory To Greece
+#POPUP= Bulgaria Signs A Defensive Pact With USSR
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 917[1]
+#LEVEL= 0
+#COUNTRY_ID= 19
+#TRIGGER= 100
+#DATE= 1939/09/03
+;1-3% activation increase towards Allies
+#MOBILIZATION= [140,140] [2]
+;Set variable conditions:
+;1st Line - Bulgaria Aligned With Axis and Not Mobilized
+#VARIABLE_CONDITION= 19 [1] [0] [0]
+}
+
+{
+#NAME= Stalin Warns Against An Invasion Into Bulgaria
+#POPUP= Stalin Warns Against An Invasion Into Bulgaria
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 917[1]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/09/03
+;2-5% activation increase towards Allies
+#MOBILIZATION= [2,5] [2]
+;Set variable conditions:
+;1st Line - USA Allies and not fully mobilized
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+{
+#NAME=  Itlay Joins The Axis
+#POPUP= Mussolini Hastily Joins Facist Alliance
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 800[1]
+#LEVEL= 0
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#DATE= 1939/09/03
+;200% activation increase towards Allies
+#MOBILIZATION= [200,200] [1]
+;Set variable conditions:
+;1st Line - Spain politically leaning to Axis and Mobilized
+#VARIABLE_CONDITION= 99 [1] [100] [0]
+}
+
+{
+#NAME= Greece Joins The Axis
+#POPUP= Greece Forms An Alliance With Germany
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 917[1]
+#LEVEL= 0
+#COUNTRY_ID= 46
+#TRIGGER= 100
+#DATE= 1939/09/03
+;200% activation increase towards Axis
+#MOBILIZATION= [200,200] [1]
+;Set variable conditions:
+;1st Line - German fully mobilized
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= Yugoslavia Joins The Axis
+#POPUP= Surrounded By Axis Nations - Yugoslavia Signs Tripartite Pact
+#IMAGE=
+#SOUND=
+#FLAG= 0
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 120
+#TRIGGER= 50
+#DATE= 1939/09/03
+;200% activation increase towards Axis
+#MOBILIZATION= [200,200] [1]
+;Set variable conditions:
+;1st Line - Germany Axis Mobilized
+;2nd Line - Greece Axis Mobilized
+;3rd Line - Romania Axis Mobilized
+;4th Line - Hungary Axis Mobilized
+;5th Line - Italy Axis Mobilized
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 46 [1] [100] [0]
+#VARIABLE_CONDITION= 93 [1] [100] [0]
+#VARIABLE_CONDITION= 52 [1] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+}
+
+{
+#NAME= Turkey Greatly Concerned About Complete Balkan Axis Alliance
+#POPUP= Turkey Greatly Concerned About Complete Balkan Axis Alliance
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 917[1]
+#LEVEL= 0
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/03
+;25-30% activation increase towards Allies
+#MOBILIZATION= [25,30] [2]
+;Set variable conditions:
+;1st Line - Germany Axis Mobilized
+;2nd Line - Greece Axis Mobilized
+;3rd Line - Romania Axis Mobilized
+;4th Line - Hungary Axis Mobilized
+;5th Line - Yugoslavia Axis Mobilized
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 46 [1] [100] [0]
+#VARIABLE_CONDITION= 93 [1] [100] [0]
+#VARIABLE_CONDITION= 52 [1] [100] [0]
+#VARIABLE_CONDITION= 120 [1] [100] [0]
+}
+
+{
+#NAME= Saudi Arabia Cuts Relations With Germany
+#POPUP= Saudi Arabia Ends Diplomatic Relations With Germany
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 999[1]
+#LEVEL= 0
+#COUNTRY_ID= 95
+#TRIGGER= 100
+#DATE= 1939/09/03
+;10% activation increase towards Allies
+#MOBILIZATION= [10,10] [2]
+;Set variable conditions:
+;1st Line - German Axis and Fully Mobilized
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= Saudi Arabia Cuts Relations With Germany
+#POPUP= Saudi Arabia Ends Diplomatic Relations With Germany
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 999[0]
+#LEVEL= 0
+#COUNTRY_ID= 95
+#TRIGGER= 100
+#DATE= 1939/09/03
+;10% activation increase towards Allies
+#MOBILIZATION= [10,10] [2]
+;Set variable conditions:
+;1st Line - German Axis and Fully Mobilized
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= DE 874 - Vichy France Joins The Axis (Vichy France > Axis)
+#POPUP= Secret Negotiations Between Germany and Vichy France Conclude
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 874[1]
+#COUNTRY_ID= 118
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 200% mobilization increase towards Axis
+#MOBILIZATION= [200,200] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= DE 874 - Algeria Joins The Axis (Algeria > Axis)
+#POPUP= Admiral Darlan Remains Loyal To Vichy France
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 874[1]
+#COUNTRY_ID= 4
+#TRIGGER= 50
+#DATE= 1939/09/03
+; 200% mobilization increase towards Axis
+#MOBILIZATION= [200,200] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 118 [1] [100] [0]
+}
+
+{
+#NAME= DE 874 - Tunisia Joins The Axis (Tunisia > Axis)
+#POPUP= The Tunisian Governor Declares For The Axis
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 874[1]
+#COUNTRY_ID= 110
+#TRIGGER= 50
+#DATE= 1939/09/03
+; 200% mobilization increase towards Axis
+#MOBILIZATION= [200,200] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 118 [1] [100] [0]
+#VARIABLE_CONDITION= 4 [1] [100] [0]
+}
+
+{
+#NAME= DE 874 - Syria Joins The Axis (Syria > Axis)
+#POPUP= Syria Joins The War To Fight For Independance
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 874[1]
+#COUNTRY_ID= 105
+#TRIGGER= 50
+#DATE= 1939/09/03
+; 200% mobilization increase towards Axis
+#MOBILIZATION= [200,200] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 118 [1] [100] [0]
+#VARIABLE_CONDITION= 4 [1] [100] [0]
+#VARIABLE_CONDITION= 110 [1] [100] [0]
+}
+
+{
+#NAME= DE 875 - The Allies Pressure Turkey To Seize Any Further German Transit (Turkey > Allies)
+#POPUP= The Allies Pressure Turkey To Cease Any Further German Transit
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 875[1]
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 3-6% Mobilizaton towards the Allies
+#MOBILIZATION= [3,6] [2]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; Sweden Sends Military Aid to Finland
+{
+#NAME= DE 848 - Sweden Sends Military Aid to Finland (Sweden->Allies)
+#POPUP= 
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 848[1]
+#COUNTRY_ID= 103
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 10% mobilization increase towards Allies
+#MOBILIZATION= [10,15] [2]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 103 [1] [0] [0]
+}
+
+; Replacement Script
+{
+#NAME= DE 947 -  Germany: Commercial Agreement - Signed (USSR->Axis)
+#POPUP= The German-Soviet Border And Commercial Agreement Is Signed At Moscow
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 947[1]
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 5% mobilization increase towards Axis
+#MOBILIZATION= [5,5] [1]
+; Set variable conditions:
+; 1st Line - USSR politically aligned with Allies, not fully active and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+; Replacement Script
+{
+#NAME= DE 947 -  Germany: Commercial Agreement - Not Signed (USSR->Allies)
+#POPUP= Stalin Grows Suspicious As Deliveries Of German Military Equipment Is Futher Delayed
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 947[0]
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 10% mobilization increase towards Allies
+#MOBILIZATION= [10,10] [2]
+; Set variable conditions:
+; 1st Line - USSR politically aligned with Allies, not fully active and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+{
+#NAME= DE 970 -  USSR: Cancel Non-Agression Pact With Turkey (USSR->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 970[1]
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 12-18% mobilization increase towards Allies
+#MOBILIZATION= [12,18] [2]
+; Set variable conditions:
+; 1st Line - USSR politically aligned with Allies, not fully active and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+{
+#NAME= DE 970 -  USA: USSR Cancels Non-Agression Pact With Turkey (USA->Allies)
+#POPUP= Western Powers Protest Soviet Agression Against Turkey
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 970[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 2-4% mobilization increase towards Axis
+#MOBILIZATION= [2,4] [1]
+; Set variable conditions:
+; 1st Line - USA politically aligned with Allies, not fully active and not surrendered
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+}
+
+{
+#NAME= DE 130 - Turkey Signs The Tripartie Pact (Turkey > Axis)
+#POPUP= Von Ribbentrop Travels To Ankara To Form An Alliance With Turkey
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 130[1]
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 200% Mobilizaton towards the Axis
+#MOBILIZATION= [200,200] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+;
+{
+#NAME= DE 131 - UK Invadies Syria (Vichy France->Axis)
+#POPUP= Vichy French Protest The Allied Occupation of Syria
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 131[1]
+#COUNTRY_ID= 118
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 5-15% mobilization increase towards Axis
+#MOBILIZATION= [5,15] [1]
+; Set variable conditions:
+; 1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;
+{
+#NAME= DE 131 - UK Invadies Syria (Tunisia->Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 131[1]
+#COUNTRY_ID= 110
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 5-15% mobilization increase towards Axis
+#MOBILIZATION= [5,15] [1]
+; Set variable conditions:
+; 1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;
+{
+#NAME= DE 131 - UK Invadies Syria (Algeria->Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 131[1]
+#COUNTRY_ID= 4
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 5-15% mobilization increase towards Axis
+#MOBILIZATION= [5,15] [1]
+; Set variable conditions:
+; 1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;
+{
+#NAME= DE 131 - UK Does Not Invade Syria (Syria->Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 131[0]
+#COUNTRY_ID= 105
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 15-25% mobilization increase towards Axis
+#MOBILIZATION= [15,25] [1]
+; Set variable conditions:
+; 1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;
+{
+#NAME= DE 132 - USA Does Not Recognize Vichy France (Algeria->Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 132[0]
+#COUNTRY_ID= 4
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 5-15% mobilization increase towards Axis
+#MOBILIZATION= [5,15] [1]
+; Set variable conditions:
+; 1st Line - USA Allied leaning
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+}
+
+;
+{
+#NAME= DE 132 - USA Does Not Recognize Vichy France (Vichy France->Axis)
+#POPUP= USA Does Not Recognize The Vichy French Government
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 132[0]
+#COUNTRY_ID= 118
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 5-15% mobilization increase towards Axis
+#MOBILIZATION= [5,15] [1]
+; Set variable conditions:
+; 1st Line - USA Allied leaning
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+}
+
+;
+{
+#NAME= DE 132 - USA Does Not Recognize Vichy France (Syria->Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 132[0]
+#COUNTRY_ID= 105
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 5-15% mobilization increase towards Axis
+#MOBILIZATION= [5,15] [1]
+; Set variable conditions:
+; 1st Line - USA Allied leaning
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+}
+
+;
+{
+#NAME= DE 132 - USA Does Not Recognize Vichy France (Tunisia->Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 132[0]
+#COUNTRY_ID= 110
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 5-15% mobilization increase towards Axis
+#MOBILIZATION= [5,15] [1]
+; Set variable conditions:
+; 1st Line - USA Allied leaning
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+}
+
+;
+{
+#NAME= DE 132 - USA Does Recognize Vichy France (USA->Axis)
+#POPUP= USA Recognizes The Vichy French Government
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 132[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 3-6% mobilization increase towards Axis
+#MOBILIZATION= [3,6] [1]
+; Set variable conditions:
+; 1st Line - USA Allied leaning
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+}
+
+;replacement script
+{
+#NAME= Syria Leans Towards Axis During Iraq Coup (Syria->Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 624[1]
+#COUNTRY_ID= 105
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 4-5% mobilization increase towards Axis
+#MOBILIZATION= [4,5] [1]
+; Set variable conditions:
+; 1st Line - Iraq politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 56 [1] [100] [0]
+#VARIABLE_CONDITION= 118 [1] [0] [0]
+}
+
+
+; Turkey Resists Allied Diplomacy
+{
+#NAME= DE 149 - Turkey Resists Allied Diplomacy (Turkey->Axis)
+#POPUP= The Turkish Government Displays Strong Resistance Against Entering War With Germany
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 149[1]
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 2-4% mobilization increase towards Axis
+#MOBILIZATION= [2,4] [1]
+; Set variable conditions:
+; 1st Line - Turkey politically aligned with Allies and not active
+#VARIABLE_CONDITION= 111 [2] [70] [0]
+}
+
+; Turkey Resists Allied Diplomacy
+{
+#NAME= DE 149 - Turkey Resists Allied Diplomacy (Turkey->Axis)
+#POPUP= 
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 149[1]
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 1% mobilization increase towards Axis
+#MOBILIZATION= [1,1] [1]
+; Set variable conditions:
+; 1st Line - Turkey politically aligned with Allies and not active
+#VARIABLE_CONDITION= 111 [2] [70] [0]
+#VARIABLE_CONDITION= 36 [2] [100] [1]
+}
+
+{
+#NAME= DE 540 - Germany Threatens Switzerland (Switzerland->Allies)
+#POPUP= Germany Threatens Switzerland In Response To German Aircraft Being Shotdown
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 540[1]
+#COUNTRY_ID= 104
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 2-5% mobilization increase towards Allies
+#MOBILIZATION= [2,5] [2]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+
+{
+#NAME= DE 542 - Success Of IRA In Ireland (Ireland>Axis)
+#POPUP= Building On Recent Attacks The IRA Gains Momentum In Demanding UK Withdrawl From Northern Ireland
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 542[1]
+#COUNTRY_ID= 57
+#TRIGGER= 20
+#DATE= 1940/09/02
+; 20-40% mobilization increase towards Axis
+#MOBILIZATION= [20,40] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= DE 543 - UK Occupies Ireland (USA>Axis)
+#POPUP= The USA Views The Occupation Of Ireland As A Hostile Move
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 543[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 2-5% mobilization increase towards Axis
+#MOBILIZATION= [2,5] [1]
+; Set variable conditions:
+; 1st Line - USA Allied leaning
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+}
+
+{
+#NAME= DE 542 - Success Of IRA In Ireland (Ireland>Axis)
+#POPUP= The IRA Gains Momentum In Demanding UK Withdrawl From Northern Ireland
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 542[1]
+#COUNTRY_ID= 57
+#TRIGGER= 20
+#DATE= 1940/09/02
+; 20-40% mobilization increase towards Axis
+#MOBILIZATION= [20,40] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= DE 542 - Irish Defence Force Defects (Ireland>Axis)
+#POPUP= Pro-Allied Voices In Ireland Diminish From Defections
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 545[1]
+#COUNTRY_ID= 57
+#TRIGGER= 100
+#DATE= 1939/09/02
+; 5% mobilization increase towards Axis
+#MOBILIZATION= [5,5] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= Swedish Military Capability Improves (Sweden>Allies)
+#POPUP= Sweden Begins Resisting German Influence Due To Improved Military Capabilities 
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 103
+#TRIGGER= 100
+#DATE= 1943/06/01
+; 1-5% mobilization increase towards Allies
+#MOBILIZATION= [1,5] [2]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 103 [1] [0] [0]
+}
+
+{
+#NAME= Military Exports From Germany (Sweden>Axis)
+#POPUP= Sweden Leans Towards The Axis After Receiving Military Exports From Germany
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 546[1]
+#COUNTRY_ID= 103
+#TRIGGER= 100
+#DATE= 1939/09/01
+; 3-6% mobilization increase towards Axis
+#MOBILIZATION= [3,6] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 57 [1] [0] [0]
+}
+
+{
+#NAME= Baltic State Gold Reserves (Sweden>Axis)
+#POPUP= Sweden Surrenders Baltic State Gold Reserves To Settle Soviet Demands
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 547[1]
+#COUNTRY_ID= 103
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 4-8% mobilization increase towards Axis
+#MOBILIZATION= [4,8] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 57 [1] [0] [0]
+}
+
+; Event for decreased Spanish mobilization:
+{
+#NAME= Franco Continues To Display A Reluctance To Join The Conflict In Europe
+#POPUP= Franco Continues To Display A Reluctance To Join The Conflict In Europe
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 99
+#TRIGGER= 10
+#DATE= 1940/01/01
+;4,8% mobilization increase towards Allies
+#MOBILIZATION= [4,8] [2]
+; Set variable conditions:
+; 1st Line - Spain Axis leaning
+#VARIABLE_CONDITION= 99 [1] [75] [0]
+}
