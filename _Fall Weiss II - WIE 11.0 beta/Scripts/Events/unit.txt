@@ -286,7 +286,7 @@
 ; #UNIT_ID_40= Destroyer
 ; #UNIT_ID_41= Escort Carrier
 ; #UNIT_ID_42= Carrier
-; #UNIT_ID_43= Sub
+; #UNIT_ID_43= Submarine
 ; #UNIT_ID_44= Motor Torpedo Boat
 ; #UNIT_ID_45= Mulberry
 ;
@@ -3136,8 +3136,8 @@
 
 ;REMOVE1942 after implementing
 {
-#NAME= DE627 - Germany Constructs Atlantic Wall Defences (1)
-#POPUP= Germany Constructs Atlantic Wall Defences
+#NAME= DE627 - Germany Constructs Atlantic Wall Defenses (1)
+#POPUP= Germany Constructs Atlantic Wall Defenses
 #IMAGE= coastalgun.png
 #SOUND=
 #FLAG= 1
@@ -3163,7 +3163,7 @@
 
 ;REMOVE1942 after implementing
 {
-#NAME= DE627 - Germany Constructs Atlantic Wall Defences (2)
+#NAME= DE627 - Germany Constructs Atlantic Wall Defenses (2)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -3190,7 +3190,7 @@
 
 ;REMOVE1942 after implementing
 {
-#NAME= DE627 - Germany Constructs Atlantic Wall Defences (3)
+#NAME= DE627 - Germany Constructs Atlantic Wall Defenses (3)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -3217,7 +3217,7 @@
 
 ;REMOVE1942 after implementing
 {
-#NAME= DE627 - Germany Constructs Atlantic Wall Defences (4)
+#NAME= DE627 - Germany Constructs Atlantic Wall Defenses (4)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -4028,7 +4028,7 @@
 ;
 ; Vichy France
 ; These events are used for when Vichy France will be DoW'd upon 
-; and/or when it joines the Allies
+; and/or when it joins the Allies
 {
 #NAME= Vichy France (Vichy Corps)
 #POPUP=
@@ -4679,7 +4679,7 @@
 
 {
 #NAME= DE 618 - Germany Launches Operation Panzerfaust - Debrecen Garrison
-#POPUP= With German Support, Ferenc Szalasi's Arrow Cross Movement Takes Power In Hungary
+#POPUP= With German Support, Ferenc Szálasi's Arrow Cross Movement Takes Power In Hungary
 #IMAGE= arrowcross.png
 #SOUND= combat1.ogg
 #FLAG= 1
@@ -5646,7 +5646,7 @@
 ; 1st Line - 2 Axis units within range of Brest (Port) OR
 ; 2nd Line - 2 Axis units within range of Cherbourg (Port) OR
 ; 3rd Line - 2 Axis units within range of Calais (Port) OR
-; 4th Line - 2 Axis units within range of St Gerorge's Channel OR
+; 4th Line - 2 Axis units within range of St George's Channel OR
 ; 5th Line - 2 Axis units within range of English Channel
 #CONDITION_POSITION= 138,87 [5,5] [2,2] [1] [0]
 #CONDITION_POSITION= 144,82 [5,5] [2,2] [1] [0]
@@ -6379,7 +6379,7 @@
 #PRIVATE= 0
 #DISPLAY_TURN= 0
 #FULL_RESEARCH= 1
-; turn after amphibs begin embarking
+; turn after amphibious transports begin embarking
 #DATE= 1944/03/03
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 144,75
@@ -6410,7 +6410,7 @@
 ; must be set to fire on Allied turn only (otherwise will not fire)
 #DISPLAY_TURN= 2
 #FULL_RESEARCH= 1
-; turn before amphibs begin embarking
+; turn before amphibious transport begin embarking
 #DATE= 1943/01/14
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 144,75
@@ -7075,7 +7075,7 @@
 
 ; USSR (reinforcements)
 {
-#NAME= ALLIED AI: USSR - Corps - Velikye Luki
+#NAME= ALLIED AI: USSR - Corps - Velikiye Luki
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -7414,7 +7414,7 @@
 
 ; USSR (Army)
 {
-#NAME= ALLIED AI: USSR - Army - Tblisi
+#NAME= ALLIED AI: USSR - Army - Tbilisi
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -7435,7 +7435,7 @@
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 235,101
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; 1st Line - 1 Axis unit within 10 hexes of Tblisi
+; 1st Line - 1 Axis unit within 10 hexes of Tbilisi
 ; 2nd Line - 1 Axis unit within 10 hexes of Grozny
 #CONDITION_POSITION= 253,101 [10,10] [1,1] [1] [0]
 #CONDITION_POSITION= 236,98 [10,10] [1,1] [1] [0]
@@ -7501,7 +7501,7 @@
 
 ; USSR (Caucasus Defense)
 {
-#NAME= ALLIED AI: USSR - Caucasus Defense - Tblisi
+#NAME= ALLIED AI: USSR - Caucasus Defense - Tbilisi
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -7520,10 +7520,11 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Tbilisi (235,101)
 #DESTINATION_RESOURCE= 235,101
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis units in range of Kirovabad OR
-; Axis units in range of Tiblisi
+; Axis units in range of Tbilisi // this actually Batumi
 #CONDITION_POSITION= 238,104 [8,8] [1,1] [1] [0]
 #CONDITION_POSITION= 229,102 [8,8] [1,1] [1] [0]
 #UNIT= 0 [10] [0] []
@@ -8518,7 +8519,7 @@
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 192,65
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; No Axis units near Siauliai
+; No Axis units near Siauliai, Lithuania
 #CONDITION_POSITION= 192,65 [4,4] [0,0] [1] [0]
 #UNIT= 4 [10] [0] []
 }
@@ -8546,7 +8547,7 @@
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 192,65
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; No Axis units near Siauliai
+; No Axis units near Siauliai, Lithuania
 #CONDITION_POSITION= 192,65 [4,4] [0,0] [1] [0]
 #UNIT= 4 [10] [0] []
 }
@@ -8642,7 +8643,7 @@
 
 ; Germany (Garrison)
 {
-#NAME= AXIS AI: Germany - Garrison - Wilhemshaven - 1941
+#NAME= AXIS AI: Germany - Garrison - Wilhelmshaven - 1941
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9689,7 +9690,7 @@
 
 ; Germany (Engineer)
 {
-#NAME= AXIS AI: Germany - Engineer (Siegrfried Line)
+#NAME= AXIS AI: Germany - Engineer (Siegfried Line)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -12054,9 +12055,9 @@
 }
 
 
-; Germany (Sub)
+; Germany (Submarine)
 {
-#NAME= AXIS AI: Germany - Sub - Arcachon - 1941
+#NAME= AXIS AI: Germany - Submarine - Arcachon - 1941
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -12706,9 +12707,9 @@
 }
 
 
-; Germany (Sub)
+; Germany (Submarine)
 {
-#NAME= AXIS AI: Germany - Sub - Arcachon - 1941
+#NAME= AXIS AI: Germany - Submarine - Arcachon - 1941
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13396,8 +13397,8 @@
 
 ; 
 {
-#NAME=  Soviet Supplied Defences Deploy At Sofia
-#POPUP= Soviet Supplied Defences Deploy At Sofia
+#NAME=  Soviet Supplied Defenses Deploy At Sofia
+#POPUP= Soviet Supplied Defenses Deploy At Sofia
 #IMAGE= 
 #SOUND=
 #FLAG= 1
