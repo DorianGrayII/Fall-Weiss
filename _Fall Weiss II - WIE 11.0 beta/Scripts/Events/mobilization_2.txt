@@ -48,6 +48,8 @@
 ; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
 ; #MOBILIZATION= The mobilization percentage increase/decrease for this event for #COUNTRY_ID
 ;                Format: [min%, max%] [political_direction]
+; #PRIVATE= Should this event #POPUP be included in the last turn summary screen?
+;           Values: [0, 1]; No= 0; Yes= 1
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
 ;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
 ; #CONDITION_POSITION= Map positions that will serve to trigger the event as well as distance and
@@ -238,7 +240,7 @@
 ; Turkey reacts to the USA providing direct assistance to the UK in Egypt
 ; 
 {
-#NAME= DE 300 - US Tanks arrive in Egypt (Turkey->Axis)
+#NAME= DE 300 - US Tanks arrive in Egypt (Turkey->Axis) (75% Chance)
 #POPUP= Turkey Complains At The Arrival Of US Tanks In The Middle East
 #IMAGE=
 #SOUND=
@@ -265,7 +267,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 {
-#NAME= Pressure Grows On The Vichy Authorities To Join The Allies (Vichy France->Allies)
+#NAME= Pressure Grows On The Vichy Authorities To Join The Allies (Vichy France->Allies) (50% Chance)
 #POPUP= Pressure Grows On The Vichy Authorities To Join The Allies
 #IMAGE=
 #SOUND=
@@ -288,7 +290,7 @@
 }
 
 {
-#NAME= The Vichy Authorities Are Overthrown By Free French Forces (Vichy Syria->Allies)
+#NAME= The Vichy Authorities Are Overthrown By Free French Forces (Vichy Syria->Allies) (25% Chance0)
 #POPUP= Syria Is Called Upon To Join The Allies
 #IMAGE=
 #SOUND=
@@ -311,7 +313,7 @@
 }
 
 {
-#NAME= The Vichy Authorities Are Overthrown By Free French Forces (Vichy Tunisia->Allies)
+#NAME= The Vichy Authorities Are Overthrown By Free French Forces (Vichy Tunisia->Allies) (25% Chance)
 #POPUP= Tunisia's Vichy Governor Comes Under Increasing Pressure To Join The Allies
 #IMAGE=
 #SOUND=
@@ -334,7 +336,7 @@
 }
 
 {
-#NAME= The Vichy Authorities Are Overthrown By Free French Forces (Vichy Algeria->Allies)
+#NAME= The Vichy Authorities Are Overthrown By Free French Forces (Vichy Algeria->Allies) (25% Chance)
 #POPUP= The Vichy Authorities In Algeria Come Under Increasing Pressure To Join The Allies
 #IMAGE=
 #SOUND=
@@ -363,7 +365,7 @@
 ;REMOVE1942
 ;
 {
-#NAME= American Public Opinion Moves Against Entering The War (USA->Allies)
+#NAME= American Public Opinion Moves Against Entering The War (USA->Allies) (35% Chance)
 #POPUP= Isolationists In The USA Call On US Units To Return To Home Waters
 #IMAGE=
 #SOUND=
@@ -542,7 +544,7 @@
 ;
 ; The US reacts to Axis gains at Gibraltar
 {
-#NAME= Axis Advances in Spain (USA->Allies)
+#NAME= Axis Advances in Spain (USA->Allies) (50% Chance)
 #POPUP= The USA Is Alarmed By Axis Moves Near Gibraltar
 #IMAGE=
 #SOUND=
@@ -568,7 +570,7 @@
 ;
 ; US reacts to Axis gains around Egypt
 {
-#NAME= USA->Allies (Axis Threaten Allied Position in Egypt and Palestine)
+#NAME= USA->Allies (Axis Threaten Allied Position in Egypt and Palestine) (50% Chance)
 #POPUP= The USA Is Alarmed by Axis Gains in The Middle East
 #IMAGE=
 #SOUND=
@@ -716,7 +718,7 @@
 ;REMOVE1941
 ;
 {
-#NAME= More than 18 Axis Units Near Warsaw From January 1941 (USSR->Allies)
+#NAME= More than 18 Axis Units Near Warsaw From January 1941 (USSR->Allies) (50% Chance)
 #POPUP= The USSR grows uneasy over the build up of Axis troops along its Polish border
 #IMAGE=
 #SOUND=
@@ -774,7 +776,7 @@
 ; US naval units in the vicinity of the Arctic Circle
 ; 3-5% increase in Soviet mobilization towards Axis
 {
-#NAME= US Naval Aggression Near Arctic Circle (USSR->Axis)
+#NAME= US Naval Aggression Near Arctic Circle (USSR->Axis) (50% Chance)
 #POPUP= USSR Alarmed Over US Naval Activity Near Arctic Circle
 #IMAGE=
 #SOUND=
@@ -830,7 +832,7 @@
 ;
 ; USSR reacts to Axis gains around Egypt
 {
-#NAME= Axis Threaten Allied Position In Egypt and Palestine (USSR->Allies)
+#NAME= Axis Threaten Allied Position In Egypt and Palestine (USSR->Allies) (25% Chance)
 #POPUP= USSR Reacts to Axis Successes In The Middle East
 #IMAGE=
 #SOUND=
@@ -929,7 +931,7 @@
 ; Soviet naval units within range of Helsinki port resulting in a
 ; 30-45% increase in Finnish activation towards Axis
 {
-#NAME= Soviet Naval Aggression in the Baltic (Finland->Axis)
+#NAME= Soviet Naval Aggression in the Baltic (Finland->Axis) (50% Chance)
 #POPUP= Soviet Naval Manuevers Alert Finnish Defence Forces
 #IMAGE=
 #SOUND=
@@ -958,7 +960,7 @@
 ; Soviet naval units within range of Helsinki port resulting in a
 ; 30-45% increase in Finnish activation towards Axis
 {
-#NAME= Soviet Naval Aggression in the Baltic (Finland->Axis)
+#NAME= Soviet Naval Aggression in the Baltic (Finland->Axis) (50% Chance)
 #POPUP= Soviet Naval Manuevers Alert Finnish Defence Forces
 #IMAGE=
 #SOUND=
@@ -988,7 +990,7 @@
 ; Soviet naval units within range of Stockholm port resulting in a
 ; 40-55% increase in Swedish activation towards Axis
 {
-#NAME= Soviet Naval Aggression in the Baltic (Sweden->Axis)
+#NAME= Soviet Naval Aggression in the Baltic (Sweden->Axis) (75% Chance)
 #POPUP= Swedish Foreign Minister Protests Local Soviet Naval Activity
 #IMAGE=
 #SOUND=
@@ -1017,7 +1019,7 @@
 ; Soviet naval units in eastern vicinity of Copenhagen port resulting in a
 ; 15-20% increase in Swedish activation towards Axis
 {
-#NAME= Soviet Naval Aggression in the Baltic (Sweden->Axis)
+#NAME= Soviet Naval Aggression in the Baltic (Sweden->Axis) (50% Chance)
 #POPUP= Sweden Alarmed Over Soviet Naval Activity In The Baltic
 #IMAGE=
 #SOUND=
@@ -1118,7 +1120,7 @@
 ; Axis land units within range of Brussels resulting in a
 ; 1-2% increase in Italian activation towards Axis
 {
-#NAME= Collapse of Belgium (Italy->Axis)
+#NAME= Collapse of Belgium (Italy->Axis) (50% Chance)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1147,7 +1149,7 @@
 ; Axis land units within range of Paris resulting in a
 ; 5-10% increase in Italian activation towards Axis
 {
-#NAME= Collapse of France (Italy->Axis)
+#NAME= Collapse of France (Italy->Axis) (75% Chance)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1308,7 +1310,7 @@
 ; Allies abandon their land positions in the Mediterranean resulting in a
 ; 1-2% increase in Italian activation towards Axis:
 {
-#NAME= Allies Abandon Mediterranean Positions (Italy->Axis)
+#NAME= Allies Abandon Mediterranean Positions (Italy->Axis) (50% Chance)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1373,7 +1375,7 @@
 ; US naval units near Spain
 ; 25-35% increase in Spanish mobilization towards Axis
 {
-#NAME= US Naval Aggression Near Spain (Spain->Axis)
+#NAME= US Naval Aggression Near Spain (Spain->Axis) (50% Chance)
 #POPUP= Spain Alarmed Over Local US Naval Activity
 #IMAGE=
 #SOUND=
@@ -1524,7 +1526,7 @@
 ; US naval units near Scandinavia
 ; 25-35% increase in Swedish mobilization towards Axis
 {
-#NAME= US Naval Aggression Near Scandinavia (Sweden->Axis)
+#NAME= US Naval Aggression Near Scandinavia (Sweden->Axis) (50% Chance)
 #POPUP= Sweden Alarmed Over Local US Naval Activity
 #IMAGE=
 #SOUND=
@@ -1559,7 +1561,7 @@
 ;REMOVE1941
 ;
 ; German Units in Iraq trigger a random
-; 45-55% increase in Vichy Syrian mobilization towards Axis
+; 45-55% increase in Vichy Syrian mobilization towards Axis (50% Chance)
 {
 #NAME= German Units In Iraq (Syria->Axis)
 #POPUP= Syria Swings Towards The Axis
@@ -1646,7 +1648,7 @@
 
 ;AMEND1942 (INCREASE TURKEY'S MOBILIZATION AND REMOVE THIS IN 1942)
 {
-#NAME= Axis Advance To Sevastopol (Turkey->Axis)
+#NAME= Axis Advance To Sevastopol (Turkey->Axis) (50% Chance)
 #POPUP= Powerful Groups In Turkey Call On Their Country To Join The Axis
 #IMAGE= 
 #SOUND=
@@ -1669,7 +1671,7 @@
 }
 
 {
-#NAME= Axis Conquer Egypt (Turkey->Axis)
+#NAME= Axis Conquer Egypt (Turkey->Axis) (50% Chance)
 #POPUP= The Axis Success In Egypt Strengthens Interest In Turkey To Join The Axis
 #IMAGE= 
 #SOUND=
@@ -1892,7 +1894,7 @@
 }
 
 {
-#NAME= AXIS AI: Fall of Moscow to Axis (Turkey -> Axis)
+#NAME= AXIS AI: Fall of Moscow to Axis (Turkey -> Axis) (5% Chance)
 #POPUP= Turkey Increases Its Friendship With Germany
 #IMAGE=
 #SOUND=
@@ -1921,7 +1923,7 @@
 }
 
 {
-#NAME= AXIS AI: Fall of Moscow to Axis (Turkey -> Axis)
+#NAME= AXIS AI: Fall of Moscow to Axis (Turkey -> Axis) (5% Chance)
 #POPUP= Turkish Parliament Debates Joining the Axis
 #IMAGE=
 #SOUND=
@@ -1949,7 +1951,7 @@
 #CONDITION_POSITION= 221,65 [0,0] [1,1] [1] [0]
 }
 
-; Turkey Allied Leaning Before War With Russia
+; Turkey Allied Leaning Before War With the USSR
 {
 #NAME= Turkey Leans Toward Allies While USSR Neutral
 #POPUP= 
@@ -1967,7 +1969,7 @@
 ; 5-10% mobilization increase towards Allies
 #MOBILIZATION= [5,5] [2]
 ; Set variable conditions:
-; 1st Line - Russia politically aligned Allied and not active
+; 1st Line - USSR politically aligned Allied and not active
 ; 2nd Line - Turkey politically aligned with Axis and Not Active
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 111 [1] [0] [0]
@@ -2004,7 +2006,7 @@
 ;NEW
 ;
 {
-#NAME= Franco Swings To The Axis In Response To Allied Preparations To Invade Italy (Spain->Axis)
+#NAME= Franco Swings To The Axis In Response To Allied Preparations To Invade Italy (Spain->Axis) (75% Chance)
 #POPUP= Franco Swings To The Axis In Response To Allied Preparations To Invade Italy
 #IMAGE=
 #SOUND=
@@ -2032,7 +2034,7 @@
 ;NEW
 ;
 {
-#NAME= Italy Mobilizes In Response To Allied Invasion Preparations (Italy->Axis)
+#NAME= Italy Mobilizes In Response To Allied Invasion Preparations (Italy->Axis) (33% Chance)
 #POPUP= <<TAG_42>>
 #IMAGE=
 #SOUND=
@@ -2086,7 +2088,7 @@
 ;
 ; Iraqis reacts to Axis gains in Egypt
 {
-#NAME= Axis Advances in Egypt (Iraq->Axis)
+#NAME= Axis Advances in Egypt (Iraq->Axis) (50% Chance)
 #POPUP= <<TAG_44>>
 #IMAGE=
 #SOUND=
