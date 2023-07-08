@@ -45,7 +45,10 @@
 ;        Example C) #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
 ; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
 ; #COUNTRY_ID= Country ID that will be owner of this event
-; #DISPLAY_ORDER= When do we display this event? (values range [0, 1]; Default= 0; Beginning of Turn= 1)
+; #DISPLAY_ORDER= Value range [0, 1]
+;        When do we display this event?
+;        0 = Default Default 
+;        1 = Beginning of Turn
 ; #DECISION= What internal decision number is this event assigned to? (values range [1, 1100]; max of 1100 decisions per campaign)
 ; #MPP_UPDOWN= Will there be an associated MPPs amount added or subtracted with respect to #COUNTRY_ID for this decision if yes? (values range [-9999, 9999])
 ; #MPP_TURNS= How many turns will the #MPP_UPDOWN= value be added or subtracted for? (values range [0, 500])
@@ -1819,6 +1822,46 @@
 }
 
 {
+#NAME= DE 155 - UK: Dummy Event to deduct 50 MPPs for DE 120 if DE 981 is approved (AI - 100% Yes)
+#POPUP=
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+;Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+;Set link value to always trigger (dummy value)
+#LINK= 981[1]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#DISPLAY_ORDER= 0
+; Set decision value
+#DECISION= 155
+#MPP_UPDOWN= -50
+#MPP_TURNS= 1
+#MPP_TEXT= Operation Countenance
+#NOTES=
+#NOTES_POSITION=
+; Set AI acceptance % (AI will accept 100% of the time)
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1941/08/12
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Kuwait is in Allied hands
+#ALIGNMENT_POSITION= 241,128 [2]
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Set variable conditions:
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
 #NAME= DE 156 - UK: Dummy Event for SAS Attacks Near Tobruk (7% Chance) (AI - 100% Yes)
 #POPUP=
 #MESSAGE=
@@ -3490,7 +3533,7 @@
 
 ;REMOVE1943
 {
-#NAME= DE 308 - Order OSS to Intrigue in Vichy Algeria? (AI - 50% Yes)
+#NAME= DE 308 - USA: Order OSS to Intrigue in Vichy Algeria? (AI - 50% Yes)
 #POPUP=
 #MESSAGE= Office of the Secretary of War %N Henry L. Stimson %N%N Bill Donovan's Office of Strategic Services (OSS) proposes to extend its network of agents in Vichy Algeria, to suborn local officials, both military and civilian, in order to pave the way for a US landing in the country. %N%N For a cost of 25 MPPs, OSS believe that these agents could carry out minor uprisings in our favour should American forces land at either Casablanca, Oran or Algiers. %N%N Would you like to authorize OSS to intrigue in this manner in Vichy Algeria?
 #IMAGE=
@@ -3502,6 +3545,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 0[0]
+; USA(115)
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #DISPLAY_ORDER= 0
@@ -3534,7 +3578,7 @@
 }
 
 {
-#NAME= DE 309 - Should OSS Build Links with the Spanish Republican Resistance? (AI - 100% Yes)
+#NAME= DE 309 - USA: Should OSS Build Links with the Spanish Republican Resistance? (AI - 100% Yes)
 #POPUP=
 #MESSAGE= Office of the Secretary of War %N Henry L. Stimson %N%N The Office of Strategic Services (OSS) has some contact with Spanish Republicans that could be made use of to increase the latter's ability to harm Franco's war effort. %N%N For a cost of 50 MPPs, OSS will provide money, arms and communications equipment to selected Republican guerrilla groups, avoiding Communists where possible. %N%N They will also attempt to co-ordinate activities so that the guerrillas will have a far bigger impact than they are currently having. %N%N Would you like to authorize OSS to build on their links with the Spanish Republican Resistance so that they can launch attacks to damage the Spanish war economy?
 #IMAGE=
@@ -4695,7 +4739,7 @@
 
 ;REMOVE1942
 {
-#NAME= DE 403 - USSR: Operation Countenance: Join with the UK in Invading Persia? (AI - 100% Yes)
+#NAME= DE 403 - USSR: Operation Countenance: Join with the UK in Invading Persia? (If DE 120 approved) (AI - 100% Yes)
 #POPUP=
 #MESSAGE= Red Army Headquarters %N%N The British have proposed that we join them in invading Persia to overthrow the pro-Axis Shah. %N%N Their plan is that we then divide the country between us, with the British having the Oilfield at Maidan-I-Naftun and the port of Bandar Mahshahr. %N%N The invasion would only cost 100 MPPs, to be divided equally between both countries. %N%N Would you like to approve this British plan to invade Persia and divide the country between us?
 #IMAGE=
@@ -6872,9 +6916,9 @@ Replacement script
 
 ;REMOVE1940
 {
-#NAME= DE 617 - Germany: Deploy The 7th Luftwaffe Division Now? (AI - 0% Yes)
+#NAME= DE 617 - Germany: Deploy The 7th Flieger Division Now? (AI - 0% Yes)
 #POPUP=
-#MESSAGE= <<TAG_240>>
+#MESSAGE= Führerhauptquartier %N%N Lieutenant-General Kurt Student's 7th Flieger Division is a partially formed and trained unit of paratroopers. %N%N Despite its incompleteness it could be used in the latter stages of the invasion of Poland, or in an early attack on France. %N%N Alternatively, we could allow it to complete its training and formation, in which case it will deploy at full strength at Hamburg at the end of this year. %N%N Would you therefore like to deploy the understrength and only partially trained 7th Flieger Division at Breslau now %B(YES), or let it complete its training so that it will deploy at full strength ready for operations in 1940 %B(NO)? %N%N If you say %B(YES), then you will receive 50 MPPs that had previously been assigned to completing its training and formation. These can be invested wherever you wish, either in reinforcing this unit or elsewhere.
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -6891,8 +6935,8 @@ Replacement script
 #DECISION= 617
 #MPP_UPDOWN= 50
 #MPP_TURNS= 1
-#MPP_TEXT= <<TAG_241>>
-#NOTES= <<TAG_242>>
+#MPP_TEXT= Deploying 7th Flieger Division
+#NOTES= The 7th Flieger Division was still forming when war broke out, so rushing it into service before it is complete will require spending MPPs to bring it up to full strength. %N%N However, by saying %B(YES) it will be available for operations sooner and it could be useful if you wish to follow up your victory in Poland with an immediate offensive elsewhere.
 #NOTES_POSITION= 180,79
 ; Set AI acceptance % (AI will accept 0% of the time)
 #AI_RESPONSE= 0
@@ -10208,7 +10252,7 @@ Replacement script
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 {
-#NAME= DE 1 - AI - Should US Attempt To Liberate The UK (AI - 100% Yes)
+#NAME= DE 1 - USA: Should US Attempt To Liberate The UK (AI - 100% Yes)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -10355,7 +10399,7 @@ Replacement script
 
 ;
 {
-#NAME= DE 864 - Fortify Romania (AI - 100% Yes)
+#NAME= DE 864 - Germany: Fortify Romania (AI - 100% Yes)
 #POPUP=
 #MESSAGE= Führerhauptquartier %N%N The Soviets have made a major breakthrough in the Ukraine and our Balkan Allies may soon be under threat.  The natural defenses of the Carpathians and lower Danube offer formidable obstacles to defend Romania from the Soviet invaders.  %N%N In light of this, we should consider assisting in the formation of a dedicated division of Engineers to build fortifications which will assist in breaking the oncoming Soviet assault. %N%N Should we assist our Romanian Allies in deploying the 96th Engineers to fortify their homeland? It will cost 50 MPPs for 2 turns.
 #IMAGE=
@@ -15174,48 +15218,6 @@ Replacement script
 #CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [120]
 }
 
-
-;REMOVE1940
-{
-#NAME= DE 999 - Germany: Deploy The 7th Luftwaffe Division Now? (AI - 0% Yes)
-#POPUP=
-#MESSAGE= Führerhauptquartier %N%N Lieutenant-General Kurt Student's 7th Flieger Division is a partially formed and trained unit of paratroopers. %N%N Despite its incompleteness it could be used in the latter stages of the invasion of Poland, or in an early attack on France. %N%N Alternatively, we could allow it to complete its training and formation, in which case it will deploy at full strength at Hamburg at the end of this year. %N%N Would you therefore like to deploy the understrength and only partially trained 7th Flieger Division at Breslau now %B(YES), or let it complete its training so that it will deploy at full strength ready for operations in 1940 %B(NO)? %N%N If you say %B(YES), then you will receive 50 MPPs that had previously been assigned to completing its training and formation. These can be invested wherever you wish, either in reinforcing this unit or elsewhere.
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-; Set decision value
-#DECISION= 999
-#MPP_UPDOWN= 50
-#MPP_TURNS= 1
-#MPP_TEXT= Deploying 7th Flieger Division
-#NOTES= The 7th Flieger Division was still forming when war broke out, so rushing it into service before it is complete will require spending MPPs to bring it up to full strength. %N%N However, by saying %B(YES) it will be available for operations sooner and it could be useful if you wish to follow up your victory in Poland with an immediate offensive elsewhere.
-#NOTES_POSITION= 180,79
-; Set AI acceptance % (AI will accept 0% of the time)
-#AI_RESPONSE= 0
-#AI_RESPONSE_POPUP=
-#DATE= 1939/09/01
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Berlin is in Axis hands
-#ALIGNMENT_POSITION= 173,74 [1]
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; Set variable conditions:
-; 1st Line - Germany politically aligned with Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
 {
 #NAME= DE 950 - Germany: 2nd Naval Infantry Division (AI - 100% Yes)
 #POPUP=
@@ -17745,7 +17747,7 @@ Replacement script
 
 ; Transfer Forces From Siberia
 {
-#NAME= DE 428 - Transfer Forces From Siberia (AI - 100% Yes)
+#NAME= DE 428 - USSR: Transfer Forces From Siberia (AI - 100% Yes)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -17787,7 +17789,7 @@ Replacement script
 
 ; Maikop Oil Fields
 {
-#NAME= DE 429 - Maikop Oil Fields (AI - 100% Yes)
+#NAME= DE 429 - Germany: Maikop Oil Fields (AI - 100% Yes)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -17828,7 +17830,7 @@ Replacement script
 }
 
 {
-#NAME= DE 430 - British Empire Reacts To Successful Sealion (AI - 100% Yes)
+#NAME= DE 430 - UK: British Empire Reacts To Successful Sealion (AI - 100% Yes)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -19039,7 +19041,7 @@ Replacement script
 
 ; Stalingrad Supply
 {
-#NAME= DE 530 - Stalingrad Supply (AI - 100% Yes)
+#NAME= DE 530 - Germany: Stalingrad Supply (AI - 100% Yes)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -19083,7 +19085,7 @@ Replacement script
 
 ; Stalingrad Supply
 {
-#NAME= DE 530 - Stalingrad Supply (AI - 100% Yes)
+#NAME= DE 530 - Germany: Stalingrad Supply (AI - 100% Yes)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -19473,7 +19475,7 @@ Replacement script
 
 ; Belgian and Dutch Armies In Exile
 {
-#NAME= DE 463 - Belgian and Dutch Armies In Exile (AI - 100% Yes)
+#NAME= DE 463 - UK: Belgian and Dutch Armies In Exile (AI - 100% Yes)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -19486,6 +19488,7 @@ Replacement script
 #GV= 1[1,100]
 ;Set link value to always trigger (dummy value)
 #LINK= 0[0]
+; UK(112)
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #DISPLAY_ORDER= 0
@@ -19516,7 +19519,7 @@ Replacement script
 
 ;Replacement
 {
-#NAME= DE 559 - Dummy Script For UK Syria Advice Popup
+#NAME= DE 559 - UK: Dummy Script For UK Syria Advice Popup
 #POPUP=
 #MESSAGE= 
 #IMAGE=
@@ -19528,6 +19531,7 @@ Replacement script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 624[1]
+; UK(112)
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #DISPLAY_ORDER= 1
@@ -19847,7 +19851,7 @@ Replacement script
 
 ;REMOVE1942
 {
-#NAME= DE 981 - USSR: Operation Countenance: Join with the UK in Invading Persia? (AI - 100% Yes)
+#NAME= DE 403 - USSR: Operation Countenance: Join with the UK in Invading Persia? (If DE 979 approved) (AI - 100% Yes)
 #POPUP=
 #MESSAGE= Red Army Headquarters %N%N The British have proposed that we join them in invading Persia to overthrow the pro-Axis Shah. %N%N Their plan is that we then divide the country between us, with the British having the Oilfield at Maidan-I-Naftun and the port of Bandar Mahshahr. %N%N The invasion would only cost 100 MPPs, to be divided equally between both countries. %N%N Would you like to approve this British plan to invade Persia and divide the country between us %B(YES)?
 #IMAGE=
@@ -19886,46 +19890,6 @@ Replacement script
 #VARIABLE_CONDITION= 82 [1] [0] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Dummy condition position (always satisfied)
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= DE 980 - UK: Dummy Event to deduct 50 MPPs for DE 120 if DE 981 is approved (AI - 100% Yes)
-#POPUP=
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-;Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-;Set link value to always trigger (dummy value)
-#LINK= 981[1]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-; Set decision value
-#DECISION= 155
-#MPP_UPDOWN= -50
-#MPP_TURNS= 1
-#MPP_TEXT= Operation Countenance
-#NOTES=
-#NOTES_POSITION=
-; Set AI acceptance % (AI will accept 100% of the time)
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1941/08/12
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Kuwait is in Allied hands
-#ALIGNMENT_POSITION= 241,128 [2]
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; Set variable conditions:
-#VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
