@@ -26,10 +26,10 @@
 ;        3 = Event fires once if all other fields are satisfied, else it will not fire.  Either way, event will be removed never to be looked at again
 ; #AI= Values range [0, 4]
 ;      0 = Event fires whenever all fields are satisfied for any game type
-;      1 = Event fires whenever all fields are satisfied, for AI games only, and only on the Axis AI turn
-;      2 = Event fires whenever all fields are satisfied, for AI games only, and only on the Allied AI turn
-;      3 = Event fires whenever all fields are satisfied, for AI and Multiplayer games only, and only on the Axis AI or on the Allied Multiplayer turns
-;      4 = Event fires whenever all fields are satisfied, for AI and Multiplayer games only, and only on the Allied AI or on the Axis Multiplayer turns
+;      1 = Event fires whenever all fields are satisfied, for Single Player games only, and only on the Axis AI turn
+;      2 = Event fires whenever all fields are satisfied, for Single Player games only, and only on the Allied AI turn
+;      3 = Event fires whenever all fields are satisfied, for any game type, and only on the Axis AI or on the Allied Multiplayer turns
+;      4 = Event fires whenever all fields are satisfied, for any game type, and only on the Allied AI or on the Axis Multiplayer turns
 ; #LEVEL= What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
 ;         Values: [0, 4]; Green= 0; Novice= 1; Intermediate= 2; Veteran= 3; Expert= 4
 ; #GV= Does the event activate based on the Global Variable values assigned?
@@ -78,6 +78,10 @@
 ; If the 'aligned_country_id' flag is set to 0 then it will check for any Axis or Allied country as
 ; determined by the alignment flag.
 ; Each #CONDITION_POSITION line will be read using OR logic.
+;
+; If #CONDITION_POSITION has an added <unit_id, ...> then it will only consider the specified UNIT_ID types, e.g.
+; Axis have an Army or Tank unit within 10 hexes of Warsaw
+; #CONDITION_POSITION= 188,76 [10,10] [1,1] [1] [0] <5,26>
 ;
 ; Use the reference values provided for #COUNTRY_ID and not the country names
 ; Use the reference values provided for POLITICAL ALIGNMENT and not names
@@ -365,10 +369,11 @@
 ;REMOVE1942
 ;
 {
-#NAME= American Public Opinion Moves Against Entering The War (USA->Allies) (35% Chance)
+#NAME= American Public Opinion Moves Against Entering The War (USA->Axis) (35% Chance)
 #POPUP= Isolationists In The USA Call On US Units To Return To Home Waters
 #IMAGE=
 #SOUND=
+; Turned off in Fall Weiss II
 #FLAG= 0
 #TYPE= 2
 #AI= 0
@@ -386,7 +391,7 @@
 ; 1st Line - Germany politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; USA has 2 or more units within 100 hexes of Ferrol in northern Spain
-#CONDITION_POSITION= 87,92 [100,100] [2,2] [2] [115]
+#CONDITION_POSITION= 130,97 [100,100] [2,2] [2] [115]
 }
 
 ;AMEND1941
@@ -566,11 +571,37 @@
 #CONDITION_POSITION= 136,114 [1,1] [1,1] [1] [0]
 }
 
+;REMOVE1941
+;
+; Iraqis reacts to Axis gains in Egypt
+{
+#NAME= Axis Advances in Egypt (Iraq->Axis)
+#POPUP= <<TAG_44>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 56
+#TRIGGER= 50
+#DATE= 1939/09/01
+;25-35% mobilization increase towards Axis
+#MOBILIZATION= [25,35] [1]
+; Set variable conditions:
+; 1st Line - Iraq politically aligned with Axis but not fully mobilized
+#VARIABLE_CONDITION= 56 [1] [0] [0]
+; The Axis have 1-2 units within 5 hexes of Suez
+#CONDITION_POSITION= 210,126 [5,5] [1,2] [1] [0]
+}
+
 ;REMOVE1942
 ;
 ; US reacts to Axis gains around Egypt
 {
-#NAME= USA->Allies (Axis Threaten Allied Position in Egypt and Palestine) (50% Chance)
+#NAME= Axis Threaten Allied Position in Egypt and Palestine (USA->Allies) (50% Chance)
 #POPUP= The USA Is Alarmed by Axis Gains in The Middle East
 #IMAGE=
 #SOUND=
@@ -830,6 +861,68 @@
 
 ;REMOVE1941
 ;
+; Axis land units in England supplementary reduction of 
+; mobilization effect for GREEN level Axis players
+{
+#NAME= Sealion (USSR->Allies) (Green)
+#POPUP= 
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 2
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0 [=]
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1940/01/01
+; 10% mobilization increase towards Axis
+#MOBILIZATION= [10,10] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Axis land 1-2 units in the UK within 1-2 hexes of London OR
+#CONDITION_POSITION= 147,77 [1,2] [1,2] [1] [0]
+; Axis land 1-2 units in the UK within 1-2 hexes of Manchester
+#CONDITION_POSITION= 142,72 [1,2] [1,2] [1] [0]
+; Axis land 1 unit in the UK within 1-2 hexes of Edinburgh
+#CONDITION_POSITION= 140,65 [1,2] [1,1] [1] [0]
+}
+
+;REMOVE1941
+;
+; Axis land units in England supplementary reduction of 
+; mobilization effect for NOVICE level Axis players
+{
+#NAME= Sealion (USSR->Allies) (Novice)
+#POPUP= 
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 2
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 1 [=]
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1940/01/01
+; 5% mobilization increase towards Axis
+#MOBILIZATION= [5,5] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Axis land 1-2 units in the UK within 1-2 hexes of London OR
+#CONDITION_POSITION= 147,77 [1,2] [1,2] [1] [0]
+; Axis land 1-2 units in the UK within 1-2 hexes of Manchester
+#CONDITION_POSITION= 142,72 [1,2] [1,2] [1] [0]
+; Axis land 1 unit in the UK within 1-2 hexes of Edinburgh
+#CONDITION_POSITION= 140,65 [1,2] [1,1] [1] [0]
+}
+
+;REMOVE1941
+;
 ; USSR reacts to Axis gains around Egypt
 {
 #NAME= Axis Threaten Allied Position In Egypt and Palestine (USSR->Allies) (25% Chance)
@@ -926,6 +1019,31 @@
 #CONDITION_POSITION= 167,52 [2,2] [1,1] [2] [0]
 }
 
+;REMOVE1942
+;
+{
+#NAME= Italian Naval Movements In The English Channel (USA->Allies)
+#POPUP= <<TAG_46>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 115
+#TRIGGER= 75
+#DATE= 1939/09/01
+; 2-5% activation increase towards Allies
+#MOBILIZATION= [2,5] [2]
+; Set variable conditions:
+; 1st Line - Italy politically aligned with Axis but not fully mobilixed
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+; Italian naval unit within 10-12 hexes of Southampton port
+#CONDITION_POSITION= 143,79 [10,12] [1,1] [1] [59]
+}
+
 ;REMOVE1941
 ;
 ; Soviet naval units within range of Helsinki port resulting in a
@@ -980,7 +1098,6 @@
 ; Set variable conditions:
 ; 1st Line - USSR politically aligned with Allies (fully active) and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [0] [0]
 ; Soviets have 1 Amphibious unit within 2-3 hexes range of Helsinki port
 #CONDITION_POSITION= 196,52 [2,3] [1,1] [2] [116] <47,48>
 }
@@ -1117,31 +1234,112 @@
 
 ;REMOVE1941
 ;
-; Axis land units within range of Brussels resulting in a
-; 1-2% increase in Italian activation towards Axis
+; Fall of Brussels resulting in a 3-5% increase 
+; in Italian mobilization towards Axis
 {
 #NAME= Collapse of Belgium (Italy->Axis) (50% Chance)
 #POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
-#TYPE= 2
+#TYPE= 1
 #AI= 0
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
+#LEVEL= 0
 #COUNTRY_ID= 59
 #TRIGGER= 50
 #DATE= 1940/01/01
-; 1-2% activation increase towards Axis
-#MOBILIZATION= [1,2] [1]
+; 3-5% mobilization increase towards Axis
+#MOBILIZATION= [3,5] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+; 2nd Line - Belgium politically aligned with Allies and surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 10 [2] [100] [1]
+;Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1941
+;
+{
+#NAME= Italy Mobilizes In Response To Allied Invasion Preparations (Italy->Axis)
+#POPUP= <<TAG_42>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 59
+#TRIGGER= 33
+#DATE= 1939/09/01
+; 15-25% mobilization increase towards Axis
+#MOBILIZATION= [15,25] [1]
 ; Set variable conditions:
 ; 1st Line - Germany politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis have 1-2 units within 1 hex range of Brussels
-#CONDITION_POSITION= 155,80 [1,1] [1,2] [1] [0]
+; 2 Allied Amphibious units within 30 hexes of Syracuse Port
+#CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
+; 7 or more Allied naval units within 18 hexes of Syracuse Port
+#CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
+}
+
+;REMOVE1941
+;
+{
+#NAME= US Swings To The Axis In Response To Allied Preparations To Invade Italy (USA->Axis)
+#POPUP= <<TAG_43>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1939/09/01
+; 5-12% mobilization increase towards Axis
+#MOBILIZATION= [5,12] [1]
+; Set variable conditions:
+; 1st Line - Italy politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+; 2 Allied Amphibious units within 30 hexes of Syracuse Port
+#CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
+; 7 or more Allied naval units within 18 hexes of Syracuse Port
+#CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
+}
+
+;REMOVE1941
+;
+{
+#NAME= Franco Swings To The Axis In Response To Allied Preparations To Invade Italy (Spain->Axis)
+#POPUP= <<TAG_45>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#DATE= 1939/09/01
+; 5-12% mobilization increase towards Axis
+#MOBILIZATION= [5,12] [1]
+; Set variable conditions:
+; 1st Line - Italy politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+; 2 Allied Amphibious units within 30 hexes of Syracuse Port
+#CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
+; 7 or more Allied naval units within 18 hexes of Syracuse Port
+#CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
 }
 
 ;REMOVE1941
@@ -1169,8 +1367,8 @@
 ; Set variable conditions:
 ; 1st Line - Germany politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis have 1 unit within 1 hex range of Paris
-#CONDITION_POSITION= 151,84 [1,1] [1,1] [1] [0]
+; Axis have 2 units within a 3 hex range of Paris
+#CONDITION_POSITION= 151,84 [3,3] [2,2] [1] [0]
 }
 
 ;REMOVE1941
@@ -1217,7 +1415,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 59
 #TRIGGER= 100
-#DATE= 1939/10/01
+#DATE= 1939/09/01
 ; 0% mobilization increase towards Axis
 #MOBILIZATION= [0,0] [1]
 ; Set variable conditions:
@@ -1324,7 +1522,7 @@
 #LINK= 0[0]
 #COUNTRY_ID= 59
 #TRIGGER= 50
-#DATE= 1939/10/01
+#DATE= 1939/09/03
 ; 1-2% activation increase towards Axis
 #MOBILIZATION= [1,2] [1]
 ; Set variable conditions:
@@ -1406,7 +1604,7 @@
 ; Axis land units in England resulting in a
 ; 6-12% increase in Spanish mobilization towards Axis:
 {
-#NAME= Sealion (Spain->Axis)
+#NAME= Sealion (Spain->Axis) (10% Chance)
 #POPUP= Franco Is Impressed By The Axis Success In The UK
 #IMAGE=
 #SOUND=
@@ -1561,9 +1759,9 @@
 ;REMOVE1941
 ;
 ; German Units in Iraq trigger a random
-; 45-55% increase in Vichy Syrian mobilization towards Axis (50% Chance)
+; 45-55% increase in Vichy Syrian mobilization towards Axis
 {
-#NAME= German Units In Iraq (Syria->Axis)
+#NAME= German Units In Iraq (Syria->Axis) (50% Chance)
 #POPUP= Syria Swings Towards The Axis
 #IMAGE= 
 #SOUND= 
@@ -1593,7 +1791,7 @@
 ; Axis land units in England resulting in a
 ; 45-55% increase in Turkish mobilization towards Axis:
 {
-#NAME= Sealion (Turkey->Axis)
+#NAME= Sealion (Turkey->Axis) (10% Chance)
 #POPUP= Turkey Strengthens Pro-Axis Relations
 #IMAGE=
 #SOUND=
@@ -1607,7 +1805,7 @@
 #LINK= 0[0]
 #COUNTRY_ID= 111
 #TRIGGER= 10
-#DATE= 1941/08/01
+#DATE= 1939/09/01
 ; 45-55% activation increase towards Axis
 #MOBILIZATION= [45,55] [1]
 ; Set variable conditions:
@@ -1619,6 +1817,32 @@
 #CONDITION_POSITION= 142,72 [0,0] [1,1] [1] [0]
 ; Axis has captured and holds Liverpool
 #CONDITION_POSITION= 141,72 [0,0] [1,1] [1] [0]
+}
+
+;AMEND1942 (INCREASE TURKEY'S MOBILIZATION AND REMOVE THIS IN 1942)
+; Axis land units 1 hex from Sevastopol resulting in a
+; 5-10% increase in Turkish mobilization towards Axis
+{
+#NAME= Axis Advance On Sevastopol (Turkey->Axis)
+#POPUP= <<TAG_34>>
+#IMAGE= 
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1941/05/25
+; 5-10% mobilization increase towards Axis
+#MOBILIZATION= [5,10] [1]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Axis has 1-2 units 1 hex from Sevastopol
+#CONDITION_POSITION= 212,96 [1,1] [1,2] [1] [0]
 }
 
 ; Allies take Rhodes
@@ -1660,7 +1884,7 @@
 #LINK= 0[0]
 #COUNTRY_ID= 111
 #TRIGGER= 50
-#DATE= 1941/08/25
+#DATE= 1939/09/01
 ; 10-20% mobilization increase towards Axis
 #MOBILIZATION= [10,20] [1]
 ; Set variable conditions:
@@ -1683,7 +1907,7 @@
 #LINK= 0[0]
 #COUNTRY_ID= 111
 #TRIGGER= 50
-#DATE= 1941/08/25
+#DATE= 1939/09/01
 ; 10-20% mobilization increase towards Axis
 #MOBILIZATION= [10,20] [1]
 ; Set variable conditions:
@@ -1755,8 +1979,37 @@
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #DATE= 1940/01/01
-; 2-4% activation increase towards Allies
-#MOBILIZATION= [2,4] [2]
+; 1-2% activation increase towards Allies
+#MOBILIZATION= [1,2] [2]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Axis land 1 unit in the UK within 10 hexes of Manchester
+#CONDITION_POSITION= 142,72 [10,10] [1,1] [1] [0]
+}
+
+;REMOVE1942
+;
+; Axis land units in UK resulting in a
+; 1-2% increase in USA activation towards Allies:
+{
+#NAME= ALLIED AI: Axis Units In The UK (USA->Allies) Expert level
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 2
+#LEVEL= 4
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1940/01/01
+; 1-2% activation increase towards Allies
+#MOBILIZATION= [1,2] [2]
 ; Set variable conditions:
 ; 1st Line - Germany politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]

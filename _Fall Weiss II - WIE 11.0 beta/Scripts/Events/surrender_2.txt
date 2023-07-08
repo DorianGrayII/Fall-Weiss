@@ -252,6 +252,33 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+;REMOVE1942
+;
+{
+#NAME= DE 198 - British And Soviet Forces Launch Operation Countenance (Historical)
+#POPUP= <<TAG_1>>
+#IMAGE= operationcountenance.png
+#SOUND= combat1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 198[1]
+#COUNTRY_ID= 82
+#RECIPIENT_ID= 116
+#ARMISTICE= 0
+#REMOVE= 3
+#TRIGGER= 100
+#DATE= 1941/08/26
+; Set variable conditions:
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
 ;REMOVE1940
 ;
 {
@@ -270,7 +297,7 @@
 #ARMISTICE= 0
 #REMOVE= 3
 #TRIGGER= 100
-#DATE= 1940/04/14
+#DATE= 1940/04/03
 ; Set variable conditions:
 ; 1st Line - Germany politically aligned with Axis and not surrendered
 ; 2nd Line - Denmark politically aligned with Allies (not fully active) and not surrendered
@@ -385,6 +412,34 @@
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; 3 German units within 15 hexes of Rome
 #CONDITION_POSITION= 171,101 [15,15] [3,3] [1] [45]
+}
+
+{
+#NAME= DE 371 Italy Surrenders (Italy -> USA) (100%)
+#POPUP= <<TAG_12>>
+#IMAGE=
+#SOUND= italy_surrender.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 371[1]
+#COUNTRY_ID= 59
+#RECIPIENT_ID= 115
+#ARMISTICE= 0
+#REMOVE= 3
+#TRIGGER= 100
+#DATE= 1939/09/01
+; Set variable conditions:
+; 1st Line - USA politically aligned with Allies and not surrendered
+; 2nd Line - Italy polically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; 1st Line - No German unit in Rome
+#CONDITION_POSITION= 171,101 [0,0] [0,0] [1] [45]
 }
 
 {

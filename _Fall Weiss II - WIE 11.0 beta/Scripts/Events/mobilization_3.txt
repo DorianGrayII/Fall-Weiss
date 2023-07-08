@@ -26,10 +26,10 @@
 ;        3 = Event fires once if all other fields are satisfied, else it will not fire.  Either way, event will be removed never to be looked at again
 ; #AI= Values range [0, 4]
 ;      0 = Event fires whenever all fields are satisfied for any game type
-;      1 = Event fires whenever all fields are satisfied, for AI games only, and only on the Axis AI turn
-;      2 = Event fires whenever all fields are satisfied, for AI games only, and only on the Allied AI turn
-;      3 = Event fires whenever all fields are satisfied, for AI and Multiplayer games only, and only on the Axis AI or on the Allied Multiplayer turns
-;      4 = Event fires whenever all fields are satisfied, for AI and Multiplayer games only, and only on the Allied AI or on the Axis Multiplayer turns
+;      1 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis
+;      2 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied
+;      3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player, or on Allied Multiplayer turns
+;      4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player, or on Axis Multiplayer turns
 ; #LEVEL= What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
 ;         Values: [0, 4]; Green= 0; Novice= 1; Intermediate= 2; Veteran= 3; Expert= 4
 ; #GV= Does the event activate based on the Global Variable values assigned?
@@ -971,16 +971,16 @@
 #FLAG= 1
 #TYPE= 1
 #AI= 0
-#LEVEL= 0
-#GV= 8[1,50]
+#GV= 8[1,33]
 #LINK= 204[1]
+#LEVEL= 0
 #COUNTRY_ID= 39
 #TRIGGER= 100
 #DATE= 1940/03/12
 ; 10-15% mobilization increase towards Allies
 #MOBILIZATION= [10,15] [2]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with Axis and not surrendered
+; 1st Line - Finland politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 39 [1] [0] [0]
 }
 
@@ -1147,6 +1147,50 @@
 #DATE= 1940/03/01
 ;7-10% activation increase towards Allies
 #MOBILIZATION= [7,10] [2]
+;Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; Event for increased USSR activation:
+{
+#NAME= USSR Annexes Lithuania (1)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 457[1]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/09/01
+;7-10% activation increase towards Axis
+#MOBILIZATION= [7,10] [1]
+;Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; Event for increased USSR activation:
+{
+#NAME= USSR Annexes Lithuania (2)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 458[1]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/09/01
+;7-10% activation increase towards Axis
+#MOBILIZATION= [7,10] [1]
 ;Set variable conditions:
 ; 1st Line - Germany politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -1958,6 +2002,10 @@
 #VARIABLE_CONDITION= 105 [2] [100] [1]
 #VARIABLE_CONDITION= 56 [1] [100] [0]
 }
+
+;================================================================
+;               Fall Weiss II Events
+;================================================================
 
 {
 #NAME= DE 825 - UK Blockades (Turkey->Axis)

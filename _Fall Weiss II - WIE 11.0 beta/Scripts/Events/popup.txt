@@ -8,6 +8,7 @@
 ; {
 ; #NAME= Event name (this will be shown as a selectable event under an OPTIONS screen within the game)
 ; #POPUP= Event popup text (this will be displayed when the event occurs)
+; #MESSAGE= Message body text (this will be displayed when the event occurs)
 ; #IMAGE= Event image that will be displayed when event occurs
 ;         PNG images must be 736x418 or 368x418 pixels, see 'Extras' folder for sample images and frames
 ;         Multiple pictures can be used by using a ',' to separate them
@@ -26,10 +27,10 @@
 ;        3 = Event fires once if all other fields are satisfied, else it will not fire.  Either way, event will be removed never to be looked at again
 ; #AI= Values range [0, 4]
 ;      0 = Event fires whenever all fields are satisfied for any game type
-;      1 = Event fires whenever all fields are satisfied, for AI games only, and only on the Axis AI turn
-;      2 = Event fires whenever all fields are satisfied, for AI games only, and only on the Allied AI turn
-;      3 = Event fires whenever all fields are satisfied, for AI and Multiplayer games only, and only on the Axis AI or on the Allied Multiplayer turns
-;      4 = Event fires whenever all fields are satisfied, for AI and Multiplayer games only, and only on the Allied AI or on the Axis Multiplayer turns
+;      1 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis
+;      2 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied
+;      3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player, or on Allied Multiplayer turns
+;      4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player, or on Axis Multiplayer turns
 ; #LEVEL= What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
 ;         Values: [0, 4]; Green= 0; Novice= 1; Intermediate= 2; Veteran= 3; Expert= 4
 ; #GV= Does the event activate based on the Global Variable values assigned?
@@ -45,10 +46,43 @@
 ;        Example C) #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
 ; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
 ; #COUNTRY_ID= Country ID associated with this event (use #COUNTRY_ID= 0 for generic popup)
-; #DISPLAY_ORDER= When do we display this popup event? (values range [0, 2]; End of Turn= 0; Beginning of Turn= 1; Deployment Phase= 2)
-; #DISPLAY_TURN= On what turn do we display this popup event? (values range [0, 2]; Any= 0; Axis Turn= 1; Allied Turn= 2)
-; #DISPLAY_STYLE= Display with or without the #POPUP text shown as a header overtop displayed #IMAGE (values range [0, 1]; No Header= 0; Header= 1)
-; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
+; #PRIVATE= Should the event remain private to the side receiving it? (values range [0, 1]; False= 0; True= 1)
+; #DISPLAY_ORDER= Values range [0, 2];
+;         When do we display this popup event:
+;         0 = End of Turn
+;         1 = Beginning of Turn
+;         2 = Deployment Phase
+; #DISPLAY_TURN= Values range [0, 2];
+;         On what turn do we display this popup event:
+;         0 = Any
+;         1 = Axis Turn
+;         2 = Allied Turn
+; #DISPLAY_STYLE= What type of display style for the #POPUP banner text area?
+;                 0 = default style, simple text with small national flags relative to #COUNTRY_ID on either side of text 
+;                     (this default can be used with #MESSAGE body text and/or #IMAGE and #SOUND
+;                 1 = major header, larger text with no national flags on either side of text 
+;                     (only if #IMAGE used, otherwise will default to default style = 0)
+;              2.xx = mouse hover popup style where xx refers to the sprite index of the symbol_sprites.png file that will be shown at #MAP_POSITION.  
+;                     More than one #MAP_POSITION can be set for #DISPLAY_STYLE = 2.xx
+;                     (e.g. 2.24 indicating the 24th sprite in the symbol_sprites.png file).
+;                     #TRIGGER and #DISPLAY_ORDER will not be checked/applied when #DISPLAY_STYLE is 2.xx.
+;                     Display of symbol sprite will follow the logic of the POPUP event, 
+;                          e.g. if #DISPLAY_TURN and #AI = 0, then the map symbol will show on all turns.
+;                     If #DISPLAY_TURN value > 0, 
+;                          e.g. only show on Axis or Allied turns, 
+;                     #PRIVATE= 1 can be used to hide the display of the symbol sprite when 'Hide/Show Map Info' is disabled in game.
+; #MESSAGE_STYLE= What type of #MESSAGE body style will be shown?
+;                 0 = default style (no large national flags or symbols shown in the #MESSAGE body text area)
+;				  1 = large national flag in upper right corner relative to #COUNTRY_ID
+;		          2 = large national flag in upper right corner w/ national symbol shown in upper middle of the #MESSAGE body text area
+;		          3 = #MESSAGE body text will be displayed in the bottom half w/ large national flag in lower left bottom half as well 
+; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd).
+; #TEXT_RGB= Text color for the decision event
+;            Format: red, green, blue (values range [0, 255])
+; #SHADOW_RGB= Shadow color for the decision event text (NOT USED IN SC3)
+;              Format: red, green, blue (values range [0, 255])
+; #MAP_POSITION= Position that the POPUP event will center over when the event fires.
+;                A #MAP_POSITION does not have to be specified and can be left blank.
 ; #ALIGNMENT_POSITION= Position that must be under the control of the selected side in order for the event to occur
 ;                      Format: x,y; political_alignment [values are 0, 1 or 2]
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
@@ -62,9 +96,19 @@
 ;
 ; Each event must be preceded by a '{' and end with a '}'
 ;
+; #MESSAGE field supports the following special characters:
+; %N = newline or carriage return
+; %T = horizontal tab
+; %R = right align text, must be applied at the beginning of a newline, otherwise it will be ignored
+; %C = center align text, must be applied at the beginning of a newline, otherwise it will be ignored
+; %B = bold text, must be applied for each word you wish to bold
+; %V = italic text, must be applied for each word you wish to italicize
+;
 ; Use the reference values provided for #COUNTRY_ID and not the country names 
 ;
 ; If #DISPLAY_ORDER= 2 (Deployment Phase) then the #DATE value is ignored as it is not applicable.
+;
+; If #DATE has an added [=] at the end then it will only apply for the current year specified, e.g. #DATE= 1939/09/01 [=]
 ;
 ; #ALIGNMENT_POSITION - Can refer to either land or a coastal hexes. More than one position can be set.
 ; Each #ALIGNMENT_POSITION will be read with AND logic.
@@ -80,6 +124,14 @@
 ; If the 'aligned_country_id' flag is set to 0 then it will check for any Axis or Allied country as
 ; determined by the alignment flag.
 ; Each #CONDITION_POSITION line will be read using OR logic.
+;
+; If #CONDITION_POSITION has an added [<] at the end then it will look for a unit count less than the [min_units, max_units] range, e.g. 
+; Axis have less than 4 units within 10 hexes of Warsaw
+; #CONDITION_POSITION= 188,76 [10,10] [4,4] [1] [0] [<]
+;
+; If #CONDITION_POSITION has an added <unit_id, ...> then it will only consider the specified UNIT_ID types, e.g.
+; Axis have an Army or Tank unit within 10 hexes of Warsaw
+; #CONDITION_POSITION= 188,76 [10,10] [1,1] [1] [0] <5,26>
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -271,6 +323,331 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+;REMOVE1942
+;
+{
+#NAME= Allied Mediterranean Positions - Gibraltar (1)
+#POPUP=
+#MESSAGE= <<TAG_181>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 3
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 2.15
+#MESSAGE_STYLE= 0
+#DATE= 1939/09/01
+#TEXT_RGB= 255,255,255
+#SHADOW_RGB= 0,0,0 
+#MAP_POSITION= 136,114
+; Gibraltar is in Allied hands 
+#ALIGNMENT_POSITION= 136,114 [2]
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+} 
+
+;REMOVE1942
+;
+{
+#NAME= Allied Mediterranean Positions - Gibraltar (2)
+#POPUP=
+#MESSAGE= <<TAG_181>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 3
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 2.14
+#MESSAGE_STYLE= 0
+#DATE= 1939/09/01
+#TEXT_RGB= 255,255,255
+#SHADOW_RGB= 0,0,0 
+#MAP_POSITION= 136,114
+; Gibraltar is in Allied hands 
+#ALIGNMENT_POSITION= 136,114 [2]
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; UK abandons Gibraltar
+#CONDITION_POSITION= 136,114 [0,0] [0,0] [2] [0]
+} 
+
+;REMOVE1942
+;
+{
+#NAME= Allied Mediterranean Positions - Malta (1)
+#POPUP=
+#MESSAGE= <<TAG_181>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 3
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 2.15
+#MESSAGE_STYLE= 0
+#DATE= 1939/09/01
+#TEXT_RGB= 255,255,255
+#SHADOW_RGB= 0,0,0 
+#MAP_POSITION= 175,114
+; Malta is in Allied hands 
+#ALIGNMENT_POSITION= 175,114 [2]
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+} 
+
+;REMOVE1942
+;
+{
+#NAME= Allied Mediterranean Positions - Malta (2)
+#POPUP=
+#MESSAGE= <<TAG_181>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 3
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 2.14
+#MESSAGE_STYLE= 0
+#DATE= 1939/09/01
+#TEXT_RGB= 255,255,255
+#SHADOW_RGB= 0,0,0 
+#MAP_POSITION= 175,114
+; Malta is in Allied hands 
+#ALIGNMENT_POSITION= 175,114 [2]
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; UK abandons Malta
+#CONDITION_POSITION= 175,114 [0,0] [0,0] [2] [0]
+} 
+
+;REMOVE1942
+;
+{
+#NAME= Allied Mediterranean Positions - Cairo (1)
+#POPUP=
+#MESSAGE= <<TAG_182>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 3
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 2.15
+#MESSAGE_STYLE= 0
+#DATE= 1939/09/01
+#TEXT_RGB= 255,255,255
+#SHADOW_RGB= 0,0,0 
+#MAP_POSITION= 208,126
+; Cairo is in Allied hands 
+#ALIGNMENT_POSITION= 208,126 [2]
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+} 
+
+;REMOVE1942
+;
+{
+#NAME= Allied Mediterranean Positions - Cairo (2)
+#POPUP=
+#MESSAGE= <<TAG_182>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 3
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 2.14
+#MESSAGE_STYLE= 0
+#DATE= 1939/09/01
+#TEXT_RGB= 255,255,255
+#SHADOW_RGB= 0,0,0 
+#MAP_POSITION= 208,126
+; Cairo is in Allied hands 
+#ALIGNMENT_POSITION= 208,126 [2]
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; UK abandons Cairo
+#CONDITION_POSITION= 208,126 [5,5] [0,0] [2] [0]
+} 
+
+;REMOVE1942
+;
+{
+#NAME= Allied Mediterranean Positions - Tunis (1)
+#POPUP=
+#MESSAGE= <<TAG_182>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 3
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 40
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 2.15
+#MESSAGE_STYLE= 0
+#DATE= 1939/09/01
+#TEXT_RGB= 255,255,255
+#SHADOW_RGB= 0,0,0 
+#MAP_POSITION=  167,112
+; Tunis is in Allied hands 
+#ALIGNMENT_POSITION= 167,112 [2]
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+} 
+
+;REMOVE1942
+;
+{
+#NAME= Allied Mediterranean Positions - Tunis (2)
+#POPUP=
+#MESSAGE= <<TAG_182>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 3
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 40
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 2.14
+#MESSAGE_STYLE= 0
+#DATE= 1939/09/01
+#TEXT_RGB= 255,255,255
+#SHADOW_RGB= 0,0,0 
+#MAP_POSITION=  167,112
+; Tunis is in Allied hands 
+#ALIGNMENT_POSITION= 167,112 [2]
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; France abandons Tunis
+#CONDITION_POSITION= 167,112 [5,5] [0,0] [2] [0]
+} 
+
+;REMOVE1942
+;
+{
+#NAME= Allied Mediterranean Positions - Damascus (1)
+#POPUP=
+#MESSAGE= <<TAG_182>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 3
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 40
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 2.15
+#MESSAGE_STYLE= 0
+#DATE= 1939/09/01
+#TEXT_RGB= 255,255,255
+#SHADOW_RGB= 0,0,0 
+#MAP_POSITION= 218,119
+; Damascus is in Allied hands 
+#ALIGNMENT_POSITION= 218,119 [2]
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+} 
+
+;REMOVE1942
+;
+{
+#NAME= Allied Mediterranean Positions - Damascus (2)
+#POPUP=
+#MESSAGE= <<TAG_182>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 3
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 40
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 2.14
+#MESSAGE_STYLE= 0
+#DATE= 1939/09/01
+#TEXT_RGB= 255,255,255
+#SHADOW_RGB= 0,0,0 
+#MAP_POSITION= 218,119
+; Damascus is in Allied hands 
+#ALIGNMENT_POSITION= 218,119 [2]
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; France abandons Damascus
+#CONDITION_POSITION= 218,119 [5,5] [0,0] [2] [0]
+} 
+
 ; Informing the Axis Player of the potential gains from raiding
 {
 #NAME= ALLIED AI: Axis Coastal Raiding/Shipping Information (1)
@@ -311,6 +688,7 @@
 #MESSAGE=
 #IMAGE= german_report_finland1.png
 #SOUND= teletype_1.ogg, teletype_2.ogg
+; Turned off for Fall Weiss II
 #FLAG= 0
 #TYPE= 1
 #AI= 4
@@ -346,6 +724,7 @@
 #MESSAGE=
 #IMAGE= german_report_finland2.png
 #SOUND= teletype_1.ogg, teletype_2.ogg
+; Turned off for Fall Weiss II
 #FLAG= 0
 #TYPE= 1
 #AI= 4
@@ -444,7 +823,7 @@
 ;
 {
 #NAME= ALLIED AI: German/Soviet Front Garrison Report 1940
-#POPUP= Report To The German High Command
+#POPUP= <<TAG_3>>
 #MESSAGE=
 #IMAGE= german_report_1940_1.png
 #SOUND= report.ogg
@@ -465,25 +844,149 @@
 #MESSAGE_STYLE= 0
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/02/23
+#MAP_POSITION= 188,76
+#DATE= 1940/01/01 [=]
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis have no units within 10 hexes of Warsaw
-#CONDITION_POSITION= 188,76 [10,10] [0,0] [1] [0]
+; Axis have less than 2 units within 10 hexes of Warsaw
+#CONDITION_POSITION= 188,76 [10,10] [2,2] [1] [0] [<]
 }
 
 ;REMOVE1941
 ;
 {
+#NAME= ALLIED AI: German/Soviet Front Garrison Report 1940
+#POPUP= 
+#MESSAGE= <<TAG_178>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 4
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 1
+#DISPLAY_STYLE= 2.15
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION= 186,74
+#MAP_POSITION= 189,66
+#MAP_POSITION= 191,67
+#MAP_POSITION= 193,68
+#MAP_POSITION= 195,69
+#MAP_POSITION= 197,70
+#MAP_POSITION= 198,72
+#MAP_POSITION= 198,74
+#MAP_POSITION= 198,76
+#MAP_POSITION= 198,78
+#MAP_POSITION= 198,80
+#MAP_POSITION= 197,81
+#MAP_POSITION= 195,82
+#MAP_POSITION= 193,83
+#MAP_POSITION= 191,84
+#MAP_POSITION= 189,85
+#MAP_POSITION= 187,85
+#MAP_POSITION= 185,84
+#MAP_POSITION= 183,83
+#MAP_POSITION= 181,82
+#MAP_POSITION= 179,81
+#MAP_POSITION= 178,80
+#MAP_POSITION= 178,78
+#MAP_POSITION= 178,76
+#MAP_POSITION= 178,74
+#MAP_POSITION= 178,72
+#MAP_POSITION= 179,70
+#MAP_POSITION= 181,69
+#DATE= 1940/01/01 [=]
+; Berlin is in Axis hands
+#ALIGNMENT_POSITION= 173,74 [1]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Dummy Condition Position
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1941
+;
+{
+#NAME= ALLIED AI: German/Soviet Front Garrison Report 1940
+#POPUP=
+#MESSAGE= <<TAG_178>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 4
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 1
+#DISPLAY_STYLE= 2.14
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION= 186,74
+#MAP_POSITION= 189,66
+#MAP_POSITION= 191,67
+#MAP_POSITION= 193,68
+#MAP_POSITION= 195,69
+#MAP_POSITION= 197,70
+#MAP_POSITION= 198,72
+#MAP_POSITION= 198,74
+#MAP_POSITION= 198,76
+#MAP_POSITION= 198,78
+#MAP_POSITION= 198,80
+#MAP_POSITION= 197,81
+#MAP_POSITION= 195,82
+#MAP_POSITION= 193,83
+#MAP_POSITION= 191,84
+#MAP_POSITION= 189,85
+#MAP_POSITION= 187,85
+#MAP_POSITION= 185,84
+#MAP_POSITION= 183,83
+#MAP_POSITION= 181,82
+#MAP_POSITION= 179,81
+#MAP_POSITION= 178,80
+#MAP_POSITION= 178,78
+#MAP_POSITION= 178,76
+#MAP_POSITION= 178,74
+#MAP_POSITION= 178,72
+#MAP_POSITION= 179,70
+#MAP_POSITION= 181,69
+#DATE= 1940/01/01 [=]
+; Berlin is in Axis hands
+#ALIGNMENT_POSITION= 173,74 [1]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Axis have less than 2 units within 10 hexes of Warsaw
+#CONDITION_POSITION= 188,76 [10,10] [2,2] [1] [0] [<]
+}
+
+;REMOVE1942
+;
+{
 #NAME= ALLIED AI: German/Soviet Front Garrison Report 1941
-#POPUP= Report To The German High Command
+#POPUP= <<TAG_3>>
 #MESSAGE=
 #IMAGE= german_report_1941_1.png
 #SOUND= report.ogg
-#FLAG= 0
+#FLAG= 1
 #TYPE= 2
 #AI= 4
 #LEVEL= 0
@@ -500,16 +1003,200 @@
 #MESSAGE_STYLE= 0
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1941/01/03
+#MAP_POSITION= 188,76
+#DATE= 1941/01/01
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis have no units in or adjacent Tilsit OR
-#CONDITION_POSITION= 190,67 [3,3] [0,0] [1] [0]
-; Axis have no units in or adjacent Siedlice OR
-#CONDITION_POSITION= 190,76 [2,2] [0,0] [1] [0]
+; Axis have less than 4 units within 10 hexes of Warsaw
+#CONDITION_POSITION= 188,76 [10,10] [4,4] [1] [0] [<]
+}
+
+;REMOVE1942
+;
+{
+#NAME= ALLIED AI: German/Soviet Front Garrison Report 1941
+#POPUP= 
+#MESSAGE= <<TAG_179>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 4
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value
+#LINK= 600[1]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 1
+#DISPLAY_STYLE= 2.15
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION= 186,74
+#MAP_POSITION= 189,66
+#MAP_POSITION= 191,67
+#MAP_POSITION= 193,68
+#MAP_POSITION= 195,69
+#MAP_POSITION= 197,70
+#MAP_POSITION= 198,72
+#MAP_POSITION= 198,74
+#MAP_POSITION= 198,76
+#MAP_POSITION= 198,78
+#MAP_POSITION= 198,80
+#MAP_POSITION= 197,81
+#MAP_POSITION= 195,82
+#MAP_POSITION= 193,83
+#MAP_POSITION= 191,84
+#MAP_POSITION= 189,85
+#MAP_POSITION= 187,85
+#MAP_POSITION= 185,84
+#MAP_POSITION= 183,83
+#MAP_POSITION= 181,82
+#MAP_POSITION= 179,81
+#MAP_POSITION= 178,80
+#MAP_POSITION= 178,78
+#MAP_POSITION= 178,76
+#MAP_POSITION= 178,74
+#MAP_POSITION= 178,72
+#MAP_POSITION= 179,70
+#MAP_POSITION= 181,69
+#DATE= 1941/01/01
+; Berlin is in Axis hands
+#ALIGNMENT_POSITION= 173,74 [1]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Dummy Condition Position
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1942
+;
+{
+#NAME= ALLIED AI: German/Soviet Front Garrison Report 1941
+#POPUP=
+#MESSAGE= <<TAG_179>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 4
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 1
+#DISPLAY_STYLE= 2.14
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION= 186,74
+#MAP_POSITION= 189,66
+#MAP_POSITION= 191,67
+#MAP_POSITION= 193,68
+#MAP_POSITION= 195,69
+#MAP_POSITION= 197,70
+#MAP_POSITION= 198,72
+#MAP_POSITION= 198,74
+#MAP_POSITION= 198,76
+#MAP_POSITION= 198,78
+#MAP_POSITION= 198,80
+#MAP_POSITION= 197,81
+#MAP_POSITION= 195,82
+#MAP_POSITION= 193,83
+#MAP_POSITION= 191,84
+#MAP_POSITION= 189,85
+#MAP_POSITION= 187,85
+#MAP_POSITION= 185,84
+#MAP_POSITION= 183,83
+#MAP_POSITION= 181,82
+#MAP_POSITION= 179,81
+#MAP_POSITION= 178,80
+#MAP_POSITION= 178,78
+#MAP_POSITION= 178,76
+#MAP_POSITION= 178,74
+#MAP_POSITION= 178,72
+#MAP_POSITION= 179,70
+#MAP_POSITION= 181,69
+#DATE= 1941/01/01
+; Berlin is in Axis hands
+#ALIGNMENT_POSITION= 173,74 [1]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Axis have less than 4 units within 10 hexes of Warsaw
+#CONDITION_POSITION= 188,76 [10,10] [4,4] [1] [0] [<]
+}
+
+;REMOVE1941
+;
+{
+#NAME= ALLIED AI: German/Soviet Front Garrison Report 1941 (more than 18 units)
+#POPUP=
+#MESSAGE= <<TAG_180>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 4
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 1
+#DISPLAY_STYLE= 2.14
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION= 186,74
+#MAP_POSITION= 189,66
+#MAP_POSITION= 191,67
+#MAP_POSITION= 193,68
+#MAP_POSITION= 195,69
+#MAP_POSITION= 197,70
+#MAP_POSITION= 198,72
+#MAP_POSITION= 198,74
+#MAP_POSITION= 198,76
+#MAP_POSITION= 198,78
+#MAP_POSITION= 198,80
+#MAP_POSITION= 197,81
+#MAP_POSITION= 195,82
+#MAP_POSITION= 193,83
+#MAP_POSITION= 191,84
+#MAP_POSITION= 189,85
+#MAP_POSITION= 187,85
+#MAP_POSITION= 185,84
+#MAP_POSITION= 183,83
+#MAP_POSITION= 181,82
+#MAP_POSITION= 179,81
+#MAP_POSITION= 178,80
+#MAP_POSITION= 178,78
+#MAP_POSITION= 178,76
+#MAP_POSITION= 178,74
+#MAP_POSITION= 178,72
+#MAP_POSITION= 179,70
+#MAP_POSITION= 181,69
+#DATE= 1941/01/01
+; Berlin is in Axis hands
+#ALIGNMENT_POSITION= 173,74 [1]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Axis have more than 18 units within 10 hexes of Warsaw
+#CONDITION_POSITION= 188,76 [10,10] [19,19] [1] [0]
 }
 
 ;REMOVE1944
@@ -571,7 +1258,7 @@
 #MESSAGE_STYLE= 0
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-#MAP_POSITION=
+#MAP_POSITION= 180,95
 #DATE= 1941/01/01
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
@@ -802,7 +1489,7 @@
 #MESSAGE_STYLE= 0
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-#MAP_POSITION=
+#MAP_POSITION= 170,99
 #DATE= 1940/01/01
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
@@ -936,6 +1623,109 @@
 ; Paris is in Allied hands
 #ALIGNMENT_POSITION= 151,84 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1941
+;
+{
+#NAME= AXIS AI: Italian Mobilization Trigger Zone (Naval)
+#POPUP=
+#MESSAGE= <<TAG_183>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 3
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 2.3
+#MESSAGE_STYLE= 0
+#DATE= 1939/09/01
+#TEXT_RGB= 255,255,255
+#SHADOW_RGB= 0,0,0 
+#MAP_POSITION= 194,110
+#MAP_POSITION= 195,110
+#MAP_POSITION= 195,111
+#MAP_POSITION= 195,112
+#MAP_POSITION= 195,113
+#MAP_POSITION= 195,114
+#MAP_POSITION= 195,116
+#MAP_POSITION= 195,117
+#MAP_POSITION= 195,118
+#MAP_POSITION= 195,119
+#MAP_POSITION= 195,120
+#MAP_POSITION= 167,100
+#MAP_POSITION= 166,101
+#MAP_POSITION= 164,103
+#MAP_POSITION= 162,104
+#MAP_POSITION= 161,104
+#MAP_POSITION= 160,105
+#MAP_POSITION= 159,105
+#MAP_POSITION= 159,106
+#MAP_POSITION= 159,107
+#MAP_POSITION= 159,108
+#MAP_POSITION= 159,109
+#MAP_POSITION= 159,110
+#MAP_POSITION= 159,111
+; Berlin is in Axis hands 
+#ALIGNMENT_POSITION= 173,74 [1]
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1941
+;
+{
+#NAME= AXIS AI: Italian Mobilization Trigger Zone (Amphibious)
+#POPUP=
+#MESSAGE= <<TAG_184>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 3
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 2.3
+#MESSAGE_STYLE= 0
+#DATE= 1939/09/01
+#TEXT_RGB= 255,255,255
+#SHADOW_RGB= 0,0,0 
+#MAP_POSITION= 207,113
+#MAP_POSITION= 207,114
+#MAP_POSITION= 207,115
+#MAP_POSITION= 207,116
+#MAP_POSITION= 207,117
+#MAP_POSITION= 207,118
+#MAP_POSITION= 207,119
+#MAP_POSITION= 207,120
+#MAP_POSITION= 207,121
+#MAP_POSITION= 207,122
+#MAP_POSITION= 147,105
+#MAP_POSITION= 147,106
+#MAP_POSITION= 147,107
+#MAP_POSITION= 147,108
+#MAP_POSITION= 147,109
+#MAP_POSITION= 147,110
+#MAP_POSITION= 147,111
+#MAP_POSITION= 147,112
+#MAP_POSITION= 147,113
+; Berlin is in Axis hands 
+#ALIGNMENT_POSITION= 173,74 [1]
+#VARIABLE_CONDITION= 59 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -1245,6 +2035,81 @@
 }
 
 {
+#NAME= AXIS AI: Report On Spain's Close Links To The Axis
+#POPUP= <<TAG_2>>
+#MESSAGE=
+#IMAGE= usa_communication_spain1.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1939/09/01
+; Paris is in Axis hands
+#ALIGNMENT_POSITION= 151,84 [1]
+; 1st Line - France politically aligned with Allies and surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; 2nd Line - Spain politically aligned with Axis but not fully mobilized
+#VARIABLE_CONDITION= 99 [1] [20] [0]
+; 3rd Line - USA politically aligned with Allies and fully mobilized
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; No Allied units within 5 hexes of Bayonne
+#CONDITION_POSITION= 144,98 [5,5] [0,0] [2] [0]
+; No Allied units within 5 hexes of Madrid
+#CONDITION_POSITION= 139,104 [5,5] [0,0] [2] [0]
+}
+
+{
+#NAME= AXIS AI: Report On The Importance Of Sweden's Political Status
+#POPUP= <<TAG_2>>
+#MESSAGE=
+#IMAGE= usa_communication_sweden1.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1943/01/01
+; Ottawa is in Allied hands
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 103 [1] [0] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
 #NAME= AXIS AI: Advice To The British To Invest In Diplomacy In Spain
 #POPUP= Strategic Advice
 #MESSAGE=
@@ -1305,6 +2170,99 @@
 #ALIGNMENT_POSITION= 216,123 [2]
 #VARIABLE_CONDITION= 111 [1] [55] [0]
 ; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1941
+{
+#NAME= AXIS AI: USSR STAVKA Report
+#POPUP= <<TAG_7>>
+#MESSAGE=
+#IMAGE= soviet_communication_1939_1.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#GV= 1[1,100]
+#LINK= 600[1]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1939/09/01
+; Ottawa is in Allied hands
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 85 [2] [100] [1]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1940
+{
+#NAME= AXIS AI: USSR STAVKA Report
+#POPUP= <<TAG_7>>
+#MESSAGE=
+#IMAGE= soviet_communication_1939_2.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#GV= 1[1,100]
+#LINK= 406[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1939/09/01
+; Ottawa is in Allied hands
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 85 [2] [100] [1]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1940
+{
+#NAME= AXIS AI: USSR STAVKA Report
+#POPUP= <<TAG_7>>
+#MESSAGE=
+#IMAGE= soviet_communication_1939_2.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#GV= 1[1,100]
+#LINK= 600[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1939/09/01
+; Ottawa is in Allied hands
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 85 [2] [100] [1]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -1631,7 +2589,7 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1944/01/01
+#DATE= 1943/01/01
 ; Madrid is in Axis hands
 #ALIGNMENT_POSITION= 139,104 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -2582,7 +3540,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -2655,7 +3613,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -2689,7 +3647,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #PRIVATE= 0
@@ -2729,7 +3687,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #PRIVATE= 0
@@ -2769,7 +3727,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 85
 #TRIGGER= 100
 #PRIVATE= 0
@@ -2847,7 +3805,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 99
 #TRIGGER= 100
 #PRIVATE= 0
@@ -2868,6 +3826,47 @@ Replacement Script
 
 ;REMOVE1941
 ;
+; Wolfram Exports
+{
+#NAME= Germany Imports Wolfram And Other Goods From Spain (Historical)
+#POPUP= <<TAG_45>>
+#MESSAGE=
+#IMAGE=
+#SOUND=
+; Turned off for Fall Weiss II
+#FLAG= 0
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 173[1]
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1939/09/01
+; Paris is in Axis hands
+#ALIGNMENT_POSITION= 151,84 [1]
+; 1st Line - France politically aligned with Allies and surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; 2nd Line - Spain politically aligned with Axis but not fully mobilized
+#VARIABLE_CONDITION= 99 [1] [20] [0]
+; No Allied units within 5 hexes of Bayonne
+#CONDITION_POSITION= 144,98 [5,5] [0,0] [2] [0]
+; No Allied units within 5 hexes of Madrid
+#CONDITION_POSITION= 139,104 [5,5] [0,0] [2] [0]
+}
+
+;REMOVE1941
+;
 ; Tripartite Pact:
 ; Historical date of event was 1940/09/27
 {
@@ -2883,7 +3882,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -2953,7 +3952,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -2987,7 +3986,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 45
 #TRIGGER= 30
 #PRIVATE= 0
@@ -3024,7 +4023,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3062,7 +4061,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3098,7 +4097,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 57
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3243,7 +4242,7 @@ Replacement Script
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3273,7 +4272,7 @@ Replacement Script
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3302,7 +4301,7 @@ Replacement Script
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3331,7 +4330,7 @@ Replacement Script
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3350,7 +4349,7 @@ Replacement Script
 }
 
 {
-#NAME= The Allies Defeat The Japanese in Burma, Liberating Mandalay
+#NAME= General Slim Defeats The Japanese in Burma, Liberating Mandalay
 #POPUP= The Allies Defeat The Japanese in Burma, Liberating Mandalay
 #MESSAGE=
 #IMAGE= burma.png
@@ -3360,7 +4359,7 @@ Replacement Script
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3395,7 +4394,7 @@ Replacement Script
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 101
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3437,7 +4436,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3473,7 +4472,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3516,7 +4515,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3551,7 +4550,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3585,7 +4584,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3619,7 +4618,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3657,7 +4656,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3833,7 +4832,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 40
 #TRIGGER= 30
 #PRIVATE= 0
@@ -3868,7 +4867,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 35
 #PRIVATE= 0
@@ -3902,7 +4901,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -3935,7 +4934,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -3969,7 +4968,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4002,7 +5001,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4035,7 +5034,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 57
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4068,7 +5067,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 57
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4101,7 +5100,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 57
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4134,7 +5133,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 112
 #TRIGGER= 35
 #PRIVATE= 0
@@ -4167,7 +5166,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 85
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4200,7 +5199,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 45
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4233,7 +5232,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 91
 #TRIGGER= 50
 #PRIVATE= 0
@@ -4267,7 +5266,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 91
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4300,7 +5299,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 99
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4335,7 +5334,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 99
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4369,7 +5368,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 45
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4403,7 +5402,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4436,7 +5435,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4472,7 +5471,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 40
 #PRIVATE= 0
@@ -4506,7 +5505,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4539,7 +5538,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 45
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4573,7 +5572,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 45
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4606,7 +5605,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 112
 #TRIGGER= 10
 #PRIVATE= 0
@@ -4638,7 +5637,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 13
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4670,7 +5669,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 46
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4703,7 +5702,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 112
 #TRIGGER= 35
 #PRIVATE= 0
@@ -4736,7 +5735,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 35
 #PRIVATE= 0
@@ -4769,7 +5768,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 35
 #PRIVATE= 0
@@ -4802,7 +5801,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 3
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4835,7 +5834,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 21
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4868,7 +5867,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 21
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4902,7 +5901,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 91
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4935,7 +5934,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 40
 #PRIVATE= 0
@@ -4968,7 +5967,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5001,7 +6000,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 85
 #TRIGGER= 40
 #PRIVATE= 0
@@ -5034,7 +6033,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 112
 #TRIGGER= 35
 #PRIVATE= 0
@@ -5067,7 +6066,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 45
 #TRIGGER= 50
 #PRIVATE= 0
@@ -5100,7 +6099,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 45
 #TRIGGER= 75
 #PRIVATE= 0
@@ -5203,7 +6202,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5237,7 +6236,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5270,7 +6269,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5304,7 +6303,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5337,7 +6336,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5370,7 +6369,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5402,7 +6401,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #PRIVATE= 0
@@ -5435,7 +6434,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 116
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5506,7 +6505,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 112
 #TRIGGER= 40
 #PRIVATE= 0
@@ -5573,7 +6572,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 45
 #TRIGGER= 60
 #PRIVATE= 0
@@ -5606,7 +6605,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5639,7 +6638,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 19
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5672,7 +6671,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 40
 #PRIVATE= 0
@@ -5704,7 +6703,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 101
 #TRIGGER= 50
 #PRIVATE= 0
@@ -5739,7 +6738,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 78
 #TRIGGER= 100
 #PRIVATE= 0
@@ -5871,7 +6870,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 31
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5904,7 +6903,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 40
 #TRIGGER= 50
 #PRIVATE= 0
@@ -5970,7 +6969,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 40
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6003,7 +7002,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 40
 #TRIGGER= 100
 #PRIVATE= 0
@@ -6137,7 +7136,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 40
 #TRIGGER= 40
 #PRIVATE= 0
@@ -6171,7 +7170,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #PRIVATE= 0
@@ -6205,7 +7204,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 45
 #TRIGGER= 40
 #PRIVATE= 0
@@ -6238,7 +7237,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 40
 #PRIVATE= 0
@@ -6271,7 +7270,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6305,7 +7304,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 91
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6346,7 +7345,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6379,7 +7378,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 40
 #PRIVATE= 0
@@ -6412,7 +7411,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6445,7 +7444,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 75
 #PRIVATE= 0
@@ -6479,7 +7478,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 50
 #PRIVATE= 0
@@ -6512,7 +7511,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 5
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6545,7 +7544,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 65
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6578,7 +7577,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 16
 #TRIGGER= 100
 #PRIVATE= 0
@@ -6612,7 +7611,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 96
 #TRIGGER= 100
 #PRIVATE= 0
@@ -6645,7 +7644,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 113
 #TRIGGER= 50
 #PRIVATE= 0
@@ -6677,7 +7676,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 45
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6713,7 +7712,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6752,7 +7751,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -6785,7 +7784,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -6819,7 +7818,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -6852,7 +7851,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -6885,7 +7884,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -6918,7 +7917,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -6951,7 +7950,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -6984,7 +7983,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7017,7 +8016,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7050,7 +8049,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7083,7 +8082,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7116,7 +8115,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7149,7 +8148,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7183,7 +8182,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7216,7 +8215,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7249,7 +8248,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7281,7 +8280,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7313,7 +8312,7 @@ Replacement Script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 173[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7331,6 +8330,10 @@ Replacement Script
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
+
+; ================================================================
+;                            Fall Weiss II Events
+; ================================================================
 
 {
 #NAME= DE 876 - Germany Switches To War Economy To Boost Military Production

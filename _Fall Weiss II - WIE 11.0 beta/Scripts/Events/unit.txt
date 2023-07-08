@@ -47,7 +47,7 @@
 ; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
 ; #PRIVATE= Should this event #POPUP be included in the last turn summary screen?
 ;           Values: [0, 1]; No= 0; Yes= 1
-; #DISPLAY_TURN= On what turn do we display this popup event? 
+; #DISPLAY_TURN= On what turn do we display this event? 
 ;           Values [0, 2]; Any= 0; Axis Turn= 1; Allied Turn= 2
 ; #COUNTRY_ID= Country ID that will be owner of unit's in the event
 ; #FULL_RESEARCH= Do the units arrive with full applicable research (values range [0, 1]; True= 1; False= 0)
@@ -245,19 +245,19 @@
 ;
 ; #UNIT_ID_0= HQ
 ; #UNIT_ID_1= Garrison
-; #UNIT_ID_2= Brigade
-; #UNIT_ID_3= Division
-; #UNIT_ID_4= Corps
-; #UNIT_ID_5= Army
-; #UNIT_ID_6= Mechanized
+; #UNIT_ID_2= Infantry Division*
+; #UNIT_ID_3= Mechanized Division*
+; #UNIT_ID_4= Infantry Corps
+; #UNIT_ID_5= Infantry Army
+; #UNIT_ID_6= Mechanized Corps
 ; #UNIT_ID_7= Special Forces
 ; #UNIT_ID_8= Engineers
 ; #UNIT_ID_9= Paratroops
-; #UNIT_ID_10= Cavalry Brigade
+; #UNIT_ID_10= Mountain Division*
 ; #UNIT_ID_11= Cavalry Division
 ; #UNIT_ID_12= Cavalry Corps
 ; #UNIT_ID_13= Partisans
-; #UNIT_ID_14= Pillbox
+; #UNIT_ID_14= Shock Army
 ; #UNIT_ID_15= Anti-Air
 ; #UNIT_ID_16= Rocket Artillery
 ; #UNIT_ID_17= Artillery
@@ -268,9 +268,9 @@
 ; #UNIT_ID_22= Reconnaissance
 ; #UNIT_ID_23= Armored Train
 ; #UNIT_ID_24= Anti-Tank
-; #UNIT_ID_25= Light Tanks
-; #UNIT_ID_26= Tanks
-; #UNIT_ID_27= Heavy Tanks
+; #UNIT_ID_25= Tank Division*
+; #UNIT_ID_26= Tank Corps
+; #UNIT_ID_27= Tank Army*
 ; #UNIT_ID_28= Airships
 ; #UNIT_ID_29= Fighters
 ; #UNIT_ID_30= Tactical Bombers
@@ -525,6 +525,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 102[1]
+; UK(112)
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #PRIVATE= 0
@@ -582,6 +583,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 104[1]
+; Yugoslavia(120)
 #COUNTRY_ID= 120
 #TRIGGER= 100
 #PRIVATE= 0
@@ -610,6 +612,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 106[1]
+; India(54)
 #COUNTRY_ID= 54
 #TRIGGER= 100
 #PRIVATE= 0
@@ -639,7 +642,8 @@
 #GV= 1[1,100]
 #LINK= 107[1]
 #LEVEL= 0
-#COUNTRY_ID= 54
+; UK(112)
+#COUNTRY_ID= 112
 #TRIGGER= 100
 #PRIVATE= 0
 #DISPLAY_TURN= 0
@@ -668,7 +672,8 @@
 #GV= 1[1,100]
 #LINK= 107[1]
 #LEVEL= 0
-#COUNTRY_ID= 54
+; UK(112)
+#COUNTRY_ID= 112
 #TRIGGER= 100
 #PRIVATE= 0
 #DISPLAY_TURN= 0
@@ -697,7 +702,8 @@
 #GV= 1[1,100]
 #LINK= 107[0]
 #LEVEL= 0
-#COUNTRY_ID= 54
+; UK(112)
+#COUNTRY_ID= 112
 #TRIGGER= 100
 #PRIVATE= 0
 #DISPLAY_TURN= 0
@@ -726,7 +732,8 @@
 #GV= 1[1,100]
 #LINK= 107[0]
 #LEVEL= 0
-#COUNTRY_ID= 54
+; UK(112)
+#COUNTRY_ID= 112
 #TRIGGER= 100
 #PRIVATE= 0
 #DISPLAY_TURN= 0
@@ -754,6 +761,7 @@
 #GV= 1[1,100]
 #LINK= 109[1]
 #LEVEL= 0
+; UK(112)
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #PRIVATE= 0
@@ -781,6 +789,7 @@
 #GV= 1[1,100]
 #LINK= 110[1]
 #LEVEL= 0
+; UK(112)
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #PRIVATE= 0
@@ -810,6 +819,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 111[1]
+; UK(112)
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #PRIVATE= 0
@@ -821,7 +831,6 @@
 ;UK politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Axis unit in the UK
-#CONDITION_POSITION= 147,77 [20,20] [1,1] [1] [0]
 #CONDITION_POSITION= 147,77 [20,20] [1,1] [1] [0]
 #CONDITION_POSITION= 148,77 [2,2] [1,1] [1] [0] <47,48>
 #CONDITION_POSITION= 147,79 [1,2] [1,1] [1] [0] <47,48>
@@ -913,7 +922,7 @@
 ;
 ; images courtesy of Stephen Lewins, CART County Information Officer for Northumberland
 {
-#NAME= DE 111 - British L.D.V. In London
+#NAME= DE 111 - British LDV In London
 #POPUP= Local Defence Volunteers Mobilize In London
 #IMAGE= home_guard_1.png, home_guard_2.png, home_guard_3.png
 #SOUND=
@@ -941,7 +950,7 @@
 ;REMOVE1941
 ;
 {
-#NAME= DE 111 - British L.D.V. In Manchester
+#NAME= DE 111 - British LDV In Manchester
 #POPUP=
 #IMAGE= 
 #SOUND=
@@ -968,7 +977,7 @@
 ;REMOVE1941
 ;
 {
-#NAME= DE 111 - British L.D.V. In Glasgow
+#NAME= DE 111 - British LDV In Glasgow
 #POPUP=
 #IMAGE= 
 #SOUND=
@@ -995,7 +1004,7 @@
 ;REMOVE1941
 ;
 {
-#NAME= DE 111 - British L.D.V. In Edinburgh
+#NAME= DE 111 - British LDV In Edinburgh
 #POPUP=
 #IMAGE= 
 #SOUND=
@@ -1175,6 +1184,7 @@
 #GV= 1[1,100]
 #LINK= 200[1]
 #LEVEL= 0
+; France(40)
 #COUNTRY_ID= 40
 #TRIGGER= 100
 #PRIVATE= 0
@@ -1703,6 +1713,122 @@
 ; USSR Decision Events
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
+;REMOVE1941
+{
+#NAME= DE 1005 - Army at Leningrad
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 1005[1]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 1
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 206,52
+#DESTINATION_RESOURCE= 210,52
+; USSR politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Bulgaria politically aligned with Axis but not fully mobilized
+#VARIABLE_CONDITION= 19 [1] [0] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 5 [10] [0] []
+}
+
+;REMOVE1941
+{
+#NAME= DE 1005 - Army at Moscow
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 1005[1]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 1
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 221,65
+#DESTINATION_RESOURCE= 225,68
+; USSR politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Bulgaria politically aligned with Axis but not fully mobilized
+#VARIABLE_CONDITION= 19 [1] [0] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 5 [10] [0] []
+}
+
+;REMOVE1941
+{
+#NAME= DE 1009 - Corps at Leningrad (Latvia invaded by Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 1009[1]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 0
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 206,52
+#DESTINATION_RESOURCE= 210,52
+; Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 4 [5] [0] []
+}
+
+;REMOVE1941
+{
+#NAME= DE 1010 - Corps at Leningrad (Estonia invaded by Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 1010[1]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 0
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 206,52
+#DESTINATION_RESOURCE= 210,52
+; Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 4 [5] [0] []
+}
+
 ;REMOVE1942
 {
 #NAME= DE 405 - Polish I Corps
@@ -2198,6 +2324,7 @@
 #GV= 1[1,100]
 #LINK= 600[0]
 #LEVEL= 0
+; USSR(116)
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #PRIVATE= 0
@@ -2446,6 +2573,33 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 604[1]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 0
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 158,99
+; Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 36 [5] [0] [Strasbourg]
+}
+
+;REMOVE1943
+{
+#NAME= DE 678 - Vichy France Strasbourg Battleship
+#POPUP= <<TAG_40>>
+#IMAGE= 
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 678[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3053,6 +3207,34 @@
 #UNIT= 1 [5] [0] [Egyptian Legion]
 }
 
+;REMOVE1940 after implementing
+;
+{
+#NAME= DE 621 - Garrison Unit In Copenhagen
+#POPUP= 
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 601[1]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 0
+#DATE= 1940/04/03
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 171,65
+; Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 1 [5] [0] [Copenhagen]
+}
+
 ;REMOVE1941 after implementing
 ;
 {
@@ -3264,40 +3446,19 @@
 #DATE= 1940/12/30
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 186,122
+#DESTINATION_RESOURCE= 184,126
+#DESTINATION_RESOURCE= 179,124
+#DESTINATION_RESOURCE= 172,121
+#DESTINATION_RESOURCE= 174,92
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Tac(30), Fighters(29), Arty(17), AntiTank(24)
 #UNIT= 30 [5] [0] [Afrika]
 #UNIT= 29 [5] [0] [Afrika]
 #UNIT= 17 [5] [0] [Afrika]
 #UNIT= 24 [5] [0] [Afrika]
-}
-
-;REMOVE1941 after implementing
-{
-#NAME= DE 642 - The Afrika Korps Arrives At Benghazi In Libya (100%)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-; Set link value to always trigger (dummy value)
-#LINK= 642[1]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1940/12/30
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 186,122
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Recon(22), Infantry Corps(4), Tank Corps(26), HQ(0) 
 #UNIT= 22 [5] [0] [Afrika]
 #UNIT= 4 [5] [0.5] [Afrika]
 #UNIT= 26 [5] [0.5] [Afrika Korps]
@@ -3326,41 +3487,20 @@
 #DATE= 1940/12/30
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 172,121
+#DESTINATION_RESOURCE= 186,122
+#DESTINATION_RESOURCE= 184,126
+#DESTINATION_RESOURCE= 179,124
+#DESTINATION_RESOURCE= 174,92
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 22 [5] [0] [Afrika]
-#UNIT= 24 [5] [0] [Afrika]
-#UNIT= 17 [5] [0] [Afrika]
+; Tac(30), Fighters(29), Arty(17), AntiTank(24)
 #UNIT= 30 [5] [0] [Afrika]
-}
-
-;REMOVE1941
-{
-#NAME= DE 647 - The Afrika Korps Arrives At Tripoli In Libya (100%)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-; Set link value to always trigger (dummy value)
-#LINK= 647[1]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1940/12/30
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 172,121
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 29 [5] [0] [Afrika]
+#UNIT= 17 [5] [0] [Afrika]
+#UNIT= 24 [5] [0] [Afrika]
+; Recon(22), Infantry Corps(4), Tank Corps(26), HQ(0) 
+#UNIT= 22 [5] [0] [Afrika]
 #UNIT= 4 [5] [0.5] [Afrika]
 #UNIT= 26 [5] [0.5] [Afrika Korps]
 #UNIT= 0 [10] [0.5] [Rommel]
@@ -3388,13 +3528,16 @@
 #DATE= 1940/12/30
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 174,92
+#DESTINATION_RESOURCE= 172,91
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Tac(30), Fighters(29), Arty(17), AntiTank(24)
 #UNIT= 30 [5] [0] [Afrika]
 #UNIT= 29 [5] [0] [Afrika]
 #UNIT= 17 [5] [0] [Afrika]
 #UNIT= 24 [5] [0] [Afrika]
+; Recon(22), Infantry Corps(4), Tank Corps(26), HQ(0) 
 #UNIT= 22 [5] [0] [Afrika]
 #UNIT= 4 [5] [0.5] [Afrika]
 #UNIT= 26 [5] [0.5] [Afrika Korps]
@@ -3423,45 +3566,25 @@
 #DATE= 1940/12/30
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 172,121
+#DESTINATION_RESOURCE= 186,122
+#DESTINATION_RESOURCE= 184,126
+#DESTINATION_RESOURCE= 179,124
+#DESTINATION_RESOURCE= 174,92
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 22 [5] [0] [Afrika]
-#UNIT= 24 [5] [0] [Afrika]
-#UNIT= 17 [5] [0] [Afrika]
+; Tac(30), Fighters(29), Arty(17), AntiTank(24)
 #UNIT= 30 [5] [0] [Afrika]
-}
-
-;REMOVE1941
-{
-#NAME= DE 649 - The Afrika Korps Arrives At Tripoli In Libya (100%)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-; Set link value to always trigger (dummy value)
-#LINK= 649[1]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1940/12/30
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 172,121
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 29 [5] [0] [Afrika]
+#UNIT= 17 [5] [0] [Afrika]
+#UNIT= 24 [5] [0] [Afrika]
+; Recon(22), Infantry Corps(4), Tank Corps(26), HQ(0) 
+#UNIT= 22 [5] [0] [Afrika]
 #UNIT= 4 [5] [0.5] [Afrika]
 #UNIT= 26 [5] [0.5] [Afrika Korps]
 #UNIT= 0 [10] [0.5] [Rommel]
 }
+
 
 ;REMOVE1941
 {
@@ -3485,40 +3608,19 @@
 #DATE= 1940/12/30
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 186,122
+#DESTINATION_RESOURCE= 184,126
+#DESTINATION_RESOURCE= 179,124
+#DESTINATION_RESOURCE= 172,121
+#DESTINATION_RESOURCE= 174,92
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Tac(30), Fighters(29), Arty(17), AntiTank(24)
 #UNIT= 30 [5] [0] [Afrika]
 #UNIT= 29 [5] [0] [Afrika]
 #UNIT= 17 [5] [0] [Afrika]
 #UNIT= 24 [5] [0] [Afrika]
-}
-
-;REMOVE1941
-{
-#NAME= DE 671 - The Afrika Korps Arrives At Benghazi In Libya (100%)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-; Set link value to always trigger (dummy value)
-#LINK= 671[1]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1940/12/30
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 186,122
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Recon(22), Infantry Corps(4), Tank Corps(26), HQ(0) 
 #UNIT= 22 [5] [0] [Afrika]
 #UNIT= 4 [5] [0.5] [Afrika]
 #UNIT= 26 [5] [0.5] [Afrika Korps]
@@ -3550,10 +3652,12 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Tac(30), Fighters(29), Arty(17), AntiTank(24)
 #UNIT= 30 [5] [0] [Afrika]
 #UNIT= 29 [5] [0] [Afrika]
 #UNIT= 17 [5] [0] [Afrika]
 #UNIT= 24 [5] [0] [Afrika]
+; Recon(22), Infantry Corps(4), Tank Corps(26), HQ(0) 
 #UNIT= 22 [5] [0] [Afrika]
 #UNIT= 4 [5] [0.5] [Afrika]
 #UNIT= 26 [5] [0.5] [Afrika Korps]
@@ -3864,6 +3968,114 @@
 #UNIT= 4 [5] [0] [XXVI Corizza]
 }
 
+;REMOVE1941
+{
+#NAME= Italy Mobilizes Garrisons In Response To Allied Invasion Preparations (Syracuse)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 59
+#TRIGGER= 33
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 0
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 176,112
+; USA politically aligned with the Allies but not yet fully mobilized
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; 2 Allied Amphibious units within 30 hexes of Syracuse Port
+#CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
+#UNIT= 1 [5] [0] []
+}
+
+;REMOVE1941
+{
+#NAME= Italy Mobilizes Garrisons In Response To Allied Invasion Preparations (Genoa)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 59
+#TRIGGER= 33
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 0
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 164,95
+; USA politically aligned with the Allies but not yet fully mobilized
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; 2 Allied Amphibious units within 30 hexes of Syracuse Port
+#CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
+#UNIT= 1 [5] [0] []
+}
+
+;REMOVE1941
+{
+#NAME= Italy Mobilizes Garrisons In Response To Allied Invasion Preparations (Brindisi)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 59
+#TRIGGER= 33
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 0
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 181,104
+; USA politically aligned with the Allies but not yet fully mobilized
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; 2 Allied Amphibious units within 30 hexes of Syracuse Port
+#CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
+#UNIT= 1 [5] [0] []
+}
+
+;REMOVE1941
+{
+#NAME= Italy Mobilizes Garrisons In Response To Allied Invasion Preparations (Rome)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 59
+#TRIGGER= 33
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 0
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 171,101
+; USA politically aligned with the Allies but not yet fully mobilized
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; 2 Allied Amphibious units within 30 hexes of Syracuse Port
+#CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
+#UNIT= 1 [5] [0] []
+}
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; UK
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4048,7 +4260,7 @@
 #DISPLAY_TURN= 0
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
-#FAILSAFE_DATE= 1939/01/01
+#FAILSAFE_DATE= 1939/09/01
 #DESTINATION_RESOURCE= 154,91
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
@@ -4076,7 +4288,7 @@
 #DISPLAY_TURN= 0
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
-#FAILSAFE_DATE= 1939/01/01
+#FAILSAFE_DATE= 1939/09/01
 #DESTINATION_RESOURCE= 157,97
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
@@ -6331,6 +6543,189 @@
 #UNIT= 4 [5] [0] []
 }
 
+{
+#NAME= ALLIED AI: USA - Liberate UK HQ - Providence - 1940 (DE 1)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 2
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 1[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 1
+#DATE= 1940/09/01
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 15,101
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 0 [10] [0] []
+}
+
+{
+#NAME= ALLIED AI: USA - Liberate UK Destroyers - Norfolk - 1941 (DE 1) (1)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 2
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 1[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 1
+; arrive on Axis turn
+#DATE= 1941/05/29
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 6,112
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 40 [10] [0] []
+#UNIT= 40 [10] [0] []
+}
+
+{
+#NAME= ALLIED AI: USA - Liberate UK Destroyers - Norfolk - 1941 (DE 1) (2) (Intermediate)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 2
+#LEVEL= 2
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 1[1]
+; USA(115)
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 1
+; arrive on Axis turn
+#DATE= 1941/07/22
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 6,112
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 40 [10] [0] []
+#UNIT= 40 [10] [0] []
+}
+
+{
+#NAME= ALLIED AI: USA - Liberate UK Reinforcements - Norfolk - 1942 (DE 1) (1)
+#POPUP= <<TAG_87>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 2
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 1[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 1
+; arrive on Axis turn
+#DATE= 1941/09/16
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 6,112
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 36 [10] [0] [Indiana]
+#UNIT= 39 [10] [0] [Oakland]
+#UNIT= 40 [10] [0] [Pringle]
+#UNIT= 40 [10] [0] [Kane]
+#UNIT= 41 [10] [0] [Ticonderoga]
+#UNIT= 42 [10] [0] [Essex]
+}
+
+{
+#NAME= ALLIED AI: USA - Liberate UK Reinforcements - Boston - 1941 (DE 1) (2) (Intermediate)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 2
+#LEVEL= 2
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 1[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 1
+; arrive on Axis turn
+#DATE= 1941/09/16
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 17,99
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 36 [10] [0] [Montana]
+#UNIT= 37 [10] [0] [Cleveland]
+#UNIT= 38 [10] [0] [Portland]
+#UNIT= 40 [10] [0] [Balch]
+#UNIT= 42 [10] [0] [Yorktown]
+}
+
+; USA (Liberate UK Support)
+{
+#NAME= ALLIED AI: USA - Liberate UK Support - New York - 1942 (DE 1) (Novice)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 2
+#GV= 1[1,100]
+#LINK= 1[1]
+#LEVEL= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 1
+; arrive on Axis turn
+#DATE= 1941/09/16
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 10,104
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 0 [10] [0] []
+#UNIT= 4 [10] [0] []
+#UNIT= 5 [10] [0] []
+#UNIT= 5 [10] [0] []
+#UNIT= 5 [10] [0] []
+#UNIT= 26 [10] [0] []
+}
+
 ; USA (HQ)
 {
 #NAME= ALLIED AI: USA - HQ - New York - 1943
@@ -7523,7 +7918,7 @@
 #DESTINATION_RESOURCE= 235,101
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis units in range of Kirovabad OR
-; Axis units in range of Tbilisi // this actually Batumi
+; Axis units in range of Tbilisi // this is actually Batumi
 #CONDITION_POSITION= 238,104 [8,8] [1,1] [1] [0]
 #CONDITION_POSITION= 229,102 [8,8] [1,1] [1] [0]
 #UNIT= 0 [10] [0] []
@@ -8326,6 +8721,149 @@
 #UNIT= 1 [5] [0] []
 }
 
+; Germany (Garrison)
+{
+#NAME= AXIS AI: Germany - Garrison - Stettin - 1941 (Intermediate)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 5
+#LEVEL= 2
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 0
+#DATE= 1941/01/01
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 175,72
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] []
+}
+
+; Germany (Garrison)
+{
+#NAME= AXIS AI: Germany - Garrison - Zagreb - 1941 (Intermediate)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 5
+#LEVEL= 2
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 0
+#DATE= 1941/06/01
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 178,92
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 1 [5] [0] []
+}
+
+; Germany (Garrison)
+{
+#NAME= AXIS AI: Germany - Garrison - Zhitomir - 1941 (Intermediate)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 5
+#LEVEL= 2
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 0
+#DATE= 1941/09/01
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 203,81
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] []
+}
+
+; Germany (Garrison)
+{
+#NAME= AXIS AI: Germany - Garrison - Neustelitz - 1942 (Intermediate)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 5
+#LEVEL= 2
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 0
+#DATE= 1942/01/01
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 172,73
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] []
+}
+
+; Germany (Army)
+{
+#NAME= AXIS AI: Germany - Army - Paris - 1941
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 5
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 1
+#DATE= 1941/01/01
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 151,84
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; No Axis unit in Paris
+#CONDITION_POSITION= 151,84 [0,0] [0,0] [1] [0]
+#UNIT= 5 [10] [0] []
+}
+
 ; Germany (Destroyers)
 {
 #NAME= AXIS AI: Germany - Destroyers - Stettin - 1941
@@ -8605,7 +9143,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis units in Paris
 #CONDITION_POSITION= 151,84 [0,0] [1,1] [1] [0]
-#UNIT= 0 [10] [2] [Schorner]
+#UNIT= 0 [10] [2] [Schörner]
 #UNIT= 4 [10] [2] []
 #UNIT= 9 [10] [2] []
 #UNIT= 26 [10] [2] []
@@ -9799,6 +10337,34 @@
 #UNIT= 4 [10] [0] []
 }
 
+; Germany (Corps)
+{
+#NAME= AXIS AI: Germany - Corps - Rome - 1942
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 1
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 1
+#DATE= 1942/01/01
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 171,101
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; No Axis unit in Rome
+#CONDITION_POSITION= 171,101 [0,0] [0,0] [1] [0]
+#UNIT= 4 [10] [0] []
+}
+
 ; Germany (Gustav Line)
 {
 #NAME= AXIS AI: Germany - Gustav Line (1)
@@ -10039,6 +10605,92 @@
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 5 [10] [0] []
+}
+
+; Italy (Garrison)
+{
+#NAME= AXIS AI: Italy - Garrison - Trieste - 1941
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 5
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 0
+#DATE= 1941/09/01
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 174,92
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] []
+}
+
+; Italy (Garrison)
+{
+#NAME= AXIS AI: Italy - Garrison - Padua - 1942
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 5
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 0
+#DATE= 1942/03/01
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 170,92
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] []
+}
+
+; Italy (Garrison)
+{
+#NAME= AXIS AI: Italy - Garrison - Syracuse - 1943
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 1
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 1
+#DATE= 1943/01/01
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 176,112
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 1 [5] [0] []
 }
 
 ; Duke Of York Battleship (UK)

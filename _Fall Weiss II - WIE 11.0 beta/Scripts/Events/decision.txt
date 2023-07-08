@@ -26,10 +26,10 @@
 ;        3 = Event fires once if all other fields are satisfied, else it will not fire.  Either way, event will be removed never to be looked at again
 ; #AI= Values range [0, 4]
 ;      0 = Event fires whenever all fields are satisfied for any game type
-;      1 = Event fires whenever all fields are satisfied, for AI games only, and only on the Axis AI turn
-;      2 = Event fires whenever all fields are satisfied, for AI games only, and only on the Allied AI turn
-;      3 = Event fires whenever all fields are satisfied, for AI and Multiplayer games only, and only on the Axis AI or on the Allied Multiplayer turns
-;      4 = Event fires whenever all fields are satisfied, for AI and Multiplayer games only, and only on the Allied AI or on the Axis Multiplayer turns
+;      1 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis
+;      2 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied
+;      3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player, or on Allied Multiplayer turns
+;      4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player, or on Axis Multiplayer turns
 ; #LEVEL= What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
 ;         Values: [0, 4]; Green= 0; Novice= 1; Intermediate= 2; Veteran= 3; Expert= 4
 ; #GV= Does the event activate based on the Global Variable values assigned?
@@ -244,6 +244,47 @@
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+{
+#NAME= DE 173 - UK: Dummy Event to turn Historical POP UPs On/Off (AI - 100% Yes)
+#POPUP=
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+;Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+;Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#DISPLAY_ORDER= 0
+; Set decision value
+#DECISION= 173
+#MPP_UPDOWN= 0
+#MPP_TURNS= 0
+#MPP_TEXT= 
+#NOTES=
+#NOTES_POSITION=
+; Set AI acceptance % (AI will accept 100% of the time)
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1939/09/01
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 228,221,198
+; Berlin is in Axis hands
+#ALIGNMENT_POSITION= 173,74 [1]
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Set variable conditions:
+; 1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; UK
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -345,7 +386,7 @@
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
-#TYPE= 1
+#TYPE= 3
 #AI= 0
 #LEVEL= 0
 ;Set global variable condition to always trigger (dummy value)
@@ -370,6 +411,8 @@
 #SHADOW_RGB= 0,0,0
 ; London is in Allied hands
 #ALIGNMENT_POSITION= 147,77 [2]
+; Alexandria is in Allied hands
+#ALIGNMENT_POSITION= 206,124 [2]
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Set variable conditions:
@@ -672,7 +715,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 109 - UK: Form The Polish I Corps? (50% Chance) (AI - 100% Yes)
+#NAME= DE 109 - UK: Form The Polish I Corps? (75% Chance) (AI - 100% Yes)
 #POPUP=
 #MESSAGE= British War Office %N David Margesson %N%N The Polish Prime Minister in exile, Wladyslaw Sikorski, wishes to form the Polish I Corps to continue the fight against Germany. %N%N The High Command is asking us to spend 50 MPPs, at 25 MPPs for 2 turns, to help create and train this new Polish Corps, which will deploy at half strength near London. %N%N Would you like to form the Polish I Corps?
 #IMAGE=
@@ -686,7 +729,7 @@
 ;Set link value to always trigger (dummy value)
 #LINK= 500[1]
 #COUNTRY_ID= 112
-#TRIGGER= 50
+#TRIGGER= 75
 #DISPLAY_ORDER= 1
 ; Set decision value
 #DECISION= 109
@@ -936,7 +979,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 115 - UK: Form The Polish I Corps? (50% Chance) (AI - 100% Yes)
+#NAME= DE 115 - UK: Form The Polish I Corps? (75% Chance) (AI - 100% Yes)
 #POPUP=
 #MESSAGE= British War Office %N David Margesson %N%N Following the fall of France thousands of Polish soldiers who had sought refuge there in the hope of forming a Polish Army in exile have been arriving in the UK. %N%N Given our now tenuous position both at home and abroad, the British High Command is asking us to spend 50 MPPs, at 25 MPPs a turn for 2 turns, to help equip and train these men. %N%N If you agree these soldiers will deploy near London as the Polish I Corps. %N%N Would you like to form this Polish unit %B(YES)?
 #IMAGE=
@@ -950,7 +993,7 @@
 ;Set link value to always trigger (dummy value)
 #LINK= 200[0]
 #COUNTRY_ID= 112
-#TRIGGER= 50
+#TRIGGER= 75
 #DISPLAY_ORDER= 1
 ; Set decision value
 #DECISION= 115
@@ -1583,14 +1626,16 @@
 #SHADOW_RGB= 0,0,0
 ; London is in Allied hands
 #ALIGNMENT_POSITION= 147,77 [2]
-;Set National Morale Trigger (dummy value)
+; Paris is in Axis hands
+#ALIGNMENT_POSITION= 151,84 [1]
+; Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Set variable conditions:
 ; 1st Line - UK politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Set condition position:
-; 1st Line - Axis units in Paris
-#CONDITION_POSITION= 151,84 [0,0] [1,1] [1] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 {
@@ -2348,6 +2393,244 @@
 #CONDITION_POSITION= 141,72 [5,5] [1,1] [1] [0]
 }
 
+{
+#NAME= DE 168 - UK: Dummy Event to Deploy 7th Armoured In The UK (AI - 100% Yes)
+#POPUP=
+#MESSAGE=
+#IMAGE=
+#SOUND= teletype_1.ogg, teletype_2.ogg
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+;Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+;Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#DISPLAY_ORDER= 1
+; Set decision value
+#DECISION= 168
+#MPP_UPDOWN= 0
+#MPP_TURNS= 0
+#MPP_TEXT= 
+#NOTES=
+#NOTES_POSITION=
+; Set AI acceptance % (AI will accept 100% of the time)
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1940/08/16
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 228,221,198
+; Set Alignment Position (London)
+#ALIGNMENT_POSITION= 147,77 [1]
+; Set Alignment Position (Alexandria)
+#ALIGNMENT_POSITION= 206,124 [2]
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Set variable conditions:
+; 1st Line - Egypt politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 169 - UK: Dummy Event to Deploy 7th Armoured In The UK (AI - 100% Yes)
+#POPUP=
+#MESSAGE=
+#IMAGE=
+#SOUND= teletype_1.ogg, teletype_2.ogg
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+;Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+;Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#DISPLAY_ORDER= 1
+; Set decision value
+#DECISION= 169
+#MPP_UPDOWN= 0
+#MPP_TURNS= 0
+#MPP_TEXT= 
+#NOTES=
+#NOTES_POSITION=
+; Set AI acceptance % (AI will accept 100% of the time)
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1940/08/16
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 228,221,198
+; Set Alignment Position (London)
+#ALIGNMENT_POSITION= 147,77 [2]
+; Set Alignment Position (Alexandria)
+#ALIGNMENT_POSITION= 206,124 [1]
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Set variable conditions:
+; 1st Line - Egypt politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 170 - UK: Dummy Event for the UK's convoy to Archangelsk (AI - 100% Yes)
+#POPUP=
+#MESSAGE=
+#IMAGE=
+#SOUND= teletype_1.ogg, teletype_2.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+;Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+;Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#DISPLAY_ORDER= 0
+; Set decision value
+#DECISION= 170
+#MPP_UPDOWN= 0
+#MPP_TURNS= 0
+#MPP_TEXT= 
+#NOTES=
+#NOTES_POSITION=
+; Set AI acceptance % (AI will accept 100% of the time)
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1939/09/01
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 228,221,198
+; Set Alignment Position (Glasgow)
+#ALIGNMENT_POSITION= 138,65 [2]
+; Hexes between Archangelsk and Vologda
+#ALIGNMENT_POSITION= 227,35 [2]
+#ALIGNMENT_POSITION= 227,36 [2]
+#ALIGNMENT_POSITION= 228,37 [2]
+#ALIGNMENT_POSITION= 228,38 [2]
+#ALIGNMENT_POSITION= 228,39 [2]
+#ALIGNMENT_POSITION= 227,39 [2]
+#ALIGNMENT_POSITION= 227,40 [2]
+#ALIGNMENT_POSITION= 227,41 [2]
+#ALIGNMENT_POSITION= 227,42 [2]
+#ALIGNMENT_POSITION= 227,43 [2]
+#ALIGNMENT_POSITION= 227,44 [2]
+#ALIGNMENT_POSITION= 227,45 [2]
+#ALIGNMENT_POSITION= 226,46 [2]
+#ALIGNMENT_POSITION= 226,47 [2]
+#ALIGNMENT_POSITION= 226,48 [2]
+#ALIGNMENT_POSITION= 226,49 [2]
+#ALIGNMENT_POSITION= 226,50 [2]
+#ALIGNMENT_POSITION= 226,51 [2]
+#ALIGNMENT_POSITION= 226,52 [2]
+#ALIGNMENT_POSITION= 226,53 [2]
+#ALIGNMENT_POSITION= 225,53 [2]
+#ALIGNMENT_POSITION= 225,54 [2]
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Set variable conditions:
+; 1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; 2nd Line - USSR politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 171 - UK: Dummy Event to check for an Iraqi unit in Baghdad (AI - 100% Yes)
+#POPUP=
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+;Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+;Set link value to always trigger (dummy value)
+#LINK= 624[1]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#DISPLAY_ORDER= 0
+; Set decision value
+#DECISION= 171
+#MPP_UPDOWN= 0
+#MPP_TURNS= 0
+#MPP_TEXT= 
+#NOTES=
+#NOTES_POSITION=
+; Set AI acceptance % (AI will accept 100% of the time)
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1939/09/01
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 228,221,198
+; Baghdad is in Axis hands
+#ALIGNMENT_POSITION= 234,120 [1]
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Set variable conditions:
+; 1st Line - UK politically aligned with Allies and not surrendered
+; 2nd Line - Iraq politically Axis and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 56 [1] [100] [0]
+; An Iraqi unit is in Baghdad
+#CONDITION_POSITION= 234,120 [0,0] [1,1] [1] [56]
+}
+
+{
+#NAME= DE 172 - UK: Dummy Event to check for an Iraqi unit in Baghdad (AI - 100% Yes)
+#POPUP=
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+;Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+;Set link value to always trigger (dummy value)
+#LINK= 624[0]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#DISPLAY_ORDER= 0
+; Set decision value
+#DECISION= 172
+#MPP_UPDOWN= 0
+#MPP_TURNS= 0
+#MPP_TEXT= 
+#NOTES=
+#NOTES_POSITION=
+; Set AI acceptance % (AI will accept 100% of the time)
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1939/09/01
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 228,221,198
+; Baghdad is in Axis hands
+#ALIGNMENT_POSITION= 234,120 [1]
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Set variable conditions:
+; 1st Line - UK politically aligned with Allies and not surrendered
+; 2nd Line - Iraq politically Axis and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 56 [1] [100] [0]
+; An Iraqi unit is in Baghdad
+#CONDITION_POSITION= 234,120 [0,0] [1,1] [1] [56]
+}
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; FRANCE
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2525,7 +2808,7 @@
 
 ;Replacement Script
 {
-#NAME= DE 204 - France: Send an Anglo-French Expedition to Support Finland? (AI - 25% Yes)
+#NAME= DE 204 - France: Send an Anglo-French Expedition to Support Finland? (AI - 50% Yes)
 #POPUP=
 #MESSAGE= Prime Minister %N Edouard Daladier %N%N General Weygand proposes that together with the British we send a military expedition to Finland to enable them to resist the Red Army. %N%N If we do assist the Finns, the British will be obliged to follow suit, as British public opinion and their First Sea Lord, Winston Churchill, are strongly in favour of doing so. %N%N For a cost of 100 MPPs, to be shared evenly between Britain and France, this support could halt the Soviet dictator's aggression in the Baltic. %N%N However, given the logistics involved this mission only has a 50% chance of success. Yet whether successful or not, the units comprising the expedition will return to Scotland in early April 1940. %N%N Would you like to send a joint Anglo-French Expedition to Finland?
 #IMAGE=
@@ -2549,7 +2832,7 @@
 #NOTES= The expedition has a 50% chance of reaching Finland in time to provide them with enough support to withstand the Soviet onslaught. If successful, the USSR will not gain any Finnish territory as a result of the conflict, and the USSR will move 4-6% towards the Axis. %N%N For their decisive action in helping defeat aggression against a neutral country, France and the UK will both gain 500 National Morale points, and Finland will swing 10-15% towards the Allies. %N%N If the mission doesn't arrive in time, then Finland will be forced to cede territory to the USSR in March 1940. %N%N Whether successful or not, the Anglo-French expedition will return to Scotland at the start of April 1940, with a French strength 8 Special Forces unit of Chasseurs Alpins deploying at Dundee with Full Research, while a similar British unit (called Rupertforce) will deploy at Inverness. %N%N If Germany invades Norway via DE 643 or DE 644, then the Allies will have an opportunity to send these units to Narvik to attempt to recapture the town. This opportunity will not exist if this expedition is not sent, so it is recommended to do so by saying %B(YES).
 #NOTES_POSITION=
 ; Set AI acceptance % (AI will accept 50% of the time)
-#AI_RESPONSE= 25
+#AI_RESPONSE= 50
 #AI_RESPONSE_POPUP=
 #DATE= 1940/01/20
 #TEXT_RGB= 0,0,0
@@ -4026,6 +4309,16 @@
 #ALIGNMENT_POSITION= 4,108 [2]
 ; Murmansk is in Allied hands
 #ALIGNMENT_POSITION= 211,16 [2]
+; Monchegorsk is in Allied hands
+#ALIGNMENT_POSITION= 211,21 [2]
+; Kandalaksha is in Allied hands
+#ALIGNMENT_POSITION= 210,24 [2]
+; Kem is in Allied hands
+#ALIGNMENT_POSITION= 214,34 [2]
+; Belomorsk is in Allied hands
+#ALIGNMENT_POSITION= 214,36 [2]
+; Vologda is in Allied hands
+#ALIGNMENT_POSITION= 225,54 [2]
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USA politically aligned with Allies and fully mobilized
@@ -4069,6 +4362,16 @@
 #ALIGNMENT_POSITION= 4,108 [2]
 ; Murmansk is in Allied hands
 #ALIGNMENT_POSITION= 211,16 [2]
+; Monchegorsk is in Allied hands
+#ALIGNMENT_POSITION= 211,21 [2]
+; Kandalaksha is in Allied hands
+#ALIGNMENT_POSITION= 210,24 [2]
+; Kem is in Allied hands
+#ALIGNMENT_POSITION= 214,34 [2]
+; Belomorsk is in Allied hands
+#ALIGNMENT_POSITION= 214,36 [2]
+; Vologda is in Allied hands
+#ALIGNMENT_POSITION= 225,54 [2]
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USA politically aligned with Allies and fully mobilized
@@ -4201,6 +4504,51 @@
 ;Dummy condition position (always satisfied) 
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0] 
 } 
+
+{
+#NAME= DE 371 - USA: Italy's National Morale falls below 1% (100%)
+#POPUP=
+#MESSAGE= 
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DISPLAY_ORDER= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+; Set decision value
+#DECISION= 371
+; Set how many MPPs should be collected over X turns if player selects 'yes'
+#MPP_UPDOWN= 0
+#MPP_TURNS= 0
+#MPP_TEXT=
+#NOTES=
+#NOTES_POSITION=
+; Set AI acceptance % (AI will accept 100% of the time)
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1939/09/01
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Ottawa is in Allied hands
+#ALIGNMENT_POSITION= 6,93 [2]
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 59 [1]
+; Set variable conditions:
+; USA politically aligned with Allies and fully mobilized 
+#VARIABLE_CONDITION= 115 [2] [100] [0] 
+; Italy politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Set condition position:
+; 1 Allied unit within 15 hexes of Rome
+#CONDITION_POSITION= 171,101 [15,15] [1,1] [2] [0]
+}
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; USSR
@@ -4390,6 +4738,136 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+;REMOVE1942
+{
+#NAME= DE 197 - UK: Operation Countenance: Call on the USSR to join us in Invading Persia? (AI - 100% Yes)
+#POPUP=
+#MESSAGE= <<TAG_60>>
+#IMAGE=
+#SOUND= teletype_1.ogg, teletype_2.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+;Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+;Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#DISPLAY_ORDER= 1
+; Set decision value
+#DECISION= 197
+#MPP_UPDOWN= 0
+#MPP_TURNS= 0
+#MPP_TEXT=
+#NOTES= <<TAG_61>>
+#NOTES_POSITION= 248,115
+; Set AI acceptance % (AI will accept 100% of the time)
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1941/08/12
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Kuwait is in Allied hands
+#ALIGNMENT_POSITION= 241,128 [2]
+; Baku is in Allied hands
+#ALIGNMENT_POSITION= 245,104 [2]
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Set variable conditions:
+#VARIABLE_CONDITION= 82 [2] [0] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1942
+{
+#NAME= DE 198 - USSR: Operation Countenance: Join with the UK in Invading Persia? (AI - 100% Yes)
+#POPUP=
+#MESSAGE= <<TAG_141>>
+#IMAGE=
+#SOUND= teletype_1.ogg, teletype_2.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+;Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+;Set link value to always trigger (dummy value)
+#LINK= 197[1]
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DISPLAY_ORDER= 0
+; Set decision value
+#DECISION= 198
+#MPP_UPDOWN= -50
+#MPP_TURNS= 1
+#MPP_TEXT= <<TAG_84>>
+#NOTES= <<TAG_142>>
+#NOTES_POSITION= 246,117
+; Set AI acceptance % (AI will accept 100% of the time)
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1941/08/12
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Kuwait is in Allied hands
+#ALIGNMENT_POSITION= 241,128 [2]
+; Baku is in Allied hands
+#ALIGNMENT_POSITION= 245,104 [2]
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Set variable conditions:
+#VARIABLE_CONDITION= 82 [2] [0] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 199 - UK: Dummy Event to deduct 50 MPPs for DE 197 if DE 198 is approved (AI - 100% Yes)
+#POPUP=
+#MESSAGE= 
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+;Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+;Set link value to always trigger (dummy value)
+#LINK= 198[1]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#DISPLAY_ORDER= 0
+; Set decision value
+#DECISION= 199
+#MPP_UPDOWN= -50
+#MPP_TURNS= 1
+#MPP_TEXT= <<TAG_84>>
+#NOTES=
+#NOTES_POSITION=
+; Set AI acceptance % (AI will accept 100% of the time)
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1941/08/12
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Kuwait is in Allied hands
+#ALIGNMENT_POSITION= 241,128 [2]
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Set variable conditions:
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
 ;REMOVE1940
 {
 #NAME= DE 404 - USSR: Sign an Armistice with Finland? (AI - 100% Yes)
@@ -4525,14 +5003,8 @@
 ; 2nd Line - Poland politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 85 [2] [100] [0]
-; An Axis unit is in range of Warsaw
-#CONDITION_POSITION= 188,76 [2,2] [1,1] [1] [0]
-; An Axis unit is in range of Lwow
-#CONDITION_POSITION= 194,82 [2,2] [1,1] [1] [0]
-; An Axis unit is in range of Lublin
-#CONDITION_POSITION= 191,78 [2,2] [1,1] [1] [0]
-; An Axis unit is in range of Kutno
-#CONDITION_POSITION= 185,75 [2,2] [1,1] [1] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 ;REMOVE1942
@@ -5014,10 +5486,6 @@
 ; Leningrad is in Axis hands
 #ALIGNMENT_POSITION= 206,52 [1]
 #ALIGNMENT_POSITION= 206,51 [1]
-; Baku is in Axis hands
-#ALIGNMENT_POSITION= 245,104 [1]
-#ALIGNMENT_POSITION= 244,105 [1]
-#ALIGNMENT_POSITION= 243,104 [1]
 ; Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR is Allied and not surrendered
@@ -5368,8 +5836,8 @@ Replacement script
 ; Set variable conditions:
 ; 1st Line - USSR politically aligned with Allies and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; At least one Axis unit is within two hex of Leningrad
-#CONDITION_POSITION= 206,52 [2,2] [1,1] [1] [0]
+; At least one Axis unit is within one hex of Leningrad
+#CONDITION_POSITION= 206,52 [1,1] [1,1] [0] [0]
 }
 
 {
@@ -5412,6 +5880,91 @@ Replacement script
 ;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
+
+;REMOVE1941
+{
+#NAME= DE 457 - USSR: Annex the Baltic States - Check for Lithuania's Status (1)
+#POPUP=
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DISPLAY_ORDER= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 414[1]
+; Set decision value (1st internally stored decision)
+#DECISION= 457
+#MPP_UPDOWN= 0
+#MPP_TURNS= 0
+#MPP_TEXT=
+#NOTES= <<TAG_169>>
+#NOTES_POSITION= 196,60
+; Set AI acceptance % (AI will accept 75% of the time)
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1939/09/01
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Kaunas is in Allied hands
+#ALIGNMENT_POSITION= 194,68 [2]
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Set variable conditions:
+; 1st Line - Lithuania pro-Allied but not fully mobilized
+#VARIABLE_CONDITION= 64 [2] [0] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1941
+{
+#NAME= DE 458 - USSR: Annex the Baltic States - Check for Lithuania's Status (2)
+#POPUP=
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DISPLAY_ORDER= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 414[1]
+; Set decision value (1st internally stored decision)
+#DECISION= 458
+#MPP_UPDOWN= 0
+#MPP_TURNS= 0
+#MPP_TEXT=
+#NOTES= <<TAG_169>>
+#NOTES_POSITION= 196,60
+; Set AI acceptance % (AI will accept 75% of the time)
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1939/09/01
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Kaunas is in Allied hands
+#ALIGNMENT_POSITION= 194,68 [2]
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Set variable conditions:
+; 1st Line - Lithuania pro-Axis but not fully mobilized
+#VARIABLE_CONDITION= 64 [1] [0] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Poland
@@ -5638,6 +6191,8 @@ Replacement script
 #ALIGNMENT_POSITION= 152,113 [1]
 ; Casablanca is in Axis hands
 #ALIGNMENT_POSITION= 131,119 [1]
+; Oran is in Axis hands
+#ALIGNMENT_POSITION= 145,115 [1]
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Set variable conditions:
@@ -5687,7 +6242,51 @@ Replacement script
 #NOTES_POSITION=
 ; Set AI acceptance % (AI will accept 50% of the time)
 #AI_RESPONSE= 50
-#AI_RESPONSE_POPUP= Germany Refits French Capital Ships
+#AI_RESPONSE_POPUP= Germany Refits French Capital Ships 
+#DATE= 1939/09/01
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Toulon is in Axis hands
+#ALIGNMENT_POSITION= 158,99 [1]
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Set variable conditions:
+; 1st Line - Vichy France politically aligned with Allies and surrendered
+#VARIABLE_CONDITION= 118 [2] [100] [1]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1943
+; Event representing the possible return of the Vichy French fleet to their home ports
+; in Axis controlled territory, if the UK opted not to support the Free French.
+{
+#NAME= DE 678 - Germany: Should We Scrap Or Refit The French Battleship Strasbourg? (AI - 50% Yes)
+#POPUP=
+#MESSAGE= <<TAG_201>>
+#IMAGE=
+#SOUND= teletype_1.ogg, teletype_2.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+;Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+;Set link value to DE 100=0
+#LINK= 100[1]
+#COUNTRY_ID= 45
+#TRIGGER= 50
+#DISPLAY_ORDER= 1
+; Set decision value
+#DECISION= 678
+#MPP_UPDOWN= -70
+#MPP_TURNS= 2
+#MPP_TEXT= <<TAG_202>>
+#NOTES= <<TAG_203>>
+#NOTES_POSITION=
+; Set AI acceptance % (AI will accept 50% of the time)
+#AI_RESPONSE= 50
+#AI_RESPONSE_POPUP= <<TAG_204>>
 #DATE= 1939/09/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
@@ -5832,8 +6431,10 @@ Replacement script
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Allied units approach Warsaw
 #CONDITION_POSITION= 188,76 [6,10] [2,2] [2] [0]
+; Allied units approach Hamburg
+#CONDITION_POSITION= 166,72 [4,6] [2,2] [2] [0]
 ; Allied units approach Konigsberg
-#CONDITION_POSITION= 187,68 [4,6] [2,2] [2] [0]
+#CONDITION_POSITION= 187,68 [4,5] [2,2] [2] [0]
 ; Allied units approach Cologne
 #CONDITION_POSITION= 160,79 [4,6] [2,2] [2] [0]
 ; Allied units approach Mainz
@@ -5885,8 +6486,10 @@ Replacement script
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Allied units approach Warsaw
 #CONDITION_POSITION= 188,76 [6,10] [2,2] [2] [0]
+; Allied units approach Hamburg
+#CONDITION_POSITION= 166,72 [4,6] [2,2] [2] [0]
 ; Allied units approach Konigsberg
-#CONDITION_POSITION= 187,68 [4,6] [2,2] [2] [0]
+#CONDITION_POSITION= 187,68 [4,5] [2,2] [2] [0]
 ; Allied units approach Cologne
 #CONDITION_POSITION= 160,79 [4,6] [2,2] [2] [0]
 ; Allied units approach Mainz
@@ -6267,6 +6870,47 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+;REMOVE1940
+{
+#NAME= DE 617 - Germany: Deploy The 7th Luftwaffe Division Now? (AI - 0% Yes)
+#POPUP=
+#MESSAGE= <<TAG_240>>
+#IMAGE=
+#SOUND= teletype_1.ogg, teletype_2.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#DISPLAY_ORDER= 0
+; Set decision value
+#DECISION= 617
+#MPP_UPDOWN= 50
+#MPP_TURNS= 1
+#MPP_TEXT= <<TAG_241>>
+#NOTES= <<TAG_242>>
+#NOTES_POSITION= 180,79
+; Set AI acceptance % (AI will accept 0% of the time)
+#AI_RESPONSE= 0
+#AI_RESPONSE_POPUP=
+#DATE= 1939/09/01
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Berlin is in Axis hands
+#ALIGNMENT_POSITION= 173,74 [1]
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
 {
 #NAME= DE 618 - Germany: Launch Operation Panzerfaust to keep Hungary in the War? (AI - 100% Yes)
 #POPUP=
@@ -6486,8 +7130,6 @@ Replacement script
 ; A German Naval Unit is in place to travel through the Strait
 #CONDITION_POSITION= 139,113 [0,0] [1,1] [1] [45]
 #CONDITION_POSITION= 139,114 [0,0] [1,1] [1] [45]
-#CONDITION_POSITION= 139,113 [0,0] [1,1] [1] [46]
-#CONDITION_POSITION= 139,114 [0,0] [1,1] [1] [46]
 #CONDITION_POSITION= 139,113 [0,0] [1,1] [1] [87]
 #CONDITION_POSITION= 139,114 [0,0] [1,1] [1] [87]
 #CONDITION_POSITION= 139,113 [0,0] [1,1] [1] [99]
@@ -6537,8 +7179,6 @@ Replacement script
 ; A German Naval Unit is in place to travel through the Strait
 #CONDITION_POSITION= 134,114 [0,0] [1,1] [1] [45]
 #CONDITION_POSITION= 134,115 [0,0] [1,1] [1] [45]
-#CONDITION_POSITION= 134,114 [0,0] [1,1] [1] [46]
-#CONDITION_POSITION= 134,115 [0,0] [1,1] [1] [46]
 #CONDITION_POSITION= 134,114 [0,0] [1,1] [1] [87]
 #CONDITION_POSITION= 134,115 [0,0] [1,1] [1] [87]
 #CONDITION_POSITION= 134,114 [0,0] [1,1] [1] [99]
@@ -6707,9 +7347,9 @@ Replacement script
 ; Set decision value
 #DECISION= 627
 #MPP_UPDOWN= -50
-#MPP_TURNS= 6
-#MPP_TEXT= Atlantic Wall Fortifications
-#NOTES= Although expensive, the construction of these Coastal Gun Batteries will significantly strengthen our defenses and could potentially delay the enemy's invasion preparations, so that is a good reason to say %B(YES). %N%N Ensure that they are protected from air attack and that mobile forces remain nearby to counterattack any enemy landings. %N%N Any units currently occupying the hexes where the Coastal Guns will be deployed will be moved out, and the Coastal Guns will deploy in the next turn. Units may temporarily disappear, but they will be returned.
+#MPP_TURNS= 4
+#MPP_TEXT= <<TAG_268>>
+#NOTES= <<TAG_269>>
 #NOTES_POSITION= 147,82
 ; Set AI acceptance % (AI will accept 100% of the time)
 #AI_RESPONSE= 100
@@ -6723,8 +7363,8 @@ Replacement script
 #ALIGNMENT_POSITION= 142,78 [2]
 ; Calais is in Axis hands
 #ALIGNMENT_POSITION= 151,79 [1]
-; Amiens is in Axis hands
-#ALIGNMENT_POSITION= 151,81 [1]
+; The hex NW of Amiens is in Axis hands
+#ALIGNMENT_POSITION= 150,81 [1]
 ; Le Havre is in Axis hands
 #ALIGNMENT_POSITION= 147,82 [1]
 ; Brest is in Axis hands
@@ -7538,7 +8178,7 @@ Replacement script
 {
 #NAME= DE 647 - Germany: Form The Afrika Korps for Service in North Africa? (Benghazi and Tripoli in Axis hands, Gazala in Allied hands) (AI - 100% Yes)
 #POPUP=
-#MESSAGE= Fuhrerhauptquartier %N%N In order to assist our Italian allies in North Africa, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British. %N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond. %N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Tripoli: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of 875 MPPs, at 175 MPPs a turn for 5 turns. %N%N Would you like to form the Afrika Korps for service in North Africa?
+#MESSAGE= Fuhrerhauptquartier %N%N In order to assist our Italian allies in North Africa, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British. %N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond. %N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Tripoli: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of 875 MPPs, at 175 MPPs a turn for 5 turns. %N%N Would you like to form the Afrika Korps for service in North Africa?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -7585,7 +8225,7 @@ Replacement script
 {
 #NAME= DE 648 - Germany: Form The Afrika Korps for Service in North Africa? (Tripoli in Allied hands and Trieste in Axis hands) (AI - 100% Yes)
 #POPUP=
-#MESSAGE= Fuhrerhauptquartier %N%N In order to assist our Italian allies now they have lost Tripoli, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British. %N%N This formation could spearhead an offensive to recapture Libya and then advance into Egypt and beyond. %N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Trieste: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of 875 MPPs, at 175 MPPs a turn for 5 turns. %N%N Would you like to form the Afrika Korps for service in the Mediterranean?
+#MESSAGE= Fuhrerhauptquartier %N%N In order to assist our Italian allies now they have lost Tripoli, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British. %N%N This formation could spearhead an offensive to recapture Libya and then advance into Egypt and beyond. %N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Trieste: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of 875 MPPs, at 175 MPPs a turn for 5 turns. %N%N Would you like to form the Afrika Korps for service in the Mediterranean?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -7632,7 +8272,7 @@ Replacement script
 {
 #NAME= DE 649 - Germany: Form The Afrika Korps for Service in North Africa? (Benghazi in Allied hands, Tripoli in Axis hands) (AI - 100% Yes)
 #POPUP=
-#MESSAGE= Fuhrerhauptquartier %N%N In order to assist our Italian allies in North Africa, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British. %N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond. %N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Tripoli: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of 875 MPPs, at 175 MPPs a turn for 5 turns. %N%N Would you like to form the Afrika Korps for service in North Africa?
+#MESSAGE= Fuhrerhauptquartier %N%N In order to assist our Italian allies in North Africa, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British. %N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond. %N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Tripoli: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of 875 MPPs, at 175 MPPs a turn for 5 turns. %N%N Would you like to form the Afrika Korps for service in North Africa?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -7846,7 +8486,7 @@ Replacement script
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 ; Bordeaux is in Axis hands
-#ALIGNMENT_POSITION= 151,84 [1]
+#ALIGNMENT_POSITION= 145,94 [1]
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Set variable conditions:
@@ -8008,6 +8648,9 @@ Replacement script
 #CONDITION_POSITION= 193,89 [5,5] [0,0] [2] [0]
 }
 
+;===============================================================
+;                        Fall Weiss II Event
+;===============================================================
 {
 #NAME= DE 680 - Germany: Chrome Imports From Turkey (AI - 100% Yes)
 #POPUP=
@@ -8815,8 +9458,8 @@ Replacement script
 #SHADOW_RGB= 0,0,0
 ; Calais is in Axis hands
 #ALIGNMENT_POSITION= 151,79 [1]
-; Amiens is in Axis hands
-#ALIGNMENT_POSITION= 151,81 [1]
+; The hex NW of Amiens is in Axis hands
+#ALIGNMENT_POSITION= 150,81 [1]
 ; Le Havre is in Axis hands
 #ALIGNMENT_POSITION= 147,82 [1]
 ; Brest is in Axis hands
@@ -8874,6 +9517,114 @@ Replacement script
 ; Set condition position:
 ; 3 German units within 15 hexes of Rome
 #CONDITION_POSITION= 171,101 [15,15] [3,3] [1] [45]
+}
+
+{
+#NAME= DE 676 - Germany: SUPPLY script for Axis control of Gibraltar (100%)
+#POPUP=
+#MESSAGE= 
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#DISPLAY_ORDER= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+; Set decision value
+#DECISION= 676
+; Set how many MPPs should be collected over X turns if player selects 'yes'
+#MPP_UPDOWN= 0
+#MPP_TURNS= 0
+#MPP_TEXT=
+#NOTES=
+#NOTES_POSITION=
+; Set AI acceptance % (AI will accept 100% of the time)
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1939/09/01
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Gibraltar is in Axis hands
+#ALIGNMENT_POSITION= 136,114 [1]
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Set variable conditions:
+; 1st Line - Germany politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Set condition position:
+; 1 German unit in Gibraltar
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [45]
+; all other plausible Axis allies apart from Italy
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [4]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [19]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [31]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [36]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [39]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [46]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [52]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [57]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [61]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [64]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [38]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [73]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [78]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [87]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [93]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [96]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [99]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [103]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [104]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [105]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [110]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [111]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [118]
+#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [120]
+}
+
+{
+#NAME= DE 677 - Germany: Dummy Event for Vichy French Pro-Allied Partisans (AI - 100% Yes)
+#POPUP=
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+#LINK= 355[1]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#DISPLAY_ORDER= 0
+; Set decision value
+#DECISION= 677
+#MPP_UPDOWN= 0
+#MPP_TURNS= 0
+#MPP_TEXT=
+#NOTES=
+#NOTES_POSITION=
+; Set AI acceptance % (AI will accept 100% of the time)
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1939/09/01
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Ottawa is in Allied hands
+#ALIGNMENT_POSITION= 6,93 [2]
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Set variable conditions:
+; 1st Line - Vichy France politically aligned with Allies and surrendered
+#VARIABLE_CONDITION= 118 [2] [100] [1]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -9500,7 +10251,9 @@ Replacement script
 #CONDITION_POSITION= 147,77 [7,7] [0,0] [2] [0]
 }
 
-;
+; =======================================================================================
+;                          Fall Weiss II Events
+; =======================================================================================
 {
 #NAME= DE 849 - Germany: Deliver Modern Tanks To Romania? (AI - 90% Yes)
 #POPUP=
