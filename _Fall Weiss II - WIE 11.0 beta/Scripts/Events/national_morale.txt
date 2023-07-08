@@ -3309,6 +3309,38 @@
 }
 
 {
+#NAME= USSR - Capture Of Sevastopol
+#POPUP= <<TAG_107>>
+#IMAGE= 
+#SOUND=
+#FLAG= 1 
+#TYPE= 1 
+#AI= 0 
+#LEVEL= 0 
+; Set global variable condition to always trigger (dummy value) 
+#GV= 1[1,100] 
+; Set link value to always trigger (dummy value) 
+#LINK= 0[0] 
+#COUNTRY_ID= 116
+#TRIGGER= 100 
+; Set how many NM points should be gained or lost over X turns 
+#NM_UPDOWN= -3000
+#NM_TURNS= 1
+#DATE= 1939/09/01
+#OBJECTIVE_TEXT_POSITION= 212,96
+; Set alignment position and controller's political alignment:
+; Sevastopol is in Axis hands
+#ALIGNMENT_POSITION= 212,96 [1]
+; Set variable conditions: 
+; 1st Line - Germany politically aligned with the Axis and not surrendered 
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; 2nd Line - USSR politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
 #NAME= Germany - Loss of Düsseldorf
 #POPUP= German National Morale Falls As The Allies Capture Düsseldorf
 #IMAGE= 
@@ -4507,6 +4539,39 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+;REMOVE1941
+{
+#NAME= Italy - Allied Invasion Preparations Boost Italian National Morale
+#POPUP= <<TAG_175>>
+#IMAGE= 
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0 
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value) 
+#LINK= 0[0] 
+#COUNTRY_ID= 59
+#TRIGGER= 100 
+; Set how many NM points should be gained or lost over X turns 
+#NM_UPDOWN= 2000
+#NM_TURNS= 1
+#DATE= 1939/09/01
+#OBJECTIVE_TEXT_POSITION=
+; Set alignment position and controller's political alignment:
+; British Empire is in Allied hands
+#ALIGNMENT_POSITION= 0,2 [2]
+; Set variable conditions:
+; 1st Line - Italy politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+; 2 Allied Amphibious units within 30 hexes of Syracuse Port
+#CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
+; 7 or more Allied naval units within 18 hexes of Syracuse Port
+#CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
+}
+
 ;REMOVE1944
 {
 #NAME= Italy - Allies Land in Southern Italy
@@ -4534,6 +4599,7 @@
 ; Set variable conditions:
 ; 1st Line - Italy politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
+; 2nd Line - USA politically aligned with the Allies
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; 2 Allied units are in southern Italy
 #CONDITION_POSITION= 177,103 [6,6] [2,2] [2] [0]
@@ -4639,7 +4705,7 @@
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; AI SCRIPTS
+; Fall Weiss II AI SCRIPTS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ;REMOVE1940
