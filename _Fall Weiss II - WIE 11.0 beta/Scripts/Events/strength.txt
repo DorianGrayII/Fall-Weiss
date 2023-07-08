@@ -23,7 +23,8 @@
 ;        2 = Reoccurring check until end of game
 ;                       OR
 ;        Once the #DATE field is satisfied:
-;        3 = Event fires once if all other fields are satisfied, else it will not fire.  Either way, event will be removed never to be looked at again
+;        3 = Event fires once if all other fields are satisfied, else it will not fire.  
+;            Either way, event will be removed never to be looked at again
 ; #AI= Values range [0, 4]
 ;      0 = Event fires whenever all fields are satisfied for any game type
 ;      1 = Event fires whenever all fields are satisfied, for AI games only, and only on the Axis AI turn
@@ -80,6 +81,8 @@
 ; be made on sea hexes, otherwise if it is a land hex range checks will be made on land hexes only.
 ; If the 'aligned_country_id' flag is set to 0 then it will check for any Axis or Allied country as
 ; determined by the alignment flag.
+;
+; Placing a < symbol at the end of the #MAP_POSITION will allow for targeted units to be destroyed.
 ;
 ; Use the reference values provided for #COUNTRY_ID and not the country names
 ; Use the reference values provided for #SEASON_FLAG and not season names
@@ -236,7 +239,33 @@
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;REMOVE1943
+;REMOVE 1940
+{
+#NAME= Poland - Battlefield Losses (Axis AI only)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 1
+#LEVEL= 2
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#FLAG_ID= 85
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 188,76 [10,10] [0,0] [-25,-50] [2] [85]
+; 1st Line - Poland politically aligned with the Allies
+#VARIABLE_CONDITION= 85 [2] [100] [0]
+; German units in range of Warsaw
+#CONDITION_POSITION= 188,76 [3,3] [2,2] [1] [0]
+}
+
+;REMOVE 1943
 {
 #NAME= O.S.S. Agents Co-ordinate Attacks On Vichy Forces In Algeria
 #POPUP= <<TAG_1>>
@@ -1252,37 +1281,37 @@
 #TRIGGER= 100
 #SEASON_FLAG= 4
 #DATE= 1941/12/21
-#MAP_POSITION= 209,68 [8,8] [0,1] [-10,-45] [1] [0]
-#MAP_POSITION= 227,35 [8,8] [0,2] [-10,-45] [1] [0]
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [45]
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [45]
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [45]
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [52]
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [52]
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [52]
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [59]
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [59]
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [59]
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [19]
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [19]
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [19]
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [93]
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [93]
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [93]
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [96]
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [96]
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [96]
-#MAP_POSITION= 201,71 [5,5] [0,2] [-10,-45] [1] [0]
-#MAP_POSITION= 207,80 [5,5] [0,2] [-10,-45] [1] [0]
-#MAP_POSITION= 211,90 [5,5] [0,2] [-10,-45] [1] [0]
-#MAP_POSITION= 213,86 [8,8] [1,2] [-10,-45] [1] [0]
-#MAP_POSITION= 216,90 [8,8] [0,2] [-10,-45] [1] [0]
-#MAP_POSITION= 218,82 [8,8] [0,2] [-10,-45] [1] [0]
-#MAP_POSITION= 220,65 [8,8] [0,2] [-10,-45] [1] [0]
-#MAP_POSITION= 225,54 [8,8] [0,2] [-10,-45] [1] [0]
-#MAP_POSITION= 225,88 [8,8] [0,2] [-10,-45] [1] [0]
-#MAP_POSITION= 233,64 [8,8] [0,2] [-10,-45] [1] [0]
-#MAP_POSITION= 224,77 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 209,68 [8,8] [0,1] [-10,-45] [1] [0] <
+#MAP_POSITION= 227,35 [8,8] [0,2] [-10,-45] [1] [0] <
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [45] <
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [45] <
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [45] <
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [52] <
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [52] <
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [52] <
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [59] <
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [59] <
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [59] <
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [19] <
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [19] <
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [19] <
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [93] <
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [93] <
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [93] <
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [96] <
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [96] <
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [96] <
+#MAP_POSITION= 201,71 [5,5] [0,2] [-10,-45] [1] [0] <
+#MAP_POSITION= 207,80 [5,5] [0,2] [-10,-45] [1] [0] <
+#MAP_POSITION= 211,90 [5,5] [0,2] [-10,-45] [1] [0] <
+#MAP_POSITION= 213,86 [8,8] [1,2] [-10,-45] [1] [0] <
+#MAP_POSITION= 216,90 [8,8] [0,2] [-10,-45] [1] [0] <
+#MAP_POSITION= 218,82 [8,8] [0,2] [-10,-45] [1] [0] <
+#MAP_POSITION= 220,65 [8,8] [0,2] [-10,-45] [1] [0] <
+#MAP_POSITION= 225,54 [8,8] [0,2] [-10,-45] [1] [0] <
+#MAP_POSITION= 225,88 [8,8] [0,2] [-10,-45] [1] [0] <
+#MAP_POSITION= 233,64 [8,8] [0,2] [-10,-45] [1] [0] <
+#MAP_POSITION= 224,77 [8,8] [0,2] [-10,-45] [1] [0] <
 ; 1st Line - USSR politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ;Dummy condition position (always satisfied)
