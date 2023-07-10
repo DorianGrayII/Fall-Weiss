@@ -21,7 +21,7 @@
 ;        With all other fields satisfied will this be:
 ;        0 = Single check regardless if #TRIGGER is satisfied
 ;        1 = Multiple check until #TRIGGER is satisfied
-;        2 = Reoccurring check until end of game
+;        2 = Reoccurring check until end of game (not valid for UNIT events)
 ;                       OR
 ;        Once the #DATE field is satisfied:
 ;        3 = Event fires once if all other fields are satisfied, else it will not fire.  Either way, event will be removed never to be looked at again
@@ -112,6 +112,8 @@
 ; Use the reference values provided for #COUNTRY_ID and not the country names
 ; Use the reference values provided for POLITICAL ALIGNMENT and not names
 ; Use the reference values provided for #UNIT and not unit id names
+;
+; if using TYPE=2, this is no longer a valid option for UNIT events as it should never have been applicable (RMelvin)
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -619,7 +621,7 @@
 ;REMOVE1941 after implementing (place them at Baghdad?)
 ;
 {
-#NAME= DE 106 - UK: XIII Indian Corps Lands At Basra (West India Corps)
+#NAME= DE 106 - XIII Indian Corps Lands At Basra (West India Corps)
 #POPUP= XIII Indian Corps Lands At Basra
 #IMAGE= xiiiindiancorps.png
 #SOUND=
@@ -629,7 +631,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 106[1]
-#COUNTRY_ID= 112
+#COUNTRY_ID= 54
 #TRIGGER= 100
 #PRIVATE= 0
 #DISPLAY_TURN= 0
@@ -637,8 +639,8 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 241,126
-; UK(112) aligned with Allies and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
+; British Empire politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 54 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [10] [0.5] [XIII Indian]
@@ -671,7 +673,7 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 4 [3] [1] [New Zealand]
+#UNIT= 2 [8] [0.5] [New Zealand]
 }
 
 ;REMOVE1941 after implementing
@@ -1669,7 +1671,7 @@
 
 ;REMOVE1940 after implementing
 {
-#NAME= DE 204 - France: The Anglo-French Expedition Returns From Finland (2)
+#NAME= DE 204 - UK: The Anglo-French Expedition Returns From Finland (2)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1752,7 +1754,7 @@
 #DESTINATION_RESOURCE= 210,52
 ; USSR(116) aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Bulgaria aligned with Axis but not fully mobilized
+; Bulgaria aligned with Axis
 #VARIABLE_CONDITION= 19 [1] [0] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1782,7 +1784,7 @@
 #DESTINATION_RESOURCE= 225,68
 ; USSR(116) aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Bulgaria aligned with Axis but not fully mobilized
+; Bulgaria aligned with Axis
 #VARIABLE_CONDITION= 19 [1] [0] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1923,6 +1925,7 @@
 #DESTINATION_RESOURCE= 243,66
 #DESTINATION_RESOURCE= 235,57
 #VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 24 [5] [0] []
@@ -2127,7 +2130,7 @@
 
 ;REMOVE1942
 {
-#NAME= Soviet Light Tanks Mobilize at Ostrov (Barbarossa)
+#NAME= USSR: Soviet Light Tanks Mobilize at Ostrov (Barbarossa)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2154,7 +2157,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 414 - Soviet Border Formations (Barbarossa)
+#NAME= DE 414 - USSR: Soviet Border Formations (Barbarossa)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2185,7 +2188,7 @@
 ;AMEND1940
 ;REMOVE1941
 {
-#NAME= DE 414 - Soviet Border Formations (Barbarossa)
+#NAME= DE 414 - USSR: Soviet Border Formations (Barbarossa)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2215,7 +2218,7 @@
 
 ;REMOVE1940 after implementing
 {
-#NAME= DE 600 - Soviet Brest-Litovsk Garrison (Pre-Barbarossa)
+#NAME= DE 600 - USSR: Soviet Brest-Litovsk Garrison (Pre-Barbarossa)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2233,7 +2236,7 @@
 #DATE= 1939/09/17
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 194,75
-; Poland aligned with Allies and surrendered
+; Poland(85) aligned with Allies and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2242,7 +2245,7 @@
 
 ;REMOVE1940 after implementing
 {
-#NAME= DE 600 - Soviet Przemysl Garrison (Pre-Barbarossa)
+#NAME= DE 600 - USSR: Soviet Przemysl Garrison (Pre-Barbarossa)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2260,7 +2263,7 @@
 #DATE= 1939/09/17
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 191,82
-; Poland aligned with Allies and surrendered
+; Poland(85) aligned with Allies and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2270,7 +2273,7 @@
 ;AMEND1940
 ;REMOVE1942
 {
-#NAME= DE 600 - Soviet Border Formations (Barbarossa)
+#NAME= DE 600 - USSR: Soviet Border Formations (Barbarossa)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2303,7 +2306,7 @@
 ;AMEND1940
 ;REMOVE1942
 {
-#NAME= DE 600 - Soviet Border Formations (Barbarossa)
+#NAME= DE 600 - USSR: Soviet Border Formations (Barbarossa)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2335,7 +2338,7 @@
 
 ;REMOVE1940
 {
-#NAME= DE 600 - Soviet Border Formations (Barbarossa)
+#NAME= DE 600 - USSR: Soviet Border Formations (Barbarossa)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2367,7 +2370,7 @@
 
 ;REMOVE1940
 {
-#NAME= DE 406 - Soviet Border Formations (Barbarossa)
+#NAME= DE 406 - USSR: Soviet Border Formations (Barbarossa)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2399,7 +2402,7 @@
 
 ;REMOVE1940
 {
-#NAME= DE 600 - Soviet Border Formations (Barbarossa)
+#NAME= DE 600 - USSR: Soviet Border Formations (Barbarossa)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2431,7 +2434,7 @@
 
 ;REMOVE1940
 {
-#NAME= DE 406 - Soviet Border Formations (Barbarossa)
+#NAME= DE 406 - USSR: Soviet Border Formations (Barbarossa)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2614,7 +2617,9 @@
 #POPUP= <<TAG_40>>
 #IMAGE= 
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
@@ -3990,7 +3995,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 0
 #GV= 1[1,100]
@@ -4017,7 +4024,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 0
 #GV= 1[1,100]
@@ -4044,7 +4053,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 0
 #GV= 1[1,100]
@@ -4071,7 +4082,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 0
 #GV= 1[1,100]
@@ -5436,7 +5449,7 @@
 #VARIABLE_CONDITION= 99 [1] [30] [0]
 ; German units in or around Riga
 #CONDITION_POSITION= 194,62 [2,2] [1,1] [1] [45]
-#UNIT= 3 [10] [1] [250th "Blue"]
+#UNIT= 2 [10] [1] [250th "Blue"]
 }
 
 ;REMOVE1943
@@ -5944,7 +5957,8 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-; currently disabled for Fall Weiss II
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
 #FLAG= 0
 #TYPE= 1
 #AI= 2
@@ -6200,7 +6214,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 2
 #LEVEL= 2
@@ -6341,7 +6357,8 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-; currently disabled for Fall Weiss II
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
 #FLAG= 0
 #TYPE= 1
 #AI= 2
@@ -6601,7 +6618,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 2
 #LEVEL= 0
@@ -6627,7 +6646,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 2
 #LEVEL= 0
@@ -6655,7 +6676,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 2
 #LEVEL= 2
@@ -6683,7 +6706,9 @@
 #POPUP= <<TAG_87>>
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 2
 #LEVEL= 0
@@ -6715,7 +6740,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 2
 #LEVEL= 2
@@ -6747,7 +6774,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 2
 #GV= 1[1,100]
@@ -9054,7 +9083,7 @@
 
 ; Germany (Corps)
 {
-#NAME= Germany(AI): Corps - Siedlice - 1941
+#NAME= DE 600 - Germany(AI): Corps - Siedlice - 1941
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9082,7 +9111,7 @@
 
 ; Germany (Corps)
 {
-#NAME= Germany(AI): Corps - Johannisburg - 1941
+#NAME= DE 600 - Germany(AI): Corps - Johannisburg - 1941
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9110,7 +9139,7 @@
 
 ; Germany (Corps)
 {
-#NAME= Germany(AI): Corps - Johannisburg - 1941
+#NAME= DE 406 - Germany(AI): Corps - Johannisburg - 1941
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -10744,7 +10773,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 5
 #LEVEL= 0
@@ -10773,7 +10804,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 5
 #LEVEL= 0
@@ -10802,7 +10835,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 1
 #LEVEL= 0
@@ -11077,7 +11112,7 @@
 
 ; Anglo-Portuguese Alliance
 {
-#NAME= DE 800 - Salazar Deployment Announces Spanish Troop Movement
+#NAME= DE 800 - Portugal: Salazar Deployment Announces Spanish Troop Movement
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -12909,7 +12944,7 @@
 
 ; Anglo-Portuguese Alliance
 {
-#NAME= DE 800 - Portugal Declares War On Spain
+#NAME= DE 800 - Portugal: Declares War On Spain
 #POPUP=
 #IMAGE= 
 #SOUND=
@@ -12929,8 +12964,11 @@
 #DESTINATION_RESOURCE= 128,108
 ; UK(112) aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
+; Portugal(87) aligned with Allies and fully mobilized
 #VARIABLE_CONDITION= 87 [2] [100] [0]
+; USSR(116) aligned with Allies and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
+; Spain(99) aligned with Axis
 #VARIABLE_CONDITION= 99 [1] [1] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -13755,8 +13793,7 @@
 #POPUP=
 #IMAGE= 
 #SOUND=
-; currently disabled in Fall Weiss II
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 2
 #LEVEL= 4
@@ -13787,8 +13824,7 @@
 #POPUP=
 #IMAGE= 
 #SOUND=
-; currently disabled in Fall Weiss II
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 2
 #LEVEL= 4
@@ -15096,7 +15132,7 @@
 
 ; Spanish Garrison Portugal Border
 {
-#NAME= DE 800 - Spanish Garrison Portugal Border
+#NAME= DE 800 - Spain: Spanish Garrison Portugal Border
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -15123,7 +15159,7 @@
 
 ; Spanish Garrison Portugal Border
 {
-#NAME= DE 800 - Spanish Garrison Portugal Border
+#NAME= DE 800 - Spain: Spanish Garrison Portugal Border
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -15150,7 +15186,7 @@
 
 ; Valencia Corps (Spain)
 {
-#NAME= DE 800 - Valencia Corps (Spain)
+#NAME= DE 800 - Spain: Valencia Corps
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -15195,7 +15231,7 @@
 #DATE= 1942/08/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 188,76
-; Turkey aligned with Allies and not surrendered
+; Germany(45) aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -15303,7 +15339,7 @@
 }
 
 {
-#NAME= DE 897 - Spain Allied Armies (Madrid)
+#NAME= DE 897 - Spain: Allied Armies (Madrid)
 #POPUP= Spanish Forces Reorganize Near Madrid
 #IMAGE=
 #SOUND=
@@ -15351,7 +15387,7 @@
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 241,128
 ; USSR(115) aligned with Allies and not surrendered
-; Egypt aligned with Allies and surrendered
+; Egypt(36) aligned with Allies and surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [1]
 ; Dummy condition position (always satisfied)
@@ -15401,7 +15437,7 @@
 
 ; UK (Corps)
 {
-#NAME= UK(AI): Corps- Mersa Matruh - 1940
+#NAME= UK(AI): Corps - Mersa Matruh - 1940
 #POPUP=
 #IMAGE=
 #SOUND=
