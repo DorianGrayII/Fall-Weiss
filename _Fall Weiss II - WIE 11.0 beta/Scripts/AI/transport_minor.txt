@@ -13,12 +13,18 @@
 ;        With all other fields satisfied will this be:
 ;        0 = Single check regardless if #TRIGGER is satisfied
 ;        1 = Multiple check until #TRIGGER is satisfied
-;        2 = Reoccuring check until end of game
+;        2 = Reoccurring check until end of game
 ;                       OR
 ;        Once the #DATE field is satisfied:
 ;        3 = Event fires once if all other fields are satisfied, else it will not fire.  Either way, event will be removed never to be looked at again
-; #LEVEL= What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
-;         Values: [0, 4]; Green= 0; Novice= 1; Intermediate= 2; Veteran= 3; Expert= 4
+; #LEVEL= Value range [-1, 4]
+;      What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;     -1 = a script that should only fire for AI friendly controlled majors on your turn
+;      0 = Green
+;      1 = Novice
+;      2 = Intermediate
+;      3 = Veteran
+;      4 = Expert
 ; #GV= Does the event activate based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
@@ -69,7 +75,7 @@
 ; BUILD_UP_TRANSPORT_MINOR - These plans will only be assigned to fully activated countries and only if the
 ; #BUILD_LENGTH value > 0.  AI will also only load units onto transports only if their strength > 5.  
 ; Automatic protection routines send transports with strength <= 5 back to the nearest port.
-; Note:  Understrengthed units will still be assigned to these plans just not loaded onto transports until they have a
+; Note:  Understrength units will still be assigned to these plans just not loaded onto transports until they have a
 ;        strength > 5.
 ;
 ; BUILD_UP_TRANSPORT_MINOR - These plans WILL NOT include HQs as a part of their default plan.
@@ -80,7 +86,7 @@
 ;              HQ, Anti-Air, Artillery, Rail Gun, Coastal Gun, Rockets, Armoured Train, Anti-Tank, Airships, Fighters, 
 ;              Tactical Bombers, Medium Bombers, Strategic Bombers, Maritime Bombers, Kamikazes
 ;        These non-core units are added to the plan (closest available unit without a plan) after all other land units.
-;        Therefore, a plan set to #SIZE= 5 would infact end up being a plan with a size equal to 6 after the game engine 
+;        Therefore, a plan set to #SIZE= 5 would in fact end up being a plan with a size equal to 6 after the game engine 
 ;        includes an HQ and so on.  Essentially, in order to have the plan satisfy the #SIZE requirement keep in mind the
 ;        original count does not include available HQ, Rockets, Air Fleet and Bombers as these are added in after the 
 ;        #SIZE value is satisfied.
@@ -128,7 +134,7 @@
 ; specified x,y position.  For example if the x,y position is a coastal tile then range checks will
 ; be made on sea tiles, otherwise if it is a land tile range checks will be made on land tiles only.
 ; Each #ACTIVATE_POSITION line will be read using OR logic.
-; Note: Once a plan has been properly activated then all references to #ACTIAVATE_POSITION are removed
+; Note: Once a plan has been properly activated then all references to #ACTIVATE_POSITION are removed
 ;       from the plan as these conditions have been satisfied.  Use #CANCEL_POSITION to set the CANCEL conditions
 ;       based on unit positions for the event.
 ;
@@ -157,10 +163,10 @@
 ; #COUNTRY_ID_5= Argentina
 ; #COUNTRY_ID_6= Australia
 ; #COUNTRY_ID_7= Austria
-; #COUNTRY_ID_8= Baltic States
+; #COUNTRY_ID_8= Kenya
 ; #COUNTRY_ID_9= Belgian Congo
 ; #COUNTRY_ID_10= Belgium
-; #COUNTRY_ID_11= Benelux
+; #COUNTRY_ID_11= Madagascar
 ; #COUNTRY_ID_12= Bhutan
 ; #COUNTRY_ID_13= Black
 ; #COUNTRY_ID_14= Bolivia
@@ -203,7 +209,7 @@
 ; #COUNTRY_ID_51= Hong Kong
 ; #COUNTRY_ID_52= Hungary
 ; #COUNTRY_ID_53= Iceland
-; #COUNTRY_ID_54= India
+; #COUNTRY_ID_54= British Empire*
 ; #COUNTRY_ID_55= Indochina
 ; #COUNTRY_ID_56= Iraq
 ; #COUNTRY_ID_57= Ireland
@@ -224,7 +230,7 @@
 ; #COUNTRY_ID_72= Nepal
 ; #COUNTRY_ID_73= Netherlands
 ; #COUNTRY_ID_74= New Zealand
-; #COUNTRY_ID_75= Newfoundland
+; #COUNTRY_ID_75= New Guinea
 ; #COUNTRY_ID_76= Nicaragua
 ; #COUNTRY_ID_77= Nigeria
 ; #COUNTRY_ID_78= Norway
@@ -346,7 +352,7 @@
 ; 1st Line - Sheffield
 ; 2nd Line - Liverpool (Port)
 ; 3rd Line - Alexandria
-; 4th Line - Cario
+; 4th Line - Cairo
 ; 5th Line - El Arish
 ; 6th Line - Port Said
 ; 7th Line - Suez
@@ -358,7 +364,7 @@
 #FRIENDLY_POSITION= 209,123
 #FRIENDLY_POSITION= 210,126
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Set tactical conditions:
 ; 1st Line - London not tactically threatened (dummy condition)
@@ -419,7 +425,7 @@
 #FRIENDLY_POSITION= 209,123
 #FRIENDLY_POSITION= 210,126
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Set tactical conditions:
 ; 1st Line - London not tactically threatened (dummy condition)
@@ -480,7 +486,7 @@
 #FRIENDLY_POSITION= 209,123
 #FRIENDLY_POSITION= 210,126
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Set tactical conditions:
 ; 1st Line - London not tactically threatened (dummy condition)
@@ -535,7 +541,7 @@
 #FRIENDLY_POSITION= 206,124
 #FRIENDLY_POSITION= 208,126
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Set tactical conditions:
 ; 1st Line - London not tactically threatened (dummy condition)
@@ -585,7 +591,7 @@
 #FRIENDLY_POSITION= 206,124
 #FRIENDLY_POSITION= 208,126
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Set tactical conditions:
 ; 1st Line - London not tactically threatened (dummy condition)
@@ -635,7 +641,7 @@
 #FRIENDLY_POSITION= 206,124
 #FRIENDLY_POSITION= 208,126
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Set tactical conditions:
 ; 1st Line - London not tactically threatened (dummy condition)
@@ -685,7 +691,7 @@
 #FRIENDLY_POSITION= 206,124
 #FRIENDLY_POSITION= 208,126
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Set tactical conditions:
 ; 1st Line - London not tactically threatened (dummy condition)
@@ -731,7 +737,7 @@
 #FRIENDLY_POSITION= 30,95
 #FRIENDLY_POSITION= 141,77
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Set tactical conditions:
 ; 1st Line - Washington D.C. not tactically threatened 
@@ -770,7 +776,7 @@
 #FRIENDLY_POSITION= 30,95
 #FRIENDLY_POSITION= 141,77
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Set tactical conditions:
 ; 1st Line - Washington D.C. not tactically threatened 
@@ -809,7 +815,7 @@
 #FRIENDLY_POSITION= 30,95
 #FRIENDLY_POSITION= 137,65
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Set tactical conditions:
 ; 1st Line - Washington D.C. not tactically threatened 
@@ -852,7 +858,7 @@
 #FRIENDLY_POSITION= 6,93
 #FRIENDLY_POSITION= 137,65
 ; Set variable conditions:
-; 1st Line - Canada politically aligned with Allies and not surrendered
+; 1st Line - Canada(21) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 21 [2] [100] [0]
 ; Set tactical conditions:
 ; 1st Line - Ottawa not tactically threatened (dummy condition)
@@ -895,7 +901,7 @@
 #FRIENDLY_POSITION= 6,93
 #FRIENDLY_POSITION= 210,127
 ; Set variable conditions:
-; 1st Line - Canada politically aligned with Allies and not surrendered
+; 1st Line - Canada(21) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 21 [2] [100] [0]
 ; Set tactical conditions:
 ; 1st Line - Ottawa not tactically threatened (dummy condition)
@@ -911,6 +917,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; ALLIED SCRIPTS - Build Up Transport Minor (FRANCE)
+; Fall Weiss II event
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; France sends reinforcements to Marseilles:
@@ -939,8 +946,8 @@
 ; 1st Line - Algiers
 #FRIENDLY_POSITION= 152,113
 ; Set variable conditions:
-; 1st Line - France politically aligned with Allies and not surrendered AND
-; 2nd Line - USSR politically aligned with Allies (not fully active) and not surrendered
+; 1st Line - France(40) politically aligned with Allies and not surrendered AND
+; 2nd Line - USSR(116) politically aligned with Allies (not fully active) and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; Set tactical conditions:
@@ -988,7 +995,7 @@
 #FRIENDLY_POSITION= 152,113
 #FRIENDLY_POSITION= 136,114
 ; Set variable conditions:
-; 1st Line - USA politically aligned with Allies and not surrendered
+; 1st Line - USA(115) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Set tactical conditions:
 ; 1st Line - Washington D.C. not tactically threatened
@@ -1033,7 +1040,7 @@
 #FRIENDLY_POSITION= 206,124
 #FRIENDLY_POSITION= 208,126
 ; Set variable conditions:
-; 1st Line - USA politically aligned with Allies and not surrendered
+; 1st Line - USA(115) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Set tactical conditions:
 ; 1st Line - Washington D.C. not tactically threatened 

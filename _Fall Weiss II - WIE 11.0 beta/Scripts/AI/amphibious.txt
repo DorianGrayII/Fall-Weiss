@@ -13,12 +13,18 @@
 ;        With all other fields satisfied will this be:
 ;        0 = Single check regardless if #TRIGGER is satisfied
 ;        1 = Multiple check until #TRIGGER is satisfied
-;        2 = Reoccuring check until end of game
+;        2 = Reoccurring check until end of game
 ;                       OR
 ;        Once the #DATE field is satisfied:
 ;        3 = Event fires once if all other fields are satisfied, else it will not fire.  Either way, event will be removed never to be looked at again
-; #LEVEL= What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
-;         Values: [0, 4]; Green= 0; Novice= 1; Intermediate= 2; Veteran= 3; Expert= 4
+; #LEVEL= Value range [-1, 4]
+;      What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;     -1 = a script that should only fire for AI friendly controlled majors on your turn
+;      0 = Green
+;      1 = Novice
+;      2 = Intermediate
+;      3 = Veteran
+;      4 = Expert
 ; #GV= Does the event activate based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
@@ -41,7 +47,8 @@
 ; #LONG_RANGE= Should the plan use regular transports or check for long range transports as they are available? (values range [0, 1]; Regular= 0; Long Range= 1)
 ; #GOAL_POSITION= What is the map position that is the objective of this plan?
 ; #COASTAL_POSITION= From what coastal position should the transports attempt to disembark towards #GOAL_POSITION?
-; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
+; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd or yyyy/mm/dd [=]).
+;        if [=] is used, only apply for year specified.
 ; #STEAL= Set priority by stealing units from other plans
 ;         Values: [0, 3]; False= 0; Steal_Offensive= 1; Steal_Defensive= 2; Steal_Offensive_Or_Defensive= 3)
 ; #FRIENDLY_POSITION= Positions that must be under friendly control in order for event to occur
@@ -72,7 +79,7 @@
 ; #BUILD_LENGTH value > 0. AI will automatically declare war (as applicable) whenever at least 50% of their transports 
 ; are within range of the #COASTAL_POSITION. AI will also only load units onto transports only if their strength > 5.  
 ; Automatic protection routines send transports with strength <= 5 back to the nearest port.
-; Note:  Understrengthed units will still be assigned to these plans just not loaded onto transports until they have a
+; Note:  Understrength units will still be assigned to these plans just not loaded onto transports until they have a
 ;        strength > 5.
 ;
 ; BUILD_UP_AMPHIBIOUS - These plans WILL include HQs as a part of their plan (if available).
@@ -83,7 +90,7 @@
 ;              HQ, Anti-Air, Artillery, Rail Gun, Coastal Gun, Rockets, Armoured Train, Anti-Tank, Airships, Fighters, 
 ;              Tactical Bombers, Medium Bombers, Strategic Bombers, Maritime Bombers, Kamikazes
 ;        These non-core units are added to the plan (closest available unit without a plan) after all other land units.
-;        Therefore, a plan set to #SIZE= 5 would infact end up being a plan with a size equal to 6 after the game engine 
+;        Therefore, a plan set to #SIZE= 5 would, in fact, end up being a plan with a size equal to 6 after the game engine 
 ;        includes an HQ and so on.  Essentially, in order to have the plan satisfy the #SIZE requirement keep in mind the 
 ;        original count does not include available HQ, Rockets, Air Fleet and Bombers as these are added in after the 
 ;        #SIZE value is satisfied.
@@ -162,10 +169,10 @@
 ; #COUNTRY_ID_5= Argentina
 ; #COUNTRY_ID_6= Australia
 ; #COUNTRY_ID_7= Austria
-; #COUNTRY_ID_8= Baltic States
+; #COUNTRY_ID_8= Kenya
 ; #COUNTRY_ID_9= Belgian Congo
 ; #COUNTRY_ID_10= Belgium
-; #COUNTRY_ID_11= Benelux
+; #COUNTRY_ID_11= Madagascar
 ; #COUNTRY_ID_12= Bhutan
 ; #COUNTRY_ID_13= Black
 ; #COUNTRY_ID_14= Bolivia
@@ -208,7 +215,7 @@
 ; #COUNTRY_ID_51= Hong Kong
 ; #COUNTRY_ID_52= Hungary
 ; #COUNTRY_ID_53= Iceland
-; #COUNTRY_ID_54= India
+; #COUNTRY_ID_54= British Empire*
 ; #COUNTRY_ID_55= Indochina
 ; #COUNTRY_ID_56= Iraq
 ; #COUNTRY_ID_57= Ireland
@@ -229,7 +236,7 @@
 ; #COUNTRY_ID_72= Nepal
 ; #COUNTRY_ID_73= Netherlands
 ; #COUNTRY_ID_74= New Zealand
-; #COUNTRY_ID_75= Newfoundland
+; #COUNTRY_ID_75= New Guinea
 ; #COUNTRY_ID_76= Nicaragua
 ; #COUNTRY_ID_77= Nigeria
 ; #COUNTRY_ID_78= Norway
@@ -353,9 +360,9 @@
 #FRIENDLY_POSITION= 167,112
 #FRIENDLY_POSITION= 172,121
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered AND
-; 2nd Line - USA politically aligned with Allies and fully active AND
-; 3rd Line - Italy politically aligned with Axis and fully active
+; 1st Line - UK(112) politically aligned with Allies and not surrendered AND
+; 2nd Line - USA(115) politically aligned with Allies and fully active AND
+; 3rd Line - Italy(59) politically aligned with Axis and fully active
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -398,9 +405,9 @@
 #FRIENDLY_POSITION= 167,112
 #FRIENDLY_POSITION= 172,121
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered AND
-; 2nd Line - USA politically aligned with Allies and fully active AND
-; 3rd Line - Italy politically aligned with Axis and fully active
+; 1st Line - UK(112) politically aligned with Allies and not surrendered AND
+; 2nd Line - USA(115) politically aligned with Allies and fully active AND
+; 3rd Line - Italy(59) politically aligned with Axis and fully active
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -443,9 +450,9 @@
 #FRIENDLY_POSITION= 167,112
 #FRIENDLY_POSITION= 172,121
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered AND
-; 2nd Line - USA politically aligned with Allies and fully active AND
-; 3rd Line - Italy politically aligned with Axis and fully active
+; 1st Line - UK(112) politically aligned with Allies and not surrendered AND
+; 2nd Line - USA(115) politically aligned with Allies and fully active AND
+; 3rd Line - Italy(59) politically aligned with Axis and fully active
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -488,9 +495,9 @@
 #FRIENDLY_POSITION= 167,112
 #FRIENDLY_POSITION= 172,121
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered AND
-; 2nd Line - USA politically aligned with Allies and fully active AND
-; 3rd Line - Italy politically aligned with Axis and fully active
+; 1st Line - UK(112) politically aligned with Allies and not surrendered AND
+; 2nd Line - USA(115) politically aligned with Allies and fully active AND
+; 3rd Line - Italy(59) politically aligned with Axis and fully active
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -534,9 +541,9 @@
 #FRIENDLY_POSITION= 167,112
 #FRIENDLY_POSITION= 172,121
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered AND
-; 2nd Line - USA politically aligned with Allies and fully active AND
-; 3rd Line - Italy politically aligned with Axis and fully active
+; 1st Line - UK(112) politically aligned with Allies and not surrendered AND
+; 2nd Line - USA(115) politically aligned with Allies and fully active AND
+; 3rd Line - Italy(59) politically aligned with Axis and fully active
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -579,9 +586,9 @@
 #FRIENDLY_POSITION= 167,112
 #FRIENDLY_POSITION= 172,121
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered AND
-; 2nd Line - USA politically aligned with Allies and fully active AND
-; 3rd Line - Italy politically aligned with Axis and fully active
+; 1st Line - UK(112) politically aligned with Allies and not surrendered AND
+; 2nd Line - USA(115) politically aligned with Allies and fully active AND
+; 3rd Line - Italy(59) politically aligned with Axis and fully active
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -626,8 +633,8 @@
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 147,77
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered AND
-; 1st Line - France politically aligned with Allies and surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered AND
+; 1st Line - France(40) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Set tactical conditions:
@@ -671,8 +678,8 @@
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 147,77
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered AND
-; 1st Line - France politically aligned with Allies and surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered AND
+; 1st Line - France(40) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Set tactical conditions:
@@ -714,8 +721,8 @@
 #FRIENDLY_POSITION= 140,65
 #FRIENDLY_POSITION= 144,73
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered AND
-; 1st Line - France politically aligned with Allies and surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered AND
+; 1st Line - France(40) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Set tactical conditions:
@@ -758,8 +765,8 @@
 #FRIENDLY_POSITION= 140,65
 #FRIENDLY_POSITION= 144,73
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered AND
-; 1st Line - France politically aligned with Allies and surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered AND
+; 1st Line - France(40) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Set tactical conditions:
@@ -801,8 +808,8 @@
 #FRIENDLY_POSITION= 140,65
 #FRIENDLY_POSITION= 144,73
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered AND
-; 1st Line - France politically aligned with Allies and surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered AND
+; 1st Line - France(40) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Set tactical conditions:
@@ -845,8 +852,8 @@
 #FRIENDLY_POSITION= 140,65
 #FRIENDLY_POSITION= 144,73
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered AND
-; 1st Line - France politically aligned with Allies and surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered AND
+; 1st Line - France(40) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Set tactical conditions:
@@ -891,7 +898,7 @@
 ; 1st Line - Washington D.C.
 #FRIENDLY_POSITION= 4,108
 ; Set variable conditions:
-; 1st Line - USA politically aligned with Allies and not surrendered
+; 1st Line - USA(115) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Set tactical conditions:
 ; 1st Line - Washington D.C. not tactically threatened 
@@ -930,7 +937,7 @@
 ; 1st Line - Washington D.C.
 #FRIENDLY_POSITION= 4,108
 ; Set variable conditions:
-; 1st Line - USA politically aligned with Allies and not surrendered
+; 1st Line - USA(115) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Set tactical conditions:
 ; 1st Line - Washington D.C. not tactically threatened 
@@ -980,8 +987,8 @@
 #FRIENDLY_POSITION= 10,104
 #FRIENDLY_POSITION= 136,114
 ; Set variable conditions:
-; 1st Line - USA politically aligned with Allies and not surrendered AND
-; 2nd Line - France politically aligned with Allies and surrendered
+; 1st Line - USA(115) politically aligned with Allies and not surrendered AND
+; 2nd Line - France(40) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Set tactical conditions:
@@ -1034,8 +1041,8 @@
 ; 1st Line - New York
 #FRIENDLY_POSITION= 10,104
 ; Set variable conditions:
-; 1st Line - USA politically aligned with Allies and not surrendered AND
-; 2nd Line - France politically aligned with Allies and surrendered
+; 1st Line - USA(115) politically aligned with Allies and not surrendered AND
+; 2nd Line - France(40) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Set tactical conditions:
@@ -1085,8 +1092,8 @@
 ; 1st Line - New York
 #FRIENDLY_POSITION= 10,104
 ; Set variable conditions:
-; 1st Line - USA politically aligned with Allies and not surrendered AND
-; 2nd Line - France politically aligned with Allies and surrendered
+; 1st Line - USA(115) politically aligned with Allies and not surrendered AND
+; 2nd Line - France(40) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Set tactical conditions:
@@ -1137,8 +1144,8 @@
 ; 2nd Line - Cairo
 #FRIENDLY_POSITION= 10,104
 ; Set variable conditions:
-; 1st Line - USA politically aligned with Allies and not surrendered AND
-; 2nd Line - France politically aligned with Allies and surrendered
+; 1st Line - USA(115) politically aligned with Allies and not surrendered AND
+; 2nd Line - France(40) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Set tactical conditions:
@@ -1189,8 +1196,8 @@
 ; 2nd Line - Cairo
 #FRIENDLY_POSITION= 10,104
 ; Set variable conditions:
-; 1st Line - USA politically aligned with Allies and not surrendered AND
-; 2nd Line - France politically aligned with Allies and surrendered
+; 1st Line - USA(115) politically aligned with Allies and not surrendered AND
+; 2nd Line - France(40) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Set tactical conditions:
@@ -1240,8 +1247,8 @@
 #FRIENDLY_POSITION= 172,121
 #FRIENDLY_POSITION= 152,113
 ; Set variable conditions:
-; 1st Line - USA politically aligned with Allies and not surrendered AND
-; 2nd Line - Italy politically aligned with Axis and not surrendered
+; 1st Line - USA(115) politically aligned with Allies and not surrendered AND
+; 2nd Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Set tactical conditions:
@@ -1287,8 +1294,8 @@
 #FRIENDLY_POSITION= 172,121
 #FRIENDLY_POSITION= 152,113
 ; Set variable conditions:
-; 1st Line - USA politically aligned with Allies and not surrendered AND
-; 2nd Line - Italy politically aligned with Axis and not surrendered
+; 1st Line - USA(115) politically aligned with Allies and not surrendered AND
+; 2nd Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Set tactical conditions:
@@ -1329,8 +1336,8 @@
 ; 1st Line - Bristol
 #FRIENDLY_POSITION= 142,78
 ; Set variable conditions:
-; 1st Line - USA politically aligned with Allies and not surrendered AND
-; 2nd Line - France politically aligned with Allies and surrendered
+; 1st Line - USA(115) politically aligned with Allies and not surrendered AND
+; 2nd Line - France(40) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Set tactical conditions:
@@ -1371,8 +1378,8 @@
 ; 1st Line - Bristol
 #FRIENDLY_POSITION= 142,78
 ; Set variable conditions:
-; 1st Line - USA politically aligned with Allies and not surrendered AND
-; 2nd Line - France politically aligned with Allies and surrendered
+; 1st Line - USA(115) politically aligned with Allies and not surrendered AND
+; 2nd Line - France(40) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Set tactical conditions:
@@ -1429,9 +1436,9 @@
 #FRIENDLY_POSITION= 179,104
 #FRIENDLY_POSITION= 173,109
 ; Set variable conditions:
-; 1st Line - France politically aligned with Allies and surrendered AND
-; 2nd Line - USSR politically Allied and surrendered AND
-; 3rd Line - Italy politically aligned with Axis and not surrendered
+; 1st Line - France(40) politically aligned with Allies and surrendered AND
+; 2nd Line - USSR(116) politically Allied and surrendered AND
+; 3rd Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 116 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -1497,9 +1504,9 @@
 #FRIENDLY_POSITION= 173,109
 #FRIENDLY_POSITION= 193,109
 ; Set variable conditions:
-; 1st Line - France politically aligned with Allies and surrendered AND
-; 2nd Line - USSR politically Allied and surrendered AND
-; 3rd Line - Italy politically aligned with Axis and not surrendered
+; 1st Line - France(40) politically aligned with Allies and surrendered AND
+; 2nd Line - USSR(116) politically Allied and surrendered AND
+; 3rd Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 116 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -1560,9 +1567,9 @@
 #FRIENDLY_POSITION= 173,109
 #FRIENDLY_POSITION= 193,109
 ; Set variable conditions:
-; 1st Line - France politically aligned with Allies and surrendered AND
-; 2nd Line - USSR politically Allied and surrendered AND
-; 3rd Line - Italy politically aligned with Axis and not surrendered
+; 1st Line - France(40) politically aligned with Allies and surrendered AND
+; 2nd Line - USSR(116) politically Allied and surrendered AND
+; 3rd Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 116 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -1611,8 +1618,8 @@
 ; 1st Line - New York
 #FRIENDLY_POSITION= 10,104
 ; Set variable conditions:
-; 1st Line - USA politically aligned with Allies and not surrendered AND
-; 2nd Line - France politically aligned with Allies and surrendered
+; 1st Line - USA(115) politically aligned with Allies and not surrendered AND
+; 2nd Line - France(40) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Set tactical conditions:
@@ -1662,8 +1669,8 @@
 ; 2nd Line - Cairo
 #FRIENDLY_POSITION= 10,104
 ; Set variable conditions:
-; 1st Line - USA politically aligned with Allies and not surrendered AND
-; 2nd Line - France politically aligned with Allies and surrendered
+; 1st Line - USA(115) politically aligned with Allies and not surrendered AND
+; 2nd Line - France(40) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Set tactical conditions:
@@ -1713,8 +1720,8 @@
 ; 2nd Line - Cairo
 #FRIENDLY_POSITION= 10,104
 ; Set variable conditions:
-; 1st Line - USA politically aligned with Allies and not surrendered AND
-; 2nd Line - France politically aligned with Allies and surrendered
+; 1st Line - USA(115) politically aligned with Allies and not surrendered AND
+; 2nd Line - France(40) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Set tactical conditions:
@@ -1762,8 +1769,8 @@
 #FRIENDLY_POSITION= 140,65
 #FRIENDLY_POSITION= 144,73
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered AND
-; 1st Line - France politically aligned with Allies and surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered AND
+; 1st Line - France(40) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Set tactical conditions:
@@ -1808,7 +1815,7 @@
 ; 1st Line - Saint John.
 #FRIENDLY_POSITION= 25,93
 ; Set variable conditions:
-; 1st Line - USA, British Empire politically aligned with Allies and not surrendered
+; 1st Line - USA(115), British Empire politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 54 [2] [100] [0]
 ; Set tactical conditions:
