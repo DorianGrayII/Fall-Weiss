@@ -743,7 +743,7 @@
 ;Set link value to always trigger (dummy value)
 #LINK= 500[1]
 #COUNTRY_ID= 112
-#TRIGGER= 75
+#TRIGGER= 50
 #DISPLAY_ORDER= 1
 ; Set decision value
 #DECISION= 109
@@ -993,7 +993,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 115 - UK: Form The Polish I Corps? (75% Chance) (AI - 100% Yes)
+#NAME= DE 115 - UK: Form The Polish I Corps? (50% Chance) (AI - 100% Yes)
 #POPUP=
 #MESSAGE= British War Office %N David Margesson %N%N Following the fall of France thousands of Polish soldiers who had sought refuge there in the hope of forming a Polish Army in exile have been arriving in the UK. %N%N Given our now tenuous position both at home and abroad, the British High Command is asking us to spend 50 MPPs, at 25 MPPs a turn for 2 turns, to help equip and train these men. %N%N If you agree these soldiers will deploy near London as the Polish I Corps. %N%N Would you like to form this Polish unit %B(YES)?
 #IMAGE=
@@ -1007,7 +1007,7 @@
 ;Set link value to always trigger (dummy value)
 #LINK= 200[0]
 #COUNTRY_ID= 112
-#TRIGGER= 75
+#TRIGGER= 50
 #DISPLAY_ORDER= 1
 ; Set decision value
 #DECISION= 115
@@ -1838,7 +1838,9 @@
 #MESSAGE=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
@@ -2453,7 +2455,9 @@
 #MESSAGE=
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 3
 #AI= 0
 #LEVEL= 0
@@ -2496,7 +2500,8 @@
 #MESSAGE=
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
+; currently disabled for Fall Weiss II
+#FLAG= 0
 #TYPE= 3
 #AI= 0
 #LEVEL= 0
@@ -2539,7 +2544,8 @@
 #MESSAGE=
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
+; currently disabled for Fall Weiss II
+#FLAG= 0
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
@@ -2605,7 +2611,8 @@
 #MESSAGE=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; currently disabled for Fall Weiss II
+#FLAG= 0
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
@@ -2648,7 +2655,8 @@
 #MESSAGE=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; currently disabled for Fall Weiss II
+#FLAG= 0
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
@@ -2862,7 +2870,7 @@
 
 ;Replacement Script
 {
-#NAME= DE 204 - France: Send an Anglo-French Expedition to Support Finland? (AI - 50% Yes)
+#NAME= DE 204 - France: Send an Anglo-French Expedition to Support Finland? (AI - 25% Yes)
 #POPUP=
 #MESSAGE= Prime Minister %N Edouard Daladier %N%N General Weygand proposes that together with the British we send a military expedition to Finland to enable them to resist the Red Army. %N%N If we do assist the Finns, the British will be obliged to follow suit, as British public opinion and their First Sea Lord, Winston Churchill, are strongly in favour of doing so. %N%N For a cost of 100 MPPs, to be shared evenly between Britain and France, this support could halt the Soviet dictator's aggression in the Baltic. %N%N However, given the logistics involved this mission only has a 50% chance of success. Yet whether successful or not, the units comprising the expedition will return to Scotland in early April 1940. %N%N Would you like to send a joint Anglo-French Expedition to Finland?
 #IMAGE=
@@ -2886,7 +2894,7 @@
 #NOTES= The expedition has a 50% chance of reaching Finland in time to provide them with enough support to withstand the Soviet onslaught. If successful, the USSR will not gain any Finnish territory as a result of the conflict, and the USSR will move 4-6% towards the Axis. %N%N For their decisive action in helping defeat aggression against a neutral country, France and the UK will both gain 500 National Morale points, and Finland will swing 10-15% towards the Allies. %N%N If the mission doesn't arrive in time, then Finland will be forced to cede territory to the USSR in March 1940. %N%N Whether successful or not, the Anglo-French expedition will return to Scotland at the start of April 1940, with a French strength 8 Special Forces unit of Chasseurs Alpins deploying at Dundee with Full Research, while a similar British unit (called Rupertforce) will deploy at Inverness. %N%N If Germany invades Norway via DE 643 or DE 644, then the Allies will have an opportunity to send these units to Narvik to attempt to recapture the town. This opportunity will not exist if this expedition is not sent, so it is recommended to do so by saying %B(YES).
 #NOTES_POSITION=
 ; Set AI acceptance % (AI will accept 50% of the time)
-#AI_RESPONSE= 50
+#AI_RESPONSE= 25
 #AI_RESPONSE_POPUP=
 #DATE= 1940/01/20
 #TEXT_RGB= 0,0,0
@@ -4566,7 +4574,9 @@
 #MESSAGE= 
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
@@ -4800,7 +4810,9 @@
 #MESSAGE= <<TAG_60>>
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
@@ -4845,7 +4857,9 @@
 #MESSAGE= <<TAG_141>>
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
@@ -4889,7 +4903,9 @@
 #MESSAGE= 
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
@@ -5541,6 +5557,10 @@
 ; Leningrad is in Axis hands
 #ALIGNMENT_POSITION= 206,52 [1]
 #ALIGNMENT_POSITION= 206,51 [1]
+; Baku is in Axis hands
+#ALIGNMENT_POSITION= 245,104 [1]
+#ALIGNMENT_POSITION= 244,105 [1]
+#ALIGNMENT_POSITION= 243,104 [1]
 ; Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR is Allied and not surrendered
@@ -5891,8 +5911,8 @@ Replacement script
 ; Set variable conditions:
 ; 1st Line - USSR(116) aligned with Allies and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; At least one Axis unit is within one hex of Leningrad
-#CONDITION_POSITION= 206,52 [1,1] [1,1] [0] [0]
+; At least one Axis unit is within two hex of Leningrad
+#CONDITION_POSITION= 206,52 [2,2] [1,1] [1] [0]
 }
 
 {
@@ -5943,7 +5963,9 @@ Replacement script
 #MESSAGE=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
@@ -5985,7 +6007,8 @@ Replacement script
 #MESSAGE=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
@@ -6321,13 +6344,15 @@ Replacement script
 #MESSAGE= <<TAG_201>>
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
 ;Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-;Set link value to DE 100=0
+;Set link value to DE 100=1
 #LINK= 100[1]
 #COUNTRY_ID= 45
 #TRIGGER= 50
@@ -7402,7 +7427,7 @@ Replacement script
 ; Set decision value
 #DECISION= 627
 #MPP_UPDOWN= -50
-#MPP_TURNS= 4
+#MPP_TURNS= 6
 #MPP_TEXT= <<TAG_268>>
 #NOTES= <<TAG_269>>
 #NOTES_POSITION= 147,82
@@ -8540,7 +8565,7 @@ Replacement script
 #DATE= 1942/01/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Bordeaux is in Axis hands
+; Bordeaux(145, 94) is in Axis hands
 #ALIGNMENT_POSITION= 145,94 [1]
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
@@ -10564,7 +10589,7 @@ Replacement script
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Set variable conditions:
 ; 1st Line - UK(112) aligned with Allies and not surrendered
-; 2nd Line - France(40) aligned with Allies and surrendered
+; 2nd Line - Portugal(87) aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 87 [2] [0] [0]
 ; Dummy condition position (always satisfied)
