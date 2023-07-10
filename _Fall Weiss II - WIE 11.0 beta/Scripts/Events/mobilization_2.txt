@@ -401,7 +401,7 @@
 ; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USA has 2 or more units within 100 hexes of Ferrol in northern Spain
+; USA has 2 or more units within 100 hexes of Ferrol(130, 97) in northern Spain
 #CONDITION_POSITION= 130,97 [100,100] [2,2] [2] [115]
 }
 
@@ -590,7 +590,9 @@
 #POPUP= <<TAG_44>>
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 2
 #AI= 0
 #GV= 1[1,100]
@@ -879,7 +881,9 @@
 #POPUP= 
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 2
 #GV= 1[1,100]
@@ -910,7 +914,9 @@
 #POPUP= 
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 2
 #GV= 1[1,100]
@@ -1976,7 +1982,7 @@
 ; Axis land units in UK resulting in a
 ; 2-4% increase in USA activation towards Allies:
 {
-#NAME= ALLIED AI: Axis Units In The UK (USA->Allies)
+#NAME= USA(AI): Axis Units In The UK (USA->Allies)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1991,8 +1997,8 @@
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #DATE= 1940/01/01
-; 1-2% activation increase towards Allies
-#MOBILIZATION= [1,2] [2]
+; 2-4% activation increase towards Allies
+#MOBILIZATION= [2,4] [2]
 ; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -2009,7 +2015,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 2
 #AI= 2
 #LEVEL= 4
