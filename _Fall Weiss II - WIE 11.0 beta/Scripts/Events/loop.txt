@@ -20,15 +20,21 @@
 ;        With all other fields satisfied will this be:
 ;        0 = Single check regardless if #TRIGGER is satisfied
 ;        1 = Multiple check until #TRIGGER is satisfied
-;        2 = Reoccuring check until end of game
+;        2 = Reoccurring check until end of game
 ; #AI= Values range [0, 4]
 ;      0 = Event fires whenever all fields are satisfied for any game type
 ;      1 = Event fires whenever all fields are satisfied, for AI games only, and only on the Axis AI turn
 ;      2 = Event fires whenever all fields are satisfied, for AI games only, and only on the Allied AI turn
 ;      3 = Event fires whenever all fields are satisfied, for AI and Multiplayer games only, and only on the Axis AI or on the Allied Multiplayer turns
 ;      4 = Event fires whenever all fields are satisfied, for AI and Multiplayer games only, and only on the Allied AI or on the Axis Multiplayer turns
-; #LEVEL= What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
-;         Values: [0, 4]; Green= 0; Novice= 1; Intermediate= 2; Veteran= 3; Expert= 4
+; #LEVEL= Value range [-1, 4]
+;      What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;     -1 = a script that should only fire for AI friendly controlled majors on your turn
+;      0 = Green
+;      1 = Novice
+;      2 = Intermediate
+;      3 = Veteran
+;      4 = Expert
 ; #GV= Does the event activate based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
@@ -474,6 +480,7 @@
 #POPUP= Naval Unit(s) Continue Around Cape Of Good Hope (Red Sea)
 #IMAGE=
 #SOUND=
+; currently disabled in Fall Weiss II
 #FLAG= 0
 #TYPE= 2
 #AI= 0
@@ -507,6 +514,7 @@
 #POPUP= Naval Unit(s) Continue Around Cape Of Good Hope (Persian Gulf)
 #IMAGE=
 #SOUND=
+; currently disabled in Fall Weiss II
 #FLAG= 0
 #TYPE= 2
 #AI= 0

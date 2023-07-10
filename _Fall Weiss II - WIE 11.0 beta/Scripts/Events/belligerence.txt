@@ -34,8 +34,14 @@
 ;          or for AI controlled Axis majors on Axis human player turns
 ;      6 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied in Single Player,
 ;          or for AI controlled Allied majors on Allied human player turns
-; #LEVEL= What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
-;         Values: [0, 4]; Green= 0; Novice= 1; Intermediate= 2; Veteran= 3; Expert= 4
+; #LEVEL= Value range [-1, 4]
+;      What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;     -1 = a script that should only fire for AI friendly controlled majors on your turn
+;      0 = Green
+;      1 = Novice
+;      2 = Intermediate
+;      3 = Veteran
+;      4 = Expert
 ; #GV= Does the event activate based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
@@ -257,11 +263,11 @@
 #BELLIGERENCE_ID= 45
 #DATE= 1939/09/03
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - UK politically aligned with the Allies and not surrendered AND
-; 2nd Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - UK(112) politically aligned with the Allies and not surrendered AND
+; 2nd Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 1st Line - Poland and Germany are belligerent
+; 1st Line - Poland(85) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [85,45]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -286,11 +292,11 @@
 #BELLIGERENCE_ID= 45
 #DATE= 1939/09/03
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - France politically aligned with the Allies and not surrendered AND
-; 2nd Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - France(40) politically aligned with the Allies and not surrendered AND
+; 2nd Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 1st Line - Poland and Germany are belligerent
+; 1st Line - Poland(85) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [85,45]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -315,11 +321,11 @@
 #BELLIGERENCE_ID= 45
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - USA politically aligned with the Allies and not surrendered AND
-; 2nd Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - USA(115) politically aligned with the Allies and not surrendered AND
+; 2nd Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 1st Line - UK and Germany are belligerent
+; 1st Line - UK(112) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -344,11 +350,11 @@
 #BELLIGERENCE_ID= 59
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - USA politically aligned with the Allies and not surrendered AND
-; 2nd Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - USA(115) politically aligned with the Allies and not surrendered AND
+; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - UK and Germany are belligerent
+; 1st Line - UK(112) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -373,11 +379,11 @@
 #BELLIGERENCE_ID= 45
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - USSR politically aligned with the Allied and not surrendered AND
-; 2nd Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - USSR(116) politically aligned with the Allied and not surrendered AND
+; 2nd Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 1st Line - UK and Germany are belligerent
+; 1st Line - UK(112) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -402,11 +408,11 @@
 #BELLIGERENCE_ID= 59
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - USSR politically aligned with the Allied and not surrendered AND
-; 2nd Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - USSR(116) politically aligned with the Allied and not surrendered AND
+; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - UK and Germany are belligerent
+; 1st Line - UK(112) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -431,11 +437,11 @@
 #BELLIGERENCE_ID= 112
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - UK politically aligned with the Allies and not surrendered AND
-; 2nd Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - UK(112) politically aligned with the Allies and not surrendered AND
+; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - UK and Germany are belligerent
+; 1st Line - UK(112) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -460,11 +466,11 @@
 #BELLIGERENCE_ID= 40
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - France politically aligned with the Allies and not surrendered AND
-; 2nd Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - France(40) politically aligned with the Allies and not surrendered AND
+; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 1st Line - UK and Germany are belligerent
+; 1st Line - UK(112) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -489,11 +495,11 @@
 #BELLIGERENCE_ID= 116
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - USSR politically aligned with the Allies and not surrendered AND
-; 2nd Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - USSR(116) politically aligned with the Allies and not surrendered AND
+; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - USSR and Germany are belligerent
+; 1st Line - USSR(116) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [116,45]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -518,11 +524,11 @@
 #BELLIGERENCE_ID= 115
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - USA politically aligned with the Allies and not surrendered AND
-; 2nd Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - USA(115) politically aligned with the Allies and not surrendered AND
+; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - USSR and Germany are belligerent
+; 1st Line - USSR(116) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [116,45]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -546,11 +552,11 @@
 #BELLIGERENCE_ID= 112
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - UK politically aligned with the Allies and surrendered
-; 2nd Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - UK(112) politically aligned with the Allies and surrendered
+; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - UK and Germany are belligerent
+; 1st Line - UK(112) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -574,11 +580,11 @@
 #BELLIGERENCE_ID= 40
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - France politically aligned with the Allies and surrendered
-; 2nd Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - France(40) politically aligned with the Allies and surrendered
+; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - France and Germany are belligerent
+; 1st Line - France(40) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [40,45]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -602,11 +608,11 @@
 #BELLIGERENCE_ID= 115
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - USA politically aligned with the Allies and surrendered
-; 2nd Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - USA(115) politically aligned with the Allies and surrendered
+; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - USA and Germany are belligerent
+; 1st Line - USA(115) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [115,45]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -630,11 +636,11 @@
 #BELLIGERENCE_ID= 116
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - USSR politically aligned with the Allies and surrendered
-; 2nd Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - USSR(116) politically aligned with the Allies and surrendered
+; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - USSR and Germany are belligerent
+; 1st Line - USSR(116) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [116,45]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -659,11 +665,11 @@
 #BELLIGERENCE_ID= 85
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - Poland politically aligned with the Allies and surrendered
-; 2nd Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - Poland(85) politically aligned with the Allies and surrendered
+; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - Poland and Germany are belligerent
+; 1st Line - Poland(85) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [85,45]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -694,11 +700,11 @@
 #BELLIGERENCE_ID= 115
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - USA politically aligned with the Allies and not surrendered AND
-; 2nd Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - USA(115) politically aligned with the Allies and not surrendered AND
+; 2nd Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 1st Line - UK(112) and Germany(45) are belligerent
+; 1st Line - UK(112)(112) and Germany(45) are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -726,11 +732,11 @@
 #BELLIGERENCE_ID= 116
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - USSR politically aligned with the Allies and not surrendered AND
-; 2nd Line - Finland politically aligned with the Axis and not surrendered
+; 1st Line - USSR(116) politically aligned with the Allies and not surrendered AND
+; 2nd Line - Finland(39) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-; 1st Line - USSR and Germany are belligerent
+; 1st Line - USSR(116) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [116,45]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -755,11 +761,11 @@
 #BELLIGERENCE_ID= 115
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - USA politically aligned with the Allies and not surrendered AND
-; 2nd Line - Finland politically aligned with the Axis and not surrendered
+; 1st Line - USA(115) politically aligned with the Allies and not surrendered AND
+; 2nd Line - Finland(39) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-; 1st Line - USA and Germany are belligerent
+; 1st Line - USA(115) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [115,45]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -784,11 +790,11 @@
 #BELLIGERENCE_ID= 112
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - UK politically aligned with the Allies and not surrendered AND
-; 2nd Line - Finland politically aligned with the Axis and not surrendered
+; 1st Line - UK(112) politically aligned with the Allies and not surrendered AND
+; 2nd Line - Finland(39) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-; 1st Line - UK and Germany are belligerent
+; 1st Line - UK(112) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -813,11 +819,11 @@
 #BELLIGERENCE_ID= 40
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - France politically aligned with the Allies and surrendered AND
-; 2nd Line - Finland politically aligned with the Axis and not surrendered
+; 1st Line - France(40) politically aligned with the Allies and surrendered AND
+; 2nd Line - Finland(39) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-; 1st Line - France and Germany are belligerent
+; 1st Line - France(40) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [40,45]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -842,11 +848,11 @@
 #BELLIGERENCE_ID= 40
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - France politically aligned with the Allies and not surrendered AND
-; 2nd Line - Finland politically aligned with the Axis and not surrendered
+; 1st Line - France(40) politically aligned with the Allies and not surrendered AND
+; 2nd Line - Finland(39) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-; 1st Line - France and Germany are belligerent
+; 1st Line - France(40) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [40,45]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -871,11 +877,11 @@
 #BELLIGERENCE_ID= 57
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - Ireland politically aligned with the Allies and not surrendered
-; 2nd Line - Germany politically aligned with the Axis and not surrendered AND
+; 1st Line - Ireland(57) politically aligned with the Allies and not surrendered
+; 2nd Line - Germany(45) politically aligned with the Axis and not surrendered AND
 #VARIABLE_CONDITION= 57 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 1st Line - Germany and UK are belligerent
+; 1st Line - Germany(45) and UK are belligerent
 #BELLIGERENCE_CONDITION= [45,112]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -900,11 +906,11 @@
 #BELLIGERENCE_ID= 57
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - Ireland politically aligned with the Allies and not surrendered
-; 2nd Line - Italy politically aligned with the Axis and not surrendered AND
+; 1st Line - Ireland(57) politically aligned with the Allies and not surrendered
+; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered AND
 #VARIABLE_CONDITION= 57 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - Germany and UK are belligerent
+; 1st Line - Germany(45) and UK are belligerent
 #BELLIGERENCE_CONDITION= [59,112]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]

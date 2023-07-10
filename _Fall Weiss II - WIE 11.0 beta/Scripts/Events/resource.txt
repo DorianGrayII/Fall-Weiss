@@ -34,8 +34,14 @@
 ;          or for AI controlled Axis majors on Axis human player turns
 ;      6 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied in Single Player,
 ;          or for AI controlled Allied majors on Allied human player turns
-; #LEVEL= What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
-;         Values: [0, 4]; Green= 0; Novice= 1; Intermediate= 2; Veteran= 3; Expert= 4
+; #LEVEL= Value range [-1, 4]
+;      What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;     -1 = a script that should only fire for AI friendly controlled majors on your turn
+;      0 = Green
+;      1 = Novice
+;      2 = Intermediate
+;      3 = Veteran
+;      4 = Expert
 ; #GV= Does the event activate based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
@@ -223,6 +229,7 @@
 #POPUP= German Industry Starts Increasing Its Military Production
 #IMAGE=
 #SOUND= industry.ogg
+; currently disabled in Fall Weiss II
 #FLAG= 0
 #TYPE= 1
 #AI= 0
@@ -240,7 +247,7 @@
 #RESOURCE= 173,79
 #RESOURCE= 175,81
 #RESOURCE= 169,86
-; 1st Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -252,6 +259,7 @@
 #POPUP= German Industry Starts Increasing Its Military Production
 #IMAGE=
 #SOUND= industry.ogg
+; currently disabled in Fall Weiss II
 #FLAG= 0
 #TYPE= 1
 #AI= 0
@@ -269,7 +277,7 @@
 #RESOURCE= 173,79
 #RESOURCE= 175,81
 #RESOURCE= 169,86
-; 1st Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -281,6 +289,7 @@
 #POPUP= German Industry Starts Increasing Its Military Production
 #IMAGE=
 #SOUND= industry.ogg
+; currently disabled in Fall Weiss II
 #FLAG= 0
 #TYPE= 1
 #AI= 0
@@ -298,7 +307,7 @@
 #RESOURCE= 173,79
 #RESOURCE= 175,81
 #RESOURCE= 169,86
-; 1st Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -310,6 +319,7 @@
 #POPUP= German Industry Starts Increasing Its Military Production
 #IMAGE=
 #SOUND= industry.ogg
+; currently disabled in Fall Weiss II
 #FLAG= 0
 #TYPE= 1
 #AI= 0
@@ -327,7 +337,7 @@
 #RESOURCE= 173,79
 #RESOURCE= 175,81
 #RESOURCE= 169,86
-; 1st Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -339,6 +349,7 @@
 #POPUP= German Industry Starts Increasing Its Military Production
 #IMAGE=
 #SOUND= industry.ogg
+; currently disabled in Fall Weiss II
 #FLAG= 0
 #TYPE= 1
 #AI= 0
@@ -356,7 +367,7 @@
 #RESOURCE= 173,79
 #RESOURCE= 175,81
 #RESOURCE= 169,86
-; 1st Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -386,7 +397,7 @@
 #RESOURCE= 144,73
 #RESOURCE= 142,72
 #RESOURCE= 139,76
-; 1st Line - UK politically aligned with the Allies and not surrendered AND
+; 1st Line - UK(112) politically aligned with the Allies and not surrendered AND
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -412,7 +423,7 @@
 #FAILSAFE_DATE= 1939/12/01
 #RESOURCE= 0,0
 #RESOURCE= 0,1
-; 1st Line - UK politically aligned with the Allies and not surrendered AND
+; 1st Line - UK(112) politically aligned with the Allies and not surrendered AND
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -438,7 +449,7 @@
 #FAILSAFE_DATE= 1939/12/01
 #RESOURCE= 215,121
 #RESOURCE= 214,124
-; 1st Line - UK politically aligned with the Allies and not surrendered AND
+; 1st Line - UK(112) politically aligned with the Allies and not surrendered AND
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -463,8 +474,8 @@
 #DATE= 1939/12/08
 #FAILSAFE_DATE= 1940/02/01
 #RESOURCE= 155,93
-; 1st Line - France politically aligned with the Allies and not surrendered AND
-; 2nd Line - Poland politically aligned with the Allies and surrendered
+; 1st Line - France(40) politically aligned with the Allies and not surrendered AND
+; 2nd Line - Poland(85) politically aligned with the Allies and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 ; dummy condition position (always satisfied)
@@ -496,7 +507,7 @@
 #RESOURCE= 152,113
 #RESOURCE= 167,112
 #RESOURCE= 157,97
-; 1st Line - France politically aligned with the Allies and not surrendered AND
+; 1st Line - France(40) politically aligned with the Allies and not surrendered AND
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -525,8 +536,8 @@
 #RESOURCE= 144,98
 #RESOURCE= 149,92
 #RESOURCE= 154,91
-; 1st Line - France politically aligned with the Allies and not surrendered AND
-; 2nd Line - Poland politically aligned with the Allies and surrendered
+; 1st Line - France(40) politically aligned with the Allies and not surrendered AND
+; 2nd Line - Poland(85) politically aligned with the Allies and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 ; dummy condition position (always satisfied)
@@ -556,7 +567,7 @@
 #RESOURCE= 0,102
 #RESOURCE= 0,103
 #RESOURCE= 0,105
-; 1st Line - USA politically aligned with the Allies and not surrendered
+; 1st Line - USA(115) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -584,7 +595,7 @@
 #RESOURCE= 267,61
 #RESOURCE= 266,62
 #RESOURCE= 267,62
-; 1st Line - USSR politically aligned with the Allies and not surrendered
+; 1st Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -614,7 +625,7 @@
 #RESOURCE= 213,86
 #RESOURCE= 212,87
 #RESOURCE= 218,82
-; 1st Line - Germany politically aligned with the Axis but not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis but not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -651,7 +662,7 @@
 #RESOURCE= 243,66
 #RESOURCE= 245,72
 #RESOURCE= 237,77
-; 1st Line - USSR politically aligned with the Allies but not surrendered
+; 1st Line - USSR(116) politically aligned with the Allies but not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -684,7 +695,7 @@
 #RESOURCE= 266,58
 #RESOURCE= 266,59
 #RESOURCE= 266,60
-; 1st Line - USSR politically aligned with the Allies and not surrendered
+; 1st Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -731,7 +742,7 @@
 #FAILSAFE_DATE= 1948/01/01
 #RESOURCE= 161,77
 ; Set Variable Condition:
-; 1st Line - Poland politically aligned with Allies and Surrendered
+; 1st Line - Poland(85) politically aligned with Allies and Surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }

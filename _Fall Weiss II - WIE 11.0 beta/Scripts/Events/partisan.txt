@@ -31,8 +31,14 @@
 ;          or for AI controlled Axis majors on Axis human player turns
 ;      6 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied in Single Player,
 ;          or for AI controlled Allied majors on Allied human player turns
-; #LEVEL= What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
-;         Values: [0, 4]; Green= 0; Novice= 1; Intermediate= 2; Veteran= 3; Expert= 4
+; #LEVEL= Value range [-1, 4]
+;      What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;     -1 = a script that should only fire for AI friendly controlled majors on your turn
+;      0 = Green
+;      1 = Novice
+;      2 = Intermediate
+;      3 = Veteran
+;      4 = Expert
 ; #GV= Does the event activate based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
@@ -47,7 +53,10 @@
 ; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
 ; #COUNTRY_ID= Country's ID that will have partisan #MAP_POSITION's
 ; #PARTISAN_FLAG= Partisan flag can be used to limit event to a particular type (see PARTISAN FLAG REFERENCE values below)
-; #ADD_UNIT= can accept the following values: (values range [0, 2]; False= 0; True= 1; True (if <= build limit)= 2
+; #ADD_UNIT= Values range [0, 2]
+;            0 = False
+;            1 = True
+;            2 = True (if <= build limit)
 ; #DISRUPTION_RANGE= What is the range of supply disruption from each partisan that appears? (values range [0, 10])
 ; #MAP_POSITION= Map position where partisan unit could appear (format x,y)
 ; }

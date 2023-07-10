@@ -34,8 +34,14 @@
 ;          or for AI controlled Axis majors on Axis human player turns
 ;      6 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied in Single Player,
 ;          or for AI controlled Allied majors on Allied human player turns
-; #LEVEL= What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
-;         Values: [0, 4]; Green= 0; Novice= 1; Intermediate= 2; Veteran= 3; Expert= 4
+; #LEVEL= Value range [-1, 4]
+;      What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;     -1 = a script that should only fire for AI friendly controlled majors on your turn
+;      0 = Green
+;      1 = Novice
+;      2 = Intermediate
+;      3 = Veteran
+;      4 = Expert
 ; #GV= Does the event activate based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
@@ -48,7 +54,7 @@
 ;        Example B) #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
 ;        Example C) #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
 ; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
-; #COUNTRY_ID= Country ID associated with this event (will only fire on this country's turn)
+; #COUNTRY_ID= Country ID associated with this event (this is the country that will either benefit or be penalized by the script)
 ; #NM_UPDOWN= The amount of National Morale that should be added or subtracted with respect to #COUNTRY_ID? (values range [-99999, 99999])
 ; #NM_TURNS= How many turns will the #NM_UPDOWN= value be added or subtracted for? (values range [0, 99])
 ; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
@@ -257,7 +263,7 @@
 ; London is in Allied hands
 #ALIGNMENT_POSITION= 147,77 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -287,7 +293,7 @@
 ; London is in Allied hands
 #ALIGNMENT_POSITION= 147,77 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -317,7 +323,7 @@
 ; Gibraltar is in Axis hands
 #ALIGNMENT_POSITION= 136,114 [1]
 ; Set variable conditions:
-; 1st Line - UK politically aligned with the Allies and not surrendered
+; 1st Line - UK(112) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -347,7 +353,7 @@
 ; Malta is in Axis hands
 #ALIGNMENT_POSITION= 175,114 [1]
 ; Set variable conditions:
-; 1st Line - UK politically aligned with the Allies and not surrendered
+; 1st Line - UK(112) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -378,7 +384,7 @@
 ; Paris is in Axis hands
 #ALIGNMENT_POSITION= 151,84 [1]
 ; Set variable conditions:
-; 1st Line - UK politically aligned with the Allies and not surrendered
+; 1st Line - UK(112) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -409,7 +415,7 @@
 ; Paris is in Axis hands
 #ALIGNMENT_POSITION= 151,84 [1]
 ; Set variable conditions:
-; 1st Line - France politically aligned with the Allies and surrendered
+; 1st Line - France(40) politically aligned with the Allies and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -440,7 +446,7 @@
 ; London is in Allied hands
 #ALIGNMENT_POSITION= 147,77 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -471,7 +477,7 @@
 ; London is in Allied hands
 #ALIGNMENT_POSITION= 147,77 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -502,7 +508,7 @@
 ; London is in Allied hands
 #ALIGNMENT_POSITION= 147,77 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -533,7 +539,7 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions:
-; 1st Line - France politically aligned with Allies and not surrendered
+; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -563,7 +569,7 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -593,7 +599,7 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -623,7 +629,7 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions:
-; 1st Line - France politically aligned with Allies and not surrendered
+; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -653,7 +659,7 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions:
-; 1st Line - France politically aligned with Allies and not surrendered
+; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -683,7 +689,7 @@
 ; Paris is in Allied hands
 #ALIGNMENT_POSITION= 151,84 [2]
 ; Set variable conditions:
-; 1st Line - France politically aligned with Allies and not surrendered
+; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; 2 British units within 7 hexes of Paris
 #CONDITION_POSITION= 151,84 [7,7] [2,2] [2] [112]
@@ -715,7 +721,7 @@
 ; Paris is in Allied hands
 #ALIGNMENT_POSITION= 151,84 [2]
 ; Set variable conditions:
-; 1st Line - France politically aligned with Allies and not surrendered
+; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; 2 British units within 7 hexes of Paris
 #CONDITION_POSITION= 151,84 [7,7] [2,2] [2] [112]
@@ -747,7 +753,7 @@
 ; Paris is in Allied hands
 #ALIGNMENT_POSITION= 151,84 [2]
 ; Set variable conditions:
-; 1st Line - France politically aligned with Allies and not surrendered
+; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; 5 British units within 7 hexes of Paris
 #CONDITION_POSITION= 151,84 [7,7] [5,5] [2] [112]
@@ -779,11 +785,11 @@
 ; Rome is in Axis hands
 #ALIGNMENT_POSITION= 171,101 [1]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 6 [1] [100] [0]
-; 2nd Line - UK politically aligned with the Allies and not surrendered
+; 2nd Line - UK(112) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; 3rd Line - Italy politically aligned with the Axis and not surrendered
+; 3rd Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -813,7 +819,7 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions:
-; 1st Line - France politically aligned with Allies and not surrendered
+; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -844,7 +850,7 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions:
-; 1st Line - France politically aligned with Allies and not surrendered
+; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -874,7 +880,7 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions:
-; 1st Line - France politically aligned with Allies and not surrendered
+; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -904,7 +910,7 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -936,7 +942,7 @@
 ; Volkhov is in Axis hands
 #ALIGNMENT_POSITION= 210,52 [1]
 ; Set variable conditions:
-; 1st Line - USSR politically aligned with the Allies and not surrendered
+; 1st Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -966,7 +972,7 @@
 ; Moscow is in Allied hands
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Set variable conditions:
-; 1st Line - USSR politically aligned with the Allies and not surrendered
+; 1st Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -996,7 +1002,7 @@
 ; Moscow is in Axis hands
 #ALIGNMENT_POSITION= 221,65 [1]
 ; Set variable conditions:
-; 1st Line - USSR politically aligned with the Allies and not surrendered
+; 1st Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1027,7 +1033,7 @@
 ; Moscow is in Axis hands
 #ALIGNMENT_POSITION= 221,65 [1]
 ; Set variable conditions:
-; 1st Line - USSR politically aligned with the Allies and not surrendered
+; 1st Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1058,7 +1064,7 @@
 ; Toronto is in Allied hands
 #ALIGNMENT_POSITION= 1,96 [2] 
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1089,9 +1095,9 @@
 ; Toronto is in Allied hands
 #ALIGNMENT_POSITION= 1,96 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - France politically aligned with the Allies and not surrendered 
+; 2nd Line - France(40) politically aligned with the Allies and not surrendered 
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1122,11 +1128,11 @@
 ; London is in Allied hands
 #ALIGNMENT_POSITION= 147,77 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - UK politically aligned with the Allies
+; 2nd Line - UK(112) politically aligned with the Allies
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; 3rd Line - Norway politically aligned with the Axis and not fully active
+; 3rd Line - Norway(78) politically aligned with the Axis and not fully active
 #VARIABLE_CONDITION= 78 [1] [0] [0]
 ; Dummy condition position (always satisfied) 
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1156,9 +1162,9 @@
 ; London is in Axis hands
 #ALIGNMENT_POSITION= 147,77 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - UK politically aligned with the Allies
+; 2nd Line - UK(112) politically aligned with the Allies
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied) 
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1188,7 +1194,7 @@
 ; London is in Axis hands
 #ALIGNMENT_POSITION= 147,77 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1218,7 +1224,7 @@
 ; London is in Axis hands
 #ALIGNMENT_POSITION= 147,77 [1]
 ; Set variable conditions: 
-; 1st Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1248,9 +1254,9 @@
 ; Alexandria is in Axis hands
 #ALIGNMENT_POSITION= 206,124 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - UK politically aligned with the Allies
+; 2nd Line - UK(112) politically aligned with the Allies
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied) 
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1280,9 +1286,9 @@
 ; Narvik is in Allied hands
 #ALIGNMENT_POSITION= 181,18 [2]
 ; Set variable conditions: 
-; 1st Line - UK politically aligned with the Allies
+; 1st Line - UK(112) politically aligned with the Allies
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; 2nd Line - Norway politically aligned with Allies and surrendered
+; 2nd Line - Norway(78) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 78 [2] [100] [1]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1312,11 +1318,11 @@
 ; Narvik is in Allied hands
 #ALIGNMENT_POSITION= 181,18 [2]
 ; Set variable conditions: 
-; 1st Line - UK politically aligned with the Allies
+; 1st Line - UK(112) politically aligned with the Allies
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; 1st Line - USSR politically aligned with the Allies but not fully mobilized
+; 1st Line - USSR(116) politically aligned with the Allies but not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; 3rd Line - Norway politically aligned with Allies and surrendered
+; 3rd Line - Norway(78) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 78 [2] [100] [1]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1346,9 +1352,9 @@
 ; Narvik is in Allied hands
 #ALIGNMENT_POSITION= 181,18 [2]
 ; Set variable conditions:
-; 1st Line - UK politically aligned with the Allies
+; 1st Line - UK(112) politically aligned with the Allies
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - Norway politically aligned with Allies and surrendered
+; 2nd Line - Norway(78) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 78 [2] [100] [1]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1379,7 +1385,7 @@
 ; Oslo is in Allied hands
 #ALIGNMENT_POSITION= 167,52 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis
+; 1st Line - Germany(45) politically aligned with the Axis
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1409,9 +1415,9 @@
 ; Cairo is in Axis hands
 #ALIGNMENT_POSITION= 208,126 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - UK politically aligned with the Allies
+; 2nd Line - UK(112) politically aligned with the Allies
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied) 
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1441,7 +1447,7 @@
 ; Cairo is in Axis hands
 #ALIGNMENT_POSITION= 208,126 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1471,7 +1477,7 @@
 ; Cairo is in Axis hands
 #ALIGNMENT_POSITION= 208,126 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1502,9 +1508,9 @@
 ; London is in Allied hands
 #ALIGNMENT_POSITION= 147,77 [2]
 ; Set variable conditions: 
-; 1st Line - Italy politically aligned with the Axis but not fully mobilized
+; 1st Line - Italy(59) politically aligned with the Axis but not fully mobilized
 #VARIABLE_CONDITION= 59 [1] [0] [0]
-; 2nd Line - UK politically aligned with the Allies and not surrendered
+; 2nd Line - UK(112) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; UK abandons Malta
 #CONDITION_POSITION= 175,114 [0,0] [0,0] [2] [0]
@@ -1539,9 +1545,9 @@
 ; Paris is in Allied hands
 #ALIGNMENT_POSITION= 151,84 [2]
 ; Set variable conditions: 
-; 1st Line - Italy politically aligned with the Axis but not fully mobilized
+; 1st Line - Italy(59) politically aligned with the Axis but not fully mobilized
 #VARIABLE_CONDITION= 59 [1] [0] [0]
-; 2nd Line - France politically aligned with the Allies and not surrendered 
+; 2nd Line - France(40) politically aligned with the Allies and not surrendered 
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; France abandons Tunis
 #CONDITION_POSITION= 167,112 [5,5] [0,0] [2] [0]
@@ -1574,7 +1580,7 @@
 ; Washington D.C. is in Allied hands
 #ALIGNMENT_POSITION= 4,108 [2]
 ; Set variable conditions: 
-; 1st Line - USA politically aligned with the Allies (not fully active) and not surrendered
+; 1st Line - USA(115) politically aligned with the Allies (not fully active) and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1605,9 +1611,9 @@
 ; Warsaw is in Axis hands
 #ALIGNMENT_POSITION= 188,76 [1]
 ; Set variable conditions:
-; 1st Line - France politically aligned with Allies and not surrendered
+; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; 2nd Line - Poland politically aligned with Allies and surrendered
+; 2nd Line - Poland(85) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1639,11 +1645,11 @@
 ; Berlin is in Axis hands 
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - France politically aligned with the Allies
+; 2nd Line - France(40) politically aligned with the Allies
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; 3rd Line - USSR politically aligned with the Allies (not fully active) and not surrendered 
+; 3rd Line - USSR(116) politically aligned with the Allies (not fully active) and not surrendered 
 #VARIABLE_CONDITION= 115 [2] [0] [0]
 ; Germany is within 3 hexes of Epinal OR
 ; Germany has 2 units within 1 hex of Verdun OR 
@@ -1680,11 +1686,11 @@
 ; Berlin is in Axis hands 
 #ALIGNMENT_POSITION= 173,74 [1] 
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - France politically aligned with the Allies
+; 2nd Line - France(40) politically aligned with the Allies
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; 3rd Line - USSR politically aligned with the Allies (not fully active) and not surrendered 
+; 3rd Line - USSR(116) politically aligned with the Allies (not fully active) and not surrendered 
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; German units are near Paris
 #CONDITION_POSITION= 151,84 [3,4] [3,4] [1] [45]
@@ -1715,9 +1721,9 @@
 ; Marseille is in Axis hands
 #ALIGNMENT_POSITION= 157,97 [1]
 ; Set variable conditions:
-; 1st Line - France politically aligned with Allies and not surrendered
+; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; 2nd Line - USSR politically aligned with Allies but not fully mobilized
+; 2nd Line - USSR(116) politically aligned with Allies but not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1748,9 +1754,9 @@
 ; Marseille is in Axis hands
 #ALIGNMENT_POSITION= 156,92 [1]
 ; Set variable conditions:
-; 1st Line - France politically aligned with Allies and not surrendered
+; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; 2nd Line - USSR politically aligned with Allies but not fully mobilized
+; 2nd Line - USSR(116) politically aligned with Allies but not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1781,7 +1787,7 @@
 ; Paris is in Axis hands
 #ALIGNMENT_POSITION= 151,84 [1]
 ; Set variable conditions:
-; 1st Line - France politically aligned with Allies and not surrendered
+; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1812,7 +1818,7 @@
 ; Paris is in Axis hands
 #ALIGNMENT_POSITION= 151,84 [1]
 ; Set variable conditions:
-; 1st Line - France politically aligned with Allies and not surrendered
+; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; No British units are within 6 hexes of Paris
 #CONDITION_POSITION= 151,84 [6,6] [0,0] [2] [112]
@@ -1843,7 +1849,7 @@
 ; Paris is in Axis hands
 #ALIGNMENT_POSITION= 151,84 [1]
 ; Set variable conditions:
-; 1st Line - France politically aligned with Allies and not surrendered
+; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1874,7 +1880,7 @@
 ; Paris is in Axis hands
 #ALIGNMENT_POSITION= 151,84 [1]
 ; Set variable conditions:
-; 1st Line - France politically aligned with Allies and not surrendered
+; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1905,7 +1911,7 @@
 ; Paris is in Axis hands
 #ALIGNMENT_POSITION= 151,84 [1]
 ; Set variable conditions:
-; 1st Line - France politically aligned with Allies and not surrendered
+; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1936,7 +1942,7 @@
 ; Paris is in Axis hands
 #ALIGNMENT_POSITION= 151,84 [1]
 ; Set variable conditions:
-; 1st Line - France politically aligned with Allies and not surrendered
+; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1967,9 +1973,9 @@
 ; Paris is in Allied hands 
 #ALIGNMENT_POSITION= 151,84 [2] 
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - France politically aligned with the Allies and not surrendered 
+; 2nd Line - France(40) politically aligned with the Allies and not surrendered 
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0] 
@@ -2000,9 +2006,9 @@
 ; Paris is in Allied hands
 #ALIGNMENT_POSITION= 151,84 [2] 
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - France politically aligned with the Allies and not surrendered 
+; 2nd Line - France(40) politically aligned with the Allies and not surrendered 
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2033,13 +2039,13 @@
 ; Paris is in Allied hands 
 #ALIGNMENT_POSITION= 151,84 [2]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - France politically aligned with the Allies and not surrendered
+; 2nd Line - France(40) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; 2nd Line - USA politically aligned with the Allies and not surrendered
+; 2nd Line - USA(115) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; 3rd Line - USSR politically aligned with the Allies and not surrendered
+; 3rd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2070,13 +2076,13 @@
 ; Paris is in Allied hands 
 #ALIGNMENT_POSITION= 151,84 [2]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - France politically aligned with the Allies and not surrendered
+; 2nd Line - France(40) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; 2nd Line - USA politically aligned with the Allies and not surrendered
+; 2nd Line - USA(115) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; 3rd Line - USSR politically aligned with the Allies and not surrendered
+; 3rd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2107,9 +2113,9 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis
+; 1st Line - Germany(45) politically aligned with the Axis
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - Poland politically aligned with the Allies
+; 2nd Line - Poland(85) politically aligned with the Allies
 #VARIABLE_CONDITION= 85 [2] [100] [0]
 ; German units in range of Warsaw
 #CONDITION_POSITION= 188,76 [3,3] [1,2] [1] [0]
@@ -2140,7 +2146,7 @@
 ; Warsaw is in Axis hands
 #ALIGNMENT_POSITION= 188,76 [1]
 ; Set variable conditions:
-; 1st Line - Poland politically aligned with the Allies but not fully mobilized
+; 1st Line - Poland(85) politically aligned with the Allies but not fully mobilized
 #VARIABLE_CONDITION= 85 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2171,7 +2177,7 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions:
-; 1st Line - Poland politically aligned with the Allies
+; 1st Line - Poland(85) politically aligned with the Allies
 #VARIABLE_CONDITION= 85 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2202,7 +2208,7 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions:
-; 1st Line - Poland politically aligned with the Allies
+; 1st Line - Poland(85) politically aligned with the Allies
 #VARIABLE_CONDITION= 85 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2233,7 +2239,7 @@
 ; Kazan is in Allied hands
 #ALIGNMENT_POSITION= 243,66 [2]
 ; Set variable conditions:
-; 1st Line - USSR politically aligned with the Allies and not surrendered
+; 1st Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2264,7 +2270,7 @@
 ; Bandar Abbas is in Allied hands
 #ALIGNMENT_POSITION= 257,130 [2]
 ; Set variable conditions: 
-; 1st Line - USSR politically aligned with the Allies and not surrendered
+; 1st Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2295,7 +2301,7 @@
 ; Bandar Abbas is in Allied hands
 #ALIGNMENT_POSITION= 257,130 [2]
 ; Set variable conditions: 
-; 1st Line - USSR politically aligned with the Allies and not surrendered
+; 1st Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2326,9 +2332,9 @@
 ; Pittsburgh is in Allied hands
 #ALIGNMENT_POSITION= 1,104 [2]
 ; Set variable conditions: 
-; 1st Line - USSR politically aligned with the Allies and not surrendered
+; 1st Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; 2nd Line - USA politically aligned with the Allies and not surrendered
+; 2nd Line - USA(115) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2359,9 +2365,9 @@
 ; Berlin is in Allied hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
 #CONDITION_POSITION= 146,84 [4,4] [4,4] [2] [0]
@@ -2394,9 +2400,9 @@
 ; Berlin is in Allied hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
 #CONDITION_POSITION= 146,84 [4,4] [4,4] [2] [0]
@@ -2429,9 +2435,9 @@
 ; Berlin is in Allied hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
 #CONDITION_POSITION= 146,84 [4,4] [4,4] [2] [0]
@@ -2464,9 +2470,9 @@
 ; Berlin is in Allied hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in Italy
 #CONDITION_POSITION= 175,103 [10,10] [3,3] [2] [0]
@@ -2498,9 +2504,9 @@
 ; Berlin is in Allied hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in Italy
 #CONDITION_POSITION= 175,103 [10,10] [3,3] [2] [0]
@@ -2532,11 +2538,11 @@
 ; Paris is in Allied hands
 #ALIGNMENT_POSITION= 151,84 [2]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - France politically aligned with the Allies and not surrendered
+; 2nd Line - France(40) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; 3rd Line - USSR politically aligned with the Allies and not surrendered
+; 3rd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; No Axis units within 4 hexes of Paris
 #CONDITION_POSITION= 151,84 [4,4] [0,0] [1] [0]
@@ -2567,11 +2573,11 @@
 ; Paris is in Allied hands
 #ALIGNMENT_POSITION= 151,84 [2]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - France politically aligned with the Allies and not surrendered
+; 2nd Line - France(40) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; 3rd Line - USSR politically aligned with the Allies and not surrendered
+; 3rd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; No Axis units within 4 hexes of Paris
 #CONDITION_POSITION= 151,84 [4,4] [0,0] [1] [0]
@@ -2602,11 +2608,11 @@
 ; Paris is in Allied hands
 #ALIGNMENT_POSITION= 151,84 [2]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - France politically aligned with the Allies and not surrendered
+; 2nd Line - France(40) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; 3rd Line - USSR politically aligned with the Allies and not surrendered
+; 3rd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; No Axis units within 4 hexes of Paris
 #CONDITION_POSITION= 151,84 [4,4] [0,0] [1] [0]
@@ -2636,11 +2642,11 @@
 ; Warsaw is in Allied hands
 #ALIGNMENT_POSITION= 188,76 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; 3rd Line - Poland politically aligned with the Allies and surrendered
+; 3rd Line - Poland(85) politically aligned with the Allies and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2670,9 +2676,9 @@
 ; Konigsberg is in Allied hands
 #ALIGNMENT_POSITION= 187,68 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2702,11 +2708,11 @@
 ; Moscow is in Allied hands
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; 3rd Line - Poland politically aligned with the Allies and surrendered
+; 3rd Line - Poland(85) politically aligned with the Allies and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 ; Allied units within 5 hexes of Berlin
 #CONDITION_POSITION= 173,74 [5,5] [1,1] [2] [0]
@@ -2737,7 +2743,7 @@
 ; Danzig is in Axis hands
 #ALIGNMENT_POSITION= 183,69 [1]
 ; Set variable conditions: 
-; 1st Line - Poland politically aligned with the Allies and surrendered
+; 1st Line - Poland(85) politically aligned with the Allies and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2767,7 +2773,7 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2797,7 +2803,7 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2828,7 +2834,7 @@
 ; Belgrade is in Allied hands
 #ALIGNMENT_POSITION= 187,94 [2]
 ; Set variable conditions: 
-; 1st Line - Yugoslavia politically aligned with the Allies and not surrendered
+; 1st Line - Yugoslavia(120) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 120 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2859,7 +2865,7 @@
 ; Belgrade is in Axis hands
 #ALIGNMENT_POSITION= 187,94 [1]
 ; Set variable conditions: 
-; 1st Line - Yugoslavia politically aligned with the Allies and surrendered
+; 1st Line - Yugoslavia(120) politically aligned with the Allies and surrendered
 #VARIABLE_CONDITION= 120 [2] [100] [1]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2890,7 +2896,7 @@
 ; Belgrade is in Axis hands
 #ALIGNMENT_POSITION= 187,94 [1]
 ; Set variable conditions: 
-; 1st Line - Yugoslavia politically aligned with the Axis and not surrendered
+; 1st Line - Yugoslavia(120) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 120 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2921,7 +2927,7 @@
 ; Danzig is in Axis hands
 #ALIGNMENT_POSITION= 183,69 [1]
 ; Set variable conditions: 
-; 1st Line - Poland politically aligned with the Allies and surrendered
+; 1st Line - Poland(85) politically aligned with the Allies and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2952,7 +2958,7 @@
 ; Moscow is in Allied hands
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2983,7 +2989,7 @@
 ; Moscow is in Allied hands
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3014,7 +3020,7 @@
 ; Paris is in Axis hands
 #ALIGNMENT_POSITION= 151,84 [1]
 ; Set variable conditions: 
-; 1st Line - France politically aligned with the Allies and surrendered
+; 1st Line - France(40) politically aligned with the Allies and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3044,9 +3050,9 @@
 ; Moscow is in Axis hands
 #ALIGNMENT_POSITION= 221,65 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3076,9 +3082,9 @@
 ; Murmansk is in Axis hands
 #ALIGNMENT_POSITION= 211,16 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3108,9 +3114,9 @@
 ; Murmansk is in Axis hands
 #ALIGNMENT_POSITION= 211,16 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3140,9 +3146,9 @@
 ; Stalingrad is in Axis hands
 #ALIGNMENT_POSITION= 234,85 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3172,9 +3178,9 @@
 ; Leningrad is in Axis hands
 #ALIGNMENT_POSITION= 206,52 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3205,9 +3211,9 @@
 ; Leningrad is in Axis hands
 #ALIGNMENT_POSITION= 206,52 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3238,9 +3244,9 @@
 ; Smolensk is in Axis hands
 #ALIGNMENT_POSITION= 209,68 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3271,9 +3277,9 @@
 ; Smolensk is in Axis hands
 #ALIGNMENT_POSITION= 209,68 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3304,9 +3310,9 @@
 ; Kiev is in Axis hands
 #ALIGNMENT_POSITION= 207,80 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3336,9 +3342,9 @@
 ; Sevastopol is in Axis hands
 #ALIGNMENT_POSITION= 212,96 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3368,7 +3374,7 @@
 ; Düsseldorf is in Allied hands
 #ALIGNMENT_POSITION= 160,78 [2]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3398,7 +3404,7 @@
 ; Hamburg is in Allied hands
 #ALIGNMENT_POSITION= 166,72 [2]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3428,9 +3434,9 @@
 ; Helsinki is in Allied hands
 #ALIGNMENT_POSITION= 195,51 [2]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - Finland politically aligned with the Axis and surrendered
+; 2nd Line - Finland(39) politically aligned with the Axis and surrendered
 #VARIABLE_CONDITION= 39 [1] [100] [1]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3460,7 +3466,7 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3490,9 +3496,9 @@
 ; Copenhagen is in Allied hands
 #ALIGNMENT_POSITION= 171,65 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3522,9 +3528,9 @@
 ; Dnepropetrovsk is in Allied hands
 #ALIGNMENT_POSITION= 215,85 [2]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3555,9 +3561,9 @@
 ; Dnepropetrovsk is in Allied hands
 #ALIGNMENT_POSITION= 215,85 [2]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies but not fully mobilized
+; 2nd Line - USSR(116) politically aligned with the Allies but not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3587,7 +3593,7 @@
 ; Belgrade is in Allied hands
 #ALIGNMENT_POSITION= 187,94 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3617,7 +3623,7 @@
 ; Budapest is in Allied hands
 #ALIGNMENT_POSITION= 184,88 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3647,9 +3653,9 @@
 ; Bucharest is in Allied hands
 #ALIGNMENT_POSITION= 198,95 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3680,7 +3686,7 @@
 ; Paris is in Allied hands
 #ALIGNMENT_POSITION= 151,84 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3710,7 +3716,7 @@
 ; Budapest is in Allied hands
 #ALIGNMENT_POSITION= 184,88 [2]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; 2nd Line - Hungary politically aligned with the Axis and surrendered
 #VARIABLE_CONDITION= 52 [1] [100] [1]
@@ -3742,7 +3748,7 @@
 ; Budapest is in Allied hands
 #ALIGNMENT_POSITION= 184,88 [2]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; 2nd Line - Hungary politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 52 [2] [100] [0]
@@ -3774,9 +3780,9 @@
 ; Bucharest is in Allied hands
 #ALIGNMENT_POSITION= 198,95 [2]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - Romania politically aligned with the Axis and surrendered
+; 2nd Line - Romania(93) politically aligned with the Axis and surrendered
 #VARIABLE_CONDITION= 93 [1] [100] [1]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3806,9 +3812,9 @@
 ; Bucharest is in Allied hands
 #ALIGNMENT_POSITION= 198,95 [2]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - Romania politically aligned with the Allies and not surrendered
+; 2nd Line - Romania(93) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 93 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3838,7 +3844,7 @@
 ; Sofia is in Allied hands
 #ALIGNMENT_POSITION= 192,100 [2]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; 2nd Line - Bulgaria politically aligned with the Axis and surrendered
 #VARIABLE_CONDITION= 19 [1] [100] [1]
@@ -3870,7 +3876,7 @@
 ; Sofia is in Allied hands
 #ALIGNMENT_POSITION= 192,100 [2]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; 2nd Line - Bulgaria politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 19 [2] [100] [0]
@@ -3903,9 +3909,9 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - Italy politically aligned with the Axis and surrendered
+; 2nd Line - Italy(59) politically aligned with the Axis and surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [1]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3936,9 +3942,9 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - Italy politically aligned with the Axis and surrendered
+; 2nd Line - Italy(59) politically aligned with the Axis and surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [1]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3969,11 +3975,11 @@
 ; Rome is in Axis hands
 #ALIGNMENT_POSITION= 171,101 [1]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 6 [1] [100] [0]
-; 2nd Line - UK politically aligned with the Allies and not surrendered
+; 2nd Line - UK(112) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; 3rd Line - Italy politically aligned with the Axis and not surrendered
+; 3rd Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4004,13 +4010,13 @@
 ; Rome is in Axis hands
 #ALIGNMENT_POSITION= 171,101 [1]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 6 [1] [100] [0]
-; 2nd Line - UK politically aligned with the Allies and not surrendered
+; 2nd Line - UK(112) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; 3rd Line - Italy politically aligned with the Axis and not surrendered
+; 3rd Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 4th Line - Egypt politically aligned with the Allies and not surrendered
+; 4th Line - Egypt(36) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4041,7 +4047,7 @@
 ; Brussels is in Axis hands
 #ALIGNMENT_POSITION= 155,80 [1]
 ; Set variable conditions:
-; 1st Line - Belgium politically aligned with the Allies and surrendered
+; 1st Line - Belgium(10) politically aligned with the Allies and surrendered
 #VARIABLE_CONDITION= 10 [2] [100] [1]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4072,7 +4078,7 @@
 ; London is in Allied hands
 #ALIGNMENT_POSITION= 147,77 [2]
 ; Set variable conditions:
-; 1st Line - UK politically aligned with the Allies and not surrendered
+; 1st Line - UK(112) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; No Axis units near London
 #CONDITION_POSITION= 147,77 [2,2] [0,0] [1] [0]
@@ -4103,7 +4109,7 @@
 ; Tripoli is in Allied hands
 #ALIGNMENT_POSITION= 172,121 [2]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4134,7 +4140,7 @@
 ; Tobruk is in Allied hands
 #ALIGNMENT_POSITION= 194,122 [2]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4165,7 +4171,7 @@
 ; Benghazi is in Allied hands
 #ALIGNMENT_POSITION= 186,122 [2]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4196,7 +4202,7 @@
 ; Tirana is in Allied hands
 #ALIGNMENT_POSITION= 185,102 [2]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4227,8 +4233,8 @@
 ; Tirana is in Axis hands
 #ALIGNMENT_POSITION= 185,102 [1]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with Axis and not surrendered
-; 2nd Line - Greece politically aligned with the Allies and not surrendered
+; 1st Line - Italy(59) politically aligned with Axis and not surrendered
+; 2nd Line - Greece(46) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 46 [2] [100] [0]
 ; Dummy condition position (always satisfied)
@@ -4260,7 +4266,7 @@
 ; Tirana is in Axis hands
 #ALIGNMENT_POSITION= 185,102 [1]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; An Allied unit is within Albania
 #CONDITION_POSITION= 185,102 [2,2] [1,1] [2] [0]
@@ -4293,7 +4299,7 @@
 ; Naples is in Allied hands
 #ALIGNMENT_POSITION= 175,103 [2]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4324,7 +4330,7 @@
 ; Rome is in Allied hands
 #ALIGNMENT_POSITION= 171,101 [2]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4355,7 +4361,7 @@
 ; Palermo is in Allied hands
 #ALIGNMENT_POSITION= 173,109 [2]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4386,7 +4392,7 @@
 ; Syracuse is in Allied hands
 #ALIGNMENT_POSITION= 176,112 [2]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4417,7 +4423,7 @@
 ; Venice is in Allied hands
 #ALIGNMENT_POSITION= 171,93 [2]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4447,7 +4453,7 @@
 ; Bologna is in Allied hands
 #ALIGNMENT_POSITION= 169,95 [2]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4477,7 +4483,7 @@
 ; Milan is in Allied hands
 #ALIGNMENT_POSITION= 164,93 [2]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4507,7 +4513,7 @@
 ; Genoa is in Allied hands
 #ALIGNMENT_POSITION= 164,95 [2]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4537,7 +4543,7 @@
 ; Turin is in Allied hands
 #ALIGNMENT_POSITION= 162,94 [2]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4568,7 +4574,7 @@
 ; British Empire is in Allied hands
 #ALIGNMENT_POSITION= 0,2 [2]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [0] [0]
 ; 2 Allied Amphibious units within 30 hexes of Syracuse Port
 #CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
@@ -4601,9 +4607,9 @@
 ; British Empire is in Allied hands
 #ALIGNMENT_POSITION= 0,2 [2]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 2nd Line - USA politically aligned with the Allies
+; 2nd Line - USA(115) politically aligned with the Allies
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; 2 Allied units are in southern Italy
 #CONDITION_POSITION= 177,103 [6,6] [2,2] [2] [0]
@@ -4634,9 +4640,9 @@
 ; Moscow is in Axis hands
 #ALIGNMENT_POSITION= 221,65 [1]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4667,9 +4673,9 @@
 ; Stalingrad is in Axis hands
 #ALIGNMENT_POSITION= 234,85 [1]
 ; Set variable conditions: 
-; 1st Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4700,9 +4706,9 @@
 ; Leningrad is in Axis hands
 #ALIGNMENT_POSITION= 206,52 [1]
 ; Set variable conditions: 
-; 1st Line - Italy politically aligned with the Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4738,9 +4744,9 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis
+; 1st Line - Germany(45) politically aligned with the Axis
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - Poland politically aligned with the Allies
+; 2nd Line - Poland(85) politically aligned with the Allies
 #VARIABLE_CONDITION= 85 [2] [100] [0]
 ; German units in range of Warsaw
 #CONDITION_POSITION= 188,76 [3,3] [1,1] [1] [0]
@@ -4771,11 +4777,11 @@
 ; Bordeaux is in Allied hands
 #ALIGNMENT_POSITION= 213,65 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - France politically aligned with the Allies but not fully mobilized
+; 2nd Line - France(40) politically aligned with the Allies but not fully mobilized
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; 3rd Line - USSR politically aligned with the Allies (not fully active) and not surrendered
+; 3rd Line - USSR(116) politically aligned with the Allies (not fully active) and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; German units near Paris
 #CONDITION_POSITION= 151,84 [3,4] [3,4] [1] [45]
@@ -4806,7 +4812,7 @@
 ; Paris is in Axis hands
 #ALIGNMENT_POSITION= 151,84 [1]
 ; Set variable conditions: 
-; 1st Line - France politically aligned with the Allies and surrendered
+; 1st Line - France(40) politically aligned with the Allies and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4836,7 +4842,7 @@
 ; London is in Allied hands
 #ALIGNMENT_POSITION= 147,77 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4866,9 +4872,9 @@
 ; Stalingrad is in Allied hands
 #ALIGNMENT_POSITION= 234,85 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4898,9 +4904,9 @@
 ; Stalingrad is in Allied hands
 #ALIGNMENT_POSITION= 234,85 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4930,9 +4936,9 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 99 [1] [0] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4962,8 +4968,8 @@
 ; Greece is in Axis Hands
 #ALIGNMENT_POSITION= 193,109 [1]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with Axis and not surrendered
-; 2nd Line - Greece politically aligned with Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with Axis and not surrendered
+; 2nd Line - Greece(46) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 46 [1] [100] [0]
 ; Dummy condition position (always satisfied)
@@ -4994,7 +5000,7 @@
 ; Stalingrad is in Allied hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5024,8 +5030,8 @@
 ; Berlin is in Axis Hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with Axis and not surrendered
-; 2nd Line - Vichy France politically aligned with Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with Axis and not surrendered
+; 2nd Line - Vichy France(118) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 118 [1] [100] [0]
 ; Dummy condition position (always satisfied)
@@ -5056,7 +5062,7 @@
 ; Helsinki is in Axis hands
 #ALIGNMENT_POSITION= 195,51 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5086,7 +5092,7 @@
 ; Helsinki is in Axis hands
 #ALIGNMENT_POSITION= 195,51 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5116,7 +5122,7 @@
 ; Helsinki is in Axis hands
 #ALIGNMENT_POSITION= 195,51 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5146,7 +5152,7 @@
 ; Helsinki is in Axis hands
 #ALIGNMENT_POSITION= 195,51 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5176,7 +5182,7 @@
 ; Helsinki is in Axis hands
 #ALIGNMENT_POSITION= 195,51 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5206,7 +5212,7 @@
 ; Stalingrad is in Allied hands
 #ALIGNMENT_POSITION= 195,51 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5236,7 +5242,7 @@
 ; Stalingrad is in Allied hands
 #ALIGNMENT_POSITION= 195,51 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5266,7 +5272,7 @@
 ; Stalingrad is in Allied hands
 #ALIGNMENT_POSITION= 195,51 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5296,7 +5302,7 @@
 ; Joensuu is in Allied hands
 #ALIGNMENT_POSITION= 205,43 [2]
 ; Set variable conditions: 
-; 1st Line - Finland politically aligned with the Axis and not surrendered 
+; 1st Line - Finland(39) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5326,7 +5332,7 @@
 ; Lappeenranta is in Allied hands
 #ALIGNMENT_POSITION= 202,48 [2]
 ; Set variable conditions: 
-; 1st Line - Finland politically aligned with the Axis and not surrendered 
+; 1st Line - Finland(39) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5356,7 +5362,7 @@
 ; Kemijarvi is in Allied hands
 #ALIGNMENT_POSITION= 201,26 [2]
 ; Set variable conditions: 
-; 1st Line - Finland politically aligned with the Axis and not surrendered 
+; 1st Line - Finland(39) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5386,7 +5392,7 @@
 ; Petsamo is in Allied hands
 #ALIGNMENT_POSITION= 209,13 [2]
 ; Set variable conditions: 
-; 1st Line - Finland politically aligned with the Axis and not surrendered 
+; 1st Line - Finland(39) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5416,7 +5422,7 @@
 ; Kajaani is in Allied hands
 #ALIGNMENT_POSITION= 201,37 [2]
 ; Set variable conditions: 
-; 1st Line - Finland politically aligned with the Axis and not surrendered 
+; 1st Line - Finland(39) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5476,7 +5482,7 @@
 ; Kajaani is in Allied hands
 #ALIGNMENT_POSITION= 207,45 [2]
 ; Set variable conditions: 
-; 1st Line - Finland politically aligned with the Axis and not surrendered 
+; 1st Line - Finland(39) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5506,7 +5512,7 @@
 ; Kajaani is in Allied hands
 #ALIGNMENT_POSITION= 207,45 [2]
 ; Set variable conditions: 
-; 1st Line - Finland politically aligned with the Axis and not surrendered 
+; 1st Line - Finland(39) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5567,7 +5573,7 @@
 ; Vyborg is in Allied hands
 #ALIGNMENT_POSITION= 203,49 [2]
 ; Set variable conditions: 
-; 1st Line - Finland politically aligned with the Axis and not surrendered 
+; 1st Line - Finland(39) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5598,7 +5604,7 @@
 ; Vyborg is in Allied hands
 #ALIGNMENT_POSITION= 203,49 [2]
 ; Set variable conditions: 
-; 1st Line - Finland politically aligned with the Axis and not surrendered 
+; 1st Line - Finland(39) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5628,9 +5634,9 @@
 ; Stalingrad is in Axis hands
 #ALIGNMENT_POSITION= 234,85 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5661,8 +5667,8 @@
 ; Tirana is in Axis hands
 #ALIGNMENT_POSITION= 185,102 [1]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with Axis and not surrendered
-; 2nd Line - Greece politically aligned with the Allies and not surrendered
+; 1st Line - Italy(59) politically aligned with Axis and not surrendered
+; 2nd Line - Greece(46) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5692,7 +5698,7 @@
 ; Rome is in Axis hands
 #ALIGNMENT_POSITION= 171,101 [1]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5722,9 +5728,9 @@
 ; Perm is in Allied hands
 #ALIGNMENT_POSITION= 257,58 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5735,6 +5741,7 @@
 #POPUP=
 #IMAGE=
 #SOUND=
+; currently disabled in Fall Weiss II
 #FLAG= 0
 #TYPE= 3 
 #AI= 2
@@ -5754,9 +5761,9 @@
 ; Moscow is in Allied hands
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5787,9 +5794,9 @@
 ; Kharkov is in Axis hands
 #ALIGNMENT_POSITION= 218,82 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5820,9 +5827,9 @@
 ; Minsk is in Axis hands
 #ALIGNMENT_POSITION= 201,71 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5853,9 +5860,9 @@
 ; Odessa is in Axis hands
 #ALIGNMENT_POSITION= 207,90 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5886,9 +5893,9 @@
 ; Sevastopol is in Axis hands
 #ALIGNMENT_POSITION= 212,96 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5918,9 +5925,9 @@
 ; Moscow is in Allied hands
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5951,9 +5958,9 @@
 ; Moscow is in Allied hands
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5984,9 +5991,9 @@
 ; Moscow is in Allied hands
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6017,9 +6024,9 @@
 ; Moscow is in Allied hands
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6049,9 +6056,9 @@
 ; Moscow is in Allied hands
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6081,9 +6088,9 @@
 ; Stalingrad is in Allied hands
 #ALIGNMENT_POSITION= 234,85 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6114,11 +6121,11 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; 2nd Line - USA politically aligned with the Allies and not surrendered
+; 2nd Line - USA(115) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6149,11 +6156,11 @@
 ; Moscow is in Allied hands
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; 2nd Line - USA politically aligned with the Allies and not surrendered
+; 2nd Line - USA(115) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6183,11 +6190,11 @@
 ; Stalingrad is in Allied hands
 #ALIGNMENT_POSITION= 234,85 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; 2nd Line - USA politically aligned with the Allies and not surrendered
+; 2nd Line - USA(115) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6217,9 +6224,9 @@
 ; Stalingrad is in Allied hands
 #ALIGNMENT_POSITION= 234,85 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6255,7 +6262,7 @@
 #ALIGNMENT_POSITION= 141,85 [2]
 #ALIGNMENT_POSITION= 140,87 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Allies in France
 ; Dummy condition position (always satisfied)
@@ -6286,7 +6293,7 @@
 ; Rome is in Axis hands
 #ALIGNMENT_POSITION= 171,101 [1]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6316,7 +6323,7 @@
 ; Rome is in Axis hands
 #ALIGNMENT_POSITION= 171,101 [1]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Dummy condition position (always satisfied)
@@ -6329,6 +6336,7 @@
 #POPUP=
 #IMAGE=
 #SOUND=
+; currently disabled in Fall Weiss II
 #FLAG= 0
 #TYPE= 1 
 #AI= 2
@@ -6348,11 +6356,11 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; 2nd Line - USA politically aligned with the Allies and not surrendered
+; 2nd Line - USA(115) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6383,11 +6391,11 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; 2nd Line - USA politically aligned with the Allies and not surrendered
+; 2nd Line - USA(115) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6418,9 +6426,9 @@
 ; Berlin is in Allied hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
@@ -6455,9 +6463,9 @@
 ; Moscow is in Allied hands
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6487,11 +6495,11 @@
 ; Paris is in Allied hands
 #ALIGNMENT_POSITION= 151,84 [2]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - France politically aligned with the Allies and not surrendered
+; 2nd Line - France(40) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; 3rd Line - USA politically aligned with the Allies and not surrendered
+; 3rd Line - USA(115) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; No Axis units within 4 hexes of Paris
 #CONDITION_POSITION= 151,84 [4,4] [0,0] [1] [0]
@@ -6521,11 +6529,11 @@
 ; Paris is in Allied hands
 #ALIGNMENT_POSITION= 151,84 [2]
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with the Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - France politically aligned with the Allies and not surrendered
+; 2nd Line - France(40) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; 3rd Line - UK politically aligned with the Allies and not surrendered
+; 3rd Line - UK(112) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; No Axis units within 4 hexes of Paris
 #CONDITION_POSITION= 151,84 [4,4] [0,0] [1] [0]
@@ -6536,6 +6544,7 @@
 #POPUP=
 #IMAGE=
 #SOUND=
+; currently disabled in Fall Weiss II
 #FLAG= 0
 #TYPE= 3
 #AI= 2
@@ -6555,9 +6564,9 @@
 ; Moscow is in Allied hands
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6587,11 +6596,11 @@
 ; Moscow is in Axis hands
 #ALIGNMENT_POSITION= 221,65 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; 2nd Line - USA politically aligned with the Allies and not surrendered
+; 2nd Line - USA(115) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6621,11 +6630,11 @@
 ; Stalingrad is in Axis hands
 #ALIGNMENT_POSITION= 234,85 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; 2nd Line - USA politically aligned with the Allies and not surrendered
+; 2nd Line - USA(115) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6637,6 +6646,7 @@
 #POPUP=
 #IMAGE=
 #SOUND=
+; currently disabled in Fall Weiss II
 #FLAG= 0
 #TYPE= 3 
 #AI= 2 
@@ -6656,9 +6666,9 @@
 ; Moscow is in Allied hands
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6669,6 +6679,7 @@
 #POPUP=
 #IMAGE=
 #SOUND=
+; currently disabled in Fall Weiss II
 #FLAG= 0
 #TYPE= 3 
 #AI= 2 
@@ -6688,9 +6699,9 @@
 ; Stalingrad is in Allied hands
 #ALIGNMENT_POSITION= 234,85 [2]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6720,7 +6731,7 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6750,7 +6761,7 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6780,7 +6791,7 @@
 ; London is in Allied hands
 #ALIGNMENT_POSITION= 147,77[2]
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6810,9 +6821,9 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6842,7 +6853,7 @@
 ; Malta is in Axis Hands
 #ALIGNMENT_POSITION= 175,114 [1]
 ; Set variable conditions: 
-; 1st Line - USA politically aligned with the Allies (not fully active) and not surrendered
+; 1st Line - USA(115) politically aligned with the Allies (not fully active) and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6873,7 +6884,7 @@
 ; Malta is in Axis Hands
 #ALIGNMENT_POSITION= 136,114 [1]
 ; Set variable conditions: 
-; 1st Line - USA politically aligned with the Allies (not fully active) and not surrendered
+; 1st Line - USA(115) politically aligned with the Allies (not fully active) and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6904,7 +6915,7 @@
 ; Alexandria is in Axis Hands
 #ALIGNMENT_POSITION= 206,124 [1]
 ; Set variable conditions: 
-; 1st Line - USA politically aligned with the Allies (not fully active) and not surrendered
+; 1st Line - USA(115) politically aligned with the Allies (not fully active) and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6935,7 +6946,7 @@
 ; Cairo is in Axis Hands
 #ALIGNMENT_POSITION= 208,126 [1]
 ; Set variable conditions: 
-; 1st Line - USA politically aligned with the Allies (not fully active) and not surrendered
+; 1st Line - USA(115) politically aligned with the Allies (not fully active) and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6965,7 +6976,7 @@
 ; Malta is in Axis Hands
 #ALIGNMENT_POSITION= 175,114 [1]
 ; Set variable conditions: 
-; 1st Line - USA politically aligned with the Allies (not fully active) and not surrendered
+; 1st Line - USA(115) politically aligned with the Allies (not fully active) and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6996,7 +7007,7 @@
 ; Malta is in Axis Hands
 #ALIGNMENT_POSITION= 136,114 [1]
 ; Set variable conditions: 
-; 1st Line - USA politically aligned with the Allies (not fully active) and not surrendered
+; 1st Line - USA(115) politically aligned with the Allies (not fully active) and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7027,7 +7038,7 @@
 ; Alexandria is in Axis Hands
 #ALIGNMENT_POSITION= 206,124 [1]
 ; Set variable conditions: 
-; 1st Line - USA politically aligned with the Allies (not fully active) and not surrendered
+; 1st Line - USA(115) politically aligned with the Allies (not fully active) and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7058,7 +7069,7 @@
 ; Cairo is in Axis Hands
 #ALIGNMENT_POSITION= 208,126 [1]
 ; Set variable conditions: 
-; 1st Line - USA politically aligned with the Allies (not fully active) and not surrendered
+; 1st Line - USA(115) politically aligned with the Allies (not fully active) and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7089,9 +7100,9 @@
 ; Leningrad is in Axis hands
 #ALIGNMENT_POSITION= 206,52 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7122,9 +7133,9 @@
 ; Moscow is in Axis hands
 #ALIGNMENT_POSITION= 221,65 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7155,9 +7166,9 @@
 ; Stalingrad is in Axis hands
 #ALIGNMENT_POSITION= 234,85 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7187,9 +7198,9 @@
 ; Grozny is in Axis hands
 #ALIGNMENT_POSITION= 236,98 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7219,9 +7230,9 @@
 ; Baku is in Axis hands
 #ALIGNMENT_POSITION= 245,104 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7251,9 +7262,9 @@
 ; Leningrad is in Axis hands
 #ALIGNMENT_POSITION= 206,52 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7284,9 +7295,9 @@
 ; Moscow is in Axis hands
 #ALIGNMENT_POSITION= 221,65 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7317,9 +7328,9 @@
 ; Stalingrad is in Axis hands
 #ALIGNMENT_POSITION= 234,85 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7349,9 +7360,9 @@
 ; Grozny is in Axis hands
 #ALIGNMENT_POSITION= 236,98 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7381,9 +7392,9 @@
 ; Baku is in Axis hands
 #ALIGNMENT_POSITION= 245,104 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7415,9 +7426,9 @@
 ; Gorky is in Axis hands
 #ALIGNMENT_POSITION= 233,64 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7449,9 +7460,9 @@
 ; Saratov is in Axis hands
 #ALIGNMENT_POSITION= 237,77 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7485,9 +7496,9 @@
 ; Moscow is in Axis hands
 #ALIGNMENT_POSITION= 221,65 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
 #CONDITION_POSITION= 146,84 [4,4] [4,4] [2] [0]
@@ -7521,9 +7532,9 @@
 ; Stalingrad is in Axis hands
 #ALIGNMENT_POSITION= 221,65 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
 #CONDITION_POSITION= 146,84 [4,4] [4,4] [2] [0]
@@ -7558,9 +7569,9 @@
 ; Moscow is in Axis hands
 #ALIGNMENT_POSITION= 221,65 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
 #CONDITION_POSITION= 146,84 [4,4] [4,4] [2] [0]
@@ -7594,9 +7605,9 @@
 ; Stalingrad is in Axis hands
 #ALIGNMENT_POSITION= 221,65 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
 #CONDITION_POSITION= 146,84 [4,4] [4,4] [2] [0]
@@ -7630,9 +7641,9 @@
 ; Riga is in Axis hands
 #ALIGNMENT_POSITION= 194,62 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Dummy condition position (always satisfied)
@@ -7665,9 +7676,9 @@
 ; Smolensk is in Axis hands
 #ALIGNMENT_POSITION= 209,68 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Dummy condition position (always satisfied)
@@ -7700,9 +7711,9 @@
 ; Rostov is in Axis hands
 #ALIGNMENT_POSITION= 225,88 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Dummy condition position (always satisfied)
@@ -7733,9 +7744,9 @@
 ; Kuybyshev is in Axis hands
 #ALIGNMENT_POSITION= 245,72 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7765,9 +7776,9 @@
 ; Perm is in Axis hands
 #ALIGNMENT_POSITION= 257,58 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - USSR politically aligned with the Allies and not surrendered
+; 2nd Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7797,7 +7808,7 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7827,7 +7838,7 @@
 ; Lappeenranta is in Allied hands
 #ALIGNMENT_POSITION= 202,48 [2]
 ; Set variable conditions: 
-; 1st Line - Finland politically aligned with the Axis and not surrendered 
+; 1st Line - Finland(39) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7857,7 +7868,7 @@
 ; Paris is in Axis hands
 #ALIGNMENT_POSITION= 151,84 [1]
 ; Set variable conditions: 
-; 1st Line - UK politically aligned with the Allies
+; 1st Line - UK(112) politically aligned with the Allies
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7887,7 +7898,7 @@
 ; Warsaw is in Axis hands
 #ALIGNMENT_POSITION= 188,76 [1]
 ; Set variable conditions: 
-; 1st Line - UK politically aligned with the Allies
+; 1st Line - UK(112) politically aligned with the Allies
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7917,7 +7928,7 @@
 ; Paris is in Axis hands
 #ALIGNMENT_POSITION= 151,84 [1]
 ; Set variable conditions: 
-; 1st Line - UK politically aligned with the Allies
+; 1st Line - UK(112) politically aligned with the Allies
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7947,7 +7958,7 @@
 ; Warsaw is in Axis hands
 #ALIGNMENT_POSITION= 188,76 [1]
 ; Set variable conditions: 
-; 1st Line - UK politically aligned with the Allies
+; 1st Line - UK(112) politically aligned with the Allies
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7977,7 +7988,7 @@
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis 
+; 1st Line - Germany(45) politically aligned with the Axis 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -8008,9 +8019,9 @@
 ; Manchester is in Axis hands
 #ALIGNMENT_POSITION= 142,72 [1]
 ; Set variable conditions: 
-; 1st Line - Germany politically aligned with the Axis and not surrendered 
+; 1st Line - Germany(45) politically aligned with the Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - UK politically aligned with the Allies
+; 2nd Line - UK(112) politically aligned with the Allies
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied) 
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -8045,7 +8056,7 @@
 ; Manchester is in Allied hands
 #ALIGNMENT_POSITION= 142,72 [2]
 ; Set variable conditions: 
-; 1st Line - UK politically aligned with the Allies
+; 1st Line - UK(112) politically aligned with the Allies
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; No Axis units within 10 hexes of Birmingham
 #CONDITION_POSITION= 143,74 [10,10] [0,0] [1] [0]
@@ -8080,7 +8091,7 @@
 ; Manchester is in Allied hands
 #ALIGNMENT_POSITION= 142,72 [2]
 ; Set variable conditions: 
-; 1st Line - UK politically aligned with the Allies
+; 1st Line - UK(112) politically aligned with the Allies
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; No Axis units within 10 hexes of Birmingham
 #CONDITION_POSITION= 143,74 [10,10] [0,0] [1] [0]
@@ -8110,7 +8121,7 @@
 ; British Empire is in Allied hands
 #ALIGNMENT_POSITION= 0,2 [2]
 ; Set variable conditions:
-; 1st Line - Italy politically aligned with Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [0] [0]
 ; 2 Allied Amphibious units within 30 hexes of Syracuse Port
 #CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>

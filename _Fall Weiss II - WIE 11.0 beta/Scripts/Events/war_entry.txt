@@ -34,8 +34,14 @@
 ;          or for AI controlled Axis majors on Axis human player turns
 ;      6 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied in Single Player,
 ;          or for AI controlled Allied majors on Allied human player turns
-; #LEVEL= What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
-;         Values: [0, 4]; Green= 0; Novice= 1; Intermediate= 2; Veteran= 3; Expert= 4
+; #LEVEL= Value range [-1, 4]
+;      What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;     -1 = a script that should only fire for AI friendly controlled majors on your turn
+;      0 = Green
+;      1 = Novice
+;      2 = Intermediate
+;      3 = Veteran
+;      4 = Expert
 ; #GV= Does the event activate based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
@@ -247,9 +253,9 @@
 #ALIGNMENT= 2
 #DATE= 1939/09/10
 ;Set variable conditions:
-;1st Line - UK politically aligned with Allies and not surrendered AND
-;2nd Line - France politically aligned with Allies and not surrendered AND
-;3rd Line - Germany politically aligned with Axis and not surrendered
+;1st Line - UK(112) politically aligned with Allies and not surrendered AND
+;2nd Line - France(40) politically aligned with Allies and not surrendered AND
+;3rd Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -389,7 +395,7 @@
 #ALIGNMENT= 1
 #DATE= 1940/12/01
 ;Set variable conditions:
-;1st Line - Poland politically aligned with Allies and surrendered
+;1st Line - Poland(85) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 }
 
@@ -461,7 +467,7 @@
 #ALIGNMENT= 1
 #DATE= 1940/11/23
 ;Set variable conditions:
-;1st Line - Poland politically aligned with Allies and surrendered
+;1st Line - Poland(85) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 }
 
@@ -535,7 +541,7 @@
 #ALIGNMENT= 1
 #DATE= 1941/03/01
 ;Set variable conditions:
-;1st Line - Poland politically aligned with Allies and surrendered
+;1st Line - Poland(85) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 }
 
@@ -556,7 +562,7 @@
 #ALIGNMENT= 1
 #DATE= 1941/05/13
 ;Set variable conditions:
-; 1st Line - Germany politically aligned with Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
@@ -577,7 +583,7 @@
 #ALIGNMENT= 2
 #DATE= 1940/10/25
 ;Set variable conditions:
-; 1st Line - Italy politically aligned with Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 }
 
@@ -587,6 +593,7 @@
 #POPUP= Finland Enters The War Against The USSR
 #IMAGE= finlandenterswar.png
 #SOUND= war1.ogg
+; currently disabled in Fall Weiss II
 #FLAG= 0
 #TYPE= 1
 #AI= 0
@@ -598,9 +605,9 @@
 #ALIGNMENT= 1
 #DATE= 1939/09/01
 ;Set variable conditions:
-; 1st Line - USSR politically aligned with Allies and not surrendered
+; 1st Line - USSR(116) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; 2nd Line - Finland politically aligned with Axis but not fully mobilized
+; 2nd Line - Finland(39) politically aligned with Axis but not fully mobilized
 #VARIABLE_CONDITION= 39 [1] [0] [0]
 }
 
@@ -709,7 +716,7 @@
 #ALIGNMENT= 1
 #DATE= 1941/01/01
 ;Set variable conditions:
-; 1st Line - Italy politically aligned with Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 87 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -759,8 +766,8 @@
 #ALIGNMENT= 1
 #DATE= 1939/09/01
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with Axis and not surrendered AND
-; 2nd Line - USSR politically aligned with Allies and not surrendered
+; 1st Line - Germany(45) politically aligned with Axis and not surrendered AND
+; 2nd Line - USSR(116) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 }
@@ -781,7 +788,7 @@
 #ALIGNMENT= 1
 #DATE= 1944/10/01
 ;Set variable conditions:
-; 1st Line - Italy politically aligned with Axis and not surrendered
+; 1st Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 87 [1] [100] [1]
 #VARIABLE_CONDITION= 116 [2] [100] [0]

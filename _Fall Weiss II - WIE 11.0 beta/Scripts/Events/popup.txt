@@ -35,8 +35,14 @@
 ;          or for AI controlled Axis majors on Axis human player turns
 ;      6 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied in Single Player,
 ;          or for AI controlled Allied majors on Allied human player turns
-; #LEVEL= What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
-;         Values: [0, 4]; Green= 0; Novice= 1; Intermediate= 2; Veteran= 3; Expert= 4
+; #LEVEL= Value range [-1, 4]
+;      What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;     -1 = a script that should only fire for AI friendly controlled majors on your turn
+;      0 = Green
+;      1 = Novice
+;      2 = Intermediate
+;      3 = Veteran
+;      4 = Expert
 ; #GV= Does the event activate based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
@@ -50,13 +56,16 @@
 ;        Example C) #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
 ; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
 ; #COUNTRY_ID= Country ID associated with this event (use #COUNTRY_ID= 0 for generic popup)
-; #PRIVATE= Should the event remain private to the side receiving it? (values range [0, 1]; False= 0; True= 1)
-; #DISPLAY_ORDER= Values range [0, 2];
+; #PRIVATE= Value range [0, 1] 
+;         Should the event remain private to the side receiving it?
+;         0 = False
+;         1 = True
+; #DISPLAY_ORDER= Values range [0, 2]
 ;         When do we display this popup event:
 ;         0 = End of Turn
 ;         1 = Beginning of Turn
-;         2 = Deployment Phase
-; #DISPLAY_TURN= Values range [0, 2];
+;         2 = Deployment Phase (ignores #DATE)
+; #DISPLAY_TURN= Values range [0, 2]
 ;         On what turn do we display this popup event:
 ;         0 = Any
 ;         1 = Axis Turn
@@ -75,12 +84,14 @@
 ;                     If #DISPLAY_TURN value > 0, 
 ;                          e.g. only show on Axis or Allied turns, 
 ;                     #PRIVATE= 1 can be used to hide the display of the symbol sprite when 'Hide/Show Map Info' is disabled in game.
-; #MESSAGE_STYLE= What type of #MESSAGE body style will be shown?
+; #MESSAGE_STYLE= Value range[0, 4]
+;                 What type of #MESSAGE body style will be shown?
 ;                 0 = default style (no large national flags or symbols shown in the #MESSAGE body text area)
 ;                 1 = large national flag in upper right corner relative to #COUNTRY_ID
 ;                 2 = large national flag in upper right corner w/ national symbol shown in upper middle of the #MESSAGE body text area
 ;                 3 = #MESSAGE body text will be displayed in the bottom half w/ large national flag in lower left bottom half as well 
-; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd).
+; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd or yyyy/mm/dd [=]).
+;        if [=] is used, only apply for year specified.
 ; #TEXT_RGB= Text color for the decision event
 ;            Format: red, green, blue (values range [0, 255])
 ; #SHADOW_RGB= Shadow color for the decision event text (NOT USED IN SC3)
@@ -93,7 +104,8 @@
 ;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
 ; #CONDITION_POSITION= Map positions that will serve to trigger the event as well as distance and
 ;                      number of Axis/Allied unit ranges as specified by 'alignment' flag
-;                      Format: x,y [min_range, max_range] [min_units, max_units] [alignment] [aligned_country_id]
+;                      Format: x,y [min_range, max_range] [min_units, max_units] [alignment] [aligned_country_id] OR
+;                              x,y [min_range, max_range] [min_units, max_units] [alignment] [aligned_country_id] [<]
 ; } 
 ;
 ; NOTES:
@@ -321,7 +333,7 @@
 #DATE= 1939/09/01
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
-; 1st Line - Germany politically aligned with Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -545,7 +557,7 @@
 #DATE= 1939/09/01
 #TEXT_RGB= 255,255,255
 #SHADOW_RGB= 0,0,0 
-#MAP_POSITION=  167,112
+#MAP_POSITION= 167,112
 ; Tunis is in Allied hands 
 #ALIGNMENT_POSITION= 167,112 [2]
 #VARIABLE_CONDITION= 59 [1] [0] [0]
@@ -577,7 +589,7 @@
 #DATE= 1939/09/01
 #TEXT_RGB= 255,255,255
 #SHADOW_RGB= 0,0,0 
-#MAP_POSITION=  167,112
+#MAP_POSITION= 167,112
 ; Tunis is in Allied hands 
 #ALIGNMENT_POSITION= 167,112 [2]
 #VARIABLE_CONDITION= 59 [1] [0] [0]
@@ -677,7 +689,7 @@
 #DATE= 1939/09/03
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
-; 1st Line - Canada politically aligned with Allies and not surrendered
+; 1st Line - Canada(21) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 21 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -711,9 +723,9 @@
 #DATE= 1940/05/06
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
-; 1st Line - Finland politically aligned with Allies but not fully mobilized
+; 1st Line - Finland(39) politically aligned with Allies but not fully mobilized
 #VARIABLE_CONDITION= 39 [2] [0] [0]
-; 2nd Line - USSR politically aligned with Allies but not fully mobilized
+; 2nd Line - USSR(116) politically aligned with Allies but not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -747,9 +759,9 @@
 #DATE= 1940/05/06
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
-; 1st Line - Finland politically aligned with Axis but not fully mobilized
+; 1st Line - Finland(39) politically aligned with Axis but not fully mobilized
 #VARIABLE_CONDITION= 39 [1] [0] [0]
-; 2nd Line - USSR politically aligned with Allies but not fully mobilized
+; 2nd Line - USSR(116) politically aligned with Allies but not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -782,7 +794,7 @@
 #DATE= 1939/09/03
 ; Paris is in Axis hands
 #ALIGNMENT_POSITION= 151,84 [1]
-; 1st Line - Spain politically aligned with Axis but not fully mobilized
+; 1st Line - Spain(99) politically aligned with Axis but not fully mobilized
 #VARIABLE_CONDITION= 99 [1] [25] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -815,8 +827,8 @@
 #DATE= 1939/09/03
 ; Berlin is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
-; 1st Line - Germany politically aligned with Axis and not surrendered
-; 2nd Line - USA politically aligned with Allies and not surrendered
+; 1st Line - Germany(45) politically aligned with Axis and not surrendered
+; 2nd Line - USA(115) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2064,11 +2076,11 @@
 #DATE= 1939/09/01
 ; Paris is in Axis hands
 #ALIGNMENT_POSITION= 151,84 [1]
-; 1st Line - France politically aligned with Allies and surrendered
+; 1st Line - France(40) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-; 2nd Line - Spain politically aligned with Axis but not fully mobilized
+; 2nd Line - Spain(99) politically aligned with Axis but not fully mobilized
 #VARIABLE_CONDITION= 99 [1] [20] [0]
-; 3rd Line - USA politically aligned with Allies and fully mobilized
+; 3rd Line - USA(115) politically aligned with Allies and fully mobilized
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; No Allied units within 5 hexes of Bayonne
 #CONDITION_POSITION= 144,98 [5,5] [0,0] [2] [0]
@@ -2118,6 +2130,7 @@
 #MESSAGE=
 #IMAGE= ukspainwarning.png
 #SOUND= report.ogg
+; currently disabled in Fall Weiss II
 #FLAG= 0
 #TYPE= 1
 #AI= 3
@@ -2150,6 +2163,7 @@
 #MESSAGE=
 #IMAGE= ukturkeywarning.png
 #SOUND= report.ogg
+; currently disabled in Fall Weiss II
 #FLAG= 0
 #TYPE= 1
 #AI= 3
@@ -3858,9 +3872,9 @@ Replacement Script
 #DATE= 1939/09/01
 ; Paris is in Axis hands
 #ALIGNMENT_POSITION= 151,84 [1]
-; 1st Line - France politically aligned with Allies and surrendered
+; 1st Line - France(40) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-; 2nd Line - Spain politically aligned with Axis but not fully mobilized
+; 2nd Line - Spain(99) politically aligned with Axis but not fully mobilized
 #VARIABLE_CONDITION= 99 [1] [20] [0]
 ; No Allied units within 5 hexes of Bayonne
 #CONDITION_POSITION= 144,98 [5,5] [0,0] [2] [0]
@@ -4411,13 +4425,13 @@ Replacement Script
 #DATE= 1944/10/19
 ; Paris is in Allied hands
 #ALIGNMENT_POSITION= 151,84 [2]
-; 1st Line - France politically aligned with Allies and not surrendered
+; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; 2nd Line - USA politically aligned with Allies and not surrendered
+; 2nd Line - USA(115) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; 3rd Line - Germany politically aligned with Axis and not surrendered
+; 3rd Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 4th Line - Spain politically aligned with Axis but not fully mobilized
+; 4th Line - Spain(99) politically aligned with Axis but not fully mobilized
 #VARIABLE_CONDITION= 99 [1] [0] [0]
 ; No Axis Units near the Spanish border
 #CONDITION_POSITION= 149,99 [4,4] [0,0] [1] [0]
@@ -8184,7 +8198,6 @@ Replacement Script
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
@@ -8217,7 +8230,6 @@ Replacement Script
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 173[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100

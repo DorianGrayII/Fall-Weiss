@@ -34,8 +34,14 @@
 ;          or for AI controlled Axis majors on Axis human player turns
 ;      6 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied in Single Player,
 ;          or for AI controlled Allied majors on Allied human player turns
-; #LEVEL= What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
-;         Values: [0, 4]; Green= 0; Novice= 1; Intermediate= 2; Veteran= 3; Expert= 4
+; #LEVEL= Value range [-1, 4]
+;      What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;     -1 = a script that should only fire for AI friendly controlled majors on your turn
+;      0 = Green
+;      1 = Novice
+;      2 = Intermediate
+;      3 = Veteran
+;      4 = Expert
 ; #GV= Does the event activate based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
@@ -303,8 +309,8 @@
 #TRIGGER= 100
 #DATE= 1940/04/03
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with Axis and not surrendered
-; 2nd Line - Denmark politically aligned with Allies (not fully active) and not surrendered
+; 1st Line - Germany(45) politically aligned with Axis and not surrendered
+; 2nd Line - Denmark(18) politically aligned with Allies (not fully active) and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 31 [0] [0] [0]
 ; dummy condition position (always satisfied)
@@ -357,8 +363,8 @@
 #TRIGGER= 100
 #DATE= 1940/04/14
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with Axis and not surrendered
-; 2nd Line - Norway politically aligned with Axis (not fully active) and not surrendered
+; 1st Line - Germany(45) politically aligned with Axis and not surrendered
+; 2nd Line - Norway(78) politically aligned with Axis (not fully active) and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 78 [1] [0] [0]
 ; dummy condition position (always satisfied)
@@ -387,9 +393,9 @@
 #TRIGGER= 100
 #DATE= 1940/04/14
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 1st Line - Norway politically aligned with Allies but not fully mobilized
+; 1st Line - Norway(78) politically aligned with Allies but not fully mobilized
 #VARIABLE_CONDITION= 78 [2] [0] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -438,8 +444,8 @@
 #TRIGGER= 100
 #DATE= 1939/09/01
 ; Set variable conditions:
-; 1st Line - USA politically aligned with Allies and not surrendered
-; 2nd Line - Italy polically aligned with Axis and not surrendered
+; 1st Line - USA(115) politically aligned with Allies and not surrendered
+; 2nd Line - Italy(59) polically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; 1st Line - No German unit in Rome
@@ -464,7 +470,7 @@
 #TRIGGER= 100
 #DATE= 1943/01/01
 ; Set variable conditions:
-; 1st Line - Romania politically aligned with Axis and not surrendered
+; 1st Line - Romania(93) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 93 [1] [100] [0]
 ; No German units within 2 hexes of Bucharest
 #CONDITION_POSITION= 198,95 [2,2] [0,0] [1] [45]
@@ -512,7 +518,7 @@
 #TRIGGER= 100
 #DATE= 1940/01/01
 ; Set variable conditions:
-; 1st Line - Finland politically aligned with Axis and not surrendered
+; 1st Line - Finland(39) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -537,7 +543,7 @@
 #TRIGGER= 100
 #DATE= 1940/01/01
 ; Set variable conditions:
-; 1st Line - Finland politically aligned with Axis and not surrendered
+; 1st Line - Finland(39) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -565,7 +571,7 @@
 #TRIGGER= 100
 #DATE= 1940/01/01
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -593,7 +599,7 @@
 #TRIGGER= 100
 #DATE= 1940/01/01
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -619,7 +625,7 @@
 #TRIGGER= 100
 #DATE= 1940/01/01
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -645,7 +651,7 @@
 #TRIGGER= 100
 #DATE= 1940/01/01
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with Axis and not surrendered
+; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -661,6 +667,7 @@
 #POPUP= Marshal Badoglio Signs An Armistice With The Allies - Italy Surrenders
 #IMAGE=
 #SOUND= italy_surrender.ogg
+; currently disabled in Fall Weiss II
 #FLAG= 0
 #TYPE= 0
 #AI= 0
@@ -676,8 +683,8 @@
 #TRIGGER= 50
 #DATE= 1943/09/08
 ; Set variable conditions:
-; 1st Line - USA politically aligned with Allies and not surrendered
-; 2nd Line - Italy politically aligned with Axis and not surrendered
+; 1st Line - USA(115) politically aligned with Allies and not surrendered
+; 2nd Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; 1st Line - No German units in Rome
@@ -707,8 +714,8 @@
 #TRIGGER= 25
 #DATE= 1939/09/01
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered
-; 2nd Line - Iraq politically Axis and not surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered
+; 2nd Line - Iraq(56) politically Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 56 [1] [100] [0]
 ; Allies within range of Baghdad
@@ -738,8 +745,8 @@
 #TRIGGER= 75
 #DATE= 1939/09/01
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered
-; 2nd Line - Iraq politically Axis and not surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered
+; 2nd Line - Iraq(56) politically Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 56 [1] [100] [0]
 ; Allies within range of Baghdad
@@ -775,7 +782,7 @@
 #TRIGGER= 25
 #DATE= 1941/06/08
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered
 ; 2nd Line - Syria politically neutral and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 105 [0] [0] [0]
@@ -796,6 +803,7 @@
 #POPUP= Germany Occupies Luxembourg
 #IMAGE=
 #SOUND= transport_movement.ogg
+; currently disabled in Fall Weiss II
 #FLAG= 0
 #TYPE= 1
 #AI= 1
@@ -811,8 +819,8 @@
 #TRIGGER= 100
 #DATE= 1939/09/01
 ; Set variable conditions:
-; 1st Line - Germany politically aligned with Axis and not surrendered
-; 2nd Line - France politically aligned with Allies and surrendered
+; 1st Line - Germany(45) politically aligned with Axis and not surrendered
+; 2nd Line - France(40) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 10 [2] [100] [1]
@@ -838,7 +846,7 @@
 #TRIGGER= 100
 #DATE= 1943/06/01
 ; Set variable conditions:
-; 1st Line - Spain politically aligned with Axis and not surrendered
+; 1st Line - Spain(99) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 99 [1] [100] [0]
 ; Less than 4 German units within 6 hexes of Madrid
 #CONDITION_POSITION= 139,104 [6,6] [0,3] [1] [45]
@@ -864,7 +872,7 @@
 #TRIGGER= 100
 #DATE= 1939/09/03
 ; Set variable conditions:
-; 1st Line - UK politically aligned with Allies and not surrendered
+; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -893,7 +901,7 @@
 #TRIGGER= 100
 #DATE= 1939/09/03
 ; Set variable conditions:
-; 1st Line - UK Allied Active
+; 1st Line - UK(112) Allied Active
 ; 2nd Line - Ireland Axis Leaning
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 57 [1] [0] [0]
