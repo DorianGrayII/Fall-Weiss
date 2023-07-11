@@ -42,7 +42,7 @@
 ;      2 = Intermediate
 ;      3 = Veteran
 ;      4 = Expert
-; #GV= Does the event activate based on the Global Variable values assigned?
+; #GV= Is the event activation based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
 ;      Example A) #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
@@ -304,7 +304,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 {
-#NAME= Norwegian Forces Damage The Rail Network As They Retire Into The Hinterland
+#NAME= DE 643 - Norwegian Forces Damage The Rail Network As They Retire Into The Hinterland
 #POPUP= Norwegian Forces Damage The Rail Network As They Retire Into The Hinterland
 #IMAGE=
 #SOUND=
@@ -328,7 +328,7 @@
 }
 
 {
-#NAME= Norwegian Forces Damage The Rail Network As They Retire Into The Hinterland
+#NAME= DE 644 - Norwegian Forces Damage The Rail Network As They Retire Into The Hinterland
 #POPUP= Norwegian Forces Damage The Rail Network As They Retire Into The Hinterland
 #IMAGE=
 #SOUND=
@@ -352,7 +352,7 @@
 }
 
 {
-#NAME= Dutch Railway Workers Strike As Allied Forces Approach The Netherlands (50% Chance)
+#NAME= DE 108 - Dutch Railway Workers Strike As Allied Forces Approach The Netherlands (50% Chance)
 #POPUP= Dutch Railway Workers Strike As Allied Forces Approach The Netherlands
 #IMAGE=
 #SOUND=
@@ -379,7 +379,7 @@
 }
 
 {
-#NAME= Dutch Railway Workers Strike As Allied Forces Approach The Netherlands (25% Chance)
+#NAME= DE 108 - Dutch Railway Workers Strike As Allied Forces Approach The Netherlands (25% Chance)
 #POPUP= Dutch Railway Workers Strike As Allied Forces Approach The Netherlands
 #IMAGE=
 #SOUND=
@@ -399,6 +399,10 @@
 #DESTINATION_RESOURCE= 156,77 [1,4]
 #DESTINATION_RESOURCE= 155,76 [1,4]
 #DESTINATION_RESOURCE= 156,75 [1,4]
+; 1st Line - Belgium(10) aligned Allied, fully mobilized and not surrendered
+; 2nd Line - France(10) aligned Allied, fully mobilized and not surrendered
+; 3rd Line - UK(112) aligned Allied, fully mobilized and not surrendered
+; 4th Line - USA(115) aligned Allied, fully mobilized and not surrendered
 #VARIABLE_CONDITION= 10 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -706,7 +710,7 @@
 }
 
 {
-#NAME= DE 313 - Danish Workers Go On Strike To Disrupt German Communications (45% Chance)
+#NAME= DE 355 - Danish Workers Go On Strike To Disrupt German Communications (45% Chance)
 #POPUP= The Danish Freedom Council Calls A General Strike To Disrupt German Communications
 #IMAGE= danishstrike.png
 #SOUND= 
@@ -1107,7 +1111,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 {
-#NAME= DE 309 - Spanish Republicans Carry Out Guerrilla Attacks On Installations In Asturias
+#NAME= DE 361 - Spanish Republicans Carry Out Guerrilla Attacks On Installations In Asturias
 #POPUP= Spanish Republicans Carry Out Guerrilla Attacks On Installations In Asturias
 #IMAGE=
 #SOUND= 
@@ -1130,7 +1134,7 @@
 }
 
 {
-#NAME= DE 309 - Spanish Republicans Launch Attacks On Installations Near Granada
+#NAME= DE 362 - Spanish Republicans Launch Attacks On Installations Near Granada
 #POPUP= Spanish Republicans Launch Attacks On Installations Near Granada
 #IMAGE=
 #SOUND= 
@@ -1152,7 +1156,7 @@
 }
 
 {
-#NAME= DE 309 - Spanish Republicans Carry Out Guerrilla Attacks On Installations Near Córdoba
+#NAME= DE 363 - Spanish Republicans Carry Out Guerrilla Attacks On Installations Near Córdoba
 #POPUP= Spanish Republicans Carry Out Guerrilla Attacks On Installations Near Córdoba
 #IMAGE=
 #SOUND= 
@@ -1174,7 +1178,7 @@
 }
 
 {
-#NAME= DE 309 - Spanish Republicans Attack Installations In Catalonia
+#NAME= DE 364 - Spanish Republicans Attack Installations In Catalonia
 #POPUP= Spanish Republicans Attack Installations In Catalonia
 #IMAGE=
 #SOUND= 
@@ -1394,7 +1398,7 @@
 ;REMOVE1942
 ; Raid on St Nazaire
 { 
-#NAME= Raid on St Nazaire - St Nazaire damaged
+#NAME= DE 113 - Raid on St Nazaire - St Nazaire damaged
 #POPUP= HMS Campbeltown Badly Damages The Normandie Dock At St Nazaire!
 #IMAGE= campbeltown1.png, campbeltown2.png, campbeltown3.png, campbeltown4.png
 #SOUND=
@@ -1422,7 +1426,7 @@
 ;REMOVE1942
 ; Raid on St Nazaire - first message
 { 
-#NAME= Raid on St Nazaire - St Nazaire destroyed
+#NAME= DE 113 - Raid on St Nazaire - St Nazaire destroyed
 #POPUP= HMS Campbeltown Destroys The Normandie Dock: St Nazaire Is Out Of Action!
 #IMAGE= campbeltown1.png, campbeltown2.png, campbeltown3.png, campbeltown4.png
 #SOUND=
@@ -1450,7 +1454,7 @@
 ;REMOVE1942
 ; Raid on St Nazaire - continuous
 { 
-#NAME= Raid on St Nazaire - St Nazaire destroyed
+#NAME= DE 113 - Raid on St Nazaire - St Nazaire destroyed
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1481,7 +1485,7 @@
 ;
 ; Fall of Gibraltar
 {
-#NAME= Fall Of Gibraltar (German Occupied) (25% Chance)
+#NAME= DE 676 - Fall Of Gibraltar (German Occupied) (25% Chance)
 #POPUP= Axis Control Of Gibraltar Hinders Allied Supply In the Mediterranean
 #IMAGE=
 #SOUND=
@@ -1693,7 +1697,7 @@
 ;               Fall Weiss II Events
 ;=============================================================
 {
-#NAME= Oil Shortages Hamper Axis Economies (15% Chance)
+#NAME= DE 871 - Oil Shortages Hamper Axis Economies (15% Chance)
 #POPUP= Oil Shortages Hamper Axis Economies
 #IMAGE=
 #SOUND=
@@ -1723,7 +1727,7 @@
 }
 
 {
-#NAME= Oil Shortages Hamper Axis Economies (10% Chance)
+#NAME= DE 381 - Oil Shortages Hamper Axis Economies (10% Chance)
 #POPUP= Oil Shortages Hamper Axis Economies
 #IMAGE=
 #SOUND=
@@ -1870,7 +1874,7 @@
 ; South Atlantic Raiders
 {
 #NAME= DE 854 - South Atlantic Raiders
-#POPUP= Graf Spee Disrupts South Atlantic Convoys
+#POPUP= KMS Admiral Graf Spee Disrupts South Atlantic Convoys
 #IMAGE= 
 #SOUND= 
 #FLAG= 1
@@ -2291,7 +2295,7 @@
 }
 
 {
-#NAME= The Allies Attack Narvik (Supply Reduction)
+#NAME= DE 128 - The Allies Attack Narvik (Supply Reduction)
 #POPUP=
 #IMAGE=
 #SOUND=
