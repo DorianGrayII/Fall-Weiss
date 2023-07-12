@@ -223,7 +223,6 @@
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;AMEND1940
 {
 #NAME= German Industry Starts Increasing Its Military Production (1939)
 #POPUP= German Industry Starts Increasing Its Military Production
@@ -253,7 +252,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;AMEND1941
 {
 #NAME= German Industry Starts Increasing Its Military Production (1941)
 #POPUP= German Industry Starts Increasing Its Military Production
@@ -283,7 +281,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;AMEND1942
 {
 #NAME= German Industry Starts Increasing Its Military Production (1942)
 #POPUP= German Industry Starts Increasing Its Military Production
@@ -313,7 +310,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;AMEND1943
 {
 #NAME= German Industry Starts Increasing Its Military Production (1943)
 #POPUP= German Industry Starts Increasing Its Military Production
@@ -343,7 +339,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;AMEND1944
 {
 #NAME= German Industry Starts Increasing Its Military Production (1944)
 #POPUP= German Industry Starts Increasing Its Military Production
@@ -373,7 +368,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;REMOVE1940
 {
 #NAME= British Industry And Trade Start Switching To Military Production (1)
 #POPUP= British Industry And Trade Start Switching To Military Production
@@ -403,7 +397,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;REMOVE1940
 {
 #NAME= British Industry And Trade Start Switching To Military Production (2)
 #POPUP=
@@ -429,7 +422,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;REMOVE1940
 {
 #NAME= British Industry And Trade Start Switching To Military Production (3)
 #POPUP=
@@ -455,7 +447,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;Replacement Script
 {
 #NAME= France Increases Industrial Mobilization With The Fall Of Poland
 #POPUP= <<TAG_3>>
@@ -482,7 +473,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;NEW
 {
 #NAME= France Increases Industrial Mobilization On Entering The War
 #POPUP= France Increases Industrial Mobilization On Entering The War
@@ -513,7 +503,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;REMOVE1940
 {
 #NAME= France Continues To Increase Industrial Mobilization
 #POPUP= France Continues To Increase Industrial Mobilization
@@ -544,7 +533,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;REMOVE1942
 {
 #NAME= USA Mobilizes For War
 #POPUP= American Industry Mobilizes For War
@@ -566,6 +554,7 @@
 #RESOURCE= 0,101
 #RESOURCE= 0,102
 #RESOURCE= 0,103
+#RESOURCE= 0,104
 #RESOURCE= 0,105
 ; 1st Line - USA(115) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
@@ -573,7 +562,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;REMOVE1942
 {
 #NAME= Urals Industry - The USSR Learns That Japan Will Not Attack In The East
 #POPUP=
@@ -601,7 +589,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;AMEND1940
 {
 #NAME= Soviet Industrial Mobilization (1)
 #POPUP= The USSR Steps Up Its Military Production
@@ -631,7 +618,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;REMOVE1941
 {
 #NAME= Soviet Industrial Mobilization (2)
 #POPUP= Stalin Orders Industry To Increase Its Military Production
@@ -668,9 +654,8 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;AMEND1942
 {
-#NAME= Urals Industry
+#NAME= DE 402 - Urals Industry
 #POPUP= USSR Transfers Industry From The Ukraine To The Urals
 #IMAGE=
 #SOUND= troops2.ogg
@@ -680,7 +665,6 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 402[1]
 #COUNTRY_ID= 116
 #TRIGGER= 100
@@ -691,9 +675,13 @@
 #RESOURCE= 267,58
 #RESOURCE= 267,59
 #RESOURCE= 267,60
+; added by Fall Weiss II
 #RESOURCE= 266,57
+; added by Fall Weiss II
 #RESOURCE= 266,58
+; added by Fall Weiss II
 #RESOURCE= 266,59
+; added by Fall Weiss II
 #RESOURCE= 266,60
 ; 1st Line - USSR(116) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -702,28 +690,86 @@
 }
 
 {
-#NAME= Wolfram Mines In Spain
-#POPUP= 
+#NAME= Urals Industry - The USSR Learns That Japan Will Not Attack In The East (AI)
+#POPUP=
 #IMAGE=
-#SOUND= 
-#FLAG= 1
+#SOUND=
+; New event from 1939 Storm Over Europe campaign
+; Disabled in Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
-#AI= 0
-#LEVEL= 0
+#AI= 2
+#LEVEL= 2
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 907[1]
-#COUNTRY_ID= 99
+#LINK= 0[0]
+#COUNTRY_ID= 116
 #TRIGGER= 100
-#DATE= 1939/09/03
+#DATE= 1941/10/01
 #FAILSAFE_DATE= 1948/01/01
-#RESOURCE= 135,97
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; dummy condition position (always satisfied)
+#RESOURCE= 266,61
+; 1st Line - USSR politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+{
+#NAME= DE 402 - Urals Industry - USSR Transfers Industry From The Ukraine To The Urals (AI - 1)
+#POPUP=
+#IMAGE=
+#SOUND=
+; New event from 1939 Storm Over Europe campaign
+; Disabled in Fall Weiss II pending review
+#FLAG= 0
+#TYPE= 1
+#AI= 2
+#LEVEL= 4
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 402[1]
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+#RESOURCE= 266,59
+#RESOURCE= 266,60
+; 1st Line - USSR politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 402 - Urals Industry - USSR Transfers Industry From The Ukraine To The Urals (AI - 2)
+#POPUP=
+#IMAGE=
+#SOUND=
+; New event from 1939 Storm Over Europe campaign
+; Disabled in Fall Weiss II pending review
+#FLAG= 0
+#TYPE= 1
+#AI= 2
+#LEVEL= 2
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 402[1]
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+#RESOURCE= 266,58
+#RESOURCE= 266,57
+; 1st Line - USSR politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; Fall Weiss II event
 ; German Industry Activation
 {
 #NAME= Germany Expands Ruhr Industry
@@ -747,6 +793,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II event
 ; German Industry Activation
 {
 #NAME= Germany Further Expands Ruhr Industry
@@ -765,7 +812,30 @@
 #FAILSAFE_DATE= 1948/01/01
 #RESOURCE= 162,78
 ; Set Variable Condition:
-; 1st Line - Russia politically aligned with Allies and Fully Active
+; 1st Line - Russia aligned with Allies and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; Fall Weiss II event
+{
+#NAME= DE 907 - Wolfram Mines In Spain
+#POPUP= 
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+#LINK= 907[1]
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#DATE= 1939/09/03
+#FAILSAFE_DATE= 1948/01/01
+#RESOURCE= 135,97
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
