@@ -23,7 +23,8 @@
 ;        2 = Reoccurring check until end of game
 ;                       OR
 ;        Once the #DATE field is satisfied:
-;        3 = Event fires once if all other fields are satisfied, else it will not fire.  Either way, event will be removed never to be looked at again
+;        3 = Event fires once if all other fields are satisfied, else it will not fire.  
+;            Either way, event will be removed never to be looked at again
 ; #AI= Values range [0, 6]
 ;      0 = Event fires whenever all fields are satisfied for any game type
 ;      1 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis
@@ -1318,7 +1319,7 @@
 ;
 ; Malta limits Axis supply in the Mediterranean
 { 
-#NAME= Malta Effect (Tripoli, Sirte, El Agheila, Benghazi, Derna)
+#NAME= Malta Effect (Tripoli, Sirte, El Agheila, Benghazi, Derna) (15% Chance)
 #POPUP= Malta Hinders Axis Supply In the Mediterranean (Tripoli, El Agheila, Benghazi)
 #IMAGE=
 #SOUND=
@@ -1336,18 +1337,31 @@
 #TRIGGER= 15
 #SEASON_FLAG= 0
 #DATE= 1940/08/01
+; Malta(175,114) [any unit]
 #SOURCE_POSITION= 175,114 [-1]
+; Tripoli(172,121)
 #DESTINATION_RESOURCE= 172,121 [1,2]
+; Tripoli Port
 #DESTINATION_RESOURCE= 172,120 [1,2]
+; Sirte(179,124)
 #DESTINATION_RESOURCE= 179,124 [1,2]
+; El Agheila(184,126)
 #DESTINATION_RESOURCE= 184,126 [1,2]
+; Benghazi(186,122)
 #DESTINATION_RESOURCE= 186,122 [1,2]
+; Benghazi Port
 #DESTINATION_RESOURCE= 185,122 [1,2]
+; Derna(191, 120)
 #DESTINATION_RESOURCE= 191,120 [1,2]
+; Msus(188,124)
 #DESTINATION_RESOURCE= 188,124 [1,2]
+; Mekili(190, 122)
 #DESTINATION_RESOURCE= 190,122 [1,2]
+; Gazala(192,122)
 #DESTINATION_RESOURCE= 192,122 [1,2]
+; Homs(175,121) - Added by Fall Weiss
 #DESTINATION_RESOURCE= 175,121 [1,2]
+; Buerat(177,123) - Added by Fall Weiss
 #DESTINATION_RESOURCE= 177,123 [1,2]
 ;Set variable conditions:
 ; 1st Line - UK(112) politically aligned with the Allies and not surrendered
@@ -1377,13 +1391,16 @@
 #SEASON_FLAG= 0
 #DATE= 1940/07/01
 #SOURCE_POSITION= 175,114 [-1]
+; Tobruk - Port
 #DESTINATION_RESOURCE= 195,121 [1,2]
+; Tobruk(194,122)
 #DESTINATION_RESOURCE= 194,122 [1,2]
 #DESTINATION_RESOURCE= 205,123 [1,2]
 #DESTINATION_RESOURCE= 206,124 [1,2]
 #DESTINATION_RESOURCE= 209,122 [1,2]
 #DESTINATION_RESOURCE= 209,123 [1,2]
 #DESTINATION_RESOURCE= 191,120 [1,2]
+; Bardia(196,123)
 #DESTINATION_RESOURCE= 196,123 [1,2]
 #DESTINATION_RESOURCE= 198,123 [1,2]
 #DESTINATION_RESOURCE= 200,124 [1,2]
@@ -1426,7 +1443,7 @@
 ;REMOVE1942
 ; Raid on St Nazaire - first message
 { 
-#NAME= DE 113 - Raid on St Nazaire - St Nazaire destroyed
+#NAME= DE 113 - Raid on St Nazaire - St Nazaire destroyed (50% Chance)
 #POPUP= HMS Campbeltown Destroys The Normandie Dock: St Nazaire Is Out Of Action!
 #IMAGE= campbeltown1.png, campbeltown2.png, campbeltown3.png, campbeltown4.png
 #SOUND=
@@ -1464,7 +1481,6 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[51,100]
-; Set link value to always trigger (dummy value)
 #LINK= 113[1]
 #COUNTRY_ID= 112
 #ALIGNMENT_ID= 0
@@ -1495,7 +1511,6 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 676[1]
 #COUNTRY_ID= 45
 #ALIGNMENT_ID= 0
@@ -1772,8 +1787,10 @@
 #ALIGNMENT_ID= 0
 #FLAG_ID= 59
 #TRIGGER= 100
+; all seasons
 #SEASON_FLAG= 0
 #DATE= 1939/09/03
+; Malta(175,114) [any unit]
 #SOURCE_POSITION= 175,114 [-1]
 #DESTINATION_RESOURCE= 172,120 [5,5]
 #DESTINATION_RESOURCE= 185,122 [5,5]
@@ -1800,8 +1817,10 @@
 #ALIGNMENT_ID= 0
 #FLAG_ID= 59
 #TRIGGER= 100
+; all seasons
 #SEASON_FLAG= 0
 #DATE= 1940/07/01
+; Alexandria(206,124) [any unit]
 #SOURCE_POSITION= 206,124 [-1]
 #DESTINATION_RESOURCE= 196,123 [3,4]
 #DESTINATION_RESOURCE= 198,123 [4,4]
@@ -1831,6 +1850,7 @@
 #TRIGGER= 100
 #SEASON_FLAG= 0
 #DATE= 1940/09/15
+; Alexandria(206,124) [any unit]
 #SOURCE_POSITION= 206,124 [-1]
 #DESTINATION_RESOURCE= 196,123 [3,4]
 #DESTINATION_RESOURCE= 198,123 [4,4]
@@ -1896,7 +1916,6 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
-
 
 ; The Port of Kiel Is Stripped Of Kriegsmarine Personnel
 { 
@@ -2008,7 +2027,7 @@
 ; Crete limits Axis supply in the Mediterranean
 { 
 #NAME= Crete Effect (Tobruk, Bardia, Sidi Barrani, Mersa Matruh, El Alamein, Alexandria) (20% Chance)
-#POPUP= Crete Hinders Axis Supply In the Mediterranean (Tobruk, El Alamein, Alexandria)
+#POPUP= Crete Hinders Axis Supply In the North Africa (Tobruk, El Alamein, Alexandria)
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -2242,6 +2261,7 @@
 #TRIGGER= 100
 #SEASON_FLAG= 0
 #DATE= 1940/08/26
+; Oxford [any unit]
 #SOURCE_POSITION= 147,77 [-1]
 #DESTINATION_RESOURCE= 173,74 [1,2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -2265,6 +2285,7 @@
 #TRIGGER= 100
 #SEASON_FLAG= 0
 #DATE= 1940/09/09
+; Oxford [any unit]
 #SOURCE_POSITION= 147,77 [-1]
 #DESTINATION_RESOURCE= 173,74 [1,2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -2288,6 +2309,7 @@
 #TRIGGER= 100
 #SEASON_FLAG= 0
 #DATE= 1940/09/23
+; Oxford [any unit]
 #SOURCE_POSITION= 147,77 [-1]
 #DESTINATION_RESOURCE= 173,74 [1,2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
