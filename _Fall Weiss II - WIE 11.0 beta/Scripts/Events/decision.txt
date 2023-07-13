@@ -267,7 +267,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 {
-#NAME= DE 173 - Disable to Hide All Historical Popups (World War II War Events)
+#NAME= DE 50 - Disable to Hide All Historical Popups
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -280,11 +280,11 @@
 #GV= 1[1,100]
 ;Set link value to always trigger (dummy value)
 #LINK= 0[0]
-#COUNTRY_ID= 112
+#COUNTRY_ID= 45
 #TRIGGER= 100
 #DISPLAY_ORDER= 0
 ; Set decision value
-#DECISION= 173
+#DECISION= 50
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT= 
@@ -301,8 +301,49 @@
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Set variable conditions:
-; 1st Line - UK(112) aligned with Allies and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
+; 1st Line - Germany(45) aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 51 - Disable to Remove All Strategic Advice Popups
+#POPUP= 
+#MESSAGE= 
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+;Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+;Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#DISPLAY_ORDER= 0
+; Set decision value
+#DECISION= 51
+#MPP_UPDOWN= 0
+#MPP_TURNS= 0
+#MPP_TEXT= 
+#NOTES=
+#NOTES_POSITION=
+; Set AI acceptance % (AI will accept 100% of the time)
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1939/09/01
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 228,221,198
+; Berlin is in Axis hands
+#ALIGNMENT_POSITION= 173,74 [1]
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Set variable conditions:
+; 1st Line - Germany(45) aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -533,7 +574,7 @@
 ; 2nd Line - Germany(45) aligned with Axis and not surrendered
 ; 3rd Line - France(40) aligned with Allies and surrendered
 ; 4th Line - Italy(59) aligned with Axis and not surrendered
-; 5th Line - Yugoslavia(120) aligned with Axis but not fully mobilized
+; 5th Line - Yugoslavia(120) aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
@@ -8092,9 +8133,9 @@ Replacement script
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Set variable conditions:
-; 1st Line - Germany(45) aligned with Axis and not surrendered
+; 1st Line - Germany(45) aligned with Axis and fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - Italy(59) aligned with Axis and not surrendered
+; 2nd Line - Italy(59) aligned with Axis and fully mobilized
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -8135,7 +8176,7 @@ Replacement script
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Set variable conditions:
-; 1st Line - Norway(78) aligned with Axis but not fully mobilized
+; 1st Line - Norway(78) aligned with Axis
 #VARIABLE_CONDITION= 78 [1] [0] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -8281,6 +8322,8 @@ Replacement script
 #DISPLAY_ORDER= 1
 ; Set decision value
 #DECISION= 647
+; Fall Weiss II 
+; Increased from -100
 #MPP_UPDOWN= -175
 #MPP_TURNS= 5
 #MPP_TEXT= Afrika Korps
@@ -8328,6 +8371,8 @@ Replacement script
 #DISPLAY_ORDER= 1
 ; Set decision value
 #DECISION= 648
+; Fall Weiss II 
+; Increased from -100
 #MPP_UPDOWN= -175
 #MPP_TURNS= 5
 #MPP_TEXT= Afrika Korps
@@ -8420,6 +8465,8 @@ Replacement script
 #DISPLAY_ORDER= 1
 ; Set decision value
 #DECISION= 671
+; Fall Weiss II 
+; Increased from -100
 #MPP_UPDOWN= -175
 #MPP_TURNS= 5
 #MPP_TEXT= Afrika Korps
@@ -8467,6 +8514,8 @@ Replacement script
 #DISPLAY_ORDER= 1
 ; Set decision value
 #DECISION= 672
+; Fall Weiss II 
+; Increased from -100
 #MPP_UPDOWN= -175
 #MPP_TURNS= 5
 #MPP_TEXT= Afrika Korps
@@ -8675,67 +8724,6 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;Replacement Script
-{
-#NAME= DE 653 - Germany: Chrome Imports From Turkey (AI - 100% Yes)
-#POPUP=
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-#LINK= 911[1]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-; Set decision value
-#DECISION= 653
-#MPP_UPDOWN= 30
-#MPP_TURNS= 1
-#MPP_TEXT= Chrome Imports From Turkey
-#NOTES=
-#NOTES_POSITION=
-; Set AI acceptance % (AI will accept 100% of the time)
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1942/12/01
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Dummy Conditions 
-#ALIGNMENT_POSITION= 1,0 [1]
-; Vienna is in Axis hands
-#ALIGNMENT_POSITION= 179,86 [1]
-; Budapest is in Axis hands
-#ALIGNMENT_POSITION= 184,88 [1]
-; Bucharest is in Axis hands
-#ALIGNMENT_POSITION= 198,95 [1]
-; Cluj is in Axis hands
-#ALIGNMENT_POSITION= 193,89 [1]
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; Set variable conditions:
-; 1st Line - Germany(45) aligned with Axis and mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2nd Line - Turkey(111) aligned with Axis but not fully mobilized
-#VARIABLE_CONDITION= 111 [1] [0] [0]
-; 3rd Line - Poland(85) aligned with Allies and surrendered
-#VARIABLE_CONDITION= 85 [2] [100] [1]
-; No Allied units within 5 hexes of Vienna
-#CONDITION_POSITION= 179,86 [5,5] [0,0] [2] [0]
-; No Allied units within 5 hexes of Budapest
-#CONDITION_POSITION= 184,88 [5,5] [0,0] [2] [0]
-; No Allied units within 5 hexes of Sofia
-#CONDITION_POSITION= 192,100 [5,5] [0,0] [2] [0]
-; No Allied units within 5 hexes of Bucharest
-#CONDITION_POSITION= 198,95 [5,5] [0,0] [2] [0]
-; No Allied units within 5 hexes of Cluj
-#CONDITION_POSITION= 193,89 [5,5] [0,0] [2] [0]
-}
-
 ;===============================================================
 ;                        Fall Weiss II Event
 ;===============================================================
@@ -8751,6 +8739,7 @@ Replacement script
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
+; Clodius Agreement= YES
 #LINK= 911[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -10951,10 +10940,12 @@ Replacement script
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Set variable conditions:
 ; 1st Line - UK(112) aligned with Allies and fully mobilized
-; 2nd Line - Turkey(111) aligned with Allies and not surrendered 
-; 3rd Line - Spain(99) aligned with Axis and not surrendered 
+; 2nd Line - USSR(116) aligned with Allies and fully mobilized 
+; 3rd Line - Turkey(2) aligned with Allies
+; 4th Line - Spain(99) aligned with Axis and not surrendered 
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 111 [2] [1] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 111 [2] [40] [0]
 #VARIABLE_CONDITION= 99 [1] [1] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -11300,14 +11291,16 @@ Replacement script
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Set variable conditions:
-; 1st Line - Germany(45) aligned with Axis and Fully Actives
-#VARIABLE_CONDITION= 111 [2] [0] [0]
+; 1st Line - Turkey(111) aligned with Axis
+; 2nd Line - Germany(45) aligned with Axis and Fully Actives
+#VARIABLE_CONDITION= 111 [1] [0] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; https://www.wikiwand.com/en/German%E2%80%93Turkish_Treaty_of_Friendship
 {
 #NAME= DE 910 - Germany: Treaty of Friendship with Turkey (AI - 100% Yes)
 #POPUP=
@@ -11329,7 +11322,7 @@ Replacement script
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT=
-#NOTES= %N%N Historically, the German Government and the Turkish Republic inspired by a desire to place relations between the two countries signed the Non-Aggression Pact in June 1941.  The Agreement also binded the nations to enter into negotiations for mutual economic benefit.  %N%N If you select %B(YES), Turkey will move 2-4% closer to the Axis and Germany may have the opportunity to establish future trade agreements.  %N%N You should select %B(NO) if you have intentions to invade Turkey.  By betraying the non-aggression pact we will negatively affect diplomatic affairs with other non-belligerent nations in Europe. 
+#NOTES= %N%N Historically, the German Government and the Turkish Republic, inspired by a desire to secure relations between the two countries, signed the German–Turkish Treaty of Friendship on June 18, 1941.  Germany and Turkey agreed to respect each other's territorial integrity and communicate with each other on friendly terms regarding matters of common interest in order to come to a mutual understanding.  %N%N If you select %B(YES), Turkey will move 2-4% closer to the Axis and Germany may have the opportunity to establish future trade agreements.  %N%N You should select %B(NO) if you have intentions to invade Turkey.  By betraying the non-aggression pact we will negatively affect diplomatic affairs with other non-belligerent nations in Europe. 
 #NOTES_POSITION= 211,106
 ; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 100
@@ -11343,13 +11336,11 @@ Replacement script
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Set variable conditions:
 ; 1st Line - Germany(45) aligned with Axis and fully mobilized
-; 2nd Line - Turkey(111) aligned with Allies and not surrendered 
-; 3rd Line - USSR(116) aligned with Allies and fully mobilized
-; 4th Line - Bulgaria aligned with Axis and fully mobilized
+; 2nd Line - Turkey(111) aligned with Axis
+; 3rd Line - USSR(116) aligned with Allies 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 111 [2] [0] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 111 [1] [0] [0]
+#VARIABLE_CONDITION= 116 [2] [50] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -11375,7 +11366,7 @@ Replacement script
 #MPP_UPDOWN= -10
 #MPP_TURNS= 5
 #MPP_TEXT= Clodius Agreement
-#NOTES= %N%N If you select %B(YES), Turkey will move 2-4% closer to the Axis and Germany will begin receiving supply shipments from Turkey (valued at 30 MPPs per turn) beginning December 31, 1942.  The materials will be transported through the Balkans, so as long as the trade route remains open we can continue to expect continuous supply shipments.  %N%N Turkey will also deploy a fully upgraded Infantry Corps at Bursa as a result of the war materials received from Germany.  The unit will deploy when and if Turkey enters the war for either side %N%N You should select %B(NO) if you have intentions to invade Turkey as the supply shipments will flow only from neutral Turkey.  
+#NOTES= %N%N In October 1941, Turkey and Germany signed the Clodius Agreement, named after the German negotiator Karl Clodius. Turkey agreed to export up 45,000 tons of chromite ore to Germany in 1941 and in 1942, and 90,000 tons of the mineral in both 1943 and 1944, contingent on Germany's supplies of military equipment to Turkey. Germany would provide as many as 117 railway locomotives and 1,250 freight rail cars to transport the ore. %N%N If you select %B(YES), Turkey will move 2-4% closer to the Axis and Germany will begin receiving supply shipments from Turkey (valued at 30 MPPs per turn) beginning December 31, 1942.  The materials will be transported through the Balkans, so as long as the trade route remains open we can continue to expect continuous supply shipments.  %N%N Turkey will also deploy a fully upgraded Infantry Corps at Bursa as a result of the war materials received from Germany.  The unit will deploy when and if Turkey enters the war for either side %N%N You should select %B(NO) if you have intentions to invade Turkey as the supply shipments will flow only from neutral Turkey.  
 #NOTES_POSITION= 211,106
 ; Set AI acceptance % (AI will accept 100% of the time)
 #AI_RESPONSE= 100
@@ -11390,10 +11381,11 @@ Replacement script
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Set variable conditions:
 ; 1st Line - Germany(45) aligned with Axis and fully mobilized
-; 2nd Line - USSR(116) aligned with Axis and fully mobilized
-; 3rd Line - Bulgaria aligned with Axis and fully mobilized
+; 2nd Line - USSR(116) aligned with Allies
+; 3rd Line - Bulgaria(19) aligned with Axis and fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [50] [0]
+#VARIABLE_CONDITION= 19 [1] [100] [0]
 ; No Units with Turkey
 #CONDITION_POSITION= 211,106 [6,6] [0,0] [1] [0]
 #CONDITION_POSITION= 228,106 [3,3] [0,0] [1] [0]
@@ -11625,7 +11617,7 @@ Replacement script
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; will trigger whenever DE 811 is not accepted
+; USA: Aircraft Delivery to Sweden= NO
 #LINK= 811[0]
 #COUNTRY_ID= 59
 #TRIGGER= 100
@@ -12505,7 +12497,7 @@ Replacement script
 #SHADOW_RGB= 0,0,0
 ;Set Friendly Position (Berlin, Frankfurt)
 #ALIGNMENT_POSITION= 173,74 [1]
-#ALIGNMENT_POSITION= 164,81[1]
+#ALIGNMENT_POSITION= 164,81 [1]
 ; Paris is in Allied hands
 #ALIGNMENT_POSITION= 151,84 [2]
 ; Cherbourg is in Allied hands
@@ -12536,7 +12528,6 @@ Replacement script
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
 #LINK= 0[0]
-; Set decision value (1st internally stored decision)
 #DECISION= 824
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
@@ -12576,6 +12567,7 @@ Replacement script
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
+; Clodius Agreement= YES
 #LINK= 911[1]
 #COUNTRY_ID= 112
 #TRIGGER= 100
@@ -12585,7 +12577,7 @@ Replacement script
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT= 
-#NOTES= %N%N Historically, Turkey eventually ended trade with Germany under extreme Allied economic pressure.%N%N If you select %B(YES), Turkey will cease its existing trade agreement with Germany which is valued at 30 MPPs per turn.  %N%N However, Turkey can be expected to reduce her Allied leaning by 15-20% in reaction to the threat of Allied blockades.
+#NOTES= %N%N Historically, Turkey eventually (April, 1944) ended trade with Germany in response to a joint stern note from the US and British governments threatening economic sanctions. Within six days of the joint US-British note, the Turkish Government announced the cessation of chromite trade to Germany, and by mid-June Turkey agreed to reduce by 50 percent the export to Germany of other commodities.%N%N If you select %B(YES), Turkey will cease its existing trade agreement with Germany which is valued at 30 MPPs per turn.  %N%N However, Turkey can be expected to reduce her Allied leaning by 15-20% in reaction to the threat of Allied blockades.
 #NOTES_POSITION= 211,106
 ; Set AI acceptance % (AI will accept 50% of the time)
 #AI_RESPONSE= 50
@@ -12608,13 +12600,13 @@ Replacement script
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Set variable conditions:
-; 1st Line - France(40) aligned with Allies and fullly mobilized
-#VARIABLE_CONDITION= 40 [2] [100] [0]
 ; 1st Line - UK(112) aligned with Allies and fully mobilized
+; 2nd Line - USA(115) aligned with Allies and fully mobilized
+; 3rd Line - Turkey(111) aligned with Axis
+; 4th Line - Poland(85) aligned with Allies and surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; 2nd Line - Turkey(111) aligned with Allies
-#VARIABLE_CONDITION= 111 [2] [0] [0]
-; 3rd Line - Poland(85) aligned with Allies and surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 111 [1] [30] [0]
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 ; No Allied units within 5 hexes of Vienna
 #CONDITION_POSITION= 179,86 [5,5] [0,0] [2] [0]
@@ -12649,7 +12641,7 @@ Replacement script
 #DECISION= 922
 #MPP_UPDOWN= -35
 #MPP_TURNS= 4
-#MPP_TEXT= Exports To Switzerland
+#MPP_TEXT= Purchase War Materials from Switzerland
 #NOTES= %N%N After the defeat of France, Switzerland was isolated and was dependent on trade with Germany.  %N%N If you select %B(YES), Switzerland will move between 6-10% closer to the Axis and will begin exporting military resources to Germany at a value of 10 MPPs per turn for as long as Switzerland remains Axis leaning.
 #NOTES_POSITION= 161,89
 ; Set AI acceptance % (AI will accept 100% of the time)
@@ -12719,7 +12711,6 @@ Replacement script
 #NAME= DE 925 - Germany: Imports From Hungary (AI - 100% Yes)
 #POPUP=
 #MESSAGE=
-
 #IMAGE=
 #SOUND= 
 #FLAG= 1
@@ -13045,7 +13036,7 @@ Replacement script
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Set variable conditions:
-; 1st Line - Saudi Arabia aligned with Allies and not surrendered
+; 1st Line - Saudi Arabia(95) aligned with Allies and not surrendered
 ; 2nd Line - USA(115) aligned with Allies and fully mobilized
 #VARIABLE_CONDITION= 95 [2] [0] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
@@ -13359,7 +13350,7 @@ Replacement script
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Set variable conditions:
-; 1st Line - Germany(45) aligned with Axis and not surrendered
+; 1st Line - Germany(45) aligned with Axis and fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
@@ -13504,7 +13495,7 @@ Replacement script
 
 ;
 {
-#NAME= DE 835 - UK: Greece Severs Economic Ties With Germany (AI - 100% Yes)
+#NAME= DE 835 - UK: Pressure Greece To Sever Economic Ties With Germany (AI - 100% Yes)
 #POPUP=
 #MESSAGE= Prime Minister %N Neville Chamberlain %N%N Despite Greece's economic ties and the ideological affinity with Germany, it is critical that we pressure the Greek government to severe economic ties with our enemy. As Greek political choices have tended ultimately, despite occasional wavering, towards Britain, coupled with the growing provocation of the Italian-German Axis, the current situation in Europe should eliminate the dilemma in choosing the path Greece must follow.  %N%N In effect, we believe we can pressure Greece to sign a trade agreement restricting its exports to Germany.  While this trade agreement will not favour Britain, we can consider denying Greek exports to Germany a victory.  %N%N Should we proceed in pressuring Greece to end economic ties with Germany %B(YES)?  It will require a total of %B150 MPPs (15 MPPs for 10 turns) for the initial set up and logistical costs of the agreement.
 #IMAGE=
@@ -13539,9 +13530,9 @@ Replacement script
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Set variable conditions:
 ; 1st Line - UK(112) aligned with Allies and not surrendered
-; 2nd Line - Greece(46) aligned with Axis
+; 2nd Line - Greece(46) aligned with Allies
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 46 [1] [0] [0]
+#VARIABLE_CONDITION= 46 [2] [10] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -13577,16 +13568,19 @@ Replacement script
 #DATE= 1939/09/03
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; London is in Allied hands
+; Berlin(173, 74) is in Axis hands
 #ALIGNMENT_POSITION= 173,74 [1]
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Set variable conditions:
-; 1st Line - UK(112) aligned with Allies and not surrendered
+; 1st Line - Germany(45) aligned with Axis and fully mobilized
+; 2nd Line - Greece(46) aligned with Allies
+; 3rd Line - Albania(3) aligned with Allies and surrendered
+; 4th Line - Bulgaria(19) aligned with Axis
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 46 [2] [0] [0]
 #VARIABLE_CONDITION= 3 [2] [100] [1]
-#VARIABLE_CONDITION= 19 [1] [0] [0]
+#VARIABLE_CONDITION= 19 [1] [10] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -16376,7 +16370,7 @@ Replacement script
 {
 #NAME= DE 947 - Germany: German-Soviet Border And Commercial Agreement (AI - 75% Yes)
 #POPUP=
-#MESSAGE= Führerhauptquartier %N%N German-Soviet Border And Commercial Agreement %N%N Mein Führer, the German ambassador to Moscow von Schulenburg and Commissar for Foreign Affairs Vyacheslav Molotov are prepared to sign agreements to settle all open Soviet disputes.  While signing will not significantly improve our existing economic agreement with the Soviets, it should serve to disguise our continuing plans for an invasion of USSR.  %N%N The Soviets continue to demand samples of Germany's latest war planes, artillery, explosives and other military equipment, which we will have to provide.  The downside of signing the German-Soviet Border and Commercial Agreement is that the Soviet's will benefit from our technology, but Stalin will continue to see Germany as an economic ally and reduce the Soviets war readiness.%N%N Mein Führer, should we order Schulenburg to sign the agreement in Moscow, or should we continue to delay the delivery of military goods to USSR? 
+#MESSAGE= Führerhauptquartier %N%N German-Soviet Border And Commercial Agreement %N%N Mein Führer, the German ambassador to Moscow von Schulenburg and Commissar for Foreign Affairs Vyacheslav Molotov are prepared to sign agreements to settle all open Soviet disputes.  While signing will not significantly improve our existing economic agreement with the Soviets, it should serve to disguise our continuing plans for an invasion of USSR.  %N%N The Soviets continue to demand samples of Germany's latest war planes, artillery, explosives and other military equipment, which we will have to provide.  The downside of signing the German-Soviet Border and Commercial Agreement is that the Soviet's will benefit from our technology, but Stalin will continue to see Germany as an economic ally and reduce the Soviets war readiness.%N%N Mein Führer, should we order Schulenburg to sign the agreement in Moscow %B(YES), or should we continue to delay the delivery of military goods to USSR %B(NO)? 
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -16385,6 +16379,7 @@ Replacement script
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
+; German-Soviet Border And Commercial Agreement
 #LINK= 895[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -16394,7 +16389,7 @@ Replacement script
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT= 
-#NOTES= %N%N Historically, the German-Soviet Border And Commercial Agreement included relatively few substantial new economic elements, but it did serve to amend and extend existing economic agreements between Germany and USSR which were under strain late in 1940.  Knowing they were preparing for a war with the Soviet Union, Germany often delayed delivery of goods beyond the summer of 1941.  Suspicious of German delays, in December of 1940 the Soviets demanded pending items be resolved.  %N%N If you select %B(YES), the Soviets will deploy near Moscow a Fighter, Heavy Artillery, and Anti-Tank unit each delivered understrength but with max experience, representing access to German technology. USSR mobilization will also decrease by 5%.%N%N If you select %B(NO), then USSR mobilization will increase by 10% as Soviet suspicions of Germany's true intentions will continue to grow.
+#NOTES= %N%N Historically, the German-Soviet Border And Commercial Agreement included relatively few substantial new economic elements, but it did serve to amend and extend existing economic agreements between Germany and USSR which were under strain late in 1940.  Knowing they were preparing for a war with the Soviet Union, Germany often delayed delivery of goods beyond the summer of 1941.  Suspicious of German delays, in December of 1940 the Soviets demanded pending items be resolved.  %N%N If you select %B(YES), the Soviets will deploy near Moscow: %N%N%T - Fighter %N%T - Heavy Artillery %N%T - Anti-Tank unit; %N%N each delivered understrength but with max experience, representing access to German technology. USSR mobilization will also decrease by 5%.%N%N If you select %B(NO), then USSR mobilization will increase by 10% as Soviet suspicions of Germany's true intentions will continue to grow.
 #NOTES_POSITION= 221,65
 ; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75

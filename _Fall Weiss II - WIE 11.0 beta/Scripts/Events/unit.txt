@@ -83,7 +83,7 @@
 ; Each event must be preceded by a '{' and end with a '}'
 ; 
 ; Event will only be triggered if the list of trigger resources are still friendly to #COUNTRY_ID.
-
+;
 ; Unit names are optional but if entered and a duplicate name is found to exist for #COUNTRY_ID it
 ; will be skipped. Otherwise if no name is specified, i.e. [], then appropriate names from the 
 ; existing unit build lists will be used instead.
@@ -115,6 +115,14 @@
 ;
 ; if using TYPE=2, this is no longer a valid option for UNIT events as it should never have been applicable (RMelvin)
 ;
+; #FAILSAFE_DATE These are present for use in some script types, e.g.
+;                Unit, Belligerence and Resource. The way they work
+;                is that if all other conditions required for the event
+;                have been reached apart from the Trigger %, then
+;                once the Failsafe Date is reached then the event will
+;                fire if it didn’t fire before. If you don’t want the event
+;                to fire unless the Trigger % is reached, then set the
+;                Failsafe Date to be beyond the campaign’s end date.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -266,9 +274,9 @@
 ; #UNIT_ID_1= Garrison
 ; #UNIT_ID_2= Infantry Division*
 ; #UNIT_ID_3= Mechanized Division*
-; #UNIT_ID_4= Infantry Corps
-; #UNIT_ID_5= Infantry Army
-; #UNIT_ID_6= Mechanized Corps
+; #UNIT_ID_4= Infantry Corps*
+; #UNIT_ID_5= Infantry Army*
+; #UNIT_ID_6= Mechanized Corps*
 ; #UNIT_ID_7= Special Forces
 ; #UNIT_ID_8= Engineers
 ; #UNIT_ID_9= Paratroops
@@ -276,7 +284,7 @@
 ; #UNIT_ID_11= Cavalry Division
 ; #UNIT_ID_12= Cavalry Corps
 ; #UNIT_ID_13= Partisans
-; #UNIT_ID_14= Shock Army
+; #UNIT_ID_14= Shock Army*
 ; #UNIT_ID_15= Anti-Air
 ; #UNIT_ID_16= Rocket Artillery
 ; #UNIT_ID_17= Artillery
@@ -288,7 +296,7 @@
 ; #UNIT_ID_23= Armored Train
 ; #UNIT_ID_24= Anti-Tank
 ; #UNIT_ID_25= Tank Division*
-; #UNIT_ID_26= Tank Corps
+; #UNIT_ID_26= Tank Corps*
 ; #UNIT_ID_27= Tank Army*
 ; #UNIT_ID_28= Airships
 ; #UNIT_ID_29= Fighters
@@ -582,7 +590,69 @@
 #DATE= 1940/08/16
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 142,72
-; UK(112) aligned with Allies and not surrendered
+; UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 26 [10] [0] [7th Armoured]
+}
+
+;REMOVE1941
+;
+; 7th Armoured formed in Manchester
+{
+#NAME= DE 168 - 7th Armoured Formed In Manchester
+#POPUP= <<TAG_9>>
+#IMAGE= 7tharmoureduk.png
+#SOUND= 
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 168[1]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 1
+#DATE= 1940/08/16
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 142,72
+; UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 26 [10] [0] [7th Armoured]
+}
+
+;REMOVE1941
+;
+; 7th Armoured formed in Manchester
+{
+#NAME= DE 169 - 7th Armoured Formed In Manchester
+#POPUP= <<TAG_9>>
+#IMAGE= 7tharmoureduk.png
+#SOUND= 
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 169[1]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 1
+#DATE= 1940/08/16
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 142,72
+; UK politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -631,7 +701,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 106[1]
-#COUNTRY_ID= 54
+#COUNTRY_ID= 112
 #TRIGGER= 100
 #PRIVATE= 0
 #DISPLAY_TURN= 0
@@ -639,8 +709,8 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 241,126
-; British Empire politically aligned with Allies and not surrendered
-#VARIABLE_CONDITION= 54 [2] [100] [0]
+; UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [10] [0.5] [XIII Indian]
@@ -1360,6 +1430,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 11,103
+; Changed from France(40)->USSR(115) in Fall Weiss II?
 ; USSR(115) aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Dummy condition position (always satisfied)
@@ -1617,8 +1688,8 @@
 }
 
 {
-#NAME= France Liberated - HQ - Jean De Lattre De Tassigny
-#POPUP= Jean De Lattre De Tassigny Takes Command Of French Forces
+#NAME= France Liberated - HQ - Jean de Lattre de Tassigny
+#POPUP= Jean de Lattre de Tassigny Takes Command Of French Forces
 #IMAGE= tassigny.png
 #SOUND=
 #FLAG= 1
@@ -1737,7 +1808,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 0
 #GV= 1[1,100]
@@ -1767,7 +1840,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 0
 #GV= 1[1,100]
@@ -1797,7 +1872,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 0
 #GV= 1[1,100]
@@ -1825,7 +1902,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 0
 #GV= 1[1,100]
@@ -1925,6 +2004,7 @@
 #DESTINATION_RESOURCE= 243,66
 #DESTINATION_RESOURCE= 235,57
 #VARIABLE_CONDITION= 45 [1] [100] [0]
+; added by Fall Weis II
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2165,6 +2245,8 @@
 #TYPE= 1
 #AI= 0
 #GV= 1[1,100]
+; Linked to DE 414 by Fall Weiss II
+; USSR: Annex the Baltic States = YES
 #LINK= 414[1]
 #LEVEL= 0
 #COUNTRY_ID= 116
@@ -2185,8 +2267,7 @@
 #UNIT= 6 [7] [0] [III]
 }
 
-;AMEND1940
-;REMOVE1941
+; Fall Weiss II Event
 {
 #NAME= DE 414 - USSR: Soviet Border Formations (Barbarossa)
 #POPUP=
@@ -2196,6 +2277,8 @@
 #TYPE= 1
 #AI= 0
 #GV= 1[1,100]
+; Linked to DE 414 by Fall Weiss II
+; USSR: Annex the Baltic States = NO
 #LINK= 414[0]
 #LEVEL= 0
 #COUNTRY_ID= 116
@@ -3161,7 +3244,6 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 617[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -3233,8 +3315,8 @@
 #UNIT= 1 [5] [0] [Egyptian Legion]
 }
 
-;REMOVE1940 after implementing
-;
+; newly merged Event from 1939 Storm over Europe campaign
+; fixes missing garrison unit
 {
 #NAME= DE 601 - Garrison Unit In Copenhagen
 #POPUP= 
@@ -3551,6 +3633,7 @@
 #DATE= 1940/12/30
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 174,92
+; new DESTINATION_RESOURCE merged from 1939 Storm over Europe campaign
 #DESTINATION_RESOURCE= 172,91
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
@@ -3668,7 +3751,10 @@
 #FULL_RESEARCH= 1
 #DATE= 1940/12/30
 #FAILSAFE_DATE= 1948/01/01
+; Trieste(174,92)
 #DESTINATION_RESOURCE= 174,92
+; Udine(172,91) (new from 1939 Storm over Europe)
+#DESTINATION_RESOURCE= 172,91
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3704,6 +3790,7 @@
 #DATE= 1942/05/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 188,76
+; new from 1939 Storm over Europe
 #DESTINATION_RESOURCE= 185,77
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
@@ -4174,7 +4261,7 @@
 ; Fall Weiss II Event
 ; British Forces Mobilize In Egypt
 {
-#NAME= UK: British Forces Mobilize In Egypt
+#NAME= UK(AI): British Forces Mobilize In Egypt
 #POPUP= British Forces Mobilize In Egypt
 #IMAGE= westerndesertaf.png
 #SOUND=
@@ -4549,7 +4636,7 @@
 #VARIABLE_CONDITION= 4 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 4 [5] [0] [XIX]
+#UNIT= 4 [10] [0] [XIX]
 }
 
 ;REMOVE1943
@@ -4857,6 +4944,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
+; Linked to DE 885 by Fall Weiss II
 #LINK= 885[1]
 #COUNTRY_ID= 116
 #TRIGGER= 100
@@ -5434,6 +5522,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Linked to DE 902 by Fall Weiss II
 #LINK= 902[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -5897,7 +5986,7 @@
 }
 
 {
-#NAME= UK(AI): Division - Portsmouth - 1940
+#NAME= UK(AI): Mech Division - Portsmouth - 1940
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -7018,7 +7107,7 @@
 ; USA
 ; This event will be called (by the game engine) when Axis units occupy Spain
 {
-#NAME= USA: Naval Assets Transferred From The Pacific
+#NAME= USA(AI): Naval Assets Transferred From The Pacific
 #POPUP= USA Transfers Naval Assets From The Pacific
 #IMAGE=
 #SOUND= naval_movement.ogg
@@ -7205,7 +7294,7 @@
 
 ; USSR (reinforcements)
 {
-#NAME= USSR(AI): Corps - Kem
+#NAME= USSR(AI): Mech Division - Kem
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -7228,12 +7317,12 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 4 [8] [0] []
+#UNIT= 3 [8] [0] []
 }
 
 ; USSR (reinforcements)
 {
-#NAME= USSR(AI): Corps - Repola
+#NAME= USSR(AI): Mech Division - Repola
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -7257,12 +7346,12 @@
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 4 [8] [0] []
+#UNIT= 3 [8] [0] []
 }
 
 ; USSR (reinforcements)
 {
-#NAME= USSR(AI): Corps - Kondopoga
+#NAME= USSR(AI): Mech Division - Kondopoga
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -7286,7 +7375,7 @@
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 4 [8] [0] []
+#UNIT= 3 [8] [0] []
 }
 
 ; USSR (reinforcements)
@@ -7547,7 +7636,6 @@
 #CONDITION_POSITION= 206,51 [5,5] [1,1] [1] [0]
 #UNIT= 4 [10] [0] []
 #UNIT= 4 [10] [0] []
-#UNIT= 4 [10] [0] []
 }
 
 ; USSR (reinforcements)
@@ -7725,11 +7813,12 @@
 #UNIT= 0 [10] [0] []
 #UNIT= 4 [10] [0] []
 #UNIT= 5 [10] [0] []
-#UNIT= 5 [10] [0] []
-#UNIT= 26 [10] [0] []
-#UNIT= 29 [10] [0] []
-#UNIT= 30 [10] [0] []
 }
+; following removed by Fall Weiss II ?
+; UNIT= 5 [10] [0] []
+; UNIT= 26 [10] [0] []
+; UNIT= 29 [10] [0] []
+; UNIT= 30 [10] [0] []
 
 ; USSR
 {
@@ -7794,9 +7883,10 @@
 #UNIT= 14 [10] [0.5] []
 #UNIT= 14 [10] [0.5] []
 #UNIT= 26 [10] [0.5] []
-#UNIT= 4 [10] [0] []
-#UNIT= 5 [10] [0] []
-#UNIT= 5 [10] [0] []
+; following removed by Fall Weiss II ?
+; UNIT= 4 [10] [0] []
+; UNIT= 5 [10] [0] []
+; UNIT= 5 [10] [0] []
 #UNIT= 7 [10] [0] []
 }
 
@@ -7831,8 +7921,9 @@
 #UNIT= 16 [10] [0] []
 #UNIT= 26 [10] [0] []
 #UNIT= 4 [10] [0] []
-#UNIT= 4 [10] [0] []
-#UNIT= 5 [10] [0] []
+; following removed by Fall Weiss II ?
+; UNIT= 4 [10] [0] []
+; UNIT= 5 [10] [0] []
 #UNIT= 7 [10] [0] []
 }
 
@@ -7895,8 +7986,7 @@
 #CONDITION_POSITION= 224,85 [5,5] [1,1] [1] [0]
 #CONDITION_POSITION= 236,98 [8,8] [1,1] [1] [0]
 #UNIT= 5 [10] [0] []
-#UNIT= 5 [10] [0] []
-#UNIT= 5 [10] [0] []
+#UNIT= 2 [10] [0] []
 }
 
 ; USSR (Army)
@@ -8016,8 +8106,9 @@
 #CONDITION_POSITION= 229,102 [8,8] [1,1] [1] [0]
 #UNIT= 0 [10] [0] []
 #UNIT= 4 [10] [0] []
-#UNIT= 4 [10] [0] []
-#UNIT= 5 [10] [0] []
+; following removed by Fall Weiss II?
+; UNIT= 4 [10] [0] []
+; UNIT= 5 [10] [0] []
 #UNIT= 5 [10] [0] []
 #UNIT= 26 [10] [0] []
 #UNIT= 29 [10] [0] []
@@ -8175,7 +8266,8 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; Disabled in Fall Weiss II
+#FLAG= 0
 #TYPE= 1
 #AI= 2
 #LEVEL= 2
@@ -8226,11 +8318,10 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 29 [10] [0] []
 #UNIT= 30 [10] [0] []
-#UNIT= 26 [10] [0] []
+; Tank Corps(26)
 #UNIT= 26 [10] [0] []
 }
 
-; Currently Off
 ; USSR (Corps)
 {
 #NAME= USSR(AI): Corps - Stalingrad - 1942
@@ -8285,7 +8376,7 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 5 [10] [0] []
+; Infantry Army(5)
 #UNIT= 5 [10] [0] []
 }
 
@@ -8315,7 +8406,6 @@
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 29 [10] [0] []
-#UNIT= 29 [10] [0] []
 }
 
 ; USSR (Tactical Bomber)
@@ -8343,7 +8433,6 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 30 [10] [0] []
 #UNIT= 30 [10] [0] []
 }
 
@@ -8392,7 +8481,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 6
 #LEVEL= 3
@@ -8554,7 +8645,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 5
 #LEVEL= 0
@@ -8887,7 +8980,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 5
 #LEVEL= 2
@@ -8916,7 +9011,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 5
 #LEVEL= 2
@@ -8944,7 +9041,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 5
 #LEVEL= 2
@@ -8973,7 +9072,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 5
 #LEVEL= 2
@@ -9002,7 +9103,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 5
 #LEVEL= 0
@@ -9600,7 +9703,7 @@
 
 ; Germany (Barbarossa)
 {
-#NAME= Germany(AI): Barbarossa Reserves - Baranowicze - 1941
+#NAME= DE 600 - Germany(AI): Barbarossa Reserves - Baranowicze - 1941
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9635,7 +9738,7 @@
 
 ; Germany (Barbarossa)
 {
-#NAME= Germany(AI): Barbarossa Reserves - Baranowicze - 1941
+#NAME= DE 406 - Germany(AI): Barbarossa Reserves - Baranowicze - 1941
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9670,7 +9773,7 @@
 
 ; Germany (Barbarossa)
 {
-#NAME= Germany(AI): Barbarossa Reserves - Warsaw - 1941
+#NAME= DE 600 - Germany(AI): Barbarossa Reserves - Warsaw - 1941
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -10415,7 +10518,7 @@
 
 ; Germany (Corps)
 {
-#NAME= Germany(AI): Corps - Bologna - Italian Low Morale
+#NAME= DE 657 - Germany(AI): Corps - Bologna - Italian Low Morale
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -10443,7 +10546,7 @@
 
 ; Germany (Corps)
 {
-#NAME= Germany(AI): Corps - Genoa - Italian Low Morale
+#NAME= DE 657 - Germany(AI): Corps - Genoa - Italian Low Morale
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -10471,7 +10574,7 @@
 
 ; Germany (Corps)
 {
-#NAME= Germany(AI): Corps - Tirana - Italian Low Morale
+#NAME= DE 657 - Germany(AI): Corps - Tirana - Italian Low Morale
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -10503,7 +10606,9 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
 #TYPE= 1
 #AI= 1
 #LEVEL= 0
@@ -10919,7 +11024,7 @@
 
 ; Allied AI Navy Helper Duke of York (UK)
 {
-#NAME= UK: Duke Of York AI Helper (UK AI)
+#NAME= UK(AI): Duke Of York AI Helper
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -10947,7 +11052,7 @@
 
 ; Allied AI Navy Helper Howe (UK)
 {
-#NAME= UK: Howe AI Helper (UK AI)
+#NAME= UK(AI): Howe AI Helper
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -10975,7 +11080,7 @@
 
 ;German Military Equipment Arrives in Romania
 {
-#NAME= DE 849 - Germany Sends Military Equipment to Romania (Tanks)
+#NAME= DE 849 - Germany: Military Equipment to Romania (Tanks)
 #POPUP= German Designed Tanks Are Delivered To Romania
 #IMAGE=
 #SOUND=
@@ -11002,7 +11107,7 @@
 
 ;German Military Equipment Arrives in Romania
 {
-#NAME= DE 849 - Germany Sends Military Equipment to Romania (Anti-Tank)
+#NAME= DE 849 - Germany: Military Equipment to Romania (Anti-Tank)
 #POPUP= German Anti-Tank Equipment Is Delivered To Romania
 #IMAGE=
 #SOUND=
@@ -11026,8 +11131,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 24 [10] [0] []
 }
-
-
 
 ;Romania Engineers
 {
@@ -11159,7 +11262,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 139,104
-; UK(112) aligned with Allies and not surrendered
+; Spain(99) aligned with Axis and fully mobilized
 #VARIABLE_CONDITION= 99 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -11186,7 +11289,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 139,104
-; UK(112) aligned with Allies and not surrendered
+; Spain(99) aligned with Axis and fully mobilized
 #VARIABLE_CONDITION= 99 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -11213,7 +11316,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 128,108
-; Portugal aligned with Allies and not surrendered
+; Portugal(87) aligned with Allies and fully mobilized
 #VARIABLE_CONDITION= 87 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -11241,7 +11344,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 130,103
-; Portugal aligned with Allies and not surrendered
+; Portugal(87) aligned with Allies and fully mobilized
 #VARIABLE_CONDITION= 87 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -11268,7 +11371,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 131,107
-; Portugal aligned with Allies and not surrendered
+; Portugal(87) aligned with Allies and fully mobilized
 #VARIABLE_CONDITION= 87 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -11295,7 +11398,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 129,100
-; Portugal aligned with Allies and not surrendered
+; Spain(99) aligned with Axis and fully mobilized
 #VARIABLE_CONDITION= 99 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -11322,35 +11425,8 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 204,105
-; Turkey aligned with Axis and not surrendered
+; Turkey(111) aligned with Axis and fully mobilized
 #VARIABLE_CONDITION= 111 [1] [100] [0]
-; Dummy condition position (always satisfied)
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 4 [10] [0] [Bursa]
-}
-
-; German Military Exports To Turkey (Corps)
-{
-#NAME= DE 911 - Germany: Military Exports To Turkey
-#POPUP= 
-#IMAGE= 
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 911[1]
-#COUNTRY_ID= 111
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1939/09/01
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 204,105
-; Turkey aligned with Allies and not surrendered
-#VARIABLE_CONDITION= 111 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [10] [0] [Bursa]
@@ -11376,36 +11452,8 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 211,106
-; Turkey aligned with Allies and not surrendered
+; Turkey aligned with Allies and fully mobilized
 #VARIABLE_CONDITION= 111 [2] [100] [0]
-; Dummy condition position (always satisfied)
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 4 [10] [0] [Ankara II]
-}
-
-
-; UK Military Exports To Turkey (Corps)
-{
-#NAME= DE 807 - UK: Military Exports to Turkey
-#POPUP= 
-#IMAGE= 
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 807[1]
-#COUNTRY_ID= 111
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1939/09/01
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 211,106
-; Turkey aligned with Allies and not surrendered
-#VARIABLE_CONDITION= 111 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [10] [0] [Ankara II]
@@ -11431,38 +11479,11 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 211,106
-; Turkey aligned with Allies and not surrendered
-#VARIABLE_CONDITION= 111 [1] [100] [0]
+; Turkey aligned with Allies and fully mobilized
+#VARIABLE_CONDITION= 111 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 27 [10] [0] [Ankara III]
-}
-
-; USA Military Exports To Turkey (Tank)
-{
-#NAME= DE 808 - USA: Military Exports to Turkey
-#POPUP= 
-#IMAGE= 
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 808[1]
-#COUNTRY_ID= 111
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1939/09/01
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 211,106
-; Turkey aligned with Allies and not surrendered
-#VARIABLE_CONDITION= 111 [2] [100] [0]
-; Dummy condition position (always satisfied)
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 26 [10] [0] [Ankara III]
 }
 
 ; USA Military Exports To Turkey (Tac Bomber)
@@ -11490,33 +11511,6 @@
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 30 [10] [0] [Ankara IV]
-}
-
-; USA Military Exports To Sweden (Fighters)
-{
-#NAME= DE 811 - USA: Military Exports to Sweden
-#POPUP= 
-#IMAGE= 
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 811[1]
-#COUNTRY_ID= 103
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 0
-#DATE= 1939/09/01
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 182,54
-; Sweden aligned with Axis and not surrendered
-#VARIABLE_CONDITION= 103 [1] [100] [0]
-; Dummy condition position (always satisfied)
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 29 [5] [0] [2nd RSAF]
 }
 
 ; USA Military Exports To Sweden (Fighters)
@@ -11568,33 +11562,6 @@
 #DESTINATION_RESOURCE= 182,54
 ; Sweden(103) aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 103 [1] [100] [0]
-; Dummy condition position (always satisfied)
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 29 [5] [0] [2nd RSAF]
-}
-
-; Italy Military Exports To Sweden (Fighters)
-{
-#NAME= DE 812 - Italy: Military Exports to Sweden
-#POPUP= 
-#IMAGE= 
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 812[1]
-#COUNTRY_ID= 103
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 0
-#DATE= 1939/09/01
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 182,54
-; Sweden(103) aligned with Allies and not surrendered
-#VARIABLE_CONDITION= 103 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 29 [5] [0] [2nd RSAF]
@@ -11933,7 +11900,7 @@
 
 ; Germany strengthens Afrika Korps (Germany)
 {
-#NAME= DE 919 - Germany: Afrika Korps Reinforced
+#NAME= DE 919 - Germany(AI): Afrika Korps Reinforced
 #POPUP=
 #IMAGE= 
 #SOUND=
@@ -12374,7 +12341,7 @@
 
 ; Egypt (AI Helper)
 {
-#NAME= Egypt (AI Units - Mobile Units)
+#NAME= UK(AI): Egypt Mobile Units
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -12404,7 +12371,7 @@
 
 ; Egypt (AI Helper)
 {
-#NAME= Egypt (AI Units - HQ Benghazi)
+#NAME= UK(AI): Egypt HQ Benghazi
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -12434,7 +12401,7 @@
 
 ; Strong Allied Air Presence Detected In Egypt (AI Helper)
 {
-#NAME= UK: Strong Allied Air Presence Detected In Egypt
+#NAME= UK(AI): Strong Allied Air Presence Detected In Egypt
 #POPUP= Strong Allied Air Presence Detected In Egypt
 #IMAGE= 
 #SOUND=
@@ -12551,7 +12518,7 @@
 
 ; Italian Navy AI Helper
 {
-#NAME= DE 602 - Italy: Navy AI Helper
+#NAME= DE 602 - Italy(AI): Navy AI Helper
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -12606,7 +12573,7 @@
 
 ; Italian Navy AI Helper
 {
-#NAME= DE 602 - Italy: Navy AI Helper
+#NAME= DE 602 - Italy(AI): Navy AI Helper
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -12914,7 +12881,7 @@
 
 ; Germany strengthens Afrika Korps (Germany AI)
 {
-#NAME= Axis AI - Germany: Strengthens Afrika Korps
+#NAME= Germany(AI): Strengthens Afrika Korps
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -12944,7 +12911,7 @@
 
 ; Anglo-Portuguese Alliance
 {
-#NAME= DE 800 - Portugal: Declares War On Spain
+#NAME= DE 800 - UK(AI): Portugal Declares War On Spain
 #POPUP=
 #IMAGE= 
 #SOUND=
@@ -12980,7 +12947,7 @@
 
 ; Mechanized Infantry - North Africa (Italy)
 {
-#NAME= DE 832 - Italy: Mechanized Infantry - North Africa 
+#NAME= DE 832 - Italy(AI): Mechanized Infantry - North Africa 
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -13044,7 +13011,7 @@
 
 ; Germany Reinforces The Eastern Front - (Germany)
 {
-#NAME= DE 932 - Germany: The Eastern Front Reinforced
+#NAME= DE 932 - Germany(AI): The Eastern Front Reinforced
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -13379,7 +13346,7 @@
 }
 
 {
-#NAME= UK Naval AI Helper (1)
+#NAME= UK(AI): Naval AI Helper (1)
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -13406,7 +13373,7 @@
 }
 
 {
-#NAME= UK Naval AI Helper (2)
+#NAME= UK(AI): Naval AI Helper (2)
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -13433,7 +13400,7 @@
 }
 
 {
-#NAME= UK Naval AI Helper (3)
+#NAME= UK(AI): Naval AI Helper (3)
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -13460,7 +13427,7 @@
 }
 
 {
-#NAME= UK Naval AI Helper (4)
+#NAME= UK(AI): Naval AI Helper (4)
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -13487,7 +13454,7 @@
 }
 
 {
-#NAME= Germany: Tripoli Reinforcement
+#NAME= DE 872 - Germany(AI): Tripoli Reinforcement
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13516,7 +13483,7 @@
 }
 
 {
-#NAME= Italy: Tripoli Reinforcement (Italy)
+#NAME= DE 872 - Italy(AI): Tripoli Reinforcement
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13575,7 +13542,7 @@
 }
 
 {
-#NAME= Italy: Syracuse Corps (Italy)
+#NAME= Italy(AI): Syracuse Corps
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13664,7 +13631,7 @@
 
 ; Currently Off
 {
-#NAME= Soviet AI Helper I (USSR)
+#NAME= USSR(AI): AI Helper I
 #POPUP=
 #IMAGE= 
 #SOUND=
@@ -13695,7 +13662,7 @@
 
 ; Currently Off
 {
-#NAME= Soviet AI Helper II (USSR)
+#NAME= USSR(AI): AI Helper II
 #POPUP=
 #IMAGE= 
 #SOUND=
@@ -13726,7 +13693,7 @@
 
 ; Currently Off
 {
-#NAME= Soviet AI Helper III (USSR)
+#NAME= USSR(AI): Soviet AI Helper III
 #POPUP=
 #IMAGE= 
 #SOUND=
@@ -13758,7 +13725,7 @@
 
 ;Currently Off
 {
-#NAME= Soviet AI Helper IV (USSR)
+#NAME= USSR(AI): Soviet AI Helper IV
 #POPUP=
 #IMAGE= 
 #SOUND=
@@ -13789,7 +13756,7 @@
 }
 
 {
-#NAME= Soviet AI Helper V (USSR)
+#NAME= USSR(AI): Soviet AI Helper V
 #POPUP=
 #IMAGE= 
 #SOUND=
@@ -13820,7 +13787,7 @@
 }
 
 {
-#NAME= Soviet AI Helper VI (USSR)
+#NAME= USSR(AI): Soviet AI Helper VI
 #POPUP=
 #IMAGE= 
 #SOUND=
@@ -14109,7 +14076,8 @@
 #LINK= 0[0]
 #COUNTRY_ID= 45
 #TRIGGER= 10
-#PRIVATE= 0
+; Show up in last turn's summary
+#PRIVATE= 1
 #DISPLAY_TURN= 0
 #FULL_RESEARCH= 1
 #DATE= 1941/06/01
@@ -14140,7 +14108,8 @@
 #LINK= 0[0]
 #COUNTRY_ID= 45
 #TRIGGER= 20
-#PRIVATE= 0
+; Show up in last turn's summary
+#PRIVATE= 1
 #DISPLAY_TURN= 0
 #FULL_RESEARCH= 1
 #DATE= 1941/06/01
@@ -14169,7 +14138,8 @@
 #LINK= 0[0]
 #COUNTRY_ID= 45
 #TRIGGER= 30
-#PRIVATE= 0
+; Show up in last turn's summary
+#PRIVATE= 1
 #DISPLAY_TURN= 0
 #FULL_RESEARCH= 1
 #DATE= 1943/01/01
@@ -14611,7 +14581,7 @@
 }
 
 {
-#NAME= DE 736 - Civilian Engineers (USSR)
+#NAME= DE 736 - USSR: Civilian Engineers
 #POPUP= Civilian Engineers Are Deployed At Moscow
 #IMAGE= 
 #SOUND=
@@ -14638,7 +14608,7 @@
 
 ; Moscow 
 {
-#NAME= DE 831 - Murmansk Reinforcements (Moscow)
+#NAME= DE 831 - USSR: Murmansk Reinforcements
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -14667,7 +14637,7 @@
 
 ; Murmansk
 {
-#NAME= DE 831 - Murmansk Reinforcements (Murmansk)
+#NAME= DE 831 - USSR: Murmansk Reinforcements
 #POPUP= Soviet Reinforcements Arrive In Murmansk District
 #IMAGE= 
 #SOUND=
@@ -14696,7 +14666,7 @@
 
 ;Finnish Attack Force
 {
-#NAME= Finnish Attack Force
+#NAME= Finland: Finnish Attack Force
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -14724,7 +14694,7 @@
 
 ;Sweden Sends Military Aid to Finland
 {
-#NAME= DE 848 - Sweden Sends Military Aid to Finland (Heavy Artillery)
+#NAME= DE 848 - Sweden: Military Aid to Finland (Heavy Artillery)
 #POPUP= Swedish Military Equipment Begins to Arrive In Finland
 #IMAGE=
 #SOUND=
@@ -14751,7 +14721,7 @@
 
 ;German Military Equipment Begins To Arrive In Finland
 {
-#NAME= DE 847 - German Sends Military Equipment to Finland (Light Tanks)
+#NAME= DE 847 - Germany: Military Equipment to Finland (Light Tanks)
 #POPUP= German Military Equipment Begins to Arrive In Finland
 #IMAGE=
 #SOUND=
@@ -14777,7 +14747,7 @@
 
 ;German Anti-Tank Equipment Begins To Arrive In Finland
 {
-#NAME= DE 893 - German Sends Military Equipment to Finland (Anti-Tank)
+#NAME= DE 893 - Germany: Military Equipment to Finland (Anti-Tank)
 #POPUP= German Anti-Tank Guns Begin To Arrive In Finland
 #IMAGE=
 #SOUND=
@@ -14804,7 +14774,7 @@
 
 ;German Reinforcements In Finland
 {
-#NAME= DE 893 - German Reinforcements In Finland (Infantry Division)
+#NAME= DE 893 - Germany: Reinforcements In Finland (Infantry Division)
 #POPUP= German Reinforcements Arrive In Finland
 #IMAGE=
 #SOUND=
@@ -14831,7 +14801,7 @@
 
 ;German Reinforcements At Berlin
 {
-#NAME= DE 893 - German Reinforcements At Berlin
+#NAME= DE 893 - Germany: Reinforcements At Berlin
 #POPUP= 
 #IMAGE=
 #SOUND=
@@ -14859,7 +14829,7 @@
 
 ;Finland Engineers
 {
-#NAME= DE 892 - Finnish Engineers (Finland)
+#NAME= DE 892 - Finland: Engineers Raised
 #POPUP= Finland Raises An Engineer Corps
 #IMAGE=
 #SOUND=
@@ -15368,7 +15338,7 @@
 
 ;American Reinforcements In Middle East (I)
 {
-#NAME= USA: Reinforcements In Middle East
+#NAME= USA(AI): Reinforcements In Middle East
 #POPUP= American Forces Arrives At Kuwait
 #IMAGE=
 #SOUND=
@@ -15466,7 +15436,7 @@
 
 ; UK (Syrian Garrison)
 {
-#NAME= DE 131 - ALLIED PBEM: UK: Syrian Garrison
+#NAME= DE 131 - UK(PBEM): Syrian Garrison
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -15995,7 +15965,7 @@
 }
 
 {
-#NAME= DE 897 - Spain Axis Army (Berlin)
+#NAME= DE 897 - Germany: Spanish Military Reorganizes in Germany (Berlin)
 #POPUP= Pro-Axis Elements Of The Spanish Military In Occupied Europe Reorganize In Germany
 #IMAGE=
 #SOUND=
@@ -16023,7 +15993,7 @@
 
 ;
 {
-#NAME= Operation Sledgehammer (UK)
+#NAME= DE 426 - UK: Operation Sledgehammer
 #POPUP=
 #IMAGE= 
 #SOUND= 
@@ -16052,7 +16022,7 @@
 
 ;
 {
-#NAME= Operation Sledgehammer (USA)
+#NAME= DE 426 - USA:Operation Sledgehammer
 #POPUP=
 #IMAGE= 
 #SOUND= 
@@ -16080,7 +16050,7 @@
 }
 
 {
-#NAME= Operation Sledgehammer (Canada)
+#NAME= DE 426 - Canada: Operation Sledgehammer
 #POPUP=
 #IMAGE= 
 #SOUND= 
@@ -16107,7 +16077,7 @@
 
 ;
 {
-#NAME= Operation Overlord (UK)
+#NAME= DE 426 - UK: Operation Overlord
 #POPUP=
 #IMAGE= 
 #SOUND= 
@@ -16136,7 +16106,7 @@
 
 ;
 {
-#NAME= Operation Overlord (USA)
+#NAME= DE 426 - USA: Operation Overlord
 #POPUP=
 #IMAGE= 
 #SOUND= 
@@ -16190,7 +16160,7 @@
 }
 
 {
-#NAME= Canada: Liberate UK
+#NAME= DE 430 - Canada: Liberate UK
 #POPUP= The British Empire Organizes Forces In Canada For Deployment To Europe
 #IMAGE= 
 #SOUND= 
@@ -16218,7 +16188,7 @@
 }
 
 {
-#NAME= British Pacific Fleet
+#NAME= DE 430 - UK: British Pacific Fleet
 #POPUP= Elements Of The British Pacific Fleet Transfer To The Atlantic
 #IMAGE= 
 #SOUND= 
@@ -16245,7 +16215,7 @@
 }
 
 {
-#NAME= British Empire Fleet
+#NAME= DE 430 - British Empire Fleet
 #POPUP=
 #IMAGE= 
 #SOUND= 
@@ -16327,7 +16297,7 @@
 }
 
 {
-#NAME= DE 428 - USSR: Transfers Additional Siberian Forces To The Eastern Front (AI)
+#NAME= DE 428 - USSR(AI): Transfers Additional Siberian Forces To The Eastern Front
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -16732,7 +16702,7 @@
 }
 
 {
-#NAME= DE 268 - USSR: Offensive Units
+#NAME= DE 268 - USSR(AI): Offensive Units
 #POPUP=
 #IMAGE= 
 #SOUND=
@@ -16762,7 +16732,7 @@
 }
 
 {
-#NAME= DE 269 - USSR: Offensive Units
+#NAME= DE 269 - USSR(AI): Offensive Units
 #POPUP=
 #IMAGE= 
 #SOUND=
@@ -16792,7 +16762,7 @@
 }
 
 {
-#NAME= DE 270 - UK: Offensive Units
+#NAME= DE 270 - UK(AI): Offensive Units
 #POPUP=
 #IMAGE= 
 #SOUND=
@@ -16821,7 +16791,7 @@
 }
 
 {
-#NAME= DE 271 - USA: Offensive Units
+#NAME= DE 271 - USA(AI): Offensive Units
 #POPUP=
 #IMAGE= 
 #SOUND=
@@ -16849,7 +16819,7 @@
 }
 
 {
-#NAME= DE 544 - Croatian Mountain Infantry Division
+#NAME= DE 544 - Croatia: Mountain Infantry Division
 #POPUP= Croatia Raises A Mountain Infantry Division For Anti-Partisan Operations
 #IMAGE=
 #SOUND=
@@ -17088,7 +17058,7 @@
 
 ; Greek Army In Exile
 {
-#NAME= DE 899 - Greek Army In Exile Flees To Egypt
+#NAME= DE 899 - UK: Greek Army In Exile Flees To Egypt
 #POPUP= The Greek Army In Exile Forms A Unit In Egypt
 #IMAGE=
 #SOUND=
@@ -17278,7 +17248,6 @@
 #DESTINATION_RESOURCE= 156,88
 ; Germany(45) aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 ; Allies within range of Paris OR
 ; Allies within range of Dusseldorf OR
 ; Allies within range of Hamburg OR
@@ -17317,7 +17286,6 @@
 #DESTINATION_RESOURCE= 156,88
 ; Germany(45) aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 ; Allies within range of Paris OR
 ; Allies within range of Dusseldorf OR
 ; Allies within range of Hamburg OR
@@ -17356,7 +17324,6 @@
 #DESTINATION_RESOURCE= 151,89
 ; Germany(45) aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 ; Allies within range of Paris OR
 ; Allies within range of Dusseldorf OR
 ; Allies within range of Hamburg OR
