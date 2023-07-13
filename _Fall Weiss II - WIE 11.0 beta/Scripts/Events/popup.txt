@@ -309,7 +309,7 @@
 ;AMEND ANNUALLY
 ;
 {
-#NAME= ALLIED AI: Axis At Start Message
+#NAME= Axis At Start Message
 #POPUP= Report On Axis War Aims
 #MESSAGE=
 #IMAGE= germanystartmessage.png
@@ -663,181 +663,10 @@
 #CONDITION_POSITION= 218,119 [5,5] [0,0] [2] [0]
 } 
 
-; Informing the Axis Player of the potential gains from raiding
-{
-#NAME= ALLIED AI: Axis Coastal Raiding/Shipping Information (1)
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= german_report_1939_1.png
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 0
-#AI= 4
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 1
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1939/09/03
-; Berlin is in Axis hands
-#ALIGNMENT_POSITION= 173,74 [1]
-; 1st Line - Canada(21) politically aligned with Allies and not surrendered
-#VARIABLE_CONDITION= 21 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-;REMOVE1940
-;
-; Informing the Axis Player that Finland is pro-Allied
-{
-#NAME= ALLIED AI: Germany Is Advised To Use Diplomacy Against Finland
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= german_report_finland1.png
-#SOUND= teletype_1.ogg, teletype_2.ogg
-; Turned off for Fall Weiss II
-#FLAG= 0
-#TYPE= 1
-#AI= 4
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 1
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/05/06
-; Berlin is in Axis hands
-#ALIGNMENT_POSITION= 173,74 [1]
-; 1st Line - Finland(39) politically aligned with Allies but not fully mobilized
-#VARIABLE_CONDITION= 39 [2] [0] [0]
-; 2nd Line - USSR(116) politically aligned with Allies but not fully mobilized
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-;REMOVE1941
-;
-; Informing the Axis Player that Finland is pro-Axis
-{
-#NAME= ALLIED AI: Germany Is Advised When Finland Will Enter The War
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= german_report_finland2.png
-#SOUND= teletype_1.ogg, teletype_2.ogg
-; Turned off for Fall Weiss II
-#FLAG= 0
-#TYPE= 1
-#AI= 4
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 1
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/05/06
-; Berlin is in Axis hands
-#ALIGNMENT_POSITION= 173,74 [1]
-; 1st Line - Finland(39) politically aligned with Axis but not fully mobilized
-#VARIABLE_CONDITION= 39 [1] [0] [0]
-; 2nd Line - USSR(116) politically aligned with Allies but not fully mobilized
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-;REMOVE1941
-;
-; Informing the Axis Player that they can use the Ports of Vigo and Santa Cruz
-{
-#NAME= ALLIED AI: Germany Gains Access To The Ports Of Vigo And Santa Cruz
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= german_report_vigo.png
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 0
-#AI= 4
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 659[1]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 1
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1939/09/03
-; Paris is in Axis hands
-#ALIGNMENT_POSITION= 151,84 [1]
-; 1st Line - Spain(99) politically aligned with Axis but not fully mobilized
-#VARIABLE_CONDITION= 99 [1] [25] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-;REMOVE1940
-;
-; Informing the Axis Player of the potential gains from raiding
-{
-#NAME= ALLIED AI: Axis Coastal Raiding/Shipping Information (2)
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= german_report_1939_2.png
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 0
-#AI= 4
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 1
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1939/09/03
-; Berlin is in Axis hands
-#ALIGNMENT_POSITION= 173,74 [1]
-; 1st Line - Germany(45) politically aligned with Axis and not surrendered
-; 2nd Line - USA(115) politically aligned with Allies and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
 ;REMOVE1941
 ;
 {
-#NAME= ALLIED AI: German/Soviet Front Garrison Report 1940
+#NAME= Germany(AI) : German/Soviet Front Garrison Report 1940
 #POPUP= <<TAG_3>>
 #MESSAGE=
 #IMAGE= german_report_1940_1.png
@@ -872,7 +701,7 @@
 ;REMOVE1941
 ;
 {
-#NAME= ALLIED AI: German/Soviet Front Garrison Report 1940
+#NAME= Germany(AI) : German/Soviet Front Garrison Report 1940
 #POPUP= 
 #MESSAGE= <<TAG_178>>
 #IMAGE=
@@ -934,7 +763,7 @@
 ;REMOVE1941
 ;
 {
-#NAME= ALLIED AI: German/Soviet Front Garrison Report 1940
+#NAME= Germany(AI) : German/Soviet Front Garrison Report 1940
 #POPUP=
 #MESSAGE= <<TAG_178>>
 #IMAGE=
@@ -996,7 +825,7 @@
 ;REMOVE1942
 ;
 {
-#NAME= DE 600 - ALLIED AI: German/Soviet Front Garrison Report 1941
+#NAME= DE 600 - Germany(AI) : German/Soviet Front Garrison Report 1941
 #POPUP= <<TAG_3>>
 #MESSAGE=
 #IMAGE= german_report_1941_1.png
@@ -1007,7 +836,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
+; DE 600 - Germany: Should Germany Honor The Molotov-Ribbentrop Pact?
 #LINK= 600[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -1031,7 +860,7 @@
 ;REMOVE1942
 ;
 {
-#NAME= DE 600 - ALLIED AI: German/Soviet Front Garrison Report 1941
+#NAME= DE 600 - Germany(AI) : German/Soviet Front Garrison Report 1941
 #POPUP= 
 #MESSAGE= <<TAG_179>>
 #IMAGE=
@@ -1042,6 +871,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
+; DE 600 - Germany: Should Germany Honor The Molotov-Ribbentrop Pact?
 #LINK= 600[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -1092,7 +922,7 @@
 ;REMOVE1942
 ;
 {
-#NAME= ALLIED AI: German/Soviet Front Garrison Report 1941
+#NAME= Germany(AI) : German/Soviet Front Garrison Report 1941
 #POPUP=
 #MESSAGE= <<TAG_179>>
 #IMAGE=
@@ -1154,7 +984,7 @@
 ;REMOVE1941
 ;
 {
-#NAME= ALLIED AI: German/Soviet Front Garrison Report 1941 (more than 18 units)
+#NAME= Germany(AI) : German/Soviet Front Garrison Report 1941 (more than 18 units)
 #POPUP=
 #MESSAGE= <<TAG_180>>
 #IMAGE=
@@ -1213,81 +1043,10 @@
 #CONDITION_POSITION= 188,76 [10,10] [19,19] [1] [0]
 }
 
-;REMOVE1944
-;
-{
-#NAME= ALLIED AI: German Murmansk Report
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= german_report_murmansk.png
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 4
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 1
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1939/09/01
-; Glasgow is in Allied hands
-#ALIGNMENT_POSITION= 138,65 [2]
-; Murmansk is in Allied hands
-#ALIGNMENT_POSITION= 211,16 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 39 [1] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
+
 
 {
-#NAME= ALLIED AI: German/Yugoslavia Anti-Partisan Report 1941 (25% Chance)
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= german_report_yugoslavia1.png
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 2
-#AI= 4
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-; Set link value to always trigger (dummy value)
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 25
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 1
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION= 180,95
-#DATE= 1941/01/01
-; Berlin is in Axis hands
-#ALIGNMENT_POSITION= 173,74 [1]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 120 [2] [100] [1]
-; Axis have no units in or adjacent mountain position OR
-#CONDITION_POSITION= 177,93 [1,1] [0,0] [1] [0]
-; Axis have no units in or adjacent mountain position OR
-#CONDITION_POSITION= 178,96 [1,1] [0,0] [1] [0]
-; Axis have no units in or adjacent mountain position OR
-#CONDITION_POSITION= 181,96 [1,1] [0,0] [1] [0]
-}
-
-{
-#NAME= DE 108 - ALLIED AI: German Report On Increased Resistance To Be Expected In 1944
+#NAME= DE 108 - Germany(AI) : German Report On Increased Resistance To Be Expected In 1944
 #POPUP= Report To The German High Command
 #MESSAGE=
 #IMAGE= german_report_resistance1944.png
@@ -1331,7 +1090,7 @@
 ;REMOVE1943
 ;
 {
-#NAME= ALLIED AI: German Report On Mussolini's Advice To Invade Cyprus
+#NAME= Germany(AI) : German Report On Mussolini's Advice To Invade Cyprus
 #POPUP= Report To The German High Command
 #MESSAGE=
 #IMAGE= german_report_cyprus1.png
@@ -1371,154 +1130,7 @@
 ;REMOVE1941
 ;
 {
-#NAME= ALLIED AI: German Report Giving Advice To Prepare For War Against The USSR
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= german_report_warineast1.png
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 4
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-; Set link value to always trigger (dummy value)
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 1
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/12/01
-; London is in Allied hands
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; No Axis units in Southern England
-#CONDITION_POSITION= 144,77 [5,5] [0,0] [1] [0]
-}
-
-;REMOVE1941
-;
-{
-#NAME= ALLIED AI: German Report On The Feasibility of Invading Great Britain
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= german_report_sealion1.png
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 4
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-; Set link value to always trigger (dummy value)
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 1
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1939/09/15
-; London is in Allied hands
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; No Axis units in Southern England
-#CONDITION_POSITION= 144,77 [5,5] [0,0] [1] [0]
-}
-
-;REMOVE1942
-;
-{
-#NAME= ALLIED AI: German Report On The Importance Of The Mediterranean
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= german_report_mediterranean1.png
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 4
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-; Set link value to always trigger (dummy value)
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 1
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/01/01
-; London is in Allied hands
-#ALIGNMENT_POSITION= 147,77 [2]
-; Cairo is in Allied hands
-#ALIGNMENT_POSITION= 208,126 [2]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#VARIABLE_CONDITION= 99 [1] [0] [0]
-; No Axis units in Central Egypt
-#CONDITION_POSITION= 208,126 [6,6] [0,0] [1] [0]
-}
-
-;REMOVE1944
-;
-{
-#NAME= ALLIED AI: German Report On The Situation In Italy
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= german_report_italy.png
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 4
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-; Set link value to always trigger (dummy value)
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 1
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION= 170,99
-#DATE= 1940/01/01
-; Berlin is in Axis hands
-#ALIGNMENT_POSITION= 173,74 [1]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; 2 Allied units are in Italy
-#CONDITION_POSITION= 171,101 [10,10] [2,2] [2] [0]
-; 2 Allied units are in Sicily
-#CONDITION_POSITION= 175,110 [4,4] [2,2] [2] [0]
-}
-
-;REMOVE1941
-;
-{
-#NAME= DE 703 - ALLIED AI: Report On Our Attempts To Bribe Greek Officers And Politicians (70% Chance)
+#NAME= DE 703 - Italy(AI) : Report On Our Attempts To Bribe Greek Officers And Politicians (70% Chance)
 #POPUP= Report To The Italian High Command
 #MESSAGE=
 #IMAGE= italian_report_greekbribery1.png
@@ -1548,7 +1160,7 @@
 }
 
 {
-#NAME= DE 309 - ALLIED AI: Report On Increased Republican Guerrilla Activity
+#NAME= DE 309 - Spain(AI) : Report On Increased Republican Guerrilla Activity
 #POPUP= Strategic Advice
 #MESSAGE=
 #IMAGE= spanish_report_resistance1.png
@@ -1576,13 +1188,9 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Axis AI Events
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;REMOVE1940
 {
-#NAME= AXIS AI: UK At Start Message
+#NAME= At Start Message
 #POPUP= Report On Allied War Aims
 #MESSAGE=
 #IMAGE= ukstartmessage.png
@@ -1612,7 +1220,7 @@
 
 ;REMOVE1941
 {
-#NAME= AXIS AI: UK Mediterranean Report
+#NAME= UK(AI) : Mediterranean Report
 #POPUP= UK Mediterranean Report
 #MESSAGE=
 #IMAGE= uk_report_1939_1.png
@@ -1643,7 +1251,7 @@
 ;REMOVE1941
 ;
 {
-#NAME= AXIS AI: Italian Mobilization Trigger Zone (Naval)
+#NAME= UK(AI) : Italian Mobilization Trigger Zone (Naval)
 #POPUP=
 #MESSAGE= <<TAG_183>>
 #IMAGE=
@@ -1697,7 +1305,7 @@
 ;REMOVE1941
 ;
 {
-#NAME= AXIS AI: Italian Mobilization Trigger Zone (Amphibious)
+#NAME= UK(AI) : Italian Mobilization Trigger Zone (Amphibious)
 #POPUP=
 #MESSAGE= <<TAG_184>>
 #IMAGE=
@@ -1745,7 +1353,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 123 - AXIS AI: UK BEF Report
+#NAME= DE 123 - UK(AI) : BEF Report
 #POPUP= Strategic Advice
 #MESSAGE=
 #IMAGE= uk_report_1939_2.png
@@ -1773,42 +1381,9 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;REMOVE1942
-{
-#NAME= AXIS AI: Report To The British Prime Minister On Winning The Intelligence War
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= uk_communication_bletchley.png
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 3
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-; Set link value to always trigger (dummy value)
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1941/10/21
-; Ottawa is in Allied hands
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-; Dummy condition position (always satisfied)
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
 ;REMOVE1941
 {
-#NAME= DE 708 - AXIS AI: Report To The British On The Importance Of Greece
+#NAME= DE 708 - UK(AI) : Report To The British On The Importance Of Greece
 #POPUP= Strategic Advice
 #MESSAGE=
 #IMAGE= uk_communication_greece1.png
@@ -1839,358 +1414,10 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;REMOVE1941
-{
-#NAME= AXIS AI: Report To The British To Consider Invading Syria
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= uk_communication_syria1.png
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 3
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-; Set link value to always trigger (dummy value)
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1941/05/01
-; Jerusalem is in Allied hands
-#ALIGNMENT_POSITION= 216,123 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 36 [2] [100] [0]
-#VARIABLE_CONDITION= 56 [1] [100] [1]
-#VARIABLE_CONDITION= 105 [1] [0] [0]
-; No Axis units in Central Egypt
-#CONDITION_POSITION= 208,126 [6,6] [0,0] [1] [0]
-}
-
-;REMOVE1942
-{
-#NAME= AXIS AI: Report To The British To Consider Invading Norway
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= uk_communication_norway1.png
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 3
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-; Set link value to always trigger (dummy value)
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/05/01
-; London is in Allied hands
-#ALIGNMENT_POSITION= 147,77 [2]
-; Portsmouth is in Allied hands
-#ALIGNMENT_POSITION= 144,79 [2]
-; Bristol is in Allied hands
-#ALIGNMENT_POSITION= 142,78 [2]
-; Narvik is in Axis hands
-#ALIGNMENT_POSITION= 181,18 [1]
-; Trondheim is in Axis hands
-#ALIGNMENT_POSITION= 167,40 [1]
-; Bergen is in Axis hands
-#ALIGNMENT_POSITION= 157,50 [1]
-; Stavanger is in Axis hands
-#ALIGNMENT_POSITION= 158,55 [1]
-; Kristiansand is in Axis hands
-#ALIGNMENT_POSITION= 162,58 [1]
-#VARIABLE_CONDITION= 78 [2] [100] [1]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; No Allied units in Southern Norway or Western Sweden
-#CONDITION_POSITION= 164,46 [14,14] [0,0] [2] [0]
-; No Allied units in Southern Norway or Western Sweden
-#CONDITION_POSITION= 164,46 [14,14] [0,0] [2] [0]
-; No Allied units in Middle Norway or Western Sweden
-#CONDITION_POSITION= 172,30 [14,14] [0,0] [2] [0]
-; No Allied units in Northern Norway or Western Sweden
-#CONDITION_POSITION= 181,18 [14,14] [0,0] [2] [0]
-}
-
-;REMOVE1943
-{
-#NAME= AXIS AI: Report To The British To Consider Invading The Dodecanese
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= uk_communication_dodecanese1.png
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 3
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-; Set link value to always trigger (dummy value)
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1943/01/01
-; Cyprus is in Allied hands
-#ALIGNMENT_POSITION= 213,115 [2]
-; Rhodes is in Axis hands
-#ALIGNMENT_POSITION= 202,113 [1]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 36 [2] [100] [0]
-#VARIABLE_CONDITION= 111 [1] [0] [0]
-; No Axis units in Central Egypt
-#CONDITION_POSITION= 208,126 [6,6] [0,0] [1] [0]
-}
-
-;REMOVE1944
-{
-#NAME= AXIS AI: Report To The British To Consider Invading The Balkans (25% Chance)
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= uk_communication_balkans1.png
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 3
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-; Set link value to always trigger (dummy value)
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#TRIGGER= 25
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1943/01/01
-; Tripoli is in Allied hands
-#ALIGNMENT_POSITION= 172,121 [2]
-; Warsaw is in Axis hands
-#ALIGNMENT_POSITION= 188,76 [1]
-; Sofia is in Axis hands
-#ALIGNMENT_POSITION= 192,100 [1]
-; Tirana is in Axis hands
-#ALIGNMENT_POSITION= 185,102 [1]
-; Bucharest is in Axis hands
-#ALIGNMENT_POSITION= 198,95 [1]
-; Lwow is in Axis hands
-#ALIGNMENT_POSITION= 194,82 [1]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 36 [2] [100] [0]
-#VARIABLE_CONDITION= 46 [2] [100] [1]
-; No Allied units are in the Balkans
-#CONDITION_POSITION= 189,101 [10,10] [0,0] [2] [0]
-}
-
-;REMOVE1943 with Saudi Arabia providing a convoy to the USA
-{
-#NAME= AXIS AI: Report On The Importance Of Saudi Arabia
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= usa_communication_saudiarabia1.png
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 3
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-; Set link value to always trigger (dummy value)
-#LINK= 0[0]
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/01/01
-; Ottawa is in Allied hands
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 95 [1] [0] [0]
-; Dummy condition position (always satisfied)
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= AXIS AI: Report On Spain's Close Links To The Axis
-#POPUP= <<TAG_2>>
-#MESSAGE=
-#IMAGE= usa_communication_spain1.png
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 3
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-; Set link value to always trigger (dummy value)
-#LINK= 0[0]
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1939/09/01
-; Paris is in Axis hands
-#ALIGNMENT_POSITION= 151,84 [1]
-; 1st Line - France(40) politically aligned with Allies and surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-; 2nd Line - Spain(99) politically aligned with Axis but not fully mobilized
-#VARIABLE_CONDITION= 99 [1] [20] [0]
-; 3rd Line - USA(115) politically aligned with Allies and fully mobilized
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; No Allied units within 5 hexes of Bayonne
-#CONDITION_POSITION= 144,98 [5,5] [0,0] [2] [0]
-; No Allied units within 5 hexes of Madrid
-#CONDITION_POSITION= 139,104 [5,5] [0,0] [2] [0]
-}
-
-{
-#NAME= AXIS AI: Report On The Importance Of Sweden's Political Status
-#POPUP= <<TAG_2>>
-#MESSAGE=
-#IMAGE= usa_communication_sweden1.png
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 3
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-; Set link value to always trigger (dummy value)
-#LINK= 0[0]
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1943/01/01
-; Ottawa is in Allied hands
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 103 [1] [0] [0]
-; Dummy condition position (always satisfied)
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= AXIS AI: Advice To The British To Invest In Diplomacy In Spain
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= ukspainwarning.png
-#SOUND= report.ogg
-; currently disabled in Fall Weiss II
-#FLAG= 0
-#TYPE= 1
-#AI= 3
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-; Set link value to always trigger (dummy value)
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1939/09/01
-; Gibraltar is in Allied hands
-#ALIGNMENT_POSITION= 136,114 [2]
-#VARIABLE_CONDITION= 99 [1] [55] [0]
-; Dummy condition position (always satisfied)
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= AXIS AI: Advice To The British To Invest In Diplomacy In Turkey
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= ukturkeywarning.png
-#SOUND= report.ogg
-; currently disabled in Fall Weiss II
-#FLAG= 0
-#TYPE= 1
-#AI= 3
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-; Set link value to always trigger (dummy value)
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1939/09/01
-; Jerusalem is in Allied hands
-#ALIGNMENT_POSITION= 216,123 [2]
-#VARIABLE_CONDITION= 111 [1] [55] [0]
-; Dummy condition position (always satisfied)
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
 
 ;REMOVE1941
 {
-#NAME= DE 600 - AXIS AI: USSR STAVKA Report
+#NAME= DE 600 - USSR(AI) : STAVKA Report
 #POPUP= <<TAG_7>>
 #MESSAGE=
 #IMAGE= soviet_communication_1939_1.png
@@ -2221,7 +1448,7 @@
 
 ;REMOVE1940
 {
-#NAME= DE 406 - AXIS AI: USSR STAVKA Report
+#NAME= DE 406 - USSR(AI) : STAVKA Report
 #POPUP= <<TAG_7>>
 #MESSAGE=
 #IMAGE= soviet_communication_1939_2.png
@@ -2252,7 +1479,7 @@
 
 ;REMOVE1940
 {
-#NAME= DE 600 - AXIS AI: USSR STAVKA Report
+#NAME= DE 600 - USSR(AI) : STAVKA Report
 #POPUP= <<TAG_7>>
 #MESSAGE=
 #IMAGE= soviet_communication_1939_2.png
@@ -2283,7 +1510,7 @@
 
 ;REMOVE1941
 {
-#NAME= AXIS AI: UK/Moscow Intelligence Dispatch 1941
+#NAME= USSR(AI): UK/Moscow Intelligence Dispatch 1941
 #POPUP= Communication Delivered By The British Ambassador
 #MESSAGE=
 #IMAGE= uk_communication_1941_1.png
@@ -2317,7 +1544,7 @@
 
 ; Text inspired/sourced from Marxists Internet Archive
 {
-#NAME= AXIS AI: Comrade Stalin Broadcasts To The Citizens Of The USSR
+#NAME= USSR(AI) : Comrade Stalin Broadcasts To The Citizens Of The USSR
 #POPUP= Radio Broadcast
 #MESSAGE=
 #IMAGE= soviet_communication_barbarossa.png
@@ -2353,7 +1580,7 @@
 }
 
 {
-#NAME= AXIS AI: USSR STAVKA Report
+#NAME= USSR(AI) : STAVKA Report
 #POPUP= USSR STAVKA Report
 #MESSAGE=
 #IMAGE= ussr_report_murmansk.png
@@ -2388,7 +1615,7 @@
 
 ;REMOVE1942
 {
-#NAME= AXIS AI: Report To Comrade Stalin On The Situation In The Far East
+#NAME= USSR(AI) : Report To Comrade Stalin On The Situation In The Far East
 #POPUP= Report To Comrade Stalin On The Situation In The Far East
 #MESSAGE=
 #IMAGE= ussr_report_richardsorge.png
@@ -2422,7 +1649,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 108 - AXIS AI: Polish Home Army Report On Axis Build Up In The East (25% Chance)
+#NAME= DE 108 - Poland(AI) : Polish Home Army Report On Axis Build Up In The East (25% Chance)
 #POPUP= The Polish Government In Exile Provides Information To The British Government
 #MESSAGE=
 #IMAGE= polishresistancereport1.png
@@ -2485,7 +1712,7 @@
 
 ;AMEND1944
 {
-#NAME= DE 355 - AXIS AI: The Greek Resistance Provides Information To the SOE (30% Chance)
+#NAME= DE 355 - Germany(AI) : The Greek Resistance Provides Information To the SOE (30% Chance)
 #POPUP= The Greek Resistance Provides Information To the SOE
 #MESSAGE=
 #IMAGE= greekresistancereport1.png
@@ -2553,7 +1780,7 @@
 
 ;AMEND1944
 {
-#NAME= AXIS AI: The French Resistance Provides Intelligence To the SOE (30% Chance)
+#NAME= DE 355 - France(AI): The French Resistance Provides Intelligence To the SOE (30% Chance)
 #POPUP= The French Resistance Provides Intelligence To the SOE
 #MESSAGE=
 #IMAGE= frenchresistancereport1.png
@@ -2620,7 +1847,7 @@
 ;
 ; The Long Range Desert Group Reports A Significant Enemy Presence Near Benghazi
 {
-#NAME= DE 112 - AXIS AI: Report To The Commander-in-Chief of Middle East Command (LRDG1) (15% Chance)
+#NAME= DE 112 - UK(AI) : Report To The Commander-in-Chief of Middle East Command (LRDG1) (15% Chance)
 #POPUP= Report To The Commander-in-Chief of Middle East Command
 #MESSAGE=
 #IMAGE= lrdg1a.png, lrdg1b.png, lrdg1c.png, lrdg1d.png, lrdg1e.png
@@ -2661,7 +1888,7 @@
 ;
 ; The Long Range Desert Group Reports A Significant Enemy Presence Near Tripoli
 {
-#NAME= DE 121 - AXIS AI: Report To The Commander-in-Chief of Middle East Command (LRDG2) (15% Chance)
+#NAME= DE 121 - UK(AI) : Report To The Commander-in-Chief of Middle East Command (LRDG2) (15% Chance)
 #POPUP= Report To The Commander-in-Chief of Middle East Command
 #MESSAGE=
 #IMAGE= lrdg2a.png, lrdg2b.png, lrdg2c.png, lrdg2d.png, lrdg2e.png
@@ -2700,7 +1927,7 @@
 ;
 ; The Long Range Desert Group Reports A Significant Enemy Presence Near Tobruk
 {
-#NAME= DE 121 - AXIS AI: Report To The Commander-in-Chief of Middle East Command (LRDG3) (15% Chance)
+#NAME= DE 121 - UK(AI) : Report To The Commander-in-Chief of Middle East Command (LRDG3) (15% Chance)
 #POPUP= Report To The Commander-in-Chief of Middle East Command
 #MESSAGE=
 #IMAGE= lrdg3a.png, lrdg3b.png, lrdg3c.png, lrdg3d.png, lrdg3e.png
@@ -2741,7 +1968,7 @@
 ;
 ; The Long Range Desert Group Reports A Significant Enemy Presence Near Sirte
 {
-#NAME= DE 121 - AXIS AI: Report To The Commander-in-Chief of Middle East Command (LRDG4) (15% Chance)
+#NAME= DE 121 - UK(AI) : Report To The Commander-in-Chief of Middle East Command (LRDG4) (15% Chance)
 #POPUP= Report To The Commander-in-Chief of Middle East Command
 #MESSAGE=
 #IMAGE= lrdg4a.png, lrdg4b.png, lrdg4c.png, lrdg4d.png, lrdg4e.png
@@ -2784,7 +2011,7 @@
 ;
 ; The Long Range Desert Group Reports A Significant Enemy Presence Near Sidi Birrani
 {
-#NAME= DE 121 - AXIS AI: Report To The Commander-in-Chief of Middle East Command (LRDG5)
+#NAME= DE 121 - UK(AI) : Report To The Commander-in-Chief of Middle East Command (LRDG5)
 #POPUP= Report To The Commander-in-Chief of Middle East Command
 #MESSAGE=
 #IMAGE= lrdg5a.png, lrdg5b.png, lrdg5c.png, lrdg5d.png, lrdg5e.png
@@ -3768,17 +2995,17 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
-;  DE 173 Events
+;  DE 50 Events
 ;
 ;  These are informational only, for flavor and can be turned off, globally
-;  via "DE 173 - Dummy Event to turn Historical POP UPs On/Off"
+;  via "DE 50 - Disable to Hide All Historical Popups"
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; US Industry Ramps Up
 ; Activation Date on Surrender of Japan
 {
-#NAME= DE 173 - USA Victory in the Pacific
+#NAME= DE 50 - USA Victory in the Pacific
 #POPUP= US Industry Mobilizes For Total War In Europe
 #MESSAGE=
 #IMAGE= american_industry_1.png, american_industry_2.png, american_industry_3.png
@@ -3789,7 +3016,8 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+; DE 50 - Disable to Hide All Historical Popups
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3813,7 +3041,7 @@
 ; Soviet Japanese Neutrality Pact:
 ; Historical date of event was 1941/04/13
 {
-#NAME= DE 173 - The USSR Signs A Non-Aggression Pact With Japan
+#NAME= DE 50 - The USSR Signs A Non-Aggression Pact With Japan
 #POPUP= The USSR Signs A Non-Aggression Pact With Japan
 #MESSAGE=
 #IMAGE= soviet_japan_pact.png
@@ -3824,7 +3052,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3846,7 +3074,7 @@
 ; Yalta Conference:
 ; Historical date of event was 1945/02/04
 {
-#NAME= DE 173 - Yalta Conference (Historical)
+#NAME= DE 50 - Yalta Conference (Historical)
 #POPUP= Allied Leaders Meet In Yalta To Discuss The Future Of Europe
 #MESSAGE=
 #IMAGE= yalta.png
@@ -3857,7 +3085,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3885,7 +3113,7 @@
 ; Historical date of event was 1945/05/02
 ; Sounds - BBC Archive
 {
-#NAME= DE 173 - Soviets Enter Berlin (Historical)
+#NAME= DE 50 - Soviets Enter Berlin (Historical)
 #POPUP= Soviet Soldiers Celebrate The Fall Of Berlin
 #MESSAGE=
 #IMAGE= redflag_berlin.png
@@ -3896,7 +3124,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3924,7 +3152,7 @@
 ; Sikorski dies in a plane crash:
 ; Historical date of event was 1943/07/04
 {
-#NAME= DE 173 - The Polish Leader General Sikorski Is Killed In A Plane Crash (Historical)
+#NAME= DE 50 - The Polish Leader General Sikorski Is Killed In A Plane Crash (Historical)
 #POPUP= The Polish Leader General Sikorski Is Killed In A Plane Crash
 #MESSAGE=
 #IMAGE= sikorski.png
@@ -3935,7 +3163,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 85
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3961,7 +3189,7 @@
 ; Tangier Occupation
 ; Historical date of event was 1940/06/14
 {
-#NAME= DE 173 - Spanish Forces Enter The International Protectorate Of Tangier (Historical)
+#NAME= DE 50 - Spanish Forces Enter The International Protectorate Of Tangier (Historical)
 #POPUP= Spanish Forces Enter The International Protectorate Of Tangier
 #MESSAGE=
 #IMAGE=
@@ -3972,7 +3200,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 99
 #TRIGGER= 100
 #PRIVATE= 0
@@ -3995,7 +3223,7 @@
 ;
 ; Wolfram Exports
 {
-#NAME= DE 173 - Germany Imports Wolfram And Other Goods From Spain (Historical)
+#NAME= DE 50 - Germany Imports Wolfram And Other Goods From Spain (Historical)
 #POPUP= <<TAG_45>>
 #MESSAGE=
 #IMAGE=
@@ -4008,7 +3236,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 99
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4037,7 +3265,7 @@
 ; Tripartite Pact:
 ; Historical date of event was 1940/09/27
 {
-#NAME= DE 173 - Tripartite Pact (Historical)
+#NAME= DE 50 - Tripartite Pact (Historical)
 #POPUP= Germany, Italy And Japan Sign Tripartite Pact
 #MESSAGE=
 #IMAGE= tripartite_pact.png
@@ -4048,7 +3276,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4073,7 +3301,7 @@
 ; Operation Mercury:
 ; Historical date of event was 1941/05/20
 {
-#NAME= DE 173 - German Paratroops Assault Crete (Historical)
+#NAME= DE 50 - German Paratroops Assault Crete (Historical)
 #POPUP= Germany Launches Operation Mercury - Paratroops Assault Crete
 #MESSAGE=
 #IMAGE= crete_1.png, crete_2.png, crete_3.png
@@ -4084,7 +3312,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4106,7 +3334,7 @@
 
 ;REMOVE1944
 {
-#NAME= DE 173 - Admiral Canaris Is Arrested And The Abwehr Is Abolished (30% Chance)
+#NAME= DE 50 - Admiral Canaris Is Arrested And The Abwehr Is Abolished (Historical)
 #POPUP= Admiral Canaris Is Arrested And The Abwehr Is Abolished
 #MESSAGE=
 #IMAGE= admiralcanaris.png
@@ -4117,7 +3345,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 45
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4142,7 +3370,7 @@
 ; Hitler Assassination Attempt:
 ; Historical date of event was 1944/07/20
 {
-#NAME= DE 173 - Hitler Assassination Attempt (Historical)
+#NAME= DE 50 - Hitler Assassination Attempt (Historical)
 #POPUP= Operation Valkyrie: German Assassination Attempt On Hitler Fails
 #MESSAGE=
 #IMAGE= hitler_assassination_1.png, hitler_assassination_2.png
@@ -4153,7 +3381,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4179,7 +3407,7 @@
 ; Historical date of event was 1945/04/30
 ; Sounds - BBC Archive
 {
-#NAME= DE 173 - Hitler Commits Suicide (Historical)
+#NAME= DE 50 - Hitler Commits Suicide (Historical)
 #POPUP= Allies Close In On The Third Reich - Hitler Commits Suicide
 #MESSAGE=
 #IMAGE= hitler_suicide.png
@@ -4190,7 +3418,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4214,7 +3442,7 @@
 }
 
 {
-#NAME= DE 173 - Irish Prime Minister De Valera Expresses His Condolences At The German Embassy (Historical)
+#NAME= DE 50 - Irish Prime Minister De Valera Expresses His Condolences At The German Embassy (Historical)
 #POPUP= Irish Prime Minister De Valera Expresses His Condolences At The German Embassy
 #MESSAGE=
 #IMAGE= eamondevalera.png
@@ -4225,7 +3453,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 57
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4257,7 +3485,7 @@
 ;
 ; Operation Vengeance
 { 
-#NAME= DE 173 - Admiral Yamamoto Is Shot Down By US Aircraft
+#NAME= DE 50 - Admiral Yamamoto Is Shot Down By US Aircraft (Historical)
 #POPUP= Admiral Yamamoto Is Shot Down By US Aircraft
 #MESSAGE=
 #IMAGE= yamamoto.png
@@ -4267,7 +3495,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4287,7 +3515,7 @@
 
 ;REMOVE1944
 {
-#NAME= DE 173 - Operation Ichi-Go: Japan Launches A Large Scale Offensive Into China
+#NAME= DE 50 - Operation Ichi-Go: Japan Launches A Large Scale Offensive Into China (Historical)
 #POPUP= Operation Ichi-Go: Japan Launches A Large Scale Offensive Into China
 #MESSAGE=
 #IMAGE= ichigo.png
@@ -4297,7 +3525,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4316,7 +3544,7 @@
 }
 
 {
-#NAME= DE 173 - The Japanese Invasion Of India Is Defeated At The Battles Of Kohima And Imphal
+#NAME= DE 50 - The Japanese Invasion Of India Is Defeated At The Battles Of Kohima And Imphal (Historical)
 #POPUP= The Japanese Invasion Of India Is Defeated At The Battles Of Kohima And Imphal
 #MESSAGE=
 #IMAGE= kohima.png
@@ -4326,7 +3554,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4345,7 +3573,7 @@
 }
 
 {
-#NAME= DE 173 - Japanese Pilots Begin Kamikaze Attacks In The Pacific
+#NAME= DE 50 - Japanese Pilots Begin Kamikaze Attacks In The Pacific (Historical)
 #POPUP= Japanese Pilots Begin Kamikaze Attacks In The Pacific
 #MESSAGE=
 #IMAGE= kamikaze.png
@@ -4355,7 +3583,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4374,7 +3602,7 @@
 }
 
 {
-#NAME= DE 173 - General Slim Defeats The Japanese in Burma, Liberating Mandalay
+#NAME= DE 50 - General Slim Defeats The Japanese in Burma, Liberating Mandalay (Historical)
 #POPUP= The Allies Defeat The Japanese in Burma, Liberating Mandalay
 #MESSAGE=
 #IMAGE= burma.png
@@ -4384,7 +3612,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4406,7 +3634,7 @@
 ; Val d'Aran Invasion
 ; Historical date of event was 1944/10/19
 {
-#NAME= DE 173 - Spanish Republicans Invade Catalonia In An Attempt To Bring Down Franco
+#NAME= DE 50 - Spanish Republicans Invade Catalonia In An Attempt To Bring Down Franco (Historical)
 #POPUP= Spanish Republicans Invade Catalonia In An Attempt To Bring Down Franco
 #MESSAGE=
 #IMAGE= spanish_maquis.png
@@ -4416,7 +3644,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 101
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4446,7 +3674,7 @@
 ;
 ; Eben Emael:
 {
-#NAME= DE 173 - German Forces Capture Eben Emael (Historical)
+#NAME= DE 50 - German Forces Capture Eben Emael (Historical)
 #POPUP= German Forces Capture Eben Emael
 #MESSAGE=
 #IMAGE= eben_emael.png
@@ -4457,7 +3685,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4481,7 +3709,7 @@
 ;
 ; Blitzkrieg:
 {
-#NAME= DE 173 - ALLIED AI: German Blitzkrieg (Historical)
+#NAME= DE 50 - German Blitzkrieg Continues Towards Paris (Historical)
 #POPUP= German Blitzkrieg Continues Towards Paris
 #MESSAGE=
 #IMAGE= blitzkrieg.png, rommel_in_france.png
@@ -4492,7 +3720,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4523,7 +3751,7 @@
 ; Fall Of France:
 ; Historical date of event was 1940/06/22
 {
-#NAME= DE 173 - ALLIED AI: Fall Of France (100%)
+#NAME= DE 50 - Fall Of France (Historical)
 #POPUP= UK Prepares For Possible Axis Invasion
 #MESSAGE=
 #IMAGE= uk_stands_alone.png
@@ -4534,7 +3762,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4557,7 +3785,7 @@
 ;
 ; Historical date of event was 1941/08/14
 {
-#NAME= DE 173 - Atlantic Charter: Joint Declaration By Churchill And Roosevelt As A First Statement Of War Aims
+#NAME= DE 50 - Atlantic Charter: Joint Declaration By Churchill And Roosevelt As A First Statement Of War Aims (Historical)
 #POPUP= Atlantic Charter: Joint Declaration By Churchill And Roosevelt As A First Statement Of War Aims
 #MESSAGE=
 #IMAGE= atlanticcharter.png
@@ -4568,7 +3796,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4590,7 +3818,7 @@
 
 ;REMOVE1942
 {
-#NAME= DE 173 - Allied Governments Sign The Declaration Of The United Nations Calling For Complete Victory Over The Axis
+#NAME= DE 50 - Allied Governments Sign The Declaration Of The United Nations Calling For Complete Victory Over The Axis (Historical)
 #POPUP= Allied Governments Sign The Declaration Of The United Nations Calling For Complete Victory Over The Axis
 #MESSAGE=
 #IMAGE= unitednations.png
@@ -4601,7 +3829,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4623,7 +3851,7 @@
 }
 
 {
-#NAME= DE 173 - The Founding Conference Of The United Nations Organization Begins In San Francisco
+#NAME= DE 50 - The Founding Conference Of The United Nations Organization Begins In San Francisco (Historical)
 #POPUP= The Founding Conference Of The United Nations Organization Begins In San Francisco
 #MESSAGE=
 #IMAGE= unitednations1945.png
@@ -4634,7 +3862,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4660,7 +3888,7 @@
 ; Allies Land In North Africa:
 ; Historical date of event was 1942/11/08
 {
-#NAME= DE 173 - ALLIED AI: Operation Torch (100%)
+#NAME= DE 50 - Operation Torch (Historical)
 #POPUP= US Troops Land In North Africa
 #MESSAGE=
 #IMAGE= torch.png
@@ -4671,7 +3899,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -4694,7 +3922,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - Weygand Becomes French CinC And Calls On France To Evoke The Spirit Of 1789 And 1914
+#NAME= DE 50 - Weygand Becomes French CinC And Calls On France To Evoke The Spirit Of 1789 And 1914 (Historical)
 #POPUP= Weygand Becomes French CinC And Calls On France To Evoke The Spirit Of 1789 And 1914
 #MESSAGE=
 #IMAGE= weygandmay1940.png
@@ -4705,7 +3933,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 40
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4728,7 +3956,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - The New York Herald Tribune Calls On The USA To Enter The War
+#NAME= DE 50 - The New York Herald Tribune Calls On The USA To Enter The War (Historical)
 #POPUP= The New York Herald Tribune Calls On The USA To Enter The War
 #MESSAGE=
 #IMAGE=
@@ -4739,7 +3967,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 35
 #PRIVATE= 0
@@ -4761,7 +3989,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - Former British Prime Minister Neville Chamberlain Dies
+#NAME= DE 50 - Former British Prime Minister Neville Chamberlain Dies (Historical)
 #POPUP= Former British Prime Minister Neville Chamberlain Dies
 #MESSAGE=
 #IMAGE= nevillechamberlain.png
@@ -4772,7 +4000,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4793,7 +4021,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - Al Bowlly Is Killed In London
+#NAME= DE 50 - Al Bowlly Is Killed In London (Historical)
 #POPUP= The Popular Singer Al Bowlly Dies During An Air Raid
 #MESSAGE=
 #IMAGE= albowlly.png
@@ -4804,7 +4032,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4826,7 +4054,7 @@
 
 ;REMOVE1943
 { 
-#NAME= DE 173 - The Common Wealth Party Is Formed In The UK To Challenge The Electoral Pact
+#NAME= DE 50 - The Common Wealth Party Is Formed In The UK To Challenge The Electoral Pact (Historical)
 #POPUP= The Common Wealth Party Is Formed In The UK To Challenge The Electoral Pact
 #MESSAGE=
 #IMAGE=
@@ -4837,7 +4065,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4858,7 +4086,7 @@
 
 ;REMOVE1943
 {
-#NAME= DE 173 - The Common Wealth Party Gains Ground In The UK, Winning Their First Election
+#NAME= DE 50 - The Common Wealth Party Gains Ground In The UK, Winning Their First Election (Historical)
 #POPUP= The Common Wealth Party Gains Ground In The UK, Winning Their First Election
 #MESSAGE=
 #IMAGE= ukelection.png
@@ -4869,7 +4097,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4890,7 +4118,7 @@
 
 ;REMOVE1940
 {
-#NAME= DE 173 - The IRA Attacks Dublin's Phoenix Park Magazine Fort
+#NAME= DE 50 - The IRA Attacks Dublin's Phoenix Park Magazine Fort (Historical)
 #POPUP= The IRA Attacks Dublin's Phoenix Park Magazine Fort
 #MESSAGE=
 #IMAGE= phoenixpark.png
@@ -4901,7 +4129,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 57
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4922,7 +4150,7 @@
 
 ;REMOVE1940
 {
-#NAME= DE 173 - The Irish Republic Imprisons Hundreds Of IRA Activists
+#NAME= DE 50 - The Irish Republic Imprisons Hundreds Of IRA Activists (Historical)
 #POPUP= The Irish Republic Imprisons Hundreds Of IRA Activists
 #MESSAGE=
 #IMAGE=
@@ -4933,7 +4161,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 57
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4954,7 +4182,7 @@
 
 ;REMOVE1940
 {
-#NAME= DE 173 - IRA Bombs Explode In Birmingham And London
+#NAME= DE 50 - IRA Bombs Explode In Birmingham And London (Historical)
 #POPUP= IRA Bombs Explode In Birmingham And London
 #MESSAGE=
 #IMAGE=
@@ -4965,7 +4193,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 57
 #TRIGGER= 30
 #PRIVATE= 0
@@ -4986,7 +4214,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - Hitler's Sister-In-Law Bridget Dowling Shows Her Support For The Allied War Effort
+#NAME= DE 50 - Hitler's Sister-In-Law Bridget Dowling Shows Her Support For The Allied War Effort (Historical)
 #POPUP= Hitler's Sister-In-Law Bridget Dowling Shows Her Support For The Allied War Effort
 #MESSAGE=
 #IMAGE= bridgetdowling.png
@@ -4997,7 +4225,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 112
 #TRIGGER= 35
 #PRIVATE= 0
@@ -5018,7 +4246,7 @@
 
 ;REMOVE1943
 {
-#NAME= DE 173 - Warsaw Ghetto Rising
+#NAME= DE 50 - Warsaw Ghetto Rising (Historical)
 #POPUP= Warsaw Ghetto Rising
 #MESSAGE=
 #IMAGE= warsawghetto.png
@@ -5029,7 +4257,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 85
 #TRIGGER= 100
 #PRIVATE= 0
@@ -5050,7 +4278,7 @@
 
 ;REMOVE1940
 {
-#NAME= DE 173 - George Elser Attempts To Kill Hitler
+#NAME= DE 50 - George Elser Attempts To Kill Hitler (Historical)
 #POPUP= George Elser Attempts To Kill Hitler In The Munich Beer Hall Putsch Commemoration
 #MESSAGE=
 #IMAGE= georgeelser.png
@@ -5061,7 +4289,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 45
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5082,7 +4310,7 @@
 
 ;REMOVE1942
 {
-#NAME= DE 173 - The Bulgarian Communist Party Forms The Fatherland Front Opposition Movement
+#NAME= DE 50 - The Bulgarian Communist Party Forms The Fatherland Front Opposition Movement (Historical)
 #POPUP= The Bulgarian Communist Party Forms The Fatherland Front Opposition Movement
 #MESSAGE=
 #IMAGE=
@@ -5093,7 +4321,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 91
 #TRIGGER= 50
 #PRIVATE= 0
@@ -5115,7 +4343,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - Ramón Mercader Assassinates Leon Trotsky In Mexico 
+#NAME= DE 50 - Ramón Mercader Assassinates Leon Trotsky In Mexico  (Historical)
 #POPUP= Ramón Mercader Assassinates Leon Trotsky In Mexico
 #MESSAGE=
 #IMAGE= trotsky.png
@@ -5126,7 +4354,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 91
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5147,7 +4375,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - Spanish Falangists Attack The British Embassy In Madrid
+#NAME= DE 50 - Spanish Falangists Attack The British Embassy In Madrid (Historical)
 #POPUP= Spanish Falangists Attack The British Embassy In Madrid
 #MESSAGE=
 #IMAGE=
@@ -5158,7 +4386,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 99
 #TRIGGER= 100
 #PRIVATE= 0
@@ -5181,7 +4409,7 @@
 }
 
 {
-#NAME= DE 173 - Don Juan's Lausanne Manifesto Attacks Franco And Calls For The Monarchy To Be Restored
+#NAME= DE 50 - Don Juan's Lausanne Manifesto Attacks Franco And Calls For The Monarchy To Be Restored (Historical)
 #POPUP= Don Juan's Lausanne Manifesto Attacks Franco And Calls For The Monarchy To Be Restored
 #MESSAGE=
 #IMAGE=
@@ -5192,7 +4420,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 99
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5214,7 +4442,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - Admiral Canaris And Air General Wolfram Von Richthofen Visit Spain
+#NAME= DE 50 - Admiral Canaris And Air General Wolfram Von Richthofen Visit Spain (Historical)
 #POPUP= Admiral Canaris And Air General Wolfram Von Richthofen Visit Spain
 #MESSAGE=
 #IMAGE=
@@ -5225,7 +4453,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 45
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5247,7 +4475,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - Arthur Koestler's Darkness At Noon Is Published In The UK
+#NAME= DE 50 - Arthur Koestler's Darkness At Noon Is Published In The UK (Historical)
 #POPUP= Arthur Koestler's Darkness At Noon Is Published In The UK
 #MESSAGE=
 #IMAGE= darknessatnoon.png
@@ -5258,7 +4486,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5279,7 +4507,7 @@
 
 ;REMOVE1944
 {
-#NAME= DE 173 - The Great Escape: 76 Prisoners Of War Escape From Stalag Luft III
+#NAME= DE 50 - The Great Escape: 76 Prisoners Of War Escape From Stalag Luft III (Historical)
 #POPUP= The Great Escape: 76 Prisoners Of War Escape From Stalag Luft III
 #MESSAGE=
 #IMAGE= greatescape.png
@@ -5290,7 +4518,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #PRIVATE= 0
@@ -5314,7 +4542,7 @@
 }
 
 {
-#NAME= DE 173 - Glenn Miller's Plane Goes Missing Over The English Channel
+#NAME= DE 50 - Glenn Miller's Plane Goes Missing Over The English Channel (Historical)
 #POPUP= Glenn Miller's Plane Goes Missing Over The English Channel
 #MESSAGE=
 #IMAGE= glennmiller.png
@@ -5325,7 +4553,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 40
 #PRIVATE= 0
@@ -5347,7 +4575,7 @@
 
 ;REMOVE1942
 {
-#NAME= DE 173 - Douglas Bader Is Shot Down Over France And Taken Prisoner, Later Ending Up In Colditz
+#NAME= DE 50 - Douglas Bader Is Shot Down Over France And Taken Prisoner, Later Ending Up In Colditz (Historical)
 #POPUP= Douglas Bader Is Shot Down Over France And Taken Prisoner, Later Ending Up In Colditz
 #MESSAGE=
 #IMAGE= douglasbader.png
@@ -5358,7 +4586,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5379,7 +4607,7 @@
 }
 
 {
-#NAME= DE 173 - Werwolf Activity: The Mayor of Aachen, Franz Oppenhoff, Is Assassinated
+#NAME= DE 50 - Werwolf Activity: The Mayor of Aachen, Franz Oppenhoff, Is Assassinated (Historical)
 #POPUP= Werwolf Activity: The Mayor of Aachen, Franz Oppenhoff, Is Assassinated
 #MESSAGE=
 #IMAGE=
@@ -5390,7 +4618,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 45
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5412,7 +4640,7 @@
 
 ;REMOVE1942
 {
-#NAME= DE 173 - The Air Ace Adolf Galland Is Appointed The Luftwaffe's Inspector Of Fighters
+#NAME= DE 50 - The Air Ace Adolf Galland Is Appointed The Luftwaffe's Inspector Of Fighters (Historical)
 #POPUP= The Air Ace Adolf Galland Is Appointed The Luftwaffe's Inspector Of Fighters
 #MESSAGE=
 #IMAGE= adolfgalland.png
@@ -5423,7 +4651,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 45
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5444,7 +4672,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - Six Peace Pledge Union Members Are Tried For Encouraging Disaffection In The British Army
+#NAME= DE 50 - Six Peace Pledge Union Members Are Tried For Encouraging Disaffection In The British Army (Historical)
 #POPUP= Six Peace Pledge Union Members Are Tried For Encouraging Disaffection In The British Army
 #MESSAGE=
 #IMAGE=
@@ -5455,7 +4683,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 112
 #TRIGGER= 10
 #PRIVATE= 0
@@ -5475,7 +4703,7 @@
 }
 
 {
-#NAME= DE 173 - The Editors Of War Commentary Are Tried For Inciting Disaffection In The British Armed Forces
+#NAME= DE 50 - The Editors Of War Commentary Are Tried For Inciting Disaffection In The British Armed Forces (Historical)
 #POPUP= The Editors Of War Commentary Are Tried For Inciting Disaffection In The British Armed Forces
 #MESSAGE=
 #IMAGE=
@@ -5486,7 +4714,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 13
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5507,7 +4735,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - Alexandros Koryzis Succeeds Metaxas As Prime Minister Following The Latter's Death
+#NAME= DE 50 - Alexandros Koryzis Succeeds Metaxas As Prime Minister Following The Latter's Death (Historical)
 #POPUP= Alexandros Koryzis Succeeds Metaxas As Prime Minister Following The Latter's Death
 #MESSAGE=
 #IMAGE=
@@ -5519,7 +4747,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 46
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5540,7 +4768,7 @@
 
 ;REMOVE1943
 {
-#NAME= DE 173 - Basil Rathbone And Nigel Bruce Star In The Propaganda Film Sherlock Holmes And The Secret Weapon
+#NAME= DE 50 - Basil Rathbone And Nigel Bruce Star In The Propaganda Film Sherlock Holmes And The Secret Weapon (Historical)
 #POPUP= Basil Rathbone And Nigel Bruce Star In The Propaganda Film Sherlock Holmes And The Secret Weapon
 #MESSAGE=
 #IMAGE= sherlockholmes.png
@@ -5552,7 +4780,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 112
 #TRIGGER= 35
 #PRIVATE= 0
@@ -5573,7 +4801,7 @@
 
 ;REMOVE1942
 {
-#NAME= DE 173 - The Andrews Sisters Release "Don't Sit Under the Apple Tree (with Anyone Else but Me)"
+#NAME= DE 50 - The Andrews Sisters Release "Don't Sit Under the Apple Tree (with Anyone Else but Me)" (Historical)
 #POPUP= The Andrews Sisters Release "Don't Sit Under the Apple Tree (with Anyone Else but Me)"
 #MESSAGE=
 #IMAGE= andrewssisters.png
@@ -5585,7 +4813,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 35
 #PRIVATE= 0
@@ -5606,7 +4834,7 @@
 
 ;REMOVE1944
 {
-#NAME= DE 173 - Marlene Dietrich Records Lili Marlene And Visits Wounded Soldiers To Raise Morale
+#NAME= DE 50 - Marlene Dietrich Records Lili Marlene And Visits Wounded Soldiers To Raise Morale (Historical)
 #POPUP= Marlene Dietrich Records Lili Marlene And Visits Wounded Soldiers To Raise Morale
 #MESSAGE=
 #IMAGE= marlenedietrich.png
@@ -5618,7 +4846,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 35
 #PRIVATE= 0
@@ -5639,7 +4867,7 @@
 
 ;REMOVE1943
 {
-#NAME= DE 173 - Enver Hoxha's Communist Party Forms The Albanian National Liberation Front
+#NAME= DE 50 - Enver Hoxha's Communist Party Forms The Albanian National Liberation Front (Historical)
 #POPUP= Enver Hoxha's Communist Party Forms The Albanian National Liberation Front
 #MESSAGE=
 #IMAGE= enverhoxha.png
@@ -5651,7 +4879,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 3
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5672,7 +4900,7 @@
 
 ;REMOVE1942
 {
-#NAME= DE 173 - Canadians Vote In A Plebiscite To Allow Conscription
+#NAME= DE 50 - Canadians Vote In A Plebiscite To Allow Conscription (Historical)
 #POPUP= Canadians Vote In A Plebiscite To Allow Conscription
 #MESSAGE=
 #IMAGE= canadaplebiscite.png
@@ -5684,7 +4912,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 21
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5705,7 +4933,7 @@
 }
 
 {
-#NAME= DE 173 - Terrace Mutiny: Some Canadian Soldiers Protest At Having To Serve Overseas
+#NAME= DE 50 - Terrace Mutiny: Some Canadian Soldiers Protest At Having To Serve Overseas (Historical)
 #POPUP= Terrace Mutiny: Some Canadian Soldiers Protest At Having To Serve Overseas
 #MESSAGE=
 #IMAGE=
@@ -5717,7 +4945,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 21
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5739,7 +4967,7 @@
 
 ;REMOVE1943
 {
-#NAME= DE 173 - The Red Orchestra Espionage Group Is Broken Up In Berlin
+#NAME= DE 50 - The Red Orchestra Espionage Group Is Broken Up In Berlin (Historical)
 #POPUP= The Red Orchestra Espionage Group Is Broken Up In Berlin
 #MESSAGE= 
 #IMAGE= redorchestra.png
@@ -5751,7 +4979,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 91
 #TRIGGER= 100
 #PRIVATE= 0
@@ -5772,7 +5000,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - Joe DiMaggio Begins His Hitting Streak In US Baseball
+#NAME= DE 50 - Joe DiMaggio Begins His Hitting Streak In US Baseball (Historical)
 #POPUP= Joe DiMaggio Begins His Hitting Streak In US Baseball
 #MESSAGE=
 #IMAGE= joedimaggio.png
@@ -5784,7 +5012,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 40
 #PRIVATE= 0
@@ -5805,7 +5033,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - Ernest Hemingway's "For Whom The Bell Tolls" Is Published
+#NAME= DE 50 - Ernest Hemingway's "For Whom The Bell Tolls" Is Published (Historical)
 #POPUP= Ernest Hemingway's "For Whom The Bell Tolls" Is Published
 #MESSAGE=
 #IMAGE= hemingway.png
@@ -5817,7 +5045,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 30
 #PRIVATE= 0
@@ -5838,7 +5066,7 @@
 
 ;REMOVE1940
 {
-#NAME= DE 173 - German Security Forces Finally Track Down And Defeat The Polish Resistance Group Led By Hubal
+#NAME= DE 50 - German Security Forces Finally Track Down And Defeat The Polish Resistance Group Led By Hubal (Historical)
 #POPUP= German Security Forces Finally Track Down And Defeat The Polish Resistance Group Led By Hubal
 #MESSAGE=
 #IMAGE= hubal.png
@@ -5850,7 +5078,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 85
 #TRIGGER= 40
 #PRIVATE= 0
@@ -5871,7 +5099,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - Sir Oswald Mosley Is Interned As The Emergency Powers Act Comes Into Force
+#NAME= DE 50 - Sir Oswald Mosley Is Interned As The Emergency Powers Act Comes Into Force (Historical)
 #POPUP= Sir Oswald Mosley Is Interned As The Emergency Powers Act Comes Into Force
 #MESSAGE=
 #IMAGE= oswaldmosley.png
@@ -5883,7 +5111,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 112
 #TRIGGER= 35
 #PRIVATE= 0
@@ -5904,7 +5132,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - The Grand Mufti of Jerusalem Haj Amin al-Husseini Flees For Berlin
+#NAME= DE 50 - The Grand Mufti of Jerusalem Haj Amin al-Husseini Flees For Berlin (Historical)
 #POPUP= The Grand Mufti of Jerusalem Haj Amin al-Husseini Flees Iraq For Berlin
 #MESSAGE=
 #IMAGE= grandmufti.png
@@ -5916,7 +5144,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 45
 #TRIGGER= 50
 #PRIVATE= 0
@@ -5937,7 +5165,7 @@
 }
 
 {
-#NAME= DE 173 - The MV Wilhelm Gustloff (Military Transport) Is Sunk In The Baltic While Evacuating Soldiers And Refugees
+#NAME= DE 50 - The MV Wilhelm Gustloff (Military Transport) Is Sunk In The Baltic While Evacuating Soldiers And Refugees (Historical)
 #POPUP= The MV Wilhelm Gustloff (Military Transport) Is Sunk In The Baltic While Evacuating Soldiers And Refugees
 #MESSAGE=
 #IMAGE= wilhelmgustloff.png
@@ -5949,7 +5177,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 45
 #TRIGGER= 75
 #PRIVATE= 0
@@ -5972,7 +5200,7 @@
 
 ;REMOVE1943
 {
-#NAME= DE 173 - Leslie Howard's Plane is Shot Down over the Bay of Biscay
+#NAME= DE 50 - Leslie Howard's Plane is Shot Down over the Bay of Biscay (Historical)
 #POPUP= Leslie Howard's Plane is Shot Down over the Bay of Biscay
 #MESSAGE=
 #IMAGE= lesliehoward.png
@@ -5984,7 +5212,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6006,7 +5234,7 @@
 
 ;REMOVE1944
 {
-#NAME= DE 173 - British Soldiers In The Cairo Forces Parliament Call For Nationalization Of The UK Economy
+#NAME= DE 50 - British Soldiers In The Cairo Forces Parliament Call For Nationalization Of The UK Economy (Historical)
 #POPUP= British Soldiers In The Cairo Forces Parliament Call For Nationalization Of The UK Economy
 #MESSAGE=
 #IMAGE=
@@ -6018,7 +5246,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6039,7 +5267,7 @@
 
 ;REMOVE1944
 {
-#NAME= DE 173 - The American Poet Ezra Pound Is Indicted For Treason For Broadcasting For Italy
+#NAME= DE 50 - The American Poet Ezra Pound Is Indicted For Treason For Broadcasting For Italy (Historical)
 #POPUP= The American Poet Ezra Pound Is Indicted For Treason For Broadcasting For Italy
 #MESSAGE=
 #IMAGE= ezrapound.png
@@ -6051,7 +5279,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6073,7 +5301,7 @@
 
 ;REMOVE1943
 {
-#NAME= DE 173 - Britain's Forces' Sweetheart Vera Lynn Stars In We'll Meet Again
+#NAME= DE 50 - Britain's Forces' Sweetheart Vera Lynn Stars In We'll Meet Again (Historical)
 #POPUP= Britain's Forces' Sweetheart Vera Lynn Stars In We'll Meet Again
 #MESSAGE=
 #IMAGE= veralynn.png
@@ -6085,7 +5313,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6106,7 +5334,7 @@
 
 ;REMOVE1944
 {
-#NAME= DE 173 - Gary Cooper And Ingrid Bergman Star In Hemingway's "For Whom The Bell Tolls"
+#NAME= DE 50 - Gary Cooper And Ingrid Bergman Star In Hemingway's "For Whom The Bell Tolls" (Historical)
 #POPUP= Gary Cooper And Ingrid Bergman Star In Hemingway's "For Whom The Bell Tolls"
 #MESSAGE=
 #IMAGE= forwhomthebelltolls.png
@@ -6118,7 +5346,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6139,7 +5367,7 @@
 
 ;REMOVE1943
 {
-#NAME= DE 173 - The Beveridge Report Is Published In The UK Calling for Greater Social Security
+#NAME= DE 50 - The Beveridge Report Is Published In The UK Calling for Greater Social Security (Historical)
 #POPUP= The Beveridge Report Is Published In The UK Calling for Greater Social Security
 #MESSAGE=
 #IMAGE= beveridge.png
@@ -6151,7 +5379,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6171,7 +5399,7 @@
 }
 
 {
-#NAME= DE 173 - George Orwell's "Animal Farm" Is Published In The UK
+#NAME= DE 50 - George Orwell's "Animal Farm" Is Published In The UK (Historical)
 #POPUP= George Orwell's "Animal Farm" Is Published In The UK
 #MESSAGE=
 #IMAGE= animalfarm.png
@@ -6183,7 +5411,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #PRIVATE= 0
@@ -6204,7 +5432,7 @@
 
 ;REMOVE1942
 {
-#NAME= DE 173 - The Bolshoi Theater Performs Shostakovich's 7th Symphony In Leningrad
+#NAME= DE 50 - The Bolshoi Theater Performs Shostakovich's 7th Symphony In Leningrad
 #POPUP= The Bolshoi Theater Performs Shostakovich's 7th Symphony In Leningrad
 #MESSAGE=
 #IMAGE= shostakovich.png
@@ -6216,7 +5444,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 116
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6238,7 +5466,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - George Formby Entertains The Troops To Raise Morale
+#NAME= DE 50 - George Formby Entertains The Troops To Raise Morale
 #POPUP= George Formby Entertains The Troops To Raise Morale
 #MESSAGE=
 #IMAGE= georgeformby.png
@@ -6250,7 +5478,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 112
 #TRIGGER= 40
 #PRIVATE= 0
@@ -6272,7 +5500,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - German Radio Starts Broadcasting "Charlie And His Orchestra" To Listeners In The UK
+#NAME= DE 50 - German Radio Starts Broadcasting "Charlie And His Orchestra" To Listeners In The UK
 #POPUP= German Radio Starts Broadcasting "Charlie And His Orchestra" To Listeners In The UK
 #MESSAGE=
 #IMAGE= charlieorchestra.png
@@ -6284,7 +5512,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 45
 #TRIGGER= 60
 #PRIVATE= 0
@@ -6305,7 +5533,7 @@
 
 ;REMOVE1942
 {
-#NAME= DE 173 - Zoot Suit Riots Break Out In Los Angeles
+#NAME= DE 50 - Zoot Suit Riots Break Out In Los Angeles
 #POPUP= Zoot Suit Riots Break Out In Los Angeles
 #MESSAGE=
 #IMAGE= zoot.png
@@ -6317,7 +5545,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6338,7 +5566,7 @@
 
 ;REMOVE1944
 {
-#NAME= DE 173 - Tsar Boris III Of Bulgaria Dies And Is Succeeded By His Six Year Old Son Simeon III
+#NAME= DE 50 - Tsar Boris III Of Bulgaria Dies And Is Succeeded By His Six Year Old Son Simeon III
 #POPUP= Tsar Boris III Of Bulgaria Dies And Is Succeeded By His Six Year Old Son Simeon III
 #MESSAGE=
 #IMAGE= tsarboris.png
@@ -6350,7 +5578,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 19
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6371,7 +5599,7 @@
 
 ;REMOVE1943
 {
-#NAME= DE 173 - 34 Die And Hundreds Are Injured In Race Riots In Detroit
+#NAME= DE 50 - 34 Die And Hundreds Are Injured In Race Riots In Detroit
 #POPUP= 34 Die And Hundreds Are Injured In Race Riots In Detroit
 #MESSAGE=
 #IMAGE=
@@ -6383,7 +5611,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 40
 #PRIVATE= 0
@@ -6403,7 +5631,7 @@
 }
 
 {
-#NAME= DE 173 - Spanish Republicans Imprisoned In Mauthausen Welcome Their Liberators
+#NAME= DE 50 - Spanish Republicans Imprisoned In Mauthausen Welcome Their Liberators
 #POPUP= Spanish Republicans Imprisoned In Mauthausen Welcome Their Liberators
 #MESSAGE=
 #IMAGE= mauthausen.png
@@ -6415,7 +5643,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 101
 #TRIGGER= 50
 #PRIVATE= 0
@@ -6438,7 +5666,7 @@
 
 ;REMOVE1940
 {
-#NAME= DE 173 - Vidkun Quisling Proclaims Himself Prime Minister Of Norway
+#NAME= DE 50 - Vidkun Quisling Proclaims Himself Prime Minister Of Norway
 #POPUP= Vidkun Quisling Proclaims Himself Prime Minister Of Norway
 #MESSAGE=
 #IMAGE= vidkunquisling.png
@@ -6450,7 +5678,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 78
 #TRIGGER= 100
 #PRIVATE= 0
@@ -6471,7 +5699,7 @@
 
 ;REMOVE1944
 {
-#NAME= DE 173 - The Nobel Prize Winning Physicist Niels Bohr Escapes From Denmark
+#NAME= DE 50 - The Nobel Prize Winning Physicist Niels Bohr Escapes From Denmark
 #POPUP= The Nobel Prize Winning Physicist Niels Bohr Escapes From Denmark
 #MESSAGE= 
 #IMAGE= nielsbohr.png
@@ -6483,7 +5711,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 31
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6504,7 +5732,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - Parisians Clash With Police During Armistice Day Commemorations
+#NAME= DE 50 - Parisians Clash With Police During Armistice Day Commemorations
 #POPUP= Parisians Clash With Police During Armistice Day Commemorations
 #MESSAGE=
 #IMAGE=
@@ -6516,7 +5744,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 40
 #TRIGGER= 50
 #PRIVATE= 0
@@ -6536,7 +5764,7 @@
 }
 
 {
-#NAME= DE 173 - Pro-Independence Demonstrations In Algeria Lead To Fighting
+#NAME= DE 50 - Pro-Independence Demonstrations In Algeria Lead To Fighting
 #POPUP= Pro-Independence Demonstrations In Algeria Lead To Fighting
 #MESSAGE=
 #IMAGE= algerianprotest.png
@@ -6548,7 +5776,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 40
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6569,7 +5797,7 @@
 
 ;REMOVE1943
 {
-#NAME= DE 173 - The French Resistance Leader Jean Moulin Is Arrested
+#NAME= DE 50 - The French Resistance Leader Jean Moulin Is Arrested
 #POPUP= The French Resistance Leader Jean Moulin Is Arrested
 #MESSAGE=
 #IMAGE= jeanmoulin.png
@@ -6581,7 +5809,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 40
 #TRIGGER= 100
 #PRIVATE= 0
@@ -6602,7 +5830,7 @@
 
 ;REMOVE1942
 {
-#NAME= DE 173 - Fighting Breaks Out At Mass Demonstrations In Lyon And Marseille On Bastille Day
+#NAME= DE 50 - Fighting Breaks Out At Mass Demonstrations In Lyon And Marseille On Bastille Day
 #POPUP= Fighting Breaks Out At Mass Demonstrations In Lyon And Marseille On Bastille Day
 #MESSAGE=
 #IMAGE= marseillesbastilleday.png
@@ -6614,7 +5842,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 40
 #TRIGGER= 40
 #PRIVATE= 0
@@ -6636,7 +5864,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - Hitler's Deputy Rudolf Hess Flies To The UK To Negotiate Peace Terms
+#NAME= DE 50 - Hitler's Deputy Rudolf Hess Flies To The UK To Negotiate Peace Terms
 #POPUP= Hitler's Deputy Rudolf Hess Flies To The UK To Negotiate Peace Terms
 #MESSAGE=
 #IMAGE= rudolfhess.png
@@ -6648,7 +5876,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #PRIVATE= 0
@@ -6670,7 +5898,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - Kaiser Wilhelm II Dies In Exile In The Netherlands
+#NAME= DE 50 - Kaiser Wilhelm II Dies In Exile In The Netherlands
 #POPUP= Kaiser Wilhelm II Dies In Exile In The Netherlands
 #MESSAGE=
 #IMAGE= kaiserwilhelm.png
@@ -6682,7 +5910,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 45
 #TRIGGER= 40
 #PRIVATE= 0
@@ -6703,7 +5931,7 @@
 
 ;REMOVE1940
 {
-#NAME= DE 173 - Gone With The Wind Is Released In US Cinemas
+#NAME= DE 50 - Gone With The Wind Is Released In US Cinemas
 #POPUP= Gone With The Wind Is Released In US Cinemas
 #MESSAGE=
 #IMAGE= gonewiththewind.png
@@ -6715,7 +5943,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 40
 #PRIVATE= 0
@@ -6736,7 +5964,7 @@
 
 ;REMOVE1942
 {
-#NAME= DE 173 - OXFAM Is Founded In The UK To Provide Famine Relief To Those Starving In Europe
+#NAME= DE 50 - OXFAM Is Founded In The UK To Provide Famine Relief To Those Starving In Europe
 #POPUP= OXFAM Is Founded In The UK To Provide Famine Relief To Those Starving In Europe
 #MESSAGE=
 #IMAGE=
@@ -6748,7 +5976,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6770,7 +5998,7 @@
 
 ;REMOVE1942
 {
-#NAME= DE 173 - British Communists Lead The Campaign Calling For A Second Front Now!
+#NAME= DE 50 - British Communists Lead The Campaign Calling For A Second Front Now!
 #POPUP= British Communists Lead The Campaign Calling For A Second Front Now!
 #MESSAGE=
 #IMAGE= secondfrontnow.png
@@ -6782,7 +6010,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 91
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6811,7 +6039,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - The America First Committee Is Formed To Keep The USA Out Of The War
+#NAME= DE 50 - The America First Committee Is Formed To Keep The USA Out Of The War
 #POPUP= The America First Committee Is Formed To Keep The USA Out Of The War
 #MESSAGE=
 #IMAGE=
@@ -6823,7 +6051,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6844,7 +6072,7 @@
 
 ;REMOVE1943
 {
-#NAME= DE 173 - African Americans Launch The Double V Campaign: For Victory Over Fascism And Against Discrimination
+#NAME= DE 50 - African Americans Launch The Double V Campaign: For Victory Over Fascism And Against Discrimination
 #POPUP= African Americans Launch The Double V Campaign: For Victory Over Fascism And Against Discrimination
 #MESSAGE=
 #IMAGE= doublev.png
@@ -6856,7 +6084,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 40
 #PRIVATE= 0
@@ -6877,7 +6105,7 @@
 
 ;REMOVE1943
 {
-#NAME= DE 173 - Bing Crosby Singing Irving Berlin's "White Christmas" Tops The US Charts
+#NAME= DE 50 - Bing Crosby Singing Irving Berlin's "White Christmas" Tops The US Charts
 #POPUP= Bing Crosby Singing Irving Berlin's "White Christmas" Tops The US Charts
 #MESSAGE=
 #IMAGE= bingcrosby.png
@@ -6889,7 +6117,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 30
 #PRIVATE= 0
@@ -6910,7 +6138,7 @@
 
 ;REMOVE1944
 {
-#NAME= DE 173 - The Actor And USAAF Officer James Stewart Is Awarded The Croix De Guerre
+#NAME= DE 50 - The Actor And USAAF Officer James Stewart Is Awarded The Croix De Guerre
 #POPUP= The Actor And USAAF Officer James Stewart Is Awarded The Croix De Guerre
 #MESSAGE=
 #IMAGE= jamesstewart.png
@@ -6922,7 +6150,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 75
 #PRIVATE= 0
@@ -6944,7 +6172,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - President Franklin D. Roosevelt Is Re-Elected With 55% Of The Vote
+#NAME= DE 50 - President Franklin D. Roosevelt Is Re-Elected With 55% Of The Vote
 #POPUP= President Franklin D. Roosevelt Is Re-Elected With 55% Of The Vote
 #MESSAGE=
 #IMAGE= fdrelection.png
@@ -6956,7 +6184,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 50
 #PRIVATE= 0
@@ -6977,7 +6205,7 @@
 
 ;REMOVE1943
 {
-#NAME= DE 173 - Peron Begins His Rise To Power As A Military Coup Overthrows The Government Of Argentina
+#NAME= DE 50 - Peron Begins His Rise To Power As A Military Coup Overthrows The Government Of Argentina
 #POPUP= Peron Begins His Rise To Power As A Military Coup Overthrows The Government Of Argentina
 #MESSAGE=
 #IMAGE= peron.png
@@ -6989,7 +6217,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 5
 #TRIGGER= 30
 #PRIVATE= 0
@@ -7010,7 +6238,7 @@
 
 ;REMOVE1942
 {
-#NAME= DE 173 - The Citizens Of Luxembourg Reject Unification With Germany In A Plebiscite
+#NAME= DE 50 - The Citizens Of Luxembourg Reject Unification With Germany In A Plebiscite
 #POPUP= The Citizens Of Luxembourg Reject Unification With Germany In A Plebiscite
 #MESSAGE=
 #IMAGE=
@@ -7022,7 +6250,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 65
 #TRIGGER= 30
 #PRIVATE= 0
@@ -7043,7 +6271,7 @@
 
 ;REMOVE1943
 {
-#NAME= DE 173 - Brazil Declares War On Germany And Starts Raising A Force To Fight In Europe
+#NAME= DE 50 - Brazil Declares War On Germany And Starts Raising A Force To Fight In Europe
 #POPUP= Brazil Declares War On Germany And Starts Raising A Force To Fight In Europe
 #MESSAGE=
 #IMAGE=
@@ -7055,7 +6283,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 16
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7077,7 +6305,7 @@
 
 ;REMOVE1944
 {
-#NAME= DE 173 - Clandestine Slovak National Council Formed Favouring Reincorporation Into Czechoslovakia
+#NAME= DE 50 - Clandestine Slovak National Council Formed Favouring Reincorporation Into Czechoslovakia
 #POPUP= Clandestine Slovak National Council Formed Favouring Reincorporation Into Czechoslovakia
 #MESSAGE=
 #IMAGE=
@@ -7089,7 +6317,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 96
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7110,7 +6338,7 @@
 
 ;REMOVE1943
 {
-#NAME= DE 173 - Ukrainian Nationalists Form The Clandestine Ukrainian Insurgent Army To Fight For Independence
+#NAME= DE 50 - Ukrainian Nationalists Form The Clandestine Ukrainian Insurgent Army To Fight For Independence
 #POPUP= Ukrainian Nationalists Form The Clandestine Ukrainian Insurgent Army To Fight For Independence
 #MESSAGE=
 #IMAGE= ukrainiannationalist.png
@@ -7122,7 +6350,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 113
 #TRIGGER= 50
 #PRIVATE= 0
@@ -7142,7 +6370,7 @@
 }
 
 {
-#NAME= DE 173 - Swedish Radio Reports That Himmler Is Attempting To Negotiate With The Allies
+#NAME= DE 50 - Swedish Radio Reports That Himmler Is Attempting To Negotiate With The Allies
 #POPUP= Swedish Radio Reports That Himmler Is Attempting To Negotiate With The Allies
 #MESSAGE=
 #IMAGE=
@@ -7154,7 +6382,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 45
 #TRIGGER= 30
 #PRIVATE= 0
@@ -7178,7 +6406,7 @@
 }
 
 {
-#NAME= DE 173 - William Joyce Is Arrested
+#NAME= DE 50 - William Joyce Is Arrested
 #POPUP= "Lord Haw Haw" The British Traitor William Joyce Is Captured
 #MESSAGE=
 #IMAGE= william_joyce.png
@@ -7190,7 +6418,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 112
 #TRIGGER= 30
 #PRIVATE= 0
@@ -7217,7 +6445,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - Japanese Forces Attack The French In Indochina Inflicting Heavy Casualties
+#NAME= DE 50 - Japanese Forces Attack The French In Indochina Inflicting Heavy Casualties
 #POPUP= Japanese Forces Attack The French In Indochina Inflicting Heavy Casualties
 #MESSAGE=
 #IMAGE=
@@ -7229,7 +6457,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7250,7 +6478,7 @@
 
 ;REMOVE1942
 {
-#NAME= DE 173 - The UK And USA Freeze Japanese Assets In Response To Their Actions In French Indochina
+#NAME= DE 50 - The UK And USA Freeze Japanese Assets In Response To Their Actions In French Indochina
 #POPUP= The UK And USA Freeze Japanese Assets In Response To Their Actions In French Indochina
 #MESSAGE=
 #IMAGE=
@@ -7262,7 +6490,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7284,7 +6512,7 @@
 
 ;REMOVE1943
 {
-#NAME= DE 173 - Fall of Singapore (Historical)
+#NAME= DE 50 - Fall of Singapore (Historical)
 #POPUP= Fall Of Singapore - Allied Stronghold Surrenders To Japan
 #MESSAGE=
 #IMAGE= singapore_1.png, singapore_2.png
@@ -7296,7 +6524,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7317,7 +6545,7 @@
 
 ;REMOVE1942
 {
-#NAME= DE 173 - Japanese Attack On Pearl Harbor (Historical)
+#NAME= DE 50 - Japanese Attack On Pearl Harbor (Historical)
 #POPUP= Pearl Harbor Attacked By Japanese Forces
 #MESSAGE=
 #IMAGE= pearl_harbour_1.png, pearl_harbour_2.png, pearl_harbour_3.png, pearl_harbour_4.png
@@ -7329,7 +6557,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7350,7 +6578,7 @@
 
 ;REMOVE1942
 {
-#NAME= DE 173 - US Aircraft Bomb Tokyo In the Doolittle Raid
+#NAME= DE 50 - US Aircraft Bomb Tokyo In the Doolittle Raid
 #POPUP= US Aircraft Bomb Tokyo In the Doolittle Raid
 #MESSAGE=
 #IMAGE= doolittle.png
@@ -7362,7 +6590,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7383,7 +6611,7 @@
 
 ;REMOVE1942
 {
-#NAME= DE 173 - The Japanese Complete Their Conquest Of The Philippines As Corregidor Falls
+#NAME= DE 50 - The Japanese Complete Their Conquest Of The Philippines As Corregidor Falls
 #POPUP= The Japanese Complete Their Conquest Of The Philippines As Corregidor Falls
 #MESSAGE=
 #IMAGE= philippinesconquest.png
@@ -7395,7 +6623,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7416,7 +6644,7 @@
 
 ;REMOVE1942
 {
-#NAME= DE 173 - Battle of Midway (Historical)
+#NAME= DE 50 - Battle of Midway (Historical)
 #POPUP= The Japanese Navy Is Hammered In The Battle Of Midway
 #MESSAGE=
 #IMAGE= midwayvictory.png
@@ -7428,7 +6656,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7449,7 +6677,7 @@
 
 ;REMOVE1943
 {
-#NAME= DE 173 - Battle of Guadalcanal (Historical)
+#NAME= DE 50 - Battle of Guadalcanal (Historical)
 #POPUP= US Marines Assault Japanese Held Islands Of Guadalcanal
 #MESSAGE=
 #IMAGE= guadalcanal_1.png, Guadalcanal_2.png, Guadalcanal_3.png
@@ -7461,7 +6689,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7482,7 +6710,7 @@
 
 ;REMOVE1942
 {
-#NAME= DE 173 - Normandie Liner Sunk (Historical)
+#NAME= DE 50 - Normandie Liner Sunk (Historical)
 #POPUP= The Normandie Ocean Liner Mysteriously Sinks In New York Harbor
 #MESSAGE=
 #IMAGE= uss_lafayette_1.png, uss_lafayette_2.png, uss_lafayette_3.png
@@ -7494,7 +6722,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7515,7 +6743,7 @@
 
 ;REMOVE1944
 {
-#NAME= DE 173 - Battle of Makin and Tarawa (Historical)
+#NAME= DE 50 - Battle of Makin and Tarawa (Historical)
 #POPUP= US Marines Assault Japanese Positions In The Gilbert Islands
 #MESSAGE=
 #IMAGE= gilbert.png
@@ -7527,7 +6755,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7548,7 +6776,7 @@
 
 ;REMOVE1944
 {
-#NAME= DE 173 - Battle of Kwajalein (Historical)
+#NAME= DE 50 - Battle of Kwajalein (Historical)
 #POPUP= Heavy Fighting On The Marshall Islands - US Forces Close In On Japan
 #MESSAGE=
 #IMAGE= kwajalein.png
@@ -7560,7 +6788,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7581,7 +6809,7 @@
 
 ; Historical date of event was 1945/02/23
 {
-#NAME= DE 173 - US Landing On Iwo Jima (Historical)
+#NAME= DE 50 - US Landing On Iwo Jima (Historical)
 #POPUP= US Troops Raise Flag On Mount Suribachi - Fighting Continues On Iwo Jima
 #MESSAGE=
 #IMAGE= suribachi.png
@@ -7593,7 +6821,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7614,7 +6842,7 @@
 
 ;REMOVE1943
 {
-#NAME= DE 173 - Casablanca Conference (Historical)
+#NAME= DE 50 - Casablanca Conference (Historical)
 #POPUP= FDR and Churchill Meet In Casablanca And Demand Unconditional Surrender
 #MESSAGE=
 #IMAGE= casablanca.png
@@ -7626,7 +6854,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7648,7 +6876,7 @@
 }
 
 {
-#NAME= DE 173 - MacArthur Returns To The Philippines (Historical)
+#NAME= DE 50 - MacArthur Returns To The Philippines (Historical)
 #POPUP= MacArthur Returns To The Philippines
 #MESSAGE=
 #IMAGE= macarthurreturns.png
@@ -7659,7 +6887,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7680,7 +6908,7 @@
 
 ;REMOVE1941
 {
-#NAME= DE 173 - US President Roosevelt Broadcasts Warning Of The Danger Of A Nazi Victory In Europe
+#NAME= DE 50 - US President Roosevelt Broadcasts Warning Of The Danger Of A Nazi Victory In Europe (Historical)
 #POPUP= Roosevelt Broadcasts Warning Of The Danger Of A Nazi Victory In Europe
 #MESSAGE=
 #IMAGE= fdrooseveltwarning.png
@@ -7691,7 +6919,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7712,7 +6940,7 @@
 }
 
 {
-#NAME= DE 173 - US President Roosevelt Dies (Historical)
+#NAME= DE 50 - US President Roosevelt Dies (Historical)
 #POPUP= President Roosevelt Dies - Truman Takes Oath Of Office
 #MESSAGE=
 #IMAGE= roosevelt_1.png, roosevelt_2.png
@@ -7724,7 +6952,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7744,7 +6972,7 @@
 }
 
 {
-#NAME= DE 173 - Atomic Bomb Dropped On Hiroshima (Historical)
+#NAME= DE 50 - Atomic Bomb Dropped On Hiroshima (Historical)
 #POPUP= Atomic Bomb Dropped On Hiroshima
 #MESSAGE=
 #IMAGE= abomb.png
@@ -7756,7 +6984,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7776,7 +7004,7 @@
 }
 
 {
-#NAME= DE 173 - Japan Surrenders (Historical)
+#NAME= DE 50 - Japan Surrenders (Historical)
 #POPUP= Japan Surrenders - MacArthur Accepts Formal Surrender On The USS Missouri
 #MESSAGE=
 #IMAGE= japan_surrenders_1.png, japan_surrenders_2.png
@@ -7787,8 +7015,7 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
-#LINK= 173[1]
+#LINK= 50[1]
 #COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7807,6 +7034,745 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Informing the Axis Player of the potential gains from raiding
+{
+#NAME= DE 51 - Axis Coastal Raiding/Shipping Information (1)
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= german_report_1939_1.png
+#SOUND= teletype_1.ogg, teletype_2.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 4
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 51[1]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 1
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1939/09/03
+; Berlin is in Axis hands
+#ALIGNMENT_POSITION= 173,74 [1]
+; 1st Line - Canada(21) politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 21 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1940
+;
+; Informing the Axis Player that Finland is pro-Allied
+{
+#NAME= DE 51 - Germany Is Advised To Use Diplomacy Against Finland
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= german_report_finland1.png
+#SOUND= teletype_1.ogg, teletype_2.ogg
+; Turned off for Fall Weiss II
+#FLAG= 0
+#TYPE= 1
+#AI= 4
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 51[1]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 1
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1940/05/06
+; Berlin is in Axis hands
+#ALIGNMENT_POSITION= 173,74 [1]
+; 1st Line - Finland(39) politically aligned with Allies but not fully mobilized
+#VARIABLE_CONDITION= 39 [2] [0] [0]
+; 2nd Line - USSR(116) politically aligned with Allies but not fully mobilized
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1941
+;
+; Informing the Axis Player that Finland is pro-Axis
+{
+#NAME= DE 51 - Is Advised When Finland Will Enter The War
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= german_report_finland2.png
+#SOUND= teletype_1.ogg, teletype_2.ogg
+; Turned off for Fall Weiss II
+#FLAG= 0
+#TYPE= 1
+#AI= 4
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 51[1]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 1
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1940/05/06
+; Berlin is in Axis hands
+#ALIGNMENT_POSITION= 173,74 [1]
+; 1st Line - Finland(39) politically aligned with Axis but not fully mobilized
+#VARIABLE_CONDITION= 39 [1] [0] [0]
+; 2nd Line - USSR(116) politically aligned with Allies but not fully mobilized
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1940
+;
+; Informing the Axis Player of the potential gains from raiding
+{
+#NAME= DE 51 - Axis Coastal Raiding/Shipping Information (2)
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= german_report_1939_2.png
+#SOUND= teletype_1.ogg, teletype_2.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 4
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 51[1]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 1
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1939/09/03
+; Berlin is in Axis hands
+#ALIGNMENT_POSITION= 173,74 [1]
+; 1st Line - Germany(45) politically aligned with Axis and not surrendered
+; 2nd Line - USA(115) politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1944
+;
+{
+#NAME= DE 51 - German Murmansk Report
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= german_report_murmansk.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 4
+#GV= 1[1,100]
+#LINK= 51[1]
+#LEVEL= 0
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 1
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1939/09/01
+; Glasgow is in Allied hands
+#ALIGNMENT_POSITION= 138,65 [2]
+; Murmansk is in Allied hands
+#ALIGNMENT_POSITION= 211,16 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 39 [1] [100] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1941
+;
+{
+#NAME= DE 51 - German Report Giving Advice To Prepare For War Against The USSR
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= german_report_warineast1.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 4
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 1
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1940/12/01
+; London is in Allied hands
+#ALIGNMENT_POSITION= 147,77 [2]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; No Axis units in Southern England
+#CONDITION_POSITION= 144,77 [5,5] [0,0] [1] [0]
+}
+
+;REMOVE1941
+;
+{
+#NAME= DE 51 - German Report On The Feasibility of Invading Great Britain
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= german_report_sealion1.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 4
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 1
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1939/09/15
+; London is in Allied hands
+#ALIGNMENT_POSITION= 147,77 [2]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; No Axis units in Southern England
+#CONDITION_POSITION= 144,77 [5,5] [0,0] [1] [0]
+}
+
+;REMOVE1942
+;
+{
+#NAME= DE 51 - German Report On The Importance Of The Mediterranean
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= german_report_mediterranean1.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 4
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 1
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1940/01/01
+; London is in Allied hands
+#ALIGNMENT_POSITION= 147,77 [2]
+; Cairo is in Allied hands
+#ALIGNMENT_POSITION= 208,126 [2]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+#VARIABLE_CONDITION= 99 [1] [0] [0]
+; No Axis units in Central Egypt
+#CONDITION_POSITION= 208,126 [6,6] [0,0] [1] [0]
+}
+
+;REMOVE1944
+;
+{
+#NAME= DE 51 - German Report On The Situation In Italy
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= german_report_italy.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 4
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 1
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION= 170,99
+#DATE= 1940/01/01
+; Berlin is in Axis hands
+#ALIGNMENT_POSITION= 173,74 [1]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; 2 Allied units are in Italy
+#CONDITION_POSITION= 171,101 [10,10] [2,2] [2] [0]
+; 2 Allied units are in Sicily
+#CONDITION_POSITION= 175,110 [4,4] [2,2] [2] [0]
+}
+
+{
+#NAME= DE 51 - German/Yugoslavia Anti-Partisan Report 1941 (25% Chance)
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= german_report_yugoslavia1.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 4
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
+#COUNTRY_ID= 45
+#TRIGGER= 25
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 1
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION= 180,95
+#DATE= 1941/01/01
+; Berlin is in Axis hands
+#ALIGNMENT_POSITION= 173,74 [1]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 120 [2] [100] [1]
+; Axis have no units in or adjacent mountain position OR
+#CONDITION_POSITION= 177,93 [1,1] [0,0] [1] [0]
+; Axis have no units in or adjacent mountain position OR
+#CONDITION_POSITION= 178,96 [1,1] [0,0] [1] [0]
+; Axis have no units in or adjacent mountain position OR
+#CONDITION_POSITION= 181,96 [1,1] [0,0] [1] [0]
+}
+
+;REMOVE1942
+{
+#NAME= DE 51 - Report To The British Prime Minister On Winning The Intelligence War
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= uk_communication_bletchley.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1941/10/21
+; Ottawa is in Allied hands
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1941
+{
+#NAME= DE 51 - Report To The British To Consider Invading Syria
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= uk_communication_syria1.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1941/05/01
+; Jerusalem is in Allied hands
+#ALIGNMENT_POSITION= 216,123 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+#VARIABLE_CONDITION= 56 [1] [100] [1]
+#VARIABLE_CONDITION= 105 [1] [0] [0]
+; No Axis units in Central Egypt
+#CONDITION_POSITION= 208,126 [6,6] [0,0] [1] [0]
+}
+
+;REMOVE1942
+{
+#NAME= DE 51 - Report To The British To Consider Invading Norway
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= uk_communication_norway1.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/05/01
+; London is in Allied hands
+#ALIGNMENT_POSITION= 147,77 [2]
+; Portsmouth is in Allied hands
+#ALIGNMENT_POSITION= 144,79 [2]
+; Bristol is in Allied hands
+#ALIGNMENT_POSITION= 142,78 [2]
+; Narvik is in Axis hands
+#ALIGNMENT_POSITION= 181,18 [1]
+; Trondheim is in Axis hands
+#ALIGNMENT_POSITION= 167,40 [1]
+; Bergen is in Axis hands
+#ALIGNMENT_POSITION= 157,50 [1]
+; Stavanger is in Axis hands
+#ALIGNMENT_POSITION= 158,55 [1]
+; Kristiansand is in Axis hands
+#ALIGNMENT_POSITION= 162,58 [1]
+#VARIABLE_CONDITION= 78 [2] [100] [1]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; No Allied units in Southern Norway or Western Sweden
+#CONDITION_POSITION= 164,46 [14,14] [0,0] [2] [0]
+; No Allied units in Southern Norway or Western Sweden
+#CONDITION_POSITION= 164,46 [14,14] [0,0] [2] [0]
+; No Allied units in Middle Norway or Western Sweden
+#CONDITION_POSITION= 172,30 [14,14] [0,0] [2] [0]
+; No Allied units in Northern Norway or Western Sweden
+#CONDITION_POSITION= 181,18 [14,14] [0,0] [2] [0]
+}
+
+;REMOVE1943
+{
+#NAME= DE 51 - Report To The British To Consider Invading The Dodecanese
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= uk_communication_dodecanese1.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1943/01/01
+; Cyprus is in Allied hands
+#ALIGNMENT_POSITION= 213,115 [2]
+; Rhodes is in Axis hands
+#ALIGNMENT_POSITION= 202,113 [1]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+#VARIABLE_CONDITION= 111 [1] [0] [0]
+; No Axis units in Central Egypt
+#CONDITION_POSITION= 208,126 [6,6] [0,0] [1] [0]
+}
+
+;REMOVE1944
+{
+#NAME= DE 51 - Report To The British To Consider Invading The Balkans (25% Chance)
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= uk_communication_balkans1.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
+#COUNTRY_ID= 112
+#TRIGGER= 25
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1943/01/01
+; Tripoli is in Allied hands
+#ALIGNMENT_POSITION= 172,121 [2]
+; Warsaw is in Axis hands
+#ALIGNMENT_POSITION= 188,76 [1]
+; Sofia is in Axis hands
+#ALIGNMENT_POSITION= 192,100 [1]
+; Tirana is in Axis hands
+#ALIGNMENT_POSITION= 185,102 [1]
+; Bucharest is in Axis hands
+#ALIGNMENT_POSITION= 198,95 [1]
+; Lwow is in Axis hands
+#ALIGNMENT_POSITION= 194,82 [1]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+#VARIABLE_CONDITION= 46 [2] [100] [1]
+; No Allied units are in the Balkans
+#CONDITION_POSITION= 189,101 [10,10] [0,0] [2] [0]
+}
+
+;REMOVE1943 with Saudi Arabia providing a convoy to the USA
+{
+#NAME= DE 51 - Report On The Importance Of Saudi Arabia
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= usa_communication_saudiarabia1.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/01/01
+; Ottawa is in Allied hands
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 95 [1] [0] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 51 - Report On Spain's Close Links To The Axis
+#POPUP= <<TAG_2>>
+#MESSAGE=
+#IMAGE= usa_communication_spain1.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+#LINK= 51[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1939/09/01
+; Paris is in Axis hands
+#ALIGNMENT_POSITION= 151,84 [1]
+; 1st Line - France(40) politically aligned with Allies and surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; 2nd Line - Spain(99) politically aligned with Axis but not fully mobilized
+#VARIABLE_CONDITION= 99 [1] [20] [0]
+; 3rd Line - USA(115) politically aligned with Allies and fully mobilized
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; No Allied units within 5 hexes of Bayonne
+#CONDITION_POSITION= 144,98 [5,5] [0,0] [2] [0]
+; No Allied units within 5 hexes of Madrid
+#CONDITION_POSITION= 139,104 [5,5] [0,0] [2] [0]
+}
+
+{
+#NAME= DE 51 - Report On The Importance Of Sweden's Political Status
+#POPUP= <<TAG_2>>
+#MESSAGE=
+#IMAGE= usa_communication_sweden1.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+#LINK= 51[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1943/01/01
+; Ottawa is in Allied hands
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 103 [1] [0] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 51 - Advice To The British To Invest In Diplomacy In Spain
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= ukspainwarning.png
+#SOUND= report.ogg
+; currently disabled in Fall Weiss II
+#FLAG= 0
+#TYPE= 1
+#AI= 3
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1939/09/01
+; Gibraltar is in Allied hands
+#ALIGNMENT_POSITION= 136,114 [2]
+#VARIABLE_CONDITION= 99 [1] [55] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 51 - Advice To The British To Invest In Diplomacy In Turkey
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= ukturkeywarning.png
+#SOUND= report.ogg
+; currently disabled in Fall Weiss II
+#FLAG= 0
+#TYPE= 1
+#AI= 3
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1939/09/01
+; Jerusalem is in Allied hands
+#ALIGNMENT_POSITION= 216,123 [2]
+#VARIABLE_CONDITION= 111 [1] [55] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Italy
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -7814,7 +7780,7 @@
 ;REMOVE1942
 ; Italian Victory in East Africa
 {
-#NAME= DE 112 - Italian Forces Invade The Sudan
+#NAME= DE 112 - Italy: Italian Forces Invade The Sudan
 #POPUP= Italian Forces Invade The Sudan
 #MESSAGE=
 #IMAGE= italiansudan.png
@@ -7879,7 +7845,7 @@
 ;REMOVE1942
 ; Italian Defeat in East Africa (2)
 { 
-#NAME= DE 112 - Italian Forces Surrender In East Africa
+#NAME= DE 112 - Italy: Italian Forces Surrender In East Africa
 #POPUP= Italian Forces Surrender In East Africa
 #MESSAGE=
 #IMAGE= italian_eastafricadefeat1.png, italian_eastafricadefeat2.png
@@ -7912,7 +7878,7 @@
 ; Allies Land In France:
 ; Historical date of event was 1944/06/06
 {
-#NAME= DE 151 - ALLIED AI: D-Day (100%)
+#NAME= DE 151 - UK(AI): D-Day (100%)
 #POPUP= Allies Assault Occupied Europe
 #MESSAGE=
 #IMAGE= dday_1.png, dday_2.png
@@ -7949,7 +7915,7 @@
 ; Allies Secure Beachheads In Normandy:
 ; Historical date of event was 1944/06/06
 {
-#NAME= DE 151 - ALLIED AI: D-Day (100%)
+#NAME= DE 151 - UK(AI): D-Day (100%)
 #POPUP= Allies Secure Beachheads In Normandy
 #MESSAGE=
 #IMAGE= normandy.png
@@ -8482,7 +8448,7 @@
 
 {
 #NAME= German Garrison Of Egypt
-#POPUP= German Garrison Of Egypt
+#POPUP= Strategic Report
 #MESSAGE= %N%N%N%N Though we have successfully occupied Egypt, the Italian defeat in East Africa means we are still adjacent to Commonwealth forces in Sudan. %N%N Therefore there will be a continuous risk of an Allied offensive into Egypt should our position appear weak. %N%N%BRecommendation: %N%N Maintain a garrison of no less than 4 units within 6 hexes of Cairo.
 #IMAGE= communication.png
 #SOUND= 
@@ -8493,7 +8459,7 @@
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 ; Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 51[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 1
@@ -8530,7 +8496,6 @@ Replacement Script
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 854[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -8680,5 +8645,38 @@ Replacement Script
 #VARIABLE_CONDITION= 118 [1] [0] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;REMOVE1941
+;
+; Informing the Axis Player that they can use the Ports of Vigo and Santa Cruz
+{
+#NAME= DE 659 - Germany(AI) : Gains Access To The Ports Of Vigo And Santa Cruz
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= german_report_vigo.png
+#SOUND= teletype_1.ogg, teletype_2.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 4
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 659[1]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 1
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1939/09/03
+; Paris is in Axis hands
+#ALIGNMENT_POSITION= 151,84 [1]
+; 1st Line - Spain(99) politically aligned with Axis but not fully mobilized
+#VARIABLE_CONDITION= 99 [1] [25] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
