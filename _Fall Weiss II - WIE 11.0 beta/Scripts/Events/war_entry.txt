@@ -230,7 +230,6 @@
 ; EVENTS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;REMOVE1940
 ;
 ; Canadian War Entry:
 ; Historical date of event was 1939/09/10
@@ -252,7 +251,6 @@
 #TRIGGER= 50
 #ALIGNMENT= 2
 #DATE= 1939/09/10
-;Set variable conditions:
 ;1st Line - UK(112) politically aligned with Allies and not surrendered AND
 ;2nd Line - France(40) politically aligned with Allies and not surrendered AND
 ;3rd Line - Germany(45) politically aligned with Axis and not surrendered
@@ -281,7 +279,6 @@
 #TRIGGER= 100
 #ALIGNMENT= 2
 #DATE= 1944/01/01
-;Set variable conditions:
 ;Germany politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
@@ -301,12 +298,10 @@
 #TRIGGER= 100
 #ALIGNMENT= 2
 #DATE= 1944/01/01
-;Set variable conditions:
 ;Germany politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
-;REMOVE1944
 {
 #NAME= DE 603 - Spain Joins The Axis
 #POPUP=
@@ -322,12 +317,10 @@
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1939/09/03
-;Set variable conditions:
 ;Germany politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
-;REMOVE1941
 {
 #NAME= DE 611 - Hungary Joins Axis Alliance (1)
 #POPUP= Hungary Joins The Axis Alliance
@@ -339,19 +332,16 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 611[1]
 #COUNTRY_ID= 52
 ;Set Hungary to have a random/variable war entry
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1940/10/20
-;Set variable conditions:
 ; Germany politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
-;REMOVE1941
 {
 #NAME= DE 611 - Hungary Joins Axis Alliance (2)
 #POPUP= Hungary Joins The Axis Alliance
@@ -363,19 +353,16 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 611[0]
 #COUNTRY_ID= 52
 ;Set Hungary to have a random/variable war entry
 #TRIGGER= 35
 #ALIGNMENT= 1
 #DATE= 1940/12/01
-;Set variable conditions:
 ; Germany politically aligned with Axis but not fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
-;REMOVE1941
 {
 #NAME= Hungary Joins Axis Alliance (Poland surrendered)
 #POPUP= Hungary Joins The Axis Alliance
@@ -394,12 +381,10 @@
 #TRIGGER= 35
 #ALIGNMENT= 1
 #DATE= 1940/12/01
-;Set variable conditions:
 ;1st Line - Poland(85) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 }
 
-;REMOVE1941
 {
 #NAME= DE 611 - Romania Joins Axis Alliance (1)
 #POPUP= Romania Joins The Axis Alliance
@@ -411,19 +396,16 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 611[0]
 #COUNTRY_ID= 93
 ;Set Romania to have a random/variable war entry
 #TRIGGER= 50
 #ALIGNMENT= 1
 #DATE= 1940/08/30
-;Set variable conditions:
 ; Germany politically aligned with Axis but not fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
-;REMOVE1941
 {
 #NAME= DE 611 - Romania Joins Axis Alliance (2)
 #POPUP= Romania Joins The Axis Alliance
@@ -435,19 +417,16 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 611[1]
 #COUNTRY_ID= 93
 ;Set Romania to have a random/variable war entry
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1940/11/23
-;Set variable conditions:
 ; Germany politically aligned with Axis but not fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
-;REMOVE1941
 {
 #NAME= Romania Joins Axis Alliance (Poland surrendered)
 #POPUP= Romania Joins The Axis Alliance
@@ -466,12 +445,10 @@
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1940/11/23
-;Set variable conditions:
 ;1st Line - Poland(85) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 }
 
-;REMOVE1941
 {
 #NAME= DE 611 - Bulgaria Joins Axis Alliance (1)
 #POPUP= Bulgaria Signs Military Pact With Axis
@@ -483,19 +460,16 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 611[1]
 #COUNTRY_ID= 19
 ;Set Bulgaria to have a random/variable war entry
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1941/02/08
-;Set variable conditions:
 ; Germany politically aligned with Axis but not fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
-;REMOVE1941
 ; Bulgarian War Entry:
 ; Historical date of event was 1941/02/08
 {
@@ -509,19 +483,16 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 611[0]
 #COUNTRY_ID= 19
 ;Set Bulgaria to have a random/variable war entry
 #TRIGGER= 35
 #ALIGNMENT= 1
 #DATE= 1941/03/01
-;Set variable conditions:
 ; Germany politically aligned with Axis but not fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
-;REMOVE1941
 {
 #NAME= Bulgaria Joins Axis Alliance (Poland surrendered)
 #POPUP= Bulgaria Signs Military Pact With Axis
@@ -540,12 +511,10 @@
 #TRIGGER= 35
 #ALIGNMENT= 1
 #DATE= 1941/03/01
-;Set variable conditions:
 ;1st Line - Poland(85) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 }
 
-;REMOVE1941
 {
 #NAME= DE 621 - Croatia Joins The Axis
 #POPUP= Croatia Joins The Axis
@@ -561,12 +530,10 @@
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1941/05/13
-;Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
-;REMOVE1941
 {
 #NAME= DE 708 - Italy Declares War On Greece
 #POPUP= Italy Declares War On Greece
@@ -582,7 +549,6 @@
 #TRIGGER= 100
 #ALIGNMENT= 2
 #DATE= 1940/10/25
-;Set variable conditions:
 ; 1st Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 }
@@ -604,7 +570,6 @@
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1939/09/01
-;Set variable conditions:
 ; 1st Line - USSR(116) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; 2nd Line - Finland(39) politically aligned with Axis but not fully mobilized
@@ -615,7 +580,6 @@
 ; ALLIED AI EVENTS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
-;REMOVE1942
 ;
 ; Syria
 {
@@ -645,7 +609,6 @@
 ; AXIS AI EVENTS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
-;REMOVE1942
 {
 #NAME= AXIS AI: Syria Joins The Axis (50%)
 #POPUP= Syria Joins The Axis
@@ -715,7 +678,6 @@
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1941/01/01
-;Set variable conditions:
 ; 1st Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 87 [2] [100] [0]
@@ -734,14 +696,12 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 917[1]
 #COUNTRY_ID= 19
 ;Set Bulgaria to have a random/variable war entry
 #TRIGGER= 100
 #ALIGNMENT= 2
 #DATE= 1940/09/01
-;Set variable conditions:
 ; Germany politically aligned with Axis but not fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 111 [2] [100] [0]
@@ -765,7 +725,6 @@
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1939/09/01
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered AND
 ; 2nd Line - USSR(116) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -787,7 +746,6 @@
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1944/10/01
-;Set variable conditions:
 ; 1st Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 87 [1] [100] [1]

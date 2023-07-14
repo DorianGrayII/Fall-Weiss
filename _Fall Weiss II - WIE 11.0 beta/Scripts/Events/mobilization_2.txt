@@ -269,7 +269,6 @@
 #DATE= 1939/09/01
 ;8-15% mobilization increase towards Axis
 #MOBILIZATION= [8,15] [1]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position
@@ -296,7 +295,6 @@
 #DATE= 1939/09/01
 ;15-25% mobilization increase towards Allies
 #MOBILIZATION= [15,25] [2]
-; Set variable conditions:
 ; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; dummy condition position
@@ -319,7 +317,6 @@
 #DATE= 1939/09/01
 ;15-25% mobilization increase towards Allies
 #MOBILIZATION= [15,25] [2]
-; Set variable conditions:
 ; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; dummy condition position
@@ -342,7 +339,6 @@
 #DATE= 1939/09/01
 ;15-25% mobilization increase towards Allies
 #MOBILIZATION= [15,25] [2]
-; Set variable conditions:
 ; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; dummy condition position
@@ -365,7 +361,6 @@
 #DATE= 1939/09/01
 ;15-25% mobilization increase towards Allies
 #MOBILIZATION= [15,25] [2]
-; Set variable conditions:
 ; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; dummy condition position
@@ -377,7 +372,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 
-;REMOVE1942
 ;
 {
 #NAME= American Public Opinion Moves Against Entering The War (USA->Axis) (35% Chance)
@@ -398,7 +392,6 @@
 #DATE= 1939/09/01
 ; 1-3% activation increase towards Axis
 #MOBILIZATION= [1,3] [1]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; USA has 2 or more units within 100 hexes of Ferrol(130, 97) in northern Spain
@@ -406,7 +399,6 @@
 }
 
 ;AMEND1941
-;REMOVE1942
 ;
 ; Axis land units in Iceland resulting in a
 ; 8-12% increase in USA activation towards Allies:
@@ -428,14 +420,12 @@
 #DATE= 1940/01/01
 ; 8-12% activation increase towards Allies
 #MOBILIZATION= [8,12] [2]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis has 1 unit in Iceland within 10 hexes of Akureyri
 #CONDITION_POSITION= 110,32 [10,10] [1,1] [1] [0]
 }
 
-;REMOVE1942
 ;
 ; Axis land units in Iceland resulting in a
 ; 5-7% increase in USA activation towards Allies:
@@ -450,21 +440,18 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 307[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #DATE= 1941/07/07
 ; 5-7% activation increase towards Allies
 #MOBILIZATION= [5,7] [2]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis has 1 unit in Iceland within 10 hexes of Akureyri
 #CONDITION_POSITION= 110,32 [10,10] [1,1] [1] [0]
 }
 
-;REMOVE1942
 {
 #NAME= DE 307 - Axis Invades Iceland - Continued (USA->Allies)
 #POPUP=
@@ -476,21 +463,18 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 307[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #DATE= 1941/07/07
 ; 3-5% activation increase towards Allies
 #MOBILIZATION= [3,5] [2]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis has 1 unit in Iceland within 10 hexes of Akureyri
 #CONDITION_POSITION= 110,32 [10,10] [1,1] [1] [0]
 }
 
-;REMOVE1942
 ;
 ; Axis land units in Canada resulting in a
 ; 100% increase in USA activation towards Allies:
@@ -512,7 +496,6 @@
 #DATE= 1940/01/01
 ; 100% activation increase towards Allies
 #MOBILIZATION= [100,100] [2]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis land 1 unit in Canada within 1 hex of Saint John's OR
@@ -523,7 +506,6 @@
 #CONDITION_POSITION= 20,85 [5,5] [1,1] [1] [0]
 }
 
-;REMOVE1942
 ;
 ; Axis land units in England resulting in a
 ; 10-15% increase in USA activation towards Allies:
@@ -545,7 +527,6 @@
 #DATE= 1940/01/01
 ; 10-15% activation increase towards Allies
 #MOBILIZATION= [10,15] [2]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis land 1 unit in the UK within 2 hexes of London OR
@@ -556,7 +537,6 @@
 #CONDITION_POSITION= 140,65 [2,2] [1,1] [1] [0]
 }
 
-;REMOVE1942
 ;
 ; The US reacts to Axis gains at Gibraltar
 {
@@ -575,14 +555,12 @@
 #DATE= 1940/01/01
 ;5-15% mobilization increase towards Allies
 #MOBILIZATION= [5,15] [2]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis has 1 unit within 1 hex of Gibraltar
 #CONDITION_POSITION= 136,114 [1,1] [1,1] [1] [0]
 }
 
-;REMOVE1941
 ;
 ; Iraqis reacts to Axis gains in Egypt
 {
@@ -603,14 +581,12 @@
 #DATE= 1939/09/01
 ;25-35% mobilization increase towards Axis
 #MOBILIZATION= [25,35] [1]
-; Set variable conditions:
 ; 1st Line - Iraq(56) politically aligned with Axis but not fully mobilized
 #VARIABLE_CONDITION= 56 [1] [0] [0]
 ; The Axis have 1-2 units within 5 hexes of Suez
 #CONDITION_POSITION= 210,126 [5,5] [1,2] [1] [0]
 }
 
-;REMOVE1942
 ;
 ; US reacts to Axis gains around Egypt
 {
@@ -631,7 +607,6 @@
 #DATE= 1940/01/01
 ;5-10% activation increase towards Allies
 #MOBILIZATION= [5,10] [2]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis has 1 unit within 1,1 hex of Alexandria
@@ -647,7 +622,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 
-;REMOVE1941
 ;
 ; This Event will apply if the triggers for the Event beneath it aren't met
 {
@@ -666,7 +640,6 @@
 #DATE= 1940/01/01
 ; 2-2% mobilization increase towards Allies
 #MOBILIZATION= [2,2] [2]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; 2nd Line - Poland(85) politically aligned with Allies and surrendered
@@ -675,7 +648,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;REMOVE1941
 ;
 ; This event is to counteract the one above
 {
@@ -694,7 +666,6 @@
 #DATE= 1940/01/01
 ; 2% mobilization increase towards Axis
 #MOBILIZATION= [2,2] [1]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; 2nd Line - Poland(85) politically aligned with Allies and surrendered
@@ -703,7 +674,6 @@
 #CONDITION_POSITION= 188,76 [10,10] [2,2] [1] [0]
 }
 
-;REMOVE1941
 ;
 ; This Event will apply if the triggers for the Event beneath it aren't met
 {
@@ -722,7 +692,6 @@
 #DATE= 1941/01/01
 ; 2% mobilization increase towards Allies
 #MOBILIZATION= [2,2] [2]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; 2nd Line - Poland(85) politically aligned with Allies and surrendered
@@ -731,7 +700,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;REMOVE1941
 ;
 ; This event is to counteract the one above
 {
@@ -750,7 +718,6 @@
 #DATE= 1941/01/01
 ; 2% mobilization increase towards Axis
 #MOBILIZATION= [2,2] [1]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; 2nd Line - Poland(85) politically aligned with Allies and surrendered
@@ -759,7 +726,6 @@
 #CONDITION_POSITION= 188,76 [10,10] [4,4] [1] [0]
 }
 
-;REMOVE1941
 ;
 {
 #NAME= More than 18 Axis Units Near Warsaw From January 1941 (USSR->Allies) (50% Chance)
@@ -777,7 +743,6 @@
 #DATE= 1941/01/01
 ; 5-10% mobilization increase towards Allies
 #MOBILIZATION= [5,10] [2]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; 2nd Line - Poland(85) politically aligned with Allies and surrendered
@@ -787,7 +752,6 @@
 #PRIVATE= 1
 }
 
-;REMOVE1941
 ;
 ; AI script to largely offset the above, so that the Axis AI can build up for Barbarossa
 {
@@ -806,7 +770,6 @@
 #DATE= 1941/01/01
 ; 3-5% mobilization increase towards Axis
 #MOBILIZATION= [3,5] [1]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; 2nd Line - Poland(85) politically aligned with Allies and surrendered
@@ -815,7 +778,6 @@
 #CONDITION_POSITION= 188,76 [10,10] [19,19] [1] [0]
 }
 
-;REMOVE1942
 ;
 ; US naval units in the vicinity of the Arctic Circle
 ; 3-5% increase in Soviet mobilization towards Axis
@@ -835,13 +797,11 @@
 #DATE= 1939/09/01
 ; 3-5% mobilization increase towards Axis
 #MOBILIZATION= [3,5] [1]
-; Set variable conditions:
 ; 1st Line - USA(115) politically aligned with Allies (not fully active) and not surrendered
 #VARIABLE_CONDITION= 115 [2] [0] [0]
 #CONDITION_POSITION= 152,10 [23,23] [1,1] [2] [115]
 }
 
-;REMOVE1941
 ;
 ; Axis land units in England resulting in a
 ; 10-15% increase in Soviet mobilization towards Allies:
@@ -861,7 +821,6 @@
 #DATE= 1940/01/01
 ; 10-15% mobilization increase towards Allies
 #MOBILIZATION= [10,15] [2]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis land 1-2 units in the UK within 1-2 hexes of London OR
@@ -872,7 +831,6 @@
 #CONDITION_POSITION= 140,65 [1,2] [1,1] [1] [0]
 }
 
-;REMOVE1941
 ;
 ; Axis land units in England supplementary reduction of 
 ; mobilization effect for GREEN level Axis players
@@ -894,7 +852,6 @@
 #DATE= 1940/01/01
 ; 10% mobilization increase towards Axis
 #MOBILIZATION= [10,10] [1]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis land 1-2 units in the UK within 1-2 hexes of London OR
@@ -905,7 +862,6 @@
 #CONDITION_POSITION= 140,65 [1,2] [1,1] [1] [0]
 }
 
-;REMOVE1941
 ;
 ; Axis land units in England supplementary reduction of 
 ; mobilization effect for NOVICE level Axis players
@@ -927,7 +883,6 @@
 #DATE= 1940/01/01
 ; 5% mobilization increase towards Axis
 #MOBILIZATION= [5,5] [1]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis land 1-2 units in the UK within 1-2 hexes of London OR
@@ -938,7 +893,6 @@
 #CONDITION_POSITION= 140,65 [1,2] [1,1] [1] [0]
 }
 
-;REMOVE1941
 ;
 ; USSR reacts to Axis gains around Egypt
 {
@@ -959,7 +913,6 @@
 #DATE= 1940/01/01
 ;4-8% activation increase towards Allies
 #MOBILIZATION= [4,8] [2]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis has 1 unit within 1,1 hex of Alexandria
@@ -974,7 +927,6 @@
 ; GERMAN MINOR EVENTS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
-;REMOVE1940
 ;
 ; Allied aggression in Norway resulting in a
 ; 20-35% increase in Swedish activation towards Axis:
@@ -996,7 +948,6 @@
 #DATE= 1939/09/03
 ; 20-35% activation increase towards Axis
 #MOBILIZATION= [20,35] [1]
-; Set variable conditions:
 ; 1st Line - USA(115) politically aligned with Allies (not fully active) and not surrendered
 ; 2nd Line - Norway(78) politically aligned with Axis and surrendered
 #VARIABLE_CONDITION= 115 [2] [0] [0]
@@ -1027,7 +978,6 @@
 #DATE= 1939/09/03
 ; 20-30% activation increase towards Axis
 #MOBILIZATION= [20,30] [1]
-; Set variable conditions:
 ; 1st Line - USA(115) politically aligned with Allies (not fully active) and not surrendered
 ; 2nd Line - Norway(78) politically aligned with Axis and surrendered
 #VARIABLE_CONDITION= 115 [2] [0] [0]
@@ -1036,7 +986,6 @@
 #CONDITION_POSITION= 167,52 [2,2] [1,1] [2] [0]
 }
 
-;REMOVE1942
 ;
 {
 #NAME= Italian Naval Movements In The English Channel (USA->Allies)
@@ -1054,14 +1003,12 @@
 #DATE= 1939/09/01
 ; 2-5% activation increase towards Allies
 #MOBILIZATION= [2,5] [2]
-; Set variable conditions:
 ; 1st Line - Italy(59) politically aligned with Axis but not fully mobilized
 #VARIABLE_CONDITION= 59 [1] [0] [0]
 ; Italian naval unit within 10-12 hexes of Southampton port
 #CONDITION_POSITION= 143,79 [10,12] [1,1] [1] [59]
 }
 
-;REMOVE1941
 ;
 ; Soviet naval units within range of Helsinki port resulting in a
 ; 30-45% increase in Finnish activation towards Axis
@@ -1083,14 +1030,12 @@
 #DATE= 1939/09/03
 ; 30-45% activation increase towards Axis
 #MOBILIZATION= [30,45] [1]
-; Set variable conditions:
 ; 1st Line - USSR(116) politically aligned with Allies (not fully active) and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; Soviets have 1 Amphibious unit within 2-3 hexes range of Helsinki port
 #CONDITION_POSITION= 196,52 [2,3] [1,1] [2] [116] <47,48>
 }
 
-;REMOVE1941
 ;
 ; Soviet naval units within range of Helsinki port resulting in a
 ; 30-45% increase in Finnish activation towards Axis
@@ -1112,14 +1057,12 @@
 #DATE= 1939/09/03
 ; 30-45% activation increase towards Axis
 #MOBILIZATION= [30,45] [1]
-; Set variable conditions:
 ; 1st Line - USSR(116) politically aligned with Allies (fully active) and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Soviets have 1 Amphibious unit within 2-3 hexes range of Helsinki port
 #CONDITION_POSITION= 196,52 [2,3] [1,1] [2] [116] <47,48>
 }
 
-;REMOVE1941
 ;
 ; Soviet naval units within range of Stockholm port resulting in a
 ; 40-55% increase in Swedish activation towards Axis
@@ -1141,14 +1084,12 @@
 #DATE= 1939/09/03
 ; 40-55% activation increase towards Axis
 #MOBILIZATION= [40,55] [1]
-; Set variable conditions:
 ; 1st Line - USSR(116) politically aligned with Allies (not fully active) and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; Soviets have 1 naval unit within 1 hex range of Stockholm port
 #CONDITION_POSITION= 183,54 [1,2] [1,1] [2] [116]
 }
 
-;REMOVE1941
 ;
 ; Soviet naval units in eastern vicinity of Copenhagen port resulting in a
 ; 15-20% increase in Swedish activation towards Axis
@@ -1170,7 +1111,6 @@
 #DATE= 1939/09/03
 ; 15-20% activation increase towards Axis
 #MOBILIZATION= [15,20] [1]
-; Set variable conditions:
 ; 1st Line - USSR(116) politically aligned with Allies (not fully active) and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; Soviets have 1 Amphibious unit within 2-3 hexes range east of Copenhagen port
@@ -1200,7 +1140,6 @@
 #DATE= 1939/09/01
 ; 100% activation increase towards Axis
 #MOBILIZATION= [100,100] [1]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; 2nd Line - Finland(39) politically aligned with Axis but not fully mobilized
@@ -1219,7 +1158,6 @@
 #CONDITION_POSITION= 208,57 [5,5] [1,1] [1] [0]
 }
 
-;REMOVE1941
 ;
 ; Axis invasion of Netherlands pushes Belgium into the Allied camp
 ; 20% increase in Belgian activation towards Allies:
@@ -1241,7 +1179,6 @@
 #DATE= 1939/09/01
 ; 20-20% activation increase towards Allies
 #MOBILIZATION= [20,20] [2]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis has 1 unit within 2 hexes of Amsterdam
@@ -1250,7 +1187,6 @@
 #CONDITION_POSITION= 155,78 [2,2] [1,1] [1] [0]
 }
 
-;REMOVE1941
 ;
 ; Fall of Brussels resulting in a 3-5% increase 
 ; in Italian mobilization towards Axis
@@ -1270,7 +1206,6 @@
 #DATE= 1940/01/01
 ; 3-5% mobilization increase towards Axis
 #MOBILIZATION= [3,5] [1]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 ; 2nd Line - Belgium(10) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -1279,7 +1214,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;REMOVE1941
 ;
 {
 #NAME= Italy Mobilizes In Response To Allied Invasion Preparations (Italy->Axis)
@@ -1297,7 +1231,6 @@
 #DATE= 1939/09/01
 ; 15-25% mobilization increase towards Axis
 #MOBILIZATION= [15,25] [1]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; 2 Allied Amphibious units within 30 hexes of Syracuse Port
@@ -1306,7 +1239,6 @@
 #CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
 }
 
-;REMOVE1941
 ;
 {
 #NAME= US Swings To The Axis In Response To Allied Preparations To Invade Italy (USA->Axis)
@@ -1324,7 +1256,6 @@
 #DATE= 1939/09/01
 ; 5-12% mobilization increase towards Axis
 #MOBILIZATION= [5,12] [1]
-; Set variable conditions:
 ; 1st Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [0] [0]
 ; 2 Allied Amphibious units within 30 hexes of Syracuse Port
@@ -1333,7 +1264,6 @@
 #CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
 }
 
-;REMOVE1941
 ;
 {
 #NAME= Franco Swings To The Axis In Response To Allied Preparations To Invade Italy (Spain->Axis)
@@ -1351,7 +1281,6 @@
 #DATE= 1939/09/01
 ; 5-12% mobilization increase towards Axis
 #MOBILIZATION= [5,12] [1]
-; Set variable conditions:
 ; 1st Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [0] [0]
 ; 2 Allied Amphibious units within 30 hexes of Syracuse Port
@@ -1360,7 +1289,6 @@
 #CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
 }
 
-;REMOVE1941
 ;
 ; Axis land units within range of Paris resulting in a
 ; 5-10% increase in Italian activation towards Axis
@@ -1382,14 +1310,12 @@
 #DATE= 1940/01/01
 ; 5-10% activation increase towards Axis
 #MOBILIZATION= [5,10] [1]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis have 2 units within a 3 hex range of Paris
 #CONDITION_POSITION= 151,84 [3,3] [2,2] [1] [0]
 }
 
-;REMOVE1941
 ;
 ; Allies abandon their land positions in the Mediterranean resulting in a
 ; 0% increase in Italian mobilization towards Axis
@@ -1410,7 +1336,6 @@
 #DATE= 1939/09/01
 ; 0% mobilization increase towards Axis
 #MOBILIZATION= [0,0] [1]
-; Set variable conditions:
 ; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; UK abandons Gibraltar
@@ -1436,14 +1361,12 @@
 #DATE= 1939/09/01
 ; 0% mobilization increase towards Axis
 #MOBILIZATION= [0,0] [1]
-; Set variable conditions:
 ; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; UK abandons Malta
 #CONDITION_POSITION= 175,114 [0,0] [0,0] [2] [0]
 }
 
-;REMOVE1941
 ;
 ; This is for informational purposes only
 {
@@ -1462,14 +1385,12 @@
 #DATE= 1939/09/01
 ; 0% mobilization increase towards Axis
 #MOBILIZATION= [0,0] [1]
-; Set variable conditions:
 ; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; UK abandons Cairo
 #CONDITION_POSITION= 208,126 [10,10] [0,0] [2] [0]
 }
 
-;REMOVE1941
 ;
 ; This is for informational purposes only
 {
@@ -1488,14 +1409,12 @@
 #DATE= 1939/09/01
 ; 0% mobilization increase towards Axis
 #MOBILIZATION= [0,0] [1]
-; Set variable conditions:
 ; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; France abandons Tunis
 #CONDITION_POSITION= 167,112 [5,5] [0,0] [2] [0]
 }
 
-;REMOVE1941
 ;
 ; This is for informational purposes only
 {
@@ -1514,14 +1433,12 @@
 #DATE= 1939/09/01
 ; 0% mobilization increase towards Axis
 #MOBILIZATION= [0,0] [1]
-; Set variable conditions:
 ; 1st Line - France(40) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; France abandons Damascus
 #CONDITION_POSITION= 218,119 [5,5] [0,0] [2] [0]
 }
 
-;REMOVE1941
 ;
 ; Allies abandon their land positions in the Mediterranean resulting in a
 ; 1-2% increase in Italian activation towards Axis:
@@ -1543,7 +1460,6 @@
 #DATE= 1939/09/03
 ; 1-2% activation increase towards Axis
 #MOBILIZATION= [1,2] [1]
-; Set variable conditions:
 ; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
@@ -1559,7 +1475,6 @@
 #CONDITION_POSITION= 218,119 [5,5] [0,0] [2] [0]
 }
 
-;REMOVE1941
 ;
 ; Allies Invade Iraq resulting in a random
 ; 5-7% increase in Italian mobilization towards Axis:
@@ -1579,14 +1494,12 @@
 #DATE= 1939/09/01
 ; 5-7% mobilization increase towards Axis
 #MOBILIZATION= [5,7] [1]
-; Set variable conditions:
 ; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Allies invade Iraq
 #CONDITION_POSITION= 234,120 [2,2] [1,1] [2] [112]
 }
 
-;REMOVE1942
 ;
 ; US naval units near Spain
 ; 25-35% increase in Spanish mobilization towards Axis
@@ -1606,7 +1519,6 @@
 #DATE= 1939/09/01
 ; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
-; Set variable conditions:
 ; 1st Line - USA(115) politically aligned with Allies (not fully active) and not surrendered
 #VARIABLE_CONDITION= 115 [2] [0] [0]
 ; US has 1 Amphibious unit within 1-2 hexes of Bilbao port OR
@@ -1637,7 +1549,6 @@
 #DATE= 1941/03/01
 ; 6-12% mobilization increase towards Axis
 #MOBILIZATION= [6,12] [1]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis has captured and holds London OR
@@ -1670,7 +1581,6 @@
 #DATE= 1939/09/01
 ; 8-12% activation increase towards Axis
 #MOBILIZATION= [8,12] [1]
-; Set variable conditions:
 ; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; 2nd Line - Italy(59) politically aligned with Axis but not fully mobilized
@@ -1699,7 +1609,6 @@
 #DATE= 1939/09/01
 ; 8-12% activation increase towards Axis
 #MOBILIZATION= [8,12] [1]
-; Set variable conditions:
 ; 1st Line - UK(112) politically aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; 2nd Line - Italy(59) politically aligned with Axis and not surrendered
@@ -1726,7 +1635,6 @@
 #DATE= 1939/09/01
 ; 6-12% mobilization increase towards Axis
 #MOBILIZATION= [6,12] [1]
-; Set variable conditions:
 ; 1st Line - Egypt(36) politically aligned with Allies and surrendered
 #VARIABLE_CONDITION= 36 [2] [100] [1]
 ; Axis has captured and holds Suez OR
@@ -1737,7 +1645,6 @@
 #CONDITION_POSITION= 214,124 [2,2] [2,2] [1] [0]
 }
 
-;REMOVE1942
 ;
 ; US naval units near Scandinavia
 ; 25-35% increase in Swedish mobilization towards Axis
@@ -1757,7 +1664,6 @@
 #DATE= 1939/09/01
 ; 25-35% mobilization increase towards Axis
 #MOBILIZATION= [25,35] [1]
-; Set variable conditions:
 ; 1st Line - USA(115) politically aligned with Allies (not fully active) and not surrendered
 #VARIABLE_CONDITION= 115 [2] [0] [0]
 ; US has 1 naval unit within 2 hex range of Narvik port OR
@@ -1774,7 +1680,6 @@
 #CONDITION_POSITION= 167,53 [3,3] [1,1] [2] [115]
 }
 
-;REMOVE1941
 ;
 ; German Units in Iraq trigger a random
 ; 45-55% increase in Vichy Syrian mobilization towards Axis
@@ -1794,7 +1699,6 @@
 #DATE= 1939/09/03
 ; 45-55% mobilization increase towards Axis
 #MOBILIZATION= [45,55] [1]
-; Set variable conditions:
 ; 1st Line - USA(115) politically aligned with Allies (not fully active) and not surrendered
 ; 1st Line - France(40) politically aligned with Allies (fully active) and surrendered
 ; 1st Line - UK(112) politically aligned with Allies and not surrendered
@@ -1826,7 +1730,6 @@
 #DATE= 1939/09/01
 ; 45-55% activation increase towards Axis
 #MOBILIZATION= [45,55] [1]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis has captured and holds London OR
@@ -1856,7 +1759,6 @@
 #DATE= 1941/05/25
 ; 5-10% mobilization increase towards Axis
 #MOBILIZATION= [5,10] [1]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis has 1-2 units 1 hex from Sevastopol
@@ -1881,7 +1783,6 @@
 #DATE= 1939/09/01
 ; 15-25% mobilization increase towards Allies
 #MOBILIZATION= [15,25] [2]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Allies have 1 unit in Rhodes
@@ -1905,7 +1806,6 @@
 #DATE= 1939/09/01
 ; 10-20% mobilization increase towards Axis
 #MOBILIZATION= [10,20] [1]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis has 1 unit in Sevastopol
@@ -1928,7 +1828,6 @@
 #DATE= 1939/09/01
 ; 10-20% mobilization increase towards Axis
 #MOBILIZATION= [10,20] [1]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; 2nd Line - Egypt(36) politically aligned with Allied and surrendered
@@ -1937,7 +1836,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;REMOVE1941
 ;
 ; Event for Yugoslavian mobilization if the UK
 ; has lost London so cannot support a pro-Allied coup there
@@ -1958,7 +1856,6 @@
 #DATE= 1941/03/28
 ;200% mobilization increase towards Axis
 #MOBILIZATION= [200,200] [1]
-;Set variable conditions:
 ; 1st Line - UK(112) politically aligned with Allies and not surrendered
 ; 2nd Line - Germany(45) politically aligned with Axis and not surrendered
 ; 3rd Line - France(40) politically aligned with Allies and surrendered
@@ -1977,7 +1874,6 @@
 ; ALLIED AI
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
-;REMOVE1942
 ;
 ; Axis land units in UK resulting in a
 ; 2-4% increase in USA activation towards Allies:
@@ -1999,14 +1895,12 @@
 #DATE= 1940/01/01
 ; 2-4% activation increase towards Allies
 #MOBILIZATION= [2,4] [2]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis land 1 unit in the UK within 10 hexes of Manchester
 #CONDITION_POSITION= 142,72 [10,10] [1,1] [1] [0]
 }
 
-;REMOVE1942
 ;
 ; Axis land units in UK resulting in a
 ; 1-2% increase in USA activation towards Allies:
@@ -2030,7 +1924,6 @@
 #DATE= 1940/01/01
 ; 1-2% activation increase towards Allies
 #MOBILIZATION= [1,2] [2]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis land 1 unit in the UK within 10 hexes of Manchester
@@ -2041,7 +1934,6 @@
 ; AXIS AI
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
-;REMOVE1940
 ;
 ; Allies Naval Patrols Near Norway
 ; 0% increase in Norwegian mobilization towards Axis
@@ -2062,7 +1954,6 @@
 #DATE= 1939/09/01
 ; 0% mobilization increase towards Axis
 #MOBILIZATION= [0,0] [1]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Allies on the Norwegian convoy line
@@ -2104,7 +1995,6 @@
 #CONDITION_POSITION= 162,70 [1,1] [1,1] [2] [0]
 }
 
-;REMOVE1940
 ;
 ; Allies Naval Patrols Near Norway
 ; 1-3% increase in Norwegian mobilization towards Axis
@@ -2124,7 +2014,6 @@
 #DATE= 1939/09/01
 ; 1-4% mobilization increase towards Axis
 #MOBILIZATION= [1,4] [1]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Allies on the Norwegian convoy line
@@ -2184,7 +2073,6 @@
 #DATE= 1939/09/03
 ; 20-40% activation increase towards Axis
 #MOBILIZATION= [20,40] [1]
-; Set variable conditions:
 ; 1st Line - France(40) aligned with Allies and surrendered
 ; 2nd Line - Germany(45) aligned with Axis and not surrendered
 ; 3rd Line - Italy(59) aligned with Axis and not surrendered
@@ -2213,7 +2101,6 @@
 #DATE= 1939/09/03
 ; 20-40% activation increase towards Axis
 #MOBILIZATION= [20,40] [1]
-; Set variable conditions:
 ; 1st Line - France(40) aligned with Allies and surrendered
 ; 2nd Line - Germany(45) aligned with Axis and fully mobilized
 ; 3rd Line - Italy(59) aligned with Axis and fully mobilized
@@ -2241,7 +2128,6 @@
 #DATE= 1939/09/03
 ; 5-10% mobilization increase towards Allies
 #MOBILIZATION= [5,5] [2]
-; Set variable conditions:
 ; 1st Line - USSR(116) politically aligned Allied and not active
 ; 2nd Line - Turkey(111) politically aligned with Axis and Not Active
 #VARIABLE_CONDITION= 116 [2] [0] [0]
@@ -2294,7 +2180,6 @@
 #DATE= 1939/09/01
 ; 5-12% mobilization increase towards Axis
 #MOBILIZATION= [5,12] [1]
-; Set variable conditions:
 ; 1st Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [0] [0]
 ; 2 Allied Amphibious units within 30 hexes of Syracuse Port
@@ -2322,7 +2207,6 @@
 #DATE= 1939/09/01
 ; 15-25% mobilization increase towards Axis
 #MOBILIZATION= [15,25] [1]
-; Set variable conditions:
 ; 1st Line - Germany(45) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; 2 Allied Amphibious units within 30 hexes of Syracuse Port
@@ -2347,7 +2231,6 @@
 #DATE= 1939/09/01
 ; 5-12% mobilization increase towards Axis
 #MOBILIZATION= [5,12] [1]
-; Set variable conditions:
 ; 1st Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [0] [0]
 ; 2 Allied Amphibious units within 30 hexes of Syracuse Port
@@ -2376,7 +2259,6 @@
 #DATE= 1939/09/01
 ;25-35% mobilization increase towards Axis
 #MOBILIZATION= [25,35] [1]
-; Set variable conditions:
 ; 1st Line - Iraq(56) politically aligned with Axis but not fully mobilized
 #VARIABLE_CONDITION= 56 [1] [0] [0]
 ; The Axis have 1-2 units within 7 hexes of Suez
