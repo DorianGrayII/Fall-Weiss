@@ -304,7 +304,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; 1st Line - Germany(45) aligned with Allies and not surrendered
+; 1st Line - Germany(45) aligned with Axis and fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -343,7 +343,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; 1st Line - Germany(45) aligned with Allies and not surrendered
+; 1st Line - Germany(45) aligned with Axis and fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5415,6 +5415,7 @@
 #LEVEL= 0
 ;Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
+; 406[1]->600[1]
 #LINK= 600[1]
 #COUNTRY_ID= 116
 #TRIGGER= 100
@@ -6452,6 +6453,7 @@ Replacement script
 #LEVEL= 0
 ;Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
+; 406[1]->600[1]
 #LINK= 600[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -7196,6 +7198,7 @@ Replacement script
 #DISPLAY_ORDER= 1
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
+; 406[1]->600[1]
 #LINK= 600[1]
 #DECISION= 630
 #MPP_UPDOWN= 0
@@ -8252,6 +8255,7 @@ Replacement script
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
+; 406[1]->600[1]
 #LINK= 600[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -8579,7 +8583,7 @@ Replacement script
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; 1st Line - Germany(45) aligned with Axis and fully mobilized
-; 2nd Line - Switzerland aligned with Axis not fully mobilized and not surrendered
+; 2nd Line - Switzerland aligned with Axis not fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 104 [1] [0] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
@@ -9846,10 +9850,12 @@ Replacement script
 ;Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 853[0]
+; 853[0]->856[?]
+#DECISION= 856
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #DISPLAY_ORDER= 1
-#DECISION= 856
+; 853[0]->856[?]
 #MPP_UPDOWN= -50
 #MPP_TURNS= 2
 #MPP_TEXT= Forming An Engineer Corps
@@ -9899,10 +9905,11 @@ Replacement script
 ;Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 853[1]
+; 853[1]->864[?]
+#DECISION= 864
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #DISPLAY_ORDER= 1
-#DECISION= 864
 #MPP_UPDOWN= -50
 #MPP_TURNS= 2
 #MPP_TEXT= Forming An Engineer Corps
@@ -9940,7 +9947,7 @@ Replacement script
 
 
 {
-#NAME= DE 857 - Germany: Seize Bessarabia? (AI - 100% Yes)
+#NAME= DE 857 - Germany: Liberate Bessarabia? (AI - 100% Yes)
 #POPUP= German Strategic Decision
 #MESSAGE= Führerhauptquartier %N%N Under the terms of the Molotov-Ribbentrop Pact, Bessarabia was seized by the Soviets to act as a buffer zone protecting Odessa from attack.  %N%N Now that we have captured Odessa, we should consider allowing Romania to reintegrate the lost territory back under their control as the Soviets flee Eastward into their homeland.%N%N Should we support Romania in reclaiming their lost territory?
 #IMAGE=
@@ -9951,11 +9958,13 @@ Replacement script
 #LEVEL= 0
 ;Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
+; 406[1]->600[1]->418[1]
 #LINK= 418[1]
+; 406[1]->600[1]->418[1]->857[?]
+#DECISION= 857
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #DISPLAY_ORDER= 1
-#DECISION= 857
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT= 
@@ -10592,8 +10601,8 @@ Replacement script
 }
 
 {
-#NAME= DE 908 - Germany: Spain Repays Debt From Civil War (AI 100% Yes)
-#POPUP=
+#NAME= DE 908 - Germany: Accept Spanish Debt Repayment Agreement? (AI 100% Yes)
+#POPUP= German Economic Decision
 #MESSAGE= Führerhauptquartier %N%N Spanish Debt %N%N Mein Führer, the development of the Wolfram mines was largely a success.  Franco has proposed repaying the debt from the civil war in steady supply shipments of Wolfram which will begin January 1, 1942.  %N%N However, although Franco owes this debt to Germany the Spanish government may view the transfer of vital resources as a contribution to our war effort, and may move further from the Axis.  We should consider now that the mines are operational we will have full access to its resources when Spain joins the war.  %N%N Mein Führer, should we accept the resource payments to eliminate Spain's debt from the civil war?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
@@ -10667,10 +10676,8 @@ Replacement script
 #ALIGNMENT_POSITION= 171,101 [1]
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; 1st Line - Germany(45) aligned with Axis and fully mobilized
-; 2nd Line - Italy(59) aligned with Axis and fully mobilized
-; 3rd Line - Spain(99) aligned with Axis and not surrendered 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+; 1st Line - Italy(59) aligned with Axis and fully mobilized
+; 2nd Line - Spain(99) aligned with Axis and not surrendered 
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 99 [1] [1] [0]
 ; Dummy condition position (always satisfied)
@@ -10678,9 +10685,9 @@ Replacement script
 }
 
 {
-#NAME= DE 130 - Germany: Turkey Signs The Tripartite Pact (AI - 100% Yes)
+#NAME= DE 130 - Germany: Turkey Signs The Axis Tripartite Pact (AI - 100% Yes)
 #POPUP= German Diplomatic Decision
-#MESSAGE= Führerhauptquartier %N%N Turkey Signing The Tripartite Pact %N%N Long standing tensions between the Soviets and Turkey had been suppressed by the 1925 Non-Aggression Pact between both nations.  The Soviets sudden withdrawal from the pact in 1939 and subsequent military occupation of the Turkish Straits has provided an opportunity for Germany to persuade the Turkish Government to join our cause in defeating our common enemy in the East.%N%N Turkey however is woefully unprepared for combat, and would require a commitment of significant military resources from Germany if they are to join our war effort.  However, if we can persuade Turkey to sign the Tripartite Pact we will immediately gain access to both the Caucasus and the Middle East so the benefits may outweigh the costs.%N%N Should we commit significant military resources to Turkey so that the country will sign the Tripartite Pact and declare war on USSR?  It will cost a total of %B800 MPPs (200 MPPs for 4 turns).
+#MESSAGE= Führerhauptquartier %N%N Turkey Signing The Tripartite Pact %N%N Long standing tensions between the Soviets and Turkey had been suppressed by the 1925 Non-Aggression Pact between both nations.  The Soviets sudden withdrawal from the pact in 1939 and subsequent military occupation of the Turkish Straits has provided an opportunity for Germany to persuade the Turkish Government to join our cause in defeating our common enemy in the East.%N%N Turkey however is woefully unprepared for war, and would require a commitment of significant military resources from Germany if they are to join our war effort.  However, if we can persuade Turkey to sign the Tripartite Pact we will immediately gain access to both the Caucasus and the Middle East so the benefits may outweigh the costs.%N%N Should we commit significant military resources to Turkey so that the country will sign the Tripartite Pact and declare war on USSR?  It will cost a total of %B800 MPPs (200 MPPs for 4 turns).
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -10689,6 +10696,8 @@ Replacement script
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
+; DE 970 - USSR: Forcibly Occupies Turkish Straits= YES
+; 406[1]->600[1]->970[1]
 #LINK= 970[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -10705,15 +10714,12 @@ Replacement script
 #DATE= 1939/10/14
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Moscow is in Allied hands
-#ALIGNMENT_POSITION= 221,65 [2]
+; Istanbul Naval Port
+#ALIGNMENT_POSITION= 203,103 [2]
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; 1st Line - Turkey(111) aligned with Axis
-; 2nd Line - Germany(45) aligned with Axis and Fully Actives
-#VARIABLE_CONDITION= 111 [1] [0] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
+; 1st Line - USSR(116) aligned with Allies
+#VARIABLE_CONDITION= 116 [2] [0] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -10819,6 +10825,8 @@ Replacement script
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
+; DE 970 - USSR: Forcibly Occupies Turkish Straits= NO
+; 406[1]->600[1]->970[0]
 #LINK= 970[0]
 #COUNTRY_ID= 112
 #TRIGGER= 100
@@ -10859,6 +10867,7 @@ Replacement script
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
+; 406[1]->600[1]->970[0]->807[1]
 #LINK= 807[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
@@ -10901,6 +10910,7 @@ Replacement script
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
+; 970[0]->807[1]->808[1]
 #LINK= 808[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
@@ -10941,6 +10951,7 @@ Replacement script
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
+; 970[0]->807[1]->808[1]->809[1]
 #LINK= 809[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
@@ -11082,9 +11093,9 @@ Replacement script
 #ALIGNMENT_POSITION= 4,108 [2]
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; 1st Line - USA(115) aligned with Allies fully mobilized and not surrendered
+; 1st Line - USA(115) aligned with Allies fully mobilized
 ; 2nd Line - Sweden(103) aligned with Axis and not surrendered 
-; 3rd Line - Germany(45) aligned with Axis fully mobilized and not surrendered
+; 3rd Line - Germany(45) aligned with Axis fully mobilized
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 103 [1] [0] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -11426,7 +11437,7 @@ Replacement script
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; 1st Line - Germany(45) aligned with Axis and fully mobilized
 ; 2nd Line - France(40) aligned with Allies and Surrendered 
-; 3rd Line - Vichy aligned with the Allies, not fully mobilized and not surrendered
+; 3rd Line - Vichy aligned with the Allies, not fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 118 [2] [0] [0]
@@ -11469,7 +11480,7 @@ Replacement script
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; 1st Line - Germany(45) aligned with Axis and fully mobilized
 ; 2nd Line - France(40) aligned with Allies and Surrendered 
-; 3rd Line - Vichy aligned with the Axis not fully mobilized and not surrendered
+; 3rd Line - Vichy aligned with the Axis not fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 118 [1] [0] [0]
@@ -11513,7 +11524,7 @@ Replacement script
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; 1st Line - Germany(45) aligned with Axis and fully mobilized
 ; 2nd Line - France(40) aligned with Allies and Surrendered 
-; 3rd Line - Vichy aligned with the Axis not fully mobilized and not surrendered
+; 3rd Line - Vichy aligned with the Axis not fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 118 [1] [0] [0]
@@ -12135,7 +12146,7 @@ Replacement script
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; 1st Line - Germany(45) aligned with Axis and fully mobilized
-; 2nd Line - Yugoslavia(120) aligned with Axis not fully mobilized and not surrendered
+; 2nd Line - Yugoslavia(120) aligned with Axis not fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 120 [1] [0] [0]
 ; Dummy condition position (always satisfied)
@@ -12154,6 +12165,7 @@ Replacement script
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
+; 406[1]->600[1]
 #LINK= 600[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -13383,10 +13395,10 @@ Replacement script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 0[0]
+#DECISION= 851
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #DISPLAY_ORDER= 0
-#DECISION= 851
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT= 
@@ -13481,7 +13493,7 @@ Replacement script
 #ALIGNMENT_POSITION= 234,85 [2]
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; 1st Line - USSR(116) aligned with Allies and fully mobilized and not surrendered
+; 1st Line - USSR(116) aligned with Allies and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis has 1 unit within 5 hexes of Stalingrad
 #CONDITION_POSITION= 234,85 [5,5] [1,1] [1] [0]
@@ -13502,10 +13514,10 @@ Replacement script
 #GV= 1[1,100]
 ;Set link value to Dummy
 #LINK= 0[0]
+#DECISION= 854
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #DISPLAY_ORDER= 1
-#DECISION= 854
 #MPP_UPDOWN= -50
 #MPP_TURNS= 5
 #MPP_TEXT= Protect South Atlantic Convoys
@@ -15037,7 +15049,7 @@ Replacement script
 #ALIGNMENT_POSITION= 221,65 [2]
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; 1st Line - USSR(116) aligned with Allies and fully mobilized and not surrendered
+; 1st Line - USSR(116) aligned with Allies and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis has 1 unit within 15 hexes of Moscow
 #CONDITION_POSITION= 221,65 [15,15] [1,1] [1] [0]
@@ -15720,6 +15732,7 @@ Replacement script
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
+; 406[1]->600[1]
 #LINK= 600[1]
 #COUNTRY_ID= 116
 #TRIGGER= 100
@@ -15841,8 +15854,8 @@ Replacement script
 }
 
 {
-#NAME= DE 970 - USSR: End The Non-Aggression Pact With Turkey (AI - 0% Yes)
-#POPUP=
+#NAME= DE 970 - USSR: Forcibly Occupy Turkish Straits? (AI - 0% Yes)
+#POPUP= USSR Strategic Decision
 #MESSAGE= Red Army Headquarters %N%N Since the 1925 Treaty of Moscow, our government has undertaken measures to establish friendly relations between the Soviet Union and Turkey, culminating in a Non-Aggression Pact between our two nations which was signed in December of that same year.%N%N However, the current political climate in Europe is ripe to enforce our territorial claims over the Turkish Straits, in addition to any demands we may also make over other neighboring nations such as Finland and Romania.%N%N Turkey is at current, woefully unprepared for an immediate full scale conflict, so we expect that a forceful military occupation of the Turkish Straits will not result in a declaration of war from Turkey, especially after witnessing the co-occupation of Poland alongside Germany.  However, we should be prepared for a potential Turkish military reaction in future years.%N%N Should the USSR cancel the Non-Aggression Pact with Turkey and forcefully occupy the Turkish Straits %B(YES) even if it may lead to conflict with Turkey in the future? 
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
@@ -15852,6 +15865,7 @@ Replacement script
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
+; 406[1]->600[1]
 #LINK= 600[1]
 #COUNTRY_ID= 116
 #TRIGGER= 100
@@ -18841,10 +18855,11 @@ Replacement script
 ;Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 851[0]
+; 851[0]->978[?]
+#DECISION= 978
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #DISPLAY_ORDER= 1
-#DECISION= 978
 #MPP_UPDOWN= -15
 #MPP_TURNS= 2
 #MPP_TEXT= German Naval Strategy
@@ -18880,10 +18895,10 @@ Replacement script
 #GV= 1[1,100]
 ;Set link value to always trigger (dummy value)
 #LINK= 0[0]
+#DECISION= 979
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #DISPLAY_ORDER= 1
-#DECISION= 979
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT=
@@ -18922,10 +18937,11 @@ Replacement script
 ;Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 979[1]
+; 979[1]->403[?]
+#DECISION= 403
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #DISPLAY_ORDER= 0
-#DECISION= 403
 #MPP_UPDOWN= -50
 #MPP_TURNS= 1
 #MPP_TEXT= Operation Countenance
@@ -19018,10 +19034,10 @@ Replacement script
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 0[0]
+#DECISION= 995
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #DISPLAY_ORDER= 0
-#DECISION= 995
 #MPP_UPDOWN= -25
 #MPP_TURNS= 3
 #MPP_TEXT= Form Ostbataillonen in France
@@ -19111,10 +19127,10 @@ Replacement script
 #GV= 1[1,100]
 ;Set link value to always trigger (dummy value)
 #LINK= 0[0]
+#DECISION= 998
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #DISPLAY_ORDER= 0
-#DECISION= 998
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT=
@@ -19151,10 +19167,10 @@ Replacement script
 #GV= 1[1,100]
 ;Set link value to always trigger (dummy value)
 #LINK= 0[0]
+#DECISION= 792
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #DISPLAY_ORDER= 0
-#DECISION= 792
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT=
