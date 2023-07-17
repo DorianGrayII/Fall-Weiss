@@ -237,31 +237,6 @@
 
 ;
 {
-#NAME= DE 403 - British And Soviet Forces Launch Operation Countenance (Historical)
-#POPUP= British And Soviet Forces Launch Operation Countenance - Persia Surrenders
-#IMAGE= operationcountenance.png
-#SOUND= combat1.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-#LINK= 403[1]
-#COUNTRY_ID= 82
-#RECIPIENT_ID= 116
-#ARMISTICE= 0
-#REMOVE= 3
-#TRIGGER= 100
-#DATE= 1941/08/26
-; Set variable conditions:
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; dummy condition position (always satisfied)
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-;
-{
 #NAME= DE 198 - British And Soviet Forces Launch Operation Countenance (Historical)
 #POPUP= <<TAG_1>>
 #IMAGE= operationcountenance.png
@@ -869,7 +844,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;
 {
 #NAME= DE 403 - British And Soviet Forces Launch Operation Countenance (Historical)
 #POPUP= British And Soviet Forces Launch Operation Countenance - Persia Surrenders
@@ -881,7 +855,9 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 981[1]
+; USSR: Operation Countenance: Join with the UK in Invading Persia?
+#LINK= 403[1]
+; Persia
 #COUNTRY_ID= 82
 #RECIPIENT_ID= 116
 #ARMISTICE= 0
@@ -893,3 +869,31 @@
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
+
+{
+#NAME= DE 424 - British And Soviet Forces Launch Operation Countenance (Historical)
+#POPUP= British And Soviet Forces Launch Operation Countenance - Persia Surrenders
+#IMAGE= operationcountenance.png
+#SOUND= combat1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; USSR: Operation Countenance: Join with the UK in Invading Persia?
+#LINK= 424[1]
+; Persia
+#COUNTRY_ID= 82
+#RECIPIENT_ID= 116
+#ARMISTICE= 0
+#REMOVE= 3
+#TRIGGER= 100
+#DATE= 1941/08/26
+; Set variable conditions:
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+

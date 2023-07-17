@@ -1804,50 +1804,10 @@
 ;Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 403[1]
+#DECISION= 155
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #DISPLAY_ORDER= 0
-#DECISION= 155
-#MPP_UPDOWN= -50
-#MPP_TURNS= 1
-#MPP_TEXT= Operation Countenance
-#NOTES=
-#NOTES_POSITION=
-; Set AI acceptance % (AI will accept 100% of the time)
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1941/08/12
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Kuwait is in Allied hands
-#ALIGNMENT_POSITION= 241,128 [2]
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; Set variable conditions:
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Dummy condition position (always satisfied)
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= DE 155 - UK: Dummy Event to deduct 50 MPPs for DE 120 if DE 981 is approved (AI - 100% Yes)
-#POPUP=
-#MESSAGE=
-#IMAGE=
-#SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-;Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-#LINK= 981[1]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#DECISION= 155
 #MPP_UPDOWN= -50
 #MPP_TURNS= 1
 #MPP_TEXT= Operation Countenance
@@ -2512,150 +2472,41 @@
 }
 
 {
-#NAME= DE 170 - UK: Dummy Event for the UK's convoy to Arkhangelsk (AI - 100% Yes)
+#NAME= DE 170 - UK: Dummy Event to deduct 50 MPPs for DE 120 if DE 403 is approved (AI - 100% Yes)
 #POPUP=
 #MESSAGE=
 #IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-; currently disabled for Fall Weiss II
-#FLAG= 0
-#TYPE= 2
+#SOUND=
+#FLAG= 1
+#TYPE= 1
 #AI= 0
 #LEVEL= 0
 ;Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-;Set link value to always trigger (dummy value)
-#LINK= 0[0]
+#LINK= 470[1]
+#DECISION= 170
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #DISPLAY_ORDER= 0
-#DECISION= 170
-#MPP_UPDOWN= 0
-#MPP_TURNS= 0
-#MPP_TEXT= 
+#MPP_UPDOWN= -50
+#MPP_TURNS= 1
+#MPP_TEXT= Operation Countenance
 #NOTES=
 #NOTES_POSITION=
 ; Set AI acceptance % (AI will accept 100% of the time)
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
-#DATE= 1939/09/01
+#DATE= 1941/08/12
 #TEXT_RGB= 0,0,0
-#SHADOW_RGB= 228,221,198
-; Set Alignment Position (Glasgow)
-#ALIGNMENT_POSITION= 138,65 [2]
-; Hexes between Archangelsk and Vologda
-#ALIGNMENT_POSITION= 227,35 [2]
-#ALIGNMENT_POSITION= 227,36 [2]
-#ALIGNMENT_POSITION= 228,37 [2]
-#ALIGNMENT_POSITION= 228,38 [2]
-#ALIGNMENT_POSITION= 228,39 [2]
-#ALIGNMENT_POSITION= 227,39 [2]
-#ALIGNMENT_POSITION= 227,40 [2]
-#ALIGNMENT_POSITION= 227,41 [2]
-#ALIGNMENT_POSITION= 227,42 [2]
-#ALIGNMENT_POSITION= 227,43 [2]
-#ALIGNMENT_POSITION= 227,44 [2]
-#ALIGNMENT_POSITION= 227,45 [2]
-#ALIGNMENT_POSITION= 226,46 [2]
-#ALIGNMENT_POSITION= 226,47 [2]
-#ALIGNMENT_POSITION= 226,48 [2]
-#ALIGNMENT_POSITION= 226,49 [2]
-#ALIGNMENT_POSITION= 226,50 [2]
-#ALIGNMENT_POSITION= 226,51 [2]
-#ALIGNMENT_POSITION= 226,52 [2]
-#ALIGNMENT_POSITION= 226,53 [2]
-#ALIGNMENT_POSITION= 225,53 [2]
-#ALIGNMENT_POSITION= 225,54 [2]
+#SHADOW_RGB= 0,0,0
+; Kuwait is in Allied hands
+#ALIGNMENT_POSITION= 241,128 [2]
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; 1st Line - UK(112) aligned with Allies and not surrendered
+; Set variable conditions:
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; 2nd Line - USSR(116) aligned with Allies and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= DE 171 - UK: Dummy Event to check for an Iraqi unit in Baghdad (AI - 100% Yes)
-#POPUP=
-#MESSAGE=
-#IMAGE=
-#SOUND=
-; currently disabled for Fall Weiss II
-#FLAG= 0
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-;Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-#LINK= 624[1]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#DECISION= 171
-#MPP_UPDOWN= 0
-#MPP_TURNS= 0
-#MPP_TEXT= 
-#NOTES=
-#NOTES_POSITION=
-; Set AI acceptance % (AI will accept 100% of the time)
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1939/09/01
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 228,221,198
-; Baghdad is in Axis hands
-#ALIGNMENT_POSITION= 234,120 [1]
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; 1st Line - UK(112) aligned with Allies and not surrendered
-; 2nd Line - Iraq(56) politically Axis and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 56 [1] [100] [0]
-; An Iraqi unit is in Baghdad
-#CONDITION_POSITION= 234,120 [0,0] [1,1] [1] [56]
-}
-
-{
-#NAME= DE 172 - UK: Dummy Event to check for an Iraqi unit in Baghdad (AI - 100% Yes)
-#POPUP=
-#MESSAGE=
-#IMAGE=
-#SOUND=
-; currently disabled for Fall Weiss II
-#FLAG= 0
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-;Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-#LINK= 624[0]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#DECISION= 172
-#MPP_UPDOWN= 0
-#MPP_TURNS= 0
-#MPP_TEXT= 
-#NOTES=
-#NOTES_POSITION=
-; Set AI acceptance % (AI will accept 100% of the time)
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1939/09/01
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 228,221,198
-; Baghdad is in Axis hands
-#ALIGNMENT_POSITION= 234,120 [1]
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; 1st Line - UK(112) aligned with Allies and not surrendered
-; 2nd Line - Iraq(56) politically Axis and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 56 [1] [100] [0]
-; An Iraqi unit is in Baghdad
-#CONDITION_POSITION= 234,120 [0,0] [1,1] [1] [56]
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4640,48 +4491,6 @@
 }
 
 {
-#NAME= DE 403 - USSR: Operation Countenance: Join with the UK in Invading Persia? (If DE 120 approved) (AI - 100% Yes)
-#POPUP=
-#MESSAGE= Red Army Headquarters %N%N The British have proposed that we join them in invading Persia to overthrow the pro-Axis Shah.%N%N Their plan is that we then divide the country between us, with the British having the Oilfield at Maidan-I-Naftun and the port of Bandar Mahshahr.%N%N The invasion would only cost %B100 MPPs, to be divided equally between both countries.%N%N Would you like to approve this British plan to invade Persia and divide the country between us?
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-;Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-#LINK= 120[1]
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#DECISION= 403
-#MPP_UPDOWN= -50
-#MPP_TURNS= 1
-#MPP_TEXT= Operation Countenance
-#NOTES= A joint invasion will ensure that Persia is swiftly conquered, and the economic benefits will more than outweigh the cost.%N%N Saying %B(YES) will also provide the USA with the opportunity to send supplies via Persia to sustain our war effort. The conquest of Persia is essential if we wish the US to send us supplies through this country. %N%N%CRecommendations: %N%N Say %B(YES) to Operation Countenance and the invasion of Persia.
-#NOTES_POSITION= 246,117
-; Set AI acceptance % (AI will accept 100% of the time)
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1941/08/12
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Kuwait is in Allied hands
-#ALIGNMENT_POSITION= 241,128 [2]
-; Baku is in Allied hands
-#ALIGNMENT_POSITION= 245,104 [2]
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; Set variable conditions:
-#VARIABLE_CONDITION= 82 [1] [0] [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Dummy condition position (always satisfied)
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
 #NAME= DE 197 - UK: Operation Countenance: Call on the USSR to join us in Invading Persia? (AI - 100% Yes)
 #POPUP=
 #MESSAGE= <<TAG_60>>
@@ -4984,7 +4793,7 @@
 }
 
 {
-#NAME= DE 407 - USSR: Should Stalin Stay in Moscow to Lead its Defence? (AI - 75% Yes)
+#NAME= DE 408 - USSR: Should Stalin Stay in Moscow to Lead its Defence? (AI - 75% Yes)
 #POPUP=
 #MESSAGE= Red Army Headquarters %N%N Comrade Stalin, the invaders are approaching our capital and the people require inspiration to increase their dedication to resist.%N%N If you were to announce that you will stay in Moscow to lead its defence, then our workers and soldiers will take heart from your example and redouble their efforts to blunt the enemy's offensive.%N%N Nevertheless, it is only recommended that you say %B(YES) to announcing that you are leading Moscow's defence if you are confident of being able to prevent the enemy from taking the city.%N%N The danger is that if you tie your name in to the defense of the city and it is lost, the effect on morale will be very grave indeed.%N%N Given this risk, would you like to show a bold face to the world and announce that you will stay in Moscow?
 #IMAGE=
@@ -5000,7 +4809,8 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #DISPLAY_ORDER= 1
-#DECISION= 407
+; Resolve conflict with previous existing 407
+#DECISION= 408
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT=
@@ -6110,49 +5920,6 @@ Replacement script
 ; Set AI acceptance % (AI will accept 50% of the time)
 #AI_RESPONSE= 50
 #AI_RESPONSE_POPUP= Germany Refits French Capital Ships 
-#DATE= 1939/09/01
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Toulon is in Axis hands
-#ALIGNMENT_POSITION= 158,99 [1]
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; 1st Line - Vichy France(118) aligned with Allies and surrendered
-#VARIABLE_CONDITION= 118 [2] [100] [1]
-; Dummy condition position (always satisfied)
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; Event representing the possible return of the Vichy French fleet to their home ports
-; in Axis controlled territory, if the UK opted not to support the Free French.
-{
-#NAME= DE 678 - Germany: Should We Scrap Or Refit The French Battleship Strasbourg? (AI - 50% Yes)
-#POPUP=
-#MESSAGE= <<TAG_201>>
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-;Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-;Set link value to DE 100=1
-#LINK= 100[1]
-#COUNTRY_ID= 45
-#TRIGGER= 50
-#DISPLAY_ORDER= 1
-#DECISION= 678
-#MPP_UPDOWN= -70
-#MPP_TURNS= 2
-#MPP_TEXT= <<TAG_202>>
-#NOTES= <<TAG_203>>
-#NOTES_POSITION=
-; Set AI acceptance % (AI will accept 50% of the time)
-#AI_RESPONSE= 50
-#AI_RESPONSE_POPUP= <<TAG_204>>
 #DATE= 1939/09/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
@@ -9213,44 +8980,6 @@ Replacement script
 #CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [111]
 #CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [118]
 #CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [120]
-}
-
-{
-#NAME= DE 677 - Germany: Dummy Event for Vichy French Pro-Allied Partisans (AI - 100% Yes)
-#POPUP=
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-#LINK= 355[1]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#DECISION= 677
-#MPP_UPDOWN= 0
-#MPP_TURNS= 0
-#MPP_TEXT=
-#NOTES=
-#NOTES_POSITION=
-; Set AI acceptance % (AI will accept 100% of the time)
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1939/09/01
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Ottawa is in Allied hands
-#ALIGNMENT_POSITION= 6,93 [2]
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; 1st Line - Vichy France(118) aligned with Allies and surrendered
-#VARIABLE_CONDITION= 118 [2] [100] [1]
-; Dummy condition position (always satisfied)
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -14448,73 +14177,6 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-
-{
-#NAME= DE 676 - Germany: SUPPLY script for Axis control of Gibraltar (AI - 100% Yes)
-#POPUP=
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-; Set global variable condition to always trigger (dummy value)
-#GV= 1[1,100]
-; Set link value to always trigger (dummy value)
-#LINK= 0[0]
-#DECISION= 676
-; Set how many MPPs should be collected over X turns if player selects 'yes'
-#MPP_UPDOWN= 0
-#MPP_TURNS= 0
-#MPP_TEXT=
-#NOTES=
-#NOTES_POSITION=
-; Set AI acceptance % (AI will accept 100% of the time)
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1939/09/01
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Gibraltar is in Axis hands
-#ALIGNMENT_POSITION= 136,114 [1]
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; 1st Line - Germany(45) aligned with Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Set condition position:
-; 1 German unit in Gibraltar
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [45]
-; all other plausible Axis allies apart from Italy
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [4]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [19]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [31]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [36]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [39]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [46]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [52]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [57]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [61]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [64]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [38]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [73]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [78]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [87]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [93]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [96]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [99]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [103]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [104]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [105]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [110]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [111]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [118]
-#CONDITION_POSITION= 136,114 [0,0] [1,1] [1] [120]
-}
-
 {
 #NAME= DE 950 - Germany: 2nd Naval Infantry Division (AI - 100% Yes)
 #POPUP=
@@ -17530,8 +17192,9 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; TODO - Look at 718 more closely
 {
-#NAME= DE 718 - UK: Dummy Event To Trigger D-Day 1943 (AI - 100% Yes)
+#NAME= DE 718 - UK: Dummy Event To Trigger D-Day 1943 (Moscow, Stalingrad - Axis) (AI - 100% Yes)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -17575,7 +17238,7 @@ Replacement script
 }
 
 {
-#NAME= DE 718 - UK: Dummy Event To Trigger D-Day 1943 (AI - 90% Yes)
+#NAME= DE 718 - UK: Dummy Event To Trigger D-Day 1943 (Stalingrad - Axis) (AI - 90% Yes)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -17619,7 +17282,7 @@ Replacement script
 }
 
 {
-#NAME= DE 718 - UK: Dummy Event To Trigger D-Day 1943 (AI - 80% Yes)
+#NAME= DE 718 - UK: Dummy Event To Trigger D-Day 1943 (Moscow - Axis) (AI - 80% Yes)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -18151,9 +17814,10 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 ; Stalingrad Supply
 {
-#NAME= DE 530 - Germany: Stalingrad Supply (AI - 100% Yes)
+#NAME= DE 530 - Germany: Stalingrad Supply (Saratov Allied) (AI - 100% Yes)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -18193,9 +17857,10 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 ; Stalingrad Supply
 {
-#NAME= DE 530 - Germany: Stalingrad Supply (AI - 100% Yes)
+#NAME= DE 530 - Germany: Stalingrad Supply (Astrakhan - Allied) (AI - 100% Yes)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -18779,7 +18444,7 @@ Replacement script
 
 ;NEW
 {
-#NAME= DE 170 - UK: Dummy Event for the UK's convoy to Arkhangelsk (AI - 100% Yes)
+#NAME= DE 175 - UK: Dummy Event for the UK's convoy to Arkhangelsk (AI - 100% Yes)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -18795,7 +18460,7 @@ Replacement script
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #DISPLAY_ORDER= 0
-#DECISION= 170
+#DECISION= 175
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT= 
@@ -18925,9 +18590,9 @@ Replacement script
 }
 
 {
-#NAME= DE 403 - USSR: Operation Countenance: Join with the UK in Invading Persia? (If DE 979 approved) (AI - 100% Yes)
+#NAME= DE 403 - USSR: Operation Countenance: Join with the UK in Invading Persia? (If DE 120 approved) (AI - 100% Yes)
 #POPUP=
-#MESSAGE= Red Army Headquarters %N%N The British have proposed that we join them in invading Persia to overthrow the pro-Axis Shah.%N%N Their plan is that we then divide the country between us, with the British having the Oilfield at Maidan-I-Naftun and the port of Bandar Mahshahr.%N%N The invasion would only cost 100 MPPs, to be divided equally between both countries.%N%N Would you like to approve this British plan to invade Persia and divide the country between us %B(YES)?
+#MESSAGE= Red Army Headquarters %N%N The British have proposed that we join them in invading Persia to overthrow the pro-Axis Shah.%N%N Their plan is that we then divide the country between us, with the British having the Oilfield at Maidan-I-Naftun and the port of Bandar Mahshahr.%N%N The invasion would only cost %B100 MPPs, to be divided equally between both countries.%N%N Would you like to approve this British plan to invade Persia and divide the country between us %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -18936,8 +18601,9 @@ Replacement script
 #LEVEL= 0
 ;Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 979[1]
-; 979[1]->403[?]
+; UK: Operation Countenance: Call on the USSR to join us in Invading Persia?
+#LINK= 120[1]
+; 120[1]->403[?]
 #DECISION= 403
 #COUNTRY_ID= 116
 #TRIGGER= 100
@@ -18945,7 +18611,7 @@ Replacement script
 #MPP_UPDOWN= -50
 #MPP_TURNS= 1
 #MPP_TEXT= Operation Countenance
-#NOTES= A joint invasion will ensure that Persia is swiftly conquered, and the economic benefits will more than outweigh the cost.%N%N Saying %B(YES) will also provide the USA with the opportunity to send supplies via Persia to sustain our war effort. The conquest of Persia is essential if we wish the US to send us supplies through this country.%N%N %CRecommendations: %N%N Say %B(YES) to invade Persia and Operation Countenance.
+#NOTES= A joint invasion will ensure that Persia is swiftly conquered, and the economic benefits will more than outweigh the cost.%N%N Saying %B(YES) will also provide the USA with the opportunity to send supplies via Persia to sustain our war effort. The conquest of Persia is essential if we wish the US to send us supplies through this country. %N%N%CRecommendations: %N%N Say %B(YES) to Operation Countenance and the invasion of Persia.
 #NOTES_POSITION= 246,117
 ; Set AI acceptance % (AI will accept 100% of the time)
 #AI_RESPONSE= 100
@@ -18960,6 +18626,52 @@ Replacement script
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Set variable conditions:
+; Persia(82) is Axis aligned
+#VARIABLE_CONDITION= 82 [1] [0] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Dummy condition position (always satisfied)
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 470 - USSR: Operation Countenance: Join with the UK in Invading Persia? (If DE 979 approved) (AI - 100% Yes)
+#POPUP=
+#MESSAGE= Red Army Headquarters %N%N The British have proposed that we join them in invading Persia to overthrow the pro-Axis Shah.%N%N Their plan is that we then divide the country between us, with the British having the Oilfield at Maidan-I-Naftun and the port of Bandar Mahshahr.%N%N The invasion would only cost %B100 MPPs, to be divided equally between both countries.%N%N Would you like to approve this British plan to invade Persia and divide the country between us %B(YES)?
+#IMAGE=
+#SOUND= teletype_1.ogg, teletype_2.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+;Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; UK: Operation Countenance: Call on the USSR to join us in Invading Persia?
+#LINK= 979[1]
+; 979[1]->470[?]
+#DECISION= 470
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DISPLAY_ORDER= 0
+#MPP_UPDOWN= -50
+#MPP_TURNS= 1
+#MPP_TEXT= Operation Countenance
+#NOTES= A joint invasion will ensure that Persia is swiftly conquered, and the economic benefits will more than outweigh the cost.%N%N Saying %B(YES) will also provide the USA with the opportunity to send supplies via Persia to sustain our war effort. The conquest of Persia is essential if we wish the US to send us supplies through this country. %N%N%CRecommendations: %N%N Say %B(YES) to Operation Countenance and the invasion of Persia.
+#NOTES_POSITION= 246,117
+; Set AI acceptance % (AI will accept 100% of the time)
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1941/08/12
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Kuwait is in Allied hands
+#ALIGNMENT_POSITION= 241,128 [2]
+; Baku is in Allied hands
+#ALIGNMENT_POSITION= 245,104 [2]
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Set variable conditions:
+; Persia(82) is Axis aligned
 #VARIABLE_CONDITION= 82 [1] [0] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]

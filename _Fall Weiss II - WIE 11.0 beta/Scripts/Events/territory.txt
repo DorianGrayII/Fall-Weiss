@@ -690,27 +690,6 @@
 #MAP_POSITION= 142,89
 }
 
-;
-{
-#NAME= DE 212 - France Retakes Control Of The Port Of St. Nazaire
-#POPUP= France Retakes Control Of The Port Of St. Nazaire
-#IMAGE=
-#SOUND= mine.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 212[1]
-#COUNTRY_ID= 45
-#RECIPIENT_ID= 40
-#REMOVE= 0
-#TRIGGER= 100
-#DATE= 1939/09/01
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#MAP_POSITION= 142,89
-}
-
 {
 #NAME= DE 252 - Alsace Is Reunited With France
 #POPUP= Alsace Is Reunited With France
@@ -3718,8 +3697,11 @@
 #LEVEL= 0
 ; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
+; USSR: Operation Countenance: Join with the UK in Invading Persia?
 #LINK= 403[1]
+; Persia
 #COUNTRY_ID= 82
+; UK
 #RECIPIENT_ID= 112
 #REMOVE= 0
 #TRIGGER= 100
@@ -3753,6 +3735,57 @@
 #MAP_POSITION= 244,125
 #MAP_POSITION= 245,124
 }
+
+{
+#NAME= DE 470 - Operation Countenance - The UK Gains Southern Persia
+#POPUP= Britain Secures The Persian Oilfield At Maidan-I-Naftun
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; USSR: Operation Countenance: Join with the UK in Invading Persia?
+#LINK= 470[1]
+; Persia
+#COUNTRY_ID= 82
+; UK
+#RECIPIENT_ID= 112
+#REMOVE= 0
+#TRIGGER= 100
+#DATE= 1941/08/26
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#MAP_POSITION= 244,127
+#MAP_POSITION= 244,126
+#MAP_POSITION= 243,125
+#MAP_POSITION= 242,125
+#MAP_POSITION= 243,124
+#MAP_POSITION= 242,124
+#MAP_POSITION= 243,123
+#MAP_POSITION= 244,123
+#MAP_POSITION= 243,122
+#MAP_POSITION= 244,122
+#MAP_POSITION= 245,122
+#MAP_POSITION= 246,123
+#MAP_POSITION= 247,123
+#MAP_POSITION= 247,124
+#MAP_POSITION= 248,124
+#MAP_POSITION= 248,125
+#MAP_POSITION= 248,126
+#MAP_POSITION= 247,125
+#MAP_POSITION= 246,126
+#MAP_POSITION= 245,126
+#MAP_POSITION= 245,125
+#MAP_POSITION= 246,125
+#MAP_POSITION= 246,124
+#MAP_POSITION= 245,123
+#MAP_POSITION= 244,124
+#MAP_POSITION= 244,125
+#MAP_POSITION= 245,124
+}
+
 
 ;
 {
