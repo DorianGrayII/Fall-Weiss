@@ -56,7 +56,11 @@
 ;        Example C) #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
 ; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
 ; #COUNTRY_ID= Country ID that will be owner of supply event
-; #ALIGNMENT_ID= Political alignment ID that will be the owner of the event
+; #ALIGNMENT_ID= Value range [0, 2]
+;        Political alignment ID that will be the owner of the event
+;        0 = Neutral; (any ?)
+;        1 = Axis;
+;        2 = Allied;
 ; #FLAG_ID= Flag ID that will be shown in the popup for this event
 ; #SEASON_FLAG= Season flag can be used to limit event to a particular season
 ; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
@@ -103,7 +107,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; Country IDs
-; #COUNTRY_ID_0= Neutral
+; #COUNTRY_ID_0= Neutral (or any country)
 ; #COUNTRY_ID_1= Abyssinia
 ; #COUNTRY_ID_2= Afghanistan
 ; #COUNTRY_ID_3= Albania
@@ -450,7 +454,7 @@
 #LINK= 0[0]
 #COUNTRY_ID= 45
 #ALIGNMENT_ID= 0
-#FLAG_ID= 112
+#FLAG_ID= 46
 #TRIGGER= 100
 #SEASON_FLAG= 0
 #DATE= 1944/12/20
@@ -922,6 +926,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Prepare Commando Raids Against Occupied Europe?
 #LINK= 114[1]
 #COUNTRY_ID= 112
 #ALIGNMENT_ID= 0
@@ -933,6 +938,7 @@
 #DESTINATION_RESOURCE= 130,98 [2,3]
 #DESTINATION_RESOURCE= 130,97 [2,3]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 99 [1][0][0]
 }
 
 {
@@ -954,7 +960,7 @@
 #DATE= 1942/12/07
 #SOURCE_POSITION= 147,77 [-1]
 #DESTINATION_RESOURCE= 145,93 [2,5]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
 }
 
 {
@@ -1313,9 +1319,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 112
 #ALIGNMENT_ID= 0
@@ -1365,9 +1369,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 112
 #ALIGNMENT_ID= 0
@@ -1375,6 +1377,7 @@
 #TRIGGER= 20
 #SEASON_FLAG= 0
 #DATE= 1940/07/01
+; Malta(174,114)
 #SOURCE_POSITION= 175,114 [-1]
 ; Tobruk - Port
 #DESTINATION_RESOURCE= 195,121 [1,2]
@@ -1406,7 +1409,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,50]
 #LINK= 113[1]
 #COUNTRY_ID= 112
@@ -1431,7 +1433,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[51,100]
 #LINK= 113[1]
 #COUNTRY_ID= 112
@@ -1456,7 +1457,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[51,100]
 #LINK= 113[1]
 #COUNTRY_ID= 112
@@ -1485,7 +1485,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 676[1]
 #COUNTRY_ID= 45
@@ -1527,8 +1526,8 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#COUNTRY_ID= 45
-#ALIGNMENT_ID= 0
+#COUNTRY_ID= 0
+#ALIGNMENT_ID= 1
 #FLAG_ID= 115
 #TRIGGER= 100
 #SEASON_FLAG= 0
@@ -1561,8 +1560,8 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#COUNTRY_ID= 45
-#ALIGNMENT_ID= 0
+#COUNTRY_ID= 0
+#ALIGNMENT_ID= 1
 #FLAG_ID= 21
 #TRIGGER= 100
 #SEASON_FLAG= 0
@@ -1588,8 +1587,8 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#COUNTRY_ID= 45
-#ALIGNMENT_ID= 0
+#COUNTRY_ID= 0
+#ALIGNMENT_ID= 1
 #FLAG_ID= 21
 #TRIGGER= 100
 #SEASON_FLAG= 0
@@ -1619,9 +1618,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 59
 #ALIGNMENT_ID= 0
@@ -1661,9 +1658,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 115
 #ALIGNMENT_ID= 0
@@ -1765,8 +1760,7 @@
 #SEASON_FLAG= 0
 #DATE= 1939/09/03
 ; Malta(175,114) [any unit]
-; highlight Malta hex
-#SOURCE_POSITION= 175,114 [-1.5]
+#SOURCE_POSITION= 175,114 [-1]
 #DESTINATION_RESOURCE= 172,120 [5,5]
 #DESTINATION_RESOURCE= 185,122 [5,5]
 #DESTINATION_RESOURCE= 195,121 [5,5]
@@ -1906,7 +1900,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 950[1]
 #COUNTRY_ID= 112
@@ -1931,7 +1924,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 951[1]
 #COUNTRY_ID= 112
@@ -1998,27 +1990,27 @@
 #VARIABLE_CONDITION= 99 [1] [100] [0]
 }
 
+
 ; Replacement Script
 ; Crete limits Axis supply in the Mediterranean
 { 
 #NAME= Crete Effect (Tobruk, Bardia, Sidi Barrani, Mersa Matruh, El Alamein, Alexandria) (20% Chance)
-#POPUP= Crete Hinders Axis Supply In the North Africa (Tobruk, El Alamein, Alexandria)
+#POPUP= The Presence Of Allied Troops Hinders Axis Supply In North Africa (Tobruk, El Alamein, Alexandria)
 #IMAGE=
 #SOUND=
 #FLAG= 1
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
+#COUNTRY_ID= 0
+#ALIGNMENT_ID= 2
 #FLAG_ID= 112
 #TRIGGER= 20
 #SEASON_FLAG= 0
 #DATE= 1940/06/01
+; Heraklion [any unit]
 #SOURCE_POSITION= 196,116 [-1.5]
 #DESTINATION_RESOURCE= 195,121 [1,3]
 #DESTINATION_RESOURCE= 194,122 [1,3]
@@ -2032,15 +2024,17 @@
 #DESTINATION_RESOURCE= 200,124 [1,3]
 #DESTINATION_RESOURCE= 204,125 [1,3]
 ; 1st Line - UK(112) politically aligned with the Allies and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
 ; 2nd Line - Egypt(36) politically aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
 }
+
 
 ; Allies In Egypt Support Greece
 {
 #NAME= DE 838 - Allies In Egypt Support Greece
-#POPUP= Greek Expedition Disrupts Allied Supply In Egypt
+#POPUP= Impromptu Allied Expedition To Greece Disrupts Supply-chain In Egypt
 #IMAGE= 
 #SOUND= 
 #FLAG= 1
@@ -2049,7 +2043,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 838[1]
-#COUNTRY_ID= 45
+#COUNTRY_ID= 112
 #ALIGNMENT_ID= 0
 #FLAG_ID= 36
 #TRIGGER= 100
@@ -2076,30 +2070,31 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 838[1]
-#COUNTRY_ID= 45
+#COUNTRY_ID= 120
 #ALIGNMENT_ID= 0
 #FLAG_ID= 120
 #TRIGGER= 100
 #SEASON_FLAG= 0
 #DATE= 1939/09/03
 #SOURCE_POSITION=
+; Skopje(189,101)
 #DESTINATION_RESOURCE= 189,101 [3,3]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Yugoslavia Allied and mobilized
 #VARIABLE_CONDITION= 120 [2] [100] [0]
+; Greece is Allied and mobilized
 #VARIABLE_CONDITION= 46 [2] [100] [0]
 }
 
 ; Maikop Oil Fields - first message
 { 
 #NAME= DE 429 - Maikop Oil Fields Destroyed
-#POPUP= German Engineers Find The Maikop Oil Fields In Irreparable Ruin
+#POPUP= German Engineers Find The Maikop Oil Fields An Irreparable Ruin
 #IMAGE=
 #SOUND=
 #FLAG= 1
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 429[1]
 #COUNTRY_ID= 116
@@ -2110,8 +2105,7 @@
 #DATE= 1940/01/01
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 225,95 [10,10]
-; 1st Line - UK(112) politically aligned with the Allies and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
 }
 
 ; Maikop Oil Fields - continuous
@@ -2125,7 +2119,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 429[1]
 #COUNTRY_ID= 116
@@ -2136,8 +2129,7 @@
 #DATE= 1940/01/01
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 225,95 [10,10]
-; 1st Line - UK(112) politically aligned with the Allies and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
 }
 
 ; Stalingrad Supply - continuous
@@ -2150,7 +2142,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 530[1]
 #COUNTRY_ID= 116
@@ -2183,11 +2174,10 @@
 #TRIGGER= 100
 #SEASON_FLAG= 0
 #DATE= 1941/08/13
-; any unit at Leningrad
+; Leningrad [any unit]
 #SOURCE_POSITION= 206,52 [-1]
 #DESTINATION_RESOURCE= 173,74 [1,2]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
 {
@@ -2203,7 +2193,7 @@
 #LINK= 0[0]
 #COUNTRY_ID= 116
 #ALIGNMENT_ID= 0
-#FLAG_ID= 116
+#FLAG_ID= 93
 #TRIGGER= 25
 #SEASON_FLAG= 0
 #DATE= 1939/09/01
