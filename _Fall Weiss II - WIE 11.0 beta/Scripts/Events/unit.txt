@@ -21,7 +21,7 @@
 ;        With all other fields satisfied will this be:
 ;        0 = Single check regardless if #TRIGGER is satisfied
 ;        1 = Multiple check until #TRIGGER is satisfied
-;        2 = Reoccurring check until end of game (not valid for UNIT events)
+;        2 = Reoccurring check until end of game (*** not valid for UNIT events ***)
 ;                       OR
 ;        Once the #DATE field is satisfied:
 ;        3 = Event fires once if all other fields are satisfied, else it will not fire.  Either way, event will be removed never to be looked at again
@@ -761,7 +761,7 @@
 #UNIT= 4 [3] [1] [I Australian]
 }
 
-;
+; https://nzhistory.govt.nz/war/the-north-african-campaign/background
 ; New Zealand Unit
 {
 #NAME= DE 107 - UK: New Zealand Reinforcements
@@ -787,7 +787,8 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 4 [10] [0.5] [New Zealand]
+; Infantry Corps(4)
+#UNIT= 4 [10] [0.5] [2NZEF]
 }
 
 ;
@@ -1005,7 +1006,7 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Axis unit in the UK
 #CONDITION_POSITION= 147,77 [25,25] [1,1] [1] [0]
-#UNIT= 1 [5] [0] [1st L.D.V.]
+#UNIT= 1 [5] [0] [1st LDV]
 }
 
 {
@@ -1030,7 +1031,7 @@
 ; UK(112) aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 147,77 [25,25] [1,1] [1] [0]
-#UNIT= 1 [5] [0] [2nd L.D.V.]
+#UNIT= 1 [5] [0] [2nd LDV]
 }
 
 ;
@@ -1056,7 +1057,7 @@
 ; UK(112) aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 147,77 [25,25] [1,1] [1] [0]
-#UNIT= 1 [5] [0] [3rd L.D.V.]
+#UNIT= 1 [5] [0] [3rd LDV]
 }
 
 ;
@@ -1082,7 +1083,7 @@
 ; UK(112) aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 147,77 [25,25] [1,1] [1] [0]
-#UNIT= 1 [5] [0] [4th L.D.V.]
+#UNIT= 1 [5] [0] [4th LDV]
 }
 
 {
@@ -1136,7 +1137,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [5] [0.5] [I]
 #UNIT= 4 [5] [0.5] [II]
-#UNIT= 5 [8] [0.5] [B.E.F.]
+#UNIT= 5 [8] [0.5] [BEF]
 }
 
 {
@@ -1188,8 +1189,9 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; HQ(0), Infantry Army(5), Infantry Corps(4)
 #UNIT= 0 [5] [0] [Lord Gort VC]
-#UNIT= 5 [8] [0.5] [B.E.F.]
+#UNIT= 5 [8] [0.5] [BEF]
 #UNIT= 4 [5] [0.5] [I]
 #UNIT= 4 [5] [0.5] [II]
 }
@@ -1780,7 +1782,8 @@
 #VARIABLE_CONDITION= 19 [1] [0] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 5 [10] [0] []
+; Infantry Army(5)
+#UNIT= 5 [10] [0] [1st Leningrad]
 }
 
 {
@@ -1811,7 +1814,8 @@
 #VARIABLE_CONDITION= 19 [1] [0] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 5 [10] [0] []
+; Infantry Army(5)
+#UNIT= 5 [10] [0] [1st Moscow]
 }
 
 {
@@ -2116,7 +2120,7 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 25 [7] [0] []
+#UNIT= 25 [7] [0] [1st Zhitomir]
 }
 
 {
@@ -2142,11 +2146,11 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 25 [7] [0] []
+#UNIT= 25 [7] [0] [1st Minsk]
 }
 
 {
-#NAME= USSR: Soviet Light Tanks Mobilize at Ostrov (Barbarossa)
+#NAME= USSR: Soviet Tank Division Mobilize at Ostrov (Barbarossa)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2168,7 +2172,7 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 25 [7] [0] []
+#UNIT= 25 [7] [0] [1st Ostrov]
 }
 
 {
@@ -3280,7 +3284,7 @@
 #VARIABLE_CONDITION= 27 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] [1st]
+#UNIT= 1 [5] [0] [Zagreb]
 }
 
 {
@@ -3457,24 +3461,31 @@
 #FULL_RESEARCH= 1
 #DATE= 1940/12/30
 #FAILSAFE_DATE= 1948/01/01
+; Benghazi(186,122)
 #DESTINATION_RESOURCE= 186,122
+; Msus(188,124)
+#DESTINATION_RESOURCE= 188,124
+; El Agheila(184,126)
 #DESTINATION_RESOURCE= 184,126
+; Sirte(179,124)
 #DESTINATION_RESOURCE= 179,124
+; Tripoli(172,121)
 #DESTINATION_RESOURCE= 172,121
+; Trieste(174,92)
 #DESTINATION_RESOURCE= 174,92
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; HQ(0), Tank Corps(26), Recon(22), Infantry Corps(4), 
+#UNIT= 0 [10] [0.5] [Rommel]
+#UNIT= 26 [5] [0.5] [DAK]
+#UNIT= 22 [5] [0] [Afrika]
+#UNIT= 4 [5] [0.5] [Afrika]
 ; Tac(30), Fighters(29), Arty(17), AntiTank(24)
 #UNIT= 30 [5] [0] [Afrika]
 #UNIT= 29 [5] [0] [Afrika]
 #UNIT= 17 [5] [0] [Afrika]
 #UNIT= 24 [5] [0] [Afrika]
-; Recon(22), Infantry Corps(4), Tank Corps(26), HQ(0) 
-#UNIT= 22 [5] [0] [Afrika]
-#UNIT= 4 [5] [0.5] [Afrika]
-#UNIT= 26 [5] [0.5] [Afrika Korps]
-#UNIT= 0 [10] [0.5] [Rommel]
 }
 
 {
@@ -3495,24 +3506,31 @@
 #FULL_RESEARCH= 1
 #DATE= 1940/12/30
 #FAILSAFE_DATE= 1948/01/01
+; Tripoli(172,121)
 #DESTINATION_RESOURCE= 172,121
+; Homs(175,121)
+#DESTINATION_RESOURCE= 175,121
+; Benghazi(186,122)
 #DESTINATION_RESOURCE= 186,122
+; El Agheila(184,126)
 #DESTINATION_RESOURCE= 184,126
+; Sirte(179,124)
 #DESTINATION_RESOURCE= 179,124
+; Trieste(174,92)
 #DESTINATION_RESOURCE= 174,92
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; HQ(0), Tank Corps(26), Recon(22), Infantry Corps(4), 
+#UNIT= 0 [10] [0.5] [Rommel]
+#UNIT= 26 [5] [0.5] [DAK]
+#UNIT= 22 [5] [0] [Afrika]
+#UNIT= 4 [5] [0.5] [Afrika]
 ; Tac(30), Fighters(29), Arty(17), AntiTank(24)
 #UNIT= 30 [5] [0] [Afrika]
 #UNIT= 29 [5] [0] [Afrika]
 #UNIT= 17 [5] [0] [Afrika]
 #UNIT= 24 [5] [0] [Afrika]
-; Recon(22), Infantry Corps(4), Tank Corps(26), HQ(0) 
-#UNIT= 22 [5] [0] [Afrika]
-#UNIT= 4 [5] [0.5] [Afrika]
-#UNIT= 26 [5] [0.5] [Afrika Korps]
-#UNIT= 0 [10] [0.5] [Rommel]
 }
 
 {
@@ -3533,22 +3551,23 @@
 #FULL_RESEARCH= 1
 #DATE= 1940/12/30
 #FAILSAFE_DATE= 1948/01/01
+; Trieste(174,92)
 #DESTINATION_RESOURCE= 174,92
-; new DESTINATION_RESOURCE merged from 1939 Storm over Europe campaign
+; Udine(172,91) (new from 1939 Storm over Europe)
 #DESTINATION_RESOURCE= 172,91
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; HQ(0), Tank Corps(26), Recon(22), Infantry Corps(4), 
+#UNIT= 0 [10] [0.5] [Rommel]
+#UNIT= 26 [5] [0.5] [DAK]
+#UNIT= 22 [5] [0] [Afrika]
+#UNIT= 4 [5] [0.5] [Afrika]
 ; Tac(30), Fighters(29), Arty(17), AntiTank(24)
 #UNIT= 30 [5] [0] [Afrika]
 #UNIT= 29 [5] [0] [Afrika]
 #UNIT= 17 [5] [0] [Afrika]
 #UNIT= 24 [5] [0] [Afrika]
-; Recon(22), Infantry Corps(4), Tank Corps(26), HQ(0) 
-#UNIT= 22 [5] [0] [Afrika]
-#UNIT= 4 [5] [0.5] [Afrika]
-#UNIT= 26 [5] [0.5] [Afrika Korps]
-#UNIT= 0 [10] [0.5] [Rommel]
 }
 
 {
@@ -3569,24 +3588,31 @@
 #FULL_RESEARCH= 1
 #DATE= 1940/12/30
 #FAILSAFE_DATE= 1948/01/01
+; Tripoli(172,121)
 #DESTINATION_RESOURCE= 172,121
+; Homs(175,121)
+#DESTINATION_RESOURCE= 175,121
+; Benghazi(186,122)
 #DESTINATION_RESOURCE= 186,122
+; El Agheila(184,126)
 #DESTINATION_RESOURCE= 184,126
+; Sirte(179,124)
 #DESTINATION_RESOURCE= 179,124
+; Trieste(174,92)
 #DESTINATION_RESOURCE= 174,92
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; HQ(0), Tank Corps(26), Recon(22), Infantry Corps(4),
+#UNIT= 0 [10] [0.5] [Rommel]
+#UNIT= 26 [5] [0.5] [DAK]
+#UNIT= 22 [5] [0] [Afrika]
+#UNIT= 4 [5] [0.5] [Afrika]
 ; Tac(30), Fighters(29), Arty(17), AntiTank(24)
 #UNIT= 30 [5] [0] [Afrika]
 #UNIT= 29 [5] [0] [Afrika]
 #UNIT= 17 [5] [0] [Afrika]
 #UNIT= 24 [5] [0] [Afrika]
-; Recon(22), Infantry Corps(4), Tank Corps(26), HQ(0) 
-#UNIT= 22 [5] [0] [Afrika]
-#UNIT= 4 [5] [0.5] [Afrika]
-#UNIT= 26 [5] [0.5] [Afrika Korps]
-#UNIT= 0 [10] [0.5] [Rommel]
 }
 
 
@@ -3608,24 +3634,31 @@
 #FULL_RESEARCH= 1
 #DATE= 1940/12/30
 #FAILSAFE_DATE= 1948/01/01
+; Benghazi(186,122)
 #DESTINATION_RESOURCE= 186,122
+; Msus(188,124)
+#DESTINATION_RESOURCE= 188,124
+; El Agheila(184,126)
 #DESTINATION_RESOURCE= 184,126
+; Sirte(179,124)
 #DESTINATION_RESOURCE= 179,124
+; Tripoli(172,121)
 #DESTINATION_RESOURCE= 172,121
+; Trieste(174,92)
 #DESTINATION_RESOURCE= 174,92
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; HQ(0), Tank Corps(26), Recon(22), Infantry Corps(4),
+#UNIT= 0 [10] [0.5] [Rommel]
+#UNIT= 26 [5] [0.5] [DAK]
+#UNIT= 22 [5] [0] [Afrika]
+#UNIT= 4 [5] [0.5] [Afrika]
 ; Tac(30), Fighters(29), Arty(17), AntiTank(24)
 #UNIT= 30 [5] [0] [Afrika]
 #UNIT= 29 [5] [0] [Afrika]
 #UNIT= 17 [5] [0] [Afrika]
 #UNIT= 24 [5] [0] [Afrika]
-; Recon(22), Infantry Corps(4), Tank Corps(26), HQ(0) 
-#UNIT= 22 [5] [0] [Afrika]
-#UNIT= 4 [5] [0.5] [Afrika]
-#UNIT= 26 [5] [0.5] [Afrika Korps]
-#UNIT= 0 [10] [0.5] [Rommel]
 }
 
 {
@@ -3653,16 +3686,16 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; HQ(0), Tank Corps(26), Recon(22), Infantry Corps(4)
+#UNIT= 0 [10] [0.5] [Rommel]
+#UNIT= 26 [5] [0.5] [DAK]
+#UNIT= 22 [5] [0] [Afrika]
+#UNIT= 4 [5] [0.5] [Afrika]
 ; Tac(30), Fighters(29), Arty(17), AntiTank(24)
 #UNIT= 30 [5] [0] [Afrika]
 #UNIT= 29 [5] [0] [Afrika]
 #UNIT= 17 [5] [0] [Afrika]
 #UNIT= 24 [5] [0] [Afrika]
-; Recon(22), Infantry Corps(4), Tank Corps(26), HQ(0) 
-#UNIT= 22 [5] [0] [Afrika]
-#UNIT= 4 [5] [0.5] [Afrika]
-#UNIT= 26 [5] [0.5] [Afrika Korps]
-#UNIT= 0 [10] [0.5] [Rommel]
 }
 
 {
@@ -3689,9 +3722,9 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 24 [5] [0] []
-#UNIT= 24 [5] [0] []
-#UNIT= 24 [5] [0] []
+#UNIT= 24 [5] [0] [11st Panzerjäger]
+#UNIT= 24 [5] [0] [12nd Panzerjäger]
+#UNIT= 24 [5] [0] [13rd Panzerjäger]
 }
 
 {
@@ -3717,8 +3750,9 @@
 #VARIABLE_CONDITION= 93 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 5 [5] [0] []
-#UNIT= 5 [5] [0] []
+; Infantry Army(5)
+#UNIT= 5 [5] [0] [3rd]
+#UNIT= 5 [5] [0] [4th]
 }
 
 {
@@ -3744,6 +3778,7 @@
 #VARIABLE_CONDITION= 19 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Infantry Army(5)
 #UNIT= 5 [5] [0] []
 #UNIT= 5 [5] [0] []
 }
@@ -3771,7 +3806,7 @@
 #VARIABLE_CONDITION= 19 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Varna]
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3992,7 +4027,7 @@
 #VARIABLE_CONDITION= 115 [2] [0] [0]
 ; 2 Allied Amphibious units within 30 hexes of Syracuse Port
 #CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Syracuse]
 }
 
 {
@@ -4020,7 +4055,7 @@
 #VARIABLE_CONDITION= 115 [2] [0] [0]
 ; 2 Allied Amphibious units within 30 hexes of Syracuse Port
 #CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Genoa]
 }
 
 {
@@ -4048,7 +4083,7 @@
 #VARIABLE_CONDITION= 115 [2] [0] [0]
 ; 2 Allied Amphibious units within 30 hexes of Syracuse Port
 #CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Brindisi]
 }
 
 {
@@ -4076,7 +4111,7 @@
 #VARIABLE_CONDITION= 115 [2] [0] [0]
 ; 2 Allied Amphibious units within 30 hexes of Syracuse Port
 #CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Rome]
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4195,6 +4230,7 @@
 #DESTINATION_RESOURCE= 216,123
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 206,124 [5,6] [1,1] [1] [0]
+; Infantry Army(5)
 #UNIT= 5 [5] [0.8] [10th]
 }
 
@@ -4764,7 +4800,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; USSR
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
+;
+; Soviet Tank Armies did not truly exist until May 1942, earliest was the
+; 3rd Guards Tank Army
+; 
 {
 #NAME= DE 885 - USSR: Siberian Reserves
 #POPUP= USSR Transfers Siberian Troops
@@ -4784,22 +4824,30 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/12/01
 #FAILSAFE_DATE= 1945/09/15
+; Kazan(243,66)
 #DESTINATION_RESOURCE= 243,66
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 0 [10] [1] [Zhukov]
 #UNIT= 0 [10] [1] []
-#UNIT= 4 [10] [1] []
-#UNIT= 4 [10] [1] []
-#UNIT= 5 [10] [1] []
-#UNIT= 5 [10] [1] []
-#UNIT= 14 [10] [1] []
-#UNIT= 14 [10] [1] []
-#UNIT= 26 [10] [1] []
-#UNIT= 27 [10] [1] []
-#UNIT= 29 [10] [1] []
-#UNIT= 30 [10] [1] []
+; Infantry Corps(4)
+#UNIT= 4 [10] [1] [19th "Siberian" Rifle]
+#UNIT= 4 [10] [1] [32nd "Transbaikal" Rifle]
+; Infantry Army(5)
+#UNIT= 5 [10] [1] [24th "Siberian"]
+#UNIT= 5 [10] [1] [25th "Far East"]
+; Shock Army(14)
+#UNIT= 14 [10] [1] [1st]
+#UNIT= 14 [10] [1] [3rd]
+; Mech Corps(6)
+#UNIT= 6 [10] [1] [5th "Transbaikal"]
+; Tank Army(27)
+#UNIT= 27 [10] [1] [3rd Guards]
+; Fighter(29)
+#UNIT= 29 [10] [1] [1st Siberian]
+; Tac(30)
+#UNIT= 30 [10] [1] [1st Siberian]
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -4928,7 +4976,8 @@
 #VARIABLE_CONDITION= 78 [2] [100] [1]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 10 [3] [0] [Narvik]
+; Mountain Division(10)
+#UNIT= 10 [3] [0] [3rd Gebirgsjäger]
 }
 
 ; Fall Weiss II Event
@@ -5104,7 +5153,8 @@
 #VARIABLE_CONDITION= 78 [2] [100] [1]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 10 [3] [0] [Narvik]
+; Mountain Division(10)
+#UNIT= 10 [3] [0] [3rd Gebirgsjäger]
 }
 
 ; Fall Weiss II Event
@@ -5280,7 +5330,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] [Tunis]
+#UNIT= 1 [5] [0] [1st Tunis]
 }
 
 {
@@ -5305,7 +5355,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] [Tunis]
+#UNIT= 1 [5] [0] [2nd Tunis]
 }
 
 ; Replacement Script
@@ -5360,7 +5410,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0] 
-#UNIT= 1 [5] [0] [Marseille]
+#UNIT= 1 [5] [0] [1st Marseille]
 }
 
 {
@@ -5385,14 +5435,12 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0] 
-#UNIT= 1 [5] [0] [Marseille]
+#UNIT= 1 [5] [0] [2nd Marseille]
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Finnish Unit Events
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;AMEND1940
 ;
 ; Finland As Axis (Winter War)
 {
@@ -5413,7 +5461,11 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Lappeenranta
 #DESTINATION_RESOURCE= 202,48
+; Lahti - Spillover location
+#DESTINATION_RESOURCE= 197,48
+; Finland(39) aligned Axis and fully mobilized
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5446,6 +5498,7 @@
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Infantry Army(5)
 #UNIT= 5 [10] [0.5] [Isthmus]
 }
 
@@ -5494,11 +5547,12 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Petsamo(209,13)
 #DESTINATION_RESOURCE= 209,13
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] [3rd]
+#UNIT= 1 [5] [0] [Petsamo]
 }
 
 ; Finland as Allied
@@ -5524,6 +5578,7 @@
 #VARIABLE_CONDITION= 39 [2] [100] [0]
 ; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Infantry Army(5)
 #UNIT= 5 [10] [0.5] [Isthmus]
 }
 
@@ -5545,6 +5600,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Hameenlinna
 #DESTINATION_RESOURCE= 194,49
 #VARIABLE_CONDITION= 39 [2] [100] [0]
 ; dummy condition position
@@ -5570,6 +5626,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Hanko
 #DESTINATION_RESOURCE= 192,51
 #VARIABLE_CONDITION= 39 [2] [100] [0]
 ; dummy condition position
@@ -5603,6 +5660,7 @@
 #VARIABLE_CONDITION= 99 [1] [100] [0]
 ; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Infantry Army(5)
 #UNIT= 5 [8] [0.6] [2nd]
 }
 
@@ -5628,6 +5686,7 @@
 #VARIABLE_CONDITION= 99 [1] [100] [0]
 ; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Infantry Army(5)
 #UNIT= 5 [8] [0.6] [2nd]
 }
 
@@ -5653,6 +5712,7 @@
 #VARIABLE_CONDITION= 99 [2] [100] [0]
 ; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Infantry Army(5)
 #UNIT= 5 [8] [0.6] [2nd]
 }
 
@@ -5678,6 +5738,7 @@
 #VARIABLE_CONDITION= 99 [2] [100] [0]
 ; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Infantry Army(5)
 #UNIT= 5 [8] [0.6] [2nd]
 }
 
@@ -5774,7 +5835,7 @@
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ; Mech Div(3)
-#UNIT= 3 [10] [0] []
+#UNIT= 3 [10] [0] [Portsmouth]
 }
 
 {
@@ -5853,7 +5914,7 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 3 [10] [0] []
+#UNIT= 3 [10] [0] [Glasgow]
 }
 
 {
@@ -5931,7 +5992,7 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; No Allied units in Alexandria
 #CONDITION_POSITION= 206,124 [0,0] [0,0] [2] [0]
-#UNIT= 3 [10] [0] []
+#UNIT= 3 [10] [0] [Alexandria]
 }
 
 ; Replacement Script
@@ -6146,7 +6207,7 @@
 #VARIABLE_CONDITION= 56 [1] [100] [1]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] [Baghdad]
+#UNIT= 1 [5] [0] [1st Baghdad]
 }
 
 {
@@ -6230,6 +6291,7 @@
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; D-Day assault imminent (no Allied units yet in France)
 #CONDITION_POSITION= 151,84 [14,14] [0,0] [2] [0]
+; Paratrooper(9)
 #UNIT= 9 [11] [1] []
 #UNIT= 29 [10] [0.5] []
 #UNIT= 30 [10] [0.5] []
@@ -6259,6 +6321,7 @@
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; D-Day assault imminent (Amphibious Transports in position)
 #CONDITION_POSITION= 137,81 [1,1] [3,3] [2] [0]
+; Paratrooper(9)
 #UNIT= 9 [11] [1] []
 #UNIT= 29 [10] [0.5] []
 #UNIT= 30 [10] [0.5] []
@@ -6368,7 +6431,7 @@
 #VARIABLE_CONDITION= 21 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 5 [10] [0] []
+#UNIT= 5 [10] [0] [1st Canadian]
 }
 
 ; Canada (Army)
@@ -6394,7 +6457,7 @@
 #VARIABLE_CONDITION= 21 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 5 [10] [0] []
+#UNIT= 5 [10] [0] [2nd Canadian]
 }
 
 ; France (Corps)
@@ -6933,7 +6996,7 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Axis units in range of Paris
 #CONDITION_POSITION= 151,84 [4,4] [1,1] [1] [0]
-#UNIT= 8 [5] [0] []
+#UNIT= 8 [5] [0] [1st Leningrad]
 }
 
 ; USSR (reinforcements)
@@ -6959,7 +7022,7 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Kandalaksha]
 }
 
 ; USSR (reinforcements)
@@ -6985,7 +7048,7 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Kestenga]
 }
 
 ; USSR (reinforcements)
@@ -7011,7 +7074,7 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 3 [8] [0] []
+#UNIT= 3 [8] [0] [1st Kem]
 }
 
 ; USSR (reinforcements)
@@ -7038,7 +7101,7 @@
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 3 [8] [0] []
+#UNIT= 3 [8] [0] [1st Repola]
 }
 
 ; USSR (reinforcements)
@@ -7065,7 +7128,7 @@
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 3 [8] [0] []
+#UNIT= 3 [8] [0] [1st Kondopoga]
 }
 
 ; USSR (reinforcements)
@@ -7091,7 +7154,7 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis units in range of Riga
 #CONDITION_POSITION= 194,62 [2,2] [1,1] [1] [0]
-#UNIT= 4 [10] [0] []
+#UNIT= 4 [10] [0] [1st Pskov Rifle]
 #UNIT= 2 [10] [0] []
 }
 
@@ -7244,7 +7307,7 @@
 #CONDITION_POSITION= 199,57 [3,3] [1,1] [1] [0]
 #CONDITION_POSITION= 208,57 [5,5] [1,1] [1] [0]
 #CONDITION_POSITION= 206,51 [5,5] [1,1] [1] [0]
-#UNIT= 5 [10] [0] []
+#UNIT= 5 [10] [0] [1st Leningrad]
 }
 
 ; USSR (Army)
@@ -7308,8 +7371,8 @@
 #CONDITION_POSITION= 199,57 [3,3] [1,1] [1] [0]
 #CONDITION_POSITION= 208,57 [5,5] [1,1] [1] [0]
 #CONDITION_POSITION= 206,51 [5,5] [1,1] [1] [0]
-#UNIT= 4 [10] [0] []
-#UNIT= 4 [10] [0] []
+#UNIT= 4 [10] [0] [1st Leningrad Rifle]
+#UNIT= 4 [10] [0] [2nd Leningrad Rifle]
 }
 
 ; USSR (reinforcements)
@@ -7335,7 +7398,7 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis units near position
 #CONDITION_POSITION= 207,63 [5,5] [1,1] [1] [0]
-#UNIT= 4 [10] [0] []
+#UNIT= 4 [10] [0] [1st Velikiye Luki Rifle]
 }
 
 ; USSR (reinforcements)
@@ -7361,7 +7424,7 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis units near position
 #CONDITION_POSITION= 214,67 [5,5] [1,1] [1] [0]
-#UNIT= 4 [10] [0] []
+#UNIT= 4 [10] [0] [1st Vyazma Rifle]
 }
 
 ; USSR (reinforcements)
@@ -7387,9 +7450,9 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis units near position
 #CONDITION_POSITION= 214,64 [5,5] [1,1] [1] [0]
-#UNIT= 5 [10] [0] []
-#UNIT= 4 [10] [0] []
-#UNIT= 4 [10] [0] []
+#UNIT= 5 [10] [0] [1st Rzhev]
+#UNIT= 4 [10] [0] [1st Rzhev Rifle]
+#UNIT= 4 [10] [0] [2nd Rzhev Rifle]
 }
 
 ; USSR (reinforcements)
@@ -7415,8 +7478,8 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis units near position
 #CONDITION_POSITION= 214,73 [5,5] [1,1] [1] [0]
-#UNIT= 2 [10] [0] []
-#UNIT= 2 [10] [0] []
+#UNIT= 2 [10] [0] [1st Orel]
+#UNIT= 2 [10] [0] [2nd Orel]
 }
 
 ; USSR (reinforcements will head towards Dnepropetrovsk)
@@ -7444,7 +7507,7 @@
 ; Axis units in range of Kirovograd
 #CONDITION_POSITION= 207,80 [2,2] [1,1] [1] [0]
 #CONDITION_POSITION= 210,86 [2,2] [1,1] [1] [0]
-#UNIT= 4 [10] [0] []
+#UNIT= 4 [10] [0] [1st Dneprop Rifle]
 }
 
 ; USSR (reinforcements will head towards Dnepropetrovsk)
@@ -7473,8 +7536,8 @@
 #CONDITION_POSITION= 207,80 [2,2] [1,1] [1] [0]
 #CONDITION_POSITION= 210,86 [2,2] [1,1] [1] [0]
 #UNIT= 0 [10] [0] []
-#UNIT= 4 [10] [0] []
-#UNIT= 5 [10] [0] []
+#UNIT= 4 [10] [0] [1st Kharkov Rifle]
+#UNIT= 5 [10] [0] [1st Kharkov]
 }
 ; following removed by Fall Weiss II ?
 ; UNIT= 5 [10] [0] []
@@ -7505,7 +7568,7 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis units in range of Kherson
 #CONDITION_POSITION= 213,90 [2,2] [1,1] [1] [0]
-#UNIT= 4 [10] [0] []
+#UNIT= 4 [10] [0] [1st Kerch Rifle]
 }
 
 ; USSR (reinforcements will head towards Moscow)
@@ -7572,15 +7635,16 @@
 ; Axis units near Voronezh
 #CONDITION_POSITION= 221,75 [4,4] [1,1] [1] [0]
 #CONDITION_POSITION= 221,80 [4,4] [1,1] [1] [0]
-#UNIT= 5 [10] [0] []
+#UNIT= 5 [10] [0] [1st Voronezh]
 #UNIT= 0 [10] [0] []
 #UNIT= 16 [10] [0] []
-#UNIT= 26 [10] [0] []
-#UNIT= 4 [10] [0] []
+#UNIT= 26 [10] [0] [1st Voronezh]
+#UNIT= 4 [10] [0] [1st Voronezh Rifle]
+#UNIT= 7 [10] [0] []
 ; following removed by Fall Weiss II ?
 ; UNIT= 4 [10] [0] []
 ; UNIT= 5 [10] [0] []
-#UNIT= 7 [10] [0] []
+
 }
 
 ; USSR (Army)
@@ -7608,8 +7672,8 @@
 ; 2nd Line - 1 Axis unit within 8 hexes of Grozny
 #CONDITION_POSITION= 234,85 [8,8] [1,1] [1] [0]
 #CONDITION_POSITION= 236,98 [8,8] [1,1] [1] [0]
-#UNIT= 5 [10] [0] []
-#UNIT= 5 [10] [0] []
+#UNIT= 5 [10] [0] [1st Grozny]
+#UNIT= 5 [10] [0] [2nd Grozny]
 }
 
 ; USSR (Army)
@@ -7666,8 +7730,8 @@
 ; 2nd Line - 1 Axis unit within 10 hexes of Grozny
 #CONDITION_POSITION= 253,101 [10,10] [1,1] [1] [0]
 #CONDITION_POSITION= 236,98 [10,10] [1,1] [1] [0]
-#UNIT= 5 [10] [0] []
-#UNIT= 5 [10] [0] []
+#UNIT= 5 [10] [0] [1st Tbilisi]
+#UNIT= 5 [10] [0] [2nd Tbilisi]
 }
 
 ; USSR (Army)
@@ -7695,7 +7759,7 @@
 ; 2nd Line - 1 Axis unit within 5 hexes of Grozny
 #CONDITION_POSITION= 245,104 [5,5] [1,1] [1] [0]
 #CONDITION_POSITION= 236,98 [5,5] [1,1] [1] [0]
-#UNIT= 5 [10] [0] []
+#UNIT= 5 [10] [0] [1st Baku]
 }
 
 ; USSR (Garrison)
@@ -7751,14 +7815,14 @@
 #CONDITION_POSITION= 238,104 [8,8] [1,1] [1] [0]
 #CONDITION_POSITION= 229,102 [8,8] [1,1] [1] [0]
 #UNIT= 0 [10] [0] []
-#UNIT= 4 [10] [0] []
+#UNIT= 4 [10] [0] [1st Tbilisi Rifle]
 ; following removed by Fall Weiss II?
 ; UNIT= 4 [10] [0] []
 ; UNIT= 5 [10] [0] []
-#UNIT= 5 [10] [0] []
-#UNIT= 26 [10] [0] []
-#UNIT= 29 [10] [0] []
-#UNIT= 30 [10] [0] []
+#UNIT= 5 [10] [0] [1st Tbilisi]
+#UNIT= 26 [10] [0] [1st Tbilisi]
+#UNIT= 29 [10] [0] [1st Tbilisi]
+#UNIT= 30 [10] [0] [1st Tbilisi]
 }
 
 ; USSR (Army)
@@ -7862,8 +7926,8 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 4 [10] [0] []
-#UNIT= 4 [10] [0] []
+#UNIT= 4 [10] [0] [1st Kalinin Rifle]
+#UNIT= 4 [10] [0] [2nd Kalinin Rifle]
 }
 
 ; USSR (Corps)
@@ -7889,11 +7953,11 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 29 [10] [0] []
-#UNIT= 30 [10] [0] []
-#UNIT= 4 [10] [0] []
-#UNIT= 4 [10] [0] []
-#UNIT= 5 [10] [0] []
+#UNIT= 29 [10] [0] [1st Kamyshin]
+#UNIT= 30 [10] [0] [1st Kamyshin]
+#UNIT= 4 [10] [0] [1st Kamyshin Rifle]
+#UNIT= 4 [10] [0] [2nd Kamyshin Rifle]
+#UNIT= 5 [10] [0] [1st Kamyshin]
 }
 
 ; USSR (Corps)
@@ -7948,10 +8012,10 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 29 [10] [0] []
-#UNIT= 30 [10] [0] []
+#UNIT= 29 [10] [0] [1st Borisoglebsk]
+#UNIT= 30 [10] [0] [1st Borisoglebsk]
 ; Tank Corps(26)
-#UNIT= 26 [10] [0] []
+#UNIT= 26 [10] [0] [1st Borisoglebsk]
 }
 
 ; USSR (Corps)
@@ -8057,7 +8121,7 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 30 [10] [0] []
+#UNIT= 30 [10] [0] [1st Stalingrad]
 }
 
 ; USSR (Corps)
@@ -8092,52 +8156,14 @@
 #CONDITION_POSITION= 233,64 [5,5] [1,1] [1] [0]
 #CONDITION_POSITION= 228,74 [5,5] [1,1] [1] [0]
 #UNIT= 0 [10] [0] []
-#UNIT= 26 [10] [0] []
-#UNIT= 4 [10] [0] []
-#UNIT= 5 [10] [0] []
+#UNIT= 26 [10] [0] [1st Sverdlovsk]
+#UNIT= 4 [10] [0] [1st Sverdlovsk Rifle]
+#UNIT= 5 [10] [0] [1st Sverdlovsk]
+; following removed by Fall Weiss II
+; UNIT= 29 [10] [0] []
+; UNIT= 30 [10] [0] []
+; UNIT= 6 [10] [0] []
 }
-
-; USSR (Corps)
-{
-#NAME= USSR(AI): Reinforcements - Sverdlovsk - 1943 (Veteran)
-#POPUP=
-#IMAGE=
-#SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
-#TYPE= 1
-#AI= 6
-#LEVEL= 3
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1943/01/01
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 265,62
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Axis units in range of Stalingrad OR
-; Axis units in range of Saratov OR
-; Axis units in range of Moscow OR
-; Axis units in range of Gorki OR
-; Axis units in range of Tambov
-#CONDITION_POSITION= 234,85 [5,5] [1,1] [1] [0]
-#CONDITION_POSITION= 237,77 [5,5] [1,1] [1] [0]
-#CONDITION_POSITION= 222,65 [5,5] [1,1] [1] [0]
-#CONDITION_POSITION= 233,64 [5,5] [1,1] [1] [0]
-#CONDITION_POSITION= 228,74 [5,5] [1,1] [1] [0]
-#UNIT= 26 [10] [0] []
-#UNIT= 29 [10] [0] []
-#UNIT= 30 [10] [0] []
-#UNIT= 6 [10] [0] []
-#UNIT= 4 [10] [0] []
-#UNIT= 5 [10] [0] []
-}
-
 
 ; USSR (Reinforcements)
 {
@@ -8163,8 +8189,8 @@
 ; Axis units have taken Moscow
 #CONDITION_POSITION= 221,65 [0,0] [1,1] [1] [0]
 #UNIT= 0 [10] [0] []
-#UNIT= 4 [10] [0] []
-#UNIT= 5 [10] [0] []
+#UNIT= 4 [10] [0] [1st Gorki Rifle]
+#UNIT= 5 [10] [0] [1st Gorki]
 }
 
 ; USSR (Reinforcements)
@@ -8191,8 +8217,8 @@
 ; Axis units have taken Leningrad
 #CONDITION_POSITION= 206,52 [0,0] [1,1] [1] [0]
 #UNIT= 0 [10] [0] []
-#UNIT= 4 [10] [0] []
-#UNIT= 5 [10] [0] []
+#UNIT= 4 [10] [0] [1st Cherepovets Rifle]
+#UNIT= 5 [10] [0] [1st Cherepovets]
 }
 
 ; USSR (Reinforcements)
@@ -8219,8 +8245,8 @@
 ; Axis units have taken Stalingrad
 #CONDITION_POSITION= 234,85 [0,0] [1,1] [1] [0]
 #UNIT= 0 [10] [0] []
-#UNIT= 4 [10] [0] []
-#UNIT= 5 [10] [0] []
+#UNIT= 4 [10] [0] [1st Uralsk Rifle]
+#UNIT= 5 [10] [0] [1st Uralsk]
 }
 
 
@@ -8249,11 +8275,11 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Johannisburg]
 }
 
 {
-#NAME= Germany(AI): Garrision - Gumbinnen - 1939
+#NAME= Germany(AI): Garrison - Gumbinnen - 1939
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -8276,7 +8302,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Gumbinnen]
 }
 
 {
@@ -8301,7 +8327,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 4 [8] [0] []
+#UNIT= 4 [8] [0] [1st Frankfurt]
 }
 
 ; Germany (Tank)
@@ -8510,7 +8536,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; No Allied units in range of Paris (French surrender and clearing of all Allied units from the area)
 #CONDITION_POSITION= 151,84 [20,20] [0,0] [2] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Lorient]
 }
 
 ; Germany (Garrison)
@@ -8536,7 +8562,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; No Allied units in range of Paris (French surrender and clearing of all Allied units from the area)
 #CONDITION_POSITION= 151,84 [20,20] [0,0] [2] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [St Malo]
 }
 
 ; Germany (Garrison)
@@ -8562,7 +8588,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; No Allied units in range of Paris (French surrender and clearing of all Allied units from the area)
 #CONDITION_POSITION= 151,84 [20,20] [0,0] [2] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Nantes]
 }
 
 ; Germany (Garrison)
@@ -8590,8 +8616,8 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] []
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [1st Stettin]
+#UNIT= 1 [5] [0] [2nd Stettin]
 }
 
 ; Germany (Garrison)
@@ -8619,7 +8645,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Zagreb]
 }
 
 ; Germany (Garrison)
@@ -8647,8 +8673,8 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] []
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [1st Zhitomir]
+#UNIT= 1 [5] [0] [2nd Zhitomir]
 }
 
 ; Germany (Garrison)
@@ -8676,8 +8702,8 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] []
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [1st Neustelitz]
+#UNIT= 1 [5] [0] [2nd Neustelitz]
 }
 
 ; Germany (Army)
@@ -8963,16 +8989,18 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/06/01
 #FAILSAFE_DATE= 1948/01/01
-; Benghazi
+; Benghazi(186,122)
 #DESTINATION_RESOURCE= 186,122
+; Msus(188,124)
+#DESTINATION_RESOURCE= 188,124
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis units in Paris
 #CONDITION_POSITION= 151,84 [0,0] [1,1] [1] [0]
 #UNIT= 0 [10] [2] [Schörner]
-#UNIT= 4 [10] [2] []
-#UNIT= 9 [10] [2] []
-#UNIT= 26 [10] [2] []
-#UNIT= 30 [10] [2] []
+#UNIT= 4 [10] [2] [Afrika II]
+#UNIT= 9 [10] [2] [Afrika II]
+#UNIT= 26 [10] [2] [Afrika II]
+#UNIT= 30 [10] [2] [Afrika II]
 }
 
 ; Germany (Garrison)
@@ -9024,7 +9052,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis units in Paris
 #CONDITION_POSITION= 151,84 [0,0] [1,1] [1] [0]
-#UNIT= 1 [5] [0] [Cuxhaven]
+#UNIT= 1 [5] [0] [Wilhelmshaven]
 }
 
 ; Germany (Tank)
@@ -9268,6 +9296,7 @@
 #AI= 1
 #LEVEL= 2
 #GV= 1[1,100]
+; The Molotov-Ribbentrop Pact?
 #LINK= 600[0]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -9284,7 +9313,7 @@
 #UNIT= 5 [10] [1] []
 #UNIT= 7 [10] [1] []
 #UNIT= 30 [10] [1] []
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Baranowicze]
 #UNIT= 0 [10] [0] []
 #UNIT= 4 [10] [0] []
 #UNIT= 5 [10] [1] []
@@ -9301,6 +9330,7 @@
 #AI= 1
 #LEVEL= 2
 #GV= 1[1,100]
+; Order the Red Army to advance into Poland?
 #LINK= 406[0]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -9317,7 +9347,7 @@
 #UNIT= 5 [10] [1] []
 #UNIT= 7 [10] [1] []
 #UNIT= 30 [10] [1] []
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Baranowicze]
 #UNIT= 0 [10] [0] []
 #UNIT= 4 [10] [0] []
 #UNIT= 5 [10] [1] []
@@ -9351,7 +9381,7 @@
 #UNIT= 5 [10] [1] []
 #UNIT= 7 [10] [1] []
 #UNIT= 30 [10] [1] []
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Warsaw]
 #UNIT= 0 [10] [0] []
 #UNIT= 4 [10] [0] []
 #UNIT= 5 [10] [1] []
@@ -9407,7 +9437,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis units in Minsk
 #CONDITION_POSITION= 201,71 [0,0] [1,1] [1] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Minsk]
 }
 
 ; Germany (Garrison)
@@ -9433,7 +9463,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis units in Kiev
 #CONDITION_POSITION= 207,80 [0,0] [1,1] [1] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Kiev]
 }
 
 ; Germany (Corps)
@@ -9485,7 +9515,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis units in Smolensk
 #CONDITION_POSITION= 209,68 [0,0] [1,1] [1] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Smolensk]
 }
 
 ; Germany (Garrison)
@@ -9511,7 +9541,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis units in Kharkov
 #CONDITION_POSITION= 218,82 [0,0] [1,1] [1] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Kharkov]
 }
 
 ; Germany (Garrison)
@@ -9537,7 +9567,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis units in Paris
 #CONDITION_POSITION= 151,84 [0,0] [1,1] [1] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Bordeaux]
 }
 
 ; Germany (Garrison)
@@ -9563,7 +9593,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis units in Paris
 #CONDITION_POSITION= 151,84 [0,0] [1,1] [1] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Rouen]
 }
 
 ; Germany (Corps)
@@ -9642,7 +9672,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis units in Minsk
 #CONDITION_POSITION= 201,71 [0,0] [1,1] [1] [0]
-#UNIT= 8 [10] [0] []
+#UNIT= 8 [10] [0] [4th Pioneer]
 }
 
 ; Germany (Sub)
@@ -9695,8 +9725,8 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] []
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [1st Warsaw]
+#UNIT= 1 [5] [0] [2nd Warsaw]
 }
 
 ; Germany (Rennes)
@@ -9722,7 +9752,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis units in Paris
 #CONDITION_POSITION= 151,84 [0,0] [1,1] [1] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Rennes]
 }
 
 ; Germany (Garrison)
@@ -9748,7 +9778,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis units in Paris
 #CONDITION_POSITION= 151,84 [0,0] [1,1] [1] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Caen]
 }
 
 ; Germany (Garrison)
@@ -9774,7 +9804,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis units in Paris
 #CONDITION_POSITION= 151,84 [0,0] [1,1] [1] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Le Havre]
 }
 
 ; Germany (Garrison)
@@ -9800,7 +9830,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis units in Paris
 #CONDITION_POSITION= 151,84 [0,0] [1,1] [1] [0]
-#UNIT= 21 [10] [0] []
+#UNIT= 21 [10] [0] [Le Havre]
 }
 
 ; Germany (Garrison)
@@ -9826,7 +9856,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis units in Paris
 #CONDITION_POSITION= 151,84 [0,0] [1,1] [1] [0]
-#UNIT= 21 [10] [0] []
+#UNIT= 21 [10] [0] [Calais]
 }
 
 ; Germany (Garrison)
@@ -9852,7 +9882,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis units in Paris
 #CONDITION_POSITION= 151,84 [0,0] [1,1] [1] [0]
-#UNIT= 21 [10] [0] []
+#UNIT= 21 [10] [0] [Ypres]
 }
 
 ; Germany (Post D-Day Frontier Defense)
@@ -9890,7 +9920,7 @@
 #UNIT= 5 [10] [1] []
 #UNIT= 5 [10] [1] []
 #UNIT= 5 [10] [1] []
-#UNIT= 15 [10] [1] []
+#UNIT= 15 [10] [1] [Frankfurt Flakkorps]
 #UNIT= 18 [10] [0] []
 #UNIT= 26 [10] [1] []
 #UNIT= 27 [10] [0] []
@@ -9954,7 +9984,7 @@
 #UNIT= 4 [10] [0] []
 #UNIT= 5 [10] [1] []
 #UNIT= 5 [10] [1] []
-#UNIT= 15 [10] [1] []
+#UNIT= 15 [10] [1] [Munich Flakkorps]
 #UNIT= 18 [10] [0] []
 }
 
@@ -9988,7 +10018,7 @@
 #UNIT= 5 [10] [1] []
 #UNIT= 5 [10] [1] []
 #UNIT= 5 [10] [1] []
-#UNIT= 15 [10] [1] []
+#UNIT= 15 [10] [1] [Berlin Flakkorps]
 #UNIT= 18 [10] [0] []
 }
 
@@ -10015,7 +10045,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 8 [10] [1] []
+#UNIT= 8 [10] [1] [5th Pioneer]
 }
 
 ; Germany (Corps)
@@ -10176,6 +10206,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1942/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Naples(175,103)
 #DESTINATION_RESOURCE= 175,103
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Allies within range of Tunis OR
@@ -10184,10 +10215,10 @@
 #CONDITION_POSITION= 167,112 [10,10] [3,3] [2] [0]
 #CONDITION_POSITION= 172,121 [10,10] [3,3] [2] [0]
 #CONDITION_POSITION= 179,107 [8,8] [1,1] [2] [0]
-#UNIT= 1 [5] [0] []
-#UNIT= 8 [10] [1] []
+#UNIT= 1 [5] [0] [Naples]
+#UNIT= 8 [10] [1] [6th Pioneer]
 #UNIT= 9 [10] [1] []
-#UNIT= 15 [10] [1] []
+#UNIT= 15 [10] [1] [Naples Flakkorps]
 #UNIT= 18 [10] [0] []
 }
 
@@ -10371,12 +10402,13 @@
 #FULL_RESEARCH= 0
 #DATE= 1941/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Trieste(174,92)
 #DESTINATION_RESOURCE= 174,92
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] []
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [1st Trieste]
+#UNIT= 1 [5] [0] [2nd Trieste]
 }
 
 ; Italy (Garrison)
@@ -10404,8 +10436,8 @@
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] []
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [1st Padua]
+#UNIT= 1 [5] [0] [2nd Padua]
 }
 
 ; Italy (Garrison)
@@ -10433,7 +10465,7 @@
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Syracuse]
 }
 
 ;==========================================================
@@ -10818,7 +10850,7 @@
 #VARIABLE_CONDITION= 87 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Porto]
 }
 
 ; UK Military Exports To Portugal (Garrison - Evora)
@@ -10845,7 +10877,7 @@
 #VARIABLE_CONDITION= 87 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Evora]
 }
 
 ; Italy Military Exports To Spain (Garrison - Vigo)
@@ -10872,7 +10904,7 @@
 #VARIABLE_CONDITION= 99 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Vigo]
 }
 
 ; German Military Exports To Turkey (Corps)
@@ -11358,14 +11390,15 @@
 #FULL_RESEARCH= 1
 #DATE= 1942/08/01
 #FAILSAFE_DATE= 1948/01/01
+; Tripoli(172,121)
 #DESTINATION_RESOURCE= 172,121
 ; Germany(45) aligned with Axis and fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 4 [10] [0] []
-#UNIT= 3 [10] [0] []
-#UNIT= 24 [10] [0] []
+#UNIT= 4 [10] [0] [Afrika II]
+#UNIT= 3 [10] [0] [Afrika II]
+#UNIT= 24 [10] [0] [14th Panzerjäger]
 }
 
 ; Germany strengthens Afrika Korps (Germany)
@@ -11387,6 +11420,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1942/08/01
 #FAILSAFE_DATE= 1948/01/01
+; Tripoli(172,121)
 #DESTINATION_RESOURCE= 172,121
 ; Germany(45) aligned with Axis and fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -11419,9 +11453,9 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 4 [10] [0] []
-#UNIT= 3 [10] [0] []
-#UNIT= 24 [10] [0] []
+#UNIT= 4 [10] [0] [Afrika II]
+#UNIT= 3 [10] [0] [Afrika II]
+#UNIT= 24 [10] [0] [14th Panzerjäger]
 }
 
 ; Rush Troops To Tripoli (Italy)
@@ -11443,6 +11477,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Tripoli(172,121)
 #DESTINATION_RESOURCE= 172,121
 ; Italy(59) aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -11502,9 +11537,9 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 27 [12] [2] [] 
-#UNIT= 27 [12] [2] [] 
-#UNIT= 5 [12] [2] [] 
+#UNIT= 27 [12] [2] [V Panzer] 
+#UNIT= 27 [12] [2] [VI Panzer] 
+#UNIT= 5 [12] [2] [VII] 
 #UNIT = 4 [12] [2] [] 
 #UNIT= 0 [10] [0] [] 
 }
@@ -11533,7 +11568,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 38 [10] [0] [Lutzow]
+#UNIT= 38 [10] [0] [Lützow]
 }
 
 ; Petropavlovsk Heavy Cruiser (USSR)
@@ -11859,6 +11894,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1940/08/01
 #FAILSAFE_DATE= 1948/01/01
+; Benghazi(186,122)
 #DESTINATION_RESOURCE= 186,122
 ; UK(112) aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -11916,6 +11952,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/10/01
 #FAILSAFE_DATE= 1948/01/01
+; Warsaw(188,76)
 #DESTINATION_RESOURCE= 188,76
 ; Turkey aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -11924,7 +11961,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [5] [0] []
 #UNIT= 2 [5] [0] []
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Warsaw]
 }
 
 ; Germany Reinforces The Eastern Front - (Germany)
@@ -11946,6 +11983,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/10/01
 #FAILSAFE_DATE= 1948/01/01
+; Konigsberg(187,68)
 #DESTINATION_RESOURCE= 187,68
 ; Turkey aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -11954,7 +11992,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [5] [0] []
 #UNIT= 2 [5] [0] []
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Konigsberg]
 }
 
 {
@@ -12358,15 +12396,16 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/06/01
 #FAILSAFE_DATE= 1948/01/01
+; Tripoli(172,121)
 #DESTINATION_RESOURCE= 172,121
 ; Turkey aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 0 [10] [0] []
-#UNIT= 6 [12] [2] [Afrika I]
+#UNIT= 6 [12] [2] [Afrika II]
 #UNIT= 26 [12] [2] [Afrika II]
-#UNIT= 29 [10] [0] []
+#UNIT= 29 [10] [0] [Afrika II]
 }
 
 ; Anglo-Portuguese Alliance
@@ -12434,8 +12473,6 @@
 #UNIT= 26 [10] [0] []
 }
 
-
-
 ; Germany Reinforces The Eastern Front - (Germany)
 {
 #NAME= DE 932 - Germany(AI): The Eastern Front Reinforced
@@ -12467,7 +12504,6 @@
 #UNIT= 26 [12] [2] []
 #UNIT= 26 [12] [2] []
 }
-
 
 ; Germany Reinforces The Eastern Front - (Germany)
 {
@@ -12927,6 +12963,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Tripoli(172,121)
 #DESTINATION_RESOURCE= 172,121
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
@@ -12954,6 +12991,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Tripoli(172,121)
 #DESTINATION_RESOURCE= 172,121
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; dummy condition position (always satisfied)
@@ -13077,7 +13115,6 @@
 #UNIT= 2 [10] [0] [1st]
 }
 
-; Currently Off
 {
 #NAME= USSR(AI): AI Helper I
 #POPUP=
@@ -13108,7 +13145,6 @@
 #UNIT= 27 [11] [1.5] []
 }
 
-; Currently Off
 {
 #NAME= USSR(AI): AI Helper II
 #POPUP=
@@ -13321,7 +13357,7 @@
 #VARIABLE_CONDITION= 56 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [6] [1] []
+#UNIT= 1 [6] [1] [Baghdad]
 }
 
 ; Germany Provides Equipment To Iraqi Forces
@@ -13349,7 +13385,7 @@
 #VARIABLE_CONDITION= 56 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [2nd Baghdad]
 }
 
 ; Germany Forms A Naval Infantry Division At Kiel
@@ -13407,7 +13443,7 @@
 }
 
 {
-#NAME= DE 643 - Germany: Bulcher Heavy Cruiser
+#NAME= DE 643 - Germany: Blücher Heavy Cruiser
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -13429,7 +13465,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 38 [8] [0] [Bulcher]
+#UNIT= 38 [8] [0] [Blücher]
 }
 
 {
@@ -13459,7 +13495,7 @@
 }
 
 {
-#NAME= DE 644 - Germany: Bulcher Heavy Cruiser
+#NAME= DE 644 - Germany: Blücher Heavy Cruiser
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -13481,7 +13517,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 38 [8] [0] [Bulcher]
+#UNIT= 38 [8] [0] [Blücher]
 }
 
 {
@@ -13619,6 +13655,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Tripoli(172,121)
 #DESTINATION_RESOURCE= 172,121
 ; 1st Line - Italy(59) aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -13745,7 +13782,7 @@
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 5 [5] [0] []
+#UNIT= 5 [5] [0] [1st Moscow Res]
 }
 
 ; Stalingrad 
@@ -13774,7 +13811,7 @@
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 12 [5] [0] []
+#UNIT= 12 [5] [0] [1st Stalingrad Res]
 }
 
 ; Leningrad 
@@ -13803,7 +13840,7 @@
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 2 [5] [0] []
+#UNIT= 2 [5] [0] [Leningrad Res]
 }
 
 {
@@ -14258,7 +14295,7 @@
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 2 [10] [0] [122nd]
-#UNIT= 24 [10] [0] []
+#UNIT= 24 [10] [0] [15th Panzerjäger]
 }
 
 ;Finland Engineers
@@ -14421,13 +14458,13 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 24 [3] [3] []
-#UNIT= 18 [3] [3] []
-#UNIT= 29 [3] [3] []
+#UNIT= 24 [3] [3] [German]
+#UNIT= 18 [3] [3] [German]
+#UNIT= 29 [3] [3] [German]
 }
 
 {
-#NAME= Germany: Allies Invade Norway - Bulcher Heavy Cruiser
+#NAME= Germany: Allies Invade Norway - Blücher Heavy Cruiser
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -14450,7 +14487,7 @@
 #VARIABLE_CONDITION= 78 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 38 [8] [0] [Bulcher]
+#UNIT= 38 [8] [0] [Blücher]
 }
 
 {
@@ -14481,7 +14518,7 @@
 }
 
 {
-#NAME= Germany: Allies Invade Norway - Bulcher Heavy Cruiser
+#NAME= Germany: Allies Invade Norway - Blücher Heavy Cruiser
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -14504,7 +14541,7 @@
 #VARIABLE_CONDITION= 78 [1] [100] [1]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 38 [8] [0] [Bulcher]
+#UNIT= 38 [8] [0] [Blücher]
 }
 
 {
@@ -14641,7 +14678,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [10] [0] []
 #UNIT= 3 [10] [0] []
-#UNIT= 24 [10] [0] []
+#UNIT= 24 [10] [0] [16th Panzerjäger]
 }
 
 
@@ -14910,11 +14947,12 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1939/09/01
+; Tripoli, Syria (217,116)
 #DESTINATION_RESOURCE= 217,116
 #VARIABLE_CONDITION= 105 [1] [100] [1]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Tripoli]
 }
 
 ; UK (Syrian Garrison)
@@ -14936,11 +14974,12 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1939/09/01
+; Beirut(216,118)
 #DESTINATION_RESOURCE= 216,118
 #VARIABLE_CONDITION= 105 [1] [100] [1]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Beirut]
 }
 
 
@@ -15020,8 +15059,8 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 26 [12] [2] []
-#UNIT= 25 [12] [2] []
+#UNIT= 26 [12] [2] [1st Kiev]
+#UNIT= 25 [12] [2] [1st Kiev]
 #UNIT= 0 [5] [0] [Buddeny]
 }
 
@@ -15049,8 +15088,8 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 26 [12] [2] []
-#UNIT= 25 [12] [2] []
+#UNIT= 26 [12] [2] [1st Smolensk]
+#UNIT= 25 [12] [2] [1st Smolensk]
 #UNIT= 0 [5] [0] [Eremenko]
 }
 
@@ -15078,7 +15117,7 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 26 [12] [2] []
+#UNIT= 26 [12] [2] [1st Moscow]
 }
 
 ; Moscow Tanks
@@ -15105,7 +15144,7 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 26 [12] [2] []
+#UNIT= 26 [12] [2] [1st Moscow]
 }
 
 ; USA
@@ -15159,12 +15198,12 @@
 ; One Axis unit within twelve hexes of Moscow
 #CONDITION_POSITION= 221,65 [12,12] [1,1] [1] [0]
 #UNIT= 14 [10] [0] []
-#UNIT= 26 [10] [0] []
+#UNIT= 26 [10] [0] [1st Moscow Res]
 #UNIT= 16 [10] [0] []
 #UNIT= 15 [10] [0] []
 #UNIT= 0 [10] [0] []
-#UNIT= 2 [10] [0] []
-#UNIT= 2 [10] [0] []
+#UNIT= 2 [10] [0] [1st Moscow Res]
+#UNIT= 2 [10] [0] [2nd Moscow Res]
 }
 
 {
@@ -15191,12 +15230,12 @@
 ; One Axis unit within twelve hexes of Moscow
 #CONDITION_POSITION= 221,65 [12,12] [1,1] [1] [0]
 #UNIT= 14 [5] [0] []
-#UNIT= 26 [5] [0] []
+#UNIT= 26 [5] [0] [1st Moscow Res]
 #UNIT= 16 [5] [0] []
 #UNIT= 15 [5] [0] []
 #UNIT= 0 [5] [0] []
-#UNIT= 2 [5] [0] []
-#UNIT= 2 [5] [0] []
+#UNIT= 2 [5] [0] [1st Moscow Res]
+#UNIT= 2 [5] [0] [2nd Moscow Res]
 }
 
 {
@@ -15222,11 +15261,11 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; One Axis unit within twelve hexes of Moscow
 #CONDITION_POSITION= 221,65 [12,12] [1,1] [1] [0]
-#UNIT= 5 [10] [0] []
-#UNIT= 3 [10] [0] []
+#UNIT= 5 [10] [0] [1st Moscow Res]
+#UNIT= 3 [10] [0] [1st Moscow Res]
 #UNIT= 15 [10] [0] []
-#UNIT= 2 [10] [0] []
-#UNIT= 2 [10] [0] []
+#UNIT= 2 [10] [0] [1st Moscow Res]
+#UNIT= 2 [10] [0] [2nd Moscow Res]
 }
 
 {
@@ -15252,11 +15291,11 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; One Axis unit within twelve hexes of Moscow
 #CONDITION_POSITION= 221,65 [12,12] [1,1] [1] [0]
-#UNIT= 5 [5] [0] []
-#UNIT= 3 [5] [0] []
+#UNIT= 5 [5] [0] [1st Moscow Res]
+#UNIT= 3 [5] [0] [1st Moscow Res]
 #UNIT= 15 [5] [0] []
-#UNIT= 2 [5] [0] []
-#UNIT= 2 [5] [0] []
+#UNIT= 2 [5] [0] [1st Moscow Res]
+#UNIT= 2 [5] [0] [2nd Moscow Res]
 }
 
 {
@@ -15282,11 +15321,11 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; One Axis unit within twelve hexes of Stalingrad
 #CONDITION_POSITION= 234,85 [12,12] [1,1] [1] [0]
-#UNIT= 5 [10] [0] []
-#UNIT= 3 [10] [0] []
+#UNIT= 5 [10] [0] [1st Stalingrad Res]
+#UNIT= 3 [10] [0] [1st Stalingrad Res]
 #UNIT= 15 [10] [0] []
-#UNIT= 2 [10] [0] []
-#UNIT= 2 [10] [0] []
+#UNIT= 2 [10] [0] [1st Stalingrad Res]
+#UNIT= 2 [10] [0] [2nd Stalingrad Res]
 }
 
 {
@@ -15312,11 +15351,11 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; One Axis unit within twelve hexes of Stalingrad
 #CONDITION_POSITION= 234,85 [12,12] [1,1] [1] [0]
-#UNIT= 5 [5] [0] []
-#UNIT= 3 [5] [0] []
+#UNIT= 5 [5] [0] [1st Stalingrad Res]
+#UNIT= 3 [5] [0] [1st Stalingrad Res]
 #UNIT= 15 [5] [0] []
-#UNIT= 2 [5] [0] []
-#UNIT= 2 [5] [0] []
+#UNIT= 2 [5] [0] [1st Stalingrad Res]
+#UNIT= 2 [5] [0] [2nd Stalingrad REs]
 }
 
 {
@@ -15343,12 +15382,12 @@
 ; One Axis unit within twelve hexes of Stalingrad
 #CONDITION_POSITION= 234,85 [12,12] [1,1] [1] [0]
 #UNIT= 14 [10] [0] []
-#UNIT= 26 [10] [0] []
+#UNIT= 26 [10] [0] [1st Stalingrad Res]
 #UNIT= 16 [10] [0] []
 #UNIT= 15 [10] [0] []
 #UNIT= 0 [10] [0] []
-#UNIT= 2 [10] [0] []
-#UNIT= 2 [10] [0] []
+#UNIT= 2 [10] [0] [1st Stalingrad Res]
+#UNIT= 2 [10] [0] [2nd Stalingrad Res]
 }
 
 {
@@ -15375,12 +15414,12 @@
 ; One Axis unit within twelve hexes of Stalingrad
 #CONDITION_POSITION= 234,85 [12,12] [1,1] [1] [0]
 #UNIT= 14 [5] [0] []
-#UNIT= 26 [5] [0] []
+#UNIT= 26 [5] [0] [1st Stalingrad Res]
 #UNIT= 16 [5] [0] []
 #UNIT= 15 [5] [0] []
 #UNIT= 0 [5] [0] []
-#UNIT= 2 [5] [0] []
-#UNIT= 2 [5] [0] []
+#UNIT= 2 [5] [0] [1st Stalingrad Res]
+#UNIT= 2 [5] [0] [2nd Stalingrad Res]
 }
 
 {
@@ -15406,6 +15445,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Infantry Army(5)
 #UNIT= 5 [5] [3] [Spanish]
 #UNIT= 4 [5] [3] [Spanish]
 }
@@ -15763,7 +15803,8 @@
 #VARIABLE_CONDITION= 111 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 10 [10] [0] []
+; Mountain Division(10)
+#UNIT= 10 [10] [0] [1st Caucasus Res]
 }
 
 {
@@ -15789,7 +15830,7 @@
 #VARIABLE_CONDITION= 111 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 4 [5] [0] []
+#UNIT= 4 [5] [0] [1st Caucasus Res]
 }
 
 {
@@ -15815,7 +15856,7 @@
 #VARIABLE_CONDITION= 111 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 4 [5] [0] []
+#UNIT= 4 [5] [0] [2nd Caucasus Res]
 }
 
 {
@@ -15869,7 +15910,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [5] [0] []
 #UNIT= 2 [5] [0] []
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Berlin]
 }
 
 {
@@ -15990,6 +16031,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Germany: Defensive Corps?
 #LINK= 264[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -16031,7 +16073,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [5] [0] []
 #UNIT= 2 [5] [0] []
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Berlin]
 }
 
 {
@@ -16192,11 +16234,13 @@
 #FULL_RESEARCH= 0
 #DATE= 1944/11/28
 #FAILSAFE_DATE= 1948/01/01
+; London(147,77)
 #DESTINATION_RESOURCE= 147,77
 ; UK(45) aligned with Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; HQ(0), Tank Army(27), Tank Corps(26), Infantry Army(5)
 #UNIT= 0 [10] [1] []
 #UNIT= 27 [11] [1] []
 #UNIT= 26 [11] [1] []
@@ -16231,6 +16275,7 @@
 #UNIT= 32 [12] [2] []
 }
 
+; https://www.wikiwand.com/en/13th_Waffen_Mountain_Division_of_the_SS_Handschar_(1st_Croatian)
 {
 #NAME= DE 544 - Croatia: Mountain Infantry Division
 #POPUP= Croatia Raises A Mountain Infantry Division For Anti-Partisan Operations
@@ -16254,7 +16299,8 @@
 #VARIABLE_CONDITION= 27 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 10 [5] [0] [1st]
+; Mountain Division(10)
+#UNIT= 10 [5] [0] [SS Handschar]
 }
 
 ; Commonwealth Invades Egypt
@@ -16409,12 +16455,13 @@
 #FULL_RESEARCH= 0
 #DATE= 1940/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Alexandria(206,124)
 #DESTINATION_RESOURCE= 206,124
 ; Germany(45) aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Alexandria]
 }
 
 {
@@ -16435,12 +16482,13 @@
 #FULL_RESEARCH= 0
 #DATE= 1940/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Port Said(209,123)
 #DESTINATION_RESOURCE= 209,123
 ; Germany(45) aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Port Said]
 }
 
 {
@@ -16461,12 +16509,13 @@
 #FULL_RESEARCH= 0
 #DATE= 1940/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Suez(210,126)
 #DESTINATION_RESOURCE= 210,126
 ; Germany(45) aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] []
+#UNIT= 1 [5] [0] [Suez]
 }
 
 ; Greek Army In Exile
@@ -16631,7 +16680,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 15 [5] [0] []
 #UNIT= 16 [8] [0] []
-#UNIT= 24 [5] [0] []
+#UNIT= 24 [5] [0] [20th Panzerjäger]
 #UNIT= 25 [8] [0] []
 #UNIT= 29 [8] [0] []
 }
@@ -16731,6 +16780,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/06/01
 #FAILSAFE_DATE= 1948/01/01
+; Amiens(151,89)
 #DESTINATION_RESOURCE= 151,89
 ; Germany(45) aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -16744,8 +16794,8 @@
 #CONDITION_POSITION= 160,78 [7,7] [2,2] [2] [0]
 #CONDITION_POSITION= 145,94 [7,7] [2,2] [2] [0]
 #CONDITION_POSITION= 138,86 [7,7] [2,2] [2] [0]
-#UNIT= 2 [10] [0.5] []
-#UNIT= 3 [5] [0] []
+#UNIT= 2 [10] [0.5] [1st Amiens Res]
+#UNIT= 3 [5] [0] [1st Amiens Res]
 }
 
 ; Strategic Reserves in France (Germany)
