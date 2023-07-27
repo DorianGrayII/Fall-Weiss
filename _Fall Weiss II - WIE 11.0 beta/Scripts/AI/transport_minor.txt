@@ -28,14 +28,14 @@
 ; #GV= Does the event activate based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
-;      Example A) #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
-;      Example B) #GV= 4[71,100] will trigger 30% per game
+;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;      Example B - #GV= 4[71,100] will trigger 30% per game
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
 ;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
-;        Example A) #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
-;        Example B) #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
-;        Example C) #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
+;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
+;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
+;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
 ; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
 ; #COUNTRY_ID= Country ID associated with this event
 ; #SIZE= How many units should be assigned to this plan?
@@ -334,9 +334,7 @@
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SIZE= 1,2
 #BUILD_LENGTH= 0
@@ -348,14 +346,13 @@
 #GOAL_POSITION= 95,135
 #DATE= 1940/09/08
 #STEAL= 0
-; Set friendly positions:
-; 1st Line - Sheffield
-; 2nd Line - Liverpool (Port)
-; 3rd Line - Alexandria
-; 4th Line - Cairo
-; 5th Line - El Arish
-; 6th Line - Port Said
-; 7th Line - Suez
+; Sheffield
+; Liverpool (Port)
+; Alexandria
+; Cairo(208,126)
+; El Arish
+; Port Said
+; Suez
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 140,72
 #FRIENDLY_POSITION= 206,124
@@ -363,18 +360,15 @@
 #FRIENDLY_POSITION= 212,124
 #FRIENDLY_POSITION= 209,123
 #FRIENDLY_POSITION= 210,126
-; Set variable conditions:
-; 1st Line - UK(112) politically aligned with Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - London not tactically threatened (dummy condition)
+; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 ; Cancel condition:
-; 1st Line - 1 Axis unit within range of London OR
-; 2nd Line - 1 Axis unit in range of transport area OR
-; 3rd Line - 1 Axis unit in range of southern England
+; 1 Axis unit within range of London OR
+; 1 Axis unit in range of transport area OR
+; 1 Axis unit in range of southern England
 #CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
 #CANCEL_POSITION= 131,81 [5,5] [1,1] [1]
 #CANCEL_POSITION= 141,82 [5,5] [1,1] [1]
@@ -395,9 +389,7 @@
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SIZE= 1,2
 #BUILD_LENGTH= 0
@@ -409,14 +401,13 @@
 #GOAL_POSITION= 95,135
 #DATE= 1940/10/14
 #STEAL= 0
-; Set friendly positions:
-; 1st Line - Sheffield
-; 2nd Line - Liverpool (Port)
-; 3rd Line - Alexandria
-; 4th Line - Cario
-; 5th Line - El Arish
-; 6th Line - Port Said
-; 7th Line - Suez
+; Sheffield
+; Liverpool (Port)
+; Alexandria
+; Cairo(208,126)
+; El Arish
+; Port Said
+; Suez
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 140,72
 #FRIENDLY_POSITION= 206,124
@@ -424,18 +415,15 @@
 #FRIENDLY_POSITION= 212,124
 #FRIENDLY_POSITION= 209,123
 #FRIENDLY_POSITION= 210,126
-; Set variable conditions:
-; 1st Line - UK(112) politically aligned with Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - London not tactically threatened (dummy condition)
+; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 ; Cancel condition:
-; 1st Line - 1 Axis unit within range of London OR
-; 2nd Line - 1 Axis unit in range of transport area OR
-; 3rd Line - 1 Axis unit in range of southern England
+; 1 Axis unit within range of London OR
+; 1 Axis unit in range of transport area OR
+; 1 Axis unit in range of southern England
 #CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
 #CANCEL_POSITION= 131,81 [5,5] [1,1] [1]
 #CANCEL_POSITION= 141,82 [5,5] [1,1] [1]
@@ -456,9 +444,7 @@
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SIZE= 1,2
 #BUILD_LENGTH= 0
@@ -470,14 +456,13 @@
 #GOAL_POSITION= 95,135
 #DATE= 1940/11/05
 #STEAL= 0
-; Set friendly positions:
-; 1st Line - Sheffield
-; 2nd Line - Liverpool (Port)
-; 3rd Line - Alexandria
-; 4th Line - Cario
-; 5th Line - El Arish
-; 6th Line - Port Said
-; 7th Line - Suez
+; Sheffield
+; Liverpool (Port)
+; Alexandria
+; Cairo(208,126)
+; El Arish
+; Port Said
+; Suez
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 140,72
 #FRIENDLY_POSITION= 206,124
@@ -485,18 +470,15 @@
 #FRIENDLY_POSITION= 212,124
 #FRIENDLY_POSITION= 209,123
 #FRIENDLY_POSITION= 210,126
-; Set variable conditions:
-; 1st Line - UK(112) politically aligned with Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - London not tactically threatened (dummy condition)
+; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 ; Cancel condition:
-; 1st Line - 1 Axis unit within range of London OR
-; 2nd Line - 1 Axis unit in range of transport area OR
-; 3rd Line - 1 Axis unit in range of southern England
+; 1 Axis unit within range of London OR
+; 1 Axis unit in range of transport area OR
+; 1 Axis unit in range of southern England
 #CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
 #CANCEL_POSITION= 131,81 [5,5] [1,1] [1]
 #CANCEL_POSITION= 141,82 [5,5] [1,1] [1]
@@ -517,39 +499,33 @@
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SIZE= 1,2
 #BUILD_LENGTH= 0
 #LENGTH= 8
 #RANGE= 25
 #NAVAL_CRUISE= 0
-; Suez
+; Suez Port(210,127)
 #GOAL_POSITION= 210,127
 #GOAL_POSITION= 95,135
 #DATE= 1941/04/14
 #STEAL= 0
-; Set friendly positions:
-; 1st Line - Sheffield
-; 2nd Line - Liverpool (Port)
-; 3rd Line - Alexandria
-; 4th Line - Cario
+; Sheffield
+; Liverpool (Port)
+; Alexandria
+; Cairo(208,126)
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 140,72
 #FRIENDLY_POSITION= 206,124
 #FRIENDLY_POSITION= 208,126
-; Set variable conditions:
-; 1st Line - UK(112) politically aligned with Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - London not tactically threatened (dummy condition)
+; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 ; Cancel condition:
-; 1st Line - 1 Axis unit within range of London
+; 1 Axis unit within range of London
 #CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
 ; Allies control Benghazi OR
 ; Allies control Tripoli
@@ -567,39 +543,33 @@
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SIZE= 1,2
 #BUILD_LENGTH= 0
 #LENGTH= 8
 #RANGE= 25
 #NAVAL_CRUISE= 0
-; Suez
+; Suez Port(210,127)
 #GOAL_POSITION= 210,127
 #GOAL_POSITION= 95,135
 #DATE= 1941/05/18
 #STEAL= 0
-; Set friendly positions:
-; 1st Line - Sheffield
-; 2nd Line - Liverpool (Port)
-; 3rd Line - Alexandria
-; 4th Line - Cario
+; Sheffield
+; Liverpool (Port)
+; Alexandria
+; Cario
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 140,72
 #FRIENDLY_POSITION= 206,124
 #FRIENDLY_POSITION= 208,126
-; Set variable conditions:
-; 1st Line - UK(112) politically aligned with Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - London not tactically threatened (dummy condition)
+; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 ; Cancel condition:
-; 1st Line - 1 Axis unit within range of London
+; 1 Axis unit within range of London
 #CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
 ; Allies control Benghazi OR
 ; Allies control Tripoli
@@ -617,39 +587,33 @@
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SIZE= 1,2
 #BUILD_LENGTH= 0
 #LENGTH= 10
 #RANGE= 25
 #NAVAL_CRUISE= 0
-; Suez
+; Suez Port(210,127)
 #GOAL_POSITION= 210,127
 #GOAL_POSITION= 95,135
 #DATE= 1941/06/09
 #STEAL= 0
-; Set friendly positions:
-; 1st Line - Sheffield
-; 2nd Line - Liverpool (Port)
-; 3rd Line - Alexandria
-; 4th Line - Cario
+; Sheffield
+; Liverpool (Port)
+; Alexandria
+; Cario
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 140,72
 #FRIENDLY_POSITION= 206,124
 #FRIENDLY_POSITION= 208,126
-; Set variable conditions:
-; 1st Line - UK(112) politically aligned with Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - London not tactically threatened (dummy condition)
+; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 ; Cancel condition:
-; 1st Line - 1 Axis unit within range of London
+; 1 Axis unit within range of London
 #CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
 ; Allies control Benghazi OR
 ; Allies control Tripoli
@@ -667,39 +631,33 @@
 #COUNTRY_ID= 112
 #TRIGGER= 50
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SIZE= 2,4
 #BUILD_LENGTH= 0
 #LENGTH= 10
 #RANGE= 25
 #NAVAL_CRUISE= 0
-; Suez
+; Suez Port(210,127)
 #GOAL_POSITION= 210,127
 #GOAL_POSITION= 95,135
 #DATE= 1942/04/05
 #STEAL= 0
-; Set friendly positions:
-; 1st Line - Sheffield
-; 2nd Line - Liverpool (Port)
-; 3rd Line - Alexandria
-; 4th Line - Cario
+; Sheffield
+; Liverpool (Port)
+; Alexandria
+; Cario
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 140,72
 #FRIENDLY_POSITION= 206,124
 #FRIENDLY_POSITION= 208,126
-; Set variable conditions:
-; 1st Line - UK(112) politically aligned with Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - London not tactically threatened (dummy condition)
+; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 ; Cancel condition:
-; 1st Line - 1 Axis unit within range of London
+; 1 Axis unit within range of London
 #CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
 ; Allies control Benghazi OR
 ; Allies control Tripoli
@@ -717,34 +675,28 @@
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SIZE= 3,8
 #BUILD_LENGTH= 1
 #LENGTH= 12
 #RANGE= 50
 #NAVAL_CRUISE= 0
-; Bristol
+; Bristol(142,78)
 #GOAL_POSITION= 141,77
 ; Date set to post arrival of US HQ/Navy via P/Q
 #DATE= 1942/06/10
 #STEAL= 0
-; Set friendly positions:
-; 1st Line - Halifax
-; 2nd Line - Bristol
+; Halifax
+; Bristol
 #FRIENDLY_POSITION= 30,95
 #FRIENDLY_POSITION= 141,77
-; Set variable conditions:
-; 1st Line - UK(112) politically aligned with Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Washington D.C. not tactically threatened 
+; Washington DC(4,108) not tactically threatened 
 #TACTICAL_CONDITION= 4,108 [1]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 1st Line - 1 Axis unit within range of Washington D.C.
+; 1 Axis unit within range of Washington DC(4,108)
 #CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
 }
 
@@ -756,9 +708,7 @@
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SIZE= 3,8
 #BUILD_LENGTH= 1
@@ -770,20 +720,16 @@
 ; Date set to post arrival of US HQ/Navy via P/Q
 #DATE= 1942/06/10
 #STEAL= 0
-; Set friendly positions:
-; 1st Line - Halifax
-; 2nd Line - Bristol
+; Halifax
+; Bristol
 #FRIENDLY_POSITION= 30,95
 #FRIENDLY_POSITION= 141,77
-; Set variable conditions:
-; 1st Line - UK(112) politically aligned with Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Washington D.C. not tactically threatened 
+; Washington DC(4,108) not tactically threatened 
 #TACTICAL_CONDITION= 4,108 [1]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 1st Line - 1 Axis unit within range of Washington D.C.
+; 1 Axis unit within range of Washington DC(4,108)
 #CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
 }
 
@@ -795,9 +741,7 @@
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SIZE= 3,8
 #BUILD_LENGTH= 1
@@ -809,20 +753,16 @@
 ; Date set to post arrival of US HQ/Navy via P/Q
 #DATE= 1942/06/10
 #STEAL= 0
-; Set friendly positions:
-; 1st Line - Halifax
-; 2nd Line - Bristol
+; Halifax
+; Bristol
 #FRIENDLY_POSITION= 30,95
 #FRIENDLY_POSITION= 137,65
-; Set variable conditions:
-; 1st Line - UK(112) politically aligned with Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Washington D.C. not tactically threatened 
+; Washington DC(4,108) not tactically threatened 
 #TACTICAL_CONDITION= 4,108 [1]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 1st Line - 1 Axis unit within range of Washington D.C.
+; 1 Axis unit within range of Washington DC(4,108)
 #CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
 }
 
@@ -835,9 +775,7 @@
 #COUNTRY_ID= 21
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 7[1,50]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SIZE= 1,1
 #BUILD_LENGTH= 0
@@ -850,20 +788,16 @@
 #GOAL_POSITION= 69,93
 #DATE= 1939/09/01
 #STEAL= 0
-; Set friendly positions:
-; 1st Line - Halifax
-; 2nd Line - Ottawa
-; 3rd Line - Glasgow
+; Halifax
+;  Ottawa
+; Glasgow
 #FRIENDLY_POSITION= 30,95
 #FRIENDLY_POSITION= 6,93
 #FRIENDLY_POSITION= 137,65
-; Set variable conditions:
-; 1st Line - Canada(21) politically aligned with Allies and not surrendered
+; Canada(21) Allied and not surrendered
 #VARIABLE_CONDITION= 21 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Ottawa not tactically threatened (dummy condition)
+; Ottawa not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 6,93 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 ; Set dummy cancel position
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
@@ -878,35 +812,29 @@
 #COUNTRY_ID= 21
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 7[51,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SIZE= 1,1
 #BUILD_LENGTH= 0
 #LENGTH= 10
 #RANGE= 25
 #NAVAL_CRUISE= 1
-; Suez
+; Suez Port(210,127)
 #GOAL_POSITION= 210,127
 #GOAL_POSITION= 49,96
 #GOAL_POSITION= 95,135
 #DATE= 1939/09/01
 #STEAL= 0
-; Set friendly positions:
-; 1st Line - Halifax
-; 2nd Line - Ottawa
-; 3rd Line - Suez (Port)
+; Halifax
+;  Ottawa
+; Suez (Port)
 #FRIENDLY_POSITION= 30,95
 #FRIENDLY_POSITION= 6,93
 #FRIENDLY_POSITION= 210,127
-; Set variable conditions:
-; 1st Line - Canada(21) politically aligned with Allies and not surrendered
+; Canada(21) Allied and not surrendered
 #VARIABLE_CONDITION= 21 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Ottawa not tactically threatened (dummy condition)
+; Ottawa not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 6,93 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 ; Allies hold Tripoli
 #CANCEL_POSITION= 172,121 [0,0] [1,1] [2]
@@ -929,31 +857,25 @@
 #COUNTRY_ID= 40
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SIZE= 1,1
 #BUILD_LENGTH= 0
 #LENGTH= 10
 #RANGE= 25
 #NAVAL_CRUISE= 0
-; Marseille
+; Marseille(157,97)
 #GOAL_POSITION= 157,98
 #DATE= 1939/11/27
 #STEAL= 0
-; Set friendly positions:
-; 1st Line - Algiers
+; Algiers(152,113)
 #FRIENDLY_POSITION= 152,113
-; Set variable conditions:
-; 1st Line - France(40) politically aligned with Allies and not surrendered AND
-; 2nd Line - USSR(116) politically aligned with Allies (not fully active) and not surrendered
+; France(40) Allied and not surrendered AND
+; USSR(116) Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; Set tactical conditions:
-; 1st Line - Paris not tactically threatened (dummy condition)
+; Paris(151,84) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 151,84 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 ; Set dummy cancel position
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
@@ -972,9 +894,7 @@
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SIZE= 2,4
 #BUILD_LENGTH= 0
@@ -987,23 +907,19 @@
 ; events so they don't interfere with each other
 #DATE= 1942/08/23
 #STEAL= 0
-; Set friendly positions:
-; 1st Line - Washington D.C.
-; 2nd Line - Algiers
-; 3rd Line - Gibraltar
+; Washington DC(4,108)
+; Algiers(152,113)
+; Gibraltar
 #FRIENDLY_POSITION= 4,108
 #FRIENDLY_POSITION= 152,113
 #FRIENDLY_POSITION= 136,114
-; Set variable conditions:
-; 1st Line - USA(115) politically aligned with Allies and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Washington D.C. not tactically threatened
+; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
-; Set activate position:
-; 1st Line - 3 Allied units within range of Algiers
+; 3 Allied units within range of Algiers
 #ACTIVATE_POSITION= 152,113 [4,4] [3,3] [2]
-; 1st Line - 1 Axis unit within range of Washington D.C.
+; 1 Axis unit within range of Washington DC(4,108)
 #CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
 }
 
@@ -1015,46 +931,40 @@
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SIZE= 2,3
 #BUILD_LENGTH= 1
 #LENGTH= 12
 #RANGE= 25
 #NAVAL_CRUISE= 1
-; Suez
+; Suez Port(210,127)
 #GOAL_POSITION= 210,127
 #GOAL_POSITION= 94,135
 ; Date
 #DATE= 1941/01/20
 #STEAL= 0
-; Set friendly positions:
-; 1st Line - Washington D.C.
-; 2nd Line - El Alamein
-; 3rd Line - Alexandria
-; 4th Line - Cario
+; Washington DC(4,108)
+; El Alamein
+; Alexandria
+; Cario
 #FRIENDLY_POSITION= 4,108
 #FRIENDLY_POSITION= 204,125
 #FRIENDLY_POSITION= 206,124
 #FRIENDLY_POSITION= 208,126
-; Set variable conditions:
-; 1st Line - USA(115) politically aligned with Allies and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Washington D.C. not tactically threatened 
+; Washington DC(4,108) not tactically threatened 
 #TACTICAL_CONDITION= 4,108 [1]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 1st Line - 1 Axis unit within range of Washington D.C. OR
+; 1 Axis unit within range of Washington DC(4,108) OR
 #CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
 ; Allies control Benghazi OR
 ; Allies control Tripoli
 #CANCEL_POSITION= 186,122 [1,1] [1,1] [2]
 #CANCEL_POSITION= 172,121 [1,1] [1,1] [2]
-; 1st Line - 1 Axis unit in England OR
-; 2nd Line - 0 Allied units in England
+; 1 Axis unit in England OR
+; 0 Allied units in England
 #CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
 #CANCEL_POSITION= 147,77 [20,20] [0,0] [2]
 ; Axis units in range of Suez

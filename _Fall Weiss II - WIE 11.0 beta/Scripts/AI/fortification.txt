@@ -28,14 +28,14 @@
 ; #GV= Does the event activate based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
-;      Example A) #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
-;      Example B) #GV= 4[71,100] will trigger 30% per game
+;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;      Example B - #GV= 4[71,100] will trigger 30% per game
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
 ;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
-;        Example A) #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
-;        Example B) #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
-;        Example C) #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
+;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
+;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
+;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
 ; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
 ; #COUNTRY_ID= Country ID associated with this event
 ; #EDGE= What type of fortification edge should this event have? (See EDGE IDS below)
@@ -97,7 +97,7 @@
 ; specified x,y position.  For example if the x,y position is a coastal tile then range checks will
 ; be made on sea tiles, otherwise if it is a land tile range checks will be made on land tiles only.
 ; Each #ACTIVATE_POSITION line will be read using OR logic.
-; Note: Once a plan has been properly activated then all references to #ACTIAVATE_POSITION are removed
+; Note: Once a plan has been properly activated then all references to #ACTIVATE_POSITION are removed
 ;       from the plan as these conditions have been satisfied.  Use #CANCEL_POSITION to set the CANCEL conditions
 ;       based on unit positions for the event.
 ;
@@ -110,6 +110,13 @@
 ; Use the reference values provided for TACTICAL_ID and not tactical names
 ; Use the reference values provided for POLITICAL ALIGNMENT and not names
 ; Use the reference values provided for SURRENDER flags and not names
+;
+; You can set dummy activate position (no units at position 0,0) as follows:
+;    #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+;
+; You can set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+;    #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -295,9 +302,7 @@
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; North West + South West
 #EDGE= 6
@@ -305,16 +310,12 @@
 ; West Alexandria Position
 #GOAL_POSITION= 203,124
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - El Alamein
+; El Alamein
 #FRIENDLY_POSITION= 204,125
-; Set variable conditions:
-; 1st Line - UK(112) politically Allied and not surrendered
+; UK(112) politically Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Alexandria not tactically threatened (dummy condition)
+; Alexandria not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 206,124 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 ; Axis units in range of El Alamein
 #CANCEL_POSITION= 204,125 [2,2] [1,1] [1]
@@ -328,9 +329,7 @@
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; North + North West + South West
 #EDGE= 1
@@ -339,16 +338,12 @@
 ; South Alexandria Position
 #GOAL_POSITION= 203,125
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - El Alamein
+; El Alamein
 #FRIENDLY_POSITION= 204,125
-; Set variable conditions:
-; 1st Line - UK(112) politically Allied and not surrendered
+; UK(112) politically Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Alexandria not tactically threatened (dummy condition)
+; Alexandria not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 206,124 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 ; Axis units in range of El Alamein
 #CANCEL_POSITION= 204,125 [2,2] [1,1] [1]
@@ -362,9 +357,7 @@
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; North + North West + South West
 #EDGE= 1
@@ -373,16 +366,12 @@
 ; South Alexandria Position
 #GOAL_POSITION= 203,126
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - El Alamein
+; El Alamein
 #FRIENDLY_POSITION= 204,125
-; Set variable conditions:
-; 1st Line - UK(112) politically Allied and not surrendered
+; UK(112) politically Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Alexandria not tactically threatened (dummy condition)
+; Alexandria not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 206,124 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 ; Axis units in range of El Alamein
 #CANCEL_POSITION= 204,125 [2,2] [1,1] [1]
@@ -396,9 +385,7 @@
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;North + North West + South West
 #EDGE= 1
@@ -407,16 +394,12 @@
 ; South Alexandria Position
 #GOAL_POSITION= 204,126
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - El Alamein
+; El Alamein
 #FRIENDLY_POSITION= 204,125
-; Set variable conditions:
-; 1st Line - UK(112) politically Allied and not surrendered
+; UK(112) politically Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Alexandria not tactically threatened (dummy condition)
+; Alexandria not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 206,124 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 ; Axis units in range of El Alamein
 #CANCEL_POSITION= 204,125 [2,2] [1,1] [1]
@@ -430,9 +413,7 @@
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; South West + South
 #EDGE= 5
@@ -440,19 +421,13 @@
 ; South West Alexandria Position
 #GOAL_POSITION= 205,124
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Alexandria
+; Alexandria
 #FRIENDLY_POSITION= 206,124
-; Set variable conditions:
-; 1st Line - UK(112) politically Allied and not surrendered
+; UK(112) politically Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Alexandria not tactically threatened (dummy condition)
+; Alexandria not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 206,124 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -464,9 +439,7 @@
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; South West + South + South East
 #EDGE= 5
@@ -475,19 +448,13 @@
 ; South Alexandria Position
 #GOAL_POSITION= 206,125
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Alexandria
+; Alexandria
 #FRIENDLY_POSITION= 206,124
-; Set variable conditions:
-; 1st Line - UK(112) politically Allied and not surrendered
+; UK(112) politically Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Alexandria not tactically threatened (dummy condition)
+; Alexandria not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 206,124 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -499,28 +466,20 @@
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; South
 #EDGE= 4
 ; South Alexandria Position
 #GOAL_POSITION= 207,124
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Alexandria
+; Alexandria
 #FRIENDLY_POSITION= 206,124
-; Set variable conditions:
-; 1st Line - UK(112) politically Allied and not surrendered
+; UK(112) politically Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Alexandria not tactically threatened (dummy condition)
+; Alexandria not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 206,124 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -537,9 +496,7 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 3
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 1
@@ -549,19 +506,13 @@
 ; Leningrad
 #GOAL_POSITION= 205,50
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied (not fully active) and not surrendered
+; USSR(116) politically Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -573,9 +524,7 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 3
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 1
@@ -583,19 +532,13 @@
 ; Leningrad
 #GOAL_POSITION= 206,50
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied (not fully active) and not surrendered
+; USSR(116) politically Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -607,9 +550,7 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 4
@@ -618,19 +559,13 @@
 ; Moscow
 #GOAL_POSITION= 219,66
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied (not fully active) and not surrendered
+; USSR(116) politically Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -642,9 +577,7 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 4
@@ -652,19 +585,13 @@
 ; Moscow
 #GOAL_POSITION= 220,67
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied (not fully active) and not surrendered
+; USSR(116) politically Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -676,9 +603,7 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 2
@@ -688,19 +613,13 @@
 ; Moscow
 #GOAL_POSITION= 221,67
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied (not fully active) and not surrendered
+; USSR(116) politically Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -712,9 +631,7 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 3
@@ -723,19 +640,13 @@
 ; Moscow
 #GOAL_POSITION= 221,66
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied (not fully active) and not surrendered
+; USSR(116) politically Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -747,9 +658,7 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 4
@@ -758,19 +667,13 @@
 ; Moscow
 #GOAL_POSITION= 220,66
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied (not fully active) and not surrendered
+; USSR(116) politically Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -782,9 +685,7 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; East + South East + South
 #EDGE= 1
@@ -794,19 +695,13 @@
 ; Moscow
 #GOAL_POSITION= 218,66
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied (not fully active) and not surrendered
+; USSR(116) politically Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -818,28 +713,20 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 6
 ; Moscow
 #GOAL_POSITION= 219,65
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied (not fully active) and not surrendered
+; USSR(116) politically Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -851,9 +738,7 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 1
@@ -862,19 +747,13 @@
 ; Moscow
 #GOAL_POSITION= 219,64
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied (not fully active) and not surrendered
+; USSR(116) politically Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -886,28 +765,20 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 6
 ; Moscow
 #GOAL_POSITION= 220,64
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied (not fully active) and not surrendered
+; USSR(116) politically Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -919,9 +790,7 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; North + North East + East
 #EDGE= 2
@@ -930,19 +799,13 @@
 ; Moscow
 #GOAL_POSITION= 222,66
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied (not fully active) and not surrendered
+; USSR(116) politically Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -954,9 +817,7 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 4
@@ -965,19 +826,13 @@
 ; Moscow
 #GOAL_POSITION= 219,66
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied and not surrendered
+; USSR(116) politically Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -989,9 +844,7 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 4
@@ -999,19 +852,13 @@
 ; Moscow
 #GOAL_POSITION= 220,67
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied and not surrendered
+; USSR(116) politically Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1023,9 +870,7 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 2
@@ -1035,19 +880,13 @@
 ; Moscow
 #GOAL_POSITION= 221,67
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied and not surrendered
+; USSR(116) politically Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1059,9 +898,7 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 3
@@ -1070,19 +907,13 @@
 ; Moscow
 #GOAL_POSITION= 221,66
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied and not surrendered
+; USSR(116) politically Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1094,9 +925,7 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 4
@@ -1105,19 +934,13 @@
 ; Moscow
 #GOAL_POSITION= 220,66
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied and not surrendered
+; USSR(116) politically Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1129,9 +952,7 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; East + South East + South
 #EDGE= 1
@@ -1141,19 +962,13 @@
 ; Moscow
 #GOAL_POSITION= 218,66
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied and not surrendered
+; USSR(116) politically Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1165,28 +980,20 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 6
 ; Moscow
 #GOAL_POSITION= 219,65
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied and not surrendered
+; USSR(116) politically Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1198,9 +1005,7 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 1
@@ -1209,19 +1014,13 @@
 ; Moscow
 #GOAL_POSITION= 219,64
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied and not surrendered
+; USSR(116) politically Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1233,28 +1032,20 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 6
 ; Moscow
 #GOAL_POSITION= 220,64
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied and not surrendered
+; USSR(116) politically Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1266,9 +1057,7 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; North + North East + East
 #EDGE= 2
@@ -1277,19 +1066,13 @@
 ; Moscow
 #GOAL_POSITION= 222,66
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied and not surrendered
+; USSR(116) politically Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1301,28 +1084,20 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 6
 ; Stalingrad
 #GOAL_POSITION= 232,86
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied and not surrendered
+; USSR(116) politically Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1334,9 +1109,7 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 5
@@ -1344,19 +1117,13 @@
 ; Stalingrad
 #GOAL_POSITION= 232,85
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied and not surrendered
+; USSR(116) politically Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1368,9 +1135,7 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 5
@@ -1378,19 +1143,13 @@
 ; Stalingrad
 #GOAL_POSITION= 232,84
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Moscow
+; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
-; Set variable conditions:
-; 1st Line - USSR(116) politically Allied and not surrendered
+; USSR(116) politically Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Set tactical conditions:
-; 1st Line - Moscow not tactically threatened (dummy condition)
+; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1407,9 +1166,7 @@
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 1
@@ -1418,19 +1175,13 @@
 ; Siegfried
 #GOAL_POSITION= 158,77
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Dusseldorf
+; Dusseldorf
 #FRIENDLY_POSITION= 160,78
-; Set variable conditions:
-; 1st Line - Germany(45) politically Allied and not surrendered
+; Germany(45) politically Allied and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Set tactical conditions:
-; 1st Line - Berlin not tactically threatened (dummy condition)
+; Berlin(173,74) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 173,74 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1442,28 +1193,20 @@
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 6
 ; Siegfried
 #GOAL_POSITION= 159,76
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Dusseldorf
+; Dusseldorf
 #FRIENDLY_POSITION= 160,78
-; Set variable conditions:
-; 1st Line - Germany(45) politically Allied and not surrendered
+; Germany(45) politically Allied and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Set tactical conditions:
-; 1st Line - Berlin not tactically threatened (dummy condition)
+; Berlin(173,74) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 173,74 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1475,9 +1218,7 @@
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 5
@@ -1485,19 +1226,13 @@
 ; Siegfried
 #GOAL_POSITION= 159,75
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Dusseldorf
+; Dusseldorf
 #FRIENDLY_POSITION= 160,78
-; Set variable conditions:
-; 1st Line - Germany(45) politically Allied and not surrendered
+; Germany(45) politically Allied and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Set tactical conditions:
-; 1st Line - Berlin not tactically threatened (dummy condition)
+; Berlin(173,74) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 173,74 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1509,9 +1244,7 @@
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 5
@@ -1519,19 +1252,13 @@
 ; Siegfried
 #GOAL_POSITION= 159,74
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Dusseldorf
+; Dusseldorf
 #FRIENDLY_POSITION= 160,78
-; Set variable conditions:
-; 1st Line - Germany(45) politically Allied and not surrendered
+; Germany(45) politically Allied and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Set tactical conditions:
-; 1st Line - Berlin not tactically threatened (dummy condition)
+; Berlin(173,74) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 173,74 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1543,9 +1270,7 @@
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 5
@@ -1553,19 +1278,13 @@
 ; Siegfried
 #GOAL_POSITION= 159,73
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Dusseldorf
+; Dusseldorf
 #FRIENDLY_POSITION= 160,78
-; Set variable conditions:
-; 1st Line - Germany(45) politically Allied and not surrendered
+; Germany(45) politically Allied and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Set tactical conditions:
-; 1st Line - Berlin not tactically threatened (dummy condition)
+; Berlin(173,74) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 173,74 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1577,9 +1296,7 @@
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ;
 #EDGE= 1
@@ -1588,19 +1305,13 @@
 ; Coastal
 #GOAL_POSITION= 140,85
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Caen
+; Caen
 #FRIENDLY_POSITION= 146,84
-; Set variable conditions:
-; 1st Line - Germany(45) politically Allied and not surrendered
+; Germany(45) politically Allied and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Set tactical conditions:
-; 1st Line - Berlin not tactically threatened (dummy condition)
+; Berlin(173,74) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 173,74 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1612,28 +1323,20 @@
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; North
 #EDGE= 1
 ; Coastal
 #GOAL_POSITION= 143,85
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Caen
+; Caen
 #FRIENDLY_POSITION= 146,84
-; Set variable conditions:
-; 1st Line - Germany(45) politically Allied and not surrendered
+; Germany(45) politically Allied and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Set tactical conditions:
-; 1st Line - Berlin not tactically threatened (dummy condition)
+; Berlin(173,74) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 173,74 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1645,28 +1348,20 @@
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; North West
 #EDGE= 6
 ; Coastal
 #GOAL_POSITION= 144,85
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Caen
+; Caen
 #FRIENDLY_POSITION= 146,84
-; Set variable conditions:
-; 1st Line - Germany(45) politically Allied and not surrendered
+; Germany(45) politically Allied and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Set tactical conditions:
-; 1st Line - Berlin not tactically threatened (dummy condition)
+; Berlin(173,74) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 173,74 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1678,28 +1373,20 @@
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; North West
 #EDGE= 6
 ; Coastal
 #GOAL_POSITION= 147,83
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Caen
+; Caen
 #FRIENDLY_POSITION= 146,84
-; Set variable conditions:
-; 1st Line - Germany(45) politically Allied and not surrendered
+; Germany(45) politically Allied and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Set tactical conditions:
-; 1st Line - Berlin not tactically threatened (dummy condition)
+; Berlin(173,74) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 173,74 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1711,9 +1398,7 @@
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; North + North West
 #EDGE= 1
@@ -1721,19 +1406,13 @@
 ; Coastal
 #GOAL_POSITION= 149,81
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Caen
+; Caen
 #FRIENDLY_POSITION= 146,84
-; Set variable conditions:
-; 1st Line - Germany(45) politically Allied and not surrendered
+; Germany(45) politically Allied and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Set tactical conditions:
-; 1st Line - Berlin not tactically threatened (dummy condition)
+; Berlin(173,74) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 173,74 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1745,28 +1424,20 @@
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; North West
 #EDGE= 6
 ; Coastal
 #GOAL_POSITION= 150,81
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Caen
+; Caen
 #FRIENDLY_POSITION= 146,84
-; Set variable conditions:
-; 1st Line - Germany(45) politically Allied and not surrendered
+; Germany(45) politically Allied and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Set tactical conditions:
-; 1st Line - Berlin not tactically threatened (dummy condition)
+; Berlin(173,74) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 173,74 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1778,28 +1449,20 @@
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; South East
 #EDGE= 3
 ; Gustav
 #GOAL_POSITION= 174,103
 #DATE= 1942/09/01
-; Set friendly positions:
-; 1st Line - Rome
+; Rome(171,101)
 #FRIENDLY_POSITION= 171,101
-; Set variable conditions:
-; 1st Line - Germany(45) politically Allied and not surrendered
+; Germany(45) politically Allied and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Set tactical conditions:
-; 1st Line - Berlin not tactically threatened (dummy condition)
+; Berlin(173,74) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 173,74 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1811,9 +1474,7 @@
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; South East
 #EDGE= 2
@@ -1822,19 +1483,13 @@
 ; Gustav
 #GOAL_POSITION= 175,102
 #DATE= 1942/09/01
-; Set friendly positions:
-; 1st Line - Rome
+; Rome(171,101)
 #FRIENDLY_POSITION= 171,101
-; Set variable conditions:
-; 1st Line - Germany(45) politically Allied and not surrendered
+; Germany(45) politically Allied and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Set tactical conditions:
-; 1st Line - Berlin not tactically threatened (dummy condition)
+; Berlin(173,74) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 173,74 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1846,28 +1501,20 @@
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; South East
 #EDGE= 3
 ; Gustav
 #GOAL_POSITION= 175,101
 #DATE= 1942/09/01
-; Set friendly positions:
-; 1st Line - Rome
+; Rome(171,101)
 #FRIENDLY_POSITION= 171,101
-; Set variable conditions:
-; 1st Line - Germany(45) politically Allied and not surrendered
+; Germany(45) politically Allied and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Set tactical conditions:
-; 1st Line - Berlin not tactically threatened (dummy condition)
+; Berlin(173,74) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 173,74 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1879,9 +1526,7 @@
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; South East
 #EDGE= 3
@@ -1889,19 +1534,13 @@
 ; Gustav
 #GOAL_POSITION= 176,101
 #DATE= 1942/09/01
-; Set friendly positions:
-; 1st Line - Rome
+; Rome(171,101)
 #FRIENDLY_POSITION= 171,101
-; Set variable conditions:
-; 1st Line - Germany(45) politically Allied and not surrendered
+; Germany(45) politically Allied and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Set tactical conditions:
-; 1st Line - Berlin not tactically threatened (dummy condition)
+; Berlin(173,74) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 173,74 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1916,9 +1555,7 @@
 #COUNTRY_ID= 93
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; South East
 #EDGE= 2
@@ -1927,19 +1564,13 @@
 ; Coastal
 #GOAL_POSITION= 199,94
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Caen
+; Bucharest(198,95)
 #FRIENDLY_POSITION= 198,95
-; Set variable conditions:
-; 1st Line - Germany(45) politically Allied and not surrendered
+; Romania Axis and fully mobilized
 #VARIABLE_CONDITION= 93 [1] [100] [0]
-; Set tactical conditions:
-; 1st Line - Berlin not tactically threatened (dummy condition)
+; Bucharest(198,95) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 198,95 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1951,9 +1582,7 @@
 #COUNTRY_ID= 93
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; South East
 #EDGE= 2
@@ -1962,19 +1591,13 @@
 ; Coastal
 #GOAL_POSITION= 201,92
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Caen
+; Bucharest(198,95)
 #FRIENDLY_POSITION= 198,95
-; Set variable conditions:
-; 1st Line - Germany(45) politically Allied and not surrendered
+; Germany(45) politically Allied and not surrendered
 #VARIABLE_CONDITION= 93 [1] [100] [0]
-; Set tactical conditions:
-; 1st Line - Berlin not tactically threatened (dummy condition)
+; Bucharest(198,95) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 198,95 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1986,9 +1609,7 @@
 #COUNTRY_ID= 93
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; South East
 #EDGE= 2
@@ -1997,19 +1618,13 @@
 ; Coastal
 #GOAL_POSITION= 203,93
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Caen
+; Bucharest(198,95)
 #FRIENDLY_POSITION= 198,95
-; Set variable conditions:
-; 1st Line - Germany(45) politically Allied and not surrendered
+; Germany(45) politically Allied and not surrendered
 #VARIABLE_CONDITION= 93 [1] [100] [0]
-; Set tactical conditions:
-; 1st Line - Berlin not tactically threatened (dummy condition)
+; Bucharest(198,95) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 198,95 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -2021,9 +1636,7 @@
 #COUNTRY_ID= 39
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; South East
 #EDGE= 2
@@ -2032,19 +1645,13 @@
 ; Coastal
 #GOAL_POSITION= 208,46
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Sortavala
+; Sortavala
 #FRIENDLY_POSITION= 207,45
-; Set variable conditions:
-; 1st Line - Germany(45) politically Allied and not surrendered
+; Germany(45) politically Allied and not surrendered
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-; Set tactical conditions:
-; 1st Line - Berlin not tactically threatened (dummy condition)
+; Berlin(173,74) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 195,51 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -2056,9 +1663,7 @@
 #COUNTRY_ID= 39
 #TRIGGER= 100
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 ; South East
 #EDGE= 2
@@ -2067,18 +1672,12 @@
 ; Coastal
 #GOAL_POSITION= 203,47
 #DATE= 1939/09/01
-; Set friendly positions:
-; 1st Line - Sortavala
+; Sortavala
 #FRIENDLY_POSITION= 203,48
-; Set variable conditions:
-; 1st Line - Germany(45) politically Allied and not surrendered
+; Germany(45) politically Allied and not surrendered
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-; Set tactical conditions:
-; 1st Line - Berlin not tactically threatened (dummy condition)
+; Berlin(173,74) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 195,51 [3]
-; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
-; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
