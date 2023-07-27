@@ -42,14 +42,14 @@
 ; #GV= Does the event activate based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
-;      Example A) #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
-;      Example B) #GV= 4[71,100] will trigger 30% per game
+;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;      Example B - #GV= 4[71,100] will trigger 30% per game
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
 ;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
-;        Example A) #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
-;        Example B) #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
-;        Example C) #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
+;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
+;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
+;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
 ; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
 ; #COUNTRY_ID= Country's ID that will have partisan #MAP_POSITION's
 ; #PARTISAN_FLAG= Partisan flag can be used to limit event to a particular type (see PARTISAN FLAG REFERENCE values below)
@@ -226,9 +226,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 112
 #TRIGGER= 15
@@ -248,9 +246,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 112
 #TRIGGER= 15
@@ -278,7 +274,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 108[1]
 #COUNTRY_ID= 120
@@ -300,7 +295,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 108[0]
 #COUNTRY_ID= 120
@@ -322,9 +316,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 120
 #TRIGGER= 0
@@ -346,7 +338,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 355[1]
 #COUNTRY_ID= 120
@@ -367,7 +358,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 358[1]
 #COUNTRY_ID= 120
@@ -389,7 +379,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 367[1]
 #COUNTRY_ID= 120
@@ -410,7 +399,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 355[1]
 #COUNTRY_ID= 3
@@ -430,7 +418,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 355[1]
 #COUNTRY_ID= 31
@@ -450,7 +437,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 355[1]
 #COUNTRY_ID= 46
@@ -471,7 +457,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 355[1]
 #COUNTRY_ID= 46
@@ -495,7 +480,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 108[1]
 #COUNTRY_ID= 46
@@ -521,7 +505,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 108[0]
 #COUNTRY_ID= 46
@@ -547,9 +530,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 46
 #TRIGGER= 0
@@ -575,7 +556,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 108[1]
 #COUNTRY_ID= 104
@@ -597,7 +577,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 108[0]
 #COUNTRY_ID= 104
@@ -619,9 +598,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 104
 #TRIGGER= 0
@@ -642,7 +619,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 677[1]
 #COUNTRY_ID= 118
@@ -662,7 +638,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 355[1]
 #COUNTRY_ID= 118
@@ -683,7 +658,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 108[1]
 #COUNTRY_ID= 40
@@ -706,7 +680,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 108[0]
 #COUNTRY_ID= 40
@@ -729,9 +702,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 40
 #TRIGGER= 0
@@ -753,7 +724,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 677[1]
 ; Vichy France(118)
@@ -773,7 +743,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 355[1]
 #COUNTRY_ID= 118
@@ -794,7 +763,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 355[1]
 #COUNTRY_ID= 40
@@ -815,7 +783,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 677[1]
 #COUNTRY_ID= 118
@@ -835,7 +802,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 355[1]
 #COUNTRY_ID= 40
@@ -855,7 +821,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 677[1]
 #COUNTRY_ID= 118
@@ -875,7 +840,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 674[1]
 #COUNTRY_ID= 59
@@ -897,7 +861,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 355[1]
 #COUNTRY_ID= 78
@@ -923,7 +886,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 108[1]
 #COUNTRY_ID= 78
@@ -948,7 +910,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 108[0]
 #COUNTRY_ID= 78
@@ -973,9 +934,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 78
 #TRIGGER= 0
@@ -999,9 +958,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 57
 #TRIGGER= 10
@@ -1020,9 +977,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 57
 #TRIGGER= 10
@@ -1041,7 +996,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 666[1]
 #COUNTRY_ID= 99
@@ -1062,7 +1016,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 666[1]
 #COUNTRY_ID= 99
@@ -1084,7 +1037,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 667[1]
 #COUNTRY_ID= 99
@@ -1105,7 +1057,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 667[1]
 #COUNTRY_ID= 99
@@ -1126,9 +1077,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 79
 #TRIGGER= 15
@@ -1147,9 +1096,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 36
 #TRIGGER= 5
@@ -1169,9 +1116,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 56
 #TRIGGER= 5
@@ -1191,9 +1136,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 95
 #TRIGGER= 25
@@ -1212,9 +1155,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 95
 #TRIGGER= 25
@@ -1233,9 +1174,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 95
 #TRIGGER= 25
@@ -1254,9 +1193,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 95
 #TRIGGER= 25
@@ -1275,9 +1212,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 95
 #TRIGGER= 10
@@ -1300,9 +1235,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 116
 #TRIGGER= 5
@@ -1332,9 +1265,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 116
 #TRIGGER= 5
@@ -1367,9 +1298,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 116
 #TRIGGER= 5
@@ -1385,6 +1314,7 @@
 #MAP_POSITION= 242,73
 #MAP_POSITION= 248,79
 #MAP_POSITION= 242,73
+; Kazan(243,66)
 #MAP_POSITION= 243,66
 }
 
@@ -1397,9 +1327,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 116
 #TRIGGER= 5
@@ -1432,9 +1360,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 116
 #TRIGGER= 5
@@ -1453,6 +1379,7 @@
 #MAP_POSITION= 229,85
 #MAP_POSITION= 235,84
 #MAP_POSITION= 236,81
+; Saratov(237,77)
 #MAP_POSITION= 237,77
 #MAP_POSITION= 235,73
 }
@@ -1466,9 +1393,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 116
 #TRIGGER= 10
@@ -1500,9 +1425,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 116
 #TRIGGER= 10
@@ -1525,9 +1448,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 116
 #TRIGGER= 10
@@ -1550,9 +1471,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 111
 #TRIGGER= 8

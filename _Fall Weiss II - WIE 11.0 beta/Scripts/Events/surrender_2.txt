@@ -45,14 +45,14 @@
 ; #GV= Does the event activate based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
-;      Example A) #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
-;      Example B) #GV= 4[71,100] will trigger 30% per game
+;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;      Example B - #GV= 4[71,100] will trigger 30% per game
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
 ;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
-;        Example A) #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
-;        Example B) #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
-;        Example C) #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
+;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
+;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
+;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
 ; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
 ; #COUNTRY_ID= Surrendering country's ID
 ; #RECIPIENT_ID= Recipient country ID (country that will receive control of the territory of COUNTRY ID upon surrender)
@@ -81,6 +81,9 @@
 ; If the 'aligned_country_id' flag is set to 0 then it will check for any Axis or Allied country as
 ; determined by the alignment flag.
 ; Each #CONDITION_POSITION line will be read using AND logic.
+;
+; A dummy condition position (always satisfied) can be set as follows:
+;    #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ;
 ; Use the reference values provided for #COUNTRY_ID and #RECIPIENT_ID and not the country names.
 ; Use the reference values provided for POLITICAL ALIGNMENT and not names.
@@ -255,7 +258,6 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1941/08/26
-; Set variable conditions:
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -279,8 +281,8 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1940/04/03
-; 1st Line - Germany(45) aligned with Axis and not surrendered
-; 2nd Line - Denmark(18) aligned with Allies (not fully active) and not surrendered
+; Germany(45) Axis and not surrendered
+; Denmark(18) Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 31 [0] [0] [0]
 ; dummy condition position (always satisfied)
@@ -304,7 +306,7 @@
 #REMOVE= 1
 #TRIGGER= 25
 #DATE= 1943/01/01
-; 1st Line - Hungary aligned with Axis and not surrendered
+; Hungary(52) Axis and not surrendered
 #VARIABLE_CONDITION= 52 [1] [100] [0]
 ; 2 Allied units are within 6 hexes of Budapest
 #CONDITION_POSITION= 184,88 [6,6] [2,2] [2] [0]
@@ -328,8 +330,8 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1940/04/14
-; 1st Line - Germany(45) aligned with Axis and not surrendered
-; 2nd Line - Norway(78) aligned with Axis (not fully active) and not surrendered
+; Germany(45) Axis and not surrendered
+; Norway(78) Axis (not fully active) and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 78 [1] [0] [0]
 ; dummy condition position (always satisfied)
@@ -354,9 +356,9 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1940/04/14
-; 1st Line - Germany(45) aligned with Axis and not surrendered
+; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 1st Line - Norway(78) aligned with Allies but not fully mobilized
+; Norway(78) Allied but not fully mobilized
 #VARIABLE_CONDITION= 78 [2] [0] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -379,7 +381,6 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1939/09/01
-; Set variable conditions:
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; 3 German units within 15 hexes of Rome
 #CONDITION_POSITION= 171,101 [15,15] [3,3] [1] [45]
@@ -404,11 +405,11 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1939/09/01
-; 1st Line - USA(115) aligned with Allies and not surrendered
-; 2nd Line - Italy(59) aligned with Axis and not surrendered
+; USA(115) Allied and not surrendered
+; Italy(59) Axis and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - No German unit in Rome
+; No German unit in Rome
 #CONDITION_POSITION= 171,101 [0,0] [0,0] [1] [45]
 }
 
@@ -429,7 +430,7 @@
 #REMOVE= 1
 #TRIGGER= 100
 #DATE= 1943/01/01
-; 1st Line - Romania(93) aligned with Axis and not surrendered
+; Romania(93) Axis and not surrendered
 #VARIABLE_CONDITION= 93 [1] [100] [0]
 ; No German units within 2 hexes of Bucharest
 #CONDITION_POSITION= 198,95 [2,2] [0,0] [1] [45]
@@ -452,7 +453,7 @@
 #REMOVE= 1
 #TRIGGER= 100
 #DATE= 1943/01/01
-; 1st Line - Bulgaria aligned with Axis and not surrendered
+; Bulgaria Axis and not surrendered
 #VARIABLE_CONDITION= 19 [1] [100] [0]
 ; No German units within 2 hexes of Sofia
 #CONDITION_POSITION= 192,100 [2,2] [0,0] [1] [45]
@@ -475,7 +476,7 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1940/01/01
-; 1st Line - Finland(39) aligned with Axis and not surrendered
+; Finland(39) Axis and not surrendered
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -499,7 +500,7 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1940/01/01
-; 1st Line - Finland(39) aligned with Axis and not surrendered
+; Finland(39) Axis and not surrendered
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -523,7 +524,7 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1940/01/01
-; 1st Line - Germany(45) aligned with Axis and not surrendered
+; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -547,7 +548,7 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1940/01/01
-; 1st Line - Germany(45) aligned with Axis and not surrendered
+; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -571,7 +572,7 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1940/01/01
-; 1st Line - Germany(45) aligned with Axis and not surrendered
+; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -595,7 +596,7 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1940/01/01
-; 1st Line - Germany(45) aligned with Axis and not surrendered
+; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -606,7 +607,7 @@
 ; Historical date of event was 1943/09/08
 ; Sounds - BBC Archive
 {
-#NAME= ALLIED AI: Italy Surrenders (Italy -> USA) (50%)
+#NAME= Italy(AI): Italy Surrenders (Italy -> USA) (50%)
 #POPUP= Marshal Badoglio Signs An Armistice With The Allies - Italy Surrenders
 #IMAGE=
 #SOUND= italy_surrender.ogg
@@ -623,11 +624,11 @@
 #REMOVE= 3
 #TRIGGER= 50
 #DATE= 1943/09/08
-; 1st Line - USA(115) aligned with Allies and not surrendered
-; 2nd Line - Italy(59) aligned with Axis and not surrendered
+; USA(115) Allied and not surrendered
+; Italy(59) Axis and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - No German units in Rome
+; No German units in Rome
 #CONDITION_POSITION= 171,101 [0,0] [0,0] [1] [45]
 }
 
@@ -653,8 +654,8 @@
 #REMOVE= 3
 #TRIGGER= 25
 #DATE= 1939/09/01
-; 1st Line - UK(112) aligned with Allies and not surrendered
-; 2nd Line - Iraq(56) politically Axis and not surrendered
+; UK(112) Allied and not surrendered
+; Iraq(56) Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 56 [1] [100] [0]
 ; Allies within range of Baghdad
@@ -683,8 +684,8 @@
 #REMOVE= 3
 #TRIGGER= 75
 #DATE= 1939/09/01
-; 1st Line - UK(112) aligned with Allies and not surrendered
-; 2nd Line - Iraq(56) politically Axis and not surrendered
+; UK(112) Allied and not surrendered
+; Iraq(56) Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 56 [1] [100] [0]
 ; Allies within range of Baghdad
@@ -700,7 +701,7 @@
 ; British and Free French Forces Occupy Syria
 ; Historical date of event was 1941/06/08
 {
-#NAME= ALLIED AI: British and Free French Forces Occupy Syria (25%)
+#NAME= UK(AI): British and Free French Forces Occupy Syria (25%)
 #POPUP= UK and FF Forces Occupy Syria - General De Gaulle Promises End To French Mandate
 #IMAGE= ukoccupysyria.png
 #SOUND= combat1.ogg
@@ -716,11 +717,11 @@
 #REMOVE= 3
 #TRIGGER= 25
 #DATE= 1941/06/08
-; 1st Line - UK(112) aligned with Allies and not surrendered
-; 2nd Line - Syria politically neutral and not surrendered
+; UK(112) Allied and not surrendered
+; Syria politically neutral and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 105 [0] [0] [0]
-; Allies control Alexandria
+; Allies control Alexandria(206,124)
 #CONDITION_POSITION= 206,124 [0,0] [1,1] [2] [0]
 }
 
@@ -748,12 +749,11 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1939/09/01
-; 1st Line - Germany(45) aligned with Axis and not surrendered
-; 2nd Line - France(40) aligned with Allies and surrendered
+; Germany(45) Axis and not surrendered
+; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 10 [2] [100] [1]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -774,7 +774,7 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1943/06/01
-; 1st Line - Spain(99) aligned with Axis and not surrendered
+; Spain(99) Axis and not surrendered
 #VARIABLE_CONDITION= 99 [1] [100] [0]
 ; Less than 4 German units within 6 hexes of Madrid
 #CONDITION_POSITION= 139,104 [6,6] [0,3] [1] [45]
@@ -797,7 +797,7 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1939/09/03
-; 1st Line - UK(112) aligned with Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -822,8 +822,8 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1939/09/03
-; 1st Line - UK(112) Allied Active
-; 2nd Line - Ireland Axis Leaning
+; UK(112) Allied Active
+; Ireland Axis Leaning
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 57 [1] [0] [0]
 ; dummy condition position (always satisfied)
@@ -849,7 +849,6 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1941/08/26
-; Set variable conditions:
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -874,7 +873,6 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1941/08/26
-; Set variable conditions:
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]

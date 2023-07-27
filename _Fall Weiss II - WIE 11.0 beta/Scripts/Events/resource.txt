@@ -45,14 +45,14 @@
 ; #GV= Does the event activate based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
-;      Example A) #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
-;      Example B) #GV= 4[71,100] will trigger 30% per game
+;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;      Example B - #GV= 4[71,100] will trigger 30% per game
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
 ;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
-;        Example A) #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
-;        Example B) #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
-;        Example C) #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
+;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
+;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
+;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
 ; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
 ; #COUNTRY_ID= Country ID that will be owner of resource's in the event
 ; #DATE= Failsafe date for the event to occur, i.e. regardless if #CONDITION_POSITION checks have been satisfied (format yyyy/mm/dd)
@@ -89,6 +89,9 @@
 ; If the 'aligned_country_id' flag is set to 0 then it will check for any Axis or Allied country as
 ; determined by the alignment flag.
 ; Each #CONDITION_POSITION line will be read using OR logic.
+;
+; A dummy condition position (always satisfied) can be set as follows:
+;    #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ;
 ; Use the reference values provided for #COUNTRY_ID and not the country names 
 ;
@@ -233,9 +236,7 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -246,7 +247,7 @@
 #RESOURCE= 173,79
 #RESOURCE= 175,81
 #RESOURCE= 169,86
-; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
+; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -262,9 +263,7 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -275,7 +274,7 @@
 #RESOURCE= 173,79
 #RESOURCE= 175,81
 #RESOURCE= 169,86
-; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
+; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -291,9 +290,7 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -304,7 +301,7 @@
 #RESOURCE= 173,79
 #RESOURCE= 175,81
 #RESOURCE= 169,86
-; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
+; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -320,9 +317,7 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -333,7 +328,7 @@
 #RESOURCE= 173,79
 #RESOURCE= 175,81
 #RESOURCE= 169,86
-; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
+; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -349,9 +344,7 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -362,7 +355,7 @@
 #RESOURCE= 173,79
 #RESOURCE= 175,81
 #RESOURCE= 169,86
-; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
+; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -377,9 +370,7 @@
 #TYPE= 0
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 112
 #TRIGGER= 100
@@ -391,7 +382,7 @@
 #RESOURCE= 144,73
 #RESOURCE= 142,72
 #RESOURCE= 139,76
-; 1st Line - UK(112) politically aligned with the Allies and not surrendered AND
+; UK(112) aligned with the Allies and not surrendered AND
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -406,9 +397,7 @@
 #TYPE= 0
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 54
 #TRIGGER= 100
@@ -416,7 +405,7 @@
 #FAILSAFE_DATE= 1939/12/01
 #RESOURCE= 0,0
 #RESOURCE= 0,1
-; 1st Line - UK(112) politically aligned with the Allies and not surrendered AND
+; UK(112) aligned with the Allies and not surrendered AND
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -431,9 +420,7 @@
 #TYPE= 0
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 79
 #TRIGGER= 100
@@ -441,7 +428,7 @@
 #FAILSAFE_DATE= 1939/12/01
 #RESOURCE= 215,121
 #RESOURCE= 214,124
-; 1st Line - UK(112) politically aligned with the Allies and not surrendered AND
+; UK(112) aligned with the Allies and not surrendered AND
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -457,17 +444,15 @@
 #TYPE= 0
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 40
 #TRIGGER= 100
 #DATE= 1939/12/08
 #FAILSAFE_DATE= 1940/02/01
 #RESOURCE= 155,93
-; 1st Line - France(40) politically aligned with the Allies and not surrendered AND
-; 2nd Line - Poland(85) politically aligned with the Allies and surrendered
+; France(40) aligned with the Allies and not surrendered AND
+; Poland(85) aligned with the Allies and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 ; dummy condition position (always satisfied)
@@ -484,9 +469,7 @@
 #TYPE= 0
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 40
 #TRIGGER= 100
@@ -499,7 +482,7 @@
 #RESOURCE= 152,113
 #RESOURCE= 167,112
 #RESOURCE= 157,97
-; 1st Line - France(40) politically aligned with the Allies and not surrendered AND
+; France(40) aligned with the Allies and not surrendered AND
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -514,9 +497,7 @@
 #TYPE= 0
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 40
 #TRIGGER= 100
@@ -527,8 +508,8 @@
 #RESOURCE= 144,98
 #RESOURCE= 149,92
 #RESOURCE= 154,91
-; 1st Line - France(40) politically aligned with the Allies and not surrendered AND
-; 2nd Line - Poland(85) politically aligned with the Allies and surrendered
+; France(40) aligned with the Allies and not surrendered AND
+; Poland(85) aligned with the Allies and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 ; dummy condition position (always satisfied)
@@ -544,9 +525,7 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 115
 #TRIGGER= 100
@@ -558,7 +537,7 @@
 #RESOURCE= 0,103
 #RESOURCE= 0,104
 #RESOURCE= 0,105
-; 1st Line - USA(115) politically aligned with the Allies and not surrendered
+; USA(115) aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -573,9 +552,7 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 116
 #TRIGGER= 100
@@ -585,9 +562,8 @@
 #RESOURCE= 267,61
 #RESOURCE= 266,62
 #RESOURCE= 267,62
-; 1st Line - USSR(116) politically aligned with the Allies and not surrendered
+; USSR(116) aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -600,9 +576,7 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 116
 #TRIGGER= 100
@@ -614,9 +588,8 @@
 #RESOURCE= 213,86
 #RESOURCE= 212,87
 #RESOURCE= 218,82
-; 1st Line - Germany(45) politically aligned with the Axis but not surrendered
+; Germany(45) is Axis but not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -629,9 +602,7 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 116
 #TRIGGER= 100
@@ -647,12 +618,13 @@
 #RESOURCE= 265,62
 #RESOURCE= 257,58
 #RESOURCE= 233,64
+; Kazan(243,66)
 #RESOURCE= 243,66
 #RESOURCE= 245,72
+; Saratov(237,77)
 #RESOURCE= 237,77
-; 1st Line - USSR(116) politically aligned with the Allies but not surrendered
+; USSR(116) aligned with the Allies but not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -665,7 +637,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 402[1]
 #COUNTRY_ID= 116
@@ -685,9 +656,8 @@
 #RESOURCE= 266,59
 ; added by Fall Weiss II
 #RESOURCE= 266,60
-; 1st Line - USSR(116) politically aligned with the Allies and not surrendered
+; USSR(116) aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -702,18 +672,15 @@
 #TYPE= 1
 #AI= 2
 #LEVEL= 2
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #DATE= 1941/10/01
 #FAILSAFE_DATE= 1948/01/01
 #RESOURCE= 266,61
-; 1st Line - USSR politically aligned with the Allies and not surrendered
+; USSR(116) aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -728,7 +695,6 @@
 #TYPE= 1
 #AI= 2
 #LEVEL= 4
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 402[1]
 #COUNTRY_ID= 116
@@ -737,9 +703,8 @@
 #FAILSAFE_DATE= 1948/01/01
 #RESOURCE= 266,59
 #RESOURCE= 266,60
-; 1st Line - USSR politically aligned with the Allies and not surrendered
+; USSR(116) aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -754,7 +719,6 @@
 #TYPE= 1
 #AI= 2
 #LEVEL= 2
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 402[1]
 #COUNTRY_ID= 116
@@ -763,9 +727,8 @@
 #FAILSAFE_DATE= 1948/01/01
 #RESOURCE= 266,58
 #RESOURCE= 266,57
-; 1st Line - USSR politically aligned with the Allies and not surrendered
+; USSR(116) aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -787,8 +750,7 @@
 #DATE= 1939/09/09
 #FAILSAFE_DATE= 1948/01/01
 #RESOURCE= 161,77
-; Set Variable Condition:
-; 1st Line - Poland(85) politically aligned with Allies and Surrendered
+; Poland(85) Allied and Surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -811,8 +773,7 @@
 #DATE= 1939/09/09
 #FAILSAFE_DATE= 1948/01/01
 #RESOURCE= 162,78
-; Set Variable Condition:
-; 1st Line - Russia aligned with Allies and fully mobilized
+; Russia Allied and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -827,7 +788,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 907[1]
 #COUNTRY_ID= 99

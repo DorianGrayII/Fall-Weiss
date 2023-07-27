@@ -45,14 +45,14 @@
 ; #GV= Does the event activate based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
-;      Example A) #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
-;      Example B) #GV= 4[71,100] will trigger 30% per game
+;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;      Example B - #GV= 4[71,100] will trigger 30% per game
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
 ;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
-;        Example A) #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
-;        Example B) #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
-;        Example C) #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
+;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
+;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
+;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
 ; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
 ; #COUNTRY_ID= Country ID associated with this event
 ; #ALIGNMENT= Political alignment check for #COUNTRY_ID (values range [1, 2]; Axis= 1; Allied= 2)
@@ -234,7 +234,7 @@
 ; Canadian War Entry:
 ; Historical date of event was 1939/09/10
 {
-#NAME= Canada Joins The Allies (Variable)
+#NAME= Canada: Canada Joins The Allies (50%)
 #POPUP= Canada Declares War On Germany
 #IMAGE=
 #SOUND= war1.ogg
@@ -242,18 +242,16 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 21
 ;Set Canada to have a random/variable war entry
 #TRIGGER= 50
 #ALIGNMENT= 2
 #DATE= 1939/09/10
-;1st Line - UK(112) politically aligned with Allies and not surrendered AND
-;2nd Line - France(40) politically aligned with Allies and not surrendered AND
-;3rd Line - Germany(45) politically aligned with Axis and not surrendered
+;1st Line - UK(112) Allied and not surrendered AND
+;2nd Line - France(40) Allied and not surrendered AND
+;3rd Line - Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -265,7 +263,7 @@
 ;
 
 {
-#NAME= DE 359 - Uprising in Banská Bystrica
+#NAME= DE 359 - Czech: Uprising in Banská Bystrica
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -279,12 +277,12 @@
 #TRIGGER= 100
 #ALIGNMENT= 2
 #DATE= 1944/01/01
-;Germany politically aligned with Axis and not surrendered
+;Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
 {
-#NAME= DE 360 - Czech Uprising in Prague
+#NAME= DE 360 - Czech: Uprising in Prague
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -298,12 +296,12 @@
 #TRIGGER= 100
 #ALIGNMENT= 2
 #DATE= 1944/01/01
-;Germany politically aligned with Axis and not surrendered
+;Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
 {
-#NAME= DE 603 - Spain Joins The Axis
+#NAME= DE 603 - Spain: Spain Joins The Axis
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -317,12 +315,12 @@
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1939/09/03
-;Germany politically aligned with Axis and not surrendered
+;Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
 {
-#NAME= DE 611 - Hungary Joins Axis Alliance (1)
+#NAME= DE 611 - Hungary: Hungary Joins Axis Alliance (1)
 #POPUP= Hungary Joins The Axis Alliance
 #IMAGE= hungaryenters.png
 #SOUND= war1.ogg
@@ -330,20 +328,18 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 611[1]
 #COUNTRY_ID= 52
-;Set Hungary to have a random/variable war entry
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1940/10/20
-; Germany politically aligned with Axis and not surrendered
+; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
 {
-#NAME= DE 611 - Hungary Joins Axis Alliance (2)
+#NAME= DE 611 - Hungary: Hungary Joins Axis Alliance (2) (35%)
 #POPUP= Hungary Joins The Axis Alliance
 #IMAGE= hungaryenters.png
 #SOUND= war1.ogg
@@ -351,7 +347,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 611[0]
 #COUNTRY_ID= 52
@@ -359,12 +354,12 @@
 #TRIGGER= 35
 #ALIGNMENT= 1
 #DATE= 1940/12/01
-; Germany politically aligned with Axis but not fully mobilized
+; Germany(45) Axis
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
 {
-#NAME= Hungary Joins Axis Alliance (Poland surrendered)
+#NAME= Hungary: Hungary Joins Axis Alliance (Poland surrendered)(35%)
 #POPUP= Hungary Joins The Axis Alliance
 #IMAGE= hungaryenters.png
 #SOUND= war1.ogg
@@ -372,21 +367,19 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 52
 ;Set Hungary to have a random/variable war entry
 #TRIGGER= 35
 #ALIGNMENT= 1
 #DATE= 1940/12/01
-;1st Line - Poland(85) politically aligned with Allies and surrendered
+;1st Line - Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 }
 
 {
-#NAME= DE 611 - Romania Joins Axis Alliance (1)
+#NAME= DE 611 - Romania: Romania Joins Axis Alliance (1) (50%)
 #POPUP= Romania Joins The Axis Alliance
 #IMAGE= romaniaenters.png
 #SOUND= war1.ogg
@@ -394,7 +387,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 611[0]
 #COUNTRY_ID= 93
@@ -402,12 +394,12 @@
 #TRIGGER= 50
 #ALIGNMENT= 1
 #DATE= 1940/08/30
-; Germany politically aligned with Axis but not fully mobilized
+; Germany(45) Axis
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
 {
-#NAME= DE 611 - Romania Joins Axis Alliance (2)
+#NAME= DE 611 - Romania: Romania Joins Axis Alliance (2)
 #POPUP= Romania Joins The Axis Alliance
 #IMAGE= romaniaenters.png
 #SOUND= war1.ogg
@@ -415,20 +407,18 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 611[1]
 #COUNTRY_ID= 93
-;Set Romania to have a random/variable war entry
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1940/11/23
-; Germany politically aligned with Axis but not fully mobilized
+; Germany(45) Axis
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
 {
-#NAME= Romania Joins Axis Alliance (Poland surrendered)
+#NAME= Romania: Romania Joins Axis Alliance (Poland surrendered)
 #POPUP= Romania Joins The Axis Alliance
 #IMAGE= romaniaenters.png
 #SOUND= war1.ogg
@@ -436,21 +426,18 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 93
-;Set Romania to have a random/variable war entry
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1940/11/23
-;1st Line - Poland(85) politically aligned with Allies and surrendered
+;1st Line - Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 }
 
 {
-#NAME= DE 611 - Bulgaria Joins Axis Alliance (1)
+#NAME= DE 611 - Bulgaria: Bulgaria Joins Axis Alliance (1)
 #POPUP= Bulgaria Signs Military Pact With Axis
 #IMAGE= bulgariaenters.png
 #SOUND= war1.ogg
@@ -458,22 +445,20 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 611[1]
 #COUNTRY_ID= 19
-;Set Bulgaria to have a random/variable war entry
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1941/02/08
-; Germany politically aligned with Axis but not fully mobilized
+; Germany(45) Axis
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
 ; Bulgarian War Entry:
 ; Historical date of event was 1941/02/08
 {
-#NAME= DE 611 - Bulgaria Joins Axis Alliance (2)
+#NAME= DE 611 - Bulgaria: Bulgaria Joins Axis Alliance (2) (35%)
 #POPUP= Bulgaria Signs Military Pact With Axis
 #IMAGE= bulgariaenters.png
 #SOUND= war1.ogg
@@ -481,20 +466,20 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
+; ; 406[1]->600[1]->611[0]
 #LINK= 611[0]
 #COUNTRY_ID= 19
 ;Set Bulgaria to have a random/variable war entry
 #TRIGGER= 35
 #ALIGNMENT= 1
-#DATE= 1941/03/01
-; Germany politically aligned with Axis but not fully mobilized
+#DATE= 1941/02/01
+; Germany(45) Axis
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
 {
-#NAME= Bulgaria Joins Axis Alliance (Poland surrendered)
+#NAME= Bulgaria: Bulgaria Joins Axis Alliance (Poland surrendered) (35%)
 #POPUP= Bulgaria Signs Military Pact With Axis
 #IMAGE= bulgariaenters.png
 #SOUND= war1.ogg
@@ -502,21 +487,19 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 19
 ;Set Bulgaria to have a random/variable war entry
 #TRIGGER= 35
 #ALIGNMENT= 1
 #DATE= 1941/03/01
-;1st Line - Poland(85) politically aligned with Allies and surrendered
+;1st Line - Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 }
 
 {
-#NAME= DE 621 - Croatia Joins The Axis
+#NAME= DE 621 - Croatia: Croatia Joins The Axis
 #POPUP= Croatia Joins The Axis
 #IMAGE= croatiaenters.png
 #SOUND= war1.ogg
@@ -530,12 +513,12 @@
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1941/05/13
-; 1st Line - Germany(45) politically aligned with Axis and not surrendered
+; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
 {
-#NAME= DE 708 - Italy Declares War On Greece
+#NAME= DE 708 - Greece: Italy Declares War On Greece
 #POPUP= Italy Declares War On Greece
 #IMAGE=
 #SOUND= war1.ogg
@@ -549,13 +532,13 @@
 #TRIGGER= 100
 #ALIGNMENT= 2
 #DATE= 1940/10/25
-; 1st Line - Italy(59) politically aligned with Axis and not surrendered
+; Italy(59) Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 }
 
 ;Replacement Script
 {
-#NAME= DE 1005 - Finland Joins The Axis
+#NAME= DE 1005 - Finland: Finland Joins The Axis
 #POPUP= Finland Enters The War Against The USSR
 #IMAGE= finlandenterswar.png
 #SOUND= war1.ogg
@@ -570,9 +553,9 @@
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1939/09/01
-; 1st Line - USSR(116) politically aligned with Allies and not surrendered
+; USSR(116) Allied and not surrendered
+; Finland(39) Axis but not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; 2nd Line - Finland(39) politically aligned with Axis but not fully mobilized
 #VARIABLE_CONDITION= 39 [1] [0] [0]
 }
 
@@ -583,7 +566,7 @@
 ;
 ; Syria
 {
-#NAME= ALLIED AI: UK Annexes Syria (25%)
+#NAME= Syria(AI): UK Annexes Syria (25%)
 #POPUP= UK Annexes Syria
 #IMAGE=
 #SOUND=
@@ -591,16 +574,13 @@
 #TYPE= 0
 #AI= 2
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 105
-;Set war entry
 #TRIGGER= 25
 #ALIGNMENT= 2
 #DATE= 1941/07/14
-;Germany politically aligned with Axis and not surrendered
+;Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
@@ -610,7 +590,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 {
-#NAME= AXIS AI: Syria Joins The Axis (50%)
+#NAME= Syria(AI): Syria Joins The Axis (50%)
 #POPUP= Syria Joins The Axis
 #IMAGE=
 #SOUND= war1.ogg
@@ -618,25 +598,22 @@
 #TYPE= 0
 #AI= 1
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 105
-;Set war entry
 #TRIGGER= 50
 #ALIGNMENT= 1
 #DATE= 1942/05/01
-; Germany politically aligned with Axis and not surrendered
-; Iraq politically aligned with Axis and not surrendered
-; Turkey aligned with Axis and not surrendered
+; Germany(45) Axis and not surrendered
+; Iraq Axis and not surrendered
+; Turkey Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 56 [1] [100] [0]
 #VARIABLE_CONDITION= 111 [1] [100] [0]
 }
 
 {
-#NAME= AXIS AI: Persia Joins The Axis (50%)
+#NAME= Persia(AI): Persia Joins The Axis (50%)
 #POPUP= Persia Joins The Axis
 #IMAGE=
 #SOUND= war1.ogg
@@ -644,19 +621,16 @@
 #TYPE= 0
 #AI= 1
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #COUNTRY_ID= 82
-;Set war entry
 #TRIGGER= 50
 #ALIGNMENT= 1
 #DATE= 1942/06/01
-; Germany politically aligned with Axis and not surrendered
-; Iraq politically aligned with Axis and not surrendered
-; Turkey aligned with Axis and not surrendered
-; Syria aligned with Axis and not surrendered
+; Germany(45) Axis and not surrendered
+; Iraq Axis and not surrendered
+; Turkey Axis and not surrendered
+; Syria Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 56 [1] [100] [0]
 #VARIABLE_CONDITION= 111 [1] [100] [0]
@@ -664,7 +638,7 @@
 }
 
 {
-#NAME= DE 846 - The Allies Declare War On Spain
+#NAME= DE 846 - Spain: The Allies Declare War On Spain
 #POPUP= The Allies Declare War On Spain
 #IMAGE=
 #SOUND= war1.ogg
@@ -678,7 +652,6 @@
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1941/01/01
-; 1st Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 87 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -686,7 +659,7 @@
 }
 
 {
-#NAME= DE 917 - Bulgaria Joins The Allies
+#NAME= DE 917 - Bulgaria: Bulgaria Joins The Allies
 #POPUP= Bulgaria Joins The Allies
 #IMAGE= 
 #SOUND= war1.ogg
@@ -694,15 +667,13 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 917[1]
 #COUNTRY_ID= 19
-;Set Bulgaria to have a random/variable war entry
 #TRIGGER= 100
 #ALIGNMENT= 2
 #DATE= 1940/09/01
-; Germany politically aligned with Axis but not fully mobilized
+; Germany(45) Axis
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 111 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -711,7 +682,7 @@
 ; Replacement Script
 ; Finland declared war on the USSR shortly after Barbarossa was launched 1941/06/22
 {
-#NAME= Finland Declares War On The USSR
+#NAME= DE 450 - Finland: Finland Declares War On The USSR
 #POPUP= Finland Enters The War Against The USSR
 #IMAGE= finlandenterswar.png
 #SOUND=
@@ -725,14 +696,14 @@
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1939/09/01
-; 1st Line - Germany(45) politically aligned with Axis and not surrendered AND
-; 2nd Line - USSR(116) politically aligned with Allies and not surrendered
+; Germany(45) Axis and not surrendered AND
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 }
 
 {
-#NAME= The Allies Declare War On Spain
+#NAME= DE 989 - Spain: The Allies Declare War On Spain
 #POPUP= The Allies Declare War On Spain
 #IMAGE=
 #SOUND= war1.ogg
@@ -746,7 +717,6 @@
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1944/10/01
-; 1st Line - Italy(59) politically aligned with Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 87 [1] [100] [1]
 #VARIABLE_CONDITION= 116 [2] [100] [0]

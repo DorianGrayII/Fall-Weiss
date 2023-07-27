@@ -46,14 +46,14 @@
 ; #GV= Does the event activate based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
-;      Example A) #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
-;      Example B) #GV= 4[71,100] will trigger 30% per game
+;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;      Example B - #GV= 4[71,100] will trigger 30% per game
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
 ;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
-;        Example A) #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
-;        Example B) #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
-;        Example C) #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
+;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
+;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
+;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
 ; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
 ; #COUNTRY_ID= Country ID associated with this event (use #COUNTRY_ID= 0 for generic popup)
 ; #PRIVATE= Value range [0, 1] 
@@ -148,6 +148,9 @@
 ; If #CONDITION_POSITION has an added <unit_id, ...> then it will only consider the specified UNIT_ID types, e.g.
 ; Axis have an Army or Tank unit within 10 hexes of Warsaw
 ; #CONDITION_POSITION= 188,76 [10,10] [1,1] [1] [0] <5,26>
+;
+; A dummy condition position (always satisfied) can be set as follows:
+;    #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -327,9 +330,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
-; 1st Line - Germany(45) politically aligned with Axis and not surrendered
+; Germany(45) Axis and not surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -359,7 +362,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/01
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -390,7 +393,7 @@
 #TEXT_RGB= 255,255,255
 #SHADOW_RGB= 0,0,0 
 #MAP_POSITION= 136,114
-; Gibraltar is in Allied hands 
+; Gibraltar(136,114) is Allied 
 #ALIGNMENT_POSITION= 136,114 [2]
 #VARIABLE_CONDITION= 59 [1] [0] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -421,7 +424,7 @@
 #TEXT_RGB= 255,255,255
 #SHADOW_RGB= 0,0,0 
 #MAP_POSITION= 136,114
-; Gibraltar is in Allied hands 
+; Gibraltar(136,114) is Allied 
 #ALIGNMENT_POSITION= 136,114 [2]
 #VARIABLE_CONDITION= 59 [1] [0] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -453,7 +456,7 @@
 #TEXT_RGB= 255,255,255
 #SHADOW_RGB= 0,0,0 
 #MAP_POSITION= 175,114
-; Malta(175,114) is in Allied hands 
+; Malta(175,114) is Allied 
 #ALIGNMENT_POSITION= 175,114 [2]
 #VARIABLE_CONDITION= 59 [1] [0] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -484,7 +487,7 @@
 #TEXT_RGB= 255,255,255
 #SHADOW_RGB= 0,0,0 
 #MAP_POSITION= 175,114
-; Malta(175,114) is in Allied hands 
+; Malta(175,114) is Allied 
 #ALIGNMENT_POSITION= 175,114 [2]
 #VARIABLE_CONDITION= 59 [1] [0] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -516,7 +519,7 @@
 #TEXT_RGB= 255,255,255
 #SHADOW_RGB= 0,0,0 
 #MAP_POSITION= 208,126
-; Cairo is in Allied hands 
+; Cairo(208,126) is Allied 
 #ALIGNMENT_POSITION= 208,126 [2]
 #VARIABLE_CONDITION= 59 [1] [0] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -547,7 +550,7 @@
 #TEXT_RGB= 255,255,255
 #SHADOW_RGB= 0,0,0 
 #MAP_POSITION= 208,126
-; Cairo is in Allied hands 
+; Cairo(208,126) is Allied 
 #ALIGNMENT_POSITION= 208,126 [2]
 #VARIABLE_CONDITION= 59 [1] [0] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -579,7 +582,7 @@
 #TEXT_RGB= 255,255,255
 #SHADOW_RGB= 0,0,0 
 #MAP_POSITION= 167,112
-; Tunis is in Allied hands 
+; Tunis(167,112) is Allied 
 #ALIGNMENT_POSITION= 167,112 [2]
 #VARIABLE_CONDITION= 59 [1] [0] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
@@ -610,7 +613,7 @@
 #TEXT_RGB= 255,255,255
 #SHADOW_RGB= 0,0,0 
 #MAP_POSITION= 167,112
-; Tunis is in Allied hands 
+; Tunis(167,112) is Allied 
 #ALIGNMENT_POSITION= 167,112 [2]
 #VARIABLE_CONDITION= 59 [1] [0] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
@@ -642,7 +645,7 @@
 #TEXT_RGB= 255,255,255
 #SHADOW_RGB= 0,0,0 
 #MAP_POSITION= 218,119
-; Damascus is in Allied hands 
+; Damascus is Allied 
 #ALIGNMENT_POSITION= 218,119 [2]
 #VARIABLE_CONDITION= 59 [1] [0] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
@@ -673,7 +676,7 @@
 #TEXT_RGB= 255,255,255
 #SHADOW_RGB= 0,0,0 
 #MAP_POSITION= 218,119
-; Damascus is in Allied hands 
+; Damascus is Allied 
 #ALIGNMENT_POSITION= 218,119 [2]
 #VARIABLE_CONDITION= 59 [1] [0] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
@@ -705,11 +708,11 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION= 188,76
 #DATE= 1940/01/01 [=]
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis have less than 2 units within 10 hexes of Warsaw
+; Axis have less than 2 units within 10 hexes of Warsaw(188,76)
 #CONDITION_POSITION= 188,76 [10,10] [2,2] [1] [0] [<]
 }
 
@@ -765,7 +768,7 @@
 #MAP_POSITION= 179,70
 #MAP_POSITION= 181,69
 #DATE= 1940/01/01 [=]
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -824,11 +827,11 @@
 #MAP_POSITION= 179,70
 #MAP_POSITION= 181,69
 #DATE= 1940/01/01 [=]
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis have less than 2 units within 10 hexes of Warsaw
+; Axis have less than 2 units within 10 hexes of Warsaw(188,76)
 #CONDITION_POSITION= 188,76 [10,10] [2,2] [1] [0] [<]
 }
 
@@ -857,11 +860,11 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION= 188,76
 #DATE= 1941/01/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis have less than 4 units within 10 hexes of Warsaw
+; Axis have less than 4 units within 10 hexes of Warsaw(188,76)
 #CONDITION_POSITION= 188,76 [10,10] [4,4] [1] [0] [<]
 }
 
@@ -918,7 +921,7 @@
 #MAP_POSITION= 179,70
 #MAP_POSITION= 181,69
 #DATE= 1941/01/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -978,11 +981,11 @@
 #MAP_POSITION= 179,70
 #MAP_POSITION= 181,69
 #DATE= 1941/01/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis have less than 4 units within 10 hexes of Warsaw
+; Axis have less than 4 units within 10 hexes of Warsaw(188,76)
 #CONDITION_POSITION= 188,76 [10,10] [4,4] [1] [0] [<]
 }
 
@@ -1037,11 +1040,11 @@
 #MAP_POSITION= 179,70
 #MAP_POSITION= 181,69
 #DATE= 1941/01/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis have more than 18 units within 10 hexes of Warsaw
+; Axis have more than 18 units within 10 hexes of Warsaw(188,76)
 #CONDITION_POSITION= 188,76 [10,10] [19,19] [1] [0]
 }
 
@@ -1068,7 +1071,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/07/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis have a unit in the Balkans
@@ -1109,11 +1112,11 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/01
-; Crete is in Axis hands
+; Crete is Axis
 #ALIGNMENT_POSITION= 196,116 [1]
-; Nicosia is in Allied hands
+; Nicosia is Allied
 #ALIGNMENT_POSITION= 213,115 [2]
-; Jerusalem is in Allied hands
+; Jerusalem is Allied
 #ALIGNMENT_POSITION= 216,123 [2]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -1146,7 +1149,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/01
-; Rome is in Axis hands
+; Rome(171,101) is Axis
 #ALIGNMENT_POSITION= 171,101 [1]
 #VARIABLE_CONDITION= 46 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -1176,7 +1179,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/01/01
-; Madrid is in Axis hands
+; Madrid is Axis
 #ALIGNMENT_POSITION= 139,104 [1]
 #VARIABLE_CONDITION= 99 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1205,7 +1208,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/08
-; Paris is in Allied hands
+; Paris(151,84) is Allied
 #ALIGNMENT_POSITION= 151,84 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1259,7 +1262,7 @@
 #MAP_POSITION= 159,109
 #MAP_POSITION= 159,110
 #MAP_POSITION= 159,111
-; Berlin is in Axis hands 
+; Berlin(173,74) is Axis 
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 59 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1307,7 +1310,7 @@
 #MAP_POSITION= 147,111
 #MAP_POSITION= 147,112
 #MAP_POSITION= 147,113
-; Berlin is in Axis hands 
+; Berlin(173,74) is Axis 
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 59 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1336,7 +1339,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/10/01
-; Paris is in Allied hands
+; Paris(151,84) is Allied
 #ALIGNMENT_POSITION= 151,84 [2]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1365,7 +1368,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/01
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
@@ -1395,7 +1398,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/01
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
@@ -1425,7 +1428,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/01
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
@@ -1455,11 +1458,11 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/06/01
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; 12 Axis units within 5 hexes of Warsaw
+; 12 Axis units within 5 hexes of Warsaw(188,76)
 #CONDITION_POSITION= 188,76 [5,5] [12,12] [1] [0]
 }
 
@@ -1487,7 +1490,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/01
-; Moscow is in Allied hands
+; Moscow(221,65) is Allied
 #ALIGNMENT_POSITION= 221,65 [2]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; 1 Axis unit within 8 hexes of Smolensk
@@ -1523,9 +1526,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/01
-; Glasgow is in Allied hands
+; Glasgow(138,65) is Allied
 #ALIGNMENT_POSITION= 138,65 [2]
-; Murmansk is in Allied hands
+; Murmansk is Allied
 #ALIGNMENT_POSITION= 211,16 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -1557,7 +1560,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/10/01
-; Perm is in Allied hands
+; Perm(257,58) is Allied
 #ALIGNMENT_POSITION= 257,58 [2]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1590,7 +1593,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/01/01
-; Warsaw is in Axis hands
+; Warsaw(188,76) is Axis
 #ALIGNMENT_POSITION= 188,76 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
@@ -1622,7 +1625,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/01/01
-; Copenhagen is in Axis hands
+; Copenhagen(171,65) is Axis
 #ALIGNMENT_POSITION= 171,65 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; 2 Axis naval units north of Copenhagen
@@ -1653,7 +1656,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/01/01
-; Athens is in Axis hands
+; Athens is Axis
 #ALIGNMENT_POSITION= 193,109 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 46 [2] [100] [1]
@@ -1685,7 +1688,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/01/01
-; Oslo is in Axis hands
+; Oslo is Axis
 #ALIGNMENT_POSITION= 167,52 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 78 [2] [100] [1]
@@ -1721,7 +1724,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/01/01
-; Marseille is in Axis hands
+; Marseille(157,97) is Axis
 #ALIGNMENT_POSITION= 157,97 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; No Axis units within 3 hexes of Marseille
@@ -1751,7 +1754,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/01/01
-; Madrid is in Axis hands
+; Madrid is Axis
 #ALIGNMENT_POSITION= 139,104 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; 3 or more Axis units within 3 hexes of Madrid
@@ -1788,13 +1791,13 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/08/01
-; Siwa Oasis is in Allied hands
+; Siwa Oasis is Allied
 #ALIGNMENT_POSITION= 198,129 [2]
-; Benghazi is in Axis hands
+; Benghazi(186,122) is Axis
 #ALIGNMENT_POSITION= 186,122 [1]
-; El Agheila is in Axis hands
+; El Agheila is Axis
 #ALIGNMENT_POSITION= 184,126 [1]
-; Gazala is in Axis hands
+; Gazala is Axis
 #ALIGNMENT_POSITION= 192,122 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; 2 Axis units within 3 hexes of Benghazi
@@ -1827,11 +1830,11 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/08/01
-; Siwa Oasis is in Allied hands
+; Siwa Oasis is Allied
 #ALIGNMENT_POSITION= 198,129 [2]
-; Sirte is in Axis hands
+; Sirte is Axis
 #ALIGNMENT_POSITION= 179,124 [1]
-; Tripoli is in Axis hands
+; Tripoli is Axis
 #ALIGNMENT_POSITION= 172,121 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; 2 Axis units within 3 hexes of Tripoli
@@ -1864,13 +1867,13 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/08/01
-; Siwa Oasis is in Allied hands
+; Siwa Oasis is Allied
 #ALIGNMENT_POSITION= 198,129 [2]
-; Mersa Matruh is in Axis hands
+; Mersa Matruh(200,124) is Axis
 #ALIGNMENT_POSITION= 200,124 [1]
-; Benghazi is in Axis hands
+; Benghazi(186,122) is Axis
 #ALIGNMENT_POSITION= 186,122 [1]
-; Tobruk is in Axis hands
+; Tobruk(194,122) is Axis
 #ALIGNMENT_POSITION= 194,122 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; 2 Axis units within 3 hexes of Tobruk
@@ -1903,15 +1906,15 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/08/01
-; Siwa Oasis is in Allied hands
+; Siwa Oasis is Allied
 #ALIGNMENT_POSITION= 198,129 [2]
-; Benghazi is in Axis hands
+; Benghazi(186,122) is Axis
 #ALIGNMENT_POSITION= 186,122 [1]
-; Sirte is in Axis hands
+; Sirte is Axis
 #ALIGNMENT_POSITION= 179,124 [1]
-; El Agheila is in Axis hands
+; El Agheila is Axis
 #ALIGNMENT_POSITION= 184,126 [1]
-; Tripoli is in Axis hands
+; Tripoli is Axis
 #ALIGNMENT_POSITION= 172,121 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; 2 Axis units within 3 hexes of Sirte
@@ -1944,13 +1947,13 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/08/01
-; Siwa Oasis is in Allied hands
+; Siwa Oasis is Allied
 #ALIGNMENT_POSITION= 198,129 [2]
-; El Alamein is in Axis hands
+; El Alamein is Axis
 #ALIGNMENT_POSITION= 204,125 [1]
-; Tobruk is in Axis hands
+; Tobruk(194,122) is Axis
 #ALIGNMENT_POSITION= 194,122 [1]
-; Sidi Birrani is in Axis hands
+; Sidi Birrani is Axis
 #ALIGNMENT_POSITION= 198,123 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; 2 Axis units within 3 hexes of Sidi Birrani
@@ -1986,10 +1989,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/01
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2018,10 +2020,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/01
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2052,7 +2053,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/12/03
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
@@ -2060,7 +2061,7 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 10 [2] [100] [0]
 #VARIABLE_CONDITION= 73 [2] [100] [0]
-; No Axis Units within 10 hexes of Manchester
+; No Axis Units within 10 hexes of Manchester(142,72)
 #CONDITION_POSITION= 142,72 [10,10] [0,0] [1] [0]
 }
 
@@ -2088,10 +2089,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/02/10
-; Fort William is in Allied hands
+; Fort William is Allied
 #ALIGNMENT_POSITION= 136,62 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2118,12 +2118,11 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/01
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 85 [2] [100] [1]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2150,11 +2149,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/05/01
-; Paris is in Axis hands
+; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 118 [1] [0] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2181,11 +2179,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/01
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2212,11 +2209,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/01
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2248,11 +2244,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/03/10
-; Paris is in Allied hands
+; Paris(151,84) is Allied
 #ALIGNMENT_POSITION= 151,84 [2]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2279,10 +2274,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/09/06
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2309,10 +2303,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/01/21
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2339,11 +2332,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/01
-; Helsinki is in Axis hands
+; Helsinki(195,51) is Axis
 #ALIGNMENT_POSITION= 195,51 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2370,10 +2362,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2400,10 +2391,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2430,10 +2420,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2460,10 +2449,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2491,7 +2479,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/03
-; Paris is in Allied hands
+; Paris(151,84) is Allied
 #ALIGNMENT_POSITION= 151,84 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
@@ -2524,11 +2512,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/05/05
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 118 [1] [0] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2555,11 +2542,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/11/06
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 118 [1] [0] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2586,9 +2572,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/04/03
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
-; Lille is in Allied hands
+; Lille is Allied
 #ALIGNMENT_POSITION= 153,80 [2]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 10 [2] [0] [0]
@@ -2620,10 +2606,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/08/31
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2654,10 +2639,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/11/30
-; Leningrad is in Allied hands
+; Leningrad(206,52) is Allied
 #ALIGNMENT_POSITION= 206,52 [2]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2684,10 +2668,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/11/30
-; Leningrad is in Allied hands
+; Leningrad(206,52) is Allied
 #ALIGNMENT_POSITION= 206,52 [2]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2718,10 +2701,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/03
-; Paris is in Axis hands
+; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2748,10 +2730,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/01/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2778,10 +2759,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/01/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2812,10 +2792,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/12/14
-; Leningrad is in Allied hands
+; Leningrad(206,52) is Allied
 #ALIGNMENT_POSITION= 206,52 [2]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2842,18 +2821,17 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/03
-; Baghdad is in Axis hands
+; Baghdad is Axis
 #ALIGNMENT_POSITION= 234,120 [1]
 #VARIABLE_CONDITION= 56 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
-;  DE 50 Events
+; DE 50 Events
 ;
-;  These are informational only, for flavor and can be turned off, globally
+; These are informational only, for flavor and can be turned off, globally
 ;  via "DE 50 - Disable to Hide All Historical Popups"
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2884,10 +2862,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1945/08/15
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2917,10 +2894,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/04/13
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2949,9 +2925,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1945/02/04
-; Sevastopol is in Allied hands
+; Sevastopol is Allied
 #ALIGNMENT_POSITION= 212,96 [2]
-; Simferopol is in Allied hands
+; Simferopol is Allied
 #ALIGNMENT_POSITION= 214,94 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
@@ -2987,7 +2963,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/03
-; Berlin is in Allied hands
+; Berlin(173,74) is Allied
 #ALIGNMENT_POSITION= 173,74 [2]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Soviets in Berlin
@@ -3024,12 +3000,11 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/07/04
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 99 [1] [0] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -3059,7 +3034,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 99 [1] [0] [0]
 ; Axis troops enter Paris
@@ -3093,11 +3068,11 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/01
-; Paris is in Axis hands
+; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
-; 1st Line - France(40) politically aligned with Allies and surrendered
+; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-; 2nd Line - Spain(99) politically aligned with Axis but not fully mobilized
+; Spain(99) Axis but not fully mobilized
 #VARIABLE_CONDITION= 99 [1] [20] [0]
 ; No Allied units within 5 hexes of Bayonne
 #CONDITION_POSITION= 144,98 [5,5] [0,0] [2] [0]
@@ -3131,11 +3106,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/09/27
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -3165,7 +3139,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/01
-; Heraklion is in Axis hands
+; Heraklion(196,116) is Axis
 #ALIGNMENT_POSITION= 196,116 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 46 [2] [100] [1]
@@ -3196,11 +3170,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/02/18
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -3231,7 +3204,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/01/01
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -3267,7 +3240,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/01/01
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
@@ -3301,7 +3274,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/01/01
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
@@ -3342,7 +3315,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/04/18
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3371,7 +3344,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/04/19
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3400,7 +3373,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/06/22
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3429,7 +3402,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/06/19
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3458,7 +3431,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1945/03/08
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3490,15 +3463,15 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/10/19
-; Paris is in Allied hands
+; Paris(151,84) is Allied
 #ALIGNMENT_POSITION= 151,84 [2]
-; 1st Line - France(40) politically aligned with Allies and not surrendered
+; France(40) Allied and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; 2nd Line - USA(115) politically aligned with Allies and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; 3rd Line - Germany(45) politically aligned with Axis and not surrendered
+; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 4th Line - Spain(99) politically aligned with Axis but not fully mobilized
+; Spain(99) Axis but not fully mobilized
 #VARIABLE_CONDITION= 99 [1] [0] [0]
 ; No Axis Units near the Spanish border
 #CONDITION_POSITION= 149,99 [4,4] [0,0] [1] [0]
@@ -3529,7 +3502,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/01
-; Eban Emael is in Axis hands
+; Eban Emael is Axis
 #ALIGNMENT_POSITION= 156,80 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 10 [2] [100] [0]
@@ -3562,7 +3535,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/03
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
@@ -3602,7 +3575,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/03
-; Paris is in Axis hands
+; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; No Axis units in UK
@@ -3634,7 +3607,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/01/01
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [50] [0]
@@ -3665,7 +3638,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/01/01
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
@@ -3697,7 +3670,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1945/04/25
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
@@ -3732,7 +3705,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/06/01
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
@@ -3764,7 +3737,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/01
-; Paris is in Allied hands
+; Paris(151,84) is Allied
 #ALIGNMENT_POSITION= 151,84 [2]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Axis units are within 5 hexes of Paris
@@ -3796,7 +3769,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/01
-; Paris is in Allied hands
+; Paris(151,84) is Allied
 #ALIGNMENT_POSITION= 151,84 [2]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [0] [0]
@@ -3827,10 +3800,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/11/09
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -3857,11 +3829,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/04/17
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -3888,10 +3859,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/07/01
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -3918,10 +3888,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/04/07
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -3948,10 +3917,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/12/23
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -3978,10 +3946,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/15
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4008,10 +3975,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/03/18
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4038,10 +4004,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/03/01
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4068,10 +4033,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/04/19
-; Warsaw is in Axis hands
+; Warsaw(188,76) is Axis
 #ALIGNMENT_POSITION= 188,76 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4098,10 +4062,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/11/08
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4128,11 +4091,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/07/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 19 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4159,10 +4121,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/08/21
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4195,7 +4156,6 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 99 [1] [25] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4226,7 +4186,6 @@
 #ALIGNMENT_POSITION= 139,104 [0]
 #VARIABLE_CONDITION= 99 [1] [0] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4257,7 +4216,6 @@
 #ALIGNMENT_POSITION= 139,104 [0]
 #VARIABLE_CONDITION= 99 [1] [0] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4284,10 +4242,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/12/25
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4314,14 +4271,13 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/03/25
-; Dresden is in Axis hands
+; Dresden is Axis
 #ALIGNMENT_POSITION= 173,79 [1]
-; Frankfurt is in Axis hands
+; Frankfurt is Axis
 #ALIGNMENT_POSITION= 175,75 [1]
-; Glogau is in Axis hands
+; Glogau is Axis
 #ALIGNMENT_POSITION= 179,77 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4348,11 +4304,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/12/15
-; Paris is in Allied hands
+; Paris(151,84) is Allied
 #ALIGNMENT_POSITION= 151,84 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4379,11 +4334,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/08/09
-; Paris is in Axis hands
+; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4410,7 +4364,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1945/03/25
-; Luxembourg is in Allied hands
+; Luxembourg is Allied
 #ALIGNMENT_POSITION= 159,82 [2]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
@@ -4441,10 +4395,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/12/05
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4471,10 +4424,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/06/01
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4501,10 +4453,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1945/04/23
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4531,10 +4482,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/01/29
-; Athens is in Allied hands
+; Athens is Allied
 #ALIGNMENT_POSITION= 193,109 [2]
 #VARIABLE_CONDITION= 46 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4561,10 +4511,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/02/12
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4591,10 +4540,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/02/15
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4621,10 +4569,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/04/15
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4651,10 +4598,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/09/16
-; Tirana is in Axis hands
+; Tirana is Axis
 #ALIGNMENT_POSITION= 185,102 [1]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4681,11 +4627,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/04/27
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 21 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4712,11 +4657,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/11/24
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 21 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4743,10 +4687,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/08/30
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4773,10 +4716,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/05/15
-; Washington DC is in Allied hands
+; Washington DC is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4803,10 +4745,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/10/21
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4833,10 +4774,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/04/30
-; Warsaw is in Axis hands
+; Warsaw(188,76) is Axis
 #ALIGNMENT_POSITION= 188,76 [1]
 #VARIABLE_CONDITION= 85 [2] [100] [1]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4863,10 +4803,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/05/23
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4893,11 +4832,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 56 [1] [100] [1]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4924,7 +4862,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/01/01
-; Danzig is in Axis hands
+; Danzig is Axis
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Red Army units are within 3 hexes of Danzig
@@ -4956,11 +4894,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/06/01
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4987,7 +4924,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/02/10
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 ; No Axis units within 10 hexes of Cairo
@@ -5017,11 +4954,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/07/10
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5048,10 +4984,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/01/18
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5078,10 +5013,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/07/14
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5108,10 +5042,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/12/02
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5138,10 +5071,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1945/08/17
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5168,11 +5100,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/03/05
-; Leningrad is in Allied hands
+; Leningrad(206,52) is Allied
 #ALIGNMENT_POSITION= 206,52 [2]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5199,11 +5130,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/10/01
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5230,10 +5160,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/03/01
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5260,10 +5189,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/06/03
-; New York is in Allied hands
+; New York is Allied
 #ALIGNMENT_POSITION= 10,104 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5290,10 +5218,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/08/28
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 19 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5320,10 +5247,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/06/20
-; New York is in Allied hands
+; New York is Allied
 #ALIGNMENT_POSITION= 10,104 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5350,12 +5276,11 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/01/01
-; Linz is in Allied hands
+; Linz is Allied
 #ALIGNMENT_POSITION= 175,85 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5382,10 +5307,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 78 [2] [100] [1]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5412,10 +5336,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/10/02
-; Copenhagen is in Axis hands
+; Copenhagen(171,65) is Axis
 #ALIGNMENT_POSITION= 171,65 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5442,10 +5365,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/11/11
-; Paris is in Axis hands
+; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5472,7 +5394,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1945/05/08
-; Algiers is in Allied hands
+; Algiers is Allied
 #ALIGNMENT_POSITION= 152,113 [2]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; No Axis units within 10 hexes of Algiers
@@ -5502,7 +5424,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/06/21
-; Paris is in Axis hands
+; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; No Allied units within 8 hexes of Orleans
@@ -5532,11 +5454,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/07/14
-; Paris is in Axis hands
+; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 118 [1] [0] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5563,11 +5484,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/05/10
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5594,10 +5514,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/06/04
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5624,10 +5543,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/12/19
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5654,11 +5572,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/05/15
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5685,13 +5602,13 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/03/29
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
-; Paris is in Axis hands
+; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
-; Smolensk is in Axis hands
+; Smolensk(209,68) is Axis
 #ALIGNMENT_POSITION= 209,68 [1]
-; Kharkov is in Axis hands
+; Kharkov(218,82) is Axis
 #ALIGNMENT_POSITION= 218,82 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -5723,10 +5640,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/09/10
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5753,10 +5669,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/10/10
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5783,10 +5698,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/10/25
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5813,7 +5727,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/01/01
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
@@ -5844,10 +5758,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/11/05
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5874,10 +5787,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/06/04
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5904,10 +5816,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/10/15
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 65 [2] [100] [1]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5934,11 +5845,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/08/22
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5965,10 +5875,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/12/10
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 96 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5995,10 +5904,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/10/14
-; Kiev is in Axis hands
+; Kiev(207,80) is Axis
 #ALIGNMENT_POSITION= 207,80 [1]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6025,7 +5933,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/01/01
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
@@ -6059,7 +5967,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/01/01
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
@@ -6068,7 +5976,6 @@
 #VARIABLE_CONDITION= 10 [2] [100] [0]
 #VARIABLE_CONDITION= 73 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [1]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6095,10 +6002,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/09/15
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6125,11 +6031,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/07/26
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6156,10 +6061,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/02/15
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6186,10 +6090,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/12/07
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6216,10 +6119,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/04/18
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6246,10 +6148,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/05/08
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6276,10 +6177,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/06/07
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6306,10 +6206,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/08/07
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6336,10 +6235,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/02/09
-; New York is in Allied hands
+; New York is Allied
 #ALIGNMENT_POSITION= 10,104 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6366,10 +6264,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/11/20
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6396,10 +6293,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/01/31
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6427,10 +6323,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1945/02/23
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6457,7 +6352,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/01/14
-; Casablanca is in Allied hands
+; Casablanca is Allied
 #ALIGNMENT_POSITION= 131,119 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
@@ -6489,10 +6384,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/10/20
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6519,11 +6413,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/01/01
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 115 [2] [50] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6550,10 +6443,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1945/04/12
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6580,10 +6472,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1945/08/06
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6610,10 +6501,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1945/08/15
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6641,9 +6531,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/03
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
-; 1st Line - Canada(21) politically aligned with Allies and not surrendered
+; Canada(21) Allied and not surrendered
 #VARIABLE_CONDITION= 21 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -6674,11 +6564,11 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/05/06
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
-; 1st Line - Finland(39) politically aligned with Allies but not fully mobilized
+; Finland(39) Allied but not fully mobilized
 #VARIABLE_CONDITION= 39 [2] [0] [0]
-; 2nd Line - USSR(116) politically aligned with Allies but not fully mobilized
+; USSR(116) Allied but not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -6709,11 +6599,11 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/05/06
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
-; 1st Line - Finland(39) politically aligned with Axis but not fully mobilized
+; Finland(39) Axis but not fully mobilized
 #VARIABLE_CONDITION= 39 [1] [0] [0]
-; 2nd Line - USSR(116) politically aligned with Allies but not fully mobilized
+; USSR(116) Allied but not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -6743,10 +6633,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/03
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
-; 1st Line - Germany(45) politically aligned with Axis and not surrendered
-; 2nd Line - USA(115) politically aligned with Allies and not surrendered
+; Germany(45) Axis and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6776,9 +6666,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/01
-; Glasgow is in Allied hands
+; Glasgow(138,65) is Allied
 #ALIGNMENT_POSITION= 138,65 [2]
-; Murmansk is in Allied hands
+; Murmansk is Allied
 #ALIGNMENT_POSITION= 211,16 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -6811,7 +6701,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/12/01
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -6845,7 +6735,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/15
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; No Axis units in Southern England
@@ -6876,9 +6766,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/01
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
-; Cairo is in Allied hands
+; Cairo(208,126) is Allied
 #ALIGNMENT_POSITION= 208,126 [2]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -6912,7 +6802,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION= 170,99
 #DATE= 1940/01/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -6946,7 +6836,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION= 180,95
 #DATE= 1941/01/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 120 [2] [100] [1]
@@ -6982,10 +6872,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/10/21
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7013,7 +6902,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/05/01
-; Jerusalem is in Allied hands
+; Jerusalem is Allied
 #ALIGNMENT_POSITION= 216,123 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
@@ -7047,21 +6936,21 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/05/01
-; London is in Allied hands
+; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
-; Portsmouth is in Allied hands
+; Portsmouth is Allied
 #ALIGNMENT_POSITION= 144,79 [2]
-; Bristol is in Allied hands
+; Bristol(142,78) is Allied
 #ALIGNMENT_POSITION= 142,78 [2]
-; Narvik is in Axis hands
+; Narvik is Axis
 #ALIGNMENT_POSITION= 181,18 [1]
-; Trondheim is in Axis hands
+; Trondheim is Axis
 #ALIGNMENT_POSITION= 167,40 [1]
-; Bergen is in Axis hands
+; Bergen is Axis
 #ALIGNMENT_POSITION= 157,50 [1]
-; Stavanger is in Axis hands
+; Stavanger is Axis
 #ALIGNMENT_POSITION= 158,55 [1]
-; Kristiansand is in Axis hands
+; Kristiansand is Axis
 #ALIGNMENT_POSITION= 162,58 [1]
 #VARIABLE_CONDITION= 78 [2] [100] [1]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -7099,9 +6988,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/01/01
-; Cyprus is in Allied hands
+; Cyprus is Allied
 #ALIGNMENT_POSITION= 213,115 [2]
-; Rhodes is in Axis hands
+; Rhodes is Axis
 #ALIGNMENT_POSITION= 202,113 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
@@ -7134,17 +7023,17 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/01/01
-; Tripoli is in Allied hands
+; Tripoli is Allied
 #ALIGNMENT_POSITION= 172,121 [2]
-; Warsaw is in Axis hands
+; Warsaw(188,76) is Axis
 #ALIGNMENT_POSITION= 188,76 [1]
-; Sofia is in Axis hands
+; Sofia is Axis
 #ALIGNMENT_POSITION= 192,100 [1]
-; Tirana is in Axis hands
+; Tirana is Axis
 #ALIGNMENT_POSITION= 185,102 [1]
-; Bucharest is in Axis hands
+; Bucharest is Axis
 #ALIGNMENT_POSITION= 198,95 [1]
-; Lwow is in Axis hands
+; Lwow(194,82) is Axis
 #ALIGNMENT_POSITION= 194,82 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
@@ -7180,11 +7069,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/01/01
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 95 [1] [0] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7211,13 +7099,13 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/01
-; Paris is in Axis hands
+; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
-; 1st Line - France(40) politically aligned with Allies and surrendered
+; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-; 2nd Line - Spain(99) politically aligned with Axis but not fully mobilized
+; Spain(99) Axis but not fully mobilized
 #VARIABLE_CONDITION= 99 [1] [20] [0]
-; 3rd Line - USA(115) politically aligned with Allies and fully mobilized
+; USA(115) Allied and fully mobilized
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; No Allied units within 5 hexes of Bayonne
 #CONDITION_POSITION= 144,98 [5,5] [0,0] [2] [0]
@@ -7248,14 +7136,13 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/01/01
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 103 [1] [0] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7284,10 +7171,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/01
-; Gibraltar is in Allied hands
+; Gibraltar(136,114) is Allied
 #ALIGNMENT_POSITION= 136,114 [2]
 #VARIABLE_CONDITION= 99 [1] [55] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7316,10 +7202,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/01
-; Jerusalem is in Allied hands
+; Jerusalem is Allied
 #ALIGNMENT_POSITION= 216,123 [2]
 #VARIABLE_CONDITION= 111 [1] [55] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7352,7 +7237,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/12/01
-; Rome is in Axis hands
+; Rome(171,101) is Axis
 #ALIGNMENT_POSITION= 171,101 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -7383,7 +7268,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/05/05
-; Rome is in Axis hands
+; Rome(171,101) is Axis
 #ALIGNMENT_POSITION= 171,101 [1]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -7415,7 +7300,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/11/27
-; Rome is in Axis hands
+; Rome(171,101) is Axis
 #ALIGNMENT_POSITION= 171,101 [1]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -7448,7 +7333,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/01
-; Washington, DC is in Allied hands
+; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
@@ -7483,7 +7368,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/01
-; Caen is in Allied hands
+; Caen is Allied
 #ALIGNMENT_POSITION= 146,84 [2]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
@@ -7517,10 +7402,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/10/01
-; Ottawa is in Allied hands
+; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7547,10 +7431,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/03/20
-; Paris is in Allied hands
+; Paris(151,84) is Allied
 #ALIGNMENT_POSITION= 151,84 [2]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7577,10 +7460,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/03/10
-; Copenhagen is in Axis hands
+; Copenhagen(171,65) is Axis
 #ALIGNMENT_POSITION= 171,65 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7607,10 +7489,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/09/15
-; Copenhagen is in Axis hands
+; Copenhagen(171,65) is Axis
 #ALIGNMENT_POSITION= 171,65 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7637,10 +7518,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/11/25
-; Copenhagen is in Axis hands
+; Copenhagen(171,65) is Axis
 #ALIGNMENT_POSITION= 171,65 [1]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7667,11 +7547,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/08/27
-; Paris is in Axis hands
+; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 118 [1] [0] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7698,11 +7577,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/04/18
-; Paris is in Axis hands
+; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 118 [1] [0] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7729,12 +7607,11 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/06/22
-; Paris is in Axis hands
+; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 118 [1] [0] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7765,10 +7642,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/06/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7795,10 +7671,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/01/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7825,10 +7700,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/10/25
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 39 [1] [0] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7855,10 +7729,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/10/25
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 39 [1] [0] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7886,11 +7759,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/15
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Turkey Allied leaning
 #VARIABLE_CONDITION= 111 [2] [0] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7917,10 +7789,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7947,10 +7818,9 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7977,12 +7847,11 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/01/01
-; Cairo is in Axis hands
+; Cairo(208,126) is Axis
 #ALIGNMENT_POSITION= 208,126 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 54 [2] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [1]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -8013,10 +7882,9 @@ Replacement Script
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/12/17
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -8043,11 +7911,10 @@ Replacement Script
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/22
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 46 [2] [0] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -8074,11 +7941,10 @@ Replacement Script
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/20
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 87 [1] [0] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -8105,12 +7971,11 @@ Replacement Script
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/01
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 105 [1] [0] [0]
 #VARIABLE_CONDITION= 56 [1] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -8137,11 +8002,10 @@ Replacement Script
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/01/20
-; Berlin is in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 118 [1] [0] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -8168,11 +8032,10 @@ Replacement Script
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/01
-; Athens is in Allied hands
+; Athens is Allied
 #ALIGNMENT_POSITION= 193,109 [2]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 #VARIABLE_CONDITION= 46 [2] [100] [0]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -8201,9 +8064,9 @@ Replacement Script
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/03
-; Paris is in Axis hands
+; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
-; 1st Line - Spain(99) politically aligned with Axis but not fully mobilized
+; Spain(99) Axis but not fully mobilized
 #VARIABLE_CONDITION= 99 [1] [25] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }

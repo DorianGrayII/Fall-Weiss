@@ -45,14 +45,14 @@
 ; #GV= Does the event activate based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
-;      Example A) #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
-;      Example B) #GV= 4[71,100] will trigger 30% per game
+;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;      Example B - #GV= 4[71,100] will trigger 30% per game
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
 ;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
-;        Example A) #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
-;        Example B) #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
-;        Example C) #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
+;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
+;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
+;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
 ; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
 ; #COUNTRY_ID= Country ID that will be owner of this event
 ; #BELLIGERENCE_ID= Which country ID should we now be at war with?
@@ -253,22 +253,19 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #TRIGGER= 100
 #COUNTRY_ID= 112
 #BELLIGERENCE_ID= 45
 #DATE= 1939/09/03
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - UK(112) politically aligned with the Allies and not surrendered AND
-; 2nd Line - Germany(45) politically aligned with the Axis and not surrendered
+; UK(112) aligned with the Allies and not surrendered AND
+; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 1st Line - Poland(85) and Germany are belligerent
+; Poland(85) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [85,45]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -281,22 +278,19 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #TRIGGER= 100
 #COUNTRY_ID= 40
 #BELLIGERENCE_ID= 45
 #DATE= 1939/09/03
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - France(40) politically aligned with the Allies and not surrendered AND
-; 2nd Line - Germany(45) politically aligned with the Axis and not surrendered
+; France(40) aligned with the Allies and not surrendered AND
+; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 1st Line - Poland(85) and Germany are belligerent
+; Poland(85) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [85,45]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -309,22 +303,19 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #TRIGGER= 100
 #COUNTRY_ID= 115
 #BELLIGERENCE_ID= 45
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - USA(115) politically aligned with the Allies and not surrendered AND
-; 2nd Line - Germany(45) politically aligned with the Axis and not surrendered
+; USA(115) aligned with the Allies and not surrendered AND
+; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 1st Line - UK(112) and Germany are belligerent
+; UK(112) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -337,22 +328,19 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #TRIGGER= 100
 #COUNTRY_ID= 115
 #BELLIGERENCE_ID= 59
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - USA(115) politically aligned with the Allies and not surrendered AND
-; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered
+; USA(115) aligned with the Allies and not surrendered AND
+; Italy(59) is Axis and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - UK(112) and Germany are belligerent
+; UK(112) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -365,22 +353,19 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #TRIGGER= 100
 #COUNTRY_ID= 116
 #BELLIGERENCE_ID= 45
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - USSR(116) politically aligned with the Allied and not surrendered AND
-; 2nd Line - Germany(45) politically aligned with the Axis and not surrendered
+; USSR(116) aligned with the Allied and not surrendered AND
+; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 1st Line - UK(112) and Germany are belligerent
+; UK(112) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -393,22 +378,19 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #TRIGGER= 100
 #COUNTRY_ID= 116
 #BELLIGERENCE_ID= 59
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - USSR(116) politically aligned with the Allied and not surrendered AND
-; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered
+; USSR(116) aligned with the Allied and not surrendered AND
+; Italy(59) is Axis and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - UK(112) and Germany are belligerent
+; UK(112) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -421,22 +403,19 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #TRIGGER= 100
 #COUNTRY_ID= 59
 #BELLIGERENCE_ID= 112
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - UK(112) politically aligned with the Allies and not surrendered AND
-; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered
+; UK(112) aligned with the Allies and not surrendered AND
+; Italy(59) is Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - UK(112) and Germany are belligerent
+; UK(112) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -449,22 +428,19 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #TRIGGER= 100
 #COUNTRY_ID= 59
 #BELLIGERENCE_ID= 40
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - France(40) politically aligned with the Allies and not surrendered AND
-; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered
+; France(40) aligned with the Allies and not surrendered AND
+; Italy(59) is Axis and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 1st Line - UK(112) and Germany are belligerent
+; UK(112) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -477,22 +453,19 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #TRIGGER= 100
 #COUNTRY_ID= 59
 #BELLIGERENCE_ID= 116
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - USSR(116) politically aligned with the Allies and not surrendered AND
-; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered
+; USSR(116) aligned with the Allies and not surrendered AND
+; Italy(59) is Axis and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - USSR(116) and Germany are belligerent
+; USSR(116) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [116,45]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -505,22 +478,19 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #TRIGGER= 100
 #COUNTRY_ID= 59
 #BELLIGERENCE_ID= 115
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - USA(115) politically aligned with the Allies and not surrendered AND
-; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered
+; USA(115) aligned with the Allies and not surrendered AND
+; Italy(59) is Axis and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - USSR(116) and Germany are belligerent
+; USSR(116) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [116,45]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -533,22 +503,19 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #TRIGGER= 100
 #COUNTRY_ID= 59
 #BELLIGERENCE_ID= 112
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - UK(112) politically aligned with the Allies and surrendered
-; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered
+; UK(112) aligned with the Allies and surrendered
+; Italy(59) is Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - UK(112) and Germany are belligerent
+; UK(112) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -561,22 +528,19 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #TRIGGER= 100
 #COUNTRY_ID= 59
 #BELLIGERENCE_ID= 40
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - France(40) politically aligned with the Allies and surrendered
-; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered
+; France(40) aligned with the Allies and surrendered
+; Italy(59) is Axis and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - France(40) and Germany are belligerent
+; France(40) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [40,45]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -589,22 +553,19 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #TRIGGER= 100
 #COUNTRY_ID= 59
 #BELLIGERENCE_ID= 115
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - USA(115) politically aligned with the Allies and surrendered
-; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered
+; USA(115) aligned with the Allies and surrendered
+; Italy(59) is Axis and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - USA(115) and Germany are belligerent
+; USA(115) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [115,45]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -617,22 +578,19 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #TRIGGER= 100
 #COUNTRY_ID= 59
 #BELLIGERENCE_ID= 116
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - USSR(116) politically aligned with the Allies and surrendered
-; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered
+; USSR(116) aligned with the Allies and surrendered
+; Italy(59) is Axis and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - USSR(116) and Germany are belligerent
+; USSR(116) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [116,45]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -645,22 +603,19 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #TRIGGER= 100
 #COUNTRY_ID= 59
 #BELLIGERENCE_ID= 85
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - Poland(85) politically aligned with the Allies and surrendered
-; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered
+; Poland(85) aligned with the Allies and surrendered
+; Italy(59) is Axis and not surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - Poland(85) and Germany are belligerent
+; Poland(85) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [85,45]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -679,22 +634,19 @@
 #TYPE= 1
 #AI= 1
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #TRIGGER= 50
 #COUNTRY_ID= 45
 #BELLIGERENCE_ID= 115
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - USA(115) politically aligned with the Allies and not surrendered AND
-; 2nd Line - Germany(45) politically aligned with the Axis and not surrendered
+; USA(115) aligned with the Allies and not surrendered AND
+; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 1st Line - UK(112)(112) and Germany(45) are belligerent
+; UK(112) and Germany(45) are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -710,22 +662,19 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #TRIGGER= 100
 #COUNTRY_ID= 39
 #BELLIGERENCE_ID= 116
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - USSR(116) politically aligned with the Allies and not surrendered AND
-; 2nd Line - Finland(39) politically aligned with the Axis and not surrendered
+; USSR(116) aligned with the Allies and not surrendered AND
+; Finland(39) is Axis and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-; 1st Line - USSR(116) and Germany are belligerent
+; USSR(116) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [116,45]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -738,7 +687,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 847[1]
 #TRIGGER= 100
@@ -746,13 +694,12 @@
 #BELLIGERENCE_ID= 115
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - USA(115) politically aligned with the Allies and not surrendered AND
-; 2nd Line - Finland(39) politically aligned with the Axis and not surrendered
+; USA(115) aligned with the Allies and not surrendered AND
+; Finland(39) is Axis and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-; 1st Line - USA(115) and Germany are belligerent
+; USA(115) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [115,45]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -765,7 +712,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 847[1]
 #TRIGGER= 100
@@ -773,13 +719,12 @@
 #BELLIGERENCE_ID= 112
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - UK(112) politically aligned with the Allies and not surrendered AND
-; 2nd Line - Finland(39) politically aligned with the Axis and not surrendered
+; UK(112) aligned with the Allies and not surrendered AND
+; Finland(39) is Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-; 1st Line - UK(112) and Germany are belligerent
+; UK(112) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -792,7 +737,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 847[1]
 #TRIGGER= 100
@@ -800,13 +744,12 @@
 #BELLIGERENCE_ID= 40
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - France(40) politically aligned with the Allies and surrendered AND
-; 2nd Line - Finland(39) politically aligned with the Axis and not surrendered
+; France(40) aligned with the Allies and surrendered AND
+; Finland(39) is Axis and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-; 1st Line - France(40) and Germany are belligerent
+; France(40) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [40,45]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -819,7 +762,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 847[1]
 #TRIGGER= 100
@@ -827,13 +769,12 @@
 #BELLIGERENCE_ID= 40
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - France(40) politically aligned with the Allies and not surrendered AND
-; 2nd Line - Finland(39) politically aligned with the Axis and not surrendered
+; France(40) aligned with the Allies and not surrendered AND
+; Finland(39) is Axis and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-; 1st Line - France(40) and Germany are belligerent
+; France(40) and Germany are belligerent
 #BELLIGERENCE_CONDITION= [40,45]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -847,7 +788,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 842[1]
 #TRIGGER= 100
@@ -855,13 +795,12 @@
 #BELLIGERENCE_ID= 57
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - Ireland(57) politically aligned with the Allies and not surrendered
-; 2nd Line - Germany(45) politically aligned with the Axis and not surrendered AND
+; Ireland(57) aligned with the Allies and not surrendered
+; Germany(45) is Axis and not surrendered AND
 #VARIABLE_CONDITION= 57 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 1st Line - Germany(45) and UK are belligerent
+; Germany(45) and UK are belligerent
 #BELLIGERENCE_CONDITION= [45,112]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -875,7 +814,6 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 842[1]
 #TRIGGER= 100
@@ -883,12 +821,11 @@
 #BELLIGERENCE_ID= 57
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; 1st Line - Ireland(57) politically aligned with the Allies and not surrendered
-; 2nd Line - Italy(59) politically aligned with the Axis and not surrendered AND
+; Ireland(57) aligned with the Allies and not surrendered
+; Italy(59) is Axis and not surrendered AND
 #VARIABLE_CONDITION= 57 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1st Line - Germany(45) and UK are belligerent
+; Germany(45) and UK are belligerent
 #BELLIGERENCE_CONDITION= [59,112]
-; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }

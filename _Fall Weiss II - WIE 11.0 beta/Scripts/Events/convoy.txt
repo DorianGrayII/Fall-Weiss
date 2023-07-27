@@ -42,14 +42,14 @@
 ; #GV= Does the event activate based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
-;      Example A) #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
-;      Example B) #GV= 4[71,100] will trigger 30% per game
+;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;      Example B - #GV= 4[71,100] will trigger 30% per game
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
 ;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
-;        Example A) #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
-;        Example B) #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
-;        Example C) #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
+;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
+;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
+;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
 ; #SENDER_ID= Country ID that will be owner of convoy event
 ; #RECIPIENT_ID= Country ID that will receive benefit of the convoy
 ; #SENDER_ID_TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
@@ -250,7 +250,6 @@
 #TYPE= 2 
 #AI= 0 
 #LEVEL= 0 
-; Set global variable condition to always trigger (dummy value) 
 #GV= 1[1,100] 
 #LINK= 370[1]
 #SENDER_ID= 115
@@ -279,7 +278,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 105[1]
 #SENDER_ID= 21
@@ -309,7 +307,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 103[1]
 #SENDER_ID= 21
@@ -343,7 +340,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 164[1]
 #SENDER_ID= 21
@@ -377,7 +373,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 105[0]
 #SENDER_ID= 36
@@ -406,7 +401,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 103[1]
 #SENDER_ID= 36
@@ -439,7 +433,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 164[1]
 #SENDER_ID= 36
@@ -474,7 +467,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 161[1]
 #SENDER_ID= 36
@@ -507,7 +499,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 165[1]
 #SENDER_ID= 36
@@ -542,7 +533,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 105[1]
 #SENDER_ID= 56
@@ -574,7 +564,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 105[0]
 #SENDER_ID= 56
@@ -606,7 +595,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 103[1]
 #SENDER_ID= 56
@@ -642,7 +630,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 164[1]
 #SENDER_ID= 56
@@ -680,7 +667,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 105[1]
 #SENDER_ID= 54
@@ -709,7 +695,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 105[0]
 #SENDER_ID= 54
@@ -739,7 +724,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 103[1]
 #SENDER_ID= 54
@@ -776,7 +760,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 164[1]
 #SENDER_ID= 54
@@ -813,7 +796,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 103[1]
 #SENDER_ID= 115
@@ -850,7 +832,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 164[1]
 #SENDER_ID= 115
@@ -892,9 +873,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SENDER_ID= 21
 #RECIPIENT_ID= 112
@@ -924,7 +903,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 163[1]
 #SENDER_ID= 21
@@ -955,9 +933,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SENDER_ID= 54
 #RECIPIENT_ID= 112
@@ -984,7 +960,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 163[1]
 #SENDER_ID= 54
@@ -1014,9 +989,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SENDER_ID= 56
 #RECIPIENT_ID= 112
@@ -1051,7 +1024,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 163[1]
 #SENDER_ID= 56
@@ -1089,7 +1061,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 350[1]
 #SENDER_ID= 115
@@ -1121,7 +1092,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 166[1]
 #SENDER_ID= 115
@@ -1153,7 +1123,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 351[1]
 #SENDER_ID= 115
@@ -1185,7 +1154,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 167[1]
 #SENDER_ID= 115
@@ -1217,7 +1185,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 162[1]
 #SENDER_ID= 112
@@ -1257,7 +1224,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 175[1]
 #SENDER_ID= 112
@@ -1299,7 +1265,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 365[1]
 #SENDER_ID= 115
@@ -1339,7 +1304,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 366[1]
 #SENDER_ID= 115
@@ -1379,7 +1343,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 105[1]
 #SENDER_ID= 115
@@ -1420,7 +1383,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 105[0]
 #SENDER_ID= 115
@@ -1461,9 +1423,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SENDER_ID= 36
 #RECIPIENT_ID= 112
@@ -1497,9 +1457,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SENDER_ID= 78
 #RECIPIENT_ID= 112
@@ -1529,9 +1487,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SENDER_ID= 95
 #RECIPIENT_ID= 115
@@ -1562,9 +1518,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SENDER_ID= 103
 #RECIPIENT_ID= 45
@@ -1598,7 +1552,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 635[1]
 #SENDER_ID= 78
@@ -1626,7 +1579,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 635[1]
 #SENDER_ID= 103
@@ -1661,7 +1613,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 636[1]
 #SENDER_ID= 78
@@ -1689,7 +1640,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 636[1]
 #SENDER_ID= 103
@@ -1724,7 +1674,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 668[1]
 #SENDER_ID= 78
@@ -1752,7 +1701,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 668[1]
 #SENDER_ID= 103
@@ -1787,9 +1735,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SENDER_ID= 78
 #RECIPIENT_ID= 45
@@ -1827,9 +1773,7 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SENDER_ID= 39
 #RECIPIENT_ID= 45
@@ -1858,7 +1802,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 847[1]
 #SENDER_ID= 45
@@ -1891,7 +1834,6 @@
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
-; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
 #LINK= 847[0]
 #SENDER_ID= 45
