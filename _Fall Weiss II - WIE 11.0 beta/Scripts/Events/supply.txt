@@ -23,7 +23,7 @@
 ;        2 = Reoccurring check until end of game
 ;                       OR
 ;        Once the #DATE field is satisfied:
-;        3 = Event fires once if all other fields are satisfied, else it will not fire.  
+;        3 = Event fires once if all other fields are satisfied, else it will not fire.
 ;            Either way, event will be removed never to be looked at again
 ; #AI= Values range [0, 6]
 ;      0 = Event fires whenever all fields are satisfied for any game type
@@ -46,14 +46,14 @@
 ; #GV= Is the event activation based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
-;      Example A) #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
-;      Example B) #GV= 4[71,100] will trigger 30% per game
+;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;      Example B - #GV= 4[71,100] will trigger 30% per game
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
 ;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
-;        Example A) #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
-;        Example B) #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
-;        Example C) #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
+;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
+;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
+;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
 ; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
 ; #COUNTRY_ID= Country ID that will be owner of supply event
 ; #ALIGNMENT_ID= Value range [0, 2]
@@ -62,11 +62,18 @@
 ;        1 = Axis;
 ;        2 = Allied;
 ; #FLAG_ID= Flag ID that will be shown in the popup for this event
-; #SEASON_FLAG= Season flag can be used to limit event to a particular season
+; #SEASON_FLAG= Value range[0, 4]
+;        Season flag can be used to limit event to a particular season
+;           0 = ALL_SEASONS;
+;           1 = SPRING;
+;           2 = SUMMER;
+;           3 = FALL;
+;           4 = WINTER;
 ; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
 ; #SOURCE_POSITION= Map position that could also trigger the event 
 ;                   Format: x,y [unit_id]
-;                   unit_id.xx is a mouse hover style where xx refers to the sprite index of the symbol_sprites.png file that will be shown at #SOURCE_POSITION.
+;                   unit_id.xx is a mouse hover style where xx refers to the sprite index of the symbol_sprites.png 
+;                   file that will be shown at #SOURCE_POSITION.
 ;                   If unit_id.xx is used then the mouse hover information text will show the #POPUP text.
 ; #DESTINATION_RESOURCE= Resource positions that will be affected by event as well as the
 ;                        resource strength reduction range (Format: x,y [min, max])
@@ -404,10 +411,10 @@
 #DESTINATION_RESOURCE= 156,77 [1,4]
 #DESTINATION_RESOURCE= 155,76 [1,4]
 #DESTINATION_RESOURCE= 156,75 [1,4]
-; 1st Line - Belgium(10) aligned Allied, fully mobilized
-; 2nd Line - France(10) aligned Allied, fully mobilized
-; 3rd Line - UK(112) aligned Allied, fully mobilized
-; 4th Line - USA(115) aligned Allied, fully mobilized
+; Belgium(10) aligned Allied, fully mobilized
+; France(10) aligned Allied, fully mobilized
+; UK(112) aligned Allied, fully mobilized
+; USA(115) aligned Allied, fully mobilized
 #VARIABLE_CONDITION= 10 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -492,11 +499,11 @@
 #DESTINATION_RESOURCE= 155,81 [2,4]
 #DESTINATION_RESOURCE= 151,81 [2,4]
 #DESTINATION_RESOURCE= 154,83 [2,4]
-; 1st Line - Belgium(10) politically aligned with the Allies and surrendered
+; Belgium(10) aligned with the Allies and surrendered
 #VARIABLE_CONDITION= 10 [2] [100] [1]
-; 2nd Line - USA(115) politically aligned with the Allies but not fully mobilized
+; USA(115) aligned with the Allies but not fully mobilized
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; 3rd Line - France(40) politically aligned with the Allies and not surrendered
+; France(40) aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 }
 
@@ -519,7 +526,7 @@
 #DATE= 1941/02/25
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 156,75 [2,3]
-; 1st Line - Netherlands politically aligned with the Allies and surrendered
+; Netherlands aligned with the Allies and surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [1]
 }
 
@@ -542,7 +549,7 @@
 #DATE= 1943/04/29
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 157,79 [2,3]
-; 1st Line - Netherlands politically aligned with the Allies and surrendered
+; Netherlands aligned with the Allies and surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [1]
 }
 
@@ -565,7 +572,7 @@
 #DATE= 1942/01/01
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 175,103 [1,3]
-; 1st Line - USA(115) politically aligned with the Allies and not surrendered
+; USA(115) aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 }
 
@@ -639,7 +646,7 @@
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 139,76 [2,4]
 #DESTINATION_RESOURCE= 144,72 [2,4]
-; 1st Line - UK(112) politically aligned with the Allies and not surrendered
+; UK(112) aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
@@ -662,9 +669,9 @@
 #DATE= 1941/05/27
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 153,81 [2,4]
-; 1st Line - UK(112) politically aligned with the Allies and not surrendered
+; UK(112) aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; 2nd Line - France(40) politically aligned with the Allies and surrendered
+; France(40) aligned with the Allies and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 }
 
@@ -701,7 +708,7 @@
 #DESTINATION_RESOURCE= 232,118 [5,5]
 #DESTINATION_RESOURCE= 225,120 [5,5]
 #DESTINATION_RESOURCE= 231,114 [5,5]
-; Iraq politically aligned with Axis and not surrendered
+; Iraq Axis and not surrendered
 #VARIABLE_CONDITION= 56 [1] [100] [0]
 }
 
@@ -1006,6 +1013,7 @@
 #SEASON_FLAG= 0
 #DATE= 1941/08/01
 #SOURCE_POSITION=
+; Tobruk(194,122)
 #DESTINATION_RESOURCE= 194,122 [1,3]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
@@ -1097,6 +1105,7 @@
 #SEASON_FLAG= 0
 #DATE= 1941/08/01
 #SOURCE_POSITION=
+; Mersa Matruh(200,124)
 #DESTINATION_RESOURCE= 200,124 [1,3]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
@@ -1229,7 +1238,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ;
-; Reykjavik reduced to 0 so Germans cannot immediately operate to Iceland
+; Reykjavik(104,37) reduced to 0 so Germans cannot immediately operate to Iceland
 ; after Danish Annexation
 {
 #NAME= DE 601 - Iceland Supply Reduction (One Time)
@@ -1251,7 +1260,7 @@
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 103,36 [10,10]
 #DESTINATION_RESOURCE= 104,37 [10,10]
-; Germany politically aligned with Axis and not surrendered
+; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
@@ -1274,8 +1283,9 @@
 #SEASON_FLAG= 0
 #DATE= 1944/08/01
 #SOURCE_POSITION=
+; Warsaw(188,76)
 #DESTINATION_RESOURCE= 188,76 [5,8]
-; Germany politically aligned with Axis and not surrendered
+; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
@@ -1301,7 +1311,7 @@
 #DESTINATION_RESOURCE= 195,78 [1,3]
 #DESTINATION_RESOURCE= 193,71 [1,3]
 #DESTINATION_RESOURCE= 192,73 [1,3]
-; Germany politically aligned with Axis and not surrendered
+; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
@@ -1312,10 +1322,11 @@
 ; Malta limits Axis supply in the Mediterranean
 { 
 #NAME= Malta Effect (Tripoli, Sirte, El Agheila, Benghazi, Derna) (15% Chance)
-#POPUP= Malta Hinders Axis Supply In the Mediterranean (Tripoli, El Agheila, Benghazi)
+#POPUP= Malta Hinders Axis Supply In the Mediterranean (Tripoli, Sirte, El Agheila, Benghazi)
 #IMAGE=
 #SOUND=
 #FLAG= 1
+; 2 = Reoccurring check until end of game
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
@@ -1326,7 +1337,7 @@
 #FLAG_ID= 112
 #TRIGGER= 15
 #SEASON_FLAG= 0
-#DATE= 1940/08/01
+#DATE= 1941/01/01
 ; Malta(175,114) [any unit]
 #SOURCE_POSITION= 175,114 [-1]
 ; Tripoli(172,121)
@@ -1339,13 +1350,40 @@
 #DESTINATION_RESOURCE= 184,126 [1,2]
 ; Benghazi(186,122)
 #DESTINATION_RESOURCE= 186,122 [1,2]
-; Benghazi Port
+; Benghazi(Port)
 #DESTINATION_RESOURCE= 185,122 [1,2]
-; Derna(191, 120)
+; UK(112) aligned with the Allies and not surrendered
+; Egypt(36) aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+}
+
+; Malta limits Axis supply in the Mediterranean
+{ 
+#NAME= Malta Effect (Derna, Msus, Mekili, Gazala) (15% Chance)
+#POPUP= Malta Hinders Axis Supply In the Mediterranean (Derna, Msus, Mekili, Gazala)
+#IMAGE=
+#SOUND=
+#FLAG= 1
+; 2 = Reoccurring check until end of game
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 15
+#SEASON_FLAG= 0
+#DATE= 1941/01/01
+; Malta(175,114) [any unit]
+#SOURCE_POSITION= 175,114 [-1]
+; Derna(191,120)
 #DESTINATION_RESOURCE= 191,120 [1,2]
 ; Msus(188,124)
 #DESTINATION_RESOURCE= 188,124 [1,2]
-; Mekili(190, 122)
+; Mekili(190,122)
 #DESTINATION_RESOURCE= 190,122 [1,2]
 ; Gazala(192,122)
 #DESTINATION_RESOURCE= 192,122 [1,2]
@@ -1353,19 +1391,20 @@
 #DESTINATION_RESOURCE= 175,121 [1,2]
 ; Buerat(177,123) - Added by Fall Weiss
 #DESTINATION_RESOURCE= 177,123 [1,2]
-; 1st Line - UK(112) politically aligned with the Allies and not surrendered
+; UK(112) aligned with the Allies and not surrendered
+; Egypt(36) aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; 2nd Line - Egypt(36) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 }
 
 ; Malta limits Axis supply in the Mediterranean
 { 
-#NAME= Malta Effect (Tobruk, Bardia, Sidi Barrani, Mersa Matruh, El Alamein, Alexandria) (20% Chance)
-#POPUP= Malta Hinders Axis Supply In the Mediterranean (Tobruk, El Alamein, Alexandria)
+#NAME= Malta Effect (Tobruk, Alexandria, Port Said) (20% Chance)
+#POPUP= Malta Hinders Axis Supply In the Mediterranean (Tobruk, Alexandria, Port Said)
 #IMAGE=
 #SOUND=
 #FLAG= 1
+; 2 = Reoccurring check until end of game
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
@@ -1376,26 +1415,58 @@
 #FLAG_ID= 112
 #TRIGGER= 20
 #SEASON_FLAG= 0
-#DATE= 1940/07/01
-; Malta(174,114)
+#DATE= 1940/08/01
+; Malta(174,114) [any unit]
 #SOURCE_POSITION= 175,114 [-1]
 ; Tobruk - Port
 #DESTINATION_RESOURCE= 195,121 [1,2]
 ; Tobruk(194,122)
 #DESTINATION_RESOURCE= 194,122 [1,2]
+; Alexandria(Port)
 #DESTINATION_RESOURCE= 205,123 [1,2]
+; Alexandria(206,124)
 #DESTINATION_RESOURCE= 206,124 [1,2]
+; Port Said(209,122)
 #DESTINATION_RESOURCE= 209,122 [1,2]
 #DESTINATION_RESOURCE= 209,123 [1,2]
-#DESTINATION_RESOURCE= 191,120 [1,2]
+; UK(112) aligned with the Allies and not surrendered
+; Egypt(36) aligned with the Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+}
+
+; Malta limits Axis supply in the Mediterranean
+{ 
+#NAME= Malta Effect (Bardia, Sidi Barrani, Mersa Matruh, El Alamein) (20% Chance)
+#POPUP= Malta Hinders Axis Supply In the Mediterranean (Bardia, Sidi Barrani, Mersa Matruh, El Alamein)
+#IMAGE=
+#SOUND=
+#FLAG= 1
+; 2 = Reoccurring check until end of game
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 20
+#SEASON_FLAG= 0
+#DATE= 1940/08/01
+; Malta(174,114) [any unit]
+#SOURCE_POSITION= 175,114 [-1]
 ; Bardia(196,123)
 #DESTINATION_RESOURCE= 196,123 [1,2]
+; Sidi Barrani(198,123)
 #DESTINATION_RESOURCE= 198,123 [1,2]
+; Mersa Matruh(200,124)
 #DESTINATION_RESOURCE= 200,124 [1,2]
+; El Alamein(204,125)
 #DESTINATION_RESOURCE= 204,125 [1,2]
-; 1st Line - UK(112) politically aligned with the Allies and not surrendered
+; UK(112) aligned with the Allies and not surrendered
+; Egypt(36) aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; 2nd Line - Egypt(36) politically aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 }
 
@@ -1419,7 +1490,7 @@
 #DATE= 1942/03/28
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 142,89 [8,10]
-; 1st Line - UK(112) politically aligned with the Allies and not surrendered
+; UK(112) aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
@@ -1443,7 +1514,7 @@
 #DATE= 1942/03/28
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 142,89 [10,10]
-; 1st Line - UK(112) politically aligned with the Allies and not surrendered
+; UK(112) aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
@@ -1467,7 +1538,7 @@
 #DATE= 1942/03/28
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 142,89 [10,10]
-; 1st Line - UK(112) politically aligned with the Allies and not surrendered
+; UK(112) aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
@@ -1482,6 +1553,7 @@
 #IMAGE=
 #SOUND=
 #FLAG= 1
+; 2 = Reoccurring check until end of game
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
@@ -1509,10 +1581,11 @@
 #DESTINATION_RESOURCE= 175,114 [1,2]
 #DESTINATION_RESOURCE= 175,115 [1,2]
 #DESTINATION_RESOURCE= 176,115 [1,2]
+; Tobruk(194,122)
 #DESTINATION_RESOURCE= 194,122 [1,2]
 #DESTINATION_RESOURCE= 195,121 [1,2]
 #DESTINATION_RESOURCE= 205,123 [1,2]
-; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
+; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
@@ -1544,8 +1617,8 @@
 #SOURCE_POSITION= 18,99 [-1.6]
 #DESTINATION_RESOURCE= 0,103 [1,2]
 #DESTINATION_RESOURCE= 0,104 [1,2]
-; 1st Line - Germany(45) politically aligned with Axis and not surrendered
-; 2nd Line - USA(115) politically aligned with Allies and not surrendered
+; Germany(45) Axis and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 }
@@ -1571,8 +1644,8 @@
 #SOURCE_POSITION= 38,90 [-1.6]
 #SOURCE_POSITION= 38,91 [-1.6]
 #DESTINATION_RESOURCE= 36,91 [1,2]
-; 1st Line - Germany(45) politically aligned with Axis and not surrendered
-; 2nd Line - Canada(21) politically aligned with Allies and not surrendered
+; Germany(45) Axis and not surrendered
+; Canada(21) Allied and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 21 [2] [100] [0]
 }
@@ -1599,8 +1672,8 @@
 #SOURCE_POSITION= 31,96 [-1.6]
 #DESTINATION_RESOURCE= 30,95 [1,2]
 #DESTINATION_RESOURCE= 29,92 [1,2]
-; 1st Line - Germany(45) politically aligned with Axis and not surrendered
-; 2nd Line - Canada(21) politically aligned with Allies and not surrendered
+; Germany(45) Axis and not surrendered
+; Canada(21) Allied and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 21 [2] [100] [0]
 }
@@ -1616,6 +1689,7 @@
 #IMAGE=
 #SOUND=
 #FLAG= 1
+; 2 = Reoccurring check until end of game
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
@@ -1643,10 +1717,11 @@
 #DESTINATION_RESOURCE= 175,114 [1,2]
 #DESTINATION_RESOURCE= 175,115 [1,2]
 #DESTINATION_RESOURCE= 176,115 [1,2]
+; Tobruk(194,122)
 #DESTINATION_RESOURCE= 194,122 [1,2]
 #DESTINATION_RESOURCE= 195,121 [1,2]
 #DESTINATION_RESOURCE= 205,123 [1,2]
-; 1st Line - Italy(59) politically aligned with the Axis and not surrendered
+; Italy(59) is Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 }
 
@@ -1671,7 +1746,6 @@
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 164,93 [1,3]
 #DESTINATION_RESOURCE= 169,95 [1,3]
-;Set variable conditions:
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -1766,8 +1840,8 @@
 #DESTINATION_RESOURCE= 172,120 [5,5]
 #DESTINATION_RESOURCE= 185,122 [5,5]
 #DESTINATION_RESOURCE= 195,121 [5,5]
-; Italy politically aligned with Axis, Fully Active and not surrendered
-; UK politically aligned with Allies, Fully Active and not surrendered
+; Italy(59) Axis, Fully Active and not surrendered
+; UK(112) Allied, Fully Active and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
@@ -1793,11 +1867,14 @@
 #DATE= 1940/07/01
 ; Alexandria(206,124) [any unit]
 #SOURCE_POSITION= 206,124 [-1]
-#DESTINATION_RESOURCE= 196,123 [3,4]
-#DESTINATION_RESOURCE= 198,123 [4,4]
-#DESTINATION_RESOURCE= 200,124 [5,5]
-; Italy politically aligned with Axis, Fully Active and not surrendered
-; UK politically aligned with Allies, Fully Active and not surrendered
+; Bardia(196,123)
+#DESTINATION_RESOURCE= 196,123 [1,3]
+; Sidi Barrani(198,123)
+#DESTINATION_RESOURCE= 198,123 [2,4]
+; Mersa Matruh(200,124)
+#DESTINATION_RESOURCE= 200,124 [3,5]
+; Italy(59) Axis, Fully Active and not surrendered
+; UK(112) Allied, Fully Active and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
@@ -1806,7 +1883,7 @@
 ; Supply Line 1940 North Africa
 {
 #NAME= DE 832 - Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
-#POPUP= Italian Supply Line Are Severely Stretched East Of Tobruk
+#POPUP= Italian Supply Line Are Severely Restricted East Of Tobruk (Bardia, Sidi Barrani, Mersa Matruh)
 #IMAGE= 
 #SOUND= 
 #FLAG= 1
@@ -1824,11 +1901,14 @@
 #DATE= 1940/09/15
 ; Alexandria(206,124) [any unit]
 #SOURCE_POSITION= 206,124 [-1]
-#DESTINATION_RESOURCE= 196,123 [3,4]
-#DESTINATION_RESOURCE= 198,123 [4,4]
-#DESTINATION_RESOURCE= 200,124 [5,5]
-; Italy politically aligned with Axis, Fully Active and not surrendered
-; UK politically aligned with Allies, Fully Active and not surrendered
+; Bardia(196,123)
+#DESTINATION_RESOURCE= 196,123 [1,3]
+; Sidi Barrani(198,123)
+#DESTINATION_RESOURCE= 198,123 [2,4]
+; Mersa Matruh(200,124)
+#DESTINATION_RESOURCE= 200,124 [3,5]
+; Italy(59) Axis, Fully Active and not surrendered
+; UK(112) Allied, Fully Active and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
@@ -1855,11 +1935,14 @@
 #DATE= 1940/12/01
 ; Alexandria(206,124) [any unit]
 #SOURCE_POSITION= 206,124 [-1]
-#DESTINATION_RESOURCE= 196,123 [3,4]
-#DESTINATION_RESOURCE= 198,123 [4,4]
-#DESTINATION_RESOURCE= 200,124 [5,5]
-; Italy politically aligned with Axis, Fully Active and not surrendered
-; UK politically aligned with Allies, Fully Active and not surrendered
+; Bardia(196,123)
+#DESTINATION_RESOURCE= 196,123 [1,3]
+; Sidi Barrani(198,123)
+#DESTINATION_RESOURCE= 198,123 [2,4]
+; Mersa Matruh(200,124)
+#DESTINATION_RESOURCE= 200,124 [3,5]
+; Italy(59) Axis, Fully Active and not surrendered
+; UK(112) Allied, Fully Active and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
@@ -1886,15 +1969,15 @@
 #SOURCE_POSITION=
 ; British Trade
 #DESTINATION_RESOURCE= 0,2 [5,5]
-; Germany politically aligned with Axis, Fully Active and not surrendered
-; UK politically aligned with Allies, Fully Active and not surrendered
+; Germany(45) Axis, Fully Active and not surrendered
+; UK(112) Allied, Fully Active and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
 ; The Port of Kiel Is Stripped Of Kriegsmarine Personnel
 { 
-#NAME= DE 950 - The Port of Kiel Is Stripped Of Kriegsmarine Personnel
+#NAME= DE 950 - Germany: The Port of Kiel Is Stripped Of Kriegsmarine Personnel
 #POPUP= The Port of Kiel Is Stripped Of Kriegsmarine Personnel
 #IMAGE=
 #SOUND=
@@ -1904,7 +1987,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 950[1]
-#COUNTRY_ID= 112
+#COUNTRY_ID= 45
 #ALIGNMENT_ID= 0
 #FLAG_ID= 45
 #TRIGGER= 100
@@ -1912,13 +1995,13 @@
 #DATE= 1944/01/01
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 167,69 [10,10]
-; 1st Line - UK(112) politically aligned with the Allies and not surrendered
+; UK(112) aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
 ; The Port of Stettin Is Stripped Of Kriegsmarine Personnel
 { 
-#NAME= DE 951 - The Port of Stettin Is Stripped Of Kriegsmarine Personnel
+#NAME= DE 951 - Germany: The Port of Stettin Is Stripped Of Kriegsmarine Personnel
 #POPUP= The Port of Stettin Is Stripped Of Kriegsmarine Personnel
 #IMAGE=
 #SOUND=
@@ -1928,7 +2011,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 951[1]
-#COUNTRY_ID= 112
+#COUNTRY_ID= 45
 #ALIGNMENT_ID= 0
 #FLAG_ID= 45
 #TRIGGER= 100
@@ -1936,13 +2019,13 @@
 #DATE= 1944/01/01
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 175,71 [10,10]
-; 1st Line - UK(112) politically aligned with the Allies and not surrendered
+; UK(112) aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
 ; Protests At Helsinki
 {
-#NAME= DE 847 - Helsinki Protests (5% Chance)
+#NAME= DE 847 - Finland: Helsinki Protests (5% Chance)
 #POPUP= Demonstrations Against War With The Western Allies Disrupt Supply In Helsinki 
 #IMAGE= 
 #SOUND= 
@@ -1961,8 +2044,8 @@
 #DATE= 1940/01/01
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 195,51 [2,4]
-; Finland politically aligned with Axis, Fully Active and not surrendered
-; UK politically aligned with Allies, Fully Active and not surrendered
+; Finland Axis, Fully Active and not surrendered
+; UK(112) Allied, Fully Active and not surrendered
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
@@ -1992,15 +2075,14 @@
 #VARIABLE_CONDITION= 99 [1] [100] [0]
 }
 
-
-; Replacement Script
 ; Crete limits Axis supply in the Mediterranean
 { 
-#NAME= Crete Effect (Tobruk, Bardia, Sidi Barrani, Mersa Matruh, El Alamein, Alexandria) (20% Chance)
+#NAME= Crete Effect (Tobruk, Bardia, Derna, Sidi Barrani, Mersa Matruh, El Alamein, Alexandria) (20% Chance)
 #POPUP= The Presence Of Allied Troops Hinders Axis Supply In North Africa (Tobruk, El Alamein, Alexandria)
 #IMAGE=
 #SOUND=
 #FLAG= 1
+; 2 = Reoccurring check until end of game
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
@@ -2012,21 +2094,29 @@
 #TRIGGER= 20
 #SEASON_FLAG= 0
 #DATE= 1940/06/01
-; Heraklion [any unit]
+; Heraklion(196,116) [any unit]
 #SOURCE_POSITION= 196,116 [-1.5]
 #DESTINATION_RESOURCE= 195,121 [1,3]
+; Tobruk(194,122)
 #DESTINATION_RESOURCE= 194,122 [1,3]
 #DESTINATION_RESOURCE= 205,123 [1,3]
+; Alexandria(206,124)
 #DESTINATION_RESOURCE= 206,124 [1,3]
+; Port Said(209,122)
 #DESTINATION_RESOURCE= 209,122 [1,3]
 #DESTINATION_RESOURCE= 209,123 [1,3]
+; Derna(191,120)
 #DESTINATION_RESOURCE= 191,120 [1,3]
+; Bardia(196,123)
 #DESTINATION_RESOURCE= 196,123 [1,3]
+; Sidi Barrani(198,123)
 #DESTINATION_RESOURCE= 198,123 [1,3]
+; Mersa Matruh(200,124)
 #DESTINATION_RESOURCE= 200,124 [1,3]
+; El Alamein(204,125)
 #DESTINATION_RESOURCE= 204,125 [1,3]
-; 1st Line - UK(112) politically aligned with the Allies and not surrendered
-; 2nd Line - Egypt(36) politically aligned with the Allies and not surrendered
+; UK(112) aligned with the Allies and not surrendered
+; Egypt(36) aligned with the Allies and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -2052,11 +2142,13 @@
 #SEASON_FLAG= 0
 #DATE= 1939/09/03
 #SOURCE_POSITION=
+; Alexandria(206,124)
 #DESTINATION_RESOURCE= 206,124 [3,4]
+; El Alamein(204,125)
 #DESTINATION_RESOURCE= 204,125 [2,3]
 #DESTINATION_RESOURCE= 205,123 [3,4]
 #DESTINATION_RESOURCE= 206,123 [2,3]
-; Germany politically aligned with Axis, Fully Active and not surrendered
+; Germany(45) Axis, Fully Active and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
@@ -2155,7 +2247,7 @@
 #SOURCE_POSITION=
 ; Stalingrad(234,85)
 #DESTINATION_RESOURCE= 234,85 [10,10]
-; 1st Line - Germany(45) politically aligned with the Axis and not surrendered
+; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
@@ -2176,8 +2268,9 @@
 #TRIGGER= 100
 #SEASON_FLAG= 0
 #DATE= 1941/08/13
-; Leningrad [any unit]
+; Leningrad(206,52) [any unit]
 #SOURCE_POSITION= 206,52 [-1]
+; Berlin(173,74)
 #DESTINATION_RESOURCE= 173,74 [1,2]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 }
@@ -2224,8 +2317,9 @@
 #TRIGGER= 100
 #SEASON_FLAG= 0
 #DATE= 1940/08/26
-; London [any unit]
+; London(147,77) [any unit]
 #SOURCE_POSITION= 147,77 [-1]
+; Berlin(173,74)
 #DESTINATION_RESOURCE= 173,74 [1,2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -2248,8 +2342,9 @@
 #TRIGGER= 100
 #SEASON_FLAG= 0
 #DATE= 1940/09/09
-; London [any unit]
+; London(147,77) [any unit]
 #SOURCE_POSITION= 147,77 [-1]
+; Berlin(173,74)
 #DESTINATION_RESOURCE= 173,74 [1,2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -2272,8 +2367,9 @@
 #TRIGGER= 100
 #SEASON_FLAG= 0
 #DATE= 1940/09/23
-; London [any unit]
+; London(147,77) [any unit]
 #SOURCE_POSITION= 147,77 [-1]
+; Berlin(173,74)
 #DESTINATION_RESOURCE= 173,74 [1,2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
