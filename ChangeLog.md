@@ -1,5 +1,5 @@
 # Changelog
-All notable changes to this project will be documented in this file.
+All notable changes (to Fall Weiss II WIE - 11 Beta) will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
@@ -7,12 +7,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 - Many new unit names have been added for Germany, Soviet Union
 - More than 18 Axis Units Near Warsaw From January 1941 (USSR->Allies) (50% Chance)
-    - now alerts player with Popup when conditions are not met
+    - now alerts player with "The USSR grows uneasy over the build up of Axis troops along its Polish border" when border garrison conditions are not met
 
 ## Changed
 
-- Significant reformatting of various decision and popup messages to enhance readability and consistency.
-- Removed hundreds of lines of junk comments across script files
+- Significant reformatting & editing of various decision and popup messages to enhance readability and consistency.
+- Fixed Resource tooltip descriptions.
+- Removed hundreds of lines of junk comments across script files (ongoing)
 - Updated/corrected existing comments
 - Neutral Italy can now pass through straits of Gibraltar
 - Axis Coastal Raiding/Shipping scripts apply to all Axis raiders
@@ -38,11 +39,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - DE 922 -  Germany: Imports From Switzerland
     - now requires Switzerland be Axis aligned
 
+- Scenario Data:
+    - Research Techs(Infantry, Armored, Aerial, Naval & Ballistic Warfare) that previously gave +5% morale bonus, now give +10%
+    - Research Tech(Aircraft Production) now give +1 build limit to Maritime Bombers.  Previously applied to Fighter and Medium Bombers
+    - Mountain Div adjusted to be more comparable with an *elite* Infantry Div rather than a Cavalry Div clone
+        - Arty, Rocket & Lt Armor Attack +1 (0->1) (equal to Inf Div)
+        - AC Attack -2 (4->2) (equal to Inf Div)
+        - Naval Attack -1 (3->2)  (1 > than Inf Div)
+        - Hard, Lt Armor & Carrier Defense +1 (0->1) (equal to Inf Div)
+        - 50% of Mountain Terrain bonus now applies to Hill Terrain
+    - Mech Div +1 Hard, Lt Armor Attack (1->2) (for comparison, Mech Corp have 3 HA, 3 LAA)
+    - Italy +1 Maritime Bomber build limits (1->2) (equal to UK) (historically, Italy had a significant number of torpedo / naval air)
+    - German +2 Light Cruiser build limits (0->2) (for comparison, USSR can build 6!)
 
 ## Fixed
 
-- 200+ typos and spelling errors
-- Merged in changes / fixes from 1939 Storm Across Europe to include:
+- 200+ typos and spelling errors corrected.
+- Merged in changes / fixes from 1939 Storm Across Europe (July, 2023) to include:
     - Change the river at Kherson (211,90) to use Major River tile 316 and 561 for the river mouth (Radar8717).
     - DE 601 will now trigger the deployment of a German Garrison unit in Copenhagen (OxfordGuy3).
     - Soviet Winter can now lead to the loss of Axis units if they are at low strength.
@@ -54,6 +67,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - Changed the terrain to numbers 147 and 498 in hexes 190,13 and 191,12 respectively, as well as changing 191,13 to be a fully land hex, to enable rail traffic to pass to and from Alta in Norway (Scottydawg).
     - Deleted the forest in hex 198,89 to avoid confusion as it couldn't be easily seen (mdsmall).
     - All Decision Events (DE 306; 353 and 454) relating to the US sending supplies to the USSR via Persia now require all road hexes between Bandar Abbas and Baku to be in Allied hands (Hobbygeneral).
+    - DE 601 - Garrison Unit In Copenhagen
+    - ... and more ...
 - Saudi Arabia Ends Diplomatic Relations With Germany changed to 1939/09/11
 - AXIS AI: Germany Declares War On The USA
     - #BELLIGERENCE_CONDITION= [112,59] changed to #BELLIGERENCE_CONDITION= [112,45]
