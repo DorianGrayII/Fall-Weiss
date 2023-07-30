@@ -368,8 +368,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-
-;
 {
 #NAME= Allied Mediterranean Positions - Gibraltar (1)
 #POPUP=
@@ -400,7 +398,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 } 
 
-;
 {
 #NAME= Allied Mediterranean Positions - Gibraltar (2)
 #POPUP=
@@ -432,7 +429,6 @@
 #CONDITION_POSITION= 136,114 [0,0] [0,0] [2] [0]
 } 
 
-;
 {
 #NAME= Allied Mediterranean Positions - Malta (1)
 #POPUP=
@@ -463,7 +459,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 } 
 
-;
 {
 #NAME= Allied Mediterranean Positions - Malta (2)
 #POPUP=
@@ -495,7 +490,6 @@
 #CONDITION_POSITION= 175,114 [0,0] [0,0] [2] [0]
 } 
 
-;
 {
 #NAME= Allied Mediterranean Positions - Cairo (1)
 #POPUP=
@@ -526,7 +520,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 } 
 
-;
 {
 #NAME= Allied Mediterranean Positions - Cairo (2)
 #POPUP=
@@ -558,7 +551,6 @@
 #CONDITION_POSITION= 208,126 [5,5] [0,0] [2] [0]
 } 
 
-;
 {
 #NAME= Allied Mediterranean Positions - Tunis (1)
 #POPUP=
@@ -589,7 +581,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 } 
 
-;
 {
 #NAME= Allied Mediterranean Positions - Tunis (2)
 #POPUP=
@@ -621,7 +612,6 @@
 #CONDITION_POSITION= 167,112 [5,5] [0,0] [2] [0]
 } 
 
-;
 {
 #NAME= Allied Mediterranean Positions - Damascus (1)
 #POPUP=
@@ -652,7 +642,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 } 
 
-;
 {
 #NAME= Allied Mediterranean Positions - Damascus (2)
 #POPUP=
@@ -684,7 +673,6 @@
 #CONDITION_POSITION= 218,119 [5,5] [0,0] [2] [0]
 } 
 
-;
 {
 #NAME= Germany(AI) : German/Soviet Front Garrison Report 1940
 #POPUP= <<TAG_3>>
@@ -716,11 +704,10 @@
 #CONDITION_POSITION= 188,76 [10,10] [2,2] [1] [0] [<]
 }
 
-;
 {
 #NAME= Germany(AI) : German/Soviet Front Garrison Report 1940
 #POPUP= 
-#MESSAGE= <<TAG_178>>
+#MESSAGE= Ensure that we have at least two units within 10 hexes of Warsaw
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -780,7 +767,7 @@
 {
 #NAME= Germany(AI) : German/Soviet Front Garrison Report (Requirements not met) 1940
 #POPUP=
-#MESSAGE= <<TAG_178>>
+#MESSAGE= Ensure that we have at least two units within 10 hexes of Warsaw
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -827,8 +814,8 @@
 #MAP_POSITION= 179,70
 #MAP_POSITION= 181,69
 #DATE= 1940/01/01 [=]
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
+; Warsaw(188,76) is Axis
+#ALIGNMENT_POSITION= 188,76 [1]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis have less than 2 units within 10 hexes of Warsaw(188,76)
@@ -860,8 +847,8 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION= 188,76
 #DATE= 1941/01/01
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
+; Warsaw(188,76) is Axis
+#ALIGNMENT_POSITION= 188,76 [1]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis have less than 4 units within 10 hexes of Warsaw(188,76)
@@ -870,9 +857,9 @@
 
 ;
 {
-#NAME= DE 600 - Germany(AI) : German/Soviet Front Garrison Report 1941
+#NAME= DE 600 - Germany(AI) : German/Soviet Front Garrison Report (4-15 units) (Requirements met) 1941
 #POPUP= 
-#MESSAGE= <<TAG_179>>
+#MESSAGE= Ensure that we have at least four units within 10 hexes of Warsaw
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -921,19 +908,18 @@
 #MAP_POSITION= 179,70
 #MAP_POSITION= 181,69
 #DATE= 1941/01/01
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
+; Warsaw(188,76) is Axis
+#ALIGNMENT_POSITION= 188,76 [1]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy Condition Position
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Axis have 4-15 units within 10 hexes of Warsaw(188,76)
+#CONDITION_POSITION= 188,76 [10,10] [4,15] [1] [0] 
 }
 
-;
 {
 #NAME= Germany(AI) : German/Soviet Front Garrison Report (Requirements not met) 1941
 #POPUP=
-#MESSAGE= <<TAG_179>>
+#MESSAGE= Ensure that we have at least four units within 10 hexes of Warsaw
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -981,8 +967,8 @@
 #MAP_POSITION= 179,70
 #MAP_POSITION= 181,69
 #DATE= 1941/01/01
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
+; Warsaw(188,76) is Axis
+#ALIGNMENT_POSITION= 188,76 [1]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis have less than 4 units within 10 hexes of Warsaw(188,76)
@@ -991,9 +977,9 @@
 
 ;
 {
-#NAME= Germany(AI) : German/Soviet Front Garrison Report 1941 (more than 18 units) (Requirements not met)
+#NAME= Germany(AI) : German/Soviet Front Garrison Report 1941 (16-18 units) (Requirements met)
 #POPUP=
-#MESSAGE= <<TAG_180>>
+#MESSAGE= WARNING - Approaching 18 units within 10 hexes of Warsaw
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -1007,6 +993,67 @@
 #PRIVATE= 1
 #DISPLAY_ORDER= 1
 #DISPLAY_TURN= 1
+; yellow hash
+#DISPLAY_STYLE= 2.3
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 255,255,255
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION= 186,74
+#MAP_POSITION= 189,66
+#MAP_POSITION= 191,67
+#MAP_POSITION= 193,68
+#MAP_POSITION= 195,69
+#MAP_POSITION= 197,70
+#MAP_POSITION= 198,72
+#MAP_POSITION= 198,74
+#MAP_POSITION= 198,76
+#MAP_POSITION= 198,78
+#MAP_POSITION= 198,80
+#MAP_POSITION= 197,81
+#MAP_POSITION= 195,82
+#MAP_POSITION= 193,83
+#MAP_POSITION= 191,84
+#MAP_POSITION= 189,85
+#MAP_POSITION= 187,85
+#MAP_POSITION= 185,84
+#MAP_POSITION= 183,83
+#MAP_POSITION= 181,82
+#MAP_POSITION= 179,81
+#MAP_POSITION= 178,80
+#MAP_POSITION= 178,78
+#MAP_POSITION= 178,76
+#MAP_POSITION= 178,74
+#MAP_POSITION= 178,72
+#MAP_POSITION= 179,70
+#MAP_POSITION= 181,69
+#DATE= 1941/01/01
+; Warsaw(188,76) is Axis
+#ALIGNMENT_POSITION= 188,76 [1]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Axis have 16-18 units within 10 hexes of Warsaw(188,76)
+#CONDITION_POSITION= 188,76 [10,10] [16,18] [1] [0]
+}
+
+
+{
+#NAME= Germany(AI) : German/Soviet Front Garrison Report 1941 (more than 18 units) (Requirements not met)
+#POPUP=
+#MESSAGE= Having more than 18 units within 10 hexes of Warsaw increases Soviet Mobilization
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 4
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 1
+; blue hash with Red '!'
 #DISPLAY_STYLE= 2.14
 #MESSAGE_STYLE= 0
 #TEXT_RGB= 255,255,255
@@ -1040,8 +1087,8 @@
 #MAP_POSITION= 179,70
 #MAP_POSITION= 181,69
 #DATE= 1941/01/01
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
+; Warsaw(188,76) is Axis
+#ALIGNMENT_POSITION= 188,76 [1]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis have more than 18 units within 10 hexes of Warsaw(188,76)
@@ -1125,7 +1172,6 @@
 #CONDITION_POSITION= 213,115 [2,2] [0,0] [1] [0]
 }
 
-;
 {
 #NAME= DE 703 - Italy(AI) : Report On Our Attempts To Bribe Greek Officers And Politicians (70% Chance)
 #POPUP= Report To The Italian High Command
@@ -1179,7 +1225,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/01/01
-; Madrid is Axis
+; Madrid(139,104) is Axis
 #ALIGNMENT_POSITION= 139,104 [1]
 #VARIABLE_CONDITION= 99 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1214,7 +1260,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;
 {
 #NAME= UK(AI) : Italian Mobilization Trigger Zone (Naval)
 #POPUP=
@@ -1268,7 +1313,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;
 {
 #NAME= UK(AI) : Italian Mobilization Trigger Zone (Amphibious)
 #POPUP=
@@ -1286,6 +1330,7 @@
 #PRIVATE= 1
 #DISPLAY_ORDER= 1
 #DISPLAY_TURN= 2
+; yellow hash
 #DISPLAY_STYLE= 2.3
 #MESSAGE_STYLE= 0
 #DATE= 1939/09/01
@@ -1597,7 +1642,7 @@
 #ALIGNMENT_POSITION= 188,76 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; 10 or more Axis units within 10 hexes of Warsaw
+; 10 or more Axis units within 10 hexes of Warsaw(188,76)
 #CONDITION_POSITION= 188,76 [10,10] [10,10] [1] [0]
 }
 
@@ -1656,9 +1701,10 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/01/01
-; Athens is Axis
+; Athens(193,109) is Axis
 #ALIGNMENT_POSITION= 193,109 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
+; Greece has surrendered
 #VARIABLE_CONDITION= 46 [2] [100] [1]
 ; No Axis units within 3 hexes of Athens
 #CONDITION_POSITION= 193,109 [3,3] [0,0] [1] [0]
@@ -1688,7 +1734,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1944/01/01
-; Oslo is Axis
+; Oslo(167,52) is Axis
 #ALIGNMENT_POSITION= 167,52 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 78 [2] [100] [1]
@@ -1754,7 +1800,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/01/01
-; Madrid is Axis
+; Madrid(139,104) is Axis
 #ALIGNMENT_POSITION= 139,104 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; 3 or more Axis units within 3 hexes of Madrid
@@ -1834,7 +1880,7 @@
 #ALIGNMENT_POSITION= 198,129 [2]
 ; Sirte is Axis
 #ALIGNMENT_POSITION= 179,124 [1]
-; Tripoli is Axis
+; Tripoli(172,121) is Axis
 #ALIGNMENT_POSITION= 172,121 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; 2 Axis units within 3 hexes of Tripoli
@@ -1914,7 +1960,7 @@
 #ALIGNMENT_POSITION= 179,124 [1]
 ; El Agheila is Axis
 #ALIGNMENT_POSITION= 184,126 [1]
-; Tripoli is Axis
+; Tripoli(172,121) is Axis
 #ALIGNMENT_POSITION= 172,121 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; 2 Axis units within 3 hexes of Sirte
@@ -3506,7 +3552,6 @@
 #ALIGNMENT_POSITION= 156,80 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 10 [2] [100] [0]
-; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -3611,7 +3656,6 @@
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [50] [0]
-; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -3643,7 +3687,6 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -3675,7 +3718,6 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4482,7 +4524,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/01/29
-; Athens is Allied
+; Athens(193,109) is Allied
 #ALIGNMENT_POSITION= 193,109 [2]
 #VARIABLE_CONDITION= 46 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7023,7 +7065,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/01/01
-; Tripoli is Allied
+; Tripoli(172,121) is Allied
 #ALIGNMENT_POSITION= 172,121 [2]
 ; Warsaw(188,76) is Axis
 #ALIGNMENT_POSITION= 188,76 [1]
@@ -7891,7 +7933,7 @@ Replacement Script
 {
 #NAME= DE 836 - Greek Neutrality
 #POPUP= Diplomatic Advice
-#MESSAGE=%N%N %BRe: %BGreek %BNeutrality %N%N Despite our recently successful efforts to encourage Greece to severe ties with Germany, our enemy has continued to press relations with the Metaxis Government in Athens. %N%N We must be prudent in dissuading Axis influence over Metaxis or we could in the future see Greece side with Germany should the war spread into the Balkans. %N%N%CRecommendations: %N%N Counter any diplomatic efforts by Germany to sway Greece towards Axis influence.
+#MESSAGE=%N%N %BRe: %BGreek %BNeutrality %N%N Despite our recently successful efforts to encourage Greece to severe ties with Germany, our enemy has continued to press relations with the Metaxas Government in Athens. %N%N We must be prudent in dissuading Axis influence over Metaxas or we could in the future see Greece side with Germany should the war spread into the Balkans. %N%N%CRecommendations: %N%N Counter any diplomatic efforts by Germany to sway Greece towards Axis influence.
 #IMAGE= communication.png
 #SOUND= 
 #FLAG= 1
@@ -8032,7 +8074,7 @@ Replacement Script
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/01
-; Athens is Allied
+; Athens(193,109) is Allied
 #ALIGNMENT_POSITION= 193,109 [2]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 #VARIABLE_CONDITION= 46 [2] [100] [0]
