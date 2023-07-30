@@ -533,7 +533,7 @@
 {
 #NAME= DE 104 - UK: Support A Pro-Allied Coup In Yugoslavia? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Office Of The British Foreign Secretary %N Anthony Eden %N%N Intelligence from the Kingdom of Yugoslavia shows that the regent, Prince Paul, is about to sign the Tripartite Pact and join the Axis.%N%N If we wish to stop him from doing so then we need to act now, and an opportunity to do so has fortunately presented itself as Prince Paul's nephew, King Peter II, is planning a coup.%N%N Peter II is totally opposed to the Axis and his success will inevitably bring Yugoslavia into conflict with the Axis, and with our help he may be able to increase his armed forces in time to offer significant resistance to the enemy.%N%N Providing officers and equipment to the Yugoslav armed forces will cost %B60 MPPs (30 MPPs for 2 turns).%N%N Would you like to support Peter II's pro-Allied Coup in Yugoslavia?
+#MESSAGE=Office Of The British Foreign Secretary %N Anthony Eden %N%N Intelligence from the Kingdom of Yugoslavia shows that the regent, Prince Paul, is about to sign the Tripartite Pact and join the Axis.%N%N If we wish to stop him from doing so then we need to act now, and an opportunity to do so has fortunately presented itself as Prince Paul's nephew, King Peter II, is planning a coup.%N%N Peter II is totally opposed to the Axis and his success will inevitably bring Yugoslavia into conflict with the Axis, and with our help he may be able to increase his armed forces in time to offer significant resistance to the enemy.%N%N Providing officers and equipment to the Yugoslav armed forces will cost %B60 MPPs (30 MPPs for 2 turns).%N%N Would you like to support Peter II's pro-Allied Coup in Yugoslavia %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -560,12 +560,10 @@
 #ALIGNMENT_POSITION= 147,77 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; UK(112) Allied and not surrendered
-; Germany(45) Axis and not surrendered
 ; France(40) Allied and surrendered
 ; Italy(59) Axis and not surrendered
-;  Yugoslavia(120) Axis and not surrendered
+; Yugoslavia(120) Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 120 [1] [0] [0]
@@ -696,7 +694,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; Event providing the opportunity to increase the size and scope of the Special Operations Executive
+; Event providing the opportunity to increase the size and scope of the Special Operations Executive (SOE)
 {
 #NAME= DE 108 - UK: Invest Funds In The Special Operations Executive? (AI - 100% Yes)
 #POPUP=
@@ -883,7 +881,7 @@
 {
 #NAME= DE 113 - UK: Prepare Operation Chariot: The Raid Against St Nazaire? (AI - 75% Yes)
 #POPUP=
-#MESSAGE=Combined Operations Headquarters %N Admiral of the Fleet Sir Roger Keyes %N%N The Germans are enhancing their naval base at St Nazaire for use by U-Boats and possibly surface vessels too.%N%N At a cost of %B20 MPPs, we could attempt to seriously damage this naval base in a bold strike by packing the %VHMS %VCampbeltown full of explosives and sending it to St Nazaire.%N%N At St Nazaire it will attempt to explode while wedged in the dock gates, hopefully destroying the port facilities.%N%N At the same time as the %VHMS %VCampbeltown attacks St Nazaire, commandos will land to disrupt the enemy's defenses. If successful, this operation could prevent the Germans from using St Nazaire for some time to come, possibly permanently.%N%N Would you like to prepare the %VHMS %VCampbeltown for a raid against St Nazaire?
+#MESSAGE=Combined Operations Headquarters %N Admiral of the Fleet Sir Roger Keyes %N%N %BRe: %BOperation %BChariot %N%N The Germans are enhancing their naval base at St Nazaire for use by U-Boats and possibly surface vessels too.%N%N At a cost of %B20 MPPs, we could attempt to seriously damage this naval base in a bold strike by packing the %VHMS %VCampbeltown full of explosives and sending it to St Nazaire.%N%N At St Nazaire it will attempt to explode while wedged in the dock gates, hopefully destroying the port facilities.%N%N At the same time as the %VHMS %VCampbeltown attacks St Nazaire, commandos will land to disrupt the enemy's defenses. If successful, this operation could prevent the Germans from using St Nazaire for some time to come, possibly permanently.%N%N Would you like to prepare the %VHMS %VCampbeltown for a raid against St Nazaire?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -936,7 +934,7 @@
 #DECISION= 114
 #MPP_UPDOWN= -50
 #MPP_TURNS= 1
-#MPP_TEXT= Commandos Raids
+#MPP_TEXT= Commando Raids
 #NOTES= If you say %B(YES), then commando raids will start taking place against Axis occupied Europe.%N%N These will target Norway, Belgium, France, and, if Spain is Axis, La Coruña.%N%N Royal Marines will also attack Bordeaux in December 1942, representing the raid of the "Cockleshell Heroes".
 #NOTES_POSITION=
 #AI_RESPONSE= 100
@@ -1196,7 +1194,7 @@
 #SHADOW_RGB= 0,0,0
 ; Siwa Oasis is Allied
 #ALIGNMENT_POSITION= 198,128 [2]
-; Tripoli is Axis
+; Tripoli(172,121) is Axis
 #ALIGNMENT_POSITION= 172,121 [1]
 ; Benghazi(186,122) is Axis
 #ALIGNMENT_POSITION= 186,122 [1]
@@ -1224,7 +1222,7 @@
 #DECISION= 122
 #MPP_UPDOWN= -50
 #MPP_TURNS= 2
-#MPP_TEXT= Coastal Command Iceland
+#MPP_TEXT= Coastal Maritime Patrol in Iceland
 #NOTES= If you say %B(YES), then you can use this Maritime Bomber to launch reconnaissance missions against likely U-Boat locations.%N%N It will be best to research and upgrade this unit with Long Range Aircraft so as to extend its strike range.%N%N This unit is in Icelandic service and cannot be Operated for use elsewhere.
 #NOTES_POSITION= 104,37
 #AI_RESPONSE= 100
@@ -1407,7 +1405,7 @@
 #DECISION= 128
 #MPP_UPDOWN= -10
 #MPP_TURNS= 1
-#MPP_TEXT= Norwegian Expedition
+#MPP_TEXT= Operation Rupert
 #NOTES= This mission has a fairly low probability of success, and none at all if the French don't also send a force to Narvik.%N%N Providing some naval support is recommended, particularly some Carriers to launch air strikes against the German forces defending Narvik.  The British attack should also result in disrupting German supply for a short time.%N%N But even so, it will not be easy to take and hold Narvik.
 #NOTES_POSITION= 181,18
 #AI_RESPONSE= 0
@@ -1418,8 +1416,6 @@
 ; Narvik(181,18) is Axis
 #ALIGNMENT_POSITION= 181,18 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Norway(78) Allied and surrendered
 #VARIABLE_CONDITION= 78 [2] [100] [1]
 ; USSR(116) aligned with the Allies but not fully mobilized
@@ -1616,7 +1612,7 @@
 #DATE= 1939/09/03
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-;Berlin in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and not surrendered
@@ -1654,13 +1650,11 @@
 #DATE= 1939/09/03
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-;Berlin in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and not surrendered
-; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -1692,7 +1686,7 @@
 #DATE= 1939/09/03
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-;Berlin in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and not surrendered
@@ -1841,13 +1835,11 @@
 #DATE= 1939/09/03
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-;Berlin in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and fully mobilized
-; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -1879,7 +1871,7 @@
 #DATE= 1939/09/03
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-;Berlin in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and not surrendered
@@ -1916,13 +1908,11 @@
 #DATE= 1939/09/03
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-;Berlin in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and not surrendered
-; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -1953,7 +1943,7 @@
 #DATE= 1939/09/03
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-;Berlin in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and not surrendered
@@ -1990,7 +1980,7 @@
 #DATE= 1939/09/03
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-;Berlin in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and not surrendered
@@ -2401,7 +2391,7 @@
 #ALIGNMENT_POSITION= 198,129 [2]
 ; Benghazi(186,122) is Allied
 #ALIGNMENT_POSITION= 186,122 [2]
-; Tripoli is Axis
+; Tripoli(172,121) is Axis
 #ALIGNMENT_POSITION= 172,121 [1]
 ; Sirte is Axis
 #ALIGNMENT_POSITION= 179,124 [1]
@@ -3081,7 +3071,6 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Norway(78) Axis but not fully mobilized
 #VARIABLE_CONDITION= 78 [1] [0] [0]
-; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4229,7 +4218,6 @@
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 116 [2] [100] [1]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [1]
 ; No Allied units are within 6 hexes of Paris or Nantes
 #CONDITION_POSITION= 151,84 [6,6] [0,0] [2] [0]
@@ -5510,7 +5498,7 @@
 {
 #NAME= DE 401 - USSR: Attack Finland in the Winter War? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Red Army Headquarters %N%N In order to decrease Leningrad's vulnerability to attack from the north, and to weaken the Finnish army, it is suggested that we force Finland to hand over some territory to us.%N%N We can demand the Karelian Isthmus (the area north of Leningrad) and the port of Hanko to the west of Helsinki.%N%N Would you like to force Finland to transfer the Karelian Isthmus and Hanko to our control?
+#MESSAGE=Red Army Headquarters %N%N In order to decrease Leningrad's vulnerability to attack from the north, and to weaken the Finnish army, it is suggested that we force Finland to hand over some territory to us.%N%N We can demand the Karelian Isthmus (the area north of Leningrad) and the port of Hanko to the west of Helsinki.%N%N Would you like to force Finland to transfer the Karelian Isthmus and Hanko to our control %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -5546,7 +5534,7 @@
 {
 #NAME= DE 402 - USSR: Transfer Industry To The Urals? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Red Army Headquarters %N%N The enemy's advance is threatening our industrial resources in the Ukraine, and without these resources the war could soon be lost.%N%N It is therefore vital that we transfer technicians and machinery to the Urals where new factories can be built to continue the war effort.%N%N Doing so will temporarily disrupt production in the Ukraine, but in the long run the benefit will far outweigh the cost.%N%N Would you like to authorize the transfer of industrial resources to safety in the Urals?
+#MESSAGE=Red Army Headquarters %N%N The enemy's advance is threatening our industrial resources in the Ukraine, and without these resources the war could soon be lost.%N%N It is therefore vital that we transfer technicians and machinery to the Urals where new factories can be built to continue the war effort.%N%N Doing so will temporarily disrupt production in the Ukraine, but in the long run the benefit will far outweigh the cost.%N%N Would you like to authorize the transfer of industrial resources to safety in the Urals %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -5627,7 +5615,7 @@
 {
 #NAME= DE 404 - USSR: Sign an Armistice with Finland? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Red Army Headquarters %N%N The Finns have come to realize that the Axis are losing the war, and are making peace overtures to us.%N%N They offer an immediate cessation of hostilities, and if we accept them, then we will be able to concentrate fully on our advances into Germany and the Balkans.%N%N Would you like to sign an armistice with Finland?
+#MESSAGE=Red Army Headquarters %N%N The Finns have come to realize that the Axis are losing the war, and are making peace overtures to us.%N%N They offer an immediate cessation of hostilities, and if we accept them, then we will be able to concentrate fully on our advances into Germany and the Balkans.%N%N Would you like to sign an armistice with Finland %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -5662,7 +5650,6 @@
 #ALIGNMENT_POSITION= 171,101 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -5672,7 +5659,7 @@
 {
 #NAME= DE 405 - USSR: Form I Polish Corps? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Red Army Headquarters %N%N General Anders has turned down our offer to evacuate thousands of Polish soldiers from the USSR.%N%N It would therefore seem appropriate that we enlist these men into the Red Army, to form them into a Polish Infantry Corps at Kuybyshev.%N%N This could be done for a total cost of %B75 MPPs (25 MPPs for 3 turns). This Polish Infantry Corps will then deploy at strength 8, with no experience due to the poor health of the men, and it will require upgrading.%N%N Would you like to form the I Polish Infantry Corps as an integral part of the Red Army?
+#MESSAGE=Red Army Headquarters %N%N General Anders has turned down our offer to evacuate thousands of Polish soldiers from the USSR.%N%N It would therefore seem appropriate that we enlist these men into the Red Army, to form them into a Polish Infantry Corps at Kuybyshev.%N%N This could be done for a total cost of %B75 MPPs (25 MPPs for 3 turns). This Polish Infantry Corps will then deploy at strength 8, with no experience due to the poor health of the men, and it will require upgrading.%N%N Would you like to form the I Polish Infantry Corps as an integral part of the Red Army %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -5706,7 +5693,7 @@
 {
 #NAME= DE 406 - USSR: Order the Red Army to advance into Poland? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Red Army Headquarters %N%N %BRe: %BThe %BMolotov-Ribbentrop %BPact %N%N Now that the German invasion of Poland is well underway, it is important that we do not show weakness and let the Germans gain the whole country.%N%N It is therefore important that we fulfill our side of the Molotov-Ribbentrop Pact by marching into Poland, even though it will cause some slight harm to our relationship with the UK and France.%N%N Would you like to order the Red Army to prepare to advance into Poland?
+#MESSAGE=Red Army Headquarters %N%N %BRe: %BThe %BMolotov-Ribbentrop %BPact %N%N Now that the German invasion of Poland is well underway, it is important that we do not show weakness and let the Germans gain the whole country.%N%N It is therefore important that we fulfill our side of the Molotov-Ribbentrop Pact by marching into Poland, even though it will cause some slight harm to our relationship with the UK and France.%N%N Would you like to order the Red Army to prepare to advance into Poland %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -5742,7 +5729,7 @@
 {
 #NAME= DE 407 - USSR: Issue Order 270 and Enlarge the NKVD to Impose Discipline? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=%N%N Red Army Headquarters %N%N With the enemy advancing into the Motherland, it might be wise to take steps to instil harsh discipline in the army to increase our soldiers' fighting spirit and prevent desertions.%N%N At the same time, we should increase the size of the NKVD to ensure that justice is meted out on any who disobey orders and desert.%N%N Imposing discipline in the Red Army will cost %B25 MPPs and will provide our forces with a one time morale boost of 25%.%N%N Would you like to say %B(YES) to imposing harsh discipline to increase the Red Army's efficiency in its struggle to halt the enemy's advance?
+#MESSAGE=%N%N Red Army Headquarters %N%N With the enemy advancing into the Motherland, it might be wise to take steps to instil harsh discipline in the army to increase our soldiers' fighting spirit and prevent desertions.%N%N At the same time, we should increase the size of the NKVD to ensure that justice is meted out on any who disobey orders and desert.%N%N Imposing discipline in the Red Army will cost %B25 MPPs and will provide our forces with a one time morale boost of 25%.%N%N Would you like to say %B(YES) to imposing harsh discipline to increase the Red Army's efficiency in its struggle to halt the enemy's advance %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -5781,7 +5768,7 @@
 {
 #NAME= DE 408 - USSR: Should Stalin Stay in Moscow to Lead its Defence? (AI - 75% Yes)
 #POPUP=
-#MESSAGE=Red Army Headquarters %N%N Comrade Stalin, the invaders are approaching our capital and the people require inspiration to increase their dedication to resist.%N%N If you were to announce that you will stay in Moscow to lead its defence, then our workers and soldiers will take heart from your example and redouble their efforts to blunt the enemy's offensive.%N%N Nevertheless, it is only recommended that you say %B(YES) to announcing that you are leading Moscow's defence if you are confident of being able to prevent the enemy from taking the city.%N%N The danger is that if you tie your name in to the defense of the city and it is lost, the effect on morale will be very grave indeed.%N%N Given this risk, would you like to show a bold face to the world and announce that you will stay in Moscow?
+#MESSAGE=Red Army Headquarters %N%N Comrade Stalin, the invaders are approaching our capital and the people require inspiration to increase their dedication to resist.%N%N If you were to announce that you will stay in Moscow to lead its defence, then our workers and soldiers will take heart from your example and redouble their efforts to blunt the enemy's offensive.%N%N Nevertheless, it is only recommended that you say %B(YES) to announcing that you are leading Moscow's defence if you are confident of being able to prevent the enemy from taking the city.%N%N The danger is that if you tie your name in to the defense of the city and it is lost, the effect on morale will be very grave indeed.%N%N Given this risk, would you like to show a bold face to the world and announce that you will stay in Moscow %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -5817,7 +5804,7 @@
 {
 #NAME= DE 409 - USSR: Learn the Lessons of the Winter War? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Red Army Headquarters %N%N Following our conflict with Finland, it has become apparent that our soldiers are under equipped for winter warfare, and as a result they suffered significant losses.%N%N Given that war with the Axis powers is virtually inevitable, it would be useful for us to take advantage of our recent experiences to better prepare the Red Army for winter warfare.%N%N If we set a process in motion now, we could provide winter clothing and equipment to our forces for just %B50 MPPs.%N%N Through this investment we will avoid suffering unduly from sicknesses during the winter when we are next at war.%N%N Would you like to prepare the Red Army to fight more effectively during the winter?
+#MESSAGE=Red Army Headquarters %N%N Following our conflict with Finland, it has become apparent that our soldiers are under equipped for winter warfare, and as a result they suffered significant losses.%N%N Given that war with the Axis powers is virtually inevitable, it would be useful for us to take advantage of our recent experiences to better prepare the Red Army for winter warfare.%N%N If we set a process in motion now, we could provide winter clothing and equipment to our forces for just %B50 MPPs.%N%N Through this investment we will avoid suffering unduly from sicknesses during the winter when we are next at war.%N%N Would you like to prepare the Red Army to fight more effectively during the winter %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -5852,7 +5839,7 @@
 {
 #NAME= DE 410 - USSR: Form a National Committee For A Free Germany? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Red Army Headquarters %N%N Discussions have taken place with some senior German Prisoners of War who state that they are willing to serve us in the fight against the Axis.%N%N They propose forming a body called the National Committee For A Free Germany to make propaganda to lower enemy morale.%N%N Setting up this organization will only cost %B25 MPPs, and its effect will be to provide a 500 point boost to Soviet National Morale, and a more significant penalty of 1,000 points against Germany.%N%N Would you like to authorize the formation of this committee to carry out propaganda aimed at the enemy?
+#MESSAGE=Red Army Headquarters %N%N Discussions have taken place with some senior German Prisoners of War who state that they are willing to serve us in the fight against the Axis.%N%N They propose forming a body called the National Committee For A Free Germany to make propaganda to lower enemy morale.%N%N Setting up this organization will only cost %B25 MPPs, and its effect will be to provide a 500 point boost to Soviet National Morale, and a more significant penalty of 1,000 points against Germany.%N%N Would you like to authorize the formation of this committee to carry out propaganda aimed at the enemy %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -5882,7 +5869,6 @@
 ; Stalingrad(234,85) is Allied
 #ALIGNMENT_POSITION= 234,85 [2]
 #NATIONAL_MORALE_TRIGGER= 45 [85]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -5893,7 +5879,7 @@
 {
 #NAME= DE 411 - USSR: Prepare for Winter Warfare? (No Winter War Against Finland) (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Red Army Headquarters %N%N An internal study shows that our forces are ill equipped for winter warfare, and will probably suffer significant losses if engaged in combat during the winter.%N%N Given that war with the Axis powers is virtually inevitable, it would be useful for us to prepare for this coming conflict by preparing the Red Army for winter warfare.%N%N If we set a process in motion now, we could provide winter clothing and equipment to our forces for %B75 MPPs.%N%N Through this investment we will avoid suffering unduly from sicknesses during the winter when we are next at war.%N%N Would you like to authorize this expenditure so that we can fight effectively during the winter?
+#MESSAGE=Red Army Headquarters %N%N An internal study shows that our forces are ill equipped for winter warfare, and will probably suffer significant losses if engaged in combat during the winter.%N%N Given that war with the Axis powers is virtually inevitable, it would be useful for us to prepare for this coming conflict by preparing the Red Army for winter warfare.%N%N If we set a process in motion now, we could provide winter clothing and equipment to our forces for %B75 MPPs.%N%N Through this investment we will avoid suffering unduly from sicknesses during the winter when we are next at war.%N%N Would you like to authorize this expenditure so that we can fight effectively during the winter %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -5928,7 +5914,7 @@
 {
 #NAME= DE 412 - USSR: Accept the German Offer of a Revised Borders and Friendship Treaty? (AI - 100% Yes)
 #POPUP= Soviet Strategic Decision
-#MESSAGE=Red Army Headquarters %N%N The German Foreign Minister has sent us proposals to revise some aspects of the Molotov-Ribbentrop Pact.%N%N The main item is that the Germans offer to transfer Lithuania from their sphere of influence to ours. This would enable us to occupy the country next year.%N%N In return they ask us to withdraw eastwards from the Vistula-San river line to the Bug-San river line in Poland.%N%N This would leave the fortress of Brest-Litovsk more vulnerable to attack, and if we say %B(YES), then this further sign of our friendship with the Axis will move the USSR 3-5% away from the Allies.%N%N In view of this, would you like to accept this revised Borders and Friendship Treaty?
+#MESSAGE=Red Army Headquarters %N%N The German Foreign Minister has sent us proposals to revise some aspects of the Molotov-Ribbentrop Pact.%N%N The main item is that the Germans offer to transfer Lithuania from their sphere of influence to ours. This would enable us to occupy the country next year.%N%N In return they ask us to withdraw eastwards from the Vistula-San river line to the Bug-San river line in Poland.%N%N This would leave the fortress of Brest-Litovsk more vulnerable to attack, and if we say %B(YES), then this further sign of our friendship with the Axis will move the USSR 3-5% away from the Allies.%N%N In view of this, would you like to accept this revised Borders and Friendship Treaty %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -5964,7 +5950,7 @@
 {
 #NAME= DE 413 - USSR: Accept the German Offer of a Revised Borders and Friendship Treaty? (AI - 100% Yes)
 #POPUP= Soviet Strategic Decision
-#MESSAGE=Red Army Headquarters %N%N The German Foreign Minister has sent us proposals to revise some aspects of the Molotov-Ribbentrop Pact.%N%N The main item is that the Germans offer to transfer Lithuania from their sphere of influence to ours.%N%N However, if we agree to Ribbentrop's proposal, then this further sign of our friendship with the Axis would move the USSR 5-8% away from the Allies.%N%N In view of this, would you like to accept this revised Borders and Friendship Treaty?
+#MESSAGE=Red Army Headquarters %N%N The German Foreign Minister has sent us proposals to revise some aspects of the Molotov-Ribbentrop Pact.%N%N The main item is that the Germans offer to transfer Lithuania from their sphere of influence to ours.%N%N However, if we agree to Ribbentrop's proposal, then this further sign of our friendship with the Axis would move the USSR 5-8% away from the Allies.%N%N In view of this, would you like to accept this revised Borders and Friendship Treaty %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -6039,7 +6025,7 @@
 {
 #NAME= DE 415 - USSR: Should We Prepare to Send Supplies via Lake Ladoga to a Besieged Leningrad? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Red Army Headquarters %N%N With enemy forces advancing through the Baltic to within striking distance of Leningrad, now would be a good time to make preparations to feed the city's defenders in the event of the enemy laying siege to the city.%N%N We could stockpile food and fuel supplies at Volkhov to the east of Leningrad, for a cost of %B35 MPPs, so that during the winter should the city be under siege we could send supplies over a frozen Lake Ladoga directly into the city.%N%N To succeed, we will need to ensure that Volkhov remains in our hands, or that we retake it should it fall to the invader.%N%N Would you like to stockpile supplies at Volkhov so that during the winter we can provide a Road of Life to the city of Leningrad?
+#MESSAGE=Red Army Headquarters %N%N With enemy forces advancing through the Baltic to within striking distance of Leningrad, now would be a good time to make preparations to feed the city's defenders in the event of the enemy laying siege to the city.%N%N We could stockpile food and fuel supplies at Volkhov to the east of Leningrad, for a cost of %B35 MPPs, so that during the winter should the city be under siege we could send supplies over a frozen Lake Ladoga directly into the city.%N%N To succeed, we will need to ensure that Volkhov remains in our hands, or that we retake it should it fall to the invader.%N%N Would you like to stockpile supplies at Volkhov so that during the winter we can provide a Road of Life to the city of Leningrad %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -6078,7 +6064,7 @@
 {
 #NAME= DE 416 - USSR: Shall We Deploy Dedicated Anti-Tank Units? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Red Army Headquarters %N%N Given the large armored formations that both sides can deploy on the Eastern Front, there have been calls for the formation of dedicated anti-tank units.%N%N These will be useful when encountering enemy armored formations, but will be fragile when fighting enemy infantry.%N%N We could at low cost quickly form 3 dedicated Anti-Tank units at Gorki for a total of %B200 MPPs (50 MPPs for 4 turns).%N%N They will deploy at half strength and will need upgrading.%N%N Would you like to form these dedicated Anti-Tank units?
+#MESSAGE=Red Army Headquarters %N%N Given the large armored formations that both sides can deploy on the Eastern Front, there have been calls for the formation of dedicated anti-tank units.%N%N These will be useful when encountering enemy armored formations, but will be fragile when fighting enemy infantry.%N%N We could at low cost quickly form 3 dedicated Anti-Tank units at Gorki for a total of %B200 MPPs (50 MPPs for 4 turns).%N%N They will deploy at half strength and will need upgrading.%N%N Would you like to form these dedicated Anti-Tank units %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -6160,7 +6146,7 @@
 {
 #NAME= DE 418 - USSR: Seize Bessarabia? (AI - 50% Yes)
 #POPUP= Soviet Strategic Decision
-#MESSAGE=Red Army Headquarters %N%N Under the terms of the Molotov-Ribbentrop Pact, Bessarabia falls into our sphere of influence and now would be a good time to seize this territory.%N%N This will provide us with a buffer zone protecting Odessa from attack.%N%N The operation will cost %B15 MPPs with any opposition being swept aside, though it will move Romania 10% towards the Axis.%N%N Would you like to order the Red Army to seize Bessarabia?
+#MESSAGE=Red Army Headquarters %N%N Under the terms of the Molotov-Ribbentrop Pact, Bessarabia falls into our sphere of influence and now would be a good time to seize this territory.%N%N This will provide us with a buffer zone protecting Odessa from attack.%N%N The operation will cost %B15 MPPs with any opposition being swept aside, though it will move Romania 10% towards the Axis.%N%N Would you like to order the Red Army to seize Bessarabia %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -6188,8 +6174,6 @@
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Romania(93) Axis but not fully mobilized
 #VARIABLE_CONDITION= 93 [1] [0] [0]
 ; USSR(116) Allied but not fully mobilized
@@ -6458,7 +6442,7 @@
 {
 #NAME= DE 427 - Germany: Learn the Lessons of the Soviet Winter? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BSoviet %BWinter %N%N Following the winter of 1941-42 in the Soviet Union, it was apparent that our soldiers were under equipped for winter warfare, and as a result, they suffered significant losses.%N%N Given that a prolonged war with the USSR is now expected, it would be useful to take advantage of our recent experiences to better prepare our forces for winter warfare.%N%N If we set a process in motion now, we could stockpile winter clothing and equipment to distribute to our forces along the Eastern Front. Through this investment we will avoid suffering unduly from sicknesses during the upcoming winter.%N%N Would you like to prepare the Army to fight more effectively during the upcoming winter?  Given our general unpreparedness the investment will be significant at a cost a total of %B150 MPPs (50 MPPs for 3 turns). 
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BSoviet %BWinter %N%N Following the winter of 1941-42 in the Soviet Union, it was apparent that our soldiers were under equipped for winter warfare, and as a result, they suffered significant losses.%N%N Given that a prolonged war with the USSR is now expected, it would be useful to take advantage of our recent experiences to better prepare our forces for winter warfare.%N%N If we set a process in motion now, we could stockpile winter clothing and equipment to distribute to our forces along the Eastern Front. Through this investment we will avoid suffering unduly from sicknesses during the upcoming winter.%N%N Would you like to prepare the Army to fight more effectively during the upcoming winter %B(YES)?  Given our general unpreparedness the investment will be significant at a cost a total of %B150 MPPs (50 MPPs for 3 turns). 
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -7106,7 +7090,7 @@ Replacement script
 {
 #NAME= DE 475 - UK: Form Leclerc Force? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Office Of The British Foreign Secretary %NLord Halifax %N%N The Free French led by General Phillipe Leclerc are slowly growing their strength and are prepared to expand operations into Italian Libya.  With our logistical support the Free French will form Leclerc Force at Siwa Oasis along side elements of the LRDG and will deploy as understrength Mechanized Division.%N%N Should the UK support Free French operations in Libya at a total cost of %B50 MPPs (25 MPPs for 2 turns)?
+#MESSAGE=Office Of The British Foreign Secretary %NLord Halifax %N%N The Free French led by General Phillipe Leclerc are slowly growing their strength and are prepared to expand operations into Italian Libya.  With our logistical support the Free French will form Leclerc Force at Siwa Oasis along side elements of the LRDG and will deploy as understrength Mechanized Division.%N%N Should the UK support Free French operations in Libya at a total cost of %B50 MPPs (25 MPPs for 2 turns) %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -7385,7 +7369,7 @@ Replacement script
 {
 #NAME= DE 540 - Germany: Threaten Switzerland (AI - 75% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BSwitzerland %N%N Mein Führer, There has been several reported incidents of German aircraft being shot down by the Swiss Air Force for violating Swiss airspace during the battle of France.  We have protested diplomatically but we reasonably expect that a harsher threat would cease this activity entirely. %N%N Although it will certainly strain our diplomatic relations with Switzerland, should we threaten the Swiss government with retaliatory measures if Switzerland does not cease the practice of shooting down German aircraft that violate its airspace?
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BSwitzerland %N%N Mein Führer, There has been several reported incidents of German aircraft being shot down by the Swiss Air Force for violating Swiss airspace during the battle of France.  We have protested diplomatically but we reasonably expect that a harsher threat would cease this activity entirely. %N%N Although it will certainly strain our diplomatic relations with Switzerland, should we threaten the Swiss government with retaliatory measures if Switzerland does not cease the practice of shooting down German aircraft that violate its airspace %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -7412,9 +7396,7 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Switzerland(104) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 104 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -7499,7 +7481,7 @@ Replacement script
 {
 #NAME= DE 544 - Germany: Croatian Mountain Division (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BCroatian %BMountain %BDivision %N%N Mein Führer, due to increased Partisan activity in the Balkans it is recommended that we lean on the state of Croatia to increase their anti-partisan operations.  With German assistance Croatia could form a new Mountain Infantry Division, which will deploy at half strength at Zagreb. %N%N Mein Führer, do you approve forming the 1st Croatian Mountain Infantry Division?  It will cost %B35 MPPs.
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BCroatian %BMountain %BDivision %N%N Mein Führer, due to increased Partisan activity in the Balkans it is recommended that we lean on the state of Croatia to increase their anti-partisan operations.  With German assistance Croatia could form a new Mountain Infantry Division, which will deploy at half strength at Zagreb. %N%N Mein Führer, do you approve forming the 1st Croatian Mountain Infantry Division %B(YES)?  It will cost %B35 MPPs.
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -7529,9 +7511,7 @@ Replacement script
 ;Set Friendly Position (Belgrade)
 #ALIGNMENT_POSITION= 187,94 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and Active
 ; Croatia Axis and Active
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 27 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -7540,7 +7520,7 @@ Replacement script
 {
 #NAME= DE 545 - UK: Permit Irish Defence Force To Defect To UK (AI - 90% Yes)
 #POPUP=
-#MESSAGE=Prime Minister %N Winston Churchill %N%N There are nearly 5,000 members of the Irish Defence Forces that have deserted to fight with the British and Allied armed forces.  While insignificant in number, these trained forces can easily be integrated into our ranks and news of their arrival should provide a small boost to our National Morale. %N%N The downside is that the exodus of these diehards from Ireland will only increase the nation's stance against joining the war on the side of the Allies.%N%N In light of these considerations, should we permit the deserted Irish Defense Force to join the British and Allied forces?
+#MESSAGE=Prime Minister %N Winston Churchill %N%N There are nearly 5,000 members of the Irish Defence Forces that have deserted to fight with the British and Allied armed forces.  While insignificant in number, these trained forces can easily be integrated into our ranks and news of their arrival should provide a small boost to our National Morale. %N%N The downside is that the exodus of these diehards from Ireland will only increase the nation's stance against joining the war on the side of the Allies.%N%N In light of these considerations, should we permit the deserted Irish Defense Force to join the British and Allied forces %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -7579,7 +7559,7 @@ Replacement script
 {
 #NAME= DE 546 - Germany: Military Exports To Sweden (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BMilitary %BExports %BTo %BSweden %N%N Mein Führer, The Swedish government has approached Germany to purchase modern rifles and other small arms. %N%N The Swedish Army which is still largely dependant on weaponry akin to the Great War is one of our most critical trade partners and by agreeing to supply their military with a modest investment in new equipment we could assist in protecting our trade from Allied intervention. %N%N In light of these considerations should we sell a modest amount of rifles and small arms to Sweden?  It will cost a total of %B30 MPPs (15 MPPs for 2 turns).
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BMilitary %BExports %BTo %BSweden %N%N Mein Führer, The Swedish government has approached Germany to purchase modern rifles and other small arms. %N%N The Swedish Army which is still largely dependant on weaponry akin to the Great War is one of our most critical trade partners and by agreeing to supply their military with a modest investment in new equipment we could assist in protecting our trade from Allied intervention. %N%N In light of these considerations should we sell a modest amount of rifles and small arms to Sweden %B(YES)?  It will cost a total of %B30 MPPs (15 MPPs for 2 turns).
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -7616,7 +7596,7 @@ Replacement script
 {
 #NAME= DE 547 - USSR: Demand Sweden Surrender Baltic State Gold Reserves (AI - 90% Yes)
 #POPUP=
-#MESSAGE=Red Army Headquarters %N%N Now that we have annexed the Baltic States we should have claim over the Baltic States gold reserves, though the nations which hold these reserves, led by Britain and the United States have thus far denied our claim as unlawful. However, one nation that we may be successful in pressuring to surrender the the gold reserves is Sweden. %N%N It is expected that Sweden, due to both their stance of neutrality and proximity to USSR will immediately surrender the gold reserves to avoid any escalating political tensions, though pressuring the country to surrender the gold when no other nation will may damage Soviet-Swedish relations slightly.%N%N In light of these considerations, should we demand the Swedish government to surrender the Baltic State gold reserves?
+#MESSAGE=Red Army Headquarters %N%N Now that we have annexed the Baltic States we should have claim over the Baltic States gold reserves, though the nations which hold these reserves, led by Britain and the United States have thus far denied our claim as unlawful. However, one nation that we may be successful in pressuring to surrender the the gold reserves is Sweden. %N%N It is expected that Sweden, due to both their stance of neutrality and proximity to USSR will immediately surrender the gold reserves to avoid any escalating political tensions, though pressuring the country to surrender the gold when no other nation will may damage Soviet-Swedish relations slightly.%N%N In light of these considerations, should we demand the Swedish government to surrender the Baltic State gold reserves %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -7806,7 +7786,7 @@ Replacement script
 {
 #NAME= DE 552 - USSR: Soviet Production (AI - 50% Yes)
 #POPUP=
-#MESSAGE=Red Army Headquarters %N%N With our industries in retreat deep into the Motherland and our valuable farm land surrendering to the invading German Army, we are forced to balance between civil and military expenditures.  While our people will unduly suffer irregardless of our decisions, we can consider forcing even greater hardship and resiliency on the population by fully prioritizing military production to meet the German advance. %N%N If we choose to fully prioritize boosting our military production rather that to balance the need to replace our food sources, in the near term we can expect to replace our lost comrades on the battlefield earlier then we could otherwise.  However by doing so we will be increasing the hardship bestowed upon our people and their morale may never fully be repairable. %N%N In light of these considerations should we fully prioritize military production over the welfare of our retreating civilians?
+#MESSAGE=Red Army Headquarters %N%N %BRe: %BProduction %BPriorities %N%N With our industries in retreat deep into the Motherland and our valuable farm land surrendering to the invading German Army, we are forced to balance between civil and military expenditures.  While our people will unduly suffer irregardless of our decisions, we can consider forcing even greater hardship and resiliency on the population by fully prioritizing military production to meet the German advance. %N%N If we choose to fully prioritize boosting our military production rather that to balance the need to replace our food sources, in the near term we can expect to replace our lost comrades on the battlefield earlier then we could otherwise.  However by doing so we will be increasing the hardship bestowed upon our people and their morale may never fully be repairable. %N%N In light of these considerations should we fully prioritize military production over the welfare of our retreating civilians %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -7941,10 +7921,8 @@ Replacement script
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Italy(59) Axis and not surrendered
 ; Iraq(56) Allied but not fully mobilized
-; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 56 [1] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7955,7 +7933,7 @@ Replacement script
 {
 #NAME= DE 600 - Germany: Should Germany Honor The Molotov-Ribbentrop Pact? (AI - 75% Yes)
 #POPUP= German Strategic Decision
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BThe %BMolotov-Ribbentrop %BPact %N%N Our offensive against Poland has been a great success and the Polish army has been decisively defeated.%N%N Molotov, the Soviet Foreign Minister, is now urging us to pull back to our previously agreed partition lines and honor our Non-Aggression Pact with the USSR.%N%N If we say %B(YES) to honoring the Pact, then we will gain imports from the USSR worth %B25 MPPs a turn.%N%N If we say %B(NO), then we will lose these imports, and the USSR will swing 20-30% towards the Allies as we push the Red Army out of Poland.%N%N Should we honor the Molotov-Ribbentrop Pact and cede Eastern Poland to the USSR?
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BThe %BMolotov-Ribbentrop %BPact %N%N Our offensive against Poland has been a great success and the Polish army has been decisively defeated.%N%N Molotov, the Soviet Foreign Minister, is now urging us to pull back to our previously agreed partition lines and honor our Non-Aggression Pact with the USSR.%N%N If we say %B(YES) to honoring the Pact, then we will gain imports from the USSR worth %B25 MPPs a turn.%N%N If we say %B(NO), then we will lose these imports, and the USSR will swing 20-30% towards the Allies as we push the Red Army out of Poland.%N%N Should we honor the Molotov-Ribbentrop Pact and cede Eastern Poland to the USSR %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -8019,7 +7997,7 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Denmark(18) politically neutral and not surrendered
+; Denmark(31) neutral and not surrendered
 #VARIABLE_CONDITION= 31 [0] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -8062,7 +8040,7 @@ Replacement script
 {
 #NAME= DE 603 - Germany: Induce Franco To Enter The War? (AI - 25% Yes)
 #POPUP= German Diplomatic Decision
-#MESSAGE=Foreign Minister %NJoachim von Ribbentrop %N%N Now that we have captured Algiers, our intelligence reports from Spain suggest that Franco may be willing to join the Tripartite Pact.%N%N Abwehr reports that it will cost a total of %B800 MPPs (200 MPPs for 4 turns), to help put Spain on a war footing, mainly to feed the starving population. Franco will also seize some French territory in North Africa in return for his assistance.%N%N Be warned that the USA will react negatively towards this, but gaining a new ally and the strategic importance of Spain's location will probably make this worthwhile.%N%N Shall we invite Franco to join the Axis?
+#MESSAGE=Foreign Minister %NJoachim von Ribbentrop %N%N Now that we have captured Algiers, our intelligence reports from Spain suggest that Franco may be willing to join the Tripartite Pact.%N%N Abwehr reports that it will cost a total of %B800 MPPs (200 MPPs for 4 turns), to help put Spain on a war footing, mainly to feed the starving population. Franco will also seize some French territory in North Africa in return for his assistance.%N%N Be warned that the USA will react negatively towards this, but gaining a new ally and the strategic importance of Spain's location will probably make this worthwhile.%N%N Shall we invite Franco to join the Axis %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -8115,7 +8093,7 @@ Replacement script
 {
 #NAME= DE 604 - Germany: Should We Scrap Or Refit The French Battleship Strasbourg? (50% Chance) (AI - 50% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N The Vichy French capital ship %VStrasbourg was sabotaged by French naval officers and sunk at Toulon.%N%N Despite this, our naval experts are confident that the vessel can be refloated and restored to service, but doing so will cost %B140 MPPs (70 MPPs for 2 turns).%N%N Would you like to order salvage work to commence?
+#MESSAGE=Führerhauptquartier %N%N The Vichy French capital ship %VStrasbourg was sabotaged by French naval officers and sunk at Toulon.%N%N Despite this, our naval experts are confident that the vessel can be refloated and restored to service, but doing so will cost %B140 MPPs (70 MPPs for 2 turns).%N%N Would you like to order salvage work to commence %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -8151,7 +8129,7 @@ Replacement script
 {
 #NAME= DE 605 - Germany: Enhance Our Naval Base At St. Nazaire? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BSt. %BNazaire %N%N Having captured Northern France, we now have access to the important naval base of St. Nazaire.%N%N This could be a very useful base for launching new naval units, but it will require some investment in order to prepare it for use.%N%N The total cost of refitting the port is %B50 MPPs (10 MPPs for 5 turns).%N%N Would you like to invest in upgrading the port of St. Nazaire so that we can launch new naval units there?
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BSt. %BNazaire %N%N Having captured Northern France, we now have access to the important naval base of St. Nazaire.%N%N This could be a very useful base for launching new naval units, but it will require some investment in order to prepare it for use.%N%N The total cost of refitting the port is %B50 MPPs (10 MPPs for 5 turns).%N%N Would you like to invest in upgrading the port of St. Nazaire so that we can launch new naval units there %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -8225,7 +8203,7 @@ Replacement script
 {
 #NAME= DE 607 - Germany: Form Volksgrenadier Corps? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N Given the proximity of enemy forces to our homeland, the time has come to mobilize all our reserves.%N%N There are thousands of men serving in the rear areas, in the Luftwaffe and Kriegsmarine, who could be better used if formed into infantry units for the defence of the Reich.%N%N At a total cost of %B150 MPPs (50 MPPs for 3 turns), we could use these men to form four Volksgrenadier Infantry Corps at Berlin.%N%N Doing so will also raise our National Morale by 5,000 points.%N%N Would you like to order the formation of these Volksgrenadier units?
+#MESSAGE=Führerhauptquartier %N%N Given the proximity of enemy forces to our homeland, the time has come to mobilize all our reserves.%N%N There are thousands of men serving in the rear areas, in the Luftwaffe and Kriegsmarine, who could be better used if formed into infantry units for the defence of the Reich.%N%N At a total cost of %B150 MPPs (50 MPPs for 3 turns), we could use these men to form four Volksgrenadier Infantry Corps at Berlin.%N%N Doing so will also raise our National Morale by 5,000 points.%N%N Would you like to order the formation of these Volksgrenadier units %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -8257,7 +8235,7 @@ Replacement script
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Allied units approach Warsaw
+; Allied units approach Warsaw(188,76)
 #CONDITION_POSITION= 188,76 [6,10] [2,2] [2] [0]
 ; Allied units approach Hamburg(166,72)
 #CONDITION_POSITION= 166,72 [4,6] [2,2] [2] [0]
@@ -8274,7 +8252,7 @@ Replacement script
 {
 #NAME= DE 608 - Germany: Provide the Volkssturm with Equipment? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N We are in the process of forming a People's Militia, the Volkssturm, that will mobilize to defend the homeland as the enemy advance.%N%N For a cost of %B50 MPPs (25 MPPs for 2 turns), we could provide the Volkssturm with better equipment and training so that its units will be better able to slow the enemy's advances into Germany.%N%N Doing so will also raise our National Morale by 2,500 points.%N%N Would you like to invest in improving the Volkssturm?
+#MESSAGE=Führerhauptquartier %N%N We are in the process of forming a People's Militia, the Volkssturm, that will mobilize to defend the homeland as the enemy advance.%N%N For a cost of %B50 MPPs (25 MPPs for 2 turns), we could provide the Volkssturm with better equipment and training so that its units will be better able to slow the enemy's advances into Germany.%N%N Doing so will also raise our National Morale by 2,500 points.%N%N Would you like to invest in improving the Volkssturm %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -8306,7 +8284,7 @@ Replacement script
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Allied units approach Warsaw
+; Allied units approach Warsaw(188,76)
 #CONDITION_POSITION= 188,76 [6,10] [2,2] [2] [0]
 ; Allied units approach Hamburg(166,72)
 #CONDITION_POSITION= 166,72 [4,6] [2,2] [2] [0]
@@ -8323,7 +8301,7 @@ Replacement script
 {
 #NAME= DE 609 - Germany: Form a Free Indian Legion? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N The Indian Nationalist Leader Subhas Chandra Bose is keen to form a "Free India" Legion to help liberate his country from British rule, and he has asked if he can recruit among the many Indians currently held in our prisoner of war camps.%N%N If we agree, it will cost %B15 MPPs to equip this formation, and it will provide us with a Garrison unit.%N%N Would you like to authorize the formation of a Free India Legion?
+#MESSAGE=Führerhauptquartier %N%N The Indian Nationalist Leader Subhas Chandra Bose is keen to form a "Free India" Legion to help liberate his country from British rule, and he has asked if he can recruit among the many Indians currently held in our prisoner of war camps.%N%N If we agree, it will cost %B15 MPPs to equip this formation, and it will provide us with a Garrison unit.%N%N Would you like to authorize the formation of a Free India Legion %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -8349,8 +8327,6 @@ Replacement script
 ; Tobruk(194,122) is Axis
 #ALIGNMENT_POSITION= 194,122 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; UK(112) Allied and not surrendered
@@ -8363,7 +8339,7 @@ Replacement script
 {
 #NAME= DE 610 - Germany: Annex Lithuania? (AI - 0% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BLithuania %N%N Lithuania remains within our sphere of influence and seizing the country before Stalin is ready to counter us would give us a good launching pad for a future invasion of the USSR.%N%N Annexing Lithuania would undoubtedly cause some alarm in the Soviet Union, but it shouldn't lead directly to conflict unless we were to follow it up with acts of aggression against Latvia or Estonia.%N%N Would you like to authorize the annexation of Lithuania?
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BLithuania %N%N Lithuania remains within our sphere of influence and seizing the country before Stalin is ready to counter us would give us a good launching pad for a future invasion of the USSR.%N%N Annexing Lithuania would undoubtedly cause some alarm in the Soviet Union, but it shouldn't lead directly to conflict unless we were to follow it up with acts of aggression against Latvia or Estonia.%N%N Would you like to authorize the annexation of Lithuania %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -8389,8 +8365,6 @@ Replacement script
 ; Memel is Axis
 #ALIGNMENT_POSITION= 188,66 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Lithuania(64) Allied but not fully mobilized
 #VARIABLE_CONDITION= 64 [2] [0] [0]
 ; USSR(116) Allied but not fully mobilized
@@ -8430,8 +8404,6 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Romania(93) Axis but not fully mobilized
 #VARIABLE_CONDITION= 93 [1] [0] [0]
 ; USSR(116) Allied but not fully mobilized
@@ -8449,7 +8421,7 @@ Replacement script
 {
 #NAME= DE 612 - Germany: Send U-Boats to Serve in the Black Sea? (AI - 0% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N We have some U-Boats at Kiel that could be usefully employed in the Black Sea for service against the USSR.%N%N Sending these U-Boats to Constanta in Romania will cost %B35 MPPs, and will provide us with a strength 5 U-Boat unit there in a month's time.%N%N Would you like to send these U-Boats to serve in the Black Sea?
+#MESSAGE=Führerhauptquartier %N%N We have some U-Boats at Kiel that could be usefully employed in the Black Sea for service against the USSR.%N%N Sending these U-Boats to Constanta in Romania will cost %B35 MPPs, and will provide us with a strength 5 U-Boat unit there in a month's time.%N%N Would you like to send these U-Boats to serve in the Black Sea %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -8475,8 +8447,6 @@ Replacement script
 ; Constanta is Axis
 #ALIGNMENT_POSITION= 202,96 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Romania(93) Axis and not surrendered
 #VARIABLE_CONDITION= 93 [1] [100] [0]
 ; USSR(116) Allied and not surrendered
@@ -8521,8 +8491,6 @@ Replacement script
 ; Trieste is Axis
 #ALIGNMENT_POSITION= 174,92 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; No Allied units within 5 hexes of Trieste
@@ -8534,7 +8502,7 @@ Replacement script
 {
 #NAME= DE 614 - Germany: Rescue Mussolini? (AI - 75% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BMussolini %N%N Italy has surrendered and Mussolini is now a prisoner of the Allies.%N%N Otto Skorzeny has discovered that he is currently being held at the Campo Imperatore Hotel in the Apennines mountains, and he proposes launching a glider borne operation using elite forces to rescue him.%N%N Once freed, Mussolini could be used as a figurehead to raise a pro-Axis unit from loyal Italians.%N%N Launching Skorzeny's mission to rescue Mussolini, codename Operation Oak, will cost 10 MPPs.%N%N Would you like to authorize this rescue attempt?
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BMussolini %N%N Italy has surrendered and Mussolini is now a prisoner of the Allies.%N%N Otto Skorzeny has discovered that he is currently being held at the Campo Imperatore Hotel in the Apennines mountains, and he proposes launching a glider borne operation using elite forces to rescue him.%N%N Once freed, Mussolini could be used as a figurehead to raise a pro-Axis unit from loyal Italians.%N%N Launching Skorzeny's mission to rescue Mussolini, codename Operation Oak, will cost 10 MPPs.%N%N Would you like to authorize this rescue attempt %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -8562,8 +8530,6 @@ Replacement script
 ; Bologna is Axis
 #ALIGNMENT_POSITION= 169,95 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Italy(59) Axis and surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [1]
 ; The presence of at least one Axis unit in north Italy
@@ -8573,7 +8539,7 @@ Replacement script
 {
 #NAME= DE 615 - Germany: Form The Italian National Republican Army? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N Following Mussolini's rescue we can use him as the figurehead for the formation of a pro-Axis force in northern Italy.%N%N Mussolini still has thousands of supporters and for %B75 MPPs we could form them into an Italian Corps that will operate under our orders.%N%N Would you like to approve the formation of this unit?
+#MESSAGE=Führerhauptquartier %N%N Following Mussolini's rescue we can use him as the figurehead for the formation of a pro-Axis force in northern Italy.%N%N Mussolini still has thousands of supporters and for %B75 MPPs we could form them into an Italian Corps that will operate under our orders.%N%N Would you like to approve the formation of this unit %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -8677,7 +8643,7 @@ Replacement script
 {
 #NAME= DE 618 - Germany: Launch Operation Panzerfaust to keep Hungary in the War? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BOperation %BPanzerfaust %N%N The Regent of Hungary, Admiral Horthy, is highly likely to switch sides and join the Allies.%N%N This could be very dangerous for us, as if the Allies gain Hungary, then our southern flank will be cut wide open and the enemy could swarm into Austria and southern Germany.%N%N To prevent this, Otto Skorzeny is ready to overthrow Horthy and replace him with Ferenc Szálasi, leader of the Arrow Cross, who will keep Hungary in the war.%N%N Codenamed Operation Panzerfaust, for %B50 MPPs we can secure Hungary and force the Allies to fight for the country.%N%N Would you like to launch Operation Panzerfaust to keep Hungary on our side?
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BOperation %BPanzerfaust %N%N The Regent of Hungary, Admiral Horthy, is highly likely to switch sides and join the Allies.%N%N This could be very dangerous for us, as if the Allies gain Hungary, then our southern flank will be cut wide open and the enemy could swarm into Austria and southern Germany.%N%N To prevent this, Otto Skorzeny is ready to overthrow Horthy and replace him with Ferenc Szálasi, leader of the Arrow Cross, who will keep Hungary in the war.%N%N Codenamed Operation Panzerfaust, for %B50 MPPs we can secure Hungary and force the Allies to fight for the country.%N%N Would you like to launch Operation Panzerfaust to keep Hungary on our side %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -8758,7 +8724,7 @@ Replacement script
 {
 #NAME= DE 620 - Germany: Raise an Egyptian Legion? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BEgyptian %BLegion %N%N With the British defeated in Egypt and Cairo in our hands, there are thousands of Egyptian Nationalists calling for the right to take up arms and serve with us in this war.%N%N We could form these men into a Garrison unit to help protect our gains in Egypt and the Middle East.%N%N Raising this unit in Cairo will cost %B25 MPPs.%N%N Would you like to authorize recruitment and training for this Egyptian Legion?
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BEgyptian %BLegion %N%N With the British defeated in Egypt and Cairo in our hands, there are thousands of Egyptian Nationalists calling for the right to take up arms and serve with us in this war.%N%N We could form these men into a Garrison unit to help protect our gains in Egypt and the Middle East.%N%N Raising this unit in Cairo will cost %B25 MPPs.%N%N Would you like to authorize recruitment and training for this Egyptian Legion %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -8784,8 +8750,6 @@ Replacement script
 ; Cairo(208,126) is Axis
 #ALIGNMENT_POSITION= 208,126 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Egypt(36) Allied surrendered
 #VARIABLE_CONDITION= 36 [2] [100] [1]
 ; There are no Allied units within 3 hexes of Cairo
@@ -8795,7 +8759,7 @@ Replacement script
 {
 #NAME= DE 621 - Germany: Divide Yugoslavia and Set up Croatia as an Independent State? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N %BRe: Croatia %N%N With Yugoslavia surrendered and occupied by our forces, we could solidify our position in the area by adjusting some borders and setting up a new and friendly state in Croatia.%N%N Croatia's capital will be Zagreb, where if you say %B(YES), then a Croatian Garrison unit will deploy for service.%N%N Forming a Croatian state will cost %B50 MPPs, though in the long run this cost will be offset by Zagreb's enhanced economic performance and the services of the Croatians.%N%N Would you like to adjust Yugoslavia's borders and form an independent Croatian state?
+#MESSAGE=Führerhauptquartier %N%N %BRe: Croatia %N%N With Yugoslavia surrendered and occupied by our forces, we could solidify our position in the area by adjusting some borders and setting up a new and friendly state in Croatia.%N%N Croatia's capital will be Zagreb, where if you say %B(YES), then a Croatian Garrison unit will deploy for service.%N%N Forming a Croatian state will cost %B50 MPPs, though in the long run this cost will be offset by Zagreb's enhanced economic performance and the services of the Croatians.%N%N Would you like to adjust Yugoslavia's borders and form an independent Croatian state %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -8821,8 +8785,6 @@ Replacement script
 ; Zagreb is Axis
 #ALIGNMENT_POSITION= 178,92 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Hungary(52) Axis and not surrendered
 #VARIABLE_CONDITION= 52 [1] [100] [0]
 ; Italy(59) Axis and not surrendered
@@ -8924,7 +8886,7 @@ Replacement script
 {
 #NAME= DE 624 - Germany: Send Assistance to the Iraqi Rebels? (AI - 50% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N The Italian Embassy in Baghdad reports that Rashid Ali needs weapons, money, and air support.%N%N The Italians are preparing to send some aid, but to have any effect we will also need to send a mission of our own, called Sonderkommando Junck, at a cost of %B30 MPPs.%N%N Unfortunately, even with our support, the Iraqis are very unlikely to hold out indefinitely, but this mission could make them hold out for longer, and therefore delay the enemy's resumption of oil production.%N%N Would you like to send Sonderkommando Junck to support the Iraqis?
+#MESSAGE=Führerhauptquartier %N%N The Italian Embassy in Baghdad reports that Rashid Ali needs weapons, money, and air support.%N%N The Italians are preparing to send some aid, but to have any effect we will also need to send a mission of our own, called Sonderkommando Junck, at a cost of %B30 MPPs.%N%N Unfortunately, even with our support, the Iraqis are very unlikely to hold out indefinitely, but this mission could make them hold out for longer, and therefore delay the enemy's resumption of oil production.%N%N Would you like to send Sonderkommando Junck to support the Iraqis %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -8953,17 +8915,15 @@ Replacement script
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Italy(59) Axis and not surrendered
 ; Iraq(56) Allied but not fully mobilized
-; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 56 [1] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 {
 #NAME= DE 625 - Germany: Raise a Don Cossack Cavalry Corps? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N Significant numbers of Don Cossacks have deserted to our lines, and their representatives are making contact asking to take service with us in our struggle against the Bolsheviks.%N%N For %B50 MPPs we could make use of these Cossacks to form a half strength Cavalry Corps at Rostov.%N%N Would you like to authorize the formation of a Don Cossack Cavalry Corps?
+#MESSAGE=Führerhauptquartier %N%N Significant numbers of Don Cossacks have deserted to our lines, and their representatives are making contact asking to take service with us in our struggle against the Bolsheviks.%N%N For %B50 MPPs we could make use of these Cossacks to form a half strength Cavalry Corps at Rostov.%N%N Would you like to authorize the formation of a Don Cossack Cavalry Corps %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9006,7 +8966,7 @@ Replacement script
 {
 #NAME= DE 626 - Germany: Raise a Russian Liberation Army Corps? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N Among the many thousands of prisoners we have taken is a senior Red Army officer, General Vlasov, who is rapidly becoming a leading figure in promoting the anti-Bolshevik message to his fellow countrymen.%N%N There are already thousands of former Red Army soldiers serving in our army, and we could make use of Vlasov to raise a specifically Russian Corps to assist in our struggle against Stalin's regime.%N%N With your approval this full strength Corps will deploy at Minsk for a total cost of %B100 MPPs (50 MPPs for 2 turns).%N%N Would you like to authorize the formation of a Russian Liberation Army Corps?
+#MESSAGE=Führerhauptquartier %N%N Among the many thousands of prisoners we have taken is a senior Red Army officer, General Vlasov, who is rapidly becoming a leading figure in promoting the anti-Bolshevik message to his fellow countrymen.%N%N There are already thousands of former Red Army soldiers serving in our army, and we could make use of Vlasov to raise a specifically Russian Corps to assist in our struggle against Stalin's regime.%N%N With your approval this full strength Corps will deploy at Minsk for a total cost of %B100 MPPs (50 MPPs for 2 turns).%N%N Would you like to authorize the formation of a Russian Liberation Army Corps %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9044,7 +9004,7 @@ Replacement script
 {
 #NAME= DE 627 - Germany: Deploy Coastal Guns on the Atlantic Wall? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N There is a potential threat of amphibious invasion from the Western Allies along the northern coast of France.%N%N It is therefore recommended that we strengthen our defenses by constructing static Coastal Gun batteries near Brest, Le Havre, Amiens and Calais.%N%N These batteries could prove crucial in repelling any invasion, as they are armed with formidable naval guns that will automatically attempt to engage enemy amphibious units that attempt to land.%N%N Their construction will cost %B300 MPPs (50 MPPs for 6 turns).%N%N Would you like to authorize the construction of these Coastal Gun batteries as part of our Atlantic Wall?
+#MESSAGE=Führerhauptquartier %N%N There is a potential threat of amphibious invasion from the Western Allies along the northern coast of France.%N%N It is therefore recommended that we strengthen our defenses by constructing static Coastal Gun batteries near Brest, Le Havre, Amiens and Calais.%N%N These batteries could prove crucial in repelling any invasion, as they are armed with formidable naval guns that will automatically attempt to engage enemy amphibious units that attempt to land.%N%N Their construction will cost %B300 MPPs (50 MPPs for 6 turns).%N%N Would you like to authorize the construction of these Coastal Gun batteries as part of our Atlantic Wall %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9088,7 +9048,7 @@ Replacement script
 {
 #NAME= DE 630 - Germany: Offer the USSR a Revised Borders and Friendship Treaty? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N Now that the Polish campaign is over, we have an opportunity to adjust some of the details of the Molotov-Ribbentrop Pact.%N%N It is proposed that we offer to transfer Lithuania from our sphere of influence to that of the USSR's.%N%N While this would enable the Soviets to occupy the country in due course, in return we would ask the USSR to withdraw eastwards from along the Vistula-San river line, to the Bug-San river line.%N%N This would put us in a much better position to attack the fortress of Brest-Litovsk when we invade the USSR. If Stalin approves this proposal, and he may not, then it would also move the USSR 3-5% away from the Allies.%N%N Would you like to offer this revised Borders and Friendship Treaty to the USSR?
+#MESSAGE=Führerhauptquartier %N%N Now that the Polish campaign is over, we have an opportunity to adjust some of the details of the Molotov-Ribbentrop Pact.%N%N It is proposed that we offer to transfer Lithuania from our sphere of influence to that of the USSR's.%N%N While this would enable the Soviets to occupy the country in due course, in return we would ask the USSR to withdraw eastwards from along the Vistula-San river line, to the Bug-San river line.%N%N This would put us in a much better position to attack the fortress of Brest-Litovsk when we invade the USSR. If Stalin approves this proposal, and he may not, then it would also move the USSR 3-5% away from the Allies.%N%N Would you like to offer this revised Borders and Friendship Treaty to the USSR %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9125,7 +9085,7 @@ Replacement script
 {
 #NAME= DE 631 - Germany: Offer the USSR a Revised Borders and Friendship Treaty? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N Now that the Polish campaign is over, we have an opportunity to adjust some of the details of the Molotov-Ribbentrop Pact.%N%N It is proposed that we offer to transfer Lithuania from our sphere of influence to that of the USSR's.%N%N While it is true that this would enable them to occupy the country in due course, if Stalin approves, and he may not, then we would benefit by having the USSR move 5-8% away from the Allies.%N%N Would you like to offer this revised Borders and Friendship Treaty to the USSR?
+#MESSAGE=Führerhauptquartier %N%N Now that the Polish campaign is over, we have an opportunity to adjust some of the details of the Molotov-Ribbentrop Pact.%N%N It is proposed that we offer to transfer Lithuania from our sphere of influence to that of the USSR's.%N%N While it is true that this would enable them to occupy the country in due course, if Stalin approves, and he may not, then we would benefit by having the USSR move 5-8% away from the Allies.%N%N Would you like to offer this revised Borders and Friendship Treaty to the USSR %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9162,7 +9122,7 @@ Replacement script
 {
 #NAME= DE 632 - Germany: Annex Lithuania? (AI - 0% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N Lithuania remains within our sphere of influence and it would give us a good launching pad for a future invasion of the USSR should we seize the country before Stalin is ready to counter us.%N%N Annexing Lithuania would undoubtedly cause some alarm in the Soviet Union, but it shouldn't lead directly to conflict unless we were to follow it up with acts of aggression against Latvia or Estonia.%N%N Would you like to authorize the annexation of Lithuania?
+#MESSAGE=Führerhauptquartier %N%N Lithuania remains within our sphere of influence and it would give us a good launching pad for a future invasion of the USSR should we seize the country before Stalin is ready to counter us.%N%N Annexing Lithuania would undoubtedly cause some alarm in the Soviet Union, but it shouldn't lead directly to conflict unless we were to follow it up with acts of aggression against Latvia or Estonia.%N%N Would you like to authorize the annexation of Lithuania %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9188,8 +9148,6 @@ Replacement script
 ; Memel is Axis
 #ALIGNMENT_POSITION= 188,66 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Lithuania(64) Allied but not fully mobilized
 #VARIABLE_CONDITION= 64 [2] [0] [0]
 ; USSR(116) Allied but not fully mobilized
@@ -9201,7 +9159,7 @@ Replacement script
 {
 #NAME= DE 633 - Germany: Annex Lithuania? (AI - 0% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N Lithuania remains within our sphere of influence as the USSR has rejected our offer of a Revised Borders and Friendship Treaty.%N%N Lithuania would give us a good launching pad for a future invasion of the USSR should we seize the country before Stalin is ready to counter us.%N%N Annexing Lithuania would undoubtedly cause some alarm in the Soviet Union, but it shouldn't lead directly to conflict unless we were to follow it up with acts of aggression against Latvia or Estonia.%N%N Would you like to authorize the annexation of Lithuania?
+#MESSAGE=Führerhauptquartier %N%N Lithuania remains within our sphere of influence as the USSR has rejected our offer of a Revised Borders and Friendship Treaty.%N%N Lithuania would give us a good launching pad for a future invasion of the USSR should we seize the country before Stalin is ready to counter us.%N%N Annexing Lithuania would undoubtedly cause some alarm in the Soviet Union, but it shouldn't lead directly to conflict unless we were to follow it up with acts of aggression against Latvia or Estonia.%N%N Would you like to authorize the annexation of Lithuania %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9227,8 +9185,6 @@ Replacement script
 ; Memel is Axis
 #ALIGNMENT_POSITION= 188,66 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Lithuania(64) Allied but not fully mobilized
 #VARIABLE_CONDITION= 64 [2] [0] [0]
 ; USSR(116) Allied but not fully mobilized
@@ -9240,7 +9196,7 @@ Replacement script
 {
 #NAME= DE 634 - Germany: Annex Lithuania? (AI - 0% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N Lithuania remains within our sphere of influence as the USSR has rejected our offer of a Revised Borders and Friendship Treaty.%N%N Lithuania would give us a good launching pad for a future invasion of the USSR should we seize the country before Stalin is ready to counter us.%N%N Annexing Lithuania would undoubtedly cause some alarm in the Soviet Union, but it shouldn't lead directly to conflict unless we were to follow it up with acts of aggression against Latvia or Estonia.%N%N Would you like to authorize the annexation of Lithuania?
+#MESSAGE=Führerhauptquartier %N%N Lithuania remains within our sphere of influence as the USSR has rejected our offer of a Revised Borders and Friendship Treaty.%N%N Lithuania would give us a good launching pad for a future invasion of the USSR should we seize the country before Stalin is ready to counter us.%N%N Annexing Lithuania would undoubtedly cause some alarm in the Soviet Union, but it shouldn't lead directly to conflict unless we were to follow it up with acts of aggression against Latvia or Estonia.%N%N Would you like to authorize the annexation of Lithuania %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9266,8 +9222,6 @@ Replacement script
 ; Memel is Axis
 #ALIGNMENT_POSITION= 188,66 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Lithuania(64) Allied but not fully mobilized
 #VARIABLE_CONDITION= 64 [2] [0] [0]
 ; USSR(116) Allied but not fully mobilized
@@ -9359,7 +9313,7 @@ Replacement script
 {
 #NAME= DE 637 - Germany: Occupy Vichy France? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N With Allied forces in Algeria, the time has come to put into action our plan to occupy Vichy France.%N%N Codenamed Case Anton, for a cost of 75 MPPs our forces will occupy Vichy France.%N%N Launching this operation will prevent the Vichy authorities in mainland France from joining the Allies.%N%N Our intelligence sources report that there is an 80% chance of the French scuttling their fleet at Toulon rather than ordering it to set sail to join the Allies at Algiers.%N%N One thing to be aware of is that once we have occupied Vichy France, Partisan activity will be likely in some areas.%N%N Would you like to order Case Anton to be put into effect in order to occupy Vichy France?
+#MESSAGE=Führerhauptquartier %N%N With Allied forces in Algeria, the time has come to put into action our plan to occupy Vichy France.%N%N Codenamed Case Anton, for a cost of 75 MPPs our forces will occupy Vichy France.%N%N Launching this operation will prevent the Vichy authorities in mainland France from joining the Allies.%N%N Our intelligence sources report that there is an 80% chance of the French scuttling their fleet at Toulon rather than ordering it to set sail to join the Allies at Algiers.%N%N One thing to be aware of is that once we have occupied Vichy France, Partisan activity will be likely in some areas.%N%N Would you like to order Case Anton to be put into effect in order to occupy Vichy France %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9391,8 +9345,6 @@ Replacement script
 ; Nancy is Axis
 #ALIGNMENT_POSITION= 158,85 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Vichy France(118) Axis but not fully mobilized
 #VARIABLE_CONDITION= 118 [1] [0] [0]
 ; USA(115) Allied and not surrendered
@@ -9406,7 +9358,7 @@ Replacement script
 {
 #NAME= DE 638 - Germany: Occupy Vichy France? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N With Allied forces in Algeria, the time has come to put into action our plan to occupy Vichy France.%N%N Codenamed Case Anton, for a cost of 75 MPPs our forces will occupy Vichy France.%N%N Launching this operation will prevent the Vichy authorities in mainland France from joining the Allies.%N%N Our intelligence sources report that there is an 80% chance of the French scuttling their fleet at Toulon rather than ordering it to set sail to join the Allies at Algiers.%N%N One thing to be aware of is that once we have occupied Vichy France, Partisan activity will be likely in some areas.%N%N Would you like to order Case Anton to be put into effect in order to occupy Vichy France?
+#MESSAGE=Führerhauptquartier %N%N With Allied forces in Algeria, the time has come to put into action our plan to occupy Vichy France.%N%N Codenamed Case Anton, for a cost of 75 MPPs our forces will occupy Vichy France.%N%N Launching this operation will prevent the Vichy authorities in mainland France from joining the Allies.%N%N Our intelligence sources report that there is an 80% chance of the French scuttling their fleet at Toulon rather than ordering it to set sail to join the Allies at Algiers.%N%N One thing to be aware of is that once we have occupied Vichy France, Partisan activity will be likely in some areas.%N%N Would you like to order Case Anton to be put into effect in order to occupy Vichy France %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9438,8 +9390,6 @@ Replacement script
 ; Nancy is Axis
 #ALIGNMENT_POSITION= 158,85 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Vichy France(118) Allied but not fully mobilized
 #VARIABLE_CONDITION= 118 [2] [0] [0]
 ; USA(115) Allied and not surrendered
@@ -9453,7 +9403,7 @@ Replacement script
 {
 #NAME= DE 639 - Germany: Occupy Tunisia? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N In order to protect our position in Libya, and protect against an invasion of Sicily or even mainland Italy, we should occupy Tunisia now that the Allies are in Algeria.%N%N Occupying Tunisia will cost %B50 MPPs, and a Garrison unit will deploy at Tunis.%N%N This operation could buy us some time in order to send reinforcements to the area, or to prepare our defenses against an Allied invasion of Italy.%N%N Would you like to issue the order for Tunisia to be occupied?
+#MESSAGE=Führerhauptquartier %N%N In order to protect our position in Libya, and protect against an invasion of Sicily or even mainland Italy, we should occupy Tunisia now that the Allies are in Algeria.%N%N Occupying Tunisia will cost %B50 MPPs, and a Garrison unit will deploy at Tunis.%N%N This operation could buy us some time in order to send reinforcements to the area, or to prepare our defenses against an Allied invasion of Italy.%N%N Would you like to issue the order for Tunisia to be occupied %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9478,15 +9428,13 @@ Replacement script
 #SHADOW_RGB= 0,0,0
 ; Algiers is Allied
 #ALIGNMENT_POSITION= 152,113 [2]
-; Tripoli is Axis
+; Tripoli(172,121) is Axis
 #ALIGNMENT_POSITION= 172,121 [1]
 ; Palermo is Axis
 #ALIGNMENT_POSITION= 173,109 [1]
 ; Syracuse is Axis
 #ALIGNMENT_POSITION= 176,112 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Tunisia Axis but not fully mobilized
 #VARIABLE_CONDITION= 110 [1] [0] [0]
 ; USA(115) Allied and not surrendered
@@ -9502,7 +9450,7 @@ Replacement script
 {
 #NAME= DE 640 - Germany: Occupy Tunisia? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N In order to protect our position in Libya, and protect against an invasion of Sicily or even mainland Italy, we should occupy Tunisia now that the Allies are in Algeria.%N%N Occupying Tunisia will cost %B50 MPPs, and a Garrison unit will deploy at Tunis.%N%N This operation could buy us some time in order to send reinforcements to the area, or to prepare our defenses against an Allied invasion of Italy.%N%N Would you like to issue the order for Tunisia to be occupied?
+#MESSAGE=Führerhauptquartier %N%N In order to protect our position in Libya, and protect against an invasion of Sicily or even mainland Italy, we should occupy Tunisia now that the Allies are in Algeria.%N%N Occupying Tunisia will cost %B50 MPPs, and a Garrison unit will deploy at Tunis.%N%N This operation could buy us some time in order to send reinforcements to the area, or to prepare our defenses against an Allied invasion of Italy.%N%N Would you like to issue the order for Tunisia to be occupied %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9527,15 +9475,13 @@ Replacement script
 #SHADOW_RGB= 0,0,0
 ; Algiers is Allied
 #ALIGNMENT_POSITION= 152,113 [2]
-; Tripoli is Axis
+; Tripoli(172,121) is Axis
 #ALIGNMENT_POSITION= 172,121 [1]
 ; Palermo is Axis
 #ALIGNMENT_POSITION= 173,109 [1]
 ; Syracuse is Axis
 #ALIGNMENT_POSITION= 176,112 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Tunisia Allied but not fully mobilized
 #VARIABLE_CONDITION= 110 [2] [0] [0]
 ; USA(115) Allied and not surrendered
@@ -9585,7 +9531,7 @@ Replacement script
 {
 #NAME= DE 642 - Germany: Form The Afrika Korps for Service in North Africa? (Benghazi, Gazala and Tripoli in Axis hands) (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies in North Africa, it is suggested that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Benghazi: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a total cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa?
+#MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies in North Africa, it is suggested that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Benghazi: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a total cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9612,11 +9558,9 @@ Replacement script
 #ALIGNMENT_POSITION= 186,122 [1]
 ; Gazala is Axis
 #ALIGNMENT_POSITION= 192,122 [1]
-; Tripoli is Axis
+; Tripoli(172,121) is Axis
 #ALIGNMENT_POSITION= 172,121 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Italy(59) Axis and fully mobilized
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -9626,7 +9570,7 @@ Replacement script
 {
 #NAME= DE 643 - Germany: Shall We Invade Norway? (Norway pro-Axis but neutral) (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N Our iron ore imports from Norway could be threatened by the British who may make a move to invade Norway and cut off our convoys.%N%N It is therefore strongly recommended that we move quickly to occupy the country, so we have devised a plan to move units secretly to land in Norway.%N%N These forces should be sufficient to deal with any Norwegian resistance, and probably also to repel any Allied counter moves.%N%N Preparations will cost a total of %B180 MPPs (90 MPPs for 2 turns), and the invasion will take place on the 9th April 1940.%N%N Would you like to authorize the invasion of Norway?
+#MESSAGE=Führerhauptquartier %N%N Our iron ore imports from Norway could be threatened by the British who may make a move to invade Norway and cut off our convoys.%N%N It is therefore strongly recommended that we move quickly to occupy the country, so we have devised a plan to move units secretly to land in Norway.%N%N These forces should be sufficient to deal with any Norwegian resistance, and probably also to repel any Allied counter moves.%N%N Preparations will cost a total of %B180 MPPs (90 MPPs for 2 turns), and the invasion will take place on the 9th April 1940.%N%N Would you like to authorize the invasion of Norway %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9654,7 +9598,6 @@ Replacement script
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Norway(78) Axis
 #VARIABLE_CONDITION= 78 [1] [0] [0]
-; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -9662,7 +9605,7 @@ Replacement script
 {
 #NAME= DE 644 - Germany: Shall We Invade Norway? (Norway pro-Allied but neutral) (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N Our iron ore imports from Norway could be threatened by the British who may make a move to invade Norway and cut off our convoys.%N%N It is therefore strongly recommended that we move quickly to occupy the country, so we have devised a plan to move units secretly to land in Norway.%N%N These forces should be sufficient to deal with any Norwegian resistance, and probably also to repel any Allied counter moves.%N%N Preparations will cost a total of %B180 MPPs (90 MPPs for 2 turns), and the invasion will take place on the 9th April 1940.%N%N Would you like to authorize the invasion of Norway?
+#MESSAGE=Führerhauptquartier %N%N Our iron ore imports from Norway could be threatened by the British who may make a move to invade Norway and cut off our convoys.%N%N It is therefore strongly recommended that we move quickly to occupy the country, so we have devised a plan to move units secretly to land in Norway.%N%N These forces should be sufficient to deal with any Norwegian resistance, and probably also to repel any Allied counter moves.%N%N Preparations will cost a total of %B180 MPPs (90 MPPs for 2 turns), and the invasion will take place on the 9th April 1940.%N%N Would you like to authorize the invasion of Norway %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9690,14 +9633,13 @@ Replacement script
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Norway(78) Allied but not fully mobilized
 #VARIABLE_CONDITION= 78 [2] [0] [0]
-; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 {
 #NAME= DE 645 - Germany: Shall We Deploy Dedicated Anti-Tank Units? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N Given the large armored formations that both sides can deploy on the Eastern Front, there have been calls for the formation of dedicated anti-tank units.%N%N These will be useful when encountering enemy armored formations, but will be fragile when fighting enemy infantry.%N%N We could at low cost quickly form 3 dedicated Anti-Tank units at Warsaw for a total of %B200 MPPs (50 MPPs for 4 turns).%N%N They will deploy at half strength and will need upgrading.%N%N Would you like to form these dedicated Anti-Tank units?
+#MESSAGE=Führerhauptquartier %N%N Given the large armored formations that both sides can deploy on the Eastern Front, there have been calls for the formation of dedicated anti-tank units.%N%N These will be useful when encountering enemy armored formations, but will be fragile when fighting enemy infantry.%N%N We could at low cost quickly form 3 dedicated Anti-Tank units at Warsaw for a total of %B200 MPPs (50 MPPs for 4 turns).%N%N They will deploy at half strength and will need upgrading.%N%N Would you like to form these dedicated Anti-Tank units %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9724,7 +9666,6 @@ Replacement script
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -9765,7 +9706,7 @@ Replacement script
 {
 #NAME= DE 647 - Germany: Form The Afrika Korps for Service in North Africa? (Benghazi and Tripoli in Axis hands, Gazala in Allied hands) (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies in North Africa, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Tripoli: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa?
+#MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies in North Africa, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Tripoli: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9794,7 +9735,7 @@ Replacement script
 #ALIGNMENT_POSITION= 186,122 [1]
 ; Gazala is Allied
 #ALIGNMENT_POSITION= 192,122 [2]
-; Tripoli is Axis
+; Tripoli(172,121) is Axis
 #ALIGNMENT_POSITION= 172,121 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Germany(45) Axis and not surrendered (dummy condition)
@@ -9807,7 +9748,7 @@ Replacement script
 {
 #NAME= DE 648 - Germany: Form The Afrika Korps for Service in North Africa? (Tripoli in Allied hands and Trieste in Axis hands) (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies now they have lost Tripoli, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N This formation could spearhead an offensive to recapture Libya and then advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Trieste: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in the Mediterranean?
+#MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies now they have lost Tripoli, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N This formation could spearhead an offensive to recapture Libya and then advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Trieste: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in the Mediterranean %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9836,11 +9777,9 @@ Replacement script
 #ALIGNMENT_POSITION= 186,122 [2]
 ; Trieste is Axis
 #ALIGNMENT_POSITION= 174,92 [1]
-; Tripoli is Axis
+; Tripoli(172,121) is Axis
 #ALIGNMENT_POSITION= 172,121 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Italy(59) Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -9849,7 +9788,7 @@ Replacement script
 {
 #NAME= DE 649 - Germany: Form The Afrika Korps for Service in North Africa? (Benghazi in Allied hands, Tripoli in Axis hands) (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies in North Africa, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Tripoli: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa?
+#MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies in North Africa, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Tripoli: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9874,11 +9813,9 @@ Replacement script
 #SHADOW_RGB= 0,0,0
 ; Benghazi(186,122) is Allied
 #ALIGNMENT_POSITION= 186,122 [2]
-; Tripoli is Axis
+; Tripoli(172,121) is Axis
 #ALIGNMENT_POSITION= 172,121 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Italy(59) Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -9958,8 +9895,6 @@ Replacement script
 ; Warsaw(188,76) is Axis
 #ALIGNMENT_POSITION= 188,76 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; USSR(116) Allied but not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -9994,8 +9929,6 @@ Replacement script
 ; Warsaw(188,76) is Axis
 #ALIGNMENT_POSITION= 188,76 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; USSR(116) Allied but not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -10157,8 +10090,6 @@ Replacement script
 ; St Malo is Axis
 #ALIGNMENT_POSITION= 141,85 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; UK(112) Allied and not surrendered
@@ -10615,11 +10546,9 @@ Replacement script
 ; Algiers is Axis
 #ALIGNMENT_POSITION= 152,113 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered
 ; France(40) Allied and surrendered
 ; Spain(99) Axis and not surrendered
 ; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 99 [1] [30] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -10630,7 +10559,7 @@ Replacement script
 {
 #NAME= DE 671 - Germany: Form The Afrika Korps for Service in North Africa? (Benghazi and Gazala in Axis hands and Tripoli in Allied hands) (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies in North Africa, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Benghazi: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa?
+#MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies in North Africa, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Benghazi: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -10659,11 +10588,9 @@ Replacement script
 #ALIGNMENT_POSITION= 186,122 [1]
 ; Gazala is Axis
 #ALIGNMENT_POSITION= 192,122 [1]
-; Tripoli is Allied
+; Tripoli(172,121) is Allied
 #ALIGNMENT_POSITION= 172,121 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Italy(59) Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -10701,13 +10628,11 @@ Replacement script
 #ALIGNMENT_POSITION= 186,122 [1]
 ; Trieste is Axis
 #ALIGNMENT_POSITION= 174,92 [1]
-; Tripoli is Axis
+; Tripoli(172,121) is Axis
 #ALIGNMENT_POSITION= 172,121 [2]
 ; Gazala is Allied
 #ALIGNMENT_POSITION= 192,122 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Italy(59) Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -10745,7 +10670,7 @@ Replacement script
 #ALIGNMENT_POSITION= 150,81 [1]
 ; Le Havre is Axis
 #ALIGNMENT_POSITION= 147,82 [1]
-; Brest is Axis
+; Brest(138,86) is Axis
 #ALIGNMENT_POSITION= 138,86 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; France(40) Allied and surrendered
@@ -10781,9 +10706,8 @@ Replacement script
 #SHADOW_RGB= 0,0,0
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
+; Italy(59)
 #NATIONAL_MORALE_TRIGGER= 59 [20]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; 3 German units within 15 hexes of Rome
 #CONDITION_POSITION= 171,101 [15,15] [3,3] [1] [45]
@@ -10912,9 +10836,7 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered
 ; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -10949,8 +10871,6 @@ Replacement script
 ; Cairo(208,126) is Axis
 #ALIGNMENT_POSITION= 208,126 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Egypt(36) Allied surrendered
 #VARIABLE_CONDITION= 36 [2] [100] [1]
 ; There are no Allied units within 3 hexes of Cairo
@@ -10999,8 +10919,6 @@ Replacement script
 ; Cluj is Axis
 #ALIGNMENT_POSITION= 193,89 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Turkey(111) Allied but not fully mobilized
 ; previous made no sense and changed to Turkey Axis
 #VARIABLE_CONDITION= 111 [1] [0] [0]
@@ -11088,11 +11006,9 @@ Replacement script
 ; Rome(171,101) is Axis
 #ALIGNMENT_POSITION= 171,101 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered
 ; Italy(59) Axis and not surrendered
 ; France(40) aligned with the Allies and surrendered
 ; USSR(116) aligned with the Allies and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -11129,7 +11045,7 @@ Replacement script
 #SHADOW_RGB= 0,0,0
 ; Rome(171,101) is Axis
 #ALIGNMENT_POSITION= 171,101 [1]
-; Toulon is Axis
+; Toulon(158,98) is Axis
 #ALIGNMENT_POSITION= 158,98 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Italy(59) Axis
@@ -11169,7 +11085,7 @@ Replacement script
 #ALIGNMENT_POSITION= 185,102 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Italy(59) Axis and not surrendered
-; Greece(46) aligned with the Allies and not surrendered
+; Greece(46) Allied and Mobilized
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 46 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -11241,7 +11157,7 @@ Replacement script
 #SHADOW_RGB= 0,0,0
 ; Rome(171,101) is Axis
 #ALIGNMENT_POSITION= 171,101 [1]
-; Toulon is Axis
+; Toulon(158,98) is Axis
 #ALIGNMENT_POSITION= 158,98 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Italy(59) Axis
@@ -11388,8 +11304,6 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -11427,8 +11341,6 @@ Replacement script
 ; Stalingrad(234,85) is Axis
 #ALIGNMENT_POSITION= 234,85 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -11468,8 +11380,6 @@ Replacement script
 ; Stalingrad(234,85) is Axis
 #ALIGNMENT_POSITION= 234,85 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -11508,8 +11418,6 @@ Replacement script
 ; Stalingrad(234,85) is Allied
 #ALIGNMENT_POSITION= 234,85 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -11548,8 +11456,6 @@ Replacement script
 ; Stalingrad(234,85) is Allied
 #ALIGNMENT_POSITION= 234,85 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -11589,9 +11495,7 @@ Replacement script
 #ALIGNMENT_POSITION= 155,76 [1]
 #ALIGNMENT_POSITION= 156,75 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Switzerland(104) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 104 [1] [0] [0]
 ; 1 Axis unit in The Hague
 #CONDITION_POSITION= 155,76 [0,0] [1,1] [1] [0]
@@ -11628,9 +11532,7 @@ Replacement script
 ; Warsaw(188,76) is Axis
 #ALIGNMENT_POSITION= 188,76 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Switzerland(104) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 104 [1] [0] [0]
 ; 1 Axis unit in Warsaw
 #CONDITION_POSITION= 188,76 [0,0] [1,1] [1] [0]
@@ -11667,9 +11569,7 @@ Replacement script
 ; Brussels(155,80) is Axis
 #ALIGNMENT_POSITION= 155,80 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Switzerland(104) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 104 [1] [0] [0]
 ; 1 Axis unit in Brussels
 #CONDITION_POSITION= 155,80 [0,0] [1,1] [1] [0]
@@ -11706,9 +11606,7 @@ Replacement script
 ; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Switzerland(104) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 104 [1] [0] [0]
 ; 1 Axis unit in Paris
 #CONDITION_POSITION= 151,84 [0,0] [1,1] [1] [0]
@@ -11746,9 +11644,7 @@ Replacement script
 #ALIGNMENT_POSITION= 221,65 [1]
 #ALIGNMENT_POSITION= 220,65 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Switzerland(104) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 104 [1] [0] [0]
 ; 1 Axis unit in Moscow
 #CONDITION_POSITION= 221,65 [0,0] [1,1] [1] [0]
@@ -11785,9 +11681,7 @@ Replacement script
 ; Kiev(207,80) is Axis
 #ALIGNMENT_POSITION= 207,80 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Switzerland(104) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 104 [1] [0] [0]
 ; 1 Axis unit in Kiev
 #CONDITION_POSITION= 207,80 [0,0] [1,1] [1] [0]
@@ -11824,9 +11718,7 @@ Replacement script
 ; Smolensk(209,68) is Axis
 #ALIGNMENT_POSITION= 209,68 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Switzerland(104) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 104 [1] [0] [0]
 ; 1 Axis unit in Smolensk 
 #CONDITION_POSITION= 209,68 [0,0] [1,1] [1] [0]
@@ -11863,9 +11755,7 @@ Replacement script
 ; London(147,77) is Axis
 #ALIGNMENT_POSITION= 147,77 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Switzerland(104) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 104 [1] [0] [0]
 ; 1 Axis unit in London
 #CONDITION_POSITION= 147,77 [0,0] [1,1] [1] [0]
@@ -11902,9 +11792,7 @@ Replacement script
 ; Manchester(142,72) is Axis
 #ALIGNMENT_POSITION= 142,72 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Switzerland(104) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 104 [1] [0] [0]
 ; 1 Axis unit in Manchester
 #CONDITION_POSITION= 142,72 [0,0] [1,1] [1] [0]
@@ -11939,13 +11827,12 @@ Replacement script
 #DATE= 1942/01/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Naples is Axis
+; Naples(175,103) is Axis
 #ALIGNMENT_POSITION= 175,103 [1]
 #NATIONAL_MORALE_TRIGGER= 59 [50]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; Two Allied units are within 2 hexes of Naples
+; Two Allied units are within 2 hexes of Naples(175,103)
 #CONDITION_POSITION= 175,103 [2,2] [2,2] [2] [0]
 }
 
@@ -11979,7 +11866,7 @@ Replacement script
 #SHADOW_RGB= 0,0,0
 ; Rome(171,101) is Axis
 #ALIGNMENT_POSITION= 171,101 [1]
-; Toulon is Axis
+; Toulon(158,98) is Axis
 #ALIGNMENT_POSITION= 158,98 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Italy(59) Axis
@@ -12018,7 +11905,7 @@ Replacement script
 #SHADOW_RGB= 0,0,0
 ; Rome(171,101) is Axis
 #ALIGNMENT_POSITION= 171,101 [1]
-; Toulon is Axis
+; Toulon(158,98) is Axis
 #ALIGNMENT_POSITION= 158,98 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Italy(59) Axis
@@ -12202,10 +12089,8 @@ Replacement script
 ; Rome(171,101) is Axis
 #ALIGNMENT_POSITION= 171,101 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Italy(59) Axis and not surrendered
 ; Spain(99) Axis and not surrendered 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [1] [0]
 #VARIABLE_CONDITION= 99 [1] [1] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -12238,13 +12123,11 @@ Replacement script
 #DATE= 1939/09/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-;Set Friendly Position (Rome)
+; Rome(171,101)
 #ALIGNMENT_POSITION= 171,101 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Italy(59) Axis and not surrendered
 ; Spain(99) Axis and not surrendered 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [1] [0]
 #VARIABLE_CONDITION= 99 [1] [1] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -12599,7 +12482,7 @@ Replacement script
 {
 #NAME= DE 812 - Italy: Delivery of Aircraft to Sweden? (AI - 75% Yes)
 #POPUP=
-#MESSAGE=Commander in Chief %N%N %BRe: %BSale %BOf %BMilitary %BAircraft %N%N Il Duce, the Swedish Government has approached Italy to purchase military aircraft after the United States' refusal to fulfill their purchase order. %N%N Selling aircraft to Sweden will help strengthen relations between Sweden and Italy, and should in turn help protect our German ally's convoys from diplomatic intervention due to improved Axis leaning. Sweden has offered us %B100 MPPs (25 MPPs for 4 turns) for the aircraft order.%N%N Il Duce, should we sell military aircraft to Sweden? Otherwise we will keep the aircraft in Italy.
+#MESSAGE=Commander in Chief %N%N %BRe: %BSale %BOf %BMilitary %BAircraft %N%N Il Duce, the Swedish Government has approached Italy to purchase military aircraft after the United States' refusal to fulfill their purchase order. %N%N Selling aircraft to Sweden will help strengthen relations between Sweden and Italy, and should in turn help protect our German ally's convoys from diplomatic intervention due to improved Axis leaning. Sweden has offered us %B100 MPPs (25 MPPs for 4 turns) for the aircraft order.%N%N Il Duce, should we sell military aircraft to Sweden %B(YES)? Otherwise we will keep the aircraft in Italy %B(NO).
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -12666,10 +12549,8 @@ Replacement script
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USA(115) Allied fully mobilized
 ; Sweden(103) Axis and not surrendered 
-; Germany(45) Axis fully mobilized
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 103 [1] [0] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -12978,12 +12859,10 @@ Replacement script
 ; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Portugal(87) Axis and not surrendered 
 ; Switzerland(104) Axis and not surrendered
 ; UK(112) Allied and fully mobilized
 ; France(40) aligned with the Allies and Surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 87 [1] [1] [0]
 #VARIABLE_CONDITION= 104 [1] [1] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -13022,10 +12901,8 @@ Replacement script
 ; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
-; Switzerland(104) Axis
+; Switzerland(104) Allied (barely)
 ; UK(112) Allied and fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 104 [2] [1] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -13229,10 +13106,10 @@ Replacement script
 #DATE= 1939/10/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-;Set Friendly Position (Rome)
+; Rome(171,101) is Axis
 #ALIGNMENT_POSITION= 171,101 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; 1st Line Italy(59) Axis and not surrendered 
+; Italy(59) Axis and not surrendered 
 #VARIABLE_CONDITION= 59 [1] [1] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -13264,10 +13141,10 @@ Replacement script
 #DATE= 1939/11/01 
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-;Set Friendly Position (Rome)
+; Rome(171,101)
 #ALIGNMENT_POSITION= 171,101 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; 1st Line Italy(59) Axis and not surrendered 
+; Italy(59) Axis and not surrendered 
 #VARIABLE_CONDITION= 59 [1] [1] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -13339,10 +13216,8 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; USSR(116) Allied and Not Surrendered
 ; Italy(59) is Axis and fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -13454,7 +13329,7 @@ Replacement script
 #ALIGNMENT_POSITION= 147,77 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; UK(112) Allied and not surrendered
-; Denmark(18) Allied and surrendered
+; Denmark(31) Allied and surrendered
 ; Norway(78) Allied and surrendered
 ; Sweden(103) Allied
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -13541,7 +13416,7 @@ Replacement script
 {
 #NAME= DE 836 - Germany: Pursue Greek Axis Relations? (AI - 50% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N Greece %N%N The Greek general and dictator, Ioannis Metaxas has thus far maintained a neutral stance during the conflict in Europe. %N%N Though recent events have drove Metaxas to lean towards Britain and France, there may still be the opportunity to sway Greece to sympathize with the Axis.  Metaxas himself had once praised fellow European authoritarian states, under the regimes of Francisco Franco, Benito Mussolini and Adolf Hitler.  If Greece were to lean towards the Axis we could explore Balkan concessions which could persuade Metaxas to join our cause, though we can not be certain that Greece will entertain any proposal, especially now that the government is Allied leaning. %N%N Mein Führer, Should we invest our efforts into bringing Metaxas into the Axis camp?  It will cost 25 MPPs.
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BGreece %N%N The Greek general and dictator, Ioannis Metaxas has thus far maintained a neutral stance during the conflict in Europe. %N%N Though recent events have drove Metaxas to lean towards Britain and France, there may still be the opportunity to sway Greece to sympathize with the Axis.  Metaxas himself had once praised fellow European authoritarian states, under the regimes of Francisco Franco, Benito Mussolini and Adolf Hitler.  If Greece were to lean towards the Axis we could explore Balkan concessions which could persuade Metaxas to join our cause, though we can not be certain that Greece will entertain any proposal, especially now that the government is Allied leaning. %N%N Mein Führer, Should we invest our efforts into bringing Metaxas into the Axis camp %B(YES)?  It will cost 25 MPPs.
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -13568,11 +13443,9 @@ Replacement script
 ; Berlin(173, 74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Greece(46) Allied
 ; Albania(3) Allied and surrendered
 ; Bulgaria(19) Axis
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 46 [2] [0] [0]
 #VARIABLE_CONDITION= 3 [2] [100] [1]
 #VARIABLE_CONDITION= 19 [1] [10] [0]
@@ -13608,17 +13481,15 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Greece(46) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 46 [1] [0] [0]
-; No Allied units within 5 hexes of Vienna
+; No Allied units within 5 hexes of Vienna(179,86)
 #CONDITION_POSITION= 179,86 [5,5] [0,0] [2] [0]
-; No Allied units within 5 hexes of Budapest
+; No Allied units within 5 hexes of Budapest(184,88)
 #CONDITION_POSITION= 184,88 [5,5] [0,0] [2] [0]
-; No Allied units within 5 hexes of Belgrade
+; No Allied units within 5 hexes of Belgrade(187,94)
 #CONDITION_POSITION= 187,94 [5,5] [0,0] [2] [0]
-; No Allied units within 5 hexes of Skopje
+; No Allied units within 5 hexes of Skopje(189,101)
 #CONDITION_POSITION= 189,101 [5,5] [0,0] [2] [0]
 }
 
@@ -13652,6 +13523,7 @@ Replacement script
 #SHADOW_RGB= 0,0,0
 ; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
+; Athens(193,109) is Allied
 #ALIGNMENT_POSITION= 193,109 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; UK(112) Allied and not surrendered
@@ -13689,14 +13561,12 @@ Replacement script
 #DATE= 1941/02/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; London(147,77) is Allied
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #ALIGNMENT_POSITION= 198,94 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Italy(59) Axis and fully mobilized
 ; Romania(93) Axis and fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 93 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -13732,10 +13602,8 @@ Replacement script
 #ALIGNMENT_POSITION= 173,74 [1]
 #ALIGNMENT_POSITION= 198,94 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Italy(59) Axis and fully mobilized
 ; Romania(93) Axis and fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 93 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -13771,10 +13639,8 @@ Replacement script
 #ALIGNMENT_POSITION= 173,74 [1]
 #ALIGNMENT_POSITION= 198,94 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Italy(59) Axis and fully mobilized
 ; Romania(93) Axis and fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 93 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -13843,12 +13709,10 @@ Replacement script
 #DATE= 1939/09/03
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; London(147,77) is Allied
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Switzerland(104) Allied
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 104 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -13880,12 +13744,10 @@ Replacement script
 #DATE= 1939/09/03
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; London(147,77) is Allied
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Switzerland(104) Allied
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 104 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -13917,12 +13779,10 @@ Replacement script
 #DATE= 1939/09/03
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; London(147,77) is Allied
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Switzerland(104) Allied and surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 104 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -13998,7 +13858,6 @@ Replacement script
 ; London(147,77) is Allied
 #ALIGNMENT_POSITION= 195,51 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -14071,7 +13930,6 @@ Replacement script
 ; Bucharest is Axis
 #ALIGNMENT_POSITION= 198,95 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 93 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -14297,7 +14155,6 @@ Replacement script
 #ALIGNMENT_POSITION= 215,87 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 #VARIABLE_CONDITION= 93 [1] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -14354,11 +14211,9 @@ Replacement script
 ; Bucharest is Axis
 #ALIGNMENT_POSITION= 209,89 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Romania(93) Axis but not fully mobilized
+; Romania(93) Axis and Mobilized
 #VARIABLE_CONDITION= 93 [1] [100] [0]
-; USSR(116) Allied but not fully mobilized
+; USSR(116) Allied and Mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -14406,8 +14261,8 @@ Replacement script
 #ALIGNMENT_POSITION= 205,49 [1]
 #ALIGNMENT_POSITION= 206,49 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied but not fully mobilized
-; Finland(39) Axis but not fully mobilized
+; USSR(116) Allied and Mobilized
+; Finland(39) Axis and Mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -14457,8 +14312,8 @@ Replacement script
 #ALIGNMENT_POSITION= 205,49 [1]
 #ALIGNMENT_POSITION= 206,49 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied but not fully mobilized
-; Finland(39) Axis but not fully mobilized
+; USSR(116) Allied and Mobilized
+; Finland(39) Axis and Mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -14507,9 +14362,8 @@ Replacement script
 ; Zaporizhia is Allied
 #ALIGNMENT_POSITION= 215,87 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; UK(112) Allied and not surrendered
+; Romania(93) Axis and Mobilized
 #VARIABLE_CONDITION= 93 [1] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -14728,11 +14582,9 @@ Replacement script
 #DATE= 1939/09/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Rome(171,101) is Axis
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -14806,15 +14658,13 @@ Replacement script
 #SHADOW_RGB= 0,0,0
 ; Algiers is Allied
 #ALIGNMENT_POSITION= 152,113 [2]
-; Tripoli is Axis
+; Tripoli(172,121) is Axis
 #ALIGNMENT_POSITION= 172,121 [1]
 ; Palermo is Axis
 #ALIGNMENT_POSITION= 173,109 [1]
 ; Syracuse is Axis
 #ALIGNMENT_POSITION= 176,112 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Italy(59) Axis and not surrendered
@@ -14894,17 +14744,15 @@ Replacement script
 #DATE= 1941/01/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; London(147,77) is Allied
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; German(45) Axis and fully mobilized
 ; Italy(59) Axis and fully mobilized
 ; Vichy France(118) Axis
 ; Algeria(4) Axis
 ; France(40) Allied and surrendered
 ; Spain(99) Axis and fully mobilized
 ; USA(115) Allied 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 118 [1] [0] [0]
 #VARIABLE_CONDITION= 4 [1] [0] [0]
@@ -14948,7 +14796,6 @@ Replacement script
 #ALIGNMENT_POSITION= 233,115 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 111 [2] [0] [0]
 #VARIABLE_CONDITION= 46 [1] [100] [0]
 #VARIABLE_CONDITION= 56 [1] [100] [0]
@@ -15087,7 +14934,7 @@ Replacement script
 #DATE= 1944/01/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Rome(171,101) is Axis
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Germany(45) Axis and not surrendered (dummy condition)
@@ -15122,13 +14969,11 @@ Replacement script
 #DATE= 1941/12/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-;Berlin in Axis hands
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and not surrendered
-; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 227,35 [2,3] [1,2] [1] [0]
 #CONDITION_POSITION= 225,54 [2,3] [1,2] [1] [0]
 #CONDITION_POSITION= 221,65 [2,4] [3,5] [1] [0]
@@ -15205,12 +15050,10 @@ Replacement script
 #SHADOW_RGB= 0,0,0
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
-;Set Friendly Position (Rome)
+; Rome(171,101) is Axis
 #ALIGNMENT_POSITION= 171,101 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Italy(59) is Axis and fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -15305,7 +15148,6 @@ Replacement script
 #ALIGNMENT_POSITION= 206,51[2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -15340,9 +15182,7 @@ Replacement script
 ; Moscow(221,65) is Allied
 #ALIGNMENT_POSITION= 221,65 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; USSR(116) Allied
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -15466,6 +15306,7 @@ Replacement script
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 46 [2] [100] [1]
+; Egypt(36) Allied
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -15500,10 +15341,8 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Italy(59) Axis and not surrendered
 ; Spain(99) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [1] [0]
 #VARIABLE_CONDITION= 99 [1] [1] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -15540,10 +15379,8 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Italy(59) Axis and not surrendered
 ; Spain(99) Axis and not surrendered 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [1] [0]
 #VARIABLE_CONDITION= 99 [1] [1] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -15581,13 +15418,10 @@ Replacement script
 #ALIGNMENT_POSITION= 173,74 [1]
 #ALIGNMENT_POSITION= 194,62 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; USSR(116) Allied and fully mobilized
 ; Spain Axis 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 99 [1] [40] [0]
-; German units in or around Riga
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -15621,10 +15455,8 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Italy(59) Axis and fully mobilized
 ; Spain(99) Axis and not surrendered 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 99 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -15659,9 +15491,7 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Portugal(87) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 87 [2] [1] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -15696,9 +15526,7 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Switzerland(104) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 104 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -15733,11 +15561,9 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Portugal(87) Axis and not surrendered 
 ; Switzerland(104) Axis and not surrendered
 ; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 87 [1] [1] [0]
 #VARIABLE_CONDITION= 104 [1] [1] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
@@ -15775,9 +15601,7 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Spain(99) Axis and not surrendered 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 99 [1] [1] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -15811,12 +15635,11 @@ Replacement script
 #SHADOW_RGB= 0,0,0
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
+; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Spain(99) Axis and not surrendered 
 ; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 99 [1] [15] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -15853,15 +15676,14 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Turkey(111) Axis
 ; USSR(116) Allied 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 111 [1] [0] [0]
 #VARIABLE_CONDITION= 116 [2] [50] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Bulgaria Axis and Mobilized
 {
 #NAME= DE 911 - Germany: Sign the Clodius Agreement? (AI - 100% Yes)
 #POPUP=
@@ -15890,14 +15712,59 @@ Replacement script
 #SHADOW_RGB= 0,0,0
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
+; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; USSR(116) Allied
 ; Bulgaria(19) Axis and fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [50] [0]
 #VARIABLE_CONDITION= 19 [1] [100] [0]
+; No Units with Turkey
+#CONDITION_POSITION= 211,106 [6,6] [0,0] [1] [0]
+#CONDITION_POSITION= 228,106 [3,3] [0,0] [1] [0]
+#CONDITION_POSITION= 211,106 [6,6] [0,0] [2] [0]
+#CONDITION_POSITION= 228,106 [3,3] [0,0] [2] [0]
+}
+
+; Greece Axis and Mobilized
+; Yugoslavia Axis controlled
+{
+#NAME= DE 911 - Germany: Sign the Clodius Agreement? (AI - 100% Yes)
+#POPUP=
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BClodius %BAgreement %N%N Mein Führer,  German trade expert Dr. Karl Clodius has negotiated a trade agreement with Turkey for the export of essential raw materials in exchange for German war materials. %N%N Although the trade agreement will require immediate expenditures on our behalf and it may be over a year before Germany will benefit from the trade agreement, the benefits (30 MPPs per turn) will far out way the costs over the course of the agreement.%N%N Mein Führer, should we sign the Clodius Agreement?  It will cost a total of %B50 MPPs (10 MPPs for 5 turns) for the initial set up and logistics of the agreement.
+#IMAGE=
+#SOUND= teletype_1.ogg, teletype_2.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 910[1]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#DISPLAY_ORDER= 0
+#DECISION= 911
+#MPP_UPDOWN= -10
+#MPP_TURNS= 5
+#MPP_TEXT= Clodius Agreement
+#NOTES= %N%N In October 1941, Turkey and Germany signed the Clodius Agreement, named after the German negotiator Karl Clodius. Turkey agreed to export up 45,000 tons of chromite ore to Germany in 1941 and in 1942, and 90,000 tons of the mineral in both 1943 and 1944, contingent on Germany's supplies of military equipment to Turkey. Germany would provide as many as 117 railway locomotives and 1,250 freight rail cars to transport the ore. %N%N If you select %B(YES), Turkey will move 2-4% closer to the Axis and Germany will begin receiving supply shipments from Turkey (valued at 30 MPPs per turn) beginning December 31, 1942.  The materials will be transported through the Balkans, so as long as the trade route remains open we can continue to expect continuous supply shipments. %N%N Turkey will also deploy a fully upgraded Infantry Corps at Bursa as a result of the war materials received from Germany.  The unit will deploy when and if Turkey enters the war for either side %N%N You should select %B(NO) if you have intentions to invade Turkey as the supply shipments will flow only from neutral Turkey.  
+#NOTES_POSITION= 211,106
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1941/10/01
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Berlin(173,74) is Axis
+#ALIGNMENT_POSITION= 173,74 [1]
+; Paris(151,84) is Axis
+#ALIGNMENT_POSITION= 151,84 [1]
+; Belgrade(187,94) is Axis
+#ALIGNMENT_POSITION= 187,94 [1]
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; USSR(116) Allied
+; Greece(46) Axis and fully mobilized
+#VARIABLE_CONDITION= 116 [2] [50] [0]
+#VARIABLE_CONDITION= 46 [1] [100] [0]
 ; No Units with Turkey
 #CONDITION_POSITION= 211,106 [6,6] [0,0] [1] [0]
 #CONDITION_POSITION= 228,106 [3,3] [0,0] [1] [0]
@@ -15935,9 +15802,7 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; France(40) Allied and Surrendered 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -15971,10 +15836,8 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; France(40) Allied and Surrendered 
 ; Vichy aligned with the Allies, not fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 118 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -16009,10 +15872,8 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; France(40) Allied and Surrendered 
 ; Vichy is Axis not fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 118 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -16047,10 +15908,8 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; France(40) Allied and Surrendered 
 ; Vichy is Axis not fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 118 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -16085,11 +15944,9 @@ Replacement script
 ; Warsaw(188,76) is Axis
 #ALIGNMENT_POSITION= 188,76 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Romania(93) Axis and fully mobilized
 ; Hungary(52) Axis and fully mobilized
 ; USSR(116) Allied and fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 93 [1] [100] [0]
 #VARIABLE_CONDITION= 52 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -16125,13 +15982,11 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Italy(59) Axis and fully mobilized
 ; Greece(46) Axis
 ; Bulgaria(19) Axis
 ; USSR(116) Allied 
 ; Albania(3) Allied and Surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 46 [1] [0] [0]
 #VARIABLE_CONDITION= 19 [1] [0] [0]
@@ -16717,13 +16572,13 @@ Replacement script
 #DATE= 1940/08/18
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-;Set Friendly Position (Rome)
+; Rome(171,101)
 #ALIGNMENT_POSITION= 171,101 [1]
 ;Set Friendly Position (Bordeaux)
 #ALIGNMENT_POSITION= 145,94 [1]
 #ALIGNMENT_POSITION= 145,93 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; 1st Line Italy(59) Axis and not surrendered 
+; Italy(59) Axis and not surrendered 
 ; 2nd Line France(40) Allied and surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
@@ -16862,10 +16717,11 @@ Replacement script
 #DATE= 1942/08/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-;Set Friendly Position (Berlin, Warsaw, Tripoli)
+; Berlin(173,74) ia Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Warsaw(188,76) is Axis
 #ALIGNMENT_POSITION= 188,76 [1]
+; Tripoli(172,121) is Allied
 #ALIGNMENT_POSITION= 172,121 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Germany(45) Axis and fully mobilized
