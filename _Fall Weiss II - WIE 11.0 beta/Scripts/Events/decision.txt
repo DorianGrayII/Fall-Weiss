@@ -7,7 +7,9 @@
 ; Basic structure for a decision event:
 ; {
 ; #NAME= Event name (this will be shown as a selectable event under an OPTIONS screen within the game)
+;
 ; #POPUP= Event popup text (this will be displayed as a header when the event occurs)
+;
 ; #MESSAGE=Message body text (this will be displayed when the event occurs)
 ;
 ;         Decision Events that do not contain a #POPUP entry or #MESSAGE entry are treated 
@@ -17,28 +19,39 @@
 ;         PNG images must be 736x418 or 368x418 pixels, see 'Extras' folder for sample images and frames
 ;         Multiple pictures can be used by using a ',' to separate them
 ;         Format: picture1.png, picture2.png, picture3.png, picture4.png
+;
 ; #SOUND= Event sound that will be displayed when event occurs
 ;         Multiple sounds can be used by using a ',' to separate them
 ;         Format: sound1.mp3, sound2.mp3, sound3.mp3, sound4.mp3
-; #FLAG= Will this be a default event for the campaign? (values range [0, 1]; True= 1; False= 0)
-; #TYPE= Values range [0, 3];
+;
+; #FLAG= Value range [0, 1]
+;        Will this event be enabled by default:
+;        0 = Disabled
+;        1 = Enabled
+;
+; #TYPE= Values range [0, 3]
 ;        With all other fields satisfied will this be:
 ;        0 = Single check regardless if #TRIGGER is satisfied
 ;        1 = Multiple check until #TRIGGER is satisfied
 ;        2 = Reoccurring check until end of game
 ;                       OR
 ;        Once the #DATE field is satisfied:
-;        3 = Event fires once if all other fields are satisfied, else it will not fire.  Either way, event will be removed never to be looked at again
+;        3 = Event fires once if all other fields are satisfied, else it will not fire.  
+;            Either way, event will be removed never to be looked at again
+;
 ; #AI= Values range [0, 6]
 ;      0 = Event fires whenever all fields are satisfied for any game type
 ;      1 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis
 ;      2 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied
-;      3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player, or on Allied Multiplayer turns
-;      4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player or on Axis Multiplayer turns
+;      3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player, 
+;          or on Allied Multiplayer turns
+;      4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player 
+;          or on Axis Multiplayer turns
 ;      5 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis in Single Player, 
 ;          or for AI controlled Axis majors on Axis human player turns
 ;      6 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied in Single Player,
 ;          or for AI controlled Allied majors on Allied human player turns
+;
 ; #LEVEL= Value range [-1, 4]
 ;      What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
 ;     -1 = a script that should only fire for AI friendly controlled majors on your turn
@@ -47,43 +60,75 @@
 ;      2 = Intermediate
 ;      3 = Veteran
 ;      4 = Expert
-; #GV= Does the event activate based on the Global Variable values assigned?
-;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
-;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
-;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
-;      Example B - #GV= 4[71,100] will trigger 30% per game
+;
+; #GV=  Does the event activate based on the Global Variable values assigned?
+;       Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
+;       Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
+;       Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;       Example B - #GV= 4[71,100] will trigger 30% per game
+;
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
 ;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
 ;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
 ;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
 ;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
-; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
-; #COUNTRY_ID= Country ID that will be owner of this event
+;
+; #TRIGGER= Value range [0, 100]
+;           Trigger percentage that the event will occur
+;
+; #COUNTRY_ID= Value range [0, 120]
+;              Country ID that will be owner of this event
+;
 ; #DISPLAY_ORDER= Value range [0, 1]
-;        When do we display this event?
-;        0 = Default Default 
-;        1 = Beginning of Turn
-; #DECISION= Value range [1, 1100] What internal decision number is this event assigned to? max of 1100 decisions per campaign)
-; #MPP_UPDOWN= Will there be an associated MPPs amount added or subtracted with respect to #COUNTRY_ID for this decision if yes? (values range [-9999, 9999])
-; #MPP_TURNS= Value range [0, 500] How many turns will the #MPP_UPDOWN= value be added or subtracted for?
+;               When do we display this event?
+;               0 = Default Default 
+;               1 = Beginning of Turn
+;
+; #DECISION=  Value range [1, 1100] 
+;             What internal decision number is this event assigned to? 
+;             (max of 1100 decisions per campaign)
+;
+; #MPP_UPDOWN= Value range [-9999, 9999]
+;              Will there be an associated MPPs amount added or subtracted with respect to #COUNTRY_ID for this decision if yes? 
+;
+; #MPP_TURNS= Value range [0, 500] 
+;             How many turns will the #MPP_UPDOWN= value be added or subtracted for?
+;
 ; #MPP_TEXT= What text will be shown in the MPPs collection dialog for this event if the #MPP_UPDOWN value is set?
-; #AI_RESPONSE= What percentage chance will the AI respond 'Yes'  event? (values range [0, 100])
-; #AI_RESPONSE_POPUP= What is the AI response popup? Note, this popup is also used in the previous turn summary list
+;
+; #AI_RESPONSE= Value range [0, 100]
+;               What percentage chance will the AI respond 'Yes' event?
+;
+; #AI_RESPONSE_POPUP= What is the AI response popup? 
+;               Note, this popup is also used in the previous turn summary list
+;
 ; #NOTES= Text to display if the player clicks on the NOTES button in the DECISION screen
-; #NOTES_POSITION= What position should we center the map on if the player clicks on the NOTES button (entry can be left blank)
+;
+; #NOTES_POSITION= What position should we center the map on if the player clicks on the NOTES button 
+;                  (entry can be left blank)
+;
 ; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd or yyyy/mm/dd [=]).
 ;        if [=] is used, only apply for year specified.
+;
 ; #TEXT_RGB= Text color for the decision event
 ;            Format: red, green, blue (values range [0, 255])
+;
 ; #SHADOW_RGB= Shadow color for the decision event text (NOT USED IN SC3)
 ;              Format: red, green, blue (values range [0, 255])
-; #ALIGNMENT_POSITION= Position that must be under the control of the selected side in order for the event to occur
-;                      Format: x,y; political_alignment [values are 0, 1 or 2]
+;
+; #ALIGNMENT_POSITION=  Position that must be under the control of the selected side in order for the event to occur:
+;                       Format: x,y [0..2]
+;                       0 = Neutral
+;                       1 = Axis
+;                       2 = Allied
+;
 ; #NATIONAL_MORALE_TRIGGER= Under what national morale situation will this event occur
 ;                           Format: country_id [national_morale_percentage]
+;
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
 ;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
+;
 ; #CONDITION_POSITION= Map positions that will serve to trigger the event as well as distance and
 ;                      number of Axis/Allied unit ranges as specified by 'alignment' flag
 ;                      Format: x,y [min_range, max_range] [min_units, max_units] [alignment] [aligned_country_id]
@@ -103,23 +148,30 @@
 ;
 ; Use the reference values provided for #COUNTRY_ID and not the country names
 ;
+; To assist with the fine tuning of Decision Events,multiple #ALIGNMENT_POSITION can be set, or
+;   this field can be left empty if it isn’t applicable.
+;
 ; #ALIGNMENT_POSITION - Can refer to either land or a coastal hexes. More than one position can be set.
+;
 ; Each #ALIGNMENT_POSITION will be read with AND logic.
 ;
 ; More than one #NATIONAL_MORALE_TRIGGER can be set and the event checks for a value less than or 
-; equal to the 'national_morale_percentage'.
+;   equal to the 'national_morale_percentage'.
+;
 ; Each #NATIONAL_MORALE_TRIGGER line will be read using AND logic.
 ;
 ; Under #VARIABLE_CONDITION you can also list countries that have not yet fully entered the war.
-; For example by listing an mobilization % less than 100% you are providing a check where the
-; #VARIABLE_CONDITION country must meet a minimum mobilization % in order for the event to occur.
+;   For example by listing an mobilization % less than 100% you are providing a check where the
+;   #VARIABLE_CONDITION country must meet a minimum mobilization % in order for the event to occur.
+;
 ; Each #VARIABLE_CONDITION line will be read using AND logic.
 ;
 ; More than one #CONDITION_POSITION can be set. Distance or range checks will be based on the 
-; specified x,y position. For example if the x,y position is a coastal hex then range checks will
-; be made on sea hexes, otherwise if it is a land hex range checks will be made on land hexes only.
-; If the 'aligned_country_id' flag is set to 0 then it will check for any Axis or Allied country as
-; determined by the alignment flag.
+;   specified x,y position. For example if the x,y position is a coastal hex then range checks will
+;   be made on sea hexes, otherwise if it is a land hex range checks will be made on land hexes only.
+;   If the 'aligned_country_id' flag is set to 0 then it will check for any Axis or Allied country as
+;   determined by the alignment flag.
+;
 ; Each #CONDITION_POSITION line will be read using OR logic.
 ;
 ; A dummy condition position (always satisfied) can be set as follows:
@@ -306,8 +358,8 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; 1 Axis unit in England OR
-; 0 Allied units in England
+; 1 Axis unit within 7 hexes of London(147,77) OR
+; 0 Allied units within 7 hexes of London(147,77)
 #CONDITION_POSITION= 147,77 [7,7] [1,1] [1] [0]
 #CONDITION_POSITION= 147,77 [7,7] [0,0] [2] [0]
 }
@@ -645,11 +697,9 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Italy(59) Axis and not surrendered
 ; Iraq(56) Allied but not fully mobilized
-; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 56 [2] [0] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; The Axis have 1 unit within 2 hexes of El Alamein
+; The Axis have 1 unit within 2 hexes of El Alamein(204,125)
 #CONDITION_POSITION= 204,125 [2,2] [1,1] [1] [0]
 ; The Axis have 1 unit within 5 hexes of Alexandria(206,124)
 #CONDITION_POSITION= 206,124 [5,5] [1,1] [1] [0]
@@ -1418,7 +1468,7 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Norway(78) Allied and surrendered
 #VARIABLE_CONDITION= 78 [2] [100] [1]
-; USSR(116) aligned with the Allies but not fully mobilized
+; USSR(116) Allied but not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; A French unit is at Dundee
 #CONDITION_POSITION= 140,63 [0,0] [1,1] [2] [40]
@@ -1616,9 +1666,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and not surrendered
-; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -1690,9 +1738,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and not surrendered
-; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -1875,9 +1921,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and not surrendered
-; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -1984,9 +2028,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and not surrendered
-; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2053,7 +2095,7 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 ; Stalingrad(234,85) is Axis
-#ALIGNMENT_POSITION= 234,80 [1]
+#ALIGNMENT_POSITION= 234,85 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Egypt(36) Allied and surrendered
 ; Turkey(111) Allied and not surrendered
@@ -2210,9 +2252,9 @@
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; USSR(116) Allied but not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; German units within 7 hexes of Orleans
+; 2 German units within 7 hexes of Orleans
 #CONDITION_POSITION= 150,87 [7,7] [2,2] [1] [45]
-; German units within 2 hexes of Nancy
+; 2 German units within 2 hexes of Nancy
 #CONDITION_POSITION= 158,85 [2,2] [2,2] [1] [45]
 }
 
@@ -3400,13 +3442,11 @@
 ; Narvik is Axis
 #ALIGNMENT_POSITION= 181,18 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; France(40) Allied and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Norway(78) Allied and surrendered
 #VARIABLE_CONDITION= 78 [2] [100] [1]
-; USSR(116) aligned with the Allies but not fully mobilized
+; USSR(116) Allied but not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; A French unit is at Dundee
 #CONDITION_POSITION= 140,63 [0,0] [1,1] [2] [40]
@@ -4051,10 +4091,12 @@
 #SHADOW_RGB= 0,0,0
 ; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
+; Cairo(208,126) is Allied
 #ALIGNMENT_POSITION= 208,126 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
+; Greece(46) Surrendered
 #VARIABLE_CONDITION= 46 [2] [100] [1]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -4256,7 +4298,6 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4294,7 +4335,6 @@
 #VARIABLE_CONDITION= 115 [2] [50] [0]
 ; UK(112) Allied and fully mobilized
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4373,7 +4413,6 @@
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; USSR(116) Allied and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4526,7 +4565,6 @@
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 116 [2] [100] [1]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; No Allied units are within 6 hexes of Paris or Nantes
 #CONDITION_POSITION= 151,84 [6,6] [0,0] [2] [0]
 #CONDITION_POSITION= 143,88 [6,6] [0,0] [2] [0]
@@ -4569,7 +4607,6 @@
 #VARIABLE_CONDITION= 115 [2] [40] [0]
 ; UK(112) Allied and fully mobilized
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4606,7 +4643,6 @@
 #VARIABLE_CONDITION= 115 [2] [25] [0]
 ; USSR(116) Allied and fully mobilized
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4643,7 +4679,6 @@
 #VARIABLE_CONDITION= 115 [2] [50] [0]
 ; USSR(116) Allied and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4723,7 +4758,6 @@
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; USSR(116) Allied and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4868,7 +4902,7 @@
 #DATE= 1944/01/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Prague is Axis
+; Prague(175,81) is Axis
 #ALIGNMENT_POSITION= 175,81 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -4977,7 +5011,7 @@
 #DATE= 1944/01/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Prague is Axis
+; Prague(175,81) is Axis
 #ALIGNMENT_POSITION= 175,81 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -5293,7 +5327,6 @@
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; USSR(116) Allied and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5457,9 +5490,9 @@
 ; Fall Weiss II
 ; Form The Polish First and Second Armies
 {
-#NAME= DE 400 - USSR: Form The Polish First And Second Armies? (50% Chance) (AI - 100% Yes)
+#NAME= DE 400 - USSR: Form The Polish 1st And 2nd Armies? (50% Chance) (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Red Army Headquarters %NNorth-West Theater %N%N Generals Karol Swierczewski and Stanislav Poplavsky inform us that the People's Army of Poland is prepared to recruit and train more men to fight alongside the Red Army.%N%N With our help the Polish First and Second Infantry Armies will be formed near Minsk for a total cost of %B150 MPPs (25 MPPs for 6 turns).%N%N Would you like to form the Polish First and Second Infantry Armies?
+#MESSAGE=Red Army Headquarters %N North-West Theater %N%N Generals Karol Swierczewski and Stanislav Poplavsky inform us that the People's Army of Poland is prepared to recruit and train more men to fight alongside the Red Army.%N%N With our help the Polish 1st and 2nd Infantry Armies will be formed near Minsk for a total cost of %B150 MPPs (25 MPPs for 6 turns).%N%N Would you like to form the Polish 1st and 2nd Infantry Armies?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -5475,7 +5508,7 @@
 #MPP_UPDOWN= -25
 #MPP_TURNS= 6
 #MPP_TEXT= Polish First and Second Armies
-#NOTES= In 1944 the I Polish Corps was expanded to form the Polish First Army and command of this formation was given to General Zygmunt Berling.%N%N As the Red Army advanced west, a Polish Second Army was formed under the command of Karol Swierczewski.%N%N Both armies saw much action from the summer of 1944 onwards, and both took part in the Battle of Berlin in 1945.%N%N This is a way cheap way to raise more units, so it is probably best to say %B(YES).
+#NOTES= In 1944 the Polish I Corps was expanded to form the Polish 1st Army and command of this formation was given to General Zygmunt Berling.%N%N As the Red Army advanced west, a Polish 2nd Army was formed under the command of Karol Swierczewski.%N%N Both armies saw much action from the summer of 1944 onwards, and both took part in the Battle of Berlin in 1945.%N%N This is a way cheap way to raise more units, so it is probably best to say %B(YES).
 #NOTES_POSITION= 201,71
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
@@ -5498,7 +5531,7 @@
 {
 #NAME= DE 401 - USSR: Attack Finland in the Winter War? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Red Army Headquarters %N%N In order to decrease Leningrad's vulnerability to attack from the north, and to weaken the Finnish army, it is suggested that we force Finland to hand over some territory to us.%N%N We can demand the Karelian Isthmus (the area north of Leningrad) and the port of Hanko to the west of Helsinki.%N%N Would you like to force Finland to transfer the Karelian Isthmus and Hanko to our control %B(YES)?
+#MESSAGE=Red Army Headquarters %N%N %BRe: %BFinland %N%N In order to decrease Leningrad's vulnerability to attack from the north, and to weaken the Finnish army, it is suggested that we force Finland to hand over some territory to us.%N%N We can demand the Karelian Isthmus (the area north of Leningrad) and the port of Hanko to the west of Helsinki.%N%N Would you like to force Finland to transfer the Karelian Isthmus and Hanko to our control %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -5562,20 +5595,20 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Axis units near Voronezh
+; Axis units within 10 hexes of Voronezh
 #CONDITION_POSITION= 224,77 [10,10] [1,1] [1] [0]
-; Axis units near Zaporizhia
+; Axis units within 10 hexes of Zaporizhia
 #CONDITION_POSITION= 215,87 [10,10] [1,1] [1] [0]
-; Axis units near Stalino
+; Axis units within 7 hexes of Stalino
 #CONDITION_POSITION= 221,86 [7,7] [1,1] [1] [0]
-; Axis units near Konotop
+; Axis units within 7 hexes of Konotop
 #CONDITION_POSITION= 212,78 [7,7] [1,1] [1] [0]
 }
 
 {
 #NAME= DE 403 - USSR: Operation Countenance: Join with the UK in Invading Persia? (If DE 120 approved) (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Red Army Headquarters %N%N The British have proposed that we join them in invading Persia to overthrow the pro-Axis Shah.%N%N Their plan is that we then divide the country between us, with the British having the Oilfield at Maidan-I-Naftun and the port of Bandar Mahshahr.%N%N The invasion would only cost %B100 MPPs, to be divided equally between both countries.%N%N Would you like to approve this British plan to invade Persia and divide the country between us %B(YES)?
+#MESSAGE=Red Army Headquarters %N%N %BRe: %BOperation %BCountenance %N%N The British have proposed that we join them in invading Persia to overthrow the pro-Axis Shah.%N%N Their plan is that we then divide the country between us, with the British having the Oilfield at Maidan-I-Naftun and the port of Bandar Mahshahr.%N%N The invasion would only cost %B100 MPPs, to be divided equally between both countries.%N%N Would you like to approve this British plan to invade Persia and divide the country between us %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -5656,10 +5689,11 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; https://www.wikiwand.com/en/I_Corps_(Polish_Armed_Forces_in_the_West)
 {
-#NAME= DE 405 - USSR: Form I Polish Corps? (AI - 100% Yes)
+#NAME= DE 405 - USSR: Form The Polish I Corps? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Red Army Headquarters %N%N General Anders has turned down our offer to evacuate thousands of Polish soldiers from the USSR.%N%N It would therefore seem appropriate that we enlist these men into the Red Army, to form them into a Polish Infantry Corps at Kuybyshev.%N%N This could be done for a total cost of %B75 MPPs (25 MPPs for 3 turns). This Polish Infantry Corps will then deploy at strength 8, with no experience due to the poor health of the men, and it will require upgrading.%N%N Would you like to form the I Polish Infantry Corps as an integral part of the Red Army %B(YES)?
+#MESSAGE=Red Army Headquarters %N%N General Anders has turned down our offer to evacuate thousands of Polish soldiers from the USSR.%N%N It would therefore seem appropriate that we enlist these men into the Red Army, to form them into a Polish Infantry Corps at Kuybyshev.%N%N This could be done for a total cost of %B75 MPPs (25 MPPs for 3 turns). This Polish Infantry Corps will then deploy at strength 8, with no experience due to the poor health of the men, and it will require upgrading.%N%N Would you like to form the Polish I Infantry Corps as an integral part of the Red Army %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -5674,7 +5708,7 @@
 #DECISION= 405
 #MPP_UPDOWN= -25
 #MPP_TURNS= 3
-#MPP_TEXT= I Polish Corps
+#MPP_TEXT= Polish I Corps
 #NOTES= If General Anders hadn't evacuated Polish soldiers and civilians from the USSR to the Middle East, then it is likely that more would have taken the field in the USSR.
 #NOTES_POSITION= 245,72
 #AI_RESPONSE= 100
@@ -5720,7 +5754,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and but not fully mobilized
-; Poland(85) aligned with the Allies and not surrendered
+; Poland(85) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 85 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5832,7 +5866,6 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Germany(45) Axis and not surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5872,7 +5905,6 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5907,7 +5939,6 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Germany(45) Axis and not surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5986,7 +6017,7 @@
 {
 #NAME= DE 414 - USSR: Annex the Baltic States? (AI - 100% Yes)
 #POPUP= Soviet Strategic Decision
-#MESSAGE=Red Army Headquarters %N%N Now would be a good time for us to increase our territory and income by annexing the Baltic States.%N%N One strategic benefit of doing so will be to increase the distance an invader would have to travel before reaching Leningrad.%N%N If you approve, then our forces will advance into the Baltic States up to the border with Germany.%N%N Would you like to annex the Baltic States?
+#MESSAGE=Red Army Headquarters %N%N %BRe: %BBaltic %BStates %N%N Now would be a good time for us to increase our territory and income by annexing the Baltic States.%N%N One strategic benefit of doing so will be to increase the distance an invader would have to travel before reaching Leningrad.%N%N If you approve, then our forces will advance into the Baltic States up to the border with Germany.%N%N Would you like to annex the Baltic States %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -6064,7 +6095,7 @@
 {
 #NAME= DE 416 - USSR: Shall We Deploy Dedicated Anti-Tank Units? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Red Army Headquarters %N%N Given the large armored formations that both sides can deploy on the Eastern Front, there have been calls for the formation of dedicated anti-tank units.%N%N These will be useful when encountering enemy armored formations, but will be fragile when fighting enemy infantry.%N%N We could at low cost quickly form 3 dedicated Anti-Tank units at Gorki for a total of %B200 MPPs (50 MPPs for 4 turns).%N%N They will deploy at half strength and will need upgrading.%N%N Would you like to form these dedicated Anti-Tank units %B(YES)?
+#MESSAGE=Red Army Headquarters %N%N %BRe: %BAnti-Tank %BUnits %N%N Given the large armored formations that both sides can deploy on the Eastern Front, there have been calls for the formation of dedicated anti-tank units.%N%N These will be useful when encountering enemy armored formations, but will be fragile when fighting enemy infantry.%N%N We could at low cost quickly form 3 dedicated Anti-Tank units at Gorki for a total of %B200 MPPs (50 MPPs for 4 turns).%N%N They will deploy at half strength and will need upgrading.%N%N Would you like to form these dedicated Anti-Tank units %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -6146,7 +6177,7 @@
 {
 #NAME= DE 418 - USSR: Seize Bessarabia? (AI - 50% Yes)
 #POPUP= Soviet Strategic Decision
-#MESSAGE=Red Army Headquarters %N%N Under the terms of the Molotov-Ribbentrop Pact, Bessarabia falls into our sphere of influence and now would be a good time to seize this territory.%N%N This will provide us with a buffer zone protecting Odessa from attack.%N%N The operation will cost %B15 MPPs with any opposition being swept aside, though it will move Romania 10% towards the Axis.%N%N Would you like to order the Red Army to seize Bessarabia %B(YES)?
+#MESSAGE=Red Army Headquarters %N%N %BRe: %BBessarabia %N%N Under the terms of the Molotov-Ribbentrop Pact, Bessarabia falls into our sphere of influence and now would be a good time to seize this territory.%N%N This will provide us with a buffer zone protecting Odessa from attack.%N%N The operation will cost %B15 MPPs with any opposition being swept aside, though it will move Romania 10% towards the Axis.%N%N Would you like to order the Red Army to seize Bessarabia %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -6154,6 +6185,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; The Molotov-Ribbentrop Pact?
 ; 406[1]->600[1]
 #LINK= 600[1]
 #COUNTRY_ID= 116
@@ -6468,10 +6500,7 @@
 ; Warsaw(188,76) is Axis
 #ALIGNMENT_POSITION= 188,76 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6508,7 +6537,6 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6545,7 +6573,6 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6585,8 +6612,8 @@
 ; British Empire(54), Canada Allied and not surrendered
 #VARIABLE_CONDITION= 54 [2] [100] [0]
 #VARIABLE_CONDITION= 21 [2] [100] [0]
-; 1 Axis unit in England OR
-; 0 Allied units in England
+; 1 Axis unit within 7 hexes of London(147,77) OR
+; 0 Allied units within 7 hexes of London(147,77)
 #CONDITION_POSITION= 147,77 [7,7] [1,1] [1] [0]
 #CONDITION_POSITION= 147,77 [7,7] [0,0] [2] [0]
 }
@@ -6775,7 +6802,6 @@
 #VARIABLE_CONDITION= 115 [2] [50] [0]
 ; USSR(116) Allied and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6855,7 +6881,6 @@ Replacement script
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; USSR(116) Allied and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6929,7 +6954,6 @@ Replacement script
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; USSR(116) Allied and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6954,7 +6978,7 @@ Replacement script
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT=
-#NOTES= <<TAG_169>>
+#NOTES= If you say %B(YES) to occupying the Baltic States then Soviet income will increase slightly, so it is recommended to say %B(YES).
 #NOTES_POSITION= 196,60
 ; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 100
@@ -6991,7 +7015,7 @@ Replacement script
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT=
-#NOTES= <<TAG_169>>
+#NOTES= If you say %B(YES) to occupying the Baltic States then Soviet income will increase slightly, so it is recommended to say %B(YES).
 #NOTES_POSITION= 196,60
 ; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 100
@@ -7049,7 +7073,7 @@ Replacement script
 {
 #NAME= DE 470 - USSR: Operation Countenance: Join with the UK in Invading Persia? (If DE 979 approved) (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Red Army Headquarters %N%N The British have proposed that we join them in invading Persia to overthrow the pro-Axis Shah.%N%N Their plan is that we then divide the country between us, with the British having the Oilfield at Maidan-I-Naftun and the port of Bandar Mahshahr.%N%N The invasion would only cost %B100 MPPs, to be divided equally between both countries.%N%N Would you like to approve this British plan to invade Persia and divide the country between us %B(YES)?
+#MESSAGE=Red Army Headquarters %N%N %BRe: %BOperation %BCountenance %N%N The British have proposed that we join them in invading Persia to overthrow the pro-Axis Shah.%N%N Their plan is that we then divide the country between us, with the British having the Oilfield at Maidan-I-Naftun and the port of Bandar Mahshahr.%N%N The invasion would only cost %B100 MPPs, to be divided equally between both countries.%N%N Would you like to approve this British plan to invade Persia and divide the country between us %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -7129,7 +7153,7 @@ Replacement script
 {
 #NAME= DE 480 - USSR: Sign an Armistice with Finland? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Red Army Headquarters %N%N The Finns morale has fallen to the point that they are fully ready to make peace with the Soviet Union and will not consult with Germany. %N%N They offer an immediate cessation of hostilities, and if we accept them then we will be able to concentrate fully on our advances into Germany and the Balkans.%N%N Would you like to sign an armistice with Finland?
+#MESSAGE=Red Army Headquarters %N%N The Finns morale has fallen to the point that they are fully ready to make peace with the Soviet Union and will not consult with Germany. %N%N They offer an immediate cessation of hostilities, and if we accept them then we will be able to concentrate fully on our advances into Germany and the Balkans.%N%N Would you like to sign an armistice with Finland %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -7250,7 +7274,7 @@ Replacement script
 }
 
 ; Fall Weiss II
-; Stalingrad(234,85) Supply
+; Stalingrad Supply
 {
 #NAME= DE 530 - Germany: Stalingrad Supply (Saratov Allied) (AI - 100% Yes)
 #POPUP=
@@ -7284,7 +7308,6 @@ Replacement script
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7323,7 +7346,6 @@ Replacement script
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7431,9 +7453,7 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and Active
 ; Ireland(57) politically leaning Axis
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 57 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -7585,9 +7605,7 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and Active
 ; Sweden(103) Axis leaning
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 103 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -8036,7 +8054,6 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;AMEND1941
 {
 #NAME= DE 603 - Germany: Induce Franco To Enter The War? (AI - 25% Yes)
 #POPUP= German Diplomatic Decision
@@ -8229,8 +8246,6 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; USA(115) Allied and not surrendered
@@ -8278,8 +8293,6 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; USA(115) Allied and not surrendered
@@ -8384,6 +8397,7 @@ Replacement script
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; The Molotov-Ribbentrop Pact?
 ; 406[1]->600[1]
 #LINK= 600[1]
 #COUNTRY_ID= 45
@@ -8410,7 +8424,7 @@ Replacement script
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
-; Bulgaria Axis but not fully mobilized
+; Bulgaria(19) Axis but not fully mobilized
 #VARIABLE_CONDITION= 19 [1] [0] [0]
 ; Hungary(52) Axis but not fully mobilized
 #VARIABLE_CONDITION= 52 [1] [0] [0]
@@ -8484,7 +8498,7 @@ Replacement script
 #DATE= 1941/08/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Vienna is Axis
+; Vienna(179,86) is Axis
 #ALIGNMENT_POSITION= 179,86 [1]
 ; Pola is Axis
 #ALIGNMENT_POSITION= 174,95 [1]
@@ -8527,7 +8541,7 @@ Replacement script
 #DATE= 1941/01/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Bologna is Axis
+; Bologna(169,95) is Axis
 #ALIGNMENT_POSITION= 169,95 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Italy(59) Axis and surrendered
@@ -8563,12 +8577,12 @@ Replacement script
 #DATE= 1941/01/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Bologna is Axis
+; Bologna(169,95) is Axis
 #ALIGNMENT_POSITION= 169,95 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Germany(45) Axis and not surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; The presence of at least one Axis unit in north Italy
+; The presence of at least one Axis with 5 hexes of Bologna(169,95)
 #CONDITION_POSITION= 169,95 [5,5] [1,1] [1] [0]
 }
 
@@ -8668,20 +8682,20 @@ Replacement script
 #SHADOW_RGB= 0,0,0
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
-; Breslau is Axis
+; Breslau(180,79) is Axis
 #ALIGNMENT_POSITION= 180,79 [1]
-; Prague is Axis
+; Prague(175,81) is Axis
 #ALIGNMENT_POSITION= 175,81 [1]
 ; Bratislava is Axis
 #ALIGNMENT_POSITION= 181,86 [1]
-; Vienna is Axis
+; Vienna(179,86) is Axis
 #ALIGNMENT_POSITION= 179,86 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Hungary(52) Axis and not surrendered
 #VARIABLE_CONDITION= 52 [1] [100] [0]
-; There are 3 Allied units within 3 hexes of Bucharest
+; There are 3 Allied units within 3 hexes of Bucharest(198,95)
 #CONDITION_POSITION= 198,95 [3,3] [3,3] [2] [0]
-; There are 3 Allied units within 8-10 hexes of Budapest
+; There are 3 Allied units within 8-10 hexes of Budapest(184,88)
 #CONDITION_POSITION= 184,88 [8,10] [3,3] [2] [0]
 }
 
@@ -8789,7 +8803,7 @@ Replacement script
 #VARIABLE_CONDITION= 52 [1] [100] [0]
 ; Italy(59) Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-;  Yugoslavia(120) aligned with the Allies and surrendered
+;  Yugoslavia(120) Allied and surrendered
 #VARIABLE_CONDITION= 120 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -9059,6 +9073,7 @@ Replacement script
 #TRIGGER= 100
 #DISPLAY_ORDER= 1
 #GV= 1[1,100]
+; The Molotov-Ribbentrop Pact?
 ; 406[1]->600[1]
 #LINK= 600[1]
 #DECISION= 630
@@ -9340,7 +9355,7 @@ Replacement script
 #ALIGNMENT_POSITION= 152,113 [2]
 ; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
-; Dijon is Axis
+; Dijon(156,88) is Axis
 #ALIGNMENT_POSITION= 156,88 [1]
 ; Nancy is Axis
 #ALIGNMENT_POSITION= 158,85 [1]
@@ -9385,7 +9400,7 @@ Replacement script
 #ALIGNMENT_POSITION= 152,113 [2]
 ; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
-; Dijon is Axis
+; Dijon(156,88) is Axis
 #ALIGNMENT_POSITION= 156,88 [1]
 ; Nancy is Axis
 #ALIGNMENT_POSITION= 158,85 [1]
@@ -9738,8 +9753,6 @@ Replacement script
 ; Tripoli(172,121) is Axis
 #ALIGNMENT_POSITION= 172,121 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Italy(59) Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -9876,6 +9889,7 @@ Replacement script
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; The Molotov-Ribbentrop Pact?
 ; 406[1]->600[1]
 #LINK= 600[1]
 #COUNTRY_ID= 45
@@ -9961,13 +9975,13 @@ Replacement script
 #DATE= 1939/09/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Vienna is Axis
+; Vienna(179,86) is Axis
 #ALIGNMENT_POSITION= 179,86 [1]
-; Budapest is Axis
+; Budapest(184,88) is Axis
 #ALIGNMENT_POSITION= 184,88 [1]
-; Sofia is Axis
+; Sofia(192,100) is Axis
 #ALIGNMENT_POSITION= 192,100 [1]
-; Bucharest is Axis
+; Bucharest(198,95) is Axis
 #ALIGNMENT_POSITION= 198,95 [1]
 ; Cluj is Axis
 #ALIGNMENT_POSITION= 193,89 [1]
@@ -10373,7 +10387,7 @@ Replacement script
 ; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Bulgaria Axis and not surrendered
+; Bulgaria(19) Axis and not surrendered
 #VARIABLE_CONDITION= 19 [1] [100] [0]
 ; 2 Soviet units within 5 hexes of Sofia
 #CONDITION_POSITION= 192,100 [5,5] [2,2] [2] [116]
@@ -10599,7 +10613,7 @@ Replacement script
 {
 #NAME= DE 672 - Germany: Form The Afrika Korps for Service in North Africa? (Benghazi and Trieste in Axis hands, Tripoli and Gazala in Allied hands) (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies now they have lost Tripoli, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N This formation could spearhead an offensive to recapture Libya and then advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Trieste: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa?
+#MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies now they have lost Tripoli, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N This formation could spearhead an offensive to recapture Libya and then advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Trieste: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -10877,9 +10891,7 @@ Replacement script
 #CONDITION_POSITION= 208,126 [3,3] [0,0] [2] [0]
 }
 
-;===============================================================
-;                        Fall Weiss II Events
-;===============================================================
+; Fall Weiss II
 ; was previously DE 653
 {
 #NAME= DE 680 - Germany: Chrome Imports From Turkey (AI - 100% Yes)
@@ -10910,11 +10922,11 @@ Replacement script
 #SHADOW_RGB= 0,0,0
 ; Dummy Conditions 
 #ALIGNMENT_POSITION= 1,0 [1]
-; Vienna is Axis
+; Vienna(179,86) is Axis
 #ALIGNMENT_POSITION= 179,86 [1]
-; Budapest is Axis
+; Budapest(184,88) is Axis
 #ALIGNMENT_POSITION= 184,88 [1]
-; Bucharest is Axis
+; Bucharest(198,95) is Axis
 #ALIGNMENT_POSITION= 198,95 [1]
 ; Cluj is Axis
 #ALIGNMENT_POSITION= 193,89 [1]
@@ -10924,13 +10936,13 @@ Replacement script
 #VARIABLE_CONDITION= 111 [1] [0] [0]
 ; Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
-; No Allied units within 5 hexes of Vienna
+; No Allied units within 5 hexes of Vienna(179,86)
 #CONDITION_POSITION= 179,86 [5,5] [0,0] [2] [0]
-; No Allied units within 5 hexes of Budapest
+; No Allied units within 5 hexes of Budapest(184,88)
 #CONDITION_POSITION= 184,88 [5,5] [0,0] [2] [0]
-; No Allied units within 5 hexes of Sofia
+; No Allied units within 5 hexes of Sofia(192,100)
 #CONDITION_POSITION= 192,100 [5,5] [0,0] [2] [0]
-; No Allied units within 5 hexes of Bucharest
+; No Allied units within 5 hexes of Bucharest(198,95)
 #CONDITION_POSITION= 198,95 [5,5] [0,0] [2] [0]
 ; No Allied units within 5 hexes of Cluj
 #CONDITION_POSITION= 193,89 [5,5] [0,0] [2] [0]
@@ -10979,7 +10991,7 @@ Replacement script
 {
 #NAME= DE 701 - Italy: Form an Italian Expeditionary Force? (50% Chance) (AI - 50% Yes)
 #POPUP=
-#MESSAGE=Commander in Chief %N%N To ensure an Axis victory in the decisive conflict in the east, it would be advisable for us to send an Italian Expeditionary Force to serve alongside our German allies.%N%N Given your approval, this force will consist of a Headquarters unit and two Corps.%N%N Forming it will cost a total of %B400 MPPs (40 MPPs for 10 turns), and it will deploy near Warsaw for service on the Eastern Front.%N%N Would you like to order the formation of an Italian Expeditionary Force?
+#MESSAGE=Commander in Chief %N%N To ensure an Axis victory in the decisive conflict in the east, it would be advisable for us to send an Italian Expeditionary Force to serve alongside our German allies.%N%N Given your approval, this force will consist of a Headquarters unit and two Corps.%N%N Forming it will cost a total of %B400 MPPs (40 MPPs for 10 turns), and it will deploy near Warsaw for service on the Eastern Front.%N%N Would you like to order the formation of an Italian Expeditionary Force %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -11007,8 +11019,8 @@ Replacement script
 #ALIGNMENT_POSITION= 171,101 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Italy(59) Axis and not surrendered
-; France(40) aligned with the Allies and surrendered
-; USSR(116) aligned with the Allies and not surrendered
+; France(40) Allied and surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -11018,7 +11030,7 @@ Replacement script
 {
 #NAME= DE 702 - Italy: Raise the French Light Cruiser Jean de Vienne? (50% Chance) (AI - 50% Yes)
 #POPUP=
-#MESSAGE=Office of the Navy %N Admiral Riccardi %N%N One of the French vessels scuttled at Toulon, the Light Cruiser %VJean %Vde %VVienne, could be salvaged and refitted for service in the Italian Navy.%N%N The work required would be considerable requiring %B60 MPPs, but we could have it salvaged and raised in port at Toulon shortly with a strength of 2.%N%N On raising the %VJean %Vde %VVienne, the cruiser would be commissioned as the %VRN %VFR.11.%N%N Would you like to salvage this vessel so we can then refit it further for service against the Allies?
+#MESSAGE=Office of the Navy %N Admiral Riccardi %N%N One of the French vessels scuttled at Toulon, the Light Cruiser %VJean %Vde %VVienne, could be salvaged and refitted for service in the Italian Navy.%N%N The work required would be considerable requiring %B60 MPPs, but we could have it salvaged and raised in port at Toulon shortly with a strength of 2.%N%N On raising the %VJean %Vde %VVienne, the cruiser would be commissioned as the %VRN %VFR.11.%N%N Would you like to salvage this vessel so we can then refit it further for service against the Allies %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -11057,7 +11069,7 @@ Replacement script
 {
 #NAME= DE 703 - Italy: Bribe Greek Politicians and Generals? (50% Chance) (AI - 50% Yes)
 #POPUP=
-#MESSAGE=Commander in Chief %N%N To assist our campaign against the Greeks, we could attempt to bribe some Greek politicians and army officers so that they spread defeatist propaganda and calls for surrender within Greece.%N%N Success is not guaranteed, but it will only cost %B15 MPPs and it could cause some disruption to Greece's armed forces, so it may be worthwhile.%N%N Would you like to authorize this expenditure on bribes to Greek politicians and military figures?
+#MESSAGE=Commander in Chief %N%N To assist our campaign against the Greeks, we could attempt to bribe some Greek politicians and army officers so that they spread defeatist propaganda and calls for surrender within Greece.%N%N Success is not guaranteed, but it will only cost %B15 MPPs and it could cause some disruption to Greece's armed forces, so it may be worthwhile.%N%N Would you like to authorize this expenditure on bribes to Greek politicians and military figures %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -11121,7 +11133,7 @@ Replacement script
 #ALIGNMENT_POSITION= 171,101 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Italy(59) Axis
-; Egypt(36) aligned with the Allies and not surrendered
+; Egypt(36) Allied and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -11230,7 +11242,7 @@ Replacement script
 ; Gibraltar(136,114) is Allied
 #ALIGNMENT_POSITION= 136,114 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-#VARIABLE_CONDITION= 45[1] [100] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; An Italian Naval Unit is in place to travel through the Strait
 #CONDITION_POSITION= 134,114 [0,0] [1,1] [1] [59]
 #CONDITION_POSITION= 134,115 [0,0] [1,1] [1] [59]
@@ -11240,7 +11252,7 @@ Replacement script
 {
 #NAME= DE 708 - Italy: Declare War on Greece? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Commander in Chief %N%N The time has come for us to assert ourselves further in the Balkans, to win fame and glory for Italy, lest Germany takes all the glory for itself.%N%N If you say %B(YES), then we will deploy two half strength Corps in Albania, and we will declare war on Greece at the end of October.%N%N Rushing these forces to Albania and deploying them there will cost a total of %B100 MPPs (50 MPPs for 2 turns).%N%N Would you like to authorize this expenditure and declare war on Greece at the end of this month?
+#MESSAGE=Commander in Chief %N%N The time has come for us to assert ourselves further in the Balkans, to win fame and glory for Italy, lest Germany takes all the glory for itself.%N%N If you say %B(YES), then we will deploy two half strength Corps in Albania, and we will declare war on Greece at the end of October.%N%N Rushing these forces to Albania and deploying them there will cost a total of %B100 MPPs (50 MPPs for 2 turns).%N%N Would you like to authorize this expenditure and declare war on Greece at the end of this month %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -11267,8 +11279,8 @@ Replacement script
 #ALIGNMENT_POSITION= 185,102 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Italy(59) Axis and not surrendered
-; Greece(46) aligned with the Allies but not fully mobilized
-; France(40) aligned with the Allies and surrendered
+; Greece(46) Allied but not fully mobilized
+; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 46 [2] [0] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
@@ -11305,7 +11317,6 @@ Replacement script
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -11344,7 +11355,6 @@ Replacement script
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -11383,7 +11393,6 @@ Replacement script
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -11421,7 +11430,6 @@ Replacement script
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -11459,7 +11467,6 @@ Replacement script
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -11980,7 +11987,6 @@ Replacement script
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Germany(45) Axis and fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 1 Axis unit in Moscow
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -12015,13 +12021,11 @@ Replacement script
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Axis has 1 unit within 15 hexes of Moscow
+; Axis has 1 unit within 15 hexes of Moscow(221,65)
 #CONDITION_POSITION= 221,65 [15,15] [1,1] [1] [0]
 }
 
-; =======================================================================================
-;                          Fall Weiss II Events
-; =======================================================================================
+; Fall Weiss II 
 {
 #NAME= DE 800 - UK: Anglo-Portuguese Alliance (AI - 15% Yes)
 #POPUP=
@@ -12059,6 +12063,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 801 - Italy: Help Spain Rebuild from Civil War (AI - 90% Yes)
 #POPUP=
@@ -12096,6 +12101,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 ; Event allowing Italian Food Supplies to Export to Spain only until Italy has entered the war.
 {
 #NAME= DE 802 - Italy: Dummy Event To Allow Export Food Supplies to Spain (AI - 100% Yes)
@@ -12133,6 +12139,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 803 - UK: Blockade American Imports to Spain (AI - 90% Yes)
 #POPUP=
@@ -12172,6 +12179,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 804 - UK: Reaction to the Blue Division (AI - 75% Yes)
 #POPUP=
@@ -12213,10 +12221,11 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 805 - UK: Send Arms to Portugal? (AI - 75% Yes)
 #POPUP=
-#MESSAGE=Prime Minister %N Winston Churchill %N%N With the very real possibility that Spain may soon join the Axis we must consider the strategic importance of Portugal.  A successful attack against Portugal will give the Axis complete access to the Atlantic. %N%N Their is a proposal to rush military aid to the Portuguese, which may provide enough resistance for the Allies to prepare a counter attack.  Doing so will surely rouse Franco to our intentions and will push Spain further into the Axis sphere of influence but this may be a risk we should take. %N%N Should we prepare for war with Spain and strengthen the Portuguese Army? It will cost a total of %B225 MPPs (75 MPPs for 3 turns).
+#MESSAGE=Prime Minister %N Winston Churchill %N%N %BRe: %BPortugal %N%N With the very real possibility that Spain may soon join the Axis we must consider the strategic importance of Portugal.  A successful attack against Portugal will give the Axis complete access to the Atlantic. %N%N Their is a proposal to rush military aid to the Portuguese, which may provide enough resistance for the Allies to prepare a counter attack.  Doing so will surely rouse Franco to our intentions and will push Spain further into the Axis sphere of influence but this may be a risk we should take. %N%N Should we prepare for war with Spain and strengthen the Portuguese Army %B(YES)? It will cost a total of %B225 MPPs (75 MPPs for 3 turns).
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -12232,7 +12241,7 @@ Replacement script
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT= 
-#NOTES= If you say %B(YES), Portugal will receive a HQ as well as a fully upgraded Infantry Corps unit at Lisbon and will also deploy garrison units at Evora and Porto.  As military resources are being transferred under Portuguese control, they will deploy when and if Portugal enters the war for either side. %N%N Spain will move 3-5% closer to the Axis in response to the military build up in Portugal.
+#NOTES= If you say %B(YES), Portugal will receive %N%N%T - HQ (Lisbon) %N%T - a fully upgraded Infantry Corps (Lisbon) %N%T  - Garrison (Evora) %N%T - Garrison(Porto).  %N%N As military resources are being transferred under Portuguese control, they will deploy when and if Portugal enters the war for either side. %N%N Spain will move 3-5% closer to the Axis in response to the military build up in Portugal.
 #NOTES_POSITION= 139,110
 ; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
@@ -12245,17 +12254,18 @@ Replacement script
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; UK(112) Allied and fully mobilized
 ; Portugal(87) Allied and not surrendered 
-; Spain(99) Axis and not surrendered 
+; Spain(99) Axis and close to entering the war 
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 87 [2] [1] [0]
 #VARIABLE_CONDITION= 99 [1] [80] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 806 - Italy: Send Military Aid to Spain? (AI - 50% Yes)
 #POPUP=
-#MESSAGE=Commander in Chief %N%N Letter from Franco %N%N Il, Duce it has been reported from Franco that if Spain is to join the war there are lists of necessities they will require from Germany. %N%N Franco reports that upon the Italian entrance into the war, his nation has been forced to take a clear stand of non-belligerency as to protect their imports from the threat of English blockade measures.%N%N It is therefore advisable that we make preparations to assist Germany in reducing Spain's reliance on foreign imports so that Franco will have less to demand before entering the war on our side.%N%N Il, Duce do you approve of sending military equipment and other essential resources to Spain?  It will cost a total of %B60 MPPs (15 MPPs for 4 turns).
+#MESSAGE=Commander in Chief %N%N Letter from Franco %N%N Il, Duce it has been reported from Franco that if Spain is to join the war there are lists of necessities they will require from Germany. %N%N Franco reports that upon the Italian entrance into the war, his nation has been forced to take a clear stand of non-belligerency as to protect their imports from the threat of English blockade measures.%N%N It is therefore advisable that we make preparations to assist Germany in reducing Spain's reliance on foreign imports so that Franco will have less to demand before entering the war on our side.%N%N Il, Duce do you approve of sending military equipment and other essential resources to Spain %B(YES)?  It will cost a total of %B60 MPPs (15 MPPs for 4 turns).
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -12271,7 +12281,7 @@ Replacement script
 #MPP_UPDOWN= -15
 #MPP_TURNS= 4
 #MPP_TEXT= Military Exports To Spain
-#NOTES= Franco wrote to Mussolini August 15, 1940 that "It has been our intention to make the greatest efforts in our preparations, in order to enter the foreign war at a favorable opportunity."  Franco went on to say that a long list of necessities were requested from Germany in order to enter the conflict in Europe.%N%N If you select %B(YES), to providing military equipment to Spain, the nation will station a garrison unit in the port town of Vigo, the only Atlantic port the nation has not yet garrisoned.  Spain will also move 2-4% closer to the Axis in response to receiving military equipment from Italy. %N%N %N%N%CRecommendations: %N%N Say %B(NO) to sending Spain military equipment and other resources unless Spain is heavily leaning towards the Axis.  
+#NOTES= Franco wrote to Mussolini on August 15, 1940 that "It has been our intention to make the greatest efforts in our preparations, in order to enter the foreign war at a favorable opportunity."  Franco went on to say that a long list of necessities were requested from Germany in order to enter the conflict in Europe.%N%N If you select %B(YES), to providing military equipment to Spain, the nation will station a garrison unit in the port town of Vigo, the only Atlantic port the nation has not yet garrisoned.  Spain will also move 4-8% closer to the Axis in response to receiving military equipment from Italy. %N%N %N%N%CRecommendations: %N%N Say %B(NO) to sending Spain military equipment and other resources unless Spain is heavily leaning towards the Axis.  
 #NOTES_POSITION= 139,110
 ; Set AI acceptance % (AI will accept 50% of the time)
 #AI_RESPONSE= 50
@@ -12289,6 +12299,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 807 - UK: Send Military supplies to Turkey? (AI - 100% Yes)
 #POPUP=
@@ -12327,6 +12338,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 808 - USA: Send Military Supplies To Turkey? (AI - 100% Yes)
 #POPUP=
@@ -12367,6 +12379,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 809 - USA: Send Military Supplies To Turkey? (AI - 75% Yes)
 #POPUP=
@@ -12405,6 +12418,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 810 - USA: Commitments to Turkish War Entry (AI - 100% Yes)
 #POPUP=
@@ -12442,6 +12456,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 811 - USA: Delivery of Aircraft to Sweden? (AI - 25% Yes)
 #POPUP=
@@ -12479,6 +12494,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 812 - Italy: Delivery of Aircraft to Sweden? (AI - 75% Yes)
 #POPUP=
@@ -12517,6 +12533,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 813 - USA: Offer Compensation to Sweden for Convoy losses? (AI - 80% Yes)
 #POPUP=
@@ -12595,6 +12612,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 815 - USSR: Allies Jointly Pressure Turkey? (AI - 100% Yes)
 #POPUP=
@@ -12635,6 +12653,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 816 - USA: Allies Jointly Pressure Turkey? (AI - 100% Yes)
 #POPUP=
@@ -12673,6 +12692,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 817 - USA: Allies Jointly Pressure Turkey? (AI - 100% Yes)
 #POPUP=
@@ -12711,6 +12731,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 818 - UK: Allies Jointly Pressure Turkey? (AI - 100% Yes)
 #POPUP=
@@ -12749,6 +12770,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 819 - UK: Allies Jointly Pressure Turkey? (AI - 100% Yes)
 #POPUP=
@@ -12787,6 +12809,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 820 - UK: Pressure Swiss Government (AI - 75% Yes)
 #POPUP=
@@ -12820,7 +12843,7 @@ Replacement script
 ; Portugal(87) Axis and not surrendered 
 ; Switzerland(104) Axis and not surrendered
 ; UK(112) Allied and fully mobilized
-; France(40) aligned with the Allies and Surrendered
+; France(40) Allied and Surrendered
 #VARIABLE_CONDITION= 87 [1] [1] [0]
 #VARIABLE_CONDITION= 104 [1] [1] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -12829,6 +12852,7 @@ Replacement script
 #CONDITION_POSITION= 139,104 [6,6] [0,0] [2] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 821 - UK: Pressure Portuguese Government? (AI - 90% Yes)
 #POPUP=
@@ -12862,7 +12886,7 @@ Replacement script
 ; Portugal(87) Axis and not surrendered 
 ; Switzerland(104) Axis and not surrendered
 ; UK(112) Allied and fully mobilized
-; France(40) aligned with the Allies and Surrendered
+; France(40) Allied and Surrendered
 #VARIABLE_CONDITION= 87 [1] [1] [0]
 #VARIABLE_CONDITION= 104 [1] [1] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -12871,6 +12895,7 @@ Replacement script
 #CONDITION_POSITION= 139,104 [6,6] [0,0] [2] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 822 - UK: Induce Switzerland To End Axis Relations? (AI - 90% Yes)
 #POPUP=
@@ -12908,6 +12933,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 823 - Italy: Rush troops to Tripoli? (AI - 50% Yes)
 #POPUP=
@@ -12945,6 +12971,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 824 - USSR: Dummy Event To Allow Failure of Fall Blau (AI - 100% Yes)
 #POPUP=
@@ -12983,6 +13010,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 825 - UK: Threaten Turkey with Blockade? (AI - 50% Yes)
 #POPUP=
@@ -13013,13 +13041,13 @@ Replacement script
 #SHADOW_RGB= 0,0,0
 ; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
-; Vienna is Axis
+; Vienna(179,86) is Axis
 #ALIGNMENT_POSITION= 179,86 [1]
-; Budapest is Axis
+; Budapest(184,88) is Axis
 #ALIGNMENT_POSITION= 184,88 [1]
-; Sofia is Axis
+; Sofia(192,100) is Axis
 #ALIGNMENT_POSITION= 192,100 [1]
-; Bucharest is Axis
+; Bucharest(198,95) is Axis
 #ALIGNMENT_POSITION= 198,95 [1]
 ; Cluj is Axis
 #ALIGNMENT_POSITION= 193,89 [1]
@@ -13032,7 +13060,7 @@ Replacement script
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 111 [1] [30] [0]
 #VARIABLE_CONDITION= 85 [2] [100] [1]
-; No Allied units within 5 hexes of Vienna
+; No Allied units within 5 hexes of Vienna(179,86)
 #CONDITION_POSITION= 179,86 [5,5] [0,0] [2] [0]
 ; No Allied units within 5 hexes of Budapest
 #CONDITION_POSITION= 184,88 [5,5] [0,0] [2] [0]
@@ -13044,6 +13072,7 @@ Replacement script
 #CONDITION_POSITION= 193,89 [5,5] [0,0] [2] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 826 - USSR: Complete Construction Of The Heavy Cruiser Petropavlovsk? (AI - 90% Yes)
 #POPUP=
@@ -13074,11 +13103,12 @@ Replacement script
 ; Moscow(221,65) is Allied
 #ALIGNMENT_POSITION= 221,65 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied and fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+; USSR(116) Allied
+#VARIABLE_CONDITION= 116 [2] [20] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 827 - Italy: Sale of Naval Assets (AI - 50% Yes)
 #POPUP=
@@ -13114,10 +13144,11 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 828 - Italy: Heavy Investment In Aircraft Industry Development? (AI - 25% Yes)
 #POPUP=
-#MESSAGE=Commander in Chief %N%N Il Duce, our air force dwarfs in comparison to other major powers and will continue to be hampered by the local aircraft industry which uses obsolete construction methods.  Even with technical assistance from Germany the situation is expected to improve very little without significant expenditures.  Planned development work of long range bombers and an expanded air fleet will require significant investment into the industry if we would expect to produce at an effective scale. %N%N Our advisors suggest that the present is the only time to begin investing into infrastructure necessary to produce air fleets which will be effective over the course of the war. The total cost of this investment would be %B1000 MPPs (25 MPPs for 40 turns). %N%N Il Duce, should we begin significantly investing into our nations aircraft industry?
+#MESSAGE=Commander in Chief %N%N Il Duce, our air force dwarfs in comparison to other major powers and will continue to be hampered by the local aircraft industry which uses obsolete construction methods.  Even with technical assistance from Germany the situation is expected to improve very little without significant expenditures.  Planned development work of long range bombers and an expanded air fleet will require significant investment into the industry if we would expect to produce at an effective scale. %N%N Our advisors suggest that the present is the only time to begin investing into infrastructure necessary to produce air fleets which will be effective over the course of the war. The total cost of this investment would be %B1000 MPPs (25 MPPs for 40 turns). %N%N Il Duce, should we begin significantly investing into our nations aircraft industry %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -13149,6 +13180,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 829 - USA(AI): Lend Lease To Saudi Arabia? (AI - 90% Yes)
 #POPUP=
@@ -13186,6 +13218,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 830 - Italy: Economic Assistance From Germany (AI - 100% Yes)
 #POPUP=
@@ -13223,10 +13256,11 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
-#NAME= DE 831 - USSR: Reinforce Murmansk District? (AI - 75% YES)
+#NAME= DE 831 - USSR: Reinforce Murmansk Or Moscow District? (AI - 75% YES)
 #POPUP=
-#MESSAGE=Red Army Headquarters %N%N Reinforce Murmansk District %N%N Now that Finland has joined the war it is possible that our Northern supply route will come under attack from Finnish and German forces. %N%N We should consider sending reinforcements  area to keep our supply lines open so that we can accept military aid from the Western Allies. %N%N Should we send reinforcements to the Murmansk district?
+#MESSAGE=Red Army Headquarters %N%N %BRe: %BMurmansk %BDistrict %N%N Now that Finland has joined the war it is possible that our Northern supply route will come under attack from Finnish and German forces. %N%N We should consider sending reinforcements to the area to keep our supply lines open so that we can accept military aid from the Western Allies. %N%N Should we send reinforcements to the Murmansk district %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -13260,6 +13294,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 832 - Italy: Reinforce North Africa? (AI - 100% Yes)
 #POPUP=
@@ -13298,6 +13333,7 @@ Replacement script
 }
 
 ;
+; Fall Weiss II 
 {
 #NAME= DE 833 - UK: Train Norwegian and Danish Forces in Sweden? (AI - 50% Yes)
 #POPUP=
@@ -13340,10 +13376,11 @@ Replacement script
 }
 
 ;
+; Fall Weiss II 
 {
 #NAME= DE 834 - UK: Send Additional Anti-Aircraft Batteries TO Malta? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Prime Minister %NNeville Chamberlain %N%N %BRe: %BMalta %N%N Given the possibility that the war with Germany may expand into the Mediterranean, we should consider upgrading our garrison on Malta. %N%N As an airborne attack against Malta may be the most effective assault we should consider deploying additional anti-aircraft batteries on the island.  Doing so will cost a total of %B45 MPPs (15 MPPs for 3 turns). %N%N Should we send additional anti-aircraft batteries to Malta to deter the possibility of an Axis invasion?
+#MESSAGE=Prime Minister %NNeville Chamberlain %N%N %BRe: %BMalta %N%N Given the possibility that the war with Germany may expand into the Mediterranean, we should consider upgrading our garrison on Malta. %N%N As an airborne attack against Malta may be the most effective assault we should consider deploying additional anti-aircraft batteries on the island.  Doing so will cost a total of %B45 MPPs (15 MPPs for 3 turns). %N%N Should we send additional anti-aircraft batteries to Malta to deter the possibility of an Axis invasion %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -13376,6 +13413,7 @@ Replacement script
 }
 
 ;
+; Fall Weiss II 
 {
 #NAME= DE 835 - UK: Pressure Greece To Sever Economic Ties With Germany? (AI - 100% Yes)
 #POPUP=
@@ -13413,6 +13451,7 @@ Replacement script
 }
 
 ;
+; Fall Weiss II 
 {
 #NAME= DE 836 - Germany: Pursue Greek Axis Relations? (AI - 50% Yes)
 #POPUP=
@@ -13452,6 +13491,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 837 - Germany: Imports From Greece (AI - 100% Yes)
 #POPUP=
@@ -13494,10 +13534,11 @@ Replacement script
 }
 
 ;Replacement
+; Fall Weiss II 
 {
 #NAME= DE 838 - UK: Support Greece? (AI - 75% Yes)
 #POPUP=
-#MESSAGE=Middle East Command to 10 Downing Street %N%N With the war spreading to Greece we are faced with the question of whether it is prudent to honour our treaties with the Greek government and lend them aid. Middle East Command at this time is concerned that by lending aid to the Greeks we will seriously undermine our ability to defend the Middle East theatre.%N%N We are able to hastily organize one understrength Infantry Corps for immediate dispatch to Greece and provide additional supplies to support a new Greek HQ. %N%N Is your directive to Middle East Command to prepare and send forces to Greece?  It will cost at total of %B150 MPPs (75 MPPs for 2 turns).
+#MESSAGE=Middle East Command to 10 Downing Street %N%N With the war spreading to Greece we are faced with the question of whether it is prudent to honour our treaties with the Greek government and lend them aid. Middle East Command at this time is concerned that by lending aid to the Greeks we will seriously undermine our ability to defend the Middle East theatre.%N%N We are able to hastily organize one understrength Infantry Corps for immediate dispatch to Greece and provide additional supplies to support a new Greek HQ. %N%N Is your directive to Middle East Command to prepare and send forces to Greece %B(YES)?  It will cost at total of %B150 MPPs (75 MPPs for 2 turns).
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -13534,10 +13575,11 @@ Replacement script
 }
 
 ;
+; Fall Weiss II 
 {
 #NAME= DE 839 - Germany: Oil Exports To Italy? (AI - 50% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N Romanian Oil Exports To Italy %N%N Mein Führer, our Allies in Italy have approached us with concerns that they do not have enough oil to fight the war as effectively as possible.  We must consider now that we have strategic control over the Romanian oil field that we can direct some of the nations oil exports into Italy. %N%N Our Generals urge a cautious approach as to not put our own nation at a disadvantage.  If we agree to the oil exports, it could be expected that Italy will receive 15 MPPs per turn. %N%N Mein Führer, do you approve the exports of oil from Romania to Italy to help our allies in the war?  It will cost 15 MPPs for the duration of the war.
+#MESSAGE=Führerhauptquartier %N%N Romanian Oil Exports To Italy %N%N Mein Führer, our Allies in Italy have approached us with concerns that they do not have enough oil to fight the war as effectively as possible.  We must consider now that we have strategic control over the Romanian oil field that we can direct some of the nations oil exports into Italy. %N%N Our Generals urge a cautious approach as to not put our own nation at a disadvantage.  If we agree to the oil exports, it could be expected that Italy will receive 15 MPPs per turn. %N%N Mein Führer, do you approve the exports of oil from Romania to Italy to help our allies in the war %B(YES)?  It will cost 15 MPPs for the duration of the war.
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -13572,6 +13614,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 840 - Germany: Oil Exports To Italy? (AI - 100% Yes)
 #POPUP=
@@ -13609,6 +13652,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 841 - Italy: Oil Imports From Germany (AI - 100% Yes)
 #POPUP=
@@ -13647,10 +13691,11 @@ Replacement script
 }
 
 ;
+; Fall Weiss II 
 {
 #NAME= DE 842 - UK: Irish Neutrality (AI - 75% Yes)
 #POPUP=
-#MESSAGE=Office Of The British Foreign Secretary %N Anthony Eden %N%N Though the Irish government has declared a strict neutral policy regarding the crisis in Europe, both the Irish and our own government have quietly discussed the need to prepare Ireland if the Axis invade Great Britain.  Ireland refrains from making any real commitments that would be seen as anything other than a strict policy of neutrality but have agreed to search out suitable airfields for the RAF if Great Britain is invaded. %N%N By making these preparations, should Germany invade the UK, we could expect Ireland to join the Allies and RAF Aircraft to be stationed in Ireland.  However, it must be emphasized that should the Axis refrain from invading the UK we should not expect any action by the Irish government for the entire course of the war. %N%N Should the UK continue with preparations with the Irish government in case of an Axis invasion? It will cost at total of %B75 MPPs (15 MPPs For 5 turns).
+#MESSAGE=Office Of The British Foreign Secretary %N Anthony Eden %N%N Though the Irish government has declared a strict neutral policy regarding the crisis in Europe, both the Irish and our own government have quietly discussed the need to prepare Ireland if the Axis invade Great Britain.  Ireland refrains from making any real commitments that would be seen as anything other than a strict policy of neutrality but have agreed to search out suitable airfields for the RAF if Great Britain is invaded. %N%N By making these preparations, should Germany invade the UK, we could expect Ireland to join the Allies and RAF Aircraft to be stationed in Ireland.  However, it must be emphasized that should the Axis refrain from invading the UK we should not expect any action by the Irish government for the entire course of the war. %N%N Should the UK continue with preparations with the Irish government in case of an Axis invasion %B(YES)? It will cost at total of %B75 MPPs (15 MPPs For 5 turns).
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -13683,6 +13728,7 @@ Replacement script
 }
 
 ;
+; Fall Weiss II 
 {
 #NAME= DE 843 - Germany: Switzerland Seizes German Gold (50% Chance) (AI - 100% Yes)
 #POPUP=
@@ -13718,10 +13764,11 @@ Replacement script
 }
 
 ;
+; Fall Weiss II 
 {
 #NAME= DE 844 - Germany: Declare War On Switzerland? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N Declare War on Switzerland %N%N Mein Führer, the betrayal of the Swiss Government must be met with swift action! We should declare war and begin preparations to invade immediately so as to avoid Switzerland from evacuating their gold reserves if they become suspicious of our intentions. %N%N Mein Führer, should we declare war on Switzerland?
+#MESSAGE=Führerhauptquartier %N%N Declare War on Switzerland %N%N Mein Führer, the betrayal of the Swiss Government must be met with swift action! We should declare war and begin preparations to invade immediately so as to avoid Switzerland from evacuating their gold reserves if they become suspicious of our intentions. %N%N Mein Führer, should we declare war on Switzerland %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -13753,6 +13800,7 @@ Replacement script
 }
 
 ;
+; Fall Weiss II 
 {
 #NAME= DE 845 - Germany: Recapture of Swiss Held Gold (AI - 100% Yes)
 #POPUP=
@@ -13788,6 +13836,7 @@ Replacement script
 }
 
 ; Allied Forces Look To March To France Through Axis Leaning Spain
+; Fall Weiss II 
 {
 #NAME= DE 846 - UK(AI): Declare War On Spain (50% Chance) (AI - 100%)
 #POPUP=
@@ -13829,10 +13878,11 @@ Replacement script
 }
 
 ;
+; Fall Weiss II 
 {
 #NAME= DE 847 - Finland: Sign Tripartite Pact? (AI - 50% Yes)
 #POPUP=
-#MESSAGE=Finnish Army Headquarters %N%N The Soviets vast manpower will be difficult for our country to overcome and after our initial offensive, the Finnish military could be unable to do anything more than protect our new borders. %N%N However, Germany has made a proposal to provide us with tanks and other military resources to support our war efforts if we sign the Tripartite Pact.  An extension of our war effort and ties with Germany will mean war with the Western Countries and also be met with resistance within our own borders, but the weapons and resources the Germans are offering will never be achievable without their assistance. %N%N Should we sign the Tripartite Pact or only fight our own war against USSR?
+#MESSAGE=Finnish Army Headquarters %N%N The Soviets vast manpower will be difficult for our country to overcome and after our initial offensive, the Finnish military could be unable to do anything more than protect our new borders. %N%N However, Germany has made a proposal to provide us with tanks and other military resources to support our war efforts if we sign the Tripartite Pact.  An extension of our war effort and ties with Germany will mean war with the Western Countries and also be met with resistance within our own borders, but the weapons and resources the Germans are offering will never be achievable without their assistance. %N%N Should we sign the Tripartite Pact %B(YES) or only fight our own war against USSR %B(NO)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -13864,10 +13914,11 @@ Replacement script
 
 ; https://www.wikiwand.com/en/Foreign_support_in_the_Winter_War
 ;
+; Fall Weiss II 
 {
 #NAME= DE 848 - Finland: Accept Aid From Swedish Volunteers? (AI - 80% Yes)
 #POPUP=
-#MESSAGE=Finnish Army Headquarters %N%N %BRe: %BForeign %BMilitary %BAid %N%N The Nordic countries led by Sweden have offered us military equipment and volunteers for the Winter War with the USSR. %N%N Although Sweden has thus far rejected direct participation in an Anti-Soviet Alliance, military aid from Sweden and our other Nordic neighbors should increase our ability to defend our country from the Soviet invasion. %N%N Should Finland accept military aid from our Nordic neighbors even if this is guaranteed to appease Sweden's neutral policy? 
+#MESSAGE=Finnish Army Headquarters %N%N %BRe: %BForeign %BMilitary %BAid %N%N The Nordic countries led by Sweden have offered us military equipment and volunteers for the Winter War with the USSR. %N%N Although Sweden has thus far rejected direct participation in an Anti-Soviet Alliance, military aid from Sweden and our other Nordic neighbors should increase our ability to defend our country from the Soviet invasion. %N%N Should Finland accept military aid from our Nordic neighbors even if this is guaranteed to appease Sweden's neutral policy %B(YES)? 
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -13900,6 +13951,7 @@ Replacement script
 }
 
 
+; Fall Weiss II 
 {
 #NAME= DE 849 - Germany: Delivery of Modern Tanks To Romania? (AI - 90% Yes)
 #POPUP=
@@ -13927,7 +13979,7 @@ Replacement script
 #DATE= 1942/06/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Bucharest is Axis
+; Bucharest(198,95) is Axis
 #ALIGNMENT_POSITION= 198,95 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 #VARIABLE_CONDITION= 93 [1] [100] [0]
@@ -13936,10 +13988,11 @@ Replacement script
 }
 
 
+; Fall Weiss II 
 {
 #NAME= DE 850 - Germany: Schwerer Gustav Gun (AI - 50% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BSchwerer %BGustav %BGun %N%N Mein Führer, as you know Schwerer Gustav will be the largest-calibre rifled weapon ever used in combat, and the heaviest mobile artillery unit ever built.%N%N Unfortunately High Command reports that the design work of Schwerer Gustav is well behind plan. Originally planned for the invasion of France, the railway gun is currently on schedule to be deployed in February 1942. %N%N There remains the possibility that we can expedite the design work and have Schwerer Gustav battle ready for August 1941, however doing so will forgo further trials and surely reduce the Railway Gun's initial effectiveness.%N%N Mein Führer, we await your orders, should we expedite the construction of Schwerer Gustav? 
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BSchwerer %BGustav %BGun %N%N Mein Führer, as you know Schwerer Gustav will be the largest-calibre rifled weapon ever used in combat, and the heaviest mobile artillery unit ever built.%N%N Unfortunately High Command reports that the design work of Schwerer Gustav is well behind plan. Originally planned for the invasion of France, the railway gun is currently on schedule to be deployed in February 1942. %N%N There remains the possibility that we can expedite the design work and have Schwerer Gustav battle ready for August 1941, however doing so will forgo further trials and surely reduce the Railway Gun's initial effectiveness.%N%N Mein Führer, we await your orders, should we expedite the construction of Schwerer Gustav %B(YES)? 
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -13971,6 +14024,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 851 - Germany: Complete the Tirpitz or Reallocate Resources toward U-boat Construction? (AI - 50% Yes)
 #POPUP=
@@ -14007,10 +14061,11 @@ Replacement script
 }
 
 ;
+; Fall Weiss II 
 {
 #NAME= DE 852 - UK: Abondon Construction of the HMS Anson for Additional Destroyers? (AI - 50% Yes)
 #POPUP=
-#MESSAGE=First Lord of the Admiralty %N Winston Churchill %N%N %BRe: %BThe %BBattleship %BHMS %BAnson %N%N We currently have plans to launch the %VHMS %VAnson Battleship with an expected completion date of April 14, 1942.  Though there are some within our ranks that suggest we may be better served to redirect some of our resources to the construction of additional destroyers. %N%N We could make the decision to abandon construction of the Battleship and instead begin construction of new destroyers.  The cost of changing plans will be considerably minimal at a total of %B75 MPPs (15 MPPs for 5 turns). %N%N Should we abandon the construction of %VHMS %VAnson and redirect our resources to the completion of Destroyers? 
+#MESSAGE=First Lord of the Admiralty %N Winston Churchill %N%N %BRe: %BThe %BBattleship %BHMS %BAnson %N%N We currently have plans to launch the %VHMS %VAnson Battleship with an expected completion date of April 14, 1942.  Though there are some within our ranks that suggest we may be better served to redirect some of our resources to the construction of additional destroyers. %N%N We could make the decision to abandon construction of the Battleship and instead begin construction of new destroyers.  The cost of changing plans will be considerably minimal at a total of %B75 MPPs (15 MPPs for 5 turns). %N%N Should we abandon the construction of %VHMS %VAnson and redirect our resources to the completion of Destroyers %B(YES)? 
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -14041,10 +14096,11 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 853 - USSR: Stalingrad Workers (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Red Army Headquarters %N%N %BRe: %BSouthern %BTheater %N%N The German Army is quickly approaching the gates of Stalingrad.  It is imperative that we hold Stalingrad at all costs.  There are thousands of factory workers who if we choose will take up arms and fight to the end to protect the city. %N%N With your approval Soviet factory workers will be prepared to form defensive positions immediately in the form of 2 understrength Infantry Divisions. %N%N At a cost of %B75 MPPs, should we approve of equipping and deploying Stalingrad's factory workers to the battlefield?
+#MESSAGE=Red Army Headquarters %N%N %BRe: %BSouthern %BTheater %N%N The German Army is quickly approaching the gates of Stalingrad.  It is imperative that we hold Stalingrad at all costs.  There are thousands of factory workers who if we choose will take up arms and fight to the end to protect the city. %N%N With your approval Soviet factory workers will be prepared to form defensive positions immediately in the form of 2 understrength Infantry Divisions. %N%N At a cost of %B75 MPPs, should we approve of equipping and deploying Stalingrad's factory workers to the battlefield %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -14076,10 +14132,11 @@ Replacement script
 #CONDITION_POSITION= 234,85 [5,5] [1,1] [1] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 854 - UK: Hunt Down The KMS Admiral Graf Spee? (AI - 50% Yes)
 #POPUP=
-#MESSAGE=First Lord of the Admiralty %N Winston Churchill %N%N %BRe: %BKMS %BGraf %BSpee %N%N The German Deutschland-class %VKMS %VAdmiral %VGraf %VSpee, is raiding our shipping lanes in the South Atlantic.  Soon we will begin to feel the economic effects of the %VAdmiral %VGraf %VSpee's successes. %N%N Our Naval advisers suggest sending a search fleet to deal with the problem. %N%N Should we pursue the German raider, the %VAdmiral %VGraf %VSpee and maintain naval protection in the South Atlantic thereafter?  It will cost a total of %B250 MPPs (50 MPPs for 5 turns).
+#MESSAGE=First Lord of the Admiralty %N Winston Churchill %N%N %BRe: %BKMS %BGraf %BSpee %N%N The German Deutschland-class %VKMS %VAdmiral %VGraf %VSpee, is raiding our shipping lanes in the South Atlantic.  Soon we will begin to feel the economic effects of the %VAdmiral %VGraf %VSpee's successes. %N%N Our Naval advisers suggest sending a search fleet to deal with the problem. %N%N Should we pursue the German raider, the %VAdmiral %VGraf %VSpee and maintain naval protection in the South Atlantic thereafter %B(YES)?  It will cost a total of %B250 MPPs (50 MPPs for 5 turns).
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -14111,10 +14168,11 @@ Replacement script
 }
 
 ;
+; Fall Weiss II 
 {
 #NAME= DE 856 - Germany: Fortify Romania (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N The Soviets have made a major breakthrough in the Ukraine and our Balkan Allies may soon be under threat.  The natural defenses of the Carpathians and lower Danube offer formidable obstacles to defend Romania from the Soviet invaders. %N%N In light of this, we should consider assisting in the formation of a dedicated division of Engineers to build fortifications which will assist in breaking the oncoming Soviet assault.%N%N Should we assist our Romanian Allies in deploying the 96th Engineers to fortify their homeland? It will cost a total of %B100 MPPs (50 MPPs for 2 turns).
+#MESSAGE=Führerhauptquartier %N%N The Soviets have made a major breakthrough in the Ukraine and our Balkan Allies may soon be under threat.  The natural defenses of the Carpathians and lower Danube offer formidable obstacles to defend Romania from the Soviet invaders. %N%N In light of this, we should consider assisting in the formation of a dedicated division of Engineers to build fortifications which will assist in breaking the oncoming Soviet assault.%N%N Should we assist our Romanian Allies in deploying the 96th Engineers to fortify their homeland %B(YES)? It will cost a total of %B100 MPPs (50 MPPs for 2 turns).
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -14139,7 +14197,7 @@ Replacement script
 #DATE= 1942/01/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Bucharest is Axis
+; Bucharest(198,95) is Axis
 #ALIGNMENT_POSITION= 198,95 [1]
 ; Odessa is Axis
 #ALIGNMENT_POSITION= 207,90 [1]
@@ -14160,10 +14218,11 @@ Replacement script
 }
 
 
+; Fall Weiss II 
 {
 #NAME= DE 857 - Germany: Liberate Bessarabia? (AI - 100% Yes)
 #POPUP= German Strategic Decision
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BBessarabia %N%N Under the terms of the Molotov-Ribbentrop Pact, Bessarabia was seized by the Soviets to act as a buffer zone protecting Odessa from attack. %N%N Now that we have captured Odessa, we should consider allowing Romania to reintegrate the lost territory back under their control as the Soviets flee Eastward into their homeland.%N%N Should we support Romania in reclaiming their lost territory?
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BBessarabia %N%N Under the terms of the Molotov-Ribbentrop Pact, Bessarabia was seized by the Soviets to act as a buffer zone protecting Odessa from attack. %N%N Now that we have captured Odessa, we should consider allowing Romania to reintegrate the lost territory back under their control as the Soviets flee Eastward into their homeland.%N%N Should we support Romania in reclaiming their lost territory %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -14188,7 +14247,7 @@ Replacement script
 #DATE= 1941/01/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Bucharest is Axis
+; Bucharest(198,95) is Axis
 #ALIGNMENT_POSITION= 198,95 [1]
 ; Bucharest is Axis
 #ALIGNMENT_POSITION= 197,86 [1]
@@ -14218,10 +14277,11 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 858 - Finland: Recapture Lost Territory? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Finnish Army Headquarters %N%N Our nation has now recaptured virtually all the territory lost during the Moscow Peace Treaty.  This is a great victory for Finland, and we should now reintegrate the territory back under our nation's control. %N%N Would you like to recapture the Karelian Isthmus, Hanko and other lost territory back into Finland?
+#MESSAGE=Finnish Army Headquarters %N%N Our nation has now recaptured virtually all the territory lost during the Moscow Peace Treaty.  This is a great victory for Finland, and we should now reintegrate the territory back under our nation's control. %N%N Would you like to recapture the Karelian Isthmus, Hanko and other lost territory back into Finland %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -14268,10 +14328,11 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 859 - Finland: Recapture Lost Territory? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Finnish Army Headquarters %N%N Our nation has now recaptured virtually all the territory lost during the Moscow Peace Treaty.  This is a great victory for Finland, and we should now reintegrate the territory back under our nation's control. %N%N Would you like to recapture the Karelian Isthmus, Hanko and other lost territory back into Finland?
+#MESSAGE=Finnish Army Headquarters %N%N Our nation has now recaptured virtually all the territory lost during the Moscow Peace Treaty.  This is a great victory for Finland, and we should now reintegrate the territory back under our nation's control. %N%N Would you like to recapture the Karelian Isthmus, Hanko and other lost territory back into Finland %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -14320,6 +14381,7 @@ Replacement script
 }
 
 ;
+; Fall Weiss II 
 {
 #NAME= DE 864 - Germany: Fortify Romania (AI - 100% Yes)
 #POPUP=
@@ -14347,7 +14409,7 @@ Replacement script
 #DATE= 1942/01/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Bucharest is Axis
+; Bucharest(198,95) is Axis
 #ALIGNMENT_POSITION= 198,95 [1]
 ; Odessa is Axis
 #ALIGNMENT_POSITION= 207,90 [1]
@@ -14368,6 +14430,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 865 - UK(AI): MPPs Helper (1) (AI - 100% Yes)
 #POPUP=
@@ -14402,6 +14465,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 866 - UK(AI): MPPs Helper (2) (AI - 100% Yes)
 #POPUP=
@@ -14436,6 +14500,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 867 - Italy(AI): Italian MPPs Helper (AI - 100% Yes)
 #POPUP=
@@ -14470,6 +14535,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 868 - Germany: Imports From Portugal (AI - 100% Yes)
 #POPUP=
@@ -14513,6 +14579,7 @@ Replacement script
 #CONDITION_POSITION= 139,104 [5,5] [0,0] [2] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 869 - Germany: Imports From Portugal (AI - 100% Yes)
 #POPUP=
@@ -14556,6 +14623,7 @@ Replacement script
 #CONDITION_POSITION= 139,104 [5,5] [0,0] [2] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 870 - Germany(AI): MPPs Helper (AI - 100% Yes)
 #POPUP=
@@ -14592,6 +14660,7 @@ Replacement script
 
 
 ;Replacement
+; Fall Weiss II 
 {
 #NAME= DE 871 - USSR: Dummy Event To Allow Axis Oil Shortages (AI - 100% Yes)
 #POPUP=
@@ -14630,6 +14699,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 872 - Germany(AI): Dummy Event To Counter Operation Torch? (AI - 100% Yes)
 #POPUP=
@@ -14677,6 +14747,7 @@ Replacement script
 
 ; Event based on the heavily escorted 1st Canadian Division sent from the Canada to UK
 ; in December 1939.
+; Fall Weiss II 
 {
 #NAME= DE 873 - UK: Deploy 1st Canadian Division In Halifax or the UK? (AI - 75% Yes)
 #POPUP=
@@ -14718,6 +14789,7 @@ Replacement script
 }
 
 ;replacement
+; Fall Weiss II 
 {
 #NAME= DE 874 - Germany: Vichy French Join The Axis (5% Chance) (AI - 100% Yes)
 #POPUP=
@@ -14763,6 +14835,7 @@ Replacement script
 }
 
 ;
+; Fall Weiss II 
 {
 #NAME= DE 875 - Germany: Send Reinforcements To Iraq? (AI - 100% Yes)
 #POPUP=
@@ -14802,6 +14875,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 876 - Germany: War Economy (AI - 100% Yes)
 #POPUP=
@@ -14836,6 +14910,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 877 - Germany: War Economy (AI - 100% Yes)
 #POPUP=
@@ -14874,6 +14949,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 878 - Germany: Underground Production (AI - 100% Yes)
 #POPUP=
@@ -14900,7 +14976,7 @@ Replacement script
 #DATE= 1944/01/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Rome(171,101) is Axis
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Germany(45) Axis and not surrendered (dummy condition)
@@ -14908,6 +14984,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 879 - Germany: Underground Production (AI - 100% Yes)
 #POPUP=
@@ -14943,6 +15020,7 @@ Replacement script
 }
 
 ; Dummy Event
+; Fall Weiss II 
 {
 #NAME= DE 885 - USSR: Siberian Reserves (AI - 100% Yes)
 #POPUP=
@@ -14984,6 +15062,7 @@ Replacement script
 #CONDITION_POSITION= 257,58 [3,5] [1,2] [1] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 890 - UK: Dummy Event To Allow Spanish Supply Shortages (AI - 100% Yes)
 #POPUP= 
@@ -15021,6 +15100,7 @@ Replacement script
 }
 
 
+; Fall Weiss II 
 {
 #NAME= DE 891 - Germany: Form Unit in Italian East Africa? (AI - 75% Yes)
 #POPUP=
@@ -15059,6 +15139,7 @@ Replacement script
 }
 
 ;
+; Fall Weiss II 
 {
 #NAME= DE 892 - Finland: Formation of new Engineer Corps? (AI - 50% Yes)
 #POPUP=
@@ -15106,6 +15187,7 @@ Replacement script
 }
 
 ;
+; Fall Weiss II 
 {
 #NAME= DE 893 - Finland: Raise and Deploy Anti-Tank Units? (AI - 50% Yes)
 #POPUP=
@@ -15152,6 +15234,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 895 - USSR: Fulfill The German-Soviet Border And Commercial Agreement? (AI - 100% Yes)
 #POPUP=
@@ -15163,6 +15246,7 @@ Replacement script
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; The Molotov-Ribbentrop Pact?
 ; 406[1]->600[1]
 #LINK= 600[1]
 #COUNTRY_ID= 116
@@ -15187,6 +15271,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 896 - USA: Dummy Event For Future Spanish Surrender (AI - 100% Yes)
 #POPUP=
@@ -15223,6 +15308,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 897 - USA: Spain Switches Sides (AI - 50% Yes)
 #POPUP=
@@ -15272,6 +15358,7 @@ Replacement script
 #CONDITION_POSITION= 139,104 [6,6] [0,3] [1] [45]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 899 - UK: Form a Garrison from The Greek Army In Exile? (AI - 75% Yes)
 #POPUP=
@@ -15301,16 +15388,19 @@ Replacement script
 #SHADOW_RGB= 0,0,0
 ; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
+; Cairo(208,126) is Allied
 #ALIGNMENT_POSITION= 208,126 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
+; Greece(46) Surrendered
 #VARIABLE_CONDITION= 46 [2] [100] [1]
 ; Egypt(36) Allied
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 900 - Germany: Help Spain Rebuild from Civil War (AI - 50% Yes)
 #POPUP=
@@ -15348,8 +15438,8 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; TODO - check to see if this stops
 ; Event allowing German Food Supplies to Export to Spain only until Italy has entered the war.
+; Fall Weiss II 
 {
 #NAME= DE 901 - Germany: Dummy Event To Allow Export of Food Supplies to Spain (AI - 100% Yes)
 #POPUP=
@@ -15387,6 +15477,7 @@ Replacement script
 }
 
 ; https://www.wikiwand.com/en/Blue_Division
+; Fall Weiss II 
 {
 #NAME= DE 902 - Germany: Accept the Spanish Blue Division? (AI - 75% Yes)
 #POPUP=
@@ -15425,6 +15516,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 903 - Germany: Send Military Aid to Spain? (AI - 50% Yes)
 #POPUP=
@@ -15462,10 +15554,11 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 904 - Germany: Send Von Ribbentrop to Portugal? (AI - 100% Yes)
 #POPUP= German Diplomatic Decision
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BDiplomatic %BMission %BTo %BPortugal %N%N Mein Führer, even though the Portuguese Government has protested the invasion of Poland, Von Ribbentrop believes the Fascist government under the lead of Antonio Salazar could be persuaded to sympathize with Germany.  Sending Von Ribbentrop to Portugal should help strengthen our diplomatic relations, and could lead to future trade agreements between our two countries. %N%N Mein Führer, should we send Von Ribbentrop on a diplomatic mission to Portugal?  It will cost %B25 MPPs.
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BDiplomatic %BMission %BTo %BPortugal %N%N Mein Führer, even though the Portuguese Government has protested the invasion of Poland, Von Ribbentrop believes the Fascist government under the lead of Antonio Salazar could be persuaded to sympathize with Germany.  Sending Von Ribbentrop to Portugal should help strengthen our diplomatic relations, and could lead to future trade agreements between our two countries. %N%N Mein Führer, should we send Von Ribbentrop on a diplomatic mission to Portugal %B(YES)?  It will cost %B25 MPPs.
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -15496,10 +15589,11 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 905 - Germany: Send Von Ribbentrop to Switzerland? (AI - 90% Yes)
 #POPUP= German Diplomatic Decision
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BDiplomatic %BMission %BTo %BSwitzerland %N%N Mein Führer, we should expect Switzerland to maintain their long standing position of neutrality throughout the course of the war.  With little risk, or benefit of the Swiss government entering the war on either side, it is advisable that we use the Swiss banking system to store our plundered gold reserves, and to convert currency so that we may conduct trade with some neutral European countries, which otherwise may not be possible.  We should also be able to establish trade between our two nations. %N%N By Sending diplomats to Switzerland we can almost ensure that the Swiss will be cooperative, and while Switzerland will officially remain a neutral country, we should be careful to maintain a positive relationship with the country or risk devastating our foreign trade. %N%N Mein Führer do you approve expanding our economic relationship with Switzerland? It will cost %B25 MPPs.
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BDiplomatic %BMission %BTo %BSwitzerland %N%N Mein Führer, we should expect Switzerland to maintain their long standing position of neutrality throughout the course of the war.  With little risk, or benefit of the Swiss government entering the war on either side, it is advisable that we use the Swiss banking system to store our plundered gold reserves, and to convert currency so that we may conduct trade with some neutral European countries, which otherwise may not be possible.  We should also be able to establish trade between our two nations. %N%N By Sending diplomats to Switzerland we can almost ensure that the Swiss will be cooperative, and while Switzerland will officially remain a neutral country, we should be careful to maintain a positive relationship with the country or risk devastating our foreign trade. %N%N Mein Führer do you approve expanding our economic relationship with Switzerland %B(YES)? It will cost %B25 MPPs.
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -15531,10 +15625,11 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 906 - Germany: Send Von Ribbentrop to Portugal? (AI 100% Yes)
 #POPUP= German Diplomatic Decision
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BDiplomatic %BMission %BTo %BPortugal %N%N Mein Führer, Although the Portuguese Government under the rule of Antonio Salazar has protested the war, Von Ribbentrop reports that the Portuguese will maintain a neutral policy. %N%N It is advisable that we reach a trade agreement with Portugal to import very important raw materials for military production.  These shipments will be conducted with thinly veiled secrecy and will be mainly routed through Switzerland.  It is important that we not only keep adequate relations with both Portugal and Switzerland to ensure a steady supply of raw materials, but also Spain, as the materials will be shipped by land and transit directly through Spanish territory.  We can expect the first shipment to begin January 1, 1942. %N%N Mein Führer, should we send Von Ribbentrop to Portugal to finalize an agreement for the import of Portuguese raw materials?  It will cost a total of %B50 MPPs (25 MPPs for 2 turns) for initial set up costs and logistics of the agreement.
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BDiplomatic %BMission %BTo %BPortugal %N%N Mein Führer, Although the Portuguese Government under the rule of Antonio Salazar has protested the war, Von Ribbentrop reports that the Portuguese will maintain a neutral policy. %N%N It is advisable that we reach a trade agreement with Portugal to import very important raw materials for military production.  These shipments will be conducted with thinly veiled secrecy and will be mainly routed through Switzerland.  It is important that we not only keep adequate relations with both Portugal and Switzerland to ensure a steady supply of raw materials, but also Spain, as the materials will be shipped by land and transit directly through Spanish territory.  We can expect the first shipment to begin January 1, 1942. %N%N Mein Führer, should we send Von Ribbentrop to Portugal to finalize an agreement for the import of Portuguese raw materials %B(YES)?  It will cost a total of %B50 MPPs (25 MPPs for 2 turns) for initial set up costs and logistics of the agreement.
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -15571,10 +15666,11 @@ Replacement script
 #CONDITION_POSITION= 139,104 [6,6] [0,0] [2] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 907 - Germany: Development of Spanish Mines? (AI 75% Yes)
 #POPUP= German Economic Decision
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BDevelopment %Bof %BSpanish %BMines %N%N Mein Führer, after the Spanish Civil War the Spanish government owed a large debt to Germany.  Despite Spain lacking in many resources, our governments have brought forth a proposal that could result in repayment in full. %N%N Spain does have some essential resources to supply from their Wolfram Mines, but further infrastructure is required.  So it is proposed that we help build the infrastructure to make the Wolfram mines more operational. %N%N Mein Führer, should we invest in Spain's Wolfram mines? It will cost a total of %B50 MPPs (10 MPPs for 5 turns).
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BDevelopment %Bof %BSpanish %BMines %N%N Mein Führer, after the Spanish Civil War the Spanish government owed a large debt to Germany.  Despite Spain lacking in many resources, our governments have brought forth a proposal that could result in repayment in full. %N%N Spain does have some essential resources to supply from their Wolfram Mines, but further infrastructure is required.  So it is proposed that we help build the infrastructure to make the Wolfram mines more operational. %N%N Mein Führer, should we invest in Spain's Wolfram mines %B(YES)? It will cost a total of %B50 MPPs (10 MPPs for 5 turns).
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -15606,10 +15702,11 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 908 - Germany: Accept Spanish Debt Repayment Agreement? (AI 100% Yes)
 #POPUP= German Economic Decision
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BSpanish %BDebt %N%N Mein Führer, the development of the Wolfram mines was largely a success.  Franco has proposed repaying the debt from the civil war in steady supply shipments of Wolfram which will begin January 1, 1942. %N%N However, although Franco owes this debt to Germany the Spanish government may view the transfer of vital resources as a contribution to our war effort, and may move further from the Axis.  We should consider now that the mines are operational we will have full access to its resources when Spain joins the war. %N%N Mein Führer, should we accept the resource payments to eliminate Spain's debt from the civil war?
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BSpanish %BDebt %N%N Mein Führer, the development of the Wolfram mines was largely a success.  Franco has proposed repaying the debt from the civil war in steady supply shipments of Wolfram which will begin January 1, 1942. %N%N However, although Franco owes this debt to Germany the Spanish government may view the transfer of vital resources as a contribution to our war effort, and may move further from the Axis.  We should consider now that the mines are operational we will have full access to its resources when Spain joins the war. %N%N Mein Führer, should we accept the resource payments to eliminate Spain's debt from the civil war %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -15646,10 +15743,11 @@ Replacement script
 }
 
 ; https://www.wikiwand.com/en/German%E2%80%93Turkish_Treaty_of_Friendship
+; Fall Weiss II 
 {
 #NAME= DE 910 - Germany: Sign Treaty of Friendship with Turkey? (AI - 100% Yes)
 #POPUP= German Diplomatic Decision
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BTreaty %Bof %BFriendship %Bwith %BTurkey %N%N Mein Führer,  German ambassador to Turkey Franz von Papen and the Turkish Minister of Foreign Affairs have drawn up a Non-Aggression Pact with Turkey. %N%N This treaty of Friendship will open the door to improved economic relations between our two nations.  It is important that if we sign this treaty that we abide by it, otherwise we may suffer severe relations with our other non-belligerent allies. %N%N Mein Führer should we sign the Treaty of Friendship with Turkey?
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BTreaty %Bof %BFriendship %Bwith %BTurkey %N%N Mein Führer,  German ambassador to Turkey Franz von Papen and the Turkish Minister of Foreign Affairs have drawn up a Non-Aggression Pact with Turkey. %N%N This treaty of Friendship will open the door to improved economic relations between our two nations.  It is important that if we sign this treaty that we abide by it, otherwise we may suffer severe relations with our other non-belligerent allies. %N%N Mein Führer should we sign the Treaty of Friendship with Turkey %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -15683,11 +15781,12 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; Bulgaria Axis and Mobilized
+; Bulgaria(19) Axis and Mobilized
+; Fall Weiss II 
 {
 #NAME= DE 911 - Germany: Sign the Clodius Agreement? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BClodius %BAgreement %N%N Mein Führer,  German trade expert Dr. Karl Clodius has negotiated a trade agreement with Turkey for the export of essential raw materials in exchange for German war materials. %N%N Although the trade agreement will require immediate expenditures on our behalf and it may be over a year before Germany will benefit from the trade agreement, the benefits (30 MPPs per turn) will far out way the costs over the course of the agreement.%N%N Mein Führer, should we sign the Clodius Agreement?  It will cost a total of %B50 MPPs (10 MPPs for 5 turns) for the initial set up and logistics of the agreement.
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BClodius %BAgreement %N%N Mein Führer,  German trade expert Dr. Karl Clodius has negotiated a trade agreement with Turkey for the export of essential raw materials in exchange for German war materials. %N%N Although the trade agreement will require immediate expenditures on our behalf and it may be over a year before Germany will benefit from the trade agreement, the benefits (30 MPPs per turn) will far out way the costs over the course of the agreement.%N%N Mein Führer, should we sign the Clodius Agreement %B(YES)?  It will cost a total of %B50 MPPs (10 MPPs for 5 turns) for the initial set up and logistics of the agreement.
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -15728,10 +15827,11 @@ Replacement script
 
 ; Greece Axis and Mobilized
 ; Yugoslavia Axis controlled
+; Fall Weiss II 
 {
 #NAME= DE 911 - Germany: Sign the Clodius Agreement? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BClodius %BAgreement %N%N Mein Führer,  German trade expert Dr. Karl Clodius has negotiated a trade agreement with Turkey for the export of essential raw materials in exchange for German war materials. %N%N Although the trade agreement will require immediate expenditures on our behalf and it may be over a year before Germany will benefit from the trade agreement, the benefits (30 MPPs per turn) will far out way the costs over the course of the agreement.%N%N Mein Führer, should we sign the Clodius Agreement?  It will cost a total of %B50 MPPs (10 MPPs for 5 turns) for the initial set up and logistics of the agreement.
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BClodius %BAgreement %N%N Mein Führer,  German trade expert Dr. Karl Clodius has negotiated a trade agreement with Turkey for the export of essential raw materials in exchange for German war materials. %N%N Although the trade agreement will require immediate expenditures on our behalf and it may be over a year before Germany will benefit from the trade agreement, the benefits (30 MPPs per turn) will far out way the costs over the course of the agreement.%N%N Mein Führer, should we sign the Clodius Agreement %B(YES)?  It will cost a total of %B50 MPPs (10 MPPs for 5 turns) for the initial set up and logistics of the agreement.
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -15772,6 +15872,7 @@ Replacement script
 #CONDITION_POSITION= 228,106 [3,3] [0,0] [2] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 912 - Germany: Vichy Collaboration Policy (AI - 75% Yes)
 #POPUP=
@@ -15807,6 +15908,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 913 - Germany: Vichy Collaboration Policy (AI - 100% Yes)
 #POPUP=
@@ -15837,12 +15939,13 @@ Replacement script
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; France(40) Allied and Surrendered 
-; Vichy aligned with the Allies, not fully mobilized
+; Vichy Allied, not fully mobilized
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 118 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 914 - Germany: Vichy Collaboration Policy (AI - 100% Yes)
 #POPUP=
@@ -15879,6 +15982,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 915 - Germany: Vichy Collaboration Policy (AI - 100% Yes)
 #POPUP=
@@ -15915,6 +16019,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 916 - Germany: Reinforce Eastern Front for Fall Blau? (AI - 100% Yes)
 #POPUP=
@@ -15953,6 +16058,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 917 - Germany: Grant Concessions To Greece To Induce Into Alliance? (AI - 100% Yes)
 #POPUP=
@@ -15995,6 +16101,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 918 - Germany: Deliver The Heavy Cruiser Lützow to USSR? (AI - 50% Yes)
 #POPUP=
@@ -16006,6 +16113,7 @@ Replacement script
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; The Molotov-Ribbentrop Pact?
 ; 406[1]->600[1]
 #LINK= 600[1]
 #COUNTRY_ID= 45
@@ -16026,13 +16134,12 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 919 - Germany: Reinforce The Deutsches Afrika Korps? (AI - 50% Yes)
 #POPUP=
@@ -16068,14 +16175,13 @@ Replacement script
 ; Warsaw(188,76) is Axis
 #ALIGNMENT_POSITION= 188,76 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 
 ; https://codenames.info/operation/wacht-am-rhein/
+; Fall Weiss II 
 {
 #NAME= DE 921 - Germany: Operation Wacht Am Rhein (AI - 100% Yes)
 #POPUP=
@@ -16115,6 +16221,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 922 - Germany: Pursue Trade Agreement With Switzerland? (AI - 100% Yes)
 #POPUP=
@@ -16145,10 +16252,8 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Switzerland(104) Axis
 ; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 104 [1] [0] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -16185,15 +16290,14 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Switzerland(104) Axis not fully mobilized
 ; France(40) has surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 104 [1] [0] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 924 - Germany: Oil Imports From Romania (AI - 100% Yes)
 #POPUP=
@@ -16223,13 +16327,12 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Romania(93) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 93 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 925 - Germany: Imports From Hungary (AI - 100% Yes)
 #POPUP=
@@ -16259,13 +16362,12 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; Hungary(52) Axis not active and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 52 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 926 - Germany: Imports From Yugoslavia (AI - 100% Yes)
 #POPUP=
@@ -16295,13 +16397,12 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
-;  Yugoslavia(120) Axis not fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Yugoslavia(120) Axis not fully mobilized
 #VARIABLE_CONDITION= 120 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 927 - Germany: Transfer Troops Through Sweden To Finland? (AI - 80% Yes)
 #POPUP=
@@ -16332,12 +16433,10 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; USSR(116) Allied and fully mobilized
 ; Finland(39) is Axis and fully mobilized
-; Norway(78) aligned with the Allies and surrendered
+; Norway(78) Allied and surrendered
 ; Sweden(103) is Axis and Not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 #VARIABLE_CONDITION= 78 [2] [100] [1]
@@ -16345,6 +16444,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 928 - Germany: Provide Economic Assistance To Italy? (AI - 75% Yes)
 #POPUP=
@@ -16375,15 +16475,14 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; USSR(116) Allied and Not Surrendered
 ; Italy(59) is Axis and fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 929 - Germany: Provide Economic Assistance To Italy? (AI - 100% Yes)
 #POPUP=
@@ -16411,18 +16510,17 @@ Replacement script
 #DATE= 1939/09/03
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Berlin(173,74) is Axis controlled
+; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; USSR(116) Allied and Not Surrendered
 ; Italy(59) is Axis and fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 930 - Germany: Tungsten Imports From Portugal (AI - 100% Yes)
 #POPUP=
@@ -16466,6 +16564,7 @@ Replacement script
 #CONDITION_POSITION= 139,104 [5,5] [0,0] [2] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 931 - Germany: Tungsten Imports From Portugal (AI - 100% Yes)
 #POPUP=
@@ -16510,6 +16609,7 @@ Replacement script
 }
 
 ; Event allowing for the German Reinforcements on The Eastern Front After USSR Is At War
+; Fall Weiss II 
 {
 #NAME= DE 932 - Germany: Dummy Event To Allow Eastern Front Reinforcements (AI - 100% Yes)
 #POPUP=
@@ -16539,12 +16639,11 @@ Replacement script
 ; Warsaw(188,76) is Axis
 #ALIGNMENT_POSITION= 188,76 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 933 - Italy: Deploy Submarines At Bordeaux Or The Mediterranean? (AI - 75% Yes)
 #POPUP=
@@ -16574,17 +16673,19 @@ Replacement script
 #SHADOW_RGB= 0,0,0
 ; Rome(171,101)
 #ALIGNMENT_POSITION= 171,101 [1]
-;Set Friendly Position (Bordeaux)
+; Bordeaux(145,94) is Axis
 #ALIGNMENT_POSITION= 145,94 [1]
+; Bordeaux-Port(145,93) is Axis
 #ALIGNMENT_POSITION= 145,93 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Italy(59) Axis and not surrendered 
-; 2nd Line France(40) Allied and surrendered
+; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 938 - Finland: Finnish National Morale falls below 50% (100%)
 #POPUP=
@@ -16619,6 +16720,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 946 - Germany: Prepare for Operation Sealion or Barbarossa? (AI - 0% Yes)
 #POPUP=
@@ -16654,6 +16756,7 @@ Replacement script
 }
 
 ; Replacement Script
+; Fall Weiss II 
 {
 #NAME= DE 947 - Germany: Fulfill The German-Soviet Border And Commercial Agreement? (AI - 75% Yes)
 #POPUP=
@@ -16685,12 +16788,11 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and Fully Actives
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 949 - Germany: Reinforcements if Tripoli Is Captured (AI - 100% Yes)
 #POPUP=
@@ -16729,6 +16831,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 950 - Germany: 2nd Naval Infantry Division (AI - 100% Yes)
 #POPUP=
@@ -16771,6 +16874,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 951 - Germany: 1st Naval Infantry Division (AI - 75% Yes)
 #POPUP=
@@ -16811,6 +16915,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 970 - USSR: Forcibly Occupy Turkish Straits? (AI - 0% Yes)
 #POPUP= USSR Strategic Decision
@@ -16822,6 +16927,7 @@ Replacement script
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; The Molotov-Ribbentrop Pact?
 ; 406[1]->600[1]
 #LINK= 600[1]
 #COUNTRY_ID= 116
@@ -16848,6 +16954,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 978 - Germany: Complete Tirpitz or Reallocate Resources toward U-boat Construction? (AI - 100% Yes)
 #POPUP=
@@ -16883,6 +16990,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 979 - UK: Operation Countenance: Call on the USSR to join us in Invading Persia? (AI - 100% Yes)
 #POPUP=
@@ -16920,6 +17028,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 982 - Germany: Vichy Collaboration Policy (AI - 100% Yes)
 #POPUP=
@@ -16950,16 +17059,15 @@ Replacement script
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
 ; France(40) Allied and Surrendered 
 ; Vichy politically neutral
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 118 [0] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 ; Allied Forces Look To March To France Through Spain
+; Fall Weiss II 
 {
 #NAME= DE 989 - UK(AI): Declare War On Spain? (50% Chance) (AI - 100% Yes)
 #POPUP=
@@ -16996,12 +17104,12 @@ Replacement script
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-; Dummy condition position (always satisfied)
-; 3 US units is within 6 hexes of Lisbon
+; 3 US units is within 6 hexes of Lisbon(128,108)
 #CONDITION_POSITION= 128,108 [6,6] [3,3] [2] [115]
 }
 
 ;NEW 10.0 Beta
+; Fall Weiss II 
 {
 #NAME= DE 994 - Germany: Strategic Reserves In France (AI - 100% Yes)
 #POPUP=
@@ -17040,17 +17148,16 @@ Replacement script
 #ALIGNMENT_POSITION= 147,82 [1]
 ; Brest is Axis
 #ALIGNMENT_POSITION= 138,86 [1]
-; Dijon is Axis
+; Dijon(156,88) is Axis
 #ALIGNMENT_POSITION= 156,88 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 ;NEW 10.0 Beta
+; Fall Weiss II 
 {
 #NAME= DE 995 - Germany: Form Ostbataillonen in France (AI - 100% Yes)
 #POPUP=
@@ -17089,16 +17196,15 @@ Replacement script
 #ALIGNMENT_POSITION= 147,82 [1]
 ; Brest is Axis
 #ALIGNMENT_POSITION= 138,86 [1]
-; Dijon is Axis
+; Dijon(156,88) is Axis
 #ALIGNMENT_POSITION= 156,88 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II 
 {
 #NAME= DE 997 - Germany: Dummy Event For Strategic Reserves (AI - 100% Yes)
 #POPUP=
@@ -17133,8 +17239,8 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-
 ; Moscow Occupied
+; Fall Weiss II 
 {
 #NAME= DE 998 - Germany: Moscow Occupied Dummy Event (AI - 100% Yes)
 #POPUP=
@@ -17166,6 +17272,6 @@ Replacement script
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Germany(45) Axis and fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 1 Axis unit in Moscow
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; 1 Axis unit in Moscow(221,65)
+#CONDITION_POSITION= 221,65 [0,0] [1,1] [1] [0]
 }
