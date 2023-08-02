@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Many new unit names have been added for Germany, Soviet Union
 - More than 18 Axis Units Near Warsaw From January 1941 (USSR->Allies) (50% Chance)
     - now alerts player with "The USSR grows uneasy over the build up of Axis troops along its Polish border" when border garrison conditions are not met
+- Added display of warning symbols for Warsaw Garrison when player is close to exceeding 18 units on Polish Border
 
 ## Changed
 
@@ -89,7 +90,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - updated to show tooltip when cursor is over Heraklion
 - Soviet Bombers Operating From Crimea Attack The Ploesti Oil Fields In Romania
     - changed SOURCE_POSITION to Simferopol
-- corrected DISPLAY_TURN for unit.txt events, such as:
+- corrected DISPLAY_TURN for unit.txt events that had '#PRIVATE= 1', such as:
     - DE 416 - USSR: Anti-Tank Units
         - DISPLAY_TURN=0 changed to 2
     - DE 645 - Germany: Anti-Tank Units
