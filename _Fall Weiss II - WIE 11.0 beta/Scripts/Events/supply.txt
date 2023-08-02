@@ -7,15 +7,23 @@
 ; Basic structure for a supply event:
 ; { 
 ; #NAME= Event name (this will be shown as a selectable event under an OPTIONS screen within the game)
+;
 ; #POPUP= Event popup text (this will be displayed when the event occurs)
+;
 ; #IMAGE= Event image that will be displayed when event occurs
 ;         PNG images must be 736x418 or 368x418 pixels, see 'Extras' folder for sample images and frames
 ;         Multiple pictures can be used by using a ',' to separate them
 ;         Format: picture1.png, picture2.png, picture3.png, picture4.png
+;
 ; #SOUND= Event sound that will be displayed when event occurs
 ;         Multiple sounds can be used by using a ',' to separate them
 ;         Format: sound1.mp3, sound2.mp3, sound3.mp3, sound4.mp3
-; #FLAG= Will this be a default event for the campaign? (values range [0, 1]; True= 1; False= 0)
+;
+; #FLAG= Value range [0, 1]
+;        Will this event be enabled by default:
+;        0 = Disabled
+;        1 = Enabled
+;
 ; #TYPE= Values range [0, 3];
 ;        With all other fields satisfied will this be:
 ;        0 = Single check regardless if #TRIGGER is satisfied
@@ -25,16 +33,20 @@
 ;        Once the #DATE field is satisfied:
 ;        3 = Event fires once if all other fields are satisfied, else it will not fire.
 ;            Either way, event will be removed never to be looked at again
+;
 ; #AI= Values range [0, 6]
 ;      0 = Event fires whenever all fields are satisfied for any game type
 ;      1 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis
 ;      2 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied
-;      3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player, or on Allied Multiplayer turns
-;      4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player or on Axis Multiplayer turns
+;      3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player, 
+;          or on Allied Multiplayer turns
+;      4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player 
+;          or on Axis Multiplayer turns
 ;      5 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis in Single Player, 
 ;          or for AI controlled Axis majors on Axis human player turns
 ;      6 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied in Single Player,
 ;          or for AI controlled Allied majors on Allied human player turns
+;
 ; #LEVEL= Value range [-1, 4]
 ;      What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
 ;     -1 = a script that should only fire for AI friendly controlled majors on your turn
@@ -43,25 +55,32 @@
 ;      2 = Intermediate
 ;      3 = Veteran
 ;      4 = Expert
+;
 ; #GV= Is the event activation based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
 ;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
 ;      Example B - #GV= 4[71,100] will trigger 30% per game
+;
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
 ;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
 ;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
 ;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
 ;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
+;
 ; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
+;
 ; #COUNTRY_ID= Country ID that will be owner of supply event
+;
 ; #ALIGNMENT_ID= Value range [0, 2]
 ;        Political alignment ID that will be the owner of the event
 ;        0 = Neutral; (any ?)
 ;        1 = Axis;
 ;        2 = Allied;
+;
 ; #FLAG_ID= Flag ID that will be shown in the popup for this event
+;
 ; #SEASON_FLAG= Value range[0, 4]
 ;        Season flag can be used to limit event to a particular season
 ;           0 = ALL_SEASONS;
@@ -69,14 +88,18 @@
 ;           2 = SUMMER;
 ;           3 = FALL;
 ;           4 = WINTER;
+;
 ; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
+;
 ; #SOURCE_POSITION= Map position that could also trigger the event 
 ;                   Format: x,y [unit_id]
 ;                   unit_id.xx is a mouse hover style where xx refers to the sprite index of the symbol_sprites.png 
 ;                   file that will be shown at #SOURCE_POSITION.
 ;                   If unit_id.xx is used then the mouse hover information text will show the #POPUP text.
+;
 ; #DESTINATION_RESOURCE= Resource positions that will be affected by event as well as the
 ;                        resource strength reduction range (Format: x,y [min, max])
+;
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
 ;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
 ; }
@@ -499,11 +522,11 @@
 #DESTINATION_RESOURCE= 155,81 [2,4]
 #DESTINATION_RESOURCE= 151,81 [2,4]
 #DESTINATION_RESOURCE= 154,83 [2,4]
-; Belgium(10) aligned with the Allies and surrendered
+; Belgium(10) Allied and surrendered
 #VARIABLE_CONDITION= 10 [2] [100] [1]
-; USA(115) aligned with the Allies but not fully mobilized
+; USA(115) Allied but not fully mobilized
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; France(40) aligned with the Allies and not surrendered
+; France(40) Allied and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 }
 
@@ -526,7 +549,7 @@
 #DATE= 1941/02/25
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 156,75 [2,3]
-; Netherlands aligned with the Allies and surrendered
+; Netherlands Allied and surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [1]
 }
 
@@ -549,7 +572,7 @@
 #DATE= 1943/04/29
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 157,79 [2,3]
-; Netherlands aligned with the Allies and surrendered
+; Netherlands Allied and surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [1]
 }
 
@@ -573,7 +596,7 @@
 #SOURCE_POSITION=
 ; Naples(175,103)
 #DESTINATION_RESOURCE= 175,103 [1,3]
-; USA(115) aligned with the Allies and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 }
 
@@ -647,7 +670,7 @@
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 139,76 [2,4]
 #DESTINATION_RESOURCE= 144,72 [2,4]
-; UK(112) aligned with the Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
@@ -670,9 +693,9 @@
 #DATE= 1941/05/27
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 153,81 [2,4]
-; UK(112) aligned with the Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; France(40) aligned with the Allies and surrendered
+; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 }
 
@@ -967,6 +990,7 @@
 #SEASON_FLAG= 0
 #DATE= 1942/12/07
 #SOURCE_POSITION= 147,77 [-1]
+; Bordeaux-Port(145,93)
 #DESTINATION_RESOURCE= 145,93 [2,5]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 }
@@ -1353,8 +1377,8 @@
 #DESTINATION_RESOURCE= 186,122 [1,2]
 ; Benghazi(Port)
 #DESTINATION_RESOURCE= 185,122 [1,2]
-; UK(112) aligned with the Allies and not surrendered
-; Egypt(36) aligned with the Allies and not surrendered
+; UK(112) Allied and not surrendered
+; Egypt(36) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 }
@@ -1392,8 +1416,8 @@
 #DESTINATION_RESOURCE= 175,121 [1,2]
 ; Buerat(177,123) - Added by Fall Weiss
 #DESTINATION_RESOURCE= 177,123 [1,2]
-; UK(112) aligned with the Allies and not surrendered
-; Egypt(36) aligned with the Allies and not surrendered
+; UK(112) Allied and not surrendered
+; Egypt(36) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 }
@@ -1430,8 +1454,8 @@
 ; Port Said(209,122)
 #DESTINATION_RESOURCE= 209,122 [1,2]
 #DESTINATION_RESOURCE= 209,123 [1,2]
-; UK(112) aligned with the Allies and not surrendered
-; Egypt(36) aligned with the Allies and not surrendered
+; UK(112) Allied and not surrendered
+; Egypt(36) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 }
@@ -1465,8 +1489,8 @@
 #DESTINATION_RESOURCE= 200,124 [1,2]
 ; El Alamein(204,125)
 #DESTINATION_RESOURCE= 204,125 [1,2]
-; UK(112) aligned with the Allies and not surrendered
-; Egypt(36) aligned with the Allies and not surrendered
+; UK(112) Allied and not surrendered
+; Egypt(36) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 }
@@ -1491,7 +1515,7 @@
 #DATE= 1942/03/28
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 142,89 [8,10]
-; UK(112) aligned with the Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
@@ -1515,7 +1539,7 @@
 #DATE= 1942/03/28
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 142,89 [10,10]
-; UK(112) aligned with the Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
@@ -1539,7 +1563,7 @@
 #DATE= 1942/03/28
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 142,89 [10,10]
-; UK(112) aligned with the Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
@@ -1750,6 +1774,7 @@
 #DATE= 1943/08/01
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 164,93 [1,3]
+; Bologna(169,95)
 #DESTINATION_RESOURCE= 169,95 [1,3]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
@@ -1785,6 +1810,7 @@
 #DESTINATION_RESOURCE= 174,82 [2,5]
 #DESTINATION_RESOURCE= 160,79 [2,3]
 #DESTINATION_RESOURCE= 173,79 [2,3]
+; Breslau(180,79)
 #DESTINATION_RESOURCE= 180,79 [2,3]
 #DESTINATION_RESOURCE= 168,83 [2,3]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -1815,6 +1841,7 @@
 #DESTINATION_RESOURCE= 174,82 [2,5]
 #DESTINATION_RESOURCE= 160,79 [2,3]
 #DESTINATION_RESOURCE= 173,79 [2,3]
+; Breslau(180,79)
 #DESTINATION_RESOURCE= 180,79 [2,3]
 #DESTINATION_RESOURCE= 168,83 [2,3]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -2001,7 +2028,7 @@
 #DATE= 1944/01/01
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 167,69 [10,10]
-; UK(112) aligned with the Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
@@ -2025,7 +2052,7 @@
 #DATE= 1944/01/01
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 175,71 [10,10]
-; UK(112) aligned with the Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
@@ -2121,8 +2148,8 @@
 #DESTINATION_RESOURCE= 200,124 [1,3]
 ; El Alamein(204,125)
 #DESTINATION_RESOURCE= 204,125 [1,3]
-; UK(112) aligned with the Allies and not surrendered
-; Egypt(36) aligned with the Allies and not surrendered
+; UK(112) Allied and not surrendered
+; Egypt(36) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]

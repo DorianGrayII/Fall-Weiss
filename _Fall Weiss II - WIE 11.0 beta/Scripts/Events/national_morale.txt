@@ -15,7 +15,10 @@
 ; #SOUND= Event sound that will be displayed when event occurs
 ;         Multiple sounds can be used by using a ',' to separate them
 ;         Format: sound1.mp3, sound2.mp3, sound3.mp3, sound4.mp3
-; #FLAG= Will this be a default event for the campaign? (values range [0, 1]; True= 1; False= 0)
+; #FLAG= Value range [0, 1]
+;        Will this event be enabled by default:
+;        0 = Disabled
+;        1 = Enabled
 ; #TYPE= Values range [0, 3];
 ;        With all other fields satisfied will this be:
 ;        0 = Single check regardless if #TRIGGER is satisfied
@@ -28,8 +31,10 @@
 ;      0 = Event fires whenever all fields are satisfied for any game type
 ;      1 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis
 ;      2 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied
-;      3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player, or on Allied Multiplayer turns
-;      4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player or on Axis Multiplayer turns
+;      3 = Event fires whenever all fields are satisfied, for any game type, 
+;          and only when the AI is Axis in Single Player, or on Allied Multiplayer turns
+;      4 = Event fires whenever all fields are satisfied, for any game type, 
+;          and only when the AI is Allied in Single Player or on Axis Multiplayer turns
 ;      5 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis in Single Player, 
 ;          or for AI controlled Axis majors on Axis human player turns
 ;      6 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied in Single Player,
@@ -53,14 +58,18 @@
 ;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
 ;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
 ;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
-; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
+; #TRIGGER= Value range [0, 100]
+;           Trigger percentage that the event will occur
 ; #COUNTRY_ID= Country ID associated with this event (this is the country that will either benefit or be penalized by the script)
 ; #NM_UPDOWN= The amount of National Morale that should be added or subtracted with respect to #COUNTRY_ID? (values range [-99999, 99999])
 ; #NM_TURNS= How many turns will the #NM_UPDOWN= value be added or subtracted for? (values range [0, 99])
 ; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
 ; #OBJECTIVE_TEXT_POSITION= Position that will be highlighted in game as a National Morale Objective position
-; #ALIGNMENT_POSITION= Position that must be under the control of the selected side in order for the event to occur
-;                      Format: x,y; political_alignment [values are 0, 1 or 2]
+; #ALIGNMENT_POSITION=  Position that must be under the control of the selected side in order for the event to occur:
+;                       Format: x,y [0..2]
+;                       0 = Neutral
+;                       1 = Axis
+;                       2 = Allied
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
 ;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
 ; #CONDITION_POSITION= Map positions that will serve to trigger the event as well as distance and
@@ -310,7 +319,7 @@
 #OBJECTIVE_TEXT_POSITION= 136,114
 ; Gibraltar(136,114) is Axis
 #ALIGNMENT_POSITION= 136,114 [1]
-; UK(112) aligned with the Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -334,7 +343,7 @@
 #OBJECTIVE_TEXT_POSITION= 175,114
 ; Malta(175,114) is Axis
 #ALIGNMENT_POSITION= 175,114 [1]
-; UK(112) aligned with the Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -358,7 +367,7 @@
 #OBJECTIVE_TEXT_POSITION= 151,84
 ; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
-; UK(112) aligned with the Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -382,7 +391,7 @@
 #OBJECTIVE_TEXT_POSITION= 151,84
 ; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
-; France(40) aligned with the Allies and surrendered
+; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -681,7 +690,7 @@
 #ALIGNMENT_POSITION= 171,101 [1]
 ; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 6 [1] [100] [0]
-; UK(112) aligned with the Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Italy(59) is Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -806,7 +815,7 @@
 #ALIGNMENT_POSITION= 206,52 [2]
 ; Volkhov is Axis
 #ALIGNMENT_POSITION= 210,52 [1]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -830,7 +839,7 @@
 #OBJECTIVE_TEXT_POSITION= 221,65
 ; Moscow(221,65) is Allied
 #ALIGNMENT_POSITION= 221,65 [2]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -854,7 +863,7 @@
 #OBJECTIVE_TEXT_POSITION= 221,65
 ; Moscow(221,65) is Axis
 #ALIGNMENT_POSITION= 221,65 [1]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -879,7 +888,7 @@
 #OBJECTIVE_TEXT_POSITION= 221,65
 ; Moscow(221,65) is Axis
 #ALIGNMENT_POSITION= 221,65 [1]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -929,7 +938,7 @@
 #ALIGNMENT_POSITION= 1,96 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; France(40) aligned with the Allies and not surrendered 
+; France(40) Allied and not surrendered 
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -956,7 +965,7 @@
 #ALIGNMENT_POSITION= 147,77 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; UK(112) aligned with the Allies
+; UK(112) Allied
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Norway(78) is Axis and not fully active
 #VARIABLE_CONDITION= 78 [1] [0] [0]
@@ -985,7 +994,7 @@
 #ALIGNMENT_POSITION= 147,77 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; UK(112) aligned with the Allies
+; UK(112) Allied
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied) 
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1060,7 +1069,7 @@
 #ALIGNMENT_POSITION= 206,124 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; UK(112) aligned with the Allies
+; UK(112) Allied
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied) 
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1085,7 +1094,7 @@
 #OBJECTIVE_TEXT_POSITION= 181,18
 ; Narvik is Allied
 #ALIGNMENT_POSITION= 181,18 [2]
-; UK(112) aligned with the Allies
+; UK(112) Allied
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Norway(78) Allied and surrendered
 #VARIABLE_CONDITION= 78 [2] [100] [1]
@@ -1111,9 +1120,9 @@
 #OBJECTIVE_TEXT_POSITION= 181,18
 ; Narvik is Allied
 #ALIGNMENT_POSITION= 181,18 [2]
-; UK(112) aligned with the Allies
+; UK(112) Allied
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; USSR(116) aligned with the Allies but not fully mobilized
+; USSR(116) Allied but not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; Norway(78) Allied and surrendered
 #VARIABLE_CONDITION= 78 [2] [100] [1]
@@ -1139,7 +1148,7 @@
 #OBJECTIVE_TEXT_POSITION= 181,18
 ; Narvik is Allied
 #ALIGNMENT_POSITION= 181,18 [2]
-; UK(112) aligned with the Allies
+; UK(112) Allied
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Norway(78) Allied and surrendered
 #VARIABLE_CONDITION= 78 [2] [100] [1]
@@ -1192,7 +1201,7 @@
 #ALIGNMENT_POSITION= 208,126 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; UK(112) aligned with the Allies
+; UK(112) Allied
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied) 
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1267,7 +1276,7 @@
 #ALIGNMENT_POSITION= 147,77 [2]
 ; Italy(59) is Axis but not fully mobilized
 #VARIABLE_CONDITION= 59 [1] [0] [0]
-; UK(112) aligned with the Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; UK abandons Malta(175,114)
 #CONDITION_POSITION= 175,114 [0,0] [0,0] [2] [0]
@@ -1299,7 +1308,7 @@
 #ALIGNMENT_POSITION= 151,84 [2]
 ; Italy(59) is Axis but not fully mobilized
 #VARIABLE_CONDITION= 59 [1] [0] [0]
-; France(40) aligned with the Allies and not surrendered 
+; France(40) Allied and not surrendered 
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; France abandons Tunis
 #CONDITION_POSITION= 167,112 [5,5] [0,0] [2] [0]
@@ -1326,7 +1335,7 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
-; USA(115) aligned with the Allies (not fully active) and not surrendered
+; USA(115) Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1380,9 +1389,9 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; France(40) aligned with the Allies
+; France(40) Allied
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; USSR(116) aligned with the Allies (not fully active) and not surrendered 
+; USSR(116) Allied (not fully active) and not surrendered 
 #VARIABLE_CONDITION= 115 [2] [0] [0]
 ; Germany is within 3 hexes of Epinal OR
 ; Germany has 2 units within 1 hex of Verdun OR 
@@ -1415,9 +1424,9 @@
 #ALIGNMENT_POSITION= 173,74 [1] 
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; France(40) aligned with the Allies
+; France(40) Allied
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; USSR(116) aligned with the Allies (not fully active) and not surrendered 
+; USSR(116) Allied (not fully active) and not surrendered 
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; German units are near Paris
 #CONDITION_POSITION= 151,84 [3,4] [3,4] [1] [45]
@@ -1641,7 +1650,7 @@
 #ALIGNMENT_POSITION= 151,84 [2] 
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; France(40) aligned with the Allies and not surrendered 
+; France(40) Allied and not surrendered 
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0] 
 } 
@@ -1667,7 +1676,7 @@
 #ALIGNMENT_POSITION= 151,84 [2] 
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; France(40) aligned with the Allies and not surrendered 
+; France(40) Allied and not surrendered 
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1693,11 +1702,11 @@
 #ALIGNMENT_POSITION= 151,84 [2]
 ; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; France(40) aligned with the Allies and not surrendered
+; France(40) Allied and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; USA(115) aligned with the Allies and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1723,11 +1732,11 @@
 #ALIGNMENT_POSITION= 151,84 [2]
 ; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; France(40) aligned with the Allies and not surrendered
+; France(40) Allied and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; USA(115) aligned with the Allies and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1753,7 +1762,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Germany(45) is Axis
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Poland(85) aligned with the Allies
+; Poland(85) Allied
 #VARIABLE_CONDITION= 85 [2] [100] [0]
 ; German units in range of Warsaw
 #CONDITION_POSITION= 188,76 [3,3] [1,2] [1] [0]
@@ -1778,7 +1787,7 @@
 #OBJECTIVE_TEXT_POSITION= 188,76
 ; Warsaw(188,76) is Axis
 #ALIGNMENT_POSITION= 188,76 [1]
-; Poland(85) aligned with the Allies but not fully mobilized
+; Poland(85) Allied but not fully mobilized
 #VARIABLE_CONDITION= 85 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1802,7 +1811,7 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
-; Poland(85) aligned with the Allies
+; Poland(85) Allied
 #VARIABLE_CONDITION= 85 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1826,7 +1835,7 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
-; Poland(85) aligned with the Allies
+; Poland(85) Allied
 #VARIABLE_CONDITION= 85 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1850,7 +1859,7 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Kazan(243,66) is Allied
 #ALIGNMENT_POSITION= 243,66 [2]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1874,7 +1883,7 @@
 #OBJECTIVE_TEXT_POSITION= 
 ; Bandar Abbas is Allied
 #ALIGNMENT_POSITION= 257,130 [2]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1899,7 +1908,7 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Bandar Abbas is Allied
 #ALIGNMENT_POSITION= 257,130 [2]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1923,9 +1932,9 @@
 #OBJECTIVE_TEXT_POSITION= 
 ; Pittsburgh is Allied
 #ALIGNMENT_POSITION= 1,104 [2]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; USA(115) aligned with the Allies and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1952,7 +1961,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
 #CONDITION_POSITION= 146,84 [4,4] [4,4] [2] [0]
@@ -1982,7 +1991,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
 #CONDITION_POSITION= 146,84 [4,4] [4,4] [2] [0]
@@ -2012,7 +2021,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
 #CONDITION_POSITION= 146,84 [4,4] [4,4] [2] [0]
@@ -2042,7 +2051,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; 3 Allies within 10 hexes of Naples(175,103) OR
 ; 3 Allies within 5 hexes of Caltanissetta(175,110)
@@ -2072,7 +2081,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in Italy
 #CONDITION_POSITION= 175,103 [10,10] [3,3] [2] [0]
@@ -2101,9 +2110,9 @@
 #ALIGNMENT_POSITION= 151,84 [2]
 ; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; France(40) aligned with the Allies and not surrendered
+; France(40) Allied and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; No Axis units within 4 hexes of Paris
 #CONDITION_POSITION= 151,84 [4,4] [0,0] [1] [0]
@@ -2131,9 +2140,9 @@
 #ALIGNMENT_POSITION= 151,84 [2]
 ; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; France(40) aligned with the Allies and not surrendered
+; France(40) Allied and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; No Axis units within 4 hexes of Paris
 #CONDITION_POSITION= 151,84 [4,4] [0,0] [1] [0]
@@ -2161,9 +2170,9 @@
 #ALIGNMENT_POSITION= 151,84 [2]
 ; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; France(40) aligned with the Allies and not surrendered
+; France(40) Allied and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; No Axis units within 4 hexes of Paris
 #CONDITION_POSITION= 151,84 [4,4] [0,0] [1] [0]
@@ -2190,9 +2199,9 @@
 #ALIGNMENT_POSITION= 188,76 [2]
 ; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Poland(85) aligned with the Allies and surrendered
+; Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -2218,7 +2227,7 @@
 #ALIGNMENT_POSITION= 187,68 [2]
 ; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -2244,9 +2253,9 @@
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Poland(85) aligned with the Allies and surrendered
+; Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 ; Allied units within 5 hexes of Berlin
 #CONDITION_POSITION= 173,74 [5,5] [1,1] [2] [0]
@@ -2271,7 +2280,7 @@
 #OBJECTIVE_TEXT_POSITION= 183,69
 ; Danzig is Axis
 #ALIGNMENT_POSITION= 183,69 [1]
-; Poland(85) aligned with the Allies and surrendered
+; Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -2343,7 +2352,7 @@
 #OBJECTIVE_TEXT_POSITION= 187,94
 ; Belgrade is Allied
 #ALIGNMENT_POSITION= 187,94 [2]
-; Yugoslavia(120) aligned with the Allies and not surrendered
+; Yugoslavia(120) Allied and not surrendered
 #VARIABLE_CONDITION= 120 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -2367,7 +2376,7 @@
 #OBJECTIVE_TEXT_POSITION= 187,94
 ; Belgrade is Axis
 #ALIGNMENT_POSITION= 187,94 [1]
-; Yugoslavia(120) aligned with the Allies and surrendered
+; Yugoslavia(120) Allied and surrendered
 #VARIABLE_CONDITION= 120 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -2415,7 +2424,7 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Danzig is Axis
 #ALIGNMENT_POSITION= 183,69 [1]
-; Poland(85) aligned with the Allies and surrendered
+; Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -2487,7 +2496,7 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
-; France(40) aligned with the Allies and surrendered
+; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -2513,7 +2522,7 @@
 #ALIGNMENT_POSITION= 221,65 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -2539,7 +2548,7 @@
 #ALIGNMENT_POSITION= 211,16 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -2565,7 +2574,7 @@
 #ALIGNMENT_POSITION= 211,16 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -2591,7 +2600,7 @@
 #ALIGNMENT_POSITION= 234,85 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -2617,7 +2626,7 @@
 #ALIGNMENT_POSITION= 206,52 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -2644,7 +2653,7 @@
 #ALIGNMENT_POSITION= 206,52 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -2670,7 +2679,7 @@
 #ALIGNMENT_POSITION= 209,68 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -2696,7 +2705,7 @@
 #ALIGNMENT_POSITION= 209,68 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -2722,7 +2731,7 @@
 #ALIGNMENT_POSITION= 207,80 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -2748,7 +2757,7 @@
 #ALIGNMENT_POSITION= 212,96 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -2872,7 +2881,7 @@
 #ALIGNMENT_POSITION= 171,65 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -2898,7 +2907,7 @@
 #ALIGNMENT_POSITION= 215,85 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -2914,6 +2923,7 @@
 #AI= 0
 #LEVEL= 0 
 #GV= 1[1,100] 
+; The Molotov-Ribbentrop Pact?
 #LINK= 600[0]
 #COUNTRY_ID= 45
 #TRIGGER= 100 
@@ -2925,7 +2935,7 @@
 #ALIGNMENT_POSITION= 215,85 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies but not fully mobilized
+; USSR(116) Allied but not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -2971,7 +2981,7 @@
 #NM_TURNS= 1 
 #DATE= 1939/09/01
 #OBJECTIVE_TEXT_POSITION= 184,88
-; Budapest is Allied
+; Budapest(184,88) is Allied
 #ALIGNMENT_POSITION= 184,88 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -2995,11 +3005,11 @@
 #NM_TURNS= 1 
 #DATE= 1939/09/01
 #OBJECTIVE_TEXT_POSITION= 198,95
-; Bucharest is Allied
+; Bucharest(198,95) is Allied
 #ALIGNMENT_POSITION= 198,95 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -3046,10 +3056,8 @@
 #NM_TURNS= 1
 #DATE= 1939/09/01
 #OBJECTIVE_TEXT_POSITION= 184,88
-; Budapest is Allied
+; Budapest(184,88) is Allied
 #ALIGNMENT_POSITION= 184,88 [2]
-; Germany(45) is Axis and not surrendered 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Hungary(52) is Axis and surrendered
 #VARIABLE_CONDITION= 52 [1] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3072,11 +3080,9 @@
 #NM_TURNS= 1
 #DATE= 1939/09/01
 #OBJECTIVE_TEXT_POSITION= 184,88
-; Budapest is Allied
+; Budapest(184,88) is Allied
 #ALIGNMENT_POSITION= 184,88 [2]
-; Germany(45) is Axis and not surrendered 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Hungary(52) aligned with the Allies and not surrendered
+; Hungary(52) Allied and not surrendered
 #VARIABLE_CONDITION= 52 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -3100,8 +3106,6 @@
 #OBJECTIVE_TEXT_POSITION= 198,95
 ; Bucharest is Allied
 #ALIGNMENT_POSITION= 198,95 [2]
-; Germany(45) is Axis and not surrendered 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Romania(93) is Axis and surrendered
 #VARIABLE_CONDITION= 93 [1] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3126,9 +3130,7 @@
 #OBJECTIVE_TEXT_POSITION= 198,95
 ; Bucharest is Allied
 #ALIGNMENT_POSITION= 198,95 [2]
-; Germany(45) is Axis and not surrendered 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Romania(93) aligned with the Allies and not surrendered
+; Romania(93) Allied and not surrendered
 #VARIABLE_CONDITION= 93 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -3150,11 +3152,9 @@
 #NM_TURNS= 1
 #DATE= 1939/09/01
 #OBJECTIVE_TEXT_POSITION= 192,100
-; Sofia is Allied
+; Sofia(192,100) is Allied
 #ALIGNMENT_POSITION= 192,100 [2]
-; Germany(45) is Axis and not surrendered 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Bulgaria is Axis and surrendered
+; Bulgaria(19) is Axis and surrendered
 #VARIABLE_CONDITION= 19 [1] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -3176,11 +3176,11 @@
 #NM_TURNS= 1
 #DATE= 1939/09/01
 #OBJECTIVE_TEXT_POSITION= 192,100
-; Sofia is Allied
+; Sofia(192,100) is Allied
 #ALIGNMENT_POSITION= 192,100 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Bulgaria aligned with the Allies and not surrendered
+; Bulgaria(19) Allied and not surrendered
 #VARIABLE_CONDITION= 19 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -3258,7 +3258,7 @@
 #ALIGNMENT_POSITION= 171,101 [1]
 ; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 6 [1] [100] [0]
-; UK(112) aligned with the Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Italy(59) is Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -3286,11 +3286,11 @@
 #ALIGNMENT_POSITION= 171,101 [1]
 ; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 6 [1] [100] [0]
-; UK(112) aligned with the Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Italy(59) is Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; Egypt(36) aligned with the Allies and not surrendered
+; Egypt(36) Allied and not surrendered
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -3314,7 +3314,7 @@
 #OBJECTIVE_TEXT_POSITION= 155,80
 ; Brussels(155,80) is Axis
 #ALIGNMENT_POSITION= 155,80 [1]
-; Belgium(10) aligned with the Allies and surrendered
+; Belgium(10) Allied and surrendered
 #VARIABLE_CONDITION= 10 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -3338,9 +3338,9 @@
 #OBJECTIVE_TEXT_POSITION=
 ; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
-; UK(112) aligned with the Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; No Axis units near London
+; No Axis units within 2 hexes of London(147,77)
 #CONDITION_POSITION= 147,77 [2,2] [0,0] [1] [0]
 }
 
@@ -3460,7 +3460,7 @@
 ; Tirana is Axis
 #ALIGNMENT_POSITION= 185,102 [1]
 ; Italy(59) Axis and not surrendered
-; Greece(46) aligned with the Allies and not surrendered
+; Greece(46) Allied and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 46 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3630,7 +3630,7 @@
 #NM_TURNS= 1 
 #DATE= 1939/09/01
 #OBJECTIVE_TEXT_POSITION= 169,95
-; Bologna is Allied
+; Bologna(169,95) is Allied
 #ALIGNMENT_POSITION= 169,95 [2]
 ; Italy(59) is Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -3759,7 +3759,7 @@
 #ALIGNMENT_POSITION= 0,2 [2]
 ; Italy(59) is Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; USA(115) aligned with the Allies
+; USA(115) Allied
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; 2 Allied units are in southern Italy
 #CONDITION_POSITION= 177,103 [6,6] [2,2] [2] [0]
@@ -3786,7 +3786,7 @@
 #ALIGNMENT_POSITION= 221,65 [1]
 ; Italy(59) is Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -3812,7 +3812,7 @@
 #ALIGNMENT_POSITION= 234,85 [1]
 ; Italy(59) is Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -3838,7 +3838,7 @@
 #ALIGNMENT_POSITION= 206,52 [1]
 ; Italy(59) is Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -3869,7 +3869,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Germany(45) is Axis
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Poland(85) aligned with the Allies
+; Poland(85) Allied
 #VARIABLE_CONDITION= 85 [2] [100] [0]
 ; German units in range of Warsaw
 #CONDITION_POSITION= 188,76 [3,3] [1,1] [1] [0]
@@ -3896,9 +3896,9 @@
 #ALIGNMENT_POSITION= 213,65 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; France(40) aligned with the Allies but not fully mobilized
+; France(40) Allied but not fully mobilized
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; USSR(116) aligned with the Allies (not fully active) and not surrendered
+; USSR(116) Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; German units near Paris
 #CONDITION_POSITION= 151,84 [3,4] [3,4] [1] [45]
@@ -3923,7 +3923,7 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
-; France(40) aligned with the Allies and surrendered
+; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -3973,7 +3973,7 @@
 #ALIGNMENT_POSITION= 234,85 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -3999,7 +3999,7 @@
 #ALIGNMENT_POSITION= 234,85 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -4025,7 +4025,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 99 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -4586,7 +4586,7 @@
 #ALIGNMENT_POSITION= 234,85 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -4611,7 +4611,7 @@
 ; Tirana(185,102) is Axis
 #ALIGNMENT_POSITION= 185,102 [1]
 ; Italy(59) Axis and not surrendered
-; Greece(46) aligned with the Allies and not surrendered
+; Greece(46) Allied and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -4661,7 +4661,7 @@
 #ALIGNMENT_POSITION= 257,58 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -4688,7 +4688,7 @@
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -4714,7 +4714,7 @@
 #ALIGNMENT_POSITION= 218,82 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -4740,7 +4740,7 @@
 #ALIGNMENT_POSITION= 201,71 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -4766,7 +4766,7 @@
 #ALIGNMENT_POSITION= 207,90 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -4792,7 +4792,7 @@
 #ALIGNMENT_POSITION= 212,96 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -4818,7 +4818,7 @@
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -4844,7 +4844,7 @@
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -4870,7 +4870,7 @@
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -4896,7 +4896,7 @@
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -4922,7 +4922,7 @@
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -4948,7 +4948,7 @@
 #ALIGNMENT_POSITION= 234,85 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -4974,9 +4974,9 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; USA(115) aligned with the Allies and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5002,9 +5002,9 @@
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; USA(115) aligned with the Allies and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5030,9 +5030,9 @@
 #ALIGNMENT_POSITION= 234,85 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; USA(115) aligned with the Allies and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5058,7 +5058,7 @@
 #ALIGNMENT_POSITION= 234,85 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5164,9 +5164,9 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; USA(115) aligned with the Allies and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5192,9 +5192,9 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; USA(115) aligned with the Allies and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5221,7 +5221,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
@@ -5253,7 +5253,7 @@
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5279,9 +5279,9 @@
 #ALIGNMENT_POSITION= 151,84 [2]
 ; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; France(40) aligned with the Allies and not surrendered
+; France(40) Allied and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; USA(115) aligned with the Allies and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; No Axis units within 4 hexes of Paris
 #CONDITION_POSITION= 151,84 [4,4] [0,0] [1] [0]
@@ -5308,9 +5308,9 @@
 #ALIGNMENT_POSITION= 151,84 [2]
 ; Germany(45) is Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; France(40) aligned with the Allies and not surrendered
+; France(40) Allied and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; UK(112) aligned with the Allies and not surrendered
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; No Axis units within 4 hexes of Paris
 #CONDITION_POSITION= 151,84 [4,4] [0,0] [1] [0]
@@ -5338,7 +5338,7 @@
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5364,9 +5364,9 @@
 #ALIGNMENT_POSITION= 221,65 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; USA(115) aligned with the Allies and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5392,9 +5392,9 @@
 #ALIGNMENT_POSITION= 234,85 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; USA(115) aligned with the Allies and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5421,7 +5421,7 @@
 #ALIGNMENT_POSITION= 221,65 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5448,7 +5448,7 @@
 #ALIGNMENT_POSITION= 234,85 [2]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5546,7 +5546,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5570,7 +5570,7 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Malta(175,114) is Axis
 #ALIGNMENT_POSITION= 175,114 [1]
-; USA(115) aligned with the Allies (not fully active) and not surrendered
+; USA(115) Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5594,7 +5594,7 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Gibraltar(136,114) is Axis
 #ALIGNMENT_POSITION= 136,114 [1]
-; USA(115) aligned with the Allies (not fully active) and not surrendered
+; USA(115) Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5618,7 +5618,7 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Alexandria is Axis
 #ALIGNMENT_POSITION= 206,124 [1]
-; USA(115) aligned with the Allies (not fully active) and not surrendered
+; USA(115) Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5642,7 +5642,7 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Cairo(208,126) is Axis
 #ALIGNMENT_POSITION= 208,126 [1]
-; USA(115) aligned with the Allies (not fully active) and not surrendered
+; USA(115) Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5666,7 +5666,7 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Malta(175,114) is Axis
 #ALIGNMENT_POSITION= 175,114 [1]
-; USA(115) aligned with the Allies (not fully active) and not surrendered
+; USA(115) Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5690,7 +5690,7 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Malta is Axis
 #ALIGNMENT_POSITION= 136,114 [1]
-; USA(115) aligned with the Allies (not fully active) and not surrendered
+; USA(115) Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5714,7 +5714,7 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Alexandria is Axis
 #ALIGNMENT_POSITION= 206,124 [1]
-; USA(115) aligned with the Allies (not fully active) and not surrendered
+; USA(115) Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5738,7 +5738,7 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Cairo(208,126) is Axis
 #ALIGNMENT_POSITION= 208,126 [1]
-; USA(115) aligned with the Allies (not fully active) and not surrendered
+; USA(115) Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5764,7 +5764,7 @@
 #ALIGNMENT_POSITION= 206,52 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5790,7 +5790,7 @@
 #ALIGNMENT_POSITION= 221,65 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5816,7 +5816,7 @@
 #ALIGNMENT_POSITION= 234,85 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5842,7 +5842,7 @@
 #ALIGNMENT_POSITION= 236,98 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5868,7 +5868,7 @@
 #ALIGNMENT_POSITION= 245,104 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5893,7 +5893,7 @@
 #ALIGNMENT_POSITION= 206,52 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5919,7 +5919,7 @@
 #ALIGNMENT_POSITION= 221,65 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5945,7 +5945,7 @@
 #ALIGNMENT_POSITION= 234,85 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5971,7 +5971,7 @@
 #ALIGNMENT_POSITION= 236,98 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5997,7 +5997,7 @@
 #ALIGNMENT_POSITION= 245,104 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -6025,7 +6025,7 @@
 #ALIGNMENT_POSITION= 233,64 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -6053,7 +6053,7 @@
 #ALIGNMENT_POSITION= 237,77 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -6083,7 +6083,7 @@
 #ALIGNMENT_POSITION= 221,65 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
 #CONDITION_POSITION= 146,84 [4,4] [4,4] [2] [0]
@@ -6114,7 +6114,7 @@
 #ALIGNMENT_POSITION= 234,85 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
 #CONDITION_POSITION= 146,84 [4,4] [4,4] [2] [0]
@@ -6146,7 +6146,7 @@
 #ALIGNMENT_POSITION= 221,65 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
 #CONDITION_POSITION= 146,84 [4,4] [4,4] [2] [0]
@@ -6177,7 +6177,7 @@
 #ALIGNMENT_POSITION= 234,85 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
 #CONDITION_POSITION= 146,84 [4,4] [4,4] [2] [0]
@@ -6208,7 +6208,7 @@
 #ALIGNMENT_POSITION= 194,62 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6237,7 +6237,7 @@
 #ALIGNMENT_POSITION= 209,68 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6266,7 +6266,7 @@
 #ALIGNMENT_POSITION= 225,88 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6293,7 +6293,7 @@
 #ALIGNMENT_POSITION= 245,72 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -6319,7 +6319,7 @@
 #ALIGNMENT_POSITION= 257,58 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -6391,7 +6391,7 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
-; UK(112) aligned with the Allies
+; UK(112) Allied
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -6415,7 +6415,7 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Warsaw(188,76) is Axis
 #ALIGNMENT_POSITION= 188,76 [1]
-; UK(112) aligned with the Allies
+; UK(112) Allied
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -6439,7 +6439,7 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
-; UK(112) aligned with the Allies
+; UK(112) Allied
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -6463,7 +6463,7 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Warsaw(188,76) is Axis
 #ALIGNMENT_POSITION= 188,76 [1]
-; UK(112) aligned with the Allies
+; UK(112) Allied
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -6514,7 +6514,7 @@
 #ALIGNMENT_POSITION= 142,72 [1]
 ; Germany(45) is Axis and not surrendered 
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; UK(112) aligned with the Allies
+; UK(112) Allied
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Dummy condition position (always satisfied) 
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6544,7 +6544,7 @@
 #ALIGNMENT_POSITION= 143,74 [2]
 ; Manchester(142,72) is Allied
 #ALIGNMENT_POSITION= 142,72 [2]
-; UK(112) aligned with the Allies
+; UK(112) Allied
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; No Axis units within 10 hexes of Birmingham
 #CONDITION_POSITION= 143,74 [10,10] [0,0] [1] [0]
@@ -6574,7 +6574,7 @@
 #ALIGNMENT_POSITION= 143,74 [2]
 ; Manchester(142,72) is Allied
 #ALIGNMENT_POSITION= 142,72 [2]
-; UK(112) aligned with the Allies
+; UK(112) Allied
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; No Axis units within 10 hexes of Birmingham
 #CONDITION_POSITION= 143,74 [10,10] [0,0] [1] [0]

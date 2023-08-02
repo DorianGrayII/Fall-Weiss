@@ -28,8 +28,10 @@
 ;      0 = Event fires whenever all fields are satisfied for any game type
 ;      1 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis
 ;      2 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied
-;      3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player, or on Allied Multiplayer turns
-;      4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player or on Axis Multiplayer turns
+;      3 = Event fires whenever all fields are satisfied, for any game type, 
+;          and only when the AI is Axis in Single Player, or on Allied Multiplayer turns
+;      4 = Event fires whenever all fields are satisfied, for any game type, 
+;          and only when the AI is Allied in Single Player or on Axis Multiplayer turns
 ;      5 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis in Single Player, 
 ;          or for AI controlled Axis majors on Axis human player turns
 ;      6 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied in Single Player,
@@ -53,10 +55,11 @@
 ;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
 ;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
 ;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
-; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
+; #TRIGGER= Value range [0, 100]
+;           Trigger percentage that the event will occur
 ; #COUNTRY_ID= Country ID that will be owner of resource's in the event
 ; #DATE= Failsafe date for the event to occur, i.e. regardless if #CONDITION_POSITION checks have been satisfied (format yyyy/mm/dd)
-; #RESOURCE= Resource position currently delisted from MPP calculations. This resource will resume
+; #RESOURCE= Resource position currently de-listed from MPP calculations. This resource will resume
 ;            MPP collection once any of the triggers has been satisfied (Format: x,y)
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
 ;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
@@ -245,6 +248,7 @@
 #RESOURCE= 174,82
 #RESOURCE= 162,78
 #RESOURCE= 173,79
+; Prague(175,81)
 #RESOURCE= 175,81
 #RESOURCE= 169,86
 ; Germany(45) is Axis and not surrendered
@@ -271,6 +275,7 @@
 #RESOURCE= 174,82
 #RESOURCE= 162,78
 #RESOURCE= 173,79
+; Prague(175,81)
 #RESOURCE= 175,81
 #RESOURCE= 169,86
 ; Germany(45) is Axis and not surrendered
@@ -297,6 +302,7 @@
 #RESOURCE= 174,82
 #RESOURCE= 162,78
 #RESOURCE= 173,79
+; Prague(175,81)
 #RESOURCE= 175,81
 #RESOURCE= 169,86
 ; Germany(45) is Axis and not surrendered
@@ -323,6 +329,7 @@
 #RESOURCE= 174,82
 #RESOURCE= 162,78
 #RESOURCE= 173,79
+; Prague(175,81)
 #RESOURCE= 175,81
 #RESOURCE= 169,86
 ; Germany(45) is Axis and not surrendered
@@ -349,6 +356,7 @@
 #RESOURCE= 174,82
 #RESOURCE= 162,78
 #RESOURCE= 173,79
+; Prague(175,81)
 #RESOURCE= 175,81
 #RESOURCE= 169,86
 ; Germany(45) is Axis and not surrendered
@@ -377,7 +385,7 @@
 #RESOURCE= 144,73
 #RESOURCE= 142,72
 #RESOURCE= 139,76
-; UK(112) aligned with the Allies and not surrendered AND
+; UK(112) Allied and not surrendered AND
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -399,7 +407,7 @@
 #FAILSAFE_DATE= 1939/12/01
 #RESOURCE= 0,0
 #RESOURCE= 0,1
-; UK(112) aligned with the Allies and not surrendered AND
+; UK(112) Allied and not surrendered AND
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -421,7 +429,7 @@
 #FAILSAFE_DATE= 1939/12/01
 #RESOURCE= 215,121
 #RESOURCE= 214,124
-; UK(112) aligned with the Allies and not surrendered AND
+; UK(112) Allied and not surrendered AND
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -443,8 +451,8 @@
 #DATE= 1939/12/08
 #FAILSAFE_DATE= 1940/02/01
 #RESOURCE= 155,93
-; France(40) aligned with the Allies and not surrendered AND
-; Poland(85) aligned with the Allies and surrendered
+; France(40) Allied and not surrendered AND
+; Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -473,7 +481,7 @@
 #RESOURCE= 152,113
 #RESOURCE= 167,112
 #RESOURCE= 157,97
-; France(40) aligned with the Allies and not surrendered AND
+; France(40) Allied and not surrendered AND
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -498,8 +506,8 @@
 #RESOURCE= 144,98
 #RESOURCE= 149,92
 #RESOURCE= 154,91
-; France(40) aligned with the Allies and not surrendered AND
-; Poland(85) aligned with the Allies and surrendered
+; France(40) Allied and not surrendered AND
+; Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -526,9 +534,8 @@
 #RESOURCE= 0,103
 #RESOURCE= 0,104
 #RESOURCE= 0,105
-; USA(115) aligned with the Allies and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -551,7 +558,7 @@
 #RESOURCE= 267,61
 #RESOURCE= 266,62
 #RESOURCE= 267,62
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -612,7 +619,7 @@
 #RESOURCE= 245,72
 ; Saratov(237,77)
 #RESOURCE= 237,77
-; USSR(116) aligned with the Allies but not surrendered
+; USSR(116) Allied but not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -645,7 +652,7 @@
 #RESOURCE= 266,59
 ; added by Fall Weiss II
 #RESOURCE= 266,60
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -668,7 +675,7 @@
 #DATE= 1941/10/01
 #FAILSAFE_DATE= 1948/01/01
 #RESOURCE= 266,61
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -692,7 +699,7 @@
 #FAILSAFE_DATE= 1948/01/01
 #RESOURCE= 266,59
 #RESOURCE= 266,60
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -716,7 +723,7 @@
 #FAILSAFE_DATE= 1948/01/01
 #RESOURCE= 266,58
 #RESOURCE= 266,57
-; USSR(116) aligned with the Allies and not surrendered
+; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }

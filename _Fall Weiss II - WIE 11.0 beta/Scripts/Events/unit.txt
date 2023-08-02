@@ -29,8 +29,10 @@
 ;      0 = Event fires whenever all fields are satisfied for any game type
 ;      1 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis
 ;      2 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied
-;      3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player, or on Allied Multiplayer turns
-;      4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player or on Axis Multiplayer turns
+;      3 = Event fires whenever all fields are satisfied, for any game type, 
+;          and only when the AI is Axis in Single Player, or on Allied Multiplayer turns
+;      4 = Event fires whenever all fields are satisfied, for any game type, 
+;          and only when the AI is Allied in Single Player or on Axis Multiplayer turns
 ;      5 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis in Single Player, 
 ;          or for AI controlled Axis majors on Axis human player turns
 ;      6 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied in Single Player,
@@ -54,7 +56,8 @@
 ;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
 ;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
 ;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
-; #TRIGGER= Value range [0, 100] Trigger percentage that the event will occur
+; #TRIGGER= Value range [0, 100]
+;           Trigger percentage that the event will occur
 ; #PRIVATE= Value range [0, 1]
 ;         Should this event #POPUP be included in the last turn summary screen?
 ;         0 = No
@@ -715,6 +718,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Cairo(208,126)
 #DESTINATION_RESOURCE= 208,126
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -743,6 +747,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Cairo(208,126)
 #DESTINATION_RESOURCE= 208,126
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -771,6 +776,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Cairo(208,126)
 #DESTINATION_RESOURCE= 208,126
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -800,6 +806,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Cairo(208,126)
 #DESTINATION_RESOURCE= 208,126
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -1259,6 +1266,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Cairo(208,126)
 #DESTINATION_RESOURCE= 208,126
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -1394,6 +1402,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1944/06/30
 #FAILSAFE_DATE= 1948/01/01
+; Norfolk(5,111)
 #DESTINATION_RESOURCE= 5,111
 ; USSR(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
@@ -1419,6 +1428,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1944/06/30
 #FAILSAFE_DATE= 1948/01/01
+; Norfolk(5,111)
 #DESTINATION_RESOURCE= 5,111
 ; USSR(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
@@ -1469,6 +1479,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1944/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Prague(175,81)
 #DESTINATION_RESOURCE= 175,81
 ; Czechoslovakia Allied and not surrendered
 #VARIABLE_CONDITION= 30 [2] [100] [0]
@@ -1746,7 +1757,7 @@
 #DESTINATION_RESOURCE= 210,52
 ; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Bulgaria Axis
+; Bulgaria(19) Axis
 #VARIABLE_CONDITION= 19 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ; Infantry Army(5)
@@ -1778,7 +1789,7 @@
 #DESTINATION_RESOURCE= 225,68
 ; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Bulgaria Axis
+; Bulgaria(19) Axis
 #VARIABLE_CONDITION= 19 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ; Infantry Army(5)
@@ -1845,7 +1856,7 @@
 
 {
 #NAME= DE 405 - USSR: Polish I Corps
-#POPUP= The I Polish Corps Enters Service As Part Of The Red Army
+#POPUP= The Polish I Corps Enters Service As Part Of The Red Army
 #IMAGE= polishcorpsussr.png
 #SOUND=
 #FLAG= 1
@@ -1870,7 +1881,7 @@
 
 {
 #NAME= DE 400 - USSR: Polish 1st And 2nd Armies
-#POPUP= Polish First And Second Armies Formed At Minsk
+#POPUP= Polish 1st And 2nd Armies Formed At Minsk
 #IMAGE= polisharmyussr.png
 #SOUND=
 #FLAG= 1
@@ -1996,6 +2007,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Stalingrad(234,85)
 #DESTINATION_RESOURCE= 234,85
 ; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -2778,6 +2790,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1942/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Breslau(180,79) is Axis
 #DESTINATION_RESOURCE= 180,79
 ; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -2937,6 +2950,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1942/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Breslau(180,79) is Axis
 #DESTINATION_RESOURCE= 180,79
 ; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -3092,6 +3106,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1941/02/01
 #FAILSAFE_DATE= 1948/01/01
+; Bologna(169,95)
 #DESTINATION_RESOURCE= 169,95
 ; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -3119,6 +3134,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Breslau(180,79) is Axis
 #DESTINATION_RESOURCE= 180,79
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0] 
@@ -3171,6 +3187,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1940/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Cairo(208,126)
 #DESTINATION_RESOURCE= 208,126
 ; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -3678,6 +3695,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1943/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Bucharest(198,95)
 #DESTINATION_RESOURCE= 198,95
 ; Romania(93) aligned Allied and fully mobilized
 #VARIABLE_CONDITION= 93 [2] [100] [0]
@@ -3705,8 +3723,9 @@
 #FULL_RESEARCH= 0
 #DATE= 1943/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Sofia(192,100)
 #DESTINATION_RESOURCE= 192,100
-; Bulgaria Allied and fully mobilized
+; Bulgaria(19) Allied and fully mobilized
 #VARIABLE_CONDITION= 19 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ; Infantry Army(5)
@@ -3733,7 +3752,7 @@
 #DATE= 1943/01/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 201,98
-; Bulgaria Allied and fully mobilized
+; Bulgaria(19) Allied and fully mobilized
 #VARIABLE_CONDITION= 19 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 1 [5] [0] [Varna]
@@ -3761,6 +3780,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1941/08/01
 #FAILSAFE_DATE= 1948/01/01
+; Cairo(208,126)
 #DESTINATION_RESOURCE= 208,126
 ; Italy(59) Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -3948,7 +3968,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 176,112
-; USSR(115) aligned with the Allies but not yet fully mobilized
+; USSR(115) Allied but not yet fully mobilized
 #VARIABLE_CONDITION= 115 [2] [0] [0]
 ; 2 Allied Amphibious units within 30 hexes of Syracuse Port
 #CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
@@ -3976,7 +3996,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 164,95
-; USSR(115) aligned with the Allies but not yet fully mobilized
+; USSR(115) Allied but not yet fully mobilized
 #VARIABLE_CONDITION= 115 [2] [0] [0]
 ; 2 Allied Amphibious units within 30 hexes of Syracuse Port
 #CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
@@ -4004,7 +4024,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 181,104
-; USSR(115) aligned with the Allies but not yet fully mobilized
+; USSR(115) Allied but not yet fully mobilized
 #VARIABLE_CONDITION= 115 [2] [0] [0]
 ; 2 Allied Amphibious units within 30 hexes of Syracuse Port
 #CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
@@ -4032,7 +4052,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 171,101
-; USSR(115) aligned with the Allies but not yet fully mobilized
+; USSR(115) Allied but not yet fully mobilized
 #VARIABLE_CONDITION= 115 [2] [0] [0]
 ; 2 Allied Amphibious units within 30 hexes of Syracuse Port
 #CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
@@ -4090,6 +4110,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1940/01/01
 #FAILSAFE_DATE= 1941/02/01
+; Cairo(208,126)
 #DESTINATION_RESOURCE= 208,126
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 204,125 [7,7] [1,1] [1] [0]
@@ -4120,6 +4141,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1940/09/09
 #FAILSAFE_DATE= 1941/02/01
+; Cairo(208,126)
 #DESTINATION_RESOURCE= 208,126
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 204,125 [7,7] [1,1] [1] [0]
@@ -5350,7 +5372,6 @@
 #DESTINATION_RESOURCE= 197,48
 ; Finland(39) aligned Axis and fully mobilized
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 5 [5] [1] [Isthmus]
 #UNIT= 4 [5] [1] [IV]
@@ -5379,7 +5400,6 @@
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 203,49
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ; Infantry Army(5)
 #UNIT= 5 [10] [0.5] [Isthmus]
@@ -5405,7 +5425,6 @@
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 203,49
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [10] [0.5] [IV]
 #UNIT= 4 [10] [0.5] [V]
@@ -5433,7 +5452,6 @@
 ; Petsamo(209,13)
 #DESTINATION_RESOURCE= 209,13
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 1 [5] [0] [Petsamo]
 }
@@ -5459,7 +5477,6 @@
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 195,51
 #VARIABLE_CONDITION= 39 [2] [100] [0]
-; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ; Infantry Army(5)
 #UNIT= 5 [10] [0.5] [Isthmus]
@@ -5486,7 +5503,6 @@
 ; Hameenlinna
 #DESTINATION_RESOURCE= 194,49
 #VARIABLE_CONDITION= 39 [2] [100] [0]
-; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [10] [0.5] [IV]
 }
@@ -5512,7 +5528,6 @@
 ; Hanko
 #DESTINATION_RESOURCE= 192,51
 #VARIABLE_CONDITION= 39 [2] [100] [0]
-; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [10] [0.5] [V]
 }
@@ -5541,7 +5556,6 @@
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 140,112
 #VARIABLE_CONDITION= 99 [1] [100] [0]
-; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ; Infantry Army(5)
 #UNIT= 5 [8] [0.6] [2nd]
@@ -5567,7 +5581,6 @@
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 137,110
 #VARIABLE_CONDITION= 99 [1] [100] [0]
-; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ; Infantry Army(5)
 #UNIT= 5 [8] [0.6] [2nd]
@@ -5593,7 +5606,6 @@
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 146,100
 #VARIABLE_CONDITION= 99 [2] [100] [0]
-; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ; Infantry Army(5)
 #UNIT= 5 [8] [0.6] [2nd]
@@ -5619,7 +5631,6 @@
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 143,99
 #VARIABLE_CONDITION= 99 [2] [100] [0]
-; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ; Infantry Army(5)
 #UNIT= 5 [8] [0.6] [2nd]
@@ -5691,7 +5702,6 @@
 ; Port Said(209,122)
 #DESTINATION_RESOURCE= 209,122
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 40 [10] [0] []
 }
@@ -7560,6 +7570,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Stalingrad(234,85)
 #DESTINATION_RESOURCE= 234,85
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; 1 Axis unit within 8 hexes of Voroshilovgrad OR
@@ -7840,6 +7851,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1942/01/21
 #FAILSAFE_DATE= 1942/01/21
+; Stalingrad(234,85)
 #DESTINATION_RESOURCE= 234,85
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7895,6 +7907,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1942/06/01
 #FAILSAFE_DATE= 1942/06/01
+; Stalingrad(234,85)
 #DESTINATION_RESOURCE= 234,85
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7921,6 +7934,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1942/06/01
 #FAILSAFE_DATE= 1942/06/01
+; Stalingrad(234,85)
 #DESTINATION_RESOURCE= 234,85
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7947,6 +7961,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1942/06/01
 #FAILSAFE_DATE= 1942/06/01
+; Stalingrad(234,85)
 #DESTINATION_RESOURCE= 234,85
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -7972,6 +7987,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1942/06/01
 #FAILSAFE_DATE= 1942/06/01
+; Stalingrad(234,85)
 #DESTINATION_RESOURCE= 234,85
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -8670,6 +8686,7 @@
 #AI= 1
 #LEVEL= 0
 #GV= 1[1,100]
+; The Molotov-Ribbentrop Pact?
 #LINK= 600[0]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -9539,6 +9556,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1942/03/01
 #FAILSAFE_DATE= 1942/03/01
+; Bordeaux-Port(145,93)
 #DESTINATION_RESOURCE= 145,93
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -9592,6 +9610,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1943/01/01
 #FAILSAFE_DATE= 1943/01/01
+; Rennes(143,86)
 #DESTINATION_RESOURCE= 143,86
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis units in Paris
@@ -9618,6 +9637,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1943/01/01
 #FAILSAFE_DATE= 1943/01/01
+; Caen(146,84)
 #DESTINATION_RESOURCE= 146,84
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis units in Paris
@@ -9644,6 +9664,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1943/01/01
 #FAILSAFE_DATE= 1943/01/01
+; Le Havre(147,82)
 #DESTINATION_RESOURCE= 147,82
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis units in Paris
@@ -9670,6 +9691,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1944/01/01
 #FAILSAFE_DATE= 1944/01/01
+; Le Havre(147,82)
 #DESTINATION_RESOURCE= 147,82
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis units in Paris
@@ -9911,6 +9933,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Bologna(169,95)
 #DESTINATION_RESOURCE= 169,95
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -10304,6 +10327,7 @@
 ;                Fall Weiss II Events
 ;==========================================================
 
+; Fall Weiss II
 ; Duke Of York Battleship (UK)
 {
 #NAME= UK: Duke Of York Battleship 
@@ -10330,6 +10354,7 @@
 #UNIT= 36 [11] [1] [Duke of York]
 }
 
+; Fall Weiss II
 ; HMS Howe Battleship (UK)
 {
 #NAME= UK: HMS Howe Battleship 
@@ -10356,6 +10381,7 @@
 #UNIT= 36 [11] [1] [Howe]
 }
 
+; Fall Weiss II
 ; Allied AI Navy Helper Duke of York (UK)
 {
 #NAME= UK(AI): Duke Of York AI Helper
@@ -10383,6 +10409,7 @@
 #UNIT= 40 [11] [1] []
 }
 
+; Fall Weiss II
 ; Allied AI Navy Helper Howe (UK)
 {
 #NAME= UK(AI): Howe AI Helper
@@ -10410,7 +10437,8 @@
 #UNIT= 40 [11] [1] []
 }
 
-;German Military Equipment Arrives in Romania
+; Fall Weiss II
+; German Military Equipment Arrives in Romania
 {
 #NAME= DE 849 - Germany: Military Equipment to Romania (Tanks)
 #POPUP= German Designed Tanks Are Delivered To Romania
@@ -10436,7 +10464,8 @@
 #UNIT= 26 [10] [0] [Panzer]
 }
 
-;German Military Equipment Arrives in Romania
+; Fall Weiss II
+; German Military Equipment Arrives in Romania
 {
 #NAME= DE 849 - Germany: Military Equipment to Romania (Anti-Tank)
 #POPUP= German Anti-Tank Equipment Is Delivered To Romania
@@ -10462,7 +10491,8 @@
 #UNIT= 24 [10] [0] []
 }
 
-;Romania Engineers
+; Fall Weiss II
+; Romanian Engineers
 {
 #NAME= DE 856 - Romania: Engineers
 #POPUP= Romania Raises An Engineer Corps
@@ -10489,7 +10519,8 @@
 #UNIT= 8 [5] [0] [96th]
 }
 
-;Romania Engineers
+; Fall Weiss II
+; Romanian Engineers
 {
 #NAME= DE 864 - Romania: Engineers
 #POPUP= Romania Raises An Engineer Corps
@@ -10508,12 +10539,14 @@
 #FULL_RESEARCH= 0
 #DATE= 1942/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Bucharest(198,95)
 #DESTINATION_RESOURCE= 198,95
 #VARIABLE_CONDITION= 93 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 8 [5] [0] [96th]
 }
 
+; Fall Weiss II
 ; Anglo-Portuguese Alliance
 {
 #NAME= DE 800 - UK: Troops Arrive In Portugal
@@ -10541,6 +10574,7 @@
 #UNIT= 2 [3] [0] [Lisbon Force I]
 }
 
+; Fall Weiss II
 ; Anglo-Portuguese Alliance
 {
 #NAME= DE 800 - Portugal: Salazar Deployment Announces Spanish Troop Movement
@@ -10569,6 +10603,7 @@
 #UNIT= 2 [3] [0] []
 }
 
+; Fall Weiss II
 ; German Military Exports To Spain (Tanks)
 {
 #NAME= DE 903 - Germany: Military Exports To Spain
@@ -10595,6 +10630,7 @@
 #UNIT= 26 [5] [0] [Panzer]
 }
 
+; Fall Weiss II
 ; German Military Exports To Spain (Corps)
 {
 #NAME= DE 903 - Germany: Military Exports To Spain
@@ -10621,6 +10657,7 @@
 #UNIT= 4 [10] [0] [Madrid II]
 }
 
+; Fall Weiss II
 ; UK Military Exports To Portugal (HQ, Corps - Lisbon)
 {
 #NAME= DE 805 - UK: Military Exports To Portugal
@@ -10648,6 +10685,7 @@
 #UNIT= 4 [10] [0] [III]
 }
 
+; Fall Weiss II
 ; UK Military Exports To Portugal (Garrison - Porto)
 {
 #NAME= DE 805 - UK: Military Exports To Portugal
@@ -10674,6 +10712,7 @@
 #UNIT= 1 [5] [0] [Porto]
 }
 
+; Fall Weiss II
 ; UK Military Exports To Portugal (Garrison - Evora)
 {
 #NAME= DE 805 - UK: Military Exports To Portugal
@@ -10700,6 +10739,7 @@
 #UNIT= 1 [5] [0] [Evora]
 }
 
+; Fall Weiss II
 ; Italy Military Exports To Spain (Garrison - Vigo)
 {
 #NAME= DE 806 - Italy: Military Exports To Spain
@@ -10726,6 +10766,7 @@
 #UNIT= 1 [5] [0] [Vigo]
 }
 
+; Fall Weiss II
 ; German Military Exports To Turkey (Corps)
 {
 #NAME= DE 911 - Germany: Military Exports To Turkey
@@ -10752,6 +10793,7 @@
 #UNIT= 4 [10] [0] [Bursa]
 }
 
+; Fall Weiss II
 ; UK Military Exports To Turkey (Corps)
 {
 #NAME= DE 807 - UK: Military Exports to Turkey
@@ -10778,6 +10820,7 @@
 #UNIT= 4 [10] [0] [Ankara II]
 }
 
+; Fall Weiss II
 ; USA Military Exports To Turkey (Tank)
 {
 #NAME= DE 808 - USA: Military Exports to Turkey
@@ -10804,6 +10847,7 @@
 #UNIT= 27 [10] [0] [Ankara III]
 }
 
+; Fall Weiss II
 ; USA Military Exports To Turkey (Tac Bomber)
 {
 #NAME= DE 809 - USA: Military Exports to Turkey
@@ -10830,6 +10874,7 @@
 #UNIT= 30 [10] [0] [Ankara IV]
 }
 
+; Fall Weiss II
 ; USA Military Exports To Sweden (Fighters)
 ; Sweden (Allied)
 {
@@ -10858,6 +10903,7 @@
 #UNIT= 29 [5] [0] [2nd RSAF]
 }
 
+; Fall Weiss II
 ; USA Military Exports To Sweden (Fighters)
 ; Sweden (Axis)
 {
@@ -10886,6 +10932,7 @@
 #UNIT= 29 [5] [0] [2nd RSAF]
 }
 
+; Fall Weiss II
 ; USA Military Exports To Sweden (Fighters)
 ; USA Keeps the fighters
 {
@@ -10914,6 +10961,7 @@
 #UNIT= 29 [5] [0] []
 }
 
+; Fall Weiss II
 ; USA Military Exports To Sweden (Fighters)
 ; Italy Does Not Get Option To Sell To Sweden
 {
@@ -10942,6 +10990,7 @@
 #UNIT= 29 [5] [0.5] []
 }
 
+; Fall Weiss II
 ; Italy Military Exports To Sweden (Fighters)
 ; Sweden (Allied)
 {
@@ -10970,6 +11019,7 @@
 #UNIT= 29 [5] [0] [2nd RSAF]
 }
 
+; Fall Weiss II
 ; Italy Military Exports To Sweden (Fighters)
 ; Sweden (Axis)
 {
@@ -10998,6 +11048,7 @@
 #UNIT= 29 [5] [0] [2nd RSAF]
 }
 
+; Fall Weiss II
 ; Italy Military Exports To Sweden (Fighters)
 ; Italy Keeps the fighters
 {
@@ -11026,6 +11077,7 @@
 #UNIT= 29 [5] [0] []
 }
 
+; Fall Weiss II
 ; USA Military Exports To Turkey (Army)
 ; Turkey (Axis)
 {
@@ -11053,6 +11105,7 @@
 #UNIT= 5 [10] [0] [Istanbul II]
 }
 
+; Fall Weiss II
 ; USA Military Exports To Turkey (Army)
 ; Turkey (Allied)
 {
@@ -11080,6 +11133,7 @@
 #UNIT= 5 [10] [0] [Istanbul II]
 }
 
+; Fall Weiss II
 ; USA Military Exports To Turkey (Army)
 {
 #NAME= DE 815 - Allied Military Exports to Turkey
@@ -11106,6 +11160,7 @@
 #UNIT= 5 [10] [0] [Istanbul II]
 }
 
+; Fall Weiss II
 ; USA Military Exports To Turkey (Army)
 {
 #NAME= DE 815 - Allied Military Exports to Turkey
@@ -11132,6 +11187,7 @@
 #UNIT= 5 [10] [0] [Istanbul II]
 }
 
+; Fall Weiss II
 ; Axis Prepare for Fall Blau (Germany)
 {
 #NAME= DE 815 - Germany: Axis Prepare for Fall Blau
@@ -11162,9 +11218,10 @@
 #UNIT= 17 [10] [0] []
 }
 
+; Fall Weiss II
 ; Axis Prepare for Fall Blau (Romania)
 {
-#NAME= DE 815 - Romania: Axis Prepare for Fall Blau
+#NAME= DE 916 - Romania: Axis Prepare for Fall Blau
 #POPUP= Romania Prepares Reinforcements For Summer Offensive
 #IMAGE= 
 #SOUND=
@@ -11181,6 +11238,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1942/05/01
 #FAILSAFE_DATE= 1948/01/01
+; Bucharest(198,95)
 #DESTINATION_RESOURCE= 198,95
 ; Romania(93) Allied and not surrendered
 #VARIABLE_CONDITION= 93 [1] [100] [0]
@@ -11188,9 +11246,10 @@
 #UNIT= 4 [10] [0] []
 }
 
+; Fall Weiss II
 ; Axis Prepare for Fall Blau (Romania)
 {
-#NAME= DE 815 - Romania: Axis Prepare for Fall Blau
+#NAME= DE 916 - Romania: Axis Prepare for Fall Blau
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -11207,6 +11266,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1942/05/01
 #FAILSAFE_DATE= 1948/01/01
+; Bucharest(198,95)
 #DESTINATION_RESOURCE= 198,95
 ; Romania(93) Allied and not surrendered
 #VARIABLE_CONDITION= 93 [1] [100] [0]
@@ -11214,9 +11274,10 @@
 #UNIT= 25 [5] [0] []
 }
 
+; Fall Weiss II
 ; Axis Prepare for Fall Blau (Hungary)
 {
-#NAME= DE 815 - Hungary Prepares for Fall Blau
+#NAME= DE 916 - Hungary Prepares for Fall Blau
 #POPUP= Hungary Raises A New Corps For The Eastern Front
 #IMAGE= 
 #SOUND=
@@ -11240,6 +11301,7 @@
 #UNIT= 4 [10] [0] []
 }
 
+; Fall Weiss II
 ; Germany strengthens Afrika Korps (Germany)
 {
 #NAME= DE 919 - Germany: Afrika Korps Reinforced
@@ -11269,6 +11331,7 @@
 #UNIT= 24 [10] [0] [14th Panzerjäger]
 }
 
+; Fall Weiss II
 ; Germany strengthens Afrika Korps (Germany)
 {
 #NAME= DE 919 - Germany(AI): Afrika Korps Reinforced
@@ -11296,6 +11359,7 @@
 #UNIT= 0 [10] [0] []
 }
 
+; Fall Weiss II
 ; Germany strengthens Afrika Korps (Germany)
 {
 #NAME= DE 919 - Germany: Afrika Korps Reinforced
@@ -11325,6 +11389,7 @@
 #UNIT= 24 [10] [0] [14th Panzerjäger]
 }
 
+; Fall Weiss II
 ; Rush Troops To Tripoli (Italy)
 {
 #NAME= DE 823 - Italy: Rush Troops To Tripoli
@@ -11352,6 +11417,7 @@
 #UNIT= 4 [10] [0] []
 }
 
+; Fall Weiss II
 ; Rush Troops To Tripoli (Italy)
 {
 #NAME= DE 823 - Italy: Rush Troops To Tripoli
@@ -11379,10 +11445,11 @@
 #UNIT= 5 [10] [0] []
 }
 
-; German Offensive In The Ardennes (Germany)
+; Fall Weiss II
+; Wacht Am Rhein (Germany)
 {
 #NAME= DE 921 - Germany: Operation Wacht Am Rhein
-#POPUP= Germany Prepares For Western Offensive
+#POPUP= Germany Prepares Operation Wacht Am Rhein
 #IMAGE= 
 #SOUND=
 #FLAG= 1
@@ -11409,6 +11476,7 @@
 #UNIT= 0 [10] [0] [] 
 }
 
+; Fall Weiss II
 ; Lützow Heavy Cruiser (Germany)
 {
 #NAME= DE 918 - Germany: Lützow Heavy Cruiser
@@ -11435,6 +11503,7 @@
 #UNIT= 38 [10] [0] [Lützow]
 }
 
+; Fall Weiss II
 ; Petropavlovsk Heavy Cruiser (USSR)
 {
 #NAME= DE 826 - USSR: Petropavlovsk Heavy Cruiser
@@ -11463,6 +11532,7 @@
 #UNIT= 38 [8] [0] [Petropavlovsk]
 }
 
+; Fall Weiss II
 ; ETNA Light Cruiser (Italy)
 {
 #NAME= DE 827 - Italy: ETNA Light Cruiser
@@ -11489,6 +11559,7 @@
 #UNIT= 39 [10] [0] [ETNA]
 }
 
+; Fall Weiss II
 ; Aircraft Industry Expansion (Italy)
 {
 #NAME= DE 828 - Italy: Fighter Squadron
@@ -11515,6 +11586,7 @@
 #UNIT= 29 [11] [1] []
 }
 
+; Fall Weiss II
 ; Aircraft Industry Expansion (Italy)
 {
 #NAME= DE 828 - Italy: Medium Bombers
@@ -11541,6 +11613,7 @@
 #UNIT= 31 [11] [1] []
 }
 
+; Fall Weiss II
 ; Aircraft Industry Expansion (Italy)
 {
 #NAME= DE 828 - Italy: Tactical Bombers
@@ -11567,6 +11640,7 @@
 #UNIT= 30 [11] [1] []
 }
 
+; Fall Weiss II
 ; Aircraft Industry Expansion (Italy)
 {
 #NAME= DE 828 - Italy: Strategic Bombers
@@ -11593,6 +11667,7 @@
 #UNIT= 32 [11] [1] []
 }
 
+; Fall Weiss II
 ; 163rd Infantry Division (Germany)
 {
 #NAME= DE 927 - Germany: 163rd Infantry Division
@@ -11619,6 +11694,7 @@
 #UNIT= 2 [11] [1] [163rd "Engelbrecht"]
 }
 
+; Fall Weiss II
 ; Lend Lease to Saudi Arabia (Saudi Arabia)
 {
 #NAME= DE 829 - Lend Lease to Saudi Arabia (Saudi Arabia)
@@ -11645,6 +11721,7 @@
 #UNIT= 2 [5] [0] []
 }
 
+; Fall Weiss II
 ; Lend Lease to Saudi Arabia (Saudi Arabia)
 {
 #NAME= DE 829 - Lend Lease to Saudi Arabia (Saudi Arabia)
@@ -11671,6 +11748,7 @@
 #UNIT= 2 [5] [0] []
 }
 
+; Fall Weiss II
 ; Mechanized Infantry - North Africa (Italy)
 {
 #NAME= DE 832 - Italy: Mechanized Infantry - North Africa
@@ -11697,7 +11775,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 6 [5] [0] []
 }
-
 
 ; Egypt (AI Helper)
 {
@@ -11760,6 +11837,7 @@
 #UNIT= 0 [10] [0] []
 }
 
+
 ; Strong Allied Air Presence Detected In Egypt (AI Helper)
 {
 #NAME= UK(AI): Strong Allied Air Presence Detected In Egypt
@@ -11780,6 +11858,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1940/12/01
 #FAILSAFE_DATE= 1942/01/01
+; Cairo(208,126)
 #DESTINATION_RESOURCE= 208,126
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -11787,7 +11866,7 @@
 #UNIT= 31 [11] [1] [Desert AF]
 }
 
-
+; Fall Weiss II
 ; Germany Reinforces The Eastern Front - (Germany)
 {
 #NAME= DE 932 - Germany: Reinforces The Eastern Front
@@ -11816,6 +11895,7 @@
 #UNIT= 1 [5] [0] [Warsaw]
 }
 
+; Fall Weiss II
 ; Germany Reinforces The Eastern Front - (Germany)
 {
 #NAME= DE 932 - Germany: Reinforces The Eastern Front
@@ -11950,7 +12030,7 @@
 #UNIT= 43 [10] [0] []
 }
 
-
+; Fall Weiss II
 ; Italian Naval Base At Bordeaux (Submarines)
 {
 #NAME= DE 933 - Italy: Naval Base At Bordeaux
@@ -11970,6 +12050,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/10/01
 #FAILSAFE_DATE= 1948/01/01
+; Bordeaux-Port(145,93)
 #DESTINATION_RESOURCE= 145,93
 ; Italy(59) Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -11977,6 +12058,7 @@
 #UNIT= 43 [5] [0] [BETASOM]
 }
 
+; Fall Weiss II
 ; Italian Submarines In the Mediterranean (Submarines)
 {
 #NAME= DE 933 - Italy: Submarines Deployed In the Mediterranean
@@ -12003,7 +12085,7 @@
 #UNIT= 43 [5] [0] []
 }
 
-
+; Fall Weiss II
 ; Norwegian Liberation Division
 {
 #NAME= DE 833 - Norwegian Liberation Division
@@ -12030,6 +12112,7 @@
 #UNIT= 2 [10] [0] [Norwegian Liberation]
 }
 
+; Fall Weiss II
 ; Danish Liberation Division
 {
 #NAME= DE 833 - Danish Liberation Division
@@ -12056,6 +12139,7 @@
 #UNIT= 2 [10] [0] [Danish Liberation]
 }
 
+; Fall Weiss II
 ; Malta Anti-Aircraft - Regular
 {
 #NAME= DE 834 - UK: Malta Anti-Aircraft
@@ -12082,6 +12166,7 @@
 #UNIT= 15 [10] [0] [Malta]
 }
 
+; Fall Weiss II
 ; Malta Anti-Aircraft - Stronger
 {
 #NAME= DE 834 - UK: Malta Anti-Aircraft
@@ -12108,7 +12193,7 @@
 #UNIT= 15 [12] [2] [Malta]
 }
 
-; 
+; Fall Weiss II
 {
 #NAME= DE 838 - UK: Reinforces Greece
 #POPUP= Allied Reinforcements Are Rushed To Athens
@@ -12135,7 +12220,7 @@
 #UNIT= 4 [5] [0] [Greek Expeditionary]
 }
 
-; 
+; Fall Weiss II
 {
 #NAME= DE 838 - UK: Supports Greek HQ
 #POPUP= 
@@ -12162,7 +12247,7 @@
 #UNIT= 0 [5] [0] [UK Supported]
 }
 
-; 
+; Fall Weiss II
 {
 #NAME= UK: RAF In Ireland
 #POPUP= RAF Re-stations To Airfields In Ireland
@@ -12190,6 +12275,7 @@
 }
 
 
+; Fall Weiss II
 ; Germany (Submarine)
 {
 #NAME= Germany(AI): Submarine - Arcachon - 1941
@@ -12209,6 +12295,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/03/01
 #FAILSAFE_DATE= 1942/03/01
+; Bordeaux-Port(145,93)
 #DESTINATION_RESOURCE= 145,93
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -12216,6 +12303,7 @@
 #UNIT= 43 [10] [0] []
 }
 
+; Fall Weiss II
 ; Germany strengthens Afrika Korps (Germany AI)
 {
 #NAME= Germany(AI): Strengthens Afrika Korps
@@ -12279,7 +12367,7 @@
 #UNIT= 5 [11] [1] []
 }
 
-
+; Fall Weiss II
 ; Mechanized Infantry - North Africa (Italy)
 {
 #NAME= DE 832 - Italy(AI): Mechanized Infantry - North Africa 
@@ -12309,6 +12397,7 @@
 #UNIT= 26 [10] [0] []
 }
 
+; Fall Weiss II
 ; Germany Reinforces The Eastern Front - (Germany)
 {
 #NAME= DE 932 - Germany(AI): The Eastern Front Reinforced
@@ -12338,6 +12427,7 @@
 #UNIT= 26 [12] [2] []
 }
 
+; Fall Weiss II
 ; Germany Reinforces The Eastern Front - (Germany)
 {
 #NAME= DE 932 - Germany(AI): The Eastern Front Reinforced
@@ -12368,9 +12458,10 @@
 #UNIT= 31 [12] [2] []
 }
 
+; Fall Weiss II
 ; Schwerer Gustav Gun (Germany)
 {
-#NAME= DE 850 - Germany: Schwerer Gustav Gun
+#NAME= DE 850 - Germany: Schwerer Gustav Gun (Early)
 #POPUP= Germany Commissions Railway Gun Schwerer Gustav
 #IMAGE= 
 #SOUND=
@@ -12394,6 +12485,7 @@
 #UNIT= 19 [10] [0] [Schwerer Gustav]
 }
 
+; Fall Weiss II
 ; Schwerer Gustav Gun (Germany)
 {
 #NAME= DE 850 - Germany: Schwerer Gustav Gun
@@ -12420,9 +12512,10 @@
 #UNIT= 19 [12] [2] [Schwerer Gustav]
 }
 
+; Fall Weiss II
 ; German Naval Strategy (Germany)
 {
-#NAME= DE 851 - Germany: Naval Strategy
+#NAME= DE 851 - Germany: Naval Strategy (Tirpitz)
 #POPUP= Germany Commissions The Tirpitz Battleship
 #IMAGE= 
 #SOUND=
@@ -12445,8 +12538,9 @@
 #UNIT= 36 [10] [0] [Tirpitz]
 }
 
+; Fall Weiss II
 {
-#NAME= DE 851 - Germany: Naval Strategy
+#NAME= DE 851 - Germany: Naval Strategy (U-boats)
 #POPUP= Germany Focuses Naval Strategy On U-boats And Expands Fleet
 #IMAGE= 
 #SOUND=
@@ -12470,10 +12564,10 @@
 #UNIT= 43 [5] [0] []
 }
 
-
+; Fall Weiss II
 ; UK Naval Strategy (UK)
 {
-#NAME= DE 852 - UK: Naval Strategy
+#NAME= DE 852 - UK: Naval Strategy (Anson)
 #POPUP= UK Commissions HMS Anson Battleship
 #IMAGE= 
 #SOUND=
@@ -12496,9 +12590,10 @@
 #UNIT= 36 [10] [0] [HMS Anson]
 }
 
+; Fall Weiss II
 ; UK Naval Strategy (UK)
 {
-#NAME= DE 852 - UK: Naval Strategy
+#NAME= DE 852 - UK: Naval Strategy (Destroyers)
 #POPUP= UK Launches Expanded Destroyer Fleet After Cancelling HMS Anson
 #IMAGE= 
 #SOUND=
@@ -12522,6 +12617,7 @@
 #UNIT= 40 [10] [0] []
 }
 
+; Fall Weiss II
 {
 #NAME= DE 853 - USSR: Stalingrad Workers
 #POPUP= Stalingrad Factory Workers Prepare To Defend The City
@@ -12548,6 +12644,7 @@
 #UNIT= 2 [5] [0] [Stalingrad Workers]
 }
 
+; Fall Weiss II
 ; Graf Spee (Germany)
 {
 #NAME= DE 854 - Germany: Graf Spee
@@ -12625,7 +12722,6 @@
 #UNIT= 4 [10] [0] []
 }
 
-;
 {
 #NAME= UK: British Conscripts In Training Are Organized Near Birmingham
 #POPUP= British Conscripts In Training Are Organized Near Birmingham
@@ -12758,6 +12854,7 @@
 #UNIT= 36 [10] [0] []
 }
 
+; Fall Weiss II
 {
 #NAME= DE 872 - Germany(AI): Tripoli Reinforcement
 #POPUP=
@@ -12785,6 +12882,7 @@
 #UNIT= 4 [10] [0] []
 }
 
+; Fall Weiss II
 {
 #NAME= DE 872 - Italy(AI): Tripoli Reinforcement
 #POPUP=
@@ -12830,6 +12928,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/03/01
 #FAILSAFE_DATE= 1942/03/01
+; Bordeaux-Port(145,93)
 #DESTINATION_RESOURCE= 145,93
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -12863,10 +12962,10 @@
 #UNIT= 4 [10] [0] []
 }
 
-
+; Fall Weiss II
 ; 1st Canadian Division Deploys in Bristol
 {
-#NAME= DE 873 - 1st Canadian Division Deploys in Bristol
+#NAME= DE 873 - 1st Canadian Division (Bristol)
 #POPUP= The 1st Canadian Infantry Division Arrives In Bristol
 #IMAGE= 
 #SOUND= 
@@ -12893,10 +12992,10 @@
 }
 
 
-;
+; Fall Weiss II
 ; 1st Canadian Division Deploys in Canada
 {
-#NAME= DE 873 - 1st Canadian Division Deploys in Canada
+#NAME= DE 873 - 1st Canadian Division (Canada)
 #POPUP= Canada Mobilizes The 1st Canadian Infantry Division At Halifax
 #IMAGE= 
 #SOUND= 
@@ -12941,7 +13040,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1942/01/31
 #FAILSAFE_DATE= 1948/01/01
-; Stalingrad
+; Stalingrad(234,85)
 #DESTINATION_RESOURCE= 234,85
 ; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -13102,6 +13201,7 @@
 #UNIT= 0 [10] [0] []
 }
 
+; Fall Weiss II
 ; Vichy France Imports From Germany
 {
 #NAME= DE 874 - Vichy France: Imports From Germany
@@ -13131,6 +13231,7 @@
 #UNIT= 25 [10] [0.5] []
 }
 
+; Fall Weiss II
 ; German Reinforcements Arrive In Iraq
 {
 #NAME= DE 875 - Germany: Reinforcements Arrive In Iraq
@@ -13159,6 +13260,7 @@
 #UNIT= 1 [6] [1] [Baghdad]
 }
 
+; Fall Weiss II
 ; Germany Provides Equipment To Iraqi Forces
 {
 #NAME= DE 875 - Iraq: Germany Provides Equipment To Iraqi Forces
@@ -13186,6 +13288,7 @@
 #UNIT= 1 [5] [0] [2nd Baghdad]
 }
 
+; Fall Weiss II
 ; Germany Forms A Naval Infantry Division At Kiel
 {
 #NAME= DE 950 - Germany: Forms A Naval Infantry Division At Kiel
@@ -13212,6 +13315,7 @@
 #UNIT= 2 [5] [0] [2nd Naval]
 }
 
+; Fall Weiss II
 ; Germany Forms A Naval Infantry Division At Stettin
 {
 #NAME= DE 951 - Germany: Forms A Naval Infantry Division At Stettin
@@ -13455,7 +13559,7 @@
 #UNIT= 3 [8] [0] []
 }
 
-; 
+; Fall Weiss II
 {
 #NAME= DE 917 - Bulgarian Support Of Turkish War Entry Is Fueled By The Soviet Defence Pact
 #POPUP= Bulgarian Support Of Turkish War Entry Is Fueled By The Soviet Defence Pact
@@ -13474,6 +13578,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/03
 #FAILSAFE_DATE= 1948/01/01
+; Sofia(192,100)
 #DESTINATION_RESOURCE= 192,100
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 19 [2] [100] [0]
@@ -13483,7 +13588,7 @@
 #UNIT= 0 [5] [0] []
 }
 
-; 
+; Fall Weiss II
 {
 #NAME= DE 917 - USSR: Soviet Supplied Defenses Deploy At Sofia
 #POPUP= Soviet Supplied Defenses Deploy At Sofia
@@ -13502,6 +13607,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/03
 #FAILSAFE_DATE= 1948/01/01
+; Sofia(192,100)
 #DESTINATION_RESOURCE= 192,100
 ; Bulgaria(19) Allied and fully mobilized
 ; Turkey(111) Allied and fully mobilized
@@ -13572,7 +13678,7 @@
 #UNIT= 5 [5] [0] [1st Moscow Res]
 }
 
-; Stalingrad(234,85) 
+; Stalingrad
 {
 #NAME= USSR: Soviet Reserves Mobilize At Stalingrad (40% Chance)
 #POPUP= Soviet Reserves Mobilize At Stalingrad
@@ -13591,6 +13697,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Stalingrad(234,85)
 #DESTINATION_RESOURCE= 234,85
 ; USSR(116) Allied and fully mobilized
 ; Finland(39) Axis and fully mobilized
@@ -13647,6 +13754,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/10/01
 #FAILSAFE_DATE= 1948/01/01
+; Narvik(181,18)
 #DESTINATION_RESOURCE= 181,18
 ; Norway(78) Axis and surrendered
 #VARIABLE_CONDITION= 78 [1] [100] [1]
@@ -13672,6 +13780,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/10/01
 #FAILSAFE_DATE= 1948/01/01
+; Trondheim(167,40)
 #DESTINATION_RESOURCE= 167,40
 ; Norway(78) Axis and surrendered
 #VARIABLE_CONDITION= 78 [1] [100] [1]
@@ -13697,6 +13806,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/10/01
 #FAILSAFE_DATE= 1948/01/01
+; Bergen(157,50)
 #DESTINATION_RESOURCE= 157,50
 ; Norway(78) Axis and surrendered
 #VARIABLE_CONDITION= 78 [1] [100] [1]
@@ -13722,6 +13832,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/10/01
 #FAILSAFE_DATE= 1948/01/01
+; Stavanger(158,55)
 #DESTINATION_RESOURCE= 158,55
 ; Norway(78) Axis and surrendered
 #VARIABLE_CONDITION= 78 [1] [100] [1]
@@ -13860,9 +13971,10 @@
 #UNIT= 8 [3] [0] [Muscovite]
 }
 
+; Fall Weiss II
 ; Moscow
 {
-#NAME= DE 831 - USSR: Murmansk Reinforcements
+#NAME= DE 831 - USSR: Murmansk Reinforcements (Moscow)
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -13888,9 +14000,10 @@
 #UNIT= 4 [10] [0] []
 }
 
+; Fall Weiss II
 ; Murmansk
 {
-#NAME= DE 831 - USSR: Murmansk Reinforcements
+#NAME= DE 831 - USSR: Murmansk Reinforcements (Murmansk)
 #POPUP= Soviet Reinforcements Arrive In Murmansk District
 #IMAGE= 
 #SOUND=
@@ -13915,7 +14028,8 @@
 #UNIT= 0 [10] [0] [Popov]
 }
 
-;Finnish Attack Force
+; Fall Weiss II
+; Finnish Attack Force
 {
 #NAME= Finland: Finnish Attack Force
 #POPUP=
@@ -13942,7 +14056,8 @@
 #UNIT= 4 [10] [0.5] []
 }
 
-;Sweden Sends Military Aid to Finland
+; Fall Weiss II
+; Sweden Sends Military Aid to Finland
 {
 #NAME= DE 848 - Sweden: Military Aid to Finland (Heavy Artillery)
 #POPUP= Swedish Military Equipment Begins to Arrive In Finland
@@ -13968,7 +14083,8 @@
 #UNIT= 18 [5] [0] [Nordic]
 }
 
-;German Military Equipment Begins To Arrive In Finland
+; Fall Weiss II
+; German Military Equipment Begins To Arrive In Finland
 {
 #NAME= DE 847 - Germany: Military Equipment to Finland (Light Tanks)
 #POPUP= German Military Equipment Begins to Arrive In Finland
@@ -13993,7 +14109,8 @@
 #UNIT= 25 [10] [0] [Nordic]
 }
 
-;German Anti-Tank Equipment Begins To Arrive In Finland
+; Fall Weiss II
+; German Anti-Tank Equipment Begins To Arrive In Finland
 {
 #NAME= DE 893 - Germany: Military Equipment to Finland (Anti-Tank)
 #POPUP= German Anti-Tank Guns Begin To Arrive In Finland
@@ -14013,13 +14130,13 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 195,51
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 24 [10] [0] [1st]
 }
 
-;German Reinforcements In Finland
+; Fall Weiss II
+; German Reinforcements In Finland
 {
 #NAME= DE 893 - Germany: Reinforcements In Finland (Infantry Division)
 #POPUP= German Reinforcements Arrive In Finland
@@ -14039,13 +14156,13 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 195,51
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 2 [10] [0] [122nd]
 }
 
-;German Reinforcements At Berlin
+; Fall Weiss II
+; German Reinforcements At Berlin
 {
 #NAME= DE 893 - Germany: Reinforcements At Berlin
 #POPUP= 
@@ -14066,14 +14183,14 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Berlin(173,74)
 #DESTINATION_RESOURCE= 173,74
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 2 [10] [0] [122nd]
 #UNIT= 24 [10] [0] [15th Panzerjäger]
 }
 
-;Finland Engineers
+; Fall Weiss II
+; Finland Engineers
 {
 #NAME= DE 892 - Finland: Engineers Raised
 #POPUP= Finland Raises An Engineer Corps
@@ -14098,6 +14215,7 @@
 #UNIT= 8 [5] [0] [Civil]
 }
 
+; Fall Weiss II
 ; Sealion Ground Forces (Germany)
 {
 #NAME= DE 946 - Germany: Sealion Ground Forces
@@ -14125,6 +14243,7 @@
 #UNIT= 9 [5] [0] []
 }
 
+; Fall Weiss II
 ; Sealion Naval Forces (Germany)
 {
 #NAME= DE 946 - Germany: Sealion Naval Forces
@@ -14151,6 +14270,7 @@
 #UNIT= 44 [5] [0] []
 }
 
+; Fall Weiss II
 ; Sealion Naval Forces (Germany)
 {
 #NAME= DE 946 - Germany: Sealion Naval Forces
@@ -14177,6 +14297,7 @@
 #UNIT= 44 [5] [0] []
 }
 
+; Fall Weiss II
 ; Germany Prepares for Barbarossa (Germany)
 {
 #NAME= DE 946 - Germany: Prepares for Barbarossa
@@ -14205,6 +14326,7 @@
 #UNIT= 26 [10] [0] []
 }
 
+; Fall Weiss II
 ; Germany Military Equipment Arrives In Moscow (USSR)
 {
 #NAME= DE 947 - USSR: German Military Equipment Arrives In Moscow
@@ -14253,8 +14375,6 @@
 #DATE= 1940/03/23
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 175,71
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 78 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 38 [8] [0] [Blücher]
@@ -14279,8 +14399,6 @@
 #DATE= 1940/03/23
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 175,72
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 78 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [8] [0] [XXI]
@@ -14305,8 +14423,6 @@
 #DATE= 1940/03/23
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 175,71
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 78 [1] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 38 [8] [0] [Blücher]
@@ -14331,8 +14447,6 @@
 #DATE= 1940/03/23
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 175,72
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 78 [1] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [8] [0] [XXI]
@@ -14416,6 +14530,7 @@
 #UNIT= 4 [8] [0] [VI]
 }
 
+; Fall Weiss II
 ; Germany Reinforcements if Tripoli Is Captured (Germany)
 {
 #NAME= DE 949 - Germany: Reinforcements if Tripoli Is Captured
@@ -14539,6 +14654,7 @@
 #UNIT= 26 [10] [0] []
 }
 
+; Fall Weiss II
 {
 #NAME= DE 897 - Spain: Allied Armies (Madrid)
 #POPUP= Spanish Forces Reorganize Near Madrid
@@ -14566,7 +14682,7 @@
 #UNIT= 4 [8] [0] []
 }
 
-;American Reinforcements In Middle East (I)
+; American Reinforcements In Middle East (I)
 {
 #NAME= USA(AI): Reinforcements In Middle East
 #POPUP= American Forces Arrives At Kuwait
@@ -14819,7 +14935,7 @@
 #UNIT= 0 [5] [0] [Buddeny]
 }
 
-; Smolensk(209,68) Tanks
+; Smolensk Tanks
 {
 #NAME= DE 136 - USSR: Modern Soviet Tanks
 #POPUP=
@@ -14847,7 +14963,7 @@
 #UNIT= 0 [5] [0] [Eremenko]
 }
 
-; Moscow(221,65) Tanks
+; Moscow Tanks
 {
 #NAME= DE 136 - USSR: Modern Soviet Tanks
 #POPUP=
@@ -15072,6 +15188,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Stalingrad(234,85)
 #DESTINATION_RESOURCE= 234,85
 ; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -15102,6 +15219,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Stalingrad(234,85)
 #DESTINATION_RESOURCE= 234,85
 ; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -15132,6 +15250,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Stalingrad(234,85)
 #DESTINATION_RESOURCE= 234,85
 ; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -15164,6 +15283,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Stalingrad(234,85)
 #DESTINATION_RESOURCE= 234,85
 ; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -15178,6 +15298,7 @@
 #UNIT= 2 [5] [0] [2nd Stalingrad Res]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 897 - Germany: Spanish Military Reorganizes in Germany (Berlin)
 #POPUP= Pro-Axis Elements Of The Spanish Military In Occupied Europe Reorganize In Germany
@@ -15389,7 +15510,6 @@
 #DESTINATION_RESOURCE= 25,93
 ; British Empire(54) Allied and not surrendered
 #VARIABLE_CONDITION= 54 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 0 [10] [0] [South African]
 #UNIT= 4 [10] [0] [Indian]
@@ -15417,7 +15537,6 @@
 #DESTINATION_RESOURCE= 26,94
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 42 [10] [0] [Indomitable]
 #UNIT= 40 [10] [0] [Napal]
@@ -15444,7 +15563,6 @@
 #DESTINATION_RESOURCE= 26,94
 ; British Empire(54) Allied and not surrendered
 #VARIABLE_CONDITION= 54 [2] [100] [0]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 39 [8] [0] [Achilles]
 #UNIT= 38 [8] [0] [Canberra]
@@ -16019,6 +16137,7 @@
 #UNIT= 32 [12] [2] []
 }
 
+; Fall Weiss II
 ; https://www.wikiwand.com/en/13th_Waffen_Mountain_Division_of_the_SS_Handschar_(1st_Croatian)
 {
 #NAME= DE 544 - Croatia: Mountain Infantry Division
@@ -16272,6 +16391,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Cairo(208,126)
 #DESTINATION_RESOURCE= 208,126
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -16436,6 +16556,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/06/01
 #FAILSAFE_DATE= 1948/01/01
+; Dijon(156,88)
 #DESTINATION_RESOURCE= 156,88
 ; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -16455,6 +16576,7 @@
 #UNIT= 9 [8] [0] []
 }
 
+; Fall Weiss II
 ; Strategic Reserves in France (Germany)
 {
 #NAME= DE 994 - Germany: Strategic Reserves in France
@@ -16474,6 +16596,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/06/01
 #FAILSAFE_DATE= 1948/01/01
+; Dijon(156,88)
 #DESTINATION_RESOURCE= 156,88
 ; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -16493,6 +16616,7 @@
 #UNIT= 9 [8] [0] []
 }
 
+; Fall Weiss II
 ; Strategic Reserves in France (Germany)
 {
 #NAME= DE 994 - Germany: Strategic Reserves in France
@@ -16530,6 +16654,7 @@
 #UNIT= 3 [5] [0] [1st Amiens Res]
 }
 
+; Fall Weiss II
 ; Strategic Reserves in France (Germany)
 {
 #NAME= DE 994 - Germany: Strategic Reserves in France
@@ -16567,6 +16692,7 @@
 #UNIT= 2 [10] [0.5] []
 }
 
+; Fall Weiss II
 ; Ostbataillonen in France (Germany)
 {
 #NAME= DE 995 - Germany: Ostbataillonen in France

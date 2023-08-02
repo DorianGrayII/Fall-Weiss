@@ -7,15 +7,23 @@
 ; Basic structure for an mobilization event:
 ; {
 ; #NAME= Event name (this will be shown as a selectable event under an OPTIONS screen within the game)
+;
 ; #POPUP= Event popup text (this will be displayed when the event occurs)
+;
 ; #IMAGE= Event image that will be displayed when event occurs
 ;         PNG images must be 736x418 or 368x418 pixels, see 'Extras' folder for sample images and frames
 ;         Multiple pictures can be used by using a ',' to separate them
 ;         Format: picture1.png, picture2.png, picture3.png, picture4.png
+;
 ; #SOUND= Event sound that will be displayed when event occurs
 ;         Multiple sounds can be used by using a ',' to separate them
 ;         Format: sound1.mp3, sound2.mp3, sound3.mp3, sound4.mp3
-; #FLAG= Will this be a default event for the campaign? (values range [0, 1]; True= 1; False= 0)
+;
+; #FLAG= Value range [0, 1]
+;        Will this event be enabled by default:
+;        0 = Disabled
+;        1 = Enabled
+;
 ; #TYPE= Values range [0, 3];
 ;        With all other fields satisfied will this be:
 ;        0 = Single check regardless if #TRIGGER is satisfied
@@ -24,16 +32,20 @@
 ;                       OR
 ;        Once the #DATE field is satisfied:
 ;        3 = Event fires once if all other fields are satisfied, else it will not fire.  Either way, event will be removed never to be looked at again
+;
 ; #AI= Values range [0, 6]
 ;      0 = Event fires whenever all fields are satisfied for any game type
 ;      1 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis
 ;      2 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied
-;      3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player, or on Allied Multiplayer turns
-;      4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player or on Axis Multiplayer turns
+;      3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player, 
+;          or on Allied Multiplayer turns
+;      4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player 
+;          or on Axis Multiplayer turns
 ;      5 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis in Single Player, 
 ;          or for AI controlled Axis majors on Axis human player turns
 ;      6 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied in Single Player,
 ;          or for AI controlled Allied majors on Allied human player turns
+;
 ; #LEVEL= Value range [-1, 4]
 ;      What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
 ;     -1 = a script that should only fire for AI friendly controlled majors on your turn
@@ -42,26 +54,38 @@
 ;      2 = Intermediate
 ;      3 = Veteran
 ;      4 = Expert
+;
 ; #GV= Does the event activate based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
 ;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
 ;      Example B - #GV= 4[71,100] will trigger 30% per game
+;
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
 ;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
 ;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
 ;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
 ;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
-; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
+;
+; #TRIGGER= Value range [0, 100]
+;           Trigger percentage that the event will occur
+;
 ; #COUNTRY_ID= Country ID associated with this event
+;
 ; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
+;
 ; #MOBILIZATION= The mobilization percentage increase/decrease for this event for #COUNTRY_ID
 ;                Format: [min%, max%] [political_direction]
-; #PRIVATE= Should this event #POPUP be included in the last turn summary screen?
-;           Values: [0, 1]; No= 0; Yes= 1
+;
+; #PRIVATE= Value range [0, 1]
+;           Should this event #POPUP be included in the last turn summary screen?
+;           0 = No
+;           1 = Yes
+;
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
 ;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
+;
 ; #CONDITION_POSITION= Map positions that will serve to trigger the event as well as distance and
 ;                      number of Axis/Allied unit ranges as specified by 'alignment' flag
 ;                      Format: x,y [min_range, max_range] [min_units, max_units] [alignment] [aligned_country_id]
@@ -72,29 +96,31 @@
 ; Each event must be preceded by a '{' and end with a '}'
 ;
 ; The #MOBILIZATION value can be set to reflect a random range of potential increase or decrease
-; towards either the Axis or Allies side. This is done by setting the 'political_direction' flag
-; under #MOBILIZATION as either Axis or Allied, i.e. [1] or [2]. For example if the US is currently
-; leaning towards the Allies then you can set an #MOBILIZATION event to decrease their current
-; mobilization percentage by setting the 'political_direction' flag as Axis.
+;   towards either the Axis or Allies side. This is done by setting the 'political_direction' flag
+;   under #MOBILIZATION as either Axis or Allied, i.e. [1] or [2]. For example if the US is currently
+;   leaning towards the Allies then you can set an #MOBILIZATION event to decrease their current
+; m obilization percentage by setting the 'political_direction' flag as Axis.
 ;
 ; Under #VARIABLE_CONDITION you can also list countries that have not yet fully entered the war.
-; For example by listing an mobilization % less than 100% you are providing a check where the
-; #VARIABLE_CONDITION country must meet a minimum mobilization % in order for the event to occur.
+;   For example by listing an mobilization % less than 100% you are providing a check where the
+;   #VARIABLE_CONDITION country must meet a minimum mobilization % in order for the event to occur.
+;
 ; Each #VARIABLE_CONDITION line will be read using AND logic.
 ;
 ; More than one #CONDITION_POSITION can be set. Distance or range checks will be based on the 
-; specified x,y position. For example if the x,y position is a coastal hex then range checks will
-; be made on sea hexes, otherwise if it is a land hex range checks will be made on land hexes only.
-; If the 'aligned_country_id' flag is set to 0 then it will check for any Axis or Allied country as
-; determined by the alignment flag.
+;   specified x,y position. For example if the x,y position is a coastal hex then range checks will
+;   be made on sea hexes, otherwise if it is a land hex range checks will be made on land hexes only.
+;   If the 'aligned_country_id' flag is set to 0 then it will check for any Axis or Allied country as
+;   determined by the alignment flag.
+;
 ; Each #CONDITION_POSITION line will be read using OR logic.
 ;
 ; If #CONDITION_POSITION has an added <unit_id, ...> then it will only consider the specified UNIT_ID types, e.g.
-; Axis have an Army or Tank unit within 10 hexes of Warsaw
-; #CONDITION_POSITION= 188,76 [10,10] [1,1] [1] [0] <5,26>
+;   Axis have an Army or Tank unit within 10 hexes of Warsaw
+;   #CONDITION_POSITION= 188,76 [10,10] [1,1] [1] [0] <5,26>
 ;
 ; A dummy condition position (always satisfied) can be set as follows:
-;    #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+;   #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ;
 ; Use the reference values provided for #COUNTRY_ID and not the country names
 ; Use the reference values provided for POLITICAL ALIGNMENT and not names
@@ -270,11 +296,10 @@
 #COUNTRY_ID= 111
 #TRIGGER= 75
 #DATE= 1939/09/01
-;8-15% mobilization increase towards Axis
+; 8-15% mobilization increase towards Axis
 #MOBILIZATION= [8,15] [1]
 ; Germany(45) Axis and not surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -296,11 +321,10 @@
 #COUNTRY_ID= 118
 #TRIGGER= 50
 #DATE= 1939/09/01
-;15-25% mobilization increase towards Allies
+; 15-25% mobilization increase towards Allies
 #MOBILIZATION= [15,25] [2]
 ; France(40) Allied and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -318,11 +342,10 @@
 #COUNTRY_ID= 105
 #TRIGGER= 25
 #DATE= 1939/09/01
-;15-25% mobilization increase towards Allies
+; 15-25% mobilization increase towards Allies
 #MOBILIZATION= [15,25] [2]
 ; France(40) Allied and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -340,11 +363,10 @@
 #COUNTRY_ID= 110
 #TRIGGER= 25
 #DATE= 1939/09/01
-;15-25% mobilization increase towards Allies
+; 15-25% mobilization increase towards Allies
 #MOBILIZATION= [15,25] [2]
 ; France(40) Allied and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -362,11 +384,10 @@
 #COUNTRY_ID= 4
 #TRIGGER= 25
 #DATE= 1939/09/01
-;15-25% mobilization increase towards Allies
+; 15-25% mobilization increase towards Allies
 #MOBILIZATION= [15,25] [2]
 ; France(40) Allied and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -375,7 +396,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 
-;
 {
 #NAME= American Public Opinion Moves Against Entering The War (USA->Axis) (35% Chance)
 #POPUP= Isolationists In The USA Call On US Units To Return To Home Waters
@@ -420,7 +440,7 @@
 #MOBILIZATION= [8,12] [2]
 ; Germany(45) Axis and not surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis has 1 unit in Iceland within 10 hexes of Akureyri
+; Axis has 1 unit in Iceland within 10 hexes of Akureyri(110,32)
 #CONDITION_POSITION= 110,32 [10,10] [1,1] [1] [0]
 }
 
@@ -445,7 +465,7 @@
 #MOBILIZATION= [5,7] [2]
 ; Germany(45) Axis and not surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis has 1 unit in Iceland within 10 hexes of Akureyri
+; Axis has 1 unit in Iceland within 10 hexes of Akureyri(110,32)
 #CONDITION_POSITION= 110,32 [10,10] [1,1] [1] [0]
 }
 
@@ -467,7 +487,7 @@
 #MOBILIZATION= [3,5] [2]
 ; Germany(45) Axis and not surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis has 1 unit in Iceland within 10 hexes of Akureyri
+; Axis has 1 unit in Iceland within 10 hexes of Akureyri(110,32)
 #CONDITION_POSITION= 110,32 [10,10] [1,1] [1] [0]
 }
 
@@ -545,11 +565,11 @@
 #COUNTRY_ID= 115
 #TRIGGER= 50
 #DATE= 1940/01/01
-;5-15% mobilization increase towards Allies
+; 5-15% mobilization increase towards Allies
 #MOBILIZATION= [5,15] [2]
 ; Germany(45) Axis and not surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis has 1 unit within 1 hex of Gibraltar
+; Axis has 1 unit within 1 hex of Gibraltar(136,114)
 #CONDITION_POSITION= 136,114 [1,1] [1,1] [1] [0]
 }
 
@@ -571,11 +591,11 @@
 #COUNTRY_ID= 56
 #TRIGGER= 50
 #DATE= 1939/09/01
-;25-35% mobilization increase towards Axis
+; 25-35% mobilization increase towards Axis
 #MOBILIZATION= [25,35] [1]
 ; Iraq(56) Axis but not fully mobilized
 #VARIABLE_CONDITION= 56 [1] [0] [0]
-; The Axis have 1-2 units within 5 hexes of Suez
+; The Axis have 1-2 units within 5 hexes of Suez(210,126)
 #CONDITION_POSITION= 210,126 [5,5] [1,2] [1] [0]
 }
 
@@ -595,15 +615,15 @@
 #COUNTRY_ID= 115
 #TRIGGER= 50
 #DATE= 1940/01/01
-;5-10% activation increase towards Allies
+; 5-10% activation increase towards Allies
 #MOBILIZATION= [5,10] [2]
 ; Germany(45) Axis and not surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis has 1 unit within 1,1 hex of Alexandria(206,124)
 #CONDITION_POSITION= 206,124 [1,1] [1,1] [1] [0]
-; Axis has 1 unit within 1,1 hex of Cairo
+; Axis has 1 unit within 1,1 hex of Cairo(208,126)
 #CONDITION_POSITION= 208,126 [1,1] [1,1] [1] [0]
-; Axis has 1 unit within 1,1 hex of Jerusalem
+; Axis has 1 unit within 1,1 hex of Jerusalem(216,123)
 #CONDITION_POSITION= 216,123 [1,1] [1,1] [1] [0]
 }
 
@@ -630,15 +650,13 @@
 #DATE= 1940/01/01
 ; 2-2% mobilization increase towards Allies
 #MOBILIZATION= [2,2] [2]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 ;
-; This event is to counteract the one above
+; This event is to counteract the one above if conditions are met
 {
 #NAME= 2 Axis Units Near Warsaw From January 1940 (USSR->Axis)
 #POPUP=
@@ -655,8 +673,6 @@
 #DATE= 1940/01/01
 ; 2% mobilization increase towards Axis
 #MOBILIZATION= [2,2] [1]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 ; 2 Axis units are within 10 hexes of Warsaw(188,76)
@@ -681,8 +697,6 @@
 #DATE= 1941/01/01
 ; 2% mobilization increase towards Allies
 #MOBILIZATION= [2,2] [2]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -706,8 +720,6 @@
 #DATE= 1941/01/01
 ; 2% mobilization increase towards Axis
 #MOBILIZATION= [2,2] [1]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 ; 4 Axis units are within 10 hexes of Warsaw(188,76)
@@ -731,11 +743,9 @@
 #DATE= 1941/01/01
 ; 5-10% mobilization increase towards Allies
 #MOBILIZATION= [5,10] [2]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
-; 19 Axis units are within 10 hexes of Warsaw
+; 19 Axis units are within 10 hexes of Warsaw(188,76)
 #CONDITION_POSITION= 188,76 [10,10] [19,19] [1] [0]
 #PRIVATE= 1
 }
@@ -758,8 +768,6 @@
 #DATE= 1941/01/01
 ; 3-5% mobilization increase towards Axis
 #MOBILIZATION= [3,5] [1]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 ; 19 Axis units are within 10 hexes of Warsaw(188,76)
@@ -811,11 +819,11 @@
 #MOBILIZATION= [10,15] [2]
 ; Germany(45) Axis and not surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis land 1-2 units in the UK within 1-2 hexes of London(147,77) OR
+; 1-2 Axis land units in the UK within 1-2 hexes of London(147,77) OR
 #CONDITION_POSITION= 147,77 [1,2] [1,2] [1] [0]
-; Axis land 1-2 units in the UK within 1-2 hexes of Manchester(142,72)
+; 1-2 Axis land units in the UK within 1-2 hexes of Manchester(142,72)
 #CONDITION_POSITION= 142,72 [1,2] [1,2] [1] [0]
-; Axis land 1 unit in the UK within 1-2 hexes of Edinburgh(140,65)
+; 1 Axis land unit in the UK within 1-2 hexes of Edinburgh(140,65)
 #CONDITION_POSITION= 140,65 [1,2] [1,1] [1] [0]
 }
 
@@ -897,7 +905,7 @@
 #COUNTRY_ID= 116
 #TRIGGER= 25
 #DATE= 1940/01/01
-;4-8% activation increase towards Allies
+; 4-8% activation increase towards Allies
 #MOBILIZATION= [4,8] [2]
 ; Germany(45) Axis and not surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -1100,7 +1108,7 @@
 #POPUP= Finland Enters The War Against The USSR
 #IMAGE= finlandenterswar.png
 #SOUND=
-; Turn off in Fall Weiss II
+; Turned off in Fall Weiss II
 #FLAG= 0
 #TYPE= 1
 #AI= 0
@@ -1112,8 +1120,6 @@
 #DATE= 1939/09/01
 ; 100% activation increase towards Axis
 #MOBILIZATION= [100,100] [1]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Finland(39) Axis but not fully mobilized
 #VARIABLE_CONDITION= 39 [1] [0] [0]
 ; USSR(116) Allied but not fully mobilized
@@ -1176,11 +1182,8 @@
 #DATE= 1940/01/01
 ; 3-5% mobilization increase towards Axis
 #MOBILIZATION= [3,5] [1]
-; Germany(45) Axis and not surrendered
 ; Belgium(10) Allied and surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 10 [2] [100] [1]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -1792,7 +1795,6 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Egypt(36) aligned with Allied and surrendered
 #VARIABLE_CONDITION= 36 [2] [100] [1]
-;Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -1817,12 +1819,10 @@
 ;200% mobilization increase towards Axis
 #MOBILIZATION= [200,200] [1]
 ; UK(112) Allied and not surrendered
-; Germany(45) Axis and not surrendered
 ; France(40) Allied and surrendered
 ; Italy(59) Axis and not surrendered
-;  Yugoslavia(120) Axis
+; Yugoslavia(120) Axis
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 120 [1] [0] [0]
@@ -2028,10 +2028,8 @@
 ; 20-40% activation increase towards Axis
 #MOBILIZATION= [20,40] [1]
 ; France(40) Allied and surrendered
-; Germany(45) Axis and not surrendered
 ; Italy(59) Axis and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Axis Occupies Moscow(221,65)
 #CONDITION_POSITION= 221,65 [0,0] [1,1] [1] [0]
@@ -2054,10 +2052,8 @@
 ; 20-40% activation increase towards Axis
 #MOBILIZATION= [20,40] [1]
 ; France(40) Allied and surrendered
-; Germany(45) Axis and fully mobilized
 ; Italy(59) Axis and fully mobilized
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Axis Occupies Moscow(221,65)
 #CONDITION_POSITION= 221,65 [0,0] [1,1] [1] [0]
@@ -2084,7 +2080,6 @@
 ; Turkey(111) Axis and Not Active
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 111 [1] [0] [0]
-; dummy condition position
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 

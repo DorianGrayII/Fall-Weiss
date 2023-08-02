@@ -7,30 +7,42 @@
 ; Basic structure for an mobilization event:
 ; {
 ; #NAME= Event name (this will be shown as a selectable event under an OPTIONS screen within the game)
+;
 ; #POPUP= Event popup text (this will be displayed when the event occurs)
+;
 ; #IMAGE= Event image that will be displayed when event occurs
 ;         PNG images must be 736x418 or 368x418 pixels, see 'Extras' folder for sample images and frames
 ;         Multiple pictures can be used by using a ',' to separate them
 ;         Format: picture1.png, picture2.png, picture3.png, picture4.png
+;
 ; #SOUND= Event sound that will be displayed when event occurs
 ;         Multiple sounds can be used by using a ',' to separate them
 ;         Format: sound1.mp3, sound2.mp3, sound3.mp3, sound4.mp3
-; #FLAG= Will this be a default event for the campaign? (values range [0, 1]; True= 1; False= 0)
+;
+; #FLAG= Value range [0, 1]
+;        Will this event be enabled by default:
+;        0 = Disabled
+;        1 = Enabled
+;
 ; #TYPE= Values range [0, 2]
 ;        With all other fields satisfied will this be:
 ;        0 = Single check regardless if #TRIGGER is satisfied
 ;        1 = Multiple check until #TRIGGER is satisfied
 ;        2 = Reoccurring check until end of game
+;
 ; #AI= Values range [0, 6]
 ;      0 = Event fires whenever all fields are satisfied for any game type
 ;      1 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis
 ;      2 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied
-;      3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player, or on Allied Multiplayer turns
-;      4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player or on Axis Multiplayer turns
+;      3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player, 
+;          or on Allied Multiplayer turns
+;      4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player 
+;          or on Axis Multiplayer turns
 ;      5 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis in Single Player, 
 ;          or for AI controlled Axis majors on Axis human player turns
 ;      6 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied in Single Player,
 ;          or for AI controlled Allied majors on Allied human player turns
+;
 ; #LEVEL= Value range [-1, 4]
 ;      What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
 ;     -1 = a script that should only fire for AI friendly controlled majors on your turn
@@ -39,21 +51,28 @@
 ;      2 = Intermediate
 ;      3 = Veteran
 ;      4 = Expert
+;
 ; #GV= Does the event activate based on the Global Variable values assigned?
 ;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
 ;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
 ;      Example B - #GV= 4[71,100] will trigger 30% per game
+;
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
 ;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
 ;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
 ;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
 ;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
-; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
+;
+; #TRIGGER= Value range [0, 100]
+;           Trigger percentage that the event will occur
+;
 ; #COUNTRY_ID= Country ID associated with this event
+;
 ; #MOBILIZATION= The mobilization percentage increase/decrease for this event for #COUNTRY_ID
 ;                Format: [min%, max%] [political_direction]
+;
 ; #CONDITION= Under what conditions will this event occur
 ;             Format: country_id [political_event] [political_alignment]
 ; }
@@ -316,7 +335,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 115
 #TRIGGER= 100
-;10-12% mobilization increase towards Allies
+; 10-12% mobilization increase towards Allies
 #MOBILIZATION= [10,12] [2]
 ; France surrenders to Axis forces
 #CONDITION= 40 [0] [1]
@@ -526,7 +545,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 115
 #TRIGGER= 100
-;1-2% mobilization increase towards Allies
+; 1-2% mobilization increase towards Allies
 #MOBILIZATION= [1,2] [2]
 ; Luxembourg declared war on by Axis
 #CONDITION= 65 [1] [1]
@@ -575,7 +594,7 @@
 #TRIGGER= 100
 ;20-30% mobilization increase towards Allies
 #MOBILIZATION= [20,30] [2]
-; Bulgaria declared war on by Axis
+; Bulgaria(19) declared war on by Axis
 #CONDITION= 19 [1] [1]
 }
 
@@ -685,7 +704,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 104
 #TRIGGER= 25
-;10-15% mobilization increase towards Allies
+; 10-15% mobilization increase towards Allies
 #MOBILIZATION= [10,15] [2]
 ; Sweden declared war on by Axis
 #CONDITION= 103 [1] [1]
@@ -731,7 +750,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 103
 #TRIGGER= 25
-;10-15% mobilization increase towards Allies
+; 10-15% mobilization increase towards Allies
 #MOBILIZATION= [10,15] [2]
 ; Switzerland declared war on by Axis
 #CONDITION= 104 [1] [1]
@@ -888,7 +907,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 104
 #TRIGGER= 25
-;10-15% mobilization increase towards Allies
+; 10-15% mobilization increase towards Allies
 #MOBILIZATION= [10,15] [2]
 ; Spain declared war on by Axis
 #CONDITION= 99 [1] [1]
@@ -957,7 +976,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 104
 #TRIGGER= 25
-;10-15% mobilization increase towards Allies
+; 10-15% mobilization increase towards Allies
 #MOBILIZATION= [10,15] [2]
 ; Portugal declared war on by Axis
 #CONDITION= 87 [1] [1]
@@ -1028,7 +1047,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 104
 #TRIGGER= 25
-;10-15% mobilization increase towards Allies
+; 10-15% mobilization increase towards Allies
 #MOBILIZATION= [10,15] [2]
 ; Vichy France declared war on by Axis
 #CONDITION= 118 [1] [1]
@@ -1372,7 +1391,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 82
 #TRIGGER= 25
-;10-15% mobilization increase towards Allies
+; 10-15% mobilization increase towards Allies
 #MOBILIZATION= [10,15] [2]
 ; Syria declared war on by Axis
 #CONDITION= 105 [1] [1]
@@ -1554,9 +1573,9 @@
 #LINK= 0[0]
 #COUNTRY_ID= 118
 #TRIGGER= 100
-;40-55% mobilization increase towards Allies
+; 40-55% mobilization increase towards Allies
 #MOBILIZATION= [40,55] [2]
-; Algeria declared war on by Axis
+; Algeria(4) declared war on by Axis
 #CONDITION= 4 [1] [1]
 }
 
@@ -1576,9 +1595,9 @@
 #LINK= 0[0]
 #COUNTRY_ID= 110
 #TRIGGER= 100
-;40-55% mobilization increase towards Allies
+; 40-55% mobilization increase towards Allies
 #MOBILIZATION= [40,55] [2]
-; Algeria declared war on by Axis
+; Algeria(4) declared war on by Axis
 #CONDITION= 4 [1] [1]
 }
 
@@ -1598,9 +1617,9 @@
 #LEVEL= 0
 #COUNTRY_ID= 105
 #TRIGGER= 100
-;40-55% mobilization increase towards Allies
+; 40-55% mobilization increase towards Allies
 #MOBILIZATION= [40,55] [2]
-; Algeria declared war on by Axis
+; Algeria(4) declared war on by Axis
 #CONDITION= 4 [1] [1]
 }
 
@@ -1713,7 +1732,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 116
 #TRIGGER= 100
-;10-15% mobilization increase towards Allies
+; 10-15% mobilization increase towards Allies
 #MOBILIZATION= [10,15] [2]
 ; USA declared war on by Axis
 #CONDITION= 115 [1] [1]
@@ -1779,7 +1798,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 116
 #TRIGGER= 100
-;15-20% mobilization increase towards Allies
+; 15-20% mobilization increase towards Allies
 #MOBILIZATION= [25,40] [2]
 ; Estonia declared war on by Axis
 #CONDITION= 38 [1] [1]
@@ -1889,7 +1908,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 116
 #TRIGGER= 100
-;10-15% mobilization increase towards Allies
+; 10-15% mobilization increase towards Allies
 #MOBILIZATION= [10,15] [2]
 ; Iraq declared war on by Axis
 #CONDITION= 56 [1] [1]
@@ -1976,7 +1995,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 115
 #TRIGGER= 100
-;10-15% mobilization increase towards Axis
+; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
 ; Allies declare war on Italy
 #CONDITION= 59 [1] [2]
@@ -1998,7 +2017,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 99
 #TRIGGER= 100
-;10-15% mobilization increase toward Axis
+; 10-15% mobilization increase toward Axis
 #MOBILIZATION= [10,15] [1]
 ; Allies declare war on Italy
 #CONDITION= 59 [1] [2]
@@ -2023,7 +2042,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 115
 #TRIGGER= 100
-;10-15% mobilization increase towards Axis
+; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
 ; Allies declare war on Denmark
 #CONDITION= 31 [1] [2]
@@ -2098,7 +2117,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 115
 #TRIGGER= 100
-;10-15% mobilization increase towards Axis
+; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
 ; Allies declare war on Belgium
 #CONDITION= 10 [1] [2]
@@ -2120,7 +2139,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 104
 #TRIGGER= 50
-;10-15% mobilization increase toward Axis
+; 10-15% mobilization increase toward Axis
 #MOBILIZATION= [10,15] [1]
 ; Allies declare war on Belgium
 #CONDITION= 10 [1] [2]
@@ -2142,7 +2161,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 103
 #TRIGGER= 50
-;10-15% mobilization increase toward Axis
+; 10-15% mobilization increase toward Axis
 #MOBILIZATION= [10,15] [1]
 ; Allies declare war on Belgium
 #CONDITION= 10 [1] [2]
@@ -2164,7 +2183,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 99
 #TRIGGER= 75
-;10-15% mobilization increase toward Axis
+; 10-15% mobilization increase toward Axis
 #MOBILIZATION= [10,15] [1]
 ; Allies declare war on Belgium
 #CONDITION= 10 [1] [2]
@@ -2189,7 +2208,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 115
 #TRIGGER= 100
-;15-25% mobilization increase towards Axis
+; 15-25% mobilization increase towards Axis
 #MOBILIZATION= [15,25] [1]
 ; Allies declare war on Ireland
 #CONDITION= 57 [1] [2]
@@ -2210,7 +2229,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 104
 #TRIGGER= 50
-;10-15% mobilization increase towards Axis
+; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
 ; Allies declare war on Ireland
 #CONDITION= 57 [1] [2]
@@ -2231,7 +2250,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 103
 #TRIGGER= 50
-;10-15% mobilization increase towards Axis
+; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
 ; Allies declare war on Ireland
 #CONDITION= 57 [1] [2]
@@ -2252,7 +2271,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 99
 #TRIGGER= 50
-;10-15% mobilization increase towards Axis
+; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
 ; Allies declare war on Ireland
 #CONDITION= 57 [1] [2]
@@ -2299,7 +2318,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 104
 #TRIGGER= 25
-;10-15% mobilization increase towards Axis
+; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
 ; Allies declare war on Norway
 #CONDITION= 78 [1] [2]
@@ -2324,7 +2343,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 115
 #TRIGGER= 100
-;10-20% mobilization increase towards Axis
+; 10-20% mobilization increase towards Axis
 #MOBILIZATION= [10,20] [1]
 ; Allies declare war on Sweden
 #CONDITION= 103 [1] [2]
@@ -2345,7 +2364,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 104
 #TRIGGER= 50
-;12-18% mobilization increase towards Axis
+; 12-18% mobilization increase towards Axis
 #MOBILIZATION= [12,18] [1]
 ; Allies declare war on Sweden
 #CONDITION= 103 [1] [2]
@@ -2367,7 +2386,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 39
 #TRIGGER= 75
-;10-20% mobilization increase towards Axis
+; 10-20% mobilization increase towards Axis
 #MOBILIZATION= [10,20] [1]
 ; Allies declare war on Sweden
 #CONDITION= 103 [1] [2]
@@ -2392,7 +2411,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 115
 #TRIGGER= 100
-;10-20% mobilization increase towards Axis
+; 10-20% mobilization increase towards Axis
 #MOBILIZATION= [10,20] [1]
 ; Allies declare war on Spain
 #CONDITION= 99 [1] [2]
@@ -2435,7 +2454,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 118
 #TRIGGER= 50
-;14-24% mobilization increase towards Axis
+; 14-24% mobilization increase towards Axis
 #MOBILIZATION= [14,24] [1]
 ; Allies declare war on Spain
 #CONDITION= 99 [1] [2]
@@ -2457,7 +2476,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 120
 #TRIGGER= 25
-;10-15% mobilization increase towards Axis
+; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
 ; Allies declare war on Spain
 #CONDITION= 99 [1] [2]
@@ -2479,7 +2498,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 52
 #TRIGGER= 25
-;10-15% mobilization increase towards Axis
+; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
 ; Allies declare war on Spain
 #CONDITION= 99 [1] [2]
@@ -2501,7 +2520,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 93
 #TRIGGER= 25
-;10-15% mobilization increase towards Axis
+; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
 ; Allies declare war on Spain
 #CONDITION= 99 [1] [2]
@@ -2568,7 +2587,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 104
 #TRIGGER= 25
-;10-15% mobilization increase towards Axis
+; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
 ; Portugal declared war on by Allies
 #CONDITION= 87 [1] [2]
@@ -2589,7 +2608,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 103
 #TRIGGER= 25
-;10-15% mobilization increase towards Axis
+; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
 ; Portugal declared war on by Allies
 #CONDITION= 87 [1] [2]
@@ -2636,7 +2655,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 82
 #TRIGGER= 25
-;10-15% mobilization increase towards Axis
+; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
 ; Allies declare war on Syria
 #CONDITION= 105 [1] [2]
@@ -2658,7 +2677,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 111
 #TRIGGER= 25
-;10-15% mobilization increase towards Axis
+; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
 ; Allies declare war on Syria
 #CONDITION= 105 [1] [2]
@@ -2680,7 +2699,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 118
 #TRIGGER= 50
-;10-15% mobilization increase towards Axis
+; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
 ; Allies declare war on Syria
 #CONDITION= 105 [1] [2]
@@ -2859,7 +2878,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 82
 #TRIGGER= 100
-;10-15% mobilization increase towards Axis
+; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
 ; Allies declare war on Iraq
 #CONDITION= 56 [1] [2]
@@ -3068,7 +3087,7 @@
 ; Yugoslavia(120)
 #COUNTRY_ID= 120
 #TRIGGER= 100
-;10-15% mobilization increase towards Allies
+; 10-15% mobilization increase towards Allies
 #MOBILIZATION= [10,15] [2]
 ; Axis declare war on Greece(46)
 #CONDITION= 46 [1] [1]
@@ -3094,7 +3113,7 @@
 ; Iraq(56)
 #COUNTRY_ID= 56
 #TRIGGER= 75
-;10-15% mobilization increase towards Axis
+; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
 ; USSR declares war on Persia(82)
 #CONDITION= 82 [1] [2]
@@ -3116,7 +3135,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 118
 #TRIGGER= 25
-;10-15% mobilization increase towards Axis
+; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
 ; USSR declares war on Persia(82)
 #CONDITION= 82 [1] [2]
@@ -3138,7 +3157,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 111
 #TRIGGER= 50
-;10-15% mobilization increase towards Axis
+; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
 ; USSR declares war on Persia
 #CONDITION= 82 [1] [2]
@@ -3232,7 +3251,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 19
 #TRIGGER= 25
-;10-15% mobilization increase towards Axis
+; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
 ; USSR declares war on Turkey
 #CONDITION= 111 [1] [2]
@@ -3298,7 +3317,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 105
 #TRIGGER= 25
-;15-25% mobilization increase towards Axis
+; 15-25% mobilization increase towards Axis
 #MOBILIZATION= [15,25] [1]
 ; USSR declares war on Turkey
 #CONDITION= 111 [1] [2]
@@ -3320,7 +3339,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 82
 #TRIGGER= 25
-;10-20% mobilization increase towards Axis
+; 10-20% mobilization increase towards Axis
 #MOBILIZATION= [10,20] [1]
 ; USSR declares war on Turkey
 #CONDITION= 111 [1] [2]
@@ -3389,7 +3408,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 120
 #TRIGGER= 75
-;10-20% mobilization increase towards Axis
+; 10-20% mobilization increase towards Axis
 #MOBILIZATION= [10,20] [1]
 ; USSR declares war on Romania
 #CONDITION= 93 [1] [2]
@@ -3411,7 +3430,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 118
 #TRIGGER= 25
-;10-15% mobilization increase towards Axis
+; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
 ; USSR declares war on Romania
 #CONDITION= 93 [1] [2]
@@ -3614,7 +3633,7 @@
 #TRIGGER= 100
 ;200% mobilization increase towards Allies
 #MOBILIZATION= [200,200] [2]
-; Bulgaria declared war on by Axis
+; Bulgaria(19) declared war on by Axis
 #CONDITION= 19 [1] [1]
 }
 
@@ -3637,7 +3656,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 115
 #TRIGGER= 100
-;15-25% mobilization increase towards Allies
+; 15-25% mobilization increase towards Allies
 #MOBILIZATION= [15,25] [2]
 ; Axis declare war on Ireland
 #CONDITION= 57 [1] [1]
