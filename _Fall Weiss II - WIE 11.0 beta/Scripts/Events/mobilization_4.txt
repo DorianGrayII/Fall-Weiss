@@ -6,56 +6,91 @@
 ;
 ; Basic structure for an mobilization event:
 ; {
-; #NAME= Event name (this will be shown as a selectable event under an OPTIONS screen within the game)
-; #POPUP= Event popup text (this will be displayed when the event occurs)
+; #NAME=  Event name 
+;         (this will be shown as a selectable event under an OPTIONS screen within the game)
+;
+; #POPUP= Event popup text 
+;         (this will be displayed when the event occurs)
+;
 ; #IMAGE= Event image that will be displayed when event occurs
 ;         PNG images must be 736x418 or 368x418 pixels, see 'Extras' folder for sample images and frames
 ;         Multiple pictures can be used by using a ',' to separate them
 ;         Format: picture1.png, picture2.png, picture3.png, picture4.png
+;
 ; #SOUND= Event sound that will be displayed when event occurs
 ;         Multiple sounds can be used by using a ',' to separate them
 ;         Format: sound1.mp3, sound2.mp3, sound3.mp3, sound4.mp3
-; #FLAG= Will this be a default event for the campaign? (values range [0, 1]; True= 1; False= 0)
-; #TYPE= Values range [0, 2];
+;
+; #FLAG= Value range [0, 1]
+;        Event default state:
+;        0 = Disabled
+;        1 = Enabled
+;
+; #TYPE= Value range [0, 2]
 ;        With all other fields satisfied will this be:
 ;        0 = Single check regardless if #TRIGGER is satisfied
 ;        1 = Multiple check until #TRIGGER is satisfied
 ;        2 = Reoccurring check until end of game
-; #AI= Values range [0, 6]
-;      0 = Event fires whenever all fields are satisfied for any game type
-;      1 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis
-;      2 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied
-;      3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player, or on Allied Multiplayer turns
-;      4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player or on Axis Multiplayer turns
-;      5 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis in Single Player, 
-;          or for AI controlled Axis majors on Axis human player turns
-;      6 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied in Single Player,
-;          or for AI controlled Allied majors on Allied human player turns
+;
+; #AI= Value range [0, 6]
+;        0 = Event fires whenever all fields are satisfied for any game type
+;        1 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis
+;        2 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied
+;        3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player, 
+;            or on Allied Multiplayer turns
+;        4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player 
+;            or on Axis Multiplayer turns
+;        5 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis in Single Player, 
+;            or for AI controlled Axis majors on Axis human player turns
+;        6 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied in Single Player,
+;            or for AI controlled Allied majors on Allied human player turns
+;
 ; #LEVEL= Value range [-1, 4]
-;      What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
-;     -1 = a script that should only fire for AI friendly controlled majors on your turn
-;      0 = Green
-;      1 = Novice
-;      2 = Intermediate
-;      3 = Veteran
-;      4 = Expert
-; #GV= Does the event activate based on the Global Variable values assigned?
-;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
-;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
-;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
-;      Example B - #GV= 4[71,100] will trigger 30% per game
+;       What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;       -1 = a script that should only fire for AI friendly controlled majors on your turn
+;        0 = Green
+;        1 = Novice
+;        2 = Intermediate
+;        3 = Veteran
+;        4 = Expert
+;
+; #GV=   Does the event activate based on the Global Variable values assigned?
+;        Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
+;        Format: GV [min, max]
+;                GV range [1,10] 
+;                min range [1,100] 
+;                max range [1,100]
+;
+;        Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;        Example B - #GV= 4[71,100] will trigger 30% per game
+;
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
-;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
+;        Format: decision[response]
+;                decision range [1, 1100]
+;                response range [0, 1]
+;                   0 = NO
+;                   1 = YES
+;
 ;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
 ;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
 ;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
-; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
-; #COUNTRY_ID= Country ID associated with this event
+;
+; #TRIGGER=     Value range [0, 100]
+;               Percentage chance that the event will occur
+;
+; #COUNTRY_ID=  Value range [0, 120]
+;               Country ID that will be owner of this event
+;
 ; #NM_UPDOWN= The amount of National Morale that should be added or subtracted with respect to #COUNTRY_ID? (values range [-99999, 99999])
+;
 ; #NM_TURNS= How many turns will the #NM_UPDOWN= value be added or subtracted for? (values range [0, 99])
-; #DECISION= What internal decision number is this event assigned to? (values range [1, 1100]; max of 1100 decisions per campaign)
-;            This DECISION is always considered as True= 1
+;
+; #DECISION=    Value range [1, 1100] 
+;               Decision number assigned to the event 
+;               (max of 1100 decisions per campaign)
+;               This DECISION is always considered as True= 1
+;
 ; #CONDITION= Under what conditions will this event occur
 ;             Format: country_id [political_event] [political_alignment]
 ; }

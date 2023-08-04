@@ -7,9 +7,14 @@
 ; Basic structure of an AI research event:
 ; { 
 ;  #NAME= Event name (this will be shown as a selectable event under an OPTIONS screen within the game)
-; #POPUP= Event popup text (this will be displayed when the event occurs)
-; #FLAG= Will this be a default event for the campaign? (values range [0, 1]; True= 1; False= 0)
-; #TYPE= Values range [0, 3];
+; #POPUP= Event popup text 
+;         (this will be displayed when the event occurs)
+;
+; #FLAG= Value range [0, 1]
+;        Event default state:
+;        0 = Disabled
+;        1 = Enabled
+; #TYPE= Value range [0, 3];
 ;        With all other fields satisfied will this be:
 ;        0 = Single check regardless if #TRIGGER is satisfied
 ;        1 = Multiple check until #TRIGGER is satisfied
@@ -31,7 +36,8 @@
 ;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
 ;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
 ; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
-; #COUNTRY_ID= Country ID associated with this event
+; #COUNTRY_ID=  Value range [0, 120]
+;               Country ID that will be owner of this event
 ; #SKIP_FUNDS_CHECK= Should we skip the applicable funds check? (values range [0, 1]; True= 1; False= 0)
 ;
 ; #RESEARCH_ID_0= Infantry Weapons
@@ -68,7 +74,17 @@
 ; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
 ; #FRIENDLY_POSITION= Positions that must be under friendly control in order for event to occur
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
-;                      Format: country_id [political_alignment] [min_activation%] [surrendered_flag]
+;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
+;                              country_id range [1, 120]
+;                              political_alignment range [0, 2]
+;                                  0 = Neutral
+;                                  1 = Axis
+;                                  2 = Allied
+;                              mobilization range [0, 100]
+;                              surrendered_flag range [0, 1]
+;                                  0 = False
+;                                  1 = True (has surrendered)
+;
 ; #TACTICAL_CONDITION= Tactical map position (resource) that currently MUST NOT be threatened for event to
 ;                      occur, i.e. plan owner should have tactical advantage over this position
 ;                      Format: x,y [tactical_flag]

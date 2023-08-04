@@ -6,10 +6,17 @@
 ;
 ; Basic structure of an AI planning event:
 ; { 
-; #NAME= Event name (this will be shown as a selectable event under an OPTIONS screen within the game)
-; #POPUP= Event popup text (this will be displayed when the event occurs)
-; #FLAG= Will this be a default event for the campaign? (values range [0, 1]; True= 1; False= 0)
-; #TYPE= Values range [0, 3];
+; #NAME=  Event name 
+;         (this will be shown as a selectable event under an OPTIONS screen within the game)
+;
+; #POPUP= Event popup text 
+;         (this will be displayed when the event occurs)
+;
+; #FLAG= Value range [0, 1]
+;        Event default state:
+;        0 = Disabled
+;        1 = Enabled
+; #TYPE= Value range [0, 3];
 ;        With all other fields satisfied will this be:
 ;        0 = Single check regardless if #TRIGGER is satisfied
 ;        1 = Multiple check until #TRIGGER is satisfied
@@ -37,7 +44,8 @@
 ;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
 ;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
 ; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
-; #COUNTRY_ID= Country ID associated with this event
+; #COUNTRY_ID=  Value range [0, 120]
+;               Country ID that will be owner of this event
 ; #SIZE= How many units should be assigned to this plan?
 ;        Format: min_size, max_size
 ; #BUILD_LENGTH= How many game turns (Axis or Allied) do you want the build up period of the plan to last?
@@ -52,8 +60,19 @@
 ; #STEAL= Set priority by stealing units from other plans
 ;         Values: [0, 3]; False= 0; Steal_Offensive= 1; Steal_Defensive= 2; Steal_Offensive_Or_Defensive= 3)
 ; #FRIENDLY_POSITION= Positions that must be under friendly control in order for event to occur
+;
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
-;                      Format: country_id [political_alignment] [min_activation%] [surrendered_flag]
+;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
+;                              country_id range [1, 120]
+;                              political_alignment range [0, 2]
+;                                  0 = Neutral
+;                                  1 = Axis
+;                                  2 = Allied
+;                              mobilization range [0, 100]
+;                              surrendered_flag range [0, 1]
+;                                  0 = False
+;                                  1 = True (has surrendered)
+;
 ; #TACTICAL_CONDITION= Tactical map position (resource) that currently MUST NOT be threatened for event to
 ;                      occur, i.e. plan owner should have tactical advantage over this position
 ;                      Format: x,y [tactical_flag]
@@ -138,7 +157,7 @@
 ;
 ; More than one #ACTIVATE_POSITION can be set.  Distance or range checks will be based on the
 ; specified x,y position.  For example if the x,y position is a coastal tile then range checks will
-; be made on sea tiles, otherwise if it is a land tile range checks will be made on land tiles only.
+; be made on sea tiles, otherwise if it is a land tile, range checks will be made on land tiles only.
 ; Each #ACTIVATE_POSITION line will be read using OR logic.
 ; Note: Once a plan has been properly activated then all references to #ACTIVATE_POSITION are removed
 ;       from the plan as these conditions have been satisfied.  Use #CANCEL_POSITION to set the CANCEL conditions
@@ -149,7 +168,7 @@
 ;
 ; More than one #CANCEL_POSITION can be set.  Distance or range checks will be based on the
 ; specified x,y position.  For example if the x,y position is a coastal tile then range checks will
-; be made on sea tiles, otherwise if it is a land tile range checks will be made on land tiles only.
+; be made on sea tiles, otherwise if it is a land tile, range checks will be made on land tiles only.
 ; Each #CANCEL_POSITION line will be read using OR logic.
 ;
 ; Use the reference values provided for #COUNTRY_ID and not the country names

@@ -6,9 +6,11 @@
 ;
 ; Basic structure for a mobilization event:
 ; {
-; #NAME= Event name (this will be shown as a selectable event under an OPTIONS screen within the game)
+; #NAME=  Event name 
+;         (this will be shown as a selectable event under an OPTIONS screen within the game)
 ;
-; #POPUP= Event popup text (this will be displayed when the event occurs)
+; #POPUP= Event popup text 
+;         (this will be displayed when the event occurs)
 ;
 ; #IMAGE= Event image that will be displayed when event occurs
 ;         PNG images must be 736x418 or 368x418 pixels, see 'Extras' folder for sample images and frames
@@ -20,11 +22,11 @@
 ;         Format: sound1.mp3, sound2.mp3, sound3.mp3, sound4.mp3
 ;
 ; #FLAG= Value range [0, 1]
-;        Will this event be enabled by default:
+;        Event default state:
 ;        0 = Disabled
 ;        1 = Enabled
 ;
-; #TYPE= Values range [0, 3];
+; #TYPE= Value range [0, 3];
 ;        With all other fields satisfied will this be:
 ;        0 = Single check regardless if #TRIGGER is satisfied
 ;        1 = Multiple check until #TRIGGER is satisfied
@@ -34,53 +36,73 @@
 ;        3 = Event fires once if all other fields are satisfied, else it will not fire.
 ;            Either way, event will be removed never to be looked at again
 ;
-; #AI= Values range [0, 6]
-;      0 = Event fires whenever all fields are satisfied for any game type
-;      1 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis
-;      2 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied
-;      3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player, 
-;          or on Allied Multiplayer turns
-;      4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player 
-;          or on Axis Multiplayer turns
-;      5 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis in Single Player, 
-;          or for AI controlled Axis majors on Axis human player turns
-;      6 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied in Single Player,
-;          or for AI controlled Allied majors on Allied human player turns
+; #AI= Value range [0, 6]
+;        0 = Event fires whenever all fields are satisfied for any game type
+;        1 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis
+;        2 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied
+;        3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player, 
+;            or on Allied Multiplayer turns
+;        4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player 
+;            or on Axis Multiplayer turns
+;        5 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis in Single Player, 
+;            or for AI controlled Axis majors on Axis human player turns
+;        6 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied in Single Player,
+;            or for AI controlled Allied majors on Allied human player turns
 ;
 ; #LEVEL= Value range [-1, 4]
-;      What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
-;     -1 = a script that should only fire for AI friendly controlled majors on your turn
-;      0 = Green
-;      1 = Novice
-;      2 = Intermediate
-;      3 = Veteran
-;      4 = Expert
+;       What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;       -1 = a script that should only fire for AI friendly controlled majors on your turn
+;        0 = Green
+;        1 = Novice
+;        2 = Intermediate
+;        3 = Veteran
+;        4 = Expert
 ;
-; #GV= Does the event activate based on the Global Variable values assigned?
-;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
-;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
-;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
-;      Example B - #GV= 4[71,100] will trigger 30% per game
+; #GV=   Does the event activate based on the Global Variable values assigned?
+;        Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
+;        Format: GV [min, max]
+;                GV range [1,10] 
+;                min range [1,100] 
+;                max range [1,100]
+;
+;        Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;        Example B - #GV= 4[71,100] will trigger 30% per game
 ;
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
-;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
+;        Format: decision[response]
+;                decision range [1, 1100]
+;                response range [0, 1]
+;                0 = NO
+;                1 = YES
+;
 ;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
 ;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
 ;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
 ;
-; #TRIGGER= Value range [0, 100]
-;           Trigger percentage that the event will occur
+; #TRIGGER=     Value range [0, 100]
+;               Percentage chance that the event will occur
 ;
-; #COUNTRY_ID= Country ID associated with this event
+; #COUNTRY_ID=  Value range [0, 120]
+;               Country ID that will be owner of this event
 ;
-; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
+; #DATE=        Date that must be satisfied (in game) for event to occur 
+;               Format: yyyy/mm/dd
 ;
 ; #MOBILIZATION= The mobilization percentage increase/decrease for this event for #COUNTRY_ID
 ;                Format: [min%, max%] [political_direction]
 ;
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
 ;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
+;                              country_id range [1, 120]
+;                              political_alignment range [0, 2]
+;                                  0 = Neutral
+;                                  1 = Axis
+;                                  2 = Allied
+;                              mobilization range [0, 100]
+;                              surrendered_flag range [0, 1]
+;                                  0 = False
+;                                  1 = True (has surrendered)
 ; }
 ;
 ; NOTES:
@@ -360,7 +382,7 @@
 ;
 ; Allied Mers-El-Kebir attack on Pro-Vichy Fleet
 {
-#NAME= DE 118 - Attack On Mers-El-Kebir (Vichy France->Axis)
+#NAME= DE 118 - Attack On Mers-El-Kebir (Vichy France->>Axis)
 #POPUP= Operation Catapult - The Royal Navy Attacks The Vichy Fleet At Mers-El-Kebir
 #IMAGE= mers_el_kebir_1.png, mers_el_kebir_2.png
 #SOUND= ship_sinking.ogg, war1.ogg
@@ -579,11 +601,11 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
-;REMOVE1941 (Implement result first)
+
 ;
 ; Greek response to Pro-Allied Coup in Yugoslavia
 {
-#NAME= DE 104 - Pro-Allied Mobilization In Greece (Greece->Allies) (50% Chance)
+#NAME= DE 104 - Pro-Allied Mobilization In Greece (Greece->>Allies) (50% Chance)
 #POPUP= Greece Mobilizes In Response To The Coup In Yugoslavia
 #IMAGE=
 #SOUND=
@@ -1290,7 +1312,7 @@
 
 ;AMEND1940
 {
-#NAME= Denmark Occupied By Axis (Iceland->Allies)
+#NAME= Denmark Occupied By Axis (Iceland->>Allies)
 #POPUP= British Royal Marines Occupy Iceland
 #IMAGE=
 #SOUND=
@@ -1300,6 +1322,7 @@
 #GV= 1[1,100]
 #LINK= 126[1]
 #LEVEL= 0
+; Iceland(53)
 #COUNTRY_ID= 53
 #TRIGGER= 100
 #DATE= 1940/05/10
@@ -1921,7 +1944,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 {
-#NAME= Turkey Swayed by Axis Victories (Turkey->Axis) (25% Chance)
+#NAME= Turkey Swayed by Axis Victories (Turkey->>Axis) (25% Chance)
 #POPUP= The Prime Minister of Turkey Visits Berlin
 #IMAGE=
 #SOUND=
@@ -1935,7 +1958,7 @@
 ; 25% chance per game
 #TRIGGER= 25
 #DATE= 1941/02/26
-;20-90% mobilization increase towards Axis
+; 20-90% mobilization increase towards Axis
 #MOBILIZATION= [20,90] [1]
 ; Egypt(36) Allied and surrendered AND
 ; Vichy Syria Allied and surrendered AND
@@ -1968,7 +1991,7 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 844 - Germany Declares War On Switzerland (Switzerland->Allies)
+#NAME= DE 844 - Germany Declares War On Switzerland (Switzerland->>Allies)
 #POPUP= Germany Declares War On Switzerland
 #IMAGE=
 #SOUND= war1.ogg
@@ -2031,7 +2054,7 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 800 - The Anglo-Portuguese Alliance (Spain->Axis)
+#NAME= DE 800 - The Anglo-Portuguese Alliance (Spain->>Axis)
 #POPUP= Franco Orders Troop Deployment Along The Portuguese Border
 #IMAGE=
 #SOUND= report.ogg
@@ -2119,7 +2142,7 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 800 - The Anglo-Portuguese Alliance (Portugal->Allies)
+#NAME= DE 800 - The Anglo-Portuguese Alliance (Portugal->>Allies)
 #POPUP= Portugal Honors The Anglo-Portuguese Alliance
 #IMAGE=
 #SOUND=
@@ -2269,7 +2292,7 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 904 - Ribbentrop Travels To Portugal (Portugal->Axis)
+#NAME= DE 904 - Ribbentrop Diplomatic Mission To Portugal (Portugal->Axis)
 #POPUP= 
 #IMAGE=
 #SOUND= 
@@ -2290,7 +2313,7 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 905 - Ribbentrop Travels To Switzerland (Switzerland->Axis)
+#NAME= DE 905 - Ribbentrop Diplomatic Mission To Switzerland (Switzerland->Axis)
 #POPUP= 
 #IMAGE=
 #SOUND= 
@@ -2394,8 +2417,9 @@
 }
 
 ; Fall Weiss II
+; Bulgaria Axis and Mobilized
 {
-#NAME= DE 911 - Germany and Turkey Trade Agreement (Turkey->Axis)
+#NAME= DE 960 - Germany and Turkey Trade Agreement (Turkey->Axis)
 #POPUP= Germany Reaches A Trade Agreement With Turkey
 #IMAGE=
 #SOUND= 
@@ -2404,7 +2428,30 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 911[1]
+#LINK= 960[1]
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 2-4% mobilization increase towards Axis
+#MOBILIZATION= [2,4] [1]
+; Turkey(111) Axis
+#VARIABLE_CONDITION= 111 [1] [0] [0]
+}
+
+; Fall Weiss II
+; Greece Axis and Mobilized
+; Yugoslavia Axis controlled
+{
+#NAME= DE 961 - Germany and Turkey Trade Agreement (Turkey->Axis)
+#POPUP= Germany Reaches A Trade Agreement With Turkey
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 961[1]
 #COUNTRY_ID= 111
 #TRIGGER= 100
 #DATE= 1939/09/03
@@ -2616,7 +2663,7 @@
 ; Fall Weiss II
 ; UK Payments to Switzerland
 {
-#NAME= DE 822 - UK Payments To Switzerland (Switzerland->Allies)
+#NAME= DE 822 - UK Payments To Switzerland (Switzerland->>Allies)
 #POPUP= Allied Intervention Leads to Switzerland Ending Axis Relations
 #IMAGE=
 #SOUND= 
@@ -2750,7 +2797,7 @@
 ; Fall Weiss II
 ; Lend Lease to Saudi Arabia
 {
-#NAME= DE 829 - Lend Lease to Saudi Arabia (Saudi Arabia->Allies) (%5 Chance)
+#NAME= DE 829 - Lend Lease to Saudi Arabia (Saudi Arabia->>Allies) (%5 Chance)
 #POPUP= Saudi Arabia Aligns Closely With USA, Oil Exports Begin
 #IMAGE=
 #SOUND= 
@@ -2786,7 +2833,7 @@
 #COUNTRY_ID= 87
 #TRIGGER= 100
 #DATE= 1939/09/03
-;2-4% activation increase towards Allies
+; 2-4% activation increase towards Allies
 #MOBILIZATION= [2,4] [2]
 ; Germany(45) is Axis, Fully Active and Not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -2807,7 +2854,7 @@
 #COUNTRY_ID= 111
 #TRIGGER= 100
 #DATE= 1939/09/03
-;8-10% activation increase towards Allies
+; 8-10% activation increase towards Allies
 #MOBILIZATION= [8,10] [2]
 ; German Active And Fully Mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -2875,7 +2922,7 @@
 #COUNTRY_ID= 111
 #TRIGGER= 100
 #DATE= 1939/09/01
-;3-5% mobilization increase towards Allies
+; 3-5% mobilization increase towards Allies
 #MOBILIZATION= [3,5] [2]
 ; Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
@@ -2883,7 +2930,7 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 917 - Greece Joins The Axis
+#NAME= DE 917 - Greece Joins The Axis (Greece->Axis)
 #POPUP= Germany Permits Territorial Concessions to Greece
 #IMAGE=
 #SOUND=
@@ -2904,7 +2951,7 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 917 - Bulgaria Cedes Territory To Greece (Greece->Allies)
+#NAME= DE 917 - Bulgaria Cedes Territory To Greece (Greece->>Allies)
 #POPUP= Bulgaria Signs A Defensive Pact With USSR
 #IMAGE=
 #SOUND=
@@ -2938,15 +2985,15 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #DATE= 1939/09/03
-;2-5% activation increase towards Allies
+; 2-5% activation increase towards Allies
 #MOBILIZATION= [2,5] [2]
-; USSR(116) Allies and not fully mobilized
+; USSR(116) Allied and not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 }
 
 ; Fall Weiss II
 {
-#NAME= DE 800 - Italy Joins The Axis (Italy->Axis)
+#NAME= DE 800 - Italy Joins The Axis (Italy->>Axis)
 #POPUP= Mussolini Hastily Joins Fascist Alliance
 #IMAGE=
 #SOUND=
@@ -2954,12 +3001,13 @@
 #TYPE= 1
 #AI= 0
 #GV= 1[1,100]
+; Anglo-Portuguese Alliance
 #LINK= 800[1]
 #LEVEL= 0
 #COUNTRY_ID= 59
 #TRIGGER= 100
 #DATE= 1939/09/03
-;200% activation increase towards Allies
+; 200% activation increase towards Allies
 #MOBILIZATION= [200,200] [1]
 ; Spain(99) politically leaning to Axis and Mobilized
 #VARIABLE_CONDITION= 99 [1] [100] [0]
@@ -2967,7 +3015,7 @@
 
 ; Fall Weiss II
 {
-#NAME= Greece Joins The Axis (Greece->Axis)
+#NAME= DE 917 - Greece Joins The Axis (Greece->>Axis)
 #POPUP= Greece Forms An Alliance With Germany
 #IMAGE=
 #SOUND=
@@ -2980,15 +3028,15 @@
 #COUNTRY_ID= 46
 #TRIGGER= 100
 #DATE= 1939/09/03
-;200% activation increase towards Axis
+; 200% activation increase towards Axis
 #MOBILIZATION= [200,200] [1]
-; German(45) fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+; German(46) Axis leaning
+#VARIABLE_CONDITION= 46 [1] [1] [0]
 }
 
 ; Fall Weiss II
 {
-#NAME= Yugoslavia Joins The Axis (Yugoslavia->Axis) (50% Chance)
+#NAME= Yugoslavia Joins The Axis (Yugoslavia->>Axis) (50% Chance)
 #POPUP= Surrounded By Axis Nations - Yugoslavia Signs Tripartite Pact
 #IMAGE=
 #SOUND=
@@ -3002,14 +3050,12 @@
 #COUNTRY_ID= 120
 #TRIGGER= 50
 #DATE= 1939/09/03
-;200% activation increase towards Axis
+; 200% activation increase towards Axis
 #MOBILIZATION= [200,200] [1]
-; Germany(45) Axis Mobilized
 ; Greece(46) Axis Mobilized
 ; Romania(93) Axis Mobilized
 ; Hungary(52) Axis Mobilized
 ; Italy(59) Axis Mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 46 [1] [100] [0]
 #VARIABLE_CONDITION= 93 [1] [100] [0]
 #VARIABLE_CONDITION= 52 [1] [100] [0]
@@ -3018,7 +3064,7 @@
 
 ; Fall Weiss II
 {
-#NAME= Turkey Greatly Concerned About Complete Balkan Axis Alliance (Turkey->Allies)
+#NAME= Turkey Greatly Concerned About Complete Balkan Axis Alliance (Turkey->>Allies)
 #POPUP= Turkey Greatly Concerned About Complete Balkan Axis Alliance
 #IMAGE=
 #SOUND=
@@ -3067,7 +3113,7 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 874 - Vichy France Joins The Axis (Vichy France->Axis)
+#NAME= DE 874 - Vichy France Joins The Axis (Vichy France->>Axis)
 #POPUP= Secret Negotiations Between Germany and Vichy France Conclude
 #IMAGE=
 #SOUND= 
@@ -3088,7 +3134,7 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 874 - Algeria Joins The Axis (Algeria->Axis) (50% Chance)
+#NAME= DE 874 - Algeria Joins The Axis (Algeria->>Axis) (50% Chance)
 #POPUP= Admiral Darlan Remains Loyal To Vichy France
 #IMAGE=
 #SOUND= 
@@ -3111,7 +3157,7 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 874 - Tunisia Joins The Axis (Tunisia->Axis) (50% Chance)
+#NAME= DE 874 - Tunisia Joins The Axis (Tunisia->>Axis) (50% Chance)
 #POPUP= The Tunisian Governor Declares For The Axis
 #IMAGE=
 #SOUND= 
@@ -3135,7 +3181,7 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 874 - Syria Joins The Axis (Syria->Axis) (50% Chance)
+#NAME= DE 874 - Syria Joins The Axis (Syria->>Axis) (50% Chance)
 #POPUP= Syria Joins The War To Fight For Independence
 #IMAGE=
 #SOUND= 
@@ -3195,7 +3241,7 @@
 #COUNTRY_ID= 103
 #TRIGGER= 100
 #DATE= 1939/09/03
-; 10% mobilization increase towards Allies
+; 10-15% mobilization increase towards Allies
 #MOBILIZATION= [10,15] [2]
 ; Sweden(103) Axis and not surrendered
 #VARIABLE_CONDITION= 103 [1] [0] [0]
@@ -3203,7 +3249,7 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 947 - Germany: Commercial Agreement - Signed (USSR->Axis)
+#NAME= DE 947 - Germany: Commercial Agreement - Deliveries Fulfilled (USSR->Axis)
 #POPUP= The German-Soviet Border And Commercial Agreement Is Signed At Moscow
 #IMAGE=
 #SOUND= 
@@ -3224,7 +3270,7 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 947 - Germany: Commercial Agreement - Not Signed (USSR->Allies)
+#NAME= DE 947 - Germany: Commercial Agreement - Deliveries Delayed (USSR->Allies)
 #POPUP= Stalin Grows Suspicious as Deliveries of German Military Equipment is Further Delayed
 #IMAGE=
 #SOUND= 
@@ -3268,7 +3314,7 @@
 ; NEW(7/14/2023)
 ; Fall Weiss II
 {
-#NAME= DE 970 - USSR: Forcibly Occupies Turkish Straits (Turkey->Axis)
+#NAME= DE 970 - USSR: Forcibly Occupies Turkish Straits (Turkey->>Axis)
 #POPUP= Turkey Outraged Over Soviet Occupation of the Turkish Straits
 #IMAGE=
 #SOUND=
@@ -3312,7 +3358,7 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 130 - Turkey Signs The Tripartite Pact (Turkey->Axis)
+#NAME= DE 130 - Turkey Signs The Tripartite Pact (Turkey->>Axis)
 #POPUP= Von Ribbentrop Travels To Ankara To Form An Alliance With Turkey
 #IMAGE=
 #SOUND= 
@@ -3613,7 +3659,7 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 542 - Success Of IRA In Ireland (Ireland->Axis) (20% Chance)
+#NAME= DE 542 - Success Of IRA In Ireland (Ireland->>Axis) (20% Chance)
 #POPUP= Building On Recent Attacks The IRA Gains Momentum In Demanding UK Withdrawal From Northern Ireland
 #IMAGE=
 #SOUND= 
@@ -3774,7 +3820,7 @@
 #COUNTRY_ID= 99
 #TRIGGER= 10
 #DATE= 1940/01/01
-; 1-8% mobilization increase towards Allies
+; 4-8% mobilization increase towards Allies
 #MOBILIZATION= [4,8] [2]
 ; Spain(99) Axis leaning
 #VARIABLE_CONDITION= 99 [1] [75] [0]
