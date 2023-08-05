@@ -264,6 +264,209 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; AXIS EVENTS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+{
+#NAME= DE 1001 - Axis DoW on Switzerland (Germany)
+#POPUP= The German Government's Political Standing Is Affected By The Attack On Switzerland
+#IMAGE= 
+#SOUND=
+#FLAG= 1 
+#TYPE= 0 
+#AI= 0 
+#GV= 1[1,100]
+#LINK= 0[0] 
+#LEVEL= 0 
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#NM_UPDOWN= -3500
+#NM_TURNS= 1
+#DECISION= 1001
+; Switzerland declared war on by Axis
+#CONDITION= 104 [1] [1]
+}
+
+{
+#NAME= DE 1002 - Axis DoW on Switzerland (Italy)
+#POPUP= Mussolini's Regime Loses Credibility For The Attack On Switzerland
+#IMAGE= 
+#SOUND= 
+#FLAG= 1 
+#TYPE= 0 
+#AI= 0 
+#GV= 1[1,100]
+#LINK= 0[0] 
+#LEVEL= 0
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#NM_UPDOWN= -2500
+#NM_TURNS= 1
+#DECISION= 1002
+; Switzerland declared war on by Axis
+#CONDITION= 104 [1] [1]
+}
+
+{
+#NAME= DE 1003 - Axis DoW on Spain (Germany)
+#POPUP= The Axis Attack On Franco's Spain Causes Consternation In Germany
+#IMAGE= 
+#SOUND= 
+#FLAG= 1 
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0] 
+#LEVEL= 0
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#NM_UPDOWN= -3500
+#NM_TURNS= 1
+#DECISION= 1003
+; Spain declared war on by Axis
+#CONDITION= 99 [1] [1]
+}
+
+{
+#NAME= DE 1004 - Axis DoW on Spain (Italy)
+#POPUP= Mussolini's Regime Loses Credibility For Attacking Its Former Ally
+#IMAGE=
+#SOUND= 
+#FLAG= 1 
+#TYPE= 0 
+#AI= 0 
+#GV= 1[1,100]
+#LINK= 0[0] 
+#LEVEL= 0
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#NM_UPDOWN= -2500
+#NM_TURNS= 1
+#DECISION= 1004
+; Spain declared war on by Axis
+#CONDITION= 99 [1] [1]
+}
+
+{
+#NAME= DE 1005 - Axis DoW on USSR
+#POPUP=
+#IMAGE=
+#SOUND= 
+#FLAG= 1 
+#TYPE= 0 
+#AI= 0 
+#GV= 1[1,100]
+#LINK= 0[0] 
+#LEVEL= 0
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#NM_UPDOWN= 0
+#NM_TURNS= 0
+#DECISION= 1005
+; USSR declared war on by Axis
+#CONDITION= 116 [1] [1]
+}
+
+{
+#NAME= DE 1006 - Axis DoW on Hungary
+#POPUP= The Axis Attack On Hungary Causes Consternation In Germany
+#IMAGE= 
+#SOUND= 
+#FLAG= 1 
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0] 
+#LEVEL= 0
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#NM_UPDOWN= -3500
+#NM_TURNS= 1
+#DECISION= 1006
+; Hungary declared war on by Axis
+#CONDITION= 52 [1] [1]
+}
+
+{
+#NAME= DE 1007 - Axis DoW on Bulgaria
+#POPUP= The Axis Attack On Bulgaria Causes Consternation In Germany
+#IMAGE= 
+#SOUND= 
+#FLAG= 1 
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0] 
+#LEVEL= 0
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#NM_UPDOWN= -3500
+#NM_TURNS= 1
+#DECISION= 1007
+; Bulgaria(19) declared war on by Axis
+#CONDITION= 19 [1] [1]
+}
+
+{
+#NAME= DE 1008 - Axis DoW on Romania
+#POPUP= The Axis Attack On Romania Causes Consternation In Germany
+#IMAGE= 
+#SOUND= 
+#FLAG= 1 
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0] 
+#LEVEL= 0
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#NM_UPDOWN= -3500
+#NM_TURNS= 1
+#DECISION= 1008
+; Romania declared war on by Axis
+#CONDITION= 93 [1] [1]
+}
+
+{
+#NAME= DE 1009 - Axis DoW on Latvia
+#POPUP=
+#IMAGE=
+#SOUND= 
+#FLAG= 1 
+#TYPE= 0 
+#AI= 0 
+#GV= 1[1,100]
+#LINK= 0[0] 
+#LEVEL= 0
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#NM_UPDOWN= 0
+#NM_TURNS= 0
+#DECISION= 1009
+; Latvia declared war on by Axis
+#CONDITION= 61 [1] [1]
+}
+
+{
+#NAME= DE 1010 - Axis DoW on Estonia
+#POPUP=
+#IMAGE=
+#SOUND= 
+#FLAG= 1 
+#TYPE= 0 
+#AI= 0 
+#GV= 1[1,100]
+#LINK= 0[0] 
+#LEVEL= 0
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#NM_UPDOWN= 0
+#NM_TURNS= 0
+#DECISION= 1010
+; Estonia declared war on by Axis
+#CONDITION= 38 [1] [1]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; ALLIED EVENTS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 {
@@ -506,205 +709,3 @@
 #CONDITION= 73 [1] [2]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; AXIS EVENTS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-{
-#NAME= DE 1001 - Axis DoW on Switzerland (Germany)
-#POPUP= The German Government's Political Standing Is Affected By The Attack On Switzerland
-#IMAGE= 
-#SOUND=
-#FLAG= 1 
-#TYPE= 0 
-#AI= 0 
-#GV= 1[1,100]
-#LINK= 0[0] 
-#LEVEL= 0 
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#NM_UPDOWN= -3500
-#NM_TURNS= 1
-#DECISION= 1001
-; Switzerland declared war on by Axis
-#CONDITION= 104 [1] [1]
-}
-
-{
-#NAME= DE 1002 - Axis DoW on Switzerland (Italy)
-#POPUP= Mussolini's Regime Loses Credibility For The Attack On Switzerland
-#IMAGE= 
-#SOUND= 
-#FLAG= 1 
-#TYPE= 0 
-#AI= 0 
-#GV= 1[1,100]
-#LINK= 0[0] 
-#LEVEL= 0
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#NM_UPDOWN= -2500
-#NM_TURNS= 1
-#DECISION= 1002
-; Switzerland declared war on by Axis
-#CONDITION= 104 [1] [1]
-}
-
-{
-#NAME= DE 1003 - Axis DoW on Spain (Germany)
-#POPUP= The Axis Attack On Franco's Spain Causes Consternation In Germany
-#IMAGE= 
-#SOUND= 
-#FLAG= 1 
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0] 
-#LEVEL= 0
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#NM_UPDOWN= -3500
-#NM_TURNS= 1
-#DECISION= 1003
-; Spain declared war on by Axis
-#CONDITION= 99 [1] [1]
-}
-
-{
-#NAME= DE 1004 - Axis DoW on Spain (Italy)
-#POPUP= Mussolini's Regime Loses Credibility For Attacking Its Former Ally
-#IMAGE=
-#SOUND= 
-#FLAG= 1 
-#TYPE= 0 
-#AI= 0 
-#GV= 1[1,100]
-#LINK= 0[0] 
-#LEVEL= 0
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#NM_UPDOWN= -2500
-#NM_TURNS= 1
-#DECISION= 1004
-; Spain declared war on by Axis
-#CONDITION= 99 [1] [1]
-}
-
-{
-#NAME= DE 1005 - Axis DoW on USSR
-#POPUP=
-#IMAGE=
-#SOUND= 
-#FLAG= 1 
-#TYPE= 0 
-#AI= 0 
-#GV= 1[1,100]
-#LINK= 0[0] 
-#LEVEL= 0
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#NM_UPDOWN= 0
-#NM_TURNS= 0
-#DECISION= 1005
-; USSR declared war on by Axis
-#CONDITION= 116 [1] [1]
-}
-
-{
-#NAME= DE 1006 - Axis DoW on Hungary
-#POPUP= The Axis Attack On Hungary Causes Consternation In Germany
-#IMAGE= 
-#SOUND= 
-#FLAG= 1 
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0] 
-#LEVEL= 0
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#NM_UPDOWN= -3500
-#NM_TURNS= 1
-#DECISION= 1006
-; Hungary declared war on by Axis
-#CONDITION= 52 [1] [1]
-}
-
-{
-#NAME= DE 1007 - Axis DoW on Bulgaria
-#POPUP= The Axis Attack On Bulgaria Causes Consternation In Germany
-#IMAGE= 
-#SOUND= 
-#FLAG= 1 
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0] 
-#LEVEL= 0
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#NM_UPDOWN= -3500
-#NM_TURNS= 1
-#DECISION= 1007
-; Bulgaria(19) declared war on by Axis
-#CONDITION= 19 [1] [1]
-}
-
-{
-#NAME= DE 1008 - Axis DoW on Romania
-#POPUP= The Axis Attack On Romania Causes Consternation In Germany
-#IMAGE= 
-#SOUND= 
-#FLAG= 1 
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0] 
-#LEVEL= 0
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#NM_UPDOWN= -3500
-#NM_TURNS= 1
-#DECISION= 1008
-; Romania declared war on by Axis
-#CONDITION= 93 [1] [1]
-}
-
-{
-#NAME= DE 1009 - Axis DoW on Latvia
-#POPUP=
-#IMAGE=
-#SOUND= 
-#FLAG= 1 
-#TYPE= 0 
-#AI= 0 
-#GV= 1[1,100]
-#LINK= 0[0] 
-#LEVEL= 0
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#NM_UPDOWN= 0
-#NM_TURNS= 0
-#DECISION= 1009
-; Latvia declared war on by Axis
-#CONDITION= 61 [1] [1]
-}
-
-{
-#NAME= DE 1010 - Axis DoW on Estonia
-#POPUP=
-#IMAGE=
-#SOUND= 
-#FLAG= 1 
-#TYPE= 0 
-#AI= 0 
-#GV= 1[1,100]
-#LINK= 0[0] 
-#LEVEL= 0
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#NM_UPDOWN= 0
-#NM_TURNS= 0
-#DECISION= 1010
-; Estonia declared war on by Axis
-#CONDITION= 38 [1] [1]
-}
