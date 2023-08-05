@@ -85,11 +85,22 @@
 ; #COUNTRY_ID=  Value range [0, 120]
 ;               Surrendering country's ID
 ;
-; #RECIPIENT_ID= Recipient country ID (country that will receive control of the territory of COUNTRY ID upon surrender)
+; #RECIPIENT_ID= Value range [1, 120]
+;                Recipient country 
+;                (country that will receive control of the territory of COUNTRY ID upon surrender)
 ;
-; #ARMISTICE= Will this be an armistice event rather than a full surrender? (values range [0, 1]; False=0; True=1; True_and_have_Minor_switch_sides=2)
+; #ARMISTICE=   Value range [0, 2]
+;               Will this be an armistice event rather than a full surrender? 
+;               0 = False
+;               1 = True
+;               2 = True (and have minor switch sides)
 ;
-; #REMOVE= Remove units when there is an armistice? (values range [0, 3]; None=0; Land=1; Naval=2; All=3)
+; #REMOVE=      Value range [0, 3]
+;               Remove units when there is an armistice?
+;               0 = None
+;               1 = Land
+;               2 = Naval
+;               3 = All
 ;
 ; #DATE=        Date that must be satisfied (in game) for event to occur 
 ;               Format: yyyy/mm/dd
@@ -334,9 +345,7 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1940/04/03
-; Germany(45) Axis and not surrendered
-; Denmark(18) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Denmark(31) Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 31 [0] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -360,7 +369,7 @@
 #DATE= 1943/01/01
 ; Hungary(52) Axis and not surrendered
 #VARIABLE_CONDITION= 52 [1] [100] [0]
-; 2 Allied units are within 6 hexes of Budapest
+; 2 Allied units are within 6 hexes of Budapest(184,88)
 #CONDITION_POSITION= 184,88 [6,6] [2,2] [2] [0]
 }
 
@@ -382,9 +391,7 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1940/04/14
-; Germany(45) Axis and not surrendered
 ; Norway(78) Axis (not fully active) and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 78 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -407,8 +414,6 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1940/04/14
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Norway(78) Allied but not fully mobilized
 #VARIABLE_CONDITION= 78 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -651,7 +656,7 @@
 ; Historical date of event was 1943/09/08
 ; Sounds - BBC Archive
 {
-#NAME= Italy(AI): Italy Surrenders (Italy -> USA) (50%)
+#NAME= Italy Surrenders (Italy -> USA) (50%)
 #POPUP= Marshal Badoglio Signs An Armistice With The Allies - Italy Surrenders
 #IMAGE=
 #SOUND= italy_surrender.ogg
@@ -682,7 +687,7 @@
 ; Historical date of event was 1941/04/18
 ; Germany sends a mission to support the Iraqis
 {
-#NAME= DE 171 - UK Invades Iraq In Response To Pro-Axis Coup (Variable)
+#NAME= DE 171 - UK Invades Iraq In Response To Pro-Axis Coup (25%)
 #POPUP= <<TAG_13>>
 #IMAGE= ukoccupyiraq.png
 #SOUND= battle2.ogg
@@ -712,7 +717,7 @@
 ; Historical date of event was 1941/04/18
 ; Germany does not send a mission to support the Iraqis
 {
-#NAME= DE 172 - UK Invades Iraq In Response To Pro-Axis Coup (Variable)
+#NAME= DE 172 - UK Invades Iraq In Response To Pro-Axis Coup (75%)
 #POPUP= <<TAG_13>>
 #IMAGE= ukoccupyiraq.png
 #SOUND= battle2.ogg
@@ -737,10 +742,6 @@
 }
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Allied AI Events
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
 ;
 ; British and Free French Forces Occupy Syria
 ; Historical date of event was 1941/06/08
@@ -769,12 +770,6 @@
 #CONDITION_POSITION= 206,124 [0,0] [1,1] [2] [0]
 }
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Axis AI Events
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-
 ;
 {
 #NAME= AXIS AI: Germany Occupies Luxembourg (100%)
@@ -793,9 +788,7 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1939/09/01
-; Germany(45) Axis and not surrendered
 ; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 10 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -825,7 +818,7 @@
 }
 
 {
-#NAME= DE 131 British and Free French Forces Occupy Syria
+#NAME= DE 131 - British and Free French Forces Occupy Syria
 #POPUP= UK and FF Forces Occupy Syria - General De Gaulle Promises End To French Mandate
 #IMAGE= ukoccupysyria.png
 #SOUND= combat1.ogg
@@ -849,7 +842,7 @@
 
 ;
 {
-#NAME= DE 543 - UK Occupies Ireland (100%)
+#NAME= DE 543 - UK Occupies Ireland
 #POPUP= Scottish And Welsh Forces March Into Ireland
 #IMAGE=
 #SOUND= hq_movement1.ogg, hq_movement2.ogg
