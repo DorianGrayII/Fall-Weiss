@@ -83,7 +83,7 @@
 ;               Percentage chance that the event will occur
 ;
 ; #COUNTRY_ID=  Value range [0, 120]
-;               Country ID that will be owner of this event
+;               Country that will be owner of this event
 ;
 ; #ALIGNMENT_ID= Value range [0, 2]
 ;               Political alignment ID that will be the owner of the event
@@ -91,7 +91,8 @@
 ;               1 = Axis
 ;               2 = Allied
 ;
-; #FLAG_ID= Flag ID that will be shown in the popup for this event
+; #FLAG_ID=     Value range [1, 120]
+;               Flag that will be shown in the popup for this event
 ;
 ; #SEASON_FLAG= Value range[0, 5]
 ;               Season flag can be used to limit event to a particular season
@@ -361,113 +362,6 @@
 ; WINTER= 4
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-{
-#NAME= DE 643 - Norwegian Forces Damage The Rail Network As They Retire Into The Hinterland
-#POPUP= Norwegian Forces Damage The Rail Network As They Retire Into The Hinterland
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 643[1]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 78
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1940/04/14
-#SOURCE_POSITION=
-#DESTINATION_RESOURCE= 167,48 [1,3]
-#DESTINATION_RESOURCE= 174,28 [1,3]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 78 [2] [100] [1]
-}
-
-{
-#NAME= DE 644 - Norwegian Forces Damage The Rail Network As They Retire Into The Hinterland
-#POPUP= Norwegian Forces Damage The Rail Network As They Retire Into The Hinterland
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 644[1]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 78
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1940/04/14
-#SOURCE_POSITION=
-#DESTINATION_RESOURCE= 167,48 [1,3]
-#DESTINATION_RESOURCE= 174,28 [1,3]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 78 [2] [100] [1]
-}
-
-{
-#NAME= DE 108 - Dutch Railway Workers Strike As Allied Forces Approach The Netherlands (50% Chance)
-#POPUP= Dutch Railway Workers Strike As Allied Forces Approach The Netherlands
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 108[1]
-#COUNTRY_ID= 10
-#ALIGNMENT_ID= 0
-#FLAG_ID= 73
-#TRIGGER= 50
-#SEASON_FLAG= 0
-#DATE= 1940/01/20
-#SOURCE_POSITION=
-#DESTINATION_RESOURCE= 156,77 [1,4]
-#DESTINATION_RESOURCE= 155,76 [1,4]
-#DESTINATION_RESOURCE= 156,75 [1,4]
-#VARIABLE_CONDITION= 10 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-}
-
-{
-#NAME= DE 108 - Dutch Railway Workers Strike As Allied Forces Approach The Netherlands (25% Chance)
-#POPUP= Dutch Railway Workers Strike As Allied Forces Approach The Netherlands
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 108[0]
-#COUNTRY_ID= 10
-#ALIGNMENT_ID= 0
-#FLAG_ID= 73
-#TRIGGER= 25
-#SEASON_FLAG= 0
-#DATE= 1940/01/20
-#SOURCE_POSITION=
-#DESTINATION_RESOURCE= 156,77 [1,4]
-#DESTINATION_RESOURCE= 155,76 [1,4]
-#DESTINATION_RESOURCE= 156,75 [1,4]
-; Belgium(10) aligned Allied, fully mobilized
-; France(10) aligned Allied, fully mobilized
-; UK(112) aligned Allied, fully mobilized
-; USA(115) aligned Allied, fully mobilized
-#VARIABLE_CONDITION= 10 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-}
-
 {
 #NAME= Fighting Breaks Out In Greece Between Monarchists And Communists
 #POPUP= Fighting Breaks Out In Greece Between Monarchists And Communists
@@ -601,30 +495,6 @@
 }
 
 {
-#NAME= DE 750 - Insurrection Against The Axis In Naples As Allied Forces Approach!
-#POPUP= Insurrection Against The Axis In Naples As Allied Forces Approach!
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 750[1]
-#COUNTRY_ID= 115
-#ALIGNMENT_ID= 0
-#FLAG_ID= 59
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1942/01/01
-#SOURCE_POSITION=
-; Naples(175,103)
-#DESTINATION_RESOURCE= 175,103 [1,3]
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-}
-
-{
 #NAME= Strikes Break Out In Turin (35% Chance)
 #POPUP= Strikes Break Out In Turin
 #IMAGE=
@@ -723,9 +593,524 @@
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; UK DECISION EVENTS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Malta limits Axis supply in the Mediterranean
+{ 
+#NAME= Malta Effect (Tripoli, Sirte, El Agheila, Benghazi, Derna) (15% Chance)
+#POPUP= Malta Hinders Axis Supply In the Mediterranean (Tripoli, Sirte, El Agheila, Benghazi)
+#IMAGE=
+#SOUND=
+#FLAG= 1
+; 2 = Reoccurring check until end of game
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 15
+#SEASON_FLAG= 0
+#DATE= 1941/01/01
+; Malta(175,114) [any unit]
+#SOURCE_POSITION= 175,114 [-1]
+; Tripoli(172,121)
+#DESTINATION_RESOURCE= 172,121 [1,2]
+; Tripoli Port
+#DESTINATION_RESOURCE= 172,120 [1,2]
+; Sirte(179,124)
+#DESTINATION_RESOURCE= 179,124 [1,2]
+; El Agheila(184,126)
+#DESTINATION_RESOURCE= 184,126 [1,2]
+; Benghazi(186,122)
+#DESTINATION_RESOURCE= 186,122 [1,2]
+; Benghazi(Port)
+#DESTINATION_RESOURCE= 185,122 [1,2]
+; UK(112) Allied and not surrendered
+; Egypt(36) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+}
+
+; Malta limits Axis supply in the Mediterranean
+{ 
+#NAME= Malta Effect (Derna, Msus, Mekili, Gazala) (15% Chance)
+#POPUP= Malta Hinders Axis Supply In the Mediterranean (Derna, Msus, Mekili, Gazala)
+#IMAGE=
+#SOUND=
+#FLAG= 1
+; 2 = Reoccurring check until end of game
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 15
+#SEASON_FLAG= 0
+#DATE= 1941/01/01
+; Malta(175,114) [any unit]
+#SOURCE_POSITION= 175,114 [-1]
+; Derna(191,120)
+#DESTINATION_RESOURCE= 191,120 [1,2]
+; Msus(188,124)
+#DESTINATION_RESOURCE= 188,124 [1,2]
+; Mekili(190,122)
+#DESTINATION_RESOURCE= 190,122 [1,2]
+; Gazala(192,122)
+#DESTINATION_RESOURCE= 192,122 [1,2]
+; Homs(175,121) - Added by Fall Weiss
+#DESTINATION_RESOURCE= 175,121 [1,2]
+; Buerat(177,123) - Added by Fall Weiss
+#DESTINATION_RESOURCE= 177,123 [1,2]
+; UK(112) Allied and not surrendered
+; Egypt(36) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+}
+
+; Malta limits Axis supply in the Mediterranean
+{ 
+#NAME= Malta Effect (Tobruk, Alexandria, Port Said) (20% Chance)
+#POPUP= Malta Hinders Axis Supply In the Mediterranean (Tobruk, Alexandria, Port Said)
+#IMAGE=
+#SOUND=
+#FLAG= 1
+; 2 = Reoccurring check until end of game
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 20
+#SEASON_FLAG= 0
+#DATE= 1940/08/01
+; Malta(175,114) [any unit]
+#SOURCE_POSITION= 175,114 [-1]
+; Tobruk - Port
+#DESTINATION_RESOURCE= 195,121 [1,2]
+; Tobruk(194,122)
+#DESTINATION_RESOURCE= 194,122 [1,2]
+; Alexandria(Port)
+#DESTINATION_RESOURCE= 205,123 [1,2]
+; Alexandria(206,124)
+#DESTINATION_RESOURCE= 206,124 [1,2]
+; Port Said(209,122)
+#DESTINATION_RESOURCE= 209,122 [1,2]
+#DESTINATION_RESOURCE= 209,123 [1,2]
+; UK(112) Allied and not surrendered
+; Egypt(36) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+}
+
+; Malta limits Axis supply in the Mediterranean
+{ 
+#NAME= Malta Effect (Bardia, Sidi Barrani, Mersa Matruh, El Alamein) (20% Chance)
+#POPUP= Malta Hinders Axis Supply In the Mediterranean (Bardia, Sidi Barrani, Mersa Matruh, El Alamein)
+#IMAGE=
+#SOUND=
+#FLAG= 1
+; 2 = Reoccurring check until end of game
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 20
+#SEASON_FLAG= 0
+#DATE= 1940/08/01
+; Malta(175,114) [any unit]
+#SOURCE_POSITION= 175,114 [-1]
+; Bardia(196,123)
+#DESTINATION_RESOURCE= 196,123 [1,2]
+; Sidi Barrani(198,123)
+#DESTINATION_RESOURCE= 198,123 [1,2]
+; Mersa Matruh(200,124)
+#DESTINATION_RESOURCE= 200,124 [1,2]
+; El Alamein(204,125)
+#DESTINATION_RESOURCE= 204,125 [1,2]
+; UK(112) Allied and not surrendered
+; Egypt(36) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+}
+
+{
+#NAME= US East Coast Shipping Disrupted By Axis Raiders (Continuous)
+#POPUP= The Presence Of Axis Vessels Disrupts US Coastal Shipping
+#IMAGE=
+#SOUND= sub_movement.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 0
+#ALIGNMENT_ID= 1
+#FLAG_ID= 115
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#SOURCE_POSITION= 7,112 [-1.6]
+#SOURCE_POSITION= 7,111 [-1.6]
+#SOURCE_POSITION= 11,105 [-1.6]
+#SOURCE_POSITION= 11,106 [-1.6]
+#SOURCE_POSITION= 12,106 [-1.6]
+#SOURCE_POSITION= 16,104 [-1.6]
+#SOURCE_POSITION= 16,103 [-1.6]
+#SOURCE_POSITION= 18,100 [-1.6]
+#SOURCE_POSITION= 18,99 [-1.6]
+#DESTINATION_RESOURCE= 0,103 [1,2]
+#DESTINATION_RESOURCE= 0,104 [1,2]
+; Germany(45) Axis and not surrendered
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+}
+
+{
+#NAME= Canadian Shipping Near Sydney Mines Disrupted By Axis Raiders (Continuous)
+#POPUP= Axis Vessels Disrupt Merchant Shipping Near The Sydney Mines
+#IMAGE=
+#SOUND= sub_movement.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 0
+#ALIGNMENT_ID= 1
+#FLAG_ID= 21
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#SOURCE_POSITION= 37,89 [-1.6]
+#SOURCE_POSITION= 38,90 [-1.6]
+#SOURCE_POSITION= 38,91 [-1.6]
+#DESTINATION_RESOURCE= 36,91 [1,2]
+; Germany(45) Axis and not surrendered
+; Canada(21) Allied and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 21 [2] [100] [0]
+}
+
+{
+#NAME= Canadian Shipping Near Halifax Disrupted By Axis Raiders (Continuous)
+#POPUP= Axis Raiders Disrupt Production At The Springhill Mines And Halifax
+#IMAGE=
+#SOUND= sub_movement.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 0
+#ALIGNMENT_ID= 1
+#FLAG_ID= 21
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#SOURCE_POSITION= 29,96 [-1.6]
+#SOURCE_POSITION= 30,97 [-1.6]
+#SOURCE_POSITION= 31,96 [-1.6]
+#DESTINATION_RESOURCE= 30,95 [1,2]
+#DESTINATION_RESOURCE= 29,92 [1,2]
+; Germany(45) Axis and not surrendered
+; Canada(21) Allied and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 21 [2] [100] [0]
+}
+
+;
+; Fall of Gibraltar
+{
+#NAME= Fall Of Gibraltar (Italian Occupied) (25% Chance)
+#POPUP= Axis Control Of Gibraltar Hinders Allied Supply In the Mediterranean
+#IMAGE=
+#SOUND=
+#FLAG= 1
+; 2 = Reoccurring check until end of game
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 59
+#ALIGNMENT_ID= 0
+#FLAG_ID= 59
+#TRIGGER= 25
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#SOURCE_POSITION= 136,114 [-1]
+; Several ports removed though Amphibious Operations are still possible
+#DESTINATION_RESOURCE= 144,115 [1,2]
+#DESTINATION_RESOURCE= 145,115 [1,2]
+#DESTINATION_RESOURCE= 152,112 [1,2]
+#DESTINATION_RESOURCE= 152,113 [1,2]
+#DESTINATION_RESOURCE= 167,111 [1,2]
+#DESTINATION_RESOURCE= 167,112 [1,2]
+#DESTINATION_RESOURCE= 172,120 [1,2]
+; Tripoli(172,121)
+#DESTINATION_RESOURCE= 172,121 [1,2]
+#DESTINATION_RESOURCE= 185,122 [1,2]
+; Benghazi(186,122)
+#DESTINATION_RESOURCE= 186,122 [1,2]
+; Malta(175,114)
+#DESTINATION_RESOURCE= 175,114 [1,2]
+#DESTINATION_RESOURCE= 175,115 [1,2]
+#DESTINATION_RESOURCE= 176,115 [1,2]
+; Tobruk(194,122)
+#DESTINATION_RESOURCE= 194,122 [1,2]
+#DESTINATION_RESOURCE= 195,121 [1,2]
+#DESTINATION_RESOURCE= 205,123 [1,2]
+; Italy(59) is Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+}
+
+; Pro-Allied Italian Resistance Activity (Post Surrender)
+{
+#NAME= Italian Partisans (Pro-Allied After Italy Surrenders) (8% Chance)
+#POPUP= Italian Pro-Allied Resistance Activity Hinders Axis Supply
+#IMAGE= partisans_in_milan.png, partisans_in_bologna.png
+#SOUND= battle2.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 115
+#ALIGNMENT_ID= 0
+#FLAG_ID= 59
+#TRIGGER= 8
+#SEASON_FLAG= 0
+#DATE= 1943/08/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 164,93 [1,3]
+; Bologna(169,95)
+#DESTINATION_RESOURCE= 169,95 [1,3]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [1]
+}
+
+; Fall Weiss II
+; Malta limits Axis supply in the Mediterranean
+{
+#NAME= Malta AF Effect (Tripoli, Tobruk)
+#POPUP= Allied Navy Hinders Axis Reinforcing North Africa
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 59
+#TRIGGER= 100
+; all seasons
+#SEASON_FLAG= 0
+#DATE= 1939/09/03
+; Malta(175,114) [any unit]
+#SOURCE_POSITION= 175,114 [-1]
+#DESTINATION_RESOURCE= 172,120 [5,5]
+#DESTINATION_RESOURCE= 185,122 [5,5]
+#DESTINATION_RESOURCE= 195,121 [5,5]
+; Italy(59) Axis, Fully Active and not surrendered
+; UK(112) Allied, Fully Active and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+; Crete limits Axis supply in the Mediterranean
+{ 
+#NAME= Crete Effect (Tobruk, Bardia, Derna, Sidi Barrani, Mersa Matruh, El Alamein, Alexandria) (20% Chance)
+#POPUP= The Presence Of Allied Troops Hinders Axis Supply In North Africa (Tobruk, El Alamein, Alexandria)
+#IMAGE=
+#SOUND=
+#FLAG= 1
+; 2 = Reoccurring check until end of game
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 0
+#ALIGNMENT_ID= 2
+#FLAG_ID= 112
+#TRIGGER= 20
+#SEASON_FLAG= 0
+#DATE= 1940/06/01
+; Heraklion(196,116) [any unit]
+#SOURCE_POSITION= 196,116 [-1.5]
+#DESTINATION_RESOURCE= 195,121 [1,3]
+; Tobruk(194,122)
+#DESTINATION_RESOURCE= 194,122 [1,3]
+#DESTINATION_RESOURCE= 205,123 [1,3]
+; Alexandria(206,124)
+#DESTINATION_RESOURCE= 206,124 [1,3]
+; Port Said(209,122)
+#DESTINATION_RESOURCE= 209,122 [1,3]
+#DESTINATION_RESOURCE= 209,123 [1,3]
+; Derna(191,120)
+#DESTINATION_RESOURCE= 191,120 [1,3]
+; Bardia(196,123)
+#DESTINATION_RESOURCE= 196,123 [1,3]
+; Sidi Barrani(198,123)
+#DESTINATION_RESOURCE= 198,123 [1,3]
+; Mersa Matruh(200,124)
+#DESTINATION_RESOURCE= 200,124 [1,3]
+; El Alamein(204,125)
+#DESTINATION_RESOURCE= 204,125 [1,3]
+; UK(112) Allied and not surrendered
+; Egypt(36) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+}
+
+{
+#NAME= Soviet Strategic Bombers Raid Berlin
+#POPUP= Soviet Strategic Bombers Raid Berlin
+#IMAGE=
+#SOUND= explosion1.ogg
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 116
+#ALIGNMENT_ID= 0
+#FLAG_ID= 45
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1941/08/13
+; Leningrad(206,52) [any unit]
+#SOURCE_POSITION= 206,52 [-1]
+; Berlin(173,74)
+#DESTINATION_RESOURCE= 173,74 [1,2]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+}
+
+{
+#NAME= Soviet Bombers Operating From Crimea Attack The Ploesti Oil Fields In Romania (25% Chance)
+#POPUP= Soviet Bombers Operating From Crimea Attack The Ploesti Oil Fields In Romania
+#IMAGE=
+#SOUND= explosion1.ogg
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 116
+#ALIGNMENT_ID= 0
+#FLAG_ID= 93
+#TRIGGER= 25
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+; Simferopol [any unit]
+#SOURCE_POSITION= 214,94 [-1]
+#DESTINATION_RESOURCE= 198,94 [1,2]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 93 [1] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+}
+
+{
+#NAME= British Strategic Bombers Launch Night Raids On Berlin (1)
+#POPUP= British Strategic Bombers Launch Night Raids On Berlin
+#IMAGE=
+#SOUND= explosion1.ogg
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/08/26
+; London(147,77) [any unit]
+#SOURCE_POSITION= 147,77 [-1]
+; Berlin(173,74)
+#DESTINATION_RESOURCE= 173,74 [1,2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= British Strategic Bombers Continue Night Raids On Berlin (2)
+#POPUP= British Strategic Bombers Continue Night Raids On Berlin
+#IMAGE=
+#SOUND= explosion1.ogg
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/09/09
+; London(147,77) [any unit]
+#SOURCE_POSITION= 147,77 [-1]
+; Berlin(173,74)
+#DESTINATION_RESOURCE= 173,74 [1,2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= British Strategic Bombers Continue Night Raids On Berlin (3)
+#POPUP= British Strategic Bombers Continue Night Raids On Berlin
+#IMAGE=
+#SOUND= explosion1.ogg
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/09/23
+; London(147,77) [any unit]
+#SOURCE_POSITION= 147,77 [-1]
+; Berlin(173,74)
+#DESTINATION_RESOURCE= 173,74 [1,2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
 ;
 ; Effect of reduced supply in Baghdad
 {
@@ -761,28 +1146,61 @@
 }
 
 {
-#NAME= DE 355 - Danish Workers Go On Strike To Disrupt German Communications (45% Chance)
-#POPUP= The Danish Freedom Council Calls A General Strike To Disrupt German Communications
-#IMAGE= danishstrike.png
-#SOUND= 
+#NAME= DE 108 - Dutch Railway Workers Strike As Allied Forces Approach The Netherlands (50% Chance)
+#POPUP= Dutch Railway Workers Strike As Allied Forces Approach The Netherlands
+#IMAGE=
+#SOUND=
 #FLAG= 1
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 355[1]
-#COUNTRY_ID= 112
+#LINK= 108[1]
+#COUNTRY_ID= 10
 #ALIGNMENT_ID= 0
-#FLAG_ID= 31
-#TRIGGER= 45
+#FLAG_ID= 73
+#TRIGGER= 50
 #SEASON_FLAG= 0
-#DATE= 1944/01/01
+#DATE= 1940/01/20
 #SOURCE_POSITION=
-#DESTINATION_RESOURCE= 171,65 [2,4]
-#DESTINATION_RESOURCE= 171,66 [2,4]
+#DESTINATION_RESOURCE= 156,77 [1,4]
+#DESTINATION_RESOURCE= 155,76 [1,4]
+#DESTINATION_RESOURCE= 156,75 [1,4]
+#VARIABLE_CONDITION= 10 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
+}
+
+{
+#NAME= DE 108 - Dutch Railway Workers Strike As Allied Forces Approach The Netherlands (25% Chance)
+#POPUP= Dutch Railway Workers Strike As Allied Forces Approach The Netherlands
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 108[0]
+#COUNTRY_ID= 10
+#ALIGNMENT_ID= 0
+#FLAG_ID= 73
+#TRIGGER= 25
+#SEASON_FLAG= 0
+#DATE= 1940/01/20
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 156,77 [1,4]
+#DESTINATION_RESOURCE= 155,76 [1,4]
+#DESTINATION_RESOURCE= 156,75 [1,4]
+; Belgium(10) aligned Allied, fully mobilized
+; France(10) aligned Allied, fully mobilized
+; UK(112) aligned Allied, fully mobilized
+; USA(115) aligned Allied, fully mobilized
+#VARIABLE_CONDITION= 10 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
 }
 
 {
@@ -808,6 +1226,78 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
+}
+
+; Raid on St Nazaire
+{ 
+#NAME= DE 113 - Raid on St Nazaire - St Nazaire damaged
+#POPUP= HMS Campbeltown Badly Damages The Normandie Dock At St Nazaire!
+#IMAGE= campbeltown1.png, campbeltown2.png, campbeltown3.png, campbeltown4.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,50]
+#LINK= 113[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1942/03/28
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 142,89 [8,10]
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+; Raid on St Nazaire - first message
+{ 
+#NAME= DE 113 - Raid on St Nazaire - St Nazaire destroyed (50% Chance)
+#POPUP= HMS Campbeltown Destroys The Normandie Dock: St Nazaire Is Out Of Action!
+#IMAGE= campbeltown1.png, campbeltown2.png, campbeltown3.png, campbeltown4.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[51,100]
+#LINK= 113[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1942/03/28
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 142,89 [10,10]
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+; Raid on St Nazaire - continuous
+{ 
+#NAME= DE 113 - Raid on St Nazaire - St Nazaire destroyed
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[51,100]
+#LINK= 113[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1942/03/28
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 142,89 [10,10]
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
 {
@@ -1044,6 +1534,30 @@
 }
 
 {
+#NAME= DE 128 - The Allies Attack Narvik (Supply Reduction)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 128[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 78
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/03
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 181,18 [1,4]
+#DESTINATION_RESOURCE= 180,19 [1,4]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 78 [2] [100] [1]
+}
+
+{
 #NAME= DE 156 - The SAS Attack Axis Supply Lines And Rear Areas Near Tobruk
 #POPUP= The SAS Attack Axis Supply Lines And Rear Areas Near Tobruk
 #IMAGE= sas6.png, sas7.png
@@ -1159,10 +1673,34 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; US DECISION EVENTS - Spanish Republican Resistance
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+{
+#NAME= DE 355 - Danish Workers Go On Strike To Disrupt German Communications (45% Chance)
+#POPUP= The Danish Freedom Council Calls A General Strike To Disrupt German Communications
+#IMAGE= danishstrike.png
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 355[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 31
+#TRIGGER= 45
+#SEASON_FLAG= 0
+#DATE= 1944/01/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 171,65 [2,4]
+#DESTINATION_RESOURCE= 171,66 [2,4]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+}
 
+
+;
+; Spanish Republican Resistance
 {
 #NAME= DE 361 - Spanish Republicans Carry Out Guerrilla Attacks On Installations In Asturias
 #POPUP= Spanish Republicans Carry Out Guerrilla Attacks On Installations In Asturias
@@ -1252,595 +1790,6 @@
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; SOVIET DECISION EVENTS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-{
-#NAME= DE 402 - Industry In The Ukraine Is Disrupted By The Transfer To The Urals
-#POPUP= Industry In The Ukraine Is Disrupted By The Transfer To The Urals
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 402[1]
-#COUNTRY_ID= 45
-#ALIGNMENT_ID= 0
-#FLAG_ID= 116
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1939/09/01
-#SOURCE_POSITION=
-#DESTINATION_RESOURCE= 212,87 [3,3]
-#DESTINATION_RESOURCE= 213,86 [3,3]
-#DESTINATION_RESOURCE= 216,90 [3,3]
-#DESTINATION_RESOURCE= 223,85 [3,3]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; GERMAN DECISION EVENTS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-;
-; Reykjavik(104,37) reduced to 0 so Germans cannot immediately operate to Iceland
-; after Danish Annexation
-{
-#NAME= DE 601 - Iceland Supply Reduction (One Time)
-#POPUP= Demonstrations Against Denmark's Annexation Cause Disruption In Reykjavik
-#IMAGE= coup.ogg
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 601[1]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 53
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1940/04/14
-#SOURCE_POSITION=
-#DESTINATION_RESOURCE= 103,36 [10,10]
-#DESTINATION_RESOURCE= 104,37 [10,10]
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-; Warsaw Rising
-{
-#NAME= DE 655 - Warsaw Rising
-#POPUP= Warsaw Rising: The Polish Home Army Attacks The German Occupier
-#IMAGE= warsaw_uprising_1944.png, polish_home_army1.png, polish_home_army2.png, polish_home_army3.png, polish_home_army4.png
-#SOUND= battle2.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 655[1]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 85
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1944/08/01
-#SOURCE_POSITION=
-; Warsaw(188,76)
-#DESTINATION_RESOURCE= 188,76 [5,8]
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-; Operation Tempest
-{
-#NAME= DE 655 - Operation Tempest
-#POPUP= Operation Tempest Is Launched To Support The Warsaw Rising
-#IMAGE= polish_home_army5.png, polish_home_army6.png
-#SOUND= battle2.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 655[1]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 85
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1944/08/01
-#SOURCE_POSITION=
-#DESTINATION_RESOURCE= 195,78 [1,3]
-#DESTINATION_RESOURCE= 193,71 [1,3]
-#DESTINATION_RESOURCE= 192,73 [1,3]
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; UK
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-; Malta limits Axis supply in the Mediterranean
-{ 
-#NAME= Malta Effect (Tripoli, Sirte, El Agheila, Benghazi, Derna) (15% Chance)
-#POPUP= Malta Hinders Axis Supply In the Mediterranean (Tripoli, Sirte, El Agheila, Benghazi)
-#IMAGE=
-#SOUND=
-#FLAG= 1
-; 2 = Reoccurring check until end of game
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 112
-#TRIGGER= 15
-#SEASON_FLAG= 0
-#DATE= 1941/01/01
-; Malta(175,114) [any unit]
-#SOURCE_POSITION= 175,114 [-1]
-; Tripoli(172,121)
-#DESTINATION_RESOURCE= 172,121 [1,2]
-; Tripoli Port
-#DESTINATION_RESOURCE= 172,120 [1,2]
-; Sirte(179,124)
-#DESTINATION_RESOURCE= 179,124 [1,2]
-; El Agheila(184,126)
-#DESTINATION_RESOURCE= 184,126 [1,2]
-; Benghazi(186,122)
-#DESTINATION_RESOURCE= 186,122 [1,2]
-; Benghazi(Port)
-#DESTINATION_RESOURCE= 185,122 [1,2]
-; UK(112) Allied and not surrendered
-; Egypt(36) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 36 [2] [100] [0]
-}
-
-; Malta limits Axis supply in the Mediterranean
-{ 
-#NAME= Malta Effect (Derna, Msus, Mekili, Gazala) (15% Chance)
-#POPUP= Malta Hinders Axis Supply In the Mediterranean (Derna, Msus, Mekili, Gazala)
-#IMAGE=
-#SOUND=
-#FLAG= 1
-; 2 = Reoccurring check until end of game
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 112
-#TRIGGER= 15
-#SEASON_FLAG= 0
-#DATE= 1941/01/01
-; Malta(175,114) [any unit]
-#SOURCE_POSITION= 175,114 [-1]
-; Derna(191,120)
-#DESTINATION_RESOURCE= 191,120 [1,2]
-; Msus(188,124)
-#DESTINATION_RESOURCE= 188,124 [1,2]
-; Mekili(190,122)
-#DESTINATION_RESOURCE= 190,122 [1,2]
-; Gazala(192,122)
-#DESTINATION_RESOURCE= 192,122 [1,2]
-; Homs(175,121) - Added by Fall Weiss
-#DESTINATION_RESOURCE= 175,121 [1,2]
-; Buerat(177,123) - Added by Fall Weiss
-#DESTINATION_RESOURCE= 177,123 [1,2]
-; UK(112) Allied and not surrendered
-; Egypt(36) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 36 [2] [100] [0]
-}
-
-; Malta limits Axis supply in the Mediterranean
-{ 
-#NAME= Malta Effect (Tobruk, Alexandria, Port Said) (20% Chance)
-#POPUP= Malta Hinders Axis Supply In the Mediterranean (Tobruk, Alexandria, Port Said)
-#IMAGE=
-#SOUND=
-#FLAG= 1
-; 2 = Reoccurring check until end of game
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 112
-#TRIGGER= 20
-#SEASON_FLAG= 0
-#DATE= 1940/08/01
-; Malta(175,114) [any unit]
-#SOURCE_POSITION= 175,114 [-1]
-; Tobruk - Port
-#DESTINATION_RESOURCE= 195,121 [1,2]
-; Tobruk(194,122)
-#DESTINATION_RESOURCE= 194,122 [1,2]
-; Alexandria(Port)
-#DESTINATION_RESOURCE= 205,123 [1,2]
-; Alexandria(206,124)
-#DESTINATION_RESOURCE= 206,124 [1,2]
-; Port Said(209,122)
-#DESTINATION_RESOURCE= 209,122 [1,2]
-#DESTINATION_RESOURCE= 209,123 [1,2]
-; UK(112) Allied and not surrendered
-; Egypt(36) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 36 [2] [100] [0]
-}
-
-; Malta limits Axis supply in the Mediterranean
-{ 
-#NAME= Malta Effect (Bardia, Sidi Barrani, Mersa Matruh, El Alamein) (20% Chance)
-#POPUP= Malta Hinders Axis Supply In the Mediterranean (Bardia, Sidi Barrani, Mersa Matruh, El Alamein)
-#IMAGE=
-#SOUND=
-#FLAG= 1
-; 2 = Reoccurring check until end of game
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 112
-#TRIGGER= 20
-#SEASON_FLAG= 0
-#DATE= 1940/08/01
-; Malta(175,114) [any unit]
-#SOURCE_POSITION= 175,114 [-1]
-; Bardia(196,123)
-#DESTINATION_RESOURCE= 196,123 [1,2]
-; Sidi Barrani(198,123)
-#DESTINATION_RESOURCE= 198,123 [1,2]
-; Mersa Matruh(200,124)
-#DESTINATION_RESOURCE= 200,124 [1,2]
-; El Alamein(204,125)
-#DESTINATION_RESOURCE= 204,125 [1,2]
-; UK(112) Allied and not surrendered
-; Egypt(36) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 36 [2] [100] [0]
-}
-
-; Raid on St Nazaire
-{ 
-#NAME= DE 113 - Raid on St Nazaire - St Nazaire damaged
-#POPUP= HMS Campbeltown Badly Damages The Normandie Dock At St Nazaire!
-#IMAGE= campbeltown1.png, campbeltown2.png, campbeltown3.png, campbeltown4.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,50]
-#LINK= 113[1]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 112
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1942/03/28
-#SOURCE_POSITION=
-#DESTINATION_RESOURCE= 142,89 [8,10]
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-}
-
-; Raid on St Nazaire - first message
-{ 
-#NAME= DE 113 - Raid on St Nazaire - St Nazaire destroyed (50% Chance)
-#POPUP= HMS Campbeltown Destroys The Normandie Dock: St Nazaire Is Out Of Action!
-#IMAGE= campbeltown1.png, campbeltown2.png, campbeltown3.png, campbeltown4.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[51,100]
-#LINK= 113[1]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 112
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1942/03/28
-#SOURCE_POSITION=
-#DESTINATION_RESOURCE= 142,89 [10,10]
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-}
-
-; Raid on St Nazaire - continuous
-{ 
-#NAME= DE 113 - Raid on St Nazaire - St Nazaire destroyed
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[51,100]
-#LINK= 113[1]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 112
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1942/03/28
-#SOURCE_POSITION=
-#DESTINATION_RESOURCE= 142,89 [10,10]
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Germany
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-; Fall of Gibraltar
-{
-#NAME= DE 676 - Fall Of Gibraltar (German Occupied) (25% Chance)
-#POPUP= Axis Control Of Gibraltar Hinders Allied Supply In the Mediterranean
-#IMAGE=
-#SOUND=
-#FLAG= 1
-; 2 = Reoccurring check until end of game
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 676[1]
-#COUNTRY_ID= 45
-#ALIGNMENT_ID= 0
-#FLAG_ID= 45
-#TRIGGER= 25
-#SEASON_FLAG= 0
-#DATE= 1939/09/01
-#SOURCE_POSITION=
-; Several ports removed so that Amphibious Operations are still possible
-#DESTINATION_RESOURCE= 144,115 [1,2]
-#DESTINATION_RESOURCE= 145,115 [1,2]
-#DESTINATION_RESOURCE= 152,112 [1,2]
-#DESTINATION_RESOURCE= 152,113 [1,2]
-#DESTINATION_RESOURCE= 167,111 [1,2]
-#DESTINATION_RESOURCE= 167,112 [1,2]
-#DESTINATION_RESOURCE= 172,120 [1,2]
-; Tripoli(172,121)
-#DESTINATION_RESOURCE= 172,121 [1,2]
-#DESTINATION_RESOURCE= 185,122 [1,2]
-; Benghazi(186,122)
-#DESTINATION_RESOURCE= 186,122 [1,2]
-; Malta(175,114)
-#DESTINATION_RESOURCE= 175,114 [1,2]
-#DESTINATION_RESOURCE= 175,115 [1,2]
-#DESTINATION_RESOURCE= 176,115 [1,2]
-; Tobruk(194,122)
-#DESTINATION_RESOURCE= 194,122 [1,2]
-#DESTINATION_RESOURCE= 195,121 [1,2]
-#DESTINATION_RESOURCE= 205,123 [1,2]
-; Germany(45) is Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-{
-#NAME= US East Coast Shipping Disrupted By Axis Raiders (Continuous)
-#POPUP= The Presence Of Axis Vessels Disrupts US Coastal Shipping
-#IMAGE=
-#SOUND= sub_movement.ogg
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 0
-#ALIGNMENT_ID= 1
-#FLAG_ID= 115
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1939/09/01
-#SOURCE_POSITION= 7,112 [-1.6]
-#SOURCE_POSITION= 7,111 [-1.6]
-#SOURCE_POSITION= 11,105 [-1.6]
-#SOURCE_POSITION= 11,106 [-1.6]
-#SOURCE_POSITION= 12,106 [-1.6]
-#SOURCE_POSITION= 16,104 [-1.6]
-#SOURCE_POSITION= 16,103 [-1.6]
-#SOURCE_POSITION= 18,100 [-1.6]
-#SOURCE_POSITION= 18,99 [-1.6]
-#DESTINATION_RESOURCE= 0,103 [1,2]
-#DESTINATION_RESOURCE= 0,104 [1,2]
-; Germany(45) Axis and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-}
-
-{
-#NAME= Canadian Shipping Near Sydney Mines Disrupted By Axis Raiders (Continuous)
-#POPUP= Axis Vessels Disrupt Merchant Shipping Near The Sydney Mines
-#IMAGE=
-#SOUND= sub_movement.ogg
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 0
-#ALIGNMENT_ID= 1
-#FLAG_ID= 21
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1939/09/01
-#SOURCE_POSITION= 37,89 [-1.6]
-#SOURCE_POSITION= 38,90 [-1.6]
-#SOURCE_POSITION= 38,91 [-1.6]
-#DESTINATION_RESOURCE= 36,91 [1,2]
-; Germany(45) Axis and not surrendered
-; Canada(21) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 21 [2] [100] [0]
-}
-
-{
-#NAME= Canadian Shipping Near Halifax Disrupted By Axis Raiders (Continuous)
-#POPUP= Axis Raiders Disrupt Production At The Springhill Mines And Halifax
-#IMAGE=
-#SOUND= sub_movement.ogg
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 0
-#ALIGNMENT_ID= 1
-#FLAG_ID= 21
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1939/09/01
-#SOURCE_POSITION= 29,96 [-1.6]
-#SOURCE_POSITION= 30,97 [-1.6]
-#SOURCE_POSITION= 31,96 [-1.6]
-#DESTINATION_RESOURCE= 30,95 [1,2]
-#DESTINATION_RESOURCE= 29,92 [1,2]
-; Germany(45) Axis and not surrendered
-; Canada(21) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 21 [2] [100] [0]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Italy
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-; Fall of Gibraltar
-{
-#NAME= Fall Of Gibraltar (Italian Occupied) (25% Chance)
-#POPUP= Axis Control Of Gibraltar Hinders Allied Supply In the Mediterranean
-#IMAGE=
-#SOUND=
-#FLAG= 1
-; 2 = Reoccurring check until end of game
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 59
-#ALIGNMENT_ID= 0
-#FLAG_ID= 59
-#TRIGGER= 25
-#SEASON_FLAG= 0
-#DATE= 1939/09/01
-#SOURCE_POSITION= 136,114 [-1]
-; Several ports removed though Amphibious Operations are still possible
-#DESTINATION_RESOURCE= 144,115 [1,2]
-#DESTINATION_RESOURCE= 145,115 [1,2]
-#DESTINATION_RESOURCE= 152,112 [1,2]
-#DESTINATION_RESOURCE= 152,113 [1,2]
-#DESTINATION_RESOURCE= 167,111 [1,2]
-#DESTINATION_RESOURCE= 167,112 [1,2]
-#DESTINATION_RESOURCE= 172,120 [1,2]
-; Tripoli(172,121)
-#DESTINATION_RESOURCE= 172,121 [1,2]
-#DESTINATION_RESOURCE= 185,122 [1,2]
-; Benghazi(186,122)
-#DESTINATION_RESOURCE= 186,122 [1,2]
-; Malta(175,114)
-#DESTINATION_RESOURCE= 175,114 [1,2]
-#DESTINATION_RESOURCE= 175,115 [1,2]
-#DESTINATION_RESOURCE= 176,115 [1,2]
-; Tobruk(194,122)
-#DESTINATION_RESOURCE= 194,122 [1,2]
-#DESTINATION_RESOURCE= 195,121 [1,2]
-#DESTINATION_RESOURCE= 205,123 [1,2]
-; Italy(59) is Axis and not surrendered
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-}
-
-; Pro-Allied Italian Resistance Activity (Post Surrender)
-{
-#NAME= Italian Partisans (Pro-Allied After Italy Surrenders) (8% Chance)
-#POPUP= Italian Pro-Allied Resistance Activity Hinders Axis Supply
-#IMAGE= partisans_in_milan.png, partisans_in_bologna.png
-#SOUND= battle2.ogg
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 115
-#ALIGNMENT_ID= 0
-#FLAG_ID= 59
-#TRIGGER= 8
-#SEASON_FLAG= 0
-#DATE= 1943/08/01
-#SOURCE_POSITION=
-#DESTINATION_RESOURCE= 164,93 [1,3]
-; Bologna(169,95)
-#DESTINATION_RESOURCE= 169,95 [1,3]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [1]
-}
-
-;============================================================
-;               Fall Weiss II Events
-;=============================================================
-{
-#NAME= DE 871 - Oil Shortages Hamper Axis Economies (15% Chance)
-#POPUP= Oil Shortages Hamper Axis Economies
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 871[1]
-#COUNTRY_ID= 116
-#ALIGNMENT_ID= 0
-#FLAG_ID= 45
-#TRIGGER= 15
-#SEASON_FLAG= 0
-#DATE= 1943/01/01
-#SOURCE_POSITION=
-#DESTINATION_RESOURCE= 161,77 [2,5]
-#DESTINATION_RESOURCE= 162,78 [2,5]
-#DESTINATION_RESOURCE= 161,83 [2,5]
-#DESTINATION_RESOURCE= 174,82 [2,5]
-#DESTINATION_RESOURCE= 160,79 [2,3]
-#DESTINATION_RESOURCE= 173,79 [2,3]
-; Breslau(180,79)
-#DESTINATION_RESOURCE= 180,79 [2,3]
-#DESTINATION_RESOURCE= 168,83 [2,3]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
 {
 #NAME= DE 381 - Oil Shortages Hamper Axis Economies (10% Chance)
 #POPUP= Oil Shortages Hamper Axis Economies
@@ -1872,368 +1821,30 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
-; Fall Weiss II
-; Malta limits Axis supply in the Mediterranean
 {
-#NAME= Malta AF Effect (Tripoli, Tobruk)
-#POPUP= Allied Navy Hinders Axis Reinforcing North Africa
-#IMAGE= 
-#SOUND= 
+#NAME= DE 402 - Industry In The Ukraine Is Disrupted By The Transfer To The Urals
+#POPUP= Industry In The Ukraine Is Disrupted By The Transfer To The Urals
+#IMAGE=
+#SOUND=
 #FLAG= 1
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 59
-#TRIGGER= 100
-; all seasons
-#SEASON_FLAG= 0
-#DATE= 1939/09/03
-; Malta(175,114) [any unit]
-#SOURCE_POSITION= 175,114 [-1]
-#DESTINATION_RESOURCE= 172,120 [5,5]
-#DESTINATION_RESOURCE= 185,122 [5,5]
-#DESTINATION_RESOURCE= 195,121 [5,5]
-; Italy(59) Axis, Fully Active and not surrendered
-; UK(112) Allied, Fully Active and not surrendered
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-}
-
-; Supply Line 1940 North Africa
-{
-#NAME= DE 832 - Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
-#POPUP= Italian Supply Line Are Severely Stretched East Of Tobruk
-#IMAGE= 
-#SOUND= 
-#FLAG= 1
-#TYPE= 3
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 832[0]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 59
-#TRIGGER= 100
-; all seasons
-#SEASON_FLAG= 0
-#DATE= 1940/07/01
-; Alexandria(206,124) [any unit]
-#SOURCE_POSITION= 206,124 [-1]
-; Bardia(196,123)
-#DESTINATION_RESOURCE= 196,123 [1,3]
-; Sidi Barrani(198,123)
-#DESTINATION_RESOURCE= 198,123 [2,4]
-; Mersa Matruh(200,124)
-#DESTINATION_RESOURCE= 200,124 [3,5]
-; Italy(59) Axis, Fully Active and not surrendered
-; UK(112) Allied, Fully Active and not surrendered
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-}
-
-; Supply Line 1940 North Africa
-{
-#NAME= DE 832 - Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
-#POPUP= Italian Supply Line Are Severely Restricted East Of Tobruk (Bardia, Sidi Barrani, Mersa Matruh)
-#IMAGE= 
-#SOUND= 
-#FLAG= 1
-#TYPE= 3
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 832[0]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 59
-#TRIGGER= 100
-; all seasons
-#SEASON_FLAG= 0
-#DATE= 1940/09/15
-; Alexandria(206,124) [any unit]
-#SOURCE_POSITION= 206,124 [-1]
-; Bardia(196,123)
-#DESTINATION_RESOURCE= 196,123 [1,3]
-; Sidi Barrani(198,123)
-#DESTINATION_RESOURCE= 198,123 [2,4]
-; Mersa Matruh(200,124)
-#DESTINATION_RESOURCE= 200,124 [3,5]
-; Italy(59) Axis, Fully Active and not surrendered
-; UK(112) Allied, Fully Active and not surrendered
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-}
-
-; Supply Line 1940 North Africa
-{
-#NAME= DE 832 - Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
-#POPUP= Italian Supply Line Are Severely Stretched East Of Tobruk
-#IMAGE= 
-#SOUND= 
-#FLAG= 1
-#TYPE= 3
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 832[0]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 59
-#TRIGGER= 100
-; all seasons
-#SEASON_FLAG= 0
-#DATE= 1940/12/01
-; Alexandria(206,124) [any unit]
-#SOURCE_POSITION= 206,124 [-1]
-; Bardia(196,123)
-#DESTINATION_RESOURCE= 196,123 [1,3]
-; Sidi Barrani(198,123)
-#DESTINATION_RESOURCE= 198,123 [2,4]
-; Mersa Matruh(200,124)
-#DESTINATION_RESOURCE= 200,124 [3,5]
-; Italy(59) Axis, Fully Active and not surrendered
-; UK(112) Allied, Fully Active and not surrendered
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-}
-
-; South Atlantic Raiders
-{
-#NAME= DE 854 - South Atlantic Raiders
-#POPUP= KMS Admiral Graf Spee Disrupts South Atlantic Convoys
-#IMAGE= 
-#SOUND= 
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 854[0]
+#LINK= 402[1]
 #COUNTRY_ID= 45
 #ALIGNMENT_ID= 0
-#FLAG_ID= 54
+#FLAG_ID= 116
 #TRIGGER= 100
 #SEASON_FLAG= 0
-#DATE= 1940/01/01
+#DATE= 1939/09/01
 #SOURCE_POSITION=
-; British Trade
-#DESTINATION_RESOURCE= 0,2 [5,5]
-; Germany(45) Axis, Fully Active and not surrendered
-; UK(112) Allied, Fully Active and not surrendered
+#DESTINATION_RESOURCE= 212,87 [3,3]
+#DESTINATION_RESOURCE= 213,86 [3,3]
+#DESTINATION_RESOURCE= 216,90 [3,3]
+#DESTINATION_RESOURCE= 223,85 [3,3]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-}
-
-; The Port of Kiel Is Stripped Of Kriegsmarine Personnel
-{ 
-#NAME= DE 950 - Germany: The Port of Kiel Is Stripped Of Kriegsmarine Personnel
-#POPUP= The Port of Kiel Is Stripped Of Kriegsmarine Personnel
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 950[1]
-#COUNTRY_ID= 45
-#ALIGNMENT_ID= 0
-#FLAG_ID= 45
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1944/01/01
-#SOURCE_POSITION=
-#DESTINATION_RESOURCE= 167,69 [10,10]
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-}
-
-; The Port of Stettin Is Stripped Of Kriegsmarine Personnel
-{ 
-#NAME= DE 951 - Germany: The Port of Stettin Is Stripped Of Kriegsmarine Personnel
-#POPUP= The Port of Stettin Is Stripped Of Kriegsmarine Personnel
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 951[1]
-#COUNTRY_ID= 45
-#ALIGNMENT_ID= 0
-#FLAG_ID= 45
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1944/01/01
-#SOURCE_POSITION=
-#DESTINATION_RESOURCE= 175,71 [10,10]
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-}
-
-; Protests At Helsinki
-{
-#NAME= DE 847 - Finland: Helsinki Protests (5% Chance)
-#POPUP= Demonstrations Against War With The Western Allies Disrupt Supply In Helsinki 
-#IMAGE= 
-#SOUND= 
-#FLAG= 1
-; 2 = Reoccurring check until end of game
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 847[1]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 39
-#TRIGGER= 5
-#SEASON_FLAG= 0
-#DATE= 1940/01/01
-#SOURCE_POSITION=
-#DESTINATION_RESOURCE= 195,51 [2,4]
-; Finland Axis, Fully Active and not surrendered
-; UK(112) Allied, Fully Active and not surrendered
-#VARIABLE_CONDITION= 39 [1] [100] [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-}
-
-{
-#NAME= DE 890 - Supply Shortages Hamper Spanish Economies (10% Chance)
-#POPUP= Supply Shortages Hamper Spanish Economies
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 890[1]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 99
-#TRIGGER= 10
-#SEASON_FLAG= 0
-#DATE= 1939/09/03
-#SOURCE_POSITION=
-#DESTINATION_RESOURCE= 141,98 [7,9]
-#DESTINATION_RESOURCE= 143,99 [7,9]
-#DESTINATION_RESOURCE= 145,101 [7,9]
-#DESTINATION_RESOURCE= 145,106 [7,9]
-#VARIABLE_CONDITION= 99 [1] [100] [0]
-}
-
-; Crete limits Axis supply in the Mediterranean
-{ 
-#NAME= Crete Effect (Tobruk, Bardia, Derna, Sidi Barrani, Mersa Matruh, El Alamein, Alexandria) (20% Chance)
-#POPUP= The Presence Of Allied Troops Hinders Axis Supply In North Africa (Tobruk, El Alamein, Alexandria)
-#IMAGE=
-#SOUND=
-#FLAG= 1
-; 2 = Reoccurring check until end of game
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 0
-#ALIGNMENT_ID= 2
-#FLAG_ID= 112
-#TRIGGER= 20
-#SEASON_FLAG= 0
-#DATE= 1940/06/01
-; Heraklion(196,116) [any unit]
-#SOURCE_POSITION= 196,116 [-1.5]
-#DESTINATION_RESOURCE= 195,121 [1,3]
-; Tobruk(194,122)
-#DESTINATION_RESOURCE= 194,122 [1,3]
-#DESTINATION_RESOURCE= 205,123 [1,3]
-; Alexandria(206,124)
-#DESTINATION_RESOURCE= 206,124 [1,3]
-; Port Said(209,122)
-#DESTINATION_RESOURCE= 209,122 [1,3]
-#DESTINATION_RESOURCE= 209,123 [1,3]
-; Derna(191,120)
-#DESTINATION_RESOURCE= 191,120 [1,3]
-; Bardia(196,123)
-#DESTINATION_RESOURCE= 196,123 [1,3]
-; Sidi Barrani(198,123)
-#DESTINATION_RESOURCE= 198,123 [1,3]
-; Mersa Matruh(200,124)
-#DESTINATION_RESOURCE= 200,124 [1,3]
-; El Alamein(204,125)
-#DESTINATION_RESOURCE= 204,125 [1,3]
-; UK(112) Allied and not surrendered
-; Egypt(36) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 36 [2] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-}
-
-
-; Allies In Egypt Support Greece
-{
-#NAME= DE 838 - Allies In Egypt Support Greece
-#POPUP= Impromptu Allied Expedition To Greece Disrupts Supply-chain In Egypt
-#IMAGE= 
-#SOUND= 
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 838[1]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 36
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1939/09/03
-#SOURCE_POSITION=
-; Alexandria(206,124)
-#DESTINATION_RESOURCE= 206,124 [3,4]
-; El Alamein(204,125)
-#DESTINATION_RESOURCE= 204,125 [2,3]
-#DESTINATION_RESOURCE= 205,123 [3,4]
-#DESTINATION_RESOURCE= 206,123 [2,3]
-; Germany(45) Axis, Fully Active and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-; Stop Greece From Reinforcing Yugoslavia
-{
-#NAME= DE 838 - Stop Greece From Reinforcing Yugoslavia
-#POPUP=
-#IMAGE= 
-#SOUND= 
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 838[1]
-#COUNTRY_ID= 120
-#ALIGNMENT_ID= 0
-#FLAG_ID= 120
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1939/09/03
-#SOURCE_POSITION=
-; Skopje(189,101)
-#DESTINATION_RESOURCE= 189,101 [3,3]
-; Yugoslavia Allied and mobilized
-#VARIABLE_CONDITION= 120 [2] [100] [0]
-; Greece is Allied and mobilized
-#VARIABLE_CONDITION= 46 [2] [100] [0]
 }
 
 ; Maikop Oil Fields - first message
@@ -2308,133 +1919,37 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
+;
+; Reykjavik(104,37) reduced to 0 so Germans cannot immediately operate to Iceland
+; after Danish Annexation
 {
-#NAME= Soviet Strategic Bombers Raid Berlin
-#POPUP= Soviet Strategic Bombers Raid Berlin
-#IMAGE=
-#SOUND= explosion1.ogg
+#NAME= DE 601 - Iceland Supply Reduction (One Time)
+#POPUP= Demonstrations Against Denmark's Annexation Cause Disruption In Reykjavik
+#IMAGE= coup.ogg
+#SOUND=
 #FLAG= 1
-#TYPE= 3
+#TYPE= 0
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 116
-#ALIGNMENT_ID= 0
-#FLAG_ID= 45
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1941/08/13
-; Leningrad(206,52) [any unit]
-#SOURCE_POSITION= 206,52 [-1]
-; Berlin(173,74)
-#DESTINATION_RESOURCE= 173,74 [1,2]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-}
-
-{
-#NAME= Soviet Bombers Operating From Crimea Attack The Ploesti Oil Fields In Romania (25% Chance)
-#POPUP= Soviet Bombers Operating From Crimea Attack The Ploesti Oil Fields In Romania
-#IMAGE=
-#SOUND= explosion1.ogg
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 116
-#ALIGNMENT_ID= 0
-#FLAG_ID= 93
-#TRIGGER= 25
-#SEASON_FLAG= 0
-#DATE= 1939/09/01
-; Simferopol [any unit]
-#SOURCE_POSITION= 214,94 [-1]
-#DESTINATION_RESOURCE= 198,94 [1,2]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 93 [1] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [0] [0]
-}
-
-{
-#NAME= British Strategic Bombers Launch Night Raids On Berlin (1)
-#POPUP= British Strategic Bombers Launch Night Raids On Berlin
-#IMAGE=
-#SOUND= explosion1.ogg
-#FLAG= 1
-#TYPE= 3
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
+#LINK= 601[1]
 #COUNTRY_ID= 112
 #ALIGNMENT_ID= 0
-#FLAG_ID= 112
+#FLAG_ID= 53
 #TRIGGER= 100
 #SEASON_FLAG= 0
-#DATE= 1940/08/26
-; London(147,77) [any unit]
-#SOURCE_POSITION= 147,77 [-1]
-; Berlin(173,74)
-#DESTINATION_RESOURCE= 173,74 [1,2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
+#DATE= 1940/04/14
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 103,36 [10,10]
+#DESTINATION_RESOURCE= 104,37 [10,10]
+; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
-{
-#NAME= British Strategic Bombers Continue Night Raids On Berlin (2)
-#POPUP= British Strategic Bombers Continue Night Raids On Berlin
-#IMAGE=
-#SOUND= explosion1.ogg
-#FLAG= 1
-#TYPE= 3
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 112
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1940/09/09
-; London(147,77) [any unit]
-#SOURCE_POSITION= 147,77 [-1]
-; Berlin(173,74)
-#DESTINATION_RESOURCE= 173,74 [1,2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
 
 {
-#NAME= British Strategic Bombers Continue Night Raids On Berlin (3)
-#POPUP= British Strategic Bombers Continue Night Raids On Berlin
-#IMAGE=
-#SOUND= explosion1.ogg
-#FLAG= 1
-#TYPE= 3
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 112
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1940/09/23
-; London(147,77) [any unit]
-#SOURCE_POSITION= 147,77 [-1]
-; Berlin(173,74)
-#DESTINATION_RESOURCE= 173,74 [1,2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-{
-#NAME= DE 128 - The Allies Attack Narvik (Supply Reduction)
-#POPUP=
+#NAME= DE 643 - Norwegian Forces Damage The Rail Network As They Retire Into The Hinterland
+#POPUP= Norwegian Forces Damage The Rail Network As They Retire Into The Hinterland
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -2442,17 +1957,495 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 128[1]
+#LINK= 643[1]
 #COUNTRY_ID= 112
 #ALIGNMENT_ID= 0
 #FLAG_ID= 78
 #TRIGGER= 100
 #SEASON_FLAG= 0
-#DATE= 1939/09/03
+#DATE= 1940/04/14
 #SOURCE_POSITION=
-#DESTINATION_RESOURCE= 181,18 [1,4]
-#DESTINATION_RESOURCE= 180,19 [1,4]
+#DESTINATION_RESOURCE= 167,48 [1,3]
+#DESTINATION_RESOURCE= 174,28 [1,3]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 78 [2] [100] [1]
 }
 
+{
+#NAME= DE 644 - Norwegian Forces Damage The Rail Network As They Retire Into The Hinterland
+#POPUP= Norwegian Forces Damage The Rail Network As They Retire Into The Hinterland
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 644[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 78
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/04/14
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 167,48 [1,3]
+#DESTINATION_RESOURCE= 174,28 [1,3]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 78 [2] [100] [1]
+}
+
+; Warsaw Rising
+{
+#NAME= DE 655 - Warsaw Rising
+#POPUP= Warsaw Rising: The Polish Home Army Attacks The German Occupier
+#IMAGE= warsaw_uprising_1944.png, polish_home_army1.png, polish_home_army2.png, polish_home_army3.png, polish_home_army4.png
+#SOUND= battle2.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 655[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 85
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1944/08/01
+#SOURCE_POSITION=
+; Warsaw(188,76)
+#DESTINATION_RESOURCE= 188,76 [5,8]
+; Germany(45) Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; Operation Tempest
+{
+#NAME= DE 655 - Operation Tempest
+#POPUP= Operation Tempest Is Launched To Support The Warsaw Rising
+#IMAGE= polish_home_army5.png, polish_home_army6.png
+#SOUND= battle2.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 655[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 85
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1944/08/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 195,78 [1,3]
+#DESTINATION_RESOURCE= 193,71 [1,3]
+#DESTINATION_RESOURCE= 192,73 [1,3]
+; Germany(45) Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+;
+; Fall of Gibraltar
+{
+#NAME= DE 676 - Fall Of Gibraltar (German Occupied) (25% Chance)
+#POPUP= Axis Control Of Gibraltar Hinders Allied Supply In the Mediterranean
+#IMAGE=
+#SOUND=
+#FLAG= 1
+; 2 = Reoccurring check until end of game
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 676[1]
+#COUNTRY_ID= 45
+#ALIGNMENT_ID= 0
+#FLAG_ID= 45
+#TRIGGER= 25
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#SOURCE_POSITION=
+; Several ports removed so that Amphibious Operations are still possible
+#DESTINATION_RESOURCE= 144,115 [1,2]
+#DESTINATION_RESOURCE= 145,115 [1,2]
+#DESTINATION_RESOURCE= 152,112 [1,2]
+#DESTINATION_RESOURCE= 152,113 [1,2]
+#DESTINATION_RESOURCE= 167,111 [1,2]
+#DESTINATION_RESOURCE= 167,112 [1,2]
+#DESTINATION_RESOURCE= 172,120 [1,2]
+; Tripoli(172,121)
+#DESTINATION_RESOURCE= 172,121 [1,2]
+#DESTINATION_RESOURCE= 185,122 [1,2]
+; Benghazi(186,122)
+#DESTINATION_RESOURCE= 186,122 [1,2]
+; Malta(175,114)
+#DESTINATION_RESOURCE= 175,114 [1,2]
+#DESTINATION_RESOURCE= 175,115 [1,2]
+#DESTINATION_RESOURCE= 176,115 [1,2]
+; Tobruk(194,122)
+#DESTINATION_RESOURCE= 194,122 [1,2]
+#DESTINATION_RESOURCE= 195,121 [1,2]
+#DESTINATION_RESOURCE= 205,123 [1,2]
+; Germany(45) is Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= DE 750 - Insurrection Against The Axis In Naples As Allied Forces Approach!
+#POPUP= Insurrection Against The Axis In Naples As Allied Forces Approach!
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 750[1]
+#COUNTRY_ID= 115
+#ALIGNMENT_ID= 0
+#FLAG_ID= 59
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1942/01/01
+#SOURCE_POSITION=
+; Naples(175,103)
+#DESTINATION_RESOURCE= 175,103 [1,3]
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+}
+
+;
+; Fall Weiss II
+; Supply Line 1940 North Africa
+{
+#NAME= DE 832 - Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
+#POPUP= Italian Supply Line Are Severely Stretched East Of Tobruk
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 832[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 59
+#TRIGGER= 100
+; all seasons
+#SEASON_FLAG= 0
+#DATE= 1940/07/01
+; Alexandria(206,124) [any unit]
+#SOURCE_POSITION= 206,124 [-1]
+; Bardia(196,123)
+#DESTINATION_RESOURCE= 196,123 [1,3]
+; Sidi Barrani(198,123)
+#DESTINATION_RESOURCE= 198,123 [2,4]
+; Mersa Matruh(200,124)
+#DESTINATION_RESOURCE= 200,124 [3,5]
+; Italy(59) Axis, Fully Active and not surrendered
+; UK(112) Allied, Fully Active and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+;
+; Fall Weiss II
+; Supply Line 1940 North Africa
+{
+#NAME= DE 832 - Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
+#POPUP= Italian Supply Line Are Severely Restricted East Of Tobruk (Bardia, Sidi Barrani, Mersa Matruh)
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 832[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 59
+#TRIGGER= 100
+; all seasons
+#SEASON_FLAG= 0
+#DATE= 1940/09/15
+; Alexandria(206,124) [any unit]
+#SOURCE_POSITION= 206,124 [-1]
+; Bardia(196,123)
+#DESTINATION_RESOURCE= 196,123 [1,3]
+; Sidi Barrani(198,123)
+#DESTINATION_RESOURCE= 198,123 [2,4]
+; Mersa Matruh(200,124)
+#DESTINATION_RESOURCE= 200,124 [3,5]
+; Italy(59) Axis, Fully Active and not surrendered
+; UK(112) Allied, Fully Active and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+;
+; Fall Weiss II
+; Supply Line 1940 North Africa
+{
+#NAME= DE 832 - Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
+#POPUP= Italian Supply Line Are Severely Stretched East Of Tobruk
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 832[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 59
+#TRIGGER= 100
+; all seasons
+#SEASON_FLAG= 0
+#DATE= 1940/12/01
+; Alexandria(206,124) [any unit]
+#SOURCE_POSITION= 206,124 [-1]
+; Bardia(196,123)
+#DESTINATION_RESOURCE= 196,123 [1,3]
+; Sidi Barrani(198,123)
+#DESTINATION_RESOURCE= 198,123 [2,4]
+; Mersa Matruh(200,124)
+#DESTINATION_RESOURCE= 200,124 [3,5]
+; Italy(59) Axis, Fully Active and not surrendered
+; UK(112) Allied, Fully Active and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+;
+; Fall Weiss II
+; Allies In Egypt Support Greece
+{
+#NAME= DE 838 - Allies In Egypt Support Greece
+#POPUP= Impromptu Allied Expedition To Greece Disrupts Supply-chain In Egypt
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 838[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 36
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/03
+#SOURCE_POSITION=
+; Alexandria(206,124)
+#DESTINATION_RESOURCE= 206,124 [3,4]
+; El Alamein(204,125)
+#DESTINATION_RESOURCE= 204,125 [2,3]
+#DESTINATION_RESOURCE= 205,123 [3,4]
+#DESTINATION_RESOURCE= 206,123 [2,3]
+; Germany(45) Axis, Fully Active and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+;
+; Fall Weiss II
+; Stop Greece From Reinforcing Yugoslavia
+{
+#NAME= DE 838 - Stop Greece From Reinforcing Yugoslavia
+#POPUP=
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 838[1]
+#COUNTRY_ID= 120
+#ALIGNMENT_ID= 0
+#FLAG_ID= 120
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/03
+#SOURCE_POSITION=
+; Skopje(189,101)
+#DESTINATION_RESOURCE= 189,101 [3,3]
+; Yugoslavia Allied and mobilized
+#VARIABLE_CONDITION= 120 [2] [100] [0]
+; Greece is Allied and mobilized
+#VARIABLE_CONDITION= 46 [2] [100] [0]
+}
+
+;
+; Fall Weiss II
+; Protests At Helsinki
+{
+#NAME= DE 847 - Finland: Helsinki Protests (5% Chance)
+#POPUP= Demonstrations Against War With The Western Allies Disrupt Supply In Helsinki 
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+; 2 = Reoccurring check until end of game
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 847[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 39
+#TRIGGER= 5
+#SEASON_FLAG= 0
+#DATE= 1940/01/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 195,51 [2,4]
+; Finland Axis, Fully Active and not surrendered
+; UK(112) Allied, Fully Active and not surrendered
+#VARIABLE_CONDITION= 39 [1] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;
+; Fall Weiss II
+; South Atlantic Raiders
+{
+#NAME= DE 854 - South Atlantic Raiders
+#POPUP= KMS Admiral Graf Spee Disrupts South Atlantic Convoys
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 854[0]
+#COUNTRY_ID= 45
+#ALIGNMENT_ID= 0
+#FLAG_ID= 54
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/01/01
+#SOURCE_POSITION=
+; British Trade
+#DESTINATION_RESOURCE= 0,2 [5,5]
+; Germany(45) Axis, Fully Active and not surrendered
+; UK(112) Allied, Fully Active and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;
+; Fall Weiss II
+{
+#NAME= DE 871 - Oil Shortages Hamper Axis Economies (15% Chance)
+#POPUP= Oil Shortages Hamper Axis Economies
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 871[1]
+#COUNTRY_ID= 116
+#ALIGNMENT_ID= 0
+#FLAG_ID= 45
+#TRIGGER= 15
+#SEASON_FLAG= 0
+#DATE= 1943/01/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 161,77 [2,5]
+#DESTINATION_RESOURCE= 162,78 [2,5]
+#DESTINATION_RESOURCE= 161,83 [2,5]
+#DESTINATION_RESOURCE= 174,82 [2,5]
+#DESTINATION_RESOURCE= 160,79 [2,3]
+#DESTINATION_RESOURCE= 173,79 [2,3]
+; Breslau(180,79)
+#DESTINATION_RESOURCE= 180,79 [2,3]
+#DESTINATION_RESOURCE= 168,83 [2,3]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+;
+; Fall Weiss II
+{
+#NAME= DE 890 - Supply Shortages Hamper Spanish Economies (10% Chance)
+#POPUP= Supply Shortages Hamper Spanish Economies
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 890[1]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 99
+#TRIGGER= 10
+#SEASON_FLAG= 0
+#DATE= 1939/09/03
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 141,98 [7,9]
+#DESTINATION_RESOURCE= 143,99 [7,9]
+#DESTINATION_RESOURCE= 145,101 [7,9]
+#DESTINATION_RESOURCE= 145,106 [7,9]
+#VARIABLE_CONDITION= 99 [1] [100] [0]
+}
+
+; The Port of Kiel Is Stripped Of Kriegsmarine Personnel
+{ 
+#NAME= DE 950 - Germany: The Port of Kiel Is Stripped Of Kriegsmarine Personnel
+#POPUP= The Port of Kiel Is Stripped Of Kriegsmarine Personnel
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 950[1]
+#COUNTRY_ID= 45
+#ALIGNMENT_ID= 0
+#FLAG_ID= 45
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1944/01/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 167,69 [10,10]
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+; The Port of Stettin Is Stripped Of Kriegsmarine Personnel
+{ 
+#NAME= DE 951 - Germany: The Port of Stettin Is Stripped Of Kriegsmarine Personnel
+#POPUP= The Port of Stettin Is Stripped Of Kriegsmarine Personnel
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 951[1]
+#COUNTRY_ID= 45
+#ALIGNMENT_ID= 0
+#FLAG_ID= 45
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1944/01/01
+#SOURCE_POSITION=
+#DESTINATION_RESOURCE= 175,71 [10,10]
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
