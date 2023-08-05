@@ -33,14 +33,13 @@
 ;        1 = Enabled
 ;
 ; #TYPE= Value range [0, 3]
-;        With all other fields satisfied will this be:
-;        0 = Single check regardless if #TRIGGER is satisfied
-;        1 = Multiple check until #TRIGGER is satisfied
-;        2 = Reoccurring check until end of game
-;                       OR
-;        Once the #DATE field is satisfied:
-;        3 = Event fires once if all other fields are satisfied, else it will not fire.  
-;            Either way, event will be removed never to be looked at again
+;        Event check type, with all other fields satisfied:
+;        0 = Single check, on or after #DATE 
+;            (ignores #TRIGGER)
+;        1 = Multiple checks, on or after #DATE, until #TRIGGER is satisfied
+;        2 = Multiple checks, on or after #DATE, until end of game (*** not valid for UNIT events ***)
+;            (not removed from event queue)
+;        3 = Single check, only on #DATE
 ;
 ; #AI= Value range [0, 6]
 ;        0 = Event fires whenever all fields are satisfied for any game type
@@ -151,9 +150,18 @@
 ;                                  0 = False
 ;                                  1 = True (has surrendered)
 ;
-; #CONDITION_POSITION= Map position(s) that will serve to trigger the event as well as distance and
-;                      number of Axis/Allied unit ranges as specified by 'alignment' flag
-;                      Format: x,y [min_range, max_range] [min_units, max_units] [alignment] [aligned_country_id]
+; #CONDITION_POSITION=  Map positions that will serve to trigger the event as well as distance and
+;                       number of Axis/Allied unit ranges as specified by 'alignment' flag
+;                       Format: x,y [min_range, max_range] [min_units, max_units] [alignment] [aligned_country_id] OR
+;                               x,y [min_range, max_range] [min_units, max_units] [alignment] [aligned_country_id] [<]
+;                           range = RND(min_range,max_range)
+;                           units = RND(min_units,max_units)
+;                           alignment range [0, 2]
+;                               0 = Neutral
+;                               1 = Axis
+;                               2 = Allied
+;                           aligned_country_id range [0, 120]
+;                               0 = Any country (uses alignment above)
 ; }
 ;
 ; NOTES:
@@ -3510,7 +3518,6 @@
 #CONDITION_POSITION= 151,84 [3,3] [0,0] [1] [0]
 }
 
-;AMEND1941
 {
 #NAME= DE 251 - France: Allies Return St. Nazaire To French Control (100%)
 #POPUP=
@@ -3545,7 +3552,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;AMEND1941
 {
 #NAME= DE 252 - France: Alsace Is Reunited With France (100%)
 #POPUP=
@@ -4288,7 +4294,6 @@
 #CONDITION_POSITION= 143,88 [6,6] [0,0] [2] [0]
 }
 
-;AMEND1942
 {
 #NAME= DE 304 - USA: Ship Supplies to the USSR via Vladivostock? (AI - 100% Yes)
 #POPUP=
@@ -4323,7 +4328,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;AMEND1941
 {
 #NAME= DE 305 - USA: Give the British Permission to repair their Warships in a US Port? (AI - 100% Yes)
 #POPUP=
@@ -4820,7 +4824,6 @@
 #CONDITION_POSITION= 57,32 [50,50] [0,0] [1] [0]
 }
 
-;AMEND1941
 {
 #NAME= DE 355 - USA: Dummy Event to increase Resistance Activity in Europe from 1st January 1944 (AI - 100% Yes)
 #POPUP=
@@ -4859,7 +4862,6 @@
 #CONDITION_POSITION= 188,76 [20,20] [4,4] [2] [0]
 }
 
-;AMEND1941
 {
 #NAME= DE 356 - USA: Dummy Event for the Czechoslovak Uprising of 1944 (AI - 100% Yes)
 #POPUP=
@@ -4897,7 +4899,6 @@
 #CONDITION_POSITION= 185,85 [5,8] [2,2] [2] [0]
 }
 
-;AMEND1941
 {
 #NAME= DE 357 - USA: Dummy Event for the Czechoslovak Uprising in Prague (AI - 100% Yes)
 #POPUP=
@@ -4934,7 +4935,6 @@
 #CONDITION_POSITION= 175,81 [3,5] [2,2] [2] [0]
 }
 
-;AMEND1941
 {
 #NAME= DE 358 - USA: Dummy Event to increase Resistance Activity - Multiplayer Games (AI - 0% Yes)
 #POPUP=
@@ -4971,7 +4971,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;AMEND1941
 {
 #NAME= DE 359 - USA: Second Dummy Event for the Czechoslovak Uprising of 1944 (AI - 100% Yes)
 #POPUP=
@@ -5006,7 +5005,6 @@
 #CONDITION_POSITION= 185,85 [0,0] [0,0] [1] [0]
 }
 
-;AMEND1941
 {
 #NAME= DE 360 - USA: Second Dummy Event for the Czechoslovak Uprising in Prague (AI - 100% Yes)
 #POPUP=
@@ -5279,7 +5277,6 @@
 #CONDITION_POSITION= 211,16 [3,3] [0,0] [1] [0]
 }
 
-;AMEND1944
 {
 #NAME= DE 367 - USA: Dummy Event to increase Resistance Activity - Multiplayer Games (AI - 0% Yes)
 #POPUP=
@@ -5387,7 +5384,6 @@
 #VARIABLE_CONDITION= 115 [2] [100] [0] 
 ; USSR(116) Allied and surrendered 
 #VARIABLE_CONDITION= 116 [2] [100] [1] 
-;Dummy condition position (always satisfied) 
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0] 
 } 
 
@@ -5426,7 +5422,7 @@
 #VARIABLE_CONDITION= 115 [2] [100] [0] 
 ; Italy(59) Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; 1 Allied unit within 15 hexes of Rome
+; 1 Allied unit within 15 hexes of Rome(171,101)
 #CONDITION_POSITION= 171,101 [15,15] [1,1] [2] [0]
 }
 
@@ -5505,10 +5501,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; USSR
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
 ; Fall Weiss II
 ; Form The Polish First and Second Armies
 {
@@ -6512,7 +6504,7 @@
 #MPP_UPDOWN= -50
 #MPP_TURNS= 3
 #MPP_TEXT= Providing Winter Equipment
-#NOTES= The German Army did learn the lessons of the 1941-42 Soviet Winter and was better able to survive the winter campaigns in the following years, but it was only through investing in the army's equipment that this was the case.%N%N It is strongly recommended to say %B(YES), as our forces will not be handicapped during the following winter on the Eastern Front.%N%N If you select %B(NO), decision, the German Army should be fully equipped for winter warfare by the end of 1943 regardless, so the upcoming winter will the be final year of harsh winter losses.%N%N Note that irregardless of your decision, there is only a 25% chance that the upcoming winter will be as harsh as the previous, so excessive winter losses may be avoidable even without this investment.
+#NOTES= The German Army did learn the lessons of the 1941-42 Soviet Winter and was better able to survive the winter campaigns in the following years, but it was only through investing in the army's equipment that this was the case.%N%N It is strongly recommended to say %B(YES), as our forces will not be handicapped during the following winter on the Eastern Front.%N%N If you select %B(NO), the German Army should be fully equipped for winter warfare by the end of 1943 regardless, so the upcoming winter will the be final year of harsh winter losses.%N%N Note that irregardless of your decision, there is only a 25% chance that the upcoming winter will be as harsh as the previous, so excessive winter losses may be avoidable even without this investment.
 #NOTES_POSITION=
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
@@ -6684,9 +6676,6 @@
 #CONDITION_POSITION= 139,104 [5,5] [0,0] [2] [0]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; USSR DUMMY EVENTS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 {
 #NAME= DE 450 - USSR: Release Of Funds For The War Effort (AI - 100% Yes)
 #POPUP=
@@ -6721,7 +6710,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;AMEND1942; ;AMEND1943 ;AMEND1944
 {
 #NAME= DE 451 - USSR(AI): Urals Transfer AI Boost 1 (AI - 100% Yes)
 #POPUP=
@@ -6756,7 +6744,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;AMEND1942; ;AMEND1943 ;AMEND1944
 {
 #NAME= DE 452 - USSR(AI): Urals Transfer AI Boost 2 (AI - 100% Yes)
 #POPUP=
@@ -6827,7 +6814,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-Replacement script
 {
 #NAME= DE 454 - USSR: Dummy Event to represent supplies sent to the USSR via Persia (AI - 100% Yes)
 #POPUP=
@@ -7206,11 +7192,6 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Poland
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
 {
 #NAME= DE 500 - Poland: Should our soldiers head to Britain or France? (AI - 75% Yes)
 #POPUP=
@@ -7966,10 +7947,6 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Germany
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
 {
 #NAME= DE 600 - Germany: Should Germany Honor The Molotov-Ribbentrop Pact? (AI - 75% Yes)
 #POPUP= German Strategic Decision
@@ -8795,7 +8772,7 @@ Replacement script
 {
 #NAME= DE 621 - Germany: Divide Yugoslavia and Set up Croatia as an Independent State? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N %BRe: Croatia %N%N With Yugoslavia surrendered and occupied by our forces, we could solidify our position in the area by adjusting some borders and setting up a new and friendly state in Croatia.%N%N Croatia's capital will be Zagreb, where if you say %B(YES), then a Croatian Garrison unit will deploy for service.%N%N Forming a Croatian state will cost %B50 MPPs, though in the long run this cost will be offset by Zagreb's enhanced economic performance and the services of the Croatians.%N%N Would you like to adjust Yugoslavia's borders and form an independent Croatian state %B(YES)?
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BCroatia %N%N With Yugoslavia surrendered and occupied by our forces, we could solidify our position in the area by adjusting some borders and setting up a new and friendly state in Croatia.%N%N Croatia's capital will be Zagreb, where if you say %B(YES), then a Croatian Garrison unit will deploy for service.%N%N Forming a Croatian state will cost %B50 MPPs, though in the long run this cost will be offset by Zagreb's enhanced economic performance and the services of the Croatians.%N%N Would you like to adjust Yugoslavia's borders and form an independent Croatian state %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -8918,11 +8895,10 @@ Replacement script
 #CONDITION_POSITION= 134,115 [0,0] [1,1] [1] [118]
 }
 
-;Replacement
 {
 #NAME= DE 624 - Germany: Send Assistance to the Iraqi Rebels? (AI - 50% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N The Italian Embassy in Baghdad reports that Rashid Ali needs weapons, money, and air support.%N%N The Italians are preparing to send some aid, but to have any effect we will also need to send a mission of our own, called Sonderkommando Junck, at a cost of %B30 MPPs.%N%N Unfortunately, even with our support, the Iraqis are very unlikely to hold out indefinitely, but this mission could make them hold out for longer, and therefore delay the enemy's resumption of oil production.%N%N Would you like to send Sonderkommando Junck to support the Iraqis %B(YES)?
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BIraq %N%N The Italian Embassy in Baghdad reports that Rashid Ali needs weapons, money, and air support.%N%N The Italians are preparing to send some aid, but to have any effect we will also need to send a mission of our own, called Sonderkommando Junck, at a cost of %B30 MPPs.%N%N Unfortunately, even with our support, the Iraqis are very unlikely to hold out indefinitely, but this mission could make them hold out for longer, and therefore delay the enemy's resumption of oil production.%N%N Would you like to send Sonderkommando Junck to support the Iraqis %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9040,7 +9016,7 @@ Replacement script
 {
 #NAME= DE 627 - Germany: Deploy Coastal Guns on the Atlantic Wall? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N There is a potential threat of amphibious invasion from the Western Allies along the northern coast of France.%N%N It is therefore recommended that we strengthen our defenses by constructing static Coastal Gun batteries near Brest, Le Havre, Amiens and Calais.%N%N These batteries could prove crucial in repelling any invasion, as they are armed with formidable naval guns that will automatically attempt to engage enemy amphibious units that attempt to land.%N%N Their construction will cost %B300 MPPs (50 MPPs for 6 turns).%N%N Would you like to authorize the construction of these Coastal Gun batteries as part of our Atlantic Wall %B(YES)?
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BAtlantic %BWall %N%N There is a potential threat of amphibious invasion from the Western Allies along the northern coast of France.%N%N It is therefore recommended that we strengthen our defenses by constructing static Coastal Gun batteries near Brest, Le Havre, Amiens and Calais.%N%N These batteries could prove crucial in repelling any invasion, as they are armed with formidable naval guns that will automatically attempt to engage enemy amphibious units that attempt to land.%N%N Their construction will cost %B300 MPPs (50 MPPs for 6 turns).%N%N Would you like to authorize the construction of these Coastal Gun batteries as part of our Atlantic Wall %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9084,7 +9060,7 @@ Replacement script
 {
 #NAME= DE 630 - Germany: Offer the USSR a Revised Borders and Friendship Treaty? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N Now that the Polish campaign is over, we have an opportunity to adjust some of the details of the Molotov-Ribbentrop Pact.%N%N It is proposed that we offer to transfer Lithuania from our sphere of influence to that of the USSR's.%N%N While this would enable the Soviets to occupy the country in due course, in return we would ask the USSR to withdraw eastwards from along the Vistula-San river line, to the Bug-San river line.%N%N This would put us in a much better position to attack the fortress of Brest-Litovsk when we invade the USSR. If Stalin approves this proposal, and he may not, then it would also move the USSR 3-5% away from the Allies.%N%N Would you like to offer this revised Borders and Friendship Treaty to the USSR %B(YES)?
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BMolotov-Ribbentrop %BPact %N%N Now that the Polish campaign is over, we have an opportunity to adjust some of the details of the Molotov-Ribbentrop Pact.%N%N It is proposed that we offer to transfer Lithuania from our sphere of influence to that of the USSR's.%N%N While this would enable the Soviets to occupy the country in due course, in return we would ask the USSR to withdraw eastwards from along the Vistula-San river line, to the Bug-San river line.%N%N This would put us in a much better position to attack the fortress of Brest-Litovsk when we invade the USSR. If Stalin approves this proposal, and he may not, then it would also move the USSR 3-5% away from the Allies.%N%N Would you like to offer this revised Borders and Friendship Treaty to the USSR %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9122,7 +9098,7 @@ Replacement script
 {
 #NAME= DE 631 - Germany: Offer the USSR a Revised Borders and Friendship Treaty? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N Now that the Polish campaign is over, we have an opportunity to adjust some of the details of the Molotov-Ribbentrop Pact.%N%N It is proposed that we offer to transfer Lithuania from our sphere of influence to that of the USSR's.%N%N While it is true that this would enable them to occupy the country in due course, if Stalin approves, and he may not, then we would benefit by having the USSR move 5-8% away from the Allies.%N%N Would you like to offer this revised Borders and Friendship Treaty to the USSR %B(YES)?
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BMolotov-Ribbentrop %BPact %N%N Now that the Polish campaign is over, we have an opportunity to adjust some of the details of the Molotov-Ribbentrop Pact.%N%N It is proposed that we offer to transfer Lithuania from our sphere of influence to that of the USSR's.%N%N While it is true that this would enable them to occupy the country in due course, if Stalin approves, and he may not, then we would benefit by having the USSR move 5-8% away from the Allies.%N%N Would you like to offer this revised Borders and Friendship Treaty to the USSR %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9159,7 +9135,7 @@ Replacement script
 {
 #NAME= DE 632 - Germany: Annex Lithuania? (AI - 0% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N Lithuania remains within our sphere of influence and it would give us a good launching pad for a future invasion of the USSR should we seize the country before Stalin is ready to counter us.%N%N Annexing Lithuania would undoubtedly cause some alarm in the Soviet Union, but it shouldn't lead directly to conflict unless we were to follow it up with acts of aggression against Latvia or Estonia.%N%N Would you like to authorize the annexation of Lithuania %B(YES)?
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BLithuania %N%N Lithuania remains within our sphere of influence and it would give us a good launching pad for a future invasion of the USSR should we seize the country before Stalin is ready to counter us.%N%N Annexing Lithuania would undoubtedly cause some alarm in the Soviet Union, but it shouldn't lead directly to conflict unless we were to follow it up with acts of aggression against Latvia or Estonia.%N%N Would you like to authorize the annexation of Lithuania %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9196,7 +9172,7 @@ Replacement script
 {
 #NAME= DE 633 - Germany: Annex Lithuania? (AI - 0% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N Lithuania remains within our sphere of influence as the USSR has rejected our offer of a Revised Borders and Friendship Treaty.%N%N Lithuania would give us a good launching pad for a future invasion of the USSR should we seize the country before Stalin is ready to counter us.%N%N Annexing Lithuania would undoubtedly cause some alarm in the Soviet Union, but it shouldn't lead directly to conflict unless we were to follow it up with acts of aggression against Latvia or Estonia.%N%N Would you like to authorize the annexation of Lithuania %B(YES)?
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BLithuania %N%N Lithuania remains within our sphere of influence as the USSR has rejected our offer of a Revised Borders and Friendship Treaty.%N%N Lithuania would give us a good launching pad for a future invasion of the USSR should we seize the country before Stalin is ready to counter us.%N%N Annexing Lithuania would undoubtedly cause some alarm in the Soviet Union, but it shouldn't lead directly to conflict unless we were to follow it up with acts of aggression against Latvia or Estonia.%N%N Would you like to authorize the annexation of Lithuania %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9233,7 +9209,7 @@ Replacement script
 {
 #NAME= DE 634 - Germany: Annex Lithuania? (AI - 0% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N Lithuania remains within our sphere of influence as the USSR has rejected our offer of a Revised Borders and Friendship Treaty.%N%N Lithuania would give us a good launching pad for a future invasion of the USSR should we seize the country before Stalin is ready to counter us.%N%N Annexing Lithuania would undoubtedly cause some alarm in the Soviet Union, but it shouldn't lead directly to conflict unless we were to follow it up with acts of aggression against Latvia or Estonia.%N%N Would you like to authorize the annexation of Lithuania %B(YES)?
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BLithuania %N%N Lithuania remains within our sphere of influence as the USSR has rejected our offer of a Revised Borders and Friendship Treaty.%N%N Lithuania would give us a good launching pad for a future invasion of the USSR should we seize the country before Stalin is ready to counter us.%N%N Annexing Lithuania would undoubtedly cause some alarm in the Soviet Union, but it shouldn't lead directly to conflict unless we were to follow it up with acts of aggression against Latvia or Estonia.%N%N Would you like to authorize the annexation of Lithuania %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9440,7 +9416,7 @@ Replacement script
 {
 #NAME= DE 639 - Germany: Occupy Tunisia? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N In order to protect our position in Libya, and protect against an invasion of Sicily or even mainland Italy, we should occupy Tunisia now that the Allies are in Algeria.%N%N Occupying Tunisia will cost %B50 MPPs, and a Garrison unit will deploy at Tunis.%N%N This operation could buy us some time in order to send reinforcements to the area, or to prepare our defenses against an Allied invasion of Italy.%N%N Would you like to issue the order for Tunisia to be occupied %B(YES)?
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BTunisia %N%N In order to protect our position in Libya, and protect against an invasion of Sicily or even mainland Italy, we should occupy Tunisia now that the Allies are in Algeria.%N%N Occupying Tunisia will cost %B50 MPPs, and a Garrison unit will deploy at Tunis.%N%N This operation could buy us some time in order to send reinforcements to the area, or to prepare our defenses against an Allied invasion of Italy.%N%N Would you like to issue the order for Tunisia to be occupied %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9487,7 +9463,7 @@ Replacement script
 {
 #NAME= DE 640 - Germany: Occupy Tunisia? (AI - 100% Yes)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N In order to protect our position in Libya, and protect against an invasion of Sicily or even mainland Italy, we should occupy Tunisia now that the Allies are in Algeria.%N%N Occupying Tunisia will cost %B50 MPPs, and a Garrison unit will deploy at Tunis.%N%N This operation could buy us some time in order to send reinforcements to the area, or to prepare our defenses against an Allied invasion of Italy.%N%N Would you like to issue the order for Tunisia to be occupied %B(YES)?
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BTunisia %N%N In order to protect our position in Libya, and protect against an invasion of Sicily or even mainland Italy, we should occupy Tunisia now that the Allies are in Algeria.%N%N Occupying Tunisia will cost %B50 MPPs, and a Garrison unit will deploy at Tunis.%N%N This operation could buy us some time in order to send reinforcements to the area, or to prepare our defenses against an Allied invasion of Italy.%N%N Would you like to issue the order for Tunisia to be occupied %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9895,7 +9871,6 @@ Replacement script
 #CONDITION_POSITION= 139,104 [5,5] [0,0] [2] [0]
 }
 
-;AMEND1940
 {
 #NAME= DE 651 - Germany: Imports From The USSR (AI - 100% Yes)
 #POPUP=
@@ -10163,7 +10138,6 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;AMEND1941
 {
 #NAME= DE 659 - Germany: Franco Provides Access To The Ports Of Vigo And Santa Cruz (AI - 100% Yes)
 #POPUP=
@@ -10198,7 +10172,6 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;AMEND1941
 {
 #NAME= DE 660 - Germany: Spain Regains The Ports Of Vigo And Santa Cruz (Spain joins the Axis) (AI - 100% Yes)
 #POPUP=
@@ -10233,7 +10206,6 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;AMEND1941
 {
 #NAME= DE 661 - Germany: Spain Regains The Ports Of Vigo And Santa Cruz (Paris Liberated) (AI - 100% Yes)
 #POPUP=
@@ -10268,7 +10240,6 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;AMEND1941
 {
 #NAME= DE 662 - Germany: Spain Regains The Ports Of Vigo And Santa Cruz (Spain is pro-Allied) (AI - 100% Yes)
 #POPUP=
@@ -12019,6 +11990,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 ; Stalingrad Occupied
 {
 #NAME= DE 792 - Germany: Stalingrad Occupied Dummy Event (AI - 100% Yes)
@@ -12054,6 +12026,7 @@ Replacement script
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 793 - USSR: Deploy Civilian Construction Engineers at Moscow ? (AI - 100% Yes)
 #POPUP=
