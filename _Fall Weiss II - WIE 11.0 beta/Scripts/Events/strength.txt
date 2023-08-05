@@ -83,9 +83,10 @@
 ;               Percentage chance that the event will occur
 ;
 ; #COUNTRY_ID=  Value range [0, 120]
-;               Country ID that will be owner of this event
+;               Country that will be owner of this event
 ;
-; #FLAG_ID= Flag ID that will be shown in the popup for this event
+; #FLAG_ID=     Value range [1, 120]
+;               Flag that will be shown in the popup for this event
 ;
 ; #SEASON_FLAG= Value range[0, 5]
 ;               Season flag can be used to limit event to a particular season
@@ -311,9 +312,8 @@
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;REMOVE 1940
 {
-#NAME= Poland(AI): Battlefield Losses
+#NAME= Germany(AI): Battlefield Losses
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -333,239 +333,6 @@
 #VARIABLE_CONDITION= 85 [2] [100] [0]
 ; 2 Axis units within 3 hexes of Warsaw(188,76)
 #CONDITION_POSITION= 188,76 [3,3] [2,2] [1] [0]
-}
-
-;REMOVE 1943
-{
-#NAME= DE 308 - USA: OSS Agents Co-ordinate Attacks On Vichy Forces In Algeria
-#POPUP= <<TAG_1>>
-#IMAGE=
-#SOUND= coup.ogg
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 308[1]
-#COUNTRY_ID= 115
-#FLAG_ID= 4
-#TRIGGER= 50
-#SEASON_FLAG= 0
-#DATE= 1942/01/01
-#MAP_POSITION= 131,119 [2,2] [0,0] [-35,-60] [1] [4]
-#MAP_POSITION= 145,115 [2,2] [0,0] [-35,-60] [1] [4]
-#MAP_POSITION= 152,113 [2,2] [0,0] [-35,-60] [1] [4]
-; Algeria is Axis and not surrendered
-#VARIABLE_CONDITION= 4 [1] [100] [0]
-; A US unit is within 3 hexes of Casablanca
-#CONDITION_POSITION= 131,119 [3,3] [1,1] [2] [115]
-; A US unit is within 3 hexes of Oran
-#CONDITION_POSITION= 145,115 [3,3] [1,1] [2] [115]
-; A US unit is within 3 hexes of Algiers(152,113)
-#CONDITION_POSITION= 152,113 [3,3] [1,1] [2] [115]
-}
-
-
-{
-#NAME= DE 408 - USSR: Comrade Stalin Vows To Stay In Moscow And Lead Its Defence!
-#POPUP= Comrade Stalin Vows To Stay In Moscow And Lead Its Defence!
-#IMAGE= stalininmoscow.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 408[1]
-#COUNTRY_ID= 116
-#FLAG_ID= 116
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1939/09/01
-#MAP_POSITION= 221,65 [50,50] [0,0] [25,25] [2] [116]
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= DE 408 - USSR: Panic Spreads As News Spreads That Comrade Stalin Has Left Moscow
-#POPUP= Panic Spreads As News Spreads That Comrade Stalin Has Left Moscow
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 408[1]
-#COUNTRY_ID= 116
-#FLAG_ID= 116
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1939/09/01
-#MAP_POSITION= 221,65 [50,50] [0,0] [-40,-40] [2] [116]
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; An Axis unit is in Moscow
-#CONDITION_POSITION= 221,65 [0,0] [1,1] [1] [0]
-}
-
-{
-#NAME= DE 409 - USSR: Ill Prepared For Winter, The Red Army Suffers In The Cold (75% Chance)
-#POPUP= Ill Prepared For Winter, The Red Army Suffers In The Cold
-#IMAGE=
-#SOUND= winter.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 409[0]
-#COUNTRY_ID= 116
-#FLAG_ID= 116
-#TRIGGER= 75
-#SEASON_FLAG= 4
-#DATE= 1941/12/21
-#MAP_POSITION= 221,65 [25,25] [0,0] [-10,-25] [2] [116]
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= DE 411 - USSR: Ill Prepared For Winter, The Red Army Suffers In The Cold (75% Chance)
-#POPUP= Ill Prepared For Winter, The Red Army Suffers In The Cold
-#IMAGE=
-#SOUND= winter.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 411[0]
-#COUNTRY_ID= 116
-#FLAG_ID= 116
-#TRIGGER= 75
-#SEASON_FLAG= 4
-#DATE= 1941/12/21
-#MAP_POSITION= 221,65 [25,25] [0,0] [-10,-25] [2] [116]
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= DE 407 - USSR: Political Commissars Read Order 270 To All Red Army Units
-#POPUP= Political Commissars Read Order 270 To All Red Army Units
-#IMAGE= order270.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 3
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 407[1]
-#COUNTRY_ID= 116
-#FLAG_ID= 116
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1939/09/01
-#MAP_POSITION= 221,65 [50,50] [0,0] [25,25] [2] [116]
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= DE 455 - USSR: The Road Of Life Provides Food And Fuel To The Defenders Of Leningrad (Pop Up)
-#POPUP= The Road Of Life Provides Food And Fuel To The Defenders Of Leningrad
-#IMAGE= roadoflife1.png, roadoflife2.png, roadoflife3.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 455[1]
-#COUNTRY_ID= 116
-#FLAG_ID= 116
-#TRIGGER= 100
-#SEASON_FLAG= 4
-#DATE= 1939/09/01
-; Leningrad(206,52)
-#MAP_POSITION= 206,52 [2,2] [0,0] [1,1] [2] [116]
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= DE 455 - USSR: The Road Of Life Provides Food And Fuel To The Defenders Of Leningrad (Continuous)
-#POPUP=
-#IMAGE= 
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 455[1]
-#COUNTRY_ID= 116
-#FLAG_ID= 116
-#TRIGGER= 100
-#SEASON_FLAG= 4
-#DATE= 1939/09/01
-; Leningrad(206,52)
-#MAP_POSITION= 206,52 [2,2] [0,0] [10,15] [2] [116]
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= DE 455 - USSR: The Road Of Life (Summer)
-#POPUP= 
-#IMAGE= 
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 455[1]
-#COUNTRY_ID= 116
-#FLAG_ID= 116
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1939/09/01
-; Leningrad(206,52)
-#MAP_POSITION= 206,52 [2,2] [0,0] [15,25] [2] [116]
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= DE 1005 - Germany: Axis Declaration Of War On The USSR
-#POPUP= The Axis Attack Causes Shockwaves In The USSR
-#IMAGE=
-#SOUND= coup.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 1005[1]
-#COUNTRY_ID= 45
-#FLAG_ID= 116
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1939/09/01
-#MAP_POSITION= 194,75 [50,50] [0,0] [-35,-35] [2] [116]
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 {
@@ -783,6 +550,231 @@
 }
 
 {
+#NAME= Greece: Morale Is Boosted By The Presence Of British Troops In Greece
+#POPUP= Greek Morale Is Boosted By The Presence Of British Troops In Greece
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 46
+#FLAG_ID= 46
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/01/01
+#MAP_POSITION= 191,106 [6,6] [0,0] [15,30] [2] [46]
+#VARIABLE_CONDITION= 46 [2] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; A British unit is in Greece
+#CONDITION_POSITION= 191,106 [6,6] [1,1] [2] [112]
+}
+
+{
+#NAME= UK: Greek Morale Is Boosted By The Presence Of British Or US Troops In Greece (Continuous)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#FLAG_ID= 46
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/01/01
+#MAP_POSITION= 191,106 [6,6] [0,0] [5,10] [2] [46]
+#VARIABLE_CONDITION= 46 [2] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; A British unit is within 6 hexes of Larissa(191,106) OR
+#CONDITION_POSITION= 191,106 [6,6] [1,1] [2] [112]
+; A US unit is within 6 hexes of Larissa(191,106)
+#CONDITION_POSITION= 191,106 [6,6] [1,1] [2] [115]
+}
+
+;
+; Soviet Winter Reduces Unit Strength
+{
+#NAME= USSR: Soviet Winter
+#POPUP= Soviet Winter Strikes
+#IMAGE= sovietwinter.png
+#SOUND= winter.ogg
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 116
+#FLAG_ID= 116
+#TRIGGER= 100
+#SEASON_FLAG= 4
+#DATE= 1941/12/21
+#MAP_POSITION= 209,68 [8,8] [0,1] [-10,-45] [1] [0] <
+#MAP_POSITION= 227,35 [8,8] [0,2] [-10,-45] [1] [0] <
+; Lappeenranta(202,48)
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [45] <
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [59] <
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [19] <
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [93] <
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [52] <
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [96] <
+; Luga(205,56)
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [45] <
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [59] <
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [19] <
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [93] <
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [52] <
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [96] <
+; Riga(194,62)
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [45] <
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [59] <
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [19] <
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [52] <
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [93] <
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [96] <
+; Minsk(201,71)
+#MAP_POSITION= 201,71 [5,5] [0,2] [-10,-45] [1] [0] <
+#MAP_POSITION= 207,80 [5,5] [0,2] [-10,-45] [1] [0] <
+#MAP_POSITION= 211,90 [5,5] [0,2] [-10,-45] [1] [0] <
+#MAP_POSITION= 213,86 [8,8] [1,2] [-10,-45] [1] [0] <
+#MAP_POSITION= 216,90 [8,8] [0,2] [-10,-45] [1] [0] <
+#MAP_POSITION= 218,82 [8,8] [0,2] [-10,-45] [1] [0] <
+#MAP_POSITION= 220,65 [8,8] [0,2] [-10,-45] [1] [0] <
+#MAP_POSITION= 225,54 [8,8] [0,2] [-10,-45] [1] [0] <
+#MAP_POSITION= 225,88 [8,8] [0,2] [-10,-45] [1] [0] <
+; Gorky(233,64)
+#MAP_POSITION= 233,64 [8,8] [0,2] [-10,-45] [1] [0] <
+#MAP_POSITION= 224,77 [8,8] [0,2] [-10,-45] [1] [0] <
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; Taranto Raid
+{
+#NAME= UK(AI): Taranto Raid (50%)
+#POPUP= Fairey Swordfish Raid La Regia Marina In Taranto
+#IMAGE= taranto.png
+#SOUND= taranto.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 2
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#FLAG_ID= 112
+#TRIGGER= 50
+#SEASON_FLAG= 0
+#DATE= 1940/11/11
+; Taranto(180,105)
+#MAP_POSITION= 180,105 [1,1] [1,3] [-50,-75] [1] [0]
+; Italy(59) is Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Allied units in Malta
+#CONDITION_POSITION= 175,114 [0,0] [1,1] [2] [0]
+}
+
+{
+#NAME= Germany: Greek Morale Suffers As Prime Minister Alexandros Koryzis Commits Suicide
+#POPUP= Greek Morale Suffers As Prime Minister Alexandros Koryzis Commits Suicide
+#IMAGE= greekmorale.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#FLAG_ID= 46
+#TRIGGER= 50
+#SEASON_FLAG= 0
+#DATE= 1941/02/01
+#MAP_POSITION= 191,106 [6,6] [0,0] [-15,-30] [2] [46]
+#VARIABLE_CONDITION= 46 [2] [100] [0]
+; 1 Axis unit within 3 hexes of Athens
+#CONDITION_POSITION= 193,109 [3,3] [1,1] [1] [0]
+}
+
+{
+#NAME= Germany: Egyptian Nationalists Rise Up Against The British As The Axis Approach Cairo
+#POPUP= Egyptian Nationalists Rise Up Against The British As The Axis Approach Cairo
+#IMAGE=
+#SOUND= coup.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#FLAG_ID= 36
+#TRIGGER= 50
+#SEASON_FLAG= 0
+#DATE= 1940/01/01
+#MAP_POSITION= 208,126 [1,3] [0,1] [-10,-30] [2] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+; 2 Axis units within 3 hexes of Cairo
+#CONDITION_POSITION= 208,126 [3,3] [2,2] [1] [0]
+}
+
+{
+#NAME= UK: Freedom Action Of Bavaria Launch A Rising Against The Nazis (Historical)
+#POPUP= Freedom Action Of Bavaria Launch A Rising Against The Nazis
+#IMAGE= freedomactionbavaria.png
+#SOUND= coup.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#FLAG_ID= 45
+#TRIGGER= 50
+#SEASON_FLAG= 0
+#DATE= 1942/01/01
+#MAP_POSITION= 169,86 [1,1] [0,2] [-30,-50] [1] [45]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; 3 Allied units within 3 hexes of Berlin
+#CONDITION_POSITION= 173,74 [3,3] [3,3] [2] [0]
+}
+
+{
+#NAME= Poland(AI): German Bombers Raid Warsaw (AI Helper)
+#POPUP= German Bombers Raid The Polish Defenders Near Warsaw
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 1
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 85
+#FLAG_ID= 45
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 188,76 [1,1] [3,4] [0,0] [2] [0]
+#VARIABLE_CONDITION= 85 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
 #NAME= DE 202 - Germany: Anti-War Propaganda Spreads Disaffection In The French Army
 #POPUP= Anti-War Propaganda Spreads Disaffection In The French Army
 #IMAGE=
@@ -806,10 +798,269 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; GERMANY MINOR DECISION EVENTS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
+{
+#NAME= DE 308 - USA: OSS Agents Coordinate Attacks On Vichy Forces In Algeria
+#POPUP= <<TAG_1>>
+#IMAGE=
+#SOUND= coup.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 308[1]
+#COUNTRY_ID= 115
+#FLAG_ID= 4
+#TRIGGER= 50
+#SEASON_FLAG= 0
+#DATE= 1942/01/01
+#MAP_POSITION= 131,119 [2,2] [0,0] [-35,-60] [1] [4]
+#MAP_POSITION= 145,115 [2,2] [0,0] [-35,-60] [1] [4]
+#MAP_POSITION= 152,113 [2,2] [0,0] [-35,-60] [1] [4]
+; Algeria is Axis and not surrendered
+#VARIABLE_CONDITION= 4 [1] [100] [0]
+; A US unit is within 3 hexes of Casablanca
+#CONDITION_POSITION= 131,119 [3,3] [1,1] [2] [115]
+; A US unit is within 3 hexes of Oran
+#CONDITION_POSITION= 145,115 [3,3] [1,1] [2] [115]
+; A US unit is within 3 hexes of Algiers(152,113)
+#CONDITION_POSITION= 152,113 [3,3] [1,1] [2] [115]
+}
+
+{
+#NAME= DE 407 - USSR: Political Commissars Read Order 270 To All Red Army Units
+#POPUP= Political Commissars Read Order 270 To All Red Army Units
+#IMAGE= order270.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 407[1]
+#COUNTRY_ID= 116
+#FLAG_ID= 116
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 221,65 [50,50] [0,0] [25,25] [2] [116]
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+
+{
+#NAME= DE 408 - USSR: Comrade Stalin Vows To Stay In Moscow And Lead Its Defence!
+#POPUP= Comrade Stalin Vows To Stay In Moscow And Lead Its Defence!
+#IMAGE= stalininmoscow.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 408[1]
+#COUNTRY_ID= 116
+#FLAG_ID= 116
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 221,65 [50,50] [0,0] [25,25] [2] [116]
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 408 - USSR: Panic Spreads As News Spreads That Comrade Stalin Has Left Moscow
+#POPUP= Panic Spreads As News Spreads That Comrade Stalin Has Left Moscow
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 408[1]
+#COUNTRY_ID= 116
+#FLAG_ID= 116
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 221,65 [50,50] [0,0] [-40,-40] [2] [116]
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; An Axis unit is in Moscow(221,65)
+#CONDITION_POSITION= 221,65 [0,0] [1,1] [1] [0]
+}
+
+{
+#NAME= DE 409 - USSR: Ill Prepared For Winter, The Red Army Suffers In The Cold (75% Chance)
+#POPUP= Ill Prepared For Winter, The Red Army Suffers In The Cold
+#IMAGE=
+#SOUND= winter.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 409[0]
+#COUNTRY_ID= 116
+#FLAG_ID= 116
+#TRIGGER= 75
+#SEASON_FLAG= 4
+#DATE= 1941/12/21
+#MAP_POSITION= 221,65 [25,25] [0,0] [-10,-25] [2] [116]
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 411 - USSR: Ill Prepared For Winter, The Red Army Suffers In The Cold (75% Chance)
+#POPUP= Ill Prepared For Winter, The Red Army Suffers In The Cold
+#IMAGE=
+#SOUND= winter.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 411[0]
+#COUNTRY_ID= 116
+#FLAG_ID= 116
+#TRIGGER= 75
+#SEASON_FLAG= 4
+#DATE= 1941/12/21
+#MAP_POSITION= 221,65 [25,25] [0,0] [-10,-25] [2] [116]
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; Soviet Winter Reduces Unit Strength
+{
+#NAME= DE 427 - USSR: Soviet Winter
+#POPUP= Soviet Winter Again Strikes The Axis
+#IMAGE= sovietwinter.png
+#SOUND= winter.ogg
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 427[0]
+#COUNTRY_ID= 116
+#FLAG_ID= 116
+#TRIGGER= 25
+#SEASON_FLAG= 4
+#DATE= 1942/12/25
+#MAP_POSITION= 209,68 [8,8] [0,1] [-10,-45] [1] [0]
+#MAP_POSITION= 227,35 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [45]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [45]
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [45]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [52]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [52]
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [52]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [59]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [59]
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [59]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [19]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [19]
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [19]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [93]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [93]
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [93]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [96]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [96]
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [96]
+#MAP_POSITION= 201,71 [5,5] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 207,80 [5,5] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 211,90 [5,5] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 213,86 [8,8] [1,2] [-10,-45] [1] [0]
+#MAP_POSITION= 216,90 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 218,82 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 220,65 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 225,54 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 225,88 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 233,64 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 224,77 [8,8] [0,2] [-10,-45] [1] [0]
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 455 - USSR: The Road Of Life Provides Food And Fuel To The Defenders Of Leningrad (Pop Up)
+#POPUP= The Road Of Life Provides Food And Fuel To The Defenders Of Leningrad
+#IMAGE= roadoflife1.png, roadoflife2.png, roadoflife3.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 455[1]
+#COUNTRY_ID= 116
+#FLAG_ID= 116
+#TRIGGER= 100
+#SEASON_FLAG= 4
+#DATE= 1939/09/01
+; Leningrad(206,52)
+#MAP_POSITION= 206,52 [2,2] [0,0] [1,1] [2] [116]
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 455 - USSR: The Road Of Life Provides Food And Fuel To The Defenders Of Leningrad (Continuous)
+#POPUP=
+#IMAGE= 
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 455[1]
+#COUNTRY_ID= 116
+#FLAG_ID= 116
+#TRIGGER= 100
+#SEASON_FLAG= 4
+#DATE= 1939/09/01
+; Leningrad(206,52)
+#MAP_POSITION= 206,52 [2,2] [0,0] [10,15] [2] [116]
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 455 - USSR: The Road Of Life (Summer)
+#POPUP= 
+#IMAGE= 
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 455[1]
+#COUNTRY_ID= 116
+#FLAG_ID= 116
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+; Leningrad(206,52)
+#MAP_POSITION= 206,52 [2,2] [0,0] [15,25] [2] [116]
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
 {
 #NAME= DE 603 - UK: Franco's War Entry Causes Unrest
 #POPUP= General Aranda Launches A Coup Against Franco's Decision To Enter The War
@@ -935,54 +1186,6 @@
 #VARIABLE_CONDITION= 46 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Greece: Morale Is Boosted By The Presence Of British Troops In Greece
-#POPUP= Greek Morale Is Boosted By The Presence Of British Troops In Greece
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 46
-#FLAG_ID= 46
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1940/01/01
-#MAP_POSITION= 191,106 [6,6] [0,0] [15,30] [2] [46]
-#VARIABLE_CONDITION= 46 [2] [100] [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; A British unit is in Greece
-#CONDITION_POSITION= 191,106 [6,6] [1,1] [2] [112]
-}
-
-{
-#NAME= UK: Greek Morale Is Boosted By The Presence Of British Or US Troops In Greece (Continuous)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#FLAG_ID= 46
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1940/01/01
-#MAP_POSITION= 191,106 [6,6] [0,0] [5,10] [2] [46]
-#VARIABLE_CONDITION= 46 [2] [100] [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; A British unit is within 6 hexes of Larissa(191,106) OR
-#CONDITION_POSITION= 191,106 [6,6] [1,1] [2] [112]
-; A US unit is within 6 hexes of Larissa(191,106)
-#CONDITION_POSITION= 191,106 [6,6] [1,1] [2] [115]
 }
 
 {
@@ -1228,231 +1431,23 @@
 #CONDITION_POSITION= 195,121 [0,0] [1,1] [2] [0]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; EVENTS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-;
-; Soviet Winter Reduces Unit Strength
 {
-#NAME= USSR: Soviet Winter
-#POPUP= Soviet Winter Strikes
-#IMAGE= sovietwinter.png
-#SOUND= winter.ogg
+#NAME= DE 1005 - Germany: Axis Declaration Of War On The USSR
+#POPUP= The Axis Attack Causes Shockwaves In The USSR
+#IMAGE=
+#SOUND= coup.ogg
 #FLAG= 1
-#TYPE= 3
+#TYPE= 1
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 116
+#LINK= 1005[1]
+#COUNTRY_ID= 45
 #FLAG_ID= 116
-#TRIGGER= 100
-#SEASON_FLAG= 4
-#DATE= 1941/12/21
-#MAP_POSITION= 209,68 [8,8] [0,1] [-10,-45] [1] [0] <
-#MAP_POSITION= 227,35 [8,8] [0,2] [-10,-45] [1] [0] <
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [45] <
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [45] <
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [45] <
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [52] <
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [52] <
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [52] <
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [59] <
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [59] <
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [59] <
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [19] <
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [19] <
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [19] <
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [93] <
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [93] <
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [93] <
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [96] <
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [96] <
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [96] <
-#MAP_POSITION= 201,71 [5,5] [0,2] [-10,-45] [1] [0] <
-#MAP_POSITION= 207,80 [5,5] [0,2] [-10,-45] [1] [0] <
-#MAP_POSITION= 211,90 [5,5] [0,2] [-10,-45] [1] [0] <
-#MAP_POSITION= 213,86 [8,8] [1,2] [-10,-45] [1] [0] <
-#MAP_POSITION= 216,90 [8,8] [0,2] [-10,-45] [1] [0] <
-#MAP_POSITION= 218,82 [8,8] [0,2] [-10,-45] [1] [0] <
-#MAP_POSITION= 220,65 [8,8] [0,2] [-10,-45] [1] [0] <
-#MAP_POSITION= 225,54 [8,8] [0,2] [-10,-45] [1] [0] <
-#MAP_POSITION= 225,88 [8,8] [0,2] [-10,-45] [1] [0] <
-#MAP_POSITION= 233,64 [8,8] [0,2] [-10,-45] [1] [0] <
-#MAP_POSITION= 224,77 [8,8] [0,2] [-10,-45] [1] [0] <
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; Taranto Raid
-{
-#NAME= UK(AI): Taranto Raid (50%)
-#POPUP= Fairey Swordfish Raid La Regia Marina In Taranto
-#IMAGE= taranto.png
-#SOUND= taranto.ogg
-#FLAG= 1
-#TYPE= 0
-#AI= 2
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#FLAG_ID= 112
-#TRIGGER= 50
-#SEASON_FLAG= 0
-#DATE= 1940/11/11
-; Taranto(180,105)
-#MAP_POSITION= 180,105 [1,1] [1,3] [-50,-75] [1] [0]
-; Italy(59) is Axis and not surrendered
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Allied units in Malta
-#CONDITION_POSITION= 175,114 [0,0] [1,1] [2] [0]
-}
-
-{
-#NAME= Germany: Greek Morale Suffers As Prime Minister Alexandros Koryzis Commits Suicide
-#POPUP= Greek Morale Suffers As Prime Minister Alexandros Koryzis Commits Suicide
-#IMAGE= greekmorale.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#FLAG_ID= 46
-#TRIGGER= 50
-#SEASON_FLAG= 0
-#DATE= 1941/02/01
-#MAP_POSITION= 191,106 [6,6] [0,0] [-15,-30] [2] [46]
-#VARIABLE_CONDITION= 46 [2] [100] [0]
-; 1 Axis unit within 3 hexes of Athens
-#CONDITION_POSITION= 193,109 [3,3] [1,1] [1] [0]
-}
-
-{
-#NAME= Germany: Egyptian Nationalists Rise Up Against The British As The Axis Approach Cairo
-#POPUP= Egyptian Nationalists Rise Up Against The British As The Axis Approach Cairo
-#IMAGE=
-#SOUND= coup.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#FLAG_ID= 36
-#TRIGGER= 50
-#SEASON_FLAG= 0
-#DATE= 1940/01/01
-#MAP_POSITION= 208,126 [1,3] [0,1] [-10,-30] [2] [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 36 [2] [100] [0]
-; 2 Axis units within 3 hexes of Cairo
-#CONDITION_POSITION= 208,126 [3,3] [2,2] [1] [0]
-}
-
-{
-#NAME= UK: Freedom Action Of Bavaria Launch A Rising Against The Nazis (Historical)
-#POPUP= Freedom Action Of Bavaria Launch A Rising Against The Nazis
-#IMAGE= freedomactionbavaria.png
-#SOUND= coup.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#FLAG_ID= 45
-#TRIGGER= 50
-#SEASON_FLAG= 0
-#DATE= 1942/01/01
-#MAP_POSITION= 169,86 [1,1] [0,2] [-30,-50] [1] [45]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; 3 Allied units within 3 hexes of Berlin
-#CONDITION_POSITION= 173,74 [3,3] [3,3] [2] [0]
-}
-
-{
-#NAME= Poland(AI): German Bombers Raid Warsaw (AI Helper)
-#POPUP= German Bombers Raid The Polish Defenders Near Warsaw
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 1
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 85
-#FLAG_ID= 45
 #TRIGGER= 100
 #SEASON_FLAG= 0
 #DATE= 1939/09/01
-#MAP_POSITION= 188,76 [1,1] [3,4] [0,0] [2] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 85 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; Soviet Winter Reduces Unit Strength
-{
-#NAME= DE 427 - USSR: Soviet Winter
-#POPUP= Soviet Winter Again Strikes The Axis
-#IMAGE= sovietwinter.png
-#SOUND= winter.ogg
-#FLAG= 1
-#TYPE= 3
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 427[0]
-#COUNTRY_ID= 116
-#FLAG_ID= 116
-#TRIGGER= 25
-#SEASON_FLAG= 4
-#DATE= 1942/12/25
-#MAP_POSITION= 209,68 [8,8] [0,1] [-10,-45] [1] [0]
-#MAP_POSITION= 227,35 [8,8] [0,2] [-10,-45] [1] [0]
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [45]
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [45]
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [45]
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [52]
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [52]
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [52]
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [59]
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [59]
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [59]
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [19]
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [19]
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [19]
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [93]
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [93]
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [93]
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [96]
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [96]
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [96]
-#MAP_POSITION= 201,71 [5,5] [0,2] [-10,-45] [1] [0]
-#MAP_POSITION= 207,80 [5,5] [0,2] [-10,-45] [1] [0]
-#MAP_POSITION= 211,90 [5,5] [0,2] [-10,-45] [1] [0]
-#MAP_POSITION= 213,86 [8,8] [1,2] [-10,-45] [1] [0]
-#MAP_POSITION= 216,90 [8,8] [0,2] [-10,-45] [1] [0]
-#MAP_POSITION= 218,82 [8,8] [0,2] [-10,-45] [1] [0]
-#MAP_POSITION= 220,65 [8,8] [0,2] [-10,-45] [1] [0]
-#MAP_POSITION= 225,54 [8,8] [0,2] [-10,-45] [1] [0]
-#MAP_POSITION= 225,88 [8,8] [0,2] [-10,-45] [1] [0]
-#MAP_POSITION= 233,64 [8,8] [0,2] [-10,-45] [1] [0]
-#MAP_POSITION= 224,77 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 194,75 [50,50] [0,0] [-35,-35] [2] [116]
 ; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
