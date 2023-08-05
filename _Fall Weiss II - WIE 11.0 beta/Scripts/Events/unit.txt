@@ -99,8 +99,9 @@
 ;
 ; #DESTINATION_RESOURCE= Resource destination position for units listed by #UNIT_ID
 ;
-; #DATE=        Date that must be satisfied (in game) for event to occur 
-;               Format: yyyy/mm/dd or yyyy/mm/dd [=]
+; #DATE=                Date requirement for the event
+;                       Format: yyyy/mm/dd or yyyy/mm/dd [=]
+;                           if [=] is used, only applies for year specified.
 ;
 ; #FAILSAFE_DATE= Date for the event to occur, regardless if #CONDITION_POSITION checks have been satisfied 
 ;               Format: yyyy/mm/dd
@@ -11533,7 +11534,7 @@
 }
 
 {
-#NAME= DE 615 - Italian Fascist Corps Formed
+#NAME= DE 615 - Germany: Italian Fascist Corps Formed(Bologna)
 #POPUP= Italian National Republican Army Corps Forced
 #IMAGE= italian_fascistunit.png
 #SOUND= 
@@ -11561,7 +11562,7 @@
 ;
 ; German Paratroops Arrive At Breslau
 {
-#NAME= DE 617 - German Paratroops
+#NAME= DE 617 - Germany: Paratroops Deployed(Breslau)
 #POPUP= German Paratroops Deploy At Breslau
 #IMAGE= germanpara1.png
 #SOUND=
@@ -11589,7 +11590,7 @@
 ;
 ; German Paratroops Arrive Near Hamburg
 {
-#NAME= DE 617 - German Paratroops
+#NAME= DE 617 - Germany: Paratroops Deployed(Hamburg)
 #POPUP= German Paratroops Deploy At Hamburg
 #IMAGE= germanpara1.png
 #SOUND=
@@ -11612,10 +11613,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0] 
 #UNIT= 9 [10] [0] [7th FSJ]
 }
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Germany
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 {
 #NAME= DE 618 - Germany: Operation Panzerfaust - Budapest Garrison
@@ -11714,7 +11711,7 @@
 }
 
 {
-#NAME= DE 620 - Egyptian Nationalist Garrison Unit In Cairo
+#NAME= DE 620 - Germany: Egyptian Nationalist Garrison Unit In Cairo
 #POPUP= An Egyptian Legion Is Formed In Cairo To Serve The Axis
 #IMAGE= egyptianlegion.png
 #SOUND=
@@ -11740,7 +11737,7 @@
 }
 
 {
-#NAME= DE 621 - Croatian Garrison Unit In Zagreb
+#NAME= DE 621 - Croatia: Garrison Unit In Zagreb
 #POPUP= A Croatian Garrison Unit Deploys In Zagreb
 #IMAGE=
 #SOUND=
@@ -11765,7 +11762,7 @@
 }
 
 {
-#NAME= DE 625 - Germany Raises A Don Cossack Cavalry Corps at Rostov
+#NAME= DE 625 - Germany: A Don Cossack Cavalry Corps is Raised at Rostov
 #POPUP= Germany Raises A Don Cossack Cavalry Corps
 #IMAGE= doncossack.png
 #SOUND=
@@ -11790,7 +11787,7 @@
 }
 
 {
-#NAME= DE 626 - ROA Russian Liberation Corps In Minsk
+#NAME= DE 626 - Germany: ROA Russian Liberation Corps In Minsk
 #POPUP= Russian Liberation Army Corps Formed At Minsk From Red Army Deserters
 #IMAGE= liberationarmy.png
 #SOUND=
@@ -11894,7 +11891,7 @@
 }
 
 {
-#NAME= DE 637 - Vichy France Occupied - The French Battleship Provence Escapes To Algiers (20% Chance)
+#NAME= DE 637 - UK: The French Battleship Provence Escapes To Algiers (20% Chance)
 #POPUP= The French Battleship Provence Escapes To Algiers
 #IMAGE=
 #SOUND=
@@ -11919,7 +11916,7 @@
 }
 
 {
-#NAME= DE 637 - Vichy France Occupied - The French Light Cruiser Jean De Vienne Escapes To Algiers (20% Chance)
+#NAME= DE 637 - UK: The French Light Cruiser Jean De Vienne Escapes To Algiers (20% Chance)
 #POPUP= The French Light Cruiser Jean De Vienne Escapes To Algiers
 #IMAGE=
 #SOUND=
@@ -11968,7 +11965,7 @@
 }
 
 {
-#NAME= DE 638 - Vichy France Occupied - The French Battleship Provence Escapes To Algiers (50% Chance)
+#NAME= DE 638 - UK: The French Battleship Provence Escapes To Algiers (50% Chance)
 #POPUP= The French Battleship Provence Escapes To Algiers
 #IMAGE=
 #SOUND=
@@ -11993,7 +11990,7 @@
 }
 
 {
-#NAME= DE 638 - Vichy France Occupied - The French Light Cruiser Jean De Vienne Escapes To Algiers (50% Chance)
+#NAME= DE 638 - UK: The French Light Cruiser Jean De Vienne Escapes To Algiers (50% Chance)
 #POPUP= The French Light Cruiser Jean De Vienne Escapes To Algiers
 #IMAGE=
 #SOUND=
@@ -12802,7 +12799,7 @@
 }
 
 {
-#NAME= DE 664 - Romania: Romanian Allied Armies (Bucharest)
+#NAME= DE 664 - Romania: Allied Armies Deployed(Bucharest)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -12830,7 +12827,7 @@
 }
 
 {
-#NAME= DE 665 - Bulgarian Allied Armies (Sofia)
+#NAME= DE 665 - Bulgaria: Allied Armies Deployed(Sofia)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -12858,7 +12855,7 @@
 }
 
 {
-#NAME= DE 665 - Bulgarian Allied Garrison (Varna)
+#NAME= DE 665 - Bulgaria: Allied Garrison (Varna)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13036,7 +13033,7 @@
 }
 
 {
-#NAME= DE 673 - Germany Constructs Atlantic Wall Defenses (2)
+#NAME= DE 673 - Germany: Atlantic Wall Defenses (2)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13061,7 +13058,7 @@
 }
 
 {
-#NAME= DE 673 - Germany Constructs Atlantic Wall Defenses (3)
+#NAME= DE 673 - Germany: Atlantic Wall Defenses (3)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13086,7 +13083,7 @@
 }
 
 {
-#NAME= DE 673 - Germany Constructs Atlantic Wall Defenses (4)
+#NAME= DE 673 - Germany: Atlantic Wall Defenses (4)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13111,7 +13108,7 @@
 }
 
 {
-#NAME= DE 678 - Vichy France Strasbourg Battleship
+#NAME= DE 678 - Germany: Vichy France Strasbourg Battleship
 #POPUP= <<TAG_40>>
 #IMAGE= 
 #SOUND=
@@ -13240,7 +13237,6 @@
 #UNIT= 42 [8] [0] [Aquila]
 }
 
-;REMOVE1940 after adding it to the PQ
 {
 #NAME= DE 700 - Italy: Roma Battleship
 #POPUP= The Roma Battleship Is Launched By The Regia Marina
@@ -13266,7 +13262,6 @@
 #UNIT= 36 [8] [0] [Roma]
 }
 
-;AMEND1941
 {
 #NAME= DE 701 - Italy: Italian Expeditionary Force
 #POPUP= Italian Expeditionary Force Formed In The East
@@ -13481,6 +13476,7 @@
 #UNIT= 2 [3] [0] []
 }
 
+; Fall Weiss II
 ; Anglo-Portuguese Alliance
 {
 #NAME= DE 800 - UK(AI): Portugal Declares War On Spain
@@ -13515,6 +13511,7 @@
 #UNIT= 5 [11] [1] []
 }
 
+; Fall Weiss II
 ; Spanish Garrison Portugal Border
 {
 #NAME= DE 800 - Spain: Spanish Garrison Portugal Border
@@ -13541,6 +13538,7 @@
 #UNIT= 2 [10] [0] []
 }
 
+; Fall Weiss II
 ; Spanish Garrison Portugal Border
 {
 #NAME= DE 800 - Spain: Spanish Garrison Portugal Border
@@ -13567,6 +13565,7 @@
 #UNIT= 2 [10] [0] []
 }
 
+; Fall Weiss II
 ; Valencia Corps (Spain)
 {
 #NAME= DE 800 - Spain: Valencia Corps
@@ -14182,10 +14181,10 @@
 }
 
 ; Fall Weiss II
-; ETNA Light Cruiser (Italy)
+; Etna Light Cruiser (Italy)
 {
-#NAME= DE 827 - Italy: ETNA Light Cruiser
-#POPUP= Italy Commissions The Light Cruiser ETNA
+#NAME= DE 827 - Italy: Etna Light Cruiser
+#POPUP= Italy Commissions The Light Cruiser Etna
 #IMAGE= 
 #SOUND=
 #FLAG= 1
@@ -14205,7 +14204,7 @@
 ; Italy(59) Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 39 [10] [0] [ETNA]
+#UNIT= 39 [10] [0] [Etna]
 }
 
 ; Fall Weiss II
@@ -15248,6 +15247,7 @@
 #UNIT= 1 [5] [0] [2nd Baghdad]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 876 - German: War Production
 #POPUP= German War Production Dramatically Increases Under Watch Of Albert Speer
@@ -15278,6 +15278,7 @@
 #UNIT= 29 [8] [0] []
 }
 
+; Fall Weiss II
 ;
 ; Soviet Tank Armies did not truly exist until May 1942, earliest was the
 ; 3rd Guards Tank Army
@@ -15489,6 +15490,7 @@
 #UNIT= 4 [5] [3] [Spanish]
 }
 
+; Fall Weiss II
 ; Greek Army In Exile
 {
 #NAME= DE 899 - UK: Greek Army In Exile Flees To Egypt
