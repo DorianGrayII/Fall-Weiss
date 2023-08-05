@@ -27,14 +27,13 @@
 ;        1 = Enabled
 ;
 ; #TYPE= Value range [0, 3]
-;        With all other fields satisfied will this be:
-;        0 = Single check regardless if #TRIGGER is satisfied
-;        1 = Multiple check until #TRIGGER is satisfied
-;        2 = Reoccurring check until end of game
-;                       OR
-;        Once the #DATE field is satisfied:
-;        3 = Event fires once if all other fields are satisfied, else it will not fire.  
-;            Either way, event will be removed never to be looked at again
+;        Event check type, with all other fields satisfied:
+;        0 = Single check, on or after #DATE 
+;            (ignores #TRIGGER)
+;        1 = Multiple checks, on or after #DATE, until #TRIGGER is satisfied
+;        2 = Multiple checks, on or after #DATE, until end of game (*** not valid for UNIT events ***)
+;            (not removed from event queue)
+;        3 = Single check, only on #DATE
 ;
 ; #AI= Value range [0, 6]
 ;        0 = Event fires whenever all fields are satisfied for any game type
@@ -111,9 +110,18 @@
 ;                                  0 = False
 ;                                  1 = True (has surrendered)
 ;
-; #CONDITION_POSITION= Map positions that will serve to trigger the event as well as distance and
-;                      number of Axis/Allied unit ranges as specified by 'alignment' flag
-;                      Format: x,y [min_range, max_range] [min_units, max_units] [alignment] [aligned_country_id]
+; #CONDITION_POSITION=  Map positions that will serve to trigger the event as well as distance and
+;                       number of Axis/Allied unit ranges as specified by 'alignment' flag
+;                       Format: x,y [min_range, max_range] [min_units, max_units] [alignment] [aligned_country_id] OR
+;                               x,y [min_range, max_range] [min_units, max_units] [alignment] [aligned_country_id] [<]
+;                           range = RND(min_range,max_range)
+;                           units = RND(min_units,max_units)
+;                           alignment range [0, 2]
+;                               0 = Neutral
+;                               1 = Axis
+;                               2 = Allied
+;                           aligned_country_id range [0, 120]
+;                               0 = Any country (uses alignment above)
 ;
 ; #MAP_POSITION= Map positions that will be the source of strength/morale loss for units of 'alignment' in range
 ;                Format: x,y [min_range, max_range] [min_strength_loss, max_strength_loss] [min_morale_adjustment, max_morale_adjustment] [alignment] [aligned_country_id]

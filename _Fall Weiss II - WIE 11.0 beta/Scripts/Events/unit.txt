@@ -102,12 +102,13 @@
 ; #DATE=        Date that must be satisfied (in game) for event to occur 
 ;               Format: yyyy/mm/dd or yyyy/mm/dd [=]
 ;
-; #FAILSAFE_DATE= Failsafe date for the event to occur, i.e. regardless if #CONDITION_POSITION checks have been satisfied (format yyyy/mm/dd)
+; #FAILSAFE_DATE= Date for the event to occur, regardless if #CONDITION_POSITION checks have been satisfied 
+;               Format: yyyy/mm/dd
 ;
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
-;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
+;                      Format: country_id [alignment] [mobilization%] [surrendered_flag]
 ;                              country_id range [1, 120]
-;                              political_alignment range [0, 2]
+;                              alignment range [0, 2]
 ;                                  0 = Neutral
 ;                                  1 = Axis
 ;                                  2 = Allied
@@ -117,9 +118,18 @@
 ;                                  1 = True (has surrendered)
 ;
 ;
-; #CONDITION_POSITION= Map positions that will serve to trigger the event as well as distance and
-;                      number of enemy unit ranges.
-;                      Format: x,y [min_range, max_range] [min_enemy_units, max_enemy_units] [alignment] [aligned_country_id]
+; #CONDITION_POSITION=  Map positions that will serve to trigger the event as well as distance and
+;                       number of Axis/Allied unit ranges as specified by 'alignment' flag
+;                       Format: x,y [min_range, max_range] [min_units, max_units] [alignment] [aligned_country_id] OR
+;                               x,y [min_range, max_range] [min_units, max_units] [alignment] [aligned_country_id] [<]
+;                           range = RND(min_range,max_range)
+;                           units = RND(min_units,max_units)
+;                           alignment range [0, 2]
+;                               0 = Neutral
+;                               1 = Axis
+;                               2 = Allied
+;                           aligned_country_id range [0, 120]
+;                               0 = Any country (uses alignment above)
 ;
 ; #UNIT= Units to be created as well as a name (optional).
 ;    Format: unit_id [strength] [experience] [name]
