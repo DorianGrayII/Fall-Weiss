@@ -6,17 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ## Added
 
 - Many new unit names have been added for Germany, Soviet Union
-- "More than 18 Axis Units Near Warsaw From January 1941" (mobilization_2.txt)
+- "More than 18 Axis Units Near Warsaw From January 1941" (see - [mobilization_2.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/mobilization_2.txt))
     - now alerts player with "The USSR grows uneasy over the build up of Axis troops along its Polish border" when unit number is exceeded
 - Added display of warning map symbols for Warsaw Garrison when player is close to exceeding 18 units on Polish Border
-    - "German/Soviet Front Garrison Update Map Symbols 1941 (0-3 units)" (popup.txt)
-    - "German/Soviet Front Garrison Update Map Symbols 1941 (4 units)" (popup.txt)
-    - "German/Soviet Front Garrison Update Map Symbols 1941 (16 units)" (popup.txt)
+    - "German/Soviet Front Garrison Update Map Symbols 1941 (0-3 units)" (see - [popup.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/popup.txt))
+    - "German/Soviet Front Garrison Update Map Symbols 1941 (4 units)" (see - [popup.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/popup.txt))
+    - "German/Soviet Front Garrison Update Map Symbols 1941 (16 units)" (see - [popup.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/popup.txt))
 - Added Turkish hostile reactions should the Soviets forcibly occupy the Turkish straits
-    - "DE 970 - USSR Forcibly Occupies Turkish Straits (Turkey->>Axis)" (mobilization_3.txt)
+    - "DE 970 - USSR Forcibly Occupies Turkish Straits (Turkey->>Axis)" (see - [mobilization_3.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/mobilization_3.txt))
 - Added Clodius Trade Agreement via Greece where Greece joins Axis in lieu of Bulgaria
-    - "DE 681 - Germany: Chrome Imports From Turkey (via Greece)" (decision.txt)
-    - "DE 961 - Germany and Turkey Trade Agreement" (mobilization_3.txt)
+    - "DE 681 - Germany: Chrome Imports From Turkey (via Greece)" (see - [decision.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/decision.txt))
+    - "DE 961 - Germany and Turkey Trade Agreement" (see - [mobilization_3.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/mobilization_3.txt))
 
 ## Changed
 
@@ -29,7 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - 200+ typos and spelling errors corrected
     - Removed unreadable characters throughout event text files
     - Removed hundreds of lines of junk comments across script files, many containing completely false, confusing or irrelevant statements (ongoing)
-    - Updated/Fixed Resource descriptions (localization.txt)
+    - Updated/Fixed Resource descriptions (see - [localization.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/localization.txt))
     - Updated/corrected existing comments (ongoing)
         - Added country ids for easy reference, where appropriate
             - Germany -> Germany(45)
@@ -99,19 +99,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - DE 601 - Garrison Unit In Copenhagen
     - ... and more ...
 
-- "Saudi Arabia Ends Diplomatic Relations With Germany"(mobilization_3.txt) changed to 1939/09/11
-- "Germany Declares War On The USA" (belligerence.txt)
+- "Saudi Arabia Ends Diplomatic Relations With Germany" (see - [mobilization_3.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/mobilizatin_3.txt))
+    - #DATE changed to 1939/09/11
+- "Germany Declares War On The USA" (see - [belligerence.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/belligerence.txt))
     - #BELLIGERENCE_CONDITION= [112,59] changed to [112,45]
-- "USSR Enters War With Italy" (belligerence.txt)
+- "USSR Enters War With Italy" (see - [belligerence.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/belligerence.txt))
     - #BELLIGERENCE_CONDITION= [112,45] changed to [112,59]
-- "Italy Declares War On The Allies (USA)" (belligerence.txt)
+- "Italy Declares War On The Allies (USA)" (see - [belligerence.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/belligerence.txt))
     - #BELLIGERENCE_CONDITION= [116,45] changed to [115,45]
-- "DE 408 - USSR: Should Stalin Stay in Moscow to Lead its Defence?" (decision.txt)
+- "DE 408 - USSR: Should Stalin Stay in Moscow to Lead its Defence?" (see - [decision.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/decision.txt))
     - #DECISION= 407 changed to 408
-- "DE 650 - Germany: Wolfram Imports From Spain" (decision.txt)
+- "DE 650 - Germany: Wolfram Imports From Spain" (see - [decision.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/decision.txt))
     - Now properly checks that Bordeaux(145,94) is Axis
     - #ALIGNMENT_POSITION= 151,84 [1] changed to 145,94 [1]
-- "DE 835 - UK: Pressure Greece To Sever Economic Ties With Germany?" (decision.txt)
+- "DE 835 - UK: Pressure Greece To Sever Economic Ties With Germany?" (see - [decision.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/decision.txt))
     - #VARIABLE_CONDITION= 46 [1] [0] [0] changed to 46 [2] [10] [0]
 - "Turkey Signs Mutual Pact With France And Britain To Protect Neutrality"
     - removed link to non-existent DECISION 999
@@ -119,16 +120,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - now checks that Spain is Axis aligned
 - "DE 114 - Cockleshell Heroes: British Royal Marines Attack Shipping At Bordeaux"
     - now checks that France has surrendered
-- "Crete Effect (Tobruk, Bardia, Sidi Barrani, Mersa Matruh, El Alamein, Alexandria)" (popup.txt)
+- "Crete Effect (Tobruk, Bardia, Sidi Barrani, Mersa Matruh, El Alamein, Alexandria)" (see - [popup.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/popup.txt))
     - updated to show tooltip when cursor is over Heraklion
 - "Soviet Bombers Operating From Crimea Attack The Ploesti Oil Fields In Romania"
     - changed SOURCE_POSITION to Simferopol
-- corrected incorrect #DISPLAY_TURN for events that had '#PRIVATE= 1' (unit.txt)
+- corrected incorrect #DISPLAY_TURN for events that had '#PRIVATE= 1' (see - [unit.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/unit.txt))
 such as:
     - DE 416 - USSR: Anti-Tank Units
         - DISPLAY_TURN=0 changed to 2
     - DE 645 - Germany: Anti-Tank Units
         - DISPLAY_TURN=0 changed to 1
-
 
 
