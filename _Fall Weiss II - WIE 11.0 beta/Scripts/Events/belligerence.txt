@@ -79,17 +79,21 @@
 ;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
 ;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
 ;
-; #TRIGGER=     Value range [0, 100]
-;               Percentage chance that the event will occur
+; #TRIGGER=         Value range [0, 100]
+;                   Percentage chance that the event will occur
 ;
-; #COUNTRY_ID=  Value range [0, 120]
-;               Country ID that will be owner of this event
+; #COUNTRY_ID=      Value range [1, 120]
+;                   Country that will be owner of this event
 ;
-; #BELLIGERENCE_ID= Which country ID should we now be at war with?
+; #BELLIGERENCE_ID= Value range [1, 120]
+;                   Which country should we now be at war with?
 ;
-; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
+; #DATE=            Date requirement for the event
+;                   Format: yyyy/mm/dd
 ;
-; #FAILSAFE_DATE= Failsafe date for the event to occur, i.e. regardless if #CONDITION_POSITION checks have been satisfied (format yyyy/mm/dd)
+; #FAILSAFE_DATE=   Date requirement for the event
+;                   Format: yyyy/mm/dd 
+;                   (ignores #CONDITION_POSITION checks)
 ;
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
 ;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
@@ -293,10 +297,6 @@
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Allied Events
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
 {
 #NAME= UK Enters War With Germany
 #POPUP= The United Kingdom Declares War On Germany
@@ -313,11 +313,9 @@
 #BELLIGERENCE_ID= 45
 #DATE= 1939/09/03
 #FAILSAFE_DATE= 1948/01/01
-; UK(112) Allied and not surrendered AND
-; Germany(45) is Axis and not surrendered
+; UK(112) Allied, mobilized and not surrendered AND
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Poland(85) and Germany are belligerent
+; Poland(85) and Germany(45) are belligerent
 #BELLIGERENCE_CONDITION= [85,45]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -338,11 +336,9 @@
 #BELLIGERENCE_ID= 45
 #DATE= 1939/09/03
 #FAILSAFE_DATE= 1948/01/01
-; France(40) Allied and not surrendered AND
-; Germany(45) is Axis and not surrendered
+; France(40) Allied, mobilized and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Poland(85) and Germany are belligerent
+; Poland(85) and Germany(45) are belligerent
 #BELLIGERENCE_CONDITION= [85,45]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -363,11 +359,9 @@
 #BELLIGERENCE_ID= 45
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; USA(115) Allied and not surrendered AND
-; Germany(45) is Axis and not surrendered
+; USA(115) Allied, mobilized and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; UK(112) and Germany are belligerent
+; UK(112) and Germany(45) are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -388,11 +382,11 @@
 #BELLIGERENCE_ID= 59
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; USA(115) Allied and not surrendered AND
-; Italy(59) is Axis and not surrendered
+; USA(115) Allied. mobilized and not surrendered AND
+; Italy(59) Axis, mobilized and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; UK(112) and Germany are belligerent
+; UK(112) and Germany(45) are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -413,11 +407,9 @@
 #BELLIGERENCE_ID= 45
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; USSR(116) aligned with the Allied and not surrendered AND
-; Germany(45) is Axis and not surrendered
+; USSR(116) Allied, mobilized and not surrendered AND
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; UK(112) and Germany are belligerent
+; UK(112) and Germany(45) are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -438,12 +430,12 @@
 #BELLIGERENCE_ID= 59
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; USSR(116) aligned with the Allied and not surrendered AND
-; Italy(59) is Axis and not surrendered
+; USSR(116) Allied, mobilized and not surrendered AND
+; Italy(59) Axis, mobilized and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; UK(112) and Germany are belligerent
-#BELLIGERENCE_CONDITION= [112,45]
+; UK(112) and Italy(59) are belligerent
+#BELLIGERENCE_CONDITION= [112,59]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -463,8 +455,8 @@
 #BELLIGERENCE_ID= 112
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; UK(112) Allied and not surrendered AND
-; Italy(59) is Axis and not surrendered
+; UK(112) Allied, mobilized and not surrendered AND
+; Italy(59) Axis, mobilized and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; UK(112) and Germany are belligerent
@@ -488,11 +480,11 @@
 #BELLIGERENCE_ID= 40
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; France(40) Allied and not surrendered AND
-; Italy(59) is Axis and not surrendered
+; France(40) Allied. mobilized and not surrendered AND
+; Italy(59) Axis, mobilized and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; UK(112) and Germany are belligerent
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; UK(112) and Germany(45) are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -513,11 +505,11 @@
 #BELLIGERENCE_ID= 116
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; USSR(116) Allied and not surrendered AND
-; Italy(59) is Axis and not surrendered
+; USSR(116) Allied. mobilized and not surrendered AND
+; Italy(59) Axis, mobilized and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; USSR(116) and Germany are belligerent
+; USSR(116) and Germany(45) are belligerent
 #BELLIGERENCE_CONDITION= [116,45]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -538,12 +530,12 @@
 #BELLIGERENCE_ID= 115
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; USA(115) Allied and not surrendered AND
-; Italy(59) is Axis and not surrendered
+; USA(115) Allied. mobilized and not surrendered AND
+; Italy(59) Axis, mobilized and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; USSR(116) and Germany are belligerent
-#BELLIGERENCE_CONDITION= [116,45]
+; USA(115) and Germany(45) are belligerent
+#BELLIGERENCE_CONDITION= [115,45]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -563,11 +555,11 @@
 #BELLIGERENCE_ID= 112
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; UK(112) Allied and surrendered
-; Italy(59) is Axis and not surrendered
+; UK(112) Allied, mobilized and surrendered
+; Italy(59) Axis, mobilized and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; UK(112) and Germany are belligerent
+; UK(112) and Germany(45) are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -589,10 +581,10 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 ; France(40) Allied and surrendered
-; Italy(59) is Axis and not surrendered
+; Italy(59) Axis, mobilized and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; France(40) and Germany are belligerent
+; France(40) and Germany(45) are belligerent
 #BELLIGERENCE_CONDITION= [40,45]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -614,10 +606,10 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 ; USA(115) Allied and surrendered
-; Italy(59) is Axis and not surrendered
+; Italy(59) Axis, mobilized and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; USA(115) and Germany are belligerent
+; USA(115) and Germany(45) are belligerent
 #BELLIGERENCE_CONDITION= [115,45]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -639,10 +631,10 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 ; USSR(116) Allied and surrendered
-; Italy(59) is Axis and not surrendered
+; Italy(59) Axis, mobilized and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; USSR(116) and Germany are belligerent
+; USSR(116) and Germany(45) are belligerent
 #BELLIGERENCE_CONDITION= [116,45]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -664,22 +656,19 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 ; Poland(85) Allied and surrendered
-; Italy(59) is Axis and not surrendered
+; Italy(59) Axis, mobilized and not surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; Poland(85) and Germany are belligerent
+; Poland(85) and Germany(45) are belligerent
 #BELLIGERENCE_CONDITION= [85,45]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; AXIS AI EVENTS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ;
 ; Germany honors the Tripartite Pact with Japan once the USA is fully mobilized
 {
-#NAME= AXIS AI: Germany Declares War On The USA (50%)
+#NAME= Germany(AI): Germany Declares War On The USA (50%)
 #POPUP= Germany Honors Tripartite Pact - Declares War On The United States
 #IMAGE=
 #SOUND=
@@ -694,18 +683,14 @@
 #BELLIGERENCE_ID= 115
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; USA(115) Allied and not surrendered AND
-; Germany(45) is Axis and not surrendered
+; USA(115) Allied, mobilized and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; UK(112) and Germany(45) are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; ==========================================================================
-;                      Fall Weiss II Events
-; ==========================================================================
+; Fall Weiss II
 {
 #NAME= Finland Declares War On USSR
 #POPUP= 
@@ -722,17 +707,18 @@
 #BELLIGERENCE_ID= 116
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; USSR(116) Allied and not surrendered AND
-; Finland(39) is Axis and not surrendered
+; USSR(116) Allied. mobilized and not surrendered AND
+; Finland(39) Axis, mobilized and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-; USSR(116) and Germany are belligerent
+; USSR(116) and Germany(45) are belligerent
 #BELLIGERENCE_CONDITION= [116,45]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
-#NAME= Finland Declares War On USA
+#NAME= DE 847 - Finland Declares War On USA
 #POPUP= 
 #IMAGE=
 #SOUND=
@@ -747,17 +733,18 @@
 #BELLIGERENCE_ID= 115
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; USA(115) Allied and not surrendered AND
-; Finland(39) is Axis and not surrendered
+; USA(115) Allied. mobilized and not surrendered AND
+; Finland(39) Axis, mobilized and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-; USA(115) and Germany are belligerent
+; USA(115) and Germany(45) are belligerent
 #BELLIGERENCE_CONDITION= [115,45]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
-#NAME= Finland Declares War On The Allies (UK)
+#NAME= DE 847 - Finland Declares War On The Allies (UK)
 #POPUP= Finland Declares War On The Allies
 #IMAGE=
 #SOUND=
@@ -772,17 +759,18 @@
 #BELLIGERENCE_ID= 112
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; UK(112) Allied and not surrendered AND
-; Finland(39) is Axis and not surrendered
+; UK(112) Allied, mobilized and not surrendered AND
+; Finland(39) Axis, mobilized and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-; UK(112) and Germany are belligerent
+; UK(112) and Germany(45) are belligerent
 #BELLIGERENCE_CONDITION= [112,45]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
-#NAME= Finland Declares War On France
+#NAME= DE 847 - Finland Declares War On France
 #POPUP= 
 #IMAGE=
 #SOUND=
@@ -798,16 +786,17 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 ; France(40) Allied and surrendered AND
-; Finland(39) is Axis and not surrendered
+; Finland(39) Axis, mobilized and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-; France(40) and Germany are belligerent
+; France(40) and Germany(45) are belligerent
 #BELLIGERENCE_CONDITION= [40,45]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
-#NAME= Finland Declares War On France
+#NAME= DE 847 - Finland Declares War On France
 #POPUP= 
 #IMAGE=
 #SOUND=
@@ -822,18 +811,18 @@
 #BELLIGERENCE_ID= 40
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; France(40) Allied and not surrendered AND
-; Finland(39) is Axis and not surrendered
+; France(40) Allied. mobilized and not surrendered AND
+; Finland(39) Axis, mobilized and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
-; France(40) and Germany are belligerent
+; France(40) and Germany(45) are belligerent
 #BELLIGERENCE_CONDITION= [40,45]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; Germany
+; Fall Weiss II
 {
-#NAME= Germany Can Fight Ireland
+#NAME= DE 842 - Germany Declares War on Ireland
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -848,18 +837,16 @@
 #BELLIGERENCE_ID= 57
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; Ireland(57) Allied and not surrendered
-; Germany(45) is Axis and not surrendered AND
+; Ireland(57) Allied, mobilized and not surrendered
 #VARIABLE_CONDITION= 57 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Germany(45) and UK are belligerent
+; Germany(45) and UK(112) are belligerent
 #BELLIGERENCE_CONDITION= [45,112]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; Germany
+; Fall Weiss II
 {
-#NAME= Italy Can Fight Ireland
+#NAME= DE 842 - Italy Declares War on Ireland
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -874,11 +861,11 @@
 #BELLIGERENCE_ID= 57
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; Ireland(57) Allied and not surrendered
-; Italy(59) is Axis and not surrendered AND
+; Ireland(57) Allied, mobilized and not surrendered
+; Italy(59) Axis, mobilized and not surrendered AND
 #VARIABLE_CONDITION= 57 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; Germany(45) and UK are belligerent
+; Italy(59) and UK(112) are belligerent
 #BELLIGERENCE_CONDITION= [59,112]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
