@@ -863,10 +863,6 @@
 #CONDITION_POSITION= 216,123 [1,1] [1,1] [1] [0]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; GERMAN MINOR EVENTS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
 ;
 ; Allied aggression in Norway resulting in a
 ; 20-35% increase in Swedish activation towards Axis:
@@ -949,7 +945,7 @@
 ; Soviet naval units within range of Helsinki port resulting in a
 ; 30-45% increase in Finnish activation towards Axis
 {
-#NAME= Soviet Naval Aggression in the Baltic (Finland->>Axis) (50% Chance)
+#NAME= Soviet Naval Aggression in the Baltic (Helsinki) (Finland->>Axis) (50% Chance)
 #POPUP= Soviet Naval Manuevers Alert Finnish Defence Forces
 #IMAGE=
 #SOUND=
@@ -971,35 +967,10 @@
 }
 
 ;
-; Soviet naval units within range of Helsinki port resulting in a
-; 30-45% increase in Finnish activation towards Axis
-{
-#NAME= Soviet Naval Aggression in the Baltic (Finland->>Axis) (50% Chance)
-#POPUP= Soviet Naval Manuevers Alert Finnish Defence Forces
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 39
-#TRIGGER= 50
-#DATE= 1939/09/03
-; 30-45% activation increase towards Axis
-#MOBILIZATION= [30,45] [1]
-; USSR(116) Allied (fully active) and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Soviets have 1 Amphibious unit within RND(2,3) hexes range of Helsinki port
-#CONDITION_POSITION= 196,52 [2,3] [1,1] [2] [116] <47,48>
-}
-
-;
 ; Soviet naval units within range of Stockholm port resulting in a
 ; 40-55% increase in Swedish activation towards Axis
 {
-#NAME= Soviet Naval Aggression in the Baltic (Sweden->>Axis) (75% Chance)
+#NAME= Soviet Naval Aggression in the Baltic (Stockholm) (Sweden->>Axis) (75% Chance)
 #POPUP= Swedish Foreign Minister Protests Local Soviet Naval Activity
 #IMAGE=
 #SOUND=
@@ -1024,7 +995,7 @@
 ; Soviet naval units in eastern vicinity of Copenhagen port resulting in a
 ; 15-20% increase in Swedish activation towards Axis
 {
-#NAME= Soviet Naval Aggression in the Baltic (Sweden->Axis) (50% Chance)
+#NAME= Soviet Naval Aggression in the Baltic (Copenhagen) (Sweden->Axis) (50% Chance)
 #POPUP= Sweden Alarmed Over Soviet Naval Activity In The Baltic
 #IMAGE=
 #SOUND=
@@ -1833,8 +1804,9 @@
 #POPUP= Norway Demands The Allies Respect Their Territorial Waters
 #IMAGE=
 #SOUND=
-#FLAG= 1
-#TYPE= 0
+; Disabled since it is effectively not doing anything
+#FLAG= 0
+#TYPE= 3
 #AI= 3
 #LEVEL= 0
 #GV= 1[1,100]
@@ -1842,6 +1814,7 @@
 #COUNTRY_ID= 78
 #TRIGGER= 100
 #DATE= 1939/09/01
+; Fall Weiss II changed from 1-4% to 0%
 ; 0% mobilization increase towards Axis
 #MOBILIZATION= [0,0] [1]
 ; Germany(45) Axis and not surrendered (dummy condition)
@@ -1883,90 +1856,6 @@
 #CONDITION_POSITION= 161,60 [1,1] [1,1] [2] [0]
 #CONDITION_POSITION= 161,69 [1,1] [1,1] [2] [0]
 #CONDITION_POSITION= 162,70 [1,1] [1,1] [2] [0]
-}
-
-;
-; Allies Naval Patrols Near Norway
-; 1-3% increase in Norwegian mobilization towards Axis
-{
-#NAME= AXIS AI: Allied Naval Presence Near Norwegian Convoy Lines (Norway->Axis)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 3
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 78
-#TRIGGER= 100
-#DATE= 1939/09/01
-; 1-4% mobilization increase towards Axis
-#MOBILIZATION= [1,4] [1]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Allies on the Norwegian convoy line
-#CONDITION_POSITION= 155,43 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 155,45 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 155,47 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 178,19 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 176,20 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 174,21 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 172,22 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 172,24 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 170,25 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 170,27 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 168,28 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 168,30 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 167,31 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 166,33 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 164,34 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 162,35 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 162,37 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 160,38 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 158,39 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 158,41 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 156,42 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 155,49 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 155,51 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 155,53 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 155,55 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 155,57 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 157,58 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 159,59 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 161,60 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 161,62 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 161,64 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 161,66 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 161,68 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 161,60 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 161,69 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 162,70 [1,1] [1,1] [2] [0]
-}
-
-{
-#NAME= Fall of Moscow to Axis (Turkey->Axis) (5% Chance)
-#POPUP= Turkey Increases Its Friendship With Germany
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 1
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 111
-#TRIGGER= 5
-#DATE= 1939/09/03
-; 20-40% activation increase towards Axis
-#MOBILIZATION= [20,40] [1]
-; France(40) Allied and surrendered
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Axis Occupies Moscow(221,65)
-#CONDITION_POSITION= 221,65 [0,0] [1,1] [1] [0]
 }
 
 {

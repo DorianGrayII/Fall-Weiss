@@ -5481,8 +5481,8 @@
 ; Fall Weiss II
 ; Duke Of York Battleship (UK)
 {
-#NAME= UK: Duke Of York Battleship 
-#POPUP= UK Commissions Duke of York Battleship
+#NAME= UK: Battleship HMS Duke Of York
+#POPUP= UK Commissions The Battleship HMS Duke of York
 #IMAGE= 
 #SOUND=
 #FLAG= 1
@@ -5508,8 +5508,8 @@
 ; Fall Weiss II
 ; HMS Howe Battleship (UK)
 {
-#NAME= UK: HMS Howe Battleship 
-#POPUP= UK Commissions HMS Howe Battleship
+#NAME= UK: Battleship HMS Howe
+#POPUP= UK Commissions The Battleship HMS Howe
 #IMAGE= 
 #SOUND=
 #FLAG= 1
@@ -6444,7 +6444,7 @@
 }
 
 {
-#NAME= Germany: Allies Invade Norway - Blücher Heavy Cruiser
+#NAME= Germany: Allies Invade Norway - Heavy Cruiser Blücher
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -6463,6 +6463,30 @@
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 175,71
 #VARIABLE_CONDITION= 78 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 38 [8] [0] [Blücher]
+}
+
+{
+#NAME= Germany: Allies Invade Norway (Norway Surrendered) - Heavy Cruiser Blücher 
+#POPUP= 
+#IMAGE= 
+#SOUND=
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 0
+#DATE= 1940/03/23
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 175,71
+#VARIABLE_CONDITION= 78 [1] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 38 [8] [0] [Blücher]
 }
@@ -6492,31 +6516,7 @@
 }
 
 {
-#NAME= Germany: Allies Invade Norway - Blücher Heavy Cruiser
-#POPUP= 
-#IMAGE= 
-#SOUND=
-#FLAG= 1
-#TYPE= 3
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 0
-#DATE= 1940/03/23
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 175,71
-#VARIABLE_CONDITION= 78 [1] [100] [1]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 38 [8] [0] [Blücher]
-}
-
-{
-#NAME= Germany: Allies Invade Norway - XXI Corps
+#NAME= Germany: Allies Invade Norway (Norway Surrendered) - XXI Corps
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -6635,7 +6635,7 @@
 
 ; UK (Syrian Garrison)
 {
-#NAME= UK(AI): Syrian Garrison
+#NAME= UK(AI): Syrian Garrison - Tripoli
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -6661,7 +6661,7 @@
 
 ; UK (Syrian Garrison)
 {
-#NAME= UK(AI): Syrian Garrison
+#NAME= UK(AI): Syrian Garrison - Beirut
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -6782,6 +6782,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Rome(175,121)
 #DESTINATION_RESOURCE= 175,121
 ; Italy(59) Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -7093,11 +7094,11 @@
 }
 
 ;
-; UK Forces Capture in Alexandria the Vichy French Battleship "Lorraine"
+; UK Forces Capture in Alexandria the Vichy French Battleship Lorraine
 ; Based on Operation Catapult in June 1940
 {
-#NAME= DE 100 - UK: Vichy French Battleship "Lorraine" Joins The Allies
-#POPUP= French Battleship "Lorraine" Joins The Allies
+#NAME= DE 100 - UK: Vichy French Battleship Lorraine Joins The Allies
+#POPUP= French Battleship Lorraine Joins The Allies
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -7121,8 +7122,8 @@
 }
 
 {
-#NAME= DE 100 - Germany Restores The "Jean Bart" Battleship To Service (75% Chance)
-#POPUP= Germany Restores The Vichy French Battleship "Jean Bart" To Service
+#NAME= DE 100 - Germany Restores The Battleship Jean Bart To Service (75% Chance)
+#POPUP= Germany Restores The Vichy French Battleship Jean Bart To Service
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -7139,9 +7140,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 130,119
-; Germany(45) Axis and not surrendered AND
 ; Vichy Algeria(4) surrendered to Axis
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 4 [2] [100] [1]
 ; An Axis unit is in Casablanca
 #CONDITION_POSITION= 131,119 [0,0] [1,1] [1] [0]
@@ -7149,8 +7148,8 @@
 }
 
 {
-#NAME= DE 100 - Germany Captures Vichy French "Bretagne" (Battleship) (75% Chance)
-#POPUP= Germany Captures The Vichy French Battleship "Bretagne"
+#NAME= DE 100 - Germany Captures The Vichy French Battleship Bretagne (75% Chance)
+#POPUP= Germany Captures The Vichy French Battleship Bretagne
 #IMAGE= 
 #SOUND=
 #FLAG= 1
@@ -7167,9 +7166,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 152,112
-; Germany(45) Axis and not surrendered AND
 ; Vichy Algeria surrendered to Axis
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 4 [2] [100] [1]
 ; Axis control Algiers
 #CONDITION_POSITION= 152,113 [0,0] [1,1] [1] [0]
@@ -7940,8 +7937,8 @@
 }
 
 {
-#NAME= DE 118 - Germany Restores The "Jean Bart" Battleship To Service (75% Chance)
-#POPUP= Germany Restores The Vichy French Battleship "Jean Bart" To Service
+#NAME= DE 118 - Germany Restores The Battleship Jean Bart To Service (75% Chance)
+#POPUP= Germany Restores The Vichy French Battleship Jean Bart To Service
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -7968,8 +7965,8 @@
 }
 
 {
-#NAME= DE 118 - Germany Captures Vichy French "Bretagne" (Battleship) (75% Chance)
-#POPUP= Germany Captures The Vichy French Battleship "Bretagne"
+#NAME= DE 118 - Germany Captures The Vichy French Battleship Bretagne (75% Chance)
+#POPUP= Germany Captures The Vichy French Battleship Bretagne
 #IMAGE= 
 #SOUND=
 #FLAG= 1
@@ -11005,7 +11002,7 @@
 }
 
 {
-#NAME= DE 604 - Vichy France Strasbourg Battleship
+#NAME= DE 604 - The Vichy French Battleship Strasbourg
 #POPUP= Strasbourg Returns To Service Under The Kriegsmarine
 #IMAGE= 
 #SOUND=
@@ -12300,7 +12297,7 @@
 }
 
 {
-#NAME= DE 643 - Germany: Blücher Heavy Cruiser
+#NAME= DE 643 - Germany: Heavy Cruiser Blücher
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -12505,6 +12502,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Germany Invades Norway = YES
 #LINK= 644[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -12520,7 +12518,7 @@
 }
 
 {
-#NAME= DE 644 - Germany: Blücher Heavy Cruiser
+#NAME= DE 644 - Germany: Heavy Cruiser Blücher
 #POPUP= 
 #IMAGE= 
 #SOUND=
@@ -12529,6 +12527,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Germany Invades Norway = NO
 #LINK= 644[0]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -13108,33 +13107,6 @@
 }
 
 {
-#NAME= DE 678 - Germany: Vichy France Strasbourg Battleship
-#POPUP= <<TAG_40>>
-#IMAGE= 
-#SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 678[1]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 0
-#DATE= 1939/09/01
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 158,99
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 36 [5] [0] [Strasbourg]
-}
-
-{
 #NAME= DE 679 - Germany: Garrisons Egypt
 #POPUP=
 #IMAGE=
@@ -13213,8 +13185,8 @@
 }
 
 {
-#NAME= DE 700 - Italy: Aquila Battleship
-#POPUP= Regia Marina Commissions The Aquila Aircraft Carrier
+#NAME= DE 700 - Italy: Aircraft Carrier Aquila
+#POPUP= Regia Marina Commissions The Aircraft Carrier Aquila
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -13238,8 +13210,8 @@
 }
 
 {
-#NAME= DE 700 - Italy: Roma Battleship
-#POPUP= The Roma Battleship Is Launched By The Regia Marina
+#NAME= DE 700 - Italy: The Battleship Roma
+#POPUP= The Battleship Roma Is Launched By The Regia Marina
 #IMAGE= romabb.png
 #SOUND=
 #FLAG= 1
@@ -14152,9 +14124,9 @@
 }
 
 ; Fall Weiss II
-; Petropavlovsk Heavy Cruiser (USSR)
+; Heavy Cruiser Petropavlovsk  (USSR)
 {
-#NAME= DE 826 - USSR: Petropavlovsk Heavy Cruiser
+#NAME= DE 826 - USSR: Heavy Cruiser Petropavlovsk
 #POPUP= USSR Commissions The Heavy Cruiser Petropavlovsk 
 #IMAGE= 
 #SOUND=
@@ -14181,9 +14153,9 @@
 }
 
 ; Fall Weiss II
-; Etna Light Cruiser (Italy)
+; Light Cruiser Etna (Italy)
 {
-#NAME= DE 827 - Italy: Etna Light Cruiser
+#NAME= DE 827 - Italy: Light Cruiser Etna
 #POPUP= Italy Commissions The Light Cruiser Etna
 #IMAGE= 
 #SOUND=
@@ -14838,7 +14810,7 @@
 ; German Naval Strategy (Germany)
 {
 #NAME= DE 851 - Germany: Naval Strategy (Tirpitz)
-#POPUP= Germany Commissions The Tirpitz Battleship
+#POPUP= Germany Commissions The Battleship Tirpitz
 #IMAGE= 
 #SOUND=
 #FLAG= 1
@@ -14890,7 +14862,7 @@
 ; UK Naval Strategy (UK)
 {
 #NAME= DE 852 - UK: Naval Strategy (Anson)
-#POPUP= UK Commissions HMS Anson Battleship
+#POPUP= UK Commissions The Battleship HMS Anson
 #IMAGE= 
 #SOUND=
 #FLAG= 1
@@ -14969,8 +14941,8 @@
 ; Fall Weiss II
 ; Graf Spee (Germany)
 {
-#NAME= DE 854 - Germany: Graf Spee
-#POPUP= Graf Spee Heavy Cruiser Returns To Port From South Atlantic
+#NAME= DE 854 - Germany: Heavy Cruiser Graf Spee
+#POPUP= Heavy Cruiser Graf Spee Returns To Port From South Atlantic
 #IMAGE= 
 #SOUND=
 #FLAG= 1
@@ -15779,9 +15751,9 @@
 }
 
 ; Fall Weiss II
-; Lützow Heavy Cruiser (Germany)
+; Heavy Cruiser Lützow (Germany)
 {
-#NAME= DE 918 - Germany: Lützow Heavy Cruiser
+#NAME= DE 918 - Germany: Heavy Cruiser Lützow
 #POPUP= Germany Commissions The Heavy Cruiser Lützow
 #IMAGE= 
 #SOUND=
@@ -15927,7 +15899,7 @@
 ; Fall Weiss II
 ; 163rd Infantry Division (Germany)
 {
-#NAME= DE 927 - Germany: 163rd Infantry Division
+#NAME= DE 927 - Germany: Transit of 163rd Infantry Division
 #POPUP= Engelbrecht Division Arrives In Finland
 #IMAGE= 
 #SOUND=
@@ -15944,6 +15916,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/03
 #FAILSAFE_DATE= 1948/01/01
+; Kemijarvi(201,26)
 #DESTINATION_RESOURCE= 201,26
 ; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]

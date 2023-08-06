@@ -484,79 +484,7 @@
 #MAP_POSITION= 133,75
 }
 
-;
-{
-#NAME= DE 124 - Ports Of Cork And Wexford Return to Ireland if the UK surrenders
-#POPUP=
-#IMAGE=
-#SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 124[1]
-#COUNTRY_ID= 112
-#RECIPIENT_ID= 57
-#REMOVE= 0
-#TRIGGER= 100
-#DATE= 1939/10/15
-#VARIABLE_CONDITION= 112 [2] [100] [1]
-#MAP_POSITION= 130,77
-#MAP_POSITION= 133,75
-}
-
-;
-{
-#NAME= DE 124 - Ports Of Cork And Wexford Return to Ireland if Ireland joins the Axis
-#POPUP=
-#IMAGE=
-#SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 124[1]
-#COUNTRY_ID= 112
-#RECIPIENT_ID= 57
-#REMOVE= 0
-#TRIGGER= 100
-#DATE= 1939/10/15
-#VARIABLE_CONDITION= 57 [1] [100] [0]
-#MAP_POSITION= 130,77
-#MAP_POSITION= 133,75
-}
-
-;
-{
-#NAME= DE 124 - Ports Of Cork And Wexford Return to Ireland if Ireland joins the Allies
-#POPUP=
-#IMAGE=
-#SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 124[1]
-#COUNTRY_ID= 112
-#RECIPIENT_ID= 57
-#REMOVE= 0
-#TRIGGER= 100
-#DATE= 1939/10/15
-#VARIABLE_CONDITION= 57 [2] [100] [0]
-#MAP_POSITION= 130,77
-#MAP_POSITION= 133,75
-}
-
-;
+; UK Surrenders
 {
 #NAME= DE 124 - Ports Of Cork And Wexford Return to Ireland if the UK surrenders
 #POPUP=
@@ -578,9 +506,7 @@
 #MAP_POSITION= 133,75
 }
 
-
-;NEW
-;
+; Ireland Joins Axis
 {
 #NAME= DE 124 - Ports Of Cork And Wexford Return to Ireland if Ireland joins the Axis
 #POPUP=
@@ -602,8 +528,7 @@
 #MAP_POSITION= 133,75
 }
 
-;NEW
-;
+; Ireland Joins Allies
 {
 #NAME= DE 124 - Ports Of Cork And Wexford Return to Ireland if Ireland joins the Allies
 #POPUP=
@@ -625,7 +550,6 @@
 #MAP_POSITION= 133,75
 }
 
-;
 {
 #NAME= DE 125 - The Royal Navy Occupies The Port Of Limerick In Ireland
 #POPUP= The Royal Navy Occupies The Port Of Limerick In Ireland
@@ -647,7 +571,7 @@
 #MAP_POSITION= 128,74
 }
 
-;
+; UK Surrenders
 {
 #NAME= DE 125 - The Port of Limerick Returns to Ireland if the UK surrenders
 #POPUP=
@@ -669,7 +593,7 @@
 #MAP_POSITION= 128,74
 }
 
-;
+; Ireland Joins Axis
 {
 #NAME= DE 125 - The Port of Limerick Returns to Ireland if Ireland joins the Axis
 #POPUP=
@@ -691,75 +615,7 @@
 #MAP_POSITION= 128,74
 }
 
-;
-{
-#NAME= DE 125 - The Port of Limerick Returns to Ireland if Ireland joins the Allies
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 125[1]
-#COUNTRY_ID= 112
-#RECIPIENT_ID= 57
-#REMOVE= 0
-#TRIGGER= 100
-#DATE= 1941/03/24
-#VARIABLE_CONDITION= 57 [2] [100] [0]
-#MAP_POSITION= 129,73
-#MAP_POSITION= 128,74
-}
-
-;
-{
-#NAME= DE 125 - The Port of Limerick Returns to Ireland if the UK surrenders
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 125[1]
-#COUNTRY_ID= 112
-#RECIPIENT_ID= 57
-#REMOVE= 0
-#TRIGGER= 100
-#DATE= 1941/03/24
-#VARIABLE_CONDITION= 112 [2] [100] [1]
-#MAP_POSITION= 129,73
-#MAP_POSITION= 128,74
-}
-
-;NEW
-;
-{
-#NAME= DE 125 - The Port of Limerick Returns to Ireland if Ireland joins the Axis
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 125[1]
-#COUNTRY_ID= 112
-#RECIPIENT_ID= 57
-#REMOVE= 0
-#TRIGGER= 100
-#DATE= 1941/03/24
-#VARIABLE_CONDITION= 57 [1] [100] [0]
-#MAP_POSITION= 129,73
-#MAP_POSITION= 128,74
-}
-
-;NEW
-;
+; Ireland Joins Allies
 {
 #NAME= DE 125 - The Port of Limerick Returns to Ireland if Ireland joins the Allies
 #POPUP=
@@ -1260,11 +1116,6 @@
 #MAP_POSITION= 165,100
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; USSR DECISION EVENTS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-;
 {
 #NAME= DE 401 - Treaty of Moscow and the Soviet-Finnish Winter War
 #POPUP= USSR Annexes Territory From Finland Following End Of Winter War
@@ -1345,7 +1196,6 @@
 #MAP_POSITION= 204,27
 }
 
-;
 {
 #NAME= DE 401 - Treaty of Moscow and the Soviet-Finnish Winter War (50%)
 #POPUP= The Anglo-French Expedition Fails To Arrive In Time And The Finns Sue For Peace
@@ -1447,7 +1297,6 @@
 #MAP_POSITION= 44,89
 }
 
-;
 {
 #NAME= DE 251 - France Retakes Control Of The Port Of St. Nazaire
 #POPUP= France Retakes Control Of The Port Of St. Nazaire
@@ -1522,7 +1371,6 @@
 #MAP_POSITION= 161,87
 }
 
-;
 {
 #NAME= DE 305 - UK Gains Access To The Port Of Providence
 #POPUP=
@@ -1543,7 +1391,6 @@
 #MAP_POSITION= 15,102
 }
 
-;
 {
 #NAME= DE 305 - USA Regains The Port Of Providence
 #POPUP=
@@ -3795,7 +3642,6 @@
 #MAP_POSITION= 245,124
 }
 
-;
 {
 #NAME= DE 406 - Germany Transfers Former Polish Territory Around Wilno To Lithuania
 #POPUP= Germany Transfers Former Polish Territory Around Wilno To Lithuania
@@ -3821,7 +3667,6 @@
 #MAP_POSITION= 195,69
 }
 
-;
 {
 #NAME= DE 412 - The USSR Pulls Back From The Vistula-San River Line To The Bug-San River Line In Poland
 #POPUP= The USSR Pulls Back From The Vistula-San River Line To The Bug-San River Line In Poland
@@ -5063,7 +4908,6 @@
 #MAP_POSITION= 204,27
 }
 
-;
 {
 #NAME= DE 859 - Finland: Reincorporate Lost Territory
 #POPUP= Finland Reincorporate Territory Lost In The Winter War
