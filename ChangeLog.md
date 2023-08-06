@@ -105,20 +105,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - ... and more ...
 
 - "Saudi Arabia Ends Diplomatic Relations With Germany" (see - [mobilization_3.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/mobilizatin_3.txt))
-    - #DATE changed to 1939/09/11
+    - #DATE changed to 1939/09/11 (historical date)
 - "Germany Declares War On The USA" (see - [belligerence.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/belligerence.txt))
     - #BELLIGERENCE_CONDITION= [112,59] changed to [112,45]
+    - UK-Italy at War to UK-Germany
 - "USSR Enters War With Italy" (see - [belligerence.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/belligerence.txt))
     - #BELLIGERENCE_CONDITION= [112,45] changed to [112,59]
+    - UK-Germany at War to UK-Italy
 - "Italy Declares War On The Allies (USA)" (see - [belligerence.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/belligerence.txt))
     - #BELLIGERENCE_CONDITION= [116,45] changed to [115,45]
+    - USSR-Germany at War to USA-Germany
 - "DE 408 - USSR: Should Stalin Stay in Moscow to Lead its Defence?" (see - [decision.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/decision.txt))
     - #DECISION= 407 changed to 408
+    - 407 was incorrect and caused linked events to never trigger
 - "DE 650 - Germany: Wolfram Imports From Spain" (see - [decision.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/decision.txt))
     - Now properly checks that Bordeaux(145,94) is Axis
     - #ALIGNMENT_POSITION= 151,84 [1] changed to 145,94 [1]
 - "DE 835 - UK: Pressure Greece To Sever Economic Ties With Germany?" (see - [decision.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/decision.txt))
     - #VARIABLE_CONDITION= 46 [1] [0] [0] changed to 46 [2] [10] [0]
+    - Greece would have to be at least leaning Allied before Allies would have any influence
 - "Turkey Signs Mutual Pact With France And Britain To Protect Neutrality"
     - removed link to non-existent DECISION 999
 - "DE 114 - British Commandos Raid Spain - Coruña"
@@ -129,6 +134,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - updated to show tooltip when cursor is over Heraklion
 - "Soviet Bombers Operating From Crimea Attack The Ploesti Oil Fields In Romania"
     - changed SOURCE_POSITION to Simferopol
+    - was impossible to lauch bombers while Sevastopol was under seige
 - corrected incorrect #DISPLAY_TURN for events that had '#PRIVATE= 1' (see - [unit.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/unit.txt))
 such as:
     - DE 416 - USSR: Anti-Tank Units
