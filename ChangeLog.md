@@ -23,13 +23,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Script file content:
     - Significant reformatting & editing of various decision and popup messages to enhance readability and consistency (ongoing)
     - Updated event names to include "DE xxx" where appropriate
-    - Address missing event #LINKs (i.e. #DECISION number does not exist)
-    - Address #DECISION/#LINK number conflicts
+    - Addressed missing event #LINKs (i.e. #DECISION number does not exist)
+    - Addressed #DECISION/#LINK number conflicts
         - A few #DECISION numbers have been changed or corrected
     - 200+ typos and spelling errors corrected
     - Removed unreadable characters throughout event text files
     - Removed hundreds of lines of junk comments across script files, many containing completely false, confusing or irrelevant statements (ongoing)
-    - Updated/Fixed Resource descriptions (see - [localization.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/localization.txt))
+    - Updated/Fixed Research descriptions (see - [localization.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/localization.txt))
     - Updated/corrected existing comments (ongoing)
         - Added country ids for easy reference, where appropriate
             - Germany -> Germany(45)
@@ -65,6 +65,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
         - now requires Sweden be Axis aligned 20%
     - DE 922 -  Germany: Imports From Switzerland
         - now requires Switzerland be Axis aligned
+    - "Malta limits Axis supply in the Mediterranean" has been split-up into the following:
+        - "Malta Effect (Tripoli, Sirte, El Agheila, Benghazi, Derna) (15% Chance)"
+        - "Malta Effect (Derna, Msus, Mekili, Gazala) (15% Chance)"
+        - "Malta Effect (Tobruk, Alexandria, Port Said) (20% Chance)"
+        - "Malta Effect (Bardia, Sidi Barrani, Mersa Matruh, El Alamein) (20% Chance)"
 
 - Scenario Data:
     - Research Techs(Infantry, Armored, Aerial, Naval & Ballistic Warfare) that previously gave +5% morale bonus, now give +10%
@@ -130,5 +135,11 @@ such as:
         - DISPLAY_TURN=0 changed to 2
     - DE 645 - Germany: Anti-Tank Units
         - DISPLAY_TURN=0 changed to 1
+- Fixed "Derna(191,120) is getting hit twice in Malta supply interdiction scripts" 
+    - (see - https://www.matrixgames.com/forums/viewtopic.php?f=10647&t=396958)
+- Fixed "Incorrect #LINK= in German/Soviet Garrison Reports" 
+    - (see - https://www.matrixgames.com/forums/viewtopic.php?f=10647&t=397073)
+- Fixed "events linked to a non-existent DECISIONs" 
+    - (see - https://www.matrixgames.com/forums/viewtopic.php?f=10647&t=396845 & https://www.matrixgames.com/forums/viewtopic.php?f=10647&t=396893)
 
 
