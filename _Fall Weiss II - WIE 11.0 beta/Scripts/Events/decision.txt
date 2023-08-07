@@ -563,6 +563,7 @@
 #SHADOW_RGB= 0,0,0
 ; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
+; Merge from 1939 SOE (July 2023)
 ; Alexandria(206,124) is Allied
 #ALIGNMENT_POSITION= 206,124 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
@@ -814,7 +815,7 @@
 }
 
 {
-#NAME= DE 109 - UK: Form The Polish I Corps? (75% Chance) (AI - 100% Yes)
+#NAME= DE 109 - UK: Form The Polish I Corps? (50% Chance) (AI - 100% Yes)
 #POPUP=
 #MESSAGE=British War Office %N David Margesson %N%N %BRe: %BThe %BPolish %BI %BCorps %N%N The Polish Prime Minister in exile, Wladyslaw Sikorski, wishes to form the Polish I Corps to continue the fight against Germany.%N%N The High Command is asking us to spend %B50 MPPs (25 MPPs for 2 turns), to help create and train this new Polish Corps, which will deploy at half strength near London.%N%N Would you like to form the Polish I Corps?
 #IMAGE=
@@ -826,6 +827,8 @@
 #GV= 1[1,100]
 #LINK= 500[1]
 #COUNTRY_ID= 112
+; Fall Weiss II
+; 75% to 50%
 #TRIGGER= 50
 #DISPLAY_ORDER= 1
 #DECISION= 109
@@ -1045,6 +1048,8 @@
 #GV= 1[1,100]
 #LINK= 200[0]
 #COUNTRY_ID= 112
+; Fall Weiss II
+; 75% to 50%
 #TRIGGER= 50
 #DISPLAY_ORDER= 1
 #DECISION= 115
@@ -1098,6 +1103,7 @@
 #ALIGNMENT_POSITION= 147,77 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
+; Portugal(87) Axis
 #VARIABLE_CONDITION= 87 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1133,6 +1139,7 @@
 #ALIGNMENT_POSITION= 147,77 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
+; Portugal(87) Allied
 #VARIABLE_CONDITION= 87 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1205,43 +1212,6 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= DE 120 - UK: Operation Countenance: Call on the USSR to join us in Invading Persia? (AI - 100% Yes)
-#POPUP=
-#MESSAGE=Prime Minister %N Winston Churchill %N%N %BRe: %BOperation %BCountenance %N%N Now that the USSR is in the war, it is more important than ever that we prevent Persia from aligning itself with the Axis Persia could also prove a useful route for war supplies to reach the USSR from the USA, and this could make all the difference in deciding the outcome of the war.%N%N A joint invasion, launched by British forces advancing from the Persian Gulf in the south, and with the Red Army descending from the north, would overwhelm the country in a very short time. %N%N We propose to offer control of most of Persia to the USSR, while retaining the southern portion, which includes the Oilfield at Maidan-I-Naftun and the port of Bandar Mahshahr.%N%N A joint offensive, codename Operation Countenance, would cost both us and the USSR %B50 MPPs each.%N%N Would you like to ask Stalin to join us in launching a joint invasion of Persia %B(YES)?
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#DISPLAY_ORDER= 1
-#DECISION= 120
-#MPP_UPDOWN= 0
-#MPP_TURNS= 0
-#MPP_TEXT=
-#NOTES= A joint invasion will ensure that Persia is swiftly conquered, and the economic benefits will more than outweigh the cost.%N%N Saying %B(YES) will also provide the USA with an opportunity to send supplies to the USSR via Persia, and if they do so this will really help the Red Army's war effort.
-#NOTES_POSITION= 248,115
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1941/08/12
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Kuwait(241,128) is Allied
-#ALIGNMENT_POSITION= 241,128 [2]
-; Baku(245,104) is Allied
-#ALIGNMENT_POSITION= 245,104 [2]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-#VARIABLE_CONDITION= 82 [1] [0] [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -1541,8 +1511,8 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; https://www.wikiwand.com/en/Syria%E2%80%93Lebanon_campaign
 ; Fall Weiss II
+; https://www.wikiwand.com/en/Syria%E2%80%93Lebanon_campaign
 {
 #NAME= DE 131 - UK: Invade Syria? (AI - 100% Yes)
 #POPUP=
@@ -2134,10 +2104,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; UK DUMMY EVENTS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 {
 #NAME= DE 150 - UK: Success At Dakar (AI - 100% Yes)(20%)
 #POPUP=
@@ -2320,39 +2286,6 @@
 ; France(40) Allied and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= DE 155 - UK: Dummy Event to deduct 50 MPPs for DE 120 if DE 403 is approved (AI - 100% Yes)
-#POPUP=
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 403[1]
-#DECISION= 155
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#MPP_UPDOWN= -50
-#MPP_TURNS= 1
-#MPP_TEXT= Operation Countenance
-#NOTES=
-#NOTES_POSITION=
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1941/08/12
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Kuwait(241,128) is Allied
-#ALIGNMENT_POSITION= 241,128 [2]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -2910,7 +2843,8 @@
 #MESSAGE=
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
-; currently disabled for Fall Weiss II
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
 #FLAG= 0
 #TYPE= 3
 #AI= 0
@@ -2938,39 +2872,6 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Egypt(36) Allied and not surrendered
 #VARIABLE_CONDITION= 36 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= DE 170 - UK: Dummy Event to deduct 50 MPPs for DE 120 if DE 403 is approved (AI - 100% Yes)
-#POPUP=
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 470[1]
-#DECISION= 170
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#MPP_UPDOWN= -50
-#MPP_TURNS= 1
-#MPP_TEXT= Operation Countenance
-#NOTES=
-#NOTES_POSITION=
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1941/08/12
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Kuwait(241,128) is Allied
-#ALIGNMENT_POSITION= 241,128 [2]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -3110,8 +3011,8 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; https://www.wikiwand.com/en/Plan_R_4
 ; Fall Weiss II
+; https://www.wikiwand.com/en/Plan_R_4
 {
 #NAME= DE 180 - UK: Invade Norway (Norway pro-Axis but neutral) (AI - 0% Yes)
 #POPUP=
@@ -3143,119 +3044,6 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Norway(78) Axis but not fully mobilized
 #VARIABLE_CONDITION= 78 [1] [0] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= DE 197 - UK: Operation Countenance: Call on the USSR to join us in Invading Persia? (AI - 100% Yes)
-#POPUP=
-#MESSAGE=<<TAG_60>>
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#DISPLAY_ORDER= 1
-#DECISION= 197
-#MPP_UPDOWN= 0
-#MPP_TURNS= 0
-#MPP_TEXT=
-#NOTES= <<TAG_61>>
-#NOTES_POSITION= 248,115
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1941/08/12
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Kuwait(241,128) is Allied
-#ALIGNMENT_POSITION= 241,128 [2]
-; Baku(245,104) is Allied
-#ALIGNMENT_POSITION= 245,104 [2]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-#VARIABLE_CONDITION= 82 [2] [0] [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= DE 198 - USSR: Operation Countenance: Join with the UK in Invading Persia? (AI - 100% Yes)
-#POPUP=
-#MESSAGE=<<TAG_141>>
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 197[1]
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#DECISION= 198
-#MPP_UPDOWN= -50
-#MPP_TURNS= 1
-#MPP_TEXT= <<TAG_84>>
-#NOTES= <<TAG_142>>
-#NOTES_POSITION= 246,117
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1941/08/12
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Kuwait(241,128) is Allied
-#ALIGNMENT_POSITION= 241,128 [2]
-; Baku(245,104) is Allied
-#ALIGNMENT_POSITION= 245,104 [2]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-#VARIABLE_CONDITION= 82 [2] [0] [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= DE 199 - UK: Dummy Event to deduct 50 MPPs for DE 197 if DE 198 is approved (AI - 100% Yes)
-#POPUP=
-#MESSAGE=
-#IMAGE=
-#SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 198[1]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#DECISION= 199
-#MPP_UPDOWN= -50
-#MPP_TURNS= 1
-#MPP_TEXT= <<TAG_84>>
-#NOTES=
-#NOTES_POSITION=
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1941/08/12
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Kuwait(241,128) is Allied
-#ALIGNMENT_POSITION= 241,128 [2]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4587,10 +4375,238 @@
 #CONDITION_POSITION= 143,88 [6,6] [0,0] [2] [0]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; USA DUMMY EVENTS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
+
+; Persia is Allied
+{
+#NAME= DE 312 - UK: Operation Countenance: Call on the USSR to join us in Invading (Allied) Persia? (AI - 100% Yes)
+#POPUP=
+#MESSAGE=Prime Minister %N Winston Churchill %N%N %BRe: %BOperation %BCountenance %N%N Now that the USSR is in the war, it is more important than ever that we prevent Persia from aligning itself with the Axis Persia could also prove a useful route for war supplies to reach the USSR from the USA, and this could make all the difference in deciding the outcome of the war.%N%N A joint invasion, launched by British forces advancing from the Persian Gulf in the south, and with the Red Army descending from the north, would overwhelm the country in a very short time. %N%N We propose to offer control of most of Persia to the USSR, while retaining the southern portion, which includes the Oilfield at Maidan-I-Naftun and the port of Bandar Mahshahr.%N%N A joint offensive, codename Operation Countenance, would cost both us and the USSR %B50 MPPs each.%N%N Would you like to ask Stalin to join us in launching a joint invasion of Persia %B(YES)?
+#IMAGE=
+#SOUND= teletype_1.ogg, teletype_2.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#DECISION= 312
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#DISPLAY_ORDER= 1
+#MPP_UPDOWN= 0
+#MPP_TURNS= 0
+#MPP_TEXT=
+#NOTES= A joint invasion will ensure that Persia is swiftly conquered, and the economic benefits will more than outweigh the cost.%N%N Saying %B(YES) will also provide the USA with an opportunity to send supplies to the USSR via Persia, and if they do so this will really help the Red Army's war effort.
+#NOTES_POSITION= 248,115
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1941/08/12
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Kuwait(241,128) is Allied
+#ALIGNMENT_POSITION= 241,128 [2]
+; Baku(245,104) is Allied
+#ALIGNMENT_POSITION= 245,104 [2]
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Persia(82) Allied
+#VARIABLE_CONDITION= 82 [2] [0] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; Persia Axis
+{
+#NAME= DE 313 - UK: Operation Countenance: Call on the USSR to join us in Invading (Axis) Persia? (AI - 100% Yes)
+#POPUP=
+#MESSAGE=Prime Minister %N Winston Churchill %N%N %BRe: %BOperation %BCountenance %N%N Now that the USSR is in the war, it is more important than ever that we prevent Persia from aligning itself with the Axis Persia could also prove a useful route for war supplies to reach the USSR from the USA, and this could make all the difference in deciding the outcome of the war.%N%N A joint invasion, launched by British forces advancing from the Persian Gulf in the south, and with the Red Army descending from the north, would overwhelm the country in a very short time. %N%N We propose to offer control of most of Persia to the USSR, while retaining the southern portion, which includes the Oilfield at Maidan-I-Naftun and the port of Bandar Mahshahr.%N%N A joint offensive, codename Operation Countenance, would cost both us and the USSR %B50 MPPs each.%N%N Would you like to ask Stalin to join us in launching a joint invasion of Persia %B(YES)?
+#IMAGE=
+#SOUND= teletype_1.ogg, teletype_2.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#DISPLAY_ORDER= 1
+#DECISION= 313
+#MPP_UPDOWN= 0
+#MPP_TURNS= 0
+#MPP_TEXT=
+#NOTES= A joint invasion will ensure that Persia is swiftly conquered, and the economic benefits will more than outweigh the cost.%N%N Saying %B(YES) will also provide the USA with an opportunity to send supplies to the USSR via Persia, and if they do so this will really help the Red Army's war effort.
+#NOTES_POSITION= 248,115
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1941/08/12
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Kuwait(241,128) is Allied
+#ALIGNMENT_POSITION= 241,128 [2]
+; Baku(245,104) is Allied
+#ALIGNMENT_POSITION= 245,104 [2]
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Persia(82) Axis
+#VARIABLE_CONDITION= 82 [1] [0] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; Persia Axis
+{
+#NAME= DE 314 - USSR: Operation Countenance: Join with the UK in Invading (Allied) Persia? (AI - 100% Yes)
+#POPUP=
+#MESSAGE=Red Army Headquarters %N%N %BRe: %BOperation %BCountenance %N%N The British have proposed that we join them in invading Persia to overthrow the pro-Axis Shah.%N%N Their plan is that we then divide the country between us, with the British having the Oilfield at Maidan-I-Naftun and the port of Bandar Mahshahr.%N%N The invasion would only cost %B100 MPPs, to be divided equally between both countries.%N%N Would you like to approve this British plan to invade Persia and divide the country between us %B(YES)?
+#IMAGE=
+#SOUND= teletype_1.ogg, teletype_2.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; UK: Operation Countenance: Call on the USSR to join us in Invading (Allied) Persia?
+#LINK= 312[1]
+; 312[1]->314[?]
+#DECISION= 314
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DISPLAY_ORDER= 0
+#MPP_UPDOWN= -50
+#MPP_TURNS= 1
+#MPP_TEXT= Operation Countenance
+#NOTES= A joint invasion will ensure that Persia is swiftly conquered, and the economic benefits will more than outweigh the cost.%N%N Saying %B(YES) will also provide the USA with the opportunity to send supplies via Persia to sustain our war effort. The conquest of Persia is essential if we wish the US to send us supplies through this country. %N%N %N%N%CRecommendations: %N%N Say %B(YES) to Operation Countenance and the invasion of Persia.
+#NOTES_POSITION= 246,117
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1941/08/12
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Kuwait(241,128) is Allied
+#ALIGNMENT_POSITION= 241,128 [2]
+; Baku(245,104) is Allied
+#ALIGNMENT_POSITION= 245,104 [2]
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Persia(82) is Allied aligned
+#VARIABLE_CONDITION= 82 [2] [0] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; Persia Axis
+{
+#NAME= DE 315 - USSR: Operation Countenance: Join with the UK in Invading (Axis) Persia? (AI - 100% Yes)
+#POPUP=
+#MESSAGE=Red Army Headquarters %N%N %BRe: %BOperation %BCountenance %N%N The British have proposed that we join them in invading Persia to overthrow the pro-Axis Shah.%N%N Their plan is that we then divide the country between us, with the British having the Oilfield at Maidan-I-Naftun and the port of Bandar Mahshahr.%N%N The invasion would only cost %B100 MPPs, to be divided equally between both countries.%N%N Would you like to approve this British plan to invade Persia and divide the country between us %B(YES)?
+#IMAGE=
+#SOUND= teletype_1.ogg, teletype_2.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; UK: Operation Countenance: Call on the USSR to join us in Invading (Axis) Persia?
+#LINK= 313[1]
+; 313[1]->315[?]
+#DECISION= 315
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DISPLAY_ORDER= 0
+#MPP_UPDOWN= -50
+#MPP_TURNS= 1
+#MPP_TEXT= Operation Countenance
+#NOTES= A joint invasion will ensure that Persia is swiftly conquered, and the economic benefits will more than outweigh the cost.%N%N Saying %B(YES) will also provide the USA with the opportunity to send supplies via Persia to sustain our war effort. The conquest of Persia is essential if we wish the US to send us supplies through this country. %N%N %N%N%CRecommendations: %N%N Say %B(YES) to Operation Countenance and the invasion of Persia.
+#NOTES_POSITION= 246,117
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1941/08/12
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Kuwait(241,128) is Allied
+#ALIGNMENT_POSITION= 241,128 [2]
+; Baku(245,104) is Allied
+#ALIGNMENT_POSITION= 245,104 [2]
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Persia(82) is Axis aligned
+#VARIABLE_CONDITION= 82 [1] [0] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; Persia Axis
+{
+#NAME= DE 317 - UK: Dummy Event to deduct 50 MPPs if Countenance is approved (AI - 100% Yes)
+#POPUP=
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 315[1]
+; 313[1]->315[1]->317[1]
+#DECISION= 317
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#DISPLAY_ORDER= 0
+#MPP_UPDOWN= -50
+#MPP_TURNS= 1
+#MPP_TEXT= Operation Countenance
+#NOTES=
+#NOTES_POSITION=
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1941/08/12
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Kuwait(241,128) is Allied
+#ALIGNMENT_POSITION= 241,128 [2]
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; Persia Allied
+{
+#NAME= DE 318 - UK: Dummy Event to deduct 50 MPPs if Countenance is approved (AI - 100% Yes)
+#POPUP=
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 314[1]
+; 312[1]->314[1]->318[1]
+#DECISION= 318
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#DISPLAY_ORDER= 0
+#MPP_UPDOWN= -50
+#MPP_TURNS= 1
+#MPP_TEXT= Operation Countenance
+#NOTES=
+#NOTES_POSITION=
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1941/08/12
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Kuwait(241,128) is Allied
+#ALIGNMENT_POSITION= 241,128 [2]
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+
 {
 #NAME= DE 350 - USA: Dummy Event as Lend Lease Begins (AI - 100% Yes)
 #POPUP=
@@ -5608,46 +5624,6 @@
 #CONDITION_POSITION= 221,86 [7,7] [1,1] [1] [0]
 ; Axis units within 7 hexes of Konotop
 #CONDITION_POSITION= 212,78 [7,7] [1,1] [1] [0]
-}
-
-{
-#NAME= DE 403 - USSR: Operation Countenance: Join with the UK in Invading Persia? (If DE 120 approved) (AI - 100% Yes)
-#POPUP=
-#MESSAGE=Red Army Headquarters %N%N %BRe: %BOperation %BCountenance %N%N The British have proposed that we join them in invading Persia to overthrow the pro-Axis Shah.%N%N Their plan is that we then divide the country between us, with the British having the Oilfield at Maidan-I-Naftun and the port of Bandar Mahshahr.%N%N The invasion would only cost %B100 MPPs, to be divided equally between both countries.%N%N Would you like to approve this British plan to invade Persia and divide the country between us %B(YES)?
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-; UK: Operation Countenance: Call on the USSR to join us in Invading Persia?
-#LINK= 120[1]
-; 120[1]->403[?]
-#DECISION= 403
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#MPP_UPDOWN= -50
-#MPP_TURNS= 1
-#MPP_TEXT= Operation Countenance
-#NOTES= A joint invasion will ensure that Persia is swiftly conquered, and the economic benefits will more than outweigh the cost.%N%N Saying %B(YES) will also provide the USA with the opportunity to send supplies via Persia to sustain our war effort. The conquest of Persia is essential if we wish the US to send us supplies through this country. %N%N %N%N%CRecommendations: %N%N Say %B(YES) to Operation Countenance and the invasion of Persia.
-#NOTES_POSITION= 246,117
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1941/08/12
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Kuwait(241,128) is Allied
-#ALIGNMENT_POSITION= 241,128 [2]
-; Baku(245,104) is Allied
-#ALIGNMENT_POSITION= 245,104 [2]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; Persia(82) is Axis aligned
-#VARIABLE_CONDITION= 82 [1] [0] [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 {
@@ -7065,47 +7041,6 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 10 [2] [100] [1]
 #VARIABLE_CONDITION= 73 [2] [100] [1]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= DE 470 - USSR: Operation Countenance: Join with the UK in Invading Persia? (If DE 979 approved) (AI - 100% Yes)
-#POPUP=
-#MESSAGE=Red Army Headquarters %N%N %BRe: %BOperation %BCountenance %N%N The British have proposed that we join them in invading Persia to overthrow the pro-Axis Shah.%N%N Their plan is that we then divide the country between us, with the British having the Oilfield at Maidan-I-Naftun and the port of Bandar Mahshahr.%N%N The invasion would only cost %B100 MPPs, to be divided equally between both countries.%N%N Would you like to approve this British plan to invade Persia and divide the country between us %B(YES)?
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-; UK: Operation Countenance: Call on the USSR to join us in Invading Persia?
-#LINK= 979[1]
-; 979[1]->470[?]
-#DECISION= 470
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#MPP_UPDOWN= -50
-#MPP_TURNS= 1
-#MPP_TEXT= Operation Countenance
-#NOTES= A joint invasion will ensure that Persia is swiftly conquered, and the economic benefits will more than outweigh the cost.%N%N Saying %B(YES) will also provide the USA with the opportunity to send supplies via Persia to sustain our war effort. The conquest of Persia is essential if we wish the US to send us supplies through this country. %N%N %N%N%CRecommendations: %N%N Say %B(YES) to Operation Countenance and the invasion of Persia.
-#NOTES_POSITION= 246,117
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1941/08/12
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Kuwait(241,128) is Allied
-#ALIGNMENT_POSITION= 241,128 [2]
-; Baku(245,104) is Allied
-#ALIGNMENT_POSITION= 245,104 [2]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; Persia(82) is Axis aligned
-#VARIABLE_CONDITION= 82 [1] [0] [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -15693,6 +15628,8 @@
 #CONDITION_POSITION= 139,104 [6,6] [0,0] [2] [0]
 }
 
+; https://www.wikiwand.com/en/Wolfram_Crisis
+; https://1997-2001.state.gov/regions/eur/rpt_9806_ng_spain.pdf
 ; Fall Weiss II 
 {
 #NAME= DE 907 - Germany: Development of Spanish Mines? (AI 75% Yes)
@@ -15713,7 +15650,7 @@
 #MPP_UPDOWN= -10
 #MPP_TURNS= 5
 #MPP_TEXT= Development Of Spanish Mines
-#NOTES= %N%N If you select %B(YES), Spain's wolfram mines will begin to become operational and the resources (Valued at 20 MPPs per turn) will be available for export to Germany at a later date.%N%N If you select %B(NO), then the wolfram mines will not produce any resources (located at 135,97) even if Spain were to join the conflict in Europe.
+#NOTES= %N%N If you select %B(YES), Spain's wolfram mines will begin to become operational and the resources (Valued at 20 MPPs per turn) will be available for export to Germany at a later date.%N%N If you select %B(NO), then the wolfram mines will not produce any resources (located at 135,97) even if Spain were to join the conflict in Europe. %N%N Spain will also greatly benefit from the development of their mines and will align themselves 4-8% toward the Axis.
 #NOTES_POSITION= 139,110
 ; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
@@ -17015,44 +16952,6 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Germany(45) Axis and not surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; Fall Weiss II 
-{
-#NAME= DE 979 - UK: Operation Countenance: Call on the USSR to join us in Invading Persia? (AI - 100% Yes)
-#POPUP=
-#MESSAGE=Prime Minister %N Winston Churchill %N%N %BRe: %BOperation %BCountenance %N%N Now that the USSR is in the war, it is more important than ever that we prevent Persia from aligning itself with the Axis Persia could also prove a useful route for war supplies to reach the USSR from the USA, and this could make all the difference in deciding the outcome of the war.%N%N A joint invasion, launched by British forces advancing from the Persian Gulf in the south, and with the Red Army descending from the north, would overwhelm the country in a very short time. %N%N We propose to offer control of most of Persia to the USSR, while retaining the southern portion, which includes the Oilfield at Maidan-I-Naftun and the port of Bandar Mahshahr.%N%N A joint offensive, codename Operation Countenance, would cost both us and the USSR %B50 MPPs each.%N%N Would you like to ask Stalin to join us in launching a joint invasion of Persia %B(YES)?
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#DECISION= 979
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#DISPLAY_ORDER= 1
-#MPP_UPDOWN= 0
-#MPP_TURNS= 0
-#MPP_TEXT=
-#NOTES= A joint invasion will ensure that Persia is swiftly conquered, and the economic benefits will more than outweigh the cost.%N%N Saying %B(YES) will also provide the USA with an opportunity to send supplies to the USSR via Persia, and if they do so this will really help the Red Army's war effort.
-#NOTES_POSITION= 248,115
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1941/08/12
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Kuwait(241,128) is Allied
-#ALIGNMENT_POSITION= 241,128 [2]
-; Baku(245,104) is Allied
-#ALIGNMENT_POSITION= 245,104 [2]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-#VARIABLE_CONDITION= 82 [2] [0] [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
