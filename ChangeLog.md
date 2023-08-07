@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Added Clodius Trade Agreement via Greece where Greece joins Axis in lieu of Bulgaria
     - "DE 681 - Germany: Chrome Imports From Turkey (via Greece)" (see - [decision.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/decision.txt))
     - "DE 961 - Germany and Turkey Trade Agreement" (see - [mobilization_3.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/mobilization_3.txt))
+- Added "DE 907 - Germany and Spain Wolfram Mine Development Agreement"
 
 ## Changed
 
@@ -102,8 +103,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - Deleted the forest in hex 198,89 to avoid confusion as it couldn't be easily seen (mdsmall).
     - All Decision Events (DE 306; 353 and 454) relating to the US sending supplies to the USSR via Persia now require all road hexes between Bandar Abbas and Baku to be in Allied hands (Hobbygeneral).
     - DE 601 - Garrison Unit In Copenhagen
+        - previously missing
+    - DE 102 - UK: Deploy 7th Armoured In Egypt Or The UK?
+        - additional check that Alexandria is Allied
+    - DE 151 - UK: Allies Liberate Paris Helper
+        - additional check that Paris is Axis controlled
+        - remove check that Axis unit in Paris
     - ... and more ...
 
+- Operation Countenance
+    - Was only partially implemented and linked incorrectly to wrong or non-existent events
+    - Re-implemented using DEs 312 through 318
 - "Saudi Arabia Ends Diplomatic Relations With Germany" (see - [mobilization_3.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/mobilizatin_3.txt))
     - #DATE changed to 1939/09/11 (historical date)
 - "Germany Declares War On The USA" (see - [belligerence.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/belligerence.txt))
@@ -134,7 +144,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - updated to show tooltip when cursor is over Heraklion
 - "Soviet Bombers Operating From Crimea Attack The Ploesti Oil Fields In Romania"
     - changed SOURCE_POSITION to Simferopol
-    - was impossible to lauch bombers while Sevastopol was under seige
+    - was impossible to launch bombers while Sevastopol was under seige
 - corrected incorrect #DISPLAY_TURN for events that had '#PRIVATE= 1' (see - [unit.txt](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/unit.txt))
 such as:
     - DE 416 - USSR: Anti-Tank Units
