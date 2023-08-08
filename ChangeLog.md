@@ -73,6 +73,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
         - "Malta Effect (Bardia, Sidi Barrani, Mersa Matruh, El Alamein) (20% Chance)"
 
 - Scenario Data:
+    - Albania(3) annexed by Italy(59)
+        - control of all Albanian hexes given to Italy (same as was originally done for Libya)
     - Research Techs(Infantry, Armored, Aerial, Naval & Ballistic Warfare) that previously gave +5% morale bonus, now give +10%
     - Research Tech(Armored Warfare) gives +5% morale bonus to Mech Div, Mech Corps (previously +10% after adjustment above)
     - Research Tech(Infantry Warfare) gives +5% morale bonus to Mech Div, Mech Corps (previously +0%)
