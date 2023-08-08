@@ -418,7 +418,7 @@
 ; Event for increased US mobilization:
 {
 #NAME= Greece Surrendered To Axis (USA->Allies)
-#POPUP=
+#POPUP= The USA Grows Concerned Over The Axis Conquest of Greece
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -442,7 +442,7 @@
 ; Event for increased US mobilization:
 {
 #NAME= Yugoslavia Surrendered To Axis (USA->Allies)
-#POPUP=
+#POPUP= The USA Grows Concerned Over The Axis Conquest of Yugoslavia
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -644,7 +644,7 @@
 ; Event for increased Spanish mobilization:
 {
 #NAME= Franco Swings Towards The Axis On The Fall Of France (Spain->Axis)
-#POPUP= Franco Swings Towards The Axis On The Fall Of France
+#POPUP= Franco Becomes Enamored With The Axis On The Fall Of France
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -770,8 +770,8 @@
 }
 
 {
-#NAME= Romania's Surrender Weakens Turkey's Relationship With The Axis (Turkey->Allies)
-#POPUP= Romania's Surrender Weakens Turkey's Relationship With The Axis
+#NAME= Romania's Surrender Weakens The Axis Relationship With Turkey (Turkey->Allies)
+#POPUP= Romania's Surrender Weakens The Axis Relationship With Turkey
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -836,8 +836,8 @@
 
 ; Fall Weiss II
 {
-#NAME= Portugal Protests Against Germany's Invasion of Poland (Portugal->Allies)
-#POPUP= Portugal Protests Against Germany's Invasion of Poland
+#NAME= Portugal Protests Germany's Invasion of Poland (Portugal->Allies)
+#POPUP= Portugal Protests Germany's Invasion of Poland
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -851,8 +851,8 @@
 #DATE= 1939/09/03
 ; 2-4% activation increase towards Allies
 #MOBILIZATION= [2,4] [2]
-; Germany(45) is Axis, Fully Active and Not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Poland(85) is Allied, Fully Active and Not surrendered
+#VARIABLE_CONDITION= 85 [2] [100] [0]
 }
 
 ; Fall Weiss II
@@ -879,7 +879,7 @@
 ; Fall Weiss II
 {
 #NAME= Yugoslavia Joins The Axis (Yugoslavia->>Axis) (50% Chance)
-#POPUP= Surrounded By Axis Nations - Yugoslavia Signs Tripartite Pact
+#POPUP= Surrounded By Axis Nations, Yugoslavia Signs Tripartite Pact
 #IMAGE=
 #SOUND=
 ; currently disabled in Fall Weiss II
@@ -906,8 +906,8 @@
 
 ; Fall Weiss II
 {
-#NAME= Saudi Arabia Ends Diplomatic Relations With Germany (Saudi Arabia->Allies)
-#POPUP= Saudi Arabia Ends Diplomatic Relations With Germany
+#NAME= Saudi Arabia Severs Diplomatic Contacts With Germany (Saudi Arabia->Allies)
+#POPUP= Saudi Arabia Severs Diplomatic Contacts With Germany
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -1697,7 +1697,7 @@
 ; Fall Weiss II
 {
 #NAME= DE 132 - USA Does Not Recognize Vichy France (Vichy France->Axis)
-#POPUP= USA Does Not Recognize The Vichy French Government
+#POPUP= USA Refuses To Recognize The Vichy French Government
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -1874,7 +1874,7 @@
 ; Anglo-French Expedition To Finland
 {
 #NAME= DE 204 - Anglo-French Expedition To Finland (Finland->Allies)
-#POPUP= Finland Reduces Pro-Axis Leaning In Response To Allied Support
+#POPUP= Finland Grows Closer To The Allies In Response To Their Support
 #IMAGE=
 #SOUND= 
 #FLAG= 1
@@ -1896,7 +1896,7 @@
 ; Event for decreased Spanish mobilization:
 {
 #NAME= DE 250 - Franco's Enthusiasm For The Axis Weakens Slightly As France Is Liberated (Spain->Allies)
-#POPUP= Franco's Enthusiasm For The Axis Weakens Slightly As France Is Liberated
+#POPUP= Franco's Enthusiasm For The Axis Is Diminished As France Is Liberated
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -2097,7 +2097,7 @@
 ; Fall Weiss II
 {
 #NAME= DE 540 - Germany Threatens Switzerland (Switzerland->Allies)
-#POPUP= Germany Threatens Switzerland In Response To German Aircraft Being Shot-down
+#POPUP= Switzerland Is Concerned Over German Threats In Response To German Aircraft Being Shot-down
 #IMAGE=
 #SOUND= 
 #FLAG= 1
@@ -2118,28 +2118,7 @@
 ; Fall Weiss II
 {
 #NAME= DE 542 - Success Of IRA In Ireland (Ireland->>Axis) (20% Chance)
-#POPUP= Building On Recent Attacks The IRA Gains Momentum In Demanding UK Withdrawal From Northern Ireland
-#IMAGE=
-#SOUND= 
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 542[1]
-#COUNTRY_ID= 57
-#TRIGGER= 20
-#DATE= 1940/09/02
-; 20-40% mobilization increase towards Axis
-#MOBILIZATION= [20,40] [1]
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= DE 542 - Success Of IRA In Ireland (Ireland->>Axis) (20% Chance)
-#POPUP= The IRA Gains Momentum In Demanding UK Withdrawal From Northern Ireland
+#POPUP= Building On Recent Attacks, The IRA Gains Momentum In Demanding UK Withdrawal From Northern Ireland
 #IMAGE=
 #SOUND= 
 #FLAG= 1
@@ -2202,7 +2181,7 @@
 ; Fall Weiss II
 {
 #NAME= DE 546 - Military Exports From Germany (Sweden->Axis)
-#POPUP= Sweden Leans Towards The Axis After Receiving Military Exports From Germany
+#POPUP= Sweden Grows Closer To The Axis After Receiving Military Equipment From Germany
 #IMAGE=
 #SOUND= 
 #FLAG= 1
@@ -2530,7 +2509,7 @@
 ; Fall Weiss II
 {
 #NAME= DE 800 - The Anglo-Portuguese Alliance (Spain->>Axis)
-#POPUP= Franco Orders Troop Deployment Along The Portuguese Border
+#POPUP= Franco Grows Highly Concerned Over Portuguese Troop Deployments
 #IMAGE=
 #SOUND= report.ogg
 #FLAG= 1
@@ -2573,7 +2552,7 @@
 ; Fall Weiss II
 {
 #NAME= DE 800 - Italy Joins The Axis (Italy->>Axis)
-#POPUP= Mussolini Hastily Joins Fascist Alliance
+#POPUP= Mussolini Hastily Joins The Fascist Alliance
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -2595,7 +2574,7 @@
 ; Fall Weiss II
 {
 #NAME= DE 801 - Italian Exports To Spain (Spain->Axis)
-#POPUP= Mussolini Promises Civil Aid To Franco
+#POPUP= Franco Is Pleased With The Civil Aid Italy Is Providing Spain
 #IMAGE=
 #SOUND= 
 #FLAG= 1
@@ -2641,7 +2620,7 @@
 ; Fall Weiss II
 {
 #NAME= DE 803 - UK Threatens To Blockade Imports To Spain (Spain->Allies)
-#POPUP= Franco Reduces Axis Leaning In Response To Possible Blockades
+#POPUP= Franco Grows Leary Of Relations With The Axis In Response To Possible Allied Blockades
 #IMAGE=
 #SOUND= 
 #FLAG= 1
@@ -2684,7 +2663,7 @@
 ; Fall Weiss II
 {
 #NAME= DE 804 - UK Condemns The Spanish Blue Division (Spain->Axis)
-#POPUP= 
+#POPUP= Franco Grows Closer With The Axis After The UK Condemns The Blue Division Deployment
 #IMAGE=
 #SOUND= 
 #FLAG= 1
@@ -2728,7 +2707,7 @@
 ; Fall Weiss II
 {
 #NAME= DE 806 - Italian Military Exports To Spain (Spain->Axis)
-#POPUP= Italian Military Exports Begin To Arrive In Spain
+#POPUP= Franco Is Pleased When Italian Military Exports Begin To Arrive In Spain
 #IMAGE=
 #SOUND= 
 #FLAG= 1
@@ -2794,7 +2773,7 @@
 ; USA Military Exports To Turkey
 {
 #NAME= DE 809 - USA Military Exports to Turkey (Turkey->Allies)
-#POPUP= USA Commits Further Military Aid To Turkey
+#POPUP= USA's Military Exports To Turkey Improves Their Relationship
 #IMAGE=
 #SOUND= 
 #FLAG= 1
@@ -2816,7 +2795,7 @@
 ; Aircraft Delivery To Sweden
 {
 #NAME= DE 811 - USA Fails To Deliver Promised Aircraft To Sweden (Sweden->Axis)
-#POPUP= 
+#POPUP= Sweden Is Disappointed With USA's Failure To Deliver Promised Aircraft
 #IMAGE=
 #SOUND= 
 #FLAG= 1
@@ -2839,7 +2818,7 @@
 ; Aircraft Delivery To Sweden
 {
 #NAME= DE 812 - Italian Military Exports To Sweden (Sweden->Axis)
-#POPUP= Sweden Improves Axis Relations After Purchasing Military Aircraft From From Italy
+#POPUP= The Italian Sale Of Aircraft To Sweden Improves Their Relations With The Axis
 #IMAGE=
 #SOUND= 
 #FLAG= 1
@@ -2883,7 +2862,7 @@
 ; Swedish Convoy
 {
 #NAME= DE 813 - Allies Exert Diplomatic Pressure To Stop Swedish Convoys (Sweden->Allies)
-#POPUP= 
+#POPUP= The Swedish Relent to Allied Pressure away from Axis Influence
 #IMAGE=
 #SOUND= 
 #FLAG= 1
@@ -2992,7 +2971,7 @@
 ; Naval Asset Delivery To Sweden
 {
 #NAME= DE 827 - Italian Naval Exports To Sweden (Sweden->Axis)
-#POPUP= Sweden Improves Axis Relations After Purchasing Naval Assets From Italy
+#POPUP= Sweden's Relations With The Axis Improves After Italy Agrees To The Sale of Naval Assets
 #IMAGE=
 #SOUND= 
 #FLAG= 1
@@ -3386,7 +3365,7 @@
 ; Fall Weiss II
 {
 #NAME= DE 907 - Germany and Spain Wolfram Mine Development Agreement (Spain->Axis)
-#POPUP= Spain Is Pleased Regarding Mine Development Agreement with Germany
+#POPUP= Franco Welcomes Axis Assistance In Development Of Its Wolfram Resources
 #IMAGE=
 #SOUND= 
 #FLAG= 1
@@ -3400,8 +3379,8 @@
 #DATE= 1939/09/03
 ; 4-8% mobilization increase towards Axis
 #MOBILIZATION= [4,8] [1]
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Spain(99) Axis and not surrendered
+#VARIABLE_CONDITION= 99 [1] [1] [0]
 }
 
 ; Fall Weiss II
