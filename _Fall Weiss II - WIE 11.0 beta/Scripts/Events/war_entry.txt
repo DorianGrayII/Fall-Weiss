@@ -271,10 +271,6 @@
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; EVENTS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;
 ; Canadian War Entry:
 ; Historical date of event was 1939/09/10
@@ -296,16 +292,9 @@
 #DATE= 1939/09/10
 ; UK(112) Allied and not surrendered AND
 ; France(40) Allied and not surrendered AND
-; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 }
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; DECISION EVENTS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
 
 {
 #NAME= DE 359 - Czech: Uprising in Banská Bystrica
@@ -604,10 +593,6 @@
 #VARIABLE_CONDITION= 39 [1] [0] [0]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ALLIED AI EVENTS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
 ;
 ; Syria
 {
@@ -629,11 +614,6 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; AXIS AI EVENTS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
 {
 #NAME= Syria(AI): Syria Joins The Axis (50%)
 #POPUP= Syria Joins The Axis
@@ -649,10 +629,8 @@
 #TRIGGER= 50
 #ALIGNMENT= 1
 #DATE= 1942/05/01
-; Germany(45) Axis and not surrendered
 ; Iraq Axis and not surrendered
 ; Turkey Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 56 [1] [100] [0]
 #VARIABLE_CONDITION= 111 [1] [100] [0]
 }
@@ -672,11 +650,9 @@
 #TRIGGER= 50
 #ALIGNMENT= 1
 #DATE= 1942/06/01
-; Germany(45) Axis and not surrendered
 ; Iraq Axis and not surrendered
 ; Turkey Axis and not surrendered
 ; Syria Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 56 [1] [100] [0]
 #VARIABLE_CONDITION= 111 [1] [100] [0]
 #VARIABLE_CONDITION= 105 [1] [100] [0]
@@ -718,8 +694,6 @@
 #TRIGGER= 100
 #ALIGNMENT= 2
 #DATE= 1940/09/01
-; Germany(45) Axis
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 111 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 }
@@ -741,9 +715,7 @@
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1939/09/01
-; Germany(45) Axis and not surrendered AND
 ; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 }
 
