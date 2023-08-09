@@ -1,4 +1,11 @@
-|  Unit  | Hard <br/> Attack | Soft <br/> Attack | Arty <br/> Attack | Rocket <br/> Attack | Lt Armor <br/> Attack | Tank <br/> Attack | Fighter <br/> Attack | Bomber <br/> Attack | Strat <br/> Bomber <br/> Attack | Naval <br/> Attack | Carrier <br/> Attack | Sub <br/> Attack| Transport <br/> Attack | Anti-Air <br/> Attack | Resource <br/> Attack |
+
+<h2 align="center">
+  Unit Attack Values
+</h2>
+
+<center>
+
+|  Unit          | Hard       | Soft     | Arty     | Rocket   | Lt Armor | Tank     | Fighter  | Bomber   | Strat <br/> Bomber  | Naval  | Carrier  | Sub | Transport  | Anti-Air  | Resource  |
 | :------------- | :--------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: |
 | HQ             |  0         | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        |
 | Garrison       |  1         | 1        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        |
@@ -43,4 +50,60 @@
 | Carrier        |  0         | 0        | 0        | 0        | 0        | 0        | 1        | 1        | 1        | 3        | 3        | 1        | 3        | 1        | 0        |
 | Sub            |  0         | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 5        | 5        | 0        | 5        | 0        | 0        |
 | Motor Torp Boat|  0         | 0        | 0        | 0        | 0        | 0        | 1*       | 1*       | 1*       | 1        | 1        | 3        | 3        | 0        | 0        |
+|                |            |          |          |          |          |          |          |          |          |          |          |          |          |          |          |
 
+</center>
+
+<h2 align="center">
+  Unit Defense Values
+</h2>
+
+<center>
+
+|  Unit          | Hard       | Soft     | Arty     | Rocket   | Lt Armor | Tank     | Fighter  | Bomber   | Strat <br/> Bomber  | Naval  | Carrier  | Sub | Transport  | Anti-Air  | Resource  |
+| :------------- | :--------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: |
+| HQ             |  1         |  1       |  0       |  0       |  1       |  1       |  2*      |  2*      |  2*      |  0       |  0       |  2*      |  0       |  0       |  0       |
+| Garrison       |  1         |  1       |  0       |  0       |  1       |  1       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |
+| Infantry Div*  |  1         |  1       |  0       |  0       |  1       |  1       |  1       |  1       |  0       |  0       |  1       |  0       |  0       |  0       |  0       |
+| Mech Div*      |  2         |  1       |  0       |  0       |  1       |  1       |  1       |  1       |  0       |  0       |  1       |  0       |  0       |  0       |  0       |
+| Infantry Corps |
+| Infantry Army  |
+| Mech Corps     |
+| Spec Forces    |
+| Engineers      |
+| Paratroops     |
+| Mountain Div*  |
+| Cavalry Div    |
+| Cavalry Corps  |
+| Partisans      |
+| Shock Army     |
+| Anti-Air       |
+| Rocket Arty    |
+| Field Arty     |
+| Heavy Arty     |
+| Rail Gun       |
+| Coastal Gun    |
+| Rockets        |
+| Recon          |
+| Armored Train  |
+| Anti-Tank      |
+| Tank Div*      |
+| Tank Corps     |
+| Tank Army      |
+| Air Ship       |
+| Fighter        |
+| Tact Bomber    |
+| Medium Bomber  |
+| Strat Bomber   |
+| Maritime Bomber|
+| Battleship     |
+| Battle Cruiser |
+| Hvy Cruiser    |
+| Lt Cruiser     |
+| Destroyer      |
+| Escort Carrier |
+| Carrier        |
+| Sub            |
+| Motor Torp Boat|
+|                |  0         |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |
+</center>
