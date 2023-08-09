@@ -79,7 +79,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - Research Tech(Armored Warfare) gives +5% morale bonus to Mech Div, Mech Corps (previously +10% after adjustment above)
     - Research Tech(Infantry Warfare) gives +5% morale bonus to Mech Div, Mech Corps (previously +0%)
     - Research Tech(Aircraft Production) now give +0.5 build limit to Tactical & Maritime Bombers.
-    - Mountain Div adjusted to be more comparable with an *elite* Infantry Div rather than a Cavalry Div clone
+    - Mountain Div adjusted to be more comparable with an *elite* Infantry Div rather than a Cavalry Div clone (see - [UnitData](./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Data/UnitData.md))
         - Arty, Rocket & Lt Armor Attack +1 (0->1) (equal to Inf Div)
         - AC Attack -2 (4->2) (equal to Inf Div)
         - Naval Attack -1 (3->2)  (1 > than Inf Div)
