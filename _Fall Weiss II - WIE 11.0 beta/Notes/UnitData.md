@@ -1,4 +1,4 @@
-|  Unit          | Hard       | Soft     | Arty     | Rocket   | Lt Armor | Tank     | Fighter  | Bomber   | S Bomber | Naval    | Carrier  | Sub      | Trans    | AA       | Res      |
+|  Unit  | Hard <br/> Attack | Soft <br/> Attack | Arty <br/> Attack | Rocket <br/> Attack | Lt Armor <br/> Attack | Tank <br/> Attack | Fighter <br/> Attack | Bomber <br/> Attack | Strat <br/> Bomber <br/> Attack | Naval <br/> Attack | Carrier <br/> Attack | Sub <br/> Attack| Transport <br/> Attack | Anti-Air <br/> Attack | Resource <br/> Attack |
 | :------------- | :--------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: |
 | HQ             |  0         | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        |
 | Garrison       |  1         | 1        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        |
