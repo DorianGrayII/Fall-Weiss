@@ -94,7 +94,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## Fixed
 
-- Merged in many changes / fixes from 1939 Storm Across Europe (July, 2023) from ("\Strategic Command WWII War in Europe\VERSION CHANGES.txt") to include:
+- Merged in many changes / fixes from 1939 Storm Across Europe (July, 2023) from ([SOE VERSION CHANGES.txt]) to include:
     - The cost of Anti-Aircraft Defense research reduced from 125 to 110 MPPs
     - Anti-Tank research has been reduced from 150 to 125 MPPs for the USSR and Germany, and from 100 to 95 MPPs for all other countries (Mithrilotter)
     - Anti-Air units’s Strat. Bomber attack and defense values now increase by 1.5 per level of Anti-Aircraft Defense research (HarrySmith)
@@ -116,6 +116,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - DE 151 - UK: Allies Liberate Paris Helper
         - additional check that Paris is Axis controlled
         - remove check that Axis unit in Paris
+    - The following National Morale scripts now require Perm rather than Moscow to be in Allied hands to fire (BigJohn):
+        - Soviet Morale Improves As The War On The Eastern Front Continues
+        - Soviet Morale Improves As The War On The Eastern Front Continues (Continuous)
+        - USSR Morale Boosted From Allied Landings In France
+        - USSR Morale Boosted From Allied Landings In Italy
+        - Soviet Morale Is Boosted As Allied Forces Approach Berlin
+    - Removed the duplicated Mobilization_1 script Allies DoW On Tunisia (USA->Axis) ([mobilization_1.txt])
+    - Saying yes to DE 103 reduces the % sent by convoy from Egypt & Iraq from 80% to 65%, as does saying no to DE 105 and yes to DE 164 (Duedman) ([convoy.txt])
     - ... and more ...
 
 - Operation Countenance
@@ -168,10 +176,13 @@ such as:
 [//]: # (These are reference links used in the body of this file)
 [localization.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/localization.txt
 [UnitData.md]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Notes/UnitData.md
+[SOE VERSION CHANGES.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Notes/SOE%20VERSION%20CHANGES.txt
 [belligerence.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/belligerence.txt
 [popup.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/popup.txt
+[convoy.txt]:./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/convoy.txt
 [decision.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/decision.txt
 [unit.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/unit.txt
+[mobilization_1.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/mobilization_1.txt
 [mobilization_2.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/mobilization_2.txt
 [mobilization_3.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/mobilization_3.txt
 [mobilization_4.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/mobilization_4.txt

@@ -21,11 +21,14 @@
 ;        0 = Disabled
 ;        1 = Enabled
 ;
-; #TYPE= Value range [0, 2]
-;        With all other fields satisfied will this be:
-;        0 = Single check regardless if #TRIGGER is satisfied
-;        1 = Multiple check until #TRIGGER is satisfied
-;        2 = Reoccurring check until end of game
+; #TYPE= Value range [0, 3]
+;        Event check type, with all other fields satisfied:
+;        0 = Single check, on or after #DATE 
+;            (ignores #TRIGGER)
+;        1 = Multiple checks, on or after #DATE, until #TRIGGER is satisfied
+;        2 = Multiple checks, on or after #DATE, until end of game (*** not valid for UNIT events ***)
+;            (not removed from event queue)
+;        3 = Single check, only on #DATE
 ;
 ; #AI= Value range [0, 6]
 ;        0 = Event fires whenever all fields are satisfied for any game type
@@ -729,10 +732,8 @@
 ; change from 0% to 20%
 #SENDER_ID_TRIGGER= 20
 #RECIPIENT_ID_TRIGGER= 100
-; Fall Weiss II
-; change from 65% to 80%
-#PERCENTAGE= 80
-#MAX_PERCENTAGE= 80
+#PERCENTAGE= 65
+#MAX_PERCENTAGE= 65
 #SPRING_REDUCTION= 100
 #SUMMER_REDUCTION= 100
 #FALL_REDUCTION= 100
@@ -898,9 +899,8 @@
 ; change from 0% to 20%
 #SENDER_ID_TRIGGER= 20
 #RECIPIENT_ID_TRIGGER= 100
-; change from 65% to 80%
-#PERCENTAGE= 80
-#MAX_PERCENTAGE= 80
+#PERCENTAGE= 65
+#MAX_PERCENTAGE= 65
 #SPRING_REDUCTION= 100
 #SUMMER_REDUCTION= 100
 #FALL_REDUCTION= 100
@@ -1300,10 +1300,8 @@
 #RECIPIENT_ID= 112
 #SENDER_ID_TRIGGER= 100
 #RECIPIENT_ID_TRIGGER= 100
-; Fall Weiss II
-; Change from 65% to 80%
-#PERCENTAGE= 80
-#MAX_PERCENTAGE= 80
+#PERCENTAGE= 65
+#MAX_PERCENTAGE= 65
 #SPRING_REDUCTION= 100
 #SUMMER_REDUCTION= 100
 #FALL_REDUCTION= 100
