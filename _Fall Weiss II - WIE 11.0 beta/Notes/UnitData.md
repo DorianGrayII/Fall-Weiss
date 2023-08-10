@@ -47,10 +47,10 @@
 | Hvy Cruiser    |  0         | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 3        | 3        | 0        | 4        | 0        | 0        |
 | Lt Cruiser     |  0         | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 2        | 2        | 1*       | 4        | 0        | 0        |
 | Destroyer      |  0         | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 1        | 1        | 2*       | 2        | 0        | 0        |
+| Motor Torp Boat|  0         | 0        | 0        | 0        | 0        | 0        | 1*       | 1*       | 1*       | 1        | 1        | 3        | 3        | 0        | 0        |
 | Escort Carrier |  0         | 0        | 0        | 0        | 0        | 0        | 1        | 1        | 1        | 3        | 3        | 2        | 3        | 1        | 0        |
 | Carrier        |  0         | 0        | 0        | 0        | 0        | 0        | 1        | 1        | 1        | 3        | 3        | 1        | 3        | 1        | 0        |
 | Sub            |  0         | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 5        | 5        | 0        | 5        | 0        | 0        |
-| Motor Torp Boat|  0         | 0        | 0        | 0        | 0        | 0        | 1*       | 1*       | 1*       | 1        | 1        | 3        | 3        | 0        | 0        |
 |                |            |          |          |          |          |          |          |          |          |          |          |          |          |          |          |
 
 </center>
@@ -103,15 +103,15 @@
 | Hvy Cruiser    |  0         |  0       |  0       |  0       |  0       |  0       |  1       |  1       |  1       |  3       |  2       |  0       |  4       |  0       |  0       |
 | Lt Cruiser     |  0         |  0       |  0       |  0       |  0       |  0       |  1       |  1       |  0       |  2       |  2       |  1       |  4       |  0       |  0       |
 | Destroyer      |  0         |  0       |  0       |  0       |  0       |  0       |  1       |  1       |  0       |  1       |  1       |  4       |  2       |  0       |  0       |
+| Motor Torp Boat|  0         |  0       |  0       |  0       |  0       |  0       |  1       |  1       |  0       |  1       |  1       |  1       |  3       |  0       |  0       |
 | Escort Carrier |  0         |  0       |  0       |  0       |  0       |  0       |  1       |  1       |  0       |  1       |  2       |  3       |  3       |  0       |  0       |
 | Carrier        |  0         |  0       |  0       |  0       |  0       |  0       |  1       |  2       |  1       |  2       |  2       |  1       |  3       |  0       |  0       |
 | Sub            |  0         |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  1       |  0       |  0       |  0       |  0       |  0       |
-| Motor Torp Boat|  0         |  0       |  0       |  0       |  0       |  0       |  1       |  1       |  0       |  1       |  1       |  1       |  3       |  0       |  0       |
 
 </center>
 
 <h2 align="center">
-  General
+  Unit General Data
 </h2>
 
 <center>
@@ -141,12 +141,12 @@
 | Paratroops     |  Hard         |  2       |  1       |  4            |  1          |  20       |  1       |  1       |  6         |
 | Partisans      |  Soft         |  1       |  1       |  3            |  1          |  15       |  1       |  1       |  -         |
 | Anti-Air       |  Anti-Air     |  1       |  1       |  3            |  -          |  -        |  -       |  1 / 1   |  0*        |
-| Rocket Arty    |  Arty         |  1       |  1       |  3            |  1          |  25       |  -       |  2       |  -         |
-| Field Arty     |  Arty         |  1       |  1       |  3            |  1          |  10       |  -       |  2       |  -         |
-| Heavy Arty     |  Arty         |  1       |  1       |  3            |  1          |  20       |  -       |  2       |  -         |
-| Rail Gun       |  Strat Arty   |  1       |  1       |  6            |  1          |  0        |  -       |  4       |  -         |
-| Coastal Gun    |  Strat Arty   |  1       |  1       |  0            |  1          |  20       |  -       |  1       |  -         |
-| Rockets        |  Strat Arty   |  1       |  1       |  2            |  0          |  5        |  -       |  2       |  -         |
+| Rocket Arty    |  Arty         |  1       |  1       |  3            |  1          |  25       |  1/3     |  2       |  -         |
+| Field Arty     |  Arty         |  1       |  1       |  3            |  1          |  10       |  2/2     |  2       |  -         |
+| Heavy Arty     |  Arty         |  1       |  1       |  3            |  1          |  20       |  1/3     |  2       |  -         |
+| Rail Gun       |  Strat Arty   |  1       |  1       |  6            |  1          |  0        |  1/3     |  3       |  -         |
+| Coastal Gun    |  Strat Arty   |  1       |  1       |  0            |  1          |  20       |  1/3     |  1       |  -         |
+| Rockets        |  Strat Arty   |  1       |  1       |  2            |  0          |  5        |  1       |  2       |  -         |
 | Fighter        |  Fighter      |  2       |  2       |  12           |  0          |  5        |  1       |  6*/7*/7 |  2         |
 | Tact Bomber    |  Bomber       |  2       |  2       |  12           |  0          |  15*      |  1       |  7       |  -         |
 | Medium Bomber  |  Bomber       |  2       |  2       |  12           |  1          |  30*      |  1       |  9       |  -         |
@@ -158,9 +158,10 @@
 | Hvy Cruiser    |  Naval        |  0       |  1       |  21           |  0          |  10       |  1       |  1       |  -         |
 | Lt Cruiser     |  Naval        |  0       |  1       |  21           |  0          |  0        |  1       |  1       |  -         |
 | Destroyer      |  Naval        |  0       |  1       |  21           |  0          |  0        |  1       |  1       |  -         |
+| Motor Torp Boat|  Naval        |  0       |  1       |  10           |  0          |  0        |  1       |  1       |  -         |
 | Escort Carrier |  Carrier      |  2       |  3       |  18           |  0          |  5        |  1       |  5/5/5   |  1         |
 | Carrier        |  Carrier      |  2       |  3       |  21           |  0          |  5        |  2       |  5/5/5   |  1         |
 | Sub            |  Sub          |  0       |  1       |  20           |  0          |  30       |  1       |  0       |  -         |
-| Motor Torp Boat|  Naval        |  0       |  1       |  10           |  0          |  0        |  1       |  1       |  -         |
+
 
 </center>
