@@ -86,6 +86,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
         - Hard, Lt Armor & Carrier Defense +1 (0->1) (equal to Inf Div)
         - 50% of Mountain Terrain bonus now applies to Hill Terrain
     - Mech Div +1 Hard, +1 Lt Armor Attack (1->2), +1 Tank Attack (0->1) (for comparison, Mech Corp have 3 HA, 3 LAA, 3 TA)
+    - Coastal Gun +1 Naval Defense (0->1)
+        - This change was also made to all scenarios as part of most recent SC3 patch (July 2023)
     - Italy +1 Maritime Bomber build limits (1->2) (equal to UK) (historically, Italy had a significant number of torpedo / naval aircraft)
     - Romania +1 Tactical Bomber build limits (0->1) (equal to Spain) (historically, Romania had a number of ground support aircraft)
     - German +2 Light Cruiser build limits (0->2) (for comparison, USSR can build 6!)
