@@ -7,7 +7,7 @@
 
 |  Unit          | Hard       | Soft     | Arty     | Rocket   | Lt Armor | Tank     | Fighter  | Bomber   | Strat <br/> Bomber  | Naval  | Carrier  | Sub | Transport  | Anti-Air  | Resource  |
 | :------------- | :--------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: |
-| HQ             |  0         | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        |
+| HQ             |  0         | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 1        |
 | Garrison       |  1         | 1        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        |
 | Division (SOE) |  3         | 0        | 0        | 0        | 0        | 0        | 3        | 3        | 3        | 2        | 2        | 1        | 2        | 1        | 0        |
 | Infantry Div*  |  2         | 1        | 1        | 1        | 1        | 0        | 1        | 1        | 1        | 1        | 1        | 1        | 1        | 1        | 0        |
@@ -107,5 +107,60 @@
 | Carrier        |  0         |  0       |  0       |  0       |  0       |  0       |  1       |  2       |  1       |  2       |  2       |  1       |  3       |  0       |  0       |
 | Sub            |  0         |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  1       |  0       |  0       |  0       |  0       |  0       |
 | Motor Torp Boat|  0         |  0       |  0       |  0       |  0       |  0       |  1       |  1       |  0       |  1       |  1       |  1       |  3       |  0       |  0       |
+
+</center>
+
+<h2 align="center">
+  General
+</h2>
+
+<center>
+
+|  Unit          | Target Type   | Land <br/> Spotting | Naval <br/> Spotting | Action Points | De-Entrench | De-Morale | Strikes  | Range    | Intercepts |
+| :------------- | :-----------: | :------: | :------: | :-----------: | :---------: | :-------: | :------: | :------: | :--------: |
+| HQ             |  Soft         |  1       |  1       |  3            |  -          |  -        |  -       |  -       |  -         |
+| Garrison       |  Soft         |  2       |  1       |  4            |  0          |  0        |  1       |  1       |  -         |
+| Division (SOE) |  Hard         |  2       |  1       |  4            |  0          |  0        |  1       |  1       |  -         |
+| Infantry Div*  |  Soft         |  2       |  1       |  4            |  0          |  0        |  1       |  1       |  -         |
+| Mountain Div*  |  Soft         |  2       |  1       |  5            |  0          |  0        |  1       |  1       |  -         |
+| Cavalry Div    |  Soft         |  2       |  1       |  5            |  0          |  0        |  1       |  1       |  -         |
+| Mech Div*      |  Hard         |  2       |  1       |  6            |  0          |  0        |  1       |  1       |  -         |
+| Tank Div*      |  Lt Armor     |  2       |  1       |  6            |  0          |  10       |  1       |  1       |  -         |
+| Infantry Corps |  Hard         |  2       |  1       |  4            |  1          |  0        |  1       |  1       |  -         |
+| Cavalry Corps  |  Soft         |  2       |  1       |  5            |  0          |  0        |  1       |  1       |  -         |
+| Mech Corps     |  Lt Armor     |  2       |  1       |  6*           |  1          |  10       |  2*      |  1       |  -         |
+| Tank Corps     |  Tank         |  2       |  1       |  6*           |  1          |  20*      |  2*      |  1       |  -         |
+| Infantry Army  |  Hard         |  2       |  1       |  3            |  1          |  10       |  2*      |  1       |  -         |
+| Shock Army     |  Hard         |  2       |  1       |  5            |  2*         |  10*      |  1       |  1       |  -         |
+| Tank Army      |  Tank         |  2       |  1       |  4            |  1          |  30*      |  2*      |  1       |  -         |
+| Special Forces |  Hard         |  2       |  1       |  4            |  1          |  20       |  1       |  1       |  -         |
+| Engineers      |  Soft         |  2       |  1       |  3            |  1          |  0        |  1       |  1       |  -         |
+| Paratroops     |  Hard         |  2       |  1       |  4            |  1          |  20       |  1       |  1       |  6         |
+| Partisans      |  Soft         |  1       |  1       |  3            |  1          |  15       |  1       |  1       |  -         |
+| Anti-Air       |  Anti-Air     |  1       |  1       |  3            |  -          |  -        |  -       |  1 / 1   |  0*        |
+| Rocket Arty    |  Arty         |  1       |  1       |  3            |  1          |  25       |  -       |  2       |  -         |
+| Field Arty     |  Arty         |  1       |  1       |  3            |  1          |  10       |  -       |  2       |  -         |
+| Heavy Arty     |  Arty         |  1       |  1       |  3            |  1          |  20       |  -       |  2       |  -         |
+| Rail Gun       |  Strat Arty   |  1       |  1       |  6            |  1          |  0        |  -       |  4       |  -         |
+| Coastal Gun    |  Strat Arty   |  1       |  1       |  0            |  1          |  20       |  -       |  1       |  -         |
+| Rockets        |  Strat Arty   |  1       |  1       |  2            |  0          |  5        |  -       |  2       |  -         |
+| Recon          |  Lt Armor     |  3       |  1       |  5            |  0          |  0        |  1       |  1       |  -         |
+| Armored Train  |  Lt Armor     |  1       |  1       |  10           |  0          |  10       |  1       |  1       |  -         |
+| Anti-Tank      |  Lt Armor     |  2       |  1       |  4            |  0          |  0        |  2*      |  1       |  -         |
+| Air Ship       |  Strat Bomber |  1       |  1       |  12           |  0          |  5        |  1       |  12/10   |  -         |
+| Fighter        |  Fighter      |  2       |  2       |  12           |  0          |  5        |  1       |  6*/7*/7 |  2         |
+| Tact Bomber    |  Bomber       |  2       |  2       |  12           |  0          |  15*      |  1       |  7       |  -         |
+| Medium Bomber  |  Bomber       |  2       |  2       |  12           |  1          |  30*      |  1       |  9       |  -         |
+| Strat Bomber   |  Strat Bomber |  2       |  2       |  12           |  0          |  10*      |  2*      |  17*     |  -         |
+| Maritime Bomber|  Bomber       |  2       |  2       |  12           |  0          |  0        |  2*      |  14      |  -         |
+| Battleship     |  Naval        |  0       |  1       |  21           |  0          |  20       |  1       |  1       |  -         |
+| Battle Cruiser |  Naval        |  0       |  1       |  21           |  0          |  10       |  1       |  1       |  -         |
+| Hvy Cruiser    |  Naval        |  0       |  1       |  21           |  0          |  10       |  1       |  1       |  -         |
+| Lt Cruiser     |  Naval        |  0       |  1       |  21           |  0          |  0        |  1       |  1       |  -         |
+| Destroyer      |  Naval        |  0       |  1       |  21           |  0          |  0        |  1       |  1       |  -         |
+| Escort Carrier |  Carrier      |  2       |  3       |  18           |  0          |  5        |  1       |  5/5/5   |  1         |
+| Carrier        |  Carrier      |  2       |  3       |  21           |  0          |  5        |  2       |  5/5/5   |  1         |
+| Sub            |  Sub          |  0       |  1       |  20           |  0          |  30       |  1       |  0       |  -         |
+| Motor Torp Boat|  Naval        |  0       |  1       |  10           |  0          |  0        |  1       |  1       |  -         |
 
 </center>
