@@ -10,11 +10,12 @@
 | HQ             |  0         | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        |
 | Garrison       |  1         | 1        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        | 0        |
 | Infantry Div*  |  2         | 1        | 1        | 1        | 1        | 0        | 1        | 1        | 1        | 1        | 1        | 1        | 1        | 1        | 0        |
+| Division (SOE) |  3         | 0        | 0        | 0        | 0        | 0        | 3        | 3        | 3        | 2        | 2        | 1        | 2        | 1        | 0        |
 | Mech Div*      |  3         | 2        | 1        | 1        | 2        | 0        | 4        | 4        | 4        | 2        | 2        | 1        | 2        | 1        | 0        |
 | Infantry Corps |  4         | 1        | 1        | 1        | 1        | 1        | 4        | 4        | 4        | 3        | 3        | 2        | 3        | 2        | 0        |
 | Infantry Army  |  5         | 3        | 2        | 2        | 2        | 2        | 8        | 8        | 8        | 6        | 6        | 4        | 6        | 3        | 1        |
 | Mech Corps     |  4         | 3        | 2        | 2        | 3        | 3        | 8        | 8        | 8        | 4        | 4        | 4        | 4        | 2        | 0        |
-| Spec Forces    |  4         | 3        | 2        | 2        | 2        | 2        | 8        | 8        | 8        | 4        | 4        | 4        | 4        | 2        | 0        |
+| Special Forces |  4         | 3        | 2        | 2        | 2        | 2        | 8        | 8        | 8        | 4        | 4        | 4        | 4        | 2        | 0        |
 | Engineers      |  3         | 2        | 2        | 2        | 2        | 2        | 6        | 6        | 6        | 4        | 4        | 4        | 4        | 2        | 1        |
 | Paratroops     |  3         | 2        | 2        | 2        | 2        | 1        | 8        | 8        | 8        | 4        | 4        | 4        | 4        | 2        | 1        |
 | Mountain Div*  |  3         | 1        | 1        | 1        | 1        | 0        | 2        | 2        | 2        | 2        | 2        | 2        | 2        | 1        | 1        |
@@ -62,48 +63,49 @@
 
 |  Unit          | Hard       | Soft     | Arty     | Rocket   | Lt Armor | Tank     | Fighter  | Bomber   | Strat <br/> Bomber  | Naval  | Carrier  | Sub | Transport  | Anti-Air  | Resource  |
 | :------------- | :--------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: | :------: |
-| HQ             |  1         |  1       |  0       |  0       |  1       |  1       |  2*      |  2*      |  2*      |  0       |  0       |  2*      |  0       |  0       |  0       |
+| HQ             |  1         |  1       |  0       |  0       |  1       |  1       |  2*      |  2*      |  2*      |  0       |  2*      |  0       |  0       |  0       |  0       |
 | Garrison       |  1         |  1       |  0       |  0       |  1       |  1       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |
 | Infantry Div*  |  1         |  1       |  0       |  0       |  1       |  1       |  1       |  1       |  0       |  0       |  1       |  0       |  0       |  0       |  0       |
+| Division (SOE) |  2         |  1       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |
 | Mech Div*      |  2         |  1       |  0       |  0       |  1       |  1       |  1       |  1       |  0       |  0       |  1       |  0       |  0       |  0       |  0       |
-| Infantry Corps |
-| Infantry Army  |
-| Mech Corps     |
-| Spec Forces    |
-| Engineers      |
-| Paratroops     |
-| Mountain Div*  |
-| Cavalry Div    |
-| Cavalry Corps  |
-| Partisans      |
-| Shock Army     |
-| Anti-Air       |
-| Rocket Arty    |
-| Field Arty     |
-| Heavy Arty     |
-| Rail Gun       |
-| Coastal Gun    |
-| Rockets        |
-| Recon          |
-| Armored Train  |
-| Anti-Tank      |
-| Tank Div*      |
-| Tank Corps     |
-| Tank Army      |
-| Air Ship       |
-| Fighter        |
-| Tact Bomber    |
-| Medium Bomber  |
-| Strat Bomber   |
-| Maritime Bomber|
-| Battleship     |
-| Battle Cruiser |
-| Hvy Cruiser    |
-| Lt Cruiser     |
-| Destroyer      |
-| Escort Carrier |
-| Carrier        |
-| Sub            |
-| Motor Torp Boat|
-|                |  0         |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |
+| Infantry Corps |  3         |  1       |  0       |  0       |  1       |  1       |  1       |  1       |  0       |  0       |  1       |  0       |  0       |  0       |  0       |
+| Infantry Army  |  4         |  2       |  0       |  0       |  2       |  2       |  2       |  2       |  0       |  0       |  1       |  0       |  0       |  0       |  0       |
+| Mech Corps     |  3         |  2       |  0       |  0       |  2       |  2       |  1       |  1       |  0       |  0       |  1       |  0       |  0       |  0       |  0       |
+| Special Forces |  3         |  2       |  0       |  0       |  2       |  2       |  1       |  1       |  0       |  0       |  1       |  0       |  0       |  0       |  0       |
+| Engineers      |  2         |  2       |  0       |  0       |  1       |  1       |  1       |  1       |  0       |  0       |  1       |  0       |  0       |  0       |  0       |
+| Paratroops     |  3         |  2       |  0       |  0       |  2       |  2       |  1       |  1       |  0       |  0       |  1       |  0       |  0       |  0       |  0       |
+| Mountain Div*  |  1         |  1       |  0       |  0       |  1       |  1       |  1       |  1       |  0       |  0       |  1       |  0       |  0       |  0       |  0       |
+| Cavalry Div    |  1         |  0       |  0       |  0       |  0       |  1       |  1       |  1       |  0       |  0       |  1       |  0       |  0       |  0       |  0       |
+| Cavalry Corps  |  2         |  1       |  0       |  0       |  1       |  1       |  1       |  1       |  0       |  0       |  1       |  0       |  0       |  0       |  0       |
+| Partisans      |  1         |  1       |  0       |  0       |  0       |  0       |  1       |  1       |  1       |  0       |  1       |  0       |  0       |  0       |  0       |
+| Shock Army     |  4         |  2       |  0       |  0       |  2.5*    |  2.5*    |  2       |  2       |  0       |  0       |  1       |  0       |  0       |  0       |  0       |
+| Anti-Air       |  2         |  1       |  0       |  0       |  1       |  1       |  2*      |  2*      |  3*      |  0       |  2*      |  0       |  0       |  0       |  0       |
+| Rocket Arty    |  1         |  0       |  0       |  0       |  0       |  0       |  1       |  1       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |
+| Field Arty     |  1         |  0       |  0       |  0       |  0       |  0       |  1       |  1       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |
+| Heavy Arty     |  1         |  0       |  0       |  0       |  0       |  0       |  1       |  1       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |
+| Rail Gun       |  0         |  0       |  0       |  0       |  0       |  0       |  1       |  1       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |
+| Coastal Gun    |  2         |  1       |  0       |  0       |  1       |  1       |  1       |  1       |  0       |  0*      |  0       |  0       |  0       |  0       |  0       |
+| Rockets        |  1         |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |
+| Recon          |  1         |  1       |  0       |  0       |  1       |  1       |  1       |  1       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |
+| Armored Train  |  0         |  0       |  0       |  0       |  0       |  0       |  1       |  1       |  1       |  0       |  1       |  0       |  0       |  0       |  0       |
+| Anti-Tank      |  2         |  2       |  0       |  0       |  5       |  6       |  1       |  1       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |
+| Tank Div*      |  2         |  1       |  0       |  0       |  3       |  2       |  1       |  1       |  1       |  0       |  1       |  0       |  0       |  0       |  0       |
+| Tank Corps     |  4         |  3       |  0       |  0       |  4       |  3       |  1       |  1       |  0       |  0       |  1       |  0       |  0       |  0       |  0       |
+| Tank Army      |  5         |  4       |  0       |  0       |  5       |  4       |  1       |  1       |  0       |  0       |  1       |  0       |  0       |  0       |  0       |
+| Air Ship       |  0         |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |
+| Fighter        |  0         |  0       |  0       |  0       |  0       |  0       |  2       |  1       |  1       |  0       |  1       |  0       |  0       |  0       |  0       |
+| Tact Bomber    |  0         |  0       |  0       |  0       |  0       |  0       |  0.5     |  0       |  0       |  1       |  1       |  0       |  0       |  0       |  0       |
+| Medium Bomber  |  0         |  0       |  0       |  0       |  0       |  0       |  0.5     |  0       |  0       |  1       |  1       |  0       |  0       |  0       |  0       |
+| Strat Bomber   |  0         |  0       |  0       |  0       |  0       |  0       |  1       |  1       |  1       |  1       |  1       |  0       |  0       |  0       |  0       |
+| Maritime Bomber|  0         |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  1       |  1       |  0       |  0       |  0       |  0       |
+| Battleship     |  0         |  0       |  0       |  0       |  0       |  0       |  1       |  1       |  1       |  5       |  2       |  1       |  5       |  0       |  0       |
+| Battle Cruiser |  0         |  0       |  0       |  0       |  0       |  0       |  1       |  1       |  1       |  4       |  2       |  0       |  4       |  0       |  0       |
+| Hvy Cruiser    |  0         |  0       |  0       |  0       |  0       |  0       |  1       |  1       |  1       |  3       |  2       |  0       |  4       |  0       |  0       |
+| Lt Cruiser     |  0         |  0       |  0       |  0       |  0       |  0       |  1       |  1       |  0       |  2       |  2       |  1       |  4       |  0       |  0       |
+| Destroyer      |  0         |  0       |  0       |  0       |  0       |  0       |  1       |  1       |  0       |  1       |  1       |  4       |  2       |  0       |  0       |
+| Escort Carrier |  0         |  0       |  0       |  0       |  0       |  0       |  1       |  1       |  0       |  1       |  2       |  3       |  3       |  0       |  0       |
+| Carrier        |  0         |  0       |  0       |  0       |  0       |  0       |  1       |  2       |  1       |  2       |  2       |  1       |  3       |  0       |  0       |
+| Sub            |  0         |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  0       |  1       |  0       |  0       |  0       |  0       |  0       |
+| Motor Torp Boat|  0         |  0       |  0       |  0       |  0       |  0       |  1       |  1       |  0       |  1       |  1       |  1       |  3       |  0       |  0       |
+
 </center>
