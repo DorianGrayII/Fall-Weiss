@@ -96,10 +96,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 - Merged in many changes / fixes from 1939 Storm Across Europe (July, 2023) from ("\Strategic Command WWII War in Europe\VERSION CHANGES.txt") to include:
     - The cost of Anti-Aircraft Defense research reduced from 125 to 110 MPPs
+    - Anti-Tank research has been reduced from 150 to 125 MPPs for the USSR and Germany, and from 100 to 95 MPPs for all other countries (Mithrilotter)
+    - Anti-Air units’s Strat. Bomber attack and defense values now increase by 1.5 per level of Anti-Aircraft Defense research (HarrySmith)
     - Change the river at Kherson (211,90) to use Major River tile 316 and 561 for the river mouth (Radar8717).
     - DE 601 will now trigger the deployment of a German Garrison unit in Copenhagen (OxfordGuy3).
     - Soviet Winter can now lead to the loss of Axis units if they are at low strength.
-    - Anti-Air units’s Strat. Bomber attack and defense values now increase by 1.5 per level of Anti-Aircraft Defense research (HarrySmith)
     - American Public Opinion Moves Against Entering The War (USA->Axis)
         - now uses correct coords for Ferrol
     - DE 104 - Pro-Allied Coup In Yugoslavia (Yugoslavia->Allies)

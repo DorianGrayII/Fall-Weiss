@@ -119,9 +119,8 @@
 ; #NOTES_POSITION= What position should we center the map on if the player clicks on the NOTES button 
 ;                  (entry can be left blank)
 ;
-; #DATE=        Date that must be satisfied (in game) for event to occur 
-;               (format yyyy/mm/dd or yyyy/mm/dd [=])
-;               if [=] is used, only apply for year specified.
+; #DATE=        Date requirement for the event
+;               Format: yyyy/mm/dd
 ;
 ; #TEXT_RGB=    Text color for the decision event
 ;               Format: red, green, blue (values range [0, 255])
@@ -6933,7 +6932,7 @@
 }
 
 {
-#NAME= DE 457 - USSR: Annex the Baltic States - Check for Lithuania's Status (1)
+#NAME= DE 457 - USSR: Annex the Baltic States - (Axis) Lithuania
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -6955,13 +6954,12 @@
 #MPP_TEXT=
 #NOTES= If you say %B(YES) to occupying the Baltic States then Soviet income will increase slightly, so it is recommended to say %B(YES).
 #NOTES_POSITION= 196,60
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
 #DATE= 1939/09/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Kaunas is Allied
+; Kaunas(194,68) is Allied
 #ALIGNMENT_POSITION= 194,68 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Lithuania(64) pro-Allied but not fully mobilized
@@ -6970,7 +6968,7 @@
 }
 
 {
-#NAME= DE 458 - USSR: Annex the Baltic States - Check for Lithuania's Status (2)
+#NAME= DE 458 - USSR: Annex the Baltic States - (Allied) Lithuania
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -6992,13 +6990,12 @@
 #MPP_TEXT=
 #NOTES= If you say %B(YES) to occupying the Baltic States then Soviet income will increase slightly, so it is recommended to say %B(YES).
 #NOTES_POSITION= 196,60
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
 #DATE= 1939/09/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Kaunas is Allied
+; Kaunas(194,68) is Allied
 #ALIGNMENT_POSITION= 194,68 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Lithuania(64) pro-Axis but not fully mobilized
