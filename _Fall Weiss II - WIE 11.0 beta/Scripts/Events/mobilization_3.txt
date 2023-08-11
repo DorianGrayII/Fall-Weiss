@@ -275,197 +275,10 @@
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-{
-#NAME= Italy Surrenders (Portugal->Allies)
-#POPUP= Italy's Surrender Forces Portugal To Reconsider Its Position
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 87
-#TRIGGER= 100
-#DATE= 1940/01/01
-; 15-25% mobilization increase towards Allies
-#MOBILIZATION= [15,25] [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [1]
-}
-
-;
-; Event for increased US mobilization:
-{
-#NAME= US Mobilization 1941 (USA->Allies)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#DATE= 1941/01/01
-; 1-2% mobilization increase towards Allies
-#MOBILIZATION= [1,2] [2]
-; UK(112) Allied and not surrendered AND
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-}
-
-;
-; Event for increased US mobilization:
-{
-#NAME= US Mobilization June 1941 (USA->Allies)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#DATE= 1941/06/22
-; 4-6% mobilization increase towards Allies
-#MOBILIZATION= [4,6] [2]
-; UK(112) Allied and not surrendered AND
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-}
-
-;
-; Event for increased US activation:
-{
-#NAME= US Mobilization 1942 (USA->Allies)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#DATE= 1942/01/01
-; 1-2% activation increase towards Allies
-#MOBILIZATION= [1,2] [2]
-; UK(112) Allied and not surrendered AND
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-}
-
-;
-; Event for increased US mobilization (Pearl Harbor):
-{
-#NAME= Pearl Harbor Attack (USA->Allies)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#DATE= 1941/12/07
-; changed from 15-20% to 25-30% by Fall Weiss II
-; 25-30% mobilization increase towards Allies
-#MOBILIZATION= [25,30] [2]
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-}
-
-;
-; Event for increased US mobilization (UK Surrendered to Axis):
-{
-#NAME= UK Surrenders To Axis (USA->Allies)
-#POPUP= USA Intensifies War Preparation After The Fall Of The UK
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#DATE= 1940/01/01
-; 10-20% mobilization increase towards Allies
-#MOBILIZATION= [10,20] [2]
-; UK(112) Allied and surrendered AND
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [1]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-}
-
-;
-; Event for increased US mobilization:
-{
-#NAME= Greece Surrendered To Axis (USA->Allies)
-#POPUP= The USA Grows Concerned Over The Axis Conquest of Greece
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#DATE= 1939/09/03
-; 3-5% mobilization increase towards Allies
-#MOBILIZATION= [3,5] [2]
-; UK(112) Allied and not surrendered AND
-; Greece(46) Allied and surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 46 [2] [100] [1]
-}
-
-;
-; Event for increased US mobilization:
-{
-#NAME= Yugoslavia Surrendered To Axis (USA->Allies)
-#POPUP= The USA Grows Concerned Over The Axis Conquest of Yugoslavia
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#DATE= 1939/09/03
-; 3-5% mobilization increase towards Allies
-#MOBILIZATION= [3,5] [2]
-; UK(112) Allied and not surrendered AND
-; Yugoslavia(120) Allied and surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 120 [2] [100] [1]
-}
-
 ;
 ; Event for increased USSR mobilization:
 {
-#NAME= USSR Mobilization 1939-40 (USSR->Allies)
+#NAME= Baltic States Surrendered To Axis (Latvia Surrendered) (USSR->Allies)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -477,77 +290,11 @@
 #LEVEL= 0
 #COUNTRY_ID= 116
 #TRIGGER= 100
-#DATE= 1939/12/08
-; 3-7% mobilization increase towards Allies
-#MOBILIZATION= [3,7] [2]
-; Poland(85) Allied and not surrendered
-#VARIABLE_CONDITION= 85 [2] [100] [0]
-}
-
-;
-; Event for increased USSR mobilization:
-{
-#NAME= USSR Mobilization 1941 (USSR->Allies) (90% Chance)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 116
-#TRIGGER= 90
-#DATE= 1941/01/01
-; 1-2% mobilization increase towards Allies
-#MOBILIZATION= [1,2] [2]
-; Poland(85) Allied and surrendered
-#VARIABLE_CONDITION= 85 [2] [100] [1]
-}
-
-;
-; Event for increased USSR mobilization:
-{
-#NAME= USSR Mobilization June 1941 (USSR->Allies)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#DATE= 1941/06/22
+#DATE= 1939/09/01
 ; 1-3% mobilization increase towards Allies
 #MOBILIZATION= [1,3] [2]
-; USSR(116) still not mobilized
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-}
-
-;
-; Event for increased USSR mobilization:
-{
-#NAME= USSR Mobilization 1942 (USSR->Allies)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#DATE= 1942/01/01
-; 3-5% mobilization increase towards Allies
-#MOBILIZATION= [3,5] [2]
-; USSR(116) still not mobilized
-#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Latvia(61) Allied and surrendered
+#VARIABLE_CONDITION= 61 [2] [100] [1]
 }
 
 ;
@@ -573,6 +320,28 @@
 }
 
 ;
+; Event for increased USSR mobilization:
+{
+#NAME= Baltic States Surrendered To Axis (Lithuania Surrendered) (USSR->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/09/01
+; 1-3% mobilization increase towards Allies
+#MOBILIZATION= [1,3] [2]
+; Lithuania(64) Allied and surrendered
+#VARIABLE_CONDITION= 64 [2] [100] [1]
+}
+
+;
 ; Baltic States Allied:
 {
 #NAME= Baltic States Surrendered To Axis (Lithuania) (USSR->Allies)
@@ -594,48 +363,46 @@
 #VARIABLE_CONDITION= 64 [2] [100] [0]
 }
 
-;
-; Event for increased USSR mobilization:
 {
-#NAME= Baltic States Surrendered To Axis (Latvia Surrendered) (USSR->Allies)
-#POPUP=
+#NAME= Bulgaria's Surrender Cools Turkish Enthusiasm For The Axis (Turkey->Allies)
+#POPUP= Bulgaria's Surrender Cools Turkish Enthusiasm For The Axis
 #IMAGE=
 #SOUND=
 #FLAG= 1
-#TYPE= 2
+#TYPE= 1
 #AI= 0
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 116
+#COUNTRY_ID= 111
 #TRIGGER= 100
 #DATE= 1939/09/01
-; 1-3% mobilization increase towards Allies
-#MOBILIZATION= [1,3] [2]
-; Latvia(61) Allied and surrendered
-#VARIABLE_CONDITION= 61 [2] [100] [1]
+; 8-15% mobilization increase towards Allies
+#MOBILIZATION= [8,15] [2]
+; Bulgaria(19) Axis and surrendered
+#VARIABLE_CONDITION= 19 [1] [100] [1]
 }
 
-;
-; Event for increased USSR mobilization:
+; Fall Weiss II
+; Event for decreased Spanish mobilization:
 {
-#NAME= Baltic States Surrendered To Axis (Lithuania Surrendered) (USSR->Allies)
-#POPUP=
+#NAME= Franco Continues To Display A Reluctance To Join The Conflict In Europe (Spain->Allies) (10%)
+#POPUP= Franco Continues To Display A Reluctance To Join The Conflict In Europe
 #IMAGE=
 #SOUND=
 #FLAG= 1
-#TYPE= 2
+#TYPE= 1
 #AI= 0
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#DATE= 1939/09/01
-; 1-3% mobilization increase towards Allies
-#MOBILIZATION= [1,3] [2]
-; Lithuania(64) Allied and surrendered
-#VARIABLE_CONDITION= 64 [2] [100] [1]
+#COUNTRY_ID= 99
+#TRIGGER= 10
+#DATE= 1940/01/01
+; 4-8% mobilization increase towards Allies
+#MOBILIZATION= [4,8] [2]
+; Spain(99) Axis leaning
+#VARIABLE_CONDITION= 99 [1] [75] [0]
 }
 
 ;
@@ -664,10 +431,10 @@
 }
 
 ;
-; Event for decreased Spanish mobilization:
+; Event for increased US mobilization:
 {
-#NAME= Italy's Surrender Reduces Franco's Enthusiasm For The Axis (Spain->Allies)
-#POPUP= Italy's Surrender Reduces Franco's Enthusiasm For The Axis
+#NAME= Greece Surrendered To Axis (USA->Allies)
+#POPUP= The USA Grows Concerned Over The Axis Conquest of Greece
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -676,13 +443,35 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 99
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 3-5% mobilization increase towards Allies
+#MOBILIZATION= [3,5] [2]
+; UK(112) Allied and not surrendered AND
+; Greece(46) Allied and surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 46 [2] [100] [1]
+}
+
+{
+#NAME= Hungary's Surrender Moves Turkey Away From The Axis (Turkey->Allies)
+#POPUP= Hungary's Surrender Moves Turkey Away From The Axis
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 111
 #TRIGGER= 100
 #DATE= 1939/09/01
 ; 8-15% mobilization increase towards Allies
 #MOBILIZATION= [8,15] [2]
-; Italy(59) Axis and surrendered
-#VARIABLE_CONDITION= 59 [1] [100] [1]
+; Hungary(52) Axis and surrendered
+#VARIABLE_CONDITION= 52 [1] [100] [1]
 }
 
 ;
@@ -730,8 +519,8 @@
 }
 
 {
-#NAME= Bulgaria's Surrender Cools Turkish Enthusiasm For The Axis (Turkey->Allies)
-#POPUP= Bulgaria's Surrender Cools Turkish Enthusiasm For The Axis
+#NAME= Italy Surrenders (Portugal->Allies)
+#POPUP= Italy's Surrender Forces Portugal To Reconsider Its Position
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -740,13 +529,37 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 111
+#COUNTRY_ID= 87
+#TRIGGER= 100
+#DATE= 1940/01/01
+; 15-25% mobilization increase towards Allies
+#MOBILIZATION= [15,25] [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [1]
+}
+
+;
+; Event for decreased Spanish mobilization:
+{
+#NAME= Italy's Surrender Reduces Franco's Enthusiasm For The Axis (Spain->Allies)
+#POPUP= Italy's Surrender Reduces Franco's Enthusiasm For The Axis
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 99
 #TRIGGER= 100
 #DATE= 1939/09/01
 ; 8-15% mobilization increase towards Allies
 #MOBILIZATION= [8,15] [2]
-; Bulgaria(19) Axis and surrendered
-#VARIABLE_CONDITION= 19 [1] [100] [1]
+; Italy(59) Axis and surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [1]
 }
 
 {
@@ -769,9 +582,11 @@
 #VARIABLE_CONDITION= 59 [1] [100] [1]
 }
 
+;
+; Event for increased US mobilization (Pearl Harbor):
 {
-#NAME= Romania's Surrender Weakens The Axis Relationship With Turkey (Turkey->Allies)
-#POPUP= Romania's Surrender Weakens The Axis Relationship With Turkey
+#NAME= Pearl Harbor Attack (USA->Allies)
+#POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -780,58 +595,14 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 111
+#COUNTRY_ID= 115
 #TRIGGER= 100
-#DATE= 1939/09/01
-; 8-15% mobilization increase towards Allies
-#MOBILIZATION= [8,15] [2]
-; Romania(93) Axis and surrendered
-#VARIABLE_CONDITION= 93 [1] [100] [1]
-}
-
-{
-#NAME= Hungary's Surrender Moves Turkey Away From The Axis (Turkey->Allies)
-#POPUP= Hungary's Surrender Moves Turkey Away From The Axis
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 111
-#TRIGGER= 100
-#DATE= 1939/09/01
-; 8-15% mobilization increase towards Allies
-#MOBILIZATION= [8,15] [2]
-; Hungary(52) Axis and surrendered
-#VARIABLE_CONDITION= 52 [1] [100] [1]
-}
-
-{
-#NAME= Turkey Swayed by Axis Victories (Turkey->>Axis) (25% Chance)
-#POPUP= The Prime Minister of Turkey Visits Berlin
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 1
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 111
-; 25% chance per game
-#TRIGGER= 25
-#DATE= 1941/02/26
-; 20-90% mobilization increase towards Axis
-#MOBILIZATION= [20,90] [1]
-; Egypt(36) Allied and surrendered AND
-; Vichy Syria Allied and surrendered AND
-; Iraq(56) Axis and not surrendered 
-#VARIABLE_CONDITION= 36 [2] [100] [1]
-#VARIABLE_CONDITION= 105 [2] [100] [1]
-#VARIABLE_CONDITION= 56 [1] [100] [0]
+#DATE= 1941/12/07
+; changed from 15-20% to 25-30% by Fall Weiss II
+; 25-30% mobilization increase towards Allies
+#MOBILIZATION= [25,30] [2]
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
 ; Fall Weiss II
@@ -855,10 +626,9 @@
 #VARIABLE_CONDITION= 85 [2] [100] [0]
 }
 
-; Fall Weiss II
 {
-#NAME= Turkey Signs Mutual Pact With France And Britain To Protect Neutrality (Turkey->Allies)
-#POPUP= Turkey Signs Mutual Pact With France And Britain To Protect Neutrality
+#NAME= Romania's Surrender Weakens The Axis Relationship With Turkey (Turkey->Allies)
+#POPUP= Romania's Surrender Weakens The Axis Relationship With Turkey
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -869,39 +639,11 @@
 #LEVEL= 0
 #COUNTRY_ID= 111
 #TRIGGER= 100
-#DATE= 1939/09/03
-; 8-10% activation increase towards Allies
-#MOBILIZATION= [8,10] [2]
-; German Active And Fully Mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= Yugoslavia Joins The Axis (Yugoslavia->>Axis) (50% Chance)
-#POPUP= Surrounded By Axis Nations, Yugoslavia Signs Tripartite Pact
-#IMAGE=
-#SOUND=
-; currently disabled in Fall Weiss II
-#FLAG= 0
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 120
-#TRIGGER= 50
-#DATE= 1939/09/03
-; 200% activation increase towards Axis
-#MOBILIZATION= [200,200] [1]
-; Greece(46) Axis Mobilized
-; Romania(93) Axis Mobilized
-; Hungary(52) Axis Mobilized
-; Italy(59) Axis Mobilized
-#VARIABLE_CONDITION= 46 [1] [100] [0]
-#VARIABLE_CONDITION= 93 [1] [100] [0]
-#VARIABLE_CONDITION= 52 [1] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
+#DATE= 1939/09/01
+; 8-15% mobilization increase towards Allies
+#MOBILIZATION= [8,15] [2]
+; Romania(93) Axis and surrendered
+#VARIABLE_CONDITION= 93 [1] [100] [1]
 }
 
 ; Fall Weiss II
@@ -948,10 +690,9 @@
 }
 
 ; Fall Weiss II
-; Event for decreased Spanish mobilization:
 {
-#NAME= Franco Continues To Display A Reluctance To Join The Conflict In Europe (Spain->Allies) (10% Chance)
-#POPUP= Franco Continues To Display A Reluctance To Join The Conflict In Europe
+#NAME= Turkey Signs Mutual Pact With France And Britain To Protect Neutrality (Turkey->Allies)
+#POPUP= Turkey Signs Mutual Pact With France And Britain To Protect Neutrality
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -960,18 +701,277 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 99
-#TRIGGER= 10
-#DATE= 1940/01/01
-; 4-8% mobilization increase towards Allies
-#MOBILIZATION= [4,8] [2]
-; Spain(99) Axis leaning
-#VARIABLE_CONDITION= 99 [1] [75] [0]
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 8-10% activation increase towards Allies
+#MOBILIZATION= [8,10] [2]
+; German Active And Fully Mobilized
+#VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
 {
-#NAME= DE 100 - UK Supports the Free French (Vichy France->Axis)
-#POPUP= Vichy France Distances Itself From Britain's Support For General De Gaulle
+#NAME= Turkey Swayed by Axis Victories (Turkey->>Axis) (25%)
+#POPUP= The Prime Minister of Turkey Visits Berlin
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 1
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 111
+; 25% chance per game
+#TRIGGER= 25
+#DATE= 1941/02/26
+; 20-90% mobilization increase towards Axis
+#MOBILIZATION= [20,90] [1]
+; Egypt(36) Allied and surrendered AND
+; Vichy Syria Allied and surrendered AND
+; Iraq(56) Axis and not surrendered 
+#VARIABLE_CONDITION= 36 [2] [100] [1]
+#VARIABLE_CONDITION= 105 [2] [100] [1]
+#VARIABLE_CONDITION= 56 [1] [100] [0]
+}
+
+;
+; Event for increased US mobilization (UK Surrendered to Axis):
+{
+#NAME= UK Surrenders To Axis (USA->Allies)
+#POPUP= USA Intensifies War Preparation After The Fall Of The UK
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1940/01/01
+; 10-20% mobilization increase towards Allies
+#MOBILIZATION= [10,20] [2]
+; UK(112) Allied and surrendered AND
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [1]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+}
+
+;
+; Event for increased US mobilization:
+{
+#NAME= US Mobilization 1941 (USA->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1941/01/01
+; 1-2% mobilization increase towards Allies
+#MOBILIZATION= [1,2] [2]
+; UK(112) Allied and not surrendered AND
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+}
+
+;
+; Event for increased US activation:
+{
+#NAME= US Mobilization 1942 (USA->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1942/01/01
+; 1-2% activation increase towards Allies
+#MOBILIZATION= [1,2] [2]
+; UK(112) Allied and not surrendered AND
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+;
+; Event for increased US mobilization:
+{
+#NAME= US Mobilization June 1941 (USA->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1941/06/22
+; 4-6% mobilization increase towards Allies
+#MOBILIZATION= [4,6] [2]
+; UK(112) Allied and not surrendered AND
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+}
+
+;
+; Event for increased USSR mobilization:
+{
+#NAME= USSR Mobilization 1939-40 (USSR->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/12/08
+; 3-7% mobilization increase towards Allies
+#MOBILIZATION= [3,7] [2]
+; Poland(85) Allied and not surrendered
+#VARIABLE_CONDITION= 85 [2] [100] [0]
+}
+
+;
+; Event for increased USSR mobilization:
+{
+#NAME= USSR Mobilization 1941 (USSR->Allies) (90%)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 90
+#DATE= 1941/01/01
+; 1-2% mobilization increase towards Allies
+#MOBILIZATION= [1,2] [2]
+; Poland(85) Allied and surrendered
+#VARIABLE_CONDITION= 85 [2] [100] [1]
+}
+
+;
+; Event for increased USSR mobilization:
+{
+#NAME= USSR Mobilization 1942 (USSR->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1942/01/01
+; 3-5% mobilization increase towards Allies
+#MOBILIZATION= [3,5] [2]
+; USSR(116) still not mobilized
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+;
+; Event for increased USSR mobilization:
+{
+#NAME= USSR Mobilization June 1941 (USSR->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1941/06/22
+; 1-3% mobilization increase towards Allies
+#MOBILIZATION= [1,3] [2]
+; USSR(116) still not mobilized
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+; Fall Weiss II
+{
+#NAME= Yugoslavia Joins The Axis (Yugoslavia->>Axis) (50%)
+#POPUP= Surrounded By Axis Nations, Yugoslavia Signs Tripartite Pact
+#IMAGE=
+#SOUND=
+; currently disabled in Fall Weiss II
+#FLAG= 0
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 120
+#TRIGGER= 50
+#DATE= 1939/09/03
+; 200% activation increase towards Axis
+#MOBILIZATION= [200,200] [1]
+; Greece(46) Axis Mobilized
+; Romania(93) Axis Mobilized
+; Hungary(52) Axis Mobilized
+; Italy(59) Axis Mobilized
+#VARIABLE_CONDITION= 46 [1] [100] [0]
+#VARIABLE_CONDITION= 93 [1] [100] [0]
+#VARIABLE_CONDITION= 52 [1] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+}
+
+;
+; Event for increased US mobilization:
+{
+#NAME= Yugoslavia Surrendered To Axis (USA->Allies)
+#POPUP= The USA Grows Concerned Over The Axis Conquest of Yugoslavia
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 3-5% mobilization increase towards Allies
+#MOBILIZATION= [3,5] [2]
+; UK(112) Allied and not surrendered AND
+; Yugoslavia(120) Allied and surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 120 [2] [100] [1]
+}
+
+{
+#NAME= DE 100 - UK Recognizes Vichy France (USA->Axis)
+#POPUP= The British Recognition Of Vichy France Strengthens Isolationists In The USA
 #IMAGE=
 #SOUND= report.ogg
 #FLAG= 1
@@ -979,14 +979,14 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 100[1]
-#COUNTRY_ID= 118
+#LINK= 100[0]
+#COUNTRY_ID= 115
 #TRIGGER= 100
 #DATE= 1939/09/03
-; 5% mobilization increase towards Axis
-#MOBILIZATION= [5,5] [1]
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
+; 3-5% mobilization increase towards Axis
+#MOBILIZATION= [3,5] [1]
+; USA(115) Allied but not fully mobilized
+#VARIABLE_CONDITION= 115 [2] [0] [0]
 }
 
 {
@@ -1050,8 +1050,8 @@
 }
 
 {
-#NAME= DE 100 - UK Recognizes Vichy France (USA->Axis)
-#POPUP= The British Recognition Of Vichy France Strengthens Isolationists In The USA
+#NAME= DE 100 - UK Supports the Free French (Vichy France->Axis)
+#POPUP= Vichy France Distances Itself From Britain's Support For General De Gaulle
 #IMAGE=
 #SOUND= report.ogg
 #FLAG= 1
@@ -1059,14 +1059,14 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 100[0]
-#COUNTRY_ID= 115
+#LINK= 100[1]
+#COUNTRY_ID= 118
 #TRIGGER= 100
 #DATE= 1939/09/03
-; 3-5% mobilization increase towards Axis
-#MOBILIZATION= [3,5] [1]
-; USA(115) Allied but not fully mobilized
-#VARIABLE_CONDITION= 115 [2] [0] [0]
+; 5% mobilization increase towards Axis
+#MOBILIZATION= [5,5] [1]
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
 ;
@@ -1140,7 +1140,7 @@
 ;
 ; Greek response to Pro-Allied Coup in Yugoslavia
 {
-#NAME= DE 104 - Pro-Allied Mobilization In Greece (Greece->>Allies) (50% Chance)
+#NAME= DE 104 - Pro-Allied Mobilization In Greece (Greece->>Allies) (50%)
 #POPUP= Greece Mobilizes In Response To The Coup In Yugoslavia
 #IMAGE=
 #SOUND=
@@ -1185,8 +1185,30 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
+;
+; Iraq Joins The Axis
 {
-#NAME= DE 106 - Syria Reacts To Annexation Of Basra (Syria->Axis) (50% Chance)
+#NAME= DE 106 - Pro-Axis Coup in Iraq (Iraq->Axis) (75%)
+#POPUP= Pro-Axis Coup in Iraq
+#IMAGE=
+#SOUND= coup.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 106[1]
+#LEVEL= 0
+#COUNTRY_ID= 56
+#TRIGGER= 75
+#DATE= 1939/09/03
+; 200% mobilization increase towards Axis
+#MOBILIZATION= [200,200] [1]
+; Germany(45) Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= DE 106 - Syria Reacts To Annexation Of Basra (Syria->Axis) (50%)
 #POPUP= Syria Leans Towards The Axis
 #IMAGE=
 #SOUND=
@@ -1208,29 +1230,7 @@
 ;
 ; Iraq Joins The Axis
 {
-#NAME= DE 106 - Pro-Axis Coup in Iraq (Iraq->Axis) (75% Chance)
-#POPUP= Pro-Axis Coup in Iraq
-#IMAGE=
-#SOUND= coup.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 106[1]
-#LEVEL= 0
-#COUNTRY_ID= 56
-#TRIGGER= 75
-#DATE= 1939/09/03
-; 200% mobilization increase towards Axis
-#MOBILIZATION= [200,200] [1]
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-;
-; Iraq Joins The Axis
-{
-#NAME= DE 107 - Pro-Axis Coup in Iraq (Iraq->Axis) (75% Chance)
+#NAME= DE 107 - Pro-Axis Coup in Iraq (Iraq->Axis) (75%)
 #POPUP= Pro-Axis Coup in Iraq
 #IMAGE=
 #SOUND= coup.ogg
@@ -1295,48 +1295,6 @@
 ;
 ; Allied Mers-El-Kebir attack on Pro-Vichy Fleet
 {
-#NAME= DE 118 - Attack On Mers-El-Kebir (Vichy France->>Axis)
-#POPUP= Operation Catapult - The Royal Navy Attacks The Vichy Fleet At Mers-El-Kebir
-#IMAGE= mers_el_kebir_1.png, mers_el_kebir_2.png
-#SOUND= ship_sinking.ogg, war1.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 118[1]
-#COUNTRY_ID= 118
-#TRIGGER= 100
-#DATE= 1939/09/03
-; 30-35% mobilization increase towards Axis
-#MOBILIZATION= [30,35] [1]
-; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-}
-
-{
-#NAME= DE 118 - Attack On Mers-El-Kebir (Vichy France->Axis)
-#POPUP= Admiral Darlan Orders The Partial Mobilization Of The Vichy French Fleet
-#IMAGE=
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 118[1]
-#COUNTRY_ID= 118
-#TRIGGER= 100
-#DATE= 1939/09/03
-; 5-15% mobilization increase towards Axis
-#MOBILIZATION= [5,15] [1]
-; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-}
-
-;
-; Allied Mers-El-Kebir attack on Pro-Vichy Fleet
-{
 #NAME= DE 118 - Attack On Mers-El-Kebir (Algeria->Axis)
 #POPUP=
 #IMAGE=
@@ -1379,24 +1337,43 @@
 }
 
 ;
-; Event for Vichy French mobilization following
-; the UK's failure to take Dakar
+; Allied Mers-El-Kebir attack on Pro-Vichy Fleet
 {
-#NAME= DE 119 - UK Fails To Capture Dakar (Vichy France->Axis) (20% Chance)
-#POPUP= Vichy France Protests Against The Attack On Dakar
-#IMAGE=
-#SOUND= report.ogg
+#NAME= DE 118 - Attack On Mers-El-Kebir (Vichy France->>Axis)
+#POPUP= Operation Catapult - The Royal Navy Attacks The Vichy Fleet At Mers-El-Kebir
+#IMAGE= mers_el_kebir_1.png, mers_el_kebir_2.png
+#SOUND= ship_sinking.ogg, war1.ogg
 #FLAG= 1
-#TYPE= 0
+#TYPE= 1
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 119[1]
+#LINK= 118[1]
 #COUNTRY_ID= 118
-#TRIGGER= 20
+#TRIGGER= 100
 #DATE= 1939/09/03
-; 5-8% mobilization increase towards Axis
-#MOBILIZATION= [5,8] [1]
+; 30-35% mobilization increase towards Axis
+#MOBILIZATION= [30,35] [1]
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+}
+
+{
+#NAME= DE 118 - Attack On Mers-El-Kebir (Vichy France->Axis)
+#POPUP= Admiral Darlan Orders The Partial Mobilization Of The Vichy French Fleet
+#IMAGE=
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 118[1]
+#COUNTRY_ID= 118
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 5-15% mobilization increase towards Axis
+#MOBILIZATION= [5,15] [1]
 ; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 }
@@ -1405,7 +1382,7 @@
 ; Event for Vichy Algerian mobilization following
 ; the UK's failure to take Dakar
 {
-#NAME= DE 119 - UK Fails To Capture Dakar (Vichy Algeria->Axis) (20% Chance)
+#NAME= DE 119 - UK Fails To Capture Dakar (Vichy Algeria->Axis) (20%)
 #POPUP= Vichy Algeria Protests Against The Attack On Dakar
 #IMAGE=
 #SOUND= report.ogg
@@ -1425,10 +1402,33 @@
 }
 
 ;
+; Event for Vichy French mobilization following
+; the UK's failure to take Dakar
+{
+#NAME= DE 119 - UK Fails To Capture Dakar (Vichy France->Axis) (20%)
+#POPUP= Vichy France Protests Against The Attack On Dakar
+#IMAGE=
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 119[1]
+#COUNTRY_ID= 118
+#TRIGGER= 20
+#DATE= 1939/09/03
+; 5-8% mobilization increase towards Axis
+#MOBILIZATION= [5,8] [1]
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+}
+
+;
 ; Event for Vichy Tunisia's mobilization following
 ; the UK's failure to take Dakar
 {
-#NAME= DE 119 - UK Fails To Capture Dakar (Vichy Tunisia->Axis) (20% Chance)
+#NAME= DE 119 - UK Fails To Capture Dakar (Vichy Tunisia->Axis) (20%)
 #POPUP= Tunisia Protests Against The Attack On Dakar
 #IMAGE=
 #SOUND= report.ogg
@@ -1591,8 +1591,29 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 131 - UK Invades Syria (Vichy France->Axis)
-#POPUP= Vichy French Protest The Allied Occupation of Syria
+#NAME= DE 131 - UK Does Not Invade Syria (Syria->Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 131[0]
+#COUNTRY_ID= 105
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 15-25% mobilization increase towards Axis
+#MOBILIZATION= [15,25] [1]
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+}
+
+; Fall Weiss II
+{
+#NAME= DE 131 - UK Invades Syria (Algeria->Axis)
+#POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -1601,7 +1622,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 131[1]
-#COUNTRY_ID= 118
+#COUNTRY_ID= 4
 #TRIGGER= 100
 #DATE= 1939/09/03
 ; 5-15% mobilization increase towards Axis
@@ -1633,8 +1654,8 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 131 - UK Invades Syria (Algeria->Axis)
-#POPUP=
+#NAME= DE 131 - UK Invades Syria (Vichy France->Axis)
+#POPUP= Vichy French Protest The Allied Occupation of Syria
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -1643,32 +1664,11 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 131[1]
-#COUNTRY_ID= 4
+#COUNTRY_ID= 118
 #TRIGGER= 100
 #DATE= 1939/09/03
 ; 5-15% mobilization increase towards Axis
 #MOBILIZATION= [5,15] [1]
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= DE 131 - UK Does Not Invade Syria (Syria->Axis)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 131[0]
-#COUNTRY_ID= 105
-#TRIGGER= 100
-#DATE= 1939/09/03
-; 15-25% mobilization increase towards Axis
-#MOBILIZATION= [15,25] [1]
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
@@ -1686,27 +1686,6 @@
 #GV= 1[1,100]
 #LINK= 132[0]
 #COUNTRY_ID= 4
-#TRIGGER= 100
-#DATE= 1939/09/03
-; 5-15% mobilization increase towards Axis
-#MOBILIZATION= [5,15] [1]
-; USA(115) Allied leaning
-#VARIABLE_CONDITION= 115 [2] [0] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= DE 132 - USA Does Not Recognize Vichy France (Vichy France->Axis)
-#POPUP= USA Refuses To Recognize The Vichy French Government
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 132[0]
-#COUNTRY_ID= 118
 #TRIGGER= 100
 #DATE= 1939/09/03
 ; 5-15% mobilization increase towards Axis
@@ -1759,6 +1738,27 @@
 
 ; Fall Weiss II
 {
+#NAME= DE 132 - USA Does Not Recognize Vichy France (Vichy France->Axis)
+#POPUP= USA Refuses To Recognize The Vichy French Government
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 132[0]
+#COUNTRY_ID= 118
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 5-15% mobilization increase towards Axis
+#MOBILIZATION= [5,15] [1]
+; USA(115) Allied leaning
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+}
+
+; Fall Weiss II
+{
 #NAME= DE 132 - USA Recognizes Vichy France (USA->Axis)
 #POPUP= USA Recognizes The Vichy French Government
 #IMAGE=
@@ -1776,28 +1776,6 @@
 #MOBILIZATION= [3,6] [1]
 ; USA(115) Allied leaning
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-}
-
-; Fall Weiss II
-; Turkey Resists Allied Diplomacy
-{
-#NAME= DE 149 - Turkey Resists Allied Diplomacy (Turkey->Axis)
-#POPUP= The Turkish Government Displays Strong Resistance Against Entering War With Germany
-#IMAGE=
-#SOUND= 
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 149[1]
-#COUNTRY_ID= 111
-#TRIGGER= 100
-#DATE= 1939/09/03
-; 2-4% mobilization increase towards Axis
-#MOBILIZATION= [2,4] [1]
-; Turkey(111) Allied and not active
-#VARIABLE_CONDITION= 111 [2] [70] [0]
 }
 
 ; Fall Weiss II
@@ -1824,6 +1802,28 @@
 #VARIABLE_CONDITION= 36 [2] [100] [1]
 }
 
+; Fall Weiss II
+; Turkey Resists Allied Diplomacy
+{
+#NAME= DE 149 - Turkey Resists Allied Diplomacy (Turkey->Axis)
+#POPUP= The Turkish Government Displays Strong Resistance Against Entering War With Germany
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 149[1]
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 2-4% mobilization increase towards Axis
+#MOBILIZATION= [2,4] [1]
+; Turkey(111) Allied and not active
+#VARIABLE_CONDITION= 111 [2] [70] [0]
+}
+
 {
 #NAME= DE 202 - French Communist Party Banned (USSR->Axis)
 #POPUP= The USSR Views The Banning Of The French Communist Party As A Hostile Move
@@ -1843,6 +1843,29 @@
 #MOBILIZATION= [2,3] [1]
 ; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; Replacement Script
+; Anglo-French Expedition To Finland
+{
+#NAME= DE 204 - Anglo-French Expedition To Finland (Finland->Allies)
+#POPUP= Finland Grows Closer To The Allies In Response To Their Support
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 8[1,33]
+#LINK= 204[1]
+#LEVEL= 0
+#COUNTRY_ID= 39
+#TRIGGER= 100
+#DATE= 1940/03/12
+; changed from 25-35% to 10-15% by Fall Weiss II
+; 10-15% mobilization increase towards Allies
+#MOBILIZATION= [10,15] [2]
+; Finland(39) Axis and not surrendered
+#VARIABLE_CONDITION= 39 [1] [0] [0]
 }
 
 ;Replacement Script
@@ -1870,29 +1893,6 @@
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 }
 
-; Replacement Script
-; Anglo-French Expedition To Finland
-{
-#NAME= DE 204 - Anglo-French Expedition To Finland (Finland->Allies)
-#POPUP= Finland Grows Closer To The Allies In Response To Their Support
-#IMAGE=
-#SOUND= 
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 8[1,33]
-#LINK= 204[1]
-#LEVEL= 0
-#COUNTRY_ID= 39
-#TRIGGER= 100
-#DATE= 1940/03/12
-; changed from 25-35% to 10-15% by Fall Weiss II
-; 10-15% mobilization increase towards Allies
-#MOBILIZATION= [10,15] [2]
-; Finland(39) Axis and not surrendered
-#VARIABLE_CONDITION= 39 [1] [0] [0]
-}
-
 ; Event for decreased Spanish mobilization:
 {
 #NAME= DE 250 - Franco's Enthusiasm For The Axis Weakens Slightly As France Is Liberated (Spain->Allies)
@@ -1915,28 +1915,6 @@
 }
 
 ;
-; Event for decreased USSR activation:
-{
-#NAME= DE 401 - USSR Attacks Finland in the Winter War (USSR->Axis)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 401[1]
-#LEVEL= 0
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#DATE= 1939/11/30
-; 3-5% activation increase towards Axis
-#MOBILIZATION= [3,5] [1]
-; USSR(116) Allied but not fully mobilized
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-}
-
-;
 ; Event for decreased Swedish activation:
 {
 #NAME= DE 401 - USSR Attacks Finland in the Winter War (Sweden->Axis)
@@ -1951,6 +1929,28 @@
 #LEVEL= 0
 ; Sweden(103)
 #COUNTRY_ID= 103
+#TRIGGER= 100
+#DATE= 1939/11/30
+; 3-5% activation increase towards Axis
+#MOBILIZATION= [3,5] [1]
+; USSR(116) Allied but not fully mobilized
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+;
+; Event for decreased USSR activation:
+{
+#NAME= DE 401 - USSR Attacks Finland in the Winter War (USSR->Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 401[1]
+#LEVEL= 0
+#COUNTRY_ID= 116
 #TRIGGER= 100
 #DATE= 1939/11/30
 ; 3-5% activation increase towards Axis
@@ -2117,7 +2117,7 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 542 - Success Of IRA In Ireland (Ireland->>Axis) (20% Chance)
+#NAME= DE 542 - Success Of IRA In Ireland (Ireland->>Axis) (20%)
 #POPUP= Building On Recent Attacks, The IRA Gains Momentum In Demanding UK Withdrawal From Northern Ireland
 #IMAGE=
 #SOUND= 
@@ -2508,25 +2508,24 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 800 - The Anglo-Portuguese Alliance (Spain->>Axis)
-#POPUP= Franco Grows Highly Concerned Over Portuguese Troop Deployments
+#NAME= DE 800 - Italy Joins The Axis (Italy->>Axis)
+#POPUP= Mussolini Hastily Joins The Fascist Alliance
 #IMAGE=
-#SOUND= report.ogg
+#SOUND=
 #FLAG= 1
 #TYPE= 1
 #AI= 0
-#LEVEL= 0
 #GV= 1[1,100]
+; Anglo-Portuguese Alliance
 #LINK= 800[1]
-#COUNTRY_ID= 99
+#LEVEL= 0
+#COUNTRY_ID= 59
 #TRIGGER= 100
 #DATE= 1939/09/03
-; 30-40% mobilization increase towards Axis
-#MOBILIZATION= [30,40] [1]
-; Spain(99) Axis and not surrendered
-; Portugal(87) Allied
-#VARIABLE_CONDITION= 99 [1] [1] [0]
-#VARIABLE_CONDITION= 87 [2] [30] [0]
+; 200% activation increase towards Allies
+#MOBILIZATION= [200,200] [1]
+; Spain(99) politically leaning to Axis and Mobilized
+#VARIABLE_CONDITION= 99 [1] [100] [0]
 }
 
 ; Fall Weiss II
@@ -2551,24 +2550,25 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 800 - Italy Joins The Axis (Italy->>Axis)
-#POPUP= Mussolini Hastily Joins The Fascist Alliance
+#NAME= DE 800 - The Anglo-Portuguese Alliance (Spain->>Axis)
+#POPUP= Franco Grows Highly Concerned Over Portuguese Troop Deployments
 #IMAGE=
-#SOUND=
+#SOUND= report.ogg
 #FLAG= 1
 #TYPE= 1
 #AI= 0
-#GV= 1[1,100]
-; Anglo-Portuguese Alliance
-#LINK= 800[1]
 #LEVEL= 0
-#COUNTRY_ID= 59
+#GV= 1[1,100]
+#LINK= 800[1]
+#COUNTRY_ID= 99
 #TRIGGER= 100
 #DATE= 1939/09/03
-; 200% activation increase towards Allies
-#MOBILIZATION= [200,200] [1]
-; Spain(99) politically leaning to Axis and Mobilized
-#VARIABLE_CONDITION= 99 [1] [100] [0]
+; 30-40% mobilization increase towards Axis
+#MOBILIZATION= [30,40] [1]
+; Spain(99) Axis and not surrendered
+; Portugal(87) Allied
+#VARIABLE_CONDITION= 99 [1] [1] [0]
+#VARIABLE_CONDITION= 87 [2] [30] [0]
 }
 
 ; Fall Weiss II
@@ -2839,28 +2839,6 @@
 ; Fall Weiss II
 ; Swedish Convoy
 {
-#NAME= DE 813 - Allies Intervene To Stop Swedish Convoys (Sweden->Allies)
-#POPUP= The Allies Intervene To Sway Sweden To End Convoys To Germany
-#IMAGE=
-#SOUND= 
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 813[1]
-#COUNTRY_ID= 103
-#TRIGGER= 100
-#DATE= 1939/09/03
-; 1% mobilization increase towards Allies (one time)
-#MOBILIZATION= [1,1] [2]
-; Sweden(103) Axis
-#VARIABLE_CONDITION= 103 [1] [20] [0]
-}
-
-; Fall Weiss II
-; Swedish Convoy
-{
 #NAME= DE 813 - Allies Exert Diplomatic Pressure To Stop Swedish Convoys (Sweden->Allies)
 #POPUP= The Swedish Relent to Allied Pressure away from Axis Influence
 #IMAGE=
@@ -2881,9 +2859,31 @@
 }
 
 ; Fall Weiss II
+; Swedish Convoy
+{
+#NAME= DE 813 - Allies Intervene To Stop Swedish Convoys (Sweden->Allies)
+#POPUP= The Allies Intervene To Sway Sweden To End Convoys To Germany
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 813[1]
+#COUNTRY_ID= 103
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 1% mobilization increase towards Allies (one time)
+#MOBILIZATION= [1,1] [2]
+; Sweden(103) Axis
+#VARIABLE_CONDITION= 103 [1] [20] [0]
+}
+
+; Fall Weiss II
 ; UK Delegates To Switzerland
 {
-#NAME= DE 820 - UK Delegates To Switzerland (Switzerland->Allies) (25% Chance)
+#NAME= DE 820 - UK Delegates To Switzerland (Switzerland->Allies) (25%)
 #POPUP= Allied Political Pressure Exposes Axis Corruption In Switzerland
 #IMAGE=
 #SOUND= 
@@ -2905,7 +2905,7 @@
 ; Fall Weiss II
 ; UK Delegates To Portugal
 {
-#NAME= DE 821 - UK Delegates To Portugal (Portugal->Allies) (50% Chance)
+#NAME= DE 821 - UK Delegates To Portugal (Portugal->Allies) (50%)
 #POPUP= Portugal Leans Towards The Allies But Maintains Trade With Germany
 #IMAGE=
 #SOUND= 
@@ -2992,6 +2992,30 @@
 ; Fall Weiss II
 ; Lend Lease to Saudi Arabia
 {
+#NAME= DE 829 - Lend Lease to Saudi Arabia (Saudi Arabia->>Allies) (%5)
+#POPUP= Saudi Arabia Aligns Closely With USA, Oil Exports Begin
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 829[1]
+#COUNTRY_ID= 95
+#TRIGGER= 5
+#DATE= 1939/09/03
+; 40% mobilization increase towards Allies
+#MOBILIZATION= [40,40] [2]
+; USA(115) Allied and not surrendered
+; Saudi Arabia(95) Allied
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 95 [2] [0] [0]
+}
+
+; Fall Weiss II
+; Lend Lease to Saudi Arabia
+{
 #NAME= DE 829 - Lend Lease to Saudi Arabia (Saudi Arabia->Allies)
 #POPUP= USA Extends Lend Lease To Saudi Arabia
 #IMAGE=
@@ -3010,30 +3034,6 @@
 ; USA(115) Allied
 ; Saudi Arabia(95) Allied
 #VARIABLE_CONDITION= 115 [2] [50] [0]
-#VARIABLE_CONDITION= 95 [2] [0] [0]
-}
-
-; Fall Weiss II
-; Lend Lease to Saudi Arabia
-{
-#NAME= DE 829 - Lend Lease to Saudi Arabia (Saudi Arabia->>Allies) (%5 Chance)
-#POPUP= Saudi Arabia Aligns Closely With USA, Oil Exports Begin
-#IMAGE=
-#SOUND= 
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 829[1]
-#COUNTRY_ID= 95
-#TRIGGER= 5
-#DATE= 1939/09/03
-; 40% mobilization increase towards Allies
-#MOBILIZATION= [40,40] [2]
-; USA(115) Allied and not surrendered
-; Saudi Arabia(95) Allied
-#VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 95 [2] [0] [0]
 }
 
@@ -3124,28 +3124,7 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 874 - Vichy France Joins The Axis (Vichy France->>Axis)
-#POPUP= Secret Negotiations Between Germany and Vichy France Conclude
-#IMAGE=
-#SOUND= 
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 874[1]
-#COUNTRY_ID= 118
-#TRIGGER= 100
-#DATE= 1939/09/03
-; 200% mobilization increase towards Axis
-#MOBILIZATION= [200,200] [1]
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= DE 874 - Algeria Joins The Axis (Algeria->>Axis) (50% Chance)
+#NAME= DE 874 - Algeria Joins The Axis (Algeria->>Axis) (50%)
 #POPUP= Admiral Darlan Remains Loyal To Vichy France
 #IMAGE=
 #SOUND= 
@@ -3168,7 +3147,32 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 874 - Tunisia Joins The Axis (Tunisia->>Axis) (50% Chance)
+#NAME= DE 874 - Syria Joins The Axis (Syria->>Axis) (50%)
+#POPUP= Syria Joins The War To Fight For Independence
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 874[1]
+#COUNTRY_ID= 105
+#TRIGGER= 50
+#DATE= 1939/09/03
+; 200% mobilization increase towards Axis
+#MOBILIZATION= [200,200] [1]
+; Vichy France(118) Axis and fully mobilized
+; Algeria(4) Axis, fully active
+; Tunisia(110) Axis, fully active
+#VARIABLE_CONDITION= 118 [1] [100] [0]
+#VARIABLE_CONDITION= 4 [1] [100] [0]
+#VARIABLE_CONDITION= 110 [1] [100] [0]
+}
+
+; Fall Weiss II
+{
+#NAME= DE 874 - Tunisia Joins The Axis (Tunisia->>Axis) (50%)
 #POPUP= The Tunisian Governor Declares For The Axis
 #IMAGE=
 #SOUND= 
@@ -3192,8 +3196,8 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 874 - Syria Joins The Axis (Syria->>Axis) (50% Chance)
-#POPUP= Syria Joins The War To Fight For Independence
+#NAME= DE 874 - Vichy France Joins The Axis (Vichy France->>Axis)
+#POPUP= Secret Negotiations Between Germany and Vichy France Conclude
 #IMAGE=
 #SOUND= 
 #FLAG= 1
@@ -3202,17 +3206,13 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 874[1]
-#COUNTRY_ID= 105
-#TRIGGER= 50
+#COUNTRY_ID= 118
+#TRIGGER= 100
 #DATE= 1939/09/03
 ; 200% mobilization increase towards Axis
 #MOBILIZATION= [200,200] [1]
-; Vichy France(118) Axis and fully mobilized
-; Algeria(4) Axis, fully active
-; Tunisia(110) Axis, fully active
-#VARIABLE_CONDITION= 118 [1] [100] [0]
-#VARIABLE_CONDITION= 4 [1] [100] [0]
-#VARIABLE_CONDITION= 110 [1] [100] [0]
+; Germany(45) Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
 ; Fall Weiss II
@@ -3427,28 +3427,7 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 912 - Vichy French Population Protest Vichy Collaboration Policy (Vichy France->Allies) (2% Chance)
-#POPUP= Vichy French Population Protest Vichy Collaboration Policy
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#GV= 1[1,100]
-#LINK= 912[0]
-#LEVEL= 0
-#COUNTRY_ID= 118
-#TRIGGER= 2
-#DATE= 1941/06/15
-; 10-15% activation increase towards Allies
-#MOBILIZATION= [10,15] [2]
-; Vichy France(118) Axis Leaning and Not Fully Mobilized
-#VARIABLE_CONDITION= 118 [1] [0] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= DE 912 - Vichy Collaboration Policy (Vichy France->Axis) (2% Chance)
+#NAME= DE 912 - Vichy Collaboration Policy (Vichy France->Axis) (2%)
 #POPUP= 
 #IMAGE=
 #SOUND=
@@ -3468,23 +3447,23 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 917 - Greece Joins The Axis (Greece->Axis)
-#POPUP= Germany Permits Territorial Concessions to Greece
+#NAME= DE 912 - Vichy French Population Protest Vichy Collaboration Policy (Vichy France->Allies) (2%)
+#POPUP= Vichy French Population Protest Vichy Collaboration Policy
 #IMAGE=
 #SOUND=
 #FLAG= 1
-#TYPE= 1
+#TYPE= 2
 #AI= 0
 #GV= 1[1,100]
-#LINK= 917[1]
+#LINK= 912[0]
 #LEVEL= 0
-#COUNTRY_ID= 46
-#TRIGGER= 100
-#DATE= 1939/09/03
-; 1% activation increase towards Axis
-#MOBILIZATION= [1,1] [1]
-; German fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+#COUNTRY_ID= 118
+#TRIGGER= 2
+#DATE= 1941/06/15
+; 10-15% activation increase towards Allies
+#MOBILIZATION= [10,15] [2]
+; Vichy France(118) Axis Leaning and Not Fully Mobilized
+#VARIABLE_CONDITION= 118 [1] [0] [0]
 }
 
 ; Fall Weiss II
@@ -3510,27 +3489,6 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 917 - Stalin Warns Against An Invasion Into Bulgaria (USSR->Allies)
-#POPUP= Stalin Warns Against An Invasion Into Bulgaria
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 917[1]
-#LEVEL= 0
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#DATE= 1939/09/03
-; 2-5% activation increase towards Allies
-#MOBILIZATION= [2,5] [2]
-; USSR(116) Allied and not fully mobilized
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-}
-
-; Fall Weiss II
-{
 #NAME= DE 917 - Greece Joins The Axis (Greece->>Axis)
 #POPUP= Greece Forms An Alliance With Germany
 #IMAGE=
@@ -3548,6 +3506,48 @@
 #MOBILIZATION= [200,200] [1]
 ; German(46) Axis leaning
 #VARIABLE_CONDITION= 46 [1] [1] [0]
+}
+
+; Fall Weiss II
+{
+#NAME= DE 917 - Greece Joins The Axis (Greece->Axis)
+#POPUP= Germany Permits Territorial Concessions to Greece
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 917[1]
+#LEVEL= 0
+#COUNTRY_ID= 46
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 1% activation increase towards Axis
+#MOBILIZATION= [1,1] [1]
+; German fully mobilized
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; Fall Weiss II
+{
+#NAME= DE 917 - Stalin Warns Against An Invasion Into Bulgaria (USSR->Allies)
+#POPUP= Stalin Warns Against An Invasion Into Bulgaria
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 917[1]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 2-5% activation increase towards Allies
+#MOBILIZATION= [2,5] [2]
+; USSR(116) Allied and not fully mobilized
+#VARIABLE_CONDITION= 116 [2] [0] [0]
 }
 
 ; Fall Weiss II
@@ -3643,27 +3643,6 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 947 - German Commercial Agreement - Deliveries Fulfilled (USSR->Axis)
-#POPUP= The German-Soviet Border And Commercial Agreement Is Signed At Moscow
-#IMAGE=
-#SOUND= 
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 947[1]
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#DATE= 1939/09/03
-; 5% mobilization increase towards Axis
-#MOBILIZATION= [5,5] [1]
-; USSR(116) Allied, and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-}
-
-; Fall Weiss II
-{
 #NAME= DE 947 - German Commercial Agreement - Deliveries Delayed (USSR->Allies)
 #POPUP= Stalin Grows Suspicious as Deliveries of German Military Equipment is Further Delayed
 #IMAGE=
@@ -3679,6 +3658,27 @@
 #DATE= 1939/09/03
 ; 10% mobilization increase towards Allies
 #MOBILIZATION= [10,10] [2]
+; USSR(116) Allied, and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+; Fall Weiss II
+{
+#NAME= DE 947 - German Commercial Agreement - Deliveries Fulfilled (USSR->Axis)
+#POPUP= The German-Soviet Border And Commercial Agreement Is Signed At Moscow
+#IMAGE=
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 947[1]
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 5% mobilization increase towards Axis
+#MOBILIZATION= [5,5] [1]
 ; USSR(116) Allied, and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 }
@@ -3732,8 +3732,8 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 970 - USSR Forcibly Occupies Turkish Straits (USSR->Allies)
-#POPUP=
+#NAME= DE 970 - USSR Cancels Non-Aggression Pact With Turkey (USA->Allies)
+#POPUP= Western Powers Protest Soviet Aggression Against Turkey
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -3743,13 +3743,13 @@
 #GV= 1[1,100]
 ; USSR: Forcibly Occupies Turkish Straits
 #LINK= 970[1]
-#COUNTRY_ID= 116
+#COUNTRY_ID= 115
 #TRIGGER= 100
 #DATE= 1939/10/14
-; 12-18% mobilization increase towards Allies
-#MOBILIZATION= [12,18] [2]
-; USSR(116) Allied, and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
+; 2-4% mobilization increase towards Axis
+#MOBILIZATION= [2,4] [1]
+; USA(115) Allied, and not surrendered
+#VARIABLE_CONDITION= 115 [2] [0] [0]
 }
 
 ; NEW(7/14/2023)
@@ -3777,8 +3777,8 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 970 - USSR Cancels Non-Aggression Pact With Turkey (USA->Allies)
-#POPUP= Western Powers Protest Soviet Aggression Against Turkey
+#NAME= DE 970 - USSR Forcibly Occupies Turkish Straits (USSR->Allies)
+#POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -3788,11 +3788,11 @@
 #GV= 1[1,100]
 ; USSR: Forcibly Occupies Turkish Straits
 #LINK= 970[1]
-#COUNTRY_ID= 115
+#COUNTRY_ID= 116
 #TRIGGER= 100
 #DATE= 1939/10/14
-; 2-4% mobilization increase towards Axis
-#MOBILIZATION= [2,4] [1]
-; USA(115) Allied, and not surrendered
-#VARIABLE_CONDITION= 115 [2] [0] [0]
+; 12-18% mobilization increase towards Allies
+#MOBILIZATION= [12,18] [2]
+; USSR(116) Allied, and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
 }

@@ -258,88 +258,169 @@
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; GENERAL SURRENDER CHECKS
 ;
-;
-; General surrenders to Axis resulting in a
-; random 3-5% increase in Italian mobilization towards Axis:
+; Allies Declare War on Algeria resulting in an
+; 5-7% increase in Spanish mobilization towards Axis:
 {
-#NAME= General Surrenders To Axis (Italy->Axis)
+#NAME= Allies DoW On Algeria (Spain->Axis) (25%)
+#POPUP= Franco Protests Against The Allied Attack On Algeria
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 99
+#TRIGGER= 25
+; 5-7% mobilization increase towards Axis
+#MOBILIZATION= [5,7] [1]
+; Algeria declared war on by Allies
+#CONDITION= 4 [1] [2]
+}
+
+;
+; Allies Declare War on Algeria resulting in an
+; 20-35% increase in Syria's mobilization towards Axis:
+{
+#NAME= Allies DoW On Algeria (Syria->Axis)
 #POPUP=
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 105
+#TRIGGER= 100
+; 20-35% mobilization increase towards Axis
+#MOBILIZATION= [20,35] [1]
+; Algeria declared war on by Allies
+#CONDITION= 4 [1] [2]
+}
+
+;
+; Allies Declare War on Algeria resulting in an
+; 20-35% increase in Tunisia's mobilization towards Axis:
+{
+#NAME= Allies DoW On Algeria (Tunisia->Axis)
+#POPUP=
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 110
+#TRIGGER= 100
+; 20-35% mobilization increase towards Axis
+#MOBILIZATION= [20,35] [1]
+; Algeria declared war on by Allies
+#CONDITION= 4 [1] [2]
+}
+
+;
+; Allies Declare War on Algeria resulting in an
+; 20-35% increase in Vichy France's mobilization towards Axis:
+{
+#NAME= Allies DoW On Algeria (Vichy France->Axis)
+#POPUP= Vichy France Severs All Diplomatic Relations With The Allies
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 118
+#TRIGGER= 100
+; 20-35% mobilization increase towards Axis
+#MOBILIZATION= [20,35] [1]
+; Algeria declared war on by Allies
+#CONDITION= 4 [1] [2]
+}
+
+;
+; Allies Declare War on Belgium resulting in a
+; random 10-15% increase in Spanish mobilization toward Axis:
+{
+#NAME= Allies DoW On Belgium (Spain->Axis)
+#POPUP= Franco Denounces The Allied Invasion Of Belgium
 #IMAGE=
 #SOUND=
 #FLAG= 1
-#TYPE= 2
+#TYPE= 0
 #AI= 0
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 59
-#TRIGGER= 100
-; 3-5% mobilization increase towards Axis
-#MOBILIZATION= [3,5] [1]
-;General surrenders to Axis forces
-#CONDITION= 0 [0] [1]
+#COUNTRY_ID= 99
+#TRIGGER= 75
+; 10-15% mobilization increase toward Axis
+#MOBILIZATION= [10,15] [1]
+; Allies declare war on Belgium
+#CONDITION= 10 [1] [2]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; GENERAL DOW CHECKS
 ;
-;
-; General Declarations Of War By Axis resulting in a
-; random 2-4% increase in USSR mobilization towards Allies:
+; Allies Declare War on Belgium resulting in a
+; random 10-15% increase in Swedish mobilization toward Axis:
 {
-#NAME= General Declarations Of War By Axis (USSR->Allies)
-#POPUP=
+#NAME= Allies DoW On Belgium (Sweden->Axis) (50%)
+#POPUP= Swedish Government Protests Allied Invasion Of Belgium
 #IMAGE=
 #SOUND=
 #FLAG= 1
-#TYPE= 2
+#TYPE= 0
 #AI= 0
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 116
-#TRIGGER= 100
-; 2-4% mobilization increase towards Allies
-#MOBILIZATION= [2,4] [2]
-; General declaration of war by Axis
-#CONDITION= 0 [1] [1]
+#COUNTRY_ID= 103
+#TRIGGER= 50
+; 10-15% mobilization increase toward Axis
+#MOBILIZATION= [10,15] [1]
+; Allies declare war on Belgium
+#CONDITION= 10 [1] [2]
 }
 
 ;
-;
-; General Declarations of War by Allies resulting in a
-; random 5-15% increase in Italian mobilization towards Axis:
+; Allies Declare War on Belgium resulting in a
+; random 10-15% increase in Swiss mobilization toward Axis:
 {
-#NAME= General Declarations Of War By Allies (Italy->Axis)
-#POPUP=
+#NAME= Allies DoW On Belgium (Switzerland->Axis) (50%)
+#POPUP= Swiss Government Protests Allied Invasion Of Belgium
 #IMAGE=
 #SOUND=
 #FLAG= 1
-#TYPE= 2
+#TYPE= 0
 #AI= 0
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 59
-#TRIGGER= 100
-; 5-15% mobilization increase towards Axis
-#MOBILIZATION= [5,15] [1]
-; General declaration of war by Allies
-#CONDITION= 0 [1] [2]
+#COUNTRY_ID= 104
+#TRIGGER= 50
+; 10-15% mobilization increase toward Axis
+#MOBILIZATION= [10,15] [1]
+; Allies declare war on Belgium
+#CONDITION= 10 [1] [2]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; DIPLOMATIC CHECKS DUE TO FRENCH SURRENDER
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;DIPLOMATIC CHECKS DUE TO ALLIED DOW ON BELGIUM
 ;
 ;
-; France surrenders resulting in a random 10-12% increase
-; in US mobilization towards Allies:
+; Allies Declare War on Belgium resulting in a
+; random 10-15% increase in US mobilization towards Axis:
 {
-#NAME= France Surrenders To Axis (USA->Allies)
-#POPUP=
+#NAME= Allies DoW On Belgium (USA->Axis)
+#POPUP= Congressional Isolationists React Strongly Against Allied War On Belgium
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -350,19 +431,21 @@
 #LEVEL= 0
 #COUNTRY_ID= 115
 #TRIGGER= 100
-; 10-12% mobilization increase towards Allies
-#MOBILIZATION= [10,12] [2]
-; France surrenders to Axis forces
-#CONDITION= 40 [0] [1]
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; Allies declare war on Belgium
+#CONDITION= 10 [1] [2]
 }
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;DIPLOMATIC CHECKS DUE TO ALLIED DOW ON DENMARK
 ;
 ;
-; France surrenders resulting in a random 3-5% increase
-; in Hungarian mobilization towards Axis:
+; Allies Declare War on Denmark resulting in a
+; random 10-15% increase in US mobilization towards Axis:
 {
-#NAME= France Surrenders To Axis (Hungary->Axis)
-#POPUP=
+#NAME= Allies DoW On Denmark (USA->Axis)
+#POPUP= US Congress Reacts Strongly Against War On Neutral Denmark
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -371,21 +454,20 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 52
+#COUNTRY_ID= 115
 #TRIGGER= 100
-; 3-5% mobilization increase towards Axis
-#MOBILIZATION= [3,5] [1]
-; France surrenders to Axis forces
-#CONDITION= 40 [0] [1]
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; Allies declare war on Denmark
+#CONDITION= 31 [1] [2]
 }
 
 ;
-;
-; France surrenders resulting in a random 3-5% increase
-; in Romanian mobilization towards Axis:
+; Allies Declare War on Greece resulting in a
+; random 6-10% increase in Turkish mobilization towards Allies:
 {
-#NAME= France Surrenders To Axis (Romania->Axis)
-#POPUP=
+#NAME= Allies DoW On Greece (Turkey->Allies) (25%)
+#POPUP= Turkey Supports Allied Intervention In Greece
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -394,21 +476,362 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 93
-#TRIGGER= 100
-; 3-5% mobilization increase towards Axis
-#MOBILIZATION= [3,5] [1]
-; France surrenders to Axis forces
-#CONDITION= 40 [0] [1]
+#COUNTRY_ID= 111
+#TRIGGER= 25
+; 6-10% mobilization increase towards Allies
+#MOBILIZATION= [6,10] [2]
+; Allies declare war on Greece
+#CONDITION= 46 [1] [2]
 }
 
 ;
-;
-; France surrenders resulting in a random 3-5% increase
-; in Bulgarian mobilization towards Axis:
+; Allies Declare War on Iraq resulting in a
+; random 10-15% increase in Persian mobilization towards Axis:
 {
-#NAME= France Surrenders To Axis (Bulgaria->Axis)
-#POPUP=
+#NAME= Allies DoW On Iraq (Persia->Axis)
+#POPUP= Persia Alarmed By Allied Attack On Nearby Iraq
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 82
+#TRIGGER= 100
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; Allies declare war on Iraq
+#CONDITION= 56 [1] [2]
+}
+
+;
+; Allies Declare War on Iraq resulting in a
+; random 20-35% increase in Turkish mobilization towards Axis:
+{
+#NAME= Allies DoW On Iraq (Turkey->Axis)
+#POPUP= Turkish Government Protests Allied Attack On Iraq
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 111
+#TRIGGER= 100
+; 20-35% mobilization increase towards Axis
+#MOBILIZATION= [20,35] [1]
+; Allies declare war on Iraq
+#CONDITION= 56 [1] [2]
+}
+
+; Allies Declare War on Ireland resulting in a
+; random 10-15% increase in Spanish mobilization towards Axis:
+{
+#NAME= Allies DoW On Ireland (Spain->Axis) (50%)
+#POPUP= Spain Is Concerned At Unwarranted Allied Aggression
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 99
+#TRIGGER= 50
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; Allies declare war on Ireland
+#CONDITION= 57 [1] [2]
+}
+
+; Allies Declare War on Ireland resulting in a
+; random 10-15% increase in Swedish mobilization towards Axis:
+{
+#NAME= Allies DoW On Ireland (Sweden->Axis) (50%)
+#POPUP= Sweden Condemns Allied War On Ireland
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 103
+#TRIGGER= 50
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; Allies declare war on Ireland
+#CONDITION= 57 [1] [2]
+}
+
+; Allies Declare War on Ireland resulting in a
+; random 10-15% increase in Swiss mobilization towards Axis:
+{
+#NAME= Allies DoW On Ireland (Switzerland->Axis) (50%)
+#POPUP= Switzerland Shocked By Allied War On Ireland
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 104
+#TRIGGER= 50
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; Allies declare war on Ireland
+#CONDITION= 57 [1] [2]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;DIPLOMATIC CHECKS DUE TO ALLIED DOW ON IRELAND
+;
+;
+; Allies Declare War on Ireland resulting in a
+; random 15-25% increase in US mobilization towards Axis:
+{
+#NAME= Allies DoW On Ireland (USA->Axis)
+#POPUP= Pro Irish Americans Pressure Congress After Allied War On Ireland
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+; 15-25% mobilization increase towards Axis
+#MOBILIZATION= [15,25] [1]
+; Allies declare war on Ireland
+#CONDITION= 57 [1] [2]
+}
+
+;
+; Allies Declare War on Italy resulting in a
+; random 10-15% increase in Spain mobilization toward Axis:
+{
+#NAME= Allies DoW On Italy (Spain->Axis)
+#POPUP= Spain Protests Against The Allied Attack Against Italy
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 99
+#TRIGGER= 100
+; 10-15% mobilization increase toward Axis
+#MOBILIZATION= [10,15] [1]
+; Allies declare war on Italy
+#CONDITION= 59 [1] [2]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;DIPLOMATIC CHECKS DUE TO ALLIED DOW ON ITALY
+;
+;
+; Allies Declare War on Italy resulting in a
+; random 2-4% increase in US mobilization towards Axis:
+{
+#NAME= Allies DoW On Italy (USA->Axis)
+#POPUP= Congressional Isolationists React Strongly Against Allied War On Italy
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; Allies declare war on Italy
+#CONDITION= 59 [1] [2]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;DIPLOMATIC CHECKS DUE TO ALLIED DOW ON LUXEMBOURG
+;
+;
+; Allies Declare War on Luxembourg resulting in a
+; random 5-10% increase in US mobilization towards Axis:
+{
+#NAME= Allies DoW On Luxembourg (USA->Axis)
+#POPUP= US Congress Reacts Strongly Against War On Neutral Luxembourg
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+; 5-10% mobilization increase towards Axis
+#MOBILIZATION= [5,10] [1]
+; Allies declare war on Luxembourg
+#CONDITION= 65 [1] [2]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;DIPLOMATIC CHECKS DUE TO ALLIED DOW ON NETHERLANDS
+;
+;
+; Allies Declare War on Netherlands resulting in a
+; random 5-10% increase in US mobilization towards Axis:
+{
+#NAME= Allies DoW On Netherlands (USA->Axis)
+#POPUP= Congressional Isolationists React Strongly Against Allied War On Netherlands
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+; 5-10% mobilization increase towards Axis
+#MOBILIZATION= [5,10] [1]
+; Allies declare war on Netherlands
+#CONDITION= 73 [1] [2]
+}
+
+;
+; Allies Declare War on Norway resulting in a
+; random 10-15% increase in Swiss mobilization towards Axis:
+{
+#NAME= Allies DoW On Norway (Switzerland->Axis) (25%)
+#POPUP= Switzerland Protests Against Allied Aggression In Norway
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 104
+#TRIGGER= 25
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; Allies declare war on Norway
+#CONDITION= 78 [1] [2]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;DIPLOMATIC CHECKS DUE TO ALLIED DOW ON NORWAY
+;
+;
+; Allies Declare War on Norway resulting in a
+; random 5-10% increase in US mobilization towards Axis:
+{
+#NAME= Allies DoW On Norway (USA->Axis)
+#POPUP= US Concerned Over Allied Aggression In Norway
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+; 5-10% mobilization increase towards Axis
+#MOBILIZATION= [5,10] [1]
+; Allies declare war on Norway
+#CONDITION= 78 [1] [2]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;DIPLOMATIC CHECKS DUE TO ALLIED DOW ON PORTUGAL
+;
+; Allied Declare War on Portugal resulting in a
+; random 35-45% increase in Spanish mobilization towards Axis:
+{
+#NAME= Allies DoW On Portugal (Spain->>Axis)
+#POPUP= Franco Is Outraged At The Allied Attack On Portugal
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 99
+#TRIGGER= 100
+; 35-45% mobilization increase towards Axis
+#MOBILIZATION= [35,45] [1]
+; Portugal declared war on by Allies
+#CONDITION= 87 [1] [2]
+}
+
+; Allied Declare War on Portugal resulting in a
+; random 10-15% increase in Swedish mobilization towards Axis:
+{
+#NAME= Allies DoW On Portugal (Sweden->Axis) (25%)
+#POPUP= Sweden Lodges A Strong Protest Against The Allied Attack On Portugal
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 103
+#TRIGGER= 25
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; Portugal declared war on by Allies
+#CONDITION= 87 [1] [2]
+}
+
+; Allied Declare War on Portugal resulting in a
+; random 10-15% increase in Swiss mobilization towards Axis:
+{
+#NAME= Allies DoW On Portugal (Switzerland->Axis) (25%)
+#POPUP= Switzerland Expresses Shock Over Allied Aggression In Portugal
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 104
+#TRIGGER= 25
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; Portugal declared war on by Allies
+#CONDITION= 87 [1] [2]
+}
+
+;
+; Allies Declare War on Spain resulting in a
+; random 5-10% increase in Bulgarian mobilization towards Axis:
+{
+#NAME= Allies DoW On Spain (Bulgaria->Axis) (25%)
+#POPUP= Bulgaria Pressured By Germany To Protest Allied Attack On Spain
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -418,20 +841,19 @@
 #LINK= 0[0]
 #LEVEL= 0
 #COUNTRY_ID= 19
-#TRIGGER= 100
-; 3-5% mobilization increase towards Axis
-#MOBILIZATION= [3,5] [1]
-; France surrenders to Axis forces
-#CONDITION= 40 [0] [1]
+#TRIGGER= 25
+; 5-10% mobilization increase towards Axis
+#MOBILIZATION= [5,10] [1]
+; Allies declare war on Spain
+#CONDITION= 99 [1] [2]
 }
 
 ;
-;
-; France surrenders resulting in a random 3-5% increase
-; in Soviet mobilization towards Allies:
+; Allies Declare War on Spain resulting in a
+; random 10-15% increase in Hungarian mobilization towards Axis:
 {
-#NAME= France Surrenders To Axis (USSR->Allies)
-#POPUP=
+#NAME= Allies DoW On Spain (Hungary->Axis) (25%)
+#POPUP= Hungary Announces Its Support For Franco's Spain
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -440,24 +862,66 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 116
-#TRIGGER= 100
-; 3-5% mobilization increase towards Allies
-#MOBILIZATION= [2,4] [1]
-; France surrenders to Axis forces
-#CONDITION= 40 [0] [1]
+#COUNTRY_ID= 52
+#TRIGGER= 25
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; Allies declare war on Spain
+#CONDITION= 99 [1] [2]
 }
 
 ;
-;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; DIPLOMATIC CHECKS DUE TO AXIS DOW ON BELGIUM
-;
-; Axis Declare War on Belgium resulting in a
-; random 2-4% increase in US mobilization towards Allies:
+; Allies Declare War on Spain resulting in a
+; random 10-15% increase in Romanian mobilization towards Axis:
 {
-#NAME= Axis DoW on Belgium (USA->Allies)
-#POPUP=
+#NAME= Allies DoW On Spain (Romania->Axis) (25%)
+#POPUP= Romania Denounces The Allied Attack On Spain
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 93
+#TRIGGER= 25
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; Allies declare war on Spain
+#CONDITION= 99 [1] [2]
+}
+
+; Allies Declare War on Spain resulting in a
+; random 8-14% increase in Swiss mobilization towards Axis:
+{
+#NAME= Allies DoW On Spain (Switzerland->Axis) (50%)
+#POPUP= Switzerland Lodges A Vehement Protest Over Allied DoW On Spain
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 104
+#TRIGGER= 50
+; 8-14% mobilization increase towards Axis
+#MOBILIZATION= [8,14] [1]
+; Allies declare war on Spain
+#CONDITION= 99 [1] [2]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;DIPLOMATIC CHECKS DUE TO ALLIED DOW ON SPAIN
+;
+;
+; Allies Declare War on Spain resulting in a
+; random 10-20% increase in US mobilization towards Axis:
+{
+#NAME= Allies DoW On Spain (USA->Axis)
+#POPUP= South America Condemns Allied Attack On Spain - Pressures American Government
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -468,17 +932,470 @@
 #LEVEL= 0
 #COUNTRY_ID= 115
 #TRIGGER= 100
-; 2-4% mobilization increase towards Allies
-#MOBILIZATION= [2,4] [2]
-; Belgium declared war on by Axis
-#CONDITION= 10 [1] [1]
+; 10-20% mobilization increase towards Axis
+#MOBILIZATION= [10,20] [1]
+; Allies declare war on Spain
+#CONDITION= 99 [1] [2]
+}
+
+;
+; Allies Declare War on Spain resulting in a
+; random 14-24% increase in Vichy France's mobilization towards Axis:
+{
+#NAME= Allies DoW On Spain (Vichy France->Axis) (50%)
+#POPUP= Vichy France Is Concerned At The Allied Attack On Spain
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 118
+#TRIGGER= 50
+; 14-24% mobilization increase towards Axis
+#MOBILIZATION= [14,24] [1]
+; Allies declare war on Spain
+#CONDITION= 99 [1] [2]
+}
+
+;
+; Allies Declare War on Spain resulting in a
+; random 10-15% increase in Yugoslavian mobilization towards Axis:
+{
+#NAME= Allies DoW On Spain (Yugoslavia->Axis) (25%)
+#POPUP= Yugoslavia Protests Against The Allied Attack On Spain
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 120
+#TRIGGER= 25
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; Allies declare war on Spain
+#CONDITION= 99 [1] [2]
+}
+
+;
+; Allies Declare War on Sweden resulting in a
+; random 10-20% increase in Finnish mobilization towards Axis:
+{
+#NAME= Allies DoW On Sweden (Finland->Axis)
+#POPUP= Finland Is Alarmed By Allied Aggression Against Sweden
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 39
+#TRIGGER= 75
+; 10-20% mobilization increase towards Axis
+#MOBILIZATION= [10,20] [1]
+; Allies declare war on Sweden
+#CONDITION= 103 [1] [2]
+}
+
+; Allies Declare War on Sweden resulting in a
+; random 12-18% increase in Swiss mobilization towards Axis:
+{
+#NAME= Allies DoW On Sweden (Switzerland->Axis) (50%)
+#POPUP= Switzerland Strongly Condemns Allied DoW On Sweden
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 104
+#TRIGGER= 50
+; 12-18% mobilization increase towards Axis
+#MOBILIZATION= [12,18] [1]
+; Allies declare war on Sweden
+#CONDITION= 103 [1] [2]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;DIPLOMATIC CHECKS DUE TO WESTERN ALLIED DOW ON SWEDEN
+;
+;
+; Allies Declare War on Sweden resulting in a
+; random 10-20% increase in US mobilization towards Axis:
+{
+#NAME= Allies DoW On Sweden (USA->Axis)
+#POPUP= US Congress Reacts Strongly Against War On Neutral Sweden
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+; 10-20% mobilization increase towards Axis
+#MOBILIZATION= [10,20] [1]
+; Allies declare war on Sweden
+#CONDITION= 103 [1] [2]
+}
+
+;
+; Allies Declare War on Syria resulting in a
+; random 5-8% increase in Algerian mobilization towards Axis:
+{
+#NAME= Allies DoW On Syria (Algeria->Axis) (25%)
+#POPUP= Vichy Algeria Protests The Allied Aggression Against Syria
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 4
+#TRIGGER= 25
+; 5-8% mobilization increase towards Axis
+#MOBILIZATION= [5,8] [1]
+; Allies declare war on Syria
+#CONDITION= 105 [1] [2]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; DIPLOMATIC CHECKS DUE TO ALLIED DOW ON SYRIA
+;
+;
+; Allies Declare War on Syria resulting in a
+; random 20-30% increase in Iraqi mobilization towards Axis:
+{
+#NAME= Allies DoW On Syria (Iraq->Axis)
+#POPUP= Iraqis Are Up In Arms Over The Allied Attack On Their Neighbor
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 56
+#TRIGGER= 100
+; 20-30% mobilization increase towards Axis
+#MOBILIZATION= [20,30] [1]
+; Allies declare war on Syria
+#CONDITION= 105 [1] [2]
+}
+
+;
+; Allies Declare War on Syria resulting in a
+; random 10-15% increase in Persian mobilization towards Axis:
+{
+#NAME= Allies DoW On Syria (Persia->Axis) (25%)
+#POPUP= Persia Begins Defense Preparations After Allied Attack On Syria
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 82
+#TRIGGER= 25
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; Allies declare war on Syria
+#CONDITION= 105 [1] [2]
+}
+
+;
+; Allies Declare War on Syria resulting in a
+; random 5-8% increase in Tunisian mobilization towards Axis:
+{
+#NAME= Allies DoW On Syria (Tunisia->Axis) (25%)
+#POPUP= Vichy France Orders Tunisia To Condemn Allied Aggression
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 110
+#TRIGGER= 25
+; 5-8% mobilization increase towards Axis
+#MOBILIZATION= [5,8] [1]
+; Allies declare war on Syria
+#CONDITION= 105 [1] [2]
+}
+
+;
+; Allies Declare War on Syria resulting in a
+; random 10-15% increase in Turkish mobilization towards Axis:
+{
+#NAME= Allies DoW On Syria (Turkey->Axis) (25%)
+#POPUP= Turkish Government Concerned About Allied Attack On Nearby Syria
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 111
+#TRIGGER= 25
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; Allies declare war on Syria
+#CONDITION= 105 [1] [2]
+}
+
+;
+; Allies Declare War on Syria resulting in a
+; random 10-15% increase in Vichy France's mobilization towards Axis:
+{
+#NAME= Allies DoW On Syria (Vichy France->Axis) (50%)
+#POPUP= Vichy France Orders Syria Garrison To Stand Firm, Deplores Allied Aggression
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 118
+#TRIGGER= 50
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; Allies declare war on Syria
+#CONDITION= 105 [1] [2]
+}
+
+;
+; Allies Declare War on Tunisia resulting in a
+; random 3-5% increase in Algeria's mobilization towards Axis:
+{
+#NAME= Allies DoW On Tunisia (Algeria->Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 4
+#TRIGGER= 100
+; 3-5% mobilization increase towards Axis
+#MOBILIZATION= [3,5] [1]
+; Allies declare war on Tunisia
+#CONDITION= 110 [1] [2]
+}
+
+;
+; Allies Declare War on Tunisia resulting in a
+; random 3-5% increase in Syria's mobilization towards Axis:
+{
+#NAME= Allies DoW On Tunisia (Syria->Axis)
+#POPUP= Vichy Territories Condemn Aggression Against Tunisia
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 105
+#TRIGGER= 100
+; 3-5% mobilization increase towards Axis
+#MOBILIZATION= [3,5] [1]
+; Allies declare war on Tunisia
+#CONDITION= 110 [1] [2]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;DIPLOMATIC CHECKS DUE TO ALLIED DOW ON TUNISIA
+;
+;
+; Allies Declare War on Tunisia resulting in a
+; random 3-5% increase in US mobilization towards Axis:
+{
+#NAME= Allies DoW On Tunisia (USA->Axis)
+#POPUP= The USA Is Concerned At Allied Aggression In The Mediterranean
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+; 3-5% mobilization increase towards Axis
+#MOBILIZATION= [3,5] [1]
+; Allies declare war on Tunisia
+#CONDITION= 110 [1] [2]
+}
+
+;
+; Allies Declare War on Tunisia resulting in a
+; random 3-5% increase in Vichy France's mobilization towards Axis:
+{
+#NAME= Allies DoW On Tunisia (Vichy France->Axis)
+#POPUP= Vichy Territories Condemn Aggression Against Tunisia
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 118
+#TRIGGER= 100
+; 3-5% mobilization increase towards Axis
+#MOBILIZATION= [3,5] [1]
+; Allies declare war on Tunisia
+#CONDITION= 110 [1] [2]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;DIPLOMATIC CHECKS DUE TO ALLIED DOW ON VICHY ALGERIA
+;
+;
+; Allies Declare War on Vichy Algeria resulting in a
+; random 3-5% increase in US mobilization towards Axis:
+{
+#NAME= Allies DoW On Vichy Algeria (USA->Axis)
+#POPUP= The USA Is Concerned At Allied Aggression In Algeria
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+; 3-5% mobilization increase towards Axis
+#MOBILIZATION= [3,5] [1]
+; Algeria declared war on by Allies
+#CONDITION= 4 [1] [2]
+}
+
+;
+; Axis Declare War on Algeria resulting in a
+; random 40-55% increase in Syria mobilization towards Allies:
+{
+#NAME= Axis DoW On Algeria (Syria->>Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 105
+#TRIGGER= 100
+; 40-55% mobilization increase towards Allies
+#MOBILIZATION= [40,55] [2]
+; Algeria(4) declared war on by Axis
+#CONDITION= 4 [1] [1]
+}
+
+;
+; Axis Declare War on Algeria resulting in an
+; 40-55% increase in Tunisia's mobilization towards Allies:
+{
+#NAME= Axis DoW On Algeria (Tunisia->>Allies)
+#POPUP=
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 110
+#TRIGGER= 100
+; 40-55% mobilization increase towards Allies
+#MOBILIZATION= [40,55] [2]
+; Algeria(4) declared war on by Axis
+#CONDITION= 4 [1] [1]
+}
+
+; Axis Declare War on Algeria resulting in an
+; 8-15% increase in USA's mobilization towards Allies:
+{
+#NAME= Axis DoW On Algeria (USA->Allies)
+#POPUP=
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+; 8-15% mobilization increase towards Allies
+#MOBILIZATION= [8,15] [2]
+; Algeria declared war on by Axis
+#CONDITION= 4 [1] [1]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; DIPLOMATIC CHECKS DUE TO AXIS DOW ON ALGERIA
+;
+;
+; Axis Declare War on Algeria resulting in an
+; 40-55% increase in Vichy France's mobilization towards Allies:
+{
+#NAME= Axis DoW On Algeria (Vichy France->>Allies)
+#POPUP= Vichy France Severs All Diplomatic Relations With The Axis
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 118
+#TRIGGER= 100
+; 40-55% mobilization increase towards Allies
+#MOBILIZATION= [40,55] [2]
+; Algeria(4) declared war on by Axis
+#CONDITION= 4 [1] [1]
 }
 
 ;
 ; Axis Declare War on Belgium resulting in a
 ; random 30-50% increase in Dutch mobilization towards Allies:
 {
-#NAME= Axis DoW on Belgium (Netherlands->>Allies)
+#NAME= Axis DoW On Belgium (Netherlands->>Allies)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -498,10 +1415,13 @@
 
 ;
 ;
-; Axis Declare War on Netherlands resulting in a
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; DIPLOMATIC CHECKS DUE TO AXIS DOW ON BELGIUM
+;
+; Axis Declare War on Belgium resulting in a
 ; random 2-4% increase in US mobilization towards Allies:
 {
-#NAME= Axis DoW on Netherlands (USA->Allies)
+#NAME= Axis DoW On Belgium (USA->Allies)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -515,75 +1435,8 @@
 #TRIGGER= 100
 ; 2-4% mobilization increase towards Allies
 #MOBILIZATION= [2,4] [2]
-; Netherlands declared war on by Axis
-#CONDITION= 73 [1] [1]
-}
-
-;
-; Axis Declare War on Netherlands resulting in a
-; 90% increase in Belgian mobilization towards Allies:
-{
-#NAME= Axis DoW on Netherlands (Belgium->>Allies)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 10
-#TRIGGER= 100
-;90-90% mobilization increase towards Allies
-#MOBILIZATION= [90,90] [2]
-; Netherlands declared war on by Axis
-#CONDITION= 73 [1] [1]
-}
-
-;
-;
-; Axis Declare War on Luxembourg resulting in a
-; random 1-2% increase in US mobilization towards Allies:
-{
-#NAME= Axis DoW on Luxembourg (USA->Allies)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-; 1-2% mobilization increase towards Allies
-#MOBILIZATION= [1,2] [2]
-; Luxembourg declared war on by Axis
-#CONDITION= 65 [1] [1]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; DIPLOMATIC CHECKS DUE TO AXIS DOW ON HUNGARY
-;
-; Axis Declare War on Hungary resulting in a random
-; 40-70% increase in Yugoslavian mobilization towards Allies:
-{
-#NAME= Axis DoW on Hungary (Yugoslavia->>Allies)
-#POPUP= Yugoslavia Protests Against The Axis Attack On Hungary
-#IMAGE= 
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 120
-#TRIGGER= 50
-#MOBILIZATION= [40,70] [2]
-#CONDITION= 52 [1] [1]
+; Belgium declared war on by Axis
+#CONDITION= 10 [1] [1]
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -610,35 +1463,102 @@
 #CONDITION= 19 [1] [1]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; DIPLOMATIC CHECKS DUE TO AXIS DOW ON YUGOSLAVIA
 ;
-;
-; Axis Declare War on Yugoslavia resulting in a
-; random 10-15% increase in Greek mobilization towards Allies:
+; Axis Declare War on Bulgaria resulting in a
+; random 5-8% increase in USSR mobilization towards Allies:
 {
-#NAME= Axis DoW on Yugoslavia (Greece->Allies)
-#POPUP= Greece Signs A Defensive Pact With The UK
-#IMAGE= 
-#SOUND=
+#NAME= Axis DoW On Bulgaria (USSR->Allies)
+#POPUP= 
+#IMAGE=
+#SOUND= 
 #FLAG= 1
 #TYPE= 0
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#COUNTRY_ID= 46
+#COUNTRY_ID= 116
 #TRIGGER= 100
-#MOBILIZATION= [10,15] [2]
-#CONDITION= 120 [1] [1]
+#MOBILIZATION= [5,8] [2]
+#CONDITION= 19 [1] [1]
 }
 
 ;
-; Axis Declare War on Yugoslavia resulting in a
-; random 5-10% increase in Turkish mobilization towards Allies:
+; Axis Declare War on Estonia resulting in a
+; random 15-20% increase in USSR mobilization towards Allies:
 {
-#NAME= Axis DoW on Yugoslavia (Turkey->Allies) (25% Chance)
-#POPUP= Turkey Is Worried By Germany's Aggression In The Balkans
+#NAME= Axis DoW On Estonia (USSR->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+; 15-20% mobilization increase towards Allies
+#MOBILIZATION= [25,40] [2]
+; Estonia declared war on by Axis
+#CONDITION= 38 [1] [1]
+}
+
+;
+; Axis Declare War on Finland resulting in a
+; random 5-15% increase in USSR mobilization towards Allies:
+{
+#NAME= Axis DoW On Finland (USSR->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+; 5-15% mobilization increase towards Allies
+#MOBILIZATION= [5,15] [2]
+; Finland declared war on by Axis
+#CONDITION= 39 [1] [1]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; DIPLOMATIC CHECKS DUE TO AXIS DOW ON GREECE
+;
+;
+; Axis Declare War on Greece resulting in a
+; random 10-15% increase in Yugoslavian mobilization towards Allies:
+{
+#NAME= Axis DoW On Greece (Yugoslavia->Allies)
+#POPUP= Yugoslavia Condemns Axis Aggression In The Balkans
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+; Yugoslavia(120)
+#COUNTRY_ID= 120
+#TRIGGER= 100
+; 10-15% mobilization increase towards Allies
+#MOBILIZATION= [10,15] [2]
+; Axis declare war on Greece(46)
+#CONDITION= 46 [1] [1]
+}
+
+;
+; Axis Declare War on Hungary resulting in a
+; random 2-5% increase in USSR mobilization towards Allies:
+{
+#NAME= Axis DoW On Hungary (USSR->Allies) (50%)
+#POPUP= The USSR Is Concerned By The Axis Attack On Hungary
 #IMAGE= 
 #SOUND= 
 #FLAG= 1
@@ -647,571 +1567,40 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#COUNTRY_ID= 111
-#TRIGGER= 25
-#MOBILIZATION= [5,10] [2]
-#CONDITION= 120 [1] [1]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; DIPLOMATIC CHECKS DUE TO AXIS DOW ON SWEDEN
-;
-;
-; Axis Declare War on Sweden resulting in a random
-; 8-15% increase in US mobilization towards Allies:
-{
-#NAME= Axis DoW On Sweden (USA->Allies)
-#POPUP= US Congress Condemns Axis Aggression In Sweden
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-; 8-15% mobilization increase towards Allies
-#MOBILIZATION= [8,15] [2]
-; Sweden declared war on by Axis
-#CONDITION= 103 [1] [1]
-}
-
-;
-;
-; Axis Declare War on Sweden resulting in a
-; random 25-35% increase in Finnish mobilization towards Allies:
-{
-#NAME= Axis DoW On Sweden (Finland->>Allies)
-#POPUP= Finland Reconsiders Axis Overtures At The Unprovoked Attack On Sweden
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 39
-#TRIGGER= 75
-; 25-35% mobilization increase towards Allies
-#MOBILIZATION= [25,35] [2]
-; Sweden declared war on by Axis
-#CONDITION= 103 [1] [1]
-}
-
-; Axis Declare War on Sweden resulting in a
-; random 10-15% increase in Swiss mobilization towards Allies:
-{
-#NAME= Axis DoW On Sweden (Switzerland->Allies) (25% Chance)
-#POPUP= Switzerland Issues A Strong Protest Over The Axis Attack On Sweden
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 104
-#TRIGGER= 25
-; 10-15% mobilization increase towards Allies
-#MOBILIZATION= [10,15] [2]
-; Sweden declared war on by Axis
-#CONDITION= 103 [1] [1]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; DIPLOMATIC CHECKS DUE TO AXIS DOW ON SWITZERLAND
-;
-;
-; Axis Declare War on Switzerland resulting in a
-; random 8-15% increase in US mobilization towards Allies:
-{
-#NAME= Axis DoW On Switzerland (USA->Allies)
-#POPUP= US Chastises German Ambassador After Axis Assault On Switzerland
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-; 8-15% mobilization increase towards Allies
-#MOBILIZATION= [8,15] [2]
-; Switzerland declared war on by Axis
-#CONDITION= 104 [1] [1]
-}
-
-; Axis Declare War on Switzerland resulting in a
-; random 10-15% increase in Swedish mobilization towards Allies:
-{
-#NAME= Axis DoW On Switzerland (Sweden->Allies) (25% Chance)
-#POPUP= Sweden's Government Vigorously Protests Axis Attack On Switzerland
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 103
-#TRIGGER= 25
-; 10-15% mobilization increase towards Allies
-#MOBILIZATION= [10,15] [2]
-; Switzerland declared war on by Axis
-#CONDITION= 104 [1] [1]
-}
-
-; Axis Declare War on Switzerland resulting in a
-; random 5-10% increase in Spanish mobilization towards Allies:
-{
-#NAME= Axis DoW On Switzerland (Spain->Allies)
-#POPUP= Franco Is Unhappy With The Axis Decision To Invade Switzerland
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 99
-#TRIGGER= 75
-; 5-10% mobilization increase towards Allies
-#MOBILIZATION= [5,10] [2]
-; Switzerland declared war on by Axis
-#CONDITION= 104 [1] [1]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; DIPLOMATIC CHECKS DUE TO AXIS DOW ON SAUDI ARABIA
-;
-;
-; Axis Declare War on Saudi Arabia resulting in a
-; random 8-15% increase in US mobilization towards Allies:
-{
-#NAME= Axis DoW On Saudi Arabia (USA->Allies)
-#POPUP= The USA Condemns The Axis Attack On Saudi Arabia
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-; 8-15% mobilization increase towards Allies
-#MOBILIZATION= [8,15] [2]
-; Saudi Arabia declared war on by Axis
-#CONDITION= 95 [1] [1]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; DIPLOMATIC CHECKS DUE TO AXIS DOW ON SPAIN
-;
-;
-; Axis Declare War on Spain resulting in a
-; random 8-15% increase in US mobilization towards Allies:
-{
-#NAME= Axis DoW On Spain (USA->Allies)
-#POPUP= The US Denounces Axis Aggression In Spain
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-; 8-15% mobilization increase towards Allies
-#MOBILIZATION= [8,15] [2]
-; Spain declared war on by Axis
-#CONDITION= 99 [1] [1]
-}
-
-; Axis Declare War on Spain resulting in a
-; random 55-65% increase in Portuguese mobilization towards Allies:
-{
-#NAME= Axis DoW On Spain (Portugal->>Allies)
-#POPUP= Allies Pledge Support To Portugal Following Axis Attack On Spain
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 87
-#TRIGGER= 100
-; 55-65% mobilization increase towards Allies
-#MOBILIZATION= [55,65] [2]
-; Spain declared war on by Axis
-#CONDITION= 99 [1] [1]
-}
-
-;
-; Axis Declare War on Spain resulting in a
-; random 30-40% increase in Vichy France's mobilization towards Allies:
-{
-#NAME= Axis DoW On Spain (Vichy France->>Allies)
-#POPUP= Vichy France Secretly Meets With Allied Leaders After Axis Attack On Spain
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 118
+#COUNTRY_ID= 116
 #TRIGGER= 50
-; 30-40% mobilization increase towards Allies
-#MOBILIZATION= [30,40] [2]
-; Spain declared war on by Axis
-#CONDITION= 99 [1] [1]
+#MOBILIZATION= [2,5] [2]
+#CONDITION= 52 [1] [1]
 }
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; DIPLOMATIC CHECKS DUE TO AXIS DOW ON HUNGARY
 ;
-; Axis Declare War on Spain resulting in a
-; random 30-40% increase in Vichy Algeria's mobilization towards Allies:
+; Axis Declare War on Hungary resulting in a random
+; 40-70% increase in Yugoslavian mobilization towards Allies:
 {
-#NAME= Axis DoW On Spain (Vichy Algeria->>Allies)
-#POPUP= Vichy Algeria Alarmed After Axis Attack On Spain
-#IMAGE=
+#NAME= Axis DoW On Hungary (Yugoslavia->>Allies) (50%)
+#POPUP= Yugoslavia Protests Against The Axis Attack On Hungary
+#IMAGE= 
 #SOUND=
 #FLAG= 1
 #TYPE= 0
 #AI= 0
+#LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 4
+#COUNTRY_ID= 120
 #TRIGGER= 50
-; 30-40% mobilization increase towards Allies
-#MOBILIZATION= [30,40] [2]
-; Spain declared war on by Axis
-#CONDITION= 99 [1] [1]
-}
-
-; Axis Declare War on Spain resulting in a
-; random 10-15% increase in Swiss mobilization towards Allies:
-{
-#NAME= Axis DoW On Spain (Switzerland->Allies) (25% Chance)
-#POPUP= Switzerland Alarmed By Axis Invasion Of Nearby Spain
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 104
-#TRIGGER= 25
-; 10-15% mobilization increase towards Allies
-#MOBILIZATION= [10,15] [2]
-; Spain declared war on by Axis
-#CONDITION= 99 [1] [1]
+#MOBILIZATION= [40,70] [2]
+#CONDITION= 52 [1] [1]
 }
 
 ;
-;
-; Axis Declare War on Spain resulting in a
-; random 20-30% increase in Tunisian mobilization towards Allies:
+; Axis Declare War on Iraq resulting in a
+; random 50-75% increase in Persian mobilization towards Allies:
 {
-#NAME= Axis DoW On Spain (Tunisia->Allies) (25% Chance)
-#POPUP= Vichy Leaders In Tunisia Alarmed By Axis Assault On Spain
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 110
-#TRIGGER= 25
-; 20-30% mobilization increase towards Allies
-#MOBILIZATION= [20,30] [2]
-; Spain declared war on by Axis
-#CONDITION= 99 [1] [1]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; DIPLOMATIC CHECKS DUE TO AXIS DOW ON PORTUGAL
-;
-;
-; Axis Declare War on Portugal resulting in a
-; random 8-15% increase in US mobilization towards Allies:
-{
-#NAME= Axis DoW On Portugal (USA->Allies)
-#POPUP= Congressional Leaders Disturbed By Axis Attack On Portugal
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-; 8-15% mobilization increase towards Allies
-#MOBILIZATION= [8,15] [2]
-; Portugal declared war on by Axis
-#CONDITION= 87 [1] [1]
-}
-
-; Axis Declare War on Portugal resulting in a
-; random 10-15% increase in Swiss mobilization towards Allies:
-{
-#NAME= Axis DoW On Portugal (Switzerland->Allies) (25% Chance)
-#POPUP= Swiss Government Condemns Latest Axis Act Of Aggression
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 104
-#TRIGGER= 25
-; 10-15% mobilization increase towards Allies
-#MOBILIZATION= [10,15] [2]
-; Portugal declared war on by Axis
-#CONDITION= 87 [1] [1]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; DIPLOMATIC CHECKS DUE TO AXIS DOW ON VICHY FRANCE 
-;
-;
-; Axis Declare War on Vichy France resulting in a
-; random 8-15% increase in US mobilization towards Allies:
-{
-#NAME= Axis DoW On Vichy France (USA->Allies)
-#POPUP= US and UK Issue Joint Condemnation Of Axis Betrayal Of Sovereign Vichy
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-; 8-15% mobilization increase towards Allies
-#MOBILIZATION= [8,15] [2]
-; Vichy France declared war on by Axis
-#CONDITION= 118 [1] [1]
-}
-
-;
-;
-; Axis Declare War on Vichy France resulting in a
-; random 3-5% increase in Spanish mobilization towards Allies:
-{
-#NAME= Axis DoW On Vichy France (Spain->Allies)
-#POPUP= The Spanish Government Is Seriously Concerned Over Nearby Axis Aggression
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 99
-#TRIGGER= 50
-; 3-5% mobilization increase towards Allies
-#MOBILIZATION= [3,5] [2]
-; Vichy France declared war on by Axis
-#CONDITION= 118 [1] [1]
-}
-
-;
-;
-; Axis Declare War on Vichy France resulting in a
-; random 10-15% increase in Swiss mobilization towards Allies:
-{
-#NAME= Axis DoW On Vichy France (Switzerland->Allies) (25% Chance)
-#POPUP= Swiss Government Is Shocked That The Axis Would Betray Vichy France
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 104
-#TRIGGER= 25
-; 10-15% mobilization increase towards Allies
-#MOBILIZATION= [10,15] [2]
-; Vichy France declared war on by Axis
-#CONDITION= 118 [1] [1]
-}
-
-;
-;
-; Axis Declare War on Vichy France resulting in a
-; random 25-45% increase in Vichy Algeria mobilization towards Allies:
-{
-#NAME= Axis DoW On Vichy France (Algeria->>Allies)
-#POPUP= Vichy Territories Alarmed By Axis Aggression Towards Vichy France
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 4
-#TRIGGER= 100
-; 25-45% mobilization increase towards Allies
-#MOBILIZATION= [25,45] [2]
-; Vichy France declared war on by Axis
-#CONDITION= 118 [1] [1]
-}
-
-;
-;
-; Axis Declare War on Vichy France resulting in a
-; random 25-45% increase in Tunisia mobilization towards Allies:
-{
-#NAME= Axis DoW On Vichy France (Tunisia->>Allies)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 110
-#TRIGGER= 100
-; 25-45% mobilization increase towards Allies
-#MOBILIZATION= [25,45] [2]
-; Vichy France declared war on by Axis
-#CONDITION= 118 [1] [1]
-}
-
-;
-;
-; Axis Declare War on Vichy France resulting in a
-; random 25-45% increase in Syria mobilization towards Allies:
-{
-#NAME= Axis DoW On Vichy France (Syria->>Allies)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 105
-#TRIGGER= 100
-; 25-45% mobilization increase towards Allies
-#MOBILIZATION= [25,45] [2]
-; Vichy France declared war on by Axis
-#CONDITION= 118 [1] [1]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;DIPLOMATIC CHECKS DUE TO AXIS DOW ON NORWAY
-;
-;
-; Axis Declare War on Norway resulting in a
-; random 3-5% increase in US mobilization towards Allies:
-{
-#NAME= Axis DoW On Norway (USA->Allies)
-#POPUP= US Concerned Over Axis Aggression In Norway
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-; 3-5% mobilization increase towards Allies
-#MOBILIZATION= [3,5] [2]
-; Axis declare war on Norway
-#CONDITION= 78 [1] [1]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; DIPLOMATIC CHECKS DUE TO AXIS DOW ON TURKEY
-;
-; Axis Declare War on Turkey resulting in a
-; random 20-30% increase in US mobilization towards Allies:
-{
-#NAME= Axis DoW On Turkey (USA->Allies)
-#POPUP= US Alarmed Over Axis Aggression In Turkey
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-; 20-30% mobilization increase towards Allies
-#MOBILIZATION= [20,30] [2]
-; Turkey declared war on by Axis
-#CONDITION= 111 [1] [1]
-}
-
-;
-; Axis Declare War on Turkey resulting in a
-; random 50-75% increase in Syrian mobilization towards Allies:
-{
-#NAME= Axis DoW On Turkey (Syria->>Allies)
-#POPUP= Syria Mobilizes Its Forces Following The Axis Attack On Turkey
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 105
-#TRIGGER= 75
-; 50-75% mobilization increase towards Allies
-#MOBILIZATION= [50,75] [2]
-; Turkey declared war on by Axis
-#CONDITION= 111 [1] [1]
-}
-
-;
-;
-; Axis Declare War on Turkey resulting in a
-; random 75-85% increase in Persian mobilization towards Allies:
-{
-#NAME= Axis DoW On Turkey (Persia->>Allies)
-#POPUP= Persia Vigorously Condemns The Axis Attack On Turkey
+#NAME= Axis DoW On Iraq (Persia->>Allies) (50%)
+#POPUP= Persia Vigorously Condemns The Axis Attack On Iraq
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -1221,20 +1610,19 @@
 #LINK= 0[0]
 #LEVEL= 0
 #COUNTRY_ID= 82
-#TRIGGER= 100
-; 75-85% mobilization increase towards Allies
-#MOBILIZATION= [75,85] [2]
-; Turkey declared war on by Axis
-#CONDITION= 111 [1] [1]
+#TRIGGER= 50
+; 50-75% mobilization increase towards Allies
+#MOBILIZATION= [50,75] [2]
+; Iraq declared war on by Axis
+#CONDITION= 56 [1] [1]
 }
 
 ;
-;
-; Axis Declare War on Turkey resulting in a
-; random 30-50% increase in Iraqi mobilization towards Allies:
+; Axis Declare War on Iraq resulting in a
+; random 20-35% increase in Syrian mobilization towards Allies:
 {
-#NAME= Axis DoW On Turkey (Iraq->>Allies)
-#POPUP= Iraq Reconsiders Its Relationship With The Axis
+#NAME= Axis DoW On Iraq (Syria->Allies)
+#POPUP= Syria Mobilizes Its Forces Following The Axis Attack On Iraq
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -1243,29 +1631,35 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 56
-#TRIGGER= 100
-; 30-50% mobilization increase towards Allies
-#MOBILIZATION= [30,50] [2]
-; Turkey declared war on by Axis
-#CONDITION= 111 [1] [1]
+#COUNTRY_ID= 105
+#TRIGGER= 75
+; 20-35% mobilization increase towards Allies
+#MOBILIZATION= [20,35] [2]
+; Iraq declared war on by Axis
+#CONDITION= 56 [1] [1]
 }
 
+;
+;
+; Axis Declare War on Iraq resulting in a
+; random 50-75% increase in Turkish mobilization towards Allies:
 {
-#NAME= Axis DoW on Turkey (Greece->>Allies)
-#POPUP= Greece Commences A Mobilization Of Its Armed Forces
-#IMAGE= 
-#SOUND= 
+#NAME= Axis DoW On Iraq (Turkey->>Allies) (25%)
+#POPUP= Turkey Reconsiders Relationship With Axis 
+#IMAGE=
+#SOUND=
 #FLAG= 1
 #TYPE= 0
 #AI= 0
-#LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#COUNTRY_ID= 46
-#TRIGGER= 100
-#MOBILIZATION= [30,50] [2]
-#CONDITION= 111 [1] [1]
+#LEVEL= 0
+#COUNTRY_ID= 111
+#TRIGGER= 25
+; 50-75% mobilization increase towards Allies
+#MOBILIZATION= [50,75] [2]
+; Iraq declared war on by Axis
+#CONDITION= 56 [1] [1]
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1295,10 +1689,10 @@
 
 ;
 ; Axis Declare War on Iraq resulting in a
-; random 20-35% increase in Syrian mobilization towards Allies:
+; random 5-15% increase in USSR mobilization towards Allies:
 {
-#NAME= Axis DoW On Iraq (Syria->Allies)
-#POPUP= Syria Mobilizes Its Forces Following The Axis Attack On Iraq
+#NAME= Axis DoW On Iraq (USSR->Allies)
+#POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -1307,20 +1701,23 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 105
-#TRIGGER= 75
-; 20-35% mobilization increase towards Allies
-#MOBILIZATION= [20,35] [2]
+#COUNTRY_ID= 116
+#TRIGGER= 100
+; 10-15% mobilization increase towards Allies
+#MOBILIZATION= [10,15] [2]
 ; Iraq declared war on by Axis
 #CONDITION= 56 [1] [1]
 }
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;DIPLOMATIC CHECKS DUE TO AXIS DOW ON IRELAND
 ;
-; Axis Declare War on Iraq resulting in a
-; random 50-75% increase in Persian mobilization towards Allies:
+;
+; Axis Declare War on Ireland resulting in a
+; random 15-25% increase in US mobilization towards Allies:
 {
-#NAME= Axis DoW On Iraq (Persia->>Allies)
-#POPUP= Persia Vigorously Condemns The Axis Attack On Iraq
+#NAME= Axis DoW On Ireland (USA->Allies)
+#POPUP= Pro Irish Americans Pressure Congress After Axis Declare War On Ireland
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -1329,21 +1726,65 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 82
-#TRIGGER= 50
-; 50-75% mobilization increase towards Allies
-#MOBILIZATION= [50,75] [2]
-; Iraq declared war on by Axis
-#CONDITION= 56 [1] [1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+; 15-25% mobilization increase towards Allies
+#MOBILIZATION= [15,25] [2]
+; Axis declare war on Ireland
+#CONDITION= 57 [1] [1]
+}
+
+;
+; Axis Declare War on Latvia resulting in a
+; random 25-35% increase in USSR mobilization towards Allies:
+{
+#NAME= Axis DoW On Latvia (USSR->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+; 25-40% mobilization increase towards Allies
+#MOBILIZATION= [25,40] [2]
+; Latvia declared war on by Axis
+#CONDITION= 61 [1] [1]
+}
+
+;
+; Axis Declare War on Baltic States resulting in a
+; random 8-15% increase in USSR mobilization towards Allies:
+{
+#NAME= Axis DoW On Lithuania (USSR->Allies)
+#POPUP= Stalin Alarmed By Axis Aggression - Abandons Molotov-Ribbentrop Pact
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+; 8-15% mobilization increase towards Allies
+#MOBILIZATION= [8,15] [2]
+; Lithuania declared war on by Axis
+#CONDITION= 64 [1] [1]
 }
 
 ;
 ;
-; Axis Declare War on Iraq resulting in a
-; random 50-75% increase in Turkish mobilization towards Allies:
+; Axis Declare War on Luxembourg resulting in a
+; random 1-2% increase in US mobilization towards Allies:
 {
-#NAME= Axis DoW On Iraq (Turkey->>Allies) (25% Chance)
-#POPUP= Turkey Reconsiders Relationship With Axis 
+#NAME= Axis DoW On Luxembourg (USA->Allies)
+#POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -1352,23 +1793,136 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 111
+#COUNTRY_ID= 115
+#TRIGGER= 100
+; 1-2% mobilization increase towards Allies
+#MOBILIZATION= [1,2] [2]
+; Luxembourg declared war on by Axis
+#CONDITION= 65 [1] [1]
+}
+
+;
+; Axis Declare War on Netherlands resulting in a
+; 90% increase in Belgian mobilization towards Allies:
+{
+#NAME= Axis DoW On Netherlands (Belgium->>Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 10
+#TRIGGER= 100
+;90-90% mobilization increase towards Allies
+#MOBILIZATION= [90,90] [2]
+; Netherlands declared war on by Axis
+#CONDITION= 73 [1] [1]
+}
+
+;
+;
+; Axis Declare War on Netherlands resulting in a
+; random 2-4% increase in US mobilization towards Allies:
+{
+#NAME= Axis DoW On Netherlands (USA->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+; 2-4% mobilization increase towards Allies
+#MOBILIZATION= [2,4] [2]
+; Netherlands declared war on by Axis
+#CONDITION= 73 [1] [1]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;DIPLOMATIC CHECKS DUE TO AXIS DOW ON NORWAY
+;
+;
+; Axis Declare War on Norway resulting in a
+; random 3-5% increase in US mobilization towards Allies:
+{
+#NAME= Axis DoW On Norway (USA->Allies)
+#POPUP= US Concerned Over Axis Aggression In Norway
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+; 3-5% mobilization increase towards Allies
+#MOBILIZATION= [3,5] [2]
+; Axis declare war on Norway
+#CONDITION= 78 [1] [1]
+}
+
+;
+; Axis Declare War on Persia resulting in a
+; random 20-30% increase in USSR mobilization towards Allies:
+{
+#NAME= Axis DoW On Persia (USSR->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+; 20-30% mobilization increase towards Allies
+#MOBILIZATION= [20,30] [2]
+; Persia declared war on by Axis
+#CONDITION= 82 [1] [1]
+}
+
+; Axis Declare War on Portugal resulting in a
+; random 10-15% increase in Swiss mobilization towards Allies:
+{
+#NAME= Axis DoW On Portugal (Switzerland->Allies) (25%)
+#POPUP= Swiss Government Condemns Latest Axis Act Of Aggression
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 104
 #TRIGGER= 25
-; 50-75% mobilization increase towards Allies
-#MOBILIZATION= [50,75] [2]
-; Iraq declared war on by Axis
-#CONDITION= 56 [1] [1]
+; 10-15% mobilization increase towards Allies
+#MOBILIZATION= [10,15] [2]
+; Portugal declared war on by Axis
+#CONDITION= 87 [1] [1]
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; DIPLOMATIC CHECKS DUE TO AXIS DOW ON SYRIA
+; DIPLOMATIC CHECKS DUE TO AXIS DOW ON PORTUGAL
 ;
 ;
-; Axis Declare War on Syria resulting in a
+; Axis Declare War on Portugal resulting in a
 ; random 8-15% increase in US mobilization towards Allies:
 {
-#NAME= Axis DoW On Syria (USA->Allies)
-#POPUP= US and UK Strongly Protest Axis Intervention In Syria
+#NAME= Axis DoW On Portugal (USA->Allies)
+#POPUP= Congressional Leaders Disturbed By Axis Attack On Portugal
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -1381,16 +1935,16 @@
 #TRIGGER= 100
 ; 8-15% mobilization increase towards Allies
 #MOBILIZATION= [8,15] [2]
-; Syria declared war on by Axis
-#CONDITION= 105 [1] [1]
+; Portugal declared war on by Axis
+#CONDITION= 87 [1] [1]
 }
 
 ;
-; Axis Declare War on Syria resulting in a
-; random 10-15% increase in Persian mobilization towards Allies:
+; Axis Declare War on Romania resulting in a
+; random 5-15% increase in USSR mobilization towards Allies:
 {
-#NAME= Axis DoW On Syria (Persia->Allies) (25% Chance)
-#POPUP= Persia Concerned That Axis Will Push Further East 
+#NAME= Axis DoW On Romania (USSR->Allies)
+#POPUP= Stalin Is Concerned At The Axis Attack On Romania
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -1399,20 +1953,88 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 82
+#COUNTRY_ID= 116
+#TRIGGER= 100
+; 5-15% mobilization increase towards Allies
+#MOBILIZATION= [5,15] [2]
+; Romania declared war on by Axis
+#CONDITION= 93 [1] [1]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; DIPLOMATIC CHECKS DUE TO AXIS DOW ON SAUDI ARABIA
+;
+;
+; Axis Declare War on Saudi Arabia resulting in a
+; random 8-15% increase in US mobilization towards Allies:
+{
+#NAME= Axis DoW On Saudi Arabia (USA->Allies)
+#POPUP= The USA Condemns The Axis Attack On Saudi Arabia
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+; 8-15% mobilization increase towards Allies
+#MOBILIZATION= [8,15] [2]
+; Saudi Arabia declared war on by Axis
+#CONDITION= 95 [1] [1]
+}
+
+; Axis Declare War on Spain resulting in a
+; random 55-65% increase in Portuguese mobilization towards Allies:
+{
+#NAME= Axis DoW On Spain (Portugal->>Allies)
+#POPUP= Allies Pledge Support To Portugal Following Axis Attack On Spain
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 87
+#TRIGGER= 100
+; 55-65% mobilization increase towards Allies
+#MOBILIZATION= [55,65] [2]
+; Spain declared war on by Axis
+#CONDITION= 99 [1] [1]
+}
+
+; Axis Declare War on Spain resulting in a
+; random 10-15% increase in Swiss mobilization towards Allies:
+{
+#NAME= Axis DoW On Spain (Switzerland->Allies) (25%)
+#POPUP= Switzerland Alarmed By Axis Invasion Of Nearby Spain
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 104
 #TRIGGER= 25
 ; 10-15% mobilization increase towards Allies
 #MOBILIZATION= [10,15] [2]
-; Syria declared war on by Axis
-#CONDITION= 105 [1] [1]
+; Spain declared war on by Axis
+#CONDITION= 99 [1] [1]
 }
 
 ;
-; Axis Declare War on Syria resulting in a
-; random 35-45% increase in Turkish mobilization towards Allies:
+;
+; Axis Declare War on Spain resulting in a
+; random 20-30% increase in Tunisian mobilization towards Allies:
 {
-#NAME= Axis DoW On Syria (Turkey->>Allies) (25% Chance)
-#POPUP= Turkish Government Alarmed By The Axis Attack On Syria
+#NAME= Axis DoW On Spain (Tunisia->Allies) (25%)
+#POPUP= Vichy Leaders In Tunisia Alarmed By Axis Assault On Spain
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -1421,12 +2043,217 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 111
+#COUNTRY_ID= 110
 #TRIGGER= 25
-; 35-45% mobilization increase towards Allies
-#MOBILIZATION= [35,45] [2]
-; Syria declared war on by Axis
-#CONDITION= 105 [1] [1]
+; 20-30% mobilization increase towards Allies
+#MOBILIZATION= [20,30] [2]
+; Spain declared war on by Axis
+#CONDITION= 99 [1] [1]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; DIPLOMATIC CHECKS DUE TO AXIS DOW ON SPAIN
+;
+;
+; Axis Declare War on Spain resulting in a
+; random 8-15% increase in US mobilization towards Allies:
+{
+#NAME= Axis DoW On Spain (USA->Allies)
+#POPUP= The US Denounces Axis Aggression In Spain
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+; 8-15% mobilization increase towards Allies
+#MOBILIZATION= [8,15] [2]
+; Spain declared war on by Axis
+#CONDITION= 99 [1] [1]
+}
+
+;
+; Axis Declare War on Spain resulting in a
+; random 30-40% increase in Vichy Algeria's mobilization towards Allies:
+{
+#NAME= Axis DoW On Spain (Vichy Algeria->>Allies) (50%)
+#POPUP= Vichy Algeria Alarmed After Axis Attack On Spain
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 4
+#TRIGGER= 50
+; 30-40% mobilization increase towards Allies
+#MOBILIZATION= [30,40] [2]
+; Spain declared war on by Axis
+#CONDITION= 99 [1] [1]
+}
+
+;
+; Axis Declare War on Spain resulting in a
+; random 30-40% increase in Vichy France's mobilization towards Allies:
+{
+#NAME= Axis DoW On Spain (Vichy France->>Allies) (50%)
+#POPUP= Vichy France Secretly Meets With Allied Leaders After Axis Attack On Spain
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 118
+#TRIGGER= 50
+; 30-40% mobilization increase towards Allies
+#MOBILIZATION= [30,40] [2]
+; Spain declared war on by Axis
+#CONDITION= 99 [1] [1]
+}
+
+;
+;
+; Axis Declare War on Sweden resulting in a
+; random 25-35% increase in Finnish mobilization towards Allies:
+{
+#NAME= Axis DoW On Sweden (Finland->>Allies) (75%)
+#POPUP= Finland Reconsiders Axis Overtures At The Unprovoked Attack On Sweden
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 39
+#TRIGGER= 75
+; 25-35% mobilization increase towards Allies
+#MOBILIZATION= [25,35] [2]
+; Sweden declared war on by Axis
+#CONDITION= 103 [1] [1]
+}
+
+; Axis Declare War on Sweden resulting in a
+; random 10-15% increase in Swiss mobilization towards Allies:
+{
+#NAME= Axis DoW On Sweden (Switzerland->Allies) (25%)
+#POPUP= Switzerland Issues A Strong Protest Over The Axis Attack On Sweden
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 104
+#TRIGGER= 25
+; 10-15% mobilization increase towards Allies
+#MOBILIZATION= [10,15] [2]
+; Sweden declared war on by Axis
+#CONDITION= 103 [1] [1]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; DIPLOMATIC CHECKS DUE TO AXIS DOW ON SWEDEN
+;
+;
+; Axis Declare War on Sweden resulting in a random
+; 8-15% increase in US mobilization towards Allies:
+{
+#NAME= Axis DoW On Sweden (USA->Allies)
+#POPUP= US Congress Condemns Axis Aggression In Sweden
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+; 8-15% mobilization increase towards Allies
+#MOBILIZATION= [8,15] [2]
+; Sweden declared war on by Axis
+#CONDITION= 103 [1] [1]
+}
+
+; Axis Declare War on Switzerland resulting in a
+; random 5-10% increase in Spanish mobilization towards Allies:
+{
+#NAME= Axis DoW On Switzerland (Spain->Allies) (75%)
+#POPUP= Franco Is Unhappy With The Axis Decision To Invade Switzerland
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 99
+#TRIGGER= 75
+; 5-10% mobilization increase towards Allies
+#MOBILIZATION= [5,10] [2]
+; Switzerland declared war on by Axis
+#CONDITION= 104 [1] [1]
+}
+
+; Axis Declare War on Switzerland resulting in a
+; random 10-15% increase in Swedish mobilization towards Allies:
+{
+#NAME= Axis DoW On Switzerland (Sweden->Allies) (25%)
+#POPUP= Sweden's Government Vigorously Protests Axis Attack On Switzerland
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 103
+#TRIGGER= 25
+; 10-15% mobilization increase towards Allies
+#MOBILIZATION= [10,15] [2]
+; Switzerland declared war on by Axis
+#CONDITION= 104 [1] [1]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; DIPLOMATIC CHECKS DUE TO AXIS DOW ON SWITZERLAND
+;
+;
+; Axis Declare War on Switzerland resulting in a
+; random 8-15% increase in US mobilization towards Allies:
+{
+#NAME= Axis DoW On Switzerland (USA->Allies)
+#POPUP= US Chastises German Ambassador After Axis Assault On Switzerland
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+; 8-15% mobilization increase towards Allies
+#MOBILIZATION= [8,15] [2]
+; Switzerland declared war on by Axis
+#CONDITION= 104 [1] [1]
 }
 
 ;
@@ -1453,6 +2280,28 @@
 
 ;
 ; Axis Declare War on Syria resulting in a
+; random 10-15% increase in Persian mobilization towards Allies:
+{
+#NAME= Axis DoW On Syria (Persia->Allies) (25%)
+#POPUP= Persia Concerned That Axis Will Push Further East 
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 82
+#TRIGGER= 25
+; 10-15% mobilization increase towards Allies
+#MOBILIZATION= [10,15] [2]
+; Syria declared war on by Axis
+#CONDITION= 105 [1] [1]
+}
+
+;
+; Axis Declare War on Syria resulting in a
 ; random 20-35% increase in Tunisia mobilization towards Allies:
 {
 #NAME= Axis DoW On Syria (Tunisia->Allies)
@@ -1469,6 +2318,53 @@
 #TRIGGER= 100
 ; 20-35% mobilization increase towards Allies
 #MOBILIZATION= [20,35] [2]
+; Syria declared war on by Axis
+#CONDITION= 105 [1] [1]
+}
+
+;
+; Axis Declare War on Syria resulting in a
+; random 35-45% increase in Turkish mobilization towards Allies:
+{
+#NAME= Axis DoW On Syria (Turkey->>Allies) (25%)
+#POPUP= Turkish Government Alarmed By The Axis Attack On Syria
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 111
+#TRIGGER= 25
+; 35-45% mobilization increase towards Allies
+#MOBILIZATION= [35,45] [2]
+; Syria declared war on by Axis
+#CONDITION= 105 [1] [1]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; DIPLOMATIC CHECKS DUE TO AXIS DOW ON SYRIA
+;
+;
+; Axis Declare War on Syria resulting in a
+; random 8-15% increase in US mobilization towards Allies:
+{
+#NAME= Axis DoW On Syria (USA->Allies)
+#POPUP= US and UK Strongly Protest Axis Intervention In Syria
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+; 8-15% mobilization increase towards Allies
+#MOBILIZATION= [8,15] [2]
 ; Syria declared war on by Axis
 #CONDITION= 105 [1] [1]
 }
@@ -1522,28 +2418,6 @@
 
 ;
 ; Axis Declare War on Tunisia resulting in a
-; random 20-35% increase in Vichy France mobilization towards Allies:
-{
-#NAME= Axis DoW On Tunisia (Vichy France->Allies)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 118
-#TRIGGER= 100
-; 20-35% mobilization increase towards Allies
-#MOBILIZATION= [20,35] [2]
-; Tunisia declared war on by Axis
-#CONDITION= 110 [1] [1]
-}
-
-;
-; Axis Declare War on Tunisia resulting in a
 ; random 20-35% increase in Syrian mobilization towards Allies:
 {
 #NAME= Axis DoW On Tunisia (Syria->Allies)
@@ -1564,58 +2438,11 @@
 #CONDITION= 110 [1] [1]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; DIPLOMATIC CHECKS DUE TO AXIS DOW ON ALGERIA
 ;
-;
-; Axis Declare War on Algeria resulting in an
-; 40-55% increase in Vichy France's mobilization towards Allies:
+; Axis Declare War on Tunisia resulting in a
+; random 20-35% increase in Vichy France mobilization towards Allies:
 {
-#NAME= Axis DoW on Vichy-Algeria (Vichy France->>Allies)
-#POPUP= Vichy France Severs All Diplomatic Relations With The Axis
-#IMAGE= 
-#SOUND= 
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 118
-#TRIGGER= 100
-; 40-55% mobilization increase towards Allies
-#MOBILIZATION= [40,55] [2]
-; Algeria(4) declared war on by Axis
-#CONDITION= 4 [1] [1]
-}
-
-;
-; Axis Declare War on Algeria resulting in an
-; 40-55% increase in Tunisia's mobilization towards Allies:
-{
-#NAME= Axis DoW on Vichy-Algeria (Tunisia->>Allies)
-#POPUP=
-#IMAGE= 
-#SOUND= 
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 110
-#TRIGGER= 100
-; 40-55% mobilization increase towards Allies
-#MOBILIZATION= [40,55] [2]
-; Algeria(4) declared war on by Axis
-#CONDITION= 4 [1] [1]
-}
-
-;
-; Axis Declare War on Algeria resulting in a
-; random 40-55% increase in Syria mobilization towards Allies:
-{
-#NAME= Axis DoW On Vichy-Algeria (Syria->>Allies)
+#NAME= Axis DoW On Tunisia (Vichy France->Allies)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1625,19 +2452,17 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 105
+#COUNTRY_ID= 118
 #TRIGGER= 100
-; 40-55% mobilization increase towards Allies
-#MOBILIZATION= [40,55] [2]
-; Algeria(4) declared war on by Axis
-#CONDITION= 4 [1] [1]
+; 20-35% mobilization increase towards Allies
+#MOBILIZATION= [20,35] [2]
+; Tunisia declared war on by Axis
+#CONDITION= 110 [1] [1]
 }
 
-; Axis Declare War on Algeria resulting in an
-; 8-15% increase in USA's mobilization towards Allies:
 {
-#NAME= Axis DoW on Vichy-Algeria (USA->Allies)
-#POPUP=
+#NAME= Axis DoW On Turkey (Greece->>Allies)
+#POPUP= Greece Commences A Mobilization Of Its Armed Forces
 #IMAGE= 
 #SOUND= 
 #FLAG= 1
@@ -1646,12 +2471,171 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
+#COUNTRY_ID= 46
+#TRIGGER= 100
+#MOBILIZATION= [30,50] [2]
+#CONDITION= 111 [1] [1]
+}
+
+;
+;
+; Axis Declare War on Turkey resulting in a
+; random 30-50% increase in Iraqi mobilization towards Allies:
+{
+#NAME= Axis DoW On Turkey (Iraq->>Allies)
+#POPUP= Iraq Reconsiders Its Relationship With The Axis
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 56
+#TRIGGER= 100
+; 30-50% mobilization increase towards Allies
+#MOBILIZATION= [30,50] [2]
+; Turkey declared war on by Axis
+#CONDITION= 111 [1] [1]
+}
+
+;
+;
+; Axis Declare War on Turkey resulting in a
+; random 75-85% increase in Persian mobilization towards Allies:
+{
+#NAME= Axis DoW On Turkey (Persia->>Allies)
+#POPUP= Persia Vigorously Condemns The Axis Attack On Turkey
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 82
+#TRIGGER= 100
+; 75-85% mobilization increase towards Allies
+#MOBILIZATION= [75,85] [2]
+; Turkey declared war on by Axis
+#CONDITION= 111 [1] [1]
+}
+
+;
+; Axis Declare War on Turkey resulting in a
+; random 50-75% increase in Syrian mobilization towards Allies:
+{
+#NAME= Axis DoW On Turkey (Syria->>Allies) (75%)
+#POPUP= Syria Mobilizes Its Forces Following The Axis Attack On Turkey
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 105
+#TRIGGER= 75
+; 50-75% mobilization increase towards Allies
+#MOBILIZATION= [50,75] [2]
+; Turkey declared war on by Axis
+#CONDITION= 111 [1] [1]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; DIPLOMATIC CHECKS DUE TO AXIS DOW ON TURKEY
+;
+; Axis Declare War on Turkey resulting in a
+; random 20-30% increase in US mobilization towards Allies:
+{
+#NAME= Axis DoW On Turkey (USA->Allies)
+#POPUP= US Alarmed Over Axis Aggression In Turkey
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
 #COUNTRY_ID= 115
 #TRIGGER= 100
-; 8-15% mobilization increase towards Allies
-#MOBILIZATION= [8,15] [2]
-; Algeria declared war on by Axis
-#CONDITION= 4 [1] [1]
+; 20-30% mobilization increase towards Allies
+#MOBILIZATION= [20,30] [2]
+; Turkey declared war on by Axis
+#CONDITION= 111 [1] [1]
+}
+
+;
+; Axis Declare War on Turkey resulting in a
+; random 25-35% increase in USSR mobilization towards Allies:
+{
+#NAME= Axis DoW On Turkey (USSR->Allies)
+#POPUP= The USSR Condemns Axis Aggression Against Turkey
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+; 25-35% mobilization increase towards Allies
+#MOBILIZATION= [25,35] [2]
+; Turkey declared war on by Axis
+#CONDITION= 111 [1] [1]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; AXIS DOW CHECKS (USSR->ALLIES)
+;
+;
+; Axis Declare War on USA resulting in a
+; random 10-15% increase in USSR mobilization towards Allies:
+{
+#NAME= Axis DoW On USA (USSR->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+; 10-15% mobilization increase towards Allies
+#MOBILIZATION= [10,15] [2]
+; USA declared war on by Axis
+#CONDITION= 115 [1] [1]
+}
+
+;
+; Axis Declare War on USSR resulting in a
+; random 7-10% increase in Bulgarian mobilization towards Axis:
+{
+#NAME= Axis DoW On USSR (Bulgaria->Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 19
+#TRIGGER= 100
+; 7-10% mobilization increase towards Axis
+#MOBILIZATION= [7,10] [1]
+; USSR declared war on by Axis
+#CONDITION= 116 [1] [1]
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1702,10 +2686,80 @@
 }
 
 ;
-; Axis Declare War on USSR resulting in a
-; random 7-10% increase in Bulgarian mobilization towards Axis:
+;
+; Axis Declare War on Vichy France resulting in a
+; random 25-45% increase in Vichy Algeria mobilization towards Allies:
 {
-#NAME= Axis DoW On USSR (Bulgaria->Axis)
+#NAME= Axis DoW On Vichy France (Algeria->>Allies)
+#POPUP= Vichy Territories Alarmed By Axis Aggression Towards Vichy France
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 4
+#TRIGGER= 100
+; 25-45% mobilization increase towards Allies
+#MOBILIZATION= [25,45] [2]
+; Vichy France declared war on by Axis
+#CONDITION= 118 [1] [1]
+}
+
+;
+;
+; Axis Declare War on Vichy France resulting in a
+; random 3-5% increase in Spanish mobilization towards Allies:
+{
+#NAME= Axis DoW On Vichy France (Spain->Allies) (50%)
+#POPUP= The Spanish Government Is Seriously Concerned Over Nearby Axis Aggression
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 99
+#TRIGGER= 50
+; 3-5% mobilization increase towards Allies
+#MOBILIZATION= [3,5] [2]
+; Vichy France declared war on by Axis
+#CONDITION= 118 [1] [1]
+}
+
+;
+;
+; Axis Declare War on Vichy France resulting in a
+; random 10-15% increase in Swiss mobilization towards Allies:
+{
+#NAME= Axis DoW On Vichy France (Switzerland->Allies) (25%)
+#POPUP= Swiss Government Is Shocked That The Axis Would Betray Vichy France
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 104
+#TRIGGER= 25
+; 10-15% mobilization increase towards Allies
+#MOBILIZATION= [10,15] [2]
+; Vichy France declared war on by Axis
+#CONDITION= 118 [1] [1]
+}
+
+;
+;
+; Axis Declare War on Vichy France resulting in a
+; random 25-45% increase in Syria mobilization towards Allies:
+{
+#NAME= Axis DoW On Vichy France (Syria->>Allies)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1715,23 +2769,46 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 19
+#COUNTRY_ID= 105
 #TRIGGER= 100
-; 7-10% mobilization increase towards Axis
-#MOBILIZATION= [7,10] [1]
-; USSR declared war on by Axis
-#CONDITION= 116 [1] [1]
+; 25-45% mobilization increase towards Allies
+#MOBILIZATION= [25,45] [2]
+; Vichy France declared war on by Axis
+#CONDITION= 118 [1] [1]
+}
+
+;
+;
+; Axis Declare War on Vichy France resulting in a
+; random 25-45% increase in Tunisia mobilization towards Allies:
+{
+#NAME= Axis DoW On Vichy France (Tunisia->>Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 110
+#TRIGGER= 100
+; 25-45% mobilization increase towards Allies
+#MOBILIZATION= [25,45] [2]
+; Vichy France declared war on by Axis
+#CONDITION= 118 [1] [1]
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; AXIS DOW CHECKS (USSR->ALLIES)
+; DIPLOMATIC CHECKS DUE TO AXIS DOW ON VICHY FRANCE 
 ;
 ;
-; Axis Declare War on USA resulting in a
-; random 10-15% increase in USSR mobilization towards Allies:
+; Axis Declare War on Vichy France resulting in a
+; random 8-15% increase in US mobilization towards Allies:
 {
-#NAME= Axis DoW On USA (USSR->Allies)
-#POPUP=
+#NAME= Axis DoW On Vichy France (USA->Allies)
+#POPUP= US and UK Issue Joint Condemnation Of Axis Betrayal Of Sovereign Vichy
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -1740,144 +2817,56 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 116
-#TRIGGER= 100
-; 10-15% mobilization increase towards Allies
-#MOBILIZATION= [10,15] [2]
-; USA declared war on by Axis
-#CONDITION= 115 [1] [1]
-}
-
-;
-; Axis Declare War on Baltic States resulting in a
-; random 8-15% increase in USSR mobilization towards Allies:
-{
-#NAME= Axis DoW On Lithuania (USSR->Allies)
-#POPUP= Stalin Alarmed By Axis Aggression - Abandons Molotov-Ribbentrop Pact
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 116
+#COUNTRY_ID= 115
 #TRIGGER= 100
 ; 8-15% mobilization increase towards Allies
 #MOBILIZATION= [8,15] [2]
-; Lithuania declared war on by Axis
-#CONDITION= 64 [1] [1]
+; Vichy France declared war on by Axis
+#CONDITION= 118 [1] [1]
 }
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; DIPLOMATIC CHECKS DUE TO AXIS DOW ON GREECE
 ;
-; Axis Declare War on Latvia resulting in a
-; random 25-35% increase in USSR mobilization towards Allies:
+;
+; Axis Declare War on Yugoslavia resulting in a
+; random 30-45% increase in Greek mobilization towards Allies:
 {
-#NAME= Axis DoW On Latvia (USSR->Allies)
-#POPUP=
-#IMAGE=
+#NAME= Axis DoW On Yugoslavia (Greece->>Allies)
+#POPUP= Greece Signs A Defensive Pact With The UK
+#IMAGE= 
 #SOUND=
 #FLAG= 1
 #TYPE= 0
 #AI= 0
+#LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 116
+#COUNTRY_ID= 46
 #TRIGGER= 100
-; 25-40% mobilization increase towards Allies
-#MOBILIZATION= [25,40] [2]
-; Latvia declared war on by Axis
-#CONDITION= 61 [1] [1]
+#MOBILIZATION= [30,45] [2]
+#CONDITION= 120 [1] [1]
 }
 
+
 ;
-; Axis Declare War on Estonia resulting in a
-; random 15-20% increase in USSR mobilization towards Allies:
+; Axis Declare War on Yugoslavia resulting in a
+; random 5-10% increase in Turkish mobilization towards Allies:
 {
-#NAME= Axis DoW On Estonia (USSR->Allies)
-#POPUP=
-#IMAGE=
-#SOUND=
+#NAME= Axis DoW On Yugoslavia (Turkey->Allies) (25%)
+#POPUP= Turkey Is Worried By Germany's Aggression In The Balkans
+#IMAGE= 
+#SOUND= 
 #FLAG= 1
 #TYPE= 0
 #AI= 0
+#LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 116
-#TRIGGER= 100
-; 15-20% mobilization increase towards Allies
-#MOBILIZATION= [25,40] [2]
-; Estonia declared war on by Axis
-#CONDITION= 38 [1] [1]
-}
-
-;
-; Axis Declare War on Turkey resulting in a
-; random 25-35% increase in USSR mobilization towards Allies:
-{
-#NAME= Axis DoW On Turkey (USSR->Allies)
-#POPUP= The USSR Condemns Axis Aggression Against Turkey
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 116
-#TRIGGER= 100
-; 25-35% mobilization increase towards Allies
-#MOBILIZATION= [25,35] [2]
-; Turkey declared war on by Axis
-#CONDITION= 111 [1] [1]
-}
-
-;
-; Axis Declare War on Finland resulting in a
-; random 5-15% increase in USSR mobilization towards Allies:
-{
-#NAME= Axis DoW On Finland (USSR->Allies)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 116
-#TRIGGER= 100
-; 5-15% mobilization increase towards Allies
-#MOBILIZATION= [5,15] [2]
-; Finland declared war on by Axis
-#CONDITION= 39 [1] [1]
-}
-
-;
-; Axis Declare War on Romania resulting in a
-; random 5-15% increase in USSR mobilization towards Allies:
-{
-#NAME= Axis DoW On Romania (USSR->Allies)
-#POPUP= Stalin Is Concerned At The Axis Attack On Romania
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 116
-#TRIGGER= 100
-; 5-15% mobilization increase towards Allies
-#MOBILIZATION= [5,15] [2]
-; Romania declared war on by Axis
-#CONDITION= 93 [1] [1]
+#COUNTRY_ID= 111
+#TRIGGER= 25
+#MOBILIZATION= [5,10] [2]
+#CONDITION= 120 [1] [1]
 }
 
 ;
@@ -1903,10 +2892,11 @@
 }
 
 ;
-; Axis Declare War on Iraq resulting in a
-; random 5-15% increase in USSR mobilization towards Allies:
+;
+; France surrenders resulting in a random 3-5% increase
+; in Bulgarian mobilization towards Axis:
 {
-#NAME= Axis DoW On Iraq (USSR->Allies)
+#NAME= France Surrenders To Axis (Bulgaria->Axis)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1916,588 +2906,21 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 116
+#COUNTRY_ID= 19
 #TRIGGER= 100
-; 10-15% mobilization increase towards Allies
-#MOBILIZATION= [10,15] [2]
-; Iraq declared war on by Axis
-#CONDITION= 56 [1] [1]
+; 3-5% mobilization increase towards Axis
+#MOBILIZATION= [3,5] [1]
+; France surrenders to Axis forces
+#CONDITION= 40 [0] [1]
 }
 
 ;
-; Axis Declare War on Persia resulting in a
-; random 20-30% increase in USSR mobilization towards Allies:
+;
+; France surrenders resulting in a random 3-5% increase
+; in Hungarian mobilization towards Axis:
 {
-#NAME= Axis DoW On Persia (USSR->Allies)
+#NAME= France Surrenders To Axis (Hungary->Axis)
 #POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 116
-#TRIGGER= 100
-; 20-30% mobilization increase towards Allies
-#MOBILIZATION= [20,30] [2]
-; Persia declared war on by Axis
-#CONDITION= 82 [1] [1]
-}
-
-;
-; Axis Declare War on Hungary resulting in a
-; random 2-5% increase in USSR mobilization towards Allies:
-{
-#NAME= Axis DoW on Hungary (USSR->Allies)
-#POPUP= The USSR Is Concerned By The Axis Attack On Hungary
-#IMAGE= 
-#SOUND= 
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 116
-#TRIGGER= 50
-#MOBILIZATION= [2,5] [2]
-#CONDITION= 52 [1] [1]
-}
-
-;
-; Axis Declare War on Bulgaria resulting in a
-; random 5-8% increase in USSR mobilization towards Allies:
-{
-#NAME= Axis DoW on Bulgaria (USSR->Allies)
-#POPUP= 
-#IMAGE=
-#SOUND= 
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#MOBILIZATION= [5,8] [2]
-#CONDITION= 19 [1] [1]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;DIPLOMATIC CHECKS DUE TO ALLIED DOW ON ITALY
-;
-;
-; Allies Declare War on Italy resulting in a
-; random 2-4% increase in US mobilization towards Axis:
-{
-#NAME= Allies DoW On Italy (USA->Axis)
-#POPUP= Congressional Isolationists React Strongly Against Allied War On Italy
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; Allies declare war on Italy
-#CONDITION= 59 [1] [2]
-}
-
-;
-; Allies Declare War on Italy resulting in a
-; random 10-15% increase in Spain mobilization toward Axis:
-{
-#NAME= Allies DoW On Italy (Spain->Axis)
-#POPUP= Spain Protests Against The Allied Attack Against Italy
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 99
-#TRIGGER= 100
-; 10-15% mobilization increase toward Axis
-#MOBILIZATION= [10,15] [1]
-; Allies declare war on Italy
-#CONDITION= 59 [1] [2]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;DIPLOMATIC CHECKS DUE TO ALLIED DOW ON DENMARK
-;
-;
-; Allies Declare War on Denmark resulting in a
-; random 10-15% increase in US mobilization towards Axis:
-{
-#NAME= Allies DoW On Denmark (USA->Axis)
-#POPUP= US Congress Reacts Strongly Against War On Neutral Denmark
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; Allies declare war on Denmark
-#CONDITION= 31 [1] [2]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;DIPLOMATIC CHECKS DUE TO ALLIED DOW ON NETHERLANDS
-;
-;
-; Allies Declare War on Netherlands resulting in a
-; random 5-10% increase in US mobilization towards Axis:
-{
-#NAME= Allies DoW On Netherlands (USA->Axis)
-#POPUP= Congressional Isolationists React Strongly Against Allied War On Netherlands
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-; 5-10% mobilization increase towards Axis
-#MOBILIZATION= [5,10] [1]
-; Allies declare war on Netherlands
-#CONDITION= 73 [1] [2]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;DIPLOMATIC CHECKS DUE TO ALLIED DOW ON LUXEMBOURG
-;
-;
-; Allies Declare War on Luxembourg resulting in a
-; random 5-10% increase in US mobilization towards Axis:
-{
-#NAME= Allies DoW On Luxembourg (USA->Axis)
-#POPUP= US Congress Reacts Strongly Against War On Neutral Luxembourg
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-; 5-10% mobilization increase towards Axis
-#MOBILIZATION= [5,10] [1]
-; Allies declare war on Luxembourg
-#CONDITION= 65 [1] [2]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;DIPLOMATIC CHECKS DUE TO ALLIED DOW ON BELGIUM
-;
-;
-; Allies Declare War on Belgium resulting in a
-; random 10-15% increase in US mobilization towards Axis:
-{
-#NAME= Allies DoW On Belgium (USA->Axis)
-#POPUP= Congressional Isolationists React Strongly Against Allied War On Belgium
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; Allies declare war on Belgium
-#CONDITION= 10 [1] [2]
-}
-
-;
-; Allies Declare War on Belgium resulting in a
-; random 10-15% increase in Swiss mobilization toward Axis:
-{
-#NAME= Allies DoW On Belgium (Switzerland->Axis)
-#POPUP= Swiss Government Protests Allied Invasion Of Belgium
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 104
-#TRIGGER= 50
-; 10-15% mobilization increase toward Axis
-#MOBILIZATION= [10,15] [1]
-; Allies declare war on Belgium
-#CONDITION= 10 [1] [2]
-}
-
-;
-; Allies Declare War on Belgium resulting in a
-; random 10-15% increase in Swedish mobilization toward Axis:
-{
-#NAME= Allies DoW On Belgium (Sweden->Axis)
-#POPUP= Swedish Government Protests Allied Invasion Of Belgium
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 103
-#TRIGGER= 50
-; 10-15% mobilization increase toward Axis
-#MOBILIZATION= [10,15] [1]
-; Allies declare war on Belgium
-#CONDITION= 10 [1] [2]
-}
-
-;
-; Allies Declare War on Belgium resulting in a
-; random 10-15% increase in Spanish mobilization toward Axis:
-{
-#NAME= Allies DoW On Belgium (Spain->Axis)
-#POPUP= Franco Denounces The Allied Invasion Of Belgium
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 99
-#TRIGGER= 75
-; 10-15% mobilization increase toward Axis
-#MOBILIZATION= [10,15] [1]
-; Allies declare war on Belgium
-#CONDITION= 10 [1] [2]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;DIPLOMATIC CHECKS DUE TO ALLIED DOW ON IRELAND
-;
-;
-; Allies Declare War on Ireland resulting in a
-; random 15-25% increase in US mobilization towards Axis:
-{
-#NAME= Allies DoW On Ireland (USA->Axis)
-#POPUP= Pro Irish Americans Pressure Congress After Allied War On Ireland
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-; 15-25% mobilization increase towards Axis
-#MOBILIZATION= [15,25] [1]
-; Allies declare war on Ireland
-#CONDITION= 57 [1] [2]
-}
-
-; Allies Declare War on Ireland resulting in a
-; random 10-15% increase in Swiss mobilization towards Axis:
-{
-#NAME= Allies DoW On Ireland (Switzerland->Axis)
-#POPUP= Switzerland Shocked By Allied War On Ireland
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 104
-#TRIGGER= 50
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; Allies declare war on Ireland
-#CONDITION= 57 [1] [2]
-}
-
-; Allies Declare War on Ireland resulting in a
-; random 10-15% increase in Swedish mobilization towards Axis:
-{
-#NAME= Allies DoW On Ireland (Sweden->Axis)
-#POPUP= Sweden Condemns Allied War On Ireland
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 103
-#TRIGGER= 50
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; Allies declare war on Ireland
-#CONDITION= 57 [1] [2]
-}
-
-; Allies Declare War on Ireland resulting in a
-; random 10-15% increase in Spanish mobilization towards Axis:
-{
-#NAME= Allies DoW On Ireland (Spain->Axis)
-#POPUP= Spain Is Concerned At Unwarranted Allied Aggression
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 99
-#TRIGGER= 50
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; Allies declare war on Ireland
-#CONDITION= 57 [1] [2]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;DIPLOMATIC CHECKS DUE TO ALLIED DOW ON NORWAY
-;
-;
-; Allies Declare War on Norway resulting in a
-; random 5-10% increase in US mobilization towards Axis:
-{
-#NAME= Allies DoW On Norway (USA->Axis)
-#POPUP= US Concerned Over Allied Aggression In Norway
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-; 5-10% mobilization increase towards Axis
-#MOBILIZATION= [5,10] [1]
-; Allies declare war on Norway
-#CONDITION= 78 [1] [2]
-}
-
-;
-; Allies Declare War on Norway resulting in a
-; random 10-15% increase in Swiss mobilization towards Axis:
-{
-#NAME= Allies DoW On Norway (Switzerland->Axis) (25% Chance)
-#POPUP= Switzerland Protests Against Allied Aggression In Norway
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 104
-#TRIGGER= 25
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; Allies declare war on Norway
-#CONDITION= 78 [1] [2]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;DIPLOMATIC CHECKS DUE TO WESTERN ALLIED DOW ON SWEDEN
-;
-;
-; Allies Declare War on Sweden resulting in a
-; random 10-20% increase in US mobilization towards Axis:
-{
-#NAME= Allies DoW On Sweden (USA->Axis)
-#POPUP= US Congress Reacts Strongly Against War On Neutral Sweden
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-; 10-20% mobilization increase towards Axis
-#MOBILIZATION= [10,20] [1]
-; Allies declare war on Sweden
-#CONDITION= 103 [1] [2]
-}
-
-; Allies Declare War on Sweden resulting in a
-; random 12-18% increase in Swiss mobilization towards Axis:
-{
-#NAME= Allies DoW On Sweden (Switzerland->Axis)
-#POPUP= Switzerland Strongly Condemns Allied DoW On Sweden
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 104
-#TRIGGER= 50
-; 12-18% mobilization increase towards Axis
-#MOBILIZATION= [12,18] [1]
-; Allies declare war on Sweden
-#CONDITION= 103 [1] [2]
-}
-
-;
-; Allies Declare War on Sweden resulting in a
-; random 10-20% increase in Finnish mobilization towards Axis:
-{
-#NAME= Allies DoW On Sweden (Finland->Axis)
-#POPUP= Finland Is Alarmed By Allied Aggression Against Sweden
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 39
-#TRIGGER= 75
-; 10-20% mobilization increase towards Axis
-#MOBILIZATION= [10,20] [1]
-; Allies declare war on Sweden
-#CONDITION= 103 [1] [2]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;DIPLOMATIC CHECKS DUE TO ALLIED DOW ON SPAIN
-;
-;
-; Allies Declare War on Spain resulting in a
-; random 10-20% increase in US mobilization towards Axis:
-{
-#NAME= Allies DoW On Spain (USA->Axis)
-#POPUP= South America Condemns Allied Attack On Spain - Pressures American Government
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-; 10-20% mobilization increase towards Axis
-#MOBILIZATION= [10,20] [1]
-; Allies declare war on Spain
-#CONDITION= 99 [1] [2]
-}
-
-; Allies Declare War on Spain resulting in a
-; random 8-14% increase in Swiss mobilization towards Axis:
-{
-#NAME= Allies DoW On Spain (Switzerland->Axis)
-#POPUP= Switzerland Lodges A Vehement Protest Over Allied DoW On Spain
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 104
-#TRIGGER= 50
-; 8-14% mobilization increase towards Axis
-#MOBILIZATION= [8,14] [1]
-; Allies declare war on Spain
-#CONDITION= 99 [1] [2]
-}
-
-;
-; Allies Declare War on Spain resulting in a
-; random 14-24% increase in Vichy France's mobilization towards Axis:
-{
-#NAME= Allies DoW On Spain (Vichy France->Axis)
-#POPUP= Vichy France Is Concerned At The Allied Attack On Spain
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 118
-#TRIGGER= 50
-; 14-24% mobilization increase towards Axis
-#MOBILIZATION= [14,24] [1]
-; Allies declare war on Spain
-#CONDITION= 99 [1] [2]
-}
-
-;
-; Allies Declare War on Spain resulting in a
-; random 10-15% increase in Yugoslavian mobilization towards Axis:
-{
-#NAME= Allies DoW On Spain (Yugoslavia->Axis) (25% Chance)
-#POPUP= Yugoslavia Protests Against The Allied Attack On Spain
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 120
-#TRIGGER= 25
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; Allies declare war on Spain
-#CONDITION= 99 [1] [2]
-}
-
-;
-; Allies Declare War on Spain resulting in a
-; random 10-15% increase in Hungarian mobilization towards Axis:
-{
-#NAME= Allies DoW On Spain (Hungary->Axis) (25% Chance)
-#POPUP= Hungary Announces Its Support For Franco's Spain
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -2507,747 +2930,20 @@
 #LINK= 0[0]
 #LEVEL= 0
 #COUNTRY_ID= 52
-#TRIGGER= 25
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; Allies declare war on Spain
-#CONDITION= 99 [1] [2]
-}
-
-;
-; Allies Declare War on Spain resulting in a
-; random 10-15% increase in Romanian mobilization towards Axis:
-{
-#NAME= Allies DoW On Spain (Romania->Axis) (25% Chance)
-#POPUP= Romania Denounces The Allied Attack On Spain
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 93
-#TRIGGER= 25
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; Allies declare war on Spain
-#CONDITION= 99 [1] [2]
-}
-
-;
-; Allies Declare War on Spain resulting in a
-; random 5-10% increase in Bulgarian mobilization towards Axis:
-{
-#NAME= Allies DoW On Spain (Bulgaria->Axis) (25% Chance)
-#POPUP= Bulgaria Pressured By Germany To Protest Allied Attack On Spain
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 19
-#TRIGGER= 25
-; 5-10% mobilization increase towards Axis
-#MOBILIZATION= [5,10] [1]
-; Allies declare war on Spain
-#CONDITION= 99 [1] [2]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;DIPLOMATIC CHECKS DUE TO ALLIED DOW ON PORTUGAL
-;
-; Allied Declare War on Portugal resulting in a
-; random 35-45% increase in Spanish mobilization towards Axis:
-{
-#NAME= Allies DoW On Portugal (Spain->>Axis)
-#POPUP= Franco Is Outraged At The Allied Attack On Portugal
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 99
-#TRIGGER= 100
-; 35-45% mobilization increase towards Axis
-#MOBILIZATION= [35,45] [1]
-; Portugal declared war on by Allies
-#CONDITION= 87 [1] [2]
-}
-
-; Allied Declare War on Portugal resulting in a
-; random 10-15% increase in Swiss mobilization towards Axis:
-{
-#NAME= Allies DoW On Portugal (Switzerland->Axis) (25% Chance)
-#POPUP= Switzerland Expresses Shock Over Allied Aggression In Portugal
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 104
-#TRIGGER= 25
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; Portugal declared war on by Allies
-#CONDITION= 87 [1] [2]
-}
-
-; Allied Declare War on Portugal resulting in a
-; random 10-15% increase in Swedish mobilization towards Axis:
-{
-#NAME= Allies DoW On Portugal (Sweden->Axis) (25% Chance)
-#POPUP= Sweden Lodges A Strong Protest Against The Allied Attack On Portugal
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 103
-#TRIGGER= 25
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; Portugal declared war on by Allies
-#CONDITION= 87 [1] [2]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; DIPLOMATIC CHECKS DUE TO ALLIED DOW ON SYRIA
-;
-;
-; Allies Declare War on Syria resulting in a
-; random 20-30% increase in Iraqi mobilization towards Axis:
-{
-#NAME= Allies DoW On Syria (Iraq->Axis)
-#POPUP= Iraqis Are Up In Arms Over The Allied Attack On Their Neighbor
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 56
-#TRIGGER= 100
-; 20-30% mobilization increase towards Axis
-#MOBILIZATION= [20,30] [1]
-; Allies declare war on Syria
-#CONDITION= 105 [1] [2]
-}
-
-;
-; Allies Declare War on Syria resulting in a
-; random 10-15% increase in Persian mobilization towards Axis:
-{
-#NAME= Allies DoW On Syria (Persia->Axis) (25% Chance)
-#POPUP= Persia Begins Defense Preparations After Allied Attack On Syria
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 82
-#TRIGGER= 25
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; Allies declare war on Syria
-#CONDITION= 105 [1] [2]
-}
-
-;
-; Allies Declare War on Syria resulting in a
-; random 10-15% increase in Turkish mobilization towards Axis:
-{
-#NAME= Allies DoW On Syria (Turkey->Axis) (25% Chance)
-#POPUP= Turkish Government Concerned About Allied Attack On Nearby Syria
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 111
-#TRIGGER= 25
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; Allies declare war on Syria
-#CONDITION= 105 [1] [2]
-}
-
-;
-; Allies Declare War on Syria resulting in a
-; random 10-15% increase in Vichy France's mobilization towards Axis:
-{
-#NAME= Allies DoW On Syria (Vichy France->Axis)
-#POPUP= Vichy France Orders Syria Garrison To Stand Firm, Deplores Allied Aggression
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 118
-#TRIGGER= 50
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; Allies declare war on Syria
-#CONDITION= 105 [1] [2]
-}
-
-;
-; Allies Declare War on Syria resulting in a
-; random 5-8% increase in Tunisian mobilization towards Axis:
-{
-#NAME= Allies DoW On Syria (Tunisia->Axis) (25% Chance)
-#POPUP= Vichy France Orders Tunisia To Condemn Allied Aggression
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 110
-#TRIGGER= 25
-; 5-8% mobilization increase towards Axis
-#MOBILIZATION= [5,8] [1]
-; Allies declare war on Syria
-#CONDITION= 105 [1] [2]
-}
-
-;
-; Allies Declare War on Syria resulting in a
-; random 5-8% increase in Algerian mobilization towards Axis:
-{
-#NAME= Allies DoW On Syria (Algeria->Axis) (25% Chance)
-#POPUP= Vichy Algeria Protests The Allied Aggression Against Syria
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 4
-#TRIGGER= 25
-; 5-8% mobilization increase towards Axis
-#MOBILIZATION= [5,8] [1]
-; Allies declare war on Syria
-#CONDITION= 105 [1] [2]
-}
-
-;
-; Allies Declare War on Tunisia resulting in a
-; random 3-5% increase in Vichy France's mobilization towards Axis:
-{
-#NAME= Allies DoW On Tunisia (Vichy France->Axis)
-#POPUP= Vichy Territories Condemn Aggression Against Tunisia
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 118
 #TRIGGER= 100
 ; 3-5% mobilization increase towards Axis
 #MOBILIZATION= [3,5] [1]
-; Allies declare war on Tunisia
-#CONDITION= 110 [1] [2]
+; France surrenders to Axis forces
+#CONDITION= 40 [0] [1]
 }
 
 ;
-; Allies Declare War on Tunisia resulting in a
-; random 3-5% increase in Algeria's mobilization towards Axis:
+;
+; France surrenders resulting in a random 3-5% increase
+; in Romanian mobilization towards Axis:
 {
-#NAME= Allies DoW On Tunisia (Algeria->Axis)
+#NAME= France Surrenders To Axis (Romania->Axis)
 #POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 4
-#TRIGGER= 100
-; 3-5% mobilization increase towards Axis
-#MOBILIZATION= [3,5] [1]
-; Allies declare war on Tunisia
-#CONDITION= 110 [1] [2]
-}
-
-;
-; Allies Declare War on Tunisia resulting in a
-; random 3-5% increase in Syria's mobilization towards Axis:
-{
-#NAME= Allies DoW On Tunisia (Syria->Axis)
-#POPUP= Vichy Territories Condemn Aggression Against Tunisia
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 105
-#TRIGGER= 100
-; 3-5% mobilization increase towards Axis
-#MOBILIZATION= [3,5] [1]
-; Allies declare war on Tunisia
-#CONDITION= 110 [1] [2]
-}
-
-;
-; Allies Declare War on Iraq resulting in a
-; random 20-35% increase in Turkish mobilization towards Axis:
-{
-#NAME= Allies DoW On Iraq (Turkey->Axis)
-#POPUP= Turkish Government Protests Allied Attack On Iraq
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 111
-#TRIGGER= 100
-; 20-35% mobilization increase towards Axis
-#MOBILIZATION= [20,35] [1]
-; Allies declare war on Iraq
-#CONDITION= 56 [1] [2]
-}
-
-;
-; Allies Declare War on Iraq resulting in a
-; random 10-15% increase in Persian mobilization towards Axis:
-{
-#NAME= Allies DoW On Iraq (Persia->Axis)
-#POPUP= Persia Alarmed By Allied Attack On Nearby Iraq
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 82
-#TRIGGER= 100
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; Allies declare war on Iraq
-#CONDITION= 56 [1] [2]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;DIPLOMATIC CHECKS DUE TO ALLIED DOW ON TUNISIA
-;
-;
-; Allies Declare War on Tunisia resulting in a
-; random 3-5% increase in US mobilization towards Axis:
-{
-#NAME= Allies DoW On Tunisia (USA->Axis)
-#POPUP= The USA Is Concerned At Allied Aggression In The Mediterranean
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-; 3-5% mobilization increase towards Axis
-#MOBILIZATION= [3,5] [1]
-; Allies declare war on Tunisia
-#CONDITION= 110 [1] [2]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;DIPLOMATIC CHECKS DUE TO ALLIED DOW ON VICHY ALGERIA
-;
-;
-; Allies Declare War on Vichy Algeria resulting in a
-; random 3-5% increase in US mobilization towards Axis:
-{
-#NAME= Allies DoW On Vichy Algeria (USA->Axis)
-#POPUP= The USA Is Concerned At Allied Aggression In Algeria
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-; 3-5% mobilization increase towards Axis
-#MOBILIZATION= [3,5] [1]
-; Algeria declared war on by Allies
-#CONDITION= 4 [1] [2]
-}
-
-;
-; Allies Declare War on Algeria resulting in an
-; 20-35% increase in Vichy France's mobilization towards Axis:
-{
-#NAME= Allies DoW on Vichy-Algeria (Vichy France->Axis)
-#POPUP= Vichy France Severs All Diplomatic Relations With The Allies
-#IMAGE= 
-#SOUND= 
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 118
-#TRIGGER= 100
-; 20-35% mobilization increase towards Axis
-#MOBILIZATION= [20,35] [1]
-; Algeria declared war on by Allies
-#CONDITION= 4 [1] [2]
-}
-
-;
-; Allies Declare War on Algeria resulting in an
-; 20-35% increase in Tunisia's mobilization towards Axis:
-{
-#NAME= Allies DoW on Vichy-Algeria (Tunisia->Axis)
-#POPUP=
-#IMAGE= 
-#SOUND= 
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 110
-#TRIGGER= 100
-; 20-35% mobilization increase towards Axis
-#MOBILIZATION= [20,35] [1]
-; Algeria declared war on by Allies
-#CONDITION= 4 [1] [2]
-}
-
-;
-; Allies Declare War on Algeria resulting in an
-; 20-35% increase in Syria's mobilization towards Axis:
-{
-#NAME= Allies DoW on Vichy-Algeria (Syria->Axis)
-#POPUP=
-#IMAGE= 
-#SOUND= 
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 105
-#TRIGGER= 100
-; 20-35% mobilization increase towards Axis
-#MOBILIZATION= [20,35] [1]
-; Algeria declared war on by Allies
-#CONDITION= 4 [1] [2]
-}
-
-;
-; Allies Declare War on Algeria resulting in an
-; 5-7% increase in Spanish mobilization towards Axis:
-{
-#NAME= Allies DoW on Vichy-Algeria (Spain->Axis) (25% Chance)
-#POPUP= Franco Protests Against The Allied Attack On Algeria
-#IMAGE= 
-#SOUND= 
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 99
-#TRIGGER= 25
-; 5-7% mobilization increase towards Axis
-#MOBILIZATION= [5,7] [1]
-; Algeria declared war on by Allies
-#CONDITION= 4 [1] [2]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; DIPLOMATIC CHECKS DUE TO ALLIED DOW ON GREECE
-;
-;
-; Axis Declare War on Yugoslavia resulting in a
-; random 30-45% increase in Greek mobilization towards Allies:
-{
-#NAME= Axis DoW on Yugoslavia (Greece->>Allies)
-#POPUP= Greece Signs A Defensive Pact With The UK
-#IMAGE= 
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 46
-#TRIGGER= 100
-#MOBILIZATION= [30,45] [2]
-#CONDITION= 120 [1] [1]
-}
-
-;
-; Allies Declare War on Greece resulting in a
-; random 6-10% increase in Turkish mobilization towards Allies:
-{
-#NAME= Allies DoW On Greece (Turkey->Allies) (25% Chance)
-#POPUP= Turkey Supports Allied Intervention In Greece
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 111
-#TRIGGER= 25
-; 6-10% mobilization increase towards Allies
-#MOBILIZATION= [6,10] [2]
-; Allies declare war on Greece
-#CONDITION= 46 [1] [2]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; DIPLOMATIC CHECKS DUE TO AXIS DOW ON GREECE
-;
-;
-; Axis Declare War on Greece resulting in a
-; random 10-15% increase in Yugoslavian mobilization towards Allies:
-{
-#NAME= Axis DoW On Greece (Yugoslavia->Allies)
-#POPUP= Yugoslavia Condemns Axis Aggression In The Balkans
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-; Yugoslavia(120)
-#COUNTRY_ID= 120
-#TRIGGER= 100
-; 10-15% mobilization increase towards Allies
-#MOBILIZATION= [10,15] [2]
-; Axis declare war on Greece(46)
-#CONDITION= 46 [1] [1]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; DIPLOMATIC CHECKS DUE TO USSR DOW ON PERSIA
-;
-;
-; USSR Declares War on Persia resulting in a
-; random 10-15% increase in Iraqi mobilization towards Axis:
-{
-#NAME= USSR DoW On Persia (Iraq->Axis)
-#POPUP= Iraqi Nationalists Condemn The Assault On Persia
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-; Iraq(56)
-#COUNTRY_ID= 56
-#TRIGGER= 75
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; USSR declares war on Persia(82)
-#CONDITION= 82 [1] [2]
-}
-
-;
-; USSR Declares War on Persia resulting in a
-; random 10-15% increase in Syrian mobilization towards Axis:
-{
-#NAME= USSR DoW On Persia (Syria->Axis) (25% Chance)
-#POPUP= Vichy France Instructs Syria To Issue Stern Protest
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 118
-#TRIGGER= 25
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; USSR declares war on Persia(82)
-#CONDITION= 82 [1] [2]
-}
-
-;
-; USSR Declares War on Persia resulting in a
-; random 10-15% increase in Turkish mobilization towards Axis:
-{
-#NAME= USSR DoW On Persia (Turkey->Axis)
-#POPUP= Turkish Government Appeases Arab Hard-Liners By Denouncing Aggression In Persia
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 111
-#TRIGGER= 50
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; USSR declares war on Persia
-#CONDITION= 82 [1] [2]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; DIPLOMATIC CHECKS DUE TO USSR DOW ON IRAQ
-;
-;
-; USSR Declares War on Iraq resulting in a
-; random 20-30% increase in Syrian mobilization towards Axis:
-{
-#NAME= USSR DoW On Iraq (Syria->Axis)
-#POPUP= Vichy Syria Vigorously Opposes The Attack On Iraq
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 105
-#TRIGGER= 75
-; 20-30% mobilization increase towards Axis
-#MOBILIZATION= [20,30] [1]
-; USSR declares war on Iraq
-#CONDITION= 56 [1] [2]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; DIPLOMATIC CHECKS DUE TO USSR DOW ON TURKEY
-;
-;
-; USSR Declares War on Turkey resulting in a
-; random 5-10% increase in US mobilization towards Axis:
-{
-#NAME= USSR DoW On Turkey (USA->Axis)
-#POPUP= US Congress Reacts Firmly Against Aggression In Turkey
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-; 5-10% mobilization increase towards Axis
-#MOBILIZATION= [5,10] [1]
-; USSR declares war on Turkey
-#CONDITION= 111 [1] [2]
-}
-
-;
-; USSR Declares War on Turkey resulting in a
-; random 5-10% increase in Greek mobilization towards Axis:
-{
-#NAME= USSR DoW On Turkey (Greece->Axis)
-#POPUP= Greece Is Concerned At The Allied Attack On Turkey
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 46
-#TRIGGER= 75
-; 5-10% mobilization increase towards Axis
-#MOBILIZATION= [5,10] [1]
-; USSR declares war on Turkey
-#CONDITION= 111 [1] [2]
-}
-
-;
-; USSR Declares War on Turkey resulting in a
-; random 10-15% increase in Bulgarian mobilization towards Axis:
-{
-#NAME= USSR DoW On Turkey (Bulgaria->Axis) (25% Chance)
-#POPUP= Bulgaria Is Alarmed By The Aggression Against Turkey
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 19
-#TRIGGER= 25
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; USSR declares war on Turkey
-#CONDITION= 111 [1] [2]
-}
-
-;
-; USSR Declares War on Turkey resulting in a
-; random 8-12% increase in Romanian mobilization towards Axis:
-{
-#NAME= USSR DoW On Turkey (Romania->Axis)
-#POPUP= Romania Is Alarmed By The Aggression Against Turkey
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -3258,18 +2954,21 @@
 #LEVEL= 0
 #COUNTRY_ID= 93
 #TRIGGER= 100
-; 8-12% mobilization increase towards Axis
-#MOBILIZATION= [8,12] [1]
-; USSR declares war on Turkey
-#CONDITION= 111 [1] [2]
+; 3-5% mobilization increase towards Axis
+#MOBILIZATION= [3,5] [1]
+; France surrenders to Axis forces
+#CONDITION= 40 [0] [1]
 }
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; DIPLOMATIC CHECKS DUE TO FRENCH SURRENDER
 ;
-; USSR Declares War on Turkey resulting in a
-; random 8-12% increase in Vichy France's mobilization towards Axis:
+;
+; France surrenders resulting in a random 10-12% increase
+; in US mobilization towards Allies:
 {
-#NAME= USSR DoW On Turkey (Vichy France->Axis) (25% Chance)
-#POPUP= Vichy France Condemns The Attack On Turkey
+#NAME= France Surrenders To Axis (USA->Allies)
+#POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -3278,20 +2977,21 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 118
-#TRIGGER= 25
-; 8-12% mobilization increase towards Axis
-#MOBILIZATION= [8,12] [1]
-; USSR declares war on Turkey
-#CONDITION= 111 [1] [2]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+; 10-12% mobilization increase towards Allies
+#MOBILIZATION= [10,12] [2]
+; France surrenders to Axis forces
+#CONDITION= 40 [0] [1]
 }
 
 ;
-; USSR Declares War on Turkey resulting in a
-; random 15-25% increase in Syrian mobilization towards Axis:
+;
+; France surrenders resulting in a random 3-5% increase
+; in Soviet mobilization towards Allies:
 {
-#NAME= USSR DoW On Turkey (Syria->Axis) (25% Chance)
-#POPUP= Syria Protests The Attack On Turkey
+#NAME= France Surrenders To Axis (USSR->Allies)
+#POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -3300,45 +3000,93 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 105
-#TRIGGER= 25
-; 15-25% mobilization increase towards Axis
-#MOBILIZATION= [15,25] [1]
-; USSR declares war on Turkey
-#CONDITION= 111 [1] [2]
+#COUNTRY_ID= 116
+#TRIGGER= 100
+; 3-5% mobilization increase towards Allies
+#MOBILIZATION= [2,4] [1]
+; France surrenders to Axis forces
+#CONDITION= 40 [0] [1]
 }
 
 ;
-; USSR Declares War on Turkey resulting in a
-; random 10-20% increase in Persian mobilization towards Axis:
+;
+; General Declarations of War by Allies resulting in a
+; random 5-15% increase in Italian mobilization towards Axis:
 {
-#NAME= USSR DoW On Turkey (Persia->Axis) (25% Chance)
-#POPUP= Persia Is Alarmed At The Aggression Against Turkey
+#NAME= General Declarations Of War By Allies (Italy->Axis)
+#POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
-#TYPE= 0
+#TYPE= 2
 #AI= 0
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 82
-#TRIGGER= 25
-; 10-20% mobilization increase towards Axis
-#MOBILIZATION= [10,20] [1]
-; USSR declares war on Turkey
-#CONDITION= 111 [1] [2]
+#COUNTRY_ID= 59
+#TRIGGER= 100
+; 5-15% mobilization increase towards Axis
+#MOBILIZATION= [5,15] [1]
+; General declaration of war by Allies
+#CONDITION= 0 [1] [2]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; DIPLOMATIC CHECKS DUE TO USSR DOW ON ROMANIA
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; GENERAL DOW CHECKS
 ;
 ;
-; USSR Declares War on Romania resulting in a
-; random 30-50% increase in Hungarian mobilization towards Axis:
+; General Declarations Of War By Axis resulting in a
+; random 2-4% increase in USSR mobilization towards Allies:
 {
-#NAME= USSR DoW On Romania (Hungary->Axis)
-#POPUP= Hungary Is Alarmed At The Attack On Romania
+#NAME= General Declarations Of War By Axis (USSR->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+; 2-4% mobilization increase towards Allies
+#MOBILIZATION= [2,4] [2]
+; General declaration of war by Axis
+#CONDITION= 0 [1] [1]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; GENERAL SURRENDER CHECKS
+;
+;
+; General surrenders to Axis resulting in a
+; random 3-5% increase in Italian mobilization towards Axis:
+{
+#NAME= General Surrenders To Axis (Italy->Axis)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 59
+#TRIGGER= 100
+; 3-5% mobilization increase towards Axis
+#MOBILIZATION= [3,5] [1]
+;General surrenders to Axis forces
+#CONDITION= 0 [0] [1]
+}
+
+;
+; USSR Declares War on Finland resulting in a
+; random 5-10% increase in Hungarian mobilization towards Axis:
+{
+#NAME= USSR DoW On Finland (Hungary->Axis) (25%)
+#POPUP= Hungary Is Concerned At The USSR's Aggression Against Finland
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -3348,77 +3096,33 @@
 #LINK= 0[0]
 #LEVEL= 0
 #COUNTRY_ID= 52
-#TRIGGER= 75
-; 30-50% mobilization increase towards Axis
-#MOBILIZATION= [30,50] [1]
-; USSR declares war on Romania
-#CONDITION= 93 [1] [2]
-}
-
-;
-; USSR Declares War on Romania resulting in a
-; random 20-40% increase in Bulgarian mobilization towards Axis:
-{
-#NAME= USSR DoW On Romania (Bulgaria->Axis)
-#POPUP= Bulgaria Is Alarmed At The Attack On Romania
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 19
-#TRIGGER= 75
-; 20-40% mobilization increase towards Axis
-#MOBILIZATION= [20,40] [1]
-; USSR declares war on Romania
-#CONDITION= 93 [1] [2]
-}
-
-;
-; USSR Declares War on Romania resulting in a
-; random 10-20% increase in Yugoslavian mobilization towards Axis:
-{
-#NAME= USSR DoW On Romania (Yugoslavia->Axis)
-#POPUP= Yugoslavia Protests Against Allied Aggression In The Balkans
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 120
-#TRIGGER= 75
-; 10-20% mobilization increase towards Axis
-#MOBILIZATION= [10,20] [1]
-; USSR declares war on Romania
-#CONDITION= 93 [1] [2]
-}
-
-;
-; USSR Declares War on Romania resulting in a
-; random 10-15% increase in Vichy France's mobilization towards Axis:
-{
-#NAME= USSR DoW On Romania (Vichy France->Axis) (25% Chance)
-#POPUP= Vichy France Condemns The Attack On Romania
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 118
 #TRIGGER= 25
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; USSR declares war on Romania
-#CONDITION= 93 [1] [2]
+; 5-10% mobilization increase towards Axis
+#MOBILIZATION= [5,10] [1]
+; USSR declares war on Finland
+#CONDITION= 39 [1] [2]
+}
+
+;
+; USSR Declares War on Finland resulting in a
+; random 5-10% increase in Romanian mobilization towards Axis:
+{
+#NAME= USSR DoW On Finland (Romania->Axis) (25%)
+#POPUP= Romania Issues A Protest Over The Attack On Finland
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 93
+#TRIGGER= 25
+; 5-10% mobilization increase towards Axis
+#MOBILIZATION= [5,10] [1]
+; USSR declares war on Finland
+#CONDITION= 39 [1] [2]
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3449,50 +3153,6 @@
 
 ;
 ; USSR Declares War on Finland resulting in a
-; random 5-10% increase in Hungarian mobilization towards Axis:
-{
-#NAME= USSR DoW On Finland (Hungary->Axis) (25% Chance)
-#POPUP= Hungary Is Concerned At The USSR's Aggression Against Finland
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 52
-#TRIGGER= 25
-; 5-10% mobilization increase towards Axis
-#MOBILIZATION= [5,10] [1]
-; USSR declares war on Finland
-#CONDITION= 39 [1] [2]
-}
-
-;
-; USSR Declares War on Finland resulting in a
-; random 5-10% increase in Romanian mobilization towards Axis:
-{
-#NAME= USSR DoW On Finland (Romania->Axis) (25% Chance)
-#POPUP= Romania Issues A Protest Over The Attack On Finland
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 93
-#TRIGGER= 25
-; 5-10% mobilization increase towards Axis
-#MOBILIZATION= [5,10] [1]
-; USSR declares war on Finland
-#CONDITION= 39 [1] [2]
-}
-
-;
-; USSR Declares War on Finland resulting in a
 ; random 3-7% increase in US mobilization towards Axis:
 {
 #NAME= USSR DoW On Finland (USA->Axis)
@@ -3514,13 +3174,199 @@
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; DIPLOMATIC CHECKS DUE TO USSR DOW ON IRAQ
+;
+;
+; USSR Declares War on Iraq resulting in a
+; random 20-30% increase in Syrian mobilization towards Axis:
+{
+#NAME= USSR DoW On Iraq (Syria->Axis) (75%)
+#POPUP= Vichy Syria Vigorously Opposes The Attack On Iraq
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 105
+#TRIGGER= 75
+; 20-30% mobilization increase towards Axis
+#MOBILIZATION= [20,30] [1]
+; USSR declares war on Iraq
+#CONDITION= 56 [1] [2]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; DIPLOMATIC CHECKS DUE TO USSR DOW ON PERSIA
+;
+;
+; USSR Declares War on Persia resulting in a
+; random 10-15% increase in Iraqi mobilization towards Axis:
+{
+#NAME= USSR DoW On Persia (Iraq->Axis) (75%)
+#POPUP= Iraqi Nationalists Condemn The Assault On Persia
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+; Iraq(56)
+#COUNTRY_ID= 56
+#TRIGGER= 75
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; USSR declares war on Persia(82)
+#CONDITION= 82 [1] [2]
+}
+
+;
+; USSR Declares War on Persia resulting in a
+; random 10-15% increase in Syrian mobilization towards Axis:
+{
+#NAME= USSR DoW On Persia (Syria->Axis) (25%)
+#POPUP= Vichy France Instructs Syria To Issue Stern Protest
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 118
+#TRIGGER= 25
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; USSR declares war on Persia(82)
+#CONDITION= 82 [1] [2]
+}
+
+;
+; USSR Declares War on Persia resulting in a
+; random 10-15% increase in Turkish mobilization towards Axis:
+{
+#NAME= USSR DoW On Persia (Turkey->Axis) (50%)
+#POPUP= Turkish Government Appeases Arab Hard-Liners By Denouncing Aggression In Persia
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 111
+#TRIGGER= 50
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; USSR declares war on Persia
+#CONDITION= 82 [1] [2]
+}
+
+;
+; USSR Declares War on Romania resulting in a
+; random 20-40% increase in Bulgarian mobilization towards Axis:
+{
+#NAME= USSR DoW On Romania (Bulgaria->Axis) (75%)
+#POPUP= Bulgaria Is Alarmed At The Attack On Romania
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 19
+#TRIGGER= 75
+; 20-40% mobilization increase towards Axis
+#MOBILIZATION= [20,40] [1]
+; USSR declares war on Romania
+#CONDITION= 93 [1] [2]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; DIPLOMATIC CHECKS DUE TO USSR DOW ON ROMANIA
+;
+;
+; USSR Declares War on Romania resulting in a
+; random 30-50% increase in Hungarian mobilization towards Axis:
+{
+#NAME= USSR DoW On Romania (Hungary->Axis) (75%)
+#POPUP= Hungary Is Alarmed At The Attack On Romania
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 52
+#TRIGGER= 75
+; 30-50% mobilization increase towards Axis
+#MOBILIZATION= [30,50] [1]
+; USSR declares war on Romania
+#CONDITION= 93 [1] [2]
+}
+
+;
+; USSR Declares War on Romania resulting in a
+; random 10-15% increase in Vichy France's mobilization towards Axis:
+{
+#NAME= USSR DoW On Romania (Vichy France->Axis) (25%)
+#POPUP= Vichy France Condemns The Attack On Romania
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 118
+#TRIGGER= 25
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; USSR declares war on Romania
+#CONDITION= 93 [1] [2]
+}
+
+;
+; USSR Declares War on Romania resulting in a
+; random 10-20% increase in Yugoslavian mobilization towards Axis:
+{
+#NAME= USSR DoW On Romania (Yugoslavia->Axis) (75%)
+#POPUP= Yugoslavia Protests Against Allied Aggression In The Balkans
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 120
+#TRIGGER= 75
+; 10-20% mobilization increase towards Axis
+#MOBILIZATION= [10,20] [1]
+; USSR declares war on Romania
+#CONDITION= 93 [1] [2]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; DIPLOMATIC CHECKS DUE TO USSR DOW ON SWEDEN
 ;
 ;
 ; USSR Declares War on Sweden resulting in a
 ; random 5-10% increase in Hungarian mobilization towards Axis:
 {
-#NAME= USSR DoW On Sweden (Hungary->Axis) (25% Chance)
+#NAME= USSR DoW On Sweden (Hungary->Axis) (25%)
 #POPUP= Hungary Condemns The Attack On Sweden
 #IMAGE=
 #SOUND=
@@ -3542,7 +3388,7 @@
 ; USSR Declares War on Sweden resulting in a
 ; random 5-10% increase in Romanian mobilization towards Axis:
 {
-#NAME= USSR DoW On Sweden (Romania->Axis) (25% Chance)
+#NAME= USSR DoW On Sweden (Romania->Axis) (25%)
 #POPUP= Romania Condemns The Attack On Sweden
 #IMAGE=
 #SOUND=
@@ -3560,15 +3406,125 @@
 #CONDITION= 103 [1] [2]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;DIPLOMATIC CHECKS DUE TO AXIS DOW ON IRELAND
 ;
-;
-; Axis Declare War on Ireland resulting in a
-; random 15-25% increase in US mobilization towards Allies:
+; USSR Declares War on Turkey resulting in a
+; random 10-15% increase in Bulgarian mobilization towards Axis:
 {
-#NAME= Axis DoW On Ireland (USA->Allies)
-#POPUP= Pro Irish Americans Pressure Congress After Axis Declare War On Ireland
+#NAME= USSR DoW On Turkey (Bulgaria->Axis) (25%)
+#POPUP= Bulgaria Is Alarmed By The Aggression Against Turkey
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 19
+#TRIGGER= 25
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; USSR declares war on Turkey
+#CONDITION= 111 [1] [2]
+}
+
+;
+; USSR Declares War on Turkey resulting in a
+; random 5-10% increase in Greek mobilization towards Axis:
+{
+#NAME= USSR DoW On Turkey (Greece->Axis)
+#POPUP= Greece Is Concerned At The Allied Attack On Turkey
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 46
+#TRIGGER= 75
+; 5-10% mobilization increase towards Axis
+#MOBILIZATION= [5,10] [1]
+; USSR declares war on Turkey
+#CONDITION= 111 [1] [2]
+}
+
+;
+; USSR Declares War on Turkey resulting in a
+; random 10-20% increase in Persian mobilization towards Axis:
+{
+#NAME= USSR DoW On Turkey (Persia->Axis) (25%)
+#POPUP= Persia Is Alarmed At The Aggression Against Turkey
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 82
+#TRIGGER= 25
+; 10-20% mobilization increase towards Axis
+#MOBILIZATION= [10,20] [1]
+; USSR declares war on Turkey
+#CONDITION= 111 [1] [2]
+}
+
+;
+; USSR Declares War on Turkey resulting in a
+; random 8-12% increase in Romanian mobilization towards Axis:
+{
+#NAME= USSR DoW On Turkey (Romania->Axis)
+#POPUP= Romania Is Alarmed By The Aggression Against Turkey
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 93
+#TRIGGER= 100
+; 8-12% mobilization increase towards Axis
+#MOBILIZATION= [8,12] [1]
+; USSR declares war on Turkey
+#CONDITION= 111 [1] [2]
+}
+
+;
+; USSR Declares War on Turkey resulting in a
+; random 15-25% increase in Syrian mobilization towards Axis:
+{
+#NAME= USSR DoW On Turkey (Syria->Axis) (25%)
+#POPUP= Syria Protests The Attack On Turkey
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 105
+#TRIGGER= 25
+; 15-25% mobilization increase towards Axis
+#MOBILIZATION= [15,25] [1]
+; USSR declares war on Turkey
+#CONDITION= 111 [1] [2]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; DIPLOMATIC CHECKS DUE TO USSR DOW ON TURKEY
+;
+;
+; USSR Declares War on Turkey resulting in a
+; random 5-10% increase in US mobilization towards Axis:
+{
+#NAME= USSR DoW On Turkey (USA->Axis)
+#POPUP= US Congress Reacts Firmly Against Aggression In Turkey
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -3579,10 +3535,32 @@
 #LEVEL= 0
 #COUNTRY_ID= 115
 #TRIGGER= 100
-; 15-25% mobilization increase towards Allies
-#MOBILIZATION= [15,25] [2]
-; Axis declare war on Ireland
-#CONDITION= 57 [1] [1]
+; 5-10% mobilization increase towards Axis
+#MOBILIZATION= [5,10] [1]
+; USSR declares war on Turkey
+#CONDITION= 111 [1] [2]
+}
+
+;
+; USSR Declares War on Turkey resulting in a
+; random 8-12% increase in Vichy France's mobilization towards Axis:
+{
+#NAME= USSR DoW On Turkey (Vichy France->Axis) (25%)
+#POPUP= Vichy France Condemns The Attack On Turkey
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 118
+#TRIGGER= 25
+; 8-12% mobilization increase towards Axis
+#MOBILIZATION= [8,12] [1]
+; USSR declares war on Turkey
+#CONDITION= 111 [1] [2]
 }
 
 ; Fall Weiss II
