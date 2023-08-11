@@ -138,7 +138,7 @@
 | Anti-Tank      |  Lt Armor     |  2       |  1       |  4            |  0          |  0        |  2*      |  1       |  -         |
 | Special Forces |  Hard         |  2       |  1       |  4            |  1          |  20       |  1       |  1       |  -         |
 | Engineers      |  Soft         |  2       |  1       |  3            |  1          |  0        |  1       |  1       |  -         |
-| Paratroops     |  Hard         |  2       |  1       |  4            |  1          |  20       |  1       |  1       |  6         |
+| Paratroops     |  Hard         |  2       |  1       |  4            |  1          |  20       |  1       |  6       |  -         |
 | Partisans      |  Soft         |  1       |  1       |  3            |  1          |  15       |  1       |  1       |  -         |
 | Anti-Air       |  Anti-Air     |  1       |  1       |  3            |  -          |  -        |  -       |  1 / 1   |  0*        |
 | Rocket Arty    |  Arty         |  1       |  1       |  3            |  1          |  25       |  1/3     |  2       |  -         |
