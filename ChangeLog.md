@@ -67,10 +67,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - DE 922 -  Germany: Imports From Switzerland
         - now requires Switzerland be Axis aligned
     - "Malta limits Axis supply in the Mediterranean" has been split-up into the following:
-        - "Malta Effect (Tripoli, Sirte, El Agheila, Benghazi, Derna) (15% Chance)"
-        - "Malta Effect (Derna, Msus, Mekili, Gazala) (15% Chance)"
-        - "Malta Effect (Tobruk, Alexandria, Port Said) (20% Chance)"
-        - "Malta Effect (Bardia, Sidi Barrani, Mersa Matruh, El Alamein) (20% Chance)"
+        - "Malta Effect (Tripoli, Sirte, El Agheila, Benghazi, Derna) (15%)"
+        - "Malta Effect (Derna, Msus, Mekili, Gazala) (15%)"
+        - "Malta Effect (Tobruk, Alexandria, Port Said) (20%)"
+        - "Malta Effect (Bardia, Sidi Barrani, Mersa Matruh, El Alamein) (20%)"
 
 - Scenario Data:
     - Albania(3) annexed by Italy(59)
