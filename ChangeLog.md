@@ -124,6 +124,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
         - Soviet Morale Is Boosted As Allied Forces Approach Berlin
     - Removed the duplicated Mobilization_1 script Allies DoW On Tunisia (USA->Axis) ([mobilization_1.txt])
     - Saying yes to DE 103 reduces the % sent by convoy from Egypt & Iraq from 80% to 65%, as does saying no to DE 105 and yes to DE 164 (Duedman) ([convoy.txt])
+    - Axis Advances in Egypt (Iraq->Axis) (50%) ([mobilization_2.txt])
     - ... and more ...
 
 - Operation Countenance
@@ -160,6 +161,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - "Soviet Bombers Operating From Crimea Attack The Ploesti Oil Fields In Romania"
     - changed SOURCE_POSITION to Simferopol
     - was impossible to launch bombers while Sevastopol was under seige
+- "DE 112 - UK: Defeated In East Africa" ([national_morale.txt])
+- "DE 112 - UK: Victorious In East Africa"
+    - removed requirement(s) for Australia to be Axis
 - corrected incorrect #DISPLAY_TURN for events that had '#PRIVATE= 1' ([unit.txt])
 such as:
     - DE 416 - USSR: Anti-Tank Units
@@ -189,3 +193,4 @@ such as:
 [strength.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/strength.txt
 [supply.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/supply.txt
 [territory.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/territory.txt
+[national_morale.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/national_morale.txt
