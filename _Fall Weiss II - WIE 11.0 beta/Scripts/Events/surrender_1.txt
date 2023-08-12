@@ -85,9 +85,16 @@
 ; #COUNTRY_ID=  Value range [0, 120]
 ;               Surrendering country's ID
 ;
-; #RECIPIENT_ID= Transfer country ID (country that will receive the territory listed under each #MAP_POSITION)
-; #SURRENDERED_TO= Additional flag ensuring #COUNTRY_ID surrendered to the applicable side (values range [1, 2]; Axis= 1; Allied= 2)
-; #MAP_POSITION= Map position where ownership is transferred from #COUNTRY_ID to #RECIPIENT_ID (format x,y)
+; #RECIPIENT_ID= Value range [1, 120]
+;                country that will receive the territory listed under each #MAP_POSITION
+;
+; #SURRENDERED_TO= Value range [1, 2]
+;                Additional flag ensuring #COUNTRY_ID surrendered to the applicable side
+;                1 = Axis
+;                2 = Allied
+;
+; #MAP_POSITION= Map position where ownership is transferred from #COUNTRY_ID to #RECIPIENT_ID 
+;                Format: x,y
 ; } 
 ;
 ; NOTES:
@@ -254,7 +261,7 @@
 ;
 ; Poland Surrenders (Germany occupies all of Poland as USSR didn't invade)
 {
-#NAME= DE 600 - German Occupation of Poland
+#NAME= DE 406 - German Occupation of Poland
 #POPUP= <<TAG_1>>
 #IMAGE=
 #SOUND= transport_movement.ogg
@@ -263,6 +270,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Red Army to advance into Poland?
 #LINK= 406[0]
 #COUNTRY_ID= 85
 #RECIPIENT_ID= 45
@@ -2555,6 +2563,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Vichy France = NO
 #LINK= 602[0]
 #COUNTRY_ID= 40
 #RECIPIENT_ID= 40
