@@ -307,277 +307,6 @@
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; FRENCH DECISION EVENTS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-{
-#NAME= Pressure Grows On The Vichy Authorities To Join The Allies (Vichy France->Allies) (50%)
-#POPUP= Pressure Grows On The Vichy Authorities To Join The Allies
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 118
-#TRIGGER= 50
-#DATE= 1939/09/01
-; 15-25% mobilization increase towards Allies
-#MOBILIZATION= [15,25] [2]
-; France(40) Allied and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= The Vichy Authorities Are Overthrown By Free French Forces (Vichy Syria->Allies) (25%)
-#POPUP= Syria Is Called Upon To Join The Allies
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 105
-#TRIGGER= 25
-#DATE= 1939/09/01
-; 15-25% mobilization increase towards Allies
-#MOBILIZATION= [15,25] [2]
-; France(40) Allied and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= The Vichy Authorities Are Overthrown By Free French Forces (Vichy Tunisia->Allies) (25%)
-#POPUP= Tunisia's Vichy Governor Comes Under Increasing Pressure To Join The Allies
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 110
-#TRIGGER= 25
-#DATE= 1939/09/01
-; 15-25% mobilization increase towards Allies
-#MOBILIZATION= [15,25] [2]
-; France(40) Allied and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= The Vichy Authorities Are Overthrown By Free French Forces (Vichy Algeria->Allies) (25%)
-#POPUP= The Vichy Authorities In Algeria Come Under Increasing Pressure To Join The Allies
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 4
-#TRIGGER= 25
-#DATE= 1939/09/01
-; 15-25% mobilization increase towards Allies
-#MOBILIZATION= [15,25] [2]
-; France(40) Allied and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= American Public Opinion Moves Against Entering The War (USA->Axis) (35%)
-#POPUP= Isolationists In The USA Call On US Units To Return To Home Waters
-#IMAGE=
-#SOUND=
-; Turned off in Fall Weiss II
-#FLAG= 0
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 115
-#TRIGGER= 35
-#DATE= 1939/09/01
-; 1-3% activation increase towards Axis
-#MOBILIZATION= [1,3] [1]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; USA has 2 or more units within 100 hexes of Ferrol(130, 97) in northern Spain
-#CONDITION_POSITION= 130,97 [100,100] [2,2] [2] [115]
-}
-
-;
-; Axis land units in Iceland resulting in a
-; 8-12% increase in USA activation towards Allies:
-{
-#NAME= Axis Invades Iceland (USA->Allies)
-#POPUP= USA Expresses Great Concern At The Axis Landing In Iceland
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#DATE= 1940/01/01
-; 8-12% activation increase towards Allies
-#MOBILIZATION= [8,12] [2]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis has 1 unit in Iceland within 10 hexes of Akureyri(110,32)
-#CONDITION_POSITION= 110,32 [10,10] [1,1] [1] [0]
-}
-
-;
-; Axis land units in Canada resulting in a
-; 100% increase in USA activation towards Allies:
-{
-#NAME= Axis Invasion of Canada (USA->>Allies)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#DATE= 1940/01/01
-; 100% activation increase towards Allies
-#MOBILIZATION= [100,100] [2]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis land 1 unit in Canada within 1 hex of Saint John's OR
-#CONDITION_POSITION= 51,88 [15,15] [1,1] [1] [0]
-; Axis land 1 unit in Canada within 15 hexes of Halifax OR
-#CONDITION_POSITION= 30,95 [15,15] [1,1] [1] [0]
-; Axis land 1 unit in Canada within the St Lawrence River
-#CONDITION_POSITION= 20,85 [5,5] [1,1] [1] [0]
-}
-
-;
-; Axis land units in England resulting in a
-; 10-15% increase in USA activation towards Allies:
-{
-#NAME= Sealion (USA->Allies)
-#POPUP= The US President Condemns The Axis Landing In The UK
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#DATE= 1940/01/01
-; 10-15% activation increase towards Allies
-#MOBILIZATION= [10,15] [2]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis land 1 unit in the UK within 2 hexes of London(147,77) OR
-#CONDITION_POSITION= 147,77 [2,2] [1,1] [1] [0]
-; Axis land 1 unit in the UK within 2 hex of Manchester
-#CONDITION_POSITION= 142,72 [2,2] [1,1] [1] [0]
-; Axis land 1 unit in the UK within 2 hex of Edinburgh(140,65)
-#CONDITION_POSITION= 140,65 [2,2] [1,1] [1] [0]
-}
-
-;
-; The US reacts to Axis gains at Gibraltar
-{
-#NAME= Axis Advances in Spain (USA->Allies) (50%)
-#POPUP= The USA Is Alarmed By Axis Moves Near Gibraltar
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 50
-#DATE= 1940/01/01
-; 5-15% mobilization increase towards Allies
-#MOBILIZATION= [5,15] [2]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis has 1 unit within 1 hex of Gibraltar(136,114)
-#CONDITION_POSITION= 136,114 [1,1] [1,1] [1] [0]
-}
-
-;
-; Iraqis reacts to Axis gains in Egypt
-{
-#NAME= Axis Advances in Egypt (Iraq->>Axis) (50%)
-#POPUP= Axis Gains In Egypt Swing Iraq Towards The Axis
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-; Iraq(56)
-#COUNTRY_ID= 56
-#TRIGGER= 50
-#DATE= 1939/09/01
-; 25-35% mobilization increase towards Axis
-#MOBILIZATION= [25,35] [1]
-; Iraq(56) Axis but not fully mobilized
-#VARIABLE_CONDITION= 56 [1] [0] [0]
-; The Axis have RND(1,2) units within 5 hexes of Suez(210,126)
-#CONDITION_POSITION= 210,126 [5,5] [1,2] [1] [0]
-}
-
-;
-; US reacts to Axis gains around Egypt
-{
-#NAME= Axis Threaten Allied Position in Egypt and Palestine (USA->Allies) (50%)
-#POPUP= The USA Is Alarmed by Axis Gains in The Middle East
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 115
-#TRIGGER= 50
-#DATE= 1940/01/01
-; 5-10% activation increase towards Allies
-#MOBILIZATION= [5,10] [2]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis has 1 unit within 1,1 hex of Alexandria(206,124)
-#CONDITION_POSITION= 206,124 [1,1] [1,1] [1] [0]
-; Axis has 1 unit within 1,1 hex of Cairo(208,126)
-#CONDITION_POSITION= 208,126 [1,1] [1,1] [1] [0]
-; Axis has 1 unit within 1,1 hex of Jerusalem(216,123)
-#CONDITION_POSITION= 216,123 [1,1] [1,1] [1] [0]
-}
-
 ;
 ; This Event will apply if the triggers for the Event beneath it aren't met
 {
@@ -721,11 +450,107 @@
 }
 
 ;
-; US naval units in the vicinity of the Arctic Circle
-; 3-5% increase in Soviet mobilization towards Axis
+; Allies Naval Patrols Near Norway
+; 0% increase in Norwegian mobilization towards Axis
+; This is for informational purposes only
 {
-#NAME= US Naval Aggression Near Arctic Circle (USSR->Axis) (50%)
-#POPUP= USSR Alarmed Over US Naval Activity Near Arctic Circle
+#NAME= AXIS AI: Allied Naval Presence Near Norwegian Convoy Lines (Norway->Axis)
+#POPUP= Norway Demands The Allies Respect Their Territorial Waters
+#IMAGE=
+#SOUND=
+; Disabled since it is effectively not doing anything
+#FLAG= 0
+#TYPE= 3
+#AI= 3
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 78
+#TRIGGER= 100
+#DATE= 1939/09/01
+; Fall Weiss II changed from 1-4% to 0%
+; 0% mobilization increase towards Axis
+#MOBILIZATION= [0,0] [1]
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Allies on the Norwegian convoy line
+#CONDITION_POSITION= 155,43 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 155,45 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 155,47 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 178,19 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 176,20 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 174,21 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 172,22 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 172,24 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 170,25 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 170,27 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 168,28 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 168,30 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 167,31 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 166,33 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 164,34 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 162,35 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 162,37 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 160,38 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 158,39 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 158,41 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 156,42 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 155,49 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 155,51 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 155,53 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 155,55 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 155,57 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 157,58 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 159,59 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 161,60 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 161,62 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 161,64 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 161,66 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 161,68 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 161,60 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 161,69 [1,1] [1,1] [2] [0]
+#CONDITION_POSITION= 162,70 [1,1] [1,1] [2] [0]
+}
+
+;
+; Allies abandon their land positions in the Mediterranean resulting in a
+; 1-2% increase in Italian activation towards Axis:
+{
+#NAME= Allies Abandon Mediterranean Positions (Italy->Axis) (50%)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 59
+#TRIGGER= 50
+#DATE= 1939/10/01
+; 1-2% activation increase towards Axis
+#MOBILIZATION= [1,2] [1]
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; UK abandons Gibraltar OR
+#CONDITION_POSITION= 136,114 [0,0] [0,0] [2] [0]
+; UK abandons Malta(175,114) OR
+#CONDITION_POSITION= 175,114 [0,0] [0,0] [2] [0]
+; UK abandons Cairo OR
+#CONDITION_POSITION= 208,126 [10,10] [0,0] [2] [0]
+; France abandons Tunis OR
+#CONDITION_POSITION= 167,112 [5,5] [0,0] [2] [0]
+; France abandons Damascus
+#CONDITION_POSITION= 218,119 [5,5] [0,0] [2] [0]
+}
+
+;
+; This is for informational purposes only
+{
+#NAME= Allies Abandon Mediterranean Positions (Italy->Axis) (Cairo)
+#POPUP= The Lack Of Allied Units In Cairo Encourages Mussolini's Ambitions
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -734,14 +559,890 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 116
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#DATE= 1939/09/01
+; 0% mobilization increase towards Axis
+#MOBILIZATION= [0,0] [1]
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; UK abandons Cairo
+#CONDITION_POSITION= 208,126 [10,10] [0,0] [2] [0]
+}
+
+;
+; This is for informational purposes only
+{
+#NAME= Allies Abandon Mediterranean Positions (Italy->Axis) (Damascus)
+#POPUP= Mussolini Is Encouraged By The Absence Of Allied Forces In Syria
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#DATE= 1939/09/01
+; 0% mobilization increase towards Axis
+#MOBILIZATION= [0,0] [1]
+; France(40) Allied and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; France abandons Damascus
+#CONDITION_POSITION= 218,119 [5,5] [0,0] [2] [0]
+}
+
+;
+; Allies abandon their land positions in the Mediterranean resulting in a
+; 0% increase in Italian mobilization towards Axis
+; This is for informational purposes only
+{
+#NAME= Allies Abandon Mediterranean Positions (Italy->Axis) (Gibraltar)
+#POPUP= Mussolini Is Encouraged By The Absence Of Allied Forces In Gibraltar
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#DATE= 1939/09/01
+; 0% mobilization increase towards Axis
+#MOBILIZATION= [0,0] [1]
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; UK abandons Gibraltar
+#CONDITION_POSITION= 136,114 [0,0] [0,0] [2] [0]
+}
+
+;
+; This is for informational purposes only
+{
+#NAME= Allies Abandon Mediterranean Positions (Italy->Axis) (Malta)
+#POPUP= The Lack Of Allied Units In Malta Encourages Mussolini's Ambitions
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#DATE= 1939/10/01
+; 0% mobilization increase towards Axis
+#MOBILIZATION= [0,0] [1]
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; UK abandons Malta(175,114)
+#CONDITION_POSITION= 175,114 [0,0] [0,0] [2] [0]
+}
+
+;
+; This is for informational purposes only
+{
+#NAME= Allies Abandon Mediterranean Positions (Italy->Axis) (Tunis)
+#POPUP= Mussolini Is Encouraged By The Absence Of Allied Forces In Tunis
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#DATE= 1939/09/01
+; 0% mobilization increase towards Axis
+#MOBILIZATION= [0,0] [1]
+; France(40) Allied and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; France abandons Tunis
+#CONDITION_POSITION= 167,112 [5,5] [0,0] [2] [0]
+}
+
+; Remove 1941
+;
+; British abandon Gibraltar resulting in a
+; 8-12% increase in Spanish activation towards Axis:
+{
+#NAME= Allies Abandon Mediterranean Positions (Spain->Axis)
+#POPUP= The Allies Abandon Gibraltar: Franco Swings Towards The Axis
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#DATE= 1939/09/01
+; 8-12% activation increase towards Axis
+#MOBILIZATION= [8,12] [1]
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Italy(59) Axis but not fully mobilized
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+; UK abandons Gibraltar
+#CONDITION_POSITION= 136,114 [0,0] [0,0] [2] [0]
+}
+
+; British abandon Gibraltar resulting in a
+; 8-12% increase in Spanish activation towards Axis:
+{
+#NAME= Allies Abandon Mediterranean Positions (Spain->Axis)
+#POPUP= The Allies Abandon Gibraltar: Franco Swings Towards The Axis
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#DATE= 1939/09/01
+; 8-12% activation increase towards Axis
+#MOBILIZATION= [8,12] [1]
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; UK abandons Gibraltar
+#CONDITION_POSITION= 136,114 [0,0] [0,0] [2] [0]
+}
+
+;
+; Allies Invade Iraq resulting in a random
+; 5-7% increase in Italian mobilization towards Axis:
+{
+#NAME= Allies Invasion of Iraq (Italy->Axis)
+#POPUP= Italy Is Concerned At Allied Aggression In Iraq
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#DATE= 1939/09/01
+; 5-7% mobilization increase towards Axis
+#MOBILIZATION= [5,7] [1]
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Allies invade Iraq
+#CONDITION_POSITION= 234,120 [2,2] [1,1] [2] [112]
+}
+
+; Allies take Rhodes
+; 15-25% increase in Turkish mobilization towards Allies
+{
+#NAME= Allies in Rhodes (Turkey->Allies)
+#POPUP= The Allied Presence In Rhodes Swings Turkey Towards The Allies
+#IMAGE= 
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/01
+; 15-25% mobilization increase towards Allies
+#MOBILIZATION= [15,25] [2]
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Allies have 1 unit in Rhodes
+#CONDITION_POSITION= 202,113 [0,0] [1,1] [2] [0]
+}
+
+{
+#NAME= American Public Opinion Moves Against Entering The War (USA->Axis) (35%)
+#POPUP= Isolationists In The USA Call On US Units To Return To Home Waters
+#IMAGE=
+#SOUND=
+; Turned off in Fall Weiss II
+#FLAG= 0
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 115
+#TRIGGER= 35
+#DATE= 1939/09/01
+; 1-3% activation increase towards Axis
+#MOBILIZATION= [1,3] [1]
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; USA has 2 or more units within 100 hexes of Ferrol(130, 97) in northern Spain
+#CONDITION_POSITION= 130,97 [100,100] [2,2] [2] [115]
+}
+
+;AMEND1942 (INCREASE TURKEY'S MOBILIZATION AND REMOVE THIS IN 1942)
+; Axis land units 1 hex from Sevastopol resulting in a
+; 5-10% increase in Turkish mobilization towards Axis
+{
+#NAME= Axis Advance On Sevastopol (Turkey->Axis)
+#POPUP= <<TAG_34>>
+#IMAGE= 
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1941/05/25
+; 5-10% mobilization increase towards Axis
+#MOBILIZATION= [5,10] [1]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Axis has RND(1,2) units 1 hex from Sevastopol(212,96)
+#CONDITION_POSITION= 212,96 [1,1] [1,2] [1] [0]
+}
+
+{
+#NAME= Axis Occupy Sevastopol (Turkey->Axis) (50%)
+#POPUP= Powerful Groups In Turkey Call On Their Country To Join The Axis
+#IMAGE= 
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 111
 #TRIGGER= 50
 #DATE= 1939/09/01
+; 10-20% mobilization increase towards Axis
+#MOBILIZATION= [10,20] [1]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Axis has 1 unit in Sevastopol
+#CONDITION_POSITION= 212,96 [0,0] [1,1] [1] [0]
+}
+
+;
+; Iraqis reacts to Axis gains in Egypt
+{
+#NAME= Axis Advances in Egypt (Iraq->>Axis) (50%)
+#POPUP= Axis Gains In Egypt Swing Iraq Towards The Axis
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+; Iraq(56)
+#COUNTRY_ID= 56
+#TRIGGER= 50
+#DATE= 1939/09/01
+; 25-35% mobilization increase towards Axis
+#MOBILIZATION= [25,35] [1]
+; Iraq(56) Axis but not fully mobilized
+#VARIABLE_CONDITION= 56 [1] [0] [0]
+; The Axis have RND(1,2) units within 5 hexes of Suez(210,126)
+#CONDITION_POSITION= 210,126 [5,5] [1,2] [1] [0]
+}
+
+;
+; The US reacts to Axis gains at Gibraltar
+{
+#NAME= Axis Advances in Spain (USA->Allies) (50%)
+#POPUP= The USA Is Alarmed By Axis Moves Near Gibraltar
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 50
+#DATE= 1940/01/01
+; 5-15% mobilization increase towards Allies
+#MOBILIZATION= [5,15] [2]
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Axis has 1 unit within 1 hex of Gibraltar(136,114)
+#CONDITION_POSITION= 136,114 [1,1] [1,1] [1] [0]
+}
+
+{
+#NAME= Axis Conquer Egypt (Turkey->Axis) (50%)
+#POPUP= The Axis Success In Egypt Strengthens Interest In Turkey To Join The Axis
+#IMAGE= 
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 111
+#TRIGGER= 50
+#DATE= 1939/09/01
+; 10-20% mobilization increase towards Axis
+#MOBILIZATION= [10,20] [1]
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Egypt(36) aligned with Allied and surrendered
+#VARIABLE_CONDITION= 36 [2] [100] [1]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;
+; Axis land units in Iceland resulting in a
+; 8-12% increase in USA activation towards Allies:
+{
+#NAME= Axis Invasion of Iceland (USA->Allies)
+#POPUP= USA Expresses Great Concern At The Axis Landing In Iceland
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1940/01/01
+; 8-12% activation increase towards Allies
+#MOBILIZATION= [8,12] [2]
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Axis has 1 unit in Iceland within 10 hexes of Akureyri(110,32)
+#CONDITION_POSITION= 110,32 [10,10] [1,1] [1] [0]
+}
+
+;
+; Axis invasion of Netherlands pushes Belgium into the Allied camp
+; 20% increase in Belgian activation towards Allies:
+{
+#NAME= Axis Invasion of Netherlands (Belgium->Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 10
+#TRIGGER= 100
+#DATE= 1939/09/01
+; 20-20% activation increase towards Allies
+#MOBILIZATION= [20,20] [2]
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Axis has 1 unit within 2 hexes of Amsterdam
+#CONDITION_POSITION= 156,75 [2,2] [1,1] [1] [0]
+; Axis has 1 unit within 2 hexes of Antwerp
+#CONDITION_POSITION= 155,78 [2,2] [1,1] [1] [0]
+}
+
+;
+; Axis land units in Canada resulting in a
+; 100% increase in USA activation towards Allies:
+{
+#NAME= Axis Invasion of Canada (USA->>Allies)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1940/01/01
+; 100% activation increase towards Allies
+#MOBILIZATION= [100,100] [2]
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Axis land 1 unit in Canada within 1 hex of Saint John's OR
+#CONDITION_POSITION= 51,88 [15,15] [1,1] [1] [0]
+; Axis land 1 unit in Canada within 15 hexes of Halifax OR
+#CONDITION_POSITION= 30,95 [15,15] [1,1] [1] [0]
+; Axis land 1 unit in Canada within the St Lawrence River
+#CONDITION_POSITION= 20,85 [5,5] [1,1] [1] [0]
+}
+
+;
+; USSR reacts to Axis gains around Egypt
+{
+#NAME= Axis Threaten Allied Position In Egypt and Palestine (USSR->Allies) (25%)
+#POPUP= USSR Reacts to Axis Successes In The Middle East
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 116
+#TRIGGER= 25
+#DATE= 1940/01/01
+; 4-8% activation increase towards Allies
+#MOBILIZATION= [4,8] [2]
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Axis has 1 unit within 1,1 hex of Alexandria(206,124)
+#CONDITION_POSITION= 206,124 [1,1] [1,1] [1] [0]
+; Axis has 1 unit within 1,1 hex of Cairo
+#CONDITION_POSITION= 208,126 [1,1] [1,1] [1] [0]
+; Axis has 1 unit within 1,1 hex of Jerusalem
+#CONDITION_POSITION= 216,123 [1,1] [1,1] [1] [0]
+}
+
+;
+; US reacts to Axis gains around Egypt
+{
+#NAME= Axis Threaten Allied Position in Egypt and Palestine (USA->Allies) (50%)
+#POPUP= The USA Is Alarmed by Axis Gains in The Middle East
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 115
+#TRIGGER= 50
+#DATE= 1940/01/01
+; 5-10% activation increase towards Allies
+#MOBILIZATION= [5,10] [2]
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Axis has 1 unit within 1,1 hex of Alexandria(206,124)
+#CONDITION_POSITION= 206,124 [1,1] [1,1] [1] [0]
+; Axis has 1 unit within 1,1 hex of Cairo(208,126)
+#CONDITION_POSITION= 208,126 [1,1] [1,1] [1] [0]
+; Axis has 1 unit within 1,1 hex of Jerusalem(216,123)
+#CONDITION_POSITION= 216,123 [1,1] [1,1] [1] [0]
+}
+
+;
+; Fall of Brussels resulting in a 3-5% increase 
+; in Italian mobilization towards Axis
+{
+#NAME= Collapse of Belgium (Italy->Axis) (50%)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 59
+#TRIGGER= 50
+#DATE= 1940/01/01
 ; 3-5% mobilization increase towards Axis
 #MOBILIZATION= [3,5] [1]
+; Belgium(10) Allied and surrendered
+#VARIABLE_CONDITION= 10 [2] [100] [1]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;
+; Axis land units within range of Paris(151,84) resulting in a
+; 5-10% increase in Italian activation towards Axis
+{
+#NAME= Collapse of France (Italy->Axis) (75%)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 59
+#TRIGGER= 75
+#DATE= 1940/01/01
+; 5-10% activation increase towards Axis
+#MOBILIZATION= [5,10] [1]
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Axis have 2 units within a 3 hex range of Paris
+#CONDITION_POSITION= 151,84 [3,3] [2,2] [1] [0]
+}
+
+{
+#NAME= Fall of Moscow to Axis (Turkey->Axis) (5%)
+#POPUP= Turkish Parliament Debates Joining the Axis
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 1
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 111
+#TRIGGER= 5
+#DATE= 1939/09/03
+; 20-40% activation increase towards Axis
+#MOBILIZATION= [20,40] [1]
+; France(40) Allied and surrendered
+; Italy(59) Axis and fully mobilized
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Axis Occupies Moscow(221,65)
+#CONDITION_POSITION= 221,65 [0,0] [1,1] [1] [0]
+}
+
+;
+; Finnish War Entry:
+; Finland declared war on the USSR shortly after Barbarossa was launched 1941/6/22
+{
+#NAME= Finland Declares War On The USSR
+#POPUP= Finland Enters The War Against The USSR
+#IMAGE= finlandenterswar.png
+#SOUND=
+; Turned off in Fall Weiss II
+#FLAG= 0
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 39
+#TRIGGER= 100
+#DATE= 1939/09/01
+; 100% activation increase towards Axis
+#MOBILIZATION= [100,100] [1]
+; Finland(39) Axis but not fully mobilized
+#VARIABLE_CONDITION= 39 [1] [0] [0]
+; USSR(116) Allied but not fully mobilized
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Axis has 1 unit within 4 hexes of Leningrad
+#CONDITION_POSITION= 206,52 [4,4] [1,1] [1] [0]
+; Axis has 1 unit within 1 hex of Pskov
+#CONDITION_POSITION= 202,59 [1,1] [1,1] [1] [0]
+; Axis has 1 unit within 1 hex of Ostrov
+#CONDITION_POSITION= 202,62 [1,1] [1,1] [1] [0]
+; Axis has 1 unit within 1 hex of Polotsk
+#CONDITION_POSITION= 202,66 [1,1] [1,1] [1] [0]
+; Axis have 1 unit within 5 hexes of Novgorod
+#CONDITION_POSITION= 208,57 [5,5] [1,1] [1] [0]
+}
+
+{
+#NAME= Franco Swings To The Axis In Response To Allied Preparations To Invade Italy (Spain->Axis)
+#POPUP= <<TAG_45>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#DATE= 1939/09/01
+; 5-12% mobilization increase towards Axis
+#MOBILIZATION= [5,12] [1]
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+; 2 Allied Amphibious units within 30 hexes of Syracuse Port(177,112)
+#CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
+; 7 or more Allied naval units within 18 hexes of Syracuse Port(177,112)
+#CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
+}
+
+;NEW
+;
+{
+#NAME= Franco Swings To The Axis In Response To Allied Preparations To Invade Italy (Spain->Axis) (75%)
+#POPUP= Franco Swings To The Axis In Response To Allied Preparations To Invade Italy
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 99
+#TRIGGER= 75
+#DATE= 1939/09/01
+; 5-12% mobilization increase towards Axis
+#MOBILIZATION= [5,12] [1]
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+; 2 Allied Amphibious units within 30 hexes of Syracuse Port(177,112)
+#CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48> OR
+; 7 or more Allied naval units within 18 hexes of Syracuse Port(177,112)
+#CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
+}
+
+;
+; German Units in Iraq trigger a random
+; 45-55% increase in Vichy Syrian mobilization towards Axis
+{
+#NAME= German Units In Iraq (Syria->Axis) (50%)
+#POPUP= Syria Swings Towards The Axis
+#IMAGE= 
+#SOUND= 
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 105
+#TRIGGER= 50
+#DATE= 1939/09/03
+; 45-55% mobilization increase towards Axis
+#MOBILIZATION= [45,55] [1]
 ; USA(115) Allied (not fully active) and not surrendered
+; France(40) Allied (fully active) and surrendered
+; UK(112) Allied and not surrendered
+; Egypt(36) Allied (fully active) and NOT surrendered
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-#CONDITION_POSITION= 152,10 [23,23] [1,1] [2] [115]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+#CONDITION_POSITION= 234,120 [2,2] [1,1] [1] [45]
+}
+
+;
+{
+#NAME= Italian Naval Movements In The English Channel (USA->Allies) (75%)
+#POPUP= <<TAG_46>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 115
+#TRIGGER= 75
+#DATE= 1939/09/01
+; 2-5% activation increase towards Allies
+#MOBILIZATION= [2,5] [2]
+; Italy(59) Axis but not fully mobilized
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+; Italian naval unit within RND(10,12) hexes of Southampton port
+#CONDITION_POSITION= 143,79 [10,12] [1,1] [1] [59]
+}
+
+{
+#NAME= Italy Mobilizes In Response To Allied Invasion Preparations (Italy->Axis)
+#POPUP= <<TAG_42>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 59
+#TRIGGER= 33
+#DATE= 1939/09/01
+; 15-25% mobilization increase towards Axis
+#MOBILIZATION= [15,25] [1]
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; 2 Allied Amphibious units within 30 hexes of Syracuse Port(177,112)
+#CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
+; 7 or more Allied naval units within 18 hexes of Syracuse Port(177,112)
+#CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
+}
+
+
+;NEW
+;
+{
+#NAME= Italy Mobilizes In Response To Allied Invasion Preparations (Italy->Axis) (33%)
+#POPUP= <<TAG_42>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 59
+#TRIGGER= 33
+#DATE= 1939/09/01
+; 15-25% mobilization increase towards Axis
+#MOBILIZATION= [15,25] [1]
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; 2 Allied Amphibious units within 30 hexes of Syracuse Port(177,112)
+#CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
+; 7 or more Allied naval units within 18 hexes of Syracuse Port(177,112)
+#CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
+}
+
+{
+#NAME= Pressure Grows On The Vichy Authorities To Join The Allies (Vichy France->Allies) (50%)
+#POPUP= Pressure Grows On The Vichy Authorities To Join The Allies
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 118
+#TRIGGER= 50
+#DATE= 1939/09/01
+; 15-25% mobilization increase towards Allies
+#MOBILIZATION= [15,25] [2]
+; France(40) Allied and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; Axis successes in Egypt inspire Franco
+; 6-12% increase in Spanish mobilization towards Axis:
+{
+#NAME= Sealion (Spain->Axis)
+#POPUP= Franco Is Impressed By The Axis Success In Egypt
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#DATE= 1939/09/01
+; 6-12% mobilization increase towards Axis
+#MOBILIZATION= [6,12] [1]
+; Egypt(36) Allied and surrendered
+#VARIABLE_CONDITION= 36 [2] [100] [1]
+; Axis has captured and holds Suez OR
+#CONDITION_POSITION= 210,126 [0,0] [1,1] [1] [0]
+; Axis has captured and holds Port Said
+#CONDITION_POSITION= 209,123 [0,0] [1,1] [1] [0]
+; Axis forces advance on Gaza
+#CONDITION_POSITION= 214,124 [2,2] [2,2] [1] [0]
+}
+
+; Axis land units in England resulting in a
+; 6-12% increase in Spanish mobilization towards Axis:
+{
+#NAME= Sealion (Spain->Axis) (10%)
+#POPUP= Franco Is Impressed By The Axis Success In The UK
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 99
+#TRIGGER= 10
+#DATE= 1941/03/01
+; 6-12% mobilization increase towards Axis
+#MOBILIZATION= [6,12] [1]
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Axis has captured and holds London OR
+#CONDITION_POSITION= 147,77 [0,0] [1,1] [1] [0]
+; Axis has captured and holds Manchester
+#CONDITION_POSITION= 142,72 [0,0] [1,1] [1] [0]
+; Axis has captured and holds Liverpool
+#CONDITION_POSITION= 141,72 [0,0] [1,1] [1] [0]
+}
+
+; Axis land units in England resulting in a
+; 45-55% increase in Turkish mobilization towards Axis:
+{
+#NAME= Sealion (Turkey->Axis) (10%)
+#POPUP= Turkey Strengthens Pro-Axis Relations
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 111
+#TRIGGER= 10
+#DATE= 1939/09/01
+; 45-55% activation increase towards Axis
+#MOBILIZATION= [45,55] [1]
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Axis has captured and holds London OR
+#CONDITION_POSITION= 147,77 [0,0] [1,1] [1] [0]
+; Axis has captured and holds Manchester
+#CONDITION_POSITION= 142,72 [0,0] [1,1] [1] [0]
+; Axis has captured and holds Liverpool
+#CONDITION_POSITION= 141,72 [0,0] [1,1] [1] [0]
+}
+
+;
+; Axis land units in England resulting in a
+; 10-15% increase in USA activation towards Allies:
+{
+#NAME= Sealion (USA->Allies)
+#POPUP= The US President Condemns The Axis Landing In The UK
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1940/01/01
+; 10-15% activation increase towards Allies
+#MOBILIZATION= [10,15] [2]
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Axis land 1 unit in the UK within 2 hexes of London(147,77) OR
+#CONDITION_POSITION= 147,77 [2,2] [1,1] [1] [0]
+; Axis land 1 unit in the UK within 2 hex of Manchester
+#CONDITION_POSITION= 142,72 [2,2] [1,1] [1] [0]
+; Axis land 1 unit in the UK within 2 hex of Edinburgh(140,65)
+#CONDITION_POSITION= 140,65 [2,2] [1,1] [1] [0]
 }
 
 ;
@@ -836,39 +1537,11 @@
 }
 
 ;
-; USSR reacts to Axis gains around Egypt
+; Soviet naval units in eastern vicinity of Copenhagen port resulting in a
+; 15-20% increase in Swedish activation towards Axis
 {
-#NAME= Axis Threaten Allied Position In Egypt and Palestine (USSR->Allies) (25%)
-#POPUP= USSR Reacts to Axis Successes In The Middle East
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 116
-#TRIGGER= 25
-#DATE= 1940/01/01
-; 4-8% activation increase towards Allies
-#MOBILIZATION= [4,8] [2]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis has 1 unit within 1,1 hex of Alexandria(206,124)
-#CONDITION_POSITION= 206,124 [1,1] [1,1] [1] [0]
-; Axis has 1 unit within 1,1 hex of Cairo
-#CONDITION_POSITION= 208,126 [1,1] [1,1] [1] [0]
-; Axis has 1 unit within 1,1 hex of Jerusalem
-#CONDITION_POSITION= 216,123 [1,1] [1,1] [1] [0]
-}
-
-;
-; Allied aggression in Norway resulting in a
-; 20-35% increase in Swedish activation towards Axis:
-{
-#NAME= UK Aggression In Norway (Sweden->Axis)
-#POPUP= Sweden Alerts Civil Defense In Response To Allied Aggression In Norway
+#NAME= Soviet Naval Aggression in the Baltic (Copenhagen) (Sweden->Axis) (50%)
+#POPUP= Sweden Alarmed Over Soviet Naval Activity In The Baltic
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -878,67 +1551,14 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #COUNTRY_ID= 103
-#TRIGGER= 100
+#TRIGGER= 50
 #DATE= 1939/09/03
-; 20-35% activation increase towards Axis
-#MOBILIZATION= [20,35] [1]
-; USA(115) Allied (not fully active) and not surrendered
-; Norway(78) Axis and surrendered
-#VARIABLE_CONDITION= 115 [2] [0] [0]
-#VARIABLE_CONDITION= 78 [1] [100] [1]
-; Allies invade Norway
-#CONDITION_POSITION= 167,52 [2,2] [1,1] [2] [0]
-} 
-
-;Replacement Script
-;
-; Allied aggression in Norway resulting in a
-; 20-30% increase in Finnish activation towards Axis:
-{
-#NAME= UK Aggression In Norway (Finnish->Axis)
-#POPUP= Finland Is Concerned At Allied Aggression Against A Neighboring Country
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 39
-#TRIGGER= 100
-#DATE= 1939/09/03
-; 20-30% activation increase towards Axis
-#MOBILIZATION= [20,30] [1]
-; USA(115) Allied (not fully active) and not surrendered
-; Norway(78) Axis and surrendered
-#VARIABLE_CONDITION= 115 [2] [0] [0]
-#VARIABLE_CONDITION= 78 [1] [100] [1]
-; Allies invade Norway
-#CONDITION_POSITION= 167,52 [2,2] [1,1] [2] [0]
-}
-
-;
-{
-#NAME= Italian Naval Movements In The English Channel (USA->Allies) (75%)
-#POPUP= <<TAG_46>>
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 115
-#TRIGGER= 75
-#DATE= 1939/09/01
-; 2-5% activation increase towards Allies
-#MOBILIZATION= [2,5] [2]
-; Italy(59) Axis but not fully mobilized
-#VARIABLE_CONDITION= 59 [1] [0] [0]
-; Italian naval unit within RND(10,12) hexes of Southampton port
-#CONDITION_POSITION= 143,79 [10,12] [1,1] [1] [59]
+; 15-20% activation increase towards Axis
+#MOBILIZATION= [15,20] [1]
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Soviets have 1 Amphibious unit within RND(2,3) hexes range east of Copenhagen port
+#CONDITION_POSITION= 171,66 [2,3] [1,1] [2] [116] <47,48>
 }
 
 ;
@@ -991,12 +1611,127 @@
 #CONDITION_POSITION= 183,54 [1,2] [1,1] [2] [116]
 }
 
-;
-; Soviet naval units in eastern vicinity of Copenhagen port resulting in a
-; 15-20% increase in Swedish activation towards Axis
 {
-#NAME= Soviet Naval Aggression in the Baltic (Copenhagen) (Sweden->Axis) (50%)
-#POPUP= Sweden Alarmed Over Soviet Naval Activity In The Baltic
+#NAME= The Vichy Authorities Are Overthrown By Free French Forces (Algeria->Allies) (25%)
+#POPUP= Algeria Come Under Increasing Pressure To Join The Allies
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 4
+#TRIGGER= 25
+#DATE= 1939/09/01
+; 15-25% mobilization increase towards Allies
+#MOBILIZATION= [15,25] [2]
+; France(40) Allied and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= The Vichy Authorities Are Overthrown By Free French Forces (Syria->Allies) (25%)
+#POPUP= Syria Is Called Upon To Join The Allies
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 105
+#TRIGGER= 25
+#DATE= 1939/09/01
+; 15-25% mobilization increase towards Allies
+#MOBILIZATION= [15,25] [2]
+; France(40) Allied and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= The Vichy Authorities Are Overthrown By Free French Forces (Tunisia->Allies) (25%)
+#POPUP= Tunisia's Vichy Governor Comes Under Increasing Pressure To Join The Allies
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 110
+#TRIGGER= 25
+#DATE= 1939/09/01
+; 15-25% mobilization increase towards Allies
+#MOBILIZATION= [15,25] [2]
+; France(40) Allied and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; Turkey Allied Leaning Before War With the USSR
+{
+#NAME= Turkey Leans Toward Allies While USSR Neutral (Turkey->Allies)
+#POPUP= 
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 5% mobilization increase towards Allies
+#MOBILIZATION= [5,5] [2]
+; USSR(116) aligned Allied and not active
+; Turkey(111) Axis and Not Active
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+#VARIABLE_CONDITION= 111 [1] [0] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;Replacement Script
+;
+; Allied aggression in Norway resulting in a
+; 20-30% increase in Finnish activation towards Axis:
+{
+#NAME= UK Aggression In Norway (Finnish->Axis)
+#POPUP= Finland Is Concerned At Allied Aggression Against A Neighboring Country
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 39
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 20-30% activation increase towards Axis
+#MOBILIZATION= [20,30] [1]
+; USA(115) Allied (not fully active) and not surrendered
+; Norway(78) Axis and surrendered
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+#VARIABLE_CONDITION= 78 [1] [100] [1]
+; Allies invade Norway
+#CONDITION_POSITION= 167,52 [2,2] [1,1] [2] [0]
+}
+
+;
+; Allied aggression in Norway resulting in a
+; 20-35% increase in Swedish activation towards Axis:
+{
+#NAME= UK Aggression In Norway (Sweden->Axis)
+#POPUP= Sweden Alerts Civil Defense In Response To Allied Aggression In Norway
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -1006,521 +1741,40 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #COUNTRY_ID= 103
-#TRIGGER= 50
+#TRIGGER= 100
 #DATE= 1939/09/03
-; 15-20% activation increase towards Axis
-#MOBILIZATION= [15,20] [1]
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Soviets have 1 Amphibious unit within RND(2,3) hexes range east of Copenhagen port
-#CONDITION_POSITION= 171,66 [2,3] [1,1] [2] [116] <47,48>
-}
+; 20-35% activation increase towards Axis
+#MOBILIZATION= [20,35] [1]
+; USA(115) Allied (not fully active) and not surrendered
+; Norway(78) Axis and surrendered
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+#VARIABLE_CONDITION= 78 [1] [100] [1]
+; Allies invade Norway
+#CONDITION_POSITION= 167,52 [2,2] [1,1] [2] [0]
+} 
 
 ;
-; Finnish War Entry:
-; Finland declared war on the USSR shortly after Barbarossa was launched 1941/6/22
+; US naval units in the vicinity of the Arctic Circle
+; 3-5% increase in Soviet mobilization towards Axis
 {
-#NAME= Finland Declares War On The USSR
-#POPUP= Finland Enters The War Against The USSR
-#IMAGE= finlandenterswar.png
-#SOUND=
-; Turned off in Fall Weiss II
-#FLAG= 0
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 39
-#TRIGGER= 100
-#DATE= 1939/09/01
-; 100% activation increase towards Axis
-#MOBILIZATION= [100,100] [1]
-; Finland(39) Axis but not fully mobilized
-#VARIABLE_CONDITION= 39 [1] [0] [0]
-; USSR(116) Allied but not fully mobilized
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Axis has 1 unit within 4 hexes of Leningrad
-#CONDITION_POSITION= 206,52 [4,4] [1,1] [1] [0]
-; Axis has 1 unit within 1 hex of Pskov
-#CONDITION_POSITION= 202,59 [1,1] [1,1] [1] [0]
-; Axis has 1 unit within 1 hex of Ostrov
-#CONDITION_POSITION= 202,62 [1,1] [1,1] [1] [0]
-; Axis has 1 unit within 1 hex of Polotsk
-#CONDITION_POSITION= 202,66 [1,1] [1,1] [1] [0]
-; Axis have 1 unit within 5 hexes of Novgorod
-#CONDITION_POSITION= 208,57 [5,5] [1,1] [1] [0]
-}
-
-;
-; Axis invasion of Netherlands pushes Belgium into the Allied camp
-; 20% increase in Belgian activation towards Allies:
-{
-#NAME= Axis Invades Netherlands (Belgium->Allies)
-#POPUP=
+#NAME= US Naval Aggression Near Arctic Circle (USSR->Axis) (50%)
+#POPUP= USSR Alarmed Over US Naval Activity Near Arctic Circle
 #IMAGE=
 #SOUND=
 #FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 10
-#TRIGGER= 100
-#DATE= 1939/09/01
-; 20-20% activation increase towards Allies
-#MOBILIZATION= [20,20] [2]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis has 1 unit within 2 hexes of Amsterdam
-#CONDITION_POSITION= 156,75 [2,2] [1,1] [1] [0]
-; Axis has 1 unit within 2 hexes of Antwerp
-#CONDITION_POSITION= 155,78 [2,2] [1,1] [1] [0]
-}
-
-;
-; Fall of Brussels resulting in a 3-5% increase 
-; in Italian mobilization towards Axis
-{
-#NAME= Collapse of Belgium (Italy->Axis) (50%)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
+#TYPE= 2
 #AI= 0
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 59
+#COUNTRY_ID= 116
 #TRIGGER= 50
-#DATE= 1940/01/01
+#DATE= 1939/09/01
 ; 3-5% mobilization increase towards Axis
 #MOBILIZATION= [3,5] [1]
-; Belgium(10) Allied and surrendered
-#VARIABLE_CONDITION= 10 [2] [100] [1]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Italy Mobilizes In Response To Allied Invasion Preparations (Italy->Axis)
-#POPUP= <<TAG_42>>
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 59
-#TRIGGER= 33
-#DATE= 1939/09/01
-; 15-25% mobilization increase towards Axis
-#MOBILIZATION= [15,25] [1]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2 Allied Amphibious units within 30 hexes of Syracuse Port(177,112)
-#CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
-; 7 or more Allied naval units within 18 hexes of Syracuse Port(177,112)
-#CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
-}
-
-{
-#NAME= US Swings To The Axis In Response To Allied Preparations To Invade Italy (USA->Axis)
-#POPUP= <<TAG_43>>
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#DATE= 1939/09/01
-; 5-12% mobilization increase towards Axis
-#MOBILIZATION= [5,12] [1]
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 59 [1] [0] [0]
-; 2 Allied Amphibious units within 30 hexes of Syracuse Port(177,112)
-#CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
-; 7 or more Allied naval units within 18 hexes of Syracuse Port(177,112)
-#CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
-}
-
-{
-#NAME= Franco Swings To The Axis In Response To Allied Preparations To Invade Italy (Spain->Axis)
-#POPUP= <<TAG_45>>
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 99
-#TRIGGER= 100
-#DATE= 1939/09/01
-; 5-12% mobilization increase towards Axis
-#MOBILIZATION= [5,12] [1]
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 59 [1] [0] [0]
-; 2 Allied Amphibious units within 30 hexes of Syracuse Port(177,112)
-#CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
-; 7 or more Allied naval units within 18 hexes of Syracuse Port(177,112)
-#CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
-}
-
-;
-; Axis land units within range of Paris(151,84) resulting in a
-; 5-10% increase in Italian activation towards Axis
-{
-#NAME= Collapse of France (Italy->Axis) (75%)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 59
-#TRIGGER= 75
-#DATE= 1940/01/01
-; 5-10% activation increase towards Axis
-#MOBILIZATION= [5,10] [1]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis have 2 units within a 3 hex range of Paris
-#CONDITION_POSITION= 151,84 [3,3] [2,2] [1] [0]
-}
-
-;
-; Allies abandon their land positions in the Mediterranean resulting in a
-; 0% increase in Italian mobilization towards Axis
-; This is for informational purposes only
-{
-#NAME= Allies Abandon Mediterranean Positions (Italy->Axis) (Gibraltar)
-#POPUP= Mussolini Is Encouraged By The Absence Of Allied Forces In Gibraltar
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#DATE= 1939/09/01
-; 0% mobilization increase towards Axis
-#MOBILIZATION= [0,0] [1]
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; UK abandons Gibraltar
-#CONDITION_POSITION= 136,114 [0,0] [0,0] [2] [0]
-}
-
-;Replacement Script
-;
-; This is for informational purposes only
-{
-#NAME= Allies Abandon Mediterranean Positions (Italy->Axis) (Malta)
-#POPUP= The Lack Of Allied Units In Malta Encourages Mussolini's Ambitions
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#DATE= 1939/10/01
-; 0% mobilization increase towards Axis
-#MOBILIZATION= [0,0] [1]
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; UK abandons Malta(175,114)
-#CONDITION_POSITION= 175,114 [0,0] [0,0] [2] [0]
-}
-
-;
-; This is for informational purposes only
-{
-#NAME= Allies Abandon Mediterranean Positions (Italy->Axis) (Cairo)
-#POPUP= The Lack Of Allied Units In Cairo Encourages Mussolini's Ambitions
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#DATE= 1939/09/01
-; 0% mobilization increase towards Axis
-#MOBILIZATION= [0,0] [1]
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; UK abandons Cairo
-#CONDITION_POSITION= 208,126 [10,10] [0,0] [2] [0]
-}
-
-;
-; This is for informational purposes only
-{
-#NAME= Allies Abandon Mediterranean Positions (Italy->Axis) (Tunis)
-#POPUP= Mussolini Is Encouraged By The Absence Of Allied Forces In Tunis
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#DATE= 1939/09/01
-; 0% mobilization increase towards Axis
-#MOBILIZATION= [0,0] [1]
-; France(40) Allied and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-; France abandons Tunis
-#CONDITION_POSITION= 167,112 [5,5] [0,0] [2] [0]
-}
-
-;
-; This is for informational purposes only
-{
-#NAME= Allies Abandon Mediterranean Positions (Italy->Axis) (Damascus)
-#POPUP= Mussolini Is Encouraged By The Absence Of Allied Forces In Syria
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#DATE= 1939/09/01
-; 0% mobilization increase towards Axis
-#MOBILIZATION= [0,0] [1]
-; France(40) Allied and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-; France abandons Damascus
-#CONDITION_POSITION= 218,119 [5,5] [0,0] [2] [0]
-}
-
-;
-; Allies abandon their land positions in the Mediterranean resulting in a
-; 1-2% increase in Italian activation towards Axis:
-{
-#NAME= Allies Abandon Mediterranean Positions (Italy->Axis) (50%)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 59
-#TRIGGER= 50
-#DATE= 1939/10/01
-; 1-2% activation increase towards Axis
-#MOBILIZATION= [1,2] [1]
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-; UK abandons Gibraltar OR
-#CONDITION_POSITION= 136,114 [0,0] [0,0] [2] [0]
-; UK abandons Malta(175,114) OR
-#CONDITION_POSITION= 175,114 [0,0] [0,0] [2] [0]
-; UK abandons Cairo OR
-#CONDITION_POSITION= 208,126 [10,10] [0,0] [2] [0]
-; France abandons Tunis OR
-#CONDITION_POSITION= 167,112 [5,5] [0,0] [2] [0]
-; France abandons Damascus
-#CONDITION_POSITION= 218,119 [5,5] [0,0] [2] [0]
-}
-
-;
-; Allies Invade Iraq resulting in a random
-; 5-7% increase in Italian mobilization towards Axis:
-{
-#NAME= Allies Invade Iraq (Italy->Axis)
-#POPUP= Italy Is Concerned At Allied Aggression In Iraq
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#DATE= 1939/09/01
-; 5-7% mobilization increase towards Axis
-#MOBILIZATION= [5,7] [1]
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Allies invade Iraq
-#CONDITION_POSITION= 234,120 [2,2] [1,1] [2] [112]
-}
-
-;
-; US naval units near Spain
-; 25-35% increase in Spanish mobilization towards Axis
-{
-#NAME= US Naval Aggression Near Spain (Spain->Axis) (50%)
-#POPUP= Spain Alarmed Over Local US Naval Activity
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 99
-#TRIGGER= 50
-#DATE= 1939/09/01
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
 ; USA(115) Allied (not fully active) and not surrendered
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; US has 1 Amphibious unit within RND(1,2) hexes of Bilbao port OR
-#CONDITION_POSITION= 141,97 [1,2] [1,1] [2] [115] <47,48>
-; US has 1 Amphibious unit within RND(1,2) hexes of Lisbon port OR
-#CONDITION_POSITION= 127,108 [1,2] [1,1] [2] [115] <47,48>
-; US has 1 Amphibious unit within RND(1,2) hexes of Valencia port OR
-#CONDITION_POSITION= 146,107 [1,2] [1,1] [2] [115] <47,48>
-; US has 1 Amphibious unit within RND(1,2) hexes of Barcelona port OR
-#CONDITION_POSITION= 151,102 [1,2] [1,1] [2] [115] <47,48>
-}
-
-; Axis land units in England resulting in a
-; 6-12% increase in Spanish mobilization towards Axis:
-{
-#NAME= Sealion (Spain->Axis) (10%)
-#POPUP= Franco Is Impressed By The Axis Success In The UK
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 99
-#TRIGGER= 10
-#DATE= 1941/03/01
-; 6-12% mobilization increase towards Axis
-#MOBILIZATION= [6,12] [1]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis has captured and holds London OR
-#CONDITION_POSITION= 147,77 [0,0] [1,1] [1] [0]
-; Axis has captured and holds Manchester
-#CONDITION_POSITION= 142,72 [0,0] [1,1] [1] [0]
-; Axis has captured and holds Liverpool
-#CONDITION_POSITION= 141,72 [0,0] [1,1] [1] [0]
-}
-
-; Remove 1941
-;
-; British abandon Gibraltar resulting in a
-; 8-12% increase in Spanish activation towards Axis:
-{
-#NAME= Allies Abandon Mediterranean Positions (Spain->Axis)
-#POPUP= The Allies Abandon Gibraltar: Franco Swings Towards The Axis
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 99
-#TRIGGER= 100
-#DATE= 1939/09/01
-; 8-12% activation increase towards Axis
-#MOBILIZATION= [8,12] [1]
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Italy(59) Axis but not fully mobilized
-#VARIABLE_CONDITION= 59 [1] [0] [0]
-; UK abandons Gibraltar
-#CONDITION_POSITION= 136,114 [0,0] [0,0] [2] [0]
-}
-
-; British abandon Gibraltar resulting in a
-; 8-12% increase in Spanish activation towards Axis:
-{
-#NAME= Allies Abandon Mediterranean Positions (Spain->Axis)
-#POPUP= The Allies Abandon Gibraltar: Franco Swings Towards The Axis
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 99
-#TRIGGER= 100
-#DATE= 1939/09/01
-; 8-12% activation increase towards Axis
-#MOBILIZATION= [8,12] [1]
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; UK abandons Gibraltar
-#CONDITION_POSITION= 136,114 [0,0] [0,0] [2] [0]
-}
-
-; Axis successes in Egypt inspire Franco
-; 6-12% increase in Spanish mobilization towards Axis:
-{
-#NAME= Sealion (Spain->Axis)
-#POPUP= Franco Is Impressed By The Axis Success In Egypt
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 99
-#TRIGGER= 100
-#DATE= 1939/09/01
-; 6-12% mobilization increase towards Axis
-#MOBILIZATION= [6,12] [1]
-; Egypt(36) Allied and surrendered
-#VARIABLE_CONDITION= 36 [2] [100] [1]
-; Axis has captured and holds Suez OR
-#CONDITION_POSITION= 210,126 [0,0] [1,1] [1] [0]
-; Axis has captured and holds Port Said
-#CONDITION_POSITION= 209,123 [0,0] [1,1] [1] [0]
-; Axis forces advance on Gaza
-#CONDITION_POSITION= 214,124 [2,2] [2,2] [1] [0]
+#CONDITION_POSITION= 152,10 [23,23] [1,1] [2] [115]
 }
 
 ;
@@ -1559,188 +1813,82 @@
 }
 
 ;
-; German Units in Iraq trigger a random
-; 45-55% increase in Vichy Syrian mobilization towards Axis
+; US naval units near Spain
+; 25-35% increase in Spanish mobilization towards Axis
 {
-#NAME= German Units In Iraq (Syria->Axis) (50%)
-#POPUP= Syria Swings Towards The Axis
-#IMAGE= 
-#SOUND= 
+#NAME= US Naval Aggression Near Spain (Spain->Axis) (50%)
+#POPUP= Spain Alarmed Over Local US Naval Activity
+#IMAGE=
+#SOUND=
 #FLAG= 1
 #TYPE= 1
 #AI= 0
-#LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#COUNTRY_ID= 105
+#LEVEL= 0
+#COUNTRY_ID= 99
 #TRIGGER= 50
-#DATE= 1939/09/03
-; 45-55% mobilization increase towards Axis
-#MOBILIZATION= [45,55] [1]
+#DATE= 1939/09/01
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
 ; USA(115) Allied (not fully active) and not surrendered
-; France(40) Allied (fully active) and surrendered
-; UK(112) Allied and not surrendered
-; Egypt(36) Allied (fully active) and NOT surrendered
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 36 [2] [100] [0]
-#CONDITION_POSITION= 234,120 [2,2] [1,1] [1] [45]
+; US has 1 Amphibious unit within RND(1,2) hexes of Bilbao port OR
+#CONDITION_POSITION= 141,97 [1,2] [1,1] [2] [115] <47,48>
+; US has 1 Amphibious unit within RND(1,2) hexes of Lisbon port OR
+#CONDITION_POSITION= 127,108 [1,2] [1,1] [2] [115] <47,48>
+; US has 1 Amphibious unit within RND(1,2) hexes of Valencia port OR
+#CONDITION_POSITION= 146,107 [1,2] [1,1] [2] [115] <47,48>
+; US has 1 Amphibious unit within RND(1,2) hexes of Barcelona port OR
+#CONDITION_POSITION= 151,102 [1,2] [1,1] [2] [115] <47,48>
 }
 
-; Axis land units in England resulting in a
-; 45-55% increase in Turkish mobilization towards Axis:
 {
-#NAME= Sealion (Turkey->Axis) (10%)
-#POPUP= Turkey Strengthens Pro-Axis Relations
+#NAME= US Swings To The Axis In Response To Allied Preparations To Invade Italy (USA->Axis)
+#POPUP= <<TAG_43>>
 #IMAGE=
 #SOUND=
 #FLAG= 1
 #TYPE= 1
 #AI= 0
-#LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#COUNTRY_ID= 111
-#TRIGGER= 10
-#DATE= 1939/09/01
-; 45-55% activation increase towards Axis
-#MOBILIZATION= [45,55] [1]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis has captured and holds London OR
-#CONDITION_POSITION= 147,77 [0,0] [1,1] [1] [0]
-; Axis has captured and holds Manchester
-#CONDITION_POSITION= 142,72 [0,0] [1,1] [1] [0]
-; Axis has captured and holds Liverpool
-#CONDITION_POSITION= 141,72 [0,0] [1,1] [1] [0]
-}
-
-;AMEND1942 (INCREASE TURKEY'S MOBILIZATION AND REMOVE THIS IN 1942)
-; Axis land units 1 hex from Sevastopol resulting in a
-; 5-10% increase in Turkish mobilization towards Axis
-{
-#NAME= Axis Advance On Sevastopol (Turkey->Axis)
-#POPUP= <<TAG_34>>
-#IMAGE= 
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
 #LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 111
-#TRIGGER= 100
-#DATE= 1941/05/25
-; 5-10% mobilization increase towards Axis
-#MOBILIZATION= [5,10] [1]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis has RND(1,2) 1 hex from Sevastopol
-#CONDITION_POSITION= 212,96 [1,1] [1,2] [1] [0]
-}
-
-; Allies take Rhodes
-; 15-25% increase in Turkish mobilization towards Allies
-{
-#NAME= Allies in Rhodes (Turkey->Allies)
-#POPUP= The Allied Presence In Rhodes Swings Turkey Towards The Allies
-#IMAGE= 
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 111
+#COUNTRY_ID= 115
 #TRIGGER= 100
 #DATE= 1939/09/01
-; 15-25% mobilization increase towards Allies
-#MOBILIZATION= [15,25] [2]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Allies have 1 unit in Rhodes
-#CONDITION_POSITION= 202,113 [0,0] [1,1] [2] [0]
-}
-
-;AMEND1942 (INCREASE TURKEY'S MOBILIZATION AND REMOVE THIS IN 1942)
-{
-#NAME= Axis Advance To Sevastopol (Turkey->Axis) (50%)
-#POPUP= Powerful Groups In Turkey Call On Their Country To Join The Axis
-#IMAGE= 
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 111
-#TRIGGER= 50
-#DATE= 1939/09/01
-; 10-20% mobilization increase towards Axis
-#MOBILIZATION= [10,20] [1]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis has 1 unit in Sevastopol
-#CONDITION_POSITION= 212,96 [0,0] [1,1] [1] [0]
-}
-
-{
-#NAME= Axis Conquer Egypt (Turkey->Axis) (50%)
-#POPUP= The Axis Success In Egypt Strengthens Interest In Turkey To Join The Axis
-#IMAGE= 
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 111
-#TRIGGER= 50
-#DATE= 1939/09/01
-; 10-20% mobilization increase towards Axis
-#MOBILIZATION= [10,20] [1]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Egypt(36) aligned with Allied and surrendered
-#VARIABLE_CONDITION= 36 [2] [100] [1]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-;
-; Event for Yugoslavian mobilization if the UK
-; has lost London so cannot support a pro-Allied coup there
-{
-#NAME= Yugoslavia Signs The Tripartite Pact (Yugoslavia->>Axis)
-#POPUP= Yugoslavia Signs The Tripartite Pact And Joins The Axis
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 120
-#TRIGGER= 100
-#DATE= 1941/03/28
-; 200% mobilization increase towards Axis
-#MOBILIZATION= [200,200] [1]
-; UK(112) Allied and not surrendered
-; France(40) Allied and surrendered
+; 5-12% mobilization increase towards Axis
+#MOBILIZATION= [5,12] [1]
 ; Italy(59) Axis and not surrendered
-; Yugoslavia(120) Axis
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#VARIABLE_CONDITION= 120 [1] [0] [0]
-; Axis has 1 unit in London
-#CONDITION_POSITION= 147,77 [0,0] [1,1] [1] [0]
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+; 2 Allied Amphibious units within 30 hexes of Syracuse Port(177,112)
+#CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
+; 7 or more Allied naval units within 18 hexes of Syracuse Port(177,112)
+#CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
+}
+
+{
+#NAME= US Swings To The Axis In Response To Allied Preparations To Invade Italy (USA->Axis)
+#POPUP= <<TAG_43>>
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1939/09/01
+; 5-12% mobilization increase towards Axis
+#MOBILIZATION= [5,12] [1]
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+; 2 Allied Amphibious units within 30 hexes of Syracuse Port(177,112)
+#CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
+; 7 or more Allied naval units within 18 hexes of Syracuse Port(177,112)
+#CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
 }
 
 ;
@@ -1796,217 +1944,35 @@
 }
 
 ;
-; Allies Naval Patrols Near Norway
-; 0% increase in Norwegian mobilization towards Axis
-; This is for informational purposes only
+; Event for Yugoslavian mobilization if the UK
+; has lost London so cannot support a pro-Allied coup there
 {
-#NAME= AXIS AI: Allied Naval Presence Near Norwegian Convoy Lines (Norway->Axis)
-#POPUP= Norway Demands The Allies Respect Their Territorial Waters
-#IMAGE=
-#SOUND=
-; Disabled since it is effectively not doing anything
-#FLAG= 0
-#TYPE= 3
-#AI= 3
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 78
-#TRIGGER= 100
-#DATE= 1939/09/01
-; Fall Weiss II changed from 1-4% to 0%
-; 0% mobilization increase towards Axis
-#MOBILIZATION= [0,0] [1]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Allies on the Norwegian convoy line
-#CONDITION_POSITION= 155,43 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 155,45 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 155,47 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 178,19 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 176,20 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 174,21 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 172,22 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 172,24 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 170,25 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 170,27 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 168,28 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 168,30 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 167,31 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 166,33 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 164,34 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 162,35 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 162,37 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 160,38 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 158,39 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 158,41 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 156,42 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 155,49 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 155,51 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 155,53 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 155,55 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 155,57 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 157,58 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 159,59 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 161,60 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 161,62 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 161,64 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 161,66 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 161,68 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 161,60 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 161,69 [1,1] [1,1] [2] [0]
-#CONDITION_POSITION= 162,70 [1,1] [1,1] [2] [0]
-}
-
-{
-#NAME= Fall of Moscow to Axis (Turkey->Axis) (5%)
-#POPUP= Turkish Parliament Debates Joining the Axis
+#NAME= Yugoslavia Signs The Tripartite Pact (Yugoslavia->>Axis)
+#POPUP= Yugoslavia Signs The Tripartite Pact And Joins The Axis
+#POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
 #TYPE= 1
-#AI= 1
+#AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#COUNTRY_ID= 111
-#TRIGGER= 5
-#DATE= 1939/09/03
-; 20-40% activation increase towards Axis
-#MOBILIZATION= [20,40] [1]
+#COUNTRY_ID= 120
+#TRIGGER= 100
+#DATE= 1941/03/28
+; 200% mobilization increase towards Axis
+#MOBILIZATION= [200,200] [1]
+; UK(112) Allied and not surrendered
 ; France(40) Allied and surrendered
-; Italy(59) Axis and fully mobilized
+; Italy(59) Axis and not surrendered
+; Yugoslavia(120) Axis
+#VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; Axis Occupies Moscow(221,65)
-#CONDITION_POSITION= 221,65 [0,0] [1,1] [1] [0]
-}
-
-; Turkey Allied Leaning Before War With the USSR
-{
-#NAME= Turkey Leans Toward Allies While USSR Neutral (Turkey->Allies)
-#POPUP= 
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 111
-#TRIGGER= 100
-#DATE= 1939/09/03
-; 5% mobilization increase towards Allies
-#MOBILIZATION= [5,5] [2]
-; USSR(116) aligned Allied and not active
-; Turkey(111) Axis and Not Active
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-#VARIABLE_CONDITION= 111 [1] [0] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-;NEW
-;
-{
-#NAME= Franco Swings To The Axis In Response To Allied Preparations To Invade Italy (Spain->Axis) (75%)
-#POPUP= Franco Swings To The Axis In Response To Allied Preparations To Invade Italy
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 99
-#TRIGGER= 75
-#DATE= 1939/09/01
-; 5-12% mobilization increase towards Axis
-#MOBILIZATION= [5,12] [1]
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 59 [1] [0] [0]
-; 2 Allied Amphibious units within 30 hexes of Syracuse Port(177,112)
-#CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48> OR
-; 7 or more Allied naval units within 18 hexes of Syracuse Port(177,112)
-#CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
-}
-
-
-;NEW
-;
-{
-#NAME= Italy Mobilizes In Response To Allied Invasion Preparations (Italy->Axis) (33%)
-#POPUP= <<TAG_42>>
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 59
-#TRIGGER= 33
-#DATE= 1939/09/01
-; 15-25% mobilization increase towards Axis
-#MOBILIZATION= [15,25] [1]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2 Allied Amphibious units within 30 hexes of Syracuse Port(177,112)
-#CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
-; 7 or more Allied naval units within 18 hexes of Syracuse Port(177,112)
-#CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
-}
-
-{
-#NAME= US Swings To The Axis In Response To Allied Preparations To Invade Italy (USA->Axis)
-#POPUP= <<TAG_43>>
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#DATE= 1939/09/01
-; 5-12% mobilization increase towards Axis
-#MOBILIZATION= [5,12] [1]
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 59 [1] [0] [0]
-; 2 Allied Amphibious units within 30 hexes of Syracuse Port(177,112)
-#CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
-; 7 or more Allied naval units within 18 hexes of Syracuse Port(177,112)
-#CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
-}
-
-
-;NEW
-;
-; Iraqis reacts to Axis gains in Egypt
-{
-#NAME= Axis Advances in Egypt (Iraq->Axis) (50%)
-#POPUP= <<TAG_44>>
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 56
-#TRIGGER= 50
-#DATE= 1939/09/01
-; 25-35% mobilization increase towards Axis
-#MOBILIZATION= [25,35] [1]
-; Iraq(56) Axis but not fully mobilized
-#VARIABLE_CONDITION= 56 [1] [0] [0]
-; The Axis have RND(1,2) within 7 hexes of Suez
-#CONDITION_POSITION= 210,126 [7,7] [1,2] [1] [0]
+#VARIABLE_CONDITION= 120 [1] [0] [0]
+; Axis has 1 unit in London
+#CONDITION_POSITION= 147,77 [0,0] [1,1] [1] [0]
 }
 
 ;
