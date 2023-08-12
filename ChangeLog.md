@@ -40,11 +40,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - Many of the event files have gone through a custom sorting algorithm that re-orders the content of the file based on #DECISION number or #LINK number
         - This enhances the UI experience from the in-game Script Selection dialog.
         - Additionally, it just makes things significantly easier to find and identify scripting issues.
-
 - Game features:
     - Neutral Italy can now pass through straits of Gibraltar
     - Axis Coastal Raiding/Shipping scripts apply to all Axis raiders
-
     - DE 116 - Portugal Leases the Azores to the UK (Portugal->Allies)
         - now requires Portugal be Allied Aligned 30%
     - DE 800 - The Anglo-Portuguese Alliance
@@ -71,7 +69,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
         - "Malta Effect (Derna, Msus, Mekili, Gazala) (15%)"
         - "Malta Effect (Tobruk, Alexandria, Port Said) (20%)"
         - "Malta Effect (Bardia, Sidi Barrani, Mersa Matruh, El Alamein) (20%)"
-
 - Scenario Data:
     - Albania(3) annexed by Italy(59)
         - control of all Albanian hexes given to Italy (same as was originally done for Libya)
@@ -126,7 +123,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - Saying yes to DE 103 reduces the % sent by convoy from Egypt & Iraq from 80% to 65%, as does saying no to DE 105 and yes to DE 164 (Duedman) ([convoy.txt])
     - Axis Advances in Egypt (Iraq->Axis) (50%) ([mobilization_2.txt])
     - ... and more ...
-
 - Operation Countenance
     - Was only partially implemented and linked incorrectly to wrong or non-existent events
     - Re-implemented using DEs 312 through 318
@@ -164,8 +160,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - "DE 112 - UK: Defeated In East Africa" ([national_morale.txt])
 - "DE 112 - UK: Victorious In East Africa"
     - removed requirement(s) for Australia to be Axis
-- corrected incorrect #DISPLAY_TURN for events that had '#PRIVATE= 1' ([unit.txt])
-such as:
+- corrected incorrect #DISPLAY_TURN for events that had '#PRIVATE= 1' ([unit.txt]) such as:
     - DE 416 - USSR: Anti-Tank Units
         - DISPLAY_TURN=0 changed to 2
     - DE 645 - Germany: Anti-Tank Units
