@@ -27,13 +27,13 @@ GAME ENGINE
 - Fixed a Special Forces amphibious embarkation issue that now has SF focus on available ports and adjacent hexes next to ports before other available embarkation hexes (kjgokc2007, petedalby).
 - Fixed a CTD that may occur when using either the sleep, upgrade or reinforce tool and then clicking the prev/next unit buttons (Surt).
 - Fixed an AI Transport error that would have AI transports at less than 50% strength possibly embark and then immediately return to port (Lothos).
-- Fixed a rare pathfinding error that led to an in game freeze (Von Hugo).
+- Fixed a rare path-finding error that led to an in game freeze (Von Hugo).
 - Fixed an AI turn sub diving error that did not properly hide player control subs from the AI after a dive (Mithrilotter).
 - Fixed an issue where towns would sometimes change control, despite not entering or formally gaining control of the town, after being attacked by a unit that moved first before attacking (Chernobyl).
 - Rebasing an air unit lowers its spotting range in half, and rebased air units can no longer swap with an adjacent unit (Elessar2, Duedman).
 - Air units in fog/rain, snow or sandstorm weather will now have their spotting range reduced to 1 hex (Lothos).
 - Air units that attack a unit in fog/rain, snow or sandstorm weather will no longer de-entrench.
-- Pathfinding routine optimized with a 3X improvement for some of the worst long distance A to B pathfinding cases.
+- Path-finding routine optimized with a 3X improvement for some of the worst long distance A to B path-finding cases.
 - Coastal Guns now have the potential to damage attacking naval units (archmache).
 - Defender units that are destroyed before they can retreat will now output a 'Shattered' message to better indicate halved losses for the attacker (Taxman66).
 - AI subs will now lock in to Hunt mode if the Fleet script is set to 'Naval Cruise' (Lothos).
@@ -49,7 +49,7 @@ EDITOR
 
 All Campaigns
 - Change the river at Kherson (211,90) to use Major River tile 316 and 561 for the river mouth (Radar8717).
-- Yugoslavia and Turkey’s unit facings changed (Hydra).
+- Yugoslavia and Turkey's unit facings changed (Hydra).
 - Russian Armored Trains are now limited to Infantry Weapons level 2 (Taxman66).
 - The cost of Anti-Aircraft Defense research reduced from 125 to 110 MPPs.
 - AA units can now be upgraded to level 3 in Anti-Aircraft Defense.
@@ -70,7 +70,7 @@ All Campaigns
 - Changed DE 151 to just check for Paris being in Axis hands, rather than requiring an Axis unit being in Paris (Gilber).
 - Duplicated DE 604 with DE 678 so that the same DE fires whether or not the UK supports the Free French (jkap).
 - The USSR now receives an AA unit via the Production Queue in July 1940.
-- France’s MPP boost on liberation increased from 75 MPPs for 3 turns to 200 MPPs for 3 turns (Mithrilotter).
+- France's MPP boost on liberation increased from 75 MPPs for 3 turns to 200 MPPs for 3 turns (Mithrilotter).
 - 6 and 10 hexes of Warsaw will now show on the map when relevant. Note that this does not take into account other political actions, e.g. the entrance of Axis Minors into the war, the independence or otherwise of the Baltic States, or whether or not Poland has been divided between Germany and the USSR (taffjones).
 - The presence of an Italian naval unit within 10-12 hexes of the port of Southampton while Italy is neutral can now trigger the US mobilizing by 2-5% per turn (HarrySmith).
 
@@ -121,11 +121,11 @@ All Campaigns
 - Updated the script headers to better explain the #AI= Values range settings (Lothos).
 - Updated the Guard script headers relating to the first #FRIENDLY_POSITION (Lothos).
 - National Morale script templates updated to say #COUNTRY_ID= Country ID associated with this event (this is the country that will either benefit or be penalized by the script) (redrum68).
-- Increased Germany’s Rocket Build Limit to 3 (ElvisJJonesRambo).
-- Fighters’ Strat Bomber attack values increased from 1 to 2 (HarrySmith).
-- Anti-Air units’s Strat. Bomber attack and defense values now increase by 1.5 per level of Anti-Aircraft Defense research (HarrySmith).
+- Increased Germany's Rocket Build Limit to 3 (ElvisJJonesRambo).
+- Fighters' Strat Bomber attack values increased from 1 to 2 (HarrySmith).
+- Anti-Air units's Strat. Bomber attack and defense values now increase by 1.5 per level of Anti-Aircraft Defense research (HarrySmith).
 - Soviet Shock Armies can now upgrade with 1 level of mobility (petedalby).
-- ASW and Naval Weapons’ upgrade increments for Airships fixed (Metalogic; OxfordGuy3).
+- ASW and Naval Weapons' upgrade increments for Airships fixed (Metalogic; OxfordGuy3).
 - The cost of Production Technology for the USSR has been reduced from 175 to 155 MPPs per chit.
 - Erzurum is now an Industrial Center.
 - Subs now have zero supply loss when attacked (Elessar2).
@@ -153,7 +153,7 @@ All Campaigns
 - If the USSR has been offered, and rejected, a Revised Borders Treaty then it will now swing only 3-5% towards the Allies rather than 7-10% if Germany annexes Lithuania via DE 633 or DE 634 (AshFall).
 - If the USSR has been offered, and rejected, a Revised Borders Treaty then it will now swing 7-10% towards the Axis if it annexes Lithuania, should Germany have failed to do so. To make this work, dummy Decisions 457 & 458 have been added, and Lithuania now starts pro-Allied rather than purely neutral, though still at 0% Mobilization. (AshFall).
 - Removed the Condition Positions for DE 406 for the USSR to decide if it wants to invade Poland (BigJohn).
-- Fixed Poland and Germany’s belligerence status.
+- Fixed Poland and Germany's belligerence status.
 
 1939 & 1940 Campaigns
 - The arrival of HMCS Columbia has been corrected to September 1941 in the Strategy Guides (Metalogic; OxfordGuy3).
@@ -177,10 +177,10 @@ All Campaigns
 - Annapolis Destroyer now starts at Halifax.
 
 1942, 1943, 1944 Campaigns
-- Adjusted the frontlines north of Leningrad (jkap).
+- Adjusted the front-lines north of Leningrad (jkap).
 
 1944 Campaign
-- Removed the USA’s chit in Logistics as they had already achieved the maximum level.
+- Removed the USA's chit in Logistics as they had already achieved the maximum level.
 
 
 v1.24.01
@@ -199,7 +199,7 @@ GAME ENGINE
 - Fixed a controlled movement error where the unit would move its full range of hexes but not record any action point cost (Laurenz)
 - Fixed another retreat error that did not have units retreat as optimally away from enemy units as they should (havoc1371)
 - Fixed a rare (usually a first turn issue but only if the script exists) combat error where any AI units that moved into place via GUARD scripts did not record that they had 'moved', providing a blitz attack bonus for these units (Illbeard)
-- Fixed a combat NM calcuation error for when a defending unit is attacked in port, the attacker no longer loses NM when the attacker does not suffer a strength point loss (Checksumchecks)
+- Fixed a combat NM calculation error for when a defending unit is attacked in port, the attacker no longer loses NM when the attacker does not suffer a strength point loss (Checksumchecks)
 - Fixed a Production Lost error for when a country surrenders and moves its Government to a new country
 - Fixed a Research log error that did not properly display the research advancements and progression of your side under Fog of War 
 - Fixed a 'shattered' from combat calculation error that did not update HQ experience, National Morale and MPPs graphs values (Checksumchecks)
@@ -295,11 +295,11 @@ All Campaigns
 - Changed the terrain to numbers 147 and 498 in hexes 190,13 and 191,12 respectively, as well as changing 191,13 to be a fully land hex, to enable rail traffic to pass to and from Alta in Norway (Scottydawg).
 - Deleted the forest in hex 198,89 to avoid confusion as it couldn't be easily seen (mdsmall).
 - Changed the weather for Late Spring (1st May to 20th June) in Russia (weather zone 5) to have a zero chance of mud (Trooper_One).
-- Nuuk in Greenland renamed as Godthåb in the Resource and Map text files (FOARP).
+- Nuuk in Greenland renamed as GodthÃ¥b in the Resource and Map text files (FOARP).
 - Ounaajoki river in Finland renamed as Ounasjoki in the River text files (FOARP).
 - Shock Armies now have a Production Delay of 4 months rather than 1 (Taxman66).
 - Reduced the penalty from -0.5 to 0.0 for Defender's HQ (Attacker Losses < Defender Losses (ThisEndUp).
-- Dummy Decision 170 added so that the UK's convoy to Archangelsk requires the destination and all hexes to Vologda being in Allied hands to fire (The Land).
+- Dummy Decision 170 added so that the UK's convoy to Arkhangelsk requires the destination and all hexes to Vologda being in Allied hands to fire (The Land).
 - All Decision Events (DE 306; 353 and 454) relating to the US sending supplies to the USSR via Persia now require all road hexes between Bandar Abbas and Baku to be in Allied hands (Hobbygeneral).
 - The date of Denmark surrendering via DE 601 has been changed from the 14th April to the 3rd April 1940, as have those scripts relating to Norway's surrender if triggered via DE 643 or 644 that would have also taken place on the 14th April (El_Condoro; havoc1371).
 - Reduced the chance of the Anglo-French Expedition re DE 204 succeeding from 50% to 33% (scum; gilthib).
@@ -378,31 +378,31 @@ GAME ENGINE CHANGES
 - AI scripts can now be accessed in the OPTIONS->ADVANCED->SCRIPTS screen via 'Advanced (AI)' for review as well as to disable any disagreable planning events.
 - AI will now consider the belligerence status of a potential Amphibious invasion goal position to avoid potential invasions when not at war with the target position, as applicable to custom mods (wobbleguts).
 - HQ supply rules, plus boosting/linking rules recap:
-	- HQ units, after amphibiously unloading, start at supply equal to 5 + their current level of Amphibious Warfare technology.  Supply will drop 2 supply points per turn after that.  This allows the HQ to act as a Mulberry for an initial landing until further supply sources are achieved.
-	- HQ distribution supply:
-		   - HQ supply = 0 will have a distribution supply value of 3 (previously it was 5).
-		   - HQ supply 1 or 2 will have a distribution supply value of 5.
-		   - HQ supply 3 or 4 will have a distribution supply value of 6 (previously it was 8).
-		   - HQ supply 5 will have a distribution supply value of 8.
-		   - HQ supply > 5 will have a distribution supply value of 10.
-	- HQ boosting can only be achieved if the first HQ has a supply value >= 3 (previously it was > 0).
-		   - The HQ to be boosted must have a supply value < 5 and is now automatically increased to a supply value of 5 which caps its distribution supply at 8.
-		   - This will improve distribution supply for boosted HQs that were at 3 or 4 supply (from 6 to 8), and more importantly, will allow them to 'operate' and 'upgrade' now that they are at 5 supply. 
-	- LOW SUPPLY HQ boosting can only be achieved if the source HQ has a supply value >= 1 and < 3.
-		   - The HQ to be boosted must have a supply value < 3 and is now automatically increased to a supply value of 5 which caps its distribution supply at 6.	
-	- Between two HQs, the higher rated HQ receives the boost, the lower rated HQ is the source of the boost.
-	- Source HQs of a supply boost to another HQ are now highlighted with a yellow hex outline, indicating they are the source of the supply boost, when clicking on the recipient HQ.	
-	- Air units do not receive supply from an HQ unless they are attached.
-	  - Under supplied Air units, due to not being attached to an HQ, will be indicated by a red hatch beneath the applicable Air unit.
-	  - Under supplied Air units, attached to an HQ but not to the most optimal supply giving HQ, will be indicated by a purple hatch beneath the applicable Air unit.
-	  
+    - HQ units, after amphibiously unloading, start at supply equal to 5 + their current level of Amphibious Warfare technology.  Supply will drop 2 supply points per turn after that.  This allows the HQ to act as a Mulberry for an initial landing until further supply sources are achieved.
+    - HQ distribution supply:
+           - HQ supply = 0 will have a distribution supply value of 3 (previously it was 5).
+           - HQ supply 1 or 2 will have a distribution supply value of 5.
+           - HQ supply 3 or 4 will have a distribution supply value of 6 (previously it was 8).
+           - HQ supply 5 will have a distribution supply value of 8.
+           - HQ supply > 5 will have a distribution supply value of 10.
+    - HQ boosting can only be achieved if the first HQ has a supply value >= 3 (previously it was > 0).
+           - The HQ to be boosted must have a supply value < 5 and is now automatically increased to a supply value of 5 which caps its distribution supply at 8.
+           - This will improve distribution supply for boosted HQs that were at 3 or 4 supply (from 6 to 8), and more importantly, will allow them to 'operate' and 'upgrade' now that they are at 5 supply. 
+    - LOW SUPPLY HQ boosting can only be achieved if the source HQ has a supply value >= 1 and < 3.
+           - The HQ to be boosted must have a supply value < 3 and is now automatically increased to a supply value of 5 which caps its distribution supply at 6.	
+    - Between two HQs, the higher rated HQ receives the boost, the lower rated HQ is the source of the boost.
+    - Source HQs of a supply boost to another HQ are now highlighted with a yellow hex outline, indicating they are the source of the supply boost, when clicking on the recipient HQ.	
+    - Air units do not receive supply from an HQ unless they are attached.
+      - Under supplied Air units, due to not being attached to an HQ, will be indicated by a red hatch beneath the applicable Air unit.
+      - Under supplied Air units, attached to an HQ but not to the most optimal supply giving HQ, will be indicated by a purple hatch beneath the applicable Air unit.
+      
 EDITOR CHANGES
 - The following have been adjusted from 5 point increments to 1 point increments for more precision when customizing campaigns (Elessar2).
-	- Combat Target Data, Raid Multiplier (MPPs), Enemy NM Losses (Per Raid)
-	- Upgrade Increments Data (per research level), Raid Multiplier (MPPs), Enemy NM Losses (Per Raid)
-	- Automatic Increments Data (per research level), Raid Multiplier (MPPs), Enemy NM Losses (Per Raid)
-	- Strength/Reinforce/Reformation Data, % Cost Per Reinforcement Point, % Cost Per Elite Reinforcement Point 
-	
+    - Combat Target Data, Raid Multiplier (MPPs), Enemy NM Losses (Per Raid)
+    - Upgrade Increments Data (per research level), Raid Multiplier (MPPs), Enemy NM Losses (Per Raid)
+    - Automatic Increments Data (per research level), Raid Multiplier (MPPs), Enemy NM Losses (Per Raid)
+    - Strength/Reinforce/Reformation Data, % Cost Per Reinforcement Point, % Cost Per Elite Reinforcement Point 
+    
 1939 Campaign
 - France's starting MPPs increased from 75 to 90.
 - French 2nd Army at Verdun and 9th Army at 155,82 increased in strength from 5 to 8, 1st Army at 153,81 increased in strength from 5 to 6, XLIV Corps at Epinal; IX Corps at Belfort increased in strength from 5 to 6. This is the equivalent of 100 MPPs worth of reinforcements.
@@ -418,8 +418,8 @@ EDITOR CHANGES
 - DE 301 for the US to send tanks to Cairo now checks for El Alamein being in Axis hands, rather than for an Axis unit to be in El Alamein (Big John).
 
 All Campaigns
-- The cost of Rocket research has been reduced from 175 to 150 MPPs, and Germany’s starting levels in this increased by 1 in all campaigns from 1939 to 1943 (ElvisJJonesRambo).
-- Increased Germany’s National Morale loss due to the fall of Berlin from 10,000 to 20,000 points (Mithrilotter).
+- The cost of Rocket research has been reduced from 175 to 150 MPPs, and Germany's starting levels in this increased by 1 in all campaigns from 1939 to 1943 (ElvisJJonesRambo).
+- Increased Germany's National Morale loss due to the fall of Berlin from 10,000 to 20,000 points (Mithrilotter).
 - The Murmansk convoy now requires Murmansk and all hexes to Belomorsk plus Vologda to be in Allied hands, having removed all hexes from Belomorsk to Volkov from the requirement (The Land).
 - USSR's Corps and Army statistics corrected (Gilber).
 
@@ -435,7 +435,7 @@ GAME ENGINE CHANGES
 - Fixed some localization issues for Multiplayer games that were not translating properly between players in different languages (EarlyDoors).
 - Fixed a resource supply/strength calculation error that did not see Minor controlled Primary/Industrial resources drop in strength when cut by rail to a Major Primary/Industrial supply source (mdsmall).
 - Fixed a PBEM++ tournament game 'Save' and 'Quit' error that would end in a CTD.
-- Fixed an isse that did not properly indicate that an artillery is no longer able to move or attack after an upgrade or reinforcement (Tanaka).
+- Fixed an issue that did not properly indicate that an artillery is no longer able to move or attack after an upgrade or reinforcement (Tanaka).
 - Fixed an error in 'objective' based scenarios/campaigns where the wrong hex control was assigned for occupied but then liberated hexes.
 - Fixed a naval combat error that did not properly have naval units demoralizing other naval units whenever applicable (Gilber).
 - Fixed an AI purchase animation error that had it CTD when purchasing and replacing destroyed Carrier units (Ason).
@@ -446,7 +446,7 @@ GAME ENGINE CHANGES
 - Fixed a Purchase Unit error that did not allow you to place Italian units in Sicily (Will952).
 - Fixed a Carrier interception error that did not apply its current research level to the intercepting aircraft (Gilber).
 - Free units from minor nations will now be able to upgrade relative to their current controlling major nation, previously they could not because consideration was still relative to their original parent nation (Gilber).
-- Players can now switch between the strategic menu options without having to close the current window, e.g. switch back and forth directly from Diplomacy to Research, to Purcahse Units etc (USGrant1962).
+- Players can now switch between the strategic menu options without having to close the current window, e.g. switch back and forth directly from Diplomacy to Research, to Purchase Units etc (USGrant1962).
 - Improved an AI HQ position vulnerability issue (Joseph).
 - Improved GRAPHS screen readability with a relative max value between all nations per category (mdsmall).
 - Loop sea transfer hexes enhanced for greater visibility (Christolos).
@@ -493,24 +493,24 @@ GAME ENGINE CHANGES
 - User saves versus the AI will now remember the last map position and center on that position when loading the save (John Fireheart).
 - Computer spotting range bonuses, as set in the OPTIONS screen, will no longer include extended spotting of Naval Mines (Hotzn).
 - HQ supply rules, plus boosting/linking rules recap:
-	- HQ units, after amphibiously unloading, start at 10 supply and maintain supply for up to 5 turns with a drop of 2 supply points per turn.  This is similar to Special Forces, and allows the HQ to act as a Mulberry for an initial landing until further supply sources are achieved.
-	- HQ distribution supply:
-		   - HQ supply = 0 will have a distribution supply value of 3 (previously it was 5).
-		   - HQ supply 1 or 2 will have a distribution supply value of 5.
-		   - HQ supply 3 or 4 will have a distribution supply value of 6 (previously it was 8).
-		   - HQ supply 5 will have a distribution supply value of 8.
-		   - HQ supply > 5 will have a distribution supply value of 10.
-	- HQ boosting can only be achieved if the first HQ has a supply value >= 3 (previously it was > 0).
-		   - the HQ to be boosted must have a supply value < 5 and is now automatically increased to a supply value of 5 which caps its distribution supply at 8.
-		   - this will improve distribution supply for boosted HQs that were at 3 or 4 supply (from 6 to 8), and more importantly, will allow them to 'operate' and 'upgrade' now that they are at 5 supply. 
-	- LOW SUPPLY HQ boosting can only be achieved if the source HQ has a supply value >= 1 and < 3.
-		   - the HQ to be boosted must have a supply value < 3 and is now automatically increased to a supply value of 5 which caps its distribution supply at 6.	
-	- Between two HQs, the higher rated HQ receives the boost, the lower rated HQ is the source of the boost.
-	- Source HQs of a supply boost to another HQ are now highlighted with a yellow hex outline, indicating they are the source of the supply boost, when clicking on the recipient HQ.	
-	- Air units do not receive supply from an HQ unless they are attached.
-	  - Under supplied Air units, due to not being attached to an HQ, will be indicated by a red hatch beneath the applicable Air unit.
-	  - Under supplied Air units, attached to an HQ but not to the most optimal supply giving HQ, will be indicated by a purple hatch beneath the applicable Air unit.
-	
+    - HQ units, after amphibiously unloading, start at 10 supply and maintain supply for up to 5 turns with a drop of 2 supply points per turn.  This is similar to Special Forces, and allows the HQ to act as a Mulberry for an initial landing until further supply sources are achieved.
+    - HQ distribution supply:
+           - HQ supply = 0 will have a distribution supply value of 3 (previously it was 5).
+           - HQ supply 1 or 2 will have a distribution supply value of 5.
+           - HQ supply 3 or 4 will have a distribution supply value of 6 (previously it was 8).
+           - HQ supply 5 will have a distribution supply value of 8.
+           - HQ supply > 5 will have a distribution supply value of 10.
+    - HQ boosting can only be achieved if the first HQ has a supply value >= 3 (previously it was > 0).
+           - the HQ to be boosted must have a supply value < 5 and is now automatically increased to a supply value of 5 which caps its distribution supply at 8.
+           - this will improve distribution supply for boosted HQs that were at 3 or 4 supply (from 6 to 8), and more importantly, will allow them to 'operate' and 'upgrade' now that they are at 5 supply. 
+    - LOW SUPPLY HQ boosting can only be achieved if the source HQ has a supply value >= 1 and < 3.
+           - the HQ to be boosted must have a supply value < 3 and is now automatically increased to a supply value of 5 which caps its distribution supply at 6.	
+    - Between two HQs, the higher rated HQ receives the boost, the lower rated HQ is the source of the boost.
+    - Source HQs of a supply boost to another HQ are now highlighted with a yellow hex outline, indicating they are the source of the supply boost, when clicking on the recipient HQ.	
+    - Air units do not receive supply from an HQ unless they are attached.
+      - Under supplied Air units, due to not being attached to an HQ, will be indicated by a red hatch beneath the applicable Air unit.
+      - Under supplied Air units, attached to an HQ but not to the most optimal supply giving HQ, will be indicated by a purple hatch beneath the applicable Air unit.
+
 EDITOR CHANGES
 - Fixed a 'TEXT' folder file read error that required an extra empty line at the end of the file in order to be properly processed/read (OnlineGeneral).
 - Fixed a Help File launch error (OnlineGeneral).
@@ -536,14 +536,14 @@ All Campaigns
 
 1939 Campaign
 - The British Fighter that arrives on the 1st May 1940 now deploys at Birmingham rather than Oxford (Cpuncher).
-- German Decision DE 601 to seize Denmark is no longer contingent on France’s status and it will also now only fire in April 1940 (Aussiematto).
+- German Decision DE 601 to seize Denmark is no longer contingent on France's status and it will also now only fire in April 1940 (Aussiematto).
 - The Treaty Ports will now return to belonging to Ireland if Ireland joins the Axis or Allies (The Land).
 
 1939 and 1940 Campaigns
 - Added alternative deployment locations to the USSR's Baltic Front units, and removed their link to the Baltic States Decision Event. Also added alternative locations to the UNIT script for the Soviet Baltic fleet (pjg100).
 - Added a Free Unit script for the Dutch navy to fight on after the fall of the Netherlands (Sgt. York).
 - Dummy Decisions DE168 and DE 169 added to deploy the 7th Armoured in the UK if London or Alexandria are in Axis hands (Cpuncher).
-- The French National Morale script entitled ‘France - German Blitzkrieg’ now requires there to be 2 Axis units within 1 hex of Verdun to fire, whereas previously only 1 was required (Taifun).
+- The French National Morale script entitled "France - German Blitzkrieg" now requires there to be 2 Axis units within 1 hex of Verdun to fire, whereas previously only 1 was required (Taifun).
 - Limerick will now return to Ireland if Ireland joins the Axis or Allies (The Land).
 - German AI may now invest in diplomacy to swing a neutral but pro-Allied Finland towards the Axis (Mithrilotter).
 - Mobilization_2 script for Italy amended so they now have a 33% chance per turn of swinging 15-25% towards the Axis if there are 2 Allied Amphibious Transports within 30 hexes of Syracuse Port, or 7 or more Allied naval units within 18 hexes of Syracuse Port (OldCrowBalthazor).
@@ -552,7 +552,7 @@ All Campaigns
 - Corrected DE 405 for the USSR to form I Polish Corps as previously it was referring to DE 400 (crispy131313).
 
 1943 & 1944 Campaigns
-– Greatly reduced the chance of the AI building some naval unit types (usual2020). 
+- Greatly reduced the chance of the AI building some naval unit types (usual2020). 
 
 
 v1.18.00
@@ -634,7 +634,7 @@ GAME ENGINE CHANGES/FIXES
 
 All Campaigns
 - Improved AI RESEARCH and PURCHASE scripts (Armuss).
-- Amended Decision 674 for Operation Axis so that it has Italy’s #COUNTRY_ID= rather than Germany's to ensure it fires correctly. 
+- Amended Decision 674 for Operation Axis so that it has Italy's #COUNTRY_ID= rather than Germany's to ensure it fires correctly. 
 
 1939 and 1940 Campaigns
 - A French Garrison unit now starts in Oran.
@@ -643,7 +643,7 @@ All Campaigns
 - The Trigger % for Italy to mobilize 1-2% towards the Axis if the Allies abandon positions in the Mediterranean has been reduced from 50 to 40%.
 
 1939-1943 Campaigns
-- Amended Decision 674 for Operation Axis so that it has Italy’s #COUNTRY_ID= rather than Germany's to ensure it fires correctly. 
+- Amended Decision 674 for Operation Axis so that it has Italy's #COUNTRY_ID= rather than Germany's to ensure it fires correctly. 
 
 1939, 1940, 1941, 1942 and 1944 Campaigns
 - Soviet Corps and Army Combat Target Statistics corrected in all campaigns apart from 1943 as the 1943 campaign did not need correction (Etzel). 
@@ -671,7 +671,7 @@ GAME ENGINE CHANGES/FIXES
 - Fixed a bug that allowed AI Engineers to reinforce after an attempted move towards a fortification building position (bootlegger267).
 - Fixed a SURRENDER_2 game engine handling error that did not properly convert enemy hex control in some situations (Mithrilotter).
 - Fixed a rare error that provided some Tank units with immediate entrenchment after moving when it should have been set to zero.
-- Fixed an issue where customized sounds from a MOD were being reset when quiting a campaign and starting again (Tanaka).
+- Fixed an issue where customized sounds from a MOD were being reset when quitting a campaign and starting again (Tanaka).
 - Custom campaign strategy guides will now launch from the campaign Manuals folder, previously it was the Docs folder, e.g. Campaigns\_myCustomCampaign\Manuals\Strategy Guide.pdf
 
 All Campaigns
@@ -721,7 +721,7 @@ GAME ENGINE CHANGES/FIXES
 - AI artillery, if it is set to fire before other land unit attacks, they will now fire more consistently instead of allowing land attacks first before firing (Mountaineer).
 
 1939 Campaign
-- Norway’s starting mobilization level increased from 0% to 25% Axis so that Allied raiding of the convoy could render German diplomatic activity a more fruitful way of gaining Norway, rendering an invasion unnecessary (Tanaka).
+- Norway's starting mobilization level increased from 0% to 25% Axis so that Allied raiding of the convoy could render German diplomatic activity a more fruitful way of gaining Norway, rendering an invasion unnecessary (Tanaka).
 - Surrender_2 scripts for the German invasion of Norway amended so that the exact turn in which Norway will surrender cannot be known by the Allied player (smckechnie).
 
 1939 and 1940 Campaigns
@@ -741,7 +741,7 @@ GAME ENGINE CHANGES/FIXES
 
 All Campaigns
 - Reduced the land spotting of all surface combat vessels and regular Transports from 1 to 0 (Markiss).
-- SUPPLY scripts’ explanatory text updated to include that triggering units must now have a strength of at least 5 for the scripts to fire.
+- SUPPLY scripts' explanatory text updated to include that triggering units must now have a strength of at least 5 for the scripts to fire.
 - All convoys to the British government in exile in Canada now arrive at Yarmouth Port rather than Halifax Port (Gilber).
 - The trigger % for Romania switching sides has been increased from 50% to 75% per turn that the trigger is satisfied (dhucul2011) and it will now fire if other Allied units are present, they no longer have to necessarily be Soviet (Mithrilotter).
 - The trigger % for Bulgaria switching sides has been increased from 25% to 50% per turn that the trigger is satisfied (dhucul2011).
@@ -753,12 +753,12 @@ v1.16.03
 GAME ENGINE CHANGES/FIXES
 - fixed a HOTSEAT password issue that kept asking for a NEW PASSWORD.
 - fixed a STRENGTH script handling error that did not reduce unit morale as expected.
-- fixed a PBEM++ resign game error that did not allow their opponent to subseqently view the turn.
+- fixed a PBEM++ resign game error that did not allow their opponent to subsequently view the turn.
 - fixed a combat calculation error that in some cases incorrectly boosted attack result values too high against zero supply or zero morale units.
 - fixed an issue where under supplied Air units were in some cases incorrectly being indicated by a purple hatch despite being unable to attach to a more optimal HQ in the area.
 - fixed a NEW UNITS placement error that would in a rare case not list the correct placement hexes for a minor unit.
 - fixed a PBEM++ Lobby error that would lead to a CTD when the 'Play' button was clicked and there were no current games being listed.
-- fixed a Research calculation error that would in some rare cases lead to no advancemets when there should be some for a particular category.
+- fixed a Research calculation error that would in some rare cases lead to no advancements when there should be some for a particular category.
 - fixed a Sub damage and dive error that resulted in Subs regaining their lost strength after diving.
 - fixed a HOTSEAT game error that did not always launch start of turn DECISION events from saved turns.
 - fixed a renaming of a Transport unit error that did not preserve the amended name.
@@ -776,9 +776,9 @@ GAME ENGINE CHANGES/FIXES
 - Spying and Intelligence research bonus for a non mobilized Major, can no longer be affected in any way by a mobilized Major, i.e. Germany cannot decrease a pre war USSR bonus.
 - HQ units, after amphibiously unloading, start at 10 supply and maintain supply for up to 5 turns with a drop of 2 supply points per turn.  This is similar to Special Forces, and allows the HQ to act as a Mulberry for an initial landing until further supply sources are achieved.
 - HQ distribution supply has been changed to the following:
-	   - HQ supply = 0 will have a distribution supply value of 3 (previously it was 5).
+       - HQ supply = 0 will have a distribution supply value of 3 (previously it was 5).
        - HQ supply 1 or 2 will have a distribution supply value of 5.
-	   - HQ supply 3 or 4 will have a distribution supply value of 6 (previously it was 8).
+       - HQ supply 3 or 4 will have a distribution supply value of 6 (previously it was 8).
        - HQ supply 5 will have a distribution supply value of 8.
        - HQ supply > 5 will have a distribution supply value of 10.
 - HQs (boosting recap) can now only be linked if the first HQ has a supply value >= 3.
@@ -790,11 +790,11 @@ EDITOR CHANGES/FIXES
 - fixed an issue where minor nation HQ flag bases were not being properly shown when displaying 3D units.
 - 'reflect at capital' option now changed to 'reflect at position' under the Edit Country Data screen.
 - added a load and apply custom MOD screen option, allowing editors to turn on or off installed graphical MODS at anytime in the Editor.
-	- mods must be installed in the USER folder for the game, typically Users\<username>\Documents\My Games\Strategic Command WWII - World at War\Mods
-	- mods must be installed in the following format:
-	  Users\<username>\Documents\My Games\Strategic Command WWII - World at War\Mods\<modfoldername>
-	  Users\<username>\Documents\My Games\Strategic Command WWII - World at War\Mods\<modfoldername>\Bitmaps
-	  Users\<username>\Documents\My Games\Strategic Command WWII - World at War\Mods\<modfoldername>\Interface etc.
+    - mods must be installed in the USER folder for the game, typically Users\<username>\Documents\My Games\Strategic Command WWII - World at War\Mods
+    - mods must be installed in the following format:
+      Users\<username>\Documents\My Games\Strategic Command WWII - World at War\Mods\<modfoldername>
+      Users\<username>\Documents\My Games\Strategic Command WWII - World at War\Mods\<modfoldername>\Bitmaps
+      Users\<username>\Documents\My Games\Strategic Command WWII - World at War\Mods\<modfoldername>\Interface etc.
 
 All Campaigns
 - Added an additional German AI GUARD position to help better deal with an Italian surrender and for when Italy vacates Tirana.
@@ -829,7 +829,7 @@ GAME ENGINE CHANGES/FIXES
 - Subs that dive from an attack will no longer pass through an enemy Land + Sea hex.
 
 1939 Campaign
-- The UK’s Carrier Illustrious can now be deployed at any UK port in May 1940 (witpaemail).
+- The UK's Carrier Illustrious can now be deployed at any UK port in May 1940 (witpaemail).
 
 
 
@@ -854,7 +854,7 @@ GAME ENGINE CHANGES/FIXES
 - fixed a unit movement error that allowed units to move a second time under a rare combination of circumstances.
 - fixed an error where an artillery unit with no shells could attack under fog of war during a surprise encounter.
 - fixed AI Strategic Bomber and Rocket attacks to have a higher priority on available resource targets.
-- fixed a convoy protection message error that output the same name for the recepient and sender countries.
+- fixed a convoy protection message error that output the same name for the recipient and sender countries.
 - fixed a unit display error that would show enemy unit experience under FoW when mouse hovering over an enemy unit.
 - fixed an upgrade error that allowed some instances of upgrades in non cooperative hexes.
 - fixed a reinforcement error that allowed some instances of reinforcement in non cooperative hexes.
@@ -887,7 +887,7 @@ GAME ENGINE CHANGES/FIXES
 - fixed a 3D model unit sprite error for some AI units coming off of the production queue.
 - fixed an issue where a Sub would dive and disappear from view under FoW despite ending its dive next to another eligible attacking unit.
 - fixed an issue where naval units that took refuge along neutral major country coastlines could not be attacked.
-- fixed an AI reorganizational issue that led to it placing air units adjacent enemy borders when it was at 100% but not mobilized.
+- fixed an AI re-organizational issue that led to it placing air units adjacent enemy borders when it was at 100% but not mobilized.
 - fixed a Carrier move and strike range error that did not allow Carriers to recon once they moved their maximum AP and had no visible targets in range.
 - fixed an escort error that allowed fighters from bad weather tiles to escort.
 - fixed a unit desertions/surrender error for units with supply < 5 that had them incorrectly re-appear on the purchase list at a discounted price.
@@ -936,10 +936,10 @@ GAME ENGINE CHANGES/FIXES
 - re-typed internal data types to use less memory bits wherever applicable.
 - increased the number of MAJORS from 8 to 10.
 - supply rule changes:
-	- subs can no longer dive at 0 supply.
-	- all raiders can no longer raid at 0 supply.
+    - subs can no longer dive at 0 supply.
+    - all raiders can no longer raid at 0 supply.
     - defending units at 0 supply will receive 50% more damage from a successful attack against them.
-	- fighters and carriers cannot intercept/escort when at 0 supply.
+    - fighters and carriers cannot intercept/escort when at 0 supply.
 - maximum reinforcement points is now 5 strength points per turn for all naval units except Motor Torpedo Boats.
 - naval units positioned top of a small island sea enemy hex will no longer be fully revealed under FoW.
 - minor nation Capitals, Fortresses with 3 or more adjacent enemy units will now have their supply reduced by one strength point per turn.
@@ -989,35 +989,35 @@ CAMPAIGNS
 - Medium Bombers' De-Moralization value increased to 50%, and their attack values reduced from 1.5 to 0.5 against all land targets.
 - Strategic Bombers' De-Moralization value increased to 15% and their Fighter Defense value decreased from 1 to 0.
 - Chance of all types of Transport retreating increased to 75%, with the potential retreat range for Transports and Amphibious Transports (Long Range) increased from 2 to 3 hexes.
-- Subs’ Hidden Attacker Readiness Bonus reduced from 25% to zero.
-- Decreased land units’ Operational Costs from 15 to 10%; air units from 30 to 20%.
+- Subs' Hidden Attacker Readiness Bonus reduced from 25% to zero.
+- Decreased land units' Operational Costs from 15 to 10%; air units from 30 to 20%.
 - Division; Corps; Paratroops; Cavalry Division; Cavalry Corps moved to be second line units when assessing Zone of Control rules.
-- Shock Army’s upgrades for Infantry Weapons will now improve their Light Armor and Tank Defense by 1.5 per level rather than 1 per level.
-- Aircraft occupying Marsh or Mountain now benefit less from the terrain’s defensive bonus if they are attacked by infantry or armoured units (room).
+- Shock Army's upgrades for Infantry Weapons will now improve their Light Armor and Tank Defense by 1.5 per level rather than 1 per level.
+- Aircraft occupying Marsh or Mountain now benefit less from the terrain's defensive bonus if they are attacked by infantry or armoured units (room).
 - The cost of Mechanized units has been increased from 200 to 250 MPPs (Pocus).
 - Cost of Coastal Guns doubled from 100 to 200 MPPs so as to increase their repair costs.
 - The cost of Motor Torpedo Boats reduced from 100 to 75 MPPs (Mithrilotter).
-- The cost of the UK’s Fighters has been reduced from 250 to 225 MPPs.
-- O.S.S. and Norwegian Batteries’ Strength scripts corrected (dhucul2011).
-- O.S.S. Strength scripts’ effects increased to bring them in line with WorldAtWar.
+- The cost of the UK's Fighters has been reduced from 250 to 225 MPPs.
+- O.S.S. and Norwegian Batteries' Strength scripts corrected (dhucul2011).
+- O.S.S. Strength scripts' effects increased to bring them in line with WorldAtWar.
 - Trigger date for Mobilization_2 scripts Sealion (Turkey?Axis); Axis Advance To Sevastopol (Turkey?Axis) and Axis Conquer Egypt (Turkey?Axis) amended so they can fire from 1st September 1939 (Taxman66).
-- Italy’s National Morale will now fall by 5,000 points if Germany surrenders, providing Italy is still on the Axis side.
+- Italy's National Morale will now fall by 5,000 points if Germany surrenders, providing Italy is still on the Axis side.
 - If the UK moves its capital to Canada then Halifax Town and Port no longer switch ownership to the UK, instead Yarmouth does.
 - Removed the mention of Vichy from the Unit script for the deployment of the Lorraine Battleship (Taxman66).
 - National Morale script boosting Soviet morale when France is liberated no longer requires Moscow to be in Allied hands when it fires, but it does now require Paris to be in Allied hands (Numdydar).
-- The wording of the Soviet National Morale boosts when Allied forces are in France and Italy amended, so they will also feel right when these forces haven’t landed but have instead marched into France or Italy from elsewhere (Xwormwood).
+- The wording of the Soviet National Morale boosts when Allied forces are in France and Italy amended, so they will also feel right when these forces haven't landed but have instead marched into France or Italy from elsewhere (Xwormwood).
 - Strategy Guides updated to reflect DE 603 where Germany can entice Franco to enter the war requires Spain to have a pro-Axis leaning of 60% to fire.
 - All air units deployed via DE 301 now arrive with full research and the 1939 and 1940 Strategy Guides have been updated to reflect that (Taxman66).
 - Research progression to levels 4 and 5 is now at an average of 4% per turn.
-- Patton’s base rating increased from 6 to 7 (JJRambo).
-- Fortification’s Maximum Entrenchment increased from 3 to 4.
+- Patton's base rating increased from 6 to 7 (JJRambo).
+- Fortification's Maximum Entrenchment increased from 3 to 4.
 - DE 619 now provides 4 rather than 2 Volksgrenadier Corps, and their formation boosts German National Morale by 5,000 rather than 2,500 points (LLv34Mika).
 
 1939 Campaign
-- France’s Tourville Heavy Cruiser now deploys from the Production Queue on the 1st March 1940.
+- France's Tourville Heavy Cruiser now deploys from the Production Queue on the 1st March 1940.
 - The time delay between the UK ordering Operation Fork and it being carried out has been removed.
 - improved AI handling of a post Sealion situation.
-- Germany’s starting MPPs increased from 50 to 100.
+- Germany's starting MPPs increased from 50 to 100.
 
 1939 and 1940 Campaigns
 - Alternative deployment locations added for the Afrika Korps so that if the original location is not available, the units can deploy elsewhere.
@@ -1108,7 +1108,7 @@ GAME ENGINE CHANGES/FIXES
 - fixed a PBEM++ game error for new games started and where the game could not find DAT files.
 - fixed a PBEM++ game error for users with a space character in their names.
 - fixed a unit count reporting error that had Maritime Bombers included in the LAND totals and not the AIR totals in the REPORTS screen.
-- fixed a Strategic Bomber combat error that did not include, in comse cases, Strategic Bombing losses in the Graphs calculation and reporting screens.
+- fixed a Strategic Bomber combat error that did not include, in some cases, Strategic Bombing losses in the Graphs calculation and reporting screens.
 - fixed a convoy raiding error for some unique cases when aircraft were set to raid convoys.
 - fixed an AI air combat error that allowed the AI to target naval units in stormy sea hexes.
 
@@ -1178,7 +1178,7 @@ CAMPAIGNS
 - POPUP #NAME= ALLIED AI: German Report On The Situation In Italy amended so that it will only fire if two Allied units are within 10 hexes of Rome, rather than 15 (pjg100).
 - An Axis Declaration of War on Ireland will now trigger the US to swing towards the Allies (Leadwieght).
 - An Allied Declaration of War on Algeria will now swing Vichy France by 20-35% towards the Axis, rather than the 30-45% it was previously swinging it (Mithrilotter).
-- Partisan scripts – moved the scripts with the line Add Unit = 1 for #MAP_POSITION= 153,92 to higher in the file (KorutZelva).
+- Partisan scripts - moved the scripts with the line Add Unit = 1 for #MAP_POSITION= 153,92 to higher in the file (KorutZelva).
 - Added the condition that the USSR is neutral to the POP UP script entitled #NAME= ALLIED AI: German Report Giving Advice To Prepare For War Against The USSR in the 1939 and 1940 campaigns (Korut Zelva).
 - Change MOBILIZATION_2 script #POPUP= Isolationists In The USA Call On US Units To Return To Home Waters, to be triggered not by hex 87,92 but by hex 130,97.
 - Removed a check for Axis units in southern England from the CONDITION_POSITION triggers for DE 162.
@@ -1234,17 +1234,17 @@ CAMPAIGNS
 - fixed several event popup texts for the French versions of the campaigns.
 - Changed the trigger on DE 664 - Germany: Dummy Event for Romania to switch sides from 25 to 50% (Mithrilotter).
 - Removed the USSR from being a Variable Condition in the US Mobilization_3 script #NAME= 1942 (USA->Allies) that fires from the 1st January 1942.
-- The Red Army’s 1st Tanks and 4th Paratroops are no longer assigned to arrive at Moscow in the 1939 and 1940 campaigns, so the player can now deploy them freely on their arrival date.
-- Increased the strength of the German Heavy Cruiser Lützow at Kiel from 5 to 6 in the 1940 campaign as this will ensure it joins the correct AI fleet script.
+- The Red Army's 1st Tanks and 4th Paratroops are no longer assigned to arrive at Moscow in the 1939 and 1940 campaigns, so the player can now deploy them freely on their arrival date.
+- Increased the strength of the German Heavy Cruiser LÃ¼tzow at Kiel from 5 to 6 in the 1940 campaign as this will ensure it joins the correct AI fleet script.
 - Added some Fortifications around Moscow in the 1941 campaign and also restored all the missing Fortifications from various German language campaigns (HvS).
 - In the 1942 campaign, hexes 209,55 and 209,56 near Novgorod now start in Axis hands so that the German HQ near Leningrad has some supply (HvS).
 - Land hex changed to number 563 at Long Island, and the island is now connected by road to the mainland.
 - Chance of Storms reduced in the Mediterranean (Mithrilotter).
-- Ports’ Sub Defense Bonus increased from 3 to 4. (Leadwieght).
+- Ports' Sub Defense Bonus increased from 3 to 4. (Leadwieght).
 - Vienna is now an Industrial Center, while Breslau, Cologne and Dresden are now Secondary Supply Centers.
 - Intelligence & Spying research can now only have 1 chit invested at a time (HvS).
-- Increased Germany’s AA Build Limit from 4 to 6 and the UK’s from 2 to 4.
-- Increased AA units’ base attack values against Strategic Bombers by 1 (Goodmongo; dave123).
+- Increased Germany's AA Build Limit from 4 to 6 and the UK's from 2 to 4.
+- Increased AA units' base attack values against Strategic Bombers by 1 (Goodmongo; dave123).
 - Increased the base Strategic Bomber Defense values of Capitals and Major Capitals from 1 to 2.
 - Starting Fighter Interception Range increased by 1.
 - Starting deployment locations of the Finnish HQ and Fighter amended in the 1939-41 campaigns.
@@ -1253,7 +1253,7 @@ CAMPAIGNS
 - Added one more USSR resource (266,57) to the RESOURCE scripts that only fires for the Allied AI when industry is transferred from the Ukraine to the Urals.
 - Added one more US resource (0,104) to the RESOURCE script that fires when they join the Allies.
 - Amended the Alignment Position in DE 602 and its related National Morale script from Paris being Axis to Toronto being Allied (Leadwieght; Yeremenko).
-- Italy’s starting MPPs increased in the 1939 Campaign from 80 to 110 to compensate for having to transport units to North Africa that previously deployed there directly.
+- Italy's starting MPPs increased in the 1939 Campaign from 80 to 110 to compensate for having to transport units to North Africa that previously deployed there directly.
 - Batumi port added and railway connecting Poti to Tbilisi added (Mithrilotter).
 - Trans-Caspian railway added (SPzAbt653).
 - verhindern changed to behindern in the German Language Partisan scripts (HvS).
@@ -1268,23 +1268,23 @@ CAMPAIGNS
        #DATE= 1940/01/01
        #FAILSAFE_DATE= 1941/02/01
        #CONDITION_POSITION= 204,125 [7,7] [1,1] [1] [0]
-- US Mobilization_2 script added to penalize the use of 2 or more US ships in the Atlantic prior to the USA’s entrance into the war (nnason).
+- US Mobilization_2 script added to penalize the use of 2 or more US ships in the Atlantic prior to the USA's entrance into the war (nnason).
 - DE 603 corrected so that it now requires Casablanca to be in Axis hands (Sugar).
 - Changed #AI= 2 to #AI= 4 in some POP UP scripts so that they will appear in Multiplayer too (Ice).
 - Some amendments made to Anti-Tank Research levels and investments from the 1941 campaign onwards (Mithrilotter).
 - German Tank unit added near Vyazma in the 1942 campaign (Numdydar).
-- Ground Attack Weapons’ attack values for Tactical and Medium Bombers against all ground units and resources now increase by 0.5 per level rather than 1. Their starting values have been increased by 0.5 against these target types so that their quality in the early/mid war isn’t affected. De-Moralization now increases by 10% per level of Ground Attack Weapons research.
+- Ground Attack Weapons' attack values for Tactical and Medium Bombers against all ground units and resources now increase by 0.5 per level rather than 1. Their starting values have been increased by 0.5 against these target types so that their quality in the early/mid war isn't affected. De-Moralization now increases by 10% per level of Ground Attack Weapons research.
 - Logistics Research corrected for all Minors so that their HQ Build Limits will not increase.
 - Anti-Tank Units' Hard, Light Armour and Tank Defense Values increased by 1, so their new values are respectively 2, 5 and 6.
 - Resources upgraded with AA will receive a 0.5 increase in their Rocket Defense value per level (Mithrilotter).
-- Reduced Fighters’ Strat Bomber Attack value from 2 to 1, and Strat Bombers’ Fighter Defence value from 2 to 1 (HvS).
+- Reduced Fighters' Strat Bomber Attack value from 2 to 1, and Strat Bombers' Fighter Defence value from 2 to 1 (HvS).
 - Germany can now build 3 Motor Torpedo Boats, Italy 2 (Ice).
 - More Garrison unit names provided for Italy, the USA and the USSR.
-- Italy’s Fighter Build Limit reduced from 5 to 4.
+- Italy's Fighter Build Limit reduced from 5 to 4.
 - Moved Helsinki port from 196,52 to 194,52 (Jack59).
-- Fighters’ Escort Range increased from 7 to 9.
-- Strategic Bombers’ Strike Range increased from 12 to 13.
-- Long Range Aircraft research will now increase Fighters’ Escort ranges by 4 per level, and Strategic Bombers’ Strike range by 3 per level.
+- Fighters' Escort Range increased from 7 to 9.
+- Strategic Bombers' Strike Range increased from 12 to 13.
+- Long Range Aircraft research will now increase Fighters' Escort ranges by 4 per level, and Strategic Bombers' Strike range by 3 per level.
 
 1939 Campaign
 - Put the USSR back to having only 1 chit invested in Production Technology.
@@ -1412,14 +1412,14 @@ GAME ENGINE CHANGES/FIXES
 
 CAMPAIGNS
 - gave the British units that deploy in Egypt 0.8 experience (they arrive at half strength so some of this will be lost in reinforcing).
-- gave the British units in Egypt 0.5 experience and some upgrades, and increased the starting strength of the British HQ and Corps there from 5 to 8. Specifically in the 1939 campaign O’Connor now has full research, 0.5 experience and is at strength 8; W.D.F. now has AA level 1 and 0.5 experience; XII Corps now has AA level 1, 0.5 experience and is at strength 8. In the 1940 campaign these all have 0.4 experience and O’Connor has full research.
+- gave the British units in Egypt 0.5 experience and some upgrades, and increased the starting strength of the British HQ and Corps there from 5 to 8. Specifically in the 1939 campaign O'Connor now has full research, 0.5 experience and is at strength 8; W.D.F. now has AA level 1 and 0.5 experience; XII Corps now has AA level 1, 0.5 experience and is at strength 8. In the 1940 campaign these all have 0.4 experience and O'Connor has full research.
 - added Edinburgh as a third British capital (Ironclad).
 - the UK now starts with Infantry Warfare Level 1.
-- the USSR’s Engineer unit now arrives in the Production Queue on the 1st October 1939 rather than the 1st September 1940. In the 1940 campaign it now arrives on the 10th May 1940 so that the player can decide where they want it.
+- the USSR's Engineer unit now arrives in the Production Queue on the 1st October 1939 rather than the 1st September 1940. In the 1940 campaign it now arrives on the 10th May 1940 so that the player can decide where they want it.
 - in 1939 the USSR now starts with 2 chits assigned to Production Technology rather than 1.
 - the USSR now starts with an AA unit at both Moscow and Leningrad, and Armies at Voronezh and Stalingrad.
-- in the 1939 campaign the USSR’s starting MPPs have been raised from 45 to 150.
-- reduced the USSR’s diplomacy chits from 5 to 3 (SPzAbt653).
+- in the 1939 campaign the USSR's starting MPPs have been raised from 45 to 150.
+- reduced the USSR's diplomacy chits from 5 to 3 (SPzAbt653).
 - increased the swing of the USA towards the Axis if the Allies declare war on Italy from 2-4% to 10-15%.
 - added more trigger points for Allied ships to swing Norway towards the Axis if they are on its convoy line to Germany, and Norway's Mobilization will now swing in every Axis turn that there are Allied ships on the convoy route. One of the information only scripts has been removed, and all can now fire from the 1st September 1939 (geordietal).
 - decreased the UK's starting Build Limit from 2 to 1 Amphibious Transport of each type.
@@ -1428,7 +1428,7 @@ CAMPAIGNS
 - Soviet Shock Armies now benefit from a 10% Morale Boost as a result of Infantry Warfare (gingerbread).
 - in the 1942 Campaign the U-30 in the Atlantic now starts fully upgraded.
 - the cost of influencing a friendly Major using Diplomacy has been increased from 125 to 150 MPPs.
-- France’s Diplomacy chits reduced from 5 to 3.
+- France's Diplomacy chits reduced from 5 to 3.
 - in the 1939 campaign the arrival locations of the Italian HQ and Corps in February 1940 can now be deployed anywhere within Italian territory (battlevonwar).
 - Italy will now swing only 1-2% towards the Axis when the Allies abandon any positions in the Med, whereas previously this was 1-3%.
 - mobilization_2 scripts added so that if the Allies abandon Gibraltar then Spain will swing 8-12% towards the Axis while Italy is neutral, and if it is still empty when Italy joins the Axis then Spain will swing 8-12% again towards the Axis.
@@ -1519,7 +1519,7 @@ GAME ENGINE CHANGES/FIXES
 
 CAMPAIGNS
 - Increased the chance of retreating for all land units eligible to retreat from 30 to 50% if in Non-Resource positions.
-- Command and Control research now automatically increases HQ’s Action Points by 0.5 per level.
+- Command and Control research now automatically increases HQ's Action Points by 0.5 per level.
 - DE 370 and its CONVOY script set to Type= 2 (sPzAbt653).
 - Marseilles spelling corrected to Marseille in the National Morale scripts for 1939 and 1940 campaigns.
 - London and Liverpool can now spawn Partisan units in the UK (crispy131313).
@@ -1553,7 +1553,7 @@ GAME ENGINE CHANGES/FIXES
 - fixed AI retreat logic for air units when set to GUARD and HOLD in position.
 - fixed an AI friendly major controlled units error that had the AI moving units not under its control on your turn.
 - fixed a Reports and War Map resource listing that was incorrect as it was not including Major Cities and Major Capitals in the totals.
-- fixed a password storage and retrieval error that was causing some issues with Hotseat games when using the 'password' option.
+- fixed a password storage and retrieval error that was causing some issues with Hot-seat games when using the 'password' option.
 - fixed a rare disappearing Capitals error.
 - fixed a Primary and Secondary supply issue for situations such as when Italy is surrendered and then subsequently liberated.  An occupier would gain the Primary and Secondary supply centers of Italy once Italy had surrendered, but it would then subsequently automatically lose them once Italy is liberated.  This is no longer the case and an occupier would have to physically lose those locations after an Italian liberation to permanently lose them as supply locations.
 - fixed several 'on_left_button_down' errors related to unit selection and movement.
@@ -1561,7 +1561,7 @@ GAME ENGINE CHANGES/FIXES
 - fixed an ESC key error that would cause some sub windows to CTD.
 - fixed a returning capital error where the re-captured capital had a low supply causing a drop in strength in connected resource calculations.
 - fixed a UNIT script error that was not having some unit events trigger when the AI was controlling friendly majors on your turn.
-- fixed a dissapearing unit bug when swapping units.
+- fixed a disappearing unit bug when swapping units.
 - UNIT script header notes expanded to explain the use of #LEVEL= -1 for when setting specific scripts for AI controlled friendly majors on your turn.
 - any unit that is using Cruise mode will no longer find or be stopped by a Sub in Silent mode, including Destroyers.
 - subs that are completely surrounded now have a chance to dive and retreat but in this case may still end their dive next to an enemy unit if no other escape option is possible for it.
@@ -1573,7 +1573,7 @@ CAMPAIGNS (AI)
 CAMPAIGNS
 - Reduced experience gains from Convoy Raiding by air units and surface vessels from 0.2 to 0.1 per raid.
 - Increased experience gains for all land units from all infantry (Garrison -> Pill Box/Shock Army; Reconnaissance -> Heavy Tanks), all air units, and for all naval units (Dreadnoughts -> Motor Torpedo Boat) for an Attack (Defending Unit) and Attack Victory (Defender Destroyed) from 0.1 to  0.15.
-- Soviet Shock Army’s Retreat chances set to match that of a normal Army. 30 10 1
+- Soviet Shock Army's Retreat chances set to match that of a normal Army. 30 10 1
 - The chance of rain in the British Isles in Fall reduced from 35 to 25% (johnvmcnichols).
 - The Italian navy now has the Lampo Destroyer in all campaigns from 1939-42, with it deployed at Brindisi (Klydon).
 - Map text for Loops changed to white (sPzAbt653).
@@ -1586,16 +1586,16 @@ CAMPAIGNS
 - Spain's starting pro-Axis leaning reduced from 20% to 12% in the 1939 and 1940 campaigns, and from 40 to 32% in the 1941; 1942 and 1943 campaigns.
 - Advanced Aircraft research limited to 1 chit (ILCK).
 - Removed the mention of Finland joining the Axis when Germany declares war on the USSR from the German advice pop ups (ILCK; Scook_99).
-- Italy’s starting National Morale has been increased by 10,000 so that a capture of Rome will generally be necessary to make the country surrender.
+- Italy's starting National Morale has been increased by 10,000 so that a capture of Rome will generally be necessary to make the country surrender.
 - Fixed two dummy DECISION scripts (DE 451 and DE 452) that had the potential to fire if players switched between human and AI control of the USSR.
 - Italy can now purchase a Maritime Bomber.
-- Hungary and Romania can now purchase 2 Garrison units, while Germany’s limit has been increased from 25 to 30.
+- Hungary and Romania can now purchase 2 Garrison units, while Germany's limit has been increased from 25 to 30.
 - Soviet Shock Army Build Time increased from 1 to 4 months (Zagys).
 - Gave Germany five more Garrison unit names.
-- Labels added for Terceira, Pico and Flores (all centred vertically and horizontally) and São Jorge (100 vertically, centred horizontally) on the Azores (sPzAbt653).
-- Lerida renamed as Lérida.
+- Labels added for Terceira, Pico and Flores (all centred vertically and horizontally) and SÃ£o Jorge (100 vertically, centred horizontally) on the Azores (sPzAbt653).
+- Lerida renamed as LÃ©rida.
 - The cost of investing in Diplomacy against neutral Majors on the opposite side has been increased from 125 to 150 MPPs (Polonthi).
-- Mechanized; Special Forces; Paratroops; Tanks’ Air Attack Values increased from 6 to 8; Partisans increased from 2 to 4; Reconnaissance and Anti-Tanks from 3 to 6; Light Tanks from 4 to 6.
+- Mechanized; Special Forces; Paratroops; Tanks' Air Attack Values increased from 6 to 8; Partisans increased from 2 to 4; Reconnaissance and Anti-Tanks from 3 to 6; Light Tanks from 4 to 6.
 - HMS Indomitable added at Gibraltar to the 1942 campaign (Mithrilotter).
 - De Lattre de Tassigny and de Gaulle added as French HQ names for the 1941 to 1944 campaigns (Patrat; Hartmann).
 - Destroyers can now upgrade to level 5 Anti-Submarine Warfare (Caladan; Mithilotter).
@@ -1606,12 +1606,12 @@ CAMPAIGNS
 - If Iraq has been conquered by the UK then Basra will now transfer back to Iraq via a Territory script so that the convoy from the Middle East can resume (Crispy131313).
 - DE 406 spelling of fulfill corrected (sPzAbt653).
 - Disabled the Pop Up script entitled German/Soviet Front Garrison Report 1941 which showed german_report_1941_1.png.
-- Removed the need for the USSR to be Allied and 100% mobilized from DE 625’s Unit script, replacing it with a German Variable Condition (sPzAbt653).
+- Removed the need for the USSR to be Allied and 100% mobilized from DE 625's Unit script, replacing it with a German Variable Condition (sPzAbt653).
 - Added text to the Borders and Friendship Treaty DECISION Notes to highlight when Germany would have the opportunity to annex Lithuania in the 1939 campaign (Arne Beruldsen; ILCK; Hartmann).
 - Removed duplicated Soviet Partisans at #MAP_POSITION= 225,88 in all campaigns (steelwarrior).
-- War Entry script added to mobilize Czechoslovakia for the Banská Bystrica uprising in all campaigns (Xwormwood).
+- War Entry script added to mobilize Czechoslovakia for the Bansk' Bystrica uprising in all campaigns (Xwormwood).
 - DE 100 DECISION script & Strategy Guide: changed the description of the Lorraine from a Cruiser to Battleship for the 1939 and 1940 campaigns (warspite1).
-- Notes to the Polish DE 500 for the 1939 campaign amended to correctly reflect that if Polish soldiers head for France then the UK will only subsequently have a chance to form the I Polish Corps if France didn’t (Zagys).
+- Notes to the Polish DE 500 for the 1939 campaign amended to correctly reflect that if Polish soldiers head for France then the UK will only subsequently have a chance to form the I Polish Corps if France didn't (Zagys).
 - Increased the pro-Allied mobilizations of all three French colonies if the Axis declare war on Vichy France in the 1939 to 1942 campaigns (Hartmann).
 - Vichy Mobilization 1 scripts corrected to remove duplications when the Allies declared war, which should have applied when the Axis declared war in the 1939 to 1942 campaigns (Zagys).
 - DE 416 will now only fire when the USSR is at 100% Mobilization in the 1939, 1940 and  1941 campaigns (dhucul).
@@ -1621,16 +1621,16 @@ CAMPAIGNS
 - Vichy France will now deploy its navy if it joins the Axis or Allies  for the 1939 to 1942 campaigns (Mountaineer).
 - US and Soviet Dummy DECISIONs for sending supplies via Vladivostock to the USSR amended so that when the USA is fully Mobilized it will fire at the start of the turn. This is to prevent double the usual number of MPPs being sent on the turn the USA enters the war, in all campaigns (sPzAbt653).
 - Notes to DE 204 regarding Finland swinging towards the Allies corrected (sPzAbt653).
-- Pop Up for DiMaggio’s Hitting Streak corrected (sPzAbt653).
-- French Strength scripts corrected as they were using Afghanistan’s Country ID rather than France’s (ericdauriac).
+- Pop Up for DiMaggio's Hitting Streak corrected (sPzAbt653).
+- French Strength scripts corrected as they were using Afghanistan's Country ID rather than France's (ericdauriac).
 - Yugoslav HQ Simovic now deploys at Valjevo 185,95 rather than at Belgrade (ILCK).
 - Hidden Attacker Readiness Bonus for surprise contact at sea reduced from 25 to 15% for all surface vessels (sPzAbt653).
 - Cost of Amphibious Transports increased from 20 to 25% of the Unit Cost.
 - Spying & Intelligence Research capped at level 3.
-- Canada’s starting Amphibious Transport Build Limit reduced from 2 to 1.
+- Canada's starting Amphibious Transport Build Limit reduced from 2 to 1.
 - 104,36 north of Reykjavik changed to a land hex, number 455 (oxford_guy).
 - DE 126 no longer checks for an Axis unit in the port.
 - Delayed the British occupation of the Faroe Islands with the Operation Valentine event, so as to prevent the Islands transferring back to Germany (Boonierat1972).
 - In Multiplayer, a Mobilization 3 script added for Italy so that if it reaches 90% by the start of the Allied turn then it will reach full mobilization at the end of that turn (PdL).
 - Four Soviet Resources have been moved from the RESOURCE script #NAME= Soviet Industrial Mobilization (1) to #NAME= Soviet Industrial Mobilization (2) These are: 233,64 Gorky; 243,66 Kazan; 245,72 Kuybyshev; 237,77 Saratov. The duplication of 243,66 has also been removed from the first script.
-- Additionally, the failsafe date for the RESOURCE script #NAME= Soviet Industrial Mobilization (2) has been changed from 1st January 1941 to 1st January 1942.			
+- Additionally, the failsafe date for the RESOURCE script #NAME= Soviet Industrial Mobilization (2) has been changed from 1st January 1941 to 1st January 1942.
