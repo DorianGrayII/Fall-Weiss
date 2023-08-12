@@ -81,10 +81,10 @@
 ;                        Country that will receive benefit of the convoy
 ;
 ; #SENDER_ID_TRIGGER=    Value range [0, 100]
-;                        Percentage chance that the event will occur
+;                        Sender required mobilization
 ;
 ; #RECIPIENT_ID_TRIGGER= Value range [0, 100]
-;                        Percentage chance that the event will occur
+;                        Recipient required mobilization
 ;
 ; #PERCENTAGE=           Value range [0, 100]
 ;                        Percentage of MPP transferable via convoy to #RECIPIENT_ID
@@ -325,6 +325,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
+; British Empire(54)
 #SENDER_ID= 54
 #RECIPIENT_ID= 112
 #SENDER_ID_TRIGGER= 1
@@ -352,6 +353,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
+; Iraq(56)
 #SENDER_ID= 56
 #RECIPIENT_ID= 112
 ; Fall Weiss II change from 0 to 20
@@ -388,6 +390,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
+; Egypt(36)
 #SENDER_ID= 36
 #RECIPIENT_ID= 112
 #SENDER_ID_TRIGGER= 100
@@ -398,6 +401,7 @@
 #SUMMER_REDUCTION= 100
 #FALL_REDUCTION= 100
 #WINTER_REDUCTION= 100
+; Alexandra Port(205,123)
 #SOURCE_PORT= 205,123
 #DESTINATION_PORT= 140,72
 #WAYPOINT= 175,115
@@ -466,6 +470,7 @@
 #SUMMER_REDUCTION= 100
 #FALL_REDUCTION= 100
 #WINTER_REDUCTION= 100
+; Al Qatif Port(245,131)
 #SOURCE_PORT= 245,131
 ; New York Port(10,105)
 #DESTINATION_PORT= 10,105
@@ -660,6 +665,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Shift Convoy Routes From The Mediterranean and North America
 #LINK= 103[1]
 #SENDER_ID= 21
 #RECIPIENT_ID= 112
@@ -693,6 +699,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Shift Convoy Routes From The Mediterranean and North America
 #LINK= 103[1]
 #SENDER_ID= 36
 #RECIPIENT_ID= 112
@@ -725,6 +732,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Shift Convoy Routes From The Mediterranean and North America
 #LINK= 103[1]
 #SENDER_ID= 56
 #RECIPIENT_ID= 112
@@ -762,7 +770,9 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Shift Convoy Routes From The Mediterranean and North America
 #LINK= 103[1]
+; British Empire(54)
 #SENDER_ID= 54
 #RECIPIENT_ID= 112
 #SENDER_ID_TRIGGER= 1
@@ -799,6 +809,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Shift Convoy Routes From The Mediterranean and North America
 #LINK= 103[1]
 #SENDER_ID= 115
 #RECIPIENT_ID= 112
@@ -893,6 +904,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 105[1]
+; Iraq(56)
 #SENDER_ID= 56
 #RECIPIENT_ID= 112
 ; Fall Weiss II
@@ -926,6 +938,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 105[0]
+; Iraq(56)
 #SENDER_ID= 56
 #RECIPIENT_ID= 112
 #SENDER_ID_TRIGGER= 20
@@ -957,6 +970,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 105[1]
+; British Empire(54)
 #SENDER_ID= 54
 #RECIPIENT_ID= 112
 #SENDER_ID_TRIGGER= 1
@@ -985,6 +999,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 105[0]
+; British Empire(54)
 #SENDER_ID= 54
 #RECIPIENT_ID= 112
 #SENDER_ID_TRIGGER= 1
@@ -1082,7 +1097,7 @@
 #WAYPOINT= 228,13
 }
 
-; DE 161 - Mediterranean/Far East convoys to the UK (DE 103[0]; DE 161[1]:
+; DE 161 - Mediterranean/Far East convoys to the UK (DE 103[0]; DE 161[1])
 {
 #NAME= DE 161 - Mediterranean/Far East Convoys To The UK
 #POPUP=
@@ -1094,6 +1109,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 161[1]
+; Egypt(36)
 #SENDER_ID= 36
 #RECIPIENT_ID= 112
 #SENDER_ID_TRIGGER= 100
@@ -1870,6 +1886,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Narvik Allied Occupied
 #LINK= 668[1]
 #SENDER_ID= 78
 #RECIPIENT_ID= 45
