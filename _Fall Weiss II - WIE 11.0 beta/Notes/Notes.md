@@ -21,5 +21,5 @@
 - [Italian 8th Army in Russia, August 1941](https://usacac.army.mil/sites/default/files/documents/carl/nafziger/941IHRA.pdf)
 - [Panzer Army Afrika, 12 Nov 1942](https://usacac.army.mil/sites/default/files/documents/carl/nafziger/942GKME.pdf)
 - [Axis Forces in Sicily, 10 July 1943](https://usacac.army.mil/sites/default/files/documents/carl/nafziger/943GGAD.pdf)
-- [Malta: A study of German strategy in the Mediterranean, June 1940 to August 1942](https://scholarworks.umt.edu/cgi/viewcontent.cgi?article=3928&context=etd)
+- [Malta: A study of German strategy in the Mediterranean, June 1940 to August 1942](./Malta_Jun1940.pdf)
 - [German Organization of Field Forces](https://www.ibiblio.org/hyperwar/Germany/HB/HB-2.html)
