@@ -6154,6 +6154,8 @@
 #CONDITION_POSITION= 143,88 [6,6] [0,0] [2] [0]
 }
 
+; https://www.wikiwand.com/en/Soviet_occupation_of_Bessarabia_and_Northern_Bukovina
+; Historic Date: 1940/06
 {
 #NAME= DE 418 - USSR: Seize Bessarabia? (AI - 50%)
 #POPUP= Soviet Strategic Decision
@@ -6175,7 +6177,7 @@
 #MPP_UPDOWN= -15
 #MPP_TURNS= 1
 #MPP_TEXT= Occupying Bessarabia
-#NOTES= If you say %B(YES), then the Red Army will seize Bessarabia from Romania, and Romania will swing 10% towards the Axis.
+#NOTES= In 1940, after securing the assent of Nazi Germany through the Molotov–Ribbentrop Pact, the Soviet Union pressured Romania, under threat of war, into withdrawing from Bessarabia, allowing the Red Army to enter and the Soviet Union to annex the region. %N%N If you say %B(YES), then the Red Army will seize Bessarabia from Romania, and Romania will swing 10% towards the Axis.
 #NOTES_POSITION= 201,89
 ; Set AI acceptance % (AI will accept 50% of the time)
 #AI_RESPONSE= 50
@@ -6190,6 +6192,8 @@
 #VARIABLE_CONDITION= 93 [1] [0] [0]
 ; USSR(116) Allied but not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
+; France(40) Allied, mobilized, surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6610,6 +6614,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Send Von Ribbentrop to Portugal
 #LINK= 906[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -8229,6 +8234,13 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Second Vienna Award
+; https://www.wikiwand.com/en/Second_Vienna_Award
+; Historic Date: 1940/09
+; Treaty of Craiova
+; https://www.wikiwand.com/en/Treaty_of_Craiova
+; Historic Date: 1940/09
+;
 ; Forcing Romania to hand over territory to its neighbors
 {
 #NAME= DE 611 - Germany: Resolve Territorial Disputes In Eastern Europe? (AI - 50%)
@@ -8241,9 +8253,8 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-; The Molotov-Ribbentrop Pact?
-; 406[1]->600[1]
-#LINK= 600[1]
+; USSR Seized Bessarabia
+#LINK= 418[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #DISPLAY_ORDER= 1
@@ -8251,7 +8262,7 @@
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT= None
-#NOTES= If you say %B(YES), then Romania will lose Northern Transylvania and Southern Dobruja from the end of August 1940.%N%N King Carol II will be forced to abdicate as Antonescu takes power, and in January 1941 Antonescu will crush the Iron Guard's rebellion.%N%N If you say %B(YES), then Romania will still join the Axis but it will join later than it would have done.%N%N By saying %B(NO), Romania retains its territorial integrity and may join the Axis slightly earlier, though the war entrance of Hungary and Bulgaria may be slightly delayed.
+#NOTES= If you say %B(YES), Romania will lose Northern Transylvania and Southern Dobruja from the end of August 1940.%N%N King Carol II will be forced to abdicate as Antonescu takes power, and in January 1941 Antonescu will crush the Iron Guard's rebellion. Romania will still join the Axis but it will join later than it would have done.%N%N By saying %B(NO), Romania retains its territorial integrity and may join the Axis slightly earlier, though the war entrance of Hungary and Bulgaria may be slightly delayed.
 #NOTES_POSITION= 193,92
 ; Set AI acceptance % (AI will accept 50% of the time)
 #AI_RESPONSE= 50
@@ -8272,6 +8283,8 @@
 #VARIABLE_CONDITION= 19 [1] [0] [0]
 ; Hungary(52) Axis but not fully mobilized
 #VARIABLE_CONDITION= 52 [1] [0] [0]
+; Italy(59) Axis, Mobilized
+#VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -8368,7 +8381,6 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-; dummy link
 #LINK= 674[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -8395,7 +8407,7 @@
 }
 
 {
-#NAME= DE 615 - Germany: Form The Italian National Republican Army? (AI - 100%)
+#NAME= DE 615 - Germany: Form The Italian National Republican Army? (90%) (AI - 100%)
 #POPUP=
 #MESSAGE=Führerhauptquartier %N%N Following Mussolini's rescue we can use him as the figurehead for the formation of a pro-Axis force in northern Italy.%N%N Mussolini still has thousands of supporters and for %B75 MPPs we could form them into an Italian Corps that will operate under our orders.%N%N Would you like to approve the formation of this unit %B(YES)?
 #IMAGE=
@@ -10822,7 +10834,7 @@
 ; Thessaloniki(192,104) is Axis
 #ALIGNMENT_POSITION= 192,104 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Turkey(111) Allied but not fully mobilized
+; Turkey(111) Axis leaning
 #VARIABLE_CONDITION= 111 [1] [0] [0]
 ; Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
@@ -11162,7 +11174,7 @@
 ; Tirana(185,102) is Axis
 #ALIGNMENT_POSITION= 185,102 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Italy(59) Axis and not surrendered
+; Italy(59) Axis, Mobilized
 ; Greece(46) Allied but not fully mobilized
 ; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -13061,7 +13073,8 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; Fall Weiss II 
+; Fall Weiss II
+; Historic Date: 02/1943
 {
 #NAME= DE 829 - USA(AI): Lend Lease To Saudi Arabia? (AI - 90%)
 #POPUP=
@@ -13086,7 +13099,7 @@
 ; Set AI acceptance % (AI will accept 90% of the time)
 #AI_RESPONSE= 90
 #AI_RESPONSE_POPUP=
-#DATE= 1943/03/16
+#DATE= 1943/02/16
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 ; New York(10,104) is Allied
@@ -14418,7 +14431,7 @@
 
 ; Fall Weiss II 
 {
-#NAME= DE 868 - Germany: Imports From Portugal (AI - 100%)
+#NAME= DE 868 - Germany: Imports From (Axis) Portugal (AI - 100%)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -14428,6 +14441,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Send Von Ribbentrop to Portugal
 #LINK= 906[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -14449,9 +14463,9 @@
 ; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Spain(99) Axis but not fully mobilized
-#VARIABLE_CONDITION= 99 [1] [100] [0]
-; Portugal(87) Allied but not fully mobilized
-#VARIABLE_CONDITION= 87 [2] [0] [0]
+#VARIABLE_CONDITION= 99 [1] [0] [0]
+; Portugal(87) Axis but not fully mobilized
+#VARIABLE_CONDITION= 87 [1] [0] [0]
 ; Switzerland(104) Axis but not fully mobilized
 #VARIABLE_CONDITION= 104 [1] [0] [0]
 ; No Allied units within 5 hexes of Bayonne(144,98)
@@ -14462,7 +14476,7 @@
 
 ; Fall Weiss II 
 {
-#NAME= DE 869 - Germany: Imports From Portugal (AI - 100%)
+#NAME= DE 869 - Germany: Imports From (Allied) Portugal (AI - 100%)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -14472,6 +14486,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Send Von Ribbentrop to Portugal
 #LINK= 906[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -14493,7 +14508,7 @@
 ; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Spain(99) Axis but not fully mobilized
-#VARIABLE_CONDITION= 99 [2] [100] [1]
+#VARIABLE_CONDITION= 99 [1] [0] [1]
 ; Portugal(87) Allied but not fully mobilized
 #VARIABLE_CONDITION= 87 [2] [0] [0]
 ; Switzerland(104) Axis but not fully mobilized
@@ -15648,7 +15663,6 @@
 #MPP_TEXT=
 #NOTES= %N%N Historically, the German Government and the Turkish Republic, inspired by a desire to secure relations between the two countries, signed the German–Turkish Treaty of Friendship on June 18, 1941.  Germany and Turkey agreed to respect each other's territorial integrity and communicate with each other on friendly terms regarding matters of common interest in order to come to a mutual understanding. %N%N If you select %B(YES), Turkey will move 2-4% closer to the Axis and Germany may have the opportunity to establish future trade agreements. %N%N You should select %B(NO) if you have intentions to invade Turkey.  By betraying the non-aggression pact we will negatively affect diplomatic affairs with other non-belligerent nations in Europe. 
 #NOTES_POSITION= 211,106
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
 #DATE= 1941/06/15
@@ -15666,7 +15680,7 @@
 
 ; Fall Weiss II 
 {
-#NAME= DE 912 - Germany: Vichy Collaboration Policy (AI - 75%)
+#NAME= DE 912 - Germany: Vichy Collaboration Policy? (AI - 75%)
 #POPUP=
 #MESSAGE=Führerhauptquartier %N%N %BRe: %BVichy %BCollaboration %BPolicy %N%N Mein Führer, one of the conditions of establishing Vichy France was the Vichy Collaboration Policy. Currently the agreement is for Germany to receive 40% (30 MPPs) of Vichy French output to help sustain the ongoing war. %N%N However, some of our advisors suggest that if we lower this total to 20% (15 MPPs), then the Vichy French government will be less susceptible to inner conflicts within the state, which could otherwise disrupt supplies to our nation. %N%N Mein Führer, we must finalize the Vichy Collaboration Policy, shall we absorb 20% of Vichy France's output %B(YES) or maintain the current drafted policy at 40% %B(NO)?
 #IMAGE=
@@ -15684,7 +15698,7 @@
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT= 
-#NOTES= %N%N If you select %B(YES), German will receive 15 MPPs per turn from Vichy France as long as France remains Axis occupied. %N%N If you select %B(NO), you will receive 30 MPPs from Vichy France only if Vichy France remains Axis Leaning and France remains Axis Occupied, but there will also remain the small chance (2% per turn) that Vichy French Population will Protest the Collaboration Policy which could disrupt ongoing Exports To Germany.
+#NOTES= %N%N If you select %B(YES) %N%N%T - Germany will receive 15 MPPs per turn from Vichy France %N%T - Requires France remains Axis occupied. %N%N If you select %B(NO) %N%N%T - Germay will receive 30 MPPs per turn from Vichy France %N%T - Requires France remains Axis Occupied %N%T - Requires Vichy France stay Axis Aligned %N%N but there will also remain the small chance (2% per turn) that Vichy French Population will Protest the Collaboration Policy, which could disrupt ongoing Exports To Germany.
 #NOTES_POSITION= 154,91
 ; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
@@ -15692,8 +15706,8 @@
 #DATE= 1939/09/03
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
+; Paris(151,84) is Axis
+#ALIGNMENT_POSITION= 151,84 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; France(40) Allied and Surrendered 
 #VARIABLE_CONDITION= 40 [2] [100] [1]
@@ -15702,7 +15716,7 @@
 
 ; Fall Weiss II 
 {
-#NAME= DE 913 - Germany: Vichy Collaboration Policy (AI - 100%)
+#NAME= DE 913 - Germany: (Allied) Lesser Vichy Collaboration Policy (AI - 100%)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -15712,6 +15726,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Lesser Vichy Collaboration
 #LINK= 912[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -15727,8 +15742,8 @@
 #DATE= 1939/09/03
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
+; Paris(151,84) is Axis
+#ALIGNMENT_POSITION= 151,84 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; France(40) Allied and Surrendered 
 ; Vichy Allied, not fully mobilized
@@ -15739,7 +15754,7 @@
 
 ; Fall Weiss II 
 {
-#NAME= DE 914 - Germany: Vichy Collaboration Policy (AI - 100%)
+#NAME= DE 914 - Germany: (Axis) Lesser Vichy Collaboration Policy (AI - 100%)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -15749,6 +15764,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Lesser Vichy Collaboration
 #LINK= 912[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -15764,19 +15780,20 @@
 #DATE= 1939/09/03
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
+; Paris(151,84) is Axis
+#ALIGNMENT_POSITION= 151,84 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; France(40) Allied and Surrendered 
-; Vichy is Axis not fully mobilized
+; Vichy France(118) Axis not fully mobilized
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 118 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; Fall Weiss II 
+; Fall Weiss II
+; Requires that Vichy France is Axis Aligned
 {
-#NAME= DE 915 - Germany: Vichy Collaboration Policy (AI - 100%)
+#NAME= DE 915 - Germany: (Axis) Vichy Collaboration Policy (AI - 100%)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -15786,6 +15803,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Full Vichy Collaboration
 #LINK= 912[0]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -15801,11 +15819,11 @@
 #DATE= 1939/09/03
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
+; Paris(151,84) is Axis
+#ALIGNMENT_POSITION= 151,84 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; France(40) Allied and Surrendered 
-; Vichy is Axis not fully mobilized
+; Vichy France(118), Axis not fully mobilized
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 118 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -15870,7 +15888,7 @@
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT= 
-#NOTES= %N%N If you select %B(YES), territory of Southern Albania (Italy), and Southern Bulgaria will transfer to Greek control and Greece will join the Axis.%N%N Italian national morale will also be decreased by 10% of its starting value and Bulgaria will align defensively with the Allies.
+#NOTES= %N%N If you select %B(YES), the territory of Southern Albania (Italy), and Southern Bulgaria will transfer to Greek control and Greece will join the Axis.%N%N Italian national morale will also be decreased by 10% of its starting value and Bulgaria will align defensively with the Allies.
 #NOTES_POSITION= 193,109
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
@@ -16480,7 +16498,7 @@
 
 ; Fall Weiss II 
 {
-#NAME= DE 938 - Finland: Finnish National Morale falls below 50% (100%)
+#NAME= DE 938 - Finland: Finnish National Morale falls below 50% (AI - 100%)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -16711,7 +16729,7 @@
 ; Fall Weiss II 
 ; Bulgaria Axis and Mobilized
 {
-#NAME= DE 960 - Germany: Sign the Clodius Agreement? (Bulgaria) (AI - 100%)
+#NAME= DE 960 - Germany: Sign the Clodius Agreement? (via Bulgaria) (AI - 100%)
 #POPUP=
 #MESSAGE=Führerhauptquartier %N%N %BRe: %BClodius %BAgreement %N%N Mein Führer,  German trade expert Dr. Karl Clodius has negotiated a trade agreement with Turkey for the export of essential raw materials in exchange for German war materials. %N%N Although the trade agreement will require immediate expenditures on our behalf and it may be over a year before Germany will benefit from the trade agreement, the benefits (30 MPPs per turn) will far out way the costs over the course of the agreement.%N%N Mein Führer, should we sign the Clodius Agreement %B(YES)?  It will cost a total of %B50 MPPs (10 MPPs for 5 turns) for the initial set up and logistics of the agreement.
 #IMAGE=
@@ -16756,7 +16774,7 @@
 ; Greece Axis and Mobilized
 ; Yugoslavia Axis controlled
 {
-#NAME= DE 961 - Germany: Sign the Clodius Agreement? (Greece) (AI - 100%)
+#NAME= DE 961 - Germany: Sign the Clodius Agreement? (via Greece) (AI - 100%)
 #POPUP=
 #MESSAGE=Führerhauptquartier %N%N %BRe: %BClodius %BAgreement %N%N Mein Führer,  German trade expert Dr. Karl Clodius has negotiated a trade agreement with Turkey for the export of essential raw materials in exchange for German war materials. %N%N Although the trade agreement will require immediate expenditures on our behalf and it may be over a year before Germany will benefit from the trade agreement, the benefits (30 MPPs per turn) will far out way the costs over the course of the agreement.%N%N Mein Führer, should we sign the Clodius Agreement %B(YES)?  It will cost a total of %B50 MPPs (10 MPPs for 5 turns) for the initial set up and logistics of the agreement.
 #IMAGE=
