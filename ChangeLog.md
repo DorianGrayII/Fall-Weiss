@@ -8,10 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Many new unit names have been added for Germany, Soviet Union
 - "More than 18 Axis Units Near Warsaw From January 1941" ([mobilization_2.txt])
     - now alerts player with "The USSR grows uneasy over the build up of Axis troops along its Polish border" when unit number is exceeded
-- Added display of warning map symbols for Warsaw Garrison when player is close to exceeding 18 units on Polish Border
-    - "German/Soviet Front Garrison Update Map Symbols 1941 (0-3 units)" ([popup.txt])
-    - "German/Soviet Front Garrison Update Map Symbols 1941 (4 units)" ([popup.txt])
-    - "German/Soviet Front Garrison Update Map Symbols 1941 (16 units)" ([popup.txt])
+- Added display of warning map symbols for Warsaw Garrison when player is close to exceeding 18 units on Polish Border ([popup.txt])
+    - "German/Soviet Front Garrison Update Map Symbols 1941 (0-3 units)"
+    - "German/Soviet Front Garrison Update Map Symbols 1941 (4 units)"
+    - "German/Soviet Front Garrison Update Map Symbols 1941 (16 units)"
 - Added Turkish hostile reactions should the Soviets forcibly occupy the Turkish straits
     - "DE 970 - USSR Forcibly Occupies Turkish Straits (Turkey->>Axis)" ([mobilization_3.txt])
 - Added Clodius Trade Agreement via Greece where Greece joins Axis in lieu of Bulgaria
@@ -43,6 +43,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - Game features:
     - Neutral Italy can now pass through straits of Gibraltar
     - Axis Coastal Raiding/Shipping scripts apply to all Axis raiders
+    - DE 418 - USSR: Seize Bessarabia? ([decision.txt])
+        - now requires that France, as a Romania Guarantor, has surrendered.
+    - DE 611 - Germany: Resolve Territorial Disputes In Eastern Europe?
+        - now is dependent on DE 418 as this was what prompted Hungary to seek Romanian territory
     - DE 116 - Portugal Leases the Azores to the UK (Portugal->Allies)
         - now requires Portugal be Allied Aligned 30%
     - DE 800 - The Anglo-Portuguese Alliance
@@ -62,13 +66,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
         - now requires Turkey be Axis aligned
     - DE 813 - Allies Exert Diplomatic Pressure To Stop Swedish Convoys
         - now requires Sweden be Axis aligned 20%
-    - DE 922 -  Germany: Imports From Switzerland
+    - DE 922 - Germany: Imports From Switzerland
         - now requires Switzerland be Axis aligned
+    - DE 829 - Lend Lease to Saudi Arabia (Saudi Arabia->>Allies) (%5) ([mobilization_3.txt])
+        - changed from #MOBILIZATION= [40,40] [2] to (25,40)
+        - changed #DATE to 1941/01/01 (Lend Lease to Saudi Arabia did not occur until 1943)
+    - DE 844 - Germany Declares War On Switzerland
+        - Removed requirement that Switzerland is Allied
     - "Malta limits Axis supply in the Mediterranean" has been split-up into the following:
         - "Malta Effect (Tripoli, Sirte, El Agheila, Benghazi, Derna) (15%)"
         - "Malta Effect (Derna, Msus, Mekili, Gazala) (15%)"
         - "Malta Effect (Tobruk, Alexandria, Port Said) (20%)"
         - "Malta Effect (Bardia, Sidi Barrani, Mersa Matruh, El Alamein) (20%)"
+    - Pearl Harbor Attack (USA->Allies)
+        - Reverted back to #MOBILIZATION= [15,20] [2] (from 25,30)
 - Scenario Data:
     - Albania(3) annexed by Italy(59)
         - control of all Albanian hexes given to Italy (same as was originally done for Libya)
@@ -122,6 +133,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - Removed the duplicated Mobilization_1 script Allies DoW On Tunisia (USA->Axis) ([mobilization_1.txt])
     - Saying yes to DE 103 reduces the % sent by convoy from Egypt & Iraq from 80% to 65%, as does saying no to DE 105 and yes to DE 164 (Duedman) ([convoy.txt])
     - Axis Advances in Egypt (Iraq->Axis) (50%) ([mobilization_2.txt])
+    - DE 104 - Pro-Allied Coup In Yugoslavia
+        - Split across 3 events beginning 03/1941
+    - DE 104 - Pro-Allied Mobilization In Greece
+        - Requires Yugoslavia Allied and Mobilized
     - ... and more ...
 - Operation Countenance
     - Was only partially implemented and linked incorrectly to wrong or non-existent events
