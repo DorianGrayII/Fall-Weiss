@@ -6,8 +6,12 @@
     - [Allied Relations and Negotiations With Turkey](https://1997-2001.state.gov/www/regions/eur/rpt_9806_ng_turkey.pdf)
 - Spain
     - [Allied Relations and Negotiations With Spain](https://1997-2001.state.gov/regions/eur/rpt_9806_ng_spain.pdf)
+    - [US Economic Warfare In Spain, 1941-1944](US_Economic_Warfare_In_Spain.pdf)
+    - [Wolfram Crisis](https://www.wikiwand.com/en/Wolfram_Crisis)
 - Sweden
     - [Allied Relations and Negotiations with Sweden](https://1997-2001.state.gov/regions/eur/rpt_9806_ng_sweden.pdf)
+- Portugal
+    - [Portugal during World War II](https://www.wikiwand.com/en/Portugal_during_World_War_II)
 
 ## ...other...
 - Germany
