@@ -918,7 +918,7 @@
 #CONDITION_POSITION= 155,80 [2,2] [1,1] [1] [0]
 ; Axis units invade Holland
 #CONDITION_POSITION= 155,76 [2,2] [1,1] [1] [0]
-; Axis units invade France
+; Axis within 2 hexes of Nancy(158,85)
 #CONDITION_POSITION= 158,85 [2,2] [1,1] [1] [0]
 ; Axis units invade the UK
 #CONDITION_POSITION= 144,73 [7,7] [1,1] [1] [0]
@@ -982,7 +982,6 @@
 #MPP_TEXT= Raiding St Nazaire
 #NOTES= If you say %B(YES), then on the 28th March 1942 the raid on St Nazaire will take place.%N%N This will have a 50% chance of permanently knocking out the port, otherwise the damage inflicted will just be temporary.
 #NOTES_POSITION= 142,89
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP=
 #DATE= 1941/09/01
@@ -1163,7 +1162,7 @@
 #MPP_UPDOWN= -35
 #MPP_TURNS= 1
 #MPP_TEXT= Operation Catapult
-#NOTES= %N%N This act would definitely sour relations between us and the new Vichy authorities, but the consequences of not doing so could be far worse, as the presence of the French fleet on the Axis side could possibly tip the war at sea in their favour.%N%N If you say %B(YES), then the French fleet at Mers-el-Kebir will be attacked.%N%N In response, Vichy France and Algeria will move 35-50% towards the Axis, and French bombers based in Algeria will retaliate by bombing Gibraltar.%N%N If you say %B(NO), then should Vichy Algeria subsequently join the Axis or be conquered by the Axis, a German strength 5 Battleship at Casablanca and a full strength Battleship at Algiers will be created.
+#NOTES= %N%N This act would definitely sour relations between us and the new Vichy authorities, but the consequences of not doing so could be far worse, as the presence of the French fleet on the Axis side could possibly tip the war at sea in their favour.%N%N If you say %B(YES), then the French fleet at Mers-el-Kebir will be attacked.%N%N In response, Vichy France, Algeria and Tunisia will move 35-50% towards the Axis, and French bombers based in Algeria will retaliate by bombing Gibraltar.%N%N If you say %B(NO), then should Vichy Algeria subsequently join the Axis or be conquered by the Axis, a German strength 5 Battleship at Casablanca and a full strength Battleship at Algiers will be created.
 #NOTES_POSITION= 144,115
 ; Set AI acceptance % (AI will accept 50% of the time)
 #AI_RESPONSE= 50
@@ -1990,9 +1989,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and not surrendered
-; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2139,7 +2136,7 @@
 }
 
 {
-#NAME= DE 151 - UK: Allies Liberate Paris Helper (100%)
+#NAME= DE 151 - UK: Allies Liberate Paris Helper 
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -2175,7 +2172,7 @@
 }
 
 {
-#NAME= DE 152 - UK: Allies Liberate The Channel Islands (100%)
+#NAME= DE 152 - UK: Allies Liberate The Channel Islands 
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -2213,7 +2210,7 @@
 }
 
 {
-#NAME= DE 153 - UK: Check For German Units In France (100%)
+#NAME= DE 153 - UK: Check For German Units In France 
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -3138,7 +3135,6 @@
 #MPP_TEXT=
 #NOTES= The French Communist Party was significantly weakened by the signing of the Molotov-Ribbentrop Pact in August 1939, as many militants struggled to understand why the USSR had aligned itself with Germany.%N%N Taking advantage of this situation, the French government decided to act decisively in banning the Communist Party to prevent the spread of subversive anti-war propaganda.%N%N By saying %B(YES), France may be able to hold out a little longer, though at the expense of slightly delaying the USSR's entrance into the war.
 #NOTES_POSITION=
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP= France Bans The Communist Party And Arrests Thousands Of Militants
 #DATE= 1939/10/14
@@ -3188,11 +3184,11 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;Replacement Script
+; Fall Weiss II Replacement Script
 {
 #NAME= DE 204 - France: Send an Anglo-French Expedition to Support Finland? (AI - 25%)
 #POPUP=
-#MESSAGE=Prime Minister %N Edouard Daladier %N%N General Weygand proposes that together with the British we send a military expedition to Finland to enable them to resist the Red Army.%N%N If we do assist the Finns, the British will be obliged to follow suit, as British public opinion and their First Sea Lord, Winston Churchill, are strongly in favour of doing so.%N%N For a cost of %B100 MPPs, to be shared evenly between Britain and France, this support could halt the Soviet dictator's aggression in the Baltic.%N%N However, given the logistics involved this mission only has a 50% chance of success. Yet whether successful or not, the units comprising the expedition will return to Scotland in early April 1940.%N%N Would you like to send a joint Anglo-French Expedition to Finland?
+#MESSAGE=Prime Minister %N Edouard Daladier %N%N General Weygand proposes that together with the British we send a military expedition to Finland to enable them to resist the Red Army.%N%N If we do assist the Finns, the British will be obliged to follow suit, as British public opinion and their First Sea Lord, Winston Churchill, are strongly in favour of doing so.%N%N For a total cost of %B100 MPPs (50 MPPs for 2 turns), to be shared evenly between Britain and France, this support could halt the Soviet dictator's aggression in the Baltic.%N%N However, given the logistics involved this mission only has a 50% chance of success. Yet whether successful or not, the units comprising the expedition will return to Scotland in early April 1940.%N%N Would you like to send a joint Anglo-French Expedition to Finland?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -3206,7 +3202,7 @@
 #DISPLAY_ORDER= 1
 #DECISION= 204
 #MPP_UPDOWN= -50
-#MPP_TURNS= 1
+#MPP_TURNS= 2
 #MPP_TEXT= Finnish Expedition
 #NOTES= The expedition has a 50% chance of reaching Finland in time to provide them with enough support to withstand the Soviet onslaught. If successful, the USSR will not gain any Finnish territory as a result of the conflict, and the USSR will move 4-6% towards the Axis.%N%N For their decisive action in helping defeat aggression against a neutral country, France and the UK will both gain 500 National Morale points, and Finland will swing 10-15% towards the Allies.%N%N If the mission doesn't arrive in time, then Finland will be forced to cede territory to the USSR in March 1940.%N%N Whether successful or not, the Anglo-French expedition will return to Scotland at the start of April 1940, with a French strength 8 Special Forces unit of Chasseurs Alpins deploying at Dundee with Full Research, while a similar British unit (called Rupertforce) will deploy at Inverness.%N%N If Germany invades Norway via DE 643 or DE 644, then the Allies will have an opportunity to send these units to Narvik to attempt to recapture the town. This opportunity will not exist if this expedition is not sent.%N%N %N%N %CRecommendations: %N%N Say %B(YES) and send the Anglo-French Expedition to Finland.
 #NOTES_POSITION=
@@ -3266,7 +3262,7 @@
 }
 
 {
-#NAME= DE 250 - France: Allies Liberate Paris Helper (100%)
+#NAME= DE 250 - France: Allies Liberate Paris Helper 
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -3301,7 +3297,7 @@
 }
 
 {
-#NAME= DE 251 - France: Allies Return St. Nazaire To French Control (100%)
+#NAME= DE 251 - France: Allies Return St. Nazaire To French Control 
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -3335,7 +3331,7 @@
 }
 
 {
-#NAME= DE 252 - France: Alsace Is Reunited With France (100%)
+#NAME= DE 252 - France: Alsace Is Reunited With France 
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -3378,7 +3374,7 @@
 }
 
 {
-#NAME= DE 253 - France: Alsace Is Reunited With France (100%)
+#NAME= DE 253 - France: Alsace Is Reunited With France 
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -3442,7 +3438,6 @@
 #MPP_TEXT=
 #NOTES= 
 #NOTES_POSITION= 
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP= 
 #DATE= 1943/01/01
@@ -3480,7 +3475,6 @@
 #MPP_TEXT=
 #NOTES= 
 #NOTES_POSITION= 
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP= 
 #DATE= 1943/01/01
@@ -3518,7 +3512,6 @@
 #MPP_TEXT=
 #NOTES= 
 #NOTES_POSITION= 
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP= 
 #DATE= 1943/01/01
@@ -3556,7 +3549,6 @@
 #MPP_TEXT=
 #NOTES= 
 #NOTES_POSITION= 
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP= 
 #DATE= 1943/01/01
@@ -3594,7 +3586,6 @@
 #MPP_TEXT=
 #NOTES= 
 #NOTES_POSITION= 
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP= 
 #DATE= 1943/01/01
@@ -3632,7 +3623,6 @@
 #MPP_TEXT=
 #NOTES= 
 #NOTES_POSITION= 
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP= 
 #DATE= 1943/01/01
@@ -3818,7 +3808,6 @@
 #MPP_TEXT=
 #NOTES= 
 #NOTES_POSITION= 
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP= 
 #DATE= 1944/11/28
@@ -3856,7 +3845,6 @@
 #MPP_TEXT=
 #NOTES= 
 #NOTES_POSITION= 
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP= 
 #DATE= 1944/11/28
@@ -4824,7 +4812,7 @@
 ; Copenhagen(171,65) is Axis
 #ALIGNMENT_POSITION= 171,65 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered AND
+; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; No Axis units within Greenland
 #CONDITION_POSITION= 57,32 [50,50] [0,0] [1] [0]
@@ -5394,7 +5382,7 @@
 } 
 
 {
-#NAME= DE 371 - USA: Italy's National Morale falls below 1% (100%)
+#NAME= DE 371 - USA: Italy's National Morale falls below 1% 
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -5800,7 +5788,6 @@
 #MPP_TEXT=
 #NOTES= Saying %B(YES) will provide a temporary boost of 25% to all our forces' morale, and it will also increase our National Morale by 5,000 points.%N%N Together these boosts will help to reduce the chance of the enemy taking Moscow.%N%N However, should the enemy subsequently take Moscow then our troops will suffer a one-off unit morale penalty of 40%, coupled with a loss of 12,500 National Morale points.%N%N This would be all the greater than it would have been had you said %B(NO), as by saying %B(YES), Comrade Stalin is staking his reputation on holding Moscow.%N%N Whereas if you say %B(NO) and Moscow falls, our National Morale will only fall by 5,000 points. %N%N %N%N%CRecommendations: %N%N Say %B(NO) if you think that the fall of Moscow is inevitable.%N%N Say %B(YES) ff you're prepared to make a fight of it.
 #NOTES_POSITION= 221,65
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP=
 #DATE= 1939/09/01
@@ -6015,7 +6002,6 @@
 #MPP_TEXT=
 #NOTES= If you say %B(YES) to occupying the Baltic States, then Soviet income will increase slightly, so it is recommended to say %B(YES).
 #NOTES_POSITION= 196,60
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
 #DATE= 1940/06/08
@@ -6636,7 +6622,7 @@
 ; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Spain(99) Axis but not fully mobilized
-#VARIABLE_CONDITION= 99 [1] [100] [0]
+#VARIABLE_CONDITION= 99 [1] [1] [0]
 ; Portugal(87) Allied but not fully mobilized
 #VARIABLE_CONDITION= 87 [1] [0] [0]
 ; Switzerland(104) Axis but not fully mobilized
@@ -6896,7 +6882,7 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; At least one Axis unit is within two hex of Leningrad
+; At least one Axis unit is within two hexes of Leningrad
 #CONDITION_POSITION= 206,52 [2,2] [1,1] [1] [0]
 }
 
@@ -7141,7 +7127,6 @@
 #MPP_TEXT=
 #NOTES= %N%N If you say %B(YES), then with British approval we will have the opportunity to form a Polish Infantry Corps in the UK.%N%N However, if you say %B(NO), then the French will have the opportunity to form a Polish Infantry Corps near Paris. %N%N Given the historic ties between France and Poland, it would only be natural for the thousands of Poles who have escaped the Nazi onslaught to head to France.%N%N%CRecommendations: %N%N Say %B(YES) if you think that strengthening Britain's armed forces is a greater priority. %N%N Say %B(NO) if you wish to increase France's chances of withstanding invasion.
 #NOTES_POSITION=
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP=
 #DATE= 1939/09/01
@@ -7340,7 +7325,6 @@
 #MPP_TEXT= 
 #NOTES= %N%N Historically, Germany repeatedly violated Swiss airspace. During the Battle of France, German aircraft violated Swiss airspace hundreds of times and in several incidents German aircraft were shot-down.  Germany protested diplomatically multiple times in June 1940, which Hitler himself followed up that Germany would respond in another manner if the practice continued.  In response Switzerland ordered the air force to stop intercepting German aircraft and instead forced intruding aircraft to land at Swiss airfields.%N%N If you select %B(YES), and threaten Switzerland, the country will move 2-5% closer to the Allies in response to the German ultimatum. %N%N If you select %B(NO), Switzerland will continue to intercept and shoot down German aircraft in violation of its airspace and German national morale will decrease by 750 points as a result.
 #NOTES_POSITION= 161,89
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP= 
 #DATE= 1940/06/19
@@ -7563,7 +7547,6 @@
 #MPP_TEXT= Baltic State Gold Reserves
 #NOTES= %N%N Historically, the Baltic assets deposited with Sweden were released to the Soviet Union immediately after the Soviets demanded.  The amounts were later compensated by Sweden to the Baltic States in 1992 as it's forfeiture was deemed unlawful. %N%N If you select %B(YES), Sweden will surrender the Baltic States gold reserves to the USSR, which will immediately receive 150 MPPs and Sweden will respond by moving 4-8% closer to the Axis.
 #NOTES_POSITION= 182,54
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 90
 #AI_RESPONSE_POPUP=
 #DATE= 1940/07/01
@@ -7576,6 +7559,82 @@
 #VARIABLE_CONDITION= 103 [1] [0] [0]
 ; USSR(116) Allied but not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; Fall Weiss II
+{
+#NAME= DE 548 - Germany: War Economy (AI - 100% Yes)
+#POPUP=
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#DISPLAY_ORDER= 1
+#GV= 1[1,100]
+#LINK= 0[0]
+#DECISION= 548
+#MPP_UPDOWN= 125
+#MPP_TURNS= 1
+#MPP_TEXT= War Economy
+#NOTES=
+#NOTES_POSITION=
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1943/06/01
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Berlin(173,74) is Axis
+#ALIGNMENT_POSITION= 173,74 [1]
+; Paris(151,84) is Allied
+#ALIGNMENT_POSITION= 151,84 [2]
+; Warsaw(188,76) is Axis
+#ALIGNMENT_POSITION= 188,76 [1]
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; Fall Weiss II
+{
+#NAME= DE 549 - Germany: War Economy (AI - 100% Yes)
+#POPUP=
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#DISPLAY_ORDER= 1
+#GV= 1[1,100]
+#LINK= 0[0]
+#DECISION= 549
+#MPP_UPDOWN= 125
+#MPP_TURNS= 1
+#MPP_TEXT= War Economy
+#NOTES=
+#NOTES_POSITION=
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1943/06/01
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Berlin(173,74) is Axis
+#ALIGNMENT_POSITION= 173,74 [1]
+; Paris(151,84) is AXis
+#ALIGNMENT_POSITION= 151,84 [1]
+; Warsaw(188,76) is Allied
+#ALIGNMENT_POSITION= 188,76 [2]
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7608,9 +7667,9 @@
 #SHADOW_RGB= 0,0,0
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
-; Paris(151,84) is Axis
+; Paris(151,84) is Allied
 #ALIGNMENT_POSITION= 151,84 [2]
-; Warsaw(188,76) is Axis
+; Warsaw(188,76) is Allied
 #ALIGNMENT_POSITION= 188,76 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Germany(45) Axis and not surrendered (dummy condition)
@@ -7819,7 +7878,6 @@
 #MPP_TEXT=
 #NOTES= If we say %B(YES), then our economy will benefit significantly from imports from the USSR.%N%N If we say %B(NO), then we will have a better launching point for a future invasion of the USSR.%N%N However, by saying %B(NO) we will have to invade sooner than we might have wished due to the anger we will trigger in the USSR by not honoring the Pact.%N%N We will also only have an opportunity to annex Lithuania in the spring of 1940 if we say %B(YES). Otherwise we would have to invade that country if we wish to seize it, and doing so would swing the USSR dramatically towards the Allies.
 #NOTES_POSITION= 194,75
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP= Germany Honors The German-Soviet Non-Aggression Pact
 #DATE= 1939/09/01
@@ -7924,7 +7982,6 @@
 #MPP_TEXT= Supplies To Spain
 #NOTES= Spain was struggling to recover from her civil war and so Franco was very reluctant to involve Spain directly in the war, though he did provide much assistance to the Axis short of doing so.%N%N Given Franco's reluctance, to obtain his help Germany would have had to provide him with territory in North Africa and much in the way of food supplies.%N%N As you have made the effort to capture Algiers, unless the military situation elsewhere limits your ability to pay the cost of Spanish war entry, it will be best to say %B(YES).
 #NOTES_POSITION= 139,110
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP= Franco Joins The Axis In Exchange For French Territory In Africa
 #DATE= 1939/09/01
@@ -8349,7 +8406,6 @@
 #MPP_TEXT= Sending U-Boats To Pola
 #NOTES= By saying %B(YES), we will be better able to intercept Allied shipping and invasion forces in the Mediterranean.
 #NOTES_POSITION= 174,95
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP=
 #DATE= 1941/08/01
@@ -8391,7 +8447,6 @@
 #MPP_TEXT= Operation Oak
 #NOTES= %N%N%CRecommendations: %N%N Say %B(YES) to allow Otto Skorzeny to attempt the rescue of Mussolini.%N%N Skorzeny's mission has a 90% chance of success.%N%N If he is successful then Germany will be presented with an opportunity to form an Italian Fascist Infantry Corps in northern Italy, and German National Morale will rise by 1,000 points.
 #NOTES_POSITION= 169,95
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP=
 #DATE= 1941/01/01
@@ -8698,6 +8753,8 @@
 ; A German Naval Unit is in place to travel through the Strait
 #CONDITION_POSITION= 139,113 [0,0] [1,1] [1] [45]
 #CONDITION_POSITION= 139,114 [0,0] [1,1] [1] [45]
+#CONDITION_POSITION= 139,113 [0,0] [1,1] [1] [46]
+#CONDITION_POSITION= 139,114 [0,0] [1,1] [1] [46]
 #CONDITION_POSITION= 139,113 [0,0] [1,1] [1] [87]
 #CONDITION_POSITION= 139,114 [0,0] [1,1] [1] [87]
 #CONDITION_POSITION= 139,113 [0,0] [1,1] [1] [99]
@@ -8742,6 +8799,8 @@
 ; A German Naval Unit is in place to travel through the Strait
 #CONDITION_POSITION= 134,114 [0,0] [1,1] [1] [45]
 #CONDITION_POSITION= 134,115 [0,0] [1,1] [1] [45]
+#CONDITION_POSITION= 139,113 [0,0] [1,1] [1] [46]
+#CONDITION_POSITION= 139,114 [0,0] [1,1] [1] [46]
 #CONDITION_POSITION= 134,114 [0,0] [1,1] [1] [87]
 #CONDITION_POSITION= 134,115 [0,0] [1,1] [1] [87]
 #CONDITION_POSITION= 134,114 [0,0] [1,1] [1] [99]
@@ -8902,8 +8961,8 @@
 #ALIGNMENT_POSITION= 142,78 [2]
 ; Calais(151,79) is Axis
 #ALIGNMENT_POSITION= 151,79 [1]
-; The hex NW of Amiens(151,81) is Axis
-#ALIGNMENT_POSITION= 150,81 [1]
+; Amiens(151,81) is Axis
+#ALIGNMENT_POSITION= 151,81 [1]
 ; Le Havre(147,82) is Axis
 #ALIGNMENT_POSITION= 147,82 [1]
 ; Brest(138,86) is Axis
@@ -9212,7 +9271,7 @@
 #ALIGNMENT_POSITION= 151,84 [1]
 ; Dijon(156,88) is Axis
 #ALIGNMENT_POSITION= 156,88 [1]
-; Nancy is Axis
+; Nancy(158,85) is Axis
 #ALIGNMENT_POSITION= 158,85 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Vichy France(118) Axis but not fully mobilized
@@ -9257,7 +9316,7 @@
 #ALIGNMENT_POSITION= 151,84 [1]
 ; Dijon(156,88) is Axis
 #ALIGNMENT_POSITION= 156,88 [1]
-; Nancy is Axis
+; Nancy(158,85) is Axis
 #ALIGNMENT_POSITION= 158,85 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Vichy France(118) Allied but not fully mobilized
@@ -9962,7 +10021,7 @@
 }
 
 {
-#NAME= DE 657 - Germany: Italy's National Morale falls below 30% (100%)
+#NAME= DE 657 - Germany: Italy's National Morale falls below 30% 
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -9993,6 +10052,50 @@
 ; Germany(45) Axis and not surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 658 - Germany: Imports From Switzerland (AI - 100% Yes)
+#POPUP=
+#MESSAGE= 
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#DISPLAY_ORDER= 0
+#DECISION= 658
+#MPP_UPDOWN= 5
+#MPP_TURNS= 1
+#MPP_TEXT= Imports From Switzerland
+#NOTES=
+#NOTES_POSITION=
+#AI_RESPONSE= 100
+#AI_RESPONSE_POPUP=
+#DATE= 1939/09/01
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Lyon(156,92) is in Axis hands
+#ALIGNMENT_POSITION= 156,92 [1]
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Set variable conditions:
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Switzerland(104) Axis but not fully mobilized
+#VARIABLE_CONDITION= 104 [1] [20] [0]
+; France(40) Allies and surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; No Allied Units within 4 hexes of Metz
+#CONDITION_POSITION= 160,84 [4,4] [0,0] [2] [0]
+; No Allied Units within 4 hexes of Milan
+#CONDITION_POSITION= 164,93 [4,4] [0,0] [2] [0]
+; No Allied Units within 4 hexes of Lyon
+#CONDITION_POSITION= 156,92 [4,4] [0,0] [2] [0]
 }
 
 {
@@ -10409,6 +10512,7 @@
 ; Spain(99) Axis and not surrendered
 ; Italy(59) Axis and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
+; Fall Weiss II changed from 60% to 30%
 #VARIABLE_CONDITION= 99 [1] [30] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; A German unit is within 3 hexes of Algiers(152,113)
@@ -10538,7 +10642,7 @@
 }
 
 {
-#NAME= DE 674 - Germany: Italy's National Morale falls below 20% (100%)
+#NAME= DE 674 - Germany: Italy's National Morale falls below 20% 
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -10573,7 +10677,7 @@
 }
 
 {
-#NAME= DE 676 - Germany: SUPPLY script for Axis control of Gibraltar (100%)
+#NAME= DE 676 - Germany: SUPPLY script for Axis control of Gibraltar 
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -10666,6 +10770,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 678 - Germany(AI): MPPs Helper (AI - 100%)
 #POPUP=
@@ -10695,7 +10800,7 @@
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -10776,9 +10881,6 @@
 ; Cluj is Axis
 #ALIGNMENT_POSITION= 193,89 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Turkey(111) Allied but not fully mobilized
-; previous made no sense and changed to Turkey Axis
-#VARIABLE_CONDITION= 111 [1] [0] [0]
 ; Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 ; No Allied units within 5 hexes of Vienna(179,86)
@@ -10834,8 +10936,6 @@
 ; Thessaloniki(192,104) is Axis
 #ALIGNMENT_POSITION= 192,104 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Turkey(111) Axis leaning
-#VARIABLE_CONDITION= 111 [1] [0] [0]
 ; Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 ; No Allied units within 5 hexes of Vienna(179,86)
@@ -11146,7 +11246,7 @@
 }
 
 {
-#NAME= DE 708 - Italy: Declare War on Greece? (AI - 100%)
+#NAME= DE 708 - Italy: Declare War on Greece? (AI - 66%)
 #POPUP=
 #MESSAGE=Commander in Chief %N%N %BRe: %BGreece %N%N The time has come for us to assert ourselves further in the Balkans, to win fame and glory for Italy, lest Germany takes all the glory for itself.%N%N If you say %B(YES), then we will deploy two half strength Corps in Albania, and we will declare war on Greece at the end of October.%N%N Rushing these forces to Albania and deploying them there will cost a total of %B100 MPPs (50 MPPs for 2 turns).%N%N Would you like to authorize this expenditure and declare war on Greece at the end of this month %B(YES)?
 #IMAGE=
@@ -11166,7 +11266,7 @@
 #MPP_TEXT= Preparations For War Against Greece
 #NOTES= Mussolini was annoyed that he wasn't informed of Germany's actions before they took place. So he decided to go to war against Greece without informing his German allies first.%N%N In response to an Italian ultimatum towards Greece, troops had to be rushed to Albania but even so, the Greeks fought bravely and advanced into Albania, much to Mussolini's embarrassment.%N%N By saying %B(YES), Italian National Morale will increase by 500 points.%N%N However, if Allied forces do enter Albania, then Italian National Morale will fall by 1,500 points, and if Tirana is lost then it will fall a further 5,000 points.%N%N If we select %B(NO), Italian prestige will be lowered by 3,000 points as Mussolini's continuing demands for Greek concessions will ultimately be rejected and the Italian ultimatum proven fruitless in the eyes of other European leaders.
 #NOTES_POSITION= 188,104
-#AI_RESPONSE= 100
+#AI_RESPONSE= 66
 #AI_RESPONSE_POPUP=
 #DATE= 1940/10/03
 #TEXT_RGB= 0,0,0
@@ -11183,6 +11283,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 717 - Germany: Dummy Event for Soviet Winter (AI - 100%)
 #POPUP=
@@ -11217,6 +11318,7 @@
 }
 
 ; TODO - Look at 718 more closely
+; Fall Weiss II
 {
 #NAME= DE 718 - UK: Dummy Event To Trigger D-Day 1943 (Moscow, Stalingrad - Axis) (AI - 100%)
 #POPUP=
@@ -11254,6 +11356,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 718 - UK: Dummy Event To Trigger D-Day 1943 (Stalingrad - Axis) (AI - 90%)
 #POPUP=
@@ -11292,6 +11395,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 718 - UK: Dummy Event To Trigger D-Day 1943 (Moscow - Axis) (AI - 80%)
 #POPUP=
@@ -11329,6 +11433,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 718 - UK: Dummy Event To Trigger D-Day 1943 (AI - 25%)
 #POPUP=
@@ -11738,7 +11843,7 @@
 
 ; Country_ID is the UK to delay the event another turn
 {
-#NAME= DE 751 - Italy: Dummy Event to trigger DE 702 for Jean de Vienne? (AI - 100%)
+#NAME= DE 751 - Italy: Dummy Event to trigger DE 702 for Jean de Vienne? (AI - 100%) (50%)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -11777,7 +11882,7 @@
 
 ; Country_ID is the UK to delay the event another turn
 {
-#NAME= DE 752 - Italy: Dummy Event to trigger DE 705 for Jean de Vienne? (AI - 100%)
+#NAME= DE 752 - Italy: Dummy Event to trigger DE 705 for Jean de Vienne? (AI - 100%) (80%)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -11815,7 +11920,7 @@
 }
 
 {
-#NAME= DE 753 - Italy: Italian Surrender Helper (100%)
+#NAME= DE 753 - Italy: Italian Surrender Helper 
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -11885,6 +11990,7 @@
 }
 
 ; Fall Weiss II
+; was previously DE 736
 {
 #NAME= DE 793 - USSR: Deploy Civilian Construction Engineers at Moscow ? (AI - 100%)
 #POPUP=
@@ -11920,7 +12026,8 @@
 #CONDITION_POSITION= 221,65 [15,15] [1,1] [1] [0]
 }
 
-; Fall Weiss II 
+; Fall Weiss II
+; https://www.wikiwand.com/en/Anglo-Portuguese_Alliance
 {
 #NAME= DE 800 - UK: Anglo-Portuguese Alliance (AI - 15%)
 #POPUP=
@@ -11940,7 +12047,7 @@
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT= 
-#NOTES= If you say %B(YES), Portugal will immediately join the Allies, as well a half strength Portuguese HQ and 2 understrength Infantry Divisions (1 UK, 1 Portugal) will deploy at Lisbon.  As a result of decisive action, British National Morale will also rise 1,000 points %N%N Spain will move in the range of 30-40% closer to the Axis as a result, and should be expected to join the Axis in the near future due to German diplomatic efforts. %N%N Saying %B(NO) should ensure Portugal maintains a neutral policy and remains out of the conflict in Europe and will not provoke neighboring Spain. %N%N %N%N%CRecommendations: %N%N Say %B(NO) unless Portugal should factor into the Allies plans for war in Europe.
+#NOTES= If you say %B(YES), Portugal will immediately join the Allies, as well a half strength Portuguese HQ and 2 understrength Infantry Divisions (1 UK, 1 Portugal) will deploy at Lisbon.  As a result of decisive action, British National Morale will also rise 1,000 points %N%N Spain will move in the range of 30-40% closer to the Axis as a result, and should be expected to join the Axis in the near future due to German diplomatic efforts. %N%N Saying %B(NO) should ensure Portugal maintains a neutral policy and remains out of the conflict in Europe and will not provoke neighboring Spain. %N%N %N%N%CRecommendations: %N%N Say %B(NO) unless Portugal should factor into the Allies plans for the upcoming war in Europe.
 #NOTES_POSITION= 128,108
 #AI_RESPONSE= 15
 #AI_RESPONSE_POPUP= UK Invokes The Anglo-Portuguese Alliance
@@ -11980,7 +12087,7 @@
 #NOTES= In 1939 Spain was struggling to recover from her civil war and its population lacked basic food supplies.  Italian assistance would have certainly leaned Franco closer to the Axis, however Franco's Spain would demand much more of her German and Italian Allies before ever entering the conflict in Europe without Allied provocation. %N%N Though the total cost of the supply shipment are indefinite in nature, Italian supplies will stop flowing to Spain after Italy has joined the war.%N%N If you select %B(YES) to deliver food supplies, Spain can be expected to lean 3-6% closer to the Axis.
 #NOTES_POSITION= 139,110
 #AI_RESPONSE= 50
-#AI_RESPONSE_POPUP= Italy Begins Sending Spain Military Assistance
+#AI_RESPONSE_POPUP= Italy Begins Sending Spain Civil Assistance
 #DATE= 1939/09/15
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
@@ -11997,7 +12104,7 @@
 ; Fall Weiss II
 ; Event allowing Italian Food Supplies to Export to Spain only until Italy has entered the war.
 {
-#NAME= DE 802 - Italy: Dummy Event To Allow Export Food Supplies to Spain (AI - 100%)
+#NAME= DE 802 - Italy: Dummy Event To Allow The Export Of Food Supplies to Spain (AI - 100%)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -12094,7 +12201,6 @@
 #MPP_TEXT= 
 #NOTES= If you say %B(YES), Spain will move 3-5% closer to the Axis in response to deteriorating relations with the UK.  However by selecting %B(YES), the UK and USSR will at the same time will improve their own diplomatic relations. %N%N As a result of improved relations between the UK and USSR, if Turkey remains neutral, the UK and USSR will be prompted to jointly pressure Turkey closer towards joining the Allies at a later date so long as Turkey would be leaning 80% towards the Allies. %N%N %N%N%CRecommendations: %N%N Say %B(NO) if Turkish war entry does not fit into the Allied plans.
 #NOTES_POSITION= 139,110
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP= UK Condemns Spain's Involvement On The Eastern Front
 #DATE= 1939/11/03
@@ -12136,7 +12242,6 @@
 #MPP_TEXT= 
 #NOTES= If you say %B(YES), Portugal will receive %N%N%T - HQ (Lisbon) %N%T - a fully upgraded Infantry Corps (Lisbon) %N%T  - Garrison (Evora) %N%T - Garrison(Porto).  %N%N As military resources are being transferred under Portuguese control, they will deploy when and if Portugal enters the war for either side. %N%N Spain will move 3-5% closer to the Axis in response to the military build up in Portugal.
 #NOTES_POSITION= 139,110
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP= UK Strengthens The Portuguese Military
 #DATE= 1940/01/01
@@ -12254,7 +12359,6 @@
 #MPP_TEXT= Military Exports To Turkey
 #NOTES= %N%N In 1941, the USA declared that "the defense of Turkey vital to the defense of the United States".  In sending supply shipments to Turkey, the USA undertook to fill the commitments that Great Britain had already made to keep Turkey firmly in the Allied Camp.%N%N If you say %B(YES), Turkey will create a new fully upgraded Tank Corps unit at Ankara. The unit will deploy when and if Turkey enters the war for either side. Turkey will also move 4-6% closer to the Allies in response to the military aid.
 #NOTES_POSITION= 211,106
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
 #DATE= 1941/05/31
@@ -12295,7 +12399,6 @@
 #MPP_TEXT= Military Exports To Turkey
 #NOTES= %N%N Until 1941, both Roosevelt and Churchill thought that continued Turkish neutrality would serve the interests of the Allies by blocking the Axis from reaching the strategic oil reserves of the Middle East. But the early victories of the Axis up to the end of 1942 caused Roosevelt and Churchill to re-evaluate a possible Turkish participation in the war on the side of the Allies.%N%N If you say %B(YES), Turkey will receive a fully upgraded Tactical Bomber unit at Ankara. The unit will deploy only when and if Turkey joins the Allies. %N%N Turkey will also move 10-15% closer to the Allies in response to the costly US commitments to the region.
 #NOTES_POSITION= 211,106
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP=
 #DATE= 1943/01/01
@@ -12410,7 +12513,6 @@
 #MPP_TEXT= Sweden Purchases Military Aircraft
 #NOTES= Before the outbreak of the war, the Swedish Ministry of Defense had ordered some 300 combat aircraft from the United States. In 1940, however, the US administration halted these exports. Only about 60 aircraft had been delivered. Sweden would subsequently turn to Italy to purchase military aircraft in an effort to defend her nation.%N%N If you say %B(YES), Sweden will receive a half strength Fighter Unit which will deploy near Stockholm and Italy will receive 25 MPPs for 4 turns.  Sweden will also move 4-6% closer to the Axis in response to the foreign trade. %N%N If you say %B(NO), Italy will deploy a half strength Fighter Unit near Bari in Southern Italy.
 #NOTES_POSITION= 182,54
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP= Italy Delivers Military Equipment To Sweden
 #DATE= 1940/02/01
@@ -12724,7 +12826,6 @@
 #MPP_TEXT= UK Attempts To Sway Switzerland
 #NOTES= %N%N If you select %B(YES), there is the a strong risk that our diplomatic mission will be unsuccessful. %N%N In fact, there is only a 25% chance that Switzerland will alter their diplomatic leaning if we make any headway at all.  However, if Switzerland does they will move in the range of 5-10% closer to the Allies. %N%N Note that should Switzerland lean towards the Allies any trade agreements established by Germany with either Switzerland or Portugal will be severed.
 #NOTES_POSITION= 161,89
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP= Allied Diplomats Are Active In Switzerland
 #DATE= 1942/02/01
@@ -12965,7 +13066,8 @@
 #CONDITION_POSITION= 193,89 [5,5] [0,0] [2] [0]
 }
 
-; Fall Weiss II 
+; Fall Weiss II
+; https://www.wikiwand.com/en/German_cruiser_L%C3%BCtzow_(1939)
 {
 #NAME= DE 826 - USSR: Complete Construction Of The Heavy Cruiser Petropavlovsk? (AI - 90%)
 #POPUP=
@@ -12985,16 +13087,18 @@
 #MPP_UPDOWN= -25
 #MPP_TURNS= 3
 #MPP_TEXT= Construction of Petropavlovsk 
-#NOTES= %N%N If you select %B(YES), the Heavy Cruiser %VPetropavlovsk will deploy at strength 8 at Leningrad in the beginning of August 1940. %N%N If you select %B(NO), construction will be cancelled, but take solace that the Heavy Cruiser has been transferred away from the German Navy.
+#NOTES= %N%N If you select %B(YES), the Heavy Cruiser %VPetropavlovsk will deploy at strength 5 at Leningrad in the beginning of May 1940. %N%N If you select %B(NO), construction will be cancelled, but take solace that the Heavy Cruiser has been transferred away from the German Navy.
 #NOTES_POSITION= 205,51
 ; Set AI acceptance % (AI will accept 90% of the time)
 #AI_RESPONSE= 90
 #AI_RESPONSE_POPUP=
-#DATE= 1940/05/17
+#DATE= 1940/04/15
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 ; Moscow(221,65) is Allied
 #ALIGNMENT_POSITION= 221,65 [2]
+; Leningrad(206,52) is Allied
+#ALIGNMENT_POSITION= 206,52 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied
 #VARIABLE_CONDITION= 116 [2] [20] [0]
@@ -13134,7 +13238,6 @@
 #MPP_TEXT= Coal Imports From Germany
 #NOTES=
 #NOTES_POSITION= 
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP= 
 #DATE= 1939/09/03
@@ -13172,7 +13275,6 @@
 #MPP_TEXT=
 #NOTES= If you select %B(YES), a fully upgraded HQ and Infantry Corps will deploy at Murmansk. %N%N If you select %B(NO), a fully upgraded HQ and Infantry Corps will deploy at Moscow instead.  
 #NOTES_POSITION= 211,16
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP=
 #DATE= 1939/09/03
@@ -13210,7 +13312,6 @@
 #MPP_TEXT= Reinforce North Africa
 #NOTES= %N%N Historically, the Italians fared poorly in North Africa almost from the beginning. Italian Command complained to Mussolini that the North African forces were not properly equipped for such an operation, and that an attack into Egypt could not possibly succeed; nevertheless, Mussolini ordered his Command to proceed. %N%N If you select %B(YES), a half strength Mechanized Corps will deploy at Tobruk. %N%N If you select %B(NO), Italy can expect significant supply reductions in the regions of Bardia, Sidi Barrani, and Mersa Matruh until supply lines can be better established in the beginning of 1941.
 #NOTES_POSITION= 
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP= Italy Reinforces North African Front Near Tobruk
 #DATE= 1939/09/03
@@ -13450,7 +13551,6 @@
 #MPP_TEXT= Supply Disruptions (Reinforcing Greece)
 #NOTES= If you select %B(YES), the UK will deploy a half strength Infantry Corps and Greece will also deploy a half strength HQ, both near Athens. The hastily deployed reinforcements will also cause a one time supply disruption in Alexandria and El Alamein, Egypt.
 #NOTES_POSITION= 193,109
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP= The UK Honours Commitment To Support Greece
 #DATE= 1939/09/03
@@ -14554,9 +14654,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-
-;Replacement
-; Fall Weiss II 
+; Fall Weiss II
 {
 #NAME= DE 871 - USSR: Dummy Event To Allow Axis Oil Shortages (AI - 100%)
 #POPUP=
@@ -14641,9 +14739,9 @@
 #CONDITION_POSITION= 152,113 [6,6] [1,1] [2] [115]
 }
 
+; Fall Weiss II
 ; Event based on the heavily escorted 1st Canadian Division sent from the Canada to UK
-; in December 1939.
-; Fall Weiss II 
+; Historic Date: December 1939
 {
 #NAME= DE 873 - UK: Deploy 1st Canadian Division In Halifax or the UK? (AI - 75%)
 #POPUP=
@@ -14684,7 +14782,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;replacement
 ; Fall Weiss II 
 {
 #NAME= DE 874 - Germany: Vichy French Join The Axis (5%) (AI - 100%)
@@ -14730,7 +14827,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;
 ; Fall Weiss II 
 {
 #NAME= DE 875 - Germany: Send Reinforcements To Iraq? (AI - 100%)
@@ -14915,7 +15011,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; Dummy Event
 ; Fall Weiss II 
 {
 #NAME= DE 885 - USSR: Siberian Reserves (AI - 100%)
@@ -15018,7 +15113,6 @@
 #MPP_TEXT= East Africa Volunteers
 #NOTES= %N%N Historically, the German Motorized Infantry was formed on July 2, 1940.  Most of the volunteers had little to no military background. In addition to being "motorized" (or truck transportable), the unit included some improvised armored cars. The Italian radio station in Addis Ababa, capital of Abyssinia, broadcast news about the German Motorized Infantry. The existence of this unit was of great propaganda value to the Italians.%N%N If you select %B(YES), Italian National Morale will improve by 500 points.
 #NOTES_POSITION= 171,101
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP= German Volunteers Join The Fight In Italian East Africa
 #DATE= 1939/09/03
@@ -15082,7 +15176,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;
 ; Fall Weiss II 
 {
 #NAME= DE 893 - Finland: Raise and Deploy Anti-Tank Units? (AI - 50%)
@@ -15276,7 +15369,6 @@
 #MPP_TEXT= Greek Army In Exile
 #NOTES= If you select %B(YES), the UK will deploy a Garrison at Cairo.%N%N If you select %B(NO), the UK will receive 25 MPPs.
 #NOTES_POSITION= 208,126
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP=
 #DATE= 1939/09/03
@@ -15318,7 +15410,6 @@
 #MPP_TEXT= 
 #NOTES= In 1939 Spain was struggling to recover from her civil war and its population lacked basic food supplies.  German assistance would have certainly leaned Franco closer to the Axis, however Franco's Spain would demand much more of her German and Italian Allies before ever entering the conflict in Europe without Allied provocation. %N%N Though the total cost of the supply shipment are indefinite in nature, German supplies will stop flowing to Spain after Italy has joined the war.%N%N If you select %B(YES) to deliver food supplies, Spain can be expected to lean 3-6% closer to the Axis and Italy will be prompted to consider following suit with supplies of her own which will result in further Axis leanings.
 #NOTES_POSITION= 139,110
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 50
 #AI_RESPONSE_POPUP=
 #DATE= 1939/09/03
@@ -15334,8 +15425,8 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; Event allowing German Food Supplies to Export to Spain only until Italy has entered the war.
 ; Fall Weiss II 
+; Event allowing Germany to Export Food Supplies to Spain only until Italy has entered the war.
 {
 #NAME= DE 901 - Germany: Dummy Event To Allow Export of Food Supplies to Spain (AI - 50%)
 #POPUP=
@@ -15372,8 +15463,8 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 ; https://www.wikiwand.com/en/Blue_Division
-; Fall Weiss II 
 {
 #NAME= DE 902 - Germany: Accept the Spanish Blue Division? (AI - 75%)
 #POPUP=
@@ -15395,7 +15486,6 @@
 #MPP_TEXT= 
 #NOTES= %N%N The Spanish Blue Division is an experienced infantry division which will deploy along the Eastern Front. %N%N It is widely believed that Franco sent the Blue Division to the Eastern Front so that Spain could maintain peace with the Western Allies, while repaying German support during the Spanish Civil War and providing an outlet for the strong anti-Communist sentiments of many Spanish nationalists. %N%N Acceptance of this division, which comes at no additional cost will result in Spain decreasing her leaning towards the Axis by 3-6%.
 #NOTES_POSITION= 139,110
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP=
 #DATE= 1941/08/24
@@ -15469,7 +15559,7 @@
 #DECISION= 904
 #MPP_UPDOWN= -25
 #MPP_TURNS= 1
-#MPP_TEXT= Von Ribbentrop Travels To Portugal
+#MPP_TEXT= Von Ribbentrop's Diplomatic Mission To Portugal
 #NOTES= %N%N If you select %B(YES), Portugal will move 10-15% closer to the Axis and if Germany can maintain a positive diplomatic relationship with Portugal (Axis leaning), future trade agreements may be possible between our two nations. %N%N As long as Portugal is Axis leaning, the UK will also have less opportunities to sway Portuguese affairs as Portugal will have moved away from the Allies sphere of influence.
 #NOTES_POSITION= 139,110
 #AI_RESPONSE= 100
@@ -15487,7 +15577,7 @@
 
 ; Fall Weiss II 
 {
-#NAME= DE 905 - Germany: Send Von Ribbentrop to Switzerland? (AI - 90%)
+#NAME= DE 905 - Germany: Send Von Ribbentrop to Switzerland? (1939) (AI - 90%)
 #POPUP= German Diplomatic Decision
 #MESSAGE=Führerhauptquartier %N%N %BRe: %BDiplomatic %BMission %BTo %BSwitzerland %N%N Mein Führer, we should expect Switzerland to maintain their long standing position of neutrality throughout the course of the war.  With little risk, or benefit of the Swiss government entering the war on either side, it is advisable that we use the Swiss banking system to store our plundered gold reserves, and to convert currency so that we may conduct trade with some neutral European countries, which otherwise may not be possible.  We should also be able to establish trade between our two nations. %N%N By Sending diplomats to Switzerland we can almost ensure that the Swiss will be cooperative, and while Switzerland will officially remain a neutral country, we should be careful to maintain a positive relationship with the country or risk devastating our foreign trade. %N%N Mein Führer do you approve expanding our economic relationship with Switzerland %B(YES)? It will cost %B25 MPPs.
 #IMAGE=
@@ -15504,7 +15594,7 @@
 #DECISION= 905
 #MPP_UPDOWN= -25
 #MPP_TURNS= 1
-#MPP_TEXT= Von Ribbentrop Travels To Switzerland
+#MPP_TEXT= Von Ribbentrop's Diplomatic Mission To Switzerland
 #NOTES= %N%N If you select %B(YES), Switzerland will move 15-20% closer to the Axis and will act as an agent of foreign trade for Germany so that our nation may import precious metals and other supplies from foreign nations which otherwise may not be possible. %N%N Maintaining a positive relationship with Switzerland will be of upmost importance as to not severe any trade agreements we may establish and to realize additional plunder as we occupy some cities.  The risk of Allied declaration of war against Switzerland is minimal so it is fully expected that Switzerland will act in her own best interests.
 #NOTES_POSITION= 161,89
 ; Set AI acceptance % (AI will accept 90% of the time)
@@ -15523,7 +15613,7 @@
 
 ; Fall Weiss II 
 {
-#NAME= DE 906 - Germany: Send Von Ribbentrop to Portugal? (AI 100%)
+#NAME= DE 906 - Germany: Send Von Ribbentrop to Portugal? (1941) (AI 100%)
 #POPUP= German Diplomatic Decision
 #MESSAGE=Führerhauptquartier %N%N %BRe: %BDiplomatic %BMission %BTo %BPortugal %N%N Mein Führer, Although the Portuguese Government under the rule of Antonio Salazar has protested the war, Von Ribbentrop reports that the Portuguese will maintain a neutral policy. %N%N It is advisable that we reach a trade agreement with Portugal to import very important raw materials for military production.  These shipments will be conducted with thinly veiled secrecy and will be mainly routed through Switzerland.  It is important that we not only keep adequate relations with both Portugal and Switzerland to ensure a steady supply of raw materials, but also Spain, as the materials will be shipped by land and transit directly through Spanish territory.  We can expect the first shipment to begin January 1, 1942. %N%N Mein Führer, should we send Von Ribbentrop to Portugal to finalize an agreement for the import of Portuguese raw materials %B(YES)?  It will cost a total of %B50 MPPs (25 MPPs for 2 turns) for initial set up costs and logistics of the agreement.
 #IMAGE=
@@ -15540,10 +15630,9 @@
 #DECISION= 906
 #MPP_UPDOWN= -25
 #MPP_TURNS= 2
-#MPP_TEXT= Von Ribbentrop Travels To Portugal
+#MPP_TEXT= Von Ribbentrop's Diplomatic Mission To Portugal
 #NOTES= %N%N If you select %B(YES), Portugal will move 3-5% closer to the Axis and beginning January 1, 1942 Portugal will begin exporting raw materials to Germany.  As long as Portugal remains neutral Germany will receive 20 MPPs per turn as part of the trade agreement. %N%N Axis Leaning Switzerland will facilitate the trade, and the materials will have to transit through Axis leaning (or Active) Spanish territory and across occupied France.  Should the diplomatic climate change, Portugal will no longer be able to transit materials to Germany.  
 #NOTES_POSITION= 139,110
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
 #DATE= 1941/06/01
@@ -15562,9 +15651,9 @@
 #CONDITION_POSITION= 139,104 [6,6] [0,0] [2] [0]
 }
 
+; Fall Weiss II
 ; https://www.wikiwand.com/en/Wolfram_Crisis
 ; https://1997-2001.state.gov/regions/eur/rpt_9806_ng_spain.pdf
-; Fall Weiss II 
 {
 #NAME= DE 907 - Germany: Development of Spanish Mines? (AI 75%)
 #POPUP= German Economic Decision
@@ -15584,9 +15673,8 @@
 #MPP_UPDOWN= -10
 #MPP_TURNS= 5
 #MPP_TEXT= Development Of Spanish Mines
-#NOTES= %N%N If you select %B(YES), Spain's wolfram mines will begin to become operational and the resources (Valued at 20 MPPs per turn) will be available for export to Germany at a later date.%N%N If you select %B(NO), then the wolfram mines will not produce any resources (located at 135,97) even if Spain were to join the conflict in Europe. %N%N Spain will also greatly benefit from the development of their mines and will align themselves 4-8% toward the Axis.
+#NOTES= %N%N If you select %B(YES), Spain's wolfram mines will begin to become operational and the resources (valued at 20 MPPs per turn) will be available for export to Germany in January 1942. Spain will also greatly benefit from the development of their mines and will align themselves 4-8% toward the Axis. %N%N If you select %B(NO), then the wolfram mines will not produce any resources (located at 135,97). %N%N 
 #NOTES_POSITION= 139,110
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP= German Engineers Travel To Spain
 #DATE= 1939/12/01
@@ -15620,9 +15708,8 @@
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT= 
-#NOTES= %N%N If you select %B(YES), Spain will move 8-12% away from the Axis and as of January 1 1942, Spain will begin exporting wolfram to Germany (worth 20 MPPs per turn) for as long as Spain remains neutral and Axis leaning. %N%N As the materials will have to transit through occupied France, should France become liberated the shipments would no longer be able to reach Germany.%N%N If you select %B(NO), the wolfram mines will remain operational and Germany will benefit from the resources should Spain join the Axis at a later date.
+#NOTES= %N%N If you select %B(YES), Spain will move 8-12% away from the Axis and as of January 1942, Spain will begin exporting wolfram to Germany (worth 20 MPPs per turn) for as long as Spain remains neutral and Axis leaning. %N%N As the materials will have to transit through occupied France, should France become liberated the shipments would no longer be able to reach Germany.%N%N If you select %B(NO), the wolfram mines will remain operational and Germany will benefit from the resources should Spain join the Axis at a later date.
 #NOTES_POSITION= 139,110
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
 #DATE= 1940/09/20
@@ -15640,8 +15727,8 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II
 ; https://www.wikiwand.com/en/German%E2%80%93Turkish_Treaty_of_Friendship
-; Fall Weiss II 
 {
 #NAME= DE 910 - Germany: Sign Treaty of Friendship with Turkey? (AI - 100%)
 #POPUP= German Diplomatic Decision
@@ -15700,7 +15787,6 @@
 #MPP_TEXT= 
 #NOTES= %N%N If you select %B(YES) %N%N%T - Germany will receive 15 MPPs per turn from Vichy France %N%T - Requires France remains Axis occupied. %N%N If you select %B(NO) %N%N%T - Germay will receive 30 MPPs per turn from Vichy France %N%T - Requires France remains Axis Occupied %N%T - Requires Vichy France stay Axis Aligned %N%N but there will also remain the small chance (2% per turn) that Vichy French Population will Protest the Collaboration Policy, which could disrupt ongoing Exports To Germany.
 #NOTES_POSITION= 154,91
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP= Germany Amends The Vichy Collaboration Policy
 #DATE= 1939/09/03
@@ -15714,7 +15800,8 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; Fall Weiss II 
+; Fall Weiss II
+; Vichy France leans toward Allies
 {
 #NAME= DE 913 - Germany: (Allied) Lesser Vichy Collaboration Policy (AI - 100%)
 #POPUP=
@@ -15752,7 +15839,8 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; Fall Weiss II 
+; Fall Weiss II
+; Vichy France leans toward Axis
 {
 #NAME= DE 914 - Germany: (Axis) Lesser Vichy Collaboration Policy (AI - 100%)
 #POPUP=
@@ -15911,7 +15999,9 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; Fall Weiss II 
+; Fall Weiss II
+; https://www.wikiwand.com/en/German_cruiser_L%C3%BCtzow_(1939)
+; Historic Date (agreement concluded): 1940/02
 {
 #NAME= DE 918 - Germany: Deliver The Heavy Cruiser Lützow to USSR? (AI - 50%)
 #POPUP=
@@ -16277,7 +16367,6 @@
 #MPP_TEXT= 
 #NOTES= %N%N If you select %B(YES), Italy will receive 15 MPPs per turn.  However, it will cost Germany 25 MPPs to redirect its resources to her less efficient Ally in Italy. %N%N Italy will continue receiving resources from Germany each turn so long as USSR remains neutral.
 #NOTES_POSITION= 171,101
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP= Germany Begins Coal Exports To Italy
 #DATE= 1939/09/03
@@ -16315,7 +16404,6 @@
 #MPP_TEXT= Coal Exports To Italy
 #NOTES=
 #NOTES_POSITION= 
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP= 
 #DATE= 1939/09/03
@@ -16476,7 +16564,6 @@
 #MPP_TEXT= Atlantic Submarine Base
 #NOTES= %N%N BETASOM (an Italian language acronym of Bordeaux Sommergibile), was a submarine base established at Bordeaux by the Italian Regia Marina during World War II. From this base, Italian submarines participated in the Battle of the Atlantic.%N%N If you select %B(YES), a half strength submarine unit will deploy at Bordeaux at a cost of 15 MPPs. Note that Italy will not have the opportunity to launch additional naval units from Bordeaux.%N%N If you select %B(NO), a half strength submarine unit will deploy in the Mediterranean.
 #NOTES_POSITION= 171,101
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP= 
 #DATE= 1940/08/18
@@ -16590,7 +16677,6 @@
 #MPP_TEXT= 
 #NOTES= %N%N Historically, the German-Soviet Border And Commercial Agreement included relatively few substantial new economic elements, but it did serve to amend and extend existing economic agreements between Germany and USSR which were under strain late in 1940.  Knowing they were preparing for a war with the Soviet Union, Germany often delayed delivery of goods beyond the summer of 1941.  Suspicious of German delays, in December of 1940 the Soviets demanded pending items be resolved. %N%N If you select %B(YES), the Soviets will deploy near Moscow: %N%N%T - Fighter %N%T - Heavy Artillery %N%T - Anti-Tank unit; %N%N each delivered understrength but with max experience, representing access to German technology. USSR mobilization will also decrease by 5%.%N%N If you select %B(NO), then USSR mobilization will increase by 10% as Soviet suspicions of Germany's true intentions will continue to grow.
 #NOTES_POSITION= 221,65
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP= 
 #DATE= 1940/12/07
@@ -16914,7 +17000,6 @@
 #MPP_TEXT= Vichy Collaboration Policy
 #NOTES= 
 #NOTES_POSITION= 
-; Set AI acceptance % (AI will accept 75% of the time)
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP= 
 #DATE= 1939/09/03
@@ -17004,13 +17089,13 @@
 #ALIGNMENT_POSITION= 147,77 [2]
 ; Bristol(142,78) is Allied
 #ALIGNMENT_POSITION= 142,78 [2]
-; Calais is Axis
+; Calais(151,79) is Axis
 #ALIGNMENT_POSITION= 151,79 [1]
-; Amiens is Axis
+; Amiens(151,81) is Axis
 #ALIGNMENT_POSITION= 151,81 [1]
-; Le Havre is Axis
+; Le Havre(147,82) is Axis
 #ALIGNMENT_POSITION= 147,82 [1]
-; Brest is Axis
+; Brest(138,86) is Axis
 #ALIGNMENT_POSITION= 138,86 [1]
 ; Dijon(156,88) is Axis
 #ALIGNMENT_POSITION= 156,88 [1]
@@ -17052,13 +17137,13 @@
 #ALIGNMENT_POSITION= 147,77 [2]
 ; Bristol(142,78) is Allied
 #ALIGNMENT_POSITION= 142,78 [2]
-; Calais is Axis
+; Calais(151,79) is Axis
 #ALIGNMENT_POSITION= 151,79 [1]
-; Amiens is Axis
+; Amiens(151,81) is Axis
 #ALIGNMENT_POSITION= 151,81 [1]
 ; Le Havre is Axis
 #ALIGNMENT_POSITION= 147,82 [1]
-; Brest is Axis
+; Brest(138,86) is Axis
 #ALIGNMENT_POSITION= 138,86 [1]
 ; Dijon(156,88) is Axis
 #ALIGNMENT_POSITION= 156,88 [1]

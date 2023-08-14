@@ -46,7 +46,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - DE 418 - USSR: Seize Bessarabia? ([decision.txt])
         - now requires that France, as a Romania Guarantor, has surrendered.
     - DE 611 - Germany: Resolve Territorial Disputes In Eastern Europe?
-        - now is dependent on DE 418 as this was what prompted Hungary to seek Romanian territory
+        - now is dependent on "DE 418 - USSR: Seize Bessarabia?", as this was what prompted Hungary to seek Romanian territory
     - DE 116 - Portugal Leases the Azores to the UK (Portugal->Allies)
         - now requires Portugal be Allied Aligned 30%
     - DE 800 - The Anglo-Portuguese Alliance
@@ -73,6 +73,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
         - changed #DATE to 1941/01/01 (Lend Lease to Saudi Arabia did not occur until 1943)
     - DE 844 - Germany Declares War On Switzerland
         - Removed requirement that Switzerland is Allied
+    - DE 680 - Germany: Chrome Imports From Turkey (via Bulgaria)
+    - DE 681 - Germany: Chrome Imports From Turkey (via Greece)
+        - Removed requirement that Turkey is Allied
+        - should apply rather Turkey is Axis or Allied
     - "Malta limits Axis supply in the Mediterranean" has been split-up into the following:
         - "Malta Effect (Tripoli, Sirte, El Agheila, Benghazi, Derna) (15%)"
         - "Malta Effect (Derna, Msus, Mekili, Gazala) (15%)"
@@ -130,13 +134,37 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
         - USSR Morale Boosted From Allied Landings In France
         - USSR Morale Boosted From Allied Landings In Italy
         - Soviet Morale Is Boosted As Allied Forces Approach Berlin
-    - Removed the duplicated Mobilization_1 script Allies DoW On Tunisia (USA->Axis) ([mobilization_1.txt])
+    - Removed the duplicated "Allies DoW On Tunisia (USA->Axis)" ([mobilization_1.txt])
+    - Removed the duplicated "Axis DoW On Yugoslavia (Greece->Allies)"
+    - Added "Allies DoW On Greece (Yugoslavia->Axis)"
+    - Fixed "Allies DoW On Persia (Syria->Axis)"
+        - corrected #COUNTRY_ID (118->105)
     - Saying yes to DE 103 reduces the % sent by convoy from Egypt & Iraq from 80% to 65%, as does saying no to DE 105 and yes to DE 164 (Duedman) ([convoy.txt])
-    - Axis Advances in Egypt (Iraq->Axis) (50%) ([mobilization_2.txt])
+    - Added "Axis Occupy Sevastopol (Turkey->Axis)" ([mobilization_2.txt])
+    - "Collapse of Belgium (Italy->Axis)"
+        - reverted to SOE version 
+    - "Axis Conquer Egypt (Turkey->Axis)"
+        - #DATE reverted back to 1939/09/01
+    - "Sealion (Turkey->Axis) (10%)"
+        - #DATE reverted back to 1939/09/01
+    - Added "Italian Naval Movements In The English Channel (USA->Allies)"
+    - Added "Sealion (USSR->Allies) (Green)"
+        - currently disabled
+    - Added "Sealion (USSR->Allies) (Novice)"
+        - currently disabled
     - DE 104 - Pro-Allied Coup In Yugoslavia
         - Split across 3 events beginning 03/1941
     - DE 104 - Pro-Allied Mobilization In Greece
         - Requires Yugoslavia Allied and Mobilized
+    - DE 365 - USA: Dummy Event for the US Convoy to the USSR
+    - DE 366 - USA: Dummy Event for the US Convoy to the USSR; added the following:
+        - #ALIGNMENT_POSITION= 211,21 [2]
+        - #ALIGNMENT_POSITION= 210,24 [2]
+        - #ALIGNMENT_POSITION= 214,34 [2]
+        - #ALIGNMENT_POSITION= 214,36 [2]
+        - #ALIGNMENT_POSITION= 225,54 [2]
+    - Added DE 658 - Germany: Imports From Switzerland from SOE
+        - previously missing from Fall Weiss II
     - ... and more ...
 - Operation Countenance
     - Was only partially implemented and linked incorrectly to wrong or non-existent events
@@ -180,6 +208,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
         - DISPLAY_TURN=0 changed to 2
     - DE 645 - Germany: Anti-Tank Units
         - DISPLAY_TURN=0 changed to 1
+- Fixed "DE 204 - France: Send an Anglo-French Expedition to Support Finland?"
+    - Incorrect MPPs calculations
+- "DE 431 - Germany: Imports From Portugal"
+    - no longer requires Spain be at War
+- "DE 826 - USSR: Heavy Cruiser Petropavlovsk"
+    - #DATE corrected to 1940/05/01 (was delivered 1940/04/15)
+    - strength changed (8->5) (it was only 70% complete by June 1941)
 - Fixed "Derna(191,120) is getting hit twice in Malta supply interdiction scripts" 
     - (see - https://www.matrixgames.com/forums/viewtopic.php?f=10647&t=396958)
 - Fixed "Incorrect #LINK= in German/Soviet Garrison Reports" 
