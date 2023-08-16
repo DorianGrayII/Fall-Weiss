@@ -215,6 +215,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - "DE 826 - USSR: Heavy Cruiser Petropavlovsk"
     - #DATE corrected to 1940/05/01 (was delivered 1940/04/15)
     - strength changed (8->5) (it was only 70% complete by June 1941)
+- "DE 621 - Germany: Divide Yugoslavia and Set up Croatia as an Independent State?"
+- "DE 621 - Germany Permits the Formation of a Croatian State" ([territory.txt])
+    - #DATE corrected to 1941/04/10
 - Fixed "Derna(191,120) is getting hit twice in Malta supply interdiction scripts" 
     - (see - https://www.matrixgames.com/forums/viewtopic.php?f=10647&t=396958)
 - Fixed "Incorrect #LINK= in German/Soviet Garrison Reports" 
