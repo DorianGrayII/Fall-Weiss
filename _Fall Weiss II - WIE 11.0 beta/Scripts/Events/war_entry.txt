@@ -83,12 +83,12 @@
 ;               Percentage chance that the event will occur
 ;
 ; #COUNTRY_ID=  Value range [0, 120]
-;               Country ID that will be owner of this event
+;               Country that will be owner of this event
 ;
 ; #ALIGNMENT=   Value range [0, 2]
 ;               Political alignment check for #COUNTRY_ID
-;               1 = Axis
-;               2 = Allied
+;                   1 = Axis
+;                   2 = Allied
 ;
 ; #DATE=        Date that must be satisfied (in game) for event to occur 
 ;               Format: yyyy/mm/dd
@@ -271,9 +271,32 @@
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+; Historic Date: 1941/03
+{
+#NAME= Bulgaria: Bulgaria Joins The Axis (35%)
+#POPUP= Bulgaria Signs Military Pact With Axis
+#IMAGE= bulgariaenters.png
+#SOUND= war1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 19
+#TRIGGER= 35
+#ALIGNMENT= 1
+; Historic Date - 1 month
+#DATE= 1941/02/01
+; Poland(85) Allied and surrendered
+#VARIABLE_CONDITION= 85 [2] [100] [1]
+; Bulgaria(19) Axis
+#VARIABLE_CONDITION= 19 [1] [0] [0]
+}
+
 ;
 ; Canadian War Entry:
-; Historical date of event was 1939/09/10
+; Historic Date: 1939/09/10
 {
 #NAME= Canada: Canada Joins The Allies (50%)
 #POPUP= Canada Declares War On Germany
@@ -286,7 +309,6 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #COUNTRY_ID= 21
-;Set Canada to have a random/variable war entry
 #TRIGGER= 50
 #ALIGNMENT= 2
 #DATE= 1939/09/10
@@ -296,67 +318,10 @@
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 }
 
+; Historic Date: 1940/11/20
 {
-#NAME= DE 359 - Czech: Uprising in Banská Bystrica
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 359[1]
-#COUNTRY_ID= 30
-#TRIGGER= 100
-#ALIGNMENT= 2
-#DATE= 1944/01/01
-;Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-{
-#NAME= DE 360 - Czech: Uprising in Prague
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 360[1]
-#COUNTRY_ID= 30
-#TRIGGER= 100
-#ALIGNMENT= 2
-#DATE= 1944/01/01
-;Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-{
-#NAME= DE 603 - Spain: Spain Joins The Axis
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 603[1]
-#COUNTRY_ID= 99
-#TRIGGER= 100
-#ALIGNMENT= 1
-#DATE= 1939/09/03
-;Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-; Historic Data: 1940/11/20
-{
-#NAME= DE 611 - Hungary: Hungary Joins Axis Alliance (1)
-#POPUP= Hungary Joins The Axis Alliance
+#NAME= Hungary: Hungary Joins The Axis (35%)
+#POPUP= Hungary Joins The Axis
 #IMAGE= hungaryenters.png
 #SOUND= war1.ogg
 #FLAG= 1
@@ -364,289 +329,15 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-; Resolve Territorial Disputes In Hungary's Favor
-#LINK= 611[1]
+#LINK= 0[0]
 #COUNTRY_ID= 52
-#TRIGGER= 100
+#TRIGGER= 35
 #ALIGNMENT= 1
+; Historic Date - 1 month
 #DATE= 1940/10/20
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-; Historic Date: 1940/11/20
-{
-#NAME= DE 611 - Hungary: Hungary Joins Axis Alliance (2) (35%)
-#POPUP= Hungary Joins The Axis Alliance
-#IMAGE= hungaryenters.png
-#SOUND= war1.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-; Resolve Territorial Disputes In Romania's Favor
-#LINK= 611[0]
-#COUNTRY_ID= 52
-; Set Hungary to have a random/variable war entry
-#TRIGGER= 35
-#ALIGNMENT= 1
-#DATE= 1940/12/01
-; Germany(45) Axis
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-; Historic Date: 1940/11/20
-{
-#NAME= Hungary: Hungary Joins Axis Alliance (Poland surrendered)(35%)
-#POPUP= Hungary Joins The Axis Alliance
-#IMAGE= hungaryenters.png
-#SOUND= war1.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 52
-; Set Hungary to have a random/variable war entry
-#TRIGGER= 35
-#ALIGNMENT= 1
-#DATE= 1940/11/20
 ; Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
-}
-
-; Historic Date: 1940/11/23
-{
-#NAME= DE 611 - Romania: Romania Joins Axis Alliance (1) (50%)
-#POPUP= Romania Joins The Axis Alliance
-#IMAGE= romaniaenters.png
-#SOUND= war1.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-; Territory Dispute Resolved In Romania's favor
-#LINK= 611[0]
-#COUNTRY_ID= 93
-; Set Romania to have a random/variable war entry
-#TRIGGER= 50
-#ALIGNMENT= 1
-#DATE= 1940/08/30
-; Romania(93) Axis
-#VARIABLE_CONDITION= 93 [1] [0] [0]
-}
-
-; Historic Date: 1940/11/23
-{
-#NAME= DE 611 - Romania: Romania Joins Axis Alliance (2)
-#POPUP= Romania Joins The Axis Alliance
-#IMAGE= romaniaenters.png
-#SOUND= war1.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-; Territory Dispute Resolved In Hungary's Favor
-#LINK= 611[1]
-#COUNTRY_ID= 93
-#TRIGGER= 100
-#ALIGNMENT= 1
-#DATE= 1940/11/23
-; Romania(93) Axis
-#VARIABLE_CONDITION= 93 [1] [0] [0]
-}
-
-; Historic Date: 1940/11/23
-{
-#NAME= Romania: Romania Joins Axis Alliance (Poland surrendered)
-#POPUP= Romania Joins The Axis Alliance
-#IMAGE= romaniaenters.png
-#SOUND= war1.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 93
-#TRIGGER= 100
-#ALIGNMENT= 1
-#DATE= 1940/11/23
-; Poland(85) Allied and surrendered
-#VARIABLE_CONDITION= 85 [2] [100] [1]
-}
-
-; Historic Date: 1941/03
-{
-#NAME= DE 611 - Bulgaria: Bulgaria Joins Axis Alliance (1)
-#POPUP= Bulgaria Signs Military Pact With Axis
-#IMAGE= bulgariaenters.png
-#SOUND= war1.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-; Territory Dispute Resolved in Bulgaria's Favor
-#LINK= 611[1]
-#COUNTRY_ID= 19
-#TRIGGER= 100
-#ALIGNMENT= 1
-#DATE= 1941/02/08
-; Bulgaria(19) Axis
-#VARIABLE_CONDITION= 19 [1] [0] [0]
-}
-
-; Historic Date: 03/1941
-{
-#NAME= DE 611 - Bulgaria: Bulgaria Joins Axis Alliance (2) (35%)
-#POPUP= Bulgaria Signs Military Pact With Axis
-#IMAGE= bulgariaenters.png
-#SOUND= war1.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-; Territory Dispute Resolved in Romania's Favor
-#LINK= 611[0]
-#COUNTRY_ID= 19
-;Set Bulgaria to have a random/variable war entry
-#TRIGGER= 35
-#ALIGNMENT= 1
-#DATE= 1941/02/01
-; Bulgaria(19) Axis
-#VARIABLE_CONDITION= 19 [1] [0] [0]
-}
-
-; Historic Date: 1941/03
-{
-#NAME= Bulgaria: Bulgaria Joins Axis Alliance (Poland surrendered) (35%)
-#POPUP= Bulgaria Signs Military Pact With Axis
-#IMAGE= bulgariaenters.png
-#SOUND= war1.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 19
-;Set Bulgaria to have a random/variable war entry
-#TRIGGER= 35
-#ALIGNMENT= 1
-#DATE= 1941/02/01
-; Poland(85) Allied and surrendered
-#VARIABLE_CONDITION= 85 [2] [100] [1]
-}
-
-; Historic Date: 1941/06/15
-{
-#NAME= DE 621 - Croatia: Croatia Joins The Axis
-#POPUP= Croatia Joins The Axis
-#IMAGE= croatiaenters.png
-#SOUND= war1.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-; Divide Yugoslavia and Set up Croatia as an Independent State?
-#LINK= 621[1]
-#LEVEL= 0
-#COUNTRY_ID= 27
-#TRIGGER= 100
-#ALIGNMENT= 1
-#DATE= 1941/05/13
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-{
-#NAME= DE 708 - Greece: Italy Declares War On Greece
-#POPUP= Italy Declares War On Greece
-#IMAGE=
-#SOUND= war1.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 708[1]
-#LEVEL= 0
-#COUNTRY_ID= 46
-#TRIGGER= 100
-#ALIGNMENT= 2
-#DATE= 1940/10/25
-; Italy(59) Axis, Mobilized
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-}
-
-;Replacement Script
-{
-#NAME= DE 1005 - Finland: Finland Joins The Axis
-#POPUP= Finland Enters The War Against The USSR
-#IMAGE= finlandenterswar.png
-#SOUND= war1.ogg
-; currently disabled in Fall Weiss II
-#FLAG= 0
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 1005[1]
-#LEVEL= 0
-#COUNTRY_ID= 39
-#TRIGGER= 100
-#ALIGNMENT= 1
-#DATE= 1939/09/01
-; USSR(116) Allied and not surrendered
-; Finland(39) Axis but not fully mobilized
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 39 [1] [0] [0]
-}
-
-;
-; Syria
-{
-#NAME= Syria(AI): UK Annexes Syria (25%)
-#POPUP= UK Annexes Syria
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 2
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 105
-#TRIGGER= 25
-#ALIGNMENT= 2
-#DATE= 1941/07/14
-;Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-{
-#NAME= Syria(AI): Syria Joins The Axis (50%)
-#POPUP= Syria Joins The Axis
-#IMAGE=
-#SOUND= war1.ogg
-#FLAG= 1
-#TYPE= 0
-#AI= 1
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 105
-#TRIGGER= 50
-#ALIGNMENT= 1
-#DATE= 1942/05/01
-; Iraq Axis and not surrendered
-; Turkey Axis and not surrendered
-#VARIABLE_CONDITION= 56 [1] [100] [0]
-#VARIABLE_CONDITION= 111 [1] [100] [0]
+#VARIABLE_CONDITION= 52 [1] [0] [0]
 }
 
 {
@@ -672,8 +363,318 @@
 #VARIABLE_CONDITION= 105 [1] [100] [0]
 }
 
+; Historic Date: 1940/11/23
 {
-#NAME= DE 846 - Spain: The Allies Declare War On Spain
+#NAME= Romania: Romania Joins The Axis (35%)
+#POPUP= Romania Joins The Axis
+#IMAGE= romaniaenters.png
+#SOUND= war1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 93
+#TRIGGER= 35
+#ALIGNMENT= 1
+; Historic Date - 1 month
+#DATE= 1940/10/23
+; Poland(85) Allied and surrendered
+#VARIABLE_CONDITION= 85 [2] [100] [1]
+#VARIABLE_CONDITION= 93 [1] [0] [0]
+}
+
+{
+#NAME= Syria(AI): Syria Joins The Axis (50%)
+#POPUP= Syria Joins The Axis
+#IMAGE=
+#SOUND= war1.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 1
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 105
+#TRIGGER= 50
+#ALIGNMENT= 1
+#DATE= 1942/05/01
+; Iraq Axis and not surrendered
+; Turkey Axis and not surrendered
+#VARIABLE_CONDITION= 56 [1] [100] [0]
+#VARIABLE_CONDITION= 111 [1] [100] [0]
+#VARIABLE_CONDITION= 105 [1] [0] [0]
+}
+
+;
+; Syria
+{
+#NAME= Syria(AI): UK Annexes Syria (25%)
+#POPUP= UK Annexes Syria
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 2
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 105
+#TRIGGER= 25
+#ALIGNMENT= 2
+#DATE= 1941/07/14
+; Germany(45) Axis, Mobilized (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= DE 359 - Czech: Uprising in Banská Bystrica
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 359[1]
+#COUNTRY_ID= 30
+#TRIGGER= 100
+#ALIGNMENT= 2
+#DATE= 1944/01/01
+; Germany(45) Axis, Mobilized (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= DE 360 - Czech: Uprising in Prague
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 360[1]
+#COUNTRY_ID= 30
+#TRIGGER= 100
+#ALIGNMENT= 2
+#DATE= 1944/01/01
+; Germany(45) Axis, Mobilized (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; Fall Weiss II
+; Finland declared war on the USSR shortly after Barbarossa was launched 1941/06/22
+{
+#NAME= DE 450 - Finland: Finland DoW On The USSR
+#POPUP= Finland Enters The War Against The USSR
+#IMAGE= finlandenterswar.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 450[1]
+#COUNTRY_ID= 39
+#TRIGGER= 100
+#ALIGNMENT= 1
+#DATE= 1939/09/01
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+}
+
+{
+#NAME= DE 603 - Spain: Spain Joins The Axis
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 603[1]
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#ALIGNMENT= 1
+#DATE= 1939/09/03
+#VARIABLE_CONDITION= 99 [1] [0] [0]
+}
+
+; Historic Date: 1941/03
+{
+#NAME= DE 611 - Bulgaria: Bulgaria Joins The Axis (1)
+#POPUP= Bulgaria Signs Military Pact With Axis
+#IMAGE= bulgariaenters.png
+#SOUND= war1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; Territory Dispute Resolved in Bulgaria's Favor
+#LINK= 611[1]
+#COUNTRY_ID= 19
+#TRIGGER= 100
+#ALIGNMENT= 1
+#DATE= 1941/03/01
+; Bulgaria(19) Axis
+#VARIABLE_CONDITION= 19 [1] [0] [0]
+}
+
+; Historic Date: 1941/03
+{
+#NAME= DE 611 - Bulgaria: Bulgaria Joins The Axis (2) (35%)
+#POPUP= Bulgaria Signs Military Pact With Axis
+#IMAGE= bulgariaenters.png
+#SOUND= war1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; Territory Dispute Resolved in Romania's Favor
+#LINK= 611[0]
+#COUNTRY_ID= 19
+#TRIGGER= 35
+#ALIGNMENT= 1
+#DATE= 1941/03/01
+; Bulgaria(19) Axis
+#VARIABLE_CONDITION= 19 [1] [0] [0]
+}
+
+; Historic Data: 1940/11/20
+{
+#NAME= DE 611 - Hungary: Hungary Joins The Axis (1) (50%)
+#POPUP= Hungary Joins The Axis Alliance
+#IMAGE= hungaryenters.png
+#SOUND= war1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; Resolve Territorial Disputes In Hungary's Favor
+#LINK= 611[1]
+#COUNTRY_ID= 52
+#TRIGGER= 50
+#ALIGNMENT= 1
+; Historic Data - 1 Month
+#DATE= 1940/10/20
+; Hungary(52) Axis
+#VARIABLE_CONDITION= 52 [1] [0] [0]
+}
+
+; Historic Date: 1940/11/20
+{
+#NAME= DE 611 - Hungary: Hungary Joins The Axis (2) (35%)
+#POPUP= Hungary Joins The Axis Alliance
+#IMAGE= hungaryenters.png
+#SOUND= war1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; Resolve Territorial Disputes In Romania's Favor
+#LINK= 611[0]
+#COUNTRY_ID= 52
+#TRIGGER= 35
+#ALIGNMENT= 1
+#DATE= 1940/11/20
+; Hungary(52) Axis
+#VARIABLE_CONDITION= 52 [1] [0] [0]
+}
+
+; Historic Date: 1940/11/23
+{
+#NAME= DE 611 - Romania: Romania Joins The Axis (1) (50%)
+#POPUP= Romania Joins The Axis
+#IMAGE= romaniaenters.png
+#SOUND= war1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; Territory Dispute Resolved In Romania's favor
+#LINK= 611[0]
+#COUNTRY_ID= 93
+#TRIGGER= 50
+#ALIGNMENT= 1
+#DATE= 1940/08/30
+; Romania(93) Axis
+#VARIABLE_CONDITION= 93 [1] [0] [0]
+}
+
+; Historic Date: 1940/11/23
+{
+#NAME= DE 611 - Romania: Romania Joins The Axis (2)
+#POPUP= Romania Joins The Axis
+#IMAGE= romaniaenters.png
+#SOUND= war1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; Territory Dispute Resolved In Hungary's Favor
+#LINK= 611[1]
+#COUNTRY_ID= 93
+#TRIGGER= 100
+#ALIGNMENT= 1
+#DATE= 1940/11/23
+; Romania(93) Axis
+#VARIABLE_CONDITION= 93 [1] [0] [0]
+}
+
+; Historic Date: 1941/06/15
+{
+#NAME= DE 621 - Croatia: Croatia Joins The Axis
+#POPUP= Croatia Joins The Axis
+#IMAGE= croatiaenters.png
+#SOUND= war1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+; Divide Yugoslavia and Set up Croatia as an Independent State?
+#LINK= 621[1]
+#LEVEL= 0
+#COUNTRY_ID= 27
+#TRIGGER= 100
+#ALIGNMENT= 1
+#DATE= 1941/05/13
+; Croatia(27) Axis
+#VARIABLE_CONDITION= 27 [1] [0] [0]
+}
+
+{
+#NAME= DE 708 - Greece: Italy DoW On Greece
+#POPUP= Italy Declares War On Greece
+#IMAGE=
+#SOUND= war1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 708[1]
+#LEVEL= 0
+#COUNTRY_ID= 46
+#TRIGGER= 100
+#ALIGNMENT= 2
+#DATE= 1940/10/25
+; Italy(59) Axis, Mobilized
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+}
+
+; Fall Weiss II
+{
+#NAME= DE 846 - Spain: The Allies DoW On Spain
 #POPUP= The Allies Declare War On Spain
 #IMAGE=
 #SOUND= war1.ogg
@@ -690,9 +691,9 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 87 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 99 [1] [1] [0]
 }
 
+; Fall Weiss II
 {
 #NAME= DE 917 - Bulgaria: Bulgaria Joins The Allies
 #POPUP= Bulgaria Joins The Allies
@@ -712,29 +713,8 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 }
 
-; Replacement Script
-; Finland declared war on the USSR shortly after Barbarossa was launched 1941/06/22
 {
-#NAME= DE 450 - Finland: Finland Declares War On The USSR
-#POPUP= Finland Enters The War Against The USSR
-#IMAGE= finlandenterswar.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 450[1]
-#COUNTRY_ID= 39
-#TRIGGER= 100
-#ALIGNMENT= 1
-#DATE= 1939/09/01
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-}
-
-{
-#NAME= DE 989 - Spain: The Allies Declare War On Spain
+#NAME= DE 989 - Spain: The Allies DoW On Spain
 #POPUP= The Allies Declare War On Spain
 #IMAGE=
 #SOUND= war1.ogg
@@ -751,4 +731,27 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 87 [1] [100] [1]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
+}
+
+{
+#NAME= DE 1005 - Finland: Finland Joins The Axis
+#POPUP= Finland Enters The War Against The USSR
+#IMAGE= finlandenterswar.png
+#SOUND= war1.ogg
+; currently disabled in Fall Weiss II
+#FLAG= 0
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+; Axis DoW on USSR
+#LINK= 1005[1]
+#LEVEL= 0
+#COUNTRY_ID= 39
+#TRIGGER= 100
+#ALIGNMENT= 1
+#DATE= 1939/09/01
+; USSR(116) Allied and not surrendered
+; Finland(39) Axis
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 39 [1] [0] [0]
 }
