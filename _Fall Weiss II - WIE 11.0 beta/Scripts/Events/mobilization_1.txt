@@ -83,13 +83,20 @@
 ;               Percentage chance that the event will occur
 ;
 ; #COUNTRY_ID=  Value range [0, 120]
-;               Country ID that will be owner of this event
+;               Country that will be owner of this event
 ;
 ; #MOBILIZATION= The mobilization percentage increase/decrease for this event for #COUNTRY_ID
 ;                Format: [min%, max%] [political_direction]
 ;
-; #CONDITION= Under what conditions will this event occur
-;             Format: country_id [political_event] [political_alignment]
+; #CONDITION=    Under what conditions will this event occur
+;                Format: country_id [event] [alignment]
+;                        country_id range [0, 120]
+;                        event range [0, 1]
+;                           0 = SURRENDERED
+;                           1 = DECLARED_WAR_ON
+;                        alignment range [1, 2]
+;                           1 = AXIS
+;                           2 = ALLIES
 ; }
 ;
 ; NOTES:
@@ -3509,7 +3516,6 @@
 }
 
 ;
-;
 ; General Declarations of War by Allies resulting in a
 ; 5-15% increase in Italian mobilization towards Axis:
 {
@@ -3576,7 +3582,7 @@
 #TRIGGER= 100
 ; 3-5% mobilization increase towards Axis
 #MOBILIZATION= [3,5] [1]
-;General surrenders to Axis forces
+; General surrenders to Axis forces
 #CONDITION= 0 [0] [1]
 }
 
