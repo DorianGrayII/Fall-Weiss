@@ -278,6 +278,155 @@ l
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 {
+#NAME= British Industry And Trade Start Switching To Military Production (1)
+#POPUP= British Industry And Trade Start Switching To Military Production
+#IMAGE=
+#SOUND= industry.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1939/12/01
+#RESOURCE= 143,67
+#RESOURCE= 144,71
+#RESOURCE= 144,72
+#RESOURCE= 144,73
+#RESOURCE= 142,72
+#RESOURCE= 139,76
+; UK(112) Allied and not surrendered AND
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= British Industry And Trade Start Switching To Military Production (2)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 54
+#TRIGGER= 100
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1939/12/01
+#RESOURCE= 0,0
+#RESOURCE= 0,1
+; UK(112) Allied and not surrendered AND
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= British Industry And Trade Start Switching To Military Production (3)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 79
+#TRIGGER= 100
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1939/12/01
+#RESOURCE= 215,121
+#RESOURCE= 214,124
+; UK(112) Allied and not surrendered AND
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= France Continues To Increase Industrial Mobilization
+#POPUP= France Continues To Increase Industrial Mobilization
+#IMAGE=
+#SOUND= industry.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 40
+#TRIGGER= 100
+#DATE= 1940/01/20
+#FAILSAFE_DATE= 1940/03/01
+#RESOURCE= 149,97
+#RESOURCE= 146,98
+#RESOURCE= 144,98
+#RESOURCE= 149,92
+#RESOURCE= 154,91
+; France(40) Allied and not surrendered AND
+; Poland(85) Allied and surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 85 [2] [100] [1]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; modified by Fall Weiss II
+{
+#NAME= France Increases Industrial Mobilization On Entering The War
+#POPUP= France Increases Industrial Mobilization On Entering The War
+#IMAGE=
+#SOUND= industry.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 40
+#TRIGGER= 100
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1940/02/01
+#RESOURCE= 145,94
+#RESOURCE= 131,119
+#RESOURCE= 133,118
+#RESOURCE= 145,115
+#RESOURCE= 152,113
+#RESOURCE= 167,112
+#RESOURCE= 157,97
+; France(40) Allied and not surrendered AND
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; modified by Fall Weiss II
+{
+#NAME= France Increases Industrial Mobilization With The Fall Of Poland
+#POPUP= <<TAG_3>>
+#IMAGE=
+#SOUND= industry.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 40
+#TRIGGER= 100
+#DATE= 1939/12/08
+#FAILSAFE_DATE= 1940/02/01
+#RESOURCE= 155,93
+; France(40) Allied and not surrendered AND
+; Poland(85) Allied and surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 85 [2] [100] [1]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
 #NAME= German Industry Starts Increasing Its Military Production (1939)
 #POPUP= German Industry Starts Increasing Its Military Production
 #IMAGE=
@@ -412,159 +561,12 @@ l
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II event
+; German Industry Activation
 {
-#NAME= British Industry And Trade Start Switching To Military Production (1)
-#POPUP= British Industry And Trade Start Switching To Military Production
+#NAME= Germany Expands Ruhr Industry
+#POPUP= Germany Expands Ruhr Industry for Continuing War
 #IMAGE=
-#SOUND= industry.ogg
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#DATE= 1939/09/01
-#FAILSAFE_DATE= 1939/12/01
-#RESOURCE= 143,67
-#RESOURCE= 144,71
-#RESOURCE= 144,72
-#RESOURCE= 144,73
-#RESOURCE= 142,72
-#RESOURCE= 139,76
-; UK(112) Allied and not surrendered AND
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= British Industry And Trade Start Switching To Military Production (2)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 54
-#TRIGGER= 100
-#DATE= 1939/09/01
-#FAILSAFE_DATE= 1939/12/01
-#RESOURCE= 0,0
-#RESOURCE= 0,1
-; UK(112) Allied and not surrendered AND
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= British Industry And Trade Start Switching To Military Production (3)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 79
-#TRIGGER= 100
-#DATE= 1939/09/01
-#FAILSAFE_DATE= 1939/12/01
-#RESOURCE= 215,121
-#RESOURCE= 214,124
-; UK(112) Allied and not surrendered AND
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; modified by Fall Weiss II
-{
-#NAME= France Increases Industrial Mobilization With The Fall Of Poland
-#POPUP= <<TAG_3>>
-#IMAGE=
-#SOUND= industry.ogg
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 40
-#TRIGGER= 100
-#DATE= 1939/12/08
-#FAILSAFE_DATE= 1940/02/01
-#RESOURCE= 155,93
-; France(40) Allied and not surrendered AND
-; Poland(85) Allied and surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 85 [2] [100] [1]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; modified by Fall Weiss II
-{
-#NAME= France Increases Industrial Mobilization On Entering The War
-#POPUP= France Increases Industrial Mobilization On Entering The War
-#IMAGE=
-#SOUND= industry.ogg
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 40
-#TRIGGER= 100
-#DATE= 1939/09/01
-#FAILSAFE_DATE= 1940/02/01
-#RESOURCE= 145,94
-#RESOURCE= 131,119
-#RESOURCE= 133,118
-#RESOURCE= 145,115
-#RESOURCE= 152,113
-#RESOURCE= 167,112
-#RESOURCE= 157,97
-; France(40) Allied and not surrendered AND
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= France Continues To Increase Industrial Mobilization
-#POPUP= France Continues To Increase Industrial Mobilization
-#IMAGE=
-#SOUND= industry.ogg
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 40
-#TRIGGER= 100
-#DATE= 1940/01/20
-#FAILSAFE_DATE= 1940/03/01
-#RESOURCE= 149,97
-#RESOURCE= 146,98
-#RESOURCE= 144,98
-#RESOURCE= 149,92
-#RESOURCE= 154,91
-; France(40) Allied and not surrendered AND
-; Poland(85) Allied and surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 85 [2] [100] [1]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= USA Mobilizes For War
-#POPUP= American Industry Mobilizes For War
-#IMAGE= american_industry_1.png, american_industry_2.png, american_industry_3.png
 #SOUND= industry.ogg
 #FLAG= 1
 #TYPE= 1
@@ -572,41 +574,35 @@ l
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#COUNTRY_ID= 115
+#COUNTRY_ID= 45
 #TRIGGER= 100
-#DATE= 1939/09/01
+#DATE= 1939/09/09
 #FAILSAFE_DATE= 1948/01/01
-#RESOURCE= 0,100
-#RESOURCE= 0,101
-#RESOURCE= 0,102
-#RESOURCE= 0,103
-#RESOURCE= 0,104
-#RESOURCE= 0,105
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
+#RESOURCE= 161,77
+; Poland(85) Allied and Surrendered
+#VARIABLE_CONDITION= 85 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Fall Weiss II event
+; German Industry Activation
 {
-#NAME= Urals Industry - The USSR Learns That Japan Will Not Attack In The East
-#POPUP=
+#NAME= Germany Further Expands Ruhr Industry
+#POPUP= Germany Further Expands Ruhr Industry for Continuing War
 #IMAGE=
-#SOUND=
+#SOUND= industry.ogg
 #FLAG= 1
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#COUNTRY_ID= 116
+#COUNTRY_ID= 45
 #TRIGGER= 100
-#DATE= 1941/10/01
+#DATE= 1939/09/09
 #FAILSAFE_DATE= 1948/01/01
-#RESOURCE= 266,61
-#RESOURCE= 267,61
-#RESOURCE= 266,62
-#RESOURCE= 267,62
-; USSR(116) Allied and not surrendered
+#RESOURCE= 162,78
+; Russia Allied and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -674,33 +670,50 @@ l
 }
 
 {
-#NAME= DE 402 - Urals Industry
-#POPUP= USSR Transfers Industry From The Ukraine To The Urals
-#IMAGE=
-#SOUND= troops2.ogg
+#NAME= USA Mobilizes For War
+#POPUP= American Industry Mobilizes For War
+#IMAGE= american_industry_1.png, american_industry_2.png, american_industry_3.png
+#SOUND= industry.ogg
 #FLAG= 1
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 402[1]
-#COUNTRY_ID= 116
+#LINK= 0[0]
+#COUNTRY_ID= 115
 #TRIGGER= 100
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-#RESOURCE= 267,56
-#RESOURCE= 267,57
-#RESOURCE= 267,58
-#RESOURCE= 267,59
-#RESOURCE= 267,60
-; added by Fall Weiss II
-#RESOURCE= 266,57
-; added by Fall Weiss II
-#RESOURCE= 266,58
-; added by Fall Weiss II
-#RESOURCE= 266,59
-; added by Fall Weiss II
-#RESOURCE= 266,60
+#RESOURCE= 0,100
+#RESOURCE= 0,101
+#RESOURCE= 0,102
+#RESOURCE= 0,103
+#RESOURCE= 0,104
+#RESOURCE= 0,105
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Urals Industry - The USSR Learns That Japan Will Not Attack In The East
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1941/10/01
+#FAILSAFE_DATE= 1948/01/01
+#RESOURCE= 266,61
+#RESOURCE= 267,61
+#RESOURCE= 266,62
+#RESOURCE= 267,62
 ; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -730,13 +743,36 @@ l
 }
 
 {
+#NAME= DE 402 - Urals Industry
+#POPUP= USSR Transfers Industry From The Ukraine To The Urals
+#IMAGE=
+#SOUND= troops2.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 402[1]
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+#RESOURCE= 267,56
+#RESOURCE= 267,57
+#RESOURCE= 267,58
+#RESOURCE= 267,59
+#RESOURCE= 267,60
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
 #NAME= DE 402 - Urals Industry - USSR Transfers Industry From The Ukraine To The Urals (AI - 1)
 #POPUP=
 #IMAGE=
 #SOUND=
-; New event from 1939 Storm Over Europe campaign
-; Disabled in Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 2
 #LEVEL= 4
@@ -758,9 +794,7 @@ l
 #POPUP=
 #IMAGE=
 #SOUND=
-; New event from 1939 Storm Over Europe campaign
-; Disabled in Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 2
 #LEVEL= 2
@@ -773,52 +807,6 @@ l
 #RESOURCE= 266,58
 #RESOURCE= 266,57
 ; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; Fall Weiss II event
-; German Industry Activation
-{
-#NAME= Germany Expands Ruhr Industry
-#POPUP= Germany Expands Ruhr Industry for Continuing War
-#IMAGE=
-#SOUND= industry.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#DATE= 1939/09/09
-#FAILSAFE_DATE= 1948/01/01
-#RESOURCE= 161,77
-; Poland(85) Allied and Surrendered
-#VARIABLE_CONDITION= 85 [2] [100] [1]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; Fall Weiss II event
-; German Industry Activation
-{
-#NAME= Germany Further Expands Ruhr Industry
-#POPUP= Germany Further Expands Ruhr Industry for Continuing War
-#IMAGE=
-#SOUND= industry.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#DATE= 1939/09/09
-#FAILSAFE_DATE= 1948/01/01
-#RESOURCE= 162,78
-; Russia Allied and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
