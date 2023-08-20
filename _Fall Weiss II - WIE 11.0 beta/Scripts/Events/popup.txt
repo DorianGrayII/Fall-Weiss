@@ -151,8 +151,8 @@
 ;                           1 = Axis
 ;                           2 = Allied
 ;
-; #VARIABLE_CONDITION=  Variable conditions event requirement
-;                       Format: country_id [alignment] [mobilization%] [surrendered_flag]
+; #VARIABLE_CONDITION=  Variable condition event requirements
+;                       Format: country_id [alignment] [mobilization] [surrendered_flag]
 ;                           country_id range [1, 120]
 ;                           alignment range [0, 2]
 ;                               0 = Neutral
@@ -173,8 +173,8 @@
 ;                               0 = Neutral
 ;                               1 = Axis
 ;                               2 = Allied
-;                           aligned_country_id range [0, 120]
-;                               0 = Any country (uses alignment above)
+;                           aligned_country_id range [1, 120]
+;                               0 = (uses alignment above)
 ;
 ; } 
 ;
@@ -5505,6 +5505,7 @@
 #MESSAGE_STYLE= 0
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
+; Banja Luka(180,95)
 #MAP_POSITION= 180,95
 #DATE= 1941/01/01
 ; Berlin(173,74) is Axis
@@ -5757,6 +5758,7 @@
 #AI= 3
 #LEVEL= 0
 #GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
 #LINK= 51[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
@@ -5794,6 +5796,7 @@
 #AI= 3
 #LEVEL= 0
 #GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
 #LINK= 51[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
@@ -5889,6 +5892,7 @@
 #AI= 4
 #LEVEL= 0
 #GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
 #LINK= 51[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
