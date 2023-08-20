@@ -57,7 +57,7 @@
 ;        3 = Veteran
 ;        4 = Expert
 ;
-; #GV=   Does the event activate based on the Global Variable values assigned?
+; #GV=   Event activation based on one of the ten Global Variable values?
 ;        Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;        Format: GV [min, max]
 ;                GV range [1,10] 
@@ -83,13 +83,18 @@
 ;               Percentage chance that the event will occur
 ;
 ; #COUNTRY_ID=  Value range [0, 120]
-;               Country ID that will be owner of this event
+;               Country that will be owner of this event
 ;
-; #DATE=        Date that must be satisfied (in game) for event to occur 
+; #DATE=        Date requirement for the event
 ;               Format: yyyy/mm/dd
 ;
 ; #MOBILIZATION= The mobilization percentage increase/decrease for this event for #COUNTRY_ID
-;                Format: [min%, max%] [political_direction]
+;                Format: [min, max] [direction]
+;                min range [0, 100]
+;                max range [0, 100]
+;                direction range [1, 2]
+;                  1 = Axis
+;                  2 = Allies
 ;
 ; #PRIVATE= Value range [0, 1]
 ;           Should this event #POPUP be included in the last turn summary screen?
@@ -97,9 +102,9 @@
 ;           1 = Yes
 ;
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
-;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
+;                      Format: country_id [alignment] [mobilization] [surrendered_flag]
 ;                              country_id range [1, 120]
-;                              political_alignment range [0, 2]
+;                              alignment range [0, 2]
 ;                                  0 = Neutral
 ;                                  1 = Axis
 ;                                  2 = Allied

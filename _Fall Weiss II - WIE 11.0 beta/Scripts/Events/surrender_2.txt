@@ -305,7 +305,7 @@
 
 ;
 ; Italy Surrenders
-; Historical date of event was 1943/09/08
+; Historical Date: 1943/09/08
 ; Sounds - BBC Archive
 {
 #NAME= Italy Surrenders (Italy -> USA) (50%)
@@ -335,12 +335,13 @@
 
 ;
 ; British and Free French Forces Occupy Syria
-; Historical date of event was 1941/06/08
+; Historical Date: 1941/06/08
 {
 #NAME= UK(AI): British and Free French Forces Occupy Syria (25%)
 #POPUP= UK and FF Forces Occupy Syria - General De Gaulle Promises End To French Mandate
 #IMAGE= ukoccupysyria.png
 #SOUND= combat1.ogg
+; currently disabled in Fall Weiss II
 #FLAG= 0
 #TYPE= 0
 #AI= 2
@@ -354,7 +355,7 @@
 #TRIGGER= 25
 #DATE= 1941/06/08
 ; UK(112) Allied and not surrendered
-; Syria politically neutral and not surrendered
+; Syria(105) Neutral and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 105 [0] [0] [0]
 ; Allies control Alexandria(206,124)
@@ -380,6 +381,7 @@
 #DATE= 1939/09/01
 ; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
+; Belgium(10) Allied, Surrendered
 #VARIABLE_CONDITION= 10 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -439,7 +441,7 @@
 ;Replacement
 ;
 ; UK Invades Iraq
-; Historical date of event was 1941/04/18
+; Historical Date: 1941/04/18
 ; Germany does not send a mission to support the Iraqis
 {
 #NAME= DE 172 - UK Invades Iraq In Response To Pro-Axis Coup (75%)
@@ -742,7 +744,7 @@
 }
 
 {
-#NAME= DE 643 - Norway Surrenders To Germany
+#NAME= DE 643 - (Axis) Norway Surrenders To Germany
 #POPUP= Germany Invades Norway
 #IMAGE= norway_1.png, norway_2.png
 #SOUND= war1.ogg
@@ -764,7 +766,7 @@
 }
 
 {
-#NAME= DE 644 - Norway Surrenders To Germany
+#NAME= DE 644 - (Allied) Norway Surrenders To Germany
 #POPUP= Germany Invades Norway
 #IMAGE= norway_1.png, norway_2.png
 #SOUND= war1.ogg
@@ -804,7 +806,7 @@
 #DATE= 1943/01/01
 ; Romania(93) Axis and not surrendered
 #VARIABLE_CONDITION= 93 [1] [100] [0]
-; No German units within 2 hexes of Bucharest
+; No German units within 2 hexes of Bucharest(198,95)
 #CONDITION_POSITION= 198,95 [2,2] [0,0] [1] [45]
 }
 

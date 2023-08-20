@@ -49,7 +49,7 @@
 ;            or for AI controlled Allied majors on Allied human player turns
 ;
 ; #LEVEL= Value range [-1, 4]
-;       What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;       What minimum skill level, as selected from the AI difficulty level screen in game, will this event apply to?
 ;       -1 = a script that should only fire for AI friendly controlled majors on your turn
 ;        0 = Green
 ;        1 = Novice
@@ -82,29 +82,31 @@
 ; #TRIGGER=     Value range [0, 100]
 ;               Percentage chance that the event will occur
 ;
-; #PRIVATE= Value range [0, 1]
-;         Should this event #POPUP be included in the last turn summary screen?
-;         0 = No
-;         1 = Yes
+; #PRIVATE=     Value range [0, 1]
+;               0 = No
+;               1 = Yes - #POPUP included in last turn's summary screen
 ;
 ; #DISPLAY_TURN= Value range [0, 2]
-;         On what turn do we display this event? 
-;         0 = Any
-;         1 = Axis Turn
-;         2 = Allied Turn
+;               Player turn to display the event 
+;               0 = Any
+;               1 = Axis Turn
+;               2 = Allied Turn
 ;
 ; #COUNTRY_ID= Country ID that will be owner of unit's in the event
 ;
-; #FULL_RESEARCH= Value range [0, 1] Do the units arrive with full applicable research; (True= 1; False= 0)
+; #FULL_RESEARCH= Value range [0, 1]
+;                 0 = False
+;                 1 = True - units arrive with full research upgrades
 ;
-; #DESTINATION_RESOURCE= Resource destination position for units listed by #UNIT_ID
+; #DESTINATION_RESOURCE= Position for units listed by #UNIT_ID
+;                       Format: x,y
 ;
 ; #DATE=                Date requirement for the event
 ;                       Format: yyyy/mm/dd or yyyy/mm/dd [=]
 ;                           if [=] is used, only applies for year specified.
 ;
-; #FAILSAFE_DATE= Date for the event to occur, regardless if #CONDITION_POSITION checks have been satisfied 
-;               Format: yyyy/mm/dd
+; #FAILSAFE_DATE=       Date for the event to occur, regardless if #CONDITION_POSITION checks have been satisfied 
+;                       Format: yyyy/mm/dd
 ;
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
 ;                      Format: country_id [alignment] [mobilization%] [surrendered_flag]
@@ -133,7 +135,11 @@
 ;                               0 = Any country (uses alignment above)
 ;
 ; #UNIT= Units to be created as well as a name (optional).
-;    Format: unit_id [strength] [experience] [name]
+;           Format: unit_id [strength] [experience] [name]
+;               unit_id range [0, 45]
+;               strength range [1, 10]
+;               experience range [0, 3]
+;               name (optional)
 ; }
 ;
 ; NOTES:
@@ -408,8 +414,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1939/09/01
 #DESTINATION_RESOURCE= 145,115
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 4 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 29 [10] [0] [1st AF]
 }
@@ -518,7 +523,7 @@
 
 ; Finland (Corps)
 {
-#NAME= Finland(AI): Corps - Turko - 1941
+#NAME= Finland(AI): (Axis) Corps - Turku - 1941
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -535,6 +540,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/03/01
 #FAILSAFE_DATE= 1941/03/01
+; Turku(190,50)
 #DESTINATION_RESOURCE= 190,50
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -544,7 +550,7 @@
 ; Fall Weiss II
 ; Finnish Attack Force
 {
-#NAME= Finland: Finnish Attack Force
+#NAME= Finland: (Axis) Finnish Attack Force
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -571,7 +577,7 @@
 
 ; Finland as Allied
 {
-#NAME= Finland: The Finnish Army Deploys
+#NAME= Finland: The (Allied) Finnish Army Deploys
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -596,7 +602,7 @@
 }
 
 {
-#NAME= Finland: The Finnish Army Deploys
+#NAME= Finland: The (Allied) Finnish Army Deploys
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -621,7 +627,7 @@
 }
 
 {
-#NAME= Finland: The Finnish Army Deploys
+#NAME= Finland: The (Allied) Finnish Army Deploys
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -646,7 +652,7 @@
 }
 
 {
-#NAME= Finland: The Finnish Army Deploys (2) (Irrespective of Winter War)
+#NAME= Finland: The (Axis) Finnish Army Deploys (2) (Irrespective of Winter War)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -850,6 +856,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Banja Luka(180,95)
 #DESTINATION_RESOURCE= 180,95
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 120 [2] [100] [1]
@@ -1240,6 +1247,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Bihacs(178,95)
 #DESTINATION_RESOURCE= 178,95
 #VARIABLE_CONDITION= 120 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1503,6 +1511,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Mostar(181,97)
 #DESTINATION_RESOURCE= 181,97
 #VARIABLE_CONDITION= 120 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1537,7 +1546,7 @@
 
 ; Germany (Garrison)
 {
-#NAME= Germany(AI): Garrison - Neustelitz - 1942 (Intermediate)
+#NAME= Germany(AI): Garrison - Neustrelitz - 1942 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1556,11 +1565,12 @@
 #FULL_RESEARCH= 0
 #DATE= 1942/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Neustrelitz(172,73)
 #DESTINATION_RESOURCE= 172,73
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 1 [5] [0] [1st Neustelitz]
-#UNIT= 1 [5] [0] [2nd Neustelitz]
+#UNIT= 1 [5] [0] [1st Neustrelitz]
+#UNIT= 1 [5] [0] [2nd Neustrelitz]
 }
 
 ; Germany (Rennes)
@@ -2571,7 +2581,7 @@
 
 ; Italy (Tactical Bomber)
 {
-#NAME= Italy(AI): Greece Reserves - Monastir - 1941
+#NAME= Italy(AI): Greece Reserves - Bitola - 1941
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2588,6 +2598,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/03/01
 #FAILSAFE_DATE= 1948/01/01
+; Bitola(188,103)
 #DESTINATION_RESOURCE= 188,103
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 46 [2] [100] [0]
@@ -2701,7 +2712,7 @@
 }
 
 {
-#NAME= Italy: Garrisons Mobilized In Response To Allied Invasion Preparations (Brindisi) (33$)
+#NAME= Italy: Garrisons Mobilized In Response To Allied Invasion Preparations (Brindisi) (33%)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2839,7 +2850,7 @@
 }
 
 {
-#NAME= Spain: Spanish Army Deployment at Cordoba (pro-Axis)
+#NAME= Spain: Spanish Army Deployment at Cordoba (pro-Axis) (50%)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2864,7 +2875,7 @@
 }
 
 {
-#NAME= Spain: Spanish Army Deployment at Granada (pro-Axis)
+#NAME= Spain: Spanish Army Deployment at Granada (pro-Axis) (50%)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2889,7 +2900,7 @@
 }
 
 {
-#NAME= Spain: Spanish Army Deployment at Huesca (pro-Allied)
+#NAME= Spain: Spanish Army Deployment at Huesca (pro-Allied) (50%)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2914,7 +2925,7 @@
 }
 
 {
-#NAME= Spain: Spanish Army Deployment at Pamplona (pro-Allied)
+#NAME= Spain: Spanish Army Deployment at Pamplona (pro-Allied) (50%)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -10380,6 +10391,7 @@
 
 ; Fall Weiss II
 ; https://www.wikiwand.com/en/13th_Waffen_Mountain_Division_of_the_SS_Handschar_(1st_Croatian)
+; Historic Date: 9 October 1943
 {
 #NAME= DE 544 - Croatia: Mountain Infantry Division
 #POPUP= Croatia Raises A Mountain Infantry Division For Anti-Partisan Operations
@@ -10396,10 +10408,11 @@
 #PRIVATE= 0
 #DISPLAY_TURN= 0
 #FULL_RESEARCH= 0
-#DATE= 1944/03/01
+#DATE= 1943/10/09
 #FAILSAFE_DATE= 1948/01/01
+; Zagreb(178,92)
 #DESTINATION_RESOURCE= 178,92
-; Croatia Axis and not surrendered
+; Croatia(27) Axis, Mobilized and not surrendered
 #VARIABLE_CONDITION= 27 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ; Mountain Division(10)
@@ -11677,16 +11690,17 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Croatia as an Independent State?
 #LINK= 621[1]
 #COUNTRY_ID= 27
 #TRIGGER= 100
 #PRIVATE= 0
 #DISPLAY_TURN= 0
 #FULL_RESEARCH= 0
-#DATE= 1941/05/13
+#DATE= 1940/01/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 178,92
-; Croatia Axis and not surrendered
+; Croatia Axis, Mobilized
 #VARIABLE_CONDITION= 27 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 1 [5] [0] [Zagreb]
@@ -15641,6 +15655,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Greek Concessions?
 #LINK= 917[1]
 #COUNTRY_ID= 19
 #TRIGGER= 100
@@ -15673,6 +15688,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Greek Concessions?
 #LINK= 917[1]
 #COUNTRY_ID= 19
 #TRIGGER= 100

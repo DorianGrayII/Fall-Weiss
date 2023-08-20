@@ -85,18 +85,22 @@
 ; #COUNTRY_ID=  Value range [0, 120]
 ;               Country's ID that will have partisan #MAP_POSITION's
 ;
-; #PARTISAN_FLAG= Partisan flag can be used to limit event to a particular type (see PARTISAN FLAG REFERENCE values below)
+; #PARTISAN_FLAG= Value range [1, 3]
+;               Partisan Event type
+;               1 = PARTISANS_ON_INVASION
+;               2 = PARTISANS_AFTER_SURRENDER
+;               3 = FULL_PARTISANS
 ;
-; #ADD_UNIT= Value range [0, 2]
-;            0 = False
-;            1 = True
-;            2 = True (if <= build limit)
+; #ADD_UNIT=    Value range [0, 2]
+;               0 = False
+;               1 = True
+;               2 = True (if <= build limit)
 ;
 ; #DISRUPTION_RANGE= Value range [0, 10]
-;            Range of supply disruption from each partisan that appears
+;               Range of supply disruption from each partisan that appears
 ;
 ; #MAP_POSITION= Map position where partisan unit could appear 
-;            Format: x,y
+;               Format: x,y
 ; }
 ;
 ; EXAMPLE:
@@ -107,8 +111,6 @@
 ;
 ; More than one #MAP_POSITION can be set.
 ;
-; Use the reference values provided for #COUNTRY_ID and #TRANSFER_ID and not the country names 
-; Use the reference values provided for #PARTISAN_FLAG's and not names
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -256,7 +258,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 {
-#NAME= UK Partisans
+#NAME= UK Partisans (15%)
 #POPUP= British Resistance Units Disrupt Axis Supply
 #IMAGE= britishresistance1.png
 #SOUND= coup.ogg
@@ -276,7 +278,7 @@
 }
 
 {
-#NAME= UK Partisans
+#NAME= UK Partisans (15%)
 #POPUP= British Resistance Units Disrupt Axis Supply
 #IMAGE= britishresistance2.png, britishresistance3.png
 #SOUND= coup.ogg
@@ -297,14 +299,10 @@
 #MAP_POSITION= 142,78
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; UK MINOR EVENTS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
 
 ;AMEND1941
 {
-#NAME= Yugoslav Partisans
+#NAME= Yugoslav Partisans (15%)
 #POPUP= Yugoslav Partisans Hinder Supply
 #IMAGE= yugoslavpartisan1.png
 #SOUND= battle3.ogg
@@ -368,7 +366,7 @@
 
 ;AMEND1944
 {
-#NAME= Yugoslav Partisans (from 1944)
+#NAME= Yugoslav Partisans (from 1944) (15%)
 #POPUP= Yugoslav Partisans Rise Against The Occupation
 #IMAGE= yugoslavpartisan3.png
 #SOUND= battle3.ogg
@@ -409,7 +407,7 @@
 
 ;AMEND1944
 {
-#NAME= Yugoslav Partisans (from 1944)
+#NAME= Yugoslav Partisans (from 1944) (15%)
 #POPUP= Yugoslav Partisans Rise Against The Occupation
 #IMAGE= yugoslavpartisan1.png
 #SOUND= battle3.ogg
@@ -429,7 +427,7 @@
 }
 
 {
-#NAME= Albanian Partisans
+#NAME= Albanian Partisans (15%)
 #POPUP= Albanian Partisans Take Control Of Tirana
 #IMAGE= albanianpartisans.png
 #SOUND= coup.ogg
@@ -487,7 +485,7 @@
 
 ; Replacement Script
 {
-#NAME= Greek Partisans
+#NAME= Greek Partisans (10%)
 #POPUP= Greek Partisans Rise Against The Occupiers
 #IMAGE= greekpartisan1.png, greekpartisan2.png, greekpartisan3.png
 #SOUND= battle3.ogg
@@ -510,7 +508,7 @@
 
 ;AMEND1941
 {
-#NAME= Greek Partisans
+#NAME= Greek Partisans (10%)
 #POPUP= Greek Partisans Disrupt Supply
 #IMAGE= greekpartisan1.png, greekpartisan2.png, greekpartisan3.png
 #SOUND= battle3.ogg
@@ -607,7 +605,7 @@
 }
 
 {
-#NAME= Swiss Partisans
+#NAME= Swiss Partisans (10%)
 #POPUP= Swiss Partisans Disrupt Supply
 #IMAGE=
 #SOUND= coup.ogg
@@ -649,7 +647,7 @@
 }
 
 {
-#NAME= French Partisans Liberate Clermont Ferrand (Vichy French)
+#NAME= French Partisans Liberate Clermont Ferrand (Vichy French) (15%)
 #POPUP= French Partisans Liberate Clermont Ferrand
 #IMAGE= frenchpartisansclermont.png
 #SOUND= coup.ogg
@@ -668,7 +666,7 @@
 }
 
 {
-#NAME= French Partisans Liberate Clermont Ferrand (Vichy French)
+#NAME= French Partisans Liberate Clermont Ferrand (Vichy French) (15%)
 #POPUP= French Partisans Liberate Clermont Ferrand
 #IMAGE= frenchpartisansclermont.png
 #SOUND= coup.ogg
@@ -688,7 +686,7 @@
 
 ;AMEND1941
 {
-#NAME= French Partisans
+#NAME= French Partisans (10%)
 #POPUP= French Partisans Disrupt Supply
 #IMAGE= french_resistance1.png, french_resistance3.png, french_resistance5.png
 #SOUND= battle3.ogg
@@ -754,7 +752,7 @@
 }
 
 {
-#NAME= French Partisans Liberate Corsica (Vichy French)
+#NAME= French Partisans Liberate Corsica (Vichy French) (15%)
 #POPUP= French Partisans Liberate Corsica
 #IMAGE= corsicapartisans.png
 #SOUND= liberation.ogg
@@ -773,7 +771,7 @@
 #MAP_POSITION= 164,101
 }
 {
-#NAME= French Partisans Liberate Corsica (Vichy French)
+#NAME= French Partisans Liberate Corsica (Vichy French) (15%)
 #POPUP= French Partisans Liberate Corsica
 #IMAGE= corsicapartisans.png
 #SOUND= liberation.ogg
@@ -832,7 +830,7 @@
 }
 
 {
-#NAME= French Partisans Liberate The Vercors Massif (French)
+#NAME= French Partisans Liberate The Vercors Massif (French) (15%)
 #POPUP= French Partisans Declare The "Free Republic Of Vercors"
 #IMAGE= vercors.png
 #SOUND= battle3.ogg
@@ -851,7 +849,7 @@
 }
 
 {
-#NAME= French Partisans Liberate The Vercors Massif (Vichy French)
+#NAME= French Partisans Liberate The Vercors Massif (Vichy French) (15%)
 #POPUP= French Partisans Declare The "Free Republic Of Vercors"
 #IMAGE= vercors.png
 #SOUND= battle3.ogg
@@ -870,7 +868,7 @@
 }
 
 {
-#NAME= DE 674 - Italian Pro-Allied Partisans
+#NAME= DE 674 - Italian Pro-Allied Partisans (15%)
 #POPUP= Italian Partisans Attack Axis Supply Lines
 #IMAGE= italian_partisan.png
 #SOUND= battle3.ogg
@@ -916,7 +914,7 @@
 
 ;AMEND1941
 {
-#NAME= Norwegian Partisans
+#NAME= Norwegian Partisans (10%)
 #POPUP= Norwegian Partisans Disrupt Vital Resources
 #IMAGE= norwayresistance1.png, norwayresistance2.png
 #SOUND= battle3.ogg
@@ -988,7 +986,7 @@
 }
 
 {
-#NAME= Irish Partisans (1)
+#NAME= Irish Partisans (1) (10%)
 #POPUP= Irish Nationalists Create Havoc in Dublin
 #IMAGE=
 #SOUND= coup.ogg
@@ -1007,7 +1005,7 @@
 }
 
 {
-#NAME= Irish Partisans (2)
+#NAME= Irish Partisans (2) (10%)
 #POPUP= Irish Nationalists Launch Attacks Near Limerick
 #IMAGE=
 #SOUND= battle3.ogg
@@ -1026,7 +1024,7 @@
 }
 
 {
-#NAME= Spanish Pro-Allied Partisans (1)
+#NAME= Spanish Pro-Allied Partisans (1) (10%)
 #POPUP= Spanish Partisans Rise Against The Axis
 #IMAGE=
 #SOUND= battle3.ogg
@@ -1046,7 +1044,7 @@
 }
 
 {
-#NAME= Spanish Pro-Allied Partisans (2)
+#NAME= Spanish Pro-Allied Partisans (2) (10%)
 #POPUP= Spanish Partisans Disrupt Supply
 #IMAGE=
 #SOUND= battle3.ogg
@@ -1067,7 +1065,7 @@
 }
 
 {
-#NAME= Spanish Nationalist Partisans (1)
+#NAME= Spanish Nationalist Partisans (1) (10%)
 #POPUP= Spanish Partisans Rise Against The Allies
 #IMAGE=
 #SOUND= battle3.ogg
@@ -1087,7 +1085,7 @@
 }
 
 {
-#NAME= Spanish Nationalist Partisans (2)
+#NAME= Spanish Nationalist Partisans (2) (10%)
 #POPUP= Spanish Partisans Disrupt Supply
 #IMAGE=
 #SOUND= battle3.ogg
@@ -1107,7 +1105,7 @@
 }
 
 {
-#NAME= Partisan Activity in Palestine
+#NAME= Partisan Activity in Palestine (15%)
 #POPUP= Partisans Disrupt Supply In Palestine
 #IMAGE=
 #SOUND= battle3.ogg
@@ -1242,7 +1240,7 @@
 }
 
 {
-#NAME= Saudi Partisans
+#NAME= Saudi Partisans (10%)
 #POPUP= Saudis Rise Against The Invader
 #IMAGE=
 #SOUND= battle3.ogg
@@ -1423,7 +1421,7 @@
 }
 
 {
-#NAME= Soviet Partisans - Add Unit (1)
+#NAME= Soviet Partisans - Add Unit (1) (10%)
 #POPUP= Soviet Partisans Hinder Supply
 #IMAGE= soviet_partisans6.png, soviet_partisans9.png
 #SOUND= battle3.ogg
@@ -1456,7 +1454,7 @@
 }
 
 {
-#NAME= Soviet Partisans - Add Unit (2)
+#NAME= Soviet Partisans - Add Unit (2) (10%)
 #POPUP= Soviet Partisans Hinder Supply
 #IMAGE= soviet_partisans7.png, soviet_partisans10.png
 #SOUND= battle3.ogg
@@ -1479,7 +1477,7 @@
 }
 
 {
-#NAME= Soviet Partisans - Add Unit (3)
+#NAME= Soviet Partisans - Add Unit (3) (10%)
 #POPUP= Soviet Partisans Hinder Supply
 #IMAGE= soviet_partisans8.png
 #SOUND= battle3.ogg

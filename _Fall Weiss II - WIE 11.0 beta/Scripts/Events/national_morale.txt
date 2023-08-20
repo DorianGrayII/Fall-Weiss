@@ -83,13 +83,16 @@
 ;               Percentage chance that the event will occur
 ;
 ; #COUNTRY_ID=  Value range [0, 120]
-;               Country ID that will be owner of this event
+;               Country that will be owner of this event
 ;
-; #NM_UPDOWN= The amount of National Morale that should be added or subtracted with respect to #COUNTRY_ID? (values range [-99999, 99999])
+; #NM_UPDOWN= Value range [-99999, 99999]
+;             The National Morale that should be added or subtracted with respect to #COUNTRY_ID
 ;
-; #NM_TURNS= How many turns will the #NM_UPDOWN= value be added or subtracted for? (values range [0, 99])
+; #NM_TURNS=  Value range [0,99]
+;             Number of turns that #NM_UPDOWN= value will be added or subtracted
 ;
-; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
+; #DATE=      Date requirement for the event
+;             Format: yyyy/mm/dd
 ;
 ; #OBJECTIVE_TEXT_POSITION= Position that will be highlighted in game as a National Morale Objective position
 ;
@@ -840,8 +843,6 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Paris(151,84) is Allied
 #ALIGNMENT_POSITION= 151,84 [2] 
-; Germany(45) is Axis and not surrendered 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; France(40) Allied and not surrendered 
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -866,8 +867,6 @@
 #OBJECTIVE_TEXT_POSITION= 
 ; Paris(151,84) is Allied 
 #ALIGNMENT_POSITION= 151,84 [2] 
-; Germany(45) is Axis and not surrendered 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; France(40) Allied and not surrendered 
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0] 
@@ -949,8 +948,6 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Paris(151,84) is Allied 
 #ALIGNMENT_POSITION= 151,84 [2]
-; Germany(45) is Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; France(40) Allied and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; USA(115) Allied and not surrendered
@@ -1123,8 +1120,6 @@
 #OBJECTIVE_TEXT_POSITION= 234,85
 ; Stalingrad(234,85) is Axis
 #ALIGNMENT_POSITION= 234,85 [1]
-; Germany(45) is Axis and not surrendered 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1317,8 +1312,6 @@
 #OBJECTIVE_TEXT_POSITION=
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
-; Germany(45) is Axis and not surrendered 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Italy(59) is Axis and surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1341,7 +1334,7 @@
 #NM_TURNS= 1
 #DATE= 1939/09/01
 #OBJECTIVE_TEXT_POSITION= 198,95
-; Bucharest is Allied
+; Bucharest(198,95) is Allied
 #ALIGNMENT_POSITION= 198,95 [2]
 ; Romania(93) is Axis and surrendered
 #VARIABLE_CONDITION= 93 [1] [100] [1]
@@ -4282,8 +4275,8 @@
 #OBJECTIVE_TEXT_POSITION=
 ; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
-; Germany(45) is Axis and not surrendered 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+; UK(112) is Allied and not surrendered 
+#VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4306,8 +4299,8 @@
 #OBJECTIVE_TEXT_POSITION=
 ; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
-; Germany(45) is Axis and not surrendered 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+; UK(112) is Allied and not surrendered 
+#VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4330,8 +4323,8 @@
 #OBJECTIVE_TEXT_POSITION=
 ; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
-; Germany(45) is Axis and not surrendered 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+; UK(112) is Allied and not surrendered 
+#VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4438,8 +4431,8 @@
 #OBJECTIVE_TEXT_POSITION=
 ; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
-; Germany(45) is Axis and not surrendered 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+; UK(112) is Allied and not surrendered 
+#VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4542,8 +4535,8 @@
 #OBJECTIVE_TEXT_POSITION=
 ; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
-; Germany(45) is Axis and not surrendered 
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+; UK(112) is Allied and not surrendered 
+#VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6279,6 +6272,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Greek Concessions?
 #LINK= 917[1]
 #COUNTRY_ID= 59
 #TRIGGER= 100
