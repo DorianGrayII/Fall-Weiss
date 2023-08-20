@@ -27,27 +27,42 @@
 ;        3 = Single check, only on #DATE
 ;
 ; #LEVEL= Value range [-1, 4]
-;      What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
-;     -1 = a script that should only fire for AI friendly controlled majors on your turn
-;      0 = Green
-;      1 = Novice
-;      2 = Intermediate
-;      3 = Veteran
-;      4 = Expert
-; #GV= Does the event activate based on the Global Variable values assigned?
-;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
-;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
-;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
-;      Example B - #GV= 4[71,100] will trigger 30% per game
+;       What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;       -1 = a script that should only fire for AI friendly controlled majors on your turn
+;        0 = Green
+;        1 = Novice
+;        2 = Intermediate
+;        3 = Veteran
+;        4 = Expert
+;
+; #GV=   Does the event activate based on the Global Variable values assigned?
+;        Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
+;        Format: GV [min, max]
+;                GV range [1, 10] 
+;                min range [1, 100] 
+;                max range [min+1, 100]
+;
+;        Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;        Example B - #GV= 4[71,100] will trigger 30% per game
+;
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
-;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
+;        Format: decision[response]
+;                decision range [1, 1100]
+;                response range [0, 1]
+;                   0 = NO
+;                   1 = YES
+;
 ;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
 ;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
 ;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
-; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
-; #COUNTRY_ID=  Value range [0, 120]
-;               Country ID that will be owner of this event
+;
+; #TRIGGER=     Value range [0, 100]
+;               Percentage chance that the event will occur
+;
+; #COUNTRY_ID=  Value range [1, 120]
+;               Country that will be owner of this event
+;
 ; #SIZE= How many units should be assigned to this plan?
 ;        Format: min_size, max_size
 ; #BUILD_LENGTH= How many game turns (Axis or Allied) do you want the build up period of the plan to last?
@@ -55,10 +70,14 @@
 ; #RANGE= How many hexes should we search for units to fulfill this plan?
 ;         Range checks from both the first listed #FRIENDLY_POSITION and then the #GOAL_POSITION if needed.
 ; #GOAL_POSITION= What is the map position that is the objective of this plan?
-; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
+;
+; #DATE=          Date requirement for the event
+;                 Format: yyyy/mm/dd
+;
 ; #STEAL= Set priority by stealing units from other plans
-;         Values: [0, 3]; False= 0; Steal_Offensive= 1; Steal_Defensive= 2; Steal_Offensive_Or_Defensive= 3)
+;         Values: [0, 3]; (False= 0; Steal_Offensive= 1; Steal_Defensive= 2; Steal_Offensive_Or_Defensive= 3)
 ; #FRIENDLY_POSITION= Positions that must be under friendly control in order for event to occur
+;
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
 ;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
 ;                              country_id range [1, 120]
@@ -136,11 +155,12 @@
 ;        e.g., a city for a GUARD script, a port for a TRANSPORT script, etc.  All AI scripts require that the first 
 ;        #FRIENDLY_POSITION be a land tile, with the exception of Fleet scripts.
 ;
-; #VARIABLE_CONDITION - More than one #VARIABLE_CONDITION can be set.  Under #VARIABLE_CONDITION you can also list 
-; countries that have not yet fully entered the war.  For example by listing an activation % less than 100% you
-; are providing a check where the #VARIABLE_CONDITION country must meet a minimum activation % (but is
-; not yet at 100%) in order for the event to occur.  To check for a fully activated country simply
-; list the activation % at 100%.  Each #VARIABLE_CONDITION line will be read using AND logic.
+; #VARIABLE_CONDITION - More than one can be set. You can also list countries that have not yet fully 
+;   entered the war. For example by listing an activation % less than 100% you are providing a check 
+;   where the country must meet a minimum activation % (but is not yet at 100%) in order for the event 
+;   to occur. To check for a fully activated country simply list the activation % at 100%.
+;
+; Each #VARIABLE_CONDITION line will be read using AND logic.
 ;
 ; More than one #TACTICAL_CONDITION can be set.  #TACTICAL_CONDITION refers to the current side, i.e.
 ; country associated with this plan having tactical superiority over the specified map position.
@@ -339,6 +359,121 @@
 ; SURRENDERED= 1
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; ALLIED SCRIPTS - Build Up Transport Minor (FRANCE)
+; Fall Weiss II event
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; France sends reinforcements to Marseilles:
+{
+#NAME= France Build Up Transport Minor - Marseille
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 40
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 0
+; Marseille(157,97)
+#GOAL_POSITION= 157,98
+#DATE= 1939/11/27
+#STEAL= 0
+; Algiers(152,113)
+#FRIENDLY_POSITION= 152,113
+; France(40) Allied and not surrendered AND
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Paris(151,84) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 151,84 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Canada builds up in the UK:
+{
+#NAME= UK Build Up Transport Minor (Canada) - Glasgow
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 21
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 7[1,50]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Glasgow
+#GOAL_POSITION= 137,65
+#GOAL_POSITION= 49,96
+#GOAL_POSITION= 69,93
+#DATE= 1939/09/01
+#STEAL= 0
+; Halifax
+;  Ottawa
+; Glasgow
+#FRIENDLY_POSITION= 30,95
+#FRIENDLY_POSITION= 6,93
+#FRIENDLY_POSITION= 137,65
+; Canada(21) Allied and not surrendered
+#VARIABLE_CONDITION= 21 [2] [100] [0]
+; Ottawa not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 6,93 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Canada builds up in Egypt:
+{
+#NAME= UK Build Up Transport Minor (Canada) - Suez
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 21
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 7[51,100]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Suez Port(210,127)
+#GOAL_POSITION= 210,127
+#GOAL_POSITION= 49,96
+#GOAL_POSITION= 95,135
+#DATE= 1939/09/01
+#STEAL= 0
+; Halifax
+;  Ottawa
+; Suez (Port)
+#FRIENDLY_POSITION= 30,95
+#FRIENDLY_POSITION= 6,93
+#FRIENDLY_POSITION= 210,127
+; Canada(21) Allied and not surrendered
+#VARIABLE_CONDITION= 21 [2] [100] [0]
+; Ottawa not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 6,93 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Allies hold Tripoli
+#CANCEL_POSITION= 172,121 [0,0] [1,1] [2]
+; Axis units in range of Suez
+#CANCEL_POSITION= 209,125 [2,2] [1,1] [1]
+}
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -578,7 +713,7 @@
 ; Sheffield
 ; Liverpool (Port)
 ; Alexandria
-; Cario
+; Cairo
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 140,72
 #FRIENDLY_POSITION= 206,124
@@ -622,7 +757,7 @@
 ; Sheffield
 ; Liverpool (Port)
 ; Alexandria
-; Cario
+; Cairo
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 140,72
 #FRIENDLY_POSITION= 206,124
@@ -666,7 +801,7 @@
 ; Sheffield
 ; Liverpool (Port)
 ; Alexandria
-; Cario
+; Cairo
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 140,72
 #FRIENDLY_POSITION= 206,124
@@ -721,39 +856,6 @@
 }
 
 {
-#NAME= UK Build Up Transport Minor - Halifax -> Plymouth (Build Up In England)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,8
-#BUILD_LENGTH= 1
-#LENGTH= 12
-#RANGE= 50
-#NAVAL_CRUISE= 0
-; Plymouth
-#GOAL_POSITION= 137,80
-; Date set to post arrival of US HQ/Navy via P/Q
-#DATE= 1942/06/10
-#STEAL= 0
-; Halifax
-; Bristol
-#FRIENDLY_POSITION= 30,95
-#FRIENDLY_POSITION= 141,77
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened 
-#TACTICAL_CONDITION= 4,108 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 1 Axis unit within range of Washington DC(4,108)
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-}
-
-{
 #NAME= UK Build Up Transport Minor - Halifax -> Glasgow (Build Up In England)
 #POPUP=
 #FLAG= 1
@@ -786,119 +888,37 @@
 #CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
 }
 
-; Canada builds up in the UK:
 {
-#NAME= UK Build Up Transport Minor (Canada) - Glasgow
+#NAME= UK Build Up Transport Minor - Halifax -> Plymouth (Build Up In England)
 #POPUP=
 #FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 21
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 7[1,50]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Glasgow
-#GOAL_POSITION= 137,65
-#GOAL_POSITION= 49,96
-#GOAL_POSITION= 69,93
-#DATE= 1939/09/01
-#STEAL= 0
-; Halifax
-;  Ottawa
-; Glasgow
-#FRIENDLY_POSITION= 30,95
-#FRIENDLY_POSITION= 6,93
-#FRIENDLY_POSITION= 137,65
-; Canada(21) Allied and not surrendered
-#VARIABLE_CONDITION= 21 [2] [100] [0]
-; Ottawa not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 6,93 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Canada builds up in Egypt:
-{
-#NAME= UK Build Up Transport Minor (Canada) - Suez
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 21
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 7[51,100]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Suez Port(210,127)
-#GOAL_POSITION= 210,127
-#GOAL_POSITION= 49,96
-#GOAL_POSITION= 95,135
-#DATE= 1939/09/01
-#STEAL= 0
-; Halifax
-;  Ottawa
-; Suez (Port)
-#FRIENDLY_POSITION= 30,95
-#FRIENDLY_POSITION= 6,93
-#FRIENDLY_POSITION= 210,127
-; Canada(21) Allied and not surrendered
-#VARIABLE_CONDITION= 21 [2] [100] [0]
-; Ottawa not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 6,93 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Allies hold Tripoli
-#CANCEL_POSITION= 172,121 [0,0] [1,1] [2]
-; Axis units in range of Suez
-#CANCEL_POSITION= 209,125 [2,2] [1,1] [1]
-}
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ALLIED SCRIPTS - Build Up Transport Minor (FRANCE)
-; Fall Weiss II event
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-; France sends reinforcements to Marseilles:
-{
-#NAME= France Build Up Transport Minor - Marseille
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 40
+#TYPE= 2
+#COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
+#SIZE= 3,8
+#BUILD_LENGTH= 1
+#LENGTH= 12
+#RANGE= 50
 #NAVAL_CRUISE= 0
-; Marseille(157,97)
-#GOAL_POSITION= 157,98
-#DATE= 1939/11/27
+; Plymouth
+#GOAL_POSITION= 137,80
+; Date set to post arrival of US HQ/Navy via P/Q
+#DATE= 1942/06/10
 #STEAL= 0
-; Algiers(152,113)
-#FRIENDLY_POSITION= 152,113
-; France(40) Allied and not surrendered AND
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Paris(151,84) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 151,84 [3]
+; Halifax
+; Bristol
+#FRIENDLY_POSITION= 30,95
+#FRIENDLY_POSITION= 141,77
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened 
+#TACTICAL_CONDITION= 4,108 [1]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
 }
 
 
@@ -967,7 +987,7 @@
 ; Washington DC(4,108)
 ; El Alamein
 ; Alexandria
-; Cario
+; Cairo
 #FRIENDLY_POSITION= 4,108
 #FRIENDLY_POSITION= 204,125
 #FRIENDLY_POSITION= 206,124
@@ -990,4 +1010,3 @@
 ; Axis units in range of Suez
 #CANCEL_POSITION= 209,125 [2,2] [1,1] [1]
 }
-

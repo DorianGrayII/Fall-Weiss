@@ -27,27 +27,42 @@
 ;        3 = Single check, only on #DATE
 ;
 ; #LEVEL= Value range [-1, 4]
-;      What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
-;     -1 = a script that should only fire for AI friendly controlled majors on your turn
-;      0 = Green
-;      1 = Novice
-;      2 = Intermediate
-;      3 = Veteran
-;      4 = Expert
-; #GV= Does the event activate based on the Global Variable values assigned?
-;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
-;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
-;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
-;      Example B - #GV= 4[71,100] will trigger 30% per game
+;       What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;       -1 = a script that should only fire for AI friendly controlled majors on your turn
+;        0 = Green
+;        1 = Novice
+;        2 = Intermediate
+;        3 = Veteran
+;        4 = Expert
+;
+; #GV=   Does the event activate based on the Global Variable values assigned?
+;        Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
+;        Format: GV [min, max]
+;                GV range [1, 10] 
+;                min range [1, 100] 
+;                max range [min+1, 100]
+;
+;        Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;        Example B - #GV= 4[71,100] will trigger 30% per game
+;
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
-;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
+;        Format: decision[response]
+;                decision range [1, 1100]
+;                response range [0, 1]
+;                   0 = NO
+;                   1 = YES
+;
 ;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
 ;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
 ;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
-; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
-; #COUNTRY_ID=  Value range [0, 120]
-;               Country ID that will be owner of this event
+;
+; #TRIGGER=     Value range [0, 100]
+;               Percentage chance that the event will occur
+;
+; #COUNTRY_ID=  Value range [1, 120]
+;               Country that will be owner of this event
+;
 ; #SIZE= How many units should be assigned to this plan?
 ;        Format: min_size, max_size
 ; #BUILD_LENGTH= How many game turns (Axis or Allied) do you want the build up period of the plan to last?
@@ -56,8 +71,12 @@
 ;         Range checks from both the first listed #FRIENDLY_POSITION and then the #GOAL_POSITION if needed.
 ; #UNIT_ID= What unit types will be associated with this plan?
 ; #GOAL_POSITION= What is the map position that is the objective of this plan?
-; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
+;
+; #DATE=          Date requirement for the event
+;                 Format: yyyy/mm/dd
+;
 ; #FRIENDLY_POSITION= Positions that must be under friendly control in order for event to occur
+;
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
 ;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
 ;                              country_id range [1, 120]
@@ -118,11 +137,12 @@
 ;        e.g., a city for a GUARD script, a port for a TRANSPORT script, etc.  All AI scripts require that the first 
 ;        #FRIENDLY_POSITION be a land tile, with the exception of Fleet scripts.
 ;
-; #VARIABLE_CONDITION - More than one #VARIABLE_CONDITION can be set.  Under #VARIABLE_CONDITION you can also list 
-; countries that have not yet fully entered the war.  For example by listing an mobilization % less than 100% you
-; are providing a check where the #VARIABLE_CONDITION country must meet a minimum mobilization % (but is
-; not yet at 100%) in order for the event to occur.  To check for a fully activated country simply
-; list the mobilization % at 100%.  Each #VARIABLE_CONDITION line will be read using AND logic.
+; #VARIABLE_CONDITION - More than one can be set. You can also list countries that have not yet fully 
+;   entered the war. For example by listing an activation % less than 100% you are providing a check 
+;   where the country must meet a minimum activation % (but is not yet at 100%) in order for the event 
+;   to occur. To check for a fully activated country simply list the activation % at 100%.
+;
+; Each #VARIABLE_CONDITION line will be read using AND logic.
 ;
 ; More than one #TACTICAL_CONDITION can be set.  #TACTICAL_CONDITION refers to the current side, i.e.
 ; country associated with this plan having tactical superiority over the specified map position.
@@ -332,6 +352,1702 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
+{
+#NAME= France Build Up Fleet - Cherbourg -> North Sea
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 40
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 4,9
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 10
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Patrol
+#GOAL_POSITION= 155,111
+#GOAL_POSITION= 157,62
+#GOAL_POSITION= 160,69
+#GOAL_POSITION= 152,74
+#GOAL_POSITION= 160,69
+#GOAL_POSITION= 157,62
+#GOAL_POSITION= 160,69
+#GOAL_POSITION= 152,74
+#GOAL_POSITION= 133,85
+#GOAL_POSITION= 124,113
+#DATE= 1940/01/01
+; Cherbourg
+#FRIENDLY_POSITION= 144,82
+; France(40) Allied and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; Paris(151,84) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 151,84 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= France Build Up Fleet - French Fleet -> Cherbourg (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 40
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 6[1,50]
+#LINK= 0[0]
+#SIZE= 5,5
+#BUILD_LENGTH= 0
+#LENGTH= 2
+#RANGE= 10
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Cherbourg
+#GOAL_POSITION= 144,82
+#DATE= 1939/09/01
+; St. Nazaire
+#FRIENDLY_POSITION= 142,89
+; France(40) Allied and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; Paris(151,84) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 151,84 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= France Build Up Fleet - French Fleet -> Cherbourg (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 40
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 6[1,50]
+#LINK= 0[0]
+#SIZE= 4,4
+#BUILD_LENGTH= 0
+#LENGTH= 5
+#RANGE= 25
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Cherbourg
+#GOAL_POSITION= 145,82
+#DATE= 1939/09/01
+; Marseilles(157,97)
+#FRIENDLY_POSITION= 157,98
+; France(40) Allied and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; Paris(151,84) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 151,84 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= France Build Up Fleet - French Fleet -> Marseilles (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 40
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 6[51,100]
+#LINK= 0[0]
+#SIZE= 5,5
+#BUILD_LENGTH= 0
+#LENGTH= 5
+#RANGE= 10
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Marseilles
+#GOAL_POSITION= 154,98
+#DATE= 1939/09/01
+; St. Nazaire
+#FRIENDLY_POSITION= 142,89
+; France(40) Allied and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; Paris(151,84) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 151,84 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= France Build Up Fleet - French Fleet -> Marseilles (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 40
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 6[51,100]
+#LINK= 0[0]
+#SIZE= 4,4
+#BUILD_LENGTH= 0
+#LENGTH= 5
+#RANGE= 25
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Marseilles
+#GOAL_POSITION= 155,98
+#DATE= 1939/09/01
+; Algiers(152,113)
+#FRIENDLY_POSITION= 152,112
+; France(40) Allied and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; Paris(151,84) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 151,84 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= France Build Up Fleet - Marseilles -> Taranto
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 40
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 4,9
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 10
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Patrol
+#GOAL_POSITION= 156,99
+#GOAL_POSITION= 159,108
+#GOAL_POSITION= 168,109
+#GOAL_POSITION= 182,115
+#GOAL_POSITION= 191,117
+#GOAL_POSITION= 184,111
+#GOAL_POSITION= 182,109
+#GOAL_POSITION= 186,115
+#GOAL_POSITION= 171,113
+#DATE= 1940/04/01
+; Marseilles(157,97)
+#FRIENDLY_POSITION= 157,98
+; France(40) Allied and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; Paris(151,84) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 151,84 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= Germany Build Up Fleet - Arctic Patrol (Post USSR Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 0
+#LENGTH= 5
+#RANGE= 10
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Narvik
+#GOAL_POSITION= 180,19
+#GOAL_POSITION= 157,25
+#GOAL_POSITION= 161,18
+#DATE= 1942/08/16
+; Narvik
+#FRIENDLY_POSITION= 180,19
+; Germany(45) Axis and not surrendered AND
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Fleet - Atlantic Patrol (France -> Atlantic) (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 3
+#RANGE= 1
+#NAVAL_CRUISE= 0
+#UNIT_ID= 43
+; North Atlantic
+#GOAL_POSITION= 97,90
+#GOAL_POSITION= 130,95
+#DATE= 1940/01/01
+; St. Nazaire
+#FRIENDLY_POSITION= 142,89
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Fleet - Atlantic Patrol (France -> Atlantic) (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 3
+#RANGE= 1
+#NAVAL_CRUISE= 0
+#UNIT_ID= 43
+; South Atlantic
+#GOAL_POSITION= 81,103
+#GOAL_POSITION= 130,95
+#DATE= 1940/01/01
+; St. Nazaire
+#FRIENDLY_POSITION= 142,89
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Fleet - Atlantic Patrol (France -> Atlantic) (3)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 3
+#RANGE= 1
+#NAVAL_CRUISE= 0
+#UNIT_ID= 43
+; North Atlantic
+#GOAL_POSITION= 111,83
+#GOAL_POSITION= 130,95
+#DATE= 1940/01/01
+; St. Nazaire
+#FRIENDLY_POSITION= 142,89
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Fleet - Atlantic Patrol (France -> Atlantic) (4)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 3
+#RANGE= 8
+#NAVAL_CRUISE= 0
+#UNIT_ID= 43
+; North Atlantic
+#GOAL_POSITION= 109,83
+#DATE= 1940/01/01
+; English Channel
+#FRIENDLY_POSITION= 137,82
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Fleet - Atlantic Patrol (Konigsberg Subs) (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 2[1,50]
+#LINK= 0[0]
+#SIZE= 2,2
+#BUILD_LENGTH= 0
+#LENGTH= 8
+#RANGE= 5
+#NAVAL_CRUISE= 0
+#UNIT_ID= 43
+; North Atlantic
+#GOAL_POSITION= 92,46
+#GOAL_POSITION= 161,62
+#GOAL_POSITION= 154,53
+#GOAL_POSITION= 157,40
+#GOAL_POSITION= 144,38
+#GOAL_POSITION= 130,38
+#GOAL_POSITION= 116,40
+#GOAL_POSITION= 104,42
+#DATE= 1939/09/01
+; Konigsberg
+#FRIENDLY_POSITION= 186,69
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= Germany Build Up Fleet - Atlantic Patrol (Konigsberg Subs) (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 2[51,100]
+#LINK= 0[0]
+#SIZE= 2,2
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 5
+#NAVAL_CRUISE= 0
+#UNIT_ID= 43
+; North Atlantic
+#GOAL_POSITION= 92,46
+#GOAL_POSITION= 167,69
+#GOAL_POSITION= 167,69
+#GOAL_POSITION= 161,62
+#GOAL_POSITION= 154,53
+#GOAL_POSITION= 157,40
+#GOAL_POSITION= 144,38
+#GOAL_POSITION= 130,38
+#GOAL_POSITION= 116,40
+#GOAL_POSITION= 104,42
+#DATE= 1939/09/01
+; Konigsberg
+#FRIENDLY_POSITION= 186,69
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= Germany Build Up Fleet - Atlantic Patrol (North Sea Subs - Recovery) (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 8
+#RANGE= 18
+#NAVAL_CRUISE= 0
+#UNIT_ID= 43
+; North Atlantic
+#GOAL_POSITION= 61,55
+#GOAL_POSITION= 157,40
+#GOAL_POSITION= 144,38
+#GOAL_POSITION= 130,38
+#GOAL_POSITION= 116,40
+#GOAL_POSITION= 104,42
+#DATE= 1939/09/01
+; North Sea
+#FRIENDLY_POSITION= 151,61
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= Germany Build Up Fleet - Atlantic Patrol (North Sea Subs - Recovery) (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 18
+#NAVAL_CRUISE= 0
+#UNIT_ID= 43
+; North Atlantic
+#GOAL_POSITION= 62,54
+#GOAL_POSITION= 157,40
+#GOAL_POSITION= 144,38
+#GOAL_POSITION= 130,38
+#GOAL_POSITION= 116,40
+#GOAL_POSITION= 104,42
+#DATE= 1939/09/01
+; North Sea
+#FRIENDLY_POSITION= 151,61
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= Germany Build Up Fleet - Atlantic Patrol (North Sea Subs - Recovery) (3)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 18
+#NAVAL_CRUISE= 0
+#UNIT_ID= 43
+; North Atlantic
+#GOAL_POSITION= 63,53
+#GOAL_POSITION= 157,40
+#GOAL_POSITION= 144,38
+#GOAL_POSITION= 130,38
+#GOAL_POSITION= 116,40
+#GOAL_POSITION= 104,42
+#DATE= 1939/09/01
+; North Sea
+#FRIENDLY_POSITION= 151,61
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Fleet - Atlantic Patrol (Send Subs To The Arctic Convoys) (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 6
+#RANGE= 25
+#NAVAL_CRUISE= 0
+#UNIT_ID= 43
+; North Atlantic
+#GOAL_POSITION= 151,35
+#GOAL_POSITION= 167,69
+#GOAL_POSITION= 167,69
+#GOAL_POSITION= 161,62
+#GOAL_POSITION= 154,53
+#GOAL_POSITION= 157,40
+#DATE= 1940/01/01
+; Stettin
+#FRIENDLY_POSITION= 175,71
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Fleet - Atlantic Patrol (Send Subs To The Atlantic) (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 8
+#RANGE= 25
+#NAVAL_CRUISE= 0
+#UNIT_ID= 43
+; North Atlantic
+#GOAL_POSITION= 102,90
+#GOAL_POSITION= 167,69
+#GOAL_POSITION= 167,69
+#GOAL_POSITION= 161,62
+#GOAL_POSITION= 154,53
+#GOAL_POSITION= 157,40
+#GOAL_POSITION= 144,38
+#GOAL_POSITION= 130,38
+#GOAL_POSITION= 116,40
+#GOAL_POSITION= 104,42
+#DATE= 1940/01/01
+; Stettin
+#FRIENDLY_POSITION= 175,71
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Fleet - Atlantic Patrol (Send Subs To The Atlantic) (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 6
+#RANGE= 25
+#NAVAL_CRUISE= 0
+#UNIT_ID= 43
+; North Atlantic
+#GOAL_POSITION= 141,40
+#GOAL_POSITION= 167,69
+#GOAL_POSITION= 167,69
+#GOAL_POSITION= 161,62
+#GOAL_POSITION= 154,53
+#GOAL_POSITION= 157,40
+#DATE= 1940/01/01
+; Stettin
+#FRIENDLY_POSITION= 175,71
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Fleet - Atlantic Patrol (Send Subs To The Atlantic) (3)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 6
+#RANGE= 25
+#NAVAL_CRUISE= 0
+#UNIT_ID= 43
+; North Atlantic
+#GOAL_POSITION= 151,28
+#GOAL_POSITION= 167,69
+#GOAL_POSITION= 167,69
+#GOAL_POSITION= 161,62
+#GOAL_POSITION= 154,53
+#GOAL_POSITION= 157,40
+#DATE= 1940/01/01
+; Stettin
+#FRIENDLY_POSITION= 175,71
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= Germany Build Up Fleet - Atlantic Patrol (U-30)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 5
+#RANGE= 5
+#NAVAL_CRUISE= 0
+#UNIT_ID= 43
+; North Atlantic
+#GOAL_POSITION= 60,80
+#DATE= 1939/09/01
+; U-30 starting position
+#FRIENDLY_POSITION= 81,59
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Fleet - Atlantic Patrol (U-32) (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 2[1,50]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 8
+#RANGE= 5
+#NAVAL_CRUISE= 0
+#UNIT_ID= 43
+; North Atlantic
+#GOAL_POSITION= 92,46
+#GOAL_POSITION= 154,53
+#GOAL_POSITION= 157,40
+#GOAL_POSITION= 144,38
+#GOAL_POSITION= 130,38
+#GOAL_POSITION= 116,40
+#GOAL_POSITION= 104,42
+#DATE= 1939/09/01
+; U-32 starting position
+#FRIENDLY_POSITION= 158,61
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= Germany Build Up Fleet - Atlantic Patrol (U-32) (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 2[51,100]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 5
+#NAVAL_CRUISE= 0
+#UNIT_ID= 43
+; North Atlantic
+#GOAL_POSITION= 92,46
+#GOAL_POSITION= 154,53
+#GOAL_POSITION= 157,40
+#GOAL_POSITION= 144,38
+#GOAL_POSITION= 130,38
+#GOAL_POSITION= 116,40
+#GOAL_POSITION= 104,42
+#DATE= 1939/09/01
+; U-32 starting position
+#FRIENDLY_POSITION= 158,61
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= Germany Build Up Fleet - Baltic Patrol (Post USSR Entry) (50%)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 50
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,15
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Stettin
+#GOAL_POSITION= 175,71
+#GOAL_POSITION= 185,60
+#GOAL_POSITION= 189,52
+#GOAL_POSITION= 201,51
+#GOAL_POSITION= 185,45
+#GOAL_POSITION= 192,34
+#GOAL_POSITION= 185,45
+#GOAL_POSITION= 201,51
+#GOAL_POSITION= 189,52
+#GOAL_POSITION= 185,60
+#DATE= 1941/06/01
+; Stettin
+#FRIENDLY_POSITION= 175,71
+; Germany(45) Axis and not surrendered AND
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Fleet - Deutschland -> Konigsberg
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 18
+#RANGE= 5
+#NAVAL_CRUISE= 0
+#UNIT_ID= 38
+; Konigsberg (nearby)
+#GOAL_POSITION= 184,68
+#GOAL_POSITION= 104,42
+#GOAL_POSITION= 121,38
+#GOAL_POSITION= 138,39
+#GOAL_POSITION= 154,48
+#GOAL_POSITION= 161,61
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#DATE= 1939/09/01
+; Deutschland (start sea position)
+#FRIENDLY_POSITION= 81,58
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Fleet - Fleet (Gibraltar -> Atlantic) (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 5
+#RANGE= 15
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; North Atlantic
+#GOAL_POSITION= 84,72
+#DATE= 1940/01/01
+; Gibraltar (Port)(137,114)
+#FRIENDLY_POSITION= 137,114
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Fleet - Fleet (Gibraltar -> Atlantic) (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 5
+#RANGE= 15
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; North Atlantic
+#GOAL_POSITION= 100,65
+#DATE= 1940/01/01
+; Gibraltar (Port)(137,114)
+#FRIENDLY_POSITION= 137,114
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Fleet - Fleet (Norway -> Bay of Biscay)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 5
+#RANGE= 15
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Bay of Biscay
+#GOAL_POSITION= 138,91
+#GOAL_POSITION= 114,44
+#DATE= 1941/01/01
+; Bergen
+#FRIENDLY_POSITION= 156,51
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Fleet - Med Patrol (Sub)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 30
+#NAVAL_CRUISE= 0
+#UNIT_ID= 43
+; Mediterranean
+#GOAL_POSITION= 180,106
+#GOAL_POSITION= 180,116
+#GOAL_POSITION= 196,119
+#GOAL_POSITION= 208,120
+#GOAL_POSITION= 177,118
+#GOAL_POSITION= 166,109
+#GOAL_POSITION= 141,114
+#DATE= 1941/09/02
+; Palermo (Port Area)
+#FRIENDLY_POSITION= 173,107
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= Germany Build Up Fleet - Move Navy To Bordeaux (Post French Surrender) (1) (25%)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 25
+#LEVEL= 0
+#GV= 7[1,50]
+#LINK= 0[0]
+#SIZE= 4,15
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Bordeaux
+#GOAL_POSITION= 145,93
+#GOAL_POSITION= 161,61
+#GOAL_POSITION= 154,48
+#GOAL_POSITION= 138,39
+#GOAL_POSITION= 121,38
+#GOAL_POSITION= 104,42
+#GOAL_POSITION= 104,60
+#GOAL_POSITION= 108,74
+#DATE= 1940/12/01
+; Konigsberg
+#FRIENDLY_POSITION= 186,69
+; Germany(45) Axis and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= Germany Build Up Fleet - Move Navy To Bordeaux (Post French Surrender) (2) (25%)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 25
+#LEVEL= 0
+#GV= 7[51,100]
+#LINK= 0[0]
+#SIZE= 4,15
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Bordeaux
+#GOAL_POSITION= 145,93
+#GOAL_POSITION= 187,56
+#GOAL_POSITION= 187,56
+#GOAL_POSITION= 161,61
+#GOAL_POSITION= 154,48
+#GOAL_POSITION= 138,39
+#GOAL_POSITION= 121,38
+#GOAL_POSITION= 104,42
+#GOAL_POSITION= 104,60
+#GOAL_POSITION= 108,74
+#DATE= 1941/12/01
+; Baltic Sea
+#FRIENDLY_POSITION= 187,56
+; Germany(45) Axis and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= Germany Build Up Fleet - Move Navy To Bordeaux (Post USSR Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,10
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Bordeaux
+#GOAL_POSITION= 145,93
+#GOAL_POSITION= 161,61
+#GOAL_POSITION= 154,48
+#GOAL_POSITION= 138,39
+#GOAL_POSITION= 121,38
+#GOAL_POSITION= 104,42
+#GOAL_POSITION= 104,60
+#GOAL_POSITION= 108,74
+#DATE= 1942/08/16
+; Stettin
+#FRIENDLY_POSITION= 175,71
+; Germany(45) Axis and not surrendered AND
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= Germany Build Up Fleet - Move Navy To Danzig (Extra Units As They Arrive) (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 2
+#RANGE= 12
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Danzig
+#GOAL_POSITION= 183,68
+#GOAL_POSITION= 186,56
+#DATE= 1939/09/01
+; Straslund/Rostock naval area
+#FRIENDLY_POSITION= 171,69
+; Germany(45) Axis and not surrendered AND
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+; Axis naval unit in the area
+#ACTIVATE_POSITION= 171,69 [12,12] [1,1] [1]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= Germany Build Up Fleet - Move Navy To Danzig (Extra Units As They Arrive) (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 8
+#RANGE= 12
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Danzig
+#GOAL_POSITION= 183,67
+#GOAL_POSITION= 186,56
+#DATE= 1939/09/01
+; Straslund/Rostock naval area
+#FRIENDLY_POSITION= 171,69
+; Germany(45) Axis and not surrendered AND
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+; Axis naval unit in the area
+#ACTIVATE_POSITION= 171,69 [12,12] [1,1] [1]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= Germany Build Up Fleet - Move Navy To Konigsberg (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 18
+#RANGE= 5
+#NAVAL_CRUISE= 0
+#UNIT_ID= 37
+; Battle Cruisers to Konigsberg
+#GOAL_POSITION= 186,69
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#DATE= 1939/09/01
+; Kiel
+#FRIENDLY_POSITION= 167,69
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= Germany Build Up Fleet - Move Navy To Konigsberg (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 18
+#RANGE= 8
+#NAVAL_CRUISE= 0
+#UNIT_ID= 38
+; Heavy Cruisers to Konigsberg (nearby)
+#GOAL_POSITION= 184,69
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#DATE= 1939/09/01
+; Kiel
+#FRIENDLY_POSITION= 167,69
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= Germany Build Up Fleet - Move Navy To Konigsberg (3)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 18
+#RANGE= 8
+#NAVAL_CRUISE= 0
+#UNIT_ID= 40
+; Destroyers to Konigsberg
+#GOAL_POSITION= 185,68
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#DATE= 1939/09/01
+; Kiel
+#FRIENDLY_POSITION= 167,69
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= Germany Build Up Fleet - Move Navy To Konigsberg (4)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 2,2
+#BUILD_LENGTH= 0
+#LENGTH= 8
+#RANGE= 8
+#NAVAL_CRUISE= 0
+#UNIT_ID= 43
+; Subs to Konigsberg
+#GOAL_POSITION= 186,67
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#GOAL_POSITION= 186,56
+#DATE= 1939/09/01
+; Kiel
+#FRIENDLY_POSITION= 167,69
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= Germany Build Up Fleet - Move Navy To Narvik (Post USSR Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,10
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Narvik
+#GOAL_POSITION= 180,19
+#GOAL_POSITION= 161,61
+#GOAL_POSITION= 154,48
+#GOAL_POSITION= 157,25
+#GOAL_POSITION= 161,18
+#DATE= 1942/08/16
+; Stettin
+; Narvik
+#FRIENDLY_POSITION= 175,71
+#FRIENDLY_POSITION= 180,19
+; Germany(45) Axis and not surrendered AND
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Battleship
+{
+#NAME= Italy Build Up Fleet - Battleship -> Venice (1939)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 2
+#RANGE= 5
+#NAVAL_CRUISE= 0
+#UNIT_ID= 36
+; Venice (Port)
+#GOAL_POSITION= 171,94
+#DATE= 1939/09/01
+; Taranto(180,105)
+#FRIENDLY_POSITION= 180,105
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Rome(171,101) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 171,101 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Cruiser
+{
+#NAME= Italy Build Up Fleet - Cruiser -> Trieste (1939)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 3
+#RANGE= 5
+#NAVAL_CRUISE= 0
+#UNIT_ID= 39
+; Trieste (Port)
+#GOAL_POSITION= 172,93
+#DATE= 1939/09/01
+; Genoa
+#FRIENDLY_POSITION= 164,96
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Rome(171,101) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 171,101 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; AXIS SCRIPTS - Build Up Fleet (Italy)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Destroyer
+{
+#NAME= Italy Build Up Fleet - Destroyer Venice (1939)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+#NAVAL_CRUISE= 0
+#UNIT_ID= 40
+; Ancona (Port)
+#GOAL_POSITION= 172,94
+#DATE= 1939/09/01
+; Ancona
+#FRIENDLY_POSITION= 174,98
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Rome(171,101) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 171,101 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Italy Build Up Fleet - Med Patrol (Sub)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 30
+#NAVAL_CRUISE= 0
+#UNIT_ID= 43
+; Mediterranean
+#GOAL_POSITION= 173,107
+#GOAL_POSITION= 180,106
+#GOAL_POSITION= 180,116
+#GOAL_POSITION= 196,119
+#GOAL_POSITION= 208,120
+#GOAL_POSITION= 177,118
+#GOAL_POSITION= 166,109
+#GOAL_POSITION= 141,114
+#DATE= 1940/01/01
+; Palermo (Port Area)
+#FRIENDLY_POSITION= 173,107
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Sub
+{
+#NAME= Italy Build Up Fleet - Sub -> Ancona (1939)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 22
+#RANGE= 5
+#NAVAL_CRUISE= 0
+#UNIT_ID= 43
+; Ancona (Port)
+#GOAL_POSITION= 174,98
+#DATE= 1939/09/01
+; Palermo
+#FRIENDLY_POSITION= 174,109
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Rome(171,101) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 171,101 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= Italy Build Up Fleet - Venice (1940-41)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 5,12
+#BUILD_LENGTH= 0
+#LENGTH= 3
+#RANGE= 25
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Venice (Port)
+#GOAL_POSITION= 171,94
+#DATE= 1940/01/01
+; Pola (Port)
+; Rome(171,101)
+; Berlin(173,74)
+; Brest
+; Paris(151,84)
+; Bordeaux
+; Palermo
+; Taranto
+; Benghazi
+; Belgrade (pulls Italian units away early otherwise)
+; Ljubljana (pulls Italian units away early otherwise)
+#FRIENDLY_POSITION= 174,95
+#FRIENDLY_POSITION= 171,101
+#FRIENDLY_POSITION= 173,74
+#FRIENDLY_POSITION= 138,86
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 173,109
+#FRIENDLY_POSITION= 179,104
+#FRIENDLY_POSITION= 186,122
+#FRIENDLY_POSITION= 187,94
+#FRIENDLY_POSITION= 176,91
+; France(40) Allied and surrendered AND
+; Germany(45) Axis and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened AND
+; Rome not tactically threatened AND
+; Paris(151,84) not tactically threatened AND
+#TACTICAL_CONDITION= 173,74 [1]
+#TACTICAL_CONDITION= 171,101 [1]
+#TACTICAL_CONDITION= 151,84 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Italy Build Up Fleet - Venice -> Tobruk (1941) (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 5[1,75]
+#LINK= 0[0]
+#SIZE= 5,12
+#BUILD_LENGTH= 0
+#LENGTH= 5
+#RANGE= 25
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Tobruk (Port)
+#GOAL_POSITION= 195,121
+#DATE= 1941/06/01
+; Venice
+#FRIENDLY_POSITION= 171,94
+; France(40) Allied and surrendered AND
+; Germany(45) Axis and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Rome(171,101) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 171,101 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Allied naval presence nearby
+#CANCEL_POSITION= 194,118 [8,8] [7,7] [2]
+#CANCEL_POSITION= 183,112 [8,8] [7,7] [2]
+}
+
+{
+#NAME= Italy Build Up Fleet - Venice -> Tobruk (1941) (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 5[76,100]
+#LINK= 0[0]
+#SIZE= 5,12
+#BUILD_LENGTH= 0
+#LENGTH= 5
+#RANGE= 25
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Tobruk (Port)
+#GOAL_POSITION= 195,121
+#DATE= 1941/11/01
+; Venice
+#FRIENDLY_POSITION= 171,94
+; France(40) Allied and surrendered AND
+; Germany(45) Axis and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Rome(171,101) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 171,101 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Allied naval presence nearby
+#CANCEL_POSITION= 194,118 [8,8] [7,7] [2]
+#CANCEL_POSITION= 183,112 [8,8] [7,7] [2]
+}
+
+{
+#NAME= UK Build Up Fleet (Canada) - Destroyer
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 21
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 5
+#RANGE= 25
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Glasgow(138,65)(off shore)
+#GOAL_POSITION= 132,66
+#GOAL_POSITION= 51,96
+#GOAL_POSITION= 70,92
+#DATE= 1939/09/01
+; Halifax (Port)
+#FRIENDLY_POSITION= 30,96
+; Canada(21) Allied and not surrendered
+#VARIABLE_CONDITION= 21 [2] [100] [0]
+; Ottawa not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 6,93 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; ALLIED SCRIPTS - Build Up Fleet (UK)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -517,6 +2233,111 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
+; Fleet
+{
+#NAME= UK Build Up Fleet - Bristol -> Liverpool
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Liverpool
+#GOAL_POSITION= 139,71
+#DATE= 1940/05/25
+; Bristol (Port)
+#FRIENDLY_POSITION= 141,77
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= UK Build Up Fleet - Channel Patrol -> Scapa Flow/London
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 2,15
+#BUILD_LENGTH= 1
+#LENGTH= 5
+#RANGE= 40
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Scapa Flow
+#GOAL_POSITION= 140,56
+#GOAL_POSITION= 139,82
+#GOAL_POSITION= 146,81
+#GOAL_POSITION= 132,89
+#GOAL_POSITION= 131,79
+#DATE= 1940/05/01
+; Liverpool
+#FRIENDLY_POSITION= 140,72
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; 2 Axis units within range of Brest (Port) OR
+; 2 Axis units within range of Cherbourg (Port) OR
+; 2 Axis units within range of Calais (Port) OR
+; 2 Axis units within range of St Gerorge's Channel OR
+; 2 Axis units within range of English Channel
+#ACTIVATE_POSITION= 138,87 [5,5] [2,2] [1]
+#ACTIVATE_POSITION= 144,82 [5,5] [2,2] [1]
+#ACTIVATE_POSITION= 150,80 [3,3] [2,2] [1]
+#ACTIVATE_POSITION= 131,80 [5,5] [2,2] [1]
+#ACTIVATE_POSITION= 138,82 [5,5] [2,2] [1]
+; Preparing for Amphibious Assaults, routines at the top will run instead
+#CANCEL_POSITION= 147,77 [20,20] [20,20] [2]
+}
+
+; Fleet
+{
+#NAME= UK Build Up Fleet - Egypt (Port Said)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 5
+#RANGE= 5
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Port Said (Hold Fleet Here)
+#GOAL_POSITION= 209,122
+#DATE= 1939/09/01
+; Alexandria
+#FRIENDLY_POSITION= 205,123
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; 8 Allied units within range of Port Said
+#CANCEL_POSITION= 209,122 [8,8] [8,8] [2]
+}
+
 {
 #NAME= UK Build Up Fleet - Flee The Med (1)
 #POPUP=
@@ -620,37 +2441,6 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-; Fleet
-{
-#NAME= UK Build Up Fleet - Egypt (Port Said)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 5
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Port Said (Hold Fleet Here)
-#GOAL_POSITION= 209,122
-#DATE= 1939/09/01
-; Alexandria
-#FRIENDLY_POSITION= 205,123
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 8 Allied units within range of Port Said
-#CANCEL_POSITION= 209,122 [8,8] [8,8] [2]
-}
-
 {
 #NAME= UK Build Up Fleet - Gibraltar -> Alexandria
 #POPUP=
@@ -682,280 +2472,41 @@
 #CANCEL_POSITION= 209,122 [8,8] [8,8] [2]
 }
 
+; Fleet
 {
-#NAME= UK Build Up Fleet - Valletta -> Alexandria
+#NAME= UK Build Up Fleet - Gibraltar -> Scapa Flow (Recovery)
 #POPUP=
 #FLAG= 1
-#TYPE= 1
+#TYPE= 2
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#SIZE= 2,2
+#SIZE= 1,15
 #BUILD_LENGTH= 0
-#LENGTH= 5
+#LENGTH= 6
 #RANGE= 5
-#NAVAL_CRUISE= 0
+#NAVAL_CRUISE= 1
 #UNIT_ID= 0
-; Alexandria (Port Area)
-#GOAL_POSITION= 206,123
-#GOAL_POSITION= 175,115
-#DATE= 1939/09/01
-; Valletta
-#FRIENDLY_POSITION= 176,115
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 8 Allied units within range of Port Said
-#CANCEL_POSITION= 209,122 [8,8] [8,8] [2]
-}
-
-{
-#NAME= UK Build Up Fleet - Send Two Battleships To Egypt
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 2,2
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 5
-#NAVAL_CRUISE= 0
-#UNIT_ID= 36
-; Port Said (Port Area)
-#GOAL_POSITION= 210,122
-#GOAL_POSITION= 126,64
-#GOAL_POSITION= 95,135
-#DATE= 1939/09/01
 ; Scapa Flow
-#FRIENDLY_POSITION= 141,56
-; UK(112) Allied and not surrendered
+#GOAL_POSITION= 141,56
+#GOAL_POSITION= 125,105
+#GOAL_POSITION= 125,87
+#GOAL_POSITION= 125,69
+#GOAL_POSITION= 131,56
+#DATE= 1941/06/09
+; Gibraltar (Port)(137,114)
+#FRIENDLY_POSITION= 137,114
+; UK(112) Allied and not surrendered AND
+; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Naval units at position
+#ACTIVATE_POSITION= 137,114 [1,1] [1,1] [2]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= UK Build Up Fleet - Send Carrier To Egypt
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 5
-#NAVAL_CRUISE= 0
-#UNIT_ID= 42
-; Port Said (Port Area)
-#GOAL_POSITION= 210,123
-#GOAL_POSITION= 126,64
-#GOAL_POSITION= 95,135
-#DATE= 1939/09/01
-; Liverpool
-#FRIENDLY_POSITION= 140,72
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= UK Build Up Fleet - North Sea Blockade - 1939 (1)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 0
-#UNIT_ID= 40
-; Cromarty
-#GOAL_POSITION= 139,59
-#GOAL_POSITION= 149,55
-#GOAL_POSITION= 155,52
-#GOAL_POSITION= 149,55
-#GOAL_POSITION= 142,54
-#GOAL_POSITION= 149,55
-#GOAL_POSITION= 155,52
-#GOAL_POSITION= 149,55
-#GOAL_POSITION= 142,54
-#GOAL_POSITION= 149,55
-#GOAL_POSITION= 155,52
-#GOAL_POSITION= 149,55
-#GOAL_POSITION= 142,54
-#DATE= 1939/09/01
-; Clydeside
-#FRIENDLY_POSITION= 137,65
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 2 Axis units within range of Brest (Port) OR
-; 2 Axis units within range of Cherbourg (Port) OR
-; 2 Axis units within range of Calais (Port) OR
-; 2 Axis units within range of St Gerorge's Channel OR
-; 2 Axis units within range of English Channel OR
-; 2 Axis units within range of Antwerp (Port) OR
-; 2 Axis units within range of The Hague (Port)
-#CANCEL_POSITION= 138,87 [5,5] [2,2] [1]
-#CANCEL_POSITION= 144,82 [5,5] [2,2] [1]
-#CANCEL_POSITION= 150,80 [3,3] [2,2] [1]
-#CANCEL_POSITION= 131,80 [5,5] [2,2] [1]
-#CANCEL_POSITION= 138,82 [5,5] [2,2] [1]
-#CANCEL_POSITION= 154,78 [5,5] [2,2] [1]
-#CANCEL_POSITION= 154,76 [5,5] [2,2] [1]
-}
-
-; Fleet
-{
-#NAME= UK Build Up Fleet - North Sea Blockade - 1939 (2)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 0
-#UNIT_ID= 40
-; Rosyth
-#GOAL_POSITION= 141,63
-#GOAL_POSITION= 152,61
-#GOAL_POSITION= 158,59
-#GOAL_POSITION= 152,61
-#GOAL_POSITION= 144,65
-#GOAL_POSITION= 152,61
-#GOAL_POSITION= 158,59
-#GOAL_POSITION= 152,61
-#GOAL_POSITION= 144,65
-#GOAL_POSITION= 152,61
-#GOAL_POSITION= 158,59
-#GOAL_POSITION= 152,61
-#GOAL_POSITION= 144,65
-#DATE= 1939/09/01
-; Plymouth
-#FRIENDLY_POSITION= 137,80
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 2 Axis units within range of Brest (Port) OR
-; 2 Axis units within range of Cherbourg (Port) OR
-; 2 Axis units within range of Calais (Port) OR
-; 2 Axis units within range of St Gerorge's Channel OR
-; 2 Axis units within range of English Channel OR
-; 2 Axis units within range of Antwerp (Port) OR
-; 2 Axis units within range of The Hague (Port)
-#CANCEL_POSITION= 138,87 [5,5] [2,2] [1]
-#CANCEL_POSITION= 144,82 [5,5] [2,2] [1]
-#CANCEL_POSITION= 150,80 [3,3] [2,2] [1]
-#CANCEL_POSITION= 131,80 [5,5] [2,2] [1]
-#CANCEL_POSITION= 138,82 [5,5] [2,2] [1]
-#CANCEL_POSITION= 154,78 [5,5] [2,2] [1]
-#CANCEL_POSITION= 154,76 [5,5] [2,2] [1]
-}
-
-; Fleet
-{
-#NAME= UK Build Up Fleet - Portsmouth -> Rosyth
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 4,4
-#BUILD_LENGTH= 0
-#LENGTH= 2
-#RANGE= 12
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Rosyth (Port Area)
-#GOAL_POSITION= 142,63
-#DATE= 1939/09/01
-; Portsmouth (Port)
-#FRIENDLY_POSITION= 143,79
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= UK Build Up Fleet - Portsmouth -> Liverpool
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,4
-#BUILD_LENGTH= 0
-#LENGTH= 2
-#RANGE= 12
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Liverpool (Port Area)
-#GOAL_POSITION= 139,70
-#DATE= 1941/01/01
-; Portsmouth (Port)
-#FRIENDLY_POSITION= 143,79
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 2 Axis units within range of Antwerp (Port) OR
-; 2 Axis units within range of The Hague (Port)
-#CANCEL_POSITION= 154,78 [5,5] [2,2] [1]
-#CANCEL_POSITION= 154,76 [5,5] [2,2] [1]
-; 2 Axis units within range of Brest (Port) OR
-; 2 Axis units within range of Cherbourg (Port) OR
-; 2 Axis units within range of Calais (Port) OR
-; 2 Axis units within range of St Gerorge's Channel OR
-; 2 Axis units within range of English Channel
-#CANCEL_POSITION= 138,87 [5,5] [2,2] [1]
-#CANCEL_POSITION= 144,82 [5,5] [2,2] [1]
-#CANCEL_POSITION= 150,80 [3,3] [2,2] [1]
-#CANCEL_POSITION= 131,80 [5,5] [2,2] [1]
-#CANCEL_POSITION= 138,82 [5,5] [2,2] [1]
 }
 
 ; Fleet
@@ -990,67 +2541,7 @@
 
 ; Fleet
 {
-#NAME= UK Build Up Fleet - Bristol -> Liverpool
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Liverpool
-#GOAL_POSITION= 139,71
-#DATE= 1940/05/25
-; Bristol (Port)
-#FRIENDLY_POSITION= 141,77
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= UK Build Up Fleet - Med Sub Hold - 1939
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 5
-#NAVAL_CRUISE= 0
-#UNIT_ID= 43
-; Suez Port(210,127)
-#GOAL_POSITION= 210,127
-#DATE= 1939/09/01
-; Suez
-#FRIENDLY_POSITION= 210,127
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= UK Build Up Fleet - Med Sub Patrol - 1940
+#NAME= UK Build Up Fleet - Halifax -> Glasgow (Recovery)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -1059,36 +2550,59 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#SIZE= 1,1
+#SIZE= 1,15
 #BUILD_LENGTH= 0
-#LENGTH= 11
-#RANGE= 40
-#NAVAL_CRUISE= 0
-#UNIT_ID= 43
-; Limassol
-#GOAL_POSITION= 211,117
-#GOAL_POSITION= 201,120
-#GOAL_POSITION= 192,118
-#GOAL_POSITION= 183,109
-#GOAL_POSITION= 180,115
-#GOAL_POSITION= 179,120
-#GOAL_POSITION= 192,118
-#GOAL_POSITION= 183,109
-#GOAL_POSITION= 180,115
-#GOAL_POSITION= 179,120
-#GOAL_POSITION= 192,118
-#DATE= 1940/01/01
-; Malta
-#FRIENDLY_POSITION= 176,115
-; UK(112) Allied and not surrendered
+#LENGTH= 3
+#RANGE= 15
+#NAVAL_CRUISE= 1
+#UNIT_ID= 0
+; Glasgow
+#GOAL_POSITION= 132,64
+#DATE= 1941/06/09
+; Halfax
+#FRIENDLY_POSITION= 30,96
+; UK(112) Allied and not surrendered AND
+; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Axis units in range of Alexandria OR
-; Axis units in range of Cairo
-#CANCEL_POSITION= 206,124 [1,1] [1,1] [1]
-#CANCEL_POSITION= 208,126 [2,2] [1,1] [1]
+; Naval units at position
+#ACTIVATE_POSITION= 30,96 [1,1] [1,1] [2]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= UK Build Up Fleet - Iceland -> Scapa Flow (Recovery)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,15
+#BUILD_LENGTH= 0
+#LENGTH= 3
+#RANGE= 5
+#NAVAL_CRUISE= 1
+#UNIT_ID= 0
+; Scapa Flow
+#GOAL_POSITION= 139,54
+#DATE= 1941/06/09
+; Reykjavik
+#FRIENDLY_POSITION= 103,36
+; UK(112) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; Naval units at position
+#ACTIVATE_POSITION= 103,36 [1,1] [1,1] [2]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
 ; Fleet
@@ -1227,7 +2741,7 @@
 
 ; Fleet
 {
-#NAME= UK Build Up Fleet - Scapa Flow -> Rosyth
+#NAME= UK Build Up Fleet - Med Sub Hold - 1939
 #POPUP=
 #FLAG= 1
 #TYPE= 1
@@ -1236,17 +2750,17 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#SIZE= 2,4
+#SIZE= 1,1
 #BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 40
+#LENGTH= 5
+#RANGE= 5
 #NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Rosyth
-#GOAL_POSITION= 140,64
-#DATE= 1942/09/06
-; Scapa Flow
-#FRIENDLY_POSITION= 141,56
+#UNIT_ID= 43
+; Suez Port(210,127)
+#GOAL_POSITION= 210,127
+#DATE= 1939/09/01
+; Suez
+#FRIENDLY_POSITION= 210,127
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -1257,32 +2771,191 @@
 
 ; Fleet
 {
-#NAME= UK Build Up Fleet - Scapa Flow -> Liverpool
+#NAME= UK Build Up Fleet - Med Sub Patrol - 1940
 #POPUP=
 #FLAG= 1
-#TYPE= 1
+#TYPE= 2
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#SIZE= 2,4
+#SIZE= 1,1
 #BUILD_LENGTH= 0
-#LENGTH= 1
+#LENGTH= 11
 #RANGE= 40
 #NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Liverpool
-#GOAL_POSITION= 140,72
-#DATE= 1942/09/06
-; Scapa Flow
-#FRIENDLY_POSITION= 141,56
+#UNIT_ID= 43
+; Limassol
+#GOAL_POSITION= 211,117
+#GOAL_POSITION= 201,120
+#GOAL_POSITION= 192,118
+#GOAL_POSITION= 183,109
+#GOAL_POSITION= 180,115
+#GOAL_POSITION= 179,120
+#GOAL_POSITION= 192,118
+#GOAL_POSITION= 183,109
+#GOAL_POSITION= 180,115
+#GOAL_POSITION= 179,120
+#GOAL_POSITION= 192,118
+#DATE= 1940/01/01
+; Malta
+#FRIENDLY_POSITION= 176,115
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+; Axis units in range of Alexandria OR
+; Axis units in range of Cairo
+#CANCEL_POSITION= 206,124 [1,1] [1,1] [1]
+#CANCEL_POSITION= 208,126 [2,2] [1,1] [1]
+}
+
+; Fleet
+{
+#NAME= UK Build Up Fleet - North Sea Blockade - 1939 (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 0
+#UNIT_ID= 40
+; Cromarty
+#GOAL_POSITION= 139,59
+#GOAL_POSITION= 149,55
+#GOAL_POSITION= 155,52
+#GOAL_POSITION= 149,55
+#GOAL_POSITION= 142,54
+#GOAL_POSITION= 149,55
+#GOAL_POSITION= 155,52
+#GOAL_POSITION= 149,55
+#GOAL_POSITION= 142,54
+#GOAL_POSITION= 149,55
+#GOAL_POSITION= 155,52
+#GOAL_POSITION= 149,55
+#GOAL_POSITION= 142,54
+#DATE= 1939/09/01
+; Clydeside
+#FRIENDLY_POSITION= 137,65
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; 2 Axis units within range of Brest (Port) OR
+; 2 Axis units within range of Cherbourg (Port) OR
+; 2 Axis units within range of Calais (Port) OR
+; 2 Axis units within range of St Gerorge's Channel OR
+; 2 Axis units within range of English Channel OR
+; 2 Axis units within range of Antwerp (Port) OR
+; 2 Axis units within range of The Hague (Port)
+#CANCEL_POSITION= 138,87 [5,5] [2,2] [1]
+#CANCEL_POSITION= 144,82 [5,5] [2,2] [1]
+#CANCEL_POSITION= 150,80 [3,3] [2,2] [1]
+#CANCEL_POSITION= 131,80 [5,5] [2,2] [1]
+#CANCEL_POSITION= 138,82 [5,5] [2,2] [1]
+#CANCEL_POSITION= 154,78 [5,5] [2,2] [1]
+#CANCEL_POSITION= 154,76 [5,5] [2,2] [1]
+}
+
+; Fleet
+{
+#NAME= UK Build Up Fleet - North Sea Blockade - 1939 (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 0
+#UNIT_ID= 40
+; Rosyth
+#GOAL_POSITION= 141,63
+#GOAL_POSITION= 152,61
+#GOAL_POSITION= 158,59
+#GOAL_POSITION= 152,61
+#GOAL_POSITION= 144,65
+#GOAL_POSITION= 152,61
+#GOAL_POSITION= 158,59
+#GOAL_POSITION= 152,61
+#GOAL_POSITION= 144,65
+#GOAL_POSITION= 152,61
+#GOAL_POSITION= 158,59
+#GOAL_POSITION= 152,61
+#GOAL_POSITION= 144,65
+#DATE= 1939/09/01
+; Plymouth
+#FRIENDLY_POSITION= 137,80
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; 2 Axis units within range of Brest (Port) OR
+; 2 Axis units within range of Cherbourg (Port) OR
+; 2 Axis units within range of Calais (Port) OR
+; 2 Axis units within range of St Gerorge's Channel OR
+; 2 Axis units within range of English Channel OR
+; 2 Axis units within range of Antwerp (Port) OR
+; 2 Axis units within range of The Hague (Port)
+#CANCEL_POSITION= 138,87 [5,5] [2,2] [1]
+#CANCEL_POSITION= 144,82 [5,5] [2,2] [1]
+#CANCEL_POSITION= 150,80 [3,3] [2,2] [1]
+#CANCEL_POSITION= 131,80 [5,5] [2,2] [1]
+#CANCEL_POSITION= 138,82 [5,5] [2,2] [1]
+#CANCEL_POSITION= 154,78 [5,5] [2,2] [1]
+#CANCEL_POSITION= 154,76 [5,5] [2,2] [1]
+}
+
+; Fleet
+{
+#NAME= UK Build Up Fleet - North Sea Patrol -> Cromarty/Kristiansand
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 2,5
+#BUILD_LENGTH= 0
+#LENGTH= 8
+#RANGE= 40
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Cromarty
+#GOAL_POSITION= 140,59
+#GOAL_POSITION= 151,60
+#GOAL_POSITION= 155,68
+#GOAL_POSITION= 152,74
+#GOAL_POSITION= 148,69
+#DATE= 1941/01/01
+; Rosyth
+#FRIENDLY_POSITION= 140,64
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; 3 Axis units within range of Kristiansand (Port)
+#ACTIVATE_POSITION= 163,58 [8,8] [3,3] [1]
+; Preparing for Amphibious Assaults, routines at the top will run instead
+#CANCEL_POSITION= 147,77 [20,20] [20,20] [2]
 }
 
 ; Fleet
@@ -1319,86 +2992,6 @@
 ; 2 Axis units within range of The Hague (Port)
 #ACTIVATE_POSITION= 154,78 [5,5] [2,2] [1]
 #ACTIVATE_POSITION= 154,76 [5,5] [2,2] [1]
-; Preparing for Amphibious Assaults, routines at the top will run instead
-#CANCEL_POSITION= 147,77 [20,20] [20,20] [2]
-}
-
-; Fleet
-{
-#NAME= UK Build Up Fleet - Channel Patrol -> Scapa Flow/London
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 2,15
-#BUILD_LENGTH= 1
-#LENGTH= 5
-#RANGE= 40
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Scapa Flow
-#GOAL_POSITION= 140,56
-#GOAL_POSITION= 139,82
-#GOAL_POSITION= 146,81
-#GOAL_POSITION= 132,89
-#GOAL_POSITION= 131,79
-#DATE= 1940/05/01
-; Liverpool
-#FRIENDLY_POSITION= 140,72
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-; 2 Axis units within range of Brest (Port) OR
-; 2 Axis units within range of Cherbourg (Port) OR
-; 2 Axis units within range of Calais (Port) OR
-; 2 Axis units within range of St Gerorge's Channel OR
-; 2 Axis units within range of English Channel
-#ACTIVATE_POSITION= 138,87 [5,5] [2,2] [1]
-#ACTIVATE_POSITION= 144,82 [5,5] [2,2] [1]
-#ACTIVATE_POSITION= 150,80 [3,3] [2,2] [1]
-#ACTIVATE_POSITION= 131,80 [5,5] [2,2] [1]
-#ACTIVATE_POSITION= 138,82 [5,5] [2,2] [1]
-; Preparing for Amphibious Assaults, routines at the top will run instead
-#CANCEL_POSITION= 147,77 [20,20] [20,20] [2]
-}
-
-; Fleet
-{
-#NAME= UK Build Up Fleet - North Sea Patrol -> Cromarty/Kristiansand
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 2,5
-#BUILD_LENGTH= 0
-#LENGTH= 8
-#RANGE= 40
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Cromarty
-#GOAL_POSITION= 140,59
-#GOAL_POSITION= 151,60
-#GOAL_POSITION= 155,68
-#GOAL_POSITION= 152,74
-#GOAL_POSITION= 148,69
-#DATE= 1941/01/01
-; Rosyth
-#FRIENDLY_POSITION= 140,64
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-; 3 Axis units within range of Kristiansand (Port)
-#ACTIVATE_POSITION= 163,58 [8,8] [3,3] [1]
 ; Preparing for Amphibious Assaults, routines at the top will run instead
 #CANCEL_POSITION= 147,77 [20,20] [20,20] [2]
 }
@@ -1457,71 +3050,196 @@
 
 ; Fleet
 {
-#NAME= UK Build Up Fleet - Gibraltar -> Scapa Flow (Recovery)
+#NAME= UK Build Up Fleet - Portsmouth -> Liverpool
 #POPUP=
 #FLAG= 1
-#TYPE= 2
+#TYPE= 1
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#SIZE= 1,15
+#SIZE= 1,4
 #BUILD_LENGTH= 0
-#LENGTH= 6
-#RANGE= 5
-#NAVAL_CRUISE= 1
+#LENGTH= 2
+#RANGE= 12
+#NAVAL_CRUISE= 0
 #UNIT_ID= 0
-; Scapa Flow
-#GOAL_POSITION= 141,56
-#GOAL_POSITION= 125,105
-#GOAL_POSITION= 125,87
-#GOAL_POSITION= 125,69
-#GOAL_POSITION= 131,56
-#DATE= 1941/06/09
-; Gibraltar (Port)(137,114)
-#FRIENDLY_POSITION= 137,114
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; Liverpool (Port Area)
+#GOAL_POSITION= 139,70
+#DATE= 1941/01/01
+; Portsmouth (Port)
+#FRIENDLY_POSITION= 143,79
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
-; Naval units at position
-#ACTIVATE_POSITION= 137,114 [1,1] [1,1] [2]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; 2 Axis units within range of Antwerp (Port) OR
+; 2 Axis units within range of The Hague (Port)
+#CANCEL_POSITION= 154,78 [5,5] [2,2] [1]
+#CANCEL_POSITION= 154,76 [5,5] [2,2] [1]
+; 2 Axis units within range of Brest (Port) OR
+; 2 Axis units within range of Cherbourg (Port) OR
+; 2 Axis units within range of Calais (Port) OR
+; 2 Axis units within range of St Gerorge's Channel OR
+; 2 Axis units within range of English Channel
+#CANCEL_POSITION= 138,87 [5,5] [2,2] [1]
+#CANCEL_POSITION= 144,82 [5,5] [2,2] [1]
+#CANCEL_POSITION= 150,80 [3,3] [2,2] [1]
+#CANCEL_POSITION= 131,80 [5,5] [2,2] [1]
+#CANCEL_POSITION= 138,82 [5,5] [2,2] [1]
+}
+
+; Fleet
+{
+#NAME= UK Build Up Fleet - Portsmouth -> Rosyth
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 4,4
+#BUILD_LENGTH= 0
+#LENGTH= 2
+#RANGE= 12
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Rosyth (Port Area)
+#GOAL_POSITION= 142,63
+#DATE= 1939/09/01
+; Portsmouth (Port)
+#FRIENDLY_POSITION= 143,79
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
 ; Fleet
 {
-#NAME= UK Build Up Fleet - Iceland -> Scapa Flow (Recovery)
+#NAME= UK Build Up Fleet - Scapa Flow -> Liverpool
 #POPUP=
 #FLAG= 1
-#TYPE= 2
+#TYPE= 1
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#SIZE= 1,15
+#SIZE= 2,4
 #BUILD_LENGTH= 0
-#LENGTH= 3
-#RANGE= 5
-#NAVAL_CRUISE= 1
+#LENGTH= 1
+#RANGE= 40
+#NAVAL_CRUISE= 0
 #UNIT_ID= 0
+; Liverpool
+#GOAL_POSITION= 140,72
+#DATE= 1942/09/06
 ; Scapa Flow
-#GOAL_POSITION= 139,54
-#DATE= 1941/06/09
-; Reykjavik
-#FRIENDLY_POSITION= 103,36
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and surrendered
+#FRIENDLY_POSITION= 141,56
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
-; Naval units at position
-#ACTIVATE_POSITION= 103,36 [1,1] [1,1] [2]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= UK Build Up Fleet - Scapa Flow -> Rosyth
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 2,4
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 40
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Rosyth
+#GOAL_POSITION= 140,64
+#DATE= 1942/09/06
+; Scapa Flow
+#FRIENDLY_POSITION= 141,56
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= UK Build Up Fleet - Send Carrier To Egypt
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 5
+#NAVAL_CRUISE= 0
+#UNIT_ID= 42
+; Port Said (Port Area)
+#GOAL_POSITION= 210,123
+#GOAL_POSITION= 126,64
+#GOAL_POSITION= 95,135
+#DATE= 1939/09/01
+; Liverpool
+#FRIENDLY_POSITION= 140,72
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= UK Build Up Fleet - Send Two Battleships To Egypt
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 2,2
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 5
+#NAVAL_CRUISE= 0
+#UNIT_ID= 36
+; Port Said (Port Area)
+#GOAL_POSITION= 210,122
+#GOAL_POSITION= 126,64
+#GOAL_POSITION= 95,135
+#DATE= 1939/09/01
+; Scapa Flow
+#FRIENDLY_POSITION= 141,56
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1558,559 +3276,35 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-; Fleet
 {
-#NAME= UK Build Up Fleet - Halifax -> Glasgow (Recovery)
+#NAME= UK Build Up Fleet - Valletta -> Alexandria
 #POPUP=
 #FLAG= 1
-#TYPE= 2
+#TYPE= 1
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#SIZE= 1,15
+#SIZE= 2,2
 #BUILD_LENGTH= 0
-#LENGTH= 3
-#RANGE= 15
-#NAVAL_CRUISE= 1
+#LENGTH= 5
+#RANGE= 5
+#NAVAL_CRUISE= 0
 #UNIT_ID= 0
-; Glasgow
-#GOAL_POSITION= 132,64
-#DATE= 1941/06/09
-; Halfax
-#FRIENDLY_POSITION= 30,96
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; Alexandria (Port Area)
+#GOAL_POSITION= 206,123
+#GOAL_POSITION= 175,115
+#DATE= 1939/09/01
+; Valletta
+#FRIENDLY_POSITION= 176,115
+; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
-; Naval units at position
-#ACTIVATE_POSITION= 30,96 [1,1] [1,1] [2]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= UK Build Up Fleet - Liberate UK Amphibious Support - Cardiff (DE 1)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 1[1]
-#SIZE= 2,5
-#BUILD_LENGTH= 2
-#LENGTH= 15
-#RANGE= 25
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Halifax (offshore)
-#GOAL_POSITION= 34,99
-; Halifax (offshore)
-#GOAL_POSITION= 39,108
-#GOAL_POSITION= 60,110
-#GOAL_POSITION= 81,106
-#GOAL_POSITION= 102,96
-#GOAL_POSITION= 123,85
-#GOAL_POSITION= 130,82
-; Plymouth (offshore)
-#GOAL_POSITION= 138,78
-#GOAL_POSITION= 133,82
-#GOAL_POSITION= 133,78
-#DATE= 1941/09/23
-; Halifax (Port)
-#FRIENDLY_POSITION= 30,96
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened 
-#TACTICAL_CONDITION= 4,108 [1]
-; 4 or more Allied naval units within range of staging tile
-#ACTIVATE_POSITION= 9,109 [1,1] [4,4] [2]
-; 1 Axis unit within range of Washington DC(4,108)
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-}
-
-{
-#NAME= UK Build Up Fleet - Liberate UK Patrol - Cardiff (DE 1)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 1[1]
-#SIZE= 2,5
-#BUILD_LENGTH= 1
-#LENGTH= 12
-#RANGE= 40
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Plymouth (offshore)
-#GOAL_POSITION= 133,78
-; English Channel
-#GOAL_POSITION= 136,83
-#GOAL_POSITION= 136,75
-#GOAL_POSITION= 131,64
-#GOAL_POSITION= 129,60
-#GOAL_POSITION= 136,83
-#GOAL_POSITION= 136,75
-#GOAL_POSITION= 131,64
-#GOAL_POSITION= 129,60
-#GOAL_POSITION= 136,83
-#GOAL_POSITION= 136,75
-#GOAL_POSITION= 131,64
-#GOAL_POSITION= 129,60
-#DATE= 1941/09/23
-; Irish Sea
-#FRIENDLY_POSITION= 136,71
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened 
-#TACTICAL_CONDITION= 4,108 [1]
-; 3 or more Allied naval units within range of staging tile
-#ACTIVATE_POSITION= 9,109 [1,1] [3,3] [2]
-; 1 Axis unit within range of Washington DC(4,108)
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-}
-
-{
-#NAME= UK Build Up Fleet - Liberate UK Amphibious Support - Ft. William (DE 1)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 1[1]
-#SIZE= 2,8
-#BUILD_LENGTH= 2
-#LENGTH= 15
-#RANGE= 25
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Halifax (offshore)
-#GOAL_POSITION= 34,98
-; Halifax (offshore)
-#GOAL_POSITION= 40,105
-#GOAL_POSITION= 60,99
-#GOAL_POSITION= 81,88
-#GOAL_POSITION= 102,78
-#GOAL_POSITION= 122,67
-; Ft. William (offshore)
-#GOAL_POSITION= 131,63
-#GOAL_POSITION= 131,63
-#DATE= 1942/07/12
-; Halifax (Port)
-#FRIENDLY_POSITION= 30,96
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened 
-#TACTICAL_CONDITION= 4,108 [1]
-; 3 or more Allied naval units within range of staging tile
-#ACTIVATE_POSITION= 10,108 [1,1] [3,3] [2]
-; 1 Axis unit within range of Washington DC(4,108)
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-}
-
-{
-#NAME= UK Build Up Fleet (Canada) - Destroyer
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 21
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 25
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Glasgow(138,65)(off shore)
-#GOAL_POSITION= 132,66
-#GOAL_POSITION= 51,96
-#GOAL_POSITION= 70,92
-#DATE= 1939/09/01
-; Halifax (Port)
-#FRIENDLY_POSITION= 30,96
-; Canada(21) Allied and not surrendered
-#VARIABLE_CONDITION= 21 [2] [100] [0]
-; Ottawa not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 6,93 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ALLIED SCRIPTS - Build Up Fleet (France)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Fleet
-{
-#NAME= France Build Up Fleet - French Fleet -> Cherbourg (1)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 40
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 6[1,50]
-#LINK= 0[0]
-#SIZE= 5,5
-#BUILD_LENGTH= 0
-#LENGTH= 2
-#RANGE= 10
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Cherbourg
-#GOAL_POSITION= 144,82
-#DATE= 1939/09/01
-; St. Nazaire
-#FRIENDLY_POSITION= 142,89
-; France(40) Allied and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-; Paris(151,84) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 151,84 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= France Build Up Fleet - French Fleet -> Cherbourg (2)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 40
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 6[1,50]
-#LINK= 0[0]
-#SIZE= 4,4
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 25
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Cherbourg
-#GOAL_POSITION= 145,82
-#DATE= 1939/09/01
-; Marseilles(157,97)
-#FRIENDLY_POSITION= 157,98
-; France(40) Allied and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-; Paris(151,84) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 151,84 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= France Build Up Fleet - French Fleet -> Marseilles (1)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 40
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 6[51,100]
-#LINK= 0[0]
-#SIZE= 5,5
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 10
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Marseilles
-#GOAL_POSITION= 154,98
-#DATE= 1939/09/01
-; St. Nazaire
-#FRIENDLY_POSITION= 142,89
-; France(40) Allied and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-; Paris(151,84) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 151,84 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= France Build Up Fleet - French Fleet -> Marseilles (2)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 40
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 6[51,100]
-#LINK= 0[0]
-#SIZE= 4,4
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 25
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Marseilles
-#GOAL_POSITION= 155,98
-#DATE= 1939/09/01
-; Algiers(152,113)
-#FRIENDLY_POSITION= 152,112
-; France(40) Allied and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-; Paris(151,84) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 151,84 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= France Build Up Fleet - Cherbourg -> North Sea
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 40
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 4,9
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 10
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Patrol
-#GOAL_POSITION= 155,111
-#GOAL_POSITION= 157,62
-#GOAL_POSITION= 160,69
-#GOAL_POSITION= 152,74
-#GOAL_POSITION= 160,69
-#GOAL_POSITION= 157,62
-#GOAL_POSITION= 160,69
-#GOAL_POSITION= 152,74
-#GOAL_POSITION= 133,85
-#GOAL_POSITION= 124,113
-#DATE= 1940/01/01
-; Cherbourg
-#FRIENDLY_POSITION= 144,82
-; France(40) Allied and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-; Paris(151,84) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 151,84 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= France Build Up Fleet - Marseilles -> Taranto
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 40
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 4,9
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 10
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Patrol
-#GOAL_POSITION= 156,99
-#GOAL_POSITION= 159,108
-#GOAL_POSITION= 168,109
-#GOAL_POSITION= 182,115
-#GOAL_POSITION= 191,117
-#GOAL_POSITION= 184,111
-#GOAL_POSITION= 182,109
-#GOAL_POSITION= 186,115
-#GOAL_POSITION= 171,113
-#DATE= 1940/04/01
-; Marseilles(157,97)
-#FRIENDLY_POSITION= 157,98
-; France(40) Allied and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-; Paris(151,84) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 151,84 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ALLIED SCRIPTS - Build Up Fleet (USA)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-{
-#NAME= USA Build Up Fleet - Liberate UK Amphibious Support - Cardiff (DE 1) 
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 1[1]
-#SIZE= 2,10
-#BUILD_LENGTH= 1
-#LENGTH= 13
-#RANGE= 40
-#NAVAL_CRUISE= 1
-#UNIT_ID= 0
-; New York (offshore)
-#GOAL_POSITION= 19,110
-; New York (offshore)
-#GOAL_POSITION= 19,108
-#GOAL_POSITION= 39,108
-#GOAL_POSITION= 60,110
-#GOAL_POSITION= 81,106
-#GOAL_POSITION= 102,96
-#GOAL_POSITION= 123,85
-#GOAL_POSITION= 130,82
-; Plymouth (offshore)
-#GOAL_POSITION= 138,78
-#GOAL_POSITION= 133,82
-#GOAL_POSITION= 133,78
-#DATE= 1941/09/23
-; New York(10,104) (Port)
-#FRIENDLY_POSITION= 10,105
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened
-#TACTICAL_CONDITION= 4,108 [1]
-; 5 or more Allied naval units within range of staging tile
-#ACTIVATE_POSITION= 9,109 [1,1] [5,5] [2]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Build Up Fleet - Liberate UK Amphibious Support - Ft. William (DE 1) 
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 1[1]
-#SIZE= 2,10
-#BUILD_LENGTH= 1
-#LENGTH= 13
-#RANGE= 40
-#NAVAL_CRUISE= 1
-#UNIT_ID= 0
-; New York (offshore)
-#GOAL_POSITION= 19,108
-; New York (offshore)
-#GOAL_POSITION= 19,108
-#GOAL_POSITION= 40,105
-#GOAL_POSITION= 60,99
-#GOAL_POSITION= 81,88
-#GOAL_POSITION= 102,78
-#GOAL_POSITION= 122,67
-; Ft. William (offshore)
-#GOAL_POSITION= 131,63
-#GOAL_POSITION= 131,63
-#DATE= 1942/07/12
-; New York(10,104) (Port)
-#FRIENDLY_POSITION= 10,105
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened
-#TACTICAL_CONDITION= 4,108 [1]
-; 5 or more Allied naval units within range of staging tile
-#ACTIVATE_POSITION= 10,108 [1,1] [5,5] [2]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Build Up Fleet - Liberate UK Transport Support - Glasgow (DE 1)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 1[1]
-#SIZE= 2,4
-#BUILD_LENGTH= 1
-#LENGTH= 8
-#RANGE= 40
-#NAVAL_CRUISE= 1
-#UNIT_ID= 0
-; New York (offshore)
-#GOAL_POSITION= 18,107
-; New York (offshore)
-#GOAL_POSITION= 19,108
-#GOAL_POSITION= 61,96
-#GOAL_POSITION= 101,74
-; Belfast (offshore)
-#GOAL_POSITION= 133,66
-#GOAL_POSITION= 133,66
-#DATE= 1941/01/20
-; New York(10,104) (Port)
-; Glasgow (Port)
-#FRIENDLY_POSITION= 10,105
-#FRIENDLY_POSITION= 137,65
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened
-#TACTICAL_CONDITION= 4,108 [1]
-; 2 or more Allied naval units within range of staging tile
-#ACTIVATE_POSITION= 12,110 [1,1] [2,2] [2]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Build Up Fleet - Liberate UK Transport Support - Inverness (DE 1)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 1[1]
-#SIZE= 2,15
-#BUILD_LENGTH= 1
-#LENGTH= 8
-#RANGE= 40
-#NAVAL_CRUISE= 1
-#UNIT_ID= 0
-; New York (offshore)
-#GOAL_POSITION= 19,107
-; New York (offshore)
-#GOAL_POSITION= 19,108
-#GOAL_POSITION= 61,96
-#GOAL_POSITION= 101,74
-; Scapa Flow (offshore)
-#GOAL_POSITION= 144,65
-#GOAL_POSITION= 145,59
-#DATE= 1941/04/26
-; Set friendly positions
-; New York(10,104) (Port)
-; Inverness (Port)
-#FRIENDLY_POSITION= 10,105
-#FRIENDLY_POSITION= 139,59
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened
-#TACTICAL_CONDITION= 4,108 [1]
-; 2 or more Allied naval units within range of staging tile
-#ACTIVATE_POSITION= 12,110 [1,1] [2,2] [2]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+; 8 Allied units within range of Port Said
+#CANCEL_POSITION= 209,122 [8,8] [8,8] [2]
 }
 
 ; 75% Algiers - Gibraltar not held by Axis
@@ -2164,230 +3358,6 @@
 #CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
 #CANCEL_POSITION= 136,114 [1,1] [1,1] [1]
 #CANCEL_POSITION= 136,114 [0,0] [0,0] [2]
-}
-
-{
-#NAME= USA Build Up Fleet - Casablanca (Torch)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 3[1,20]
-#LINK= 0[0]
-#SIZE= 4,6
-#BUILD_LENGTH= 2
-#LENGTH= 8
-#RANGE= 40
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Casablanca (off shore)
-#GOAL_POSITION= 131,115
-#GOAL_POSITION= 19,108
-#GOAL_POSITION= 38,110
-#GOAL_POSITION= 57,110
-#GOAL_POSITION= 131,115
-#GOAL_POSITION= 131,115
-#GOAL_POSITION= 131,115
-#GOAL_POSITION= 131,115
-; Date set to after Vichy amphibious events
-#DATE= 1942/06/28
-; New York(10,104) (Port)
-#FRIENDLY_POSITION= 10,105
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-; Washington DC(4,108) not tactically threatened
-#TACTICAL_CONDITION= 4,108 [1]
-; 3 or more Allied naval units within range of staging tile
-#ACTIVATE_POSITION= 10,108 [1,1] [3,3] [2]
-; 1 Axis unit in England OR
-; 0 Allied units in England OR
-; 1 Axis unit within range of Washington DC(4,108)
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-#CANCEL_POSITION= 147,77 [20,20] [0,0] [2]
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-}
-
-{
-#NAME= USA Build Up Fleet - Lagos (Torch)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 3[21,40]
-#LINK= 0[0]
-#SIZE= 4,4
-#BUILD_LENGTH= 2
-#LENGTH= 8
-#RANGE= 40
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Lagos (off shore)
-#GOAL_POSITION= 130,115
-#GOAL_POSITION= 19,108
-#GOAL_POSITION= 38,110
-#GOAL_POSITION= 57,110
-#GOAL_POSITION= 130,115
-#GOAL_POSITION= 130,115
-#GOAL_POSITION= 130,115
-#GOAL_POSITION= 130,115
-; Date set to after Vichy amphibious events
-#DATE= 1942/06/28
-; New York(10,104) (Port)
-#FRIENDLY_POSITION= 10,105
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-; Washington DC(4,108) not tactically threatened
-#TACTICAL_CONDITION= 4,108 [1]
-; 3 or more Allied naval units within range of staging tile
-#ACTIVATE_POSITION= 10,110 [1,1] [3,3] [2]
-; 1 Axis unit in England OR
-; 0 Allied units in England OR
-; 1 Axis unit within range of Washington DC(4,108)
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-#CANCEL_POSITION= 147,77 [20,20] [0,0] [2]
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-}
-
-{
-#NAME= USA Build Up Fleet - Porto (Torch)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 3[41,60]
-#LINK= 0[0]
-#SIZE= 4,4
-#BUILD_LENGTH= 2
-#LENGTH= 8
-#RANGE= 40
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Porto (off shore)
-#GOAL_POSITION= 125,102
-#GOAL_POSITION= 19,108
-#GOAL_POSITION= 38,110
-#GOAL_POSITION= 57,110
-#GOAL_POSITION= 125,102
-#GOAL_POSITION= 125,102
-#GOAL_POSITION= 125,102
-#GOAL_POSITION= 125,102
-; Date set to after Vichy amphibious events
-#DATE= 1942/06/28
-; New York(10,104) (Port)
-#FRIENDLY_POSITION= 10,105
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-; Washington DC(4,108) not tactically threatened
-#TACTICAL_CONDITION= 4,108 [1]
-; 3 or more Allied naval units within range of staging tile
-#ACTIVATE_POSITION= 10,110 [1,1] [3,3] [2]
-; 1 Axis unit in England OR
-; 0 Allied units in England OR
-; 1 Axis unit within range of Washington DC(4,108)
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-#CANCEL_POSITION= 147,77 [20,20] [0,0] [2]
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-}
-
-{
-#NAME= USA Build Up Fleet - Bordeaux (Torch)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 3[61,80]
-#LINK= 0[0]
-#SIZE= 4,4
-#BUILD_LENGTH= 2
-#LENGTH= 8
-#RANGE= 40
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Bordeaux (off shore)
-#GOAL_POSITION= 141,94
-#GOAL_POSITION= 19,108
-#GOAL_POSITION= 38,110
-#GOAL_POSITION= 57,110
-#GOAL_POSITION= 141,94
-#GOAL_POSITION= 141,94
-#GOAL_POSITION= 141,94
-#GOAL_POSITION= 141,94
-; Date set to after Vichy amphibious events
-#DATE= 1942/06/28
-; New York(10,104) (Port)
-#FRIENDLY_POSITION= 10,105
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-; Washington DC(4,108) not tactically threatened
-#TACTICAL_CONDITION= 4,108 [1]
-; 3 or more Allied naval units within range of staging tile
-#ACTIVATE_POSITION= 10,110 [1,1] [3,3] [2]
-; 1 Axis unit in England OR
-; 0 Allied units in England OR
-; 1 Axis unit within range of Washington DC(4,108)
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-#CANCEL_POSITION= 147,77 [20,20] [0,0] [2]
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-}
-
-{
-#NAME= USA Build Up Fleet - Palermo
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 4,4
-#BUILD_LENGTH= 1
-#LENGTH= 4
-#RANGE= 25
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Palermo (off shore)
-#GOAL_POSITION= 182,112
-#GOAL_POSITION= 168,109
-#GOAL_POSITION= 175,118
-#GOAL_POSITION= 183,109
-; Date set to after Vichy amphibious events
-#DATE= 1942/06/28
-; Algiers(152,113) (Port)
-; Tunis(167,112)
-; Tripoli(172,121)
-#FRIENDLY_POSITION= 152,112
-#FRIENDLY_POSITION= 167,112
-#FRIENDLY_POSITION= 172,121
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-; Washington DC(4,108) not tactically threatened
-#TACTICAL_CONDITION= 10,105 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 1 Axis unit in England OR
-; 0 Allied units in England OR
-; 1 Axis unit within range of Washington DC(4,108)
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-#CANCEL_POSITION= 147,77 [20,20] [0,0] [2]
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
 }
 
 ; Fleet
@@ -2578,9 +3548,233 @@
 #CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
 }
 
+{
+#NAME= USA Build Up Fleet - Bordeaux (Torch)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 3[61,80]
+#LINK= 0[0]
+#SIZE= 4,4
+#BUILD_LENGTH= 2
+#LENGTH= 8
+#RANGE= 40
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Bordeaux (off shore)
+#GOAL_POSITION= 141,94
+#GOAL_POSITION= 19,108
+#GOAL_POSITION= 38,110
+#GOAL_POSITION= 57,110
+#GOAL_POSITION= 141,94
+#GOAL_POSITION= 141,94
+#GOAL_POSITION= 141,94
+#GOAL_POSITION= 141,94
+; Date set to after Vichy amphibious events
+#DATE= 1942/06/28
+; New York(10,104) (Port)
+#FRIENDLY_POSITION= 10,105
+; USA(115) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Washington DC(4,108) not tactically threatened
+#TACTICAL_CONDITION= 4,108 [1]
+; 3 or more Allied naval units within range of staging tile
+#ACTIVATE_POSITION= 10,110 [1,1] [3,3] [2]
+; 1 Axis unit in England OR
+; 0 Allied units in England OR
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+#CANCEL_POSITION= 147,77 [20,20] [0,0] [2]
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+{
+#NAME= USA Build Up Fleet - Casablanca (Torch)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 3[1,20]
+#LINK= 0[0]
+#SIZE= 4,6
+#BUILD_LENGTH= 2
+#LENGTH= 8
+#RANGE= 40
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Casablanca (off shore)
+#GOAL_POSITION= 131,115
+#GOAL_POSITION= 19,108
+#GOAL_POSITION= 38,110
+#GOAL_POSITION= 57,110
+#GOAL_POSITION= 131,115
+#GOAL_POSITION= 131,115
+#GOAL_POSITION= 131,115
+#GOAL_POSITION= 131,115
+; Date set to after Vichy amphibious events
+#DATE= 1942/06/28
+; New York(10,104) (Port)
+#FRIENDLY_POSITION= 10,105
+; USA(115) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Washington DC(4,108) not tactically threatened
+#TACTICAL_CONDITION= 4,108 [1]
+; 3 or more Allied naval units within range of staging tile
+#ACTIVATE_POSITION= 10,108 [1,1] [3,3] [2]
+; 1 Axis unit in England OR
+; 0 Allied units in England OR
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+#CANCEL_POSITION= 147,77 [20,20] [0,0] [2]
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+{
+#NAME= USA Build Up Fleet - Lagos (Torch)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 3[21,40]
+#LINK= 0[0]
+#SIZE= 4,4
+#BUILD_LENGTH= 2
+#LENGTH= 8
+#RANGE= 40
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Lagos (off shore)
+#GOAL_POSITION= 130,115
+#GOAL_POSITION= 19,108
+#GOAL_POSITION= 38,110
+#GOAL_POSITION= 57,110
+#GOAL_POSITION= 130,115
+#GOAL_POSITION= 130,115
+#GOAL_POSITION= 130,115
+#GOAL_POSITION= 130,115
+; Date set to after Vichy amphibious events
+#DATE= 1942/06/28
+; New York(10,104) (Port)
+#FRIENDLY_POSITION= 10,105
+; USA(115) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Washington DC(4,108) not tactically threatened
+#TACTICAL_CONDITION= 4,108 [1]
+; 3 or more Allied naval units within range of staging tile
+#ACTIVATE_POSITION= 10,110 [1,1] [3,3] [2]
+; 1 Axis unit in England OR
+; 0 Allied units in England OR
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+#CANCEL_POSITION= 147,77 [20,20] [0,0] [2]
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+{
+#NAME= USA Build Up Fleet - Palermo
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 4,4
+#BUILD_LENGTH= 1
+#LENGTH= 4
+#RANGE= 25
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Palermo (off shore)
+#GOAL_POSITION= 182,112
+#GOAL_POSITION= 168,109
+#GOAL_POSITION= 175,118
+#GOAL_POSITION= 183,109
+; Date set to after Vichy amphibious events
+#DATE= 1942/06/28
+; Algiers(152,113) (Port)
+; Tunis(167,112)
+; Tripoli(172,121)
+#FRIENDLY_POSITION= 152,112
+#FRIENDLY_POSITION= 167,112
+#FRIENDLY_POSITION= 172,121
+; USA(115) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Washington DC(4,108) not tactically threatened
+#TACTICAL_CONDITION= 10,105 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; 1 Axis unit in England OR
+; 0 Allied units in England OR
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+#CANCEL_POSITION= 147,77 [20,20] [0,0] [2]
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+{
+#NAME= USA Build Up Fleet - Porto (Torch)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 3[41,60]
+#LINK= 0[0]
+#SIZE= 4,4
+#BUILD_LENGTH= 2
+#LENGTH= 8
+#RANGE= 40
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Porto (off shore)
+#GOAL_POSITION= 125,102
+#GOAL_POSITION= 19,108
+#GOAL_POSITION= 38,110
+#GOAL_POSITION= 57,110
+#GOAL_POSITION= 125,102
+#GOAL_POSITION= 125,102
+#GOAL_POSITION= 125,102
+#GOAL_POSITION= 125,102
+; Date set to after Vichy amphibious events
+#DATE= 1942/06/28
+; New York(10,104) (Port)
+#FRIENDLY_POSITION= 10,105
+; USA(115) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Washington DC(4,108) not tactically threatened
+#TACTICAL_CONDITION= 4,108 [1]
+; 3 or more Allied naval units within range of staging tile
+#ACTIVATE_POSITION= 10,110 [1,1] [3,3] [2]
+; 1 Axis unit in England OR
+; 0 Allied units in England OR
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+#CANCEL_POSITION= 147,77 [20,20] [0,0] [2]
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
 ; Fleet
 {
-#NAME= USA Build Up Fleet - UK Sea Transport Support (New York -> Bristol/Plymouth/Glasgow -> New York) - 1943
+#NAME= USA Build Up Fleet - Prevent Overflow (Reykyavik -> Boston)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -2589,35 +3783,55 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#SIZE= 2,5
+#SIZE= 1,5
 #BUILD_LENGTH= 1
-#LENGTH= 8
-#RANGE= 40
+#LENGTH= 2
+#RANGE= 10
 #NAVAL_CRUISE= 1
 #UNIT_ID= 0
-; New York (offshore)
-#GOAL_POSITION= 18,106
-; New York (offshore)
-#GOAL_POSITION= 23,105
-#GOAL_POSITION= 64,97
-#GOAL_POSITION= 93,82
-; Plymouth (off shore)
-#GOAL_POSITION= 130,81
-#GOAL_POSITION= 138,78
-#GOAL_POSITION= 129,63
-; Date set to a little after Vichy Amphibious 
-; events so they don't interfere with each other
+; Boston (offshore)
+#GOAL_POSITION= 19,100
 #DATE= 1943/01/01
-; New York(10,104) (Port)
-#FRIENDLY_POSITION= 10,105
+; Reykyavik (Port)
+#FRIENDLY_POSITION= 103,36
 ; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
-; 2 or more Allied naval units within range of staging tile
-#ACTIVATE_POSITION= 15,107 [1,1] [2,2] [2]
-; 1 Axis unit within range of Washington DC(4,108)
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+; Allied naval units within range
+#ACTIVATE_POSITION= 103,36 [1,1] [1,1] [2]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fleet
+{
+#NAME= USA Build Up Fleet - Prevent Overflow (St. John's -> Boston)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 1
+#LENGTH= 1
+#RANGE= 10
+#NAVAL_CRUISE= 1
+#UNIT_ID= 0
+; Boston (offshore)
+#GOAL_POSITION= 19,99
+#DATE= 1943/01/01
+; St. John's (Port)
+#FRIENDLY_POSITION= 52,89
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened
+#TACTICAL_CONDITION= 4,108 [1]
+; Allied naval units within range
+#ACTIVATE_POSITION= 52,89 [1,1] [1,1] [2]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
 ; Fleet
@@ -2664,10 +3878,10 @@
 
 ; Fleet
 {
-#NAME= USA Build Up Fleet - UK Sea Transport Support (New York -> Plymouth) - 1942
+#NAME= USA Build Up Fleet - UK Sea Transport Support (New York -> Bristol/Plymouth/Glasgow -> New York) - 1943
 #POPUP=
 #FLAG= 1
-#TYPE= 1
+#TYPE= 2
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #LEVEL= 0
@@ -2675,12 +3889,12 @@
 #LINK= 0[0]
 #SIZE= 2,5
 #BUILD_LENGTH= 1
-#LENGTH= 6
+#LENGTH= 8
 #RANGE= 40
 #NAVAL_CRUISE= 1
 #UNIT_ID= 0
-; Plymouth (offshore)
-#GOAL_POSITION= 131,79
+; New York (offshore)
+#GOAL_POSITION= 18,106
 ; New York (offshore)
 #GOAL_POSITION= 23,105
 #GOAL_POSITION= 64,97
@@ -2688,9 +3902,10 @@
 ; Plymouth (off shore)
 #GOAL_POSITION= 130,81
 #GOAL_POSITION= 138,78
-; Date set to a little after Vichy Amphibious
+#GOAL_POSITION= 129,63
+; Date set to a little after Vichy Amphibious 
 ; events so they don't interfere with each other
-#DATE= 1943/02/25
+#DATE= 1943/01/01
 ; New York(10,104) (Port)
 #FRIENDLY_POSITION= 10,105
 ; USA(115) Allied and not surrendered
@@ -2789,70 +4004,45 @@
 
 ; Fleet
 {
-#NAME= USA Build Up Fleet - Prevent Overflow (Reykyavik -> Boston)
+#NAME= USA Build Up Fleet - UK Sea Transport Support (New York -> Plymouth) - 1942
 #POPUP=
 #FLAG= 1
-#TYPE= 2
+#TYPE= 1
 #COUNTRY_ID= 115
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#SIZE= 1,5
+#SIZE= 2,5
 #BUILD_LENGTH= 1
-#LENGTH= 2
-#RANGE= 10
+#LENGTH= 6
+#RANGE= 40
 #NAVAL_CRUISE= 1
 #UNIT_ID= 0
-; Boston (offshore)
-#GOAL_POSITION= 19,100
-#DATE= 1943/01/01
-; Reykyavik (Port)
-#FRIENDLY_POSITION= 103,36
+; Plymouth (offshore)
+#GOAL_POSITION= 131,79
+; New York (offshore)
+#GOAL_POSITION= 23,105
+#GOAL_POSITION= 64,97
+#GOAL_POSITION= 93,82
+; Plymouth (off shore)
+#GOAL_POSITION= 130,81
+#GOAL_POSITION= 138,78
+; Date set to a little after Vichy Amphibious
+; events so they don't interfere with each other
+#DATE= 1943/02/25
+; New York(10,104) (Port)
+#FRIENDLY_POSITION= 10,105
 ; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
-; Allied naval units within range
-#ACTIVATE_POSITION= 103,36 [1,1] [1,1] [2]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+; 2 or more Allied naval units within range of staging tile
+#ACTIVATE_POSITION= 15,107 [1,1] [2,2] [2]
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
 }
 
-; Fleet
-{
-#NAME= USA Build Up Fleet - Prevent Overflow (St. John's -> Boston)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 1
-#LENGTH= 1
-#RANGE= 10
-#NAVAL_CRUISE= 1
-#UNIT_ID= 0
-; Boston (offshore)
-#GOAL_POSITION= 19,99
-#DATE= 1943/01/01
-; St. John's (Port)
-#FRIENDLY_POSITION= 52,89
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened
-#TACTICAL_CONDITION= 4,108 [1]
-; Allied naval units within range
-#ACTIVATE_POSITION= 52,89 [1,1] [1,1] [2]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ALLIED SCRIPTS - Build Up Fleet (USSR)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 {
 #NAME= USSR Build Up Fleet - Destroyer (Arctic Convoy) (1)
 #POPUP=
@@ -2921,1484 +4111,6 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; AXIS SCRIPTS - Build Up Fleet (Germany)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-; Fleet
-{
-#NAME= Germany Build Up Fleet - Atlantic Patrol (Konigsberg Subs) (1)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 2[1,50]
-#LINK= 0[0]
-#SIZE= 2,2
-#BUILD_LENGTH= 0
-#LENGTH= 8
-#RANGE= 5
-#NAVAL_CRUISE= 0
-#UNIT_ID= 43
-; North Atlantic
-#GOAL_POSITION= 92,46
-#GOAL_POSITION= 161,62
-#GOAL_POSITION= 154,53
-#GOAL_POSITION= 157,40
-#GOAL_POSITION= 144,38
-#GOAL_POSITION= 130,38
-#GOAL_POSITION= 116,40
-#GOAL_POSITION= 104,42
-#DATE= 1939/09/01
-; Konigsberg
-#FRIENDLY_POSITION= 186,69
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= Germany Build Up Fleet - Atlantic Patrol (Konigsberg Subs) (2)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 2[51,100]
-#LINK= 0[0]
-#SIZE= 2,2
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 5
-#NAVAL_CRUISE= 0
-#UNIT_ID= 43
-; North Atlantic
-#GOAL_POSITION= 92,46
-#GOAL_POSITION= 167,69
-#GOAL_POSITION= 167,69
-#GOAL_POSITION= 161,62
-#GOAL_POSITION= 154,53
-#GOAL_POSITION= 157,40
-#GOAL_POSITION= 144,38
-#GOAL_POSITION= 130,38
-#GOAL_POSITION= 116,40
-#GOAL_POSITION= 104,42
-#DATE= 1939/09/01
-; Konigsberg
-#FRIENDLY_POSITION= 186,69
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Fleet - Atlantic Patrol (U-32) (1)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 2[1,50]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 8
-#RANGE= 5
-#NAVAL_CRUISE= 0
-#UNIT_ID= 43
-; North Atlantic
-#GOAL_POSITION= 92,46
-#GOAL_POSITION= 154,53
-#GOAL_POSITION= 157,40
-#GOAL_POSITION= 144,38
-#GOAL_POSITION= 130,38
-#GOAL_POSITION= 116,40
-#GOAL_POSITION= 104,42
-#DATE= 1939/09/01
-; U-32 starting position
-#FRIENDLY_POSITION= 158,61
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= Germany Build Up Fleet - Atlantic Patrol (U-32) (2)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 2[51,100]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 5
-#NAVAL_CRUISE= 0
-#UNIT_ID= 43
-; North Atlantic
-#GOAL_POSITION= 92,46
-#GOAL_POSITION= 154,53
-#GOAL_POSITION= 157,40
-#GOAL_POSITION= 144,38
-#GOAL_POSITION= 130,38
-#GOAL_POSITION= 116,40
-#GOAL_POSITION= 104,42
-#DATE= 1939/09/01
-; U-32 starting position
-#FRIENDLY_POSITION= 158,61
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= Germany Build Up Fleet - Atlantic Patrol (U-30)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 5
-#NAVAL_CRUISE= 0
-#UNIT_ID= 43
-; North Atlantic
-#GOAL_POSITION= 60,80
-#DATE= 1939/09/01
-; U-30 starting position
-#FRIENDLY_POSITION= 81,59
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Fleet - Deutschland -> Konigsberg
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 18
-#RANGE= 5
-#NAVAL_CRUISE= 0
-#UNIT_ID= 38
-; Konigsberg (nearby)
-#GOAL_POSITION= 184,68
-#GOAL_POSITION= 104,42
-#GOAL_POSITION= 121,38
-#GOAL_POSITION= 138,39
-#GOAL_POSITION= 154,48
-#GOAL_POSITION= 161,61
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#DATE= 1939/09/01
-; Deutschland (start sea position)
-#FRIENDLY_POSITION= 81,58
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= Germany Build Up Fleet - Move Navy To Konigsberg (1)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 18
-#RANGE= 5
-#NAVAL_CRUISE= 0
-#UNIT_ID= 37
-; Battle Cruisers to Konigsberg
-#GOAL_POSITION= 186,69
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#DATE= 1939/09/01
-; Kiel
-#FRIENDLY_POSITION= 167,69
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= Germany Build Up Fleet - Move Navy To Konigsberg (2)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 18
-#RANGE= 8
-#NAVAL_CRUISE= 0
-#UNIT_ID= 38
-; Heavy Cruisers to Konigsberg (nearby)
-#GOAL_POSITION= 184,69
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#DATE= 1939/09/01
-; Kiel
-#FRIENDLY_POSITION= 167,69
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= Germany Build Up Fleet - Move Navy To Konigsberg (3)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 18
-#RANGE= 8
-#NAVAL_CRUISE= 0
-#UNIT_ID= 40
-; Destroyers to Konigsberg
-#GOAL_POSITION= 185,68
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#DATE= 1939/09/01
-; Kiel
-#FRIENDLY_POSITION= 167,69
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= Germany Build Up Fleet - Move Navy To Konigsberg (4)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 2,2
-#BUILD_LENGTH= 0
-#LENGTH= 8
-#RANGE= 8
-#NAVAL_CRUISE= 0
-#UNIT_ID= 43
-; Subs to Konigsberg
-#GOAL_POSITION= 186,67
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#GOAL_POSITION= 186,56
-#DATE= 1939/09/01
-; Kiel
-#FRIENDLY_POSITION= 167,69
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= Germany Build Up Fleet - Move Navy To Bordeaux (Post French Surrender) (1) (25%)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 25
-#LEVEL= 0
-#GV= 7[1,50]
-#LINK= 0[0]
-#SIZE= 4,15
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Bordeaux
-#GOAL_POSITION= 145,93
-#GOAL_POSITION= 161,61
-#GOAL_POSITION= 154,48
-#GOAL_POSITION= 138,39
-#GOAL_POSITION= 121,38
-#GOAL_POSITION= 104,42
-#GOAL_POSITION= 104,60
-#GOAL_POSITION= 108,74
-#DATE= 1940/12/01
-; Konigsberg
-#FRIENDLY_POSITION= 186,69
-; Germany(45) Axis and not surrendered AND
-; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= Germany Build Up Fleet - Move Navy To Bordeaux (Post French Surrender) (2) (25%)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 25
-#LEVEL= 0
-#GV= 7[51,100]
-#LINK= 0[0]
-#SIZE= 4,15
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Bordeaux
-#GOAL_POSITION= 145,93
-#GOAL_POSITION= 187,56
-#GOAL_POSITION= 187,56
-#GOAL_POSITION= 161,61
-#GOAL_POSITION= 154,48
-#GOAL_POSITION= 138,39
-#GOAL_POSITION= 121,38
-#GOAL_POSITION= 104,42
-#GOAL_POSITION= 104,60
-#GOAL_POSITION= 108,74
-#DATE= 1941/12/01
-; Baltic Sea
-#FRIENDLY_POSITION= 187,56
-; Germany(45) Axis and not surrendered AND
-; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= Germany Build Up Fleet - Baltic Patrol (Post USSR Entry) (50%)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 50
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,15
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Stettin
-#GOAL_POSITION= 175,71
-#GOAL_POSITION= 185,60
-#GOAL_POSITION= 189,52
-#GOAL_POSITION= 201,51
-#GOAL_POSITION= 185,45
-#GOAL_POSITION= 192,34
-#GOAL_POSITION= 185,45
-#GOAL_POSITION= 201,51
-#GOAL_POSITION= 189,52
-#GOAL_POSITION= 185,60
-#DATE= 1941/06/01
-; Stettin
-#FRIENDLY_POSITION= 175,71
-; Germany(45) Axis and not surrendered AND
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= Germany Build Up Fleet - Move Navy To Narvik (Post USSR Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,10
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Narvik
-#GOAL_POSITION= 180,19
-#GOAL_POSITION= 161,61
-#GOAL_POSITION= 154,48
-#GOAL_POSITION= 157,25
-#GOAL_POSITION= 161,18
-#DATE= 1942/08/16
-; Stettin
-; Narvik
-#FRIENDLY_POSITION= 175,71
-#FRIENDLY_POSITION= 180,19
-; Germany(45) Axis and not surrendered AND
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= Germany Build Up Fleet - Move Navy To Bordeaux (Post USSR Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,10
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Bordeaux
-#GOAL_POSITION= 145,93
-#GOAL_POSITION= 161,61
-#GOAL_POSITION= 154,48
-#GOAL_POSITION= 138,39
-#GOAL_POSITION= 121,38
-#GOAL_POSITION= 104,42
-#GOAL_POSITION= 104,60
-#GOAL_POSITION= 108,74
-#DATE= 1942/08/16
-; Stettin
-#FRIENDLY_POSITION= 175,71
-; Germany(45) Axis and not surrendered AND
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= Germany Build Up Fleet - Arctic Patrol (Post USSR Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 10
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Narvik
-#GOAL_POSITION= 180,19
-#GOAL_POSITION= 157,25
-#GOAL_POSITION= 161,18
-#DATE= 1942/08/16
-; Narvik
-#FRIENDLY_POSITION= 180,19
-; Germany(45) Axis and not surrendered AND
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= Germany Build Up Fleet - Move Navy To Danzig (Extra Units As They Arrive) (1)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 2
-#RANGE= 12
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Danzig
-#GOAL_POSITION= 183,68
-#GOAL_POSITION= 186,56
-#DATE= 1939/09/01
-; Straslund/Rostock naval area
-#FRIENDLY_POSITION= 171,69
-; Germany(45) Axis and not surrendered AND
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-; Axis naval unit in the area
-#ACTIVATE_POSITION= 171,69 [12,12] [1,1] [1]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= Germany Build Up Fleet - Move Navy To Danzig (Extra Units As They Arrive) (2)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 8
-#RANGE= 12
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Danzig
-#GOAL_POSITION= 183,67
-#GOAL_POSITION= 186,56
-#DATE= 1939/09/01
-; Straslund/Rostock naval area
-#FRIENDLY_POSITION= 171,69
-; Germany(45) Axis and not surrendered AND
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-; Axis naval unit in the area
-#ACTIVATE_POSITION= 171,69 [12,12] [1,1] [1]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Fleet - Atlantic Patrol (Send Subs To The Atlantic) (1)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 8
-#RANGE= 25
-#NAVAL_CRUISE= 0
-#UNIT_ID= 43
-; North Atlantic
-#GOAL_POSITION= 102,90
-#GOAL_POSITION= 167,69
-#GOAL_POSITION= 167,69
-#GOAL_POSITION= 161,62
-#GOAL_POSITION= 154,53
-#GOAL_POSITION= 157,40
-#GOAL_POSITION= 144,38
-#GOAL_POSITION= 130,38
-#GOAL_POSITION= 116,40
-#GOAL_POSITION= 104,42
-#DATE= 1940/01/01
-; Stettin
-#FRIENDLY_POSITION= 175,71
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Fleet - Atlantic Patrol (Send Subs To The Arctic Convoys) (1)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 6
-#RANGE= 25
-#NAVAL_CRUISE= 0
-#UNIT_ID= 43
-; North Atlantic
-#GOAL_POSITION= 151,35
-#GOAL_POSITION= 167,69
-#GOAL_POSITION= 167,69
-#GOAL_POSITION= 161,62
-#GOAL_POSITION= 154,53
-#GOAL_POSITION= 157,40
-#DATE= 1940/01/01
-; Stettin
-#FRIENDLY_POSITION= 175,71
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Fleet - Atlantic Patrol (Send Subs To The Atlantic) (2)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 6
-#RANGE= 25
-#NAVAL_CRUISE= 0
-#UNIT_ID= 43
-; North Atlantic
-#GOAL_POSITION= 141,40
-#GOAL_POSITION= 167,69
-#GOAL_POSITION= 167,69
-#GOAL_POSITION= 161,62
-#GOAL_POSITION= 154,53
-#GOAL_POSITION= 157,40
-#DATE= 1940/01/01
-; Stettin
-#FRIENDLY_POSITION= 175,71
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Fleet - Atlantic Patrol (Send Subs To The Atlantic) (3)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 6
-#RANGE= 25
-#NAVAL_CRUISE= 0
-#UNIT_ID= 43
-; North Atlantic
-#GOAL_POSITION= 151,28
-#GOAL_POSITION= 167,69
-#GOAL_POSITION= 167,69
-#GOAL_POSITION= 161,62
-#GOAL_POSITION= 154,53
-#GOAL_POSITION= 157,40
-#DATE= 1940/01/01
-; Stettin
-#FRIENDLY_POSITION= 175,71
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Fleet - Atlantic Patrol (France -> Atlantic) (1)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 3
-#RANGE= 1
-#NAVAL_CRUISE= 0
-#UNIT_ID= 43
-; North Atlantic
-#GOAL_POSITION= 97,90
-#GOAL_POSITION= 130,95
-#DATE= 1940/01/01
-; St. Nazaire
-#FRIENDLY_POSITION= 142,89
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Fleet - Atlantic Patrol (France -> Atlantic) (2)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 3
-#RANGE= 1
-#NAVAL_CRUISE= 0
-#UNIT_ID= 43
-; South Atlantic
-#GOAL_POSITION= 81,103
-#GOAL_POSITION= 130,95
-#DATE= 1940/01/01
-; St. Nazaire
-#FRIENDLY_POSITION= 142,89
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Fleet - Atlantic Patrol (France -> Atlantic) (3)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 3
-#RANGE= 1
-#NAVAL_CRUISE= 0
-#UNIT_ID= 43
-; North Atlantic
-#GOAL_POSITION= 111,83
-#GOAL_POSITION= 130,95
-#DATE= 1940/01/01
-; St. Nazaire
-#FRIENDLY_POSITION= 142,89
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Fleet - Atlantic Patrol (France -> Atlantic) (4)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 3
-#RANGE= 8
-#NAVAL_CRUISE= 0
-#UNIT_ID= 43
-; North Atlantic
-#GOAL_POSITION= 109,83
-#DATE= 1940/01/01
-; English Channel
-#FRIENDLY_POSITION= 137,82
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= Germany Build Up Fleet - Atlantic Patrol (North Sea Subs - Recovery) (1)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 8
-#RANGE= 18
-#NAVAL_CRUISE= 0
-#UNIT_ID= 43
-; North Atlantic
-#GOAL_POSITION= 61,55
-#GOAL_POSITION= 157,40
-#GOAL_POSITION= 144,38
-#GOAL_POSITION= 130,38
-#GOAL_POSITION= 116,40
-#GOAL_POSITION= 104,42
-#DATE= 1939/09/01
-; North Sea
-#FRIENDLY_POSITION= 151,61
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= Germany Build Up Fleet - Atlantic Patrol (North Sea Subs - Recovery) (2)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 18
-#NAVAL_CRUISE= 0
-#UNIT_ID= 43
-; North Atlantic
-#GOAL_POSITION= 62,54
-#GOAL_POSITION= 157,40
-#GOAL_POSITION= 144,38
-#GOAL_POSITION= 130,38
-#GOAL_POSITION= 116,40
-#GOAL_POSITION= 104,42
-#DATE= 1939/09/01
-; North Sea
-#FRIENDLY_POSITION= 151,61
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= Germany Build Up Fleet - Atlantic Patrol (North Sea Subs - Recovery) (3)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 18
-#NAVAL_CRUISE= 0
-#UNIT_ID= 43
-; North Atlantic
-#GOAL_POSITION= 63,53
-#GOAL_POSITION= 157,40
-#GOAL_POSITION= 144,38
-#GOAL_POSITION= 130,38
-#GOAL_POSITION= 116,40
-#GOAL_POSITION= 104,42
-#DATE= 1939/09/01
-; North Sea
-#FRIENDLY_POSITION= 151,61
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Fleet - Med Patrol (Sub)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 30
-#NAVAL_CRUISE= 0
-#UNIT_ID= 43
-; Mediterranean
-#GOAL_POSITION= 180,106
-#GOAL_POSITION= 180,116
-#GOAL_POSITION= 196,119
-#GOAL_POSITION= 208,120
-#GOAL_POSITION= 177,118
-#GOAL_POSITION= 166,109
-#GOAL_POSITION= 141,114
-#DATE= 1941/09/02
-; Palermo (Port Area)
-#FRIENDLY_POSITION= 173,107
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Fleet - Fleet (Norway -> Bay of Biscay)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 15
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Bay of Biscay
-#GOAL_POSITION= 138,91
-#GOAL_POSITION= 114,44
-#DATE= 1941/01/01
-; Bergen
-#FRIENDLY_POSITION= 156,51
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Fleet - Fleet (Gibraltar -> Atlantic) (1)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 15
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; North Atlantic
-#GOAL_POSITION= 84,72
-#DATE= 1940/01/01
-; Gibraltar (Port)(137,114)
-#FRIENDLY_POSITION= 137,114
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Fleet - Fleet (Gibraltar -> Atlantic) (2)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 15
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; North Atlantic
-#GOAL_POSITION= 100,65
-#DATE= 1940/01/01
-; Gibraltar (Port)(137,114)
-#FRIENDLY_POSITION= 137,114
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; AXIS SCRIPTS - Build Up Fleet (Italy)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-; Destroyer
-{
-#NAME= Italy Build Up Fleet - Destroyer Venice (1939)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-#NAVAL_CRUISE= 0
-#UNIT_ID= 40
-; Ancona (Port)
-#GOAL_POSITION= 172,94
-#DATE= 1939/09/01
-; Ancona
-#FRIENDLY_POSITION= 174,98
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Rome(171,101) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 171,101 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Sub
-{
-#NAME= Italy Build Up Fleet - Sub -> Ancona (1939)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 22
-#RANGE= 5
-#NAVAL_CRUISE= 0
-#UNIT_ID= 43
-; Ancona (Port)
-#GOAL_POSITION= 174,98
-#DATE= 1939/09/01
-; Palermo
-#FRIENDLY_POSITION= 174,109
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Rome(171,101) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 171,101 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Cruiser
-{
-#NAME= Italy Build Up Fleet - Cruiser -> Trieste (1939)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 3
-#RANGE= 5
-#NAVAL_CRUISE= 0
-#UNIT_ID= 39
-; Trieste (Port)
-#GOAL_POSITION= 172,93
-#DATE= 1939/09/01
-; Genoa
-#FRIENDLY_POSITION= 164,96
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Rome(171,101) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 171,101 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Battleship
-{
-#NAME= Italy Build Up Fleet - Battleship -> Venice (1939)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 2
-#RANGE= 5
-#NAVAL_CRUISE= 0
-#UNIT_ID= 36
-; Venice (Port)
-#GOAL_POSITION= 171,94
-#DATE= 1939/09/01
-; Taranto(180,105)
-#FRIENDLY_POSITION= 180,105
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Rome(171,101) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 171,101 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Italy Build Up Fleet - Med Patrol (Sub)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 30
-#NAVAL_CRUISE= 0
-#UNIT_ID= 43
-; Mediterranean
-#GOAL_POSITION= 173,107
-#GOAL_POSITION= 180,106
-#GOAL_POSITION= 180,116
-#GOAL_POSITION= 196,119
-#GOAL_POSITION= 208,120
-#GOAL_POSITION= 177,118
-#GOAL_POSITION= 166,109
-#GOAL_POSITION= 141,114
-#DATE= 1940/01/01
-; Palermo (Port Area)
-#FRIENDLY_POSITION= 173,107
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fleet
-{
-#NAME= Italy Build Up Fleet - Venice (1940-41)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 5,12
-#BUILD_LENGTH= 0
-#LENGTH= 3
-#RANGE= 25
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Venice (Port)
-#GOAL_POSITION= 171,94
-#DATE= 1940/01/01
-; Pola (Port)
-; Rome(171,101)
-; Berlin(173,74)
-; Brest
-; Paris(151,84)
-; Bordeaux
-; Palermo
-; Taranto
-; Benghazi
-; Belgrade (pulls Italian units away early otherwise)
-; Ljubljana (pulls Italian units away early otherwise)
-#FRIENDLY_POSITION= 174,95
-#FRIENDLY_POSITION= 171,101
-#FRIENDLY_POSITION= 173,74
-#FRIENDLY_POSITION= 138,86
-#FRIENDLY_POSITION= 151,84
-#FRIENDLY_POSITION= 151,84
-#FRIENDLY_POSITION= 173,109
-#FRIENDLY_POSITION= 179,104
-#FRIENDLY_POSITION= 186,122
-#FRIENDLY_POSITION= 187,94
-#FRIENDLY_POSITION= 176,91
-; France(40) Allied and surrendered AND
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened AND
-; Rome not tactically threatened AND
-; Paris(151,84) not tactically threatened AND
-#TACTICAL_CONDITION= 173,74 [1]
-#TACTICAL_CONDITION= 171,101 [1]
-#TACTICAL_CONDITION= 151,84 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Italy Build Up Fleet - Venice -> Tobruk (1941) (1)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 5[1,75]
-#LINK= 0[0]
-#SIZE= 5,12
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 25
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Tobruk (Port)
-#GOAL_POSITION= 195,121
-#DATE= 1941/06/01
-; Venice
-#FRIENDLY_POSITION= 171,94
-; France(40) Allied and surrendered AND
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Rome(171,101) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 171,101 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Allied naval presence nearby
-#CANCEL_POSITION= 194,118 [8,8] [7,7] [2]
-#CANCEL_POSITION= 183,112 [8,8] [7,7] [2]
-}
-
-{
-#NAME= Italy Build Up Fleet - Venice -> Tobruk (1941) (2)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 5[76,100]
-#LINK= 0[0]
-#SIZE= 5,12
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 25
-#NAVAL_CRUISE= 0
-#UNIT_ID= 0
-; Tobruk (Port)
-#GOAL_POSITION= 195,121
-#DATE= 1941/11/01
-; Venice
-#FRIENDLY_POSITION= 171,94
-; France(40) Allied and surrendered AND
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Rome(171,101) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 171,101 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Allied naval presence nearby
-#CANCEL_POSITION= 194,118 [8,8] [7,7] [2]
-#CANCEL_POSITION= 183,112 [8,8] [7,7] [2]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;                   Fall Weiss II scripts
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 {
 #NAME= British Empire Build Up Fleet - Liberate UK Amphibious Support - Cardiff (DE 1)
 #POPUP=
@@ -4439,4 +4151,291 @@
 #ACTIVATE_POSITION= 9,109 [1,1] [4,4] [2]
 ; 1 Axis unit within range of Washington DC(4,108)
 #CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+{
+#NAME= UK Build Up Fleet - Liberate UK Amphibious Support - Cardiff (DE 1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 1[1]
+#SIZE= 2,5
+#BUILD_LENGTH= 2
+#LENGTH= 15
+#RANGE= 25
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Halifax (offshore)
+#GOAL_POSITION= 34,99
+; Halifax (offshore)
+#GOAL_POSITION= 39,108
+#GOAL_POSITION= 60,110
+#GOAL_POSITION= 81,106
+#GOAL_POSITION= 102,96
+#GOAL_POSITION= 123,85
+#GOAL_POSITION= 130,82
+; Plymouth (offshore)
+#GOAL_POSITION= 138,78
+#GOAL_POSITION= 133,82
+#GOAL_POSITION= 133,78
+#DATE= 1941/09/23
+; Halifax (Port)
+#FRIENDLY_POSITION= 30,96
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened 
+#TACTICAL_CONDITION= 4,108 [1]
+; 4 or more Allied naval units within range of staging tile
+#ACTIVATE_POSITION= 9,109 [1,1] [4,4] [2]
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+{
+#NAME= UK Build Up Fleet - Liberate UK Amphibious Support - Ft. William (DE 1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 1[1]
+#SIZE= 2,8
+#BUILD_LENGTH= 2
+#LENGTH= 15
+#RANGE= 25
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Halifax (offshore)
+#GOAL_POSITION= 34,98
+; Halifax (offshore)
+#GOAL_POSITION= 40,105
+#GOAL_POSITION= 60,99
+#GOAL_POSITION= 81,88
+#GOAL_POSITION= 102,78
+#GOAL_POSITION= 122,67
+; Ft. William (offshore)
+#GOAL_POSITION= 131,63
+#GOAL_POSITION= 131,63
+#DATE= 1942/07/12
+; Halifax (Port)
+#FRIENDLY_POSITION= 30,96
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened 
+#TACTICAL_CONDITION= 4,108 [1]
+; 3 or more Allied naval units within range of staging tile
+#ACTIVATE_POSITION= 10,108 [1,1] [3,3] [2]
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+{
+#NAME= UK Build Up Fleet - Liberate UK Patrol - Cardiff (DE 1)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 1[1]
+#SIZE= 2,5
+#BUILD_LENGTH= 1
+#LENGTH= 12
+#RANGE= 40
+#NAVAL_CRUISE= 0
+#UNIT_ID= 0
+; Plymouth (offshore)
+#GOAL_POSITION= 133,78
+; English Channel
+#GOAL_POSITION= 136,83
+#GOAL_POSITION= 136,75
+#GOAL_POSITION= 131,64
+#GOAL_POSITION= 129,60
+#GOAL_POSITION= 136,83
+#GOAL_POSITION= 136,75
+#GOAL_POSITION= 131,64
+#GOAL_POSITION= 129,60
+#GOAL_POSITION= 136,83
+#GOAL_POSITION= 136,75
+#GOAL_POSITION= 131,64
+#GOAL_POSITION= 129,60
+#DATE= 1941/09/23
+; Irish Sea
+#FRIENDLY_POSITION= 136,71
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened 
+#TACTICAL_CONDITION= 4,108 [1]
+; 3 or more Allied naval units within range of staging tile
+#ACTIVATE_POSITION= 9,109 [1,1] [3,3] [2]
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+{
+#NAME= USA Build Up Fleet - Liberate UK Amphibious Support - Cardiff (DE 1) 
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 1[1]
+#SIZE= 2,10
+#BUILD_LENGTH= 1
+#LENGTH= 13
+#RANGE= 40
+#NAVAL_CRUISE= 1
+#UNIT_ID= 0
+; New York (offshore)
+#GOAL_POSITION= 19,110
+; New York (offshore)
+#GOAL_POSITION= 19,108
+#GOAL_POSITION= 39,108
+#GOAL_POSITION= 60,110
+#GOAL_POSITION= 81,106
+#GOAL_POSITION= 102,96
+#GOAL_POSITION= 123,85
+#GOAL_POSITION= 130,82
+; Plymouth (offshore)
+#GOAL_POSITION= 138,78
+#GOAL_POSITION= 133,82
+#GOAL_POSITION= 133,78
+#DATE= 1941/09/23
+; New York(10,104) (Port)
+#FRIENDLY_POSITION= 10,105
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened
+#TACTICAL_CONDITION= 4,108 [1]
+; 5 or more Allied naval units within range of staging tile
+#ACTIVATE_POSITION= 9,109 [1,1] [5,5] [2]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Build Up Fleet - Liberate UK Amphibious Support - Ft. William (DE 1) 
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 1[1]
+#SIZE= 2,10
+#BUILD_LENGTH= 1
+#LENGTH= 13
+#RANGE= 40
+#NAVAL_CRUISE= 1
+#UNIT_ID= 0
+; New York (offshore)
+#GOAL_POSITION= 19,108
+; New York (offshore)
+#GOAL_POSITION= 19,108
+#GOAL_POSITION= 40,105
+#GOAL_POSITION= 60,99
+#GOAL_POSITION= 81,88
+#GOAL_POSITION= 102,78
+#GOAL_POSITION= 122,67
+; Ft. William (offshore)
+#GOAL_POSITION= 131,63
+#GOAL_POSITION= 131,63
+#DATE= 1942/07/12
+; New York(10,104) (Port)
+#FRIENDLY_POSITION= 10,105
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened
+#TACTICAL_CONDITION= 4,108 [1]
+; 5 or more Allied naval units within range of staging tile
+#ACTIVATE_POSITION= 10,108 [1,1] [5,5] [2]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Build Up Fleet - Liberate UK Transport Support - Glasgow (DE 1)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 1[1]
+#SIZE= 2,4
+#BUILD_LENGTH= 1
+#LENGTH= 8
+#RANGE= 40
+#NAVAL_CRUISE= 1
+#UNIT_ID= 0
+; New York (offshore)
+#GOAL_POSITION= 18,107
+; New York (offshore)
+#GOAL_POSITION= 19,108
+#GOAL_POSITION= 61,96
+#GOAL_POSITION= 101,74
+; Belfast (offshore)
+#GOAL_POSITION= 133,66
+#GOAL_POSITION= 133,66
+#DATE= 1941/01/20
+; New York(10,104) (Port)
+; Glasgow (Port)
+#FRIENDLY_POSITION= 10,105
+#FRIENDLY_POSITION= 137,65
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened
+#TACTICAL_CONDITION= 4,108 [1]
+; 2 or more Allied naval units within range of staging tile
+#ACTIVATE_POSITION= 12,110 [1,1] [2,2] [2]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Build Up Fleet - Liberate UK Transport Support - Inverness (DE 1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 1[1]
+#SIZE= 2,15
+#BUILD_LENGTH= 1
+#LENGTH= 8
+#RANGE= 40
+#NAVAL_CRUISE= 1
+#UNIT_ID= 0
+; New York (offshore)
+#GOAL_POSITION= 19,107
+; New York (offshore)
+#GOAL_POSITION= 19,108
+#GOAL_POSITION= 61,96
+#GOAL_POSITION= 101,74
+; Scapa Flow (offshore)
+#GOAL_POSITION= 144,65
+#GOAL_POSITION= 145,59
+#DATE= 1941/04/26
+; Set friendly positions
+; New York(10,104) (Port)
+; Inverness (Port)
+#FRIENDLY_POSITION= 10,105
+#FRIENDLY_POSITION= 139,59
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened
+#TACTICAL_CONDITION= 4,108 [1]
+; 2 or more Allied naval units within range of staging tile
+#ACTIVATE_POSITION= 12,110 [1,1] [2,2] [2]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }

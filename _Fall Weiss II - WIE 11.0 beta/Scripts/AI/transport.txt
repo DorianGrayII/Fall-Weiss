@@ -27,27 +27,42 @@
 ;        3 = Single check, only on #DATE
 ;
 ; #LEVEL= Value range [-1, 4]
-;      What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
-;     -1 = a script that should only fire for AI friendly controlled majors on your turn
-;      0 = Green
-;      1 = Novice
-;      2 = Intermediate
-;      3 = Veteran
-;      4 = Expert
-; #GV= Does the event activate based on the Global Variable values assigned?
-;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
-;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
-;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
-;      Example B - #GV= 4[71,100] will trigger 30% per game
+;       What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;       -1 = a script that should only fire for AI friendly controlled majors on your turn
+;        0 = Green
+;        1 = Novice
+;        2 = Intermediate
+;        3 = Veteran
+;        4 = Expert
+;
+; #GV=   Does the event activate based on the Global Variable values assigned?
+;        Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
+;        Format: GV [min, max]
+;                GV range [1, 10] 
+;                min range [1, 100] 
+;                max range [min+1, 100]
+;
+;        Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;        Example B - #GV= 4[71,100] will trigger 30% per game
+;
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
-;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
+;        Format: decision[response]
+;                decision range [1, 1100]
+;                response range [0, 1]
+;                   0 = NO
+;                   1 = YES
+;
 ;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
 ;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
 ;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
-; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
-; #COUNTRY_ID=  Value range [0, 120]
-;               Country ID that will be owner of this event
+;
+; #TRIGGER=     Value range [0, 100]
+;               Percentage chance that the event will occur
+;
+; #COUNTRY_ID=  Value range [1, 120]
+;               Country that will be owner of this event
+;
 ; #SIZE= How many units should be assigned to this plan?
 ;        Format: min_size, max_size
 ; #BUILD_LENGTH= How many game turns (Axis or Allied) do you want the build up period of the plan to last?
@@ -55,10 +70,14 @@
 ; #RANGE= How many hexes should we search for units to fulfill this plan?
 ;         Range checks from both the first listed #FRIENDLY_POSITION and then the #GOAL_POSITION if needed.
 ; #GOAL_POSITION= What is the map position that is the objective of this plan?
-; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
+;
+; #DATE=          Date requirement for the event
+;                 Format: yyyy/mm/dd
+;
 ; #STEAL= Set priority by stealing units from other plans
-;         Values: [0, 3]; False= 0; Steal_Offensive= 1; Steal_Defensive= 2; Steal_Offensive_Or_Defensive= 3)
+;         Values: [0, 3]; (False= 0; Steal_Offensive= 1; Steal_Defensive= 2; Steal_Offensive_Or_Defensive= 3)
 ; #FRIENDLY_POSITION= Positions that must be under friendly control in order for event to occur
+;
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
 ;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
 ;                              country_id range [1, 120]
@@ -136,11 +155,12 @@
 ;        e.g., a city for a GUARD script, a port for a TRANSPORT script, etc.  All AI scripts require that the first 
 ;        #FRIENDLY_POSITION be a land tile, with the exception of Fleet scripts.
 ;
-; #VARIABLE_CONDITION - More than one #VARIABLE_CONDITION can be set.  Under #VARIABLE_CONDITION you can also list 
-; countries that have not yet fully entered the war.  For example by listing an activation % less than 100% you
-; are providing a check where the #VARIABLE_CONDITION country must meet a minimum activation % (but is
-; not yet at 100%) in order for the event to occur.  To check for a fully activated country simply
-; list the activation % at 100%.  Each #VARIABLE_CONDITION line will be read using AND logic.
+; #VARIABLE_CONDITION - More than one can be set. You can also list countries that have not yet fully 
+;   entered the war. For example by listing an activation % less than 100% you are providing a check 
+;   where the country must meet a minimum activation % (but is not yet at 100%) in order for the event 
+;   to occur. To check for a fully activated country simply list the activation % at 100%.
+;
+; Each #VARIABLE_CONDITION line will be read using AND logic.
 ;
 ; More than one #TACTICAL_CONDITION can be set.  #TACTICAL_CONDITION refers to the current side, i.e.
 ; country associated with this plan having tactical superiority over the specified map position.
@@ -169,6 +189,708 @@
 ; Use the reference values provided for SURRENDER flags and not names
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; AXIS SCRIPTS - Build Up Transport (Germany)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Transport
+{
+#NAME= Germany Build Up Transport - Sealion
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 2,5
+#BUILD_LENGTH= 3
+#LENGTH= 8
+#RANGE= 25
+#NAVAL_CRUISE= 0
+; London(147,77) (Port)
+#GOAL_POSITION= 148,77
+#DATE= 1939/09/01
+#STEAL= 3
+; Brussels
+; London(147,77)
+; London(147,77) (Port)
+#FRIENDLY_POSITION= 155,80
+#FRIENDLY_POSITION= 147,77
+#FRIENDLY_POSITION= 148,77
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Brussels not tactically threatened
+#TACTICAL_CONDITION= 155,80 [3]
+; 1 Axis units in London
+#ACTIVATE_POSITION= 147,77 [0,0] [1,1] [1]
+; 5 Allied units within 2 hexes of London
+#CANCEL_POSITION= 147,77 [2,2] [5,5] [2]
+}
+
+; Italy prepares to send units to Benghazi:
+{
+#NAME= Italy Build Up Transport - Benghazi
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 5[1,75]
+#LINK= 0[0]
+#SIZE= 2,4
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Benghazi
+#GOAL_POSITION= 185,122
+#DATE= 1941/03/01
+#STEAL= 1
+; Rome(171,101)
+; Berlin(173,74)
+; Br; Brest(138,86)est
+; Paris(151,84)
+; Bordeaux
+; Palermo
+; Taranto
+; Benghazi
+; Belgrade (pulls Italian units away early otherwise)
+; Ljubljana (pulls Italian units away early otherwise)
+#FRIENDLY_POSITION= 171,101
+#FRIENDLY_POSITION= 173,74
+#FRIENDLY_POSITION= 138,86
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 173,109
+#FRIENDLY_POSITION= 179,104
+#FRIENDLY_POSITION= 186,122
+#FRIENDLY_POSITION= 187,94
+#FRIENDLY_POSITION= 176,91
+; France(40) Allied and surrendered AND
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Berlin(173,74) not tactically threatened AND
+; Rome not tactically threatened AND
+; Paris(151,84) not tactically threatened AND
+; Benghazi not tactically threatened (by sea) AND
+; Taranto not tactically threatened (by sea)
+#TACTICAL_CONDITION= 173,74 [1]
+#TACTICAL_CONDITION= 171,101 [1]
+#TACTICAL_CONDITION= 151,84 [1]
+#TACTICAL_CONDITION= 186,122 [3]
+#TACTICAL_CONDITION= 180,105 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Allied naval presence nearby
+#CANCEL_POSITION= 194,118 [8,8] [7,7] [2]
+#CANCEL_POSITION= 183,112 [8,8] [7,7] [2]
+}
+
+; Italy prepares to send units to Tobruk:
+{
+#NAME= Italy Build Up Transport - Tirana -> Tobruk (Pre-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[34,66]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 5
+#NAVAL_CRUISE= 1
+; Tobruk
+#GOAL_POSITION= 195,121
+#DATE= 1940/05/06
+#STEAL= 3
+; Tirana
+#FRIENDLY_POSITION= 185,102
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Rome not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 171,101 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; UK reinforces France
+{
+#NAME= UK Build Up Transport (Canada) - Brest (Continual Reinforcement In France)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 21
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Brest (Port)
+#GOAL_POSITION= 138,87
+; Date set to post arrival of US HQ/Navy via P/Q
+#DATE= 1942/06/10
+#STEAL= 0
+; Sheffield
+; Brest(138,86)
+; Lorient
+; St. Malo
+; Rennes
+#FRIENDLY_POSITION= 144,73
+#FRIENDLY_POSITION= 138,86
+#FRIENDLY_POSITION= 140,87
+#FRIENDLY_POSITION= 141,85
+#FRIENDLY_POSITION= 143,86
+; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+; UK reinforces France
+{
+#NAME= UK Build Up Transport (Canada) - Cherbourg (Continual Reinforcement In France)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 21
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Cherbourg (Port)
+#GOAL_POSITION= 144,82
+; Date set to post arrival of US HQ/Navy via P/Q
+#DATE= 1942/06/10
+#STEAL= 0
+; Sheffield
+; Cherbourg
+#FRIENDLY_POSITION= 144,73
+#FRIENDLY_POSITION= 143,82
+#FRIENDLY_POSITION= 146,84
+#FRIENDLY_POSITION= 147,82
+#FRIENDLY_POSITION= 143,86
+#FRIENDLY_POSITION= 141,85
+; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+; Canada builds up in Egypt:
+{
+#NAME= UK Build Up Transport (Canada) - Egypt
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 21
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 7[51,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Suez(Port)
+#GOAL_POSITION= 210,127
+#GOAL_POSITION= 49,96
+#GOAL_POSITION= 95,135
+#DATE= 1939/09/01
+#STEAL= 0
+; Halifax
+;  Ottawa
+; Suez (Port)
+; El Alamein
+; Alexandria
+; Cairo(208,126)
+#FRIENDLY_POSITION= 30,95
+#FRIENDLY_POSITION= 6,93
+#FRIENDLY_POSITION= 210,127
+#FRIENDLY_POSITION= 204,125
+#FRIENDLY_POSITION= 206,124
+#FRIENDLY_POSITION= 208,126
+; Canada(21) Allied and not surrendered
+#VARIABLE_CONDITION= 21 [2] [100] [0]
+; Ottawa not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 30,95 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Allies hold Tripoli
+#CANCEL_POSITION= 172,121 [0,0] [1,1] [2]
+; Axis units in range of Suez
+#CANCEL_POSITION= 209,125 [2,2] [1,1] [1]
+}
+
+
+; UK sends troops from Egypt to Libya:
+{
+#NAME= UK Build Up Transport (Canada) - Egypt -> Libya (Benghazi)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 21
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,4
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 15
+#NAVAL_CRUISE= 1
+; Benghazi(Port)
+#GOAL_POSITION= 185,122
+#DATE= 1940/01/01
+#STEAL= 3
+; Jerusalem
+; Benghazi
+#FRIENDLY_POSITION= 216,123
+#FRIENDLY_POSITION= 186,122
+; Canada(21) Allied and not surrendered
+#VARIABLE_CONDITION= 21 [2] [100] [0]
+; Ottawa not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 6,93 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Canada sends troops from Egypt to Libya:
+{
+#NAME= UK Build Up Transport (Canada) - Egypt -> Libya (Tripoli)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 21
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,4
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 15
+#NAVAL_CRUISE= 1
+; Tripoli (Port)
+#GOAL_POSITION= 172,120
+#DATE= 1940/01/01
+#STEAL= 3
+; Jerusalem
+; Tripoli(172,121)
+#FRIENDLY_POSITION= 216,123
+#FRIENDLY_POSITION= 172,121
+; Canada(21) Allied and not surrendered
+#VARIABLE_CONDITION= 21 [2] [100] [0]
+; Ottawa not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 6,93 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Canada builds up in the UK:
+; Suez(210,126) checks failed
+{
+#NAME= UK Build Up Transport (Canada) - Glasgow
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 21
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 0
+#LENGTH= 7
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Glasgow
+#GOAL_POSITION= 137,65
+#GOAL_POSITION= 49,96
+#GOAL_POSITION= 69,93
+#DATE= 1940/01/01
+#STEAL= 0
+; Halifax
+;  Ottawa
+; Glasgow
+#FRIENDLY_POSITION= 30,95
+#FRIENDLY_POSITION= 6,93
+#FRIENDLY_POSITION= 137,65
+; Canada(21) Allied and not surrendered
+#VARIABLE_CONDITION= 21 [2] [100] [0]
+; Ottawa not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 6,93 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; UK sends troops from Libya to Italy:
+{
+#NAME= UK Build Up Transport (Canada) - Tripoli -> Civitavecchia
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 21
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,4
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 10
+#NAVAL_CRUISE= 1
+; Civitavecchia (Port)
+#GOAL_POSITION= 169,101
+#DATE= 1940/01/01
+#STEAL= 3
+; Gabes
+; Tripoli
+; Tunis
+#FRIENDLY_POSITION= 166,119
+#FRIENDLY_POSITION= 172,121
+#FRIENDLY_POSITION= 167,112
+; Canada(21) Allied and not surrendered
+#VARIABLE_CONDITION= 21 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; UK sends troops from Libya to Italy:
+{
+#NAME= UK Build Up Transport (Canada) - Tripoli -> Naples
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 21
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,4
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 10
+#NAVAL_CRUISE= 1
+; Naples (Port)
+#GOAL_POSITION= 175,104
+#DATE= 1940/01/01
+#STEAL= 3
+; Gabes
+; Tripoli
+; Tunis
+#FRIENDLY_POSITION= 166,119
+#FRIENDLY_POSITION= 172,121
+#FRIENDLY_POSITION= 167,112
+; Canada(21) Allied and not surrendered
+#VARIABLE_CONDITION= 21 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; UK sends troops from Libya to Italy:
+{
+#NAME= UK Build Up Transport (Canada) - Tripoli -> Syracuse
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 21
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,4
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 10
+#NAVAL_CRUISE= 1
+; Syracuse (Port)
+#GOAL_POSITION= 177,112
+#DATE= 1940/01/01
+#STEAL= 3
+; Gabes
+; Tripoli
+; Tunis
+#FRIENDLY_POSITION= 166,119
+#FRIENDLY_POSITION= 172,121
+#FRIENDLY_POSITION= 167,112
+; Canada(21) Allied and not surrendered
+#VARIABLE_CONDITION= 21 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; UK reinforces France
+{
+#NAME= UK Build Up Transport - Bordeaux (Continual Reinforcement In France)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,8
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Bordeaux (Port)
+#GOAL_POSITION= 145,93
+; Date set to a little after Vichy Amphibious 
+; events so they don't interfere with each other
+#DATE= 1942/08/09
+#STEAL= 0
+; Sheffield
+; Bordeaux (Port)
+#FRIENDLY_POSITION= 144,73
+#FRIENDLY_POSITION= 145,93
+; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+; Allies near Bordeaux
+#ACTIVATE_POSITION= 145,94 [1,1] [1,1] [2]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+; UK reinforces France
+{
+#NAME= UK Build Up Transport - Brest (Continual Reinforcement In France)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,8
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Brest (Port)
+#GOAL_POSITION= 138,87
+; Date set to post arrival of US HQ/Navy via P/Q
+#DATE= 1942/06/10
+#STEAL= 0
+; Sheffield
+; Brest(138,86)
+; Lorient
+; St. Malo
+; Rennes
+#FRIENDLY_POSITION= 144,73
+#FRIENDLY_POSITION= 138,86
+#FRIENDLY_POSITION= 140,87
+#FRIENDLY_POSITION= 141,85
+#FRIENDLY_POSITION= 143,86
+; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+; UK reinforces France
+{
+#NAME= UK Build Up Transport - Cherbourg (Continual Reinforcement In France)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,8
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Cherbourg (Port)
+#GOAL_POSITION= 144,82
+; Date set to post arrival of US HQ/Navy via P/Q
+#DATE= 1942/06/10
+#STEAL= 0
+; Sheffield
+; Cherbourg
+#FRIENDLY_POSITION= 144,73
+#FRIENDLY_POSITION= 143,82
+#FRIENDLY_POSITION= 146,84
+#FRIENDLY_POSITION= 147,82
+#FRIENDLY_POSITION= 143,86
+#FRIENDLY_POSITION= 141,85
+; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+; UK sends troops from Egypt to Libya:
+{
+#NAME= UK Build Up Transport - Egypt -> Libya (Benghazi)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,4
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 15
+#NAVAL_CRUISE= 1
+; Benghazi(Port)
+#GOAL_POSITION= 185,122
+#DATE= 1940/01/01
+#STEAL= 3
+; Jerusalem
+; Cairo(208,126)
+; Alexandria
+; El Alamein
+; Tobruk(194,122)
+; Benghazi
+#FRIENDLY_POSITION= 216,123
+#FRIENDLY_POSITION= 208,126
+#FRIENDLY_POSITION= 206,124
+#FRIENDLY_POSITION= 204,125
+#FRIENDLY_POSITION= 194,122
+#FRIENDLY_POSITION= 186,122
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; UK sends troops from Egypt to Libya:
+{
+#NAME= UK Build Up Transport - Egypt -> Libya (Tripoli)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,4
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 15
+#NAVAL_CRUISE= 1
+; Tripoli (Port)
+#GOAL_POSITION= 172,120
+#DATE= 1940/01/01
+#STEAL= 3
+; Jerusalem
+; Cairo(208,126)
+; Alexandria
+; El Alamein
+; Tobruk(194,122)
+; Tripoli(172,121)
+#FRIENDLY_POSITION= 216,123
+#FRIENDLY_POSITION= 208,126
+#FRIENDLY_POSITION= 206,124
+#FRIENDLY_POSITION= 204,125
+#FRIENDLY_POSITION= 194,122
+#FRIENDLY_POSITION= 172,121
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; UK evacuates BEF from France:
+{
+#NAME= UK Build Up Transport - Evacuate BEF -> Egypt
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 4[51,100]
+#LINK= 0[0]
+#SIZE= 1,3
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Suez(Port)
+#GOAL_POSITION= 210,127
+#GOAL_POSITION= 95,135
+#DATE= 1940/04/03
+#STEAL= 3
+; Cherbourg
+#FRIENDLY_POSITION= 143,82
+#FRIENDLY_POSITION= 146,84
+#FRIENDLY_POSITION= 147,82
+#FRIENDLY_POSITION= 143,86
+#FRIENDLY_POSITION= 141,85
+; UK(112) Allied and not surrendered AND
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; 1 Axis unit within 1 hexes of Lille(153,80) OR
+; 2 Axis units within 1 hexes of Ypres southeast
+#ACTIVATE_POSITION= 153,80 [1,1] [1,1] [1]
+#ACTIVATE_POSITION= 154,79 [1,1] [2,2] [1]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; COUNTRY ID REFERENCE VALUES
@@ -384,93 +1106,185 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-; UK evacuates BEF from France:
 {
-#NAME= UK Build Up Transport - Evacuate BEF -> Egypt
+#NAME= UK Build Up Transport - Halifax -> Bristol (Build Up In England)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
-#GV= 4[51,100]
+#GV= 1[1,100]
 #LINK= 0[0]
-#SIZE= 1,3
+#SIZE= 3,5
+#BUILD_LENGTH= 1
+#LENGTH= 7
+#RANGE= 50
+#NAVAL_CRUISE= 1
+; Bristol(142,78) (Port)
+#GOAL_POSITION= 141,77
+; Date set to post arrival of US HQ/Navy via P/Q
+#DATE= 1942/06/10
+#STEAL= 0
+; Halifax
+; Bristol
+#FRIENDLY_POSITION= 30,95
+#FRIENDLY_POSITION= 141,77
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened 
+#TACTICAL_CONDITION= 4,108 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+{
+#NAME= UK Build Up Transport - Halifax -> Glasgow (Build Up In England)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,5
+#BUILD_LENGTH= 1
+#LENGTH= 7
+#RANGE= 50
+#NAVAL_CRUISE= 1
+; Glasgow
+#GOAL_POSITION= 137,65
+; Date set to post arrival of US HQ/Navy via P/Q
+#DATE= 1942/06/10
+#STEAL= 0
+; Halifax
+; Bristol
+#FRIENDLY_POSITION= 30,95
+#FRIENDLY_POSITION= 137,65
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened 
+#TACTICAL_CONDITION= 4,108 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+{
+#NAME= UK Build Up Transport - Halifax -> Plymouth (Build Up In England)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,8
+#BUILD_LENGTH= 1
+#LENGTH= 7
+#RANGE= 50
+#NAVAL_CRUISE= 1
+; Plymouth
+#GOAL_POSITION= 137,80
+; Date set to post arrival of US HQ/Navy via P/Q
+#DATE= 1942/06/10
+#STEAL= 0
+; Halifax
+; Bristol
+#FRIENDLY_POSITION= 30,95
+#FRIENDLY_POSITION= 141,77
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened 
+#TACTICAL_CONDITION= 4,108 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+; UK reinforces Portugal
+{
+#NAME= UK Build Up Transport - Lagos (Continual Reinforcement In Portugal)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,8
 #BUILD_LENGTH= 0
 #LENGTH= 10
 #RANGE= 25
 #NAVAL_CRUISE= 1
-; Suez(Port)
-#GOAL_POSITION= 210,127
-#GOAL_POSITION= 95,135
-#DATE= 1940/04/03
-#STEAL= 3
-; Cherbourg
-#FRIENDLY_POSITION= 143,82
-#FRIENDLY_POSITION= 146,84
+; Lagos (Port)
+#GOAL_POSITION= 131,112
+; Date set to a little after Vichy Amphibious 
+; events so they don't interfere with each other
+#DATE= 1942/08/09
+#STEAL= 0
+; Sheffield
+; Lagos (Port)
+#FRIENDLY_POSITION= 144,73
+#FRIENDLY_POSITION= 131,112
+; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+; Allies near Lagos
+#ACTIVATE_POSITION= 130,112 [1,1] [1,1] [2]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+; UK reinforces France
+{
+#NAME= UK Build Up Transport - Le Havre (Continual Reinforcement In France)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,8
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Le Havre (Port)
+#GOAL_POSITION= 146,82
+; Date set to post arrival of US HQ/Navy via P/Q
+#DATE= 1942/06/10
+#STEAL= 0
+; Sheffield
+; Le Havre
+#FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 147,82
-#FRIENDLY_POSITION= 143,86
-#FRIENDLY_POSITION= 141,85
-; UK(112) Allied and not surrendered AND
-; USSR(116) Allied (not fully active) and not surrendered
+#FRIENDLY_POSITION= 149,82
+#FRIENDLY_POSITION= 146,84
+#FRIENDLY_POSITION= 143,82
+; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-; 1 Axis unit within 1 hexes of Lille(153,80) OR
-; 2 Axis units within 1 hexes of Ypres southeast
-#ACTIVATE_POSITION= 153,80 [1,1] [1,1] [1]
-#ACTIVATE_POSITION= 154,79 [1,1] [2,2] [1]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; UK sends troops from Iraq to Egypt:
-{
-#NAME= UK Build Up Transport - XIII Indian -> Suez (Egypt)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 1
-#LENGTH= 10
-#RANGE= 15
-#NAVAL_CRUISE= 1
-; Port Said
-#GOAL_POSITION= 209,122
-#GOAL_POSITION= 248,132
-#DATE= 1940/01/01
-#STEAL= 3
-; Baghdad
-; Basra (Port)
-; Suez
-; Cairo(208,126)
-; El Arish
-; Port Said
-#FRIENDLY_POSITION= 234,120
-#FRIENDLY_POSITION= 242,127
-#FRIENDLY_POSITION= 210,126
-#FRIENDLY_POSITION= 208,126
-#FRIENDLY_POSITION= 212,124
-#FRIENDLY_POSITION= 209,123
-; UK(112) Allied and not surrendered AND
-; Iraq(56) Axis and surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 56 [1] [100] [1]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Axis units within 2 hexes of Port Said
-#CANCEL_POSITION= 209,124 [2,2] [1,1] [1]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
 }
 
-; UK sends troops from Egypt to Libya:
+; UK reinforces Portugal
 {
-#NAME= UK Build Up Transport - Egypt -> Libya (Tripoli)
+#NAME= UK Build Up Transport - Porto (Continual Reinforcement In Portugal)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -479,38 +1293,36 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#SIZE= 1,4
+#SIZE= 1,8
 #BUILD_LENGTH= 0
 #LENGTH= 10
-#RANGE= 15
+#RANGE= 25
 #NAVAL_CRUISE= 1
-; Tripoli (Port)
-#GOAL_POSITION= 172,120
-#DATE= 1940/01/01
-#STEAL= 3
-; Jerusalem
-; Cairo(208,126)
-; Alexandria
-; El Alamein
-; Tobruk(194,122)
-; Tripoli(172,121)
-#FRIENDLY_POSITION= 216,123
-#FRIENDLY_POSITION= 208,126
-#FRIENDLY_POSITION= 206,124
-#FRIENDLY_POSITION= 204,125
-#FRIENDLY_POSITION= 194,122
-#FRIENDLY_POSITION= 172,121
+; Porto (Port)
+#GOAL_POSITION= 129,103
+; Date set to a little after Vichy Amphibious 
+; events so they don't interfere with each other
+#DATE= 1942/08/09
+#STEAL= 0
+; Sheffield
+; Porto (Port)
+#FRIENDLY_POSITION= 144,73
+#FRIENDLY_POSITION= 129,103
 ; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+; Allies near Porto
+#ACTIVATE_POSITION= 130,103 [1,1] [1,1] [2]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
 }
 
-; UK sends troops from Egypt to Libya:
+; UK reinforces France
 {
-#NAME= UK Build Up Transport - Egypt -> Libya (Benghazi)
+#NAME= UK Build Up Transport - St. Malo (Continual Reinforcement In France)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -519,33 +1331,29 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#SIZE= 1,4
+#SIZE= 1,8
 #BUILD_LENGTH= 0
 #LENGTH= 10
-#RANGE= 15
+#RANGE= 25
 #NAVAL_CRUISE= 1
-; Benghazi(Port)
-#GOAL_POSITION= 185,122
-#DATE= 1940/01/01
-#STEAL= 3
-; Jerusalem
-; Cairo(208,126)
-; Alexandria
-; El Alamein
-; Tobruk(194,122)
-; Benghazi
-#FRIENDLY_POSITION= 216,123
-#FRIENDLY_POSITION= 208,126
-#FRIENDLY_POSITION= 206,124
-#FRIENDLY_POSITION= 204,125
-#FRIENDLY_POSITION= 194,122
-#FRIENDLY_POSITION= 186,122
+; St. Malo (Port)
+#GOAL_POSITION= 142,85
+; Date set to post arrival of US HQ/Navy via P/Q
+#DATE= 1942/06/10
+#STEAL= 0
+; Sheffield
+; St. Malo (Port)
+#FRIENDLY_POSITION= 144,73
+#FRIENDLY_POSITION= 142,85
 ; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
 }
 
 ; UK sends troops from Libya to Italy:
@@ -650,1393 +1458,77 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-; UK reinforces France
+; UK sends troops from Iraq to Egypt:
 {
-#NAME= UK Build Up Transport - Le Havre (Continual Reinforcement In France)
+#NAME= UK Build Up Transport - XIII Indian -> Suez (Egypt)
 #POPUP=
 #FLAG= 1
-#TYPE= 2
+#TYPE= 1
 #COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#SIZE= 1,8
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Le Havre (Port)
-#GOAL_POSITION= 146,82
-; Date set to post arrival of US HQ/Navy via P/Q
-#DATE= 1942/06/10
-#STEAL= 0
-; Sheffield
-; Le Havre
-#FRIENDLY_POSITION= 144,73
-#FRIENDLY_POSITION= 147,82
-#FRIENDLY_POSITION= 149,82
-#FRIENDLY_POSITION= 146,84
-#FRIENDLY_POSITION= 143,82
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-; UK reinforces France
-{
-#NAME= UK Build Up Transport - Cherbourg (Continual Reinforcement In France)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,8
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Cherbourg (Port)
-#GOAL_POSITION= 144,82
-; Date set to post arrival of US HQ/Navy via P/Q
-#DATE= 1942/06/10
-#STEAL= 0
-; Sheffield
-; Cherbourg
-#FRIENDLY_POSITION= 144,73
-#FRIENDLY_POSITION= 143,82
-#FRIENDLY_POSITION= 146,84
-#FRIENDLY_POSITION= 147,82
-#FRIENDLY_POSITION= 143,86
-#FRIENDLY_POSITION= 141,85
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-; UK reinforces France
-{
-#NAME= UK Build Up Transport - St. Malo (Continual Reinforcement In France)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,8
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; St. Malo (Port)
-#GOAL_POSITION= 142,85
-; Date set to post arrival of US HQ/Navy via P/Q
-#DATE= 1942/06/10
-#STEAL= 0
-; Sheffield
-; St. Malo (Port)
-#FRIENDLY_POSITION= 144,73
-#FRIENDLY_POSITION= 142,85
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-; UK reinforces France
-{
-#NAME= UK Build Up Transport - Brest (Continual Reinforcement In France)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,8
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Brest (Port)
-#GOAL_POSITION= 138,87
-; Date set to post arrival of US HQ/Navy via P/Q
-#DATE= 1942/06/10
-#STEAL= 0
-; Sheffield
-; Brest(138,86)
-; Lorient
-; St. Malo
-; Rennes
-#FRIENDLY_POSITION= 144,73
-#FRIENDLY_POSITION= 138,86
-#FRIENDLY_POSITION= 140,87
-#FRIENDLY_POSITION= 141,85
-#FRIENDLY_POSITION= 143,86
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-; UK reinforces France
-{
-#NAME= UK Build Up Transport - Bordeaux (Continual Reinforcement In France)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,8
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Bordeaux (Port)
-#GOAL_POSITION= 145,93
-; Date set to a little after Vichy Amphibious 
-; events so they don't interfere with each other
-#DATE= 1942/08/09
-#STEAL= 0
-; Sheffield
-; Bordeaux (Port)
-#FRIENDLY_POSITION= 144,73
-#FRIENDLY_POSITION= 145,93
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-; Allies near Bordeaux
-#ACTIVATE_POSITION= 145,94 [1,1] [1,1] [2]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-; UK reinforces Portugal
-{
-#NAME= UK Build Up Transport - Porto (Continual Reinforcement In Portugal)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,8
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Porto (Port)
-#GOAL_POSITION= 129,103
-; Date set to a little after Vichy Amphibious 
-; events so they don't interfere with each other
-#DATE= 1942/08/09
-#STEAL= 0
-; Sheffield
-; Porto (Port)
-#FRIENDLY_POSITION= 144,73
-#FRIENDLY_POSITION= 129,103
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-; Allies near Porto
-#ACTIVATE_POSITION= 130,103 [1,1] [1,1] [2]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-; UK reinforces Portugal
-{
-#NAME= UK Build Up Transport - Lagos (Continual Reinforcement In Portugal)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,8
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Lagos (Port)
-#GOAL_POSITION= 131,112
-; Date set to a little after Vichy Amphibious 
-; events so they don't interfere with each other
-#DATE= 1942/08/09
-#STEAL= 0
-; Sheffield
-; Lagos (Port)
-#FRIENDLY_POSITION= 144,73
-#FRIENDLY_POSITION= 131,112
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-; Allies near Lagos
-#ACTIVATE_POSITION= 130,112 [1,1] [1,1] [2]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-{
-#NAME= UK Build Up Transport - Halifax -> Glasgow (Build Up In England)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,5
+#SIZE= 1,2
 #BUILD_LENGTH= 1
-#LENGTH= 7
-#RANGE= 50
-#NAVAL_CRUISE= 1
-; Glasgow
-#GOAL_POSITION= 137,65
-; Date set to post arrival of US HQ/Navy via P/Q
-#DATE= 1942/06/10
-#STEAL= 0
-; Halifax
-; Bristol
-#FRIENDLY_POSITION= 30,95
-#FRIENDLY_POSITION= 137,65
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened 
-#TACTICAL_CONDITION= 4,108 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 1 Axis unit within range of Washington DC(4,108)
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-}
-
-{
-#NAME= UK Build Up Transport - Halifax -> Bristol (Build Up In England)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,5
-#BUILD_LENGTH= 1
-#LENGTH= 7
-#RANGE= 50
-#NAVAL_CRUISE= 1
-; Bristol(142,78) (Port)
-#GOAL_POSITION= 141,77
-; Date set to post arrival of US HQ/Navy via P/Q
-#DATE= 1942/06/10
-#STEAL= 0
-; Halifax
-; Bristol
-#FRIENDLY_POSITION= 30,95
-#FRIENDLY_POSITION= 141,77
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened 
-#TACTICAL_CONDITION= 4,108 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 1 Axis unit within range of Washington DC(4,108)
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-}
-
-{
-#NAME= UK Build Up Transport - Halifax -> Plymouth (Build Up In England)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,8
-#BUILD_LENGTH= 1
-#LENGTH= 7
-#RANGE= 50
-#NAVAL_CRUISE= 1
-; Plymouth
-#GOAL_POSITION= 137,80
-; Date set to post arrival of US HQ/Navy via P/Q
-#DATE= 1942/06/10
-#STEAL= 0
-; Halifax
-; Bristol
-#FRIENDLY_POSITION= 30,95
-#FRIENDLY_POSITION= 141,77
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened 
-#TACTICAL_CONDITION= 4,108 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 1 Axis unit within range of Washington DC(4,108)
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-}
-
-; UK reinforces France
-{
-#NAME= UK Build Up Transport (Canada) - Cherbourg (Continual Reinforcement In France)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 21
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 0
 #LENGTH= 10
-#RANGE= 25
+#RANGE= 15
 #NAVAL_CRUISE= 1
-; Cherbourg (Port)
-#GOAL_POSITION= 144,82
-; Date set to post arrival of US HQ/Navy via P/Q
-#DATE= 1942/06/10
-#STEAL= 0
-; Sheffield
-; Cherbourg
-#FRIENDLY_POSITION= 144,73
-#FRIENDLY_POSITION= 143,82
-#FRIENDLY_POSITION= 146,84
-#FRIENDLY_POSITION= 147,82
-#FRIENDLY_POSITION= 143,86
-#FRIENDLY_POSITION= 141,85
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-; UK reinforces France
-{
-#NAME= UK Build Up Transport (Canada) - Brest (Continual Reinforcement In France)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 21
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Brest (Port)
-#GOAL_POSITION= 138,87
-; Date set to post arrival of US HQ/Navy via P/Q
-#DATE= 1942/06/10
-#STEAL= 0
-; Sheffield
-; Brest(138,86)
-; Lorient
-; St. Malo
-; Rennes
-#FRIENDLY_POSITION= 144,73
-#FRIENDLY_POSITION= 138,86
-#FRIENDLY_POSITION= 140,87
-#FRIENDLY_POSITION= 141,85
-#FRIENDLY_POSITION= 143,86
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-; Canada builds up in Egypt:
-{
-#NAME= UK Build Up Transport (Canada) - Egypt
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 21
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 7[51,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Suez(Port)
-#GOAL_POSITION= 210,127
-#GOAL_POSITION= 49,96
-#GOAL_POSITION= 95,135
-#DATE= 1939/09/01
-#STEAL= 0
-; Halifax
-;  Ottawa
-; Suez (Port)
-; El Alamein
-; Alexandria
+; Port Said
+#GOAL_POSITION= 209,122
+#GOAL_POSITION= 248,132
+#DATE= 1940/01/01
+#STEAL= 3
+; Baghdad
+; Basra (Port)
+; Suez
 ; Cairo(208,126)
-#FRIENDLY_POSITION= 30,95
-#FRIENDLY_POSITION= 6,93
-#FRIENDLY_POSITION= 210,127
-#FRIENDLY_POSITION= 204,125
-#FRIENDLY_POSITION= 206,124
+; El Arish
+; Port Said
+#FRIENDLY_POSITION= 234,120
+#FRIENDLY_POSITION= 242,127
+#FRIENDLY_POSITION= 210,126
 #FRIENDLY_POSITION= 208,126
-; Canada(21) Allied and not surrendered
-#VARIABLE_CONDITION= 21 [2] [100] [0]
-; Ottawa not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 30,95 [3]
+#FRIENDLY_POSITION= 212,124
+#FRIENDLY_POSITION= 209,123
+; UK(112) Allied and not surrendered AND
+; Iraq(56) Axis and surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 56 [1] [100] [1]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Allies hold Tripoli
-#CANCEL_POSITION= 172,121 [0,0] [1,1] [2]
-; Axis units in range of Suez
-#CANCEL_POSITION= 209,125 [2,2] [1,1] [1]
+; Axis units within 2 hexes of Port Said
+#CANCEL_POSITION= 209,124 [2,2] [1,1] [1]
 }
 
-; Canada builds up in the UK:
-; Suez(210,126) checks failed
 {
-#NAME= UK Build Up Transport (Canada) - Glasgow
+#NAME= USA Build Up Transport - Belfast -> Glasgow (Recovery)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
-#COUNTRY_ID= 21
+#COUNTRY_ID= 115
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
 #SIZE= 1,5
 #BUILD_LENGTH= 0
-#LENGTH= 7
-#RANGE= 25
-#NAVAL_CRUISE= 1
+#LENGTH= 2
+#RANGE= 10
+#NAVAL_CRUISE= 0
 ; Glasgow
 #GOAL_POSITION= 137,65
-#GOAL_POSITION= 49,96
-#GOAL_POSITION= 69,93
-#DATE= 1940/01/01
+#DATE= 1942/01/21
 #STEAL= 0
-; Halifax
-;  Ottawa
-; Glasgow
-#FRIENDLY_POSITION= 30,95
-#FRIENDLY_POSITION= 6,93
-#FRIENDLY_POSITION= 137,65
-; Canada(21) Allied and not surrendered
-#VARIABLE_CONDITION= 21 [2] [100] [0]
-; Ottawa not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 6,93 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Canada sends troops from Egypt to Libya:
-{
-#NAME= UK Build Up Transport (Canada) - Egypt -> Libya (Tripoli)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 21
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,4
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 15
-#NAVAL_CRUISE= 1
-; Tripoli (Port)
-#GOAL_POSITION= 172,120
-#DATE= 1940/01/01
-#STEAL= 3
-; Jerusalem
-; Tripoli(172,121)
-#FRIENDLY_POSITION= 216,123
-#FRIENDLY_POSITION= 172,121
-; Canada(21) Allied and not surrendered
-#VARIABLE_CONDITION= 21 [2] [100] [0]
-; Ottawa not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 6,93 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-
-; UK sends troops from Egypt to Libya:
-{
-#NAME= UK Build Up Transport (Canada) - Egypt -> Libya (Benghazi)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 21
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,4
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 15
-#NAVAL_CRUISE= 1
-; Benghazi(Port)
-#GOAL_POSITION= 185,122
-#DATE= 1940/01/01
-#STEAL= 3
-; Jerusalem
-; Benghazi
-#FRIENDLY_POSITION= 216,123
-#FRIENDLY_POSITION= 186,122
-; Canada(21) Allied and not surrendered
-#VARIABLE_CONDITION= 21 [2] [100] [0]
-; Ottawa not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 6,93 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; UK sends troops from Libya to Italy:
-{
-#NAME= UK Build Up Transport (Canada) - Tripoli -> Civitavecchia
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 21
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,4
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 10
-#NAVAL_CRUISE= 1
-; Civitavecchia (Port)
-#GOAL_POSITION= 169,101
-#DATE= 1940/01/01
-#STEAL= 3
-; Gabes
-; Tripoli
-; Tunis
-#FRIENDLY_POSITION= 166,119
-#FRIENDLY_POSITION= 172,121
-#FRIENDLY_POSITION= 167,112
-; Canada(21) Allied and not surrendered
-#VARIABLE_CONDITION= 21 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; UK sends troops from Libya to Italy:
-{
-#NAME= UK Build Up Transport (Canada) - Tripoli -> Naples
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 21
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,4
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 10
-#NAVAL_CRUISE= 1
-; Naples (Port)
-#GOAL_POSITION= 175,104
-#DATE= 1940/01/01
-#STEAL= 3
-; Gabes
-; Tripoli
-; Tunis
-#FRIENDLY_POSITION= 166,119
-#FRIENDLY_POSITION= 172,121
-#FRIENDLY_POSITION= 167,112
-; Canada(21) Allied and not surrendered
-#VARIABLE_CONDITION= 21 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; UK sends troops from Libya to Italy:
-{
-#NAME= UK Build Up Transport (Canada) - Tripoli -> Syracuse
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 21
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,4
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 10
-#NAVAL_CRUISE= 1
-; Syracuse (Port)
-#GOAL_POSITION= 177,112
-#DATE= 1940/01/01
-#STEAL= 3
-; Gabes
-; Tripoli
-; Tunis
-#FRIENDLY_POSITION= 166,119
-#FRIENDLY_POSITION= 172,121
-#FRIENDLY_POSITION= 167,112
-; Canada(21) Allied and not surrendered
-#VARIABLE_CONDITION= 21 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ALLIED SCRIPTS - Build Up Transport (USA)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-{
-#NAME= USA Build Up Transport - US -> Glasgow (Liberate UK)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 1[1]
-#SIZE= 2,3
-#BUILD_LENGTH= 1
-#LENGTH= 4
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Glasgow
-#GOAL_POSITION= 137,65
-#GOAL_POSITION= 12,110
-#GOAL_POSITION= 54,98
-#GOAL_POSITION= 95,77
-#DATE= 1941/01/20
-#STEAL= 0
-; Washington DC(4,108)
-#FRIENDLY_POSITION= 4,108
+; Belfast
+#FRIENDLY_POSITION= 135,68
 ; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Washington DC(4,108) not tactically threatened 
 #TACTICAL_CONDITION= 4,108 [1]
-; US Fleet near East Coast (sufficient minimum)
-#ACTIVATE_POSITION= 16,110 [15,15] [2,2] [2]
-; 1 Axis unit within range of Washington DC(4,108) OR
-; 0 Axis units within 5 hexes of Sheffield
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-#CANCEL_POSITION= 144,73 [5,5] [0,0] [1]
-}
-
-{
-#NAME= USA Build Up Transport - US -> Inverness (Liberate UK)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 1[1]
-#SIZE= 2,3
-#BUILD_LENGTH= 1
-#LENGTH= 5
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Inverness
-#GOAL_POSITION= 139,59
-#GOAL_POSITION= 12,110
-#GOAL_POSITION= 54,98
-#GOAL_POSITION= 96,77
-#GOAL_POSITION= 129,56
-#DATE= 1941/04/26
-#STEAL= 0
-; Washington DC(4,108)
-#FRIENDLY_POSITION= 4,108
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened 
-#TACTICAL_CONDITION= 4,108 [1]
-; US Fleet near East Coast (sufficient minimum)
-#ACTIVATE_POSITION= 16,110 [15,15] [2,2] [2]
-; 1 Axis unit within range of Washington DC(4,108) OR
-; 0 Axis units within 5 hexes of Sheffield
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-#CANCEL_POSITION= 144,73 [5,5] [0,0] [1]
-}
-
-; USA reinforces France
-{
-#NAME= USA Build Up Transport - UK -> Le Havre (Continual Reinforcement In France)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Le Havre (Port)
-#GOAL_POSITION= 146,82
-; Date set to a little after Vichy Amphibious
-; events so they don't interfere with each other
-#DATE= 1942/08/09
-#STEAL= 0
-; Sheffield
-; Le Havre
-#FRIENDLY_POSITION= 144,73
-#FRIENDLY_POSITION= 147,82
-#FRIENDLY_POSITION= 149,82
-#FRIENDLY_POSITION= 146,84
-#FRIENDLY_POSITION= 143,82
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-{
-#NAME= USA Build Up Transport - UK -> Cherbourg (Continual Reinforcement In France)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Cherbourg (Port)
-#GOAL_POSITION= 144,82
-; Date set to a little after Vichy Amphibious 
-; events so they don't interfere with each other
-#DATE= 1942/08/09
-#STEAL= 0
-; Sheffield
-; Cherbourg
-#FRIENDLY_POSITION= 144,73
-#FRIENDLY_POSITION= 143,82
-#FRIENDLY_POSITION= 146,84
-#FRIENDLY_POSITION= 147,82
-#FRIENDLY_POSITION= 143,86
-#FRIENDLY_POSITION= 141,85
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-{
-#NAME= USA Build Up Transport - UK -> St. Malo (Continual Reinforcement In France)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; St Malo (Port)
-#GOAL_POSITION= 142,85
-; Date set to a little after Vichy Amphibious 
-; events so they don't interfere with each other
-#DATE= 1942/08/09
-#STEAL= 0
-; Sheffield
-; St Malo
-#FRIENDLY_POSITION= 144,73
-#FRIENDLY_POSITION= 141,85
-#FRIENDLY_POSITION= 143,86
-#FRIENDLY_POSITION= 140,87
-#FRIENDLY_POSITION= 138,86
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-{
-#NAME= USA Build Up Transport - UK -> Brest (Continual Reinforcement In France)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Brest (Port)
-#GOAL_POSITION= 138,87
-; Date set to a little after Vichy Amphibious 
-; events so they don't interfere with each other
-#DATE= 1942/08/09
-#STEAL= 0
-; Sheffield
-; Brest(138,86)
-; Lorient
-; St. Malo
-; Rennes
-#FRIENDLY_POSITION= 144,73
-#FRIENDLY_POSITION= 138,86
-#FRIENDLY_POSITION= 140,87
-#FRIENDLY_POSITION= 141,85
-#FRIENDLY_POSITION= 143,86
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-; USA reinforces France
-{
-#NAME= USA Build Up Transport - UK -> Bordeaux (Continual Reinforcement In France)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Bordeaux (Port)
-#GOAL_POSITION= 145,93
-; Date set to a little after Vichy Amphibious
-; events so they don't interfere with each other
-#DATE= 1942/08/09
-#STEAL= 0
-; Sheffield
-; Bordeaux (Port)
-#FRIENDLY_POSITION= 144,73
-#FRIENDLY_POSITION= 145,93
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-; Allies near Bordeaux
-#ACTIVATE_POSITION= 145,94 [1,1] [1,1] [2]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-; USA reinforces Portugal
-{
-#NAME= USA Build Up Transport - UK -> Porto (Continual Reinforcement In Portugal)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,5
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Porto (Port)
-#GOAL_POSITION= 129,103
-; Date set to a little after Vichy Amphibious 
-; events so they don't interfere with each other
-#DATE= 1942/08/09
-#STEAL= 0
-; Sheffield
-; Porto (Port)
-#FRIENDLY_POSITION= 144,73
-#FRIENDLY_POSITION= 129,103
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-; Allies near Porto
-#ACTIVATE_POSITION= 130,103 [1,1] [1,1] [2]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-; USA reinforces Portugal
-{
-#NAME= USA Build Up Transport - UK -> Lagos (Continual Reinforcement In Portugal)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,5
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Lagos (Port)
-#GOAL_POSITION= 131,112
-; Date set to a little after Vichy Amphibious
-; events so they don't interfere with each other
-#DATE= 1942/08/09
-#STEAL= 0
-; Sheffield
-; Lagos (Port)
-#FRIENDLY_POSITION= 144,73
-#FRIENDLY_POSITION= 131,112
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-; Allies near Lagos
-#ACTIVATE_POSITION= 130,112 [1,1] [1,1] [2]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-{
-#NAME= USA Build Up Transport - USA -> Le Havre (Continual Reinforcement In France)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 4,4
-#BUILD_LENGTH= 1
-#LENGTH= 4
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Le Havre (Port)
-#GOAL_POSITION= 146,82
-#GOAL_POSITION= 15,107
-#GOAL_POSITION= 54,108
-#GOAL_POSITION= 98,101
-; Date set to a little after Vichy Amphibious 
-; events so they don't interfere with each other
-#DATE= 1942/08/09
-#STEAL= 0
-; Washington DC(4,108)
-; Le Havre
-#FRIENDLY_POSITION= 4,108
-#FRIENDLY_POSITION= 147,82
-#FRIENDLY_POSITION= 149,82
-#FRIENDLY_POSITION= 146,84
-#FRIENDLY_POSITION= 143,82
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-; US Fleet near East Coast (sufficient minimum)
-#ACTIVATE_POSITION= 16,110 [15,15] [2,2] [2]
-; 1 Axis unit within range of Washington DC(4,108)
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-}
-
-{
-#NAME= USA Build Up Transport - USA -> Cherbourg (Continual Reinforcement In France)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 4,4
-#BUILD_LENGTH= 1
-#LENGTH= 4
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Cherbourg (Port)
-#GOAL_POSITION= 144,82
-#GOAL_POSITION= 15,107
-#GOAL_POSITION= 54,108
-#GOAL_POSITION= 98,101
-; Date set to a little after Vichy Amphibious 
-; events so they don't interfere with each other
-#DATE= 1942/08/09
-#STEAL= 0
-; Washington DC(4,108)
-; Cherbourg
-#FRIENDLY_POSITION= 4,108
-#FRIENDLY_POSITION= 143,82
-#FRIENDLY_POSITION= 146,84
-#FRIENDLY_POSITION= 147,82
-#FRIENDLY_POSITION= 143,86
-#FRIENDLY_POSITION= 141,85
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-; US Fleet near East Coast (sufficient minimum)
-#ACTIVATE_POSITION= 16,110 [15,15] [2,2] [2]
-; 1 Axis unit within range of Washington DC(4,108)
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-}
-
-{
-#NAME= USA Build Up Transport - USA -> St. Malo (Continual Reinforcement In France)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 4,4
-#BUILD_LENGTH= 1
-#LENGTH= 4
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; St. Malo (Port)
-#GOAL_POSITION= 142,85
-#GOAL_POSITION= 15,107
-#GOAL_POSITION= 54,108
-#GOAL_POSITION= 98,101
-; Date set to a little after Vichy Amphibious 
-; events so they don't interfere with each other
-#DATE= 1942/08/09
-#STEAL= 0
-; Washington DC(4,108)
-; St. Malo
-#FRIENDLY_POSITION= 4,108
-#FRIENDLY_POSITION= 141,85
-#FRIENDLY_POSITION= 143,86
-#FRIENDLY_POSITION= 140,87
-#FRIENDLY_POSITION= 138,86
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-; US Fleet near East Coast (sufficient minimum)
-#ACTIVATE_POSITION= 16,110 [15,15] [2,2] [2]
-; 1 Axis unit within range of Washington DC(4,108)
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-}
-
-{
-#NAME= USA Build Up Transport - USA -> Brest (Continual Reinforcement In France)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 4,4
-#BUILD_LENGTH= 1
-#LENGTH= 4
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Brest (Port)
-#GOAL_POSITION= 138,87
-#GOAL_POSITION= 15,107
-#GOAL_POSITION= 54,108
-#GOAL_POSITION= 98,101
-; Date set to a little after Vichy Amphibious 
-; events so they don't interfere with each other
-#DATE= 1942/08/09
-#STEAL= 0
-; Washington DC(4,108)
-; Brest(138,86)
-; Lorient
-; St. Malo
-; Rennes
-#FRIENDLY_POSITION= 4,108
-#FRIENDLY_POSITION= 138,86
-#FRIENDLY_POSITION= 140,87
-#FRIENDLY_POSITION= 141,85
-#FRIENDLY_POSITION= 143,86
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-; US Fleet near East Coast (sufficient minimum)
-#ACTIVATE_POSITION= 16,110 [15,15] [2,2] [2]
-; 1 Axis unit within range of Washington DC(4,108)
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-}
-
-{
-#NAME= USA Build Up Transport - USA -> Bordeaux (Continual Reinforcement In France)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 4,4
-#BUILD_LENGTH= 1
-#LENGTH= 4
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Bordeaux (Port)
-#GOAL_POSITION= 145,93
-#GOAL_POSITION= 15,107
-#GOAL_POSITION= 54,108
-#GOAL_POSITION= 98,101
-; Date set to a little after Vichy Amphibious 
-; events so they don't interfere with each other
-#DATE= 1942/08/09
-#STEAL= 0
-; Washington DC(4,108)
-; Bordeaux (Port)
-#FRIENDLY_POSITION= 4,108
-#FRIENDLY_POSITION= 145,93
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-; US Fleet near East Coast (sufficient minimum)
-#ACTIVATE_POSITION= 16,110 [15,15] [2,2] [2]
-; 1 Axis unit within range of Washington DC(4,108)
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-}
-
-{
-#NAME= USA Build Up Transport - USA -> Porto (Continual Reinforcement In Portugal)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,5
-#BUILD_LENGTH= 1
-#LENGTH= 4
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Porto (Port)
-#GOAL_POSITION= 129,103
-#GOAL_POSITION= 15,110
-#GOAL_POSITION= 33,107
-; Date set to a little after Vichy Amphibious
-; events so they don't interfere with each other
-#DATE= 1942/08/09
-#STEAL= 0
-; Washington DC(4,108)
-; Porto (Port)
-#FRIENDLY_POSITION= 4,108
-#FRIENDLY_POSITION= 129,103
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-; Allies near Porto
-#ACTIVATE_POSITION= 130,103 [1,1] [1,1] [2]
-; 1 Axis unit within range of Washington DC(4,108)
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-}
-
-{
-#NAME= USA Build Up Transport - USA -> Lagos (Continual Reinforcement In Portugal)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,5
-#BUILD_LENGTH= 1
-#LENGTH= 4
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Lagos (Port)
-#GOAL_POSITION= 131,112
-#GOAL_POSITION= 15,110
-#GOAL_POSITION= 33,107
-; Date set to a little after Vichy Amphibious
-; events so they don't interfere with each other
-#DATE= 1942/08/09
-#STEAL= 0
-; Washington DC(4,108)
-; Lagos (Port)
-#FRIENDLY_POSITION= 4,108
-#FRIENDLY_POSITION= 131,112
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-; Allies near Lagos
-#ACTIVATE_POSITION= 130,112 [1,1] [1,1] [2]
-; 1 Axis unit within range of Washington DC(4,108)
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-}
-
-{
-#NAME= USA Build Up Transport - Liverpool (Build Up In England) (1944)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 5,6
-#BUILD_LENGTH= 2
-#LENGTH= 4
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Liverpool
-#GOAL_POSITION= 140,72
-#GOAL_POSITION= 15,107
-#GOAL_POSITION= 57,97
-#GOAL_POSITION= 87,84
-#GOAL_POSITION= 123,81
-#DATE= 1944/01/01
-#STEAL= 0
-; Washington DC(4,108)
-; Glasgow
-#FRIENDLY_POSITION= 4,108
-#FRIENDLY_POSITION= 137,65
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened 
-#TACTICAL_CONDITION= 4,108 [1]
-; US Fleet near East Coast (sufficient minimum)
-#ACTIVATE_POSITION= 16,110 [15,15] [2,2] [2]
-; 1 Axis unit within range of Washington DC(4,108) OR
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-#CANCEL_POSITION= 147,77 [25,25] [1,1] [1]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
 {
@@ -2078,711 +1570,6 @@
 ; 1 Axis unit within range of London
 #CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
 #CANCEL_POSITION= 147,77 [25,25] [1,1] [1]
-}
-
-{
-#NAME= USA Build Up Transport - Plymouth (Build Up In England)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 5,6
-#BUILD_LENGTH= 2
-#LENGTH= 4
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Plymouth
-#GOAL_POSITION= 137,80
-#GOAL_POSITION= 15,107
-#GOAL_POSITION= 57,97
-#GOAL_POSITION= 87,84
-#GOAL_POSITION= 123,81
-#DATE= 1943/02/25
-#STEAL= 0
-; Washington DC(4,108)
-; Plymouth
-#FRIENDLY_POSITION= 4,108
-#FRIENDLY_POSITION= 137,80
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened 
-#TACTICAL_CONDITION= 4,108 [1]
-; US Fleet near East Coast (sufficient minimum)
-#ACTIVATE_POSITION= 16,110 [15,15] [2,2] [2]
-; 1 Axis unit within range of Washington DC(4,108) OR
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-#CANCEL_POSITION= 147,77 [25,25] [1,1] [1]
-}
-
-{
-#NAME= USA Build Up Transport - Glasgow (Build Up In England)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 5,6
-#BUILD_LENGTH= 2
-#LENGTH= 4
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Glasgow
-#GOAL_POSITION= 137,65
-#GOAL_POSITION= 15,107
-#GOAL_POSITION= 57,97
-#GOAL_POSITION= 87,84
-#GOAL_POSITION= 123,81
-#DATE= 1943/08/12
-#STEAL= 0
-; Washington DC(4,108)
-; Glasgow
-#FRIENDLY_POSITION= 4,108
-#FRIENDLY_POSITION= 137,65
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened 
-#TACTICAL_CONDITION= 4,108 [1]
-; US Fleet near East Coast (sufficient minimum)
-#ACTIVATE_POSITION= 16,110 [15,15] [2,2] [2]
-; 1 Axis unit within range of Washington DC(4,108) OR
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
-#CANCEL_POSITION= 147,77 [25,25] [1,1] [1]
-}
-
-; USA sends troops from Egypt to Libya:
-{
-#NAME= USA Build Up Transport - Egypt -> Libya (Tripoli)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,4
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 15
-#NAVAL_CRUISE= 1
-; Tripoli (Port)
-#GOAL_POSITION= 172,120
-#DATE= 1940/01/01
-#STEAL= 3
-; Jerusalem
-; Cairo(208,126)
-; Alexandria
-; El Alamein
-; Tobruk(194,122)
-; Tripoli(172,121)
-#FRIENDLY_POSITION= 216,123
-#FRIENDLY_POSITION= 208,126
-#FRIENDLY_POSITION= 206,124
-#FRIENDLY_POSITION= 204,125
-#FRIENDLY_POSITION= 194,122
-#FRIENDLY_POSITION= 172,121
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; USA sends troops from Egypt to Libya:
-{
-#NAME= USA Build Up Transport - Egypt -> Libya (Benghazi)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,4
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 15
-#NAVAL_CRUISE= 1
-; Benghazi(Port)
-#GOAL_POSITION= 185,122
-#DATE= 1940/01/01
-#STEAL= 3
-; Jerusalem
-; Cairo(208,126)
-; Alexandria
-; El Alamein
-; Tobruk(194,122)
-; Benghazi
-#FRIENDLY_POSITION= 216,123
-#FRIENDLY_POSITION= 208,126
-#FRIENDLY_POSITION= 206,124
-#FRIENDLY_POSITION= 204,125
-#FRIENDLY_POSITION= 194,122
-#FRIENDLY_POSITION= 186,122
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; USA sends troops from Libya to Italy:
-{
-#NAME= USA Build Up Transport - Tripoli -> Civitavecchia
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,4
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 10
-#NAVAL_CRUISE= 1
-; Civitavecchia (Port)
-#GOAL_POSITION= 169,101
-#DATE= 1940/01/01
-#STEAL= 3
-; Philippeville
-; Tripoli
-; Tunis
-#FRIENDLY_POSITION= 159,112
-#FRIENDLY_POSITION= 172,121
-#FRIENDLY_POSITION= 167,112
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened 
-#TACTICAL_CONDITION= 4,108 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; USA sends troops from Libya to Italy:
-{
-#NAME= USA Build Up Transport - Tripoli -> Naples
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,4
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 10
-#NAVAL_CRUISE= 1
-; Naples (Port)
-#GOAL_POSITION= 175,104
-#DATE= 1940/01/01
-#STEAL= 3
-; Philippeville
-; Tripoli
-; Tunis
-#FRIENDLY_POSITION= 159,112
-#FRIENDLY_POSITION= 172,121
-#FRIENDLY_POSITION= 167,112
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened 
-#TACTICAL_CONDITION= 4,108 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; USA sends troops from Libya to Italy:
-{
-#NAME= USA Build Up Transport - Tripoli -> Syracuse
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,4
-#BUILD_LENGTH= 0
-#LENGTH= 5
-#RANGE= 10
-#NAVAL_CRUISE= 1
-; Syracuse (Port)
-#GOAL_POSITION= 177,112
-#DATE= 1940/01/01
-#STEAL= 3
-; Philippeville
-; Tripoli
-; Tunis
-#FRIENDLY_POSITION= 159,112
-#FRIENDLY_POSITION= 172,121
-#FRIENDLY_POSITION= 167,112
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened 
-#TACTICAL_CONDITION= 4,108 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Build Up Transport - Belfast -> Glasgow (Recovery)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 0
-#LENGTH= 2
-#RANGE= 10
-#NAVAL_CRUISE= 0
-; Glasgow
-#GOAL_POSITION= 137,65
-#DATE= 1942/01/21
-#STEAL= 0
-; Belfast
-#FRIENDLY_POSITION= 135,68
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened 
-#TACTICAL_CONDITION= 4,108 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Build Up Transport - Reykjavik -> Glasgow (Recovery)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 1
-#LENGTH= 2
-#RANGE= 10
-#NAVAL_CRUISE= 1
-; Glasgow
-#GOAL_POSITION= 137,65
-#DATE= 1942/01/21
-#STEAL= 0
-; Reykjavik
-#FRIENDLY_POSITION= 104,37
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened 
-#TACTICAL_CONDITION= 4,108 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Axis naval units in the area
-#CANCEL_POSITION= 98,38 [3,3] [1,1] [1]
-#CANCEL_POSITION= 105,43 [3,3] [1,1] [1]
-#CANCEL_POSITION= 131,65 [3,3] [1,1] [1]
-}
-
-{
-#NAME= USA Build Up Transport - St. John's -> Liverpool (Recovery)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,3
-#BUILD_LENGTH= 1
-#LENGTH= 4
-#RANGE= 5
-#NAVAL_CRUISE= 1
-; Liverpool
-#GOAL_POSITION= 140,72
-; Date set to a little after Vichy Amphibious 
-; events so they don't interfere with each other
-#DATE= 1942/08/09
-#STEAL= 0
-; St. John's
-; Liverpool
-#FRIENDLY_POSITION= 51,88
-#FRIENDLY_POSITION= 141,72
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened 
-#TACTICAL_CONDITION= 4,108 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Build Up Transport - Halifax -> Liverpool (Recovery)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,3
-#BUILD_LENGTH= 1
-#LENGTH= 4
-#RANGE= 5
-#NAVAL_CRUISE= 1
-; Liverpool
-#GOAL_POSITION= 140,72
-; Date set to a little after Vichy Amphibious 
-; events so they don't interfere with each other
-#DATE= 1942/08/09
-#STEAL= 0
-; Halifax
-; Liverpool
-#FRIENDLY_POSITION= 30,95
-; Liverpool(141,72)
-#FRIENDLY_POSITION= 141,72
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened 
-#TACTICAL_CONDITION= 4,108 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; AXIS SCRIPTS - Build Up Transport (Germany)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Transport
-{
-#NAME= Germany Build Up Transport - Sealion
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 2,5
-#BUILD_LENGTH= 3
-#LENGTH= 8
-#RANGE= 25
-#NAVAL_CRUISE= 0
-; London(147,77) (Port)
-#GOAL_POSITION= 148,77
-#DATE= 1939/09/01
-#STEAL= 3
-; Brussels
-; London(147,77)
-; London(147,77) (Port)
-#FRIENDLY_POSITION= 155,80
-#FRIENDLY_POSITION= 147,77
-#FRIENDLY_POSITION= 148,77
-; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-; Brussels not tactically threatened
-#TACTICAL_CONDITION= 155,80 [3]
-; 1 Axis units in London
-#ACTIVATE_POSITION= 147,77 [0,0] [1,1] [1]
-; 5 Allied units within 2 hexes of London
-#CANCEL_POSITION= 147,77 [2,2] [5,5] [2]
-}
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; AXIS SCRIPTS - Build Up Sea Transport (Italy)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-; Italy prepares to send units to Tobruk:
-{
-#NAME= Italy Build Up Transport - Tirana -> Tobruk (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[34,66]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 5
-#NAVAL_CRUISE= 1
-; Tobruk
-#GOAL_POSITION= 195,121
-#DATE= 1940/05/06
-#STEAL= 3
-; Tirana
-#FRIENDLY_POSITION= 185,102
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Rome not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 171,101 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Italy prepares to send units to Benghazi:
-{
-#NAME= Italy Build Up Transport - Benghazi
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 5[1,75]
-#LINK= 0[0]
-#SIZE= 2,4
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Benghazi
-#GOAL_POSITION= 185,122
-#DATE= 1941/03/01
-#STEAL= 1
-; Rome(171,101)
-; Berlin(173,74)
-; Br; Brest(138,86)est
-; Paris(151,84)
-; Bordeaux
-; Palermo
-; Taranto
-; Benghazi
-; Belgrade (pulls Italian units away early otherwise)
-; Ljubljana (pulls Italian units away early otherwise)
-#FRIENDLY_POSITION= 171,101
-#FRIENDLY_POSITION= 173,74
-#FRIENDLY_POSITION= 138,86
-#FRIENDLY_POSITION= 151,84
-#FRIENDLY_POSITION= 151,84
-#FRIENDLY_POSITION= 173,109
-#FRIENDLY_POSITION= 179,104
-#FRIENDLY_POSITION= 186,122
-#FRIENDLY_POSITION= 187,94
-#FRIENDLY_POSITION= 176,91
-; France(40) Allied and surrendered AND
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-; Berlin(173,74) not tactically threatened AND
-; Rome not tactically threatened AND
-; Paris(151,84) not tactically threatened AND
-; Benghazi not tactically threatened (by sea) AND
-; Taranto not tactically threatened (by sea)
-#TACTICAL_CONDITION= 173,74 [1]
-#TACTICAL_CONDITION= 171,101 [1]
-#TACTICAL_CONDITION= 151,84 [1]
-#TACTICAL_CONDITION= 186,122 [3]
-#TACTICAL_CONDITION= 180,105 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Allied naval presence nearby
-#CANCEL_POSITION= 194,118 [8,8] [7,7] [2]
-#CANCEL_POSITION= 183,112 [8,8] [7,7] [2]
-}
-
-;=====================================================================
-;                      Fall Weiss II Events
-;=====================================================================
-; UK reinforces Portugal
-{
-#NAME= UK Build Up Transport - Porto (Continual Reinforcement In Portugal)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 10
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 846[1]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Porto (Port)
-#GOAL_POSITION= 129,103
-; Date set to a little after Vichy Amphibious 
-; events so they don't interfere with each other
-#DATE= 1941/01/01
-#STEAL= 0
-; Sheffield
-; Porto (Port)
-#FRIENDLY_POSITION= 144,73
-#FRIENDLY_POSITION= 129,103
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-; Allies near Porto
-#ACTIVATE_POSITION= 130,103 [1,1] [1,1] [2]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-; UK reinforces Portugal
-{
-#NAME= UK Build Up Transport - Lisbon (Continual Reinforcement In Portugal)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 10
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 846[1]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Lisbon (Port)
-#GOAL_POSITION= 127,108
-; Date set to a little after Vichy Amphibious 
-; events so they don't interfere with each other
-#DATE= 1941/01/01
-#STEAL= 0
-; Sheffield
-; Lisbon(128,108) (Port)
-#FRIENDLY_POSITION= 144,73
-#FRIENDLY_POSITION= 127,108
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-; Allies near Porto
-#ACTIVATE_POSITION= 128,108 [1,1] [1,1] [2]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-; UK reinforces Portugal
-{
-#NAME= UK Build Up Transport - Porto (Continual Reinforcement In Portugal)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 846[1]
-#SIZE= 2,3
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Porto (Port)
-#GOAL_POSITION= 129,103
-; Date set to a little after Vichy Amphibious 
-; events so they don't interfere with each other
-#DATE= 1941/01/01
-#STEAL= 0
-; Sheffield
-; Porto (Port)
-#FRIENDLY_POSITION= 144,73
-#FRIENDLY_POSITION= 129,103
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-; Allies near Porto
-#ACTIVATE_POSITION= 130,103 [1,1] [1,1] [2]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-; UK reinforces Portugal
-{
-#NAME= UK Build Up Transport - Lisbon (Continual Reinforcement In Portugal)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 846[1]
-#SIZE= 2,3
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Lisbon (Port)
-#GOAL_POSITION= 127,108
-; Date set to a little after Vichy Amphibious 
-; events so they don't interfere with each other
-#DATE= 1941/01/01
-#STEAL= 0
-; Sheffield
-; Lisbon(128,108) (Port)
-#FRIENDLY_POSITION= 144,73
-#FRIENDLY_POSITION= 127,108
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-; Allies near Porto
-#ACTIVATE_POSITION= 128,108 [1,1] [1,1] [2]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-{
-#NAME= USA Build Up Transport - USA -> Algiers (Reinforcement In Algiers) (25%)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 25
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 2,3
-#BUILD_LENGTH= 1
-#LENGTH= 10
-#RANGE= 25
-#NAVAL_CRUISE= 1
-; Algiers (Port)
-#GOAL_POSITION= 152,112
-; Date set to a little after Vichy Amphibious 
-; events so they don't interfere with each other
-#DATE= 1942/07/12
-#STEAL= 0
-; Washington DC(4,108)
-; Algiers(152,113) (Port)
-#FRIENDLY_POSITION= 4,108
-#FRIENDLY_POSITION= 152,112
-; UK(112) Allied and not surrendered
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; London(147,77) not tactically threatened
-#TACTICAL_CONDITION= 147,77 [1]
-; Allies near Lagos
-#ACTIVATE_POSITION= 152,112 [1,1] [1,1] [2]
-; 1 Axis unit within range of Washington DC(4,108)
-#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
 }
 
 {
@@ -2897,4 +1684,1232 @@
 ; 1 Axis unit within range of London
 #CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
 #CANCEL_POSITION= 147,77 [25,25] [1,1] [1]
+}
+
+; USA sends troops from Egypt to Libya:
+{
+#NAME= USA Build Up Transport - Egypt -> Libya (Benghazi)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,4
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 15
+#NAVAL_CRUISE= 1
+; Benghazi(Port)
+#GOAL_POSITION= 185,122
+#DATE= 1940/01/01
+#STEAL= 3
+; Jerusalem
+; Cairo(208,126)
+; Alexandria
+; El Alamein
+; Tobruk(194,122)
+; Benghazi
+#FRIENDLY_POSITION= 216,123
+#FRIENDLY_POSITION= 208,126
+#FRIENDLY_POSITION= 206,124
+#FRIENDLY_POSITION= 204,125
+#FRIENDLY_POSITION= 194,122
+#FRIENDLY_POSITION= 186,122
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; USA sends troops from Egypt to Libya:
+{
+#NAME= USA Build Up Transport - Egypt -> Libya (Tripoli)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,4
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 15
+#NAVAL_CRUISE= 1
+; Tripoli (Port)
+#GOAL_POSITION= 172,120
+#DATE= 1940/01/01
+#STEAL= 3
+; Jerusalem
+; Cairo(208,126)
+; Alexandria
+; El Alamein
+; Tobruk(194,122)
+; Tripoli(172,121)
+#FRIENDLY_POSITION= 216,123
+#FRIENDLY_POSITION= 208,126
+#FRIENDLY_POSITION= 206,124
+#FRIENDLY_POSITION= 204,125
+#FRIENDLY_POSITION= 194,122
+#FRIENDLY_POSITION= 172,121
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Build Up Transport - Glasgow (Build Up In England)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 5,6
+#BUILD_LENGTH= 2
+#LENGTH= 4
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Glasgow
+#GOAL_POSITION= 137,65
+#GOAL_POSITION= 15,107
+#GOAL_POSITION= 57,97
+#GOAL_POSITION= 87,84
+#GOAL_POSITION= 123,81
+#DATE= 1943/08/12
+#STEAL= 0
+; Washington DC(4,108)
+; Glasgow
+#FRIENDLY_POSITION= 4,108
+#FRIENDLY_POSITION= 137,65
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened 
+#TACTICAL_CONDITION= 4,108 [1]
+; US Fleet near East Coast (sufficient minimum)
+#ACTIVATE_POSITION= 16,110 [15,15] [2,2] [2]
+; 1 Axis unit within range of Washington DC(4,108) OR
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+#CANCEL_POSITION= 147,77 [25,25] [1,1] [1]
+}
+
+{
+#NAME= USA Build Up Transport - Halifax -> Liverpool (Recovery)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,3
+#BUILD_LENGTH= 1
+#LENGTH= 4
+#RANGE= 5
+#NAVAL_CRUISE= 1
+; Liverpool
+#GOAL_POSITION= 140,72
+; Date set to a little after Vichy Amphibious 
+; events so they don't interfere with each other
+#DATE= 1942/08/09
+#STEAL= 0
+; Halifax
+; Liverpool
+#FRIENDLY_POSITION= 30,95
+; Liverpool(141,72)
+#FRIENDLY_POSITION= 141,72
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened 
+#TACTICAL_CONDITION= 4,108 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Build Up Transport - Liverpool (Build Up In England) (1944)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 5,6
+#BUILD_LENGTH= 2
+#LENGTH= 4
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Liverpool
+#GOAL_POSITION= 140,72
+#GOAL_POSITION= 15,107
+#GOAL_POSITION= 57,97
+#GOAL_POSITION= 87,84
+#GOAL_POSITION= 123,81
+#DATE= 1944/01/01
+#STEAL= 0
+; Washington DC(4,108)
+; Glasgow
+#FRIENDLY_POSITION= 4,108
+#FRIENDLY_POSITION= 137,65
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened 
+#TACTICAL_CONDITION= 4,108 [1]
+; US Fleet near East Coast (sufficient minimum)
+#ACTIVATE_POSITION= 16,110 [15,15] [2,2] [2]
+; 1 Axis unit within range of Washington DC(4,108) OR
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+#CANCEL_POSITION= 147,77 [25,25] [1,1] [1]
+}
+
+{
+#NAME= USA Build Up Transport - Plymouth (Build Up In England)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 5,6
+#BUILD_LENGTH= 2
+#LENGTH= 4
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Plymouth
+#GOAL_POSITION= 137,80
+#GOAL_POSITION= 15,107
+#GOAL_POSITION= 57,97
+#GOAL_POSITION= 87,84
+#GOAL_POSITION= 123,81
+#DATE= 1943/02/25
+#STEAL= 0
+; Washington DC(4,108)
+; Plymouth
+#FRIENDLY_POSITION= 4,108
+#FRIENDLY_POSITION= 137,80
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened 
+#TACTICAL_CONDITION= 4,108 [1]
+; US Fleet near East Coast (sufficient minimum)
+#ACTIVATE_POSITION= 16,110 [15,15] [2,2] [2]
+; 1 Axis unit within range of Washington DC(4,108) OR
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+#CANCEL_POSITION= 147,77 [25,25] [1,1] [1]
+}
+
+{
+#NAME= USA Build Up Transport - Reykjavik -> Glasgow (Recovery)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 1
+#LENGTH= 2
+#RANGE= 10
+#NAVAL_CRUISE= 1
+; Glasgow
+#GOAL_POSITION= 137,65
+#DATE= 1942/01/21
+#STEAL= 0
+; Reykjavik
+#FRIENDLY_POSITION= 104,37
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened 
+#TACTICAL_CONDITION= 4,108 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Axis naval units in the area
+#CANCEL_POSITION= 98,38 [3,3] [1,1] [1]
+#CANCEL_POSITION= 105,43 [3,3] [1,1] [1]
+#CANCEL_POSITION= 131,65 [3,3] [1,1] [1]
+}
+
+{
+#NAME= USA Build Up Transport - St. John's -> Liverpool (Recovery)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,3
+#BUILD_LENGTH= 1
+#LENGTH= 4
+#RANGE= 5
+#NAVAL_CRUISE= 1
+; Liverpool
+#GOAL_POSITION= 140,72
+; Date set to a little after Vichy Amphibious 
+; events so they don't interfere with each other
+#DATE= 1942/08/09
+#STEAL= 0
+; St. John's
+; Liverpool
+#FRIENDLY_POSITION= 51,88
+#FRIENDLY_POSITION= 141,72
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened 
+#TACTICAL_CONDITION= 4,108 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; USA sends troops from Libya to Italy:
+{
+#NAME= USA Build Up Transport - Tripoli -> Civitavecchia
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,4
+#BUILD_LENGTH= 0
+#LENGTH= 5
+#RANGE= 10
+#NAVAL_CRUISE= 1
+; Civitavecchia (Port)
+#GOAL_POSITION= 169,101
+#DATE= 1940/01/01
+#STEAL= 3
+; Philippeville
+; Tripoli
+; Tunis
+#FRIENDLY_POSITION= 159,112
+#FRIENDLY_POSITION= 172,121
+#FRIENDLY_POSITION= 167,112
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened 
+#TACTICAL_CONDITION= 4,108 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; USA sends troops from Libya to Italy:
+{
+#NAME= USA Build Up Transport - Tripoli -> Naples
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,4
+#BUILD_LENGTH= 0
+#LENGTH= 5
+#RANGE= 10
+#NAVAL_CRUISE= 1
+; Naples (Port)
+#GOAL_POSITION= 175,104
+#DATE= 1940/01/01
+#STEAL= 3
+; Philippeville
+; Tripoli
+; Tunis
+#FRIENDLY_POSITION= 159,112
+#FRIENDLY_POSITION= 172,121
+#FRIENDLY_POSITION= 167,112
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened 
+#TACTICAL_CONDITION= 4,108 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; USA sends troops from Libya to Italy:
+{
+#NAME= USA Build Up Transport - Tripoli -> Syracuse
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,4
+#BUILD_LENGTH= 0
+#LENGTH= 5
+#RANGE= 10
+#NAVAL_CRUISE= 1
+; Syracuse (Port)
+#GOAL_POSITION= 177,112
+#DATE= 1940/01/01
+#STEAL= 3
+; Philippeville
+; Tripoli
+; Tunis
+#FRIENDLY_POSITION= 159,112
+#FRIENDLY_POSITION= 172,121
+#FRIENDLY_POSITION= 167,112
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened 
+#TACTICAL_CONDITION= 4,108 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; USA reinforces France
+{
+#NAME= USA Build Up Transport - UK -> Bordeaux (Continual Reinforcement In France)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 0
+#LENGTH= 5
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Bordeaux (Port)
+#GOAL_POSITION= 145,93
+; Date set to a little after Vichy Amphibious
+; events so they don't interfere with each other
+#DATE= 1942/08/09
+#STEAL= 0
+; Sheffield
+; Bordeaux (Port)
+#FRIENDLY_POSITION= 144,73
+#FRIENDLY_POSITION= 145,93
+; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+; Allies near Bordeaux
+#ACTIVATE_POSITION= 145,94 [1,1] [1,1] [2]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+{
+#NAME= USA Build Up Transport - UK -> Brest (Continual Reinforcement In France)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 0
+#LENGTH= 5
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Brest (Port)
+#GOAL_POSITION= 138,87
+; Date set to a little after Vichy Amphibious 
+; events so they don't interfere with each other
+#DATE= 1942/08/09
+#STEAL= 0
+; Sheffield
+; Brest(138,86)
+; Lorient
+; St. Malo
+; Rennes
+#FRIENDLY_POSITION= 144,73
+#FRIENDLY_POSITION= 138,86
+#FRIENDLY_POSITION= 140,87
+#FRIENDLY_POSITION= 141,85
+#FRIENDLY_POSITION= 143,86
+; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+{
+#NAME= USA Build Up Transport - UK -> Cherbourg (Continual Reinforcement In France)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 0
+#LENGTH= 5
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Cherbourg (Port)
+#GOAL_POSITION= 144,82
+; Date set to a little after Vichy Amphibious 
+; events so they don't interfere with each other
+#DATE= 1942/08/09
+#STEAL= 0
+; Sheffield
+; Cherbourg
+#FRIENDLY_POSITION= 144,73
+#FRIENDLY_POSITION= 143,82
+#FRIENDLY_POSITION= 146,84
+#FRIENDLY_POSITION= 147,82
+#FRIENDLY_POSITION= 143,86
+#FRIENDLY_POSITION= 141,85
+; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+; USA reinforces Portugal
+{
+#NAME= USA Build Up Transport - UK -> Lagos (Continual Reinforcement In Portugal)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,5
+#BUILD_LENGTH= 0
+#LENGTH= 5
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Lagos (Port)
+#GOAL_POSITION= 131,112
+; Date set to a little after Vichy Amphibious
+; events so they don't interfere with each other
+#DATE= 1942/08/09
+#STEAL= 0
+; Sheffield
+; Lagos (Port)
+#FRIENDLY_POSITION= 144,73
+#FRIENDLY_POSITION= 131,112
+; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+; Allies near Lagos
+#ACTIVATE_POSITION= 130,112 [1,1] [1,1] [2]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+; USA reinforces France
+{
+#NAME= USA Build Up Transport - UK -> Le Havre (Continual Reinforcement In France)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 0
+#LENGTH= 5
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Le Havre (Port)
+#GOAL_POSITION= 146,82
+; Date set to a little after Vichy Amphibious
+; events so they don't interfere with each other
+#DATE= 1942/08/09
+#STEAL= 0
+; Sheffield
+; Le Havre
+#FRIENDLY_POSITION= 144,73
+#FRIENDLY_POSITION= 147,82
+#FRIENDLY_POSITION= 149,82
+#FRIENDLY_POSITION= 146,84
+#FRIENDLY_POSITION= 143,82
+; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+; USA reinforces Portugal
+{
+#NAME= USA Build Up Transport - UK -> Porto (Continual Reinforcement In Portugal)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,5
+#BUILD_LENGTH= 0
+#LENGTH= 5
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Porto (Port)
+#GOAL_POSITION= 129,103
+; Date set to a little after Vichy Amphibious 
+; events so they don't interfere with each other
+#DATE= 1942/08/09
+#STEAL= 0
+; Sheffield
+; Porto (Port)
+#FRIENDLY_POSITION= 144,73
+#FRIENDLY_POSITION= 129,103
+; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+; Allies near Porto
+#ACTIVATE_POSITION= 130,103 [1,1] [1,1] [2]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+{
+#NAME= USA Build Up Transport - UK -> St. Malo (Continual Reinforcement In France)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 0
+#LENGTH= 5
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; St Malo (Port)
+#GOAL_POSITION= 142,85
+; Date set to a little after Vichy Amphibious 
+; events so they don't interfere with each other
+#DATE= 1942/08/09
+#STEAL= 0
+; Sheffield
+; St Malo
+#FRIENDLY_POSITION= 144,73
+#FRIENDLY_POSITION= 141,85
+#FRIENDLY_POSITION= 143,86
+#FRIENDLY_POSITION= 140,87
+#FRIENDLY_POSITION= 138,86
+; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+{
+#NAME= USA Build Up Transport - USA -> Algiers (Reinforcement In Algiers) (25%)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 25
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 2,3
+#BUILD_LENGTH= 1
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Algiers (Port)
+#GOAL_POSITION= 152,112
+; Date set to a little after Vichy Amphibious 
+; events so they don't interfere with each other
+#DATE= 1942/07/12
+#STEAL= 0
+; Washington DC(4,108)
+; Algiers(152,113) (Port)
+#FRIENDLY_POSITION= 4,108
+#FRIENDLY_POSITION= 152,112
+; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+; Allies near Lagos
+#ACTIVATE_POSITION= 152,112 [1,1] [1,1] [2]
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+{
+#NAME= USA Build Up Transport - USA -> Bordeaux (Continual Reinforcement In France)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 4,4
+#BUILD_LENGTH= 1
+#LENGTH= 4
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Bordeaux (Port)
+#GOAL_POSITION= 145,93
+#GOAL_POSITION= 15,107
+#GOAL_POSITION= 54,108
+#GOAL_POSITION= 98,101
+; Date set to a little after Vichy Amphibious 
+; events so they don't interfere with each other
+#DATE= 1942/08/09
+#STEAL= 0
+; Washington DC(4,108)
+; Bordeaux (Port)
+#FRIENDLY_POSITION= 4,108
+#FRIENDLY_POSITION= 145,93
+; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+; US Fleet near East Coast (sufficient minimum)
+#ACTIVATE_POSITION= 16,110 [15,15] [2,2] [2]
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+{
+#NAME= USA Build Up Transport - USA -> Brest (Continual Reinforcement In France)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 4,4
+#BUILD_LENGTH= 1
+#LENGTH= 4
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Brest (Port)
+#GOAL_POSITION= 138,87
+#GOAL_POSITION= 15,107
+#GOAL_POSITION= 54,108
+#GOAL_POSITION= 98,101
+; Date set to a little after Vichy Amphibious 
+; events so they don't interfere with each other
+#DATE= 1942/08/09
+#STEAL= 0
+; Washington DC(4,108)
+; Brest(138,86)
+; Lorient
+; St. Malo
+; Rennes
+#FRIENDLY_POSITION= 4,108
+#FRIENDLY_POSITION= 138,86
+#FRIENDLY_POSITION= 140,87
+#FRIENDLY_POSITION= 141,85
+#FRIENDLY_POSITION= 143,86
+; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+; US Fleet near East Coast (sufficient minimum)
+#ACTIVATE_POSITION= 16,110 [15,15] [2,2] [2]
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+{
+#NAME= USA Build Up Transport - USA -> Cherbourg (Continual Reinforcement In France)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 4,4
+#BUILD_LENGTH= 1
+#LENGTH= 4
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Cherbourg (Port)
+#GOAL_POSITION= 144,82
+#GOAL_POSITION= 15,107
+#GOAL_POSITION= 54,108
+#GOAL_POSITION= 98,101
+; Date set to a little after Vichy Amphibious 
+; events so they don't interfere with each other
+#DATE= 1942/08/09
+#STEAL= 0
+; Washington DC(4,108)
+; Cherbourg
+#FRIENDLY_POSITION= 4,108
+#FRIENDLY_POSITION= 143,82
+#FRIENDLY_POSITION= 146,84
+#FRIENDLY_POSITION= 147,82
+#FRIENDLY_POSITION= 143,86
+#FRIENDLY_POSITION= 141,85
+; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+; US Fleet near East Coast (sufficient minimum)
+#ACTIVATE_POSITION= 16,110 [15,15] [2,2] [2]
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+{
+#NAME= USA Build Up Transport - USA -> Lagos (Continual Reinforcement In Portugal)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,5
+#BUILD_LENGTH= 1
+#LENGTH= 4
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Lagos (Port)
+#GOAL_POSITION= 131,112
+#GOAL_POSITION= 15,110
+#GOAL_POSITION= 33,107
+; Date set to a little after Vichy Amphibious
+; events so they don't interfere with each other
+#DATE= 1942/08/09
+#STEAL= 0
+; Washington DC(4,108)
+; Lagos (Port)
+#FRIENDLY_POSITION= 4,108
+#FRIENDLY_POSITION= 131,112
+; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+; Allies near Lagos
+#ACTIVATE_POSITION= 130,112 [1,1] [1,1] [2]
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+{
+#NAME= USA Build Up Transport - USA -> Le Havre (Continual Reinforcement In France)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 4,4
+#BUILD_LENGTH= 1
+#LENGTH= 4
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Le Havre (Port)
+#GOAL_POSITION= 146,82
+#GOAL_POSITION= 15,107
+#GOAL_POSITION= 54,108
+#GOAL_POSITION= 98,101
+; Date set to a little after Vichy Amphibious 
+; events so they don't interfere with each other
+#DATE= 1942/08/09
+#STEAL= 0
+; Washington DC(4,108)
+; Le Havre
+#FRIENDLY_POSITION= 4,108
+#FRIENDLY_POSITION= 147,82
+#FRIENDLY_POSITION= 149,82
+#FRIENDLY_POSITION= 146,84
+#FRIENDLY_POSITION= 143,82
+; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+; US Fleet near East Coast (sufficient minimum)
+#ACTIVATE_POSITION= 16,110 [15,15] [2,2] [2]
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+{
+#NAME= USA Build Up Transport - USA -> Porto (Continual Reinforcement In Portugal)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,5
+#BUILD_LENGTH= 1
+#LENGTH= 4
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Porto (Port)
+#GOAL_POSITION= 129,103
+#GOAL_POSITION= 15,110
+#GOAL_POSITION= 33,107
+; Date set to a little after Vichy Amphibious
+; events so they don't interfere with each other
+#DATE= 1942/08/09
+#STEAL= 0
+; Washington DC(4,108)
+; Porto (Port)
+#FRIENDLY_POSITION= 4,108
+#FRIENDLY_POSITION= 129,103
+; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+; Allies near Porto
+#ACTIVATE_POSITION= 130,103 [1,1] [1,1] [2]
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+{
+#NAME= USA Build Up Transport - USA -> St. Malo (Continual Reinforcement In France)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 4,4
+#BUILD_LENGTH= 1
+#LENGTH= 4
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; St. Malo (Port)
+#GOAL_POSITION= 142,85
+#GOAL_POSITION= 15,107
+#GOAL_POSITION= 54,108
+#GOAL_POSITION= 98,101
+; Date set to a little after Vichy Amphibious 
+; events so they don't interfere with each other
+#DATE= 1942/08/09
+#STEAL= 0
+; Washington DC(4,108)
+; St. Malo
+#FRIENDLY_POSITION= 4,108
+#FRIENDLY_POSITION= 141,85
+#FRIENDLY_POSITION= 143,86
+#FRIENDLY_POSITION= 140,87
+#FRIENDLY_POSITION= 138,86
+; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+; US Fleet near East Coast (sufficient minimum)
+#ACTIVATE_POSITION= 16,110 [15,15] [2,2] [2]
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; ALLIED SCRIPTS - Build Up Transport (USA)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+{
+#NAME= USA Build Up Transport - US -> Glasgow (Liberate UK)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 1[1]
+#SIZE= 2,3
+#BUILD_LENGTH= 1
+#LENGTH= 4
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Glasgow
+#GOAL_POSITION= 137,65
+#GOAL_POSITION= 12,110
+#GOAL_POSITION= 54,98
+#GOAL_POSITION= 95,77
+#DATE= 1941/01/20
+#STEAL= 0
+; Washington DC(4,108)
+#FRIENDLY_POSITION= 4,108
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened 
+#TACTICAL_CONDITION= 4,108 [1]
+; US Fleet near East Coast (sufficient minimum)
+#ACTIVATE_POSITION= 16,110 [15,15] [2,2] [2]
+; 1 Axis unit within range of Washington DC(4,108) OR
+; 0 Axis units within 5 hexes of Sheffield
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+#CANCEL_POSITION= 144,73 [5,5] [0,0] [1]
+}
+
+{
+#NAME= USA Build Up Transport - US -> Inverness (Liberate UK)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 1[1]
+#SIZE= 2,3
+#BUILD_LENGTH= 1
+#LENGTH= 5
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Inverness
+#GOAL_POSITION= 139,59
+#GOAL_POSITION= 12,110
+#GOAL_POSITION= 54,98
+#GOAL_POSITION= 96,77
+#GOAL_POSITION= 129,56
+#DATE= 1941/04/26
+#STEAL= 0
+; Washington DC(4,108)
+#FRIENDLY_POSITION= 4,108
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened 
+#TACTICAL_CONDITION= 4,108 [1]
+; US Fleet near East Coast (sufficient minimum)
+#ACTIVATE_POSITION= 16,110 [15,15] [2,2] [2]
+; 1 Axis unit within range of Washington DC(4,108) OR
+; 0 Axis units within 5 hexes of Sheffield
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+#CANCEL_POSITION= 144,73 [5,5] [0,0] [1]
+}
+
+; UK reinforces Portugal
+{
+#NAME= UK Build Up Transport - Lisbon (Continual Reinforcement In Portugal)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 10
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 846[1]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Lisbon (Port)
+#GOAL_POSITION= 127,108
+; Date set to a little after Vichy Amphibious 
+; events so they don't interfere with each other
+#DATE= 1941/01/01
+#STEAL= 0
+; Sheffield
+; Lisbon(128,108) (Port)
+#FRIENDLY_POSITION= 144,73
+#FRIENDLY_POSITION= 127,108
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+; Allies near Porto
+#ACTIVATE_POSITION= 128,108 [1,1] [1,1] [2]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+; UK reinforces Portugal
+{
+#NAME= UK Build Up Transport - Lisbon (Continual Reinforcement In Portugal)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 846[1]
+#SIZE= 2,3
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Lisbon (Port)
+#GOAL_POSITION= 127,108
+; Date set to a little after Vichy Amphibious 
+; events so they don't interfere with each other
+#DATE= 1941/01/01
+#STEAL= 0
+; Sheffield
+; Lisbon(128,108) (Port)
+#FRIENDLY_POSITION= 144,73
+#FRIENDLY_POSITION= 127,108
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+; Allies near Porto
+#ACTIVATE_POSITION= 128,108 [1,1] [1,1] [2]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+;=====================================================================
+;                      Fall Weiss II Events
+;=====================================================================
+; UK reinforces Portugal
+{
+#NAME= UK Build Up Transport - Porto (Continual Reinforcement In Portugal)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 10
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 846[1]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Porto (Port)
+#GOAL_POSITION= 129,103
+; Date set to a little after Vichy Amphibious 
+; events so they don't interfere with each other
+#DATE= 1941/01/01
+#STEAL= 0
+; Sheffield
+; Porto (Port)
+#FRIENDLY_POSITION= 144,73
+#FRIENDLY_POSITION= 129,103
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+; Allies near Porto
+#ACTIVATE_POSITION= 130,103 [1,1] [1,1] [2]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+; UK reinforces Portugal
+{
+#NAME= UK Build Up Transport - Porto (Continual Reinforcement In Portugal)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 846[1]
+#SIZE= 2,3
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25
+#NAVAL_CRUISE= 1
+; Porto (Port)
+#GOAL_POSITION= 129,103
+; Date set to a little after Vichy Amphibious 
+; events so they don't interfere with each other
+#DATE= 1941/01/01
+#STEAL= 0
+; Sheffield
+; Porto (Port)
+#FRIENDLY_POSITION= 144,73
+#FRIENDLY_POSITION= 129,103
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened
+#TACTICAL_CONDITION= 147,77 [1]
+; Allies near Porto
+#ACTIVATE_POSITION= 130,103 [1,1] [1,1] [2]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
 }

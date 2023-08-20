@@ -26,22 +26,43 @@
 ;            (not removed from event queue)
 ;        3 = Single check, only on #DATE
 ;
-; #LEVEL= What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
-;         Values: [0, 4]; Green= 0; Novice= 1; Intermediate= 2; Veteran= 3; Expert= 4
-; #GV= Does the event activate based on the Global Variable values assigned?
-;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
-;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
-;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
-;      Example B - #GV= 4[71,100] will trigger 30% per game
+; #LEVEL= Value range [-1, 4]
+;       What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;       -1 = a script that should only fire for AI friendly controlled majors on your turn
+;        0 = Green
+;        1 = Novice
+;        2 = Intermediate
+;        3 = Veteran
+;        4 = Expert
+;
+; #GV=   Does the event activate based on the Global Variable values assigned?
+;        Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
+;        Format: GV [min, max]
+;                GV range [1, 10] 
+;                min range [1, 100] 
+;                max range [min+1, 100]
+;
+;        Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;        Example B - #GV= 4[71,100] will trigger 30% per game
+;
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
-;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
+;        Format: decision[response]
+;                decision range [1, 1100]
+;                response range [0, 1]
+;                   0 = NO
+;                   1 = YES
+;
 ;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
 ;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
 ;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
-; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
-; #COUNTRY_ID=  Value range [0, 120]
-;               Country ID that will be owner of this event
+;
+; #TRIGGER=     Value range [0, 100]
+;               Percentage chance that the event will occur
+;
+; #COUNTRY_ID=  Value range [1, 120]
+;               Country that will be owner of this event
+;
 ; #SKIP_FUNDS_CHECK= Should we skip the applicable funds check? (values range [0, 1]; True= 1; False= 0)
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -364,42 +385,514 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ALLIED SCRIPTS - UK
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
+;=====================================================================
+;                      Fall Weiss II Event
+;=====================================================================
 {
-#NAME= UK (1944)
+#NAME= Finland
 #POPUP=
 #FLAG= 1
 #TYPE= 2
-#COUNTRY_ID= 112
+#COUNTRY_ID= 39
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
 #SKIP_FUNDS_CHECK= 0
 ; HQ
-#UNIT_ID_0= 10 [1]
+#UNIT_ID_0= 25 [1]
 ; Garrison
 #UNIT_ID_1= 0 [0]
 ; Infantry Division
-#UNIT_ID_2= 25 [1]
+#UNIT_ID_2= 10 [1]
 ; Mech Division
-#UNIT_ID_3= 25 [1]
+#UNIT_ID_3= 0 [0]
 ; Corps
-#UNIT_ID_4= 25 [3]
+#UNIT_ID_4= 10 [1]
 ; Army
-#UNIT_ID_5= 25 [3]
-; Mech Corps Corp
+#UNIT_ID_5= 10 [1]
+; Mech Corps
 #UNIT_ID_6= 0 [0]
 ; Special Forces
 #UNIT_ID_7= 10 [1]
 ; Engineers
 #UNIT_ID_8= 0 [0]
 ; Paratroops
-#UNIT_ID_9= 10 [1]
-; Mountain Division
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Tank Division
+#UNIT_ID_25= 0 [0]
+; Tank Corps
+#UNIT_ID_26= 0 [0]
+; Tank Army
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 10 [1]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1939/09/01
+#DESTINATION_RESOURCE=
+; Berlin(173,74)
+#FRIENDLY_POSITION= 195,51
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 39 [1] [100] [0]
+; Italy(59) not tactically threatened
+#TACTICAL_CONDITION= 195,51 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; ALLIED SCRIPTS - France
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+{
+#NAME= France (1940 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 40
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Infantry Division
+#UNIT_ID_2= 5 [1]
+; Mech Division
+#UNIT_ID_3= 10 [1]
+; Corps
+#UNIT_ID_4= 25 [2]
+; Army
+#UNIT_ID_5= 25 [2]
+; Mech Corps
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Tank Division
+#UNIT_ID_25= 5 [1]
+; Tank Corps
+#UNIT_ID_26= 15 [1]
+; Tank Army
+#UNIT_ID_27= 15 [1]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 0 [0]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1940/01/01
+#DESTINATION_RESOURCE=
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; France(40) Allied and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; Paris(151,84) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 151,84 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany (1939 - 1940)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Infantry Division
+#UNIT_ID_2= 0 [0]
+; Mech Division
+#UNIT_ID_3= 5 [1]
+; Corps
+#UNIT_ID_4= 25 [2]
+; Army
+#UNIT_ID_5= 25 [2]
+; Mech Corps
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Tank Division
+#UNIT_ID_25= 25 [2]
+; Tank Corps
+#UNIT_ID_26= 0 [0]
+; Tank Army
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 10 [1]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 10 [1]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1939/09/01
+#DESTINATION_RESOURCE=
+; Berlin(173,74)
+; Frankfurt
+; Dusseldorf
+#FRIENDLY_POSITION= 173,74
+#FRIENDLY_POSITION= 164,81
+#FRIENDLY_POSITION= 160,78
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany (1940 - 1941)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Infantry Division
+#UNIT_ID_2= 10 [1]
+; Mech Division
+#UNIT_ID_3= 5 [1]
+; Corps
+#UNIT_ID_4= 50 [1]
+; Army
+#UNIT_ID_5= 10 [1]
+; Mech Corps
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Tank Division
+#UNIT_ID_25= 50 [1]
+; Tank Corps
+#UNIT_ID_26= 50 [1]
+; Tank Army
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 50 [1]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 10 [1]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1940/09/01
+#DESTINATION_RESOURCE=
+; Berlin(173,74)
+#FRIENDLY_POSITION= 173,74
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany (1941 - September 1941)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Infantry Division
+#UNIT_ID_2= 0 [0]
+; Mech Division
+#UNIT_ID_3= 10 [1]
+; Corps
+#UNIT_ID_4= 50 [1]
+; Army
+#UNIT_ID_5= 10 [1]
+; Mech Corps
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
 #UNIT_ID_10= 0 [0]
 ; Cavalry Division
 #UNIT_ID_11= 10 [1]
@@ -412,7 +905,7 @@
 ; Anti-Air
 #UNIT_ID_15= 0 [0]
 ; Rocket Artillery
-#UNIT_ID_16= 0 [0]
+#UNIT_ID_16= 10 [1]
 ; Artillery
 #UNIT_ID_17= 0 [0]
 ; Heavy Artillery
@@ -430,11 +923,248 @@
 ; Anti Tank
 #UNIT_ID_24= 0 [0]
 ; Tank Division
-#UNIT_ID_25= 10 [1]
+#UNIT_ID_25= 30 [1]
 ; Tank Corps
-#UNIT_ID_26= 10 [1]
+#UNIT_ID_26= 50 [1]
 ; Tank Army
-#UNIT_ID_27= 10 [1]
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 25 [1]
+; Tactical Bombers
+#UNIT_ID_30= 10 [1]
+; Medium Bombers
+#UNIT_ID_31= 10 [1]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1941/01/01
+#DESTINATION_RESOURCE=
+; Berlin(173,74)
+#FRIENDLY_POSITION= 173,74
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany (1943 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Infantry Division
+#UNIT_ID_2= 50 [3]
+; Mech Division
+#UNIT_ID_3= 15 [1]
+; Corps
+#UNIT_ID_4= 25 [1]
+; Army
+#UNIT_ID_5= 25 [2]
+; Mech Corps
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 10 [1]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 10 [1]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 10 [1]
+; Rocket Artillery
+#UNIT_ID_16= 10 [1]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 10 [1]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Tank Division
+#UNIT_ID_25= 25 [2]
+; Tank Corps
+#UNIT_ID_26= 25 [1]
+; Tank Army
+#UNIT_ID_27= 25 [1]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 10 [1]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 10 [1]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 10 [3]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1943/01/01
+#DESTINATION_RESOURCE=
+; Berlin(173,74)
+#FRIENDLY_POSITION= 173,74
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; AXIS SCRIPTS - Germany
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+{
+#NAME= Germany (1944 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 10 [1]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Infantry Division
+#UNIT_ID_2= 50 [3]
+; Mech Division
+#UNIT_ID_3= 25 [1]
+; Corps
+#UNIT_ID_4= 25 [1]
+; Army
+#UNIT_ID_5= 25 [2]
+; Mech Corps
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 10 [1]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 10 [1]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 10 [1]
+; Rocket Artillery
+#UNIT_ID_16= 10 [1]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 10 [1]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Tank Division
+#UNIT_ID_25= 25 [2]
+; Tank Corps
+#UNIT_ID_26= 25 [1]
+; Tank Army
+#UNIT_ID_27= 25 [1]
 ; Airships
 #UNIT_ID_28= 0 [0]
 ; Fighters
@@ -446,7 +1176,7 @@
 ; Strategic Bombers
 #UNIT_ID_32= 10 [1]
 ; Maritime Bombers
-#UNIT_ID_33= 0 [0]
+#UNIT_ID_33= 10 [1]
 ; Kamikazes
 #UNIT_ID_34= 0 [0]
 ; Dreadnought
@@ -458,38 +1188,38 @@
 ; Heavy Cruiser
 #UNIT_ID_38= 10 [3]
 ; Light Cruiser
-#UNIT_ID_39= 10 [3]
+#UNIT_ID_39= 0 [0]
 ; Destroyer
 #UNIT_ID_40= 10 [3]
 ; Escort Carrier
-#UNIT_ID_41= 10 [3]
+#UNIT_ID_41= 0 [0]
 ; Carrier
 #UNIT_ID_42= 10 [3]
 ; Sub
-#UNIT_ID_43= 0 [0]
+#UNIT_ID_43= 10 [3]
 ; Motor Torpedo Boat
-#UNIT_ID_44= 0 [0]
+#UNIT_ID_44= 10 [3]
 ; Mulberry
 #UNIT_ID_45= 0 [0]
 ;
 #DATE= 1944/01/01
 #DESTINATION_RESOURCE=
-; London(147,77)
-#FRIENDLY_POSITION= 147,77
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
+; Berlin(173,74)
+#FRIENDLY_POSITION= 173,74
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
 {
-#NAME= UK (Sep 1942 - 1944)
+#NAME= Germany (September 1941 - 1943)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
-#COUNTRY_ID= 112
+#COUNTRY_ID= 45
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
@@ -500,22 +1230,22 @@
 ; Garrison
 #UNIT_ID_1= 0 [0]
 ; Infantry Division
-#UNIT_ID_2= 25 [1]
+#UNIT_ID_2= 10 [2]
 ; Mech Division
-#UNIT_ID_3= 10 [1]
+#UNIT_ID_3= 10 [2]
 ; Corps
-#UNIT_ID_4= 40 [3]
+#UNIT_ID_4= 50 [1]
 ; Army
-#UNIT_ID_5= 10 [1]
-; Mechanized Corps
+#UNIT_ID_5= 25 [2]
+; Mech Corps
 #UNIT_ID_6= 0 [0]
 ; Special Forces
-#UNIT_ID_7= 10 [1]
+#UNIT_ID_7= 0 [0]
 ; Engineers
 #UNIT_ID_8= 0 [0]
 ; Paratroops
 #UNIT_ID_9= 0 [0]
-; Mountain Division
+; Cavalry Brigade
 #UNIT_ID_10= 0 [0]
 ; Cavalry Division
 #UNIT_ID_11= 10 [1]
@@ -526,9 +1256,9 @@
 ; Pillbox
 #UNIT_ID_14= 0 [0]
 ; Anti-Air
-#UNIT_ID_15= 0 [0]
+#UNIT_ID_15= 10 [1]
 ; Rocket Artillery
-#UNIT_ID_16= 0 [0]
+#UNIT_ID_16= 10 [1]
 ; Artillery
 #UNIT_ID_17= 0 [0]
 ; Heavy Artillery
@@ -546,9 +1276,241 @@
 ; Anti Tank
 #UNIT_ID_24= 0 [0]
 ; Tank Division
+#UNIT_ID_25= 50 [1]
+; Tank Corps
+#UNIT_ID_26= 25 [1]
+; Tank Army
+#UNIT_ID_27= 50 [1]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 25 [1]
+; Tactical Bombers
+#UNIT_ID_30= 10 [1]
+; Medium Bombers
+#UNIT_ID_31= 10 [1]
+; Strategic Bombers
+#UNIT_ID_32= 10 [1]
+; Maritime Bombers
+#UNIT_ID_33= 10 [1]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 10 [1]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1941/09/01
+#DESTINATION_RESOURCE=
+; Berlin(173,74)
+#FRIENDLY_POSITION= 173,74
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Italy (1939 - 1941)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Infantry Division
+#UNIT_ID_2= 5 [1]
+; Mech Division
+#UNIT_ID_3= 5 [1]
+; Corps
+#UNIT_ID_4= 25 [2]
+; Army
+#UNIT_ID_5= 25 [2]
+; Mech Corps
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 5 [1]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Tank Division
 #UNIT_ID_25= 10 [1]
 ; Tank Corps
-#UNIT_ID_26= 10 [1]
+#UNIT_ID_26= 20 [2]
+; Tank Army
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 10 [1]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1939/09/01
+#DESTINATION_RESOURCE=
+; Berlin(173,74)
+#FRIENDLY_POSITION= 171,101
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Italy(59) not tactically threatened
+#TACTICAL_CONDITION= 171,101 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Italy (1939 - 1941) (Pre-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Infantry Division
+#UNIT_ID_2= 5 [1]
+; Mech Division
+#UNIT_ID_3= 5 [1]
+; Corps
+#UNIT_ID_4= 25 [2]
+; Army
+#UNIT_ID_5= 25 [2]
+; Mech Corps
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 5 [1]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Tank Division
+#UNIT_ID_25= 10 [1]
+; Tank Corps
+#UNIT_ID_26= 20 [1]
 ; Tank Army
 #UNIT_ID_27= 0 [0]
 ; Airships
@@ -588,7 +1550,477 @@
 ; Mulberry
 #UNIT_ID_45= 0 [0]
 ;
-#DATE= 1942/09/01
+#DATE= 1939/09/01
+#DESTINATION_RESOURCE=
+;STRATEGIC_ Set friendly positions:
+; Rome(171,101)
+#FRIENDLY_POSITION= 171,101
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+; Rome(171,101) not tactically threatened
+#TACTICAL_CONDITION= 171,101 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Italy (1941 - September 1941)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Infantry Division
+#UNIT_ID_2= 25 [2]
+; Mech Division
+#UNIT_ID_3= 10 [1]
+; Corps
+#UNIT_ID_4= 30 [2]
+; Army
+#UNIT_ID_5= 5 [2]
+; Mech Corps
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 5 [2]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Tank Division
+#UNIT_ID_25= 50 [2]
+; Tank Corps
+#UNIT_ID_26= 20 [2]
+; Tank Army
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 10 [1]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1941/01/01
+#DESTINATION_RESOURCE=
+; Rome(171,101)
+#FRIENDLY_POSITION= 171,101
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Rome(171,101) not tactically threatened
+#TACTICAL_CONDITION= 171,101 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; AXIS SCRIPTS - Italy
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+{
+#NAME= Italy (1943 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 10 [1]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Infantry Division
+#UNIT_ID_2= 5 [1]
+; Mech Division
+#UNIT_ID_3= 10 [1]
+; Corps
+#UNIT_ID_4= 50 [1]
+; Army
+#UNIT_ID_5= 25 [2]
+; Mech Corps
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 10 [1]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 10 [1]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 10 [1]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 10 [1]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Tank Division
+#UNIT_ID_25= 10 [1]
+; Tank Corps
+#UNIT_ID_26= 0 [0]
+; Tank Army
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 10 [1]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 10 [1]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 10 [3]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 10 [3]
+; Light Cruiser
+#UNIT_ID_39= 10 [3]
+; Destroyer
+#UNIT_ID_40= 10 [3]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 10 [3]
+; Sub
+#UNIT_ID_43= 10 [1]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1943/01/01
+#DESTINATION_RESOURCE=
+; Rome(171,101)
+#FRIENDLY_POSITION= 171,101
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Rome(171,101) not tactically threatened
+#TACTICAL_CONDITION= 171,101 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Italy (September 1941 - 1943)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 10 [1]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Infantry Division
+#UNIT_ID_2= 50 [2]
+; Mech Division
+#UNIT_ID_3= 10 [1]
+; Corps
+#UNIT_ID_4= 50 [2]
+; Army
+#UNIT_ID_5= 25 [2]
+; Mech Corps
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 10 [1]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 10 [1]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 10 [1]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Tank Division
+#UNIT_ID_25= 50 [2]
+; Tank Corps
+#UNIT_ID_26= 25 [2]
+; Tank Army
+#UNIT_ID_27= 50 [2]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 10 [2]
+; Tactical Bombers
+#UNIT_ID_30= 10 [2]
+; Medium Bombers
+#UNIT_ID_31= 10 [2]
+; Strategic Bombers
+#UNIT_ID_32= 10 [2]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1941/09/01
+#DESTINATION_RESOURCE=
+; Rome(171,101)
+#FRIENDLY_POSITION= 171,101
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Rome(171,101) not tactically threatened
+#TACTICAL_CONDITION= 171,101 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= UK (1939 - February 1940)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 10 [1]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Infantry Division
+#UNIT_ID_2= 15 [2]
+; Mech Division
+#UNIT_ID_3= 10 [1]
+; Corps
+#UNIT_ID_4= 75 [2]
+; Army
+#UNIT_ID_5= 25 [2]
+; Mech Corps
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 10 [1]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Tank Division
+#UNIT_ID_25= 0 [0]
+; Tank Corps
+#UNIT_ID_26= 0 [0]
+; Tank Army
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 0 [0]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1939/09/01
 #DESTINATION_RESOURCE=
 ; London(147,77)
 #FRIENDLY_POSITION= 147,77
@@ -705,6 +2137,127 @@
 #UNIT_ID_45= 0 [0]
 ;
 #DATE= 1942/01/01
+#DESTINATION_RESOURCE=
+; London(147,77)
+#FRIENDLY_POSITION= 147,77
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; ALLIED SCRIPTS - UK
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+{
+#NAME= UK (1944)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 10 [1]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Infantry Division
+#UNIT_ID_2= 25 [1]
+; Mech Division
+#UNIT_ID_3= 25 [1]
+; Corps
+#UNIT_ID_4= 25 [3]
+; Army
+#UNIT_ID_5= 25 [3]
+; Mech Corps Corp
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 10 [1]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 10 [1]
+; Mountain Division
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 10 [1]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 10 [1]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Tank Division
+#UNIT_ID_25= 10 [1]
+; Tank Corps
+#UNIT_ID_26= 10 [1]
+; Tank Army
+#UNIT_ID_27= 10 [1]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 10 [1]
+; Tactical Bombers
+#UNIT_ID_30= 10 [1]
+; Medium Bombers
+#UNIT_ID_31= 10 [1]
+; Strategic Bombers
+#UNIT_ID_32= 10 [1]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 10 [3]
+; Battle Cruiser
+#UNIT_ID_37= 10 [3]
+; Heavy Cruiser
+#UNIT_ID_38= 10 [3]
+; Light Cruiser
+#UNIT_ID_39= 10 [3]
+; Destroyer
+#UNIT_ID_40= 10 [3]
+; Escort Carrier
+#UNIT_ID_41= 10 [3]
+; Carrier
+#UNIT_ID_42= 10 [3]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1944/01/01
 #DESTINATION_RESOURCE=
 ; London(147,77)
 #FRIENDLY_POSITION= 147,77
@@ -833,7 +2386,7 @@
 }
 
 {
-#NAME= UK (1939 - February 1940)
+#NAME= UK (Sep 1942 - 1944)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -844,29 +2397,29 @@
 #LINK= 0[0]
 #SKIP_FUNDS_CHECK= 0
 ; HQ
-#UNIT_ID_0= 10 [1]
+#UNIT_ID_0= 0 [0]
 ; Garrison
 #UNIT_ID_1= 0 [0]
 ; Infantry Division
-#UNIT_ID_2= 15 [2]
+#UNIT_ID_2= 25 [1]
 ; Mech Division
 #UNIT_ID_3= 10 [1]
 ; Corps
-#UNIT_ID_4= 75 [2]
+#UNIT_ID_4= 40 [3]
 ; Army
-#UNIT_ID_5= 25 [2]
-; Mech Corps
+#UNIT_ID_5= 10 [1]
+; Mechanized Corps
 #UNIT_ID_6= 0 [0]
 ; Special Forces
-#UNIT_ID_7= 0 [0]
+#UNIT_ID_7= 10 [1]
 ; Engineers
 #UNIT_ID_8= 0 [0]
 ; Paratroops
 #UNIT_ID_9= 0 [0]
-; Cavalry Brigade
+; Mountain Division
 #UNIT_ID_10= 0 [0]
 ; Cavalry Division
-#UNIT_ID_11= 0 [0]
+#UNIT_ID_11= 10 [1]
 ; Cavalry Corps
 #UNIT_ID_12= 0 [0]
 ; Partisans
@@ -874,13 +2427,13 @@
 ; Pillbox
 #UNIT_ID_14= 0 [0]
 ; Anti-Air
-#UNIT_ID_15= 10 [1]
+#UNIT_ID_15= 0 [0]
 ; Rocket Artillery
 #UNIT_ID_16= 0 [0]
 ; Artillery
 #UNIT_ID_17= 0 [0]
 ; Heavy Artillery
-#UNIT_ID_18= 0 [0]
+#UNIT_ID_18= 10 [1]
 ; Rail Gun
 #UNIT_ID_19= 0 [0]
 ; Coastal Gun
@@ -894,9 +2447,9 @@
 ; Anti Tank
 #UNIT_ID_24= 0 [0]
 ; Tank Division
-#UNIT_ID_25= 0 [0]
+#UNIT_ID_25= 10 [1]
 ; Tank Corps
-#UNIT_ID_26= 0 [0]
+#UNIT_ID_26= 10 [1]
 ; Tank Army
 #UNIT_ID_27= 0 [0]
 ; Airships
@@ -936,7 +2489,7 @@
 ; Mulberry
 #UNIT_ID_45= 0 [0]
 ;
-#DATE= 1939/09/01
+#DATE= 1942/09/01
 #DESTINATION_RESOURCE=
 ; London(147,77)
 #FRIENDLY_POSITION= 147,77
@@ -1180,248 +2733,6 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ALLIED SCRIPTS - France
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-{
-#NAME= France (1940 - )
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 40
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; HQ
-#UNIT_ID_0= 0 [0]
-; Garrison
-#UNIT_ID_1= 0 [0]
-; Infantry Division
-#UNIT_ID_2= 5 [1]
-; Mech Division
-#UNIT_ID_3= 10 [1]
-; Corps
-#UNIT_ID_4= 25 [2]
-; Army
-#UNIT_ID_5= 25 [2]
-; Mech Corps
-#UNIT_ID_6= 0 [0]
-; Special Forces
-#UNIT_ID_7= 0 [0]
-; Engineers
-#UNIT_ID_8= 0 [0]
-; Paratroops
-#UNIT_ID_9= 0 [0]
-; Cavalry Brigade
-#UNIT_ID_10= 0 [0]
-; Cavalry Division
-#UNIT_ID_11= 0 [0]
-; Cavalry Corps
-#UNIT_ID_12= 0 [0]
-; Partisans
-#UNIT_ID_13= 0 [0]
-; Pillbox
-#UNIT_ID_14= 0 [0]
-; Anti-Air
-#UNIT_ID_15= 0 [0]
-; Rocket Artillery
-#UNIT_ID_16= 0 [0]
-; Artillery
-#UNIT_ID_17= 0 [0]
-; Heavy Artillery
-#UNIT_ID_18= 0 [0]
-; Rail Gun
-#UNIT_ID_19= 0 [0]
-; Coastal Gun
-#UNIT_ID_20= 0 [0]
-; Rockets
-#UNIT_ID_21= 0 [0]
-; Reconnaissance
-#UNIT_ID_22= 0 [0]
-; Armoured Train
-#UNIT_ID_23= 0 [0]
-; Anti Tank
-#UNIT_ID_24= 0 [0]
-; Tank Division
-#UNIT_ID_25= 5 [1]
-; Tank Corps
-#UNIT_ID_26= 15 [1]
-; Tank Army
-#UNIT_ID_27= 15 [1]
-; Airships
-#UNIT_ID_28= 0 [0]
-; Fighters
-#UNIT_ID_29= 0 [0]
-; Tactical Bombers
-#UNIT_ID_30= 0 [0]
-; Medium Bombers
-#UNIT_ID_31= 0 [0]
-; Strategic Bombers
-#UNIT_ID_32= 0 [0]
-; Maritime Bombers
-#UNIT_ID_33= 0 [0]
-; Kamikazes
-#UNIT_ID_34= 0 [0]
-; Dreadnought
-#UNIT_ID_35= 0 [0]
-; Battleship
-#UNIT_ID_36= 0 [0]
-; Battle Cruiser
-#UNIT_ID_37= 0 [0]
-; Heavy Cruiser
-#UNIT_ID_38= 0 [0]
-; Light Cruiser
-#UNIT_ID_39= 0 [0]
-; Destroyer
-#UNIT_ID_40= 0 [0]
-; Escort Carrier
-#UNIT_ID_41= 0 [0]
-; Carrier
-#UNIT_ID_42= 0 [0]
-; Sub
-#UNIT_ID_43= 0 [0]
-; Motor Torpedo Boat
-#UNIT_ID_44= 0 [0]
-; Mulberry
-#UNIT_ID_45= 0 [0]
-;
-#DATE= 1940/01/01
-#DESTINATION_RESOURCE=
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; France(40) Allied and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-; Paris(151,84) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 151,84 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ALLIED SCRIPTS - USA
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-{
-#NAME= USA (1944 - )
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; HQ
-#UNIT_ID_0= 10 [1]
-; Garrison
-#UNIT_ID_1= 0 [0]
-; Infantry Division
-#UNIT_ID_2= 25 [2]
-; Mech Division
-#UNIT_ID_3= 0 [0]
-; Corps
-#UNIT_ID_4= 25 [3]
-; Army
-#UNIT_ID_5= 10 [2]
-; Mech Corps
-#UNIT_ID_6= 0 [0]
-; Special Forces
-#UNIT_ID_7= 10 [1]
-; Engineers
-#UNIT_ID_8= 10 [1]
-; Paratroops
-#UNIT_ID_9= 10 [1]
-; Cavalry Brigade
-#UNIT_ID_10= 0 [0]
-; Cavalry Division
-#UNIT_ID_11= 0 [0]
-; Cavalry Corps
-#UNIT_ID_12= 0 [0]
-; Partisans
-#UNIT_ID_13= 0 [0]
-; Pillbox
-#UNIT_ID_14= 0 [0]
-; Anti-Air
-#UNIT_ID_15= 10 [1]
-; Rocket Artillery
-#UNIT_ID_16= 0 [0]
-; Artillery
-#UNIT_ID_17= 0 [0]
-; Heavy Artillery
-#UNIT_ID_18= 10 [1]
-; Rail Gun
-#UNIT_ID_19= 0 [0]
-; Coastal Gun
-#UNIT_ID_20= 0 [0]
-; Rockets
-#UNIT_ID_21= 0 [0]
-; Reconnaissance
-#UNIT_ID_22= 0 [0]
-; Armoured Train
-#UNIT_ID_23= 0 [0]
-; Anti Tank
-#UNIT_ID_24= 0 [0]
-; Tank Division
-#UNIT_ID_25= 15 [2]
-; Tank Corps
-#UNIT_ID_26= 15 [1]
-; Tank Army
-#UNIT_ID_27= 15 [1]
-; Airships
-#UNIT_ID_28= 0 [0]
-; Fighters
-#UNIT_ID_29= 10 [1]
-; Tactical Bombers
-#UNIT_ID_30= 10 [1]
-; Medium Bombers
-#UNIT_ID_31= 10 [1]
-; Strategic Bombers
-#UNIT_ID_32= 10 [1]
-; Maritime Bombers
-#UNIT_ID_33= 0 [0]
-; Kamikazes
-#UNIT_ID_34= 0 [0]
-; Dreadnought
-#UNIT_ID_35= 0 [0]
-; Battleship
-#UNIT_ID_36= 10 [3]
-; Battle Cruiser
-#UNIT_ID_37= 0 [0]
-; Heavy Cruiser
-#UNIT_ID_38= 10 [3]
-; Light Cruiser
-#UNIT_ID_39= 10 [3]
-; Destroyer
-#UNIT_ID_40= 10 [3]
-; Escort Carrier
-#UNIT_ID_41= 10 [3]
-; Carrier
-#UNIT_ID_42= 10 [3]
-; Sub
-#UNIT_ID_43= 10 [3]
-; Motor Torpedo Boat
-#UNIT_ID_44= 0 [0]
-; Mulberry
-#UNIT_ID_45= 0 [0]
-;
-#DATE= 1944/01/01
-#DESTINATION_RESOURCE=
-; Washington DC(4,108)
-#FRIENDLY_POSITION= 4,108
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 4,108 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
 {
 #NAME= USA (1943 - 1944)
 #POPUP=
@@ -1538,8 +2849,13 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; ALLIED SCRIPTS - USA
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
 {
-#NAME= USA (Sept 1942 - 1943) (Post-Entry)
+#NAME= USA (1944 - )
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -1550,25 +2866,25 @@
 #LINK= 0[0]
 #SKIP_FUNDS_CHECK= 0
 ; HQ
-#UNIT_ID_0= 0 [0]
+#UNIT_ID_0= 10 [1]
 ; Garrison
 #UNIT_ID_1= 0 [0]
 ; Infantry Division
-#UNIT_ID_2= 10 [1]
+#UNIT_ID_2= 25 [2]
 ; Mech Division
 #UNIT_ID_3= 0 [0]
 ; Corps
-#UNIT_ID_4= 0 [0]
+#UNIT_ID_4= 25 [3]
 ; Army
-#UNIT_ID_5= 0 [0]
+#UNIT_ID_5= 10 [2]
 ; Mech Corps
 #UNIT_ID_6= 0 [0]
 ; Special Forces
 #UNIT_ID_7= 10 [1]
 ; Engineers
-#UNIT_ID_8= 0 [0]
+#UNIT_ID_8= 10 [1]
 ; Paratroops
-#UNIT_ID_9= 0 [0]
+#UNIT_ID_9= 10 [1]
 ; Cavalry Brigade
 #UNIT_ID_10= 0 [0]
 ; Cavalry Division
@@ -1580,7 +2896,7 @@
 ; Pillbox
 #UNIT_ID_14= 0 [0]
 ; Anti-Air
-#UNIT_ID_15= 0 [0]
+#UNIT_ID_15= 10 [1]
 ; Rocket Artillery
 #UNIT_ID_16= 0 [0]
 ; Artillery
@@ -1600,21 +2916,21 @@
 ; Anti Tank
 #UNIT_ID_24= 0 [0]
 ; Tank Division
-#UNIT_ID_25= 0 [0]
+#UNIT_ID_25= 15 [2]
 ; Tank Corps
-#UNIT_ID_26= 0 [0]
+#UNIT_ID_26= 15 [1]
 ; Tank Army
-#UNIT_ID_27= 0 [0]
+#UNIT_ID_27= 15 [1]
 ; Airships
 #UNIT_ID_28= 0 [0]
 ; Fighters
 #UNIT_ID_29= 10 [1]
 ; Tactical Bombers
-#UNIT_ID_30= 40 [1]
+#UNIT_ID_30= 10 [1]
 ; Medium Bombers
-#UNIT_ID_31= 40 [1]
+#UNIT_ID_31= 10 [1]
 ; Strategic Bombers
-#UNIT_ID_32= 40 [1]
+#UNIT_ID_32= 10 [1]
 ; Maritime Bombers
 #UNIT_ID_33= 0 [0]
 ; Kamikazes
@@ -1622,27 +2938,27 @@
 ; Dreadnought
 #UNIT_ID_35= 0 [0]
 ; Battleship
-#UNIT_ID_36= 0 [0]
+#UNIT_ID_36= 10 [3]
 ; Battle Cruiser
 #UNIT_ID_37= 0 [0]
 ; Heavy Cruiser
-#UNIT_ID_38= 0 [0]
+#UNIT_ID_38= 10 [3]
 ; Light Cruiser
-#UNIT_ID_39= 0 [0]
+#UNIT_ID_39= 10 [3]
 ; Destroyer
-#UNIT_ID_40= 0 [0]
+#UNIT_ID_40= 10 [3]
 ; Escort Carrier
-#UNIT_ID_41= 0 [0]
+#UNIT_ID_41= 10 [3]
 ; Carrier
-#UNIT_ID_42= 0 [0]
+#UNIT_ID_42= 10 [3]
 ; Sub
-#UNIT_ID_43= 0 [0]
+#UNIT_ID_43= 10 [3]
 ; Motor Torpedo Boat
 #UNIT_ID_44= 0 [0]
 ; Mulberry
 #UNIT_ID_45= 0 [0]
 ;
-#DATE= 1942/09/01
+#DATE= 1944/01/01
 #DESTINATION_RESOURCE=
 ; Washington DC(4,108)
 #FRIENDLY_POSITION= 4,108
@@ -1771,6 +3087,122 @@
 }
 
 {
+#NAME= USA (March 1940 - Sep 1942) (Pre-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; HQ
+#UNIT_ID_0= 0 [0]
+; Garrison
+#UNIT_ID_1= 0 [0]
+; Infantry Division
+#UNIT_ID_2= 5 [1]
+; Mech Division
+#UNIT_ID_3= 0 [0]
+; Corps
+#UNIT_ID_4= 25 [3]
+; Army
+#UNIT_ID_5= 10 [1]
+; Mech Corps
+#UNIT_ID_6= 0 [0]
+; Special Forces
+#UNIT_ID_7= 0 [0]
+; Engineers
+#UNIT_ID_8= 0 [0]
+; Paratroops
+#UNIT_ID_9= 0 [0]
+; Cavalry Brigade
+#UNIT_ID_10= 0 [0]
+; Cavalry Division
+#UNIT_ID_11= 0 [0]
+; Cavalry Corps
+#UNIT_ID_12= 0 [0]
+; Partisans
+#UNIT_ID_13= 0 [0]
+; Pillbox
+#UNIT_ID_14= 0 [0]
+; Anti-Air
+#UNIT_ID_15= 0 [0]
+; Rocket Artillery
+#UNIT_ID_16= 0 [0]
+; Artillery
+#UNIT_ID_17= 0 [0]
+; Heavy Artillery
+#UNIT_ID_18= 0 [0]
+; Rail Gun
+#UNIT_ID_19= 0 [0]
+; Coastal Gun
+#UNIT_ID_20= 0 [0]
+; Rockets
+#UNIT_ID_21= 0 [0]
+; Reconnaissance
+#UNIT_ID_22= 0 [0]
+; Armoured Train
+#UNIT_ID_23= 0 [0]
+; Anti Tank
+#UNIT_ID_24= 0 [0]
+; Tank Division
+#UNIT_ID_25= 0 [0]
+; Tank Corps
+#UNIT_ID_26= 10 [1]
+; Tank Army
+#UNIT_ID_27= 0 [0]
+; Airships
+#UNIT_ID_28= 0 [0]
+; Fighters
+#UNIT_ID_29= 0 [0]
+; Tactical Bombers
+#UNIT_ID_30= 0 [0]
+; Medium Bombers
+#UNIT_ID_31= 0 [0]
+; Strategic Bombers
+#UNIT_ID_32= 0 [0]
+; Maritime Bombers
+#UNIT_ID_33= 0 [0]
+; Kamikazes
+#UNIT_ID_34= 0 [0]
+; Dreadnought
+#UNIT_ID_35= 0 [0]
+; Battleship
+#UNIT_ID_36= 0 [0]
+; Battle Cruiser
+#UNIT_ID_37= 0 [0]
+; Heavy Cruiser
+#UNIT_ID_38= 0 [0]
+; Light Cruiser
+#UNIT_ID_39= 0 [0]
+; Destroyer
+#UNIT_ID_40= 0 [0]
+; Escort Carrier
+#UNIT_ID_41= 0 [0]
+; Carrier
+#UNIT_ID_42= 0 [0]
+; Sub
+#UNIT_ID_43= 0 [0]
+; Motor Torpedo Boat
+#UNIT_ID_44= 0 [0]
+; Mulberry
+#UNIT_ID_45= 0 [0]
+;
+#DATE= 1940/03/01
+#DESTINATION_RESOURCE=
+; Washington DC(4,108)
+#FRIENDLY_POSITION= 4,108
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; Washington DC(4,108) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
 #NAME= USA (Sep 1942 - 1943) (Pre-Entry)
 #POPUP=
 #FLAG= 1
@@ -1888,7 +3320,7 @@
 }
 
 {
-#NAME= USA (March 1940 - Sep 1942) (Pre-Entry)
+#NAME= USA (Sept 1942 - 1943) (Post-Entry)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -1903,17 +3335,17 @@
 ; Garrison
 #UNIT_ID_1= 0 [0]
 ; Infantry Division
-#UNIT_ID_2= 5 [1]
+#UNIT_ID_2= 10 [1]
 ; Mech Division
 #UNIT_ID_3= 0 [0]
 ; Corps
-#UNIT_ID_4= 25 [3]
+#UNIT_ID_4= 0 [0]
 ; Army
-#UNIT_ID_5= 10 [1]
+#UNIT_ID_5= 0 [0]
 ; Mech Corps
 #UNIT_ID_6= 0 [0]
 ; Special Forces
-#UNIT_ID_7= 0 [0]
+#UNIT_ID_7= 10 [1]
 ; Engineers
 #UNIT_ID_8= 0 [0]
 ; Paratroops
@@ -1935,7 +3367,7 @@
 ; Artillery
 #UNIT_ID_17= 0 [0]
 ; Heavy Artillery
-#UNIT_ID_18= 0 [0]
+#UNIT_ID_18= 10 [1]
 ; Rail Gun
 #UNIT_ID_19= 0 [0]
 ; Coastal Gun
@@ -1951,19 +3383,19 @@
 ; Tank Division
 #UNIT_ID_25= 0 [0]
 ; Tank Corps
-#UNIT_ID_26= 10 [1]
+#UNIT_ID_26= 0 [0]
 ; Tank Army
 #UNIT_ID_27= 0 [0]
 ; Airships
 #UNIT_ID_28= 0 [0]
 ; Fighters
-#UNIT_ID_29= 0 [0]
+#UNIT_ID_29= 10 [1]
 ; Tactical Bombers
-#UNIT_ID_30= 0 [0]
+#UNIT_ID_30= 40 [1]
 ; Medium Bombers
-#UNIT_ID_31= 0 [0]
+#UNIT_ID_31= 40 [1]
 ; Strategic Bombers
-#UNIT_ID_32= 0 [0]
+#UNIT_ID_32= 40 [1]
 ; Maritime Bombers
 #UNIT_ID_33= 0 [0]
 ; Kamikazes
@@ -1991,251 +3423,14 @@
 ; Mulberry
 #UNIT_ID_45= 0 [0]
 ;
-#DATE= 1940/03/01
+#DATE= 1942/09/01
 #DESTINATION_RESOURCE=
 ; Washington DC(4,108)
 #FRIENDLY_POSITION= 4,108
 ; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [0] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Washington DC(4,108) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 4,108 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ALLIED SCRIPTS - USSR
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-{
-#NAME= USSR (1943 - )
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; HQ
-#UNIT_ID_0= 10 [1]
-; Garrison
-#UNIT_ID_1= 0 [0]
-; Infantry Division
-#UNIT_ID_2= 10 [2]
-; Mech Division
-#UNIT_ID_3= 10 [2]
-; Corps
-#UNIT_ID_4= 40 [3]
-; Army
-#UNIT_ID_5= 40 [2]
-; Mech Corps
-#UNIT_ID_6= 25 [2]
-; Special Forces
-#UNIT_ID_7= 10 [1]
-; Engineers
-#UNIT_ID_8= 10 [1]
-; Paratroops
-#UNIT_ID_9= 10 [1]
-; Cavalry Brigade
-#UNIT_ID_10= 0 [0]
-; Cavalry Division
-#UNIT_ID_11= 0 [0]
-; Cavalry Corps
-#UNIT_ID_12= 10 [1]
-; Partisans
-#UNIT_ID_13= 0 [0]
-; Pillbox
-#UNIT_ID_14= 25 [2]
-; Anti-Air
-#UNIT_ID_15= 0 [0]
-; Rocket Artillery
-#UNIT_ID_16= 10 [1]
-; Artillery
-#UNIT_ID_17= 0 [0]
-; Heavy Artillery
-#UNIT_ID_18= 10 [1]
-; Rail Gun
-#UNIT_ID_19= 0 [0]
-; Coastal Gun
-#UNIT_ID_20= 0 [0]
-; Rockets
-#UNIT_ID_21= 0 [0]
-; Reconnaissance
-#UNIT_ID_22= 0 [0]
-; Armoured Train
-#UNIT_ID_23= 10 [1]
-; Anti Tank
-#UNIT_ID_24= 0 [0]
-; Tank Division
-#UNIT_ID_25= 25 [1]
-; Tank Corps
-#UNIT_ID_26= 25 [2]
-; Tank Army
-#UNIT_ID_27= 25 [2]
-; Airships
-#UNIT_ID_28= 0 [0]
-; Fighters
-#UNIT_ID_29= 25 [2]
-; Tactical Bombers
-#UNIT_ID_30= 25 [2]
-; Medium Bombers
-#UNIT_ID_31= 25 [2]
-; Strategic Bombers
-#UNIT_ID_32= 10 [1]
-; Maritime Bombers
-#UNIT_ID_33= 0 [0]
-; Kamikazes
-#UNIT_ID_34= 0 [0]
-; Dreadnought
-#UNIT_ID_35= 0 [0]
-; Battleship
-#UNIT_ID_36= 0 [0]
-; Battle Cruiser
-#UNIT_ID_37= 0 [0]
-; Heavy Cruiser
-#UNIT_ID_38= 0 [0]
-; Light Cruiser
-#UNIT_ID_39= 0 [0]
-; Destroyer
-#UNIT_ID_40= 0 [0]
-; Escort Carrier
-#UNIT_ID_41= 0 [0]
-; Carrier
-#UNIT_ID_42= 0 [0]
-; Sub
-#UNIT_ID_43= 0 [0]
-; Motor Torpedo Boat
-#UNIT_ID_44= 0 [0]
-; Mulberry
-#UNIT_ID_45= 0 [0]
-;
-#DATE= 1943/01/01
-#DESTINATION_RESOURCE=
-; Perm(257,58)
-#FRIENDLY_POSITION= 257,58
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Perm(257,58) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 257,58 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR (1942 - )
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; HQ
-#UNIT_ID_0= 0 [0]
-; Garrison
-#UNIT_ID_1= 0 [0]
-; Infantry Division
-#UNIT_ID_2= 25 [1]
-; Mech Division
-#UNIT_ID_3= 25 [1]
-; Corps
-#UNIT_ID_4= 40 [3]
-; Army
-#UNIT_ID_5= 40 [2]
-; Mech Corps
-#UNIT_ID_6= 25 [1]
-; Special Forces
-#UNIT_ID_7= 10 [1]
-; Engineers
-#UNIT_ID_8= 0 [0]
-; Paratroops
-#UNIT_ID_9= 0 [0]
-; Cavalry Brigade
-#UNIT_ID_10= 0 [0]
-; Cavalry Division
-#UNIT_ID_11= 0 [0]
-; Cavalry Corps
-#UNIT_ID_12= 10 [1]
-; Partisans
-#UNIT_ID_13= 0 [0]
-; Pillbox
-#UNIT_ID_14= 25 [2]
-; Anti-Air
-#UNIT_ID_15= 10 [1]
-; Rocket Artillery
-#UNIT_ID_16= 10 [1]
-; Artillery
-#UNIT_ID_17= 0 [0]
-; Heavy Artillery
-#UNIT_ID_18= 10 [1]
-; Rail Gun
-#UNIT_ID_19= 0 [0]
-; Coastal Gun
-#UNIT_ID_20= 0 [0]
-; Rockets
-#UNIT_ID_21= 0 [0]
-; Reconnaissance
-#UNIT_ID_22= 0 [0]
-; Armoured Train
-#UNIT_ID_23= 0 [0]
-; Anti Tank
-#UNIT_ID_24= 0 [0]
-; Tank Division
-#UNIT_ID_25= 25 [2]
-; Tank Corps
-#UNIT_ID_26= 25 [2]
-; Tank Army
-#UNIT_ID_27= 25 [2]
-; Airships
-#UNIT_ID_28= 0 [0]
-; Fighters
-#UNIT_ID_29= 0 [0]
-; Tactical Bombers
-#UNIT_ID_30= 0 [0]
-; Medium Bombers
-#UNIT_ID_31= 0 [0]
-; Strategic Bombers
-#UNIT_ID_32= 0 [0]
-; Maritime Bombers
-#UNIT_ID_33= 0 [0]
-; Kamikazes
-#UNIT_ID_34= 0 [0]
-; Dreadnought
-#UNIT_ID_35= 0 [0]
-; Battleship
-#UNIT_ID_36= 0 [0]
-; Battle Cruiser
-#UNIT_ID_37= 0 [0]
-; Heavy Cruiser
-#UNIT_ID_38= 0 [0]
-; Light Cruiser
-#UNIT_ID_39= 0 [0]
-; Destroyer
-#UNIT_ID_40= 0 [0]
-; Escort Carrier
-#UNIT_ID_41= 0 [0]
-; Carrier
-#UNIT_ID_42= 0 [0]
-; Sub
-#UNIT_ID_43= 0 [0]
-; Motor Torpedo Boat
-#UNIT_ID_44= 0 [0]
-; Mulberry
-#UNIT_ID_45= 0 [0]
-;
-#DATE= 1942/01/01
-#DESTINATION_RESOURCE=
-; Perm(257,58)
-#FRIENDLY_POSITION= 257,58
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Perm(257,58) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 257,58 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
@@ -2472,36 +3667,31 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; AXIS SCRIPTS - Germany
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
 {
-#NAME= Germany (1944 - )
+#NAME= USSR (1942 - )
 #POPUP=
 #FLAG= 1
 #TYPE= 2
-#COUNTRY_ID= 45
+#COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
 #SKIP_FUNDS_CHECK= 0
 ; HQ
-#UNIT_ID_0= 10 [1]
+#UNIT_ID_0= 0 [0]
 ; Garrison
 #UNIT_ID_1= 0 [0]
 ; Infantry Division
-#UNIT_ID_2= 50 [3]
+#UNIT_ID_2= 25 [1]
 ; Mech Division
 #UNIT_ID_3= 25 [1]
 ; Corps
-#UNIT_ID_4= 25 [1]
+#UNIT_ID_4= 40 [3]
 ; Army
-#UNIT_ID_5= 25 [2]
+#UNIT_ID_5= 40 [2]
 ; Mech Corps
-#UNIT_ID_6= 0 [0]
+#UNIT_ID_6= 25 [1]
 ; Special Forces
 #UNIT_ID_7= 10 [1]
 ; Engineers
@@ -2511,13 +3701,13 @@
 ; Cavalry Brigade
 #UNIT_ID_10= 0 [0]
 ; Cavalry Division
-#UNIT_ID_11= 10 [1]
+#UNIT_ID_11= 0 [0]
 ; Cavalry Corps
-#UNIT_ID_12= 0 [0]
+#UNIT_ID_12= 10 [1]
 ; Partisans
 #UNIT_ID_13= 0 [0]
 ; Pillbox
-#UNIT_ID_14= 0 [0]
+#UNIT_ID_14= 25 [2]
 ; Anti-Air
 #UNIT_ID_15= 10 [1]
 ; Rocket Artillery
@@ -2540,1179 +3730,10 @@
 #UNIT_ID_24= 0 [0]
 ; Tank Division
 #UNIT_ID_25= 25 [2]
-; Tank Corps
-#UNIT_ID_26= 25 [1]
-; Tank Army
-#UNIT_ID_27= 25 [1]
-; Airships
-#UNIT_ID_28= 0 [0]
-; Fighters
-#UNIT_ID_29= 10 [1]
-; Tactical Bombers
-#UNIT_ID_30= 10 [1]
-; Medium Bombers
-#UNIT_ID_31= 10 [1]
-; Strategic Bombers
-#UNIT_ID_32= 10 [1]
-; Maritime Bombers
-#UNIT_ID_33= 10 [1]
-; Kamikazes
-#UNIT_ID_34= 0 [0]
-; Dreadnought
-#UNIT_ID_35= 0 [0]
-; Battleship
-#UNIT_ID_36= 10 [3]
-; Battle Cruiser
-#UNIT_ID_37= 10 [3]
-; Heavy Cruiser
-#UNIT_ID_38= 10 [3]
-; Light Cruiser
-#UNIT_ID_39= 0 [0]
-; Destroyer
-#UNIT_ID_40= 10 [3]
-; Escort Carrier
-#UNIT_ID_41= 0 [0]
-; Carrier
-#UNIT_ID_42= 10 [3]
-; Sub
-#UNIT_ID_43= 10 [3]
-; Motor Torpedo Boat
-#UNIT_ID_44= 10 [3]
-; Mulberry
-#UNIT_ID_45= 0 [0]
-;
-#DATE= 1944/01/01
-#DESTINATION_RESOURCE=
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany (1943 - )
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; HQ
-#UNIT_ID_0= 0 [0]
-; Garrison
-#UNIT_ID_1= 0 [0]
-; Infantry Division
-#UNIT_ID_2= 50 [3]
-; Mech Division
-#UNIT_ID_3= 15 [1]
-; Corps
-#UNIT_ID_4= 25 [1]
-; Army
-#UNIT_ID_5= 25 [2]
-; Mech Corps
-#UNIT_ID_6= 0 [0]
-; Special Forces
-#UNIT_ID_7= 10 [1]
-; Engineers
-#UNIT_ID_8= 0 [0]
-; Paratroops
-#UNIT_ID_9= 0 [0]
-; Cavalry Brigade
-#UNIT_ID_10= 0 [0]
-; Cavalry Division
-#UNIT_ID_11= 10 [1]
-; Cavalry Corps
-#UNIT_ID_12= 0 [0]
-; Partisans
-#UNIT_ID_13= 0 [0]
-; Pillbox
-#UNIT_ID_14= 0 [0]
-; Anti-Air
-#UNIT_ID_15= 10 [1]
-; Rocket Artillery
-#UNIT_ID_16= 10 [1]
-; Artillery
-#UNIT_ID_17= 0 [0]
-; Heavy Artillery
-#UNIT_ID_18= 10 [1]
-; Rail Gun
-#UNIT_ID_19= 0 [0]
-; Coastal Gun
-#UNIT_ID_20= 0 [0]
-; Rockets
-#UNIT_ID_21= 0 [0]
-; Reconnaissance
-#UNIT_ID_22= 0 [0]
-; Armoured Train
-#UNIT_ID_23= 0 [0]
-; Anti Tank
-#UNIT_ID_24= 0 [0]
-; Tank Division
-#UNIT_ID_25= 25 [2]
-; Tank Corps
-#UNIT_ID_26= 25 [1]
-; Tank Army
-#UNIT_ID_27= 25 [1]
-; Airships
-#UNIT_ID_28= 0 [0]
-; Fighters
-#UNIT_ID_29= 10 [1]
-; Tactical Bombers
-#UNIT_ID_30= 0 [0]
-; Medium Bombers
-#UNIT_ID_31= 0 [0]
-; Strategic Bombers
-#UNIT_ID_32= 0 [0]
-; Maritime Bombers
-#UNIT_ID_33= 10 [1]
-; Kamikazes
-#UNIT_ID_34= 0 [0]
-; Dreadnought
-#UNIT_ID_35= 0 [0]
-; Battleship
-#UNIT_ID_36= 0 [0]
-; Battle Cruiser
-#UNIT_ID_37= 0 [0]
-; Heavy Cruiser
-#UNIT_ID_38= 0 [0]
-; Light Cruiser
-#UNIT_ID_39= 0 [0]
-; Destroyer
-#UNIT_ID_40= 0 [0]
-; Escort Carrier
-#UNIT_ID_41= 0 [0]
-; Carrier
-#UNIT_ID_42= 0 [0]
-; Sub
-#UNIT_ID_43= 10 [3]
-; Motor Torpedo Boat
-#UNIT_ID_44= 0 [0]
-; Mulberry
-#UNIT_ID_45= 0 [0]
-;
-#DATE= 1943/01/01
-#DESTINATION_RESOURCE=
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany (September 1941 - 1943)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; HQ
-#UNIT_ID_0= 0 [0]
-; Garrison
-#UNIT_ID_1= 0 [0]
-; Infantry Division
-#UNIT_ID_2= 10 [2]
-; Mech Division
-#UNIT_ID_3= 10 [2]
-; Corps
-#UNIT_ID_4= 50 [1]
-; Army
-#UNIT_ID_5= 25 [2]
-; Mech Corps
-#UNIT_ID_6= 0 [0]
-; Special Forces
-#UNIT_ID_7= 0 [0]
-; Engineers
-#UNIT_ID_8= 0 [0]
-; Paratroops
-#UNIT_ID_9= 0 [0]
-; Cavalry Brigade
-#UNIT_ID_10= 0 [0]
-; Cavalry Division
-#UNIT_ID_11= 10 [1]
-; Cavalry Corps
-#UNIT_ID_12= 0 [0]
-; Partisans
-#UNIT_ID_13= 0 [0]
-; Pillbox
-#UNIT_ID_14= 0 [0]
-; Anti-Air
-#UNIT_ID_15= 10 [1]
-; Rocket Artillery
-#UNIT_ID_16= 10 [1]
-; Artillery
-#UNIT_ID_17= 0 [0]
-; Heavy Artillery
-#UNIT_ID_18= 10 [1]
-; Rail Gun
-#UNIT_ID_19= 0 [0]
-; Coastal Gun
-#UNIT_ID_20= 0 [0]
-; Rockets
-#UNIT_ID_21= 0 [0]
-; Reconnaissance
-#UNIT_ID_22= 0 [0]
-; Armoured Train
-#UNIT_ID_23= 0 [0]
-; Anti Tank
-#UNIT_ID_24= 0 [0]
-; Tank Division
-#UNIT_ID_25= 50 [1]
-; Tank Corps
-#UNIT_ID_26= 25 [1]
-; Tank Army
-#UNIT_ID_27= 50 [1]
-; Airships
-#UNIT_ID_28= 0 [0]
-; Fighters
-#UNIT_ID_29= 25 [1]
-; Tactical Bombers
-#UNIT_ID_30= 10 [1]
-; Medium Bombers
-#UNIT_ID_31= 10 [1]
-; Strategic Bombers
-#UNIT_ID_32= 10 [1]
-; Maritime Bombers
-#UNIT_ID_33= 10 [1]
-; Kamikazes
-#UNIT_ID_34= 0 [0]
-; Dreadnought
-#UNIT_ID_35= 0 [0]
-; Battleship
-#UNIT_ID_36= 0 [0]
-; Battle Cruiser
-#UNIT_ID_37= 0 [0]
-; Heavy Cruiser
-#UNIT_ID_38= 0 [0]
-; Light Cruiser
-#UNIT_ID_39= 0 [0]
-; Destroyer
-#UNIT_ID_40= 0 [0]
-; Escort Carrier
-#UNIT_ID_41= 0 [0]
-; Carrier
-#UNIT_ID_42= 0 [0]
-; Sub
-#UNIT_ID_43= 10 [1]
-; Motor Torpedo Boat
-#UNIT_ID_44= 0 [0]
-; Mulberry
-#UNIT_ID_45= 0 [0]
-;
-#DATE= 1941/09/01
-#DESTINATION_RESOURCE=
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany (1941 - September 1941)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; HQ
-#UNIT_ID_0= 0 [0]
-; Garrison
-#UNIT_ID_1= 0 [0]
-; Infantry Division
-#UNIT_ID_2= 0 [0]
-; Mech Division
-#UNIT_ID_3= 10 [1]
-; Corps
-#UNIT_ID_4= 50 [1]
-; Army
-#UNIT_ID_5= 10 [1]
-; Mech Corps
-#UNIT_ID_6= 0 [0]
-; Special Forces
-#UNIT_ID_7= 0 [0]
-; Engineers
-#UNIT_ID_8= 0 [0]
-; Paratroops
-#UNIT_ID_9= 0 [0]
-; Cavalry Brigade
-#UNIT_ID_10= 0 [0]
-; Cavalry Division
-#UNIT_ID_11= 10 [1]
-; Cavalry Corps
-#UNIT_ID_12= 0 [0]
-; Partisans
-#UNIT_ID_13= 0 [0]
-; Pillbox
-#UNIT_ID_14= 0 [0]
-; Anti-Air
-#UNIT_ID_15= 0 [0]
-; Rocket Artillery
-#UNIT_ID_16= 10 [1]
-; Artillery
-#UNIT_ID_17= 0 [0]
-; Heavy Artillery
-#UNIT_ID_18= 10 [1]
-; Rail Gun
-#UNIT_ID_19= 0 [0]
-; Coastal Gun
-#UNIT_ID_20= 0 [0]
-; Rockets
-#UNIT_ID_21= 0 [0]
-; Reconnaissance
-#UNIT_ID_22= 0 [0]
-; Armoured Train
-#UNIT_ID_23= 0 [0]
-; Anti Tank
-#UNIT_ID_24= 0 [0]
-; Tank Division
-#UNIT_ID_25= 30 [1]
-; Tank Corps
-#UNIT_ID_26= 50 [1]
-; Tank Army
-#UNIT_ID_27= 0 [0]
-; Airships
-#UNIT_ID_28= 0 [0]
-; Fighters
-#UNIT_ID_29= 25 [1]
-; Tactical Bombers
-#UNIT_ID_30= 10 [1]
-; Medium Bombers
-#UNIT_ID_31= 10 [1]
-; Strategic Bombers
-#UNIT_ID_32= 0 [0]
-; Maritime Bombers
-#UNIT_ID_33= 0 [0]
-; Kamikazes
-#UNIT_ID_34= 0 [0]
-; Dreadnought
-#UNIT_ID_35= 0 [0]
-; Battleship
-#UNIT_ID_36= 0 [0]
-; Battle Cruiser
-#UNIT_ID_37= 0 [0]
-; Heavy Cruiser
-#UNIT_ID_38= 0 [0]
-; Light Cruiser
-#UNIT_ID_39= 0 [0]
-; Destroyer
-#UNIT_ID_40= 0 [0]
-; Escort Carrier
-#UNIT_ID_41= 0 [0]
-; Carrier
-#UNIT_ID_42= 0 [0]
-; Sub
-#UNIT_ID_43= 0 [0]
-; Motor Torpedo Boat
-#UNIT_ID_44= 0 [0]
-; Mulberry
-#UNIT_ID_45= 0 [0]
-;
-#DATE= 1941/01/01
-#DESTINATION_RESOURCE=
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany (1940 - 1941)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; HQ
-#UNIT_ID_0= 0 [0]
-; Garrison
-#UNIT_ID_1= 0 [0]
-; Infantry Division
-#UNIT_ID_2= 10 [1]
-; Mech Division
-#UNIT_ID_3= 5 [1]
-; Corps
-#UNIT_ID_4= 50 [1]
-; Army
-#UNIT_ID_5= 10 [1]
-; Mech Corps
-#UNIT_ID_6= 0 [0]
-; Special Forces
-#UNIT_ID_7= 0 [0]
-; Engineers
-#UNIT_ID_8= 0 [0]
-; Paratroops
-#UNIT_ID_9= 0 [0]
-; Cavalry Brigade
-#UNIT_ID_10= 0 [0]
-; Cavalry Division
-#UNIT_ID_11= 0 [0]
-; Cavalry Corps
-#UNIT_ID_12= 0 [0]
-; Partisans
-#UNIT_ID_13= 0 [0]
-; Pillbox
-#UNIT_ID_14= 0 [0]
-; Anti-Air
-#UNIT_ID_15= 0 [0]
-; Rocket Artillery
-#UNIT_ID_16= 0 [0]
-; Artillery
-#UNIT_ID_17= 0 [0]
-; Heavy Artillery
-#UNIT_ID_18= 0 [0]
-; Rail Gun
-#UNIT_ID_19= 0 [0]
-; Coastal Gun
-#UNIT_ID_20= 0 [0]
-; Rockets
-#UNIT_ID_21= 0 [0]
-; Reconnaissance
-#UNIT_ID_22= 0 [0]
-; Armoured Train
-#UNIT_ID_23= 0 [0]
-; Anti Tank
-#UNIT_ID_24= 0 [0]
-; Tank Division
-#UNIT_ID_25= 50 [1]
-; Tank Corps
-#UNIT_ID_26= 50 [1]
-; Tank Army
-#UNIT_ID_27= 0 [0]
-; Airships
-#UNIT_ID_28= 0 [0]
-; Fighters
-#UNIT_ID_29= 50 [1]
-; Tactical Bombers
-#UNIT_ID_30= 0 [0]
-; Medium Bombers
-#UNIT_ID_31= 0 [0]
-; Strategic Bombers
-#UNIT_ID_32= 0 [0]
-; Maritime Bombers
-#UNIT_ID_33= 0 [0]
-; Kamikazes
-#UNIT_ID_34= 0 [0]
-; Dreadnought
-#UNIT_ID_35= 0 [0]
-; Battleship
-#UNIT_ID_36= 0 [0]
-; Battle Cruiser
-#UNIT_ID_37= 0 [0]
-; Heavy Cruiser
-#UNIT_ID_38= 0 [0]
-; Light Cruiser
-#UNIT_ID_39= 0 [0]
-; Destroyer
-#UNIT_ID_40= 0 [0]
-; Escort Carrier
-#UNIT_ID_41= 0 [0]
-; Carrier
-#UNIT_ID_42= 0 [0]
-; Sub
-#UNIT_ID_43= 10 [1]
-; Motor Torpedo Boat
-#UNIT_ID_44= 0 [0]
-; Mulberry
-#UNIT_ID_45= 0 [0]
-;
-#DATE= 1940/09/01
-#DESTINATION_RESOURCE=
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany (1939 - 1940)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; HQ
-#UNIT_ID_0= 0 [0]
-; Garrison
-#UNIT_ID_1= 0 [0]
-; Infantry Division
-#UNIT_ID_2= 0 [0]
-; Mech Division
-#UNIT_ID_3= 5 [1]
-; Corps
-#UNIT_ID_4= 25 [2]
-; Army
-#UNIT_ID_5= 25 [2]
-; Mech Corps
-#UNIT_ID_6= 0 [0]
-; Special Forces
-#UNIT_ID_7= 0 [0]
-; Engineers
-#UNIT_ID_8= 0 [0]
-; Paratroops
-#UNIT_ID_9= 0 [0]
-; Cavalry Brigade
-#UNIT_ID_10= 0 [0]
-; Cavalry Division
-#UNIT_ID_11= 0 [0]
-; Cavalry Corps
-#UNIT_ID_12= 0 [0]
-; Partisans
-#UNIT_ID_13= 0 [0]
-; Pillbox
-#UNIT_ID_14= 0 [0]
-; Anti-Air
-#UNIT_ID_15= 0 [0]
-; Rocket Artillery
-#UNIT_ID_16= 0 [0]
-; Artillery
-#UNIT_ID_17= 0 [0]
-; Heavy Artillery
-#UNIT_ID_18= 0 [0]
-; Rail Gun
-#UNIT_ID_19= 0 [0]
-; Coastal Gun
-#UNIT_ID_20= 0 [0]
-; Rockets
-#UNIT_ID_21= 0 [0]
-; Reconnaissance
-#UNIT_ID_22= 0 [0]
-; Armoured Train
-#UNIT_ID_23= 0 [0]
-; Anti Tank
-#UNIT_ID_24= 0 [0]
-; Tank Division
-#UNIT_ID_25= 25 [2]
-; Tank Corps
-#UNIT_ID_26= 0 [0]
-; Tank Army
-#UNIT_ID_27= 0 [0]
-; Airships
-#UNIT_ID_28= 0 [0]
-; Fighters
-#UNIT_ID_29= 10 [1]
-; Tactical Bombers
-#UNIT_ID_30= 0 [0]
-; Medium Bombers
-#UNIT_ID_31= 0 [0]
-; Strategic Bombers
-#UNIT_ID_32= 0 [0]
-; Maritime Bombers
-#UNIT_ID_33= 0 [0]
-; Kamikazes
-#UNIT_ID_34= 0 [0]
-; Dreadnought
-#UNIT_ID_35= 0 [0]
-; Battleship
-#UNIT_ID_36= 0 [0]
-; Battle Cruiser
-#UNIT_ID_37= 0 [0]
-; Heavy Cruiser
-#UNIT_ID_38= 0 [0]
-; Light Cruiser
-#UNIT_ID_39= 0 [0]
-; Destroyer
-#UNIT_ID_40= 0 [0]
-; Escort Carrier
-#UNIT_ID_41= 0 [0]
-; Carrier
-#UNIT_ID_42= 0 [0]
-; Sub
-#UNIT_ID_43= 10 [1]
-; Motor Torpedo Boat
-#UNIT_ID_44= 0 [0]
-; Mulberry
-#UNIT_ID_45= 0 [0]
-;
-#DATE= 1939/09/01
-#DESTINATION_RESOURCE=
-; Berlin(173,74)
-; Frankfurt
-; Dusseldorf
-#FRIENDLY_POSITION= 173,74
-#FRIENDLY_POSITION= 164,81
-#FRIENDLY_POSITION= 160,78
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; AXIS SCRIPTS - Italy
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-{
-#NAME= Italy (1943 - )
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; HQ
-#UNIT_ID_0= 10 [1]
-; Garrison
-#UNIT_ID_1= 0 [0]
-; Infantry Division
-#UNIT_ID_2= 5 [1]
-; Mech Division
-#UNIT_ID_3= 10 [1]
-; Corps
-#UNIT_ID_4= 50 [1]
-; Army
-#UNIT_ID_5= 25 [2]
-; Mech Corps
-#UNIT_ID_6= 0 [0]
-; Special Forces
-#UNIT_ID_7= 10 [1]
-; Engineers
-#UNIT_ID_8= 0 [0]
-; Paratroops
-#UNIT_ID_9= 0 [0]
-; Cavalry Brigade
-#UNIT_ID_10= 10 [1]
-; Cavalry Division
-#UNIT_ID_11= 0 [0]
-; Cavalry Corps
-#UNIT_ID_12= 0 [0]
-; Partisans
-#UNIT_ID_13= 0 [0]
-; Pillbox
-#UNIT_ID_14= 0 [0]
-; Anti-Air
-#UNIT_ID_15= 10 [1]
-; Rocket Artillery
-#UNIT_ID_16= 0 [0]
-; Artillery
-#UNIT_ID_17= 0 [0]
-; Heavy Artillery
-#UNIT_ID_18= 10 [1]
-; Rail Gun
-#UNIT_ID_19= 0 [0]
-; Coastal Gun
-#UNIT_ID_20= 0 [0]
-; Rockets
-#UNIT_ID_21= 0 [0]
-; Reconnaissance
-#UNIT_ID_22= 0 [0]
-; Armoured Train
-#UNIT_ID_23= 0 [0]
-; Anti Tank
-#UNIT_ID_24= 0 [0]
-; Tank Division
-#UNIT_ID_25= 10 [1]
-; Tank Corps
-#UNIT_ID_26= 0 [0]
-; Tank Army
-#UNIT_ID_27= 0 [0]
-; Airships
-#UNIT_ID_28= 0 [0]
-; Fighters
-#UNIT_ID_29= 10 [1]
-; Tactical Bombers
-#UNIT_ID_30= 0 [0]
-; Medium Bombers
-#UNIT_ID_31= 0 [0]
-; Strategic Bombers
-#UNIT_ID_32= 10 [1]
-; Maritime Bombers
-#UNIT_ID_33= 0 [0]
-; Kamikazes
-#UNIT_ID_34= 0 [0]
-; Dreadnought
-#UNIT_ID_35= 0 [0]
-; Battleship
-#UNIT_ID_36= 10 [3]
-; Battle Cruiser
-#UNIT_ID_37= 0 [0]
-; Heavy Cruiser
-#UNIT_ID_38= 10 [3]
-; Light Cruiser
-#UNIT_ID_39= 10 [3]
-; Destroyer
-#UNIT_ID_40= 10 [3]
-; Escort Carrier
-#UNIT_ID_41= 0 [0]
-; Carrier
-#UNIT_ID_42= 10 [3]
-; Sub
-#UNIT_ID_43= 10 [1]
-; Motor Torpedo Boat
-#UNIT_ID_44= 0 [0]
-; Mulberry
-#UNIT_ID_45= 0 [0]
-;
-#DATE= 1943/01/01
-#DESTINATION_RESOURCE=
-; Rome(171,101)
-#FRIENDLY_POSITION= 171,101
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Rome(171,101) not tactically threatened
-#TACTICAL_CONDITION= 171,101 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Italy (September 1941 - 1943)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; HQ
-#UNIT_ID_0= 10 [1]
-; Garrison
-#UNIT_ID_1= 0 [0]
-; Infantry Division
-#UNIT_ID_2= 50 [2]
-; Mech Division
-#UNIT_ID_3= 10 [1]
-; Corps
-#UNIT_ID_4= 50 [2]
-; Army
-#UNIT_ID_5= 25 [2]
-; Mech Corps
-#UNIT_ID_6= 0 [0]
-; Special Forces
-#UNIT_ID_7= 10 [1]
-; Engineers
-#UNIT_ID_8= 0 [0]
-; Paratroops
-#UNIT_ID_9= 0 [0]
-; Cavalry Brigade
-#UNIT_ID_10= 0 [0]
-; Cavalry Division
-#UNIT_ID_11= 0 [0]
-; Cavalry Corps
-#UNIT_ID_12= 0 [0]
-; Partisans
-#UNIT_ID_13= 0 [0]
-; Pillbox
-#UNIT_ID_14= 0 [0]
-; Anti-Air
-#UNIT_ID_15= 10 [1]
-; Rocket Artillery
-#UNIT_ID_16= 0 [0]
-; Artillery
-#UNIT_ID_17= 0 [0]
-; Heavy Artillery
-#UNIT_ID_18= 10 [1]
-; Rail Gun
-#UNIT_ID_19= 0 [0]
-; Coastal Gun
-#UNIT_ID_20= 0 [0]
-; Rockets
-#UNIT_ID_21= 0 [0]
-; Reconnaissance
-#UNIT_ID_22= 0 [0]
-; Armoured Train
-#UNIT_ID_23= 0 [0]
-; Anti Tank
-#UNIT_ID_24= 0 [0]
-; Tank Division
-#UNIT_ID_25= 50 [2]
 ; Tank Corps
 #UNIT_ID_26= 25 [2]
 ; Tank Army
-#UNIT_ID_27= 50 [2]
-; Airships
-#UNIT_ID_28= 0 [0]
-; Fighters
-#UNIT_ID_29= 10 [2]
-; Tactical Bombers
-#UNIT_ID_30= 10 [2]
-; Medium Bombers
-#UNIT_ID_31= 10 [2]
-; Strategic Bombers
-#UNIT_ID_32= 10 [2]
-; Maritime Bombers
-#UNIT_ID_33= 0 [0]
-; Kamikazes
-#UNIT_ID_34= 0 [0]
-; Dreadnought
-#UNIT_ID_35= 0 [0]
-; Battleship
-#UNIT_ID_36= 0 [0]
-; Battle Cruiser
-#UNIT_ID_37= 0 [0]
-; Heavy Cruiser
-#UNIT_ID_38= 0 [0]
-; Light Cruiser
-#UNIT_ID_39= 0 [0]
-; Destroyer
-#UNIT_ID_40= 0 [0]
-; Escort Carrier
-#UNIT_ID_41= 0 [0]
-; Carrier
-#UNIT_ID_42= 0 [0]
-; Sub
-#UNIT_ID_43= 0 [0]
-; Motor Torpedo Boat
-#UNIT_ID_44= 0 [0]
-; Mulberry
-#UNIT_ID_45= 0 [0]
-;
-#DATE= 1941/09/01
-#DESTINATION_RESOURCE=
-; Rome(171,101)
-#FRIENDLY_POSITION= 171,101
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Rome(171,101) not tactically threatened
-#TACTICAL_CONDITION= 171,101 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Italy (1941 - September 1941)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; HQ
-#UNIT_ID_0= 0 [0]
-; Garrison
-#UNIT_ID_1= 0 [0]
-; Infantry Division
-#UNIT_ID_2= 25 [2]
-; Mech Division
-#UNIT_ID_3= 10 [1]
-; Corps
-#UNIT_ID_4= 30 [2]
-; Army
-#UNIT_ID_5= 5 [2]
-; Mech Corps
-#UNIT_ID_6= 0 [0]
-; Special Forces
-#UNIT_ID_7= 0 [0]
-; Engineers
-#UNIT_ID_8= 0 [0]
-; Paratroops
-#UNIT_ID_9= 0 [0]
-; Cavalry Brigade
-#UNIT_ID_10= 5 [2]
-; Cavalry Division
-#UNIT_ID_11= 0 [0]
-; Cavalry Corps
-#UNIT_ID_12= 0 [0]
-; Partisans
-#UNIT_ID_13= 0 [0]
-; Pillbox
-#UNIT_ID_14= 0 [0]
-; Anti-Air
-#UNIT_ID_15= 0 [0]
-; Rocket Artillery
-#UNIT_ID_16= 0 [0]
-; Artillery
-#UNIT_ID_17= 0 [0]
-; Heavy Artillery
-#UNIT_ID_18= 0 [0]
-; Rail Gun
-#UNIT_ID_19= 0 [0]
-; Coastal Gun
-#UNIT_ID_20= 0 [0]
-; Rockets
-#UNIT_ID_21= 0 [0]
-; Reconnaissance
-#UNIT_ID_22= 0 [0]
-; Armoured Train
-#UNIT_ID_23= 0 [0]
-; Anti Tank
-#UNIT_ID_24= 0 [0]
-; Tank Division
-#UNIT_ID_25= 50 [2]
-; Tank Corps
-#UNIT_ID_26= 20 [2]
-; Tank Army
-#UNIT_ID_27= 0 [0]
-; Airships
-#UNIT_ID_28= 0 [0]
-; Fighters
-#UNIT_ID_29= 10 [1]
-; Tactical Bombers
-#UNIT_ID_30= 0 [0]
-; Medium Bombers
-#UNIT_ID_31= 0 [0]
-; Strategic Bombers
-#UNIT_ID_32= 0 [0]
-; Maritime Bombers
-#UNIT_ID_33= 0 [0]
-; Kamikazes
-#UNIT_ID_34= 0 [0]
-; Dreadnought
-#UNIT_ID_35= 0 [0]
-; Battleship
-#UNIT_ID_36= 0 [0]
-; Battle Cruiser
-#UNIT_ID_37= 0 [0]
-; Heavy Cruiser
-#UNIT_ID_38= 0 [0]
-; Light Cruiser
-#UNIT_ID_39= 0 [0]
-; Destroyer
-#UNIT_ID_40= 0 [0]
-; Escort Carrier
-#UNIT_ID_41= 0 [0]
-; Carrier
-#UNIT_ID_42= 0 [0]
-; Sub
-#UNIT_ID_43= 0 [0]
-; Motor Torpedo Boat
-#UNIT_ID_44= 0 [0]
-; Mulberry
-#UNIT_ID_45= 0 [0]
-;
-#DATE= 1941/01/01
-#DESTINATION_RESOURCE=
-; Rome(171,101)
-#FRIENDLY_POSITION= 171,101
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Rome(171,101) not tactically threatened
-#TACTICAL_CONDITION= 171,101 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Italy (1939 - 1941)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; HQ
-#UNIT_ID_0= 0 [0]
-; Garrison
-#UNIT_ID_1= 0 [0]
-; Infantry Division
-#UNIT_ID_2= 5 [1]
-; Mech Division
-#UNIT_ID_3= 5 [1]
-; Corps
-#UNIT_ID_4= 25 [2]
-; Army
-#UNIT_ID_5= 25 [2]
-; Mech Corps
-#UNIT_ID_6= 0 [0]
-; Special Forces
-#UNIT_ID_7= 0 [0]
-; Engineers
-#UNIT_ID_8= 0 [0]
-; Paratroops
-#UNIT_ID_9= 0 [0]
-; Cavalry Brigade
-#UNIT_ID_10= 5 [1]
-; Cavalry Division
-#UNIT_ID_11= 0 [0]
-; Cavalry Corps
-#UNIT_ID_12= 0 [0]
-; Partisans
-#UNIT_ID_13= 0 [0]
-; Pillbox
-#UNIT_ID_14= 0 [0]
-; Anti-Air
-#UNIT_ID_15= 0 [0]
-; Rocket Artillery
-#UNIT_ID_16= 0 [0]
-; Artillery
-#UNIT_ID_17= 0 [0]
-; Heavy Artillery
-#UNIT_ID_18= 0 [0]
-; Rail Gun
-#UNIT_ID_19= 0 [0]
-; Coastal Gun
-#UNIT_ID_20= 0 [0]
-; Rockets
-#UNIT_ID_21= 0 [0]
-; Reconnaissance
-#UNIT_ID_22= 0 [0]
-; Armoured Train
-#UNIT_ID_23= 0 [0]
-; Anti Tank
-#UNIT_ID_24= 0 [0]
-; Tank Division
-#UNIT_ID_25= 10 [1]
-; Tank Corps
-#UNIT_ID_26= 20 [2]
-; Tank Army
-#UNIT_ID_27= 0 [0]
-; Airships
-#UNIT_ID_28= 0 [0]
-; Fighters
-#UNIT_ID_29= 10 [1]
-; Tactical Bombers
-#UNIT_ID_30= 0 [0]
-; Medium Bombers
-#UNIT_ID_31= 0 [0]
-; Strategic Bombers
-#UNIT_ID_32= 0 [0]
-; Maritime Bombers
-#UNIT_ID_33= 0 [0]
-; Kamikazes
-#UNIT_ID_34= 0 [0]
-; Dreadnought
-#UNIT_ID_35= 0 [0]
-; Battleship
-#UNIT_ID_36= 0 [0]
-; Battle Cruiser
-#UNIT_ID_37= 0 [0]
-; Heavy Cruiser
-#UNIT_ID_38= 0 [0]
-; Light Cruiser
-#UNIT_ID_39= 0 [0]
-; Destroyer
-#UNIT_ID_40= 0 [0]
-; Escort Carrier
-#UNIT_ID_41= 0 [0]
-; Carrier
-#UNIT_ID_42= 0 [0]
-; Sub
-#UNIT_ID_43= 0 [0]
-; Motor Torpedo Boat
-#UNIT_ID_44= 0 [0]
-; Mulberry
-#UNIT_ID_45= 0 [0]
-;
-#DATE= 1939/09/01
-#DESTINATION_RESOURCE=
-; Berlin(173,74)
-#FRIENDLY_POSITION= 171,101
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Italy(59) not tactically threatened
-#TACTICAL_CONDITION= 171,101 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Italy (1939 - 1941) (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; HQ
-#UNIT_ID_0= 0 [0]
-; Garrison
-#UNIT_ID_1= 0 [0]
-; Infantry Division
-#UNIT_ID_2= 5 [1]
-; Mech Division
-#UNIT_ID_3= 5 [1]
-; Corps
-#UNIT_ID_4= 25 [2]
-; Army
-#UNIT_ID_5= 25 [2]
-; Mech Corps
-#UNIT_ID_6= 0 [0]
-; Special Forces
-#UNIT_ID_7= 0 [0]
-; Engineers
-#UNIT_ID_8= 0 [0]
-; Paratroops
-#UNIT_ID_9= 0 [0]
-; Cavalry Brigade
-#UNIT_ID_10= 5 [1]
-; Cavalry Division
-#UNIT_ID_11= 0 [0]
-; Cavalry Corps
-#UNIT_ID_12= 0 [0]
-; Partisans
-#UNIT_ID_13= 0 [0]
-; Pillbox
-#UNIT_ID_14= 0 [0]
-; Anti-Air
-#UNIT_ID_15= 0 [0]
-; Rocket Artillery
-#UNIT_ID_16= 0 [0]
-; Artillery
-#UNIT_ID_17= 0 [0]
-; Heavy Artillery
-#UNIT_ID_18= 0 [0]
-; Rail Gun
-#UNIT_ID_19= 0 [0]
-; Coastal Gun
-#UNIT_ID_20= 0 [0]
-; Rockets
-#UNIT_ID_21= 0 [0]
-; Reconnaissance
-#UNIT_ID_22= 0 [0]
-; Armoured Train
-#UNIT_ID_23= 0 [0]
-; Anti Tank
-#UNIT_ID_24= 0 [0]
-; Tank Division
-#UNIT_ID_25= 10 [1]
-; Tank Corps
-#UNIT_ID_26= 20 [1]
-; Tank Army
-#UNIT_ID_27= 0 [0]
+#UNIT_ID_27= 25 [2]
 ; Airships
 #UNIT_ID_28= 0 [0]
 ; Fighters
@@ -3750,71 +3771,72 @@
 ; Mulberry
 #UNIT_ID_45= 0 [0]
 ;
-#DATE= 1939/09/01
+#DATE= 1942/01/01
 #DESTINATION_RESOURCE=
-;STRATEGIC_ Set friendly positions:
-; Rome(171,101)
-#FRIENDLY_POSITION= 171,101
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 59 [1] [0] [0]
-; Rome(171,101) not tactically threatened
-#TACTICAL_CONDITION= 171,101 [1]
+; Perm(257,58)
+#FRIENDLY_POSITION= 257,58
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Perm(257,58) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-;=====================================================================
-;                      Fall Weiss II Event
-;=====================================================================
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; ALLIED SCRIPTS - USSR
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
 {
-#NAME= Finland
+#NAME= USSR (1943 - )
 #POPUP=
 #FLAG= 1
 #TYPE= 2
-#COUNTRY_ID= 39
+#COUNTRY_ID= 116
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
 #SKIP_FUNDS_CHECK= 0
 ; HQ
-#UNIT_ID_0= 25 [1]
+#UNIT_ID_0= 10 [1]
 ; Garrison
 #UNIT_ID_1= 0 [0]
 ; Infantry Division
-#UNIT_ID_2= 10 [1]
+#UNIT_ID_2= 10 [2]
 ; Mech Division
-#UNIT_ID_3= 0 [0]
+#UNIT_ID_3= 10 [2]
 ; Corps
-#UNIT_ID_4= 10 [1]
+#UNIT_ID_4= 40 [3]
 ; Army
-#UNIT_ID_5= 10 [1]
+#UNIT_ID_5= 40 [2]
 ; Mech Corps
-#UNIT_ID_6= 0 [0]
+#UNIT_ID_6= 25 [2]
 ; Special Forces
 #UNIT_ID_7= 10 [1]
 ; Engineers
-#UNIT_ID_8= 0 [0]
+#UNIT_ID_8= 10 [1]
 ; Paratroops
-#UNIT_ID_9= 0 [0]
+#UNIT_ID_9= 10 [1]
 ; Cavalry Brigade
 #UNIT_ID_10= 0 [0]
 ; Cavalry Division
 #UNIT_ID_11= 0 [0]
 ; Cavalry Corps
-#UNIT_ID_12= 0 [0]
+#UNIT_ID_12= 10 [1]
 ; Partisans
 #UNIT_ID_13= 0 [0]
 ; Pillbox
-#UNIT_ID_14= 0 [0]
+#UNIT_ID_14= 25 [2]
 ; Anti-Air
 #UNIT_ID_15= 0 [0]
 ; Rocket Artillery
-#UNIT_ID_16= 0 [0]
+#UNIT_ID_16= 10 [1]
 ; Artillery
 #UNIT_ID_17= 0 [0]
 ; Heavy Artillery
-#UNIT_ID_18= 0 [0]
+#UNIT_ID_18= 10 [1]
 ; Rail Gun
 #UNIT_ID_19= 0 [0]
 ; Coastal Gun
@@ -3824,25 +3846,25 @@
 ; Reconnaissance
 #UNIT_ID_22= 0 [0]
 ; Armoured Train
-#UNIT_ID_23= 0 [0]
+#UNIT_ID_23= 10 [1]
 ; Anti Tank
 #UNIT_ID_24= 0 [0]
 ; Tank Division
-#UNIT_ID_25= 0 [0]
+#UNIT_ID_25= 25 [1]
 ; Tank Corps
-#UNIT_ID_26= 0 [0]
+#UNIT_ID_26= 25 [2]
 ; Tank Army
-#UNIT_ID_27= 0 [0]
+#UNIT_ID_27= 25 [2]
 ; Airships
 #UNIT_ID_28= 0 [0]
 ; Fighters
-#UNIT_ID_29= 10 [1]
+#UNIT_ID_29= 25 [2]
 ; Tactical Bombers
-#UNIT_ID_30= 0 [0]
+#UNIT_ID_30= 25 [2]
 ; Medium Bombers
-#UNIT_ID_31= 0 [0]
+#UNIT_ID_31= 25 [2]
 ; Strategic Bombers
-#UNIT_ID_32= 0 [0]
+#UNIT_ID_32= 10 [1]
 ; Maritime Bombers
 #UNIT_ID_33= 0 [0]
 ; Kamikazes
@@ -3870,14 +3892,14 @@
 ; Mulberry
 #UNIT_ID_45= 0 [0]
 ;
-#DATE= 1939/09/01
+#DATE= 1943/01/01
 #DESTINATION_RESOURCE=
-; Berlin(173,74)
-#FRIENDLY_POSITION= 195,51
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 39 [1] [100] [0]
-; Italy(59) not tactically threatened
-#TACTICAL_CONDITION= 195,51 [1]
+; Perm(257,58)
+#FRIENDLY_POSITION= 257,58
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Perm(257,58) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }

@@ -27,27 +27,42 @@
 ;        3 = Single check, only on #DATE
 ;
 ; #LEVEL= Value range [-1, 4]
-;      What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
-;     -1 = a script that should only fire for AI friendly controlled majors on your turn
-;      0 = Green
-;      1 = Novice
-;      2 = Intermediate
-;      3 = Veteran
-;      4 = Expert
-; #GV= Does the event activate based on the Global Variable values assigned?
-;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
-;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
-;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
-;      Example B - #GV= 4[71,100] will trigger 30% per game
+;       What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;       -1 = a script that should only fire for AI friendly controlled majors on your turn
+;        0 = Green
+;        1 = Novice
+;        2 = Intermediate
+;        3 = Veteran
+;        4 = Expert
+;
+; #GV=   Does the event activate based on the Global Variable values assigned?
+;        Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
+;        Format: GV [min, max]
+;                GV range [1, 10] 
+;                min range [1, 100] 
+;                max range [min+1, 100]
+;
+;        Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;        Example B - #GV= 4[71,100] will trigger 30% per game
+;
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
-;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
+;        Format: decision[response]
+;                decision range [1, 1100]
+;                response range [0, 1]
+;                   0 = NO
+;                   1 = YES
+;
 ;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
 ;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
 ;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
-; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
-; #COUNTRY_ID=  Value range [0, 120]
-;               Country ID that will be owner of this event
+;
+; #TRIGGER=     Value range [0, 100]
+;               Percentage chance that the event will occur
+;
+; #COUNTRY_ID=  Value range [1, 120]
+;               Country that will be owner of this event
+;
 ; #SIZE= How many units should be assigned to this plan?
 ;        Format: min_size, max_size
 ; #BUILD_LENGTH= How many game turns (Axis or Allied) do you want the build up period of the plan to last?
@@ -55,10 +70,14 @@
 ; #RANGE= How many hexes should we search for units to fulfill this plan?
 ;         Range checks from both the first listed #FRIENDLY_POSITION and then the #GOAL_POSITION if needed.
 ; #GOAL_POSITION= What is the map position that is the objective of this plan?
-; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
+;
+; #DATE=          Date requirement for the event
+;                 Format: yyyy/mm/dd
+;
 ; #STEAL= Set priority by stealing units from other plans
-;         Values: [0, 3]; False= 0; Steal_Offensive= 1; Steal_Defensive= 2; Steal_Offensive_Or_Defensive= 3)
+;         Values: [0, 3]; (False= 0; Steal_Offensive= 1; Steal_Defensive= 2; Steal_Offensive_Or_Defensive= 3)
 ; #FRIENDLY_POSITION= Positions that must be under friendly control in order for event to occur
+;
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
 ;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
 ;                              country_id range [1, 120]
@@ -157,11 +176,12 @@
 ;        e.g., a city for a GUARD script, a port for a TRANSPORT script, etc.  All AI scripts require that the first 
 ;        #FRIENDLY_POSITION be a land tile, with the exception of Fleet scripts.
 ;
-; More than one #VARIABLE_CONDITION can be set.  Under #VARIABLE_CONDITION you can also list countries
-; that have not yet fully entered the war.  For example by listing an activation % less than 100% you
-; are providing a check where the #VARIABLE_CONDITION country must meet a minimum activation % (but is
-; not yet at 100%) in order for the event to occur.  To check for a fully activated country simply
-; list the activation % at 100%.  Each #VARIABLE_CONDITION line will be read using AND logic.
+; #VARIABLE_CONDITION - More than one can be set. You can also list countries that have not yet fully 
+;   entered the war. For example by listing an activation % less than 100% you are providing a check 
+;   where the country must meet a minimum activation % (but is not yet at 100%) in order for the event 
+;   to occur. To check for a fully activated country simply list the activation % at 100%.
+;
+; Each #VARIABLE_CONDITION line will be read using AND logic.
 ;
 ; More than one #TACTICAL_CONDITION can be set.  #TACTICAL_CONDITION refers to the current side, i.e.
 ; country associated with this plan having tactical superiority over the specified map position.
@@ -365,6 +385,2725 @@
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; ALLIED SCRIPTS - Build Up Offensive (France)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; France Prepares To Attack Belgium
+{
+#NAME= France Build Up Offensive - Brussels (Leaning Allied)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 40
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 4,8
+#BUILD_LENGTH= 1
+#LENGTH= 5
+#RANGE= 15
+#GOAL_POSITION= 155,80
+#DATE= 1940/01/01
+#STEAL= 0
+; Paris(151,84)
+; Maginot
+; Maginot
+; Maginot
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 162,85
+#FRIENDLY_POSITION= 162,87
+#FRIENDLY_POSITION= 160,84
+; France(40) Allied and not surrendered AND
+; Belgium(10) Allied (not fully active) and not surrendered AND
+; Russia Allied and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 10 [2] [0] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Paris(151,84) not tactically threatened
+#TACTICAL_CONDITION= 151,84 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Cancel condition:
+; 1 Axis unit with 4 hexes of Paris(151,84) OR
+;  6 Axis units within 3 hexes of Maginot OR
+; 4 Axis units within 2 hexes of Maastricht
+#CANCEL_POSITION= 151,84 [4,4] [1,1] [1]
+#CANCEL_POSITION= 160,84 [3,3] [6,6] [1]
+#CANCEL_POSITION= 157,79 [2,2] [4,4] [1]
+}
+
+; France Prepares To Attack Belgium
+{
+#NAME= France Build Up Offensive - Brussels (Leaning Axis)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 40
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 4,8
+#BUILD_LENGTH= 1
+#LENGTH= 5
+#RANGE= 15
+#GOAL_POSITION= 155,80
+#DATE= 1940/01/01
+#STEAL= 0
+; Paris(151,84)
+; Maginot
+; Maginot
+; Maginot
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 162,85
+#FRIENDLY_POSITION= 162,87
+#FRIENDLY_POSITION= 160,84
+; France(40) Allied and not surrendered AND
+; Belgium(10) Axis (not fully active) and not surrendered AND
+; Russia Allied and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 10 [1] [0] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Paris(151,84) not tactically threatened
+#TACTICAL_CONDITION= 151,84 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Cancel condition:
+; 1 Axis unit with 4 hexes of Paris(151,84) OR
+;  6 Axis units within 3 hexes of Maginot OR
+; 4 Axis units within 2 hexes of Maastricht
+#CANCEL_POSITION= 151,84 [4,4] [1,1] [1]
+#CANCEL_POSITION= 160,84 [3,3] [6,6] [1]
+#CANCEL_POSITION= 157,79 [2,2] [4,4] [1]
+}
+
+; Germany prepares to attack the USSR:
+{
+#NAME= Germany Build Up Offensive - (Bulgaria) Odessa (Build Up)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 19
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 100
+#LENGTH= 1
+#RANGE= 15
+; Odessa
+#GOAL_POSITION= 207,90
+#DATE= 1939/09/01
+#STEAL= 3
+; Bucharest(198,95)
+#FRIENDLY_POSITION= 198,95
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Sophia not tactically threatened
+#TACTICAL_CONDITION= 192,100 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Bulgaria:
+{
+#NAME= Germany Build Up Offensive - (Bulgaria) Odessa -> Kremenchuk
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 19
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 100
+#LENGTH= 1
+#RANGE= 10
+; Kremenchuk
+#GOAL_POSITION= 212,84
+#DATE= 1939/09/01
+#STEAL= 3
+; Odessa
+#FRIENDLY_POSITION= 207,90
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Sophia not tactically threatened
+#TACTICAL_CONDITION= 192,100 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - (Finland) Helsinki -> Archangel
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 39
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 20
+#RANGE= 15
+; Archangel
+#GOAL_POSITION= 227,35
+#DATE= 1940/01/01
+#STEAL= 3
+; Helsinki
+#FRIENDLY_POSITION= 195,51
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+; Set activate position (no allied units in Archangel)
+#ACTIVATE_POSITION= 227,35 [0,0] [0,0] [2]
+; Set cancel position (two Allied units within 2 tiles of Helsinki).
+#CANCEL_POSITION= 195,51 [2,2] [2,2] [2]
+}
+
+; Germany prepares to attack the USSR:
+{
+#NAME= Germany Build Up Offensive - (Hungary) Proskurov (Build Up)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 52
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 100
+#LENGTH= 1
+#RANGE= 15
+; Proskurov
+#GOAL_POSITION= 199,83
+#DATE= 1939/09/01
+#STEAL= 3
+; Budapest(184,88)
+#FRIENDLY_POSITION= 184,88
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Budapest(184,88) not tactically threatened
+#TACTICAL_CONDITION= 184,88 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack the USSR:
+{
+#NAME= Germany Build Up Offensive - (Romania) Odessa (Build Up)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 93
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 100
+#LENGTH= 1
+#RANGE= 15
+; Odessa
+#GOAL_POSITION= 207,90
+#DATE= 1939/09/01
+#STEAL= 3
+; Bucharest(198,95)
+#FRIENDLY_POSITION= 198,95
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Bucharest(198,95) not tactically threatened
+#TACTICAL_CONDITION= 198,95 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Romania:
+{
+#NAME= Germany Build Up Offensive - (Romania) Odessa -> Zaporizhia
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 93
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 100
+#LENGTH= 1
+#RANGE= 10
+; Zaporizhia
+#GOAL_POSITION= 215,87
+#DATE= 1939/09/01
+#STEAL= 3
+; Odessa
+#FRIENDLY_POSITION= 207,90
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Bucharest(198,95) not tactically threatened
+#TACTICAL_CONDITION= 198,95 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack Gibraltar:
+{
+#NAME= Germany Build Up Offensive - (Spain) Madrid -> Gibraltar
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 15
+; Gibraltar(136,114)
+#GOAL_POSITION= 136,114
+#DATE= 1940/01/01
+#STEAL= 3
+; Madrid(139,104)
+#FRIENDLY_POSITION= 139,104
+; Spain(99) Axis and not surrendered
+#VARIABLE_CONDITION= 99 [1] [100] [0]
+; Madrid(139,104) not tactically threatened
+#TACTICAL_CONDITION= 139,104 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack Portugal:
+{
+#NAME= Germany Build Up Offensive - (Spain) Madrid -> Lisbon
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 2,8
+#BUILD_LENGTH= 3
+#LENGTH= 1
+#RANGE= 50
+; Lisbon
+#GOAL_POSITION= 128,108
+#DATE= 1940/01/01
+#STEAL= 3
+; Madrid(139,104)
+; Gibraltar(136,114)
+#FRIENDLY_POSITION= 139,104
+#FRIENDLY_POSITION= 136,114
+; Spain(99) Axis and not surrendered
+#VARIABLE_CONDITION= 99 [1] [100] [0]
+; Madrid(139,104) not tactically threatened
+#TACTICAL_CONDITION= 139,104 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Spain:
+{
+#NAME= Germany Build Up Offensive - (Spain) Odessa -> Cherkasy
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 100
+#LENGTH= 1
+#RANGE= 10
+; Cherkasy
+#GOAL_POSITION= 210,83
+#DATE= 1939/09/01
+#STEAL= 3
+; Odessa
+#FRIENDLY_POSITION= 207,90
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Madrid(139,104) not tactically threatened
+#TACTICAL_CONDITION= 139,104 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Baghdad
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,8
+#BUILD_LENGTH= 3
+#LENGTH= 10
+#RANGE= 15
+; Baghdad
+#GOAL_POSITION= 234,120
+#DATE= 1941/01/01
+#STEAL= 3
+; Beirut(216,118)
+; Damascus
+; Alexandria
+; Cairo(208,126)
+#FRIENDLY_POSITION= 216,118
+#FRIENDLY_POSITION= 218,119
+#FRIENDLY_POSITION= 206,124
+#FRIENDLY_POSITION= 208,126
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Beirut
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,8
+#BUILD_LENGTH= 3
+#LENGTH= 10
+#RANGE= 15
+; Beirut(216,118)
+#GOAL_POSITION= 216,118
+#DATE= 1941/03/01
+#STEAL= 3
+; Damascus
+#FRIENDLY_POSITION= 218,119
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack Yugoslavia:
+{
+#NAME= Germany Build Up Offensive - Belgrade (Build Up)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,6
+#BUILD_LENGTH= 100
+#LENGTH= 1
+#RANGE= 40
+; Belgrade
+#GOAL_POSITION= 187,94
+#DATE= 1939/09/01
+#STEAL= 3
+; Bratislava
+; Paris(151,84)
+; Rome
+; Taranto
+; Palermo
+#FRIENDLY_POSITION= 181,86
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 171,101
+#FRIENDLY_POSITION= 179,104
+#FRIENDLY_POSITION= 173,109
+; USSR(116) Allied (not fully active) and not surrendered AND
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Axis unit in Belgrade
+#CANCEL_POSITION= 187,94 [0,0] [1,1] [1]
+}
+
+; Germany prepares to attack Yugoslavia:
+{
+#NAME= Germany Build Up Offensive - Belgrade (Yugoslavia Allied)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,6
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Belgrade
+#GOAL_POSITION= 187,94
+#DATE= 1939/09/01
+#STEAL= 3
+; Szeged
+; Paris(151,84)
+; Rome
+; Taranto
+; Palermo
+#FRIENDLY_POSITION= 186,91
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 171,101
+#FRIENDLY_POSITION= 179,104
+#FRIENDLY_POSITION= 173,109
+; Yugoslavia(120) Allied and not surrendered
+#VARIABLE_CONDITION= 120 [2] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Axis unit in Belgrade
+#CANCEL_POSITION= 187,94 [0,0] [1,1] [1]
+}
+
+; Germany prepares to attack the USSR:
+{
+#NAME= Germany Build Up Offensive - Bialystok
+#POPUP=
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Bialystok
+#GOAL_POSITION= 192,73
+#DATE= 1941/05/29
+#STEAL= 3
+; Johannisburg
+#FRIENDLY_POSITION= 190,71
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack Belgium:
+{
+#NAME= Germany Build Up Offensive - Brussels (Build Up)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,15
+#BUILD_LENGTH= 4
+#LENGTH= 1
+#RANGE= 30
+; Brussels(155,80)
+#GOAL_POSITION= 155,80
+#DATE= 1939/09/01
+#STEAL= 3
+; Cologne
+; Warsaw
+; German coastal and French border positions
+#FRIENDLY_POSITION= 160,79
+#FRIENDLY_POSITION= 188,76
+#FRIENDLY_POSITION= 163,83
+#FRIENDLY_POSITION= 165,85
+#FRIENDLY_POSITION= 162,82
+#FRIENDLY_POSITION= 161,80
+#FRIENDLY_POSITION= 160,78
+#FRIENDLY_POSITION= 160,79
+#FRIENDLY_POSITION= 164,81
+#FRIENDLY_POSITION= 160,73
+#FRIENDLY_POSITION= 164,71
+#FRIENDLY_POSITION= 165,68
+#FRIENDLY_POSITION= 166,70
+#FRIENDLY_POSITION= 164,73
+#FRIENDLY_POSITION= 166,72
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; Axis unit in Warsaw
+#ACTIVATE_POSITION= 188,76 [0,0] [1,1] [1]
+; Axis unit already in Brussels (due to possible Allied DoW)
+#CANCEL_POSITION= 155,80 [0,0] [1,1] [1]
+}
+
+{
+#NAME= Germany Build Up Offensive - Bygoszcz -> Modlin
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 1
+; Modlin
+#GOAL_POSITION= 187,75
+#DATE= 1939/09/01
+#STEAL= 3
+; Bygoszcz
+#FRIENDLY_POSITION= 182,73
+; Poland(85) Allied and not surrendered
+#VARIABLE_CONDITION= 85 [2] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; No Allied unit in Modlin
+#CANCEL_POSITION= 187,75 [0,0] [0,0] [2]
+}
+
+{
+#NAME= Germany Build Up Offensive - Damascus
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,8
+#BUILD_LENGTH= 3
+#LENGTH= 10
+#RANGE= 15
+; Damascus
+#GOAL_POSITION= 218,119
+#DATE= 1941/03/01
+#STEAL= 3
+; Jerusalem
+#FRIENDLY_POSITION= 216,123
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack the USSR:
+{
+#NAME= Germany Build Up Offensive - Dnepropetrovsk -> Sevastapol
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 15
+; Sevastopol
+#GOAL_POSITION= 212,96
+#DATE= 1941/05/29
+#STEAL= 2
+; Dnepropetrovsk
+#FRIENDLY_POSITION= 215,85
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack the USSR:
+{
+#NAME= Germany Build Up Offensive - Grodno
+#POPUP=
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Grodno
+#GOAL_POSITION= 193,71
+#DATE= 1941/05/29
+#STEAL= 3
+; Johannisburg
+#FRIENDLY_POSITION= 190,71
+; Germany(45) Axis and not surrendered AND
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack the USSR:
+{
+#NAME= Germany Build Up Offensive - Kaunas
+#POPUP=
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Kaunas
+#GOAL_POSITION= 194,68
+#DATE= 1941/05/29
+#STEAL= 3
+; Johannisburg
+#FRIENDLY_POSITION= 190,71
+; Germany(45) Axis and not surrendered AND
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack the USSR:
+{
+#NAME= Germany Build Up Offensive - Kaunas (Build Up)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 100
+#LENGTH= 1
+#RANGE= 50
+; Kaunas
+#GOAL_POSITION= 194,68
+#DATE= 1939/09/01
+#STEAL= 2
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; USSR(116) Allied (not fully active) and not surrendered AND
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; No Allied units within range of Paris
+#ACTIVATE_POSITION= 151,84 [20,20] [0,0] [2]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack the USSR:
+{
+#NAME= Germany Build Up Offensive - Kiev (Build Up)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 100
+#LENGTH= 1
+#RANGE= 50
+; Kiev(207,80)
+#GOAL_POSITION= 207,80
+#DATE= 1939/09/01
+#STEAL= 2
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; USSR(116) Allied (not fully active) and not surrendered AND
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; No Allied units within range of Paris
+#ACTIVATE_POSITION= 151,84 [20,20] [0,0] [2]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack Poland:
+{
+#NAME= Germany Build Up Offensive - Kutno -> Warsaw
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,20
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 10
+; Warsaw
+#GOAL_POSITION= 188,76
+#DATE= 1939/09/01
+#STEAL= 3
+; Kutno
+#FRIENDLY_POSITION= 185,75
+; Poland(85) Allied and not surrendered
+#VARIABLE_CONDITION= 85 [2] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Axis unit in Warsaw
+#CANCEL_POSITION= 188,76 [0,0] [1,1] [1]
+}
+
+{
+#NAME= Germany Build Up Offensive - Kuybyshev -> Perm
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,10
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 15
+; Perm
+#GOAL_POSITION= 257,58
+#DATE= 1941/05/29
+#STEAL= 2
+; Kuybyshev
+#FRIENDLY_POSITION= 245,72
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Lisbon (Spain Helper)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,3
+#BUILD_LENGTH= 0
+#LENGTH=
+#RANGE= 50
+; Lisbon
+#GOAL_POSITION= 128,108
+#DATE= 1941/01/01
+#STEAL= 3
+; Berlin(173,74)
+; Gibraltar(136,114)
+#FRIENDLY_POSITION= 173,74
+#FRIENDLY_POSITION= 136,114
+; Germany(45) Axis and not surrendered
+; Portugal(87) Allied and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 87 [2] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; AXIS SCRIPTS - Build Up Offensive (Germany)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+{
+#NAME= Germany Build Up Offensive - Lodz
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,7
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 8
+; Lodz
+#GOAL_POSITION= 185,77
+#DATE= 1939/09/01
+#STEAL= 2
+; Breslau
+#FRIENDLY_POSITION= 180,79
+; Poland(85) Allied and not surrendered
+#VARIABLE_CONDITION= 85 [2] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Axis unit in Lodz
+#CANCEL_POSITION= 185,77 [0,0] [1,1] [1]
+}
+
+{
+#NAME= Germany Build Up Offensive - Lodz -> Warsaw
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,20
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 10
+; Warsaw
+#GOAL_POSITION= 188,76
+#DATE= 1939/09/01
+#STEAL= 3
+; Lodz
+#FRIENDLY_POSITION= 185,77
+; Poland(85) Allied and not surrendered
+#VARIABLE_CONDITION= 85 [2] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Axis unit in Warsaw
+#CANCEL_POSITION= 188,76 [0,0] [1,1] [1]
+}
+
+; Germany prepares to attack Luxembourg:
+{
+#NAME= Germany Build Up Offensive - Luxembourg (Build Up)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 4
+#LENGTH= 1
+#RANGE= 30
+; Luxembourg
+#GOAL_POSITION= 159,82
+#DATE= 1939/09/01
+#STEAL= 3
+; Coblenz
+; Warsaw
+; German coastal and French border positions
+#FRIENDLY_POSITION= 161,80
+#FRIENDLY_POSITION= 188,76
+#FRIENDLY_POSITION= 163,83
+#FRIENDLY_POSITION= 165,85
+#FRIENDLY_POSITION= 162,82
+#FRIENDLY_POSITION= 161,80
+#FRIENDLY_POSITION= 160,78
+#FRIENDLY_POSITION= 160,79
+#FRIENDLY_POSITION= 164,81
+#FRIENDLY_POSITION= 160,73
+#FRIENDLY_POSITION= 164,71
+#FRIENDLY_POSITION= 165,68
+#FRIENDLY_POSITION= 166,70
+#FRIENDLY_POSITION= 164,73
+#FRIENDLY_POSITION= 166,72
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; Axis unit in Warsaw
+#ACTIVATE_POSITION= 188,76 [0,0] [1,1] [1]
+; Axis unit already in Luxembourg (due to possible Allied DoW)
+#CANCEL_POSITION= 159,82 [0,0] [1,1] [1]
+}
+
+; Germany prepares to attack Maginot:
+{
+#NAME= Germany Build Up Offensive - Maginot (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 8
+; Maginot
+#GOAL_POSITION= 162,85
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+; Allied unit adjacent or within Maginot
+#ACTIVATE_POSITION= 162,85 [0,0] [1,1] [2]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack Maginot:
+{
+#NAME= Germany Build Up Offensive - Maginot (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 8
+; Maginot
+#GOAL_POSITION= 162,87
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+; Allied unit adjacent or within Maginot
+#ACTIVATE_POSITION= 162,87 [0,0] [1,1] [2]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack Maginot:
+{
+#NAME= Germany Build Up Offensive - Maginot (3)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 8
+; Maginot
+#GOAL_POSITION= 160,84
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+; Allied unit adjacent or within Maginot
+#ACTIVATE_POSITION= 160,84 [0,0] [1,1] [2]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack the USSR:
+{
+#NAME= Germany Build Up Offensive - Minsk (Build Up)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 100
+#LENGTH= 1
+#RANGE= 50
+; Minsk(201,71)
+#GOAL_POSITION= 201,71
+#DATE= 1939/09/01
+#STEAL= 2
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; USSR(116) Allied (not fully active) and not surrendered AND
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; No Allied units within range of Paris
+#ACTIVATE_POSITION= 151,84 [20,20] [0,0] [2]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack Yugoslavia:
+{
+#NAME= Germany Build Up Offensive - Novi Sad (DoW Historical)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 2
+#LENGTH= 1
+#RANGE= 8
+; Novi Sad
+#GOAL_POSITION= 185,93
+#DATE= 1939/09/01
+#STEAL= 3
+; Budapest(184,88)
+; Paris(151,84)
+; Rome
+; Taranto
+; Palermo
+#FRIENDLY_POSITION= 184,88
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 171,101
+#FRIENDLY_POSITION= 179,104
+#FRIENDLY_POSITION= 173,109
+; USSR(116) Allied (not fully active) and not surrendered AND
+; Italy(59) Axis and not surrendered
+; Hungary(52) Axis and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+#VARIABLE_CONDITION= 52 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Axis unit in Novi Sad
+#CANCEL_POSITION= 185,93 [0,0] [1,1] [1]
+}
+
+; Germany prepares to attack Yugoslavia:
+{
+#NAME= Germany Build Up Offensive - Novi Sad (Yugoslavia Allied)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Novi Sad
+#GOAL_POSITION= 185,93
+#DATE= 1939/09/01
+#STEAL= 3
+; Szeged
+; Paris(151,84)
+; Rome
+; Taranto
+; Palermo
+#FRIENDLY_POSITION= 186,91
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 171,101
+#FRIENDLY_POSITION= 179,104
+#FRIENDLY_POSITION= 173,109
+; Yugoslavia(120) Allied and not surrendered
+#VARIABLE_CONDITION= 120 [2] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Axis unit in Novi Sad
+#CANCEL_POSITION= 185,93 [0,0] [1,1] [1]
+}
+
+{
+#NAME= Germany Build Up Offensive - Novi Sad -> Kragujevac (Yugoslavia Allied)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Kragujevac
+#GOAL_POSITION= 188,96
+#DATE= 1939/09/01
+#STEAL= 2
+; Novi Sad
+#FRIENDLY_POSITION= 185,93
+; Yugoslavia(120) Allied and not surrendered
+#VARIABLE_CONDITION= 120 [2] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Axis unit in Kragujevac
+#CANCEL_POSITION= 188,96 [0,0] [1,1] [1]
+}
+
+; Germany prepares to attack the USSR:
+{
+#NAME= Germany Build Up Offensive - Odessa (Build Up)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,4
+#BUILD_LENGTH= 100
+#LENGTH= 1
+#RANGE= 50
+; Odessa
+#GOAL_POSITION= 207,90
+#DATE= 1939/09/01
+#STEAL= 2
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; USSR(116) Allied (not fully active) and not surrendered AND
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; No Allied units within range of Paris
+#ACTIVATE_POSITION= 151,84 [20,20] [0,0] [2]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack the USSR:
+{
+#NAME= Germany Build Up Offensive - Orsha (DoW Early)
+#POPUP=
+#FLAG= 1
+#TYPE= 3
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,10
+#BUILD_LENGTH= 2
+#LENGTH= 1
+#RANGE= 50
+; Orsha
+#GOAL_POSITION= 206,69
+#DATE= 1941/02/10
+#STEAL= 2
+; Warsaw
+; Belgrade
+#FRIENDLY_POSITION= 188,76
+#FRIENDLY_POSITION= 187,94
+; Germany(45) Axis and not surrendered
+; USSR(116) Allied (not fully active) and not surrendered
+; Romania(93) Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+#VARIABLE_CONDITION= 93 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; No Allied units within range of Paris
+#ACTIVATE_POSITION= 151,84 [20,20] [0,0] [2]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack the USSR:
+{
+#NAME= Germany Build Up Offensive - Orsha (DoW Historical)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,10
+#BUILD_LENGTH= 2
+#LENGTH= 1
+#RANGE= 50
+; Orsha
+#GOAL_POSITION= 206,69
+#DATE= 1941/04/15
+#STEAL= 2
+; Warsaw
+; Belgrade
+#FRIENDLY_POSITION= 188,76
+#FRIENDLY_POSITION= 187,94
+; Germany(45) Axis and not surrendered
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; No Allied units within range of Paris
+#ACTIVATE_POSITION= 151,84 [20,20] [0,0] [2]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Paris -> Auxerre
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Auxerre
+#GOAL_POSITION= 154,87
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Paris -> Bayonne
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 15
+; Bayonne
+#GOAL_POSITION= 144,98
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Paris -> Belfort
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Belfort(160,88)
+#GOAL_POSITION= 160,88
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Paris -> Besancon
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Besancon(158,89)
+#GOAL_POSITION= 158,89
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Paris -> Bordeaux
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 10
+; Bordeaux
+#GOAL_POSITION= 145,94
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Paris -> Bourges
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Bourges
+#GOAL_POSITION= 151,89
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Paris -> Brest
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 8
+; Brest(138,86)
+#GOAL_POSITION= 138,86
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Paris -> Caen
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Caen
+#GOAL_POSITION= 146,84
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Paris -> Dijon
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Dijon
+#GOAL_POSITION= 156,88
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Paris -> Epinal
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Epinal(159,86)
+#GOAL_POSITION= 159,86
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Paris -> La Rochelle
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; La Rochelle
+#GOAL_POSITION= 144,91
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Paris -> Le Havre
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Le Havre
+#GOAL_POSITION= 147,82
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Paris -> Le Mans
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Le Mans
+#GOAL_POSITION= 147,86
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Paris -> Lorient
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Lorient
+#GOAL_POSITION= 140,87
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Paris -> Nancy
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Nancy(158,85)
+#GOAL_POSITION= 158,85
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Paris -> Nantes
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Nantes
+#GOAL_POSITION= 143,88
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Paris -> Orleans
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Orleans
+#GOAL_POSITION= 150,87
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Paris -> Poitiers
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Poitiers
+#GOAL_POSITION= 147,89
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Paris -> Rennes
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Rennes
+#GOAL_POSITION= 143,86
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Paris -> St Malo
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; St Malo
+#GOAL_POSITION= 141,85
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Paris -> Tours
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,3
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Tours
+#GOAL_POSITION= 148,88
+#DATE= 1939/09/01
+#STEAL= 3
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Parnu -> Kuressaare
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 15
+; Kuressaare
+#GOAL_POSITION= 191,57
+#DATE= 1941/05/29
+#STEAL= 2
+; Parnu
+#FRIENDLY_POSITION= 195,57
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack the USSR:
+{
+#NAME= Germany Build Up Offensive - Proskurov (Build Up)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 100
+#LENGTH= 1
+#RANGE= 50
+; Proskurov
+#GOAL_POSITION= 199,83
+#DATE= 1939/09/01
+#STEAL= 2
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; USSR(116) Allied (not fully active) and not surrendered AND
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; No Allied units within range of Paris
+#ACTIVATE_POSITION= 151,84 [20,20] [0,0] [2]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack the USSR:
+{
+#NAME= Germany Build Up Offensive - Riga (DoW Early)
+#POPUP=
+#FLAG= 1
+#TYPE= 3
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,10
+#BUILD_LENGTH= 2
+#LENGTH= 1
+#RANGE= 50
+; Riga
+#GOAL_POSITION= 194,62
+#DATE= 1941/02/10
+#STEAL= 2
+; Warsaw
+; Belgrade
+#FRIENDLY_POSITION= 188,76
+#FRIENDLY_POSITION= 187,94
+; Germany(45) Axis and not surrendered
+; USSR(116) Allied (not fully active) and not surrendered
+; Romania(93) Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+#VARIABLE_CONDITION= 93 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; No Allied units within range of Paris
+#ACTIVATE_POSITION= 151,84 [20,20] [0,0] [2]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack the USSR:
+{
+#NAME= Germany Build Up Offensive - Riga (DoW Historical)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,10
+#BUILD_LENGTH= 2
+#LENGTH= 1
+#RANGE= 50
+; Riga
+#GOAL_POSITION= 194,62
+#DATE= 1941/04/15
+#STEAL= 2
+; Warsaw
+; Belgrade
+#FRIENDLY_POSITION= 188,76
+#FRIENDLY_POSITION= 187,94
+; Germany(45) Axis and not surrendered
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; No Allied units within range of Paris
+#ACTIVATE_POSITION= 151,84 [20,20] [0,0] [2]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Riga -> Parnu
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 15
+; Parnu
+#GOAL_POSITION= 195,57
+#DATE= 1941/05/29
+#STEAL= 2
+; Riga
+#FRIENDLY_POSITION= 194,62
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Build Up Offensive - Saratov -> Kuybyshev
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,8
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 15
+; Kuybyshev
+#GOAL_POSITION= 245,72
+#DATE= 1941/05/29
+#STEAL= 2
+; Saratov(237,77)
+#FRIENDLY_POSITION= 237,77
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack Greece:
+{
+#NAME= Germany Build Up Offensive - Skopje -> Thessaloniki (Build Up)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#SIZE= 1,4
+#BUILD_LENGTH= 2
+#LENGTH= 1
+#RANGE= 5
+; Thessaloniki
+#GOAL_POSITION= 192,104
+#DATE= 1939/09/01
+#STEAL= 3
+; Skopje
+#FRIENDLY_POSITION= 189,101
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; Belgrade has an Axis unit
+; This way either Yugoslavia is an ally or conquered to activate the attack on Greece
+#ACTIVATE_POSITION= 187,94 [0,0] [1,1] [1]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack Greece:
+{
+#NAME= Germany Build Up Offensive - Skopje -> Thessaloniki (Greece Allied)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#SIZE= 1,3
+#BUILD_LENGTH= 0
+#LENGTH= 3
+#RANGE= 5
+; Thessaloniki
+#GOAL_POSITION= 192,104
+#DATE= 1939/09/01
+#STEAL= 3
+; Skopje
+#FRIENDLY_POSITION= 189,101
+; Germany(45) Axis and not surrendered AND
+; Greece(46) Allied and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 46 [2] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; Belgrade has an Axis unit
+; This way either Yugoslavia is an ally or conquered to activate the attack on Greece
+#ACTIVATE_POSITION= 187,94 [0,0] [1,1] [1]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack Netherlands:
+{
+#NAME= Germany Build Up Offensive - The Hague (Build Up)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,8
+#BUILD_LENGTH= 4
+#LENGTH= 1
+#RANGE= 30
+; The Hague
+#GOAL_POSITION= 155,76
+#DATE= 1939/09/01
+#STEAL= 3
+; Osnabruck
+; Warsaw
+; German coastal and French border positions
+#FRIENDLY_POSITION= 162,75
+#FRIENDLY_POSITION= 188,76
+#FRIENDLY_POSITION= 163,83
+#FRIENDLY_POSITION= 165,85
+#FRIENDLY_POSITION= 162,82
+#FRIENDLY_POSITION= 161,80
+#FRIENDLY_POSITION= 160,78
+#FRIENDLY_POSITION= 160,79
+#FRIENDLY_POSITION= 164,81
+#FRIENDLY_POSITION= 160,73
+#FRIENDLY_POSITION= 164,71
+#FRIENDLY_POSITION= 165,68
+#FRIENDLY_POSITION= 166,70
+#FRIENDLY_POSITION= 164,73
+#FRIENDLY_POSITION= 166,72
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; Axis unit in Warsaw
+#ACTIVATE_POSITION= 188,76 [0,0] [1,1] [1]
+; Axis unit already in The Hague (due to possible Allied DoW)
+#CANCEL_POSITION= 155,76 [0,0] [1,1] [1]
+}
+
+; Germany prepares to attack Greece:
+{
+#NAME= Germany Build Up Offensive - Thessaloniki -> Larissa (Greece Allied)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#SIZE= 1,3
+#BUILD_LENGTH= 0
+#LENGTH= 3
+#RANGE= 5
+; Larissa
+#GOAL_POSITION= 191,106
+#DATE= 1939/09/01
+#STEAL= 3
+; Thessaloniki
+#FRIENDLY_POSITION= 192,104
+; Germany(45) Axis and not surrendered AND
+; Greece(46) Allied and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 46 [2] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; Belgrade has an Axis unit
+; This way either Yugoslavia is an ally or conquered to activate the attack on Greece
+#ACTIVATE_POSITION= 187,94 [0,0] [1,1] [1]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack Yugoslavia:
+{
+#NAME= Germany Build Up Offensive - Zagreb (Yugoslavia Allied)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,6
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 5
+; Zagreb
+#GOAL_POSITION= 178,92
+#DATE= 1939/09/01
+#STEAL= 3
+; Graz
+; Paris(151,84)
+; Rome
+; Taranto
+; Palermo
+#FRIENDLY_POSITION= 177,89
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 171,101
+#FRIENDLY_POSITION= 179,104
+#FRIENDLY_POSITION= 173,109
+; Yugoslavia(120) Allied and not surrendered
+#VARIABLE_CONDITION= 120 [2] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Axis unit in Zagreb
+#CANCEL_POSITION= 178,92 [0,0] [1,1] [1]
+}
+
+; Germany prepares to attack the USSR:
+{
+#NAME= Germany Build Up Offensive - Zhitomir (DoW Early)
+#POPUP=
+#FLAG= 1
+#TYPE= 3
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,10
+#BUILD_LENGTH= 2
+#LENGTH= 1
+#RANGE= 50
+; Zhitomir
+#GOAL_POSITION= 203,81
+#DATE= 1941/02/10
+#STEAL= 2
+; Vienna
+; Belgrade
+#FRIENDLY_POSITION= 265,59
+#FRIENDLY_POSITION= 187,94
+; Germany(45) Axis and not surrendered
+; USSR(116) Allied (not fully active) and not surrendered
+; Romania(93) Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+#VARIABLE_CONDITION= 93 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; No Allied units within range of Paris
+#ACTIVATE_POSITION= 151,84 [20,20] [0,0] [2]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Germany prepares to attack the USSR:
+{
+#NAME= Germany Build Up Offensive - Zhitomir (DoW Historical)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,10
+#BUILD_LENGTH= 2
+#LENGTH= 1
+#RANGE= 50
+; Zhitomir
+#GOAL_POSITION= 203,81
+#DATE= 1941/04/15
+#STEAL= 2
+; Vienna
+; Belgrade
+#FRIENDLY_POSITION= 265,59
+#FRIENDLY_POSITION= 187,94
+; Germany(45) Axis and not surrendered
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+; No Allied units within range of Paris
+#ACTIVATE_POSITION= 151,84 [20,20] [0,0] [2]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Italy Build Up Offensive - Damascus -> Baghdad
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 3
+#LENGTH= 10
+#RANGE= 15
+; Baghdad
+#GOAL_POSITION= 234,120
+#DATE= 1940/06/01
+#STEAL= 3
+; Damascus
+; Alexandria
+; Cairo(208,126)
+#FRIENDLY_POSITION= 218,119
+#FRIENDLY_POSITION= 206,124
+#FRIENDLY_POSITION= 208,126
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Italy prepares to attack Yugoslavia:
+{
+#NAME= Italy Build Up Offensive - Dijon -> Ljubljana (Build Up)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 100
+#LENGTH= 1
+#RANGE= 12
+; Ljubljana
+#GOAL_POSITION= 176,91
+#DATE= 1939/09/01
+#STEAL= 3
+; Dijon
+; Paris(151,84)
+; Brest(138,86)
+#FRIENDLY_POSITION= 156,88
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 138,86
+#FRIENDLY_POSITION= 143,82
+; USSR(116) Allied (not fully active) and not surrendered AND
+; Italy(59) Axis and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Berlin(173,74) not tactically threatened AND
+; Rome not tactically threatened AND
+; Paris(151,84) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#TACTICAL_CONDITION= 171,101 [1]
+#TACTICAL_CONDITION= 151,84 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Italy Build Up Offensive - Jerusalem -> Damascus
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 3
+#LENGTH= 10
+#RANGE= 15
+; Damascus
+#GOAL_POSITION= 218,119
+#DATE= 1940/06/01
+#STEAL= 3
+; Jerusalem
+; Alexandria
+; Cairo(208,126)
+#FRIENDLY_POSITION= 216,123
+#FRIENDLY_POSITION= 206,124
+#FRIENDLY_POSITION= 208,126
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Italy prepares to attack France:
+{
+#NAME= Italy Build Up Offensive - Marseilles -> Toulouse
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 15
+; Toulouse
+#GOAL_POSITION= 149,97
+#DATE= 1940/01/01
+#STEAL= 3
+; Marseilles, Nice, Monaco
+#FRIENDLY_POSITION= 157,97
+#FRIENDLY_POSITION= 160,97
+#FRIENDLY_POSITION= 162,96
+; France(40) Allied and not surrendered 
+; Italy(59) Axis
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Berlin(173,74) not tactically threatened AND
+; Rome not tactically threatened AND
+#TACTICAL_CONDITION= 173,74 [1]
+#TACTICAL_CONDITION= 171,101 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Italy prepares to attack France:
+{
+#NAME= Italy Build Up Offensive - Monaco -> Nice
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 15
+; Nice
+#GOAL_POSITION= 160,97
+#DATE= 1940/01/01
+#STEAL= 3
+; Monaco
+#FRIENDLY_POSITION= 162,96
+; France(40) Allied and not surrendered
+; Italy(59) Axis
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Berlin(173,74) not tactically threatened AND
+; Rome not tactically threatened AND
+#TACTICAL_CONDITION= 173,74 [1]
+#TACTICAL_CONDITION= 171,101 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Italy prepares to attack France:
+{
+#NAME= Italy Build Up Offensive - Nice -> Marseille
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 15
+; Marseille(157,97)
+#GOAL_POSITION= 157,97
+#DATE= 1940/01/01
+#STEAL= 3
+; Nice, Monaco
+#FRIENDLY_POSITION= 160,97
+#FRIENDLY_POSITION= 162,96
+; France(40) Allied and not surrendered
+; Italy(59) Axis
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Berlin(173,74) not tactically threatened AND
+; Rome not tactically threatened AND
+#TACTICAL_CONDITION= 173,74 [1]
+#TACTICAL_CONDITION= 171,101 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Italy prepares to attack Greece:
+{
+#NAME= Italy Build Up Offensive - Salzburg -> Ioannina (Post Yugoslavia)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#SIZE= 1,5
+#BUILD_LENGTH= 2
+#LENGTH= 1
+#RANGE= 20
+; Ioannina
+#GOAL_POSITION= 188,107
+#DATE= 1940/01/01
+#STEAL= 3
+; Salzburg
+; Budapest(184,88)
+; Paris(151,84)
+; Brest(138,86)
+; Bordeaux
+; Rome
+; Taranto
+; Palermo
+; Belgrade
+#FRIENDLY_POSITION= 172,87
+#FRIENDLY_POSITION= 184,88
+#FRIENDLY_POSITION= 138,86
+#FRIENDLY_POSITION= 145,94
+#FRIENDLY_POSITION= 171,101
+#FRIENDLY_POSITION= 179,104
+#FRIENDLY_POSITION= 173,109
+#FRIENDLY_POSITION= 143,82
+#FRIENDLY_POSITION= 187,94
+; Italy(59) Axis and not surrendered AND
+; Hungary(52) Axis and not surrendered
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+#VARIABLE_CONDITION= 52 [1] [100] [0]
+; Berlin(173,74) not tactically threatened AND
+; Rome not tactically threatened AND
+; Paris(151,84) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#TACTICAL_CONDITION= 171,101 [1]
+#TACTICAL_CONDITION= 151,84 [1]
+; Belgrade has an Axis unit
+; This way either Yugoslavia is an ally or conquered to activate the attack on Greece
+#ACTIVATE_POSITION= 187,94 [0,0] [1,1] [1]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Italy prepares to attack France:
+{
+#NAME= Italy Build Up Offensive - Torino -> Monaco
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 15
+; Monaco
+#GOAL_POSITION= 162,96
+#DATE= 1940/01/01
+#STEAL= 3
+; Torino
+#FRIENDLY_POSITION= 162,94
+; France(40) Allied and not surrendered AND
+; Italy(59) Axis AND 
+; USSR(116) Allied and not yet fully mobilized
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Berlin(173,74) not tactically threatened AND
+; Rome not tactically threatened AND
+#TACTICAL_CONDITION= 173,74 [1]
+#TACTICAL_CONDITION= 171,101 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; AXIS SCRIPTS - Build Up Offensive (Italy)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Italy prepares to attack France:
+{
+#NAME= Italy Build Up Offensive - Torino -> Nice (Build Up)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 100
+#LENGTH= 1
+#RANGE= 15
+; Nice
+#GOAL_POSITION= 160,97
+#DATE= 1939/09/01
+#STEAL= 3
+; Torino
+#FRIENDLY_POSITION= 162,94
+; France(40) Allied and not surrendered AND
+; Italy(59) Axis AND 
+; USSR(116) Allied and not yet fully mobilized
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Berlin(173,74) not tactically threatened AND
+; Rome not tactically threatened AND
+#TACTICAL_CONDITION= 173,74 [1]
+#TACTICAL_CONDITION= 171,101 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Italy prepares to attack France:
+{
+#NAME= Italy Build Up Offensive - Toulouse -> Bordeaux
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 15
+; Bordeaux(145,94)
+#GOAL_POSITION= 145,94
+#DATE= 1940/01/01
+#STEAL= 3
+; Toulouse
+#FRIENDLY_POSITION= 149,97
+; France(40) Allied and not surrendered 
+; Italy(59) Axis
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Berlin(173,74) not tactically threatened AND
+; Rome not tactically threatened AND
+#TACTICAL_CONDITION= 173,74 [1]
+#TACTICAL_CONDITION= 171,101 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; ALLIED SCRIPTS - Build Up Offensive (UK)
@@ -461,232 +3200,6 @@
 
 ;UK Prepares To Attack El Aghelia
 {
-#NAME= UK Build Up Offensive - Benghazi -> El Aghelia
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,12
-; length of zero means it will take immediate effect
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 15
-#GOAL_POSITION= 184,126
-#DATE= 1939/09/01
-#STEAL= 0
-; Benghazi
-; Tobruk(194,122)
-; Alexandria
-#FRIENDLY_POSITION= 186,122
-#FRIENDLY_POSITION= 194,122
-#FRIENDLY_POSITION= 206,124
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Alexandria not tactically threatened
-#TACTICAL_CONDITION= 206,124 [0]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set cancel condition:
-; 1 Axis unit within range of Alexandria OR
-; 1 Axis unit within range of Cairo OR
-; 1 Axis unit within range of Jerusalem
-#CANCEL_POSITION= 206,124 [2,2] [1,1] [1]
-#CANCEL_POSITION= 208,126 [2,2] [1,1] [1]
-#CANCEL_POSITION= 216,123 [2,2] [1,1] [1]
-}
-
-;UK Prepares To Attack Sirte
-{
-#NAME= UK Build Up Offensive - El Aghelia -> Sirte
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,12
-; length of zero means it will take immediate effect
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 15
-#GOAL_POSITION= 179,124
-#DATE= 1939/09/01
-#STEAL= 0
-; El Aghelia
-; Alexandria
-; Tobruk(194,122)
-; Benghazi
-#FRIENDLY_POSITION= 184,126
-#FRIENDLY_POSITION= 206,124
-#FRIENDLY_POSITION= 194,122
-#FRIENDLY_POSITION= 186,122
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Alexandria not tactically threatened
-#TACTICAL_CONDITION= 206,124 [0]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set cancel condition:
-; 1 Axis unit within range of Alexandria OR
-; 1 Axis unit within range of Cairo OR
-; 1 Axis unit within range of Jerusalem
-#CANCEL_POSITION= 206,124 [2,2] [1,1] [1]
-#CANCEL_POSITION= 208,126 [2,2] [1,1] [1]
-#CANCEL_POSITION= 216,123 [2,2] [1,1] [1]
-}
-
-;UK Prepares To Attack Tripoli
-{
-#NAME= UK Build Up Offensive - Sirte -> Tripoli
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,12
-; length of zero means it will take immediate effect
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 15
-#GOAL_POSITION= 172,121
-#DATE= 1939/09/01
-#STEAL= 0
-; Sirte
-; Alexandria
-; Tobruk(194,122)
-; Benghazi
-#FRIENDLY_POSITION= 179,124
-#FRIENDLY_POSITION= 206,124
-#FRIENDLY_POSITION= 194,122
-#FRIENDLY_POSITION= 186,122
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Alexandria not tactically threatened
-#TACTICAL_CONDITION= 206,124 [0]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set cancel condition:
-; 1 Axis unit within range of Alexandria OR
-; 1 Axis unit within range of Cairo OR
-; 1 Axis unit within range of Jerusalem
-#CANCEL_POSITION= 206,124 [2,2] [1,1] [1]
-#CANCEL_POSITION= 208,126 [2,2] [1,1] [1]
-#CANCEL_POSITION= 216,123 [2,2] [1,1] [1]
-}
-
-;UK Prepares To Attack Gabes
-{
-#NAME= UK Build Up Offensive - Tripoli -> Gabes
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,12
-; length of zero means it will take immediate effect
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 15
-#GOAL_POSITION= 166,119
-#DATE= 1939/09/01
-#STEAL= 0
-; Tripoli(172,121)
-; Alexandria
-; Tobruk(194,122)
-; Benghazi
-#FRIENDLY_POSITION= 172,121
-#FRIENDLY_POSITION= 206,124
-#FRIENDLY_POSITION= 194,122
-#FRIENDLY_POSITION= 186,122
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Alexandria not tactically threatened
-#TACTICAL_CONDITION= 206,124 [0]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-;UK Prepares To Attack Souse
-{
-#NAME= UK Build Up Offensive - Gabes -> Sousse
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,12
-; length of zero means it will take immediate effect
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 15
-#GOAL_POSITION= 167,114
-#DATE= 1939/09/01
-#STEAL= 0
-; Gabes
-; Alexandria
-; Tobruk(194,122)
-; Benghazi
-#FRIENDLY_POSITION= 166,119
-#FRIENDLY_POSITION= 206,124
-#FRIENDLY_POSITION= 194,122
-#FRIENDLY_POSITION= 186,122
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Alexandria not tactically threatened
-#TACTICAL_CONDITION= 206,124 [0]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-;UK Prepares To Attack Tunis
-{
-#NAME= UK Build Up Offensive - Sousse -> Tunis
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,12
-; length of zero means it will take immediate effect
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 15
-#GOAL_POSITION= 167,112
-#DATE= 1939/09/01
-#STEAL= 0
-; Sousse
-; Alexandria
-; Tobruk(194,122)
-; Benghazi
-#FRIENDLY_POSITION= 167,114
-#FRIENDLY_POSITION= 206,124
-#FRIENDLY_POSITION= 194,122
-#FRIENDLY_POSITION= 186,122
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Alexandria not tactically threatened
-#TACTICAL_CONDITION= 206,124 [0]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-;UK Prepares To Attack El Aghelia
-{
 #NAME= UK Build Up Offensive (Canada) - Benghazi -> El Aghelia
 #POPUP=
 #FLAG= 1
@@ -765,6 +3278,41 @@
 #CANCEL_POSITION= 216,123 [2,2] [1,1] [1]
 }
 
+;UK Prepares To Attack Souse
+{
+#NAME= UK Build Up Offensive (Canada) - Gabes -> Sousse
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 21
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,4
+; length of zero means it will take immediate effect
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 15
+#GOAL_POSITION= 167,114
+#DATE= 1939/09/01
+#STEAL= 0
+; Gabes
+; Alexandria
+; Tobruk(194,122)
+; Benghazi
+#FRIENDLY_POSITION= 166,119
+#FRIENDLY_POSITION= 206,124
+#FRIENDLY_POSITION= 194,122
+#FRIENDLY_POSITION= 186,122
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Alexandria not tactically threatened
+#TACTICAL_CONDITION= 206,124 [0]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
 ;UK Prepares To Attack Tripoli
 {
 #NAME= UK Build Up Offensive (Canada) - Sirte -> Tripoli
@@ -806,76 +3354,6 @@
 #CANCEL_POSITION= 216,123 [2,2] [1,1] [1]
 }
 
-;UK Prepares To Attack Gabes
-{
-#NAME= UK Build Up Offensive (Canada) - Tripoli -> Gabes
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 21
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,4
-; length of zero means it will take immediate effect
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 15
-#GOAL_POSITION= 166,119
-#DATE= 1939/09/01
-#STEAL= 0
-; Tripoli(172,121)
-; Alexandria
-; Tobruk(194,122)
-; Benghazi
-#FRIENDLY_POSITION= 172,121
-#FRIENDLY_POSITION= 206,124
-#FRIENDLY_POSITION= 194,122
-#FRIENDLY_POSITION= 186,122
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Alexandria not tactically threatened
-#TACTICAL_CONDITION= 206,124 [0]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-;UK Prepares To Attack Souse
-{
-#NAME= UK Build Up Offensive (Canada) - Gabes -> Sousse
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 21
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,4
-; length of zero means it will take immediate effect
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 15
-#GOAL_POSITION= 167,114
-#DATE= 1939/09/01
-#STEAL= 0
-; Gabes
-; Alexandria
-; Tobruk(194,122)
-; Benghazi
-#FRIENDLY_POSITION= 166,119
-#FRIENDLY_POSITION= 206,124
-#FRIENDLY_POSITION= 194,122
-#FRIENDLY_POSITION= 186,122
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Alexandria not tactically threatened
-#TACTICAL_CONDITION= 206,124 [0]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
 ;UK Prepares To Attack Tunis
 {
 #NAME= UK Build Up Offensive (Canada) - Sousse -> Tunis
@@ -911,97 +3389,323 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ALLIED SCRIPTS - Build Up Offensive (France)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-; France Prepares To Attack Belgium
+;UK Prepares To Attack Gabes
 {
-#NAME= France Build Up Offensive - Brussels (Leaning Allied)
+#NAME= UK Build Up Offensive (Canada) - Tripoli -> Gabes
 #POPUP=
 #FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 40
+#TYPE= 2
+#COUNTRY_ID= 21
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#SIZE= 4,8
-#BUILD_LENGTH= 1
-#LENGTH= 5
+#SIZE= 1,4
+; length of zero means it will take immediate effect
+#BUILD_LENGTH= 0
+#LENGTH= 1
 #RANGE= 15
-#GOAL_POSITION= 155,80
-#DATE= 1940/01/01
+#GOAL_POSITION= 166,119
+#DATE= 1939/09/01
 #STEAL= 0
-; Paris(151,84)
-; Maginot
-; Maginot
-; Maginot
-#FRIENDLY_POSITION= 151,84
-#FRIENDLY_POSITION= 162,85
-#FRIENDLY_POSITION= 162,87
-#FRIENDLY_POSITION= 160,84
-; France(40) Allied and not surrendered AND
-; Belgium(10) Allied (not fully active) and not surrendered AND
-; Russia Allied and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 10 [2] [0] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Paris(151,84) not tactically threatened
-#TACTICAL_CONDITION= 151,84 [1]
+; Tripoli(172,121)
+; Alexandria
+; Tobruk(194,122)
+; Benghazi
+#FRIENDLY_POSITION= 172,121
+#FRIENDLY_POSITION= 206,124
+#FRIENDLY_POSITION= 194,122
+#FRIENDLY_POSITION= 186,122
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Alexandria not tactically threatened
+#TACTICAL_CONDITION= 206,124 [0]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Cancel condition:
-; 1 Axis unit with 4 hexes of Paris(151,84) OR
-;  6 Axis units within 3 hexes of Maginot OR
-; 4 Axis units within 2 hexes of Maastricht
-#CANCEL_POSITION= 151,84 [4,4] [1,1] [1]
-#CANCEL_POSITION= 160,84 [3,3] [6,6] [1]
-#CANCEL_POSITION= 157,79 [2,2] [4,4] [1]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-; France Prepares To Attack Belgium
+;UK Prepares To Attack El Aghelia
 {
-#NAME= France Build Up Offensive - Brussels (Leaning Axis)
+#NAME= UK Build Up Offensive - Benghazi -> El Aghelia
 #POPUP=
 #FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 40
+#TYPE= 2
+#COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#SIZE= 4,8
+#SIZE= 1,12
+; length of zero means it will take immediate effect
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 15
+#GOAL_POSITION= 184,126
+#DATE= 1939/09/01
+#STEAL= 0
+; Benghazi
+; Tobruk(194,122)
+; Alexandria
+#FRIENDLY_POSITION= 186,122
+#FRIENDLY_POSITION= 194,122
+#FRIENDLY_POSITION= 206,124
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Alexandria not tactically threatened
+#TACTICAL_CONDITION= 206,124 [0]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set cancel condition:
+; 1 Axis unit within range of Alexandria OR
+; 1 Axis unit within range of Cairo OR
+; 1 Axis unit within range of Jerusalem
+#CANCEL_POSITION= 206,124 [2,2] [1,1] [1]
+#CANCEL_POSITION= 208,126 [2,2] [1,1] [1]
+#CANCEL_POSITION= 216,123 [2,2] [1,1] [1]
+}
+
+;UK Prepares To Attack Sirte
+{
+#NAME= UK Build Up Offensive - El Aghelia -> Sirte
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,12
+; length of zero means it will take immediate effect
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 15
+#GOAL_POSITION= 179,124
+#DATE= 1939/09/01
+#STEAL= 0
+; El Aghelia
+; Alexandria
+; Tobruk(194,122)
+; Benghazi
+#FRIENDLY_POSITION= 184,126
+#FRIENDLY_POSITION= 206,124
+#FRIENDLY_POSITION= 194,122
+#FRIENDLY_POSITION= 186,122
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Alexandria not tactically threatened
+#TACTICAL_CONDITION= 206,124 [0]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set cancel condition:
+; 1 Axis unit within range of Alexandria OR
+; 1 Axis unit within range of Cairo OR
+; 1 Axis unit within range of Jerusalem
+#CANCEL_POSITION= 206,124 [2,2] [1,1] [1]
+#CANCEL_POSITION= 208,126 [2,2] [1,1] [1]
+#CANCEL_POSITION= 216,123 [2,2] [1,1] [1]
+}
+
+;UK Prepares To Attack Souse
+{
+#NAME= UK Build Up Offensive - Gabes -> Sousse
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,12
+; length of zero means it will take immediate effect
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 15
+#GOAL_POSITION= 167,114
+#DATE= 1939/09/01
+#STEAL= 0
+; Gabes
+; Alexandria
+; Tobruk(194,122)
+; Benghazi
+#FRIENDLY_POSITION= 166,119
+#FRIENDLY_POSITION= 206,124
+#FRIENDLY_POSITION= 194,122
+#FRIENDLY_POSITION= 186,122
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Alexandria not tactically threatened
+#TACTICAL_CONDITION= 206,124 [0]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+;UK Prepares To Attack Tripoli
+{
+#NAME= UK Build Up Offensive - Sirte -> Tripoli
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,12
+; length of zero means it will take immediate effect
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 15
+#GOAL_POSITION= 172,121
+#DATE= 1939/09/01
+#STEAL= 0
+; Sirte
+; Alexandria
+; Tobruk(194,122)
+; Benghazi
+#FRIENDLY_POSITION= 179,124
+#FRIENDLY_POSITION= 206,124
+#FRIENDLY_POSITION= 194,122
+#FRIENDLY_POSITION= 186,122
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Alexandria not tactically threatened
+#TACTICAL_CONDITION= 206,124 [0]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set cancel condition:
+; 1 Axis unit within range of Alexandria OR
+; 1 Axis unit within range of Cairo OR
+; 1 Axis unit within range of Jerusalem
+#CANCEL_POSITION= 206,124 [2,2] [1,1] [1]
+#CANCEL_POSITION= 208,126 [2,2] [1,1] [1]
+#CANCEL_POSITION= 216,123 [2,2] [1,1] [1]
+}
+
+;UK Prepares To Attack Tunis
+{
+#NAME= UK Build Up Offensive - Sousse -> Tunis
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,12
+; length of zero means it will take immediate effect
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 15
+#GOAL_POSITION= 167,112
+#DATE= 1939/09/01
+#STEAL= 0
+; Sousse
+; Alexandria
+; Tobruk(194,122)
+; Benghazi
+#FRIENDLY_POSITION= 167,114
+#FRIENDLY_POSITION= 206,124
+#FRIENDLY_POSITION= 194,122
+#FRIENDLY_POSITION= 186,122
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Alexandria not tactically threatened
+#TACTICAL_CONDITION= 206,124 [0]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+;UK Prepares To Attack Gabes
+{
+#NAME= UK Build Up Offensive - Tripoli -> Gabes
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,12
+; length of zero means it will take immediate effect
+#BUILD_LENGTH= 0
+#LENGTH= 1
+#RANGE= 15
+#GOAL_POSITION= 166,119
+#DATE= 1939/09/01
+#STEAL= 0
+; Tripoli(172,121)
+; Alexandria
+; Tobruk(194,122)
+; Benghazi
+#FRIENDLY_POSITION= 172,121
+#FRIENDLY_POSITION= 206,124
+#FRIENDLY_POSITION= 194,122
+#FRIENDLY_POSITION= 186,122
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Alexandria not tactically threatened
+#TACTICAL_CONDITION= 206,124 [0]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; USA prepares to attack Oran:
+{
+#NAME= USA Build Up Offensive - Algiers
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,12
 #BUILD_LENGTH= 1
 #LENGTH= 5
 #RANGE= 15
-#GOAL_POSITION= 155,80
-#DATE= 1940/01/01
-#STEAL= 0
-; Paris(151,84)
-; Maginot
-; Maginot
-; Maginot
-#FRIENDLY_POSITION= 151,84
-#FRIENDLY_POSITION= 162,85
-#FRIENDLY_POSITION= 162,87
-#FRIENDLY_POSITION= 160,84
-; France(40) Allied and not surrendered AND
-; Belgium(10) Axis (not fully active) and not surrendered AND
-; Russia Allied and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 10 [1] [0] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Paris(151,84) not tactically threatened
-#TACTICAL_CONDITION= 151,84 [1]
+; Algiers
+#GOAL_POSITION= 152,113
+#DATE= 1942/01/01
+#STEAL= 3
+; Oran
+#FRIENDLY_POSITION= 145,115
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Cancel condition:
-; 1 Axis unit with 4 hexes of Paris(151,84) OR
-;  6 Axis units within 3 hexes of Maginot OR
-; 4 Axis units within 2 hexes of Maastricht
-#CANCEL_POSITION= 151,84 [4,4] [1,1] [1]
-#CANCEL_POSITION= 160,84 [3,3] [6,6] [1]
-#CANCEL_POSITION= 157,79 [2,2] [4,4] [1]
+; 1 or more Axis units within range of Tangier
+#CANCEL_POSITION= 136,116 [3,3] [1,1] [1]
+}
+
+{
+#NAME= USA Build Up Offensive - Benghazi -> Tobruk
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 4,12
+#BUILD_LENGTH= 4
+#LENGTH= 5
+#RANGE= 15
+; Tobruk
+#GOAL_POSITION= 194,122
+#DATE= 1942/01/01
+#STEAL= 3
+; Benghazi
+#FRIENDLY_POSITION= 186,122
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
 
@@ -1038,9 +3742,8 @@
 #CANCEL_POSITION= 136,116 [3,3] [1,1] [1]
 }
 
-; USA prepares to attack Oran:
 {
-#NAME= USA Build Up Offensive - Algiers
+#NAME= USA Build Up Offensive - Tobruk -> Alexandria
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -1049,23 +3752,50 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#SIZE= 3,12
-#BUILD_LENGTH= 1
+#SIZE= 4,12
+#BUILD_LENGTH= 4
 #LENGTH= 5
 #RANGE= 15
-; Algiers
-#GOAL_POSITION= 152,113
+; Alexandria
+#GOAL_POSITION= 206,124
 #DATE= 1942/01/01
 #STEAL= 3
-; Oran
-#FRIENDLY_POSITION= 145,115
+; Tobruk(194,122)
+#FRIENDLY_POSITION= 194,122
 ; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Washington DC(4,108) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 4,108 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 1 or more Axis units within range of Tangier
-#CANCEL_POSITION= 136,116 [3,3] [1,1] [1]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Build Up Offensive - Tripoli -> Benghazi
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 4,12
+#BUILD_LENGTH= 4
+#LENGTH= 5
+#RANGE= 15
+; Benghazi
+#GOAL_POSITION= 186,122
+#DATE= 1942/01/01
+#STEAL= 3
+; Tripoli(172,121)
+#FRIENDLY_POSITION= 172,121
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
 ; USA prepares to attack Tunis:
@@ -1124,2715 +3854,5 @@
 ; Washington DC(4,108) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 4,108 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Build Up Offensive - Tripoli -> Benghazi
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 4,12
-#BUILD_LENGTH= 4
-#LENGTH= 5
-#RANGE= 15
-; Benghazi
-#GOAL_POSITION= 186,122
-#DATE= 1942/01/01
-#STEAL= 3
-; Tripoli(172,121)
-#FRIENDLY_POSITION= 172,121
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 4,108 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Build Up Offensive - Benghazi -> Tobruk
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 4,12
-#BUILD_LENGTH= 4
-#LENGTH= 5
-#RANGE= 15
-; Tobruk
-#GOAL_POSITION= 194,122
-#DATE= 1942/01/01
-#STEAL= 3
-; Benghazi
-#FRIENDLY_POSITION= 186,122
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 4,108 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Build Up Offensive - Tobruk -> Alexandria
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 4,12
-#BUILD_LENGTH= 4
-#LENGTH= 5
-#RANGE= 15
-; Alexandria
-#GOAL_POSITION= 206,124
-#DATE= 1942/01/01
-#STEAL= 3
-; Tobruk(194,122)
-#FRIENDLY_POSITION= 194,122
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 4,108 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; AXIS SCRIPTS - Build Up Offensive (Germany)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-{
-#NAME= Germany Build Up Offensive - Lodz
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,7
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 8
-; Lodz
-#GOAL_POSITION= 185,77
-#DATE= 1939/09/01
-#STEAL= 2
-; Breslau
-#FRIENDLY_POSITION= 180,79
-; Poland(85) Allied and not surrendered
-#VARIABLE_CONDITION= 85 [2] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Axis unit in Lodz
-#CANCEL_POSITION= 185,77 [0,0] [1,1] [1]
-}
-
-; Germany prepares to attack Poland:
-{
-#NAME= Germany Build Up Offensive - Kutno -> Warsaw
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,20
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 10
-; Warsaw
-#GOAL_POSITION= 188,76
-#DATE= 1939/09/01
-#STEAL= 3
-; Kutno
-#FRIENDLY_POSITION= 185,75
-; Poland(85) Allied and not surrendered
-#VARIABLE_CONDITION= 85 [2] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Axis unit in Warsaw
-#CANCEL_POSITION= 188,76 [0,0] [1,1] [1]
-}
-
-{
-#NAME= Germany Build Up Offensive - Lodz -> Warsaw
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,20
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 10
-; Warsaw
-#GOAL_POSITION= 188,76
-#DATE= 1939/09/01
-#STEAL= 3
-; Lodz
-#FRIENDLY_POSITION= 185,77
-; Poland(85) Allied and not surrendered
-#VARIABLE_CONDITION= 85 [2] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Axis unit in Warsaw
-#CANCEL_POSITION= 188,76 [0,0] [1,1] [1]
-}
-
-{
-#NAME= Germany Build Up Offensive - Bygoszcz -> Modlin
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 1
-; Modlin
-#GOAL_POSITION= 187,75
-#DATE= 1939/09/01
-#STEAL= 3
-; Bygoszcz
-#FRIENDLY_POSITION= 182,73
-; Poland(85) Allied and not surrendered
-#VARIABLE_CONDITION= 85 [2] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; No Allied unit in Modlin
-#CANCEL_POSITION= 187,75 [0,0] [0,0] [2]
-}
-
-; Germany prepares to attack Netherlands:
-{
-#NAME= Germany Build Up Offensive - The Hague (Build Up)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,8
-#BUILD_LENGTH= 4
-#LENGTH= 1
-#RANGE= 30
-; The Hague
-#GOAL_POSITION= 155,76
-#DATE= 1939/09/01
-#STEAL= 3
-; Osnabruck
-; Warsaw
-; German coastal and French border positions
-#FRIENDLY_POSITION= 162,75
-#FRIENDLY_POSITION= 188,76
-#FRIENDLY_POSITION= 163,83
-#FRIENDLY_POSITION= 165,85
-#FRIENDLY_POSITION= 162,82
-#FRIENDLY_POSITION= 161,80
-#FRIENDLY_POSITION= 160,78
-#FRIENDLY_POSITION= 160,79
-#FRIENDLY_POSITION= 164,81
-#FRIENDLY_POSITION= 160,73
-#FRIENDLY_POSITION= 164,71
-#FRIENDLY_POSITION= 165,68
-#FRIENDLY_POSITION= 166,70
-#FRIENDLY_POSITION= 164,73
-#FRIENDLY_POSITION= 166,72
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-; Axis unit in Warsaw
-#ACTIVATE_POSITION= 188,76 [0,0] [1,1] [1]
-; Axis unit already in The Hague (due to possible Allied DoW)
-#CANCEL_POSITION= 155,76 [0,0] [1,1] [1]
-}
-
-; Germany prepares to attack Luxembourg:
-{
-#NAME= Germany Build Up Offensive - Luxembourg (Build Up)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 4
-#LENGTH= 1
-#RANGE= 30
-; Luxembourg
-#GOAL_POSITION= 159,82
-#DATE= 1939/09/01
-#STEAL= 3
-; Coblenz
-; Warsaw
-; German coastal and French border positions
-#FRIENDLY_POSITION= 161,80
-#FRIENDLY_POSITION= 188,76
-#FRIENDLY_POSITION= 163,83
-#FRIENDLY_POSITION= 165,85
-#FRIENDLY_POSITION= 162,82
-#FRIENDLY_POSITION= 161,80
-#FRIENDLY_POSITION= 160,78
-#FRIENDLY_POSITION= 160,79
-#FRIENDLY_POSITION= 164,81
-#FRIENDLY_POSITION= 160,73
-#FRIENDLY_POSITION= 164,71
-#FRIENDLY_POSITION= 165,68
-#FRIENDLY_POSITION= 166,70
-#FRIENDLY_POSITION= 164,73
-#FRIENDLY_POSITION= 166,72
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-; Axis unit in Warsaw
-#ACTIVATE_POSITION= 188,76 [0,0] [1,1] [1]
-; Axis unit already in Luxembourg (due to possible Allied DoW)
-#CANCEL_POSITION= 159,82 [0,0] [1,1] [1]
-}
-
-; Germany prepares to attack Belgium:
-{
-#NAME= Germany Build Up Offensive - Brussels (Build Up)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,15
-#BUILD_LENGTH= 4
-#LENGTH= 1
-#RANGE= 30
-; Brussels(155,80)
-#GOAL_POSITION= 155,80
-#DATE= 1939/09/01
-#STEAL= 3
-; Cologne
-; Warsaw
-; German coastal and French border positions
-#FRIENDLY_POSITION= 160,79
-#FRIENDLY_POSITION= 188,76
-#FRIENDLY_POSITION= 163,83
-#FRIENDLY_POSITION= 165,85
-#FRIENDLY_POSITION= 162,82
-#FRIENDLY_POSITION= 161,80
-#FRIENDLY_POSITION= 160,78
-#FRIENDLY_POSITION= 160,79
-#FRIENDLY_POSITION= 164,81
-#FRIENDLY_POSITION= 160,73
-#FRIENDLY_POSITION= 164,71
-#FRIENDLY_POSITION= 165,68
-#FRIENDLY_POSITION= 166,70
-#FRIENDLY_POSITION= 164,73
-#FRIENDLY_POSITION= 166,72
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-; Axis unit in Warsaw
-#ACTIVATE_POSITION= 188,76 [0,0] [1,1] [1]
-; Axis unit already in Brussels (due to possible Allied DoW)
-#CANCEL_POSITION= 155,80 [0,0] [1,1] [1]
-}
-
-; Germany prepares to attack Yugoslavia:
-{
-#NAME= Germany Build Up Offensive - Zagreb (Yugoslavia Allied)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,6
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Zagreb
-#GOAL_POSITION= 178,92
-#DATE= 1939/09/01
-#STEAL= 3
-; Graz
-; Paris(151,84)
-; Rome
-; Taranto
-; Palermo
-#FRIENDLY_POSITION= 177,89
-#FRIENDLY_POSITION= 151,84
-#FRIENDLY_POSITION= 171,101
-#FRIENDLY_POSITION= 179,104
-#FRIENDLY_POSITION= 173,109
-; Yugoslavia(120) Allied and not surrendered
-#VARIABLE_CONDITION= 120 [2] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Axis unit in Zagreb
-#CANCEL_POSITION= 178,92 [0,0] [1,1] [1]
-}
-
-; Germany prepares to attack Yugoslavia:
-{
-#NAME= Germany Build Up Offensive - Belgrade (Yugoslavia Allied)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,6
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Belgrade
-#GOAL_POSITION= 187,94
-#DATE= 1939/09/01
-#STEAL= 3
-; Szeged
-; Paris(151,84)
-; Rome
-; Taranto
-; Palermo
-#FRIENDLY_POSITION= 186,91
-#FRIENDLY_POSITION= 151,84
-#FRIENDLY_POSITION= 171,101
-#FRIENDLY_POSITION= 179,104
-#FRIENDLY_POSITION= 173,109
-; Yugoslavia(120) Allied and not surrendered
-#VARIABLE_CONDITION= 120 [2] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Axis unit in Belgrade
-#CANCEL_POSITION= 187,94 [0,0] [1,1] [1]
-}
-
-; Germany prepares to attack Yugoslavia:
-{
-#NAME= Germany Build Up Offensive - Novi Sad (Yugoslavia Allied)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Novi Sad
-#GOAL_POSITION= 185,93
-#DATE= 1939/09/01
-#STEAL= 3
-; Szeged
-; Paris(151,84)
-; Rome
-; Taranto
-; Palermo
-#FRIENDLY_POSITION= 186,91
-#FRIENDLY_POSITION= 151,84
-#FRIENDLY_POSITION= 171,101
-#FRIENDLY_POSITION= 179,104
-#FRIENDLY_POSITION= 173,109
-; Yugoslavia(120) Allied and not surrendered
-#VARIABLE_CONDITION= 120 [2] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Axis unit in Novi Sad
-#CANCEL_POSITION= 185,93 [0,0] [1,1] [1]
-}
-
-{
-#NAME= Germany Build Up Offensive - Novi Sad -> Kragujevac (Yugoslavia Allied)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Kragujevac
-#GOAL_POSITION= 188,96
-#DATE= 1939/09/01
-#STEAL= 2
-; Novi Sad
-#FRIENDLY_POSITION= 185,93
-; Yugoslavia(120) Allied and not surrendered
-#VARIABLE_CONDITION= 120 [2] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Axis unit in Kragujevac
-#CANCEL_POSITION= 188,96 [0,0] [1,1] [1]
-}
-
-; Germany prepares to attack Yugoslavia:
-{
-#NAME= Germany Build Up Offensive - Novi Sad (DoW Historical)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 2
-#LENGTH= 1
-#RANGE= 8
-; Novi Sad
-#GOAL_POSITION= 185,93
-#DATE= 1939/09/01
-#STEAL= 3
-; Budapest(184,88)
-; Paris(151,84)
-; Rome
-; Taranto
-; Palermo
-#FRIENDLY_POSITION= 184,88
-#FRIENDLY_POSITION= 151,84
-#FRIENDLY_POSITION= 171,101
-#FRIENDLY_POSITION= 179,104
-#FRIENDLY_POSITION= 173,109
-; USSR(116) Allied (not fully active) and not surrendered AND
-; Italy(59) Axis and not surrendered
-; Hungary(52) Axis and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#VARIABLE_CONDITION= 52 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Axis unit in Novi Sad
-#CANCEL_POSITION= 185,93 [0,0] [1,1] [1]
-}
-
-; Germany prepares to attack Yugoslavia:
-{
-#NAME= Germany Build Up Offensive - Belgrade (Build Up)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,6
-#BUILD_LENGTH= 100
-#LENGTH= 1
-#RANGE= 40
-; Belgrade
-#GOAL_POSITION= 187,94
-#DATE= 1939/09/01
-#STEAL= 3
-; Bratislava
-; Paris(151,84)
-; Rome
-; Taranto
-; Palermo
-#FRIENDLY_POSITION= 181,86
-#FRIENDLY_POSITION= 151,84
-#FRIENDLY_POSITION= 171,101
-#FRIENDLY_POSITION= 179,104
-#FRIENDLY_POSITION= 173,109
-; USSR(116) Allied (not fully active) and not surrendered AND
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Axis unit in Belgrade
-#CANCEL_POSITION= 187,94 [0,0] [1,1] [1]
-}
-
-; Germany prepares to attack Greece:
-{
-#NAME= Germany Build Up Offensive - Skopje -> Thessaloniki (Greece Allied)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#SIZE= 1,3
-#BUILD_LENGTH= 0
-#LENGTH= 3
-#RANGE= 5
-; Thessaloniki
-#GOAL_POSITION= 192,104
-#DATE= 1939/09/01
-#STEAL= 3
-; Skopje
-#FRIENDLY_POSITION= 189,101
-; Germany(45) Axis and not surrendered AND
-; Greece(46) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 46 [2] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-; Belgrade has an Axis unit
-; This way either Yugoslavia is an ally or conquered to activate the attack on Greece
-#ACTIVATE_POSITION= 187,94 [0,0] [1,1] [1]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack Greece:
-{
-#NAME= Germany Build Up Offensive - Thessaloniki -> Larissa (Greece Allied)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#SIZE= 1,3
-#BUILD_LENGTH= 0
-#LENGTH= 3
-#RANGE= 5
-; Larissa
-#GOAL_POSITION= 191,106
-#DATE= 1939/09/01
-#STEAL= 3
-; Thessaloniki
-#FRIENDLY_POSITION= 192,104
-; Germany(45) Axis and not surrendered AND
-; Greece(46) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 46 [2] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-; Belgrade has an Axis unit
-; This way either Yugoslavia is an ally or conquered to activate the attack on Greece
-#ACTIVATE_POSITION= 187,94 [0,0] [1,1] [1]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack Greece:
-{
-#NAME= Germany Build Up Offensive - Skopje -> Thessaloniki (Build Up)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#SIZE= 1,4
-#BUILD_LENGTH= 2
-#LENGTH= 1
-#RANGE= 5
-; Thessaloniki
-#GOAL_POSITION= 192,104
-#DATE= 1939/09/01
-#STEAL= 3
-; Skopje
-#FRIENDLY_POSITION= 189,101
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-; Belgrade has an Axis unit
-; This way either Yugoslavia is an ally or conquered to activate the attack on Greece
-#ACTIVATE_POSITION= 187,94 [0,0] [1,1] [1]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Paris -> Le Havre
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Le Havre
-#GOAL_POSITION= 147,82
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Paris -> Caen
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Caen
-#GOAL_POSITION= 146,84
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Paris -> Le Mans
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Le Mans
-#GOAL_POSITION= 147,86
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Paris -> Rennes
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Rennes
-#GOAL_POSITION= 143,86
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Paris -> St Malo
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; St Malo
-#GOAL_POSITION= 141,85
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Paris -> Lorient
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Lorient
-#GOAL_POSITION= 140,87
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Paris -> Nantes
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Nantes
-#GOAL_POSITION= 143,88
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Paris -> Tours
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Tours
-#GOAL_POSITION= 148,88
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Paris -> Orleans
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Orleans
-#GOAL_POSITION= 150,87
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Paris -> Bourges
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Bourges
-#GOAL_POSITION= 151,89
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Paris -> Poitiers
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Poitiers
-#GOAL_POSITION= 147,89
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Paris -> La Rochelle
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; La Rochelle
-#GOAL_POSITION= 144,91
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Paris -> Auxerre
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Auxerre
-#GOAL_POSITION= 154,87
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Paris -> Dijon
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Dijon
-#GOAL_POSITION= 156,88
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Paris -> Besancon
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Besancon(158,89)
-#GOAL_POSITION= 158,89
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Paris -> Nancy
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Nancy(158,85)
-#GOAL_POSITION= 158,85
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Paris -> Epinal
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Epinal(159,86)
-#GOAL_POSITION= 159,86
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Paris -> Belfort
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Belfort(160,88)
-#GOAL_POSITION= 160,88
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Paris -> Brest
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 8
-; Brest(138,86)
-#GOAL_POSITION= 138,86
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Paris -> Bordeaux
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 10
-; Bordeaux
-#GOAL_POSITION= 145,94
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Paris -> Bayonne
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 15
-; Bayonne
-#GOAL_POSITION= 144,98
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack Maginot:
-{
-#NAME= Germany Build Up Offensive - Maginot (1)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 8
-; Maginot
-#GOAL_POSITION= 162,85
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-; Allied unit adjacent or within Maginot
-#ACTIVATE_POSITION= 162,85 [0,0] [1,1] [2]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack Maginot:
-{
-#NAME= Germany Build Up Offensive - Maginot (2)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 8
-; Maginot
-#GOAL_POSITION= 162,87
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-; Allied unit adjacent or within Maginot
-#ACTIVATE_POSITION= 162,87 [0,0] [1,1] [2]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack Maginot:
-{
-#NAME= Germany Build Up Offensive - Maginot (3)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 8
-; Maginot
-#GOAL_POSITION= 160,84
-#DATE= 1939/09/01
-#STEAL= 3
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-; Allied unit adjacent or within Maginot
-#ACTIVATE_POSITION= 160,84 [0,0] [1,1] [2]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Damascus
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,8
-#BUILD_LENGTH= 3
-#LENGTH= 10
-#RANGE= 15
-; Damascus
-#GOAL_POSITION= 218,119
-#DATE= 1941/03/01
-#STEAL= 3
-; Jerusalem
-#FRIENDLY_POSITION= 216,123
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Beirut
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,8
-#BUILD_LENGTH= 3
-#LENGTH= 10
-#RANGE= 15
-; Beirut(216,118)
-#GOAL_POSITION= 216,118
-#DATE= 1941/03/01
-#STEAL= 3
-; Damascus
-#FRIENDLY_POSITION= 218,119
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Baghdad
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 3,8
-#BUILD_LENGTH= 3
-#LENGTH= 10
-#RANGE= 15
-; Baghdad
-#GOAL_POSITION= 234,120
-#DATE= 1941/01/01
-#STEAL= 3
-; Beirut(216,118)
-; Damascus
-; Alexandria
-; Cairo(208,126)
-#FRIENDLY_POSITION= 216,118
-#FRIENDLY_POSITION= 218,119
-#FRIENDLY_POSITION= 206,124
-#FRIENDLY_POSITION= 208,126
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Lisbon (Spain Helper)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,3
-#BUILD_LENGTH= 0
-#LENGTH=
-#RANGE= 50
-; Lisbon
-#GOAL_POSITION= 128,108
-#DATE= 1941/01/01
-#STEAL= 3
-; Berlin(173,74)
-; Gibraltar(136,114)
-#FRIENDLY_POSITION= 173,74
-#FRIENDLY_POSITION= 136,114
-; Germany(45) Axis and not surrendered
-; Portugal(87) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 87 [2] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack the USSR:
-{
-#NAME= Germany Build Up Offensive - Odessa (Build Up)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,4
-#BUILD_LENGTH= 100
-#LENGTH= 1
-#RANGE= 50
-; Odessa
-#GOAL_POSITION= 207,90
-#DATE= 1939/09/01
-#STEAL= 2
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; USSR(116) Allied (not fully active) and not surrendered AND
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-; No Allied units within range of Paris
-#ACTIVATE_POSITION= 151,84 [20,20] [0,0] [2]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack the USSR:
-{
-#NAME= Germany Build Up Offensive - Proskurov (Build Up)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 100
-#LENGTH= 1
-#RANGE= 50
-; Proskurov
-#GOAL_POSITION= 199,83
-#DATE= 1939/09/01
-#STEAL= 2
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; USSR(116) Allied (not fully active) and not surrendered AND
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-; No Allied units within range of Paris
-#ACTIVATE_POSITION= 151,84 [20,20] [0,0] [2]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack the USSR:
-{
-#NAME= Germany Build Up Offensive - Kaunas (Build Up)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 100
-#LENGTH= 1
-#RANGE= 50
-; Kaunas
-#GOAL_POSITION= 194,68
-#DATE= 1939/09/01
-#STEAL= 2
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; USSR(116) Allied (not fully active) and not surrendered AND
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-; No Allied units within range of Paris
-#ACTIVATE_POSITION= 151,84 [20,20] [0,0] [2]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack the USSR:
-{
-#NAME= Germany Build Up Offensive - Kiev (Build Up)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 100
-#LENGTH= 1
-#RANGE= 50
-; Kiev(207,80)
-#GOAL_POSITION= 207,80
-#DATE= 1939/09/01
-#STEAL= 2
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; USSR(116) Allied (not fully active) and not surrendered AND
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-; No Allied units within range of Paris
-#ACTIVATE_POSITION= 151,84 [20,20] [0,0] [2]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack the USSR:
-{
-#NAME= Germany Build Up Offensive - Minsk (Build Up)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 100
-#LENGTH= 1
-#RANGE= 50
-; Minsk(201,71)
-#GOAL_POSITION= 201,71
-#DATE= 1939/09/01
-#STEAL= 2
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; USSR(116) Allied (not fully active) and not surrendered AND
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-; No Allied units within range of Paris
-#ACTIVATE_POSITION= 151,84 [20,20] [0,0] [2]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack the USSR:
-{
-#NAME= Germany Build Up Offensive - Riga (DoW Early)
-#POPUP=
-#FLAG= 1
-#TYPE= 3
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,10
-#BUILD_LENGTH= 2
-#LENGTH= 1
-#RANGE= 50
-; Riga
-#GOAL_POSITION= 194,62
-#DATE= 1941/02/10
-#STEAL= 2
-; Warsaw
-; Belgrade
-#FRIENDLY_POSITION= 188,76
-#FRIENDLY_POSITION= 187,94
-; Germany(45) Axis and not surrendered
-; USSR(116) Allied (not fully active) and not surrendered
-; Romania(93) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-#VARIABLE_CONDITION= 93 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-; No Allied units within range of Paris
-#ACTIVATE_POSITION= 151,84 [20,20] [0,0] [2]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack the USSR:
-{
-#NAME= Germany Build Up Offensive - Orsha (DoW Early)
-#POPUP=
-#FLAG= 1
-#TYPE= 3
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,10
-#BUILD_LENGTH= 2
-#LENGTH= 1
-#RANGE= 50
-; Orsha
-#GOAL_POSITION= 206,69
-#DATE= 1941/02/10
-#STEAL= 2
-; Warsaw
-; Belgrade
-#FRIENDLY_POSITION= 188,76
-#FRIENDLY_POSITION= 187,94
-; Germany(45) Axis and not surrendered
-; USSR(116) Allied (not fully active) and not surrendered
-; Romania(93) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-#VARIABLE_CONDITION= 93 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-; No Allied units within range of Paris
-#ACTIVATE_POSITION= 151,84 [20,20] [0,0] [2]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack the USSR:
-{
-#NAME= Germany Build Up Offensive - Zhitomir (DoW Early)
-#POPUP=
-#FLAG= 1
-#TYPE= 3
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,10
-#BUILD_LENGTH= 2
-#LENGTH= 1
-#RANGE= 50
-; Zhitomir
-#GOAL_POSITION= 203,81
-#DATE= 1941/02/10
-#STEAL= 2
-; Vienna
-; Belgrade
-#FRIENDLY_POSITION= 265,59
-#FRIENDLY_POSITION= 187,94
-; Germany(45) Axis and not surrendered
-; USSR(116) Allied (not fully active) and not surrendered
-; Romania(93) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-#VARIABLE_CONDITION= 93 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-; No Allied units within range of Paris
-#ACTIVATE_POSITION= 151,84 [20,20] [0,0] [2]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack the USSR:
-{
-#NAME= Germany Build Up Offensive - Riga (DoW Historical)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,10
-#BUILD_LENGTH= 2
-#LENGTH= 1
-#RANGE= 50
-; Riga
-#GOAL_POSITION= 194,62
-#DATE= 1941/04/15
-#STEAL= 2
-; Warsaw
-; Belgrade
-#FRIENDLY_POSITION= 188,76
-#FRIENDLY_POSITION= 187,94
-; Germany(45) Axis and not surrendered
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-; No Allied units within range of Paris
-#ACTIVATE_POSITION= 151,84 [20,20] [0,0] [2]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack the USSR:
-{
-#NAME= Germany Build Up Offensive - Orsha (DoW Historical)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,10
-#BUILD_LENGTH= 2
-#LENGTH= 1
-#RANGE= 50
-; Orsha
-#GOAL_POSITION= 206,69
-#DATE= 1941/04/15
-#STEAL= 2
-; Warsaw
-; Belgrade
-#FRIENDLY_POSITION= 188,76
-#FRIENDLY_POSITION= 187,94
-; Germany(45) Axis and not surrendered
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-; No Allied units within range of Paris
-#ACTIVATE_POSITION= 151,84 [20,20] [0,0] [2]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack the USSR:
-{
-#NAME= Germany Build Up Offensive - Zhitomir (DoW Historical)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,10
-#BUILD_LENGTH= 2
-#LENGTH= 1
-#RANGE= 50
-; Zhitomir
-#GOAL_POSITION= 203,81
-#DATE= 1941/04/15
-#STEAL= 2
-; Vienna
-; Belgrade
-#FRIENDLY_POSITION= 265,59
-#FRIENDLY_POSITION= 187,94
-; Germany(45) Axis and not surrendered
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-; No Allied units within range of Paris
-#ACTIVATE_POSITION= 151,84 [20,20] [0,0] [2]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack the USSR:
-{
-#NAME= Germany Build Up Offensive - Kaunas
-#POPUP=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Kaunas
-#GOAL_POSITION= 194,68
-#DATE= 1941/05/29
-#STEAL= 3
-; Johannisburg
-#FRIENDLY_POSITION= 190,71
-; Germany(45) Axis and not surrendered AND
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack the USSR:
-{
-#NAME= Germany Build Up Offensive - Grodno
-#POPUP=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Grodno
-#GOAL_POSITION= 193,71
-#DATE= 1941/05/29
-#STEAL= 3
-; Johannisburg
-#FRIENDLY_POSITION= 190,71
-; Germany(45) Axis and not surrendered AND
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack the USSR:
-{
-#NAME= Germany Build Up Offensive - Bialystok
-#POPUP=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 5
-; Bialystok
-#GOAL_POSITION= 192,73
-#DATE= 1941/05/29
-#STEAL= 3
-; Johannisburg
-#FRIENDLY_POSITION= 190,71
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Riga -> Parnu
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 15
-; Parnu
-#GOAL_POSITION= 195,57
-#DATE= 1941/05/29
-#STEAL= 2
-; Riga
-#FRIENDLY_POSITION= 194,62
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Parnu -> Kuressaare
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 15
-; Kuressaare
-#GOAL_POSITION= 191,57
-#DATE= 1941/05/29
-#STEAL= 2
-; Parnu
-#FRIENDLY_POSITION= 195,57
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack the USSR:
-{
-#NAME= Germany Build Up Offensive - Dnepropetrovsk -> Sevastapol
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 15
-; Sevastopol
-#GOAL_POSITION= 212,96
-#DATE= 1941/05/29
-#STEAL= 2
-; Dnepropetrovsk
-#FRIENDLY_POSITION= 215,85
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Saratov -> Kuybyshev
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,8
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 15
-; Kuybyshev
-#GOAL_POSITION= 245,72
-#DATE= 1941/05/29
-#STEAL= 2
-; Saratov(237,77)
-#FRIENDLY_POSITION= 237,77
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - Kuybyshev -> Perm
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,10
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 15
-; Perm
-#GOAL_POSITION= 257,58
-#DATE= 1941/05/29
-#STEAL= 2
-; Kuybyshev
-#FRIENDLY_POSITION= 245,72
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack the USSR:
-{
-#NAME= Germany Build Up Offensive - (Hungary) Proskurov (Build Up)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 52
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 100
-#LENGTH= 1
-#RANGE= 15
-; Proskurov
-#GOAL_POSITION= 199,83
-#DATE= 1939/09/01
-#STEAL= 3
-; Budapest(184,88)
-#FRIENDLY_POSITION= 184,88
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Budapest(184,88) not tactically threatened
-#TACTICAL_CONDITION= 184,88 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack the USSR:
-{
-#NAME= Germany Build Up Offensive - (Romania) Odessa (Build Up)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 93
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 100
-#LENGTH= 1
-#RANGE= 15
-; Odessa
-#GOAL_POSITION= 207,90
-#DATE= 1939/09/01
-#STEAL= 3
-; Bucharest(198,95)
-#FRIENDLY_POSITION= 198,95
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Bucharest(198,95) not tactically threatened
-#TACTICAL_CONDITION= 198,95 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack the USSR:
-{
-#NAME= Germany Build Up Offensive - (Bulgaria) Odessa (Build Up)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 19
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 100
-#LENGTH= 1
-#RANGE= 15
-; Odessa
-#GOAL_POSITION= 207,90
-#DATE= 1939/09/01
-#STEAL= 3
-; Bucharest(198,95)
-#FRIENDLY_POSITION= 198,95
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Sophia not tactically threatened
-#TACTICAL_CONDITION= 192,100 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Romania:
-{
-#NAME= Germany Build Up Offensive - (Romania) Odessa -> Zaporizhia
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 93
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 100
-#LENGTH= 1
-#RANGE= 10
-; Zaporizhia
-#GOAL_POSITION= 215,87
-#DATE= 1939/09/01
-#STEAL= 3
-; Odessa
-#FRIENDLY_POSITION= 207,90
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Bucharest(198,95) not tactically threatened
-#TACTICAL_CONDITION= 198,95 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Bulgaria:
-{
-#NAME= Germany Build Up Offensive - (Bulgaria) Odessa -> Kremenchuk
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 19
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 100
-#LENGTH= 1
-#RANGE= 10
-; Kremenchuk
-#GOAL_POSITION= 212,84
-#DATE= 1939/09/01
-#STEAL= 3
-; Odessa
-#FRIENDLY_POSITION= 207,90
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Sophia not tactically threatened
-#TACTICAL_CONDITION= 192,100 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Spain:
-{
-#NAME= Germany Build Up Offensive - (Spain) Odessa -> Cherkasy
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 99
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 100
-#LENGTH= 1
-#RANGE= 10
-; Cherkasy
-#GOAL_POSITION= 210,83
-#DATE= 1939/09/01
-#STEAL= 3
-; Odessa
-#FRIENDLY_POSITION= 207,90
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Madrid(139,104) not tactically threatened
-#TACTICAL_CONDITION= 139,104 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack Gibraltar:
-{
-#NAME= Germany Build Up Offensive - (Spain) Madrid -> Gibraltar
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 99
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,3
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 15
-; Gibraltar(136,114)
-#GOAL_POSITION= 136,114
-#DATE= 1940/01/01
-#STEAL= 3
-; Madrid(139,104)
-#FRIENDLY_POSITION= 139,104
-; Spain(99) Axis and not surrendered
-#VARIABLE_CONDITION= 99 [1] [100] [0]
-; Madrid(139,104) not tactically threatened
-#TACTICAL_CONDITION= 139,104 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Germany prepares to attack Portugal:
-{
-#NAME= Germany Build Up Offensive - (Spain) Madrid -> Lisbon
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 99
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 2,8
-#BUILD_LENGTH= 3
-#LENGTH= 1
-#RANGE= 50
-; Lisbon
-#GOAL_POSITION= 128,108
-#DATE= 1940/01/01
-#STEAL= 3
-; Madrid(139,104)
-; Gibraltar(136,114)
-#FRIENDLY_POSITION= 139,104
-#FRIENDLY_POSITION= 136,114
-; Spain(99) Axis and not surrendered
-#VARIABLE_CONDITION= 99 [1] [100] [0]
-; Madrid(139,104) not tactically threatened
-#TACTICAL_CONDITION= 139,104 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Build Up Offensive - (Finland) Helsinki -> Archangel
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 39
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 20
-#RANGE= 15
-; Archangel
-#GOAL_POSITION= 227,35
-#DATE= 1940/01/01
-#STEAL= 3
-; Helsinki
-#FRIENDLY_POSITION= 195,51
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-; Set activate position (no allied units in Archangel)
-#ACTIVATE_POSITION= 227,35 [0,0] [0,0] [2]
-; Set cancel position (two Allied units within 2 tiles of Helsinki).
-#CANCEL_POSITION= 195,51 [2,2] [2,2] [2]
-}
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; AXIS SCRIPTS - Build Up Offensive (Italy)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-; Italy prepares to attack France:
-{
-#NAME= Italy Build Up Offensive - Torino -> Nice (Build Up)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 100
-#LENGTH= 1
-#RANGE= 15
-; Nice
-#GOAL_POSITION= 160,97
-#DATE= 1939/09/01
-#STEAL= 3
-; Torino
-#FRIENDLY_POSITION= 162,94
-; France(40) Allied and not surrendered AND
-; Italy(59) Axis AND 
-; USSR(116) Allied and not yet fully mobilized
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [0] [0]
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Berlin(173,74) not tactically threatened AND
-; Rome not tactically threatened AND
-#TACTICAL_CONDITION= 173,74 [1]
-#TACTICAL_CONDITION= 171,101 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Italy prepares to attack France:
-{
-#NAME= Italy Build Up Offensive - Torino -> Monaco
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 15
-; Monaco
-#GOAL_POSITION= 162,96
-#DATE= 1940/01/01
-#STEAL= 3
-; Torino
-#FRIENDLY_POSITION= 162,94
-; France(40) Allied and not surrendered AND
-; Italy(59) Axis AND 
-; USSR(116) Allied and not yet fully mobilized
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Berlin(173,74) not tactically threatened AND
-; Rome not tactically threatened AND
-#TACTICAL_CONDITION= 173,74 [1]
-#TACTICAL_CONDITION= 171,101 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Italy prepares to attack France:
-{
-#NAME= Italy Build Up Offensive - Monaco -> Nice
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 15
-; Nice
-#GOAL_POSITION= 160,97
-#DATE= 1940/01/01
-#STEAL= 3
-; Monaco
-#FRIENDLY_POSITION= 162,96
-; France(40) Allied and not surrendered
-; Italy(59) Axis
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Berlin(173,74) not tactically threatened AND
-; Rome not tactically threatened AND
-#TACTICAL_CONDITION= 173,74 [1]
-#TACTICAL_CONDITION= 171,101 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Italy prepares to attack France:
-{
-#NAME= Italy Build Up Offensive - Nice -> Marseille
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 15
-; Marseille(157,97)
-#GOAL_POSITION= 157,97
-#DATE= 1940/01/01
-#STEAL= 3
-; Nice, Monaco
-#FRIENDLY_POSITION= 160,97
-#FRIENDLY_POSITION= 162,96
-; France(40) Allied and not surrendered
-; Italy(59) Axis
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Berlin(173,74) not tactically threatened AND
-; Rome not tactically threatened AND
-#TACTICAL_CONDITION= 173,74 [1]
-#TACTICAL_CONDITION= 171,101 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Italy prepares to attack France:
-{
-#NAME= Italy Build Up Offensive - Marseilles -> Toulouse
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 15
-; Toulouse
-#GOAL_POSITION= 149,97
-#DATE= 1940/01/01
-#STEAL= 3
-; Marseilles, Nice, Monaco
-#FRIENDLY_POSITION= 157,97
-#FRIENDLY_POSITION= 160,97
-#FRIENDLY_POSITION= 162,96
-; France(40) Allied and not surrendered 
-; Italy(59) Axis
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Berlin(173,74) not tactically threatened AND
-; Rome not tactically threatened AND
-#TACTICAL_CONDITION= 173,74 [1]
-#TACTICAL_CONDITION= 171,101 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Italy prepares to attack France:
-{
-#NAME= Italy Build Up Offensive - Toulouse -> Bordeaux
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 0
-#LENGTH= 1
-#RANGE= 15
-; Bordeaux(145,94)
-#GOAL_POSITION= 145,94
-#DATE= 1940/01/01
-#STEAL= 3
-; Toulouse
-#FRIENDLY_POSITION= 149,97
-; France(40) Allied and not surrendered 
-; Italy(59) Axis
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Berlin(173,74) not tactically threatened AND
-; Rome not tactically threatened AND
-#TACTICAL_CONDITION= 173,74 [1]
-#TACTICAL_CONDITION= 171,101 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Italy Build Up Offensive - Jerusalem -> Damascus
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 3
-#LENGTH= 10
-#RANGE= 15
-; Damascus
-#GOAL_POSITION= 218,119
-#DATE= 1940/06/01
-#STEAL= 3
-; Jerusalem
-; Alexandria
-; Cairo(208,126)
-#FRIENDLY_POSITION= 216,123
-#FRIENDLY_POSITION= 206,124
-#FRIENDLY_POSITION= 208,126
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Italy Build Up Offensive - Damascus -> Baghdad
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 3
-#LENGTH= 10
-#RANGE= 15
-; Baghdad
-#GOAL_POSITION= 234,120
-#DATE= 1940/06/01
-#STEAL= 3
-; Damascus
-; Alexandria
-; Cairo(208,126)
-#FRIENDLY_POSITION= 218,119
-#FRIENDLY_POSITION= 206,124
-#FRIENDLY_POSITION= 208,126
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Italy prepares to attack Yugoslavia:
-{
-#NAME= Italy Build Up Offensive - Dijon -> Ljubljana (Build Up)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 100
-#LENGTH= 1
-#RANGE= 12
-; Ljubljana
-#GOAL_POSITION= 176,91
-#DATE= 1939/09/01
-#STEAL= 3
-; Dijon
-; Paris(151,84)
-; Brest(138,86)
-#FRIENDLY_POSITION= 156,88
-#FRIENDLY_POSITION= 151,84
-#FRIENDLY_POSITION= 138,86
-#FRIENDLY_POSITION= 143,82
-; USSR(116) Allied (not fully active) and not surrendered AND
-; Italy(59) Axis and not surrendered AND
-; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-; Berlin(173,74) not tactically threatened AND
-; Rome not tactically threatened AND
-; Paris(151,84) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#TACTICAL_CONDITION= 171,101 [1]
-#TACTICAL_CONDITION= 151,84 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Italy prepares to attack Greece:
-{
-#NAME= Italy Build Up Offensive - Salzburg -> Ioannina (Post Yugoslavia)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#SIZE= 1,5
-#BUILD_LENGTH= 2
-#LENGTH= 1
-#RANGE= 20
-; Ioannina
-#GOAL_POSITION= 188,107
-#DATE= 1940/01/01
-#STEAL= 3
-; Salzburg
-; Budapest(184,88)
-; Paris(151,84)
-; Brest(138,86)
-; Bordeaux
-; Rome
-; Taranto
-; Palermo
-; Belgrade
-#FRIENDLY_POSITION= 172,87
-#FRIENDLY_POSITION= 184,88
-#FRIENDLY_POSITION= 138,86
-#FRIENDLY_POSITION= 145,94
-#FRIENDLY_POSITION= 171,101
-#FRIENDLY_POSITION= 179,104
-#FRIENDLY_POSITION= 173,109
-#FRIENDLY_POSITION= 143,82
-#FRIENDLY_POSITION= 187,94
-; Italy(59) Axis and not surrendered AND
-; Hungary(52) Axis and not surrendered
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#VARIABLE_CONDITION= 52 [1] [100] [0]
-; Berlin(173,74) not tactically threatened AND
-; Rome not tactically threatened AND
-; Paris(151,84) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#TACTICAL_CONDITION= 171,101 [1]
-#TACTICAL_CONDITION= 151,84 [1]
-; Belgrade has an Axis unit
-; This way either Yugoslavia is an ally or conquered to activate the attack on Greece
-#ACTIVATE_POSITION= 187,94 [0,0] [1,1] [1]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }

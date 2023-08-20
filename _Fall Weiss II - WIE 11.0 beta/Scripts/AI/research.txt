@@ -6,7 +6,9 @@
 ;
 ; Basic structure of an AI research event:
 ; { 
-;  #NAME= Event name (this will be shown as a selectable event under an OPTIONS screen within the game)
+; #NAME=  Event name 
+;         (this will be shown as a selectable event under an OPTIONS screen within the game)
+;
 ; #POPUP= Event popup text 
 ;         (this will be displayed when the event occurs)
 ;
@@ -24,57 +26,57 @@
 ;            (not removed from event queue)
 ;        3 = Single check, only on #DATE
 ;
-; #LEVEL= What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
-;         Values: [0, 4]; Green= 0; Novice= 1; Intermediate= 2; Veteran= 3; Expert= 4
-; #GV= Does the event activate based on the Global Variable values assigned?
-;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
-;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
-;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
-;      Example B - #GV= 4[71,100] will trigger 30% per game
+; #LEVEL= Value range [-1, 4]
+;       What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;       -1 = a script that should only fire for AI friendly controlled majors on your turn
+;        0 = Green
+;        1 = Novice
+;        2 = Intermediate
+;        3 = Veteran
+;        4 = Expert
+;
+; #GV=   Does the event activate based on the Global Variable values assigned?
+;        Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
+;        Format: GV [min, max]
+;                GV range [1, 10] 
+;                min range [1, 100] 
+;                max range [min+1, 100]
+;
+;        Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;        Example B - #GV= 4[71,100] will trigger 30% per game
+;
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
-;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
+;        Format: decision[response]
+;                decision range [1, 1100]
+;                response range [0, 1]
+;                   0 = NO
+;                   1 = YES
+;
 ;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
 ;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
 ;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
-; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
-; #COUNTRY_ID=  Value range [0, 120]
-;               Country ID that will be owner of this event
-; #SKIP_FUNDS_CHECK= Should we skip the applicable funds check? (values range [0, 1]; True= 1; False= 0)
 ;
-; #RESEARCH_ID_0= Infantry Weapons
-; #RESEARCH_ID_1= Anti-Tank Weapons
-; #RESEARCH_ID_2= Heavy Tanks
-; #RESEARCH_ID_3= Advanced Aircraft
-; #RESEARCH_ID_4= Heavy Bombers
-; #RESEARCH_ID_5= Naval Weaponry
-; #RESEARCH_ID_6= Long Range Aircraft
-; #RESEARCH_ID_7= Advanced Subs
-; #RESEARCH_ID_8= Artillery Weapons
-; #RESEARCH_ID_9= Rocket Weapons
-; #RESEARCH_ID_10= Ground Attack Weapons
-; #RESEARCH_ID_11= Motorization
-; #RESEARCH_ID_12= Anti-Submarine Warfare
-; #RESEARCH_ID_13= Anti-Aircraft Defense
-; #RESEARCH_ID_14= Command and Control
-; #RESEARCH_ID_15= Infantry Warfare
-; #RESEARCH_ID_16= Armored Warfare
-; #RESEARCH_ID_17= Aerial Warfare
-; #RESEARCH_ID_18= Naval Warfare
-; #RESEARCH_ID_19= Amphibious Warfare
-; #RESEARCH_ID_20= Trench Warfare
-; #RESEARCH_ID_21= Shell Production
-; #RESEARCH_ID_22= Synthetic Oil
-; #RESEARCH_ID_23= Spying and Intelligence
-; #RESEARCH_ID_24= Logistics
-; #RESEARCH_ID_25= Production Technology
-; #RESEARCH_ID_26= Industrial Technology
+; #TRIGGER=     Value range [0, 100]
+;               Percentage chance that the event will occur
 ;
-; Will these research types be purchased by the AI
-; Format: % chance assigned to this purchase [max_chits]
+; #COUNTRY_ID=  Value range [1, 120]
+;               Country that will be owner of this event
 ;
-; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
+; #SKIP_FUNDS_CHECK= Value range [0, 1]
+;                       1 = True
+;                       0 = False
+;
+; #RESEARCH_ID_[n]= Will these research types be purchased by the AI
+;                   Format: percent_chance [max_chits]
+;                           percent_chance range [0, 100]
+;                           max_chits range [0, 5]
+;
+; #DATE=          Date requirement for the event
+;                 Format: yyyy/mm/dd
+;
 ; #FRIENDLY_POSITION= Positions that must be under friendly control in order for event to occur
+;
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
 ;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
 ;                              country_id range [1, 120]
@@ -125,11 +127,12 @@
 ;        e.g., a city for a GUARD script, a port for a TRANSPORT script, etc.  All AI scripts require that the first 
 ;        #FRIENDLY_POSITION be a land tile, with the exception of Fleet scripts.
 ;
-; #VARIABLE_CONDITION - More than one #VARIABLE_CONDITION can be set.  Under #VARIABLE_CONDITION you can also list 
-; countries that have not yet fully entered the war.  For example by listing an activation % less than 100% you
-; are providing a check where the #VARIABLE_CONDITION country must meet a minimum activation % (but is
-; not yet at 100%) in order for the event to occur.  To check for a fully activated country simply
-; list the activation % at 100%.  Each #VARIABLE_CONDITION line will be read using AND logic.
+; #VARIABLE_CONDITION - More than one can be set. You can also list countries that have not yet fully 
+;   entered the war. For example by listing an activation % less than 100% you are providing a check 
+;   where the country must meet a minimum activation % (but is not yet at 100%) in order for the event 
+;   to occur. To check for a fully activated country simply list the activation % at 100%.
+;
+; Each #VARIABLE_CONDITION line will be read using AND logic.
 ;
 ; More than one #TACTICAL_CONDITION can be set.  #TACTICAL_CONDITION refers to the current side, i.e.
 ; country associated with this plan having tactical superiority over the specified map position.
@@ -318,24 +321,20 @@
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ALLIED SCRIPTS - UK
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
+; Fall Weiss II
 {
-#NAME= UK Research (1943 - FORCED)
+#NAME= Finland Research (1939 - )
 #POPUP=
 #FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
+#TYPE= 2
+#COUNTRY_ID= 39
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
+#SKIP_FUNDS_CHECK= 0
 ; Infantry Weapons
-#RESEARCH_ID_0= 0 [0]
+#RESEARCH_ID_0= 75 [1]
 ; Anti-Tank Weapons
 #RESEARCH_ID_1= 0 [0]
 ; Heavy Tanks
@@ -357,15 +356,15 @@
 ; Ground Attack Weapons
 #RESEARCH_ID_10= 0 [0]
 ; Motorization
-#RESEARCH_ID_11= 0 [0]
+#RESEARCH_ID_11= 5 [1]
 ; Anti-Submarine Warfare
 #RESEARCH_ID_12= 0 [0]
 ; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
+#RESEARCH_ID_13= 5 [1]
 ; Command and Control
-#RESEARCH_ID_14= 0 [0]
+#RESEARCH_ID_14= 5 [1]
 ; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
+#RESEARCH_ID_15= 5 [1]
 ; Armored Warfare
 #RESEARCH_ID_16= 0 [0]
 ; Aerial Warfare
@@ -374,88 +373,11 @@
 #RESEARCH_ID_18= 0 [0]
 ; Amphibious Warfare
 #RESEARCH_ID_19= 0 [0]
-; Trench Warfare
+; Ballistic Warfare
 #RESEARCH_ID_20= 0 [0]
-; Shell Production
+; Aircraft Production
 #RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 100 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 100 [1]
-;
-#DATE= 1943/06/01
-; London(147,77)
-#FRIENDLY_POSITION= 147,77
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= UK Research (1942 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 0 [0]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 100 [1]
-; Heavy Tanks
-#RESEARCH_ID_2= 100 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 100 [1]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 100 [1]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
+; Tank Production
 #RESEARCH_ID_22= 0 [0]
 ; Spying and Intelligence
 #RESEARCH_ID_23= 0 [0]
@@ -464,563 +386,97 @@
 ; Production Technology
 #RESEARCH_ID_25= 0 [0]
 ; Industrial Technology
-#RESEARCH_ID_26= 0 [0]
+#RESEARCH_ID_26= 5 [0]
 ;
-#DATE= 1942/06/01
-; London(147,77)
-#FRIENDLY_POSITION= 147,77
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
+#DATE= 1939/09/01
+; Helsinki
+#FRIENDLY_POSITION= 195,51
+; Finland(39) Axis and not surrendered
+#VARIABLE_CONDITION= 39 [1] [100] [0]
+; Helsinki not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 195,51 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
+; Fall Weiss II
 {
-#NAME= UK Research (1942 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 0 [0]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 0 [0]
-; Advanced Aircraft
-#RESEARCH_ID_3= 100 [1]
-; Heavy Bombers
-#RESEARCH_ID_4= 100 [1]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 100 [1]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 100 [1]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 0 [0]
-; Industrial Technology
-#RESEARCH_ID_26= 0 [0]
-;
-#DATE= 1942/01/01
-; London(147,77)
-#FRIENDLY_POSITION= 147,77
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= UK Research (1941 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 0 [0]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 100 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 100 [1]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 0 [0]
-; Industrial Technology
-#RESEARCH_ID_26= 0 [0]
-;
-#DATE= 1941/09/01
-; London(147,77)
-#FRIENDLY_POSITION= 147,77
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= UK Research (1941 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 0 [0]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 0 [0]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 1 [100]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 100 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 100 [1]
-;
-#DATE= 1941/06/01
-; London(147,77)
-#FRIENDLY_POSITION= 147,77
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= UK Research (1941 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 100 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 100 [1]
-; Heavy Tanks
-#RESEARCH_ID_2= 100 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 100 [1]
-; Heavy Bombers
-#RESEARCH_ID_4= 100 [1]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 100 [2]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 100 [1]
-; Infantry Warfare
-#RESEARCH_ID_15= 100 [1]
-; Armored Warfare
-#RESEARCH_ID_16= 100 [1]
-; Aerial Warfare
-#RESEARCH_ID_17= 100 [1]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 100 [1]
-; Trench Warfare
-#RESEARCH_ID_20= 100 [1]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 0 [0]
-; Industrial Technology
-#RESEARCH_ID_26= 0 [0]
-;
-#DATE= 1941/01/01
-; London(147,77)
-#FRIENDLY_POSITION= 147,77
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= UK Research (1940 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 0 [0]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 0 [0]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 100 [1]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 100 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 100 [1]
-;
-#DATE= 1940/06/01
-; London(147,77)
-#FRIENDLY_POSITION= 147,77
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= UK Research (1940 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 100 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 0 [0]
-; Advanced Aircraft
-#RESEARCH_ID_3= 100 [1]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 100 [1]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 100 [1]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 100 [1]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 100 [1]
-; Trench Warfare
-#RESEARCH_ID_20= 100 [1]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 0 [0]
-; Industrial Technology
-#RESEARCH_ID_26= 0 [0]
-;
-#DATE= 1940/01/01
-; London(147,77)
-#FRIENDLY_POSITION= 147,77
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= UK Research (1939 - )
+#NAME= Finland Research (1939 - ) (Pre-War Entry)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
-#COUNTRY_ID= 112
+#COUNTRY_ID= 39
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
 #SKIP_FUNDS_CHECK= 0
 ; Infantry Weapons
-#RESEARCH_ID_0= 25 [1]
+#RESEARCH_ID_0= 75 [1]
 ; Anti-Tank Weapons
-#RESEARCH_ID_1= 25 [1]
+#RESEARCH_ID_1= 0 [0]
 ; Heavy Tanks
-#RESEARCH_ID_2= 25 [1]
+#RESEARCH_ID_2= 0 [0]
 ; Advanced Aircraft
-#RESEARCH_ID_3= 25 [1]
+#RESEARCH_ID_3= 0 [0]
 ; Heavy Bombers
-#RESEARCH_ID_4= 25 [1]
+#RESEARCH_ID_4= 0 [0]
 ; Naval Weaponry
 #RESEARCH_ID_5= 0 [0]
 ; Long Range Aircraft
-#RESEARCH_ID_6= 25 [1]
+#RESEARCH_ID_6= 0 [0]
 ; Advanced Subs
 #RESEARCH_ID_7= 0 [0]
 ; Artillery Weapons
-#RESEARCH_ID_8= 10 [1]
+#RESEARCH_ID_8= 0 [0]
 ; Rocket Weapons
 #RESEARCH_ID_9= 0 [0]
 ; Ground Attack Weapons
-#RESEARCH_ID_10= 25 [1]
+#RESEARCH_ID_10= 0 [0]
 ; Motorization
-#RESEARCH_ID_11= 10 [1]
+#RESEARCH_ID_11= 0 [0]
 ; Anti-Submarine Warfare
-#RESEARCH_ID_12= 25 [1]
+#RESEARCH_ID_12= 0 [0]
 ; Anti-Aircraft Defense
-#RESEARCH_ID_13= 10 [1]
+#RESEARCH_ID_13= 0 [0]
 ; Command and Control
-#RESEARCH_ID_14= 0 [0]
+#RESEARCH_ID_14= 10 [1]
 ; Infantry Warfare
-#RESEARCH_ID_15= 5 [1]
+#RESEARCH_ID_15= 10 [1]
 ; Armored Warfare
-#RESEARCH_ID_16= 5 [1]
+#RESEARCH_ID_16= 0 [0]
 ; Aerial Warfare
-#RESEARCH_ID_17= 5 [1]
+#RESEARCH_ID_17= 0 [0]
 ; Naval Warfare
-#RESEARCH_ID_18= 5 [1]
+#RESEARCH_ID_18= 0 [0]
 ; Amphibious Warfare
-#RESEARCH_ID_19= 10 [1]
-; Trench Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
 #RESEARCH_ID_20= 0 [0]
-; Shell Production
+; Aircraft Production
 #RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
+; Tank Production
 #RESEARCH_ID_22= 0 [0]
 ; Spying and Intelligence
-#RESEARCH_ID_23= 10 [1]
+#RESEARCH_ID_23= 0 [0]
 ; Logistics
 #RESEARCH_ID_24= 0 [0]
 ; Production Technology
-#RESEARCH_ID_25= 25 [1]
+#RESEARCH_ID_25= 0 [0]
 ; Industrial Technology
-#RESEARCH_ID_26= 25 [1]
+#RESEARCH_ID_26= 0 [0]
 ;
 #DATE= 1939/09/01
-; London(147,77)
-#FRIENDLY_POSITION= 147,77
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
+; Helsinki
+#FRIENDLY_POSITION= 195,51
+; Finland(39) Axis and not surrendered
+#VARIABLE_CONDITION= 39 [1] [0] [0]
+; Helsinki not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 195,51 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ALLIED SCRIPTS - France
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
 {
 #NAME= French Research (1939 - )
 #POPUP=
@@ -1072,11 +528,11 @@
 #RESEARCH_ID_18= 0 [0]
 ; Amphibious Warfare
 #RESEARCH_ID_19= 0 [0]
-; Trench Warfare
+; Ballistic Warfare
 #RESEARCH_ID_20= 0 [0]
-; Shell Production
+; Aircraft Production
 #RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
+; Tank Production
 #RESEARCH_ID_22= 0 [0]
 ; Spying and Intelligence
 #RESEARCH_ID_23= 0 [0]
@@ -1094,3104 +550,6 @@
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Paris(151,84) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 151,84 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ALLIED SCRIPTS - USA
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-{
-#NAME= USA Research (1943 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 0 [0]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 0 [0]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 100 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 100 [1]
-;
-#DATE= 1943/06/01
-; Washington DC(4,108)
-#FRIENDLY_POSITION= 4,108
-; USA(115) Allied (fully active) and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 4,108 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Research (1942 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 100 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 100 [1]
-; Heavy Tanks
-#RESEARCH_ID_2= 100 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 100 [1]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 0 [0]
-; Industrial Technology
-#RESEARCH_ID_26= 0 [0]
-;
-#DATE= 1942/06/01
-; Washington DC(4,108)
-#FRIENDLY_POSITION= 4,108
-; USA(115) Allied (fully active) and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 4,108 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Research (1942 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 100 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 100 [1]
-; Heavy Tanks
-#RESEARCH_ID_2= 100 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 100 [1]
-; Heavy Bombers
-#RESEARCH_ID_4= 100 [1]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 100 [1]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 100 [1]
-; Motorization
-#RESEARCH_ID_11= 100 [1]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 100 [2]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 100 [1]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 0 [0]
-; Industrial Technology
-#RESEARCH_ID_26= 0 [0]
-;
-#DATE= 1942/01/01
-; Washington DC(4,108)
-#FRIENDLY_POSITION= 4,108
-; USA(115) Allied (fully active) and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 4,108 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Research (1941 - )
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; Infantry Weapons
-#RESEARCH_ID_0= 25 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 10 [1]
-; Heavy Tanks
-#RESEARCH_ID_2= 10 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 10 [1]
-; Heavy Bombers
-#RESEARCH_ID_4= 10 [1]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 10 [1]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 10 [1]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 25 [1]
-; Motorization
-#RESEARCH_ID_11= 10 [1]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 10 [1]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 10 [1]
-; Infantry Warfare
-#RESEARCH_ID_15= 10 [1]
-; Armored Warfare
-#RESEARCH_ID_16= 10 [1]
-; Aerial Warfare
-#RESEARCH_ID_17= 10 [1]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 10 [1]
-; Trench Warfare
-#RESEARCH_ID_20= 10 [1]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 10 [1]
-; Logistics
-#RESEARCH_ID_24= 10 [1]
-; Production Technology
-#RESEARCH_ID_25= 25 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 25 [1]
-;
-#DATE= 1941/01/01
-; Washington DC(4,108)
-#FRIENDLY_POSITION= 4,108
-; USA(115) Allied (fully active) and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 4,108 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Research (1939 - )
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; Infantry Weapons
-#RESEARCH_ID_0= 25 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 10 [1]
-; Heavy Tanks
-#RESEARCH_ID_2= 10 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 10 [1]
-; Heavy Bombers
-#RESEARCH_ID_4= 10 [1]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 10 [1]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 10 [1]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 5 [1]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 5 [1]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 10 [1]
-; Logistics
-#RESEARCH_ID_24= 10 [1]
-; Production Technology
-#RESEARCH_ID_25= 10 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 50 [1]
-;
-#DATE= 1939/09/01
-; Washington DC(4,108)
-#FRIENDLY_POSITION= 4,108
-; USA(115) Allied (fully active) and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 4,108 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Research (1941 - FORCED) (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 0 [0]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 0 [0]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 100 [1]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 100 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 100 [1]
-;
-#DATE= 1941/06/01
-; Washington DC(4,108)
-#FRIENDLY_POSITION= 4,108
-; USA(115) Allied (fully active) and not surrendered
-#VARIABLE_CONDITION= 115 [2] [0] [0]
-; Washington DC(4,108) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 4,108 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Research (1941 - FORCED) (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 100 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 100 [1]
-; Heavy Tanks
-#RESEARCH_ID_2= 100 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 100 [1]
-; Heavy Bombers
-#RESEARCH_ID_4= 100 [1]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 100 [1]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 100 [1]
-; Armored Warfare
-#RESEARCH_ID_16= 100 [1]
-; Aerial Warfare
-#RESEARCH_ID_17= 100 [1]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 100 [1]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 0 [0]
-; Industrial Technology
-#RESEARCH_ID_26= 0 [0]
-;
-#DATE= 1941/01/01
-; Washington DC(4,108)
-#FRIENDLY_POSITION= 4,108
-; USA(115) Allied (fully active) and not surrendered
-#VARIABLE_CONDITION= 115 [2] [0] [0]
-; Washington DC(4,108) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 4,108 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Research (1941 - ) (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; Infantry Weapons
-#RESEARCH_ID_0= 25 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 10 [1]
-; Heavy Tanks
-#RESEARCH_ID_2= 10 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 10 [1]
-; Heavy Bombers
-#RESEARCH_ID_4= 10 [1]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 10 [1]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 10 [1]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 25 [1]
-; Motorization
-#RESEARCH_ID_11= 10 [1]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 10 [1]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 10 [1]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 10 [1]
-; Logistics
-#RESEARCH_ID_24= 10 [1]
-; Production Technology
-#RESEARCH_ID_25= 25 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 25 [1]
-;
-#DATE= 1941/01/01
-; Washington DC(4,108)
-#FRIENDLY_POSITION= 4,108
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [0] [0]
-; Washington DC(4,108) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 4,108 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Research (1940 - FORCED) (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 0 [0]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 0 [0]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 100 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 100 [1]
-;
-#DATE= 1940/06/01
-; Washington DC(4,108)
-#FRIENDLY_POSITION= 4,108
-; USA(115) Allied (fully active) and not surrendered
-#VARIABLE_CONDITION= 115 [2] [0] [0]
-; Washington DC(4,108) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 4,108 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Research (1939 - FORCED) (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 0 [0]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 0 [0]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 100 [1]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 0 [0]
-; Industrial Technology
-#RESEARCH_ID_26= 0 [0]
-;
-#DATE= 1939/09/01
-; Washington DC(4,108)
-#FRIENDLY_POSITION= 4,108
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [0] [0]
-; Washington DC(4,108) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 4,108 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Research (1939 - ) (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; Infantry Weapons
-#RESEARCH_ID_0= 25 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 10 [1]
-; Heavy Tanks
-#RESEARCH_ID_2= 10 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 10 [1]
-; Heavy Bombers
-#RESEARCH_ID_4= 10 [1]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 10 [1]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 10 [1]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 10 [1]
-; Logistics
-#RESEARCH_ID_24= 10 [1]
-; Production Technology
-#RESEARCH_ID_25= 10 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 50 [1]
-;
-#DATE= 1939/09/01
-; Washington DC(4,108)
-#FRIENDLY_POSITION= 4,108
-; USA(115) Allied and not surrendered
-#VARIABLE_CONDITION= 115 [2] [0] [0]
-; Washington DC(4,108) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 4,108 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ALLIED SCRIPTS - USSR
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-{
-#NAME= USSR Loss of Stalingrad Research (1941 - )
-#POPUP=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
-#TYPE= 2
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; Infantry Weapons
-#RESEARCH_ID_0= 50 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 25 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 50 [1]
-; Motorization
-#RESEARCH_ID_11= 10 [1]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 25 [1]
-; Armored Warfare
-#RESEARCH_ID_16= 25 [1]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 10 [1]
-; Production Technology
-#RESEARCH_ID_25= 0 [0]
-; Industrial Technology
-#RESEARCH_ID_26= 0 [0]
-;
-#DATE= 1941/01/01
-; Perm(257,58)
-#FRIENDLY_POSITION= 257,58
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Perm(257,58) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 257,58 [3]
-; Enemy units in Stalingrad
-#ACTIVATE_POSITION= 234,85 [1,1] [1,1] [1]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Research (1943 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 0 [0]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 0 [0]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 100 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 100 [1]
-;
-#DATE= 1943/01/01
-; Perm(257,58)
-#FRIENDLY_POSITION= 257,58
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Perm(257,58) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 257,58 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Research (1942 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 100 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 0 [0]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 100 [1]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 100 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 100 [1]
-;
-#DATE= 1942/09/01
-; Perm(257,58)
-#FRIENDLY_POSITION= 257,58
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Perm(257,58) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 257,58 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Research (1942 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 100 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 100 [1]
-; Heavy Tanks
-#RESEARCH_ID_2= 100 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 100 [1]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 100 [1]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 100 [1]
-; Armored Warfare
-#RESEARCH_ID_16= 100 [1]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 0 [0]
-; Industrial Technology
-#RESEARCH_ID_26= 0 [0]
-;
-#DATE= 1942/03/01
-; Perm(257,58)
-#FRIENDLY_POSITION= 257,58
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Perm(257,58) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 257,58 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Research (1942 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 0 [0]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 0 [0]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 100 [1]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 100 [1]
-; Production Technology
-#RESEARCH_ID_25= 100 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 100 [1]
-;
-#DATE= 1942/01/01
-; Perm(257,58)
-#FRIENDLY_POSITION= 257,58
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Perm(257,58) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 257,58 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Research (1941 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 100 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 100 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 100 [1]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 0 [0]
-; Industrial Technology
-#RESEARCH_ID_26= 0 [0]
-;
-#DATE= 1941/09/01
-; Perm(257,58)
-#FRIENDLY_POSITION= 257,58
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Perm(257,58) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 257,58 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Research (1941 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 100 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 100 [1]
-; Heavy Tanks
-#RESEARCH_ID_2= 100 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 100 [1]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 100 [1]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 100 [1]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 100 [1]
-; Command and Control
-#RESEARCH_ID_14= 100 [1]
-; Infantry Warfare
-#RESEARCH_ID_15= 100 [1]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 100 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 100 [1]
-;
-#DATE= 1941/06/01
-; Perm(257,58)
-#FRIENDLY_POSITION= 257,58
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Perm(257,58) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 257,58 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Research (1941 - )
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; Infantry Weapons
-#RESEARCH_ID_0= 25 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 25 [1]
-; Heavy Tanks
-#RESEARCH_ID_2= 25 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 20 [1]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 5 [1]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 10 [1]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 10 [1]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 10 [1]
-; Command and Control
-#RESEARCH_ID_14= 10 [1]
-; Infantry Warfare
-#RESEARCH_ID_15= 10 [1]
-; Armored Warfare
-#RESEARCH_ID_16= 10 [1]
-; Aerial Warfare
-#RESEARCH_ID_17= 10 [1]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 10 [1]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 10 [1]
-; Production Technology
-#RESEARCH_ID_25= 10 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 10 [1]
-;
-#DATE= 1941/01/01
-; Perm(257,58)
-#FRIENDLY_POSITION= 257,58
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Perm(257,58) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 257,58 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Research (May 1940 - 1941)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; Infantry Weapons
-#RESEARCH_ID_0= 50 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 10 [1]
-; Heavy Tanks
-#RESEARCH_ID_2= 20 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 15 [1]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 10 [1]
-; Rocket Weapons
-#RESEARCH_ID_9= 10 [1]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 30 [1]
-; Motorization
-#RESEARCH_ID_11= 10 [1]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 5 [1]
-; Logistics
-#RESEARCH_ID_24= 10 [1]
-; Production Technology
-#RESEARCH_ID_25= 25 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 25 [1]
-;
-#DATE= 1940/05/01
-; Perm(257,58)
-#FRIENDLY_POSITION= 257,58
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Perm(257,58) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 257,58 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Research (1939 - May 1940)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; Infantry Weapons
-#RESEARCH_ID_0= 25 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 5 [1]
-; Heavy Tanks
-#RESEARCH_ID_2= 10 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 5 [1]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 5 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 50 [1]
-;
-#DATE= 1939/09/01
-; Perm(257,58)
-#FRIENDLY_POSITION= 257,58
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Perm(257,58) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 257,58 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Research (1941 - FORCED) (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 100 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 100 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 0 [0]
-; Industrial Technology
-#RESEARCH_ID_26= 100 [1]
-;
-#DATE= 1941/06/01
-; Perm(257,58)
-#FRIENDLY_POSITION= 257,58
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Perm(257,58) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 257,58 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Research (1941 - FORCED) (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 100 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 100 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 100 [1]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 100 [1]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 0 [0]
-; Industrial Technology
-#RESEARCH_ID_26= 100 [1]
-;
-#DATE= 1941/01/01
-; Perm(257,58)
-#FRIENDLY_POSITION= 257,58
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Perm(257,58) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 257,58 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Research (Oct 1940 - 1941) (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; Infantry Weapons
-#RESEARCH_ID_0= 50 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 10 [1]
-; Heavy Tanks
-#RESEARCH_ID_2= 20 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 15 [1]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 10 [1]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 25 [1]
-; Motorization
-#RESEARCH_ID_11= 10 [1]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 25 [1]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 5 [1]
-; Armored Warfare
-#RESEARCH_ID_16= 5 [1]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 5 [1]
-; Logistics
-#RESEARCH_ID_24= 10 [1]
-; Production Technology
-#RESEARCH_ID_25= 25 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 25 [1]
-;
-#DATE= 1940/10/01
-; Perm(257,58)
-#FRIENDLY_POSITION= 257,58
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Perm(257,58) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 257,58 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Research (1940 - FORCED) (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 100 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 100 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 0 [0]
-; Industrial Technology
-#RESEARCH_ID_26= 100 [1]
-;
-#DATE= 1940/09/01
-; Perm(257,58)
-#FRIENDLY_POSITION= 257,58
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Perm(257,58) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 257,58 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Research (1940 - FORCED) (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 100 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 0 [0]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 0 [0]
-; Industrial Technology
-#RESEARCH_ID_26= 0 [0]
-;
-#DATE= 1940/04/01
-; Perm(257,58)
-#FRIENDLY_POSITION= 257,58
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Perm(257,58) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 257,58 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-
-{
-#NAME= USSR Research (1940 - FORCED) (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 0 [0]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 100 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 100 [1]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 100 [1]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 0 [0]
-; Industrial Technology
-#RESEARCH_ID_26= 100 [1]
-;
-#DATE= 1940/01/01
-; Perm(257,58)
-#FRIENDLY_POSITION= 257,58
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Perm(257,58) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 257,58 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Research (1940 - FORCED) (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 0 [0]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 100 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 0 [0]
-; Industrial Technology
-#RESEARCH_ID_26= 100 [1]
-;
-#DATE= 1939/12/01
-; Perm(257,58)
-#FRIENDLY_POSITION= 257,58
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Perm(257,58) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 257,58 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Research (1939 - Oct 1940) (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; Infantry Weapons
-#RESEARCH_ID_0= 0 [0]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 0 [0]
-; Advanced Aircraft
-#RESEARCH_ID_3= 10 [1]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 5 [1]
-; Armored Warfare
-#RESEARCH_ID_16= 5 [1]
-; Aerial Warfare
-#RESEARCH_ID_17= 5 [1]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 0 [0]
-; Industrial Technology
-#RESEARCH_ID_26= 50 [1]
-;
-#DATE= 1939/09/01
-; Perm(257,58)
-#FRIENDLY_POSITION= 257,58
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Perm(257,58) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 257,58 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; AXIS SCRIPTS - Germany
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-{
-#NAME= Germany Research (1944 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 0 [0]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 0 [0]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 100 [1]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 100 [1]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 100 [1]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 100 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 100 [1]
-;
-#DATE= 1944/01/01
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Research (1943 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 0 [0]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 0 [0]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 100 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 100 [1]
-;
-#DATE= 1943/06/01
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Research (1943 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 0 [0]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 0 [0]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 100 [1]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 100 [3]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 100 [1]
-; Shell Production
-#RESEARCH_ID_21= 100 [1]
-; Synthetic Oil
-#RESEARCH_ID_22= 100 [1]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 100 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 100 [1]
-;
-#DATE= 1943/01/01
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Research (1942 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 0 [0]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 0 [0]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 100 [1]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 0 [0]
-; Industrial Technology
-#RESEARCH_ID_26= 0 [0]
-;
-#DATE= 1942/09/01
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Research (1942 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 0 [0]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 0 [0]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 100 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 100 [1]
-;
-#DATE= 1942/06/01
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Research (1942 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 100 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 100 [1]
-; Heavy Tanks
-#RESEARCH_ID_2= 100 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 100 [1]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 100 [1]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 100 [1]
-; Armored Warfare
-#RESEARCH_ID_16= 100 [1]
-; Aerial Warfare
-#RESEARCH_ID_17= 100 [1]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 100 [1]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 100 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 100 [1]
-;
-#DATE= 1942/01/01
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Research (1942 - )
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#SKIP_FUNDS_CHECK= 0
-; Infantry Weapons
-#RESEARCH_ID_0= 25 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 25 [1]
-; Heavy Tanks
-#RESEARCH_ID_2= 25 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 25 [1]
-; Heavy Bombers
-#RESEARCH_ID_4= 10 [1]
-; Naval Weaponry
-#RESEARCH_ID_5= 10 [1]
-; Long Range Aircraft
-#RESEARCH_ID_6= 25 [1]
-; Advanced Subs
-#RESEARCH_ID_7= 20 [2]
-; Artillery Weapons
-#RESEARCH_ID_8= 10 [1]
-; Rocket Weapons
-#RESEARCH_ID_9= 10 [1]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 10 [1]
-; Motorization
-#RESEARCH_ID_11= 10 [1]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 10 [1]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 5 [1]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 5 [1]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 10 [1]
-; Logistics
-#RESEARCH_ID_24= 10 [1]
-; Production Technology
-#RESEARCH_ID_25= 25 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 50 [1]
-;
-#DATE= 1942/01/01
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Research (1941 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 0 [0]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 0 [0]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 0 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 100 [1]
-; Production Technology
-#RESEARCH_ID_25= 100 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 100 [1]
-;
-#DATE= 1941/06/01
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Research (1941 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 100 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 100 [1]
-; Heavy Tanks
-#RESEARCH_ID_2= 100 [2]
-; Advanced Aircraft
-#RESEARCH_ID_3= 100 [1]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 100 [1]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 100 [1]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 100 [0]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 0 [0]
-; Industrial Technology
-#RESEARCH_ID_26= 0 [0]
-;
-#DATE= 1941/01/01
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Research (1941 - )
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-; Infantry Weapons
-#RESEARCH_ID_0= 25 [1]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 25 [1]
-; Heavy Tanks
-#RESEARCH_ID_2= 25 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 25 [1]
-; Heavy Bombers
-#RESEARCH_ID_4= 10 [1]
-; Naval Weaponry
-#RESEARCH_ID_5= 10 [1]
-; Long Range Aircraft
-#RESEARCH_ID_6= 25 [1]
-; Advanced Subs
-#RESEARCH_ID_7= 20 [1]
-; Artillery Weapons
-#RESEARCH_ID_8= 10 [1]
-; Rocket Weapons
-#RESEARCH_ID_9= 10 [1]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 10 [1]
-; Motorization
-#RESEARCH_ID_11= 10 [1]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 10 [1]
-; Command and Control
-#RESEARCH_ID_14= 0 [0]
-; Infantry Warfare
-#RESEARCH_ID_15= 5 [1]
-; Armored Warfare
-#RESEARCH_ID_16= 5 [1]
-; Aerial Warfare
-#RESEARCH_ID_17= 5 [1]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 5 [1]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 10 [1]
-; Logistics
-#RESEARCH_ID_24= 10 [1]
-; Production Technology
-#RESEARCH_ID_25= 25 [1]
-; Industrial Technology
-#RESEARCH_ID_26= 25 [1]
-;
-#DATE= 1941/01/01
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Research (1940 - FORCED)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#SKIP_FUNDS_CHECK= 1
-; Infantry Weapons
-#RESEARCH_ID_0= 0 [0]
-; Anti-Tank Weapons
-#RESEARCH_ID_1= 0 [0]
-; Heavy Tanks
-#RESEARCH_ID_2= 100 [1]
-; Advanced Aircraft
-#RESEARCH_ID_3= 0 [0]
-; Heavy Bombers
-#RESEARCH_ID_4= 0 [0]
-; Naval Weaponry
-#RESEARCH_ID_5= 0 [0]
-; Long Range Aircraft
-#RESEARCH_ID_6= 0 [0]
-; Advanced Subs
-#RESEARCH_ID_7= 0 [0]
-; Artillery Weapons
-#RESEARCH_ID_8= 0 [0]
-; Rocket Weapons
-#RESEARCH_ID_9= 0 [0]
-; Ground Attack Weapons
-#RESEARCH_ID_10= 0 [0]
-; Motorization
-#RESEARCH_ID_11= 0 [0]
-; Anti-Submarine Warfare
-#RESEARCH_ID_12= 0 [0]
-; Anti-Aircraft Defense
-#RESEARCH_ID_13= 0 [0]
-; Command and Control
-#RESEARCH_ID_14= 100 [1]
-; Infantry Warfare
-#RESEARCH_ID_15= 0 [0]
-; Armored Warfare
-#RESEARCH_ID_16= 0 [0]
-; Aerial Warfare
-#RESEARCH_ID_17= 100 [1]
-; Naval Warfare
-#RESEARCH_ID_18= 0 [0]
-; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
-#RESEARCH_ID_20= 0 [0]
-; Shell Production
-#RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
-#RESEARCH_ID_22= 0 [0]
-; Spying and Intelligence
-#RESEARCH_ID_23= 0 [0]
-; Logistics
-#RESEARCH_ID_24= 0 [0]
-; Production Technology
-#RESEARCH_ID_25= 0 [0]
-; Industrial Technology
-#RESEARCH_ID_26= 100 [1]
-;
-#DATE= 1940/01/01
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
@@ -4247,11 +605,11 @@
 #RESEARCH_ID_18= 0 [0]
 ; Amphibious Warfare
 #RESEARCH_ID_19= 0 [0]
-; Trench Warfare
+; Ballistic Warfare
 #RESEARCH_ID_20= 0 [0]
-; Shell Production
+; Aircraft Production
 #RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
+; Tank Production
 #RESEARCH_ID_22= 0 [0]
 ; Spying and Intelligence
 #RESEARCH_ID_23= 0 [0]
@@ -4273,11 +631,853 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; AXIS SCRIPTS - Italy
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+{
+#NAME= Germany Research (FORCED) (1940/01 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 0 [0]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 100 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 100 [1]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 100 [1]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 0 [0]
+; Industrial Technology
+#RESEARCH_ID_26= 100 [1]
 ;
+#DATE= 1940/01/01
+; Berlin(173,74)
+#FRIENDLY_POSITION= 173,74
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Research (1941/01 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; Infantry Weapons
+#RESEARCH_ID_0= 25 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 25 [1]
+; Heavy Tanks
+#RESEARCH_ID_2= 25 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 25 [1]
+; Heavy Bombers
+#RESEARCH_ID_4= 10 [1]
+; Naval Weaponry
+#RESEARCH_ID_5= 10 [1]
+; Long Range Aircraft
+#RESEARCH_ID_6= 25 [1]
+; Advanced Subs
+#RESEARCH_ID_7= 20 [1]
+; Artillery Weapons
+#RESEARCH_ID_8= 10 [1]
+; Rocket Weapons
+#RESEARCH_ID_9= 10 [1]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 10 [1]
+; Motorization
+#RESEARCH_ID_11= 10 [1]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 10 [1]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 5 [1]
+; Armored Warfare
+#RESEARCH_ID_16= 5 [1]
+; Aerial Warfare
+#RESEARCH_ID_17= 5 [1]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 5 [1]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 10 [1]
+; Logistics
+#RESEARCH_ID_24= 10 [1]
+; Production Technology
+#RESEARCH_ID_25= 25 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 25 [1]
+;
+#DATE= 1941/01/01
+; Berlin(173,74)
+#FRIENDLY_POSITION= 173,74
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Research (FORCED) (1941/01 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 100 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 100 [1]
+; Heavy Tanks
+#RESEARCH_ID_2= 100 [2]
+; Advanced Aircraft
+#RESEARCH_ID_3= 100 [1]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 100 [1]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 100 [1]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 100 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 0 [0]
+; Industrial Technology
+#RESEARCH_ID_26= 0 [0]
+;
+#DATE= 1941/01/01
+; Berlin(173,74)
+#FRIENDLY_POSITION= 173,74
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Research (FORCED) (1941/06 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 0 [0]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 0 [0]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 100 [1]
+; Production Technology
+#RESEARCH_ID_25= 100 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 100 [1]
+;
+#DATE= 1941/06/01
+; Berlin(173,74)
+#FRIENDLY_POSITION= 173,74
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Research (1942/01 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#SKIP_FUNDS_CHECK= 0
+; Infantry Weapons
+#RESEARCH_ID_0= 25 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 25 [1]
+; Heavy Tanks
+#RESEARCH_ID_2= 25 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 25 [1]
+; Heavy Bombers
+#RESEARCH_ID_4= 10 [1]
+; Naval Weaponry
+#RESEARCH_ID_5= 10 [1]
+; Long Range Aircraft
+#RESEARCH_ID_6= 25 [1]
+; Advanced Subs
+#RESEARCH_ID_7= 20 [2]
+; Artillery Weapons
+#RESEARCH_ID_8= 10 [1]
+; Rocket Weapons
+#RESEARCH_ID_9= 10 [1]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 10 [1]
+; Motorization
+#RESEARCH_ID_11= 10 [1]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 10 [1]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 5 [1]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 5 [1]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 10 [1]
+; Logistics
+#RESEARCH_ID_24= 10 [1]
+; Production Technology
+#RESEARCH_ID_25= 25 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 50 [1]
+;
+#DATE= 1942/01/01
+; Berlin(173,74)
+#FRIENDLY_POSITION= 173,74
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Research (FORCED) (1942/01 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 100 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 100 [1]
+; Heavy Tanks
+#RESEARCH_ID_2= 100 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 100 [1]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 100 [1]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 100 [1]
+; Armored Warfare
+#RESEARCH_ID_16= 100 [1]
+; Aerial Warfare
+#RESEARCH_ID_17= 100 [1]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 100 [1]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 100 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 100 [1]
+;
+#DATE= 1942/01/01
+; Berlin(173,74)
+#FRIENDLY_POSITION= 173,74
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Research (FORCED) (1942/06 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 0 [0]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 0 [0]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 100 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 100 [1]
+;
+#DATE= 1942/06/01
+; Berlin(173,74)
+#FRIENDLY_POSITION= 173,74
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Research (FORCED) (1942/09 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 0 [0]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 0 [0]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 100 [1]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 0 [0]
+; Industrial Technology
+#RESEARCH_ID_26= 0 [0]
+;
+#DATE= 1942/09/01
+; Berlin(173,74)
+#FRIENDLY_POSITION= 173,74
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Research (FORCED) (1943/01 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 0 [0]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 0 [0]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 100 [1]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 100 [3]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 100 [1]
+; Aircraft Production
+#RESEARCH_ID_21= 100 [1]
+; Tank Production
+#RESEARCH_ID_22= 100 [1]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 100 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 100 [1]
+;
+#DATE= 1943/01/01
+; Berlin(173,74)
+#FRIENDLY_POSITION= 173,74
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Research (FORCED) (1943/06 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 0 [0]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 0 [0]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 100 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 100 [1]
+;
+#DATE= 1943/06/01
+; Berlin(173,74)
+#FRIENDLY_POSITION= 173,74
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Research (FORCED) (1944/01 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 0 [0]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 0 [0]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 100 [1]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 100 [1]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 100 [1]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 100 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 100 [1]
+;
+#DATE= 1944/01/01
+; Berlin(173,74)
+#FRIENDLY_POSITION= 173,74
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
 {
 #NAME= Italy Research (1939 - )
 #POPUP=
@@ -4329,11 +1529,11 @@
 #RESEARCH_ID_18= 10 [1]
 ; Amphibious Warfare
 #RESEARCH_ID_19= 0 [0]
-; Trench Warfare
+; Ballistic Warfare
 #RESEARCH_ID_20= 5 [0]
-; Shell Production
+; Aircraft Production
 #RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
+; Tank Production
 #RESEARCH_ID_22= 0 [0]
 ; Spying and Intelligence
 #RESEARCH_ID_23= 10 [1]
@@ -4355,23 +1555,173 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Fall Weiss II AXIS SCRIPTS - Finland
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
 {
-#NAME= Finland Research (Pre-War Entry)
+#NAME= UK Research (1939 - )
 #POPUP=
 #FLAG= 1
 #TYPE= 2
-#COUNTRY_ID= 39
+#COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
 #SKIP_FUNDS_CHECK= 0
 ; Infantry Weapons
-#RESEARCH_ID_0= 75 [1]
+#RESEARCH_ID_0= 25 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 25 [1]
+; Heavy Tanks
+#RESEARCH_ID_2= 25 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 25 [1]
+; Heavy Bombers
+#RESEARCH_ID_4= 25 [1]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 25 [1]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 10 [1]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 25 [1]
+; Motorization
+#RESEARCH_ID_11= 10 [1]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 25 [1]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 10 [1]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 5 [1]
+; Armored Warfare
+#RESEARCH_ID_16= 5 [1]
+; Aerial Warfare
+#RESEARCH_ID_17= 5 [1]
+; Naval Warfare
+#RESEARCH_ID_18= 5 [1]
+; Amphibious Warfare
+#RESEARCH_ID_19= 10 [1]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 10 [1]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 25 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 25 [1]
+;
+#DATE= 1939/09/01
+; London(147,77)
+#FRIENDLY_POSITION= 147,77
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= UK Research (FORCED) (1940/01 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 100 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 0 [0]
+; Advanced Aircraft
+#RESEARCH_ID_3= 100 [1]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 100 [1]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 100 [1]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 100 [1]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 100 [1]
+; Ballistic Warfare
+#RESEARCH_ID_20= 100 [1]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 0 [0]
+; Industrial Technology
+#RESEARCH_ID_26= 0 [0]
+;
+#DATE= 1940/01/01
+; London(147,77)
+#FRIENDLY_POSITION= 147,77
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= UK Research (FORCED) (1940/06 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 0 [0]
 ; Anti-Tank Weapons
 #RESEARCH_ID_1= 0 [0]
 ; Heavy Tanks
@@ -4399,9 +1749,9 @@
 ; Anti-Aircraft Defense
 #RESEARCH_ID_13= 0 [0]
 ; Command and Control
-#RESEARCH_ID_14= 10 [1]
+#RESEARCH_ID_14= 0 [0]
 ; Infantry Warfare
-#RESEARCH_ID_15= 10 [1]
+#RESEARCH_ID_15= 0 [0]
 ; Armored Warfare
 #RESEARCH_ID_16= 0 [0]
 ; Aerial Warfare
@@ -4409,12 +1759,89 @@
 ; Naval Warfare
 #RESEARCH_ID_18= 0 [0]
 ; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
+#RESEARCH_ID_19= 100 [1]
+; Ballistic Warfare
 #RESEARCH_ID_20= 0 [0]
-; Shell Production
+; Aircraft Production
 #RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 100 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 100 [1]
+;
+#DATE= 1940/06/01
+; London(147,77)
+#FRIENDLY_POSITION= 147,77
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= UK Research (FORCED) (1941/01 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 100 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 100 [1]
+; Heavy Tanks
+#RESEARCH_ID_2= 100 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 100 [1]
+; Heavy Bombers
+#RESEARCH_ID_4= 100 [1]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 100 [2]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 100 [1]
+; Infantry Warfare
+#RESEARCH_ID_15= 100 [1]
+; Armored Warfare
+#RESEARCH_ID_16= 100 [1]
+; Aerial Warfare
+#RESEARCH_ID_17= 100 [1]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 100 [1]
+; Ballistic Warfare
+#RESEARCH_ID_20= 100 [1]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
 #RESEARCH_ID_22= 0 [0]
 ; Spying and Intelligence
 #RESEARCH_ID_23= 0 [0]
@@ -4425,31 +1852,30 @@
 ; Industrial Technology
 #RESEARCH_ID_26= 0 [0]
 ;
-#DATE= 1939/09/01
-; Helsinki
-#FRIENDLY_POSITION= 195,51
-; Finland(39) Axis and not surrendered
-#VARIABLE_CONDITION= 39 [1] [0] [0]
-; Helsinki not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 195,51 [3]
+#DATE= 1941/01/01
+; London(147,77)
+#FRIENDLY_POSITION= 147,77
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-;
 {
-#NAME= Finland Research (1939 - )
+#NAME= UK Research (FORCED) (1941/06 - )
 #POPUP=
 #FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 39
+#TYPE= 1
+#COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
+#SKIP_FUNDS_CHECK= 1
 ; Infantry Weapons
-#RESEARCH_ID_0= 75 [1]
+#RESEARCH_ID_0= 0 [0]
 ; Anti-Tank Weapons
 #RESEARCH_ID_1= 0 [0]
 ; Heavy Tanks
@@ -4471,15 +1897,15 @@
 ; Ground Attack Weapons
 #RESEARCH_ID_10= 0 [0]
 ; Motorization
-#RESEARCH_ID_11= 5 [1]
+#RESEARCH_ID_11= 0 [0]
 ; Anti-Submarine Warfare
 #RESEARCH_ID_12= 0 [0]
 ; Anti-Aircraft Defense
-#RESEARCH_ID_13= 5 [1]
+#RESEARCH_ID_13= 0 [0]
 ; Command and Control
-#RESEARCH_ID_14= 5 [1]
+#RESEARCH_ID_14= 0 [0]
 ; Infantry Warfare
-#RESEARCH_ID_15= 5 [1]
+#RESEARCH_ID_15= 0 [0]
 ; Armored Warfare
 #RESEARCH_ID_16= 0 [0]
 ; Aerial Warfare
@@ -4487,12 +1913,89 @@
 ; Naval Warfare
 #RESEARCH_ID_18= 0 [0]
 ; Amphibious Warfare
-#RESEARCH_ID_19= 0 [0]
-; Trench Warfare
+#RESEARCH_ID_19= 1 [100]
+; Ballistic Warfare
 #RESEARCH_ID_20= 0 [0]
-; Shell Production
+; Aircraft Production
 #RESEARCH_ID_21= 0 [0]
-; Synthetic Oil
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 100 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 100 [1]
+;
+#DATE= 1941/06/01
+; London(147,77)
+#FRIENDLY_POSITION= 147,77
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= UK Research (FORCED) (1941/09 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 0 [0]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 100 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 100 [1]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
 #RESEARCH_ID_22= 0 [0]
 ; Spying and Intelligence
 #RESEARCH_ID_23= 0 [0]
@@ -4501,15 +2004,2483 @@
 ; Production Technology
 #RESEARCH_ID_25= 0 [0]
 ; Industrial Technology
-#RESEARCH_ID_26= 5 [0]
+#RESEARCH_ID_26= 0 [0]
+;
+#DATE= 1941/09/01
+; London(147,77)
+#FRIENDLY_POSITION= 147,77
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= UK Research (FORCED) (1942/01 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 0 [0]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 0 [0]
+; Advanced Aircraft
+#RESEARCH_ID_3= 100 [1]
+; Heavy Bombers
+#RESEARCH_ID_4= 100 [1]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 100 [1]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 100 [1]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 0 [0]
+; Industrial Technology
+#RESEARCH_ID_26= 0 [0]
+;
+#DATE= 1942/01/01
+; London(147,77)
+#FRIENDLY_POSITION= 147,77
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= UK Research (FORCED) (1942/06 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 0 [0]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 100 [1]
+; Heavy Tanks
+#RESEARCH_ID_2= 100 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 100 [1]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 100 [1]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 0 [0]
+; Industrial Technology
+#RESEARCH_ID_26= 0 [0]
+;
+#DATE= 1942/06/01
+; London(147,77)
+#FRIENDLY_POSITION= 147,77
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= UK Research (FORCED) (1943/06 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 0 [0]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 0 [0]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 100 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 100 [1]
+;
+#DATE= 1943/06/01
+; London(147,77)
+#FRIENDLY_POSITION= 147,77
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Research (1939 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; Infantry Weapons
+#RESEARCH_ID_0= 25 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 10 [1]
+; Heavy Tanks
+#RESEARCH_ID_2= 10 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 10 [1]
+; Heavy Bombers
+#RESEARCH_ID_4= 10 [1]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 10 [1]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 10 [1]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 5 [1]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 5 [1]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 10 [1]
+; Logistics
+#RESEARCH_ID_24= 10 [1]
+; Production Technology
+#RESEARCH_ID_25= 10 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 50 [1]
 ;
 #DATE= 1939/09/01
-; Helsinki
-#FRIENDLY_POSITION= 195,51
-; Finland(39) Axis and not surrendered
-#VARIABLE_CONDITION= 39 [1] [100] [0]
-; Helsinki not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 195,51 [3]
+; Washington DC(4,108)
+#FRIENDLY_POSITION= 4,108
+; USA(115) Allied (fully active) and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Research (1939 - ) (Pre-War Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; Infantry Weapons
+#RESEARCH_ID_0= 25 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 10 [1]
+; Heavy Tanks
+#RESEARCH_ID_2= 10 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 10 [1]
+; Heavy Bombers
+#RESEARCH_ID_4= 10 [1]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 10 [1]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 10 [1]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 10 [1]
+; Logistics
+#RESEARCH_ID_24= 10 [1]
+; Production Technology
+#RESEARCH_ID_25= 10 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 50 [1]
+;
+#DATE= 1939/09/01
+; Washington DC(4,108)
+#FRIENDLY_POSITION= 4,108
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; Washington DC(4,108) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Research (FORCED) (1939 - ) (Pre-War Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 0 [0]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 0 [0]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 100 [1]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 0 [0]
+; Industrial Technology
+#RESEARCH_ID_26= 0 [0]
+;
+#DATE= 1939/09/01
+; Washington DC(4,108)
+#FRIENDLY_POSITION= 4,108
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; Washington DC(4,108) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Research (FORCED) (1940/06 - ) (Pre-War Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 0 [0]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 0 [0]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 100 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 100 [1]
+;
+#DATE= 1940/06/01
+; Washington DC(4,108)
+#FRIENDLY_POSITION= 4,108
+; USA(115) Allied (fully active) and not surrendered
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; Washington DC(4,108) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Research (1941/01 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; Infantry Weapons
+#RESEARCH_ID_0= 25 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 10 [1]
+; Heavy Tanks
+#RESEARCH_ID_2= 10 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 10 [1]
+; Heavy Bombers
+#RESEARCH_ID_4= 10 [1]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 10 [1]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 10 [1]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 25 [1]
+; Motorization
+#RESEARCH_ID_11= 10 [1]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 10 [1]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 10 [1]
+; Infantry Warfare
+#RESEARCH_ID_15= 10 [1]
+; Armored Warfare
+#RESEARCH_ID_16= 10 [1]
+; Aerial Warfare
+#RESEARCH_ID_17= 10 [1]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 10 [1]
+; Ballistic Warfare
+#RESEARCH_ID_20= 10 [1]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 10 [1]
+; Logistics
+#RESEARCH_ID_24= 10 [1]
+; Production Technology
+#RESEARCH_ID_25= 25 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 25 [1]
+;
+#DATE= 1941/01/01
+; Washington DC(4,108)
+#FRIENDLY_POSITION= 4,108
+; USA(115) Allied (fully active) and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Research (1941/01 - ) (Pre-War Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; Infantry Weapons
+#RESEARCH_ID_0= 25 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 10 [1]
+; Heavy Tanks
+#RESEARCH_ID_2= 10 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 10 [1]
+; Heavy Bombers
+#RESEARCH_ID_4= 10 [1]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 10 [1]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 10 [1]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 25 [1]
+; Motorization
+#RESEARCH_ID_11= 10 [1]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 10 [1]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 10 [1]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 10 [1]
+; Logistics
+#RESEARCH_ID_24= 10 [1]
+; Production Technology
+#RESEARCH_ID_25= 25 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 25 [1]
+;
+#DATE= 1941/01/01
+; Washington DC(4,108)
+#FRIENDLY_POSITION= 4,108
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; Washington DC(4,108) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Research (FORCED) (1941/01 - ) (Pre-War Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 100 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 100 [1]
+; Heavy Tanks
+#RESEARCH_ID_2= 100 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 100 [1]
+; Heavy Bombers
+#RESEARCH_ID_4= 100 [1]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 100 [1]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 100 [1]
+; Armored Warfare
+#RESEARCH_ID_16= 100 [1]
+; Aerial Warfare
+#RESEARCH_ID_17= 100 [1]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 100 [1]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 0 [0]
+; Industrial Technology
+#RESEARCH_ID_26= 0 [0]
+;
+#DATE= 1941/01/01
+; Washington DC(4,108)
+#FRIENDLY_POSITION= 4,108
+; USA(115) Allied (fully active) and not surrendered
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; Washington DC(4,108) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Research (FORCED) (1941/06 - ) (Pre-War Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 0 [0]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 0 [0]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 100 [1]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 100 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 100 [1]
+;
+#DATE= 1941/06/01
+; Washington DC(4,108)
+#FRIENDLY_POSITION= 4,108
+; USA(115) Allied (fully active) and not surrendered
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; Washington DC(4,108) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Research (FORCED) (1942/01 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 100 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 100 [1]
+; Heavy Tanks
+#RESEARCH_ID_2= 100 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 100 [1]
+; Heavy Bombers
+#RESEARCH_ID_4= 100 [1]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 100 [1]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 100 [1]
+; Motorization
+#RESEARCH_ID_11= 100 [1]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 100 [2]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 100 [1]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 0 [0]
+; Industrial Technology
+#RESEARCH_ID_26= 0 [0]
+;
+#DATE= 1942/01/01
+; Washington DC(4,108)
+#FRIENDLY_POSITION= 4,108
+; USA(115) Allied (fully active) and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Research (FORCED) (1942/06 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 100 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 100 [1]
+; Heavy Tanks
+#RESEARCH_ID_2= 100 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 100 [1]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 0 [0]
+; Industrial Technology
+#RESEARCH_ID_26= 0 [0]
+;
+#DATE= 1942/06/01
+; Washington DC(4,108)
+#FRIENDLY_POSITION= 4,108
+; USA(115) Allied (fully active) and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Research (FORCED) (1943/06 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 0 [0]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 0 [0]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 100 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 100 [1]
+;
+#DATE= 1943/06/01
+; Washington DC(4,108)
+#FRIENDLY_POSITION= 4,108
+; USA(115) Allied (fully active) and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Research (1939 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; Infantry Weapons
+#RESEARCH_ID_0= 25 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 5 [1]
+; Heavy Tanks
+#RESEARCH_ID_2= 10 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 5 [1]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 5 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 50 [1]
+;
+#DATE= 1939/09/01
+; Perm(257,58)
+#FRIENDLY_POSITION= 257,58
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Perm(257,58) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Research (1939 - ) (Pre-War Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; Infantry Weapons
+#RESEARCH_ID_0= 0 [0]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 0 [0]
+; Advanced Aircraft
+#RESEARCH_ID_3= 10 [1]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 5 [1]
+; Armored Warfare
+#RESEARCH_ID_16= 5 [1]
+; Aerial Warfare
+#RESEARCH_ID_17= 5 [1]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 0 [0]
+; Industrial Technology
+#RESEARCH_ID_26= 50 [1]
+;
+#DATE= 1939/09/01
+; Perm(257,58)
+#FRIENDLY_POSITION= 257,58
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Perm(257,58) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Research (FORCED) (1939/12 - ) (Pre-War Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 0 [0]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 100 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 0 [0]
+; Industrial Technology
+#RESEARCH_ID_26= 100 [1]
+;
+#DATE= 1939/12/01
+; Perm(257,58)
+#FRIENDLY_POSITION= 257,58
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Perm(257,58) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Research (FORCED) (1940/01 - ) (Pre-War Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 0 [0]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 100 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 100 [1]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 100 [1]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 0 [0]
+; Industrial Technology
+#RESEARCH_ID_26= 100 [1]
+;
+#DATE= 1940/01/01
+; Perm(257,58)
+#FRIENDLY_POSITION= 257,58
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Perm(257,58) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Research (FORCED) (1940/04 - ) (Pre-War Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 100 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 0 [0]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 0 [0]
+; Industrial Technology
+#RESEARCH_ID_26= 0 [0]
+;
+#DATE= 1940/04/01
+; Perm(257,58)
+#FRIENDLY_POSITION= 257,58
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Perm(257,58) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Research (1940/05 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; Infantry Weapons
+#RESEARCH_ID_0= 50 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 10 [1]
+; Heavy Tanks
+#RESEARCH_ID_2= 20 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 15 [1]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 10 [1]
+; Rocket Weapons
+#RESEARCH_ID_9= 10 [1]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 30 [1]
+; Motorization
+#RESEARCH_ID_11= 10 [1]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 5 [1]
+; Logistics
+#RESEARCH_ID_24= 10 [1]
+; Production Technology
+#RESEARCH_ID_25= 25 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 25 [1]
+;
+#DATE= 1940/05/01
+; Perm(257,58)
+#FRIENDLY_POSITION= 257,58
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Perm(257,58) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Research (FORCED) (1940/09 - ) (Pre-War Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 100 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 100 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 0 [0]
+; Industrial Technology
+#RESEARCH_ID_26= 100 [1]
+;
+#DATE= 1940/09/01
+; Perm(257,58)
+#FRIENDLY_POSITION= 257,58
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Perm(257,58) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Research (1940/10 - ) (Pre-War Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; Infantry Weapons
+#RESEARCH_ID_0= 50 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 10 [1]
+; Heavy Tanks
+#RESEARCH_ID_2= 20 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 15 [1]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 10 [1]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 25 [1]
+; Motorization
+#RESEARCH_ID_11= 10 [1]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 25 [1]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 5 [1]
+; Armored Warfare
+#RESEARCH_ID_16= 5 [1]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 5 [1]
+; Logistics
+#RESEARCH_ID_24= 10 [1]
+; Production Technology
+#RESEARCH_ID_25= 25 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 25 [1]
+;
+#DATE= 1940/10/01
+; Perm(257,58)
+#FRIENDLY_POSITION= 257,58
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Perm(257,58) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Research (1941/01 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; Infantry Weapons
+#RESEARCH_ID_0= 25 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 25 [1]
+; Heavy Tanks
+#RESEARCH_ID_2= 25 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 20 [1]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 5 [1]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 10 [1]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 10 [1]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 10 [1]
+; Command and Control
+#RESEARCH_ID_14= 10 [1]
+; Infantry Warfare
+#RESEARCH_ID_15= 10 [1]
+; Armored Warfare
+#RESEARCH_ID_16= 10 [1]
+; Aerial Warfare
+#RESEARCH_ID_17= 10 [1]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 10 [1]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 10 [1]
+; Production Technology
+#RESEARCH_ID_25= 10 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 10 [1]
+;
+#DATE= 1941/01/01
+; Perm(257,58)
+#FRIENDLY_POSITION= 257,58
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Perm(257,58) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Research (FORCED) (1941/01 - ) (Pre-War Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 100 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 100 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 100 [1]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 100 [1]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 0 [0]
+; Industrial Technology
+#RESEARCH_ID_26= 100 [1]
+;
+#DATE= 1941/01/01
+; Perm(257,58)
+#FRIENDLY_POSITION= 257,58
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Perm(257,58) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Research (FORCED) (1941/06 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 100 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 100 [1]
+; Heavy Tanks
+#RESEARCH_ID_2= 100 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 100 [1]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 100 [1]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 100 [1]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 100 [1]
+; Command and Control
+#RESEARCH_ID_14= 100 [1]
+; Infantry Warfare
+#RESEARCH_ID_15= 100 [1]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 100 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 100 [1]
+;
+#DATE= 1941/06/01
+; Perm(257,58)
+#FRIENDLY_POSITION= 257,58
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Perm(257,58) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Research (FORCED) (1941/06 - ) (Pre-War Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 100 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 100 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 0 [0]
+; Industrial Technology
+#RESEARCH_ID_26= 100 [1]
+;
+#DATE= 1941/06/01
+; Perm(257,58)
+#FRIENDLY_POSITION= 257,58
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Perm(257,58) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Research (FORCED) (1941/09 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 100 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 100 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 100 [1]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 0 [0]
+; Industrial Technology
+#RESEARCH_ID_26= 0 [0]
+;
+#DATE= 1941/09/01
+; Perm(257,58)
+#FRIENDLY_POSITION= 257,58
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Perm(257,58) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Research (FORCED) (1942/01 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 0 [0]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 0 [0]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 100 [1]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 100 [1]
+; Production Technology
+#RESEARCH_ID_25= 100 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 100 [1]
+;
+#DATE= 1942/01/01
+; Perm(257,58)
+#FRIENDLY_POSITION= 257,58
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Perm(257,58) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Research (FORCED) (1942/03 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 100 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 100 [1]
+; Heavy Tanks
+#RESEARCH_ID_2= 100 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 100 [1]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 100 [1]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 100 [1]
+; Armored Warfare
+#RESEARCH_ID_16= 100 [1]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 0 [0]
+; Industrial Technology
+#RESEARCH_ID_26= 0 [0]
+;
+#DATE= 1942/03/01
+; Perm(257,58)
+#FRIENDLY_POSITION= 257,58
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Perm(257,58) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Research (FORCED) (1942/09 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 100 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 0 [0]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 100 [1]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 100 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 100 [1]
+;
+#DATE= 1942/09/01
+; Perm(257,58)
+#FRIENDLY_POSITION= 257,58
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Perm(257,58) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Research (FORCED) (1943/01 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+; Infantry Weapons
+#RESEARCH_ID_0= 0 [0]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 0 [0]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 0 [0]
+; Motorization
+#RESEARCH_ID_11= 0 [0]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 0 [0]
+; Armored Warfare
+#RESEARCH_ID_16= 0 [0]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 0 [0]
+; Production Technology
+#RESEARCH_ID_25= 100 [1]
+; Industrial Technology
+#RESEARCH_ID_26= 100 [1]
+;
+#DATE= 1943/01/01
+; Perm(257,58)
+#FRIENDLY_POSITION= 257,58
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Perm(257,58) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+;
+{
+#NAME= USSR Research Loss of Stalingrad  (1941/01 - )
+#POPUP=
+; new event from "1939 Storm Over Europe" campaign
+; currently disabled for Fall Weiss II pending review
+#FLAG= 0
+#TYPE= 2
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+; Infantry Weapons
+#RESEARCH_ID_0= 50 [1]
+; Anti-Tank Weapons
+#RESEARCH_ID_1= 0 [0]
+; Heavy Tanks
+#RESEARCH_ID_2= 25 [1]
+; Advanced Aircraft
+#RESEARCH_ID_3= 0 [0]
+; Heavy Bombers
+#RESEARCH_ID_4= 0 [0]
+; Naval Weaponry
+#RESEARCH_ID_5= 0 [0]
+; Long Range Aircraft
+#RESEARCH_ID_6= 0 [0]
+; Advanced Subs
+#RESEARCH_ID_7= 0 [0]
+; Artillery Weapons
+#RESEARCH_ID_8= 0 [0]
+; Rocket Weapons
+#RESEARCH_ID_9= 0 [0]
+; Ground Attack Weapons
+#RESEARCH_ID_10= 50 [1]
+; Motorization
+#RESEARCH_ID_11= 10 [1]
+; Anti-Submarine Warfare
+#RESEARCH_ID_12= 0 [0]
+; Anti-Aircraft Defense
+#RESEARCH_ID_13= 0 [0]
+; Command and Control
+#RESEARCH_ID_14= 0 [0]
+; Infantry Warfare
+#RESEARCH_ID_15= 25 [1]
+; Armored Warfare
+#RESEARCH_ID_16= 25 [1]
+; Aerial Warfare
+#RESEARCH_ID_17= 0 [0]
+; Naval Warfare
+#RESEARCH_ID_18= 0 [0]
+; Amphibious Warfare
+#RESEARCH_ID_19= 0 [0]
+; Ballistic Warfare
+#RESEARCH_ID_20= 0 [0]
+; Aircraft Production
+#RESEARCH_ID_21= 0 [0]
+; Tank Production
+#RESEARCH_ID_22= 0 [0]
+; Spying and Intelligence
+#RESEARCH_ID_23= 0 [0]
+; Logistics
+#RESEARCH_ID_24= 10 [1]
+; Production Technology
+#RESEARCH_ID_25= 0 [0]
+; Industrial Technology
+#RESEARCH_ID_26= 0 [0]
+;
+#DATE= 1941/01/01
+; Perm(257,58)
+#FRIENDLY_POSITION= 257,58
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Perm(257,58) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 257,58 [3]
+; Enemy units in Stalingrad
+#ACTIVATE_POSITION= 234,85 [1,1] [1,1] [1]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }

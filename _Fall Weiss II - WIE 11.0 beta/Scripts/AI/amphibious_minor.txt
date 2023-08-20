@@ -27,26 +27,42 @@
 ;        3 = Single check, only on #DATE
 ;
 ; #LEVEL= Value range [-1, 4]
-;      What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
-;     -1 = a script that should only fire for AI friendly controlled majors on your turn
-;      0 = Green
-;      1 = Novice
-;      2 = Intermediate
-;      3 = Veteran
-;      4 = Expert
-; #GV= Does the event activate based on the Global Variable values assigned?
-;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
-;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
-;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
-;      Example B - #GV= 4[71,100] will trigger 30% per game
+;       What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;       -1 = a script that should only fire for AI friendly controlled majors on your turn
+;        0 = Green
+;        1 = Novice
+;        2 = Intermediate
+;        3 = Veteran
+;        4 = Expert
+;
+; #GV=   Does the event activate based on the Global Variable values assigned?
+;        Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
+;        Format: GV [min, max]
+;                GV range [1, 10] 
+;                min range [1, 100] 
+;                max range [min+1, 100]
+;
+;        Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;        Example B - #GV= 4[71,100] will trigger 30% per game
+;
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
-;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
+;        Format: decision[response]
+;                decision range [1, 1100]
+;                response range [0, 1]
+;                   0 = NO
+;                   1 = YES
+;
 ;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
 ;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
 ;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
-; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
-; #COUNTRY_ID= Country ID associated with this event
+;
+; #TRIGGER=     Value range [0, 100]
+;               Percentage chance that the event will occur
+;
+; #COUNTRY_ID=  Value range [1, 120]
+;               Country that will be owner of this event
+;
 ; #SIZE= How many units should be assigned to this plan?
 ;        Format: min_size, max_size
 ; #BUILD_LENGTH= How many game turns (Axis or Allied) do you want the build up period of the plan to last?
@@ -142,11 +158,12 @@
 ;        e.g., a city for a GUARD script, a port for a TRANSPORT script, etc.  All AI scripts require that the first 
 ;        #FRIENDLY_POSITION be a land tile, with the exception of Fleet scripts.
 ;
-; #VARIABLE_CONDITION - More than one #VARIABLE_CONDITION can be set.  Under #VARIABLE_CONDITION you can also list 
-; countries that have not yet fully entered the war.  For example by listing an activation % less than 100% you
-; are providing a check where the #VARIABLE_CONDITION country must meet a minimum activation % (but is
-; not yet at 100%) in order for the event to occur.  To check for a fully activated country simply
-; list the activation % at 100%.  Each #VARIABLE_CONDITION line will be read using AND logic.
+; #VARIABLE_CONDITION - More than one can be set. You can also list countries that have not yet fully 
+;   entered the war. For example by listing an activation % less than 100% you are providing a check 
+;   where the country must meet a minimum activation % (but is not yet at 100%) in order for the event 
+;   to occur. To check for a fully activated country simply list the activation % at 100%.
+;
+; Each #VARIABLE_CONDITION line will be read using AND logic.
 ;
 ; More than one #TACTICAL_CONDITION can be set.  #TACTICAL_CONDITION refers to the current side, i.e.
 ; country associated with this plan having tactical superiority over the specified map position.
@@ -346,10 +363,204 @@
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+; France prepares to attack Italy:
+{
+#NAME= France Build Up Amphibious - Rome
+#POPUP=
+#FLAG= 1
+#TYPE= 0
+#COUNTRY_ID= 40
+#TRIGGER= 50
+#LEVEL= 4
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,2
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25    
+#LONG_RANGE= 1
+; Rome(171,101)
+#GOAL_POSITION= 171,101
+#COASTAL_POSITION= 170,102
+#DATE= 1939/09/01
+#STEAL= 3
+; Tunis(167,112)
+#FRIENDLY_POSITION= 167,112
+; France(40) Allied and not surrendered
+; Italy(59) Allied and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [85] [0]
+; Marseilles(157,97) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 157,97 [3]
+; 0 axis units in Rome
+#ACTIVATE_POSITION= 171,101 [2,2] [0,0] [1]
+; 1 Axis unit within Rome OR
+; 1 Axis unit within range of Cagliari Port
+#CANCEL_POSITION= 171,101 [2,2] [1,1] [1]
+#CANCEL_POSITION= 165,107 [7,7] [1,1] [1]
+}
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ALLIED SCRIPTS - Build Up Amphibious Minor (UK)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+{
+#NAME= Germany Build Up Amphibious Minor - London
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 50
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 2,2
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25    
+#LONG_RANGE= 1
+; London(147,77)
+#GOAL_POSITION= 147,77
+#COASTAL_POSITION= 147,79
+#DATE= 1939/09/01
+#STEAL= 3
+; Brussels
+; Mannheim
+; Dusseldorf
+; Hamburg
+#FRIENDLY_POSITION= 155,80
+#FRIENDLY_POSITION= 163,83
+#FRIENDLY_POSITION= 160,78
+#FRIENDLY_POSITION= 164,71
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Berlin(173,74) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [3]
+; No allied units in or next to London(147,77)
+#ACTIVATE_POSITION= 147,77 [2,2] [0,0] [2]
+; 1 Allied Ship close to London Port OR
+; Allied unit near London OR
+; 4 or more allied units in the UK OR
+; 5 or more allied ships within 7 tiles of London Port OR
+; 1 Axis unit in London OR
+#CANCEL_POSITION= 150,77 [4,4] [1,1] [2]
+#CANCEL_POSITION= 147,77 [1,1] [1,1] [2]
+#CANCEL_POSITION= 147,77 [5,5] [4,4] [2]
+#CANCEL_POSITION= 150,77 [7,7] [5,5] [2]
+#CANCEL_POSITION= 147,77 [0,0] [1,1] [1]
+}
+
+; UK prepares to attack France:
+{
+#NAME= UK Build Up Amphibious Minor (Canada) - Rouen (Post D-Day/Continual Reinforcement)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 21
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 2
+#LENGTH= 10
+#RANGE= 25   
+#LONG_RANGE= 0
+; Le Havre
+#GOAL_POSITION= 149,82
+#GOAL_POSITION= 139,80
+#COASTAL_POSITION= 148,81
+#DATE= 1943/02/25
+#STEAL= 0
+; London(147,77)
+; Le Havre(147,82)
+#FRIENDLY_POSITION= 147,77
+#FRIENDLY_POSITION= 147,82
+; UK(112) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; 1 Allied unit already in France
+#ACTIVATE_POSITION= 144,84 [3,3] [1,1] [2]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+; UK prepares to attack France:
+{
+#NAME= UK Build Up Amphibious Minor - Caen (Post D-Day/Continual Reinforcement)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 2
+#LENGTH= 10
+#RANGE= 25 
+#LONG_RANGE= 0
+; Caen
+#GOAL_POSITION= 146,84
+#GOAL_POSITION= 139,80
+#COASTAL_POSITION= 146,83
+#DATE= 1943/02/25
+#STEAL= 0
+; London(147,77)
+; Le Havre(147,72)
+#FRIENDLY_POSITION= 147,77
+#FRIENDLY_POSITION= 147,82
+; UK(112) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; 1 Allied unit already in France
+#ACTIVATE_POSITION= 144,84 [3,3] [1,1] [2]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+; UK prepares to attack Copenhagen:
+{
+#NAME= UK Build Up Amphibious Minor - Copenhagen
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 3
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,1
+#BUILD_LENGTH= 0
+#LENGTH= 10
+#RANGE= 25  
+#LONG_RANGE= 1
+; Copenhagen(171,65)
+#GOAL_POSITION= 171,65
+#COASTAL_POSITION= 170,64
+#DATE= 1943/01/01
+#STEAL= 0
+; Sheffield(144,73)
+#FRIENDLY_POSITION= 144,73
+; UK(112) Allied and not surrendered AND
+; Denmark(18) Allied and surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 18 [2] [100] [1]
+; London(147,77) not tactically threatened 
+#TACTICAL_CONDITION= 147,77 [1]
+; 0 Axis units in Copenhagen
+#ACTIVATE_POSITION= 171,65 [2,2] [0,0] [1]
+; 1 Axis unit in Copenhagen OR
+; 1 Axis unit near Copenhagen (Sea) OR
+; 1 Axis unit near Kristiansand (Port)
+#CANCEL_POSITION= 171,65 [2,2] [1,1] [1]
+#CANCEL_POSITION= 169,63 [2,2] [1,1] [1]
+#CANCEL_POSITION= 163,58 [6,6] [1,1] [1]
+}
+
 ;
 ; UK prepares to attack Trondheim:
 {
@@ -430,43 +641,6 @@
 #CANCEL_POSITION= 163,58 [6,6] [1,1] [1]
 }
 
-; UK prepares to attack Wilhelmshaven:
-{
-#NAME= UK Build Up Amphibious Minor - Wilhelmshaven
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 3
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,1
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25  
-#LONG_RANGE= 1
-; Wilhelmshaven
-#GOAL_POSITION= 160,73
-#COASTAL_POSITION= 160,72
-#DATE= 1943/01/01
-#STEAL= 0
-; Sheffield(144,73)
-#FRIENDLY_POSITION= 144,73
-; UK(112) Allied and not surrendered AND
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; London(147,77) not tactically threatened 
-#TACTICAL_CONDITION= 147,77 [1]
-; 0 Axis units in Wilhelmshaven
-#ACTIVATE_POSITION= 160,73 [2,2] [0,0] [1]
-; 1 Axis unit in Wilhelmshaven OR
-; 1 Axis unit near Wilhelmshaven (coastal position)
-#CANCEL_POSITION= 160,73 [2,2] [1,1] [1]
-#CANCEL_POSITION= 161,72 [2,2] [1,1] [1]
-}
-
 ; UK prepares to attack Brussels:
 {
 #NAME= UK Build Up Amphibious Minor - The Hague
@@ -504,9 +678,9 @@
 #CANCEL_POSITION= 154,76 [2,2] [1,1] [1]
 }
 
-; UK prepares to attack Copenhagen:
+; UK prepares to attack Wilhelmshaven:
 {
-#NAME= UK Build Up Amphibious Minor - Copenhagen
+#NAME= UK Build Up Amphibious Minor - Wilhelmshaven
 #POPUP=
 #FLAG= 1
 #TYPE= 1
@@ -520,150 +694,27 @@
 #LENGTH= 10
 #RANGE= 25  
 #LONG_RANGE= 1
-; Copenhagen(171,65)
-#GOAL_POSITION= 171,65
-#COASTAL_POSITION= 170,64
+; Wilhelmshaven
+#GOAL_POSITION= 160,73
+#COASTAL_POSITION= 160,72
 #DATE= 1943/01/01
 #STEAL= 0
 ; Sheffield(144,73)
 #FRIENDLY_POSITION= 144,73
 ; UK(112) Allied and not surrendered AND
-; Denmark(18) Allied and surrendered
+; Germany(45) Axis and not surrendered (dummy condition)
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 18 [2] [100] [1]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; London(147,77) not tactically threatened 
 #TACTICAL_CONDITION= 147,77 [1]
-; 0 Axis units in Copenhagen
-#ACTIVATE_POSITION= 171,65 [2,2] [0,0] [1]
-; 1 Axis unit in Copenhagen OR
-; 1 Axis unit near Copenhagen (Sea) OR
-; 1 Axis unit near Kristiansand (Port)
-#CANCEL_POSITION= 171,65 [2,2] [1,1] [1]
-#CANCEL_POSITION= 169,63 [2,2] [1,1] [1]
-#CANCEL_POSITION= 163,58 [6,6] [1,1] [1]
+; 0 Axis units in Wilhelmshaven
+#ACTIVATE_POSITION= 160,73 [2,2] [0,0] [1]
+; 1 Axis unit in Wilhelmshaven OR
+; 1 Axis unit near Wilhelmshaven (coastal position)
+#CANCEL_POSITION= 160,73 [2,2] [1,1] [1]
+#CANCEL_POSITION= 161,72 [2,2] [1,1] [1]
 }
 
-; UK prepares to attack France:
-{
-#NAME= UK Build Up Amphibious Minor - Caen (Post D-Day/Continual Reinforcement)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 2
-#LENGTH= 10
-#RANGE= 25 
-#LONG_RANGE= 0
-; Caen
-#GOAL_POSITION= 146,84
-#GOAL_POSITION= 139,80
-#COASTAL_POSITION= 146,83
-#DATE= 1943/02/25
-#STEAL= 0
-; London(147,77)
-; Le Havre(147,72)
-#FRIENDLY_POSITION= 147,77
-#FRIENDLY_POSITION= 147,82
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-; 1 Allied unit already in France
-#ACTIVATE_POSITION= 144,84 [3,3] [1,1] [2]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-; UK prepares to attack France:
-{
-#NAME= UK Build Up Amphibious Minor (Canada) - Rouen (Post D-Day/Continual Reinforcement)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 21
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 2
-#LENGTH= 10
-#RANGE= 25   
-#LONG_RANGE= 0
-; Le Havre
-#GOAL_POSITION= 149,82
-#GOAL_POSITION= 139,80
-#COASTAL_POSITION= 148,81
-#DATE= 1943/02/25
-#STEAL= 0
-; London(147,77)
-; Le Havre(147,82)
-#FRIENDLY_POSITION= 147,77
-#FRIENDLY_POSITION= 147,82
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-; 1 Allied unit already in France
-#ACTIVATE_POSITION= 144,84 [3,3] [1,1] [2]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ALLIED SCRIPTS - Build Up Amphibious Minor (France)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; France prepares to attack Italy:
-{
-#NAME= France Build Up Amphibious - Rome
-#POPUP=
-#FLAG= 1
-#TYPE= 0
-#COUNTRY_ID= 40
-#TRIGGER= 50
-#LEVEL= 4
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,2
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25    
-#LONG_RANGE= 1
-; Rome(171,101)
-#GOAL_POSITION= 171,101
-#COASTAL_POSITION= 170,102
-#DATE= 1939/09/01
-#STEAL= 3
-; Tunis(167,112)
-#FRIENDLY_POSITION= 167,112
-; France(40) Allied and not surrendered
-; Italy(59) Allied and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [85] [0]
-; Marseilles(157,97) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 157,97 [3]
-; 0 axis units in Rome
-#ACTIVATE_POSITION= 171,101 [2,2] [0,0] [1]
-; 1 Axis unit within Rome OR
-; 1 Axis unit within range of Cagliari Port
-#CANCEL_POSITION= 171,101 [2,2] [1,1] [1]
-#CANCEL_POSITION= 165,107 [7,7] [1,1] [1]
-}
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ALLIED SCRIPTS - Build Up Amphibious Minor (USA)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; USA prepares to attack France:
 {
@@ -697,44 +748,6 @@
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Washington DC(4,108) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 4,108 [3]
-; 1 Allied unit already in France
-#ACTIVATE_POSITION= 144,84 [3,3] [1,1] [2]
-; 1 Axis unit within range of London
-#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
-}
-
-; USA prepares to attack France:
-{
-#NAME= USA Build Up Amphibious Minor - St. Malo (Post D-Day/Continual Reinforcement)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 1,5
-#BUILD_LENGTH= 2
-#LENGTH= 5
-#RANGE= 25 
-#LONG_RANGE= 0
-; St. Malo
-#GOAL_POSITION= 141,85
-#GOAL_POSITION= 139,80
-#COASTAL_POSITION= 139,84
-#DATE= 1943/02/25
-#STEAL= 0
-; London(147,77)
-; Brest(138,86)
-#FRIENDLY_POSITION= 147,77
-#FRIENDLY_POSITION= 138,86
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
 ; 1 Allied unit already in France
 #ACTIVATE_POSITION= 144,84 [3,3] [1,1] [2]
 ; 1 Axis unit within range of London
@@ -779,10 +792,44 @@
 #CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
 }
 
+; USA prepares to attack France:
+{
+#NAME= USA Build Up Amphibious Minor - St. Malo (Post D-Day/Continual Reinforcement)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 2
+#LENGTH= 5
+#RANGE= 25 
+#LONG_RANGE= 0
+; St. Malo
+#GOAL_POSITION= 141,85
+#GOAL_POSITION= 139,80
+#COASTAL_POSITION= 139,84
+#DATE= 1943/02/25
+#STEAL= 0
+; London(147,77)
+; Brest(138,86)
+#FRIENDLY_POSITION= 147,77
+#FRIENDLY_POSITION= 138,86
+; USA(115) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; 1 Allied unit already in France
+#ACTIVATE_POSITION= 144,84 [3,3] [1,1] [2]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ALLIED SCRIPTS - Build Up Amphibious Minor (USSR)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; USSR prepares to attack Romania
 {
@@ -817,55 +864,4 @@
 ; Axis naval units in range of port
 #CANCEL_POSITION= 202,96 [2,2] [1,1] [1]
 #CANCEL_POSITION= 203,96 [4,4] [1,1] [1]
-}
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; AXIS SCRIPTS - Build Up Amphibious Minor (Germany)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-{
-#NAME= Germany Build Up Amphibious Minor - London
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 50
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 2,2
-#BUILD_LENGTH= 0
-#LENGTH= 10
-#RANGE= 25    
-#LONG_RANGE= 1
-; London(147,77)
-#GOAL_POSITION= 147,77
-#COASTAL_POSITION= 147,79
-#DATE= 1939/09/01
-#STEAL= 3
-; Brussels
-; Mannheim
-; Dusseldorf
-; Hamburg
-#FRIENDLY_POSITION= 155,80
-#FRIENDLY_POSITION= 163,83
-#FRIENDLY_POSITION= 160,78
-#FRIENDLY_POSITION= 164,71
-; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-; Berlin(173,74) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [3]
-; No allied units in or next to London(147,77)
-#ACTIVATE_POSITION= 147,77 [2,2] [0,0] [2]
-; 1 Allied Ship close to London Port OR
-; Allied unit near London OR
-; 4 or more allied units in the UK OR
-; 5 or more allied ships within 7 tiles of London Port OR
-; 1 Axis unit in London OR
-#CANCEL_POSITION= 150,77 [4,4] [1,1] [2]
-#CANCEL_POSITION= 147,77 [1,1] [1,1] [2]
-#CANCEL_POSITION= 147,77 [5,5] [4,4] [2]
-#CANCEL_POSITION= 150,77 [7,7] [5,5] [2]
-#CANCEL_POSITION= 147,77 [0,0] [1,1] [1]
 }

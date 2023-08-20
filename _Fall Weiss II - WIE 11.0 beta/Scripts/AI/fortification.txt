@@ -1,4 +1,5 @@
-﻿;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+﻿
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; FORTIFICATION SCRIPT (Handle AI Planning)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
@@ -27,31 +28,50 @@
 ;        3 = Single check, only on #DATE
 ;
 ; #LEVEL= Value range [-1, 4]
-;      What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
-;     -1 = a script that should only fire for AI friendly controlled majors on your turn
-;      0 = Green
-;      1 = Novice
-;      2 = Intermediate
-;      3 = Veteran
-;      4 = Expert
-; #GV= Does the event activate based on the Global Variable values assigned?
-;      Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
-;      Format: GV [min, max]; GV range [1,10]; min range [1,100]; max range [1,100]
-;      Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
-;      Example B - #GV= 4[71,100] will trigger 30% per game
+;       What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;       -1 = a script that should only fire for AI friendly controlled majors on your turn
+;        0 = Green
+;        1 = Novice
+;        2 = Intermediate
+;        3 = Veteran
+;        4 = Expert
+;
+; #GV=   Does the event activate based on the Global Variable values assigned?
+;        Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
+;        Format: GV [min, max]
+;                GV range [1, 10] 
+;                min range [1, 100] 
+;                max range [min+1, 100]
+;
+;        Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;        Example B - #GV= 4[71,100] will trigger 30% per game
+;
 ; #LINK= Does the event activate based on the Link values assigned?
 ;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
-;        Format: decision[flag]; flag range [0, 1]; True= 1; False= 0
+;        Format: decision[response]
+;                decision range [1, 1100]
+;                response range [0, 1]
+;                   0 = NO
+;                   1 = YES
+;
 ;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
 ;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
 ;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
-; #TRIGGER= Trigger percentage that the event will occur (values range [0, 100])
-; #COUNTRY_ID=  Value range [0, 120]
-;               Country ID that will be owner of this event
+;
+; #TRIGGER=     Value range [0, 100]
+;               Percentage chance that the event will occur
+;
+; #COUNTRY_ID=  Value range [1, 120]
+;               Country that will be owner of this event
+;
 ; #EDGE= What type of fortification edge should this event have? (See EDGE IDS below)
 ; #GOAL_POSITION= What is the map position that is the objective of this plan?
-; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd)
+;
+; #DATE=          Date requirement for the event
+;                 Format: yyyy/mm/dd
+;
 ; #FRIENDLY_POSITION= Positions that must be under friendly control in order for event to occur
+;
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
 ;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
 ;                              country_id range [1, 120]
@@ -99,11 +119,12 @@
 ;        e.g., a city for a GUARD script, a port for a TRANSPORT script, etc.  All AI scripts require that the first 
 ;        #FRIENDLY_POSITION be a land tile, with the exception of Fleet scripts.
 ;
-; #VARIABLE_CONDITION - More than one #VARIABLE_CONDITION can be set.  Under #VARIABLE_CONDITION you can also list 
-; countries that have not yet fully entered the war.  For example by listing an activation % less than 100% you
-; are providing a check where the #VARIABLE_CONDITION country must meet a minimum activation % (but is
-; not yet at 100%) in order for the event to occur.  To check for a fully activated country simply
-; list the activation % at 100%.  Each #VARIABLE_CONDITION line will be read using AND logic.
+; #VARIABLE_CONDITION - More than one can be set. You can also list countries that have not yet fully 
+;   entered the war. For example by listing an activation % less than 100% you are providing a check 
+;   where the country must meet a minimum activation % (but is not yet at 100%) in order for the event 
+;   to occur. To check for a fully activated country simply list the activation % at 100%.
+;
+; Each #VARIABLE_CONDITION line will be read using AND logic.
 ;
 ; More than one #TACTICAL_CONDITION can be set.  #TACTICAL_CONDITION refers to the current side, i.e.
 ; country associated with this plan having tactical superiority over the specified map position.
@@ -310,1000 +331,56 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ALLIED SCRIPTS - Fortification (UK)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
 {
-#NAME= UK Fortification - El Alamein Position (1)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-; North West + South West
-#EDGE= 6
-#EDGE= 5
-; West Alexandria Position
-#GOAL_POSITION= 203,124
-#DATE= 1939/09/01
-; El Alamein
-#FRIENDLY_POSITION= 204,125
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Alexandria not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 206,124 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Axis units in range of El Alamein
-#CANCEL_POSITION= 204,125 [2,2] [1,1] [1]
-}
-
-{
-#NAME= UK Fortification - El Alamein Position (2)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-; North + North West + South West
-#EDGE= 1
-#EDGE= 6
-#EDGE= 5
-; South Alexandria Position
-#GOAL_POSITION= 203,125
-#DATE= 1939/09/01
-; El Alamein
-#FRIENDLY_POSITION= 204,125
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Alexandria not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 206,124 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Axis units in range of El Alamein
-#CANCEL_POSITION= 204,125 [2,2] [1,1] [1]
-}
-
-{
-#NAME= UK Fortification - El Alamein Position (3)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-; North + North West + South West
-#EDGE= 1
-#EDGE= 6
-#EDGE= 5
-; South Alexandria Position
-#GOAL_POSITION= 203,126
-#DATE= 1939/09/01
-; El Alamein
-#FRIENDLY_POSITION= 204,125
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Alexandria not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 206,124 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Axis units in range of El Alamein
-#CANCEL_POSITION= 204,125 [2,2] [1,1] [1]
-}
-
-{
-#NAME= UK Fortification - El Alamein Position (4)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;North + North West + South West
-#EDGE= 1
-#EDGE= 6
-#EDGE= 5
-; South Alexandria Position
-#GOAL_POSITION= 204,126
-#DATE= 1939/09/01
-; El Alamein
-#FRIENDLY_POSITION= 204,125
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Alexandria not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 206,124 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Axis units in range of El Alamein
-#CANCEL_POSITION= 204,125 [2,2] [1,1] [1]
-}
-
-{
-#NAME= UK Fortification - South West Alexandria Position (1)
+#NAME= Finland Fortification - Lappenranta (1)
 #POPUP=
 #FLAG= 1
 #TYPE= 1
-#COUNTRY_ID= 112
+#COUNTRY_ID= 39
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-; South West + South
-#EDGE= 5
-#EDGE= 4
-; South West Alexandria Position
-#GOAL_POSITION= 205,124
-#DATE= 1939/09/01
-; Alexandria
-#FRIENDLY_POSITION= 206,124
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Alexandria not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 206,124 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= UK Fortification - South Alexandria Position (2)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-; South West + South + South East
-#EDGE= 5
-#EDGE= 4
-#EDGE= 3
-; South Alexandria Position
-#GOAL_POSITION= 206,125
-#DATE= 1939/09/01
-; Alexandria
-#FRIENDLY_POSITION= 206,124
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Alexandria not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 206,124 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= UK Fortification - South East Alexandria Position (3)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-; South
-#EDGE= 4
-; South Alexandria Position
-#GOAL_POSITION= 207,124
-#DATE= 1939/09/01
-; Alexandria
-#FRIENDLY_POSITION= 206,124
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Alexandria not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 206,124 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ALLIED SCRIPTS - Fortification (USSR)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-{
-#NAME= USSR Fortification - Leningrad (1) - (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 3
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 1
-#EDGE= 2
-#EDGE= 5
-#EDGE= 6
-; Leningrad
-#GOAL_POSITION= 205,50
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Leningrad (2) - (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 3
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 1
-#EDGE= 6
-; Leningrad
-#GOAL_POSITION= 206,50
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Moscow (1) - (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 4
-#EDGE= 5
-#EDGE= 6
-; Moscow
-#GOAL_POSITION= 219,66
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Moscow (2) - (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 4
-#EDGE= 5
-; Moscow
-#GOAL_POSITION= 220,67
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Moscow (3) - (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
+; South East
 #EDGE= 2
 #EDGE= 3
 #EDGE= 4
-#EDGE= 5
-; Moscow
-#GOAL_POSITION= 221,67
+; Coastal
+#GOAL_POSITION= 203,47
 #DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
+; Sortavala
+#FRIENDLY_POSITION= 203,48
+; Germany(45) Allied and not surrendered
+#VARIABLE_CONDITION= 39 [1] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 195,51 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
 {
-#NAME= USSR Fortification - Moscow (4) - (Pre-Entry)
+#NAME= Finland Fortification - Sortavala (1)
 #POPUP=
 #FLAG= 1
 #TYPE= 1
-#COUNTRY_ID= 116
+#COUNTRY_ID= 39
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-;
-#EDGE= 3
-#EDGE= 4
-#EDGE= 5
-; Moscow
-#GOAL_POSITION= 221,66
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Moscow (5) - (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 4
-#EDGE= 5
-#EDGE= 6
-; Moscow
-#GOAL_POSITION= 220,66
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Moscow (6) - (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-; East + South East + South
-#EDGE= 1
-#EDGE= 4
-#EDGE= 5
-#EDGE= 6
-; Moscow
-#GOAL_POSITION= 218,66
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Moscow (7) - (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 6
-; Moscow
-#GOAL_POSITION= 219,65
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Moscow (8) - (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 1
-#EDGE= 5
-#EDGE= 6
-; Moscow
-#GOAL_POSITION= 219,64
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Moscow (9) - (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 6
-; Moscow
-#GOAL_POSITION= 220,64
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Moscow (10) - (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-; North + North East + East
+; South East
 #EDGE= 2
 #EDGE= 3
 #EDGE= 4
-; Moscow
-#GOAL_POSITION= 222,66
+; Coastal
+#GOAL_POSITION= 208,46
 #DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Moscow (1) - (Post-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 4
-#EDGE= 5
-#EDGE= 6
-; Moscow
-#GOAL_POSITION= 219,66
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Moscow (2) - (Post-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 4
-#EDGE= 5
-; Moscow
-#GOAL_POSITION= 220,67
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Moscow (3) - (Post-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 2
-#EDGE= 3
-#EDGE= 4
-#EDGE= 5
-; Moscow
-#GOAL_POSITION= 221,67
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Moscow (4) - (Post-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 3
-#EDGE= 4
-#EDGE= 5
-; Moscow
-#GOAL_POSITION= 221,66
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Moscow (5) - (Post-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 4
-#EDGE= 5
-#EDGE= 6
-; Moscow
-#GOAL_POSITION= 220,66
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Moscow (6) - (Post-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-; East + South East + South
-#EDGE= 1
-#EDGE= 4
-#EDGE= 5
-#EDGE= 6
-; Moscow
-#GOAL_POSITION= 218,66
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Moscow (7) - (Post-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 6
-; Moscow
-#GOAL_POSITION= 219,65
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Moscow (8) - (Post-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 1
-#EDGE= 5
-#EDGE= 6
-; Moscow
-#GOAL_POSITION= 219,64
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Moscow (9) - (Post-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 6
-; Moscow
-#GOAL_POSITION= 220,64
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Moscow (10) - (Post-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-; North + North East + East
-#EDGE= 2
-#EDGE= 3
-#EDGE= 4
-; Moscow
-#GOAL_POSITION= 222,66
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Stalingrad (1)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 6
-; Stalingrad
-#GOAL_POSITION= 232,86
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Stalingrad (2)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 5
-#EDGE= 6
-; Stalingrad
-#GOAL_POSITION= 232,85
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Stalingrad (3)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 5
-#EDGE= 6
-; Stalingrad
-#GOAL_POSITION= 232,84
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; AXIS SCRIPTS - Fortification (Germany)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-{
-#NAME= Germany Fortification - Siegfried (1)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 1
-#EDGE= 5
-#EDGE= 6
-; Siegfried
-#GOAL_POSITION= 158,77
-#DATE= 1939/09/01
-; Dusseldorf
-#FRIENDLY_POSITION= 160,78
+; Sortavala
+#FRIENDLY_POSITION= 207,45
 ; Germany(45) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Fortification - Siegfried (2)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 6
-; Siegfried
-#GOAL_POSITION= 159,76
-#DATE= 1939/09/01
-; Dusseldorf
-#FRIENDLY_POSITION= 160,78
-; Germany(45) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Fortification - Siegfried (3)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 5
-#EDGE= 6
-; Siegfried
-#GOAL_POSITION= 159,75
-#DATE= 1939/09/01
-; Dusseldorf
-#FRIENDLY_POSITION= 160,78
-; Germany(45) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Fortification - Siegfried (4)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 5
-#EDGE= 6
-; Siegfried
-#GOAL_POSITION= 159,74
-#DATE= 1939/09/01
-; Dusseldorf
-#FRIENDLY_POSITION= 160,78
-; Germany(45) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Fortification - Siegfried (5)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-;
-#EDGE= 5
-#EDGE= 6
-; Siegfried
-#GOAL_POSITION= 159,73
-#DATE= 1939/09/01
-; Dusseldorf
-#FRIENDLY_POSITION= 160,78
-; Germany(45) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
+#TACTICAL_CONDITION= 195,51 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
@@ -1564,9 +641,136 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;                  Fall Weiss II scripts
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+{
+#NAME= Germany Fortification - Siegfried (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 1
+#EDGE= 5
+#EDGE= 6
+; Siegfried
+#GOAL_POSITION= 158,77
+#DATE= 1939/09/01
+; Dusseldorf
+#FRIENDLY_POSITION= 160,78
+; Germany(45) Allied and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Fortification - Siegfried (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 6
+; Siegfried
+#GOAL_POSITION= 159,76
+#DATE= 1939/09/01
+; Dusseldorf
+#FRIENDLY_POSITION= 160,78
+; Germany(45) Allied and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Fortification - Siegfried (3)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 5
+#EDGE= 6
+; Siegfried
+#GOAL_POSITION= 159,75
+#DATE= 1939/09/01
+; Dusseldorf
+#FRIENDLY_POSITION= 160,78
+; Germany(45) Allied and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Fortification - Siegfried (4)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 5
+#EDGE= 6
+; Siegfried
+#GOAL_POSITION= 159,74
+#DATE= 1939/09/01
+; Dusseldorf
+#FRIENDLY_POSITION= 160,78
+; Germany(45) Allied and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Fortification - Siegfried (5)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 5
+#EDGE= 6
+; Siegfried
+#GOAL_POSITION= 159,73
+#DATE= 1939/09/01
+; Dusseldorf
+#FRIENDLY_POSITION= 160,78
+; Germany(45) Allied and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
 {
 #NAME= Romania Fortification - Bucharest(1)
 #POPUP=
@@ -1649,55 +853,855 @@
 }
 
 {
-#NAME= Finland Fortification - Sortavala (1)
+#NAME= UK Fortification - El Alamein Position (1)
 #POPUP=
 #FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 39
+#TYPE= 2
+#COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-; South East
-#EDGE= 2
-#EDGE= 3
-#EDGE= 4
-; Coastal
-#GOAL_POSITION= 208,46
+; North West + South West
+#EDGE= 6
+#EDGE= 5
+; West Alexandria Position
+#GOAL_POSITION= 203,124
 #DATE= 1939/09/01
-; Sortavala
-#FRIENDLY_POSITION= 207,45
-; Germany(45) Allied and not surrendered
-#VARIABLE_CONDITION= 39 [1] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 195,51 [3]
+; El Alamein
+#FRIENDLY_POSITION= 204,125
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Alexandria not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 206,124 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Axis units in range of El Alamein
+#CANCEL_POSITION= 204,125 [2,2] [1,1] [1]
+}
+
+{
+#NAME= UK Fortification - El Alamein Position (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+; North + North West + South West
+#EDGE= 1
+#EDGE= 6
+#EDGE= 5
+; South Alexandria Position
+#GOAL_POSITION= 203,125
+#DATE= 1939/09/01
+; El Alamein
+#FRIENDLY_POSITION= 204,125
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Alexandria not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 206,124 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Axis units in range of El Alamein
+#CANCEL_POSITION= 204,125 [2,2] [1,1] [1]
+}
+
+{
+#NAME= UK Fortification - El Alamein Position (3)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+; North + North West + South West
+#EDGE= 1
+#EDGE= 6
+#EDGE= 5
+; South Alexandria Position
+#GOAL_POSITION= 203,126
+#DATE= 1939/09/01
+; El Alamein
+#FRIENDLY_POSITION= 204,125
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Alexandria not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 206,124 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Axis units in range of El Alamein
+#CANCEL_POSITION= 204,125 [2,2] [1,1] [1]
+}
+
+{
+#NAME= UK Fortification - El Alamein Position (4)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;North + North West + South West
+#EDGE= 1
+#EDGE= 6
+#EDGE= 5
+; South Alexandria Position
+#GOAL_POSITION= 204,126
+#DATE= 1939/09/01
+; El Alamein
+#FRIENDLY_POSITION= 204,125
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Alexandria not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 206,124 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Axis units in range of El Alamein
+#CANCEL_POSITION= 204,125 [2,2] [1,1] [1]
+}
+
+{
+#NAME= UK Fortification - South Alexandria Position (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+; South West + South + South East
+#EDGE= 5
+#EDGE= 4
+#EDGE= 3
+; South Alexandria Position
+#GOAL_POSITION= 206,125
+#DATE= 1939/09/01
+; Alexandria
+#FRIENDLY_POSITION= 206,124
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Alexandria not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 206,124 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
 {
-#NAME= Finland Fortification - Lappenranta (1)
+#NAME= UK Fortification - South East Alexandria Position (3)
 #POPUP=
 #FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 39
+#TYPE= 2
+#COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-; South East
+; South
+#EDGE= 4
+; South Alexandria Position
+#GOAL_POSITION= 207,124
+#DATE= 1939/09/01
+; Alexandria
+#FRIENDLY_POSITION= 206,124
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Alexandria not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 206,124 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= UK Fortification - South West Alexandria Position (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+; South West + South
+#EDGE= 5
+#EDGE= 4
+; South West Alexandria Position
+#GOAL_POSITION= 205,124
+#DATE= 1939/09/01
+; Alexandria
+#FRIENDLY_POSITION= 206,124
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Alexandria not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 206,124 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Leningrad (1) - (Pre-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 3
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 1
+#EDGE= 2
+#EDGE= 5
+#EDGE= 6
+; Leningrad
+#GOAL_POSITION= 205,50
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Leningrad (2) - (Pre-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 3
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 1
+#EDGE= 6
+; Leningrad
+#GOAL_POSITION= 206,50
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Moscow (1) - (Post-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 4
+#EDGE= 5
+#EDGE= 6
+; Moscow
+#GOAL_POSITION= 219,66
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Moscow (1) - (Pre-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 4
+#EDGE= 5
+#EDGE= 6
+; Moscow
+#GOAL_POSITION= 219,66
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Moscow (2) - (Post-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 4
+#EDGE= 5
+; Moscow
+#GOAL_POSITION= 220,67
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Moscow (2) - (Pre-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 4
+#EDGE= 5
+; Moscow
+#GOAL_POSITION= 220,67
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Moscow (3) - (Post-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
 #EDGE= 2
 #EDGE= 3
 #EDGE= 4
-; Coastal
-#GOAL_POSITION= 203,47
+#EDGE= 5
+; Moscow
+#GOAL_POSITION= 221,67
 #DATE= 1939/09/01
-; Sortavala
-#FRIENDLY_POSITION= 203,48
-; Germany(45) Allied and not surrendered
-#VARIABLE_CONDITION= 39 [1] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 195,51 [3]
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Moscow (3) - (Pre-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 2
+#EDGE= 3
+#EDGE= 4
+#EDGE= 5
+; Moscow
+#GOAL_POSITION= 221,67
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Moscow (4) - (Post-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 3
+#EDGE= 4
+#EDGE= 5
+; Moscow
+#GOAL_POSITION= 221,66
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Moscow (4) - (Pre-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 3
+#EDGE= 4
+#EDGE= 5
+; Moscow
+#GOAL_POSITION= 221,66
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Moscow (5) - (Post-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 4
+#EDGE= 5
+#EDGE= 6
+; Moscow
+#GOAL_POSITION= 220,66
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Moscow (5) - (Pre-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 4
+#EDGE= 5
+#EDGE= 6
+; Moscow
+#GOAL_POSITION= 220,66
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Moscow (6) - (Post-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+; East + South East + South
+#EDGE= 1
+#EDGE= 4
+#EDGE= 5
+#EDGE= 6
+; Moscow
+#GOAL_POSITION= 218,66
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Moscow (6) - (Pre-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+; East + South East + South
+#EDGE= 1
+#EDGE= 4
+#EDGE= 5
+#EDGE= 6
+; Moscow
+#GOAL_POSITION= 218,66
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Moscow (7) - (Post-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 6
+; Moscow
+#GOAL_POSITION= 219,65
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Moscow (7) - (Pre-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 6
+; Moscow
+#GOAL_POSITION= 219,65
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Moscow (8) - (Post-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 1
+#EDGE= 5
+#EDGE= 6
+; Moscow
+#GOAL_POSITION= 219,64
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Moscow (8) - (Pre-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 1
+#EDGE= 5
+#EDGE= 6
+; Moscow
+#GOAL_POSITION= 219,64
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Moscow (9) - (Post-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 6
+; Moscow
+#GOAL_POSITION= 220,64
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Moscow (9) - (Pre-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 6
+; Moscow
+#GOAL_POSITION= 220,64
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Moscow (10) - (Post-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+; North + North East + East
+#EDGE= 2
+#EDGE= 3
+#EDGE= 4
+; Moscow
+#GOAL_POSITION= 222,66
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Moscow (10) - (Pre-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+; North + North East + East
+#EDGE= 2
+#EDGE= 3
+#EDGE= 4
+; Moscow
+#GOAL_POSITION= 222,66
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Stalingrad (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 6
+; Stalingrad
+#GOAL_POSITION= 232,86
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Stalingrad (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 5
+#EDGE= 6
+; Stalingrad
+#GOAL_POSITION= 232,85
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Stalingrad (3)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+;
+#EDGE= 5
+#EDGE= 6
+; Stalingrad
+#GOAL_POSITION= 232,84
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
