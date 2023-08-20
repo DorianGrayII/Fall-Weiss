@@ -201,6 +201,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - changed SOURCE_POSITION to Simferopol
     - was impossible to launch bombers while Sevastopol was under seige
 - "DE 112 - UK: Defeated In East Africa" ([national_morale.txt])
+    - removed requirement(s) for Australia to be Axis
 - "DE 112 - UK: Victorious In East Africa"
     - removed requirement(s) for Australia to be Axis
 - corrected incorrect #DISPLAY_TURN for events that had '#PRIVATE= 1' ([unit.txt]) such as:
@@ -215,9 +216,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - "DE 826 - USSR: Heavy Cruiser Petropavlovsk"
     - #DATE corrected to 1940/05/01 (was delivered 1940/04/15)
     - strength changed (8->5) (it was only 70% complete by June 1941)
-- "DE 621 - Germany: Divide Yugoslavia and Set up Croatia as an Independent State?"
+- "DE 621 - Germany: Divide Yugoslavia and Set up Croatia as an Independent State?" ([decision.txt])
 - "DE 621 - Germany Permits the Formation of a Croatian State" ([territory.txt])
-    - #DATE corrected to 1941/04/10
+- "DE 621 - Hungary Annexes Parts of Former Yugoslavia"
+- "DE 621 - Germany Annexes Parts of Former Yugoslavia"
+- "DE 621 - Italy Annexes Parts of Former Yugoslavia"
+    - #DATEs changed to 1940/01/01 to allow event to be triggered after conquest of Yugoslavia
+    - Italy now acquires Split and Adriatic Islands
+- Corrected City Name
+    - Monastir -> Bitola 
 - Fixed "Derna(191,120) is getting hit twice in Malta supply interdiction scripts" 
     - (see - https://www.matrixgames.com/forums/viewtopic.php?f=10647&t=396958)
 - Fixed "Incorrect #LINK= in German/Soviet Garrison Reports" 

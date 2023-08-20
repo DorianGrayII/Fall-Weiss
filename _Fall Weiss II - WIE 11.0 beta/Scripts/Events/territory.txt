@@ -68,7 +68,7 @@
 ;        Example B - #GV= 4[71,100] will trigger 30% per game
 ;
 ; #LINK= Does the event activate based on the Link values assigned?
-;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
+;        A campaign can have up to 1100 Decision events (previously set with #DECISION) and is referenced by this statement
 ;        Format: decision[response]
 ;                decision range [1, 1100]
 ;                response range [0, 1]
@@ -79,16 +79,21 @@
 ;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
 ;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
 ;
-; #TRIGGER=     Value range [0, 100]
-;               Percentage chance that the event will occur
+; #TRIGGER=      Value range [0, 100]
+;                Percentage chance that the event will occur
 ;
-; #COUNTRY_ID=  Value range [0, 120]
-;               Country's ID that will lose territory to TRANSFER_ID
+; #COUNTRY_ID=   Value range [0, 120]
+;                Country that will lose territory to RECIPIENT_ID
 ;
-; #RECIPIENT_ID= Transfer country ID (country that will receive the territory listed under each #MAP_POSITION)
+; #RECIPIENT_ID= Value range [1, 120]
+;                Recipient country (country that will receive the territory listed under each #MAP_POSITION)
 ;
-; #REMOVE= Override of the default event handling of enemy units in territory to be transferred
-;          Remove enemy units from territory to be transferred? (values range [0, 3]; None= 0; Land= 1; Naval= 2; All= 3)
+; #REMOVE=       Value range [0, 3]
+;                Units removed territory to be transferred 
+;                   0 = None
+;                   1 = Land
+;                   2 = Naval
+;                   3 = All
 ;
 ; #DATE=        Date that must be satisfied (in game) for event to occur 
 ;               Format: yyyy/mm/dd
@@ -105,7 +110,8 @@
 ;                                  0 = False
 ;                                  1 = True (has surrendered)
 ;
-; #MAP_POSITION= Map position where ownership is transferred from #COUNTRY_ID to #RECIPIENT_ID (format x,y)
+; #MAP_POSITION=       Map position to be transferred from #COUNTRY_ID to #RECIPIENT_ID
+;                      Format: x,y
 ; } 
 ;
 ; NOTES:
@@ -113,17 +119,16 @@
 ; Each event must be preceded by a '{' and end with a '}'
 ;
 ; Under #VARIABLE_CONDITION you can also list countries that have not yet fully entered the war.
-; For example by listing an mobilization % less than 100% you are providing a check where the
-; #VARIABLE_CONDITION country must meet a minimum mobilization % in order for the event to occur.
+;   For example by listing an mobilization % less than 100% you are providing a check where the
+;   country must meet a minimum mobilization % in order for the event to occur.
+;
 ; Each #VARIABLE_CONDITION line will be read using AND logic.
 ;
 ; #MAP_POSITION cannot be a Capital position but if this event is used to create a new country
-; on the map, setting the first #MAP_POSITION entry as a City or a Village will ensure this 
-; becomes the Capital position for the new country.
+;   on the map, setting the first #MAP_POSITION entry as a City or a Village will ensure this 
+;   becomes the Capital position for the new country.
 ;
-; More than one #MAP_POSITION can be set
-;
-; Use the reference values provided for #COUNTRY_ID and #RECIPIENT_ID and not the country names 
+; More than one #MAP_POSITION can be set and together form a set of the map locations to be transferred 
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -4421,9 +4426,8 @@
 #MAP_POSITION= 202,98
 }
 
-;
 {
-#NAME= DE 621 - Germany Transfers Part of Yugoslavia to Hungary
+#NAME= DE 621 - Hungary Annexes Parts of Former Yugoslavia
 #POPUP=
 #IMAGE= 
 #SOUND=
@@ -4432,26 +4436,26 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Croatia as an Independent State?
 #LINK= 621[1]
 #COUNTRY_ID= 120
 #RECIPIENT_ID= 52
 #REMOVE= 0
 #TRIGGER= 100
-#DATE= 1941/05/13
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+#DATE= 1940/01/01
+#VARIABLE_CONDITION= 52 [1] [100] [0]
 #MAP_POSITION= 185,91
 #MAP_POSITION= 184,92
 #MAP_POSITION= 184,93
 #MAP_POSITION= 185,92
 #MAP_POSITION= 186,93
 #MAP_POSITION= 186,92
+; Nova Sad(185,93)
 #MAP_POSITION= 185,93
-#MAP_POSITION= 178,90
 }
 
-;
 {
-#NAME= DE 621 - Germany Gains Part of Yugoslavia
+#NAME= DE 621 - Germany Annexes Parts of Former Yugoslavia
 #POPUP=
 #IMAGE= 
 #SOUND=
@@ -4460,19 +4464,20 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Croatia as an Independent State?
 #LINK= 621[1]
 #COUNTRY_ID= 120
 #RECIPIENT_ID= 45
 #REMOVE= 0
 #TRIGGER= 100
-#DATE= 1941/05/13
+#DATE= 1940/01/01
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #MAP_POSITION= 177,90
+#MAP_POSITION= 178,90
 }
 
-;
 {
-#NAME= DE 621 - Germany Transfers Part of Yugoslavia to Italy
+#NAME= DE 621 - Italy Annexes Parts of Former Yugoslavia
 #POPUP=
 #IMAGE= 
 #SOUND=
@@ -4481,22 +4486,61 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Croatia as an Independent State?
 #LINK= 621[1]
 #COUNTRY_ID= 120
 #RECIPIENT_ID= 59
 #REMOVE= 0
 #TRIGGER= 100
-#DATE= 1941/05/13
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+#DATE= 1940/01/01
+#VARIABLE_CONDITION= 59 [1] [100] [0]
 #MAP_POSITION= 175,90
+; Ljubljana(176,91)
 #MAP_POSITION= 176,91
 #MAP_POSITION= 176,92
 #MAP_POSITION= 175,91
 #MAP_POSITION= 176,93
+; Split(179,87)
+#MAP_POSITION= 179,97
+#MAP_POSITION= 178,98
+#MAP_POSITION= 178,97
+; Adriatic Islands
+#MAP_POSITION= 180,99
+#MAP_POSITION= 179,98
+#MAP_POSITION= 177,97
+#MAP_POSITION= 176,97
+#MAP_POSITION= 175,96
+#MAP_POSITION= 175,95
+}
+
+; following is not complete yet
+{
+#NAME= DE 621 - Bulgaria Annexes Parts of Former Yugoslavia
+#POPUP=
+#IMAGE= 
+#SOUND=
+#FLAG= 0
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; Croatia as an Independent State?
+#LINK= 621[1]
+#COUNTRY_ID= 120
+#RECIPIENT_ID= 59
+#REMOVE= 0
+#TRIGGER= 100
+#DATE= 1940/01/01
+#VARIABLE_CONDITION= 19 [1] [100] [0]
+; Skopje(189,101)
+#MAP_POSITION= 189,101
+; Bitola(188,103)
+#MAP_POSITION= 188,103
 }
 
 ; Fall Weiss II
 ; https://www.wikiwand.com/en/Independent_State_of_Croatia
+; https://www.wikiwand.com/en/Invasion_of_Yugoslavia
 ; Historic Date: 1941/04/10
 {
 #NAME= DE 621 - Germany Permits the Formation of a Croatian State
@@ -4508,13 +4552,15 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Croatia as an Independent State?
 #LINK= 621[1]
 #COUNTRY_ID= 120
 #RECIPIENT_ID= 27
 #REMOVE= 0
 #TRIGGER= 100
-#DATE= 1941/04/10
+#DATE= 1940/01/01
 #VARIABLE_CONDITION= 45 [1] [100] [0]
+; Zagreb(178,92)
 #MAP_POSITION= 178,92
 #MAP_POSITION= 186,94
 #MAP_POSITION= 186,95
@@ -4535,6 +4581,9 @@
 #MAP_POSITION= 182,94
 #MAP_POSITION= 181,94
 #MAP_POSITION= 181,95
+; Mostar(181,97)
+#MAP_POSITION= 181,97
+; Banja Luka(180,95)
 #MAP_POSITION= 180,95
 #MAP_POSITION= 180,94
 #MAP_POSITION= 180,93
@@ -4544,6 +4593,8 @@
 #MAP_POSITION= 180,91
 #MAP_POSITION= 179,94
 #MAP_POSITION= 178,94
+; Bihacs(178,95)
+#MAP_POSITION= 178,95
 #MAP_POSITION= 179,93
 #MAP_POSITION= 178,93
 #MAP_POSITION= 177,92
