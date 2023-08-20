@@ -48,16 +48,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - DE 611 - Germany: Resolve Territorial Disputes In Eastern Europe?
         - now is dependent on "DE 418 - USSR: Seize Bessarabia?", as this was what prompted Hungary to seek Romanian territory
     - DE 116 - Portugal Leases the Azores to the UK (Portugal->Allies)
-        - now requires Portugal be Allied Aligned 30%
+        - now requires Portugal is Allied(30%) or more
     - DE 800 - The Anglo-Portuguese Alliance
-        - now requires Portugal be Allied Aligned 30%
+        - now requires Portugal is Allied(30%) or more
     - DE 805 - UK Strengthens Portugal
-        - now requires Portugal be Allied Aligned 10%
+        - now requires Portugal is Allied(10%) or more
     - DE 803 - UK Threatens To Blockade Imports To Spain
-        - now requires Portugal be Axis aligned 20%
-        - now requires Spain be Axis aligned 20%
+        - now requires Portugal is Axis(20%) or more
+        - now requires Spain is Axis(20%) or more
     - DE 803 - UK Threatens To Blockade Imports To Spain
-        - now requires Spain be Axis aligned 20%
+        - now requires Spain be Axis(20%) or more
     - DE 908 - Spanish Debt Repayment
         - now requires Spain be Axis aligned
     - DE 910 - Treaty of Friendship (Turkey)
@@ -65,7 +65,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - DE 911 - Germany and Turkey Trade Agreement
         - now requires Turkey be Axis aligned
     - DE 813 - Allies Exert Diplomatic Pressure To Stop Swedish Convoys
-        - now requires Sweden be Axis aligned 20%
+        - now requires Sweden be Axis(20%) or more
     - DE 922 - Germany: Imports From Switzerland
         - now requires Switzerland be Axis aligned
     - DE 829 - Lend Lease to Saudi Arabia (Saudi Arabia->>Allies) (%5) ([mobilization_3.txt])
@@ -157,7 +157,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - DE 104 - Pro-Allied Coup In Yugoslavia
         - Split across 3 events beginning 03/1941
     - DE 104 - Pro-Allied Mobilization In Greece
-        - Requires Yugoslavia Allied and Mobilized
+        - Requires Yugoslavia Allied(100%)
     - DE 365 - USA: Dummy Event for the US Convoy to the USSR
     - DE 366 - USA: Dummy Event for the US Convoy to the USSR; added the following:
         - #ALIGNMENT_POSITION= 211,21 [2]
@@ -212,7 +212,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - DE 645 - Germany: Anti-Tank Units
         - DISPLAY_TURN=0 changed to 1
 - Fixed "DE 204 - France: Send an Anglo-French Expedition to Support Finland?"
-    - Incorrect MPPs calculations
+    - Corrected incorrect MPPs calculations
 - "DE 431 - Germany: Imports From Portugal"
     - no longer requires Spain be at War
 - "DE 826 - USSR: Heavy Cruiser Petropavlovsk"
