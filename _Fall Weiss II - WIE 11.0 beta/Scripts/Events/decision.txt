@@ -89,10 +89,10 @@
 ;               Percentage chance that the event will occur
 ;
 ; #COUNTRY_ID=  Value range [0, 120]
-;               Country ID that will be owner of this event
+;               Country owner of this event
 ;
 ; #DISPLAY_ORDER= Value range [0, 1]
-;               When the event displayed?
+;               When the event displayed
 ;               0 = Default
 ;               1 = Beginning of Turn
 ;
@@ -100,13 +100,13 @@
 ;               Decision number assigned to the event 
 ;               (max of 1100 decisions per campaign)
 ;
-; #MPP_UPDOWN=  Value range [-9999, 9999]
-;               Will there be an associated MPPs amount added or subtracted with respect to #COUNTRY_ID for this decision if yes? 
+; #NM_UPDOWN=   Value range [-99999, 99999]
+;               The National Morale that should be added or subtracted with respect to #COUNTRY_ID
 ;
-; #MPP_TURNS=   Value range [0, 500] 
-;               How many turns will the #MPP_UPDOWN= value be applied?
+; #NM_TURNS=    Value range [0,99]
+;               Number of turns that #NM_UPDOWN= value will be added or subtracted
 ;
-; #MPP_TEXT=    Text shown in the MPPs collection turn summary for this event if the #MPP_UPDOWN value is set?
+; #MPP_TEXT=    Text shown in the MPPs collection turn summary for this event if the #MPP_UPDOWN value is set
 ;
 ; #AI_RESPONSE= Value range [0, 100]
 ;               Percentage chance that the AI responds 'Yes' to the event?
@@ -134,10 +134,10 @@
 ;                       1 = Axis
 ;                       2 = Allied
 ;
-; #NATIONAL_MORALE_TRIGGER= Under what national morale situation will this event occur
+; #NATIONAL_MORALE_TRIGGER= National morale requirement for the event
 ;                           Format: country_id [national_morale_percentage]
 ;
-; #VARIABLE_CONDITION= Under what variable conditions will this event occur
+; #VARIABLE_CONDITION= Variable condition requirements for the event
 ;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
 ;                              country_id range [1, 120]
 ;                              political_alignment range [0, 2]
@@ -175,36 +175,30 @@
 ;    %B = bold text, must be applied for each word you wish to bold
 ;    %V = italic text, must be applied for each word you wish to italicize
 ;
-; Use the reference values provided for #COUNTRY_ID and not the country names
+; #ALIGNMENT_POSITION - Can refer to either land or a coastal hexes. More than one position can be set,
+;   or can be left empty if it isn't applicable.
 ;
-; To assist with the fine tuning of Decision Events,multiple #ALIGNMENT_POSITION can be set, or
-;   this field can be left empty if it isn’t applicable.
-;
-; #ALIGNMENT_POSITION - Can refer to either land or a coastal hexes. More than one position can be set.
-;
-; Each #ALIGNMENT_POSITION will be read with AND logic.
-;
-; More than one #NATIONAL_MORALE_TRIGGER can be set and the event checks for a value less than or 
+; #NATIONAL_MORALE_TRIGGER - More than one can be set. The event checks for a value less than or 
 ;   equal to the 'national_morale_percentage'.
 ;
-; Each #NATIONAL_MORALE_TRIGGER line will be read using AND logic.
+; #VARIABLE_CONDITION - More than one can be set. You can also list countries that have not yet fully 
+;   entered the war. For example by listing an activation % less than 100% you are providing a check 
+;   where the country must meet a minimum activation % (but is not yet at 100%) in order for the event 
+;   to occur. To check for a fully activated country simply list the activation % at 100%.
 ;
-; Under #VARIABLE_CONDITION you can also list countries that have not yet fully entered the war.
-;   For example by listing an mobilization % less than 100% you are providing a check where the
-;   #VARIABLE_CONDITION country must meet a minimum mobilization % in order for the event to occur.
-;
-; Each #VARIABLE_CONDITION line will be read using AND logic.
-;
-; More than one #CONDITION_POSITION can be set. Distance or range checks will be based on the 
+; #CONDITION_POSITION - More than one can be set. Distance or range checks will be based on the 
 ;   specified x,y position. For example if the x,y position is a coastal hex then range checks will
 ;   be made on sea hexes, otherwise if it is a land hex range checks will be made on land hexes only.
 ;   If the 'aligned_country_id' flag is set to 0 then it will check for any Axis or Allied country as
 ;   determined by the alignment flag.
 ;
-; Each #CONDITION_POSITION line will be read using OR logic.
-;
 ; A dummy condition position (always satisfied) can be set as follows:
 ;    #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+;
+; Each #ALIGNMENT_POSITION will be read with AND logic.
+; Each #NATIONAL_MORALE_TRIGGER line will be read using AND logic.
+; Each #VARIABLE_CONDITION line will be read using AND logic.
+; Each #CONDITION_POSITION line will be read using OR logic.
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -3279,7 +3273,7 @@
 #DECISION= 250
 #MPP_UPDOWN= 75
 #MPP_TURNS= 3
-#MPP_TEXT= <<TAG_99>>
+#MPP_TEXT= Funds to Reform the French Army
 #NOTES=
 #NOTES_POSITION=
 #AI_RESPONSE= 100
@@ -4133,7 +4127,7 @@
 {
 #NAME= DE 306 - USA: Transfer Supplies to the USSR via Persia? (AI - 100%)
 #POPUP=
-#MESSAGE=<<TAG_119>>
+#MESSAGE= Office of the Secretary of War %N Henry L. Stimson %N%N With Persia now in Allied hands, we could make use of the country to send supplies to the USSR. %N%N For a cost to us of only 40 MPPs a turn, the goods we send via Persia would be worth 80 MPPs to the USSR. Their arrival would also boost Soviet National Morale by 200 points a turn. %N%N The increased benefit of these goods to the USSR is due to their much greater scarcity value there. So sending war supplies and food this way will be extremely useful to the Soviet Union. %N%N Would you like to send supplies to the USSR via Persia?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -4149,10 +4143,10 @@
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT=
-#NOTES= <<TAG_120>>
+#NOTES= Following the conquest of Persia, the US sent huge amounts of war material to the USSR through the country. %N%N Given the economic worth to the USSR of doing so, you are very strongly advised to say %B(YES).
 #NOTES_POSITION= 248,115
 #AI_RESPONSE= 100
-#AI_RESPONSE_POPUP= <<TAG_121>>
+#AI_RESPONSE_POPUP= The US Sends Supplies To The USSR Via Persia
 #DATE= 1939/09/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
@@ -4721,7 +4715,7 @@
 #DECISION= 353
 #MPP_UPDOWN= -40
 #MPP_TURNS= 1
-#MPP_TEXT= <<TAG_133>>
+#MPP_TEXT= Supplies To USSR Via Persia (Worth Double To USSR)
 #NOTES=
 #NOTES_POSITION=
 #AI_RESPONSE= 100
@@ -6789,7 +6783,7 @@
 #DECISION= 454
 #MPP_UPDOWN= 80
 #MPP_TURNS= 1
-#MPP_TEXT= <<TAG_185>>
+#MPP_TEXT= Supplies From The USA Through Persia
 #NOTES=
 #NOTES_POSITION=
 #AI_RESPONSE= 100
@@ -7413,6 +7407,8 @@
 }
 
 ; Fall Weiss II
+; https://www.wikiwand.com/en/13th_Waffen_Mountain_Division_of_the_SS_Handschar_(1st_Croatian)
+; Historic Date: 9 October 1943
 {
 #NAME= DE 544 - Germany: Croatian Mountain Division (AI - 100%)
 #POPUP=
@@ -7424,6 +7420,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Croatia as an Independent State?
 #LINK= 621[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -7436,7 +7433,7 @@
 #NOTES_POSITION= 178,92
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
-#DATE= 1944/03/01
+#DATE= 1943/10/09
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 ; Berlin(173,74) is Axis
@@ -7446,7 +7443,7 @@
 ;Set Friendly Position (Belgrade)
 #ALIGNMENT_POSITION= 187,94 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Croatia Axis and Active
+; Croatia(27) Axis and Active
 #VARIABLE_CONDITION= 27 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -7896,7 +7893,7 @@
 {
 #NAME= DE 601 - Germany: Should We Occupy Denmark? (AI - 100%)
 #POPUP=
-#MESSAGE=<<TAG_297>>
+#MESSAGE= Foreign Minister %N%N %BRe: %BDenmark %N%N Now would be a good time for us to move into Denmark, to secure our northern flank and the food imports that we receive from this country. %N%N It would also have maximum effect if we occupy the country at the same time as we land in Norway, as this will provide us with a much more secure route to Norway. It is therefore planned to launch our invasion in early April 1940. %N%N We are confident of only facing minimal resistance from the Danish army, and in order to minimize disruption we intend to leave the Danish government and King in place. %N%N As a result our move into Denmark will only cost %B50 MPPs. %N%N Would you like to authorize preparations for the occupation of Denmark to commence %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -7911,8 +7908,8 @@
 #DECISION= 601
 #MPP_UPDOWN= -50
 #MPP_TURNS= 1
-#MPP_TEXT= <<TAG_298>>
-#NOTES= <<TAG_299>>
+#MPP_TEXT= Danish Occupation
+#NOTES= By saying %B(YES), Germany will occupy Denmark on the 9th April 1940, while discontent in Iceland will disrupt Axis supply there. %N%N The British will automatically occupy the Faroe Islands in response, and they will probably send an expedition to occupy Iceland in May 1940. %N%N If the British do not occupy Iceland then we could use Reykjavik as a naval base, though were we to send any Axis ground or air units there to protect the base then US mobilization would increase 8-12%. %N%N If you say %B(NO), you will have to invade Denmark yourself in order to gain control of the country, and the Allies will still be likely to occupy Iceland in response. %N%N %N%N%CRecommendations: %N%N Say %B(YES) and invade Denmark.
 #NOTES_POSITION= 167,66
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
@@ -8700,19 +8697,23 @@
 #MPP_UPDOWN= -50
 #MPP_TURNS= 1
 #MPP_TEXT= Dividing Yugoslavia
-#NOTES= It is both economically and militarily beneficial to say %B(YES), as by doing so you will gain in income and the Croatian Garrison unit can be used against partisans in Yugoslavia.%N%N Other territorial adjustments that will come with saying %B(YES) are that Germany and Hungary will gain small portions of territory in northern Yugoslavia, and the towns of Novi Sad and Ljubljana will go to Hungary and Italy respectively. %N%N %N%N%CRecommendations: %N%N Say %B(YES) to forming the independent state of Croatia.
+#NOTES= It is both economically and militarily beneficial to say %B(YES), as by doing so you will gain in income and the Croatian Garrison unit can be used against partisans in Yugoslavia.%N%N Other territorial adjustments that will come with saying %B(YES) are that Germany and Hungary will gain small portions of territory in northern Yugoslavia, and the towns of Novi Sad will go to Hungary, Ljubljana and Split will go to Italy respectively. %N%N %N%N%CRecommendations: %N%N Say %B(YES) to forming the independent state of Croatia.
 #NOTES_POSITION= 178,92
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
-#DATE= 1941/04/10
+#DATE= 1940/01/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Zagreb is Axis
+; Zagreb(178,92) is Axis
 #ALIGNMENT_POSITION= 178,92 [1]
+; Belgrade(187,94) is Axis
+#ALIGNMENT_POSITION= 187,94 [1]
+; Sarajevo(183,96) is Axis
+#ALIGNMENT_POSITION= 183,96 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Hungary(52) Axis and not surrendered
+; Hungary(52) Axis, Mobilized
 #VARIABLE_CONDITION= 52 [1] [100] [0]
-; Italy(59) Axis and not surrendered
+; Italy(59) Axis, Mobilized
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Yugoslavia(120) Allied and surrendered
 #VARIABLE_CONDITION= 120 [2] [100] [1]
@@ -8947,8 +8948,8 @@
 #DECISION= 627
 #MPP_UPDOWN= -50
 #MPP_TURNS= 6
-#MPP_TEXT= <<TAG_268>>
-#NOTES= <<TAG_269>>
+#MPP_TEXT= Atlantic Wall Fortifications
+#NOTES= Although expensive, the construction of these Coastal Gun Batteries will significantly strengthen our defenses and could potentially delay the enemy's invasion preparations, so that is a good reason to say %B(YES). %N%N Ensure that they are protected from air attack and that mobile forces remain nearby to counterattack any enemy landings. %N%N Any units currently occupying the hexes where the Coastal Guns will be deployed will be moved out, and the Coastal Guns will deploy in the next turn. Units may temporarily disappear, but they will be returned.
 #NOTES_POSITION= 147,82
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
@@ -9876,7 +9877,7 @@
 #DECISION= 653
 #MPP_UPDOWN= 5
 #MPP_TURNS= 1
-#MPP_TEXT= <<TAG_302>>
+#MPP_TEXT= Chrome Imports From Turkey
 #NOTES=
 #NOTES_POSITION=
 #AI_RESPONSE= 100
@@ -10245,6 +10246,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Croatia as an Independent State?
 #LINK= 621[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -10262,10 +10264,10 @@
 #SHADOW_RGB= 0,0,0
 ; Rome(171,101) is Allied
 #ALIGNMENT_POSITION= 139,104 [2]
-; Ljubljana is Axis
+; Ljubljana(176,91) is Axis
 #ALIGNMENT_POSITION= 176,91 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Croatia Axis and not surrendered
+; Croatia(27) Axis and not surrendered
 #VARIABLE_CONDITION= 27 [1] [100] [0]
 ; No Allied units within 2 hexes of Ljubljana
 #CONDITION_POSITION= 176,91 [2,2] [0,0] [2] [0]
@@ -15692,7 +15694,7 @@
 {
 #NAME= DE 908 - Germany: Accept Spanish Debt Repayment Agreement? (AI 100%)
 #POPUP= German Economic Decision
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BSpanish %BDebt %N%N Mein Führer, the development of the Wolfram mines was largely a success.  Franco has proposed repaying the debt from the civil war in steady supply shipments of Wolfram which will begin January 1, 1942. %N%N However, although Franco owes this debt to Germany the Spanish government may view the transfer of vital resources as a contribution to our war effort, and may move further from the Axis.  We should consider now that the mines are operational we will have full access to its resources when Spain joins the war. %N%N Mein Führer, should we accept the resource payments to eliminate Spain's debt from the civil war %B(YES)?
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BSpanish %BDebt %N%N Mein Führer, the development of the Wolfram mines was largely a success.  Franco has proposed repaying the debt from the civil war in steady supply shipments of Wolfram, which will begin January 1, 1942. %N%N However, although Franco owes this debt to Germany, the Spanish government will view the transfer of vital resources as a contribution to our war effort, and will move further from the Axis.  We should consider now that the mines are operational, we will have full access to its resources when Spain joins the war. %N%N Mein Führer, should we accept the resource payments to eliminate Spain's debt from the civil war %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -15708,7 +15710,7 @@
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT= 
-#NOTES= %N%N If you select %B(YES), Spain will move 8-12% away from the Axis and as of January 1942, Spain will begin exporting wolfram to Germany (worth 20 MPPs per turn) for as long as Spain remains neutral and Axis leaning. %N%N As the materials will have to transit through occupied France, should France become liberated the shipments would no longer be able to reach Germany.%N%N If you select %B(NO), the wolfram mines will remain operational and Germany will benefit from the resources should Spain join the Axis at a later date.
+#NOTES= %N%N If you select %B(YES), Spain will move 8-12% away from the Axis and, as of January 1942, Spain will begin exporting wolfram to Germany (worth 20 MPPs per turn) for as long as Spain remains neutral and Axis leaning. %N%N As the materials will have to transit through occupied France, should France become liberated the shipments will no longer be able to reach Germany.%N%N If you select %B(NO), the wolfram mines will remain operational and Germany will benefit from the resources should Spain join the Axis at a later date.
 #NOTES_POSITION= 139,110
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
@@ -15976,7 +15978,7 @@
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT= 
-#NOTES= %N%N If you select %B(YES), the territory of Southern Albania (Italy), and Southern Bulgaria will transfer to Greek control and Greece will join the Axis.%N%N Italian national morale will also be decreased by 10% of its starting value and Bulgaria will align defensively with the Allies.
+#NOTES= %N%N If you select %B(YES), the territory of southern Albania (Italy), and southern Bulgaria will transfer to Greek control and Greece will join the Axis.%N%N Italian national morale will also be decreased by 3000 and Bulgaria will align defensively with the Allies.
 #NOTES_POSITION= 193,109
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
