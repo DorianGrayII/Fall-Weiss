@@ -84,6 +84,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
         - "Malta Effect (Bardia, Sidi Barrani, Mersa Matruh, El Alamein) (20%)"
     - Pearl Harbor Attack (USA->Allies)
         - Reverted back to #MOBILIZATION= [15,20] [2] (from 25,30)
+    - "DE 917 - Germany: Grant Concessions To Greece To Induce Into Alliance?"
+        - now requires Greece is Axis(10%) or more
 - Scenario Data:
     - Albania(3) annexed by Italy(59)
         - control of all Albanian hexes given to Italy (same as was originally done for Libya)
