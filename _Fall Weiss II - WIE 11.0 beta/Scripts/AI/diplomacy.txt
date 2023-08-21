@@ -5,11 +5,11 @@
 ; USAGE:
 ;
 ; Basic structure of an AI diplomatic event:
-; { 
-; #NAME=  Event name 
+; {
+; #NAME=  Event name
 ;         (this will be shown as a selectable event under an OPTIONS screen within the game)
 ;
-; #POPUP= Event popup text 
+; #POPUP= Event popup text
 ;         (this will be displayed when the event occurs)
 ;
 ; #FLAG= Value range [0, 1]
@@ -19,7 +19,7 @@
 ;
 ; #TYPE= Value range [0, 3]
 ;        Event check type, with all other fields satisfied:
-;        0 = Single check, on or after #DATE 
+;        0 = Single check, on or after #DATE
 ;            (ignores #TRIGGER)
 ;        1 = Multiple checks, on or after #DATE, until #TRIGGER is satisfied
 ;        2 = Multiple checks, on or after #DATE, until end of game (*** not valid for UNIT events ***)
@@ -38,8 +38,8 @@
 ; #GV=   Does the event activate based on the Global Variable values assigned?
 ;        Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;        Format: GV [min, max]
-;                GV range [1, 10] 
-;                min range [1, 100] 
+;                GV range [1, 10]
+;                min range [1, 100]
 ;                max range [min+1, 100]
 ;
 ;        Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
@@ -109,30 +109,30 @@
 ;
 ; Each event must be preceded by a '{' and end with a '}'
 ;
-; Diplomacy Plan identity is determined by #COUNTRY_ID and #DIPLOMATIC_ID.  A country can only have a single plan based 
-; on this criteria and will be assigned the first valid plan regardless of duplicate script entries (even if the 
+; Diplomacy Plan identity is determined by #COUNTRY_ID and #DIPLOMATIC_ID.  A country can only have a single plan based
+; on this criteria and will be assigned the first valid plan regardless of duplicate script entries (even if the
 ; remaining control '#' values are different).
 ; Note:  This will also allow you to set up a variety of plans with the same identity but different
 ; control '#' parameters where the first 'event' satisfied will be the fist plan assigned (for added variability).
 ;
-; Each Diplomacy event corresponds with a single diplomatic chit purchase by #COUNTRY_ID towards 
+; Each Diplomacy event corresponds with a single diplomatic chit purchase by #COUNTRY_ID towards
 ; #DIPLOMATIC_ID.  For multiple diplomatic chit purchases you could choose an event #TYPE=2 or set up multiple
 ; events of either #TYPE=1 or #TYPE=0.  In any event repetitive events will only be successful if the maximum
 ; applicable chit level has not been reached and there are sufficient funds for diplomatic purchase.
 ; Note:  Maximum chit levels as well as diplomatic costs can be adjusted via the Editor.
 ;
 ; #FRIENDLY_POSITION - First position must refer to a land tile, subsequent positions can refer to either land or coastal tiles.
-; Note:  More than one #FRIENDLY_POSITION can be set.  #FRIENDLY_POSITION refers to the current side associated with this 
-;        plan.  
+; Note:  More than one #FRIENDLY_POSITION can be set.  #FRIENDLY_POSITION refers to the current side associated with this
+;        plan.
 ;
 ;        For all AI scripts that use the #FRIENDLY_POSITION field, the AI picks available units closest to and connected to
-;        the first #FRIENDLY_POSITION, within #RANGE, and then sends them to the nearest available position for the script; 
-;        e.g., a city for a GUARD script, a port for a TRANSPORT script, etc.  All AI scripts require that the first 
+;        the first #FRIENDLY_POSITION, within #RANGE, and then sends them to the nearest available position for the script;
+;        e.g., a city for a GUARD script, a port for a TRANSPORT script, etc.  All AI scripts require that the first
 ;        #FRIENDLY_POSITION be a land tile, with the exception of Fleet scripts.
 ;
-; #VARIABLE_CONDITION - More than one can be set. You can also list countries that have not yet fully 
-;   entered the war. For example by listing an activation % less than 100% you are providing a check 
-;   where the country must meet a minimum activation % (but is not yet at 100%) in order for the event 
+; #VARIABLE_CONDITION - More than one can be set. You can also list countries that have not yet fully
+;   entered the war. For example by listing an activation % less than 100% you are providing a check
+;   where the country must meet a minimum activation % (but is not yet at 100%) in order for the event
 ;   to occur. To check for a fully activated country simply list the activation % at 100%.
 ;
 ; #TACTICAL_CONDITION - More than one can be set.  #TACTICAL_CONDITION refers to the current side, i.e.
@@ -152,7 +152,7 @@
 ;       based on unit positions for the event.
 ;
 ; #CANCEL_POSITION - More than one can be set.  Distance or range checks will be based on the specified x,y position.
-;   For example if the x,y position is a coastal tile then range checks will be made on sea tiles, otherwise if it 
+;   For example if the x,y position is a coastal tile then range checks will be made on sea tiles, otherwise if it
 ;   is a land tile, range checks will be made on land tiles only.
 ;
 ; Logic Table - Each line will be read using following logic:
@@ -324,7 +324,7 @@
 
 ; Fall Weiss II
 {
-#NAME= Finland Presses Sweden (1940 - )
+#NAME= Finland Presses Sweden (1940 - ) (25%)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -442,7 +442,7 @@
 #TACTICAL_CONDITION= 173,74 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-} 
+}
 
 ; Fall Weiss II
 {
@@ -584,7 +584,7 @@
 }
 
 {
-#NAME= Germany Presses Vichy Algeria (1940 - )
+#NAME= Germany Presses Vichy Algeria (1940 - ) (25%)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -659,6 +659,7 @@
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Fall Weiss II AXIS SCRIPTS - Italy
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -738,7 +739,7 @@
 }
 
 {
-#NAME= UK Presses Norway (1940 - )
+#NAME= UK Presses Norway (1940 - ) (10%)
 #POPUP=
 #FLAG= 1
 #TYPE= 1
@@ -764,7 +765,7 @@
 
 ; Fall Weiss II Event
 {
-#NAME= UK Presses Portugal (1940 - )
+#NAME= UK Presses Portugal (1940 - ) (10%)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -864,7 +865,7 @@
 
 ; Fall Weiss II Event
 {
-#NAME= UK Presses Switzerland (1940 - )
+#NAME= UK Presses Switzerland (1940 - ) (10%)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -887,7 +888,7 @@
 }
 
 {
-#NAME= UK Presses Turkey (1940 - FORCED) (Above 50%)
+#NAME= UK Presses Turkey (1940 - FORCED) (50%)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -912,7 +913,7 @@
 }
 
 {
-#NAME= UK Presses Turkey (1941 - )
+#NAME= UK Presses Turkey (1941 - ) (10%)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -1228,7 +1229,7 @@
 }
 
 {
-#NAME= USSR Presses Turkey (1942 - FORCED) (1)
+#NAME= USSR Presses Turkey (1942 - FORCED) (1) (75%)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -1253,7 +1254,7 @@
 }
 
 {
-#NAME= USSR Presses Turkey (1943 - ) (2)
+#NAME= USSR Presses Turkey (1943 - ) (2) (10%)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -1485,7 +1486,7 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 836 - UK Presses Greece (1939 - )
+#NAME= DE 836 - UK Presses Greece (1939 - ) (10%)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -1510,7 +1511,7 @@
 }
 
 {
-#NAME= DE 905 - Germany Presses Switzerland (1940 - )
+#NAME= DE 905 - Germany Presses Switzerland (1940 - ) (10%)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -1533,7 +1534,7 @@
 }
 
 {
-#NAME= DE 906 - Germany Presses Portugal (1940 - )
+#NAME= DE 906 - Germany Presses Portugal (1940 - ) (10%)
 #POPUP=
 #FLAG= 1
 #TYPE= 2

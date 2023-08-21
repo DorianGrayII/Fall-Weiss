@@ -5,11 +5,11 @@
 ; USAGE:
 ;
 ; Basic structure of an AI planning event:
-; { 
-; #NAME=  Event name 
+; {
+; #NAME=  Event name
 ;         (this will be shown as a selectable event under an OPTIONS screen within the game)
 ;
-; #POPUP= Event popup text 
+; #POPUP= Event popup text
 ;         (this will be displayed when the event occurs)
 ;
 ; #FLAG= Value range [0, 1]
@@ -19,7 +19,7 @@
 ;
 ; #TYPE= Value range [0, 3]
 ;        Event check type, with all other fields satisfied:
-;        0 = Single check, on or after #DATE 
+;        0 = Single check, on or after #DATE
 ;            (ignores #TRIGGER)
 ;        1 = Multiple checks, on or after #DATE, until #TRIGGER is satisfied
 ;        2 = Multiple checks, on or after #DATE, until end of game (*** not valid for UNIT events ***)
@@ -38,8 +38,8 @@
 ; #GV=   Does the event activate based on the Global Variable values assigned?
 ;        Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;        Format: GV [min, max]
-;                GV range [1, 10] 
-;                min range [1, 100] 
+;                GV range [1, 10]
+;                min range [1, 100]
 ;                max range [min+1, 100]
 ;
 ;        Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
@@ -81,8 +81,14 @@
 ;
 ; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd or yyyy/mm/dd [=]).
 ;        if [=] is used, only apply for year specified.
-; #STEAL= Set priority by stealing units from other plans
-;         Values: [0, 3]; (False= 0; Steal_Offensive= 1; Steal_Defensive= 2; Steal_Offensive_Or_Defensive= 3)
+;
+; #STEAL= Value range [0, 3]
+;         Set priority by stealing units from other plans
+;           0 = False
+;           1 = Steal_Offensive
+;           2 = Steal_Defensive
+;           3 = Steal_Offensive_Or_Defensive
+;
 ; #FRIENDLY_POSITION= Positions that must be under friendly control in order for event to occur
 ;
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
@@ -97,15 +103,17 @@
 ;                                  0 = False
 ;                                  1 = True (has surrendered)
 ;
-; #TACTICAL_CONDITION= Tactical map position (resource) that currently MUST NOT be threatened for event to
-;                      occur, i.e. plan owner should have tactical advantage over this position
-;                      Format: x,y [tactical_flag]
-; #ACTIVATE_POSITION= Condition positions that will serve to ACTIVATE the event.
-;                     Looks at distance as well as a selected number of Axis/Allied units as specified by 'alignment' flag
-;                     Format: x,y [min_range, max_range] [min_units, max_units] [alignment]
-; #CANCEL_POSITION= Condition positions that will serve to CANCEL the event.
-;                   Looks at distance as well as a selected number of Axis/Allied units as specified by 'alignment' flag
-;                   Format: x,y [min_range, max_range] [min_units, max_units] [alignment]
+; #TACTICAL_CONDITION=  Tactical map position (resource) that currently MUST NOT be threatened for event to
+;                       occur, i.e. plan owner should have tactical advantage over this position
+;                       Format: x,y [tactical_flag]
+;
+; #ACTIVATE_POSITION=   Condition positions that will serve to ACTIVATE the event.
+;                       Looks at distance as well as a selected number of Axis/Allied units as specified by 'alignment' flag
+;                       Format: x,y [min_range, max_range] [min_units, max_units] [alignment]
+;
+; #CANCEL_POSITION=     Condition positions that will serve to CANCEL the event.
+;                       Looks at distance as well as a selected number of Axis/Allied units as specified by 'alignment' flag
+;                       Format: x,y [min_range, max_range] [min_units, max_units] [alignment]
 ; }
 ;
 ; NOTES:
@@ -114,13 +122,13 @@
 ;
 ; Plan identity is determined by #COUNTRY_ID and #GOAL_POSITION.  A country can only have a
 ; single plan based on this criteria and will be assigned the first valid plan regardless of duplicate
-; script entries (even if the remaining control '#' values are different).  
-; Note:  This will also allow you to set up a variety of plans with the same identity but different 
+; script entries (even if the remaining control '#' values are different).
+; Note:  This will also allow you to set up a variety of plans with the same identity but different
 ; control '#' parameters where the first 'event' satisfied will be the fist plan assigned (for added variability).
 ;
-; BUILD_UP_AMPHIBIOUS - These plans will only be assigned to fully activated countries and only if the 
-; #BUILD_LENGTH value > 0. AI will automatically declare war (as applicable) whenever at least 50% of their transports 
-; are within range of the #COASTAL_POSITION. AI will also only load units onto transports only if their strength > 5.  
+; BUILD_UP_AMPHIBIOUS - These plans will only be assigned to fully activated countries and only if the
+; #BUILD_LENGTH value > 0. AI will automatically declare war (as applicable) whenever at least 50% of their transports
+; are within range of the #COASTAL_POSITION. AI will also only load units onto transports only if their strength > 5.
 ; Automatic protection routines send transports with strength <= 5 back to the nearest port.
 ; Note:  Understrength units will still be assigned to these plans just not loaded onto transports until they have a
 ;        strength > 5.
@@ -130,12 +138,12 @@
 ; #SIZE - This value must be satisfied or the event will not occur.  For example, if the game engine cannot find enough
 ; enough units to satisfy the #SIZE requirement the event will not be added to the active plan list.
 ; Note:  #SIZE values refer to the number of units assigned to a plan except for non-core units including:
-;              HQ, Anti-Air, Artillery, Rail Gun, Coastal Gun, Rockets, Armoured Train, Anti-Tank, Airships, Fighters, 
+;              HQ, Anti-Air, Artillery, Rail Gun, Coastal Gun, Rockets, Armoured Train, Anti-Tank, Airships, Fighters,
 ;              Tactical Bombers, Medium Bombers, Strategic Bombers, Maritime Bombers, Kamikazes
 ;        These non-core units are added to the plan (closest available unit without a plan) after all other land units.
-;        Therefore, a plan set to #SIZE= 5 would, in fact, end up being a plan with a size equal to 6 after the game engine 
-;        includes an HQ and so on.  Essentially, in order to have the plan satisfy the #SIZE requirement keep in mind the 
-;        original count does not include available HQ, Rockets, Air Fleet and Bombers as these are added in after the 
+;        Therefore, a plan set to #SIZE= 5 would, in fact, end up being a plan with a size equal to 6 after the game engine
+;        includes an HQ and so on.  Essentially, in order to have the plan satisfy the #SIZE requirement keep in mind the
+;        original count does not include available HQ, Rockets, Air Fleet and Bombers as these are added in after the
 ;        #SIZE value is satisfied.
 ;
 ; #BUILD_LENGTH= - How long do you want the build up period of the plan to last?  For example, a
@@ -161,13 +169,13 @@
 ;        plan.  Each #FRIENDLY_POSITION will be read using AND logic.
 ;
 ;        For all AI scripts that use the #FRIENDLY_POSITION field, the AI picks available units closest to and connected to
-;        the first #FRIENDLY_POSITION, within #RANGE, and then sends them to the nearest available position for the script; 
-;        e.g., a city for a GUARD script, a port for a TRANSPORT script, etc.  All AI scripts require that the first 
+;        the first #FRIENDLY_POSITION, within #RANGE, and then sends them to the nearest available position for the script;
+;        e.g., a city for a GUARD script, a port for a TRANSPORT script, etc.  All AI scripts require that the first
 ;        #FRIENDLY_POSITION be a land tile, with the exception of Fleet scripts.
 ;
-; #VARIABLE_CONDITION - More than one can be set. You can also list countries that have not yet fully 
-;   entered the war. For example by listing an activation % less than 100% you are providing a check 
-;   where the country must meet a minimum activation % (but is not yet at 100%) in order for the event 
+; #VARIABLE_CONDITION - More than one can be set. You can also list countries that have not yet fully
+;   entered the war. For example by listing an activation % less than 100% you are providing a check
+;   where the country must meet a minimum activation % (but is not yet at 100%) in order for the event
 ;   to occur. To check for a fully activated country simply list the activation % at 100%.
 ;
 ; Each #VARIABLE_CONDITION line will be read using AND logic.
@@ -901,7 +909,7 @@
 #SIZE= 1,5
 #BUILD_LENGTH= 3.0
 #LENGTH= 5
-#RANGE= 25   
+#RANGE= 25
 #LONG_RANGE= 0
 ; Brest(138,86)
 #GOAL_POSITION= 138,86
@@ -1425,7 +1433,7 @@
 #FRIENDLY_POSITION= 4,108
 ; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened 
+; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 ; 1 Axis unit within range of Washington DC(4,108)
@@ -1458,7 +1466,7 @@
 #FRIENDLY_POSITION= 4,108
 ; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened 
+; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 ; 1 Axis unit within range of Washington DC(4,108)
@@ -1492,7 +1500,7 @@
 ; USA(115), British Empire Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 54 [2] [100] [0]
-; Washington DC(4,108), Washington D.C. not tactically threatened 
+; Washington DC(4,108), Washington D.C. not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
 #TACTICAL_CONDITION= 25,93 [1]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
@@ -1591,7 +1599,7 @@
 #SIZE= 1,5
 #BUILD_LENGTH= 3.0
 #LENGTH= 5
-#RANGE= 25   
+#RANGE= 25
 #LONG_RANGE= 0
 ; Brest(138,86)
 #GOAL_POSITION= 138,86

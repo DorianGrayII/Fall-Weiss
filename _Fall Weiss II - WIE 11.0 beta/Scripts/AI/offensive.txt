@@ -5,11 +5,11 @@
 ; USAGE:
 ;
 ; Basic structure of an AI planning event:
-; { 
-; #NAME=  Event name 
+; {
+; #NAME=  Event name
 ;         (this will be shown as a selectable event under an OPTIONS screen within the game)
 ;
-; #POPUP= Event popup text 
+; #POPUP= Event popup text
 ;         (this will be displayed when the event occurs)
 ;
 ; #FLAG= Value range [0, 1]
@@ -19,7 +19,7 @@
 ;
 ; #TYPE= Value range [0, 3]
 ;        Event check type, with all other fields satisfied:
-;        0 = Single check, on or after #DATE 
+;        0 = Single check, on or after #DATE
 ;            (ignores #TRIGGER)
 ;        1 = Multiple checks, on or after #DATE, until #TRIGGER is satisfied
 ;        2 = Multiple checks, on or after #DATE, until end of game (*** not valid for UNIT events ***)
@@ -38,8 +38,8 @@
 ; #GV=   Does the event activate based on the Global Variable values assigned?
 ;        Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;        Format: GV [min, max]
-;                GV range [1, 10] 
-;                min range [1, 100] 
+;                GV range [1, 10]
+;                min range [1, 100]
 ;                max range [min+1, 100]
 ;
 ;        Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
@@ -65,17 +65,26 @@
 ;
 ; #SIZE= How many units should be assigned to this plan?
 ;        Format: min_size, max_size
+;
 ; #BUILD_LENGTH= How many game turns (Axis or Allied) do you want the build up period of the plan to last?
+;
 ; #LENGTH= How many game turns (Axis or Allied) should pass before the plan (post #BUILD_LENGTH period) is cancelled?
+;
 ; #RANGE= How many hexes should we search for units to fulfill this plan?
 ;         Range checks from both the first listed #FRIENDLY_POSITION and then the #GOAL_POSITION if needed.
+;
 ; #GOAL_POSITION= What is the map position that is the objective of this plan?
 ;
 ; #DATE=          Date requirement for the event
 ;                 Format: yyyy/mm/dd
 ;
-; #STEAL= Set priority by stealing units from other plans
-;         Values: [0, 3]; (False= 0; Steal_Offensive= 1; Steal_Defensive= 2; Steal_Offensive_Or_Defensive= 3)
+; #STEAL= Value range [0, 3]
+;         Set priority by stealing units from other plans
+;           0 = False
+;           1 = Steal_Offensive
+;           2 = Steal_Defensive
+;           3 = Steal_Offensive_Or_Defensive
+;
 ; #FRIENDLY_POSITION= Positions that must be under friendly control in order for event to occur
 ;
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
@@ -90,15 +99,17 @@
 ;                                  0 = False
 ;                                  1 = True (has surrendered)
 ;
-; #TACTICAL_CONDITION= Tactical map position (resource) that currently MUST NOT be threatened for event to
-;                      occur, i.e. plan owner should have tactical advantage over this position
-;                      Format: x,y [tactical_flag]
-; #ACTIVATE_POSITION= Condition positions that will serve to ACTIVATE the event.
-;                     Looks at distance as well as a selected number of Axis/Allied units as specified by 'alignment' flag
-;                     Format: x,y [min_range, max_range] [min_units, max_units] [alignment]
-; #CANCEL_POSITION= Condition positions that will serve to CANCEL the event.
-;                   Looks at distance as well as a selected number of Axis/Allied units as specified by 'alignment' flag
-;                   Format: x,y [min_range, max_range] [min_units, max_units] [alignment]
+; #TACTICAL_CONDITION=  Tactical map position (resource) that currently MUST NOT be threatened for event to
+;                       occur, i.e. plan owner should have tactical advantage over this position
+;                       Format: x,y [tactical_flag]
+;
+; #ACTIVATE_POSITION=   Condition positions that will serve to ACTIVATE the event.
+;                       Looks at distance as well as a selected number of Axis/Allied units as specified by 'alignment' flag
+;                       Format: x,y [min_range, max_range] [min_units, max_units] [alignment]
+;
+; #CANCEL_POSITION=     Condition positions that will serve to CANCEL the event.
+;                       Looks at distance as well as a selected number of Axis/Allied units as specified by 'alignment' flag
+;                       Format: x,y [min_range, max_range] [min_units, max_units] [alignment]
 ; }
 ;
 ; NOTES:
@@ -107,8 +118,8 @@
 ;
 ; Plan identity is determined by #COUNTRY_ID, and #GOAL_POSITION.  A country can only have a
 ; single plan based on this criteria and will be assigned the first valid plan regardless of duplicate
-; script entries (even if the remaining control '#' values are different).  
-; Note:  This will also allow you to set up a variety of plans with the same identity but different 
+; script entries (even if the remaining control '#' values are different).
+; Note:  This will also allow you to set up a variety of plans with the same identity but different
 ; control '#' parameters where the first 'event' satisfied will be the fist plan assigned (for added variability).
 ;
 ; BUILD_UP_OFFENSIVE - Once this plan is successfully converted to an OFFENSIVE plan the game engine will automatically
@@ -120,12 +131,12 @@
 ; Internally the game engine automatically assigns OFFENSIVE and DEFENSIVE plans depending on the current tactical
 ; situation.  In this case the plan keeps track of several tactical ratios.  A CANCEL_RATIO is assigned that is
 ; 1/2 of the plan's START_RATIO.  If the CANCEL_RATIO is ever met then the plan is cancelled and reassessed.
-
+;
 ; For example, a CANCEL_RATIO= 1 and a #PLAN_ID= OFFENSIVE would mean that the plan would be cancelled
 ; if we ever reached a tactical situation of 1-to-1.  Meaning tactically the current offensive presence must
 ; remain greater than the current defensive presence of your opponent.  For DEFENSIVE plans a lower CANCEL_RATIO
-; value such as CANCEL_RATIO= .5 would mean that the plan's defensive presence is now 2-to-1 in comparison to the 
-; presence of enemy offensive units.  Subsequently this plan would now be cancelled in favor of a new OFFENSIVE 
+; value such as CANCEL_RATIO= .5 would mean that the plan's defensive presence is now 2-to-1 in comparison to the
+; presence of enemy offensive units.  Subsequently this plan would now be cancelled in favor of a new OFFENSIVE
 ; plan (automatically handled by the game engine).  See CURRENT_RATIO formulas below for more details.
 ;
 ; The CURRENT_RATIO formulas:
@@ -149,11 +160,11 @@
 ; #SIZE - This value must be satisfied or the event will not occur.  For example, if the game engine cannot find enough
 ; enough units to satisfy the #SIZE requirement the event will not be added to the active plan list.
 ; Note:  #SIZE values refer to the number of units assigned to a plan except for non-core units including:
-;              HQ, Anti-Air, Artillery, Rail Gun, Coastal Gun, Rockets, Armoured Train, Anti-Tank, Airships, Fighters, 
+;              HQ, Anti-Air, Artillery, Rail Gun, Coastal Gun, Rockets, Armoured Train, Anti-Tank, Airships, Fighters,
 ;              Tactical Bombers, Medium Bombers, Strategic Bombers, Maritime Bombers, Kamikazes
 ;        These non-core units are added to the plan (closest available unit without a plan) after all other land units.
-;        Therefore, a plan set to #SIZE= 5 would in fact end up being a plan with a size equal to 6 after the game engine 
-;        includes an HQ and so on.  Essentially, in order to have the plan satisfy the #SIZE requirement keep in mind the 
+;        Therefore, a plan set to #SIZE= 5 would in fact end up being a plan with a size equal to 6 after the game engine
+;        includes an HQ and so on.  Essentially, in order to have the plan satisfy the #SIZE requirement keep in mind the
 ;        original count does not include available HQ, Rockets, Air Fleet and Bombers as these are added in after the
 ;        #SIZE value is satisfied.
 ;
@@ -164,21 +175,21 @@
 ; #GOAL_POSITION - This must be either a Town, City, Capital or Fortress etc.
 ;
 ; #STEAL - Do we steal units available from other plans?
-; Note:  This flag will only allow you to steal units from existing OFFENSIVE or DEFENSIVE plans.  
+; Note:  This flag will only allow you to steal units from existing OFFENSIVE or DEFENSIVE plans.
 ;        See STEAL ID REFERENCE VALUES for more details.
 ;
 ; #FRIENDLY_POSITION - First position must refer to a land tile, subsequent positions can refer to either land or coastal tiles.
-; Note:  More than one #FRIENDLY_POSITION can be set.  #FRIENDLY_POSITION refers to the current side associated with this 
+; Note:  More than one #FRIENDLY_POSITION can be set.  #FRIENDLY_POSITION refers to the current side associated with this
 ;        plan.  Each #FRIENDLY_POSITION will be read using AND logic.
 ;
 ;        For all AI scripts that use the #FRIENDLY_POSITION field, the AI picks available units closest to and connected to
-;        the first #FRIENDLY_POSITION, within #RANGE, and then sends them to the nearest available position for the script; 
-;        e.g., a city for a GUARD script, a port for a TRANSPORT script, etc.  All AI scripts require that the first 
+;        the first #FRIENDLY_POSITION, within #RANGE, and then sends them to the nearest available position for the script;
+;        e.g., a city for a GUARD script, a port for a TRANSPORT script, etc.  All AI scripts require that the first
 ;        #FRIENDLY_POSITION be a land tile, with the exception of Fleet scripts.
 ;
-; #VARIABLE_CONDITION - More than one can be set. You can also list countries that have not yet fully 
-;   entered the war. For example by listing an activation % less than 100% you are providing a check 
-;   where the country must meet a minimum activation % (but is not yet at 100%) in order for the event 
+; #VARIABLE_CONDITION - More than one can be set. You can also list countries that have not yet fully
+;   entered the war. For example by listing an activation % less than 100% you are providing a check
+;   where the country must meet a minimum activation % (but is not yet at 100%) in order for the event
 ;   to occur. To check for a fully activated country simply list the activation % at 100%.
 ;
 ; Each #VARIABLE_CONDITION line will be read using AND logic.
@@ -521,7 +532,7 @@
 #BUILD_LENGTH= 100
 #LENGTH= 1
 #RANGE= 10
-; Kremenchuk
+; Kremenchuk(212,84)
 #GOAL_POSITION= 212,84
 #DATE= 1939/09/01
 #STEAL= 3
@@ -580,7 +591,7 @@
 #BUILD_LENGTH= 100
 #LENGTH= 1
 #RANGE= 15
-; Proskurov
+; Proskurov(199,83)
 #GOAL_POSITION= 199,83
 #DATE= 1939/09/01
 #STEAL= 3
@@ -727,7 +738,7 @@
 #BUILD_LENGTH= 100
 #LENGTH= 1
 #RANGE= 10
-; Cherkasy
+; Cherkasy(210,83)
 #GOAL_POSITION= 210,83
 #DATE= 1939/09/01
 #STEAL= 3
@@ -977,14 +988,14 @@
 #GOAL_POSITION= 187,75
 #DATE= 1939/09/01
 #STEAL= 3
-; Bygoszcz
+; Bygoszcz(182,73)
 #FRIENDLY_POSITION= 182,73
 ; Poland(85) Allied and not surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [0]
 ; Berlin(173,74) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 173,74 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; No Allied unit in Modlin
+; No Allied unit in Modlin(187,75)
 #CANCEL_POSITION= 187,75 [0,0] [0,0] [2]
 }
 
@@ -1018,7 +1029,7 @@
 
 ; Germany prepares to attack the USSR:
 {
-#NAME= Germany Build Up Offensive - Dnepropetrovsk -> Sevastapol
+#NAME= Germany Build Up Offensive - Dnepropetrovsk -> Sevastopol
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -1602,7 +1613,7 @@
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [1]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Axis unit in Kragujevac
+; Axis unit in Kragujevac(188,96)
 #CANCEL_POSITION= 188,96 [0,0] [1,1] [1]
 }
 
@@ -2565,7 +2576,7 @@
 #GOAL_POSITION= 155,76
 #DATE= 1939/09/01
 #STEAL= 3
-; Osnabruck
+; Osnabrück
 ; Warsaw
 ; German coastal and French border positions
 #FRIENDLY_POSITION= 162,75
@@ -2863,7 +2874,7 @@
 #FRIENDLY_POSITION= 157,97
 #FRIENDLY_POSITION= 160,97
 #FRIENDLY_POSITION= 162,96
-; France(40) Allied and not surrendered 
+; France(40) Allied and not surrendered
 ; Italy(59) Axis
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -3017,7 +3028,7 @@
 ; Torino
 #FRIENDLY_POSITION= 162,94
 ; France(40) Allied and not surrendered AND
-; Italy(59) Axis AND 
+; Italy(59) Axis AND
 ; USSR(116) Allied and not yet fully mobilized
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -3057,7 +3068,7 @@
 ; Torino
 #FRIENDLY_POSITION= 162,94
 ; France(40) Allied and not surrendered AND
-; Italy(59) Axis AND 
+; Italy(59) Axis AND
 ; USSR(116) Allied and not yet fully mobilized
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [0] [0]
@@ -3091,7 +3102,7 @@
 #STEAL= 3
 ; Toulouse
 #FRIENDLY_POSITION= 149,97
-; France(40) Allied and not surrendered 
+; France(40) Allied and not surrendered
 ; Italy(59) Axis
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -3198,9 +3209,9 @@
 #CANCEL_POSITION= 157,79 [2,2] [4,4] [1]
 }
 
-;UK Prepares To Attack El Aghelia
+;UK Prepares To Attack El Agheila
 {
-#NAME= UK Build Up Offensive (Canada) - Benghazi -> El Aghelia
+#NAME= UK Build Up Offensive (Canada) - Benghazi -> El Agheila
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -3239,7 +3250,7 @@
 
 ;UK Prepares To Attack Sirte
 {
-#NAME= UK Build Up Offensive (Canada) - El Aghelia -> Sirte
+#NAME= UK Build Up Offensive (Canada) - El Agheila -> Sirte
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -3256,7 +3267,7 @@
 #GOAL_POSITION= 179,124
 #DATE= 1939/09/01
 #STEAL= 0
-; El Aghelia
+; El Agheila
 ; Alexandria
 ; Tobruk(194,122)
 ; Benghazi
@@ -3424,9 +3435,9 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-;UK Prepares To Attack El Aghelia
+;UK Prepares To Attack El Agheila
 {
-#NAME= UK Build Up Offensive - Benghazi -> El Aghelia
+#NAME= UK Build Up Offensive - Benghazi -> El Agheila
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -3465,7 +3476,7 @@
 
 ;UK Prepares To Attack Sirte
 {
-#NAME= UK Build Up Offensive - El Aghelia -> Sirte
+#NAME= UK Build Up Offensive - El Agheila -> Sirte
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -3482,7 +3493,7 @@
 #GOAL_POSITION= 179,124
 #DATE= 1939/09/01
 #STEAL= 0
-; El Aghelia
+; El Agheila
 ; Alexandria
 ; Tobruk(194,122)
 ; Benghazi
@@ -3599,7 +3610,7 @@
 #GOAL_POSITION= 167,112
 #DATE= 1939/09/01
 #STEAL= 0
-; Sousse
+; Sousse(167,114)
 ; Alexandria
 ; Tobruk(194,122)
 ; Benghazi
@@ -3731,7 +3742,7 @@
 #GOAL_POSITION= 145,115
 #DATE= 1942/01/01
 #STEAL= 3
-; Mellila
+; Melilla
 #FRIENDLY_POSITION= 141,116
 ; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
