@@ -224,10 +224,10 @@
 ; #COUNTRY_ID_5= Argentina
 ; #COUNTRY_ID_6= Australia
 ; #COUNTRY_ID_7= Austria
-; #COUNTRY_ID_8= Kenya
+; #COUNTRY_ID_8= Baltic States
 ; #COUNTRY_ID_9= Belgian Congo
 ; #COUNTRY_ID_10= Belgium
-; #COUNTRY_ID_11= Madagascar
+; #COUNTRY_ID_11= Benelux
 ; #COUNTRY_ID_12= Bhutan
 ; #COUNTRY_ID_13= Black
 ; #COUNTRY_ID_14= Bolivia
@@ -291,7 +291,7 @@
 ; #COUNTRY_ID_72= Nepal
 ; #COUNTRY_ID_73= Netherlands
 ; #COUNTRY_ID_74= New Zealand
-; #COUNTRY_ID_75= New Guinea
+; #COUNTRY_ID_75= Newfoundland
 ; #COUNTRY_ID_76= Nicaragua
 ; #COUNTRY_ID_77= Nigeria
 ; #COUNTRY_ID_78= Norway
@@ -381,179 +381,85 @@
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; AXIS SCRIPTS - Build Up Amphibious (Germany)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Germany prepares to attack UK:
+; ALLIED SCRIPTS - Build Up Amphibious (UK)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; UK prepares to attack Italy:
 {
-#NAME= Germany Build Up Amphibious - UK
+#NAME= UK Build Up Amphibious - Palermo (North Africa)
 #POPUP=
 #FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
+#TYPE= 1
+#COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#SIZE= 5,5
-#BUILD_LENGTH= 5
+#SIZE= 2,4
+#BUILD_LENGTH= 3
 #LENGTH= 5
 #RANGE= 25
 #LONG_RANGE= 1
-; London(147,77)
-#GOAL_POSITION= 147,77
-#COASTAL_POSITION= 147,79
-#DATE= 1943/01/01
-#STEAL= 1
-; Brussels
-; Berlin(173,74)
-; Paris(151,84)
-; Brest(138,86)
-; Bordeaux
-; Rome
-; Taranto
 ; Palermo
-#FRIENDLY_POSITION= 155,80
-#FRIENDLY_POSITION= 173,74
-#FRIENDLY_POSITION= 151,84
-#FRIENDLY_POSITION= 138,86
-#FRIENDLY_POSITION= 151,84
-#FRIENDLY_POSITION= 171,101
-#FRIENDLY_POSITION= 179,104
-#FRIENDLY_POSITION= 173,109
-; France(40) Allied and surrendered AND
-; USSR(116) Allied and surrendered AND
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-#VARIABLE_CONDITION= 116 [2] [100] [1]
+#GOAL_POSITION= 173,109
+#GOAL_POSITION= 172,114
+#COASTAL_POSITION= 174,112
+#DATE= 1941/01/01
+#STEAL= 3
+; Tunis(167,112)
+; Tripoli(172,121)
+#FRIENDLY_POSITION= 167,112
+#FRIENDLY_POSITION= 172,121
+; UK(112) Allied and not surrendered AND
+; USA(115) Allied and fully active AND
+; Italy(59) Axis and fully active
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; Berlin(173,74) not tactically threatened AND
-; Rome not tactically threatened AND
-; Paris(151,84) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#TACTICAL_CONDITION= 171,101 [1]
-#TACTICAL_CONDITION= 151,84 [1]
-; Axis units in position
-#ACTIVATE_POSITION= 153,78 [2,2] [5,5] [1]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; AXIS SCRIPTS - Build Up Amphibious (Italy)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-; Italy prepares to attack North Afrika:
-{
-#NAME= Italy Build Up Amphibious - North Africa (Benghazi)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 5,8
-#BUILD_LENGTH= 2
-#LENGTH= 10
-#RANGE= 25
-#LONG_RANGE= 1
-; Benghazi
-#GOAL_POSITION= 186,122
-#COASTAL_POSITION= 186,121
-#DATE= 1940/01/01
-#STEAL= 1
-; Brussels
-; Berlin(173,74)
-; Paris(151,84)
-; Brest(138,86)
-; Bordeaux
-; Rome
-; Taranto
-; Palermo
-; Athens
-#FRIENDLY_POSITION= 155,80
-#FRIENDLY_POSITION= 173,74
-#FRIENDLY_POSITION= 151,84
-#FRIENDLY_POSITION= 138,86
-#FRIENDLY_POSITION= 151,84
-#FRIENDLY_POSITION= 171,101
-#FRIENDLY_POSITION= 179,104
-#FRIENDLY_POSITION= 173,109
-#FRIENDLY_POSITION= 193,109
-; France(40) Allied and surrendered AND
-; USSR(116) Allied and surrendered AND
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-#VARIABLE_CONDITION= 116 [2] [100] [1]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Berlin(173,74) not tactically threatened AND
-; Rome not tactically threatened AND
-; Paris(151,84) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#TACTICAL_CONDITION= 171,101 [1]
-#TACTICAL_CONDITION= 151,84 [1]
+; Tripoli(172,121) not tactically threatened
+#TACTICAL_CONDITION= 172,121 [1]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-; Italy prepares to attack North Afrika:
 {
-#NAME= Italy Build Up Amphibious - North Afrika (Tobruk)
+#NAME= UK Build Up Amphibious - Catanzaro (North Africa)
 #POPUP=
 #FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 59
+#TYPE= 1
+#COUNTRY_ID= 112
 #TRIGGER= 100
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#SIZE= 3,5
-#BUILD_LENGTH= 2
-#LENGTH= 10
+#SIZE= 2,4
+#BUILD_LENGTH= 3
+#LENGTH= 5
 #RANGE= 25
 #LONG_RANGE= 1
-; Tobruk
-#GOAL_POSITION= 194,122
-#COASTAL_POSITION= 193,121
-#DATE= 1940/01/01
-#STEAL= 1
-; Brussels
-; Berlin(173,74)
-; Paris(151,84)
-; Brest(138,86)
-; Bordeaux
-; Rome
-; Taranto
-; Palermo
-; Athens
-#FRIENDLY_POSITION= 155,80
-#FRIENDLY_POSITION= 173,74
-#FRIENDLY_POSITION= 151,84
-#FRIENDLY_POSITION= 138,86
-#FRIENDLY_POSITION= 151,84
-#FRIENDLY_POSITION= 171,101
-#FRIENDLY_POSITION= 179,104
-#FRIENDLY_POSITION= 173,109
-#FRIENDLY_POSITION= 193,109
-; France(40) Allied and surrendered AND
-; USSR(116) Allied and surrendered AND
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-#VARIABLE_CONDITION= 116 [2] [100] [1]
+; Taranto(180,105)
+#GOAL_POSITION= 179,107
+#GOAL_POSITION= 181,112
+#COASTAL_POSITION= 180,108
+#DATE= 1941/01/01
+#STEAL= 3
+; Tunis(167,112)
+; Tripoli(172,121)
+#FRIENDLY_POSITION= 167,112
+#FRIENDLY_POSITION= 172,121
+; UK(112) Allied and not surrendered AND
+; USA(115) Allied and fully active AND
+; Italy(59) Axis and fully active
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; Berlin(173,74) not tactically threatened AND
-; Rome not tactically threatened AND
-; Paris(151,84) not tactically threatened
-#TACTICAL_CONDITION= 173,74 [1]
-#TACTICAL_CONDITION= 171,101 [1]
-#TACTICAL_CONDITION= 151,84 [1]
+; Tripoli(172,121) not tactically threatened
+#TACTICAL_CONDITION= 172,121 [1]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-; UK prepares to attack Italy:
 {
 #NAME= UK Build Up Amphibious (Canada) - Catanzaro (North Africa)
 #POPUP=
@@ -569,7 +475,7 @@
 #LENGTH= 5
 #RANGE= 25
 #LONG_RANGE= 1
-; Taranto
+; Taranto(180,105)
 #GOAL_POSITION= 179,107
 #GOAL_POSITION= 181,112
 #COASTAL_POSITION= 180,108
@@ -703,43 +609,6 @@
 #CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
 }
 
-{
-#NAME= UK Build Up Amphibious - Catanzaro (North Africa)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 2,4
-#BUILD_LENGTH= 3
-#LENGTH= 5
-#RANGE= 25
-#LONG_RANGE= 1
-; Taranto
-#GOAL_POSITION= 179,107
-#GOAL_POSITION= 181,112
-#COASTAL_POSITION= 180,108
-#DATE= 1941/01/01
-#STEAL= 3
-; Tunis(167,112)
-; Tripoli(172,121)
-#FRIENDLY_POSITION= 167,112
-#FRIENDLY_POSITION= 172,121
-; UK(112) Allied and not surrendered AND
-; USA(115) Allied and fully active AND
-; Italy(59) Axis and fully active
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Tripoli(172,121) not tactically threatened
-#TACTICAL_CONDITION= 172,121 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
 ; UK prepares to attack France:
 ; This will trigger the possible targeting of Cherbourg by Bombers
 {
@@ -817,46 +686,7 @@
 #CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ALLIED SCRIPTS - Build Up Amphibious (UK)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; UK prepares to attack Italy:
-{
-#NAME= UK Build Up Amphibious - Palermo (North Africa)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SIZE= 2,4
-#BUILD_LENGTH= 3
-#LENGTH= 5
-#RANGE= 25
-#LONG_RANGE= 1
-; Palermo
-#GOAL_POSITION= 173,109
-#GOAL_POSITION= 172,114
-#COASTAL_POSITION= 174,112
-#DATE= 1941/01/01
-#STEAL= 3
-; Tunis(167,112)
-; Tripoli(172,121)
-#FRIENDLY_POSITION= 167,112
-#FRIENDLY_POSITION= 172,121
-; UK(112) Allied and not surrendered AND
-; USA(115) Allied and fully active AND
-; Italy(59) Axis and fully active
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Tripoli(172,121) not tactically threatened
-#TACTICAL_CONDITION= 172,121 [1]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
+
 
 {
 #NAME= UK Build Up Amphibious - Rome (North Africa)
@@ -1657,4 +1487,176 @@
 #ACTIVATE_POSITION= 147,77 [20,20] [30,30] [2]
 ; 1 Axis unit within range of London
 #CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; AXIS SCRIPTS - Build Up Amphibious (Germany)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Germany prepares to attack UK:
+{
+#NAME= Germany Build Up Amphibious - UK
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 5,5
+#BUILD_LENGTH= 5
+#LENGTH= 5
+#RANGE= 25
+#LONG_RANGE= 1
+; London(147,77)
+#GOAL_POSITION= 147,77
+#COASTAL_POSITION= 147,79
+#DATE= 1943/01/01
+#STEAL= 1
+; Brussels(155,80)
+; Berlin(173,74)
+; Paris(151,84)
+; Brest(138,86)
+; Bordeaux
+; Rome(171,101)
+; Taranto(180,105)
+; Palermo
+#FRIENDLY_POSITION= 155,80
+#FRIENDLY_POSITION= 173,74
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 138,86
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 171,101
+#FRIENDLY_POSITION= 179,104
+#FRIENDLY_POSITION= 173,109
+; France(40) Allied and surrendered AND
+; USSR(116) Allied and surrendered AND
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#VARIABLE_CONDITION= 116 [2] [100] [1]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Berlin(173,74) not tactically threatened AND
+; Rome(171,101) not tactically threatened AND
+; Paris(151,84) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#TACTICAL_CONDITION= 171,101 [1]
+#TACTICAL_CONDITION= 151,84 [1]
+; Axis units in position
+#ACTIVATE_POSITION= 153,78 [2,2] [5,5] [1]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; AXIS SCRIPTS - Build Up Amphibious (Italy)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Italy prepares to attack North Afrika:
+{
+#NAME= Italy Build Up Amphibious - North Africa (Benghazi)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 5,8
+#BUILD_LENGTH= 2
+#LENGTH= 10
+#RANGE= 25
+#LONG_RANGE= 1
+; Benghazi
+#GOAL_POSITION= 186,122
+#COASTAL_POSITION= 186,121
+#DATE= 1940/01/01
+#STEAL= 1
+; Brussels(155,80)
+; Berlin(173,74)
+; Paris(151,84)
+; Brest(138,86)
+; Bordeaux
+; Rome(171,101)
+; Taranto(180,105)
+; Palermo
+; Athens
+#FRIENDLY_POSITION= 155,80
+#FRIENDLY_POSITION= 173,74
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 138,86
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 171,101
+#FRIENDLY_POSITION= 179,104
+#FRIENDLY_POSITION= 173,109
+#FRIENDLY_POSITION= 193,109
+; France(40) Allied and surrendered AND
+; USSR(116) Allied and surrendered AND
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#VARIABLE_CONDITION= 116 [2] [100] [1]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Berlin(173,74) not tactically threatened AND
+; Rome(171,101) not tactically threatened AND
+; Paris(151,84) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#TACTICAL_CONDITION= 171,101 [1]
+#TACTICAL_CONDITION= 151,84 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Italy prepares to attack North Afrika:
+{
+#NAME= Italy Build Up Amphibious - North Afrika (Tobruk)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,5
+#BUILD_LENGTH= 2
+#LENGTH= 10
+#RANGE= 25
+#LONG_RANGE= 1
+; Tobruk
+#GOAL_POSITION= 194,122
+#COASTAL_POSITION= 193,121
+#DATE= 1940/01/01
+#STEAL= 1
+; Brussels(155,80)
+; Berlin(173,74)
+; Paris(151,84)
+; Brest(138,86)
+; Bordeaux
+; Rome(171,101)
+; Taranto(180,105)
+; Palermo
+; Athens
+#FRIENDLY_POSITION= 155,80
+#FRIENDLY_POSITION= 173,74
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 138,86
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 171,101
+#FRIENDLY_POSITION= 179,104
+#FRIENDLY_POSITION= 173,109
+#FRIENDLY_POSITION= 193,109
+; France(40) Allied and surrendered AND
+; USSR(116) Allied and surrendered AND
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#VARIABLE_CONDITION= 116 [2] [100] [1]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Berlin(173,74) not tactically threatened AND
+; Rome(171,101) not tactically threatened AND
+; Paris(151,84) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#TACTICAL_CONDITION= 171,101 [1]
+#TACTICAL_CONDITION= 151,84 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }

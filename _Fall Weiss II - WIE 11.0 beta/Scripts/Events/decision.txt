@@ -215,10 +215,10 @@
 ; #COUNTRY_ID_5= Argentina
 ; #COUNTRY_ID_6= Australia
 ; #COUNTRY_ID_7= Austria
-; #COUNTRY_ID_8= Kenya
+; #COUNTRY_ID_8= Baltic States
 ; #COUNTRY_ID_9= Belgian Congo
 ; #COUNTRY_ID_10= Belgium
-; #COUNTRY_ID_11= Madagascar
+; #COUNTRY_ID_11= Benelux
 ; #COUNTRY_ID_12= Bhutan
 ; #COUNTRY_ID_13= Black
 ; #COUNTRY_ID_14= Bolivia
@@ -282,7 +282,7 @@
 ; #COUNTRY_ID_72= Nepal
 ; #COUNTRY_ID_73= Netherlands
 ; #COUNTRY_ID_74= New Zealand
-; #COUNTRY_ID_75= New Guinea
+; #COUNTRY_ID_75= Newfoundland
 ; #COUNTRY_ID_76= Nicaragua
 ; #COUNTRY_ID_77= Nigeria
 ; #COUNTRY_ID_78= Norway
@@ -3356,7 +3356,7 @@
 #ALIGNMENT_POSITION= 162,85 [2]
 ; Mulhouse is Allied
 #ALIGNMENT_POSITION= 162,87 [2]
-; Mannheim is Allied
+; Mannheim(163,83) is Allied
 #ALIGNMENT_POSITION= 163,83 [2]
 ; Stuttgart is Allied
 #ALIGNMENT_POSITION= 165,85 [2]
@@ -3399,7 +3399,7 @@
 #ALIGNMENT_POSITION= 162,85 [2]
 ; Mulhouse is Allied
 #ALIGNMENT_POSITION= 162,87 [2]
-; Mannheim is Allied
+; Mannheim(163,83) is Allied
 #ALIGNMENT_POSITION= 163,83 [2]
 ; Stuttgart is Allied
 #ALIGNMENT_POSITION= 165,85 [2]
@@ -4447,7 +4447,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-; UK: Operation Countenance: Call on the USSR to join us in Invading (Allied) Persia?
+; UK(112): Operation Countenance: Call on the USSR to join us in Invading (Allied) Persia?
 #LINK= 312[1]
 ; 312[1]->314[?]
 #DECISION= 314
@@ -4488,7 +4488,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-; UK: Operation Countenance: Call on the USSR to join us in Invading (Axis) Persia?
+; UK(112): Operation Countenance: Call on the USSR to join us in Invading (Axis) Persia?
 #LINK= 313[1]
 ; 313[1]->315[?]
 #DECISION= 315
@@ -6125,9 +6125,9 @@
 #ALIGNMENT_POSITION= 244,105 [1]
 #ALIGNMENT_POSITION= 243,104 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR is Allied and not surrendered
+; USSR(116) is Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; France is Allied and surrendered
+; France(40) is Allied and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; No Allied units are within 6 hexes of Paris(151,84) or Nantes
 #CONDITION_POSITION= 151,84 [6,6] [0,0] [2] [0]
@@ -7477,7 +7477,7 @@
 #SHADOW_RGB= 0,0,0
 ;Set Friendly Position (Belfast)
 #ALIGNMENT_POSITION= 135,68 [2]
-;Set Friendly Position (London)
+;Set Friendly Position (London(147,77))
 #ALIGNMENT_POSITION= 147,77 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; UK(112) Allied and Active
@@ -8307,7 +8307,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-; USSR Seized Bessarabia
+; USSR(116) Seized Bessarabia
 #LINK= 418[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -10671,7 +10671,7 @@
 #SHADOW_RGB= 0,0,0
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
-; Italy(59)
+; Italy(59)(59)
 #NATIONAL_MORALE_TRIGGER= 59 [20]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; 3 German units within 15 hexes of Rome
@@ -12504,7 +12504,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-; USA: Aircraft Delivery to Sweden= NO
+; USA(115): Aircraft Delivery to Sweden= NO
 #LINK= 811[0]
 #COUNTRY_ID= 59
 #TRIGGER= 100
@@ -16816,6 +16816,7 @@
 
 ; Fall Weiss II
 ; Bulgaria Axis and Mobilized
+; https://en.wikipedia.org/wiki/German%E2%80%93Turkish_Treaty_of_Friendship
 {
 #NAME= DE 960 - Germany: Sign the Clodius Agreement? (via Bulgaria) (AI - 100%)
 #POPUP=
