@@ -5,11 +5,11 @@
 ; USAGE:
 ;
 ; Basic structure for a convoy event:
-; { 
-; #NAME=  Event name 
+; {
+; #NAME=  Event name
 ;         (this will be shown as a selectable event under an OPTIONS screen within the game)
 ;
-; #POPUP= Event popup text 
+; #POPUP= Event popup text
 ;         (this will be displayed when the event occurs)
 ;
 ; #SOUND= Event sound that will be displayed when event occurs
@@ -23,7 +23,7 @@
 ;
 ; #TYPE= Value range [0, 3]
 ;        Event check type, with all other fields satisfied:
-;        0 = Single check, on or after #DATE 
+;        0 = Single check, on or after #DATE
 ;            (ignores #TRIGGER)
 ;        1 = Multiple checks, on or after #DATE, until #TRIGGER is satisfied
 ;        2 = Multiple checks, on or after #DATE, until end of game (*** not valid for UNIT events ***)
@@ -34,11 +34,11 @@
 ;        0 = Event fires whenever all fields are satisfied for any game type
 ;        1 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis
 ;        2 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied
-;        3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player, 
+;        3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player,
 ;            or on Allied Multiplayer turns
-;        4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player 
+;        4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player
 ;            or on Axis Multiplayer turns
-;        5 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis in Single Player, 
+;        5 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis in Single Player,
 ;            or for AI controlled Axis majors on Axis human player turns
 ;        6 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied in Single Player,
 ;            or for AI controlled Allied majors on Allied human player turns
@@ -55,8 +55,8 @@
 ; #GV=   Does the event activate based on the Global Variable values assigned?
 ;        Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;        Format: GV [min, max]
-;                GV range [1,10] 
-;                min range [1,100] 
+;                GV range [1,10]
+;                min range [1,100]
 ;                max range [1,100]
 ;
 ;        Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
@@ -96,23 +96,23 @@
 ;                        Reduction percentage for this season
 ;
 ; #SUMMER_REDUCTION=     Value range [0, 100]
-;                        Reduction percentage for this season 
+;                        Reduction percentage for this season
 ;
 ; #FALL_REDUCTION=       Value range [0, 100]
-;                        Reduction percentage for this season 
+;                        Reduction percentage for this season
 ;
 ; #WINTER_REDUCTION=     Value range [0, 100]
-;                        Reduction percentage for this season 
+;                        Reduction percentage for this season
 ;
-; #SOURCE_PORT=          Source port for the convoy 
+; #SOURCE_PORT=          Source port for the convoy
 ;                        Format: x,y
 ;
-; #DESTINATION_PORT=     Destination port for the convoy 
+; #DESTINATION_PORT=     Destination port for the convoy
 ;                        Format: x,y
 ;
 ; #WAYPOINT=             Convoy waypoint at sea
 ;                        Format: x,y
-; } 
+; }
 ;
 ; NOTES:
 ;
@@ -796,7 +796,7 @@
 #WAYPOINT= 128,65
 }
 
-; DE 103 - US supply convoy to the UK; 
+; DE 103 - US supply convoy to the UK;
 ; Historical date March 11, 1941
 {
 #NAME= DE 103 - US Lend Lease To The UK
@@ -1725,27 +1725,27 @@
 #NAME= DE 370 - US Lend Lease To The UK if Sealion is successful and the USSR has surrendered
 #POPUP= US Begins Lend-Lease Convoys To The UK Via Nova Scotia
 #IMAGE=
-#SOUND= convoy.ogg 
+#SOUND= convoy.ogg
 #FLAG= 1
-#TYPE= 2 
-#AI= 0 
-#LEVEL= 0 
-#GV= 1[1,100] 
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
 #LINK= 370[1]
 #SENDER_ID= 115
-#RECIPIENT_ID= 112 
-#SENDER_ID_TRIGGER= 100 
-#RECIPIENT_ID_TRIGGER= 100 
+#RECIPIENT_ID= 112
+#SENDER_ID_TRIGGER= 100
+#RECIPIENT_ID_TRIGGER= 100
 #PERCENTAGE= 0
-#MAX_PERCENTAGE= 25 
-#SPRING_REDUCTION= 100 
-#SUMMER_REDUCTION= 100 
-#FALL_REDUCTION= 100 
-#WINTER_REDUCTION= 75 
+#MAX_PERCENTAGE= 25
+#SPRING_REDUCTION= 100
+#SUMMER_REDUCTION= 100
+#FALL_REDUCTION= 100
+#WINTER_REDUCTION= 75
 #SOURCE_PORT= 6,112
 #DESTINATION_PORT= 25,96
-#WAYPOINT= 20,105 
-#WAYPOINT= 20,99 
+#WAYPOINT= 20,105
+#WAYPOINT= 20,99
 }
 
 ; DE 635 - Norwegian supply convoys to Germany:
@@ -1938,7 +1938,7 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 847 - German Supply Shipments To Finland (Pact)
+#NAME= [FW]DE 847 - German Supply Shipments To Finland (Pact)
 #POPUP=
 #IMAGE=
 #SOUND= convoy.ogg
@@ -1970,7 +1970,7 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 847 - German Supply Shipments To Finland (No Pact)
+#NAME= [FW]DE 847 - German Supply Shipments To Finland (No Pact)
 #POPUP=
 #IMAGE=
 #SOUND= convoy.ogg

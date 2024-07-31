@@ -330,62 +330,6 @@
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Fall Weiss II
-{
-#NAME= Finland Fortification - Lappenranta (1)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 39
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-; South East
-#EDGE= 2
-#EDGE= 3
-#EDGE= 4
-; Coastal
-#GOAL_POSITION= 203,47
-#DATE= 1939/09/01
-; Sortavala
-#FRIENDLY_POSITION= 203,48
-; Germany(45) Allied and not surrendered
-#VARIABLE_CONDITION= 39 [1] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 195,51 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= Finland Fortification - Sortavala (1)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 39
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-; South East
-#EDGE= 2
-#EDGE= 3
-#EDGE= 4
-; Coastal
-#GOAL_POSITION= 208,46
-#DATE= 1939/09/01
-; Sortavala
-#FRIENDLY_POSITION= 207,45
-; Germany(45) Allied and not surrendered
-#VARIABLE_CONDITION= 39 [1] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 195,51 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
 {
 #NAME= Germany Fortification - France (1)
 #POPUP=
@@ -396,7 +340,6 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-;
 #EDGE= 1
 #EDGE= 2
 #EDGE= 6
@@ -774,7 +717,7 @@
 
 ; Fall Weiss II
 {
-#NAME= Romania Fortification - Bucharest(1)
+#NAME= [FW]Romania Fortification - Bucharest(1)
 #POPUP=
 #FLAG= 1
 #TYPE= 1
@@ -802,7 +745,7 @@
 
 ; Fall Weiss II
 {
-#NAME= Romania Fortification - Bucharest(3)
+#NAME= [FW]Romania Fortification - Bucharest(3)
 #POPUP=
 #FLAG= 1
 #TYPE= 1
@@ -1705,6 +1648,62 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Moscow(221,65) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fall Weiss II
+{
+#NAME= [FW]Finland Fortification - Lappenranta (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 39
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+; South East
+#EDGE= 2
+#EDGE= 3
+#EDGE= 4
+; Coastal
+#GOAL_POSITION= 203,47
+#DATE= 1939/09/01
+; Sortavala
+#FRIENDLY_POSITION= 203,48
+; Germany(45) Allied and not surrendered
+#VARIABLE_CONDITION= 39 [1] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 195,51 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fall Weiss II
+{
+#NAME= [FW]Finland Fortification - Sortavala (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 39
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+; South East
+#EDGE= 2
+#EDGE= 3
+#EDGE= 4
+; Coastal
+#GOAL_POSITION= 208,46
+#DATE= 1939/09/01
+; Sortavala
+#FRIENDLY_POSITION= 207,45
+; Germany(45) Allied and not surrendered
+#VARIABLE_CONDITION= 39 [1] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 195,51 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }

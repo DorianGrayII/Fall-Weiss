@@ -906,7 +906,7 @@
 ; Fall Weiss II
 ; Malta limits Axis supply in the Mediterranean
 {
-#NAME= Malta AF Effect (Tripoli, Tobruk)
+#NAME= [FW]Malta AF Effect (Tripoli, Tobruk)
 #POPUP= Allied Navy Hinders Axis Reinforcing North Africa
 #IMAGE=
 #SOUND=
@@ -1318,7 +1318,7 @@
 }
 
 {
-#NAME= DE 114 - British Commandos Raid Norway - Bergen
+#NAME= DE 114 - British Commandos Raid Norway - Bergen (2%)
 #POPUP= British Commandos Raid Bergen In Norway
 #IMAGE= commando7.png
 #SOUND=
@@ -1341,7 +1341,7 @@
 }
 
 {
-#NAME= DE 114 - British Commandos Raid Norway - Trondheim
+#NAME= DE 114 - British Commandos Raid Norway - Trondheim (2%)
 #POPUP= British Commandos Raid Trondheim In Norway
 #IMAGE= commando6.png
 #SOUND=
@@ -1365,7 +1365,7 @@
 }
 
 {
-#NAME= DE 114 - British Commandos Raid Norway - Narvik
+#NAME= DE 114 - British Commandos Raid Norway - Narvik (2%)
 #POPUP= British Commandos Raid Narvik In Norway
 #IMAGE= commando5.png
 #SOUND=
@@ -1388,7 +1388,7 @@
 }
 
 {
-#NAME= DE 114 - British Commandos Raid France - Calais
+#NAME= DE 114 - British Commandos Raid France - Calais (2%)
 #POPUP= British Commandos Raid Calais
 #IMAGE= commando4.png
 #SOUND=
@@ -1411,7 +1411,7 @@
 }
 
 {
-#NAME= DE 114 - British Commandos Raid France - St Malo
+#NAME= DE 114 - British Commandos Raid France - St Malo (2%)
 #POPUP= British Commandos Raid St Malo
 #IMAGE= commando3.png
 #SOUND=
@@ -1434,7 +1434,7 @@
 }
 
 {
-#NAME= DE 114 - British Commandos Raid Belgium - Ostend
+#NAME= DE 114 - British Commandos Raid Belgium - Ostend (2%)
 #POPUP= British Commandos Raid The Belgian Coast
 #IMAGE= commando1.png
 #SOUND=
@@ -1456,7 +1456,7 @@
 }
 
 {
-#NAME= DE 114 - British Commandos Raid Spain - Coruña
+#NAME= DE 114 - British Commandos Raid Spain - Coruña (2%)
 #POPUP= British Commandos Raid The Spanish Coast
 #IMAGE= commando2.png
 #SOUND=
@@ -1890,7 +1890,7 @@
 
 ; Stalingrad Supply - continuous
 {
-#NAME= DE 530 - Stalingrad Supply Reduction
+#NAME= [FW]DE 530 - Stalingrad Supply Reduction
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1900,6 +1900,31 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 530[1]
+#COUNTRY_ID= 116
+#ALIGNMENT_ID= 0
+#FLAG_ID= 45
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/01/01
+#SOURCE_POSITION=
+; Stalingrad(234,85)
+#DESTINATION_RESOURCE= 234,85 [10,10]
+; Germany(45) is Axis and not surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; Stalingrad Supply - continuous
+{
+#NAME= [FW]DE 531 - Stalingrad Supply Reduction
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 531[1]
 #COUNTRY_ID= 116
 #ALIGNMENT_ID= 0
 #FLAG_ID= 45
@@ -2114,7 +2139,7 @@
 ; Fall Weiss II
 ; Supply Line 1940 North Africa
 {
-#NAME= DE 832 - Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
+#NAME= [FW]DE 832 - Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
 #POPUP= Italian Supply Line Are Severely Stretched East Of Tobruk
 #IMAGE=
 #SOUND=
@@ -2150,7 +2175,7 @@
 ; Fall Weiss II
 ; Supply Line 1940 North Africa
 {
-#NAME= DE 832 - Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
+#NAME= [FW]DE 832 - Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
 #POPUP= Italian Supply Line Are Severely Restricted East Of Tobruk (Bardia, Sidi Barrani, Mersa Matruh)
 #IMAGE=
 #SOUND=
@@ -2186,7 +2211,7 @@
 ; Fall Weiss II
 ; Supply Line 1940 North Africa
 {
-#NAME= DE 832 - Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
+#NAME= [FW]DE 832 - Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
 #POPUP= Italian Supply Line Are Severely Stretched East Of Tobruk
 #IMAGE=
 #SOUND=
@@ -2222,7 +2247,7 @@
 ; Fall Weiss II
 ; Allies In Egypt Support Greece
 {
-#NAME= DE 838 - Allies In Egypt Support Greece
+#NAME= [FW]DE 838 - Allies In Egypt Support Greece
 #POPUP= Impromptu Allied Expedition To Greece Disrupts Supply-chain In Egypt
 #IMAGE=
 #SOUND=
@@ -2253,7 +2278,7 @@
 ; Fall Weiss II
 ; Stop Greece From Reinforcing Yugoslavia
 {
-#NAME= DE 838 - Stop Greece From Reinforcing Yugoslavia
+#NAME= [FW]DE 838 - Stop Greece From Reinforcing Yugoslavia
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2282,7 +2307,7 @@
 ; Fall Weiss II
 ; Protests At Helsinki
 {
-#NAME= DE 847 - Finland: Helsinki Protests (5%)
+#NAME= [FW]DE 847 - Finland: Helsinki Protests (5%)
 #POPUP= Demonstrations Against War With The Western Allies Disrupt Supply In Helsinki
 #IMAGE=
 #SOUND=
@@ -2311,7 +2336,7 @@
 ; Fall Weiss II
 ; South Atlantic Raiders
 {
-#NAME= DE 854 - South Atlantic Raiders
+#NAME= [FW]DE 854 - South Atlantic Raiders
 #POPUP= KMS Admiral Graf Spee Disrupts South Atlantic Convoys
 #IMAGE=
 #SOUND=
@@ -2339,7 +2364,7 @@
 ;
 ; Fall Weiss II
 {
-#NAME= DE 871 - Oil Shortages Hamper Axis Economies (15%)
+#NAME= [FW]DE 871 - Oil Shortages Hamper Axis Economies (15%)
 #POPUP= Oil Shortages Hamper Axis Economies
 #IMAGE=
 #SOUND=
@@ -2372,7 +2397,7 @@
 ;
 ; Fall Weiss II
 {
-#NAME= DE 890 - Supply Shortages Hamper Spanish Economies (10%)
+#NAME= [FW]DE 890 - Supply Shortages Hamper Spanish Economies (10%)
 #POPUP= Supply Shortages Hamper Spanish Economies
 #IMAGE=
 #SOUND=

@@ -135,7 +135,7 @@ All Campaigns
 - Geneva and Zurich added as Swiss alternate capitals (Checksum).
 - The cost of Anti-Tank research has been reduced from 150 to 125 MPPs for the USSR and Germany, and from 100 to 95 MPPs for all other countries (Mithrilotter).
 - Infantry Weapons and Heavy Tanks research now provides a 0.5 increase in attack and defense values against Transports (HamburgerMeat).
-- The Spanish Republican resistance can now provide intelligence to S.O.E. on an Axis build up in Spain from January 1943 rather than 1944 (wobbleguts).
+- The Spanish Republican resistance can now provide intelligence to SOE on an Axis build up in Spain from January 1943 rather than 1944 (wobbleguts).
 - The National Morale scripts for the loss of Manchester and liberation of London will now display text correctly in all languages (Armuss).
 - The following National Morale scripts now require Perm rather than Moscow to be in Allied hands to fire (BigJohn):
 #NAME= USSR - Soviet Morale Improves As The War On The Eastern Front Continues
@@ -201,7 +201,7 @@ GAME ENGINE
 - Fixed a rare (usually a first turn issue but only if the script exists) combat error where any AI units that moved into place via GUARD scripts did not record that they had 'moved', providing a blitz attack bonus for these units (Illbeard)
 - Fixed a combat NM calculation error for when a defending unit is attacked in port, the attacker no longer loses NM when the attacker does not suffer a strength point loss (Checksumchecks)
 - Fixed a Production Lost error for when a country surrenders and moves its Government to a new country
-- Fixed a Research log error that did not properly display the research advancements and progression of your side under Fog of War 
+- Fixed a Research log error that did not properly display the research advancements and progression of your side under Fog of War
 - Fixed a 'shattered' from combat calculation error that did not update HQ experience, National Morale and MPPs graphs values (Checksumchecks)
 - AI Medium Bombers will now attack in a sequence prior to AI Tactical Bombers (SittingDuck).
 
@@ -235,7 +235,7 @@ Strategy Guides
 v1.23.00
 
 GAME ENGINE
-- Fixed an issue where active convoy calculations were performed prior to resource strength calculations, which could incorrectly result in some convoys showing as invalid, due to a weakened port, prior to the final resource strength updates (Mithilotter). 
+- Fixed an issue where active convoy calculations were performed prior to resource strength calculations, which could incorrectly result in some convoys showing as invalid, due to a weakened port, prior to the final resource strength updates (Mithilotter).
 - Fixed an issue where renaming your HQ in the PURCHASE screen would not remove the originally named HQ from the list (ArcturusRising).
 - Fixed an issue where a SURRENDER_2 event would incorrectly remove a friendly unit relative to the event recipient ID when located in the capital (petedalby).
 - Removed the GDI+ installed check at runtime.
@@ -340,7 +340,7 @@ v1.21.01
 
 GAME ENGINE CHANGES
 - Fixed a display error when navigating through the strategic menu options, e.g. War Map, Purchase Units etc, on displays with < 960 vertical pixels.
-- Fixed a unit indicator sprite issue that would stometimes stop flashing when performing a brief quick scroll via a mouse move along the edge of the game window (Narisomo). 
+- Fixed a unit indicator sprite issue that would stometimes stop flashing when performing a brief quick scroll via a mouse move along the edge of the game window (Narisomo).
 - Fixed a maximum map zoom error when the game is paused during a DECISION event and viewing the map (wobbleguts).
 - Fixed an Amphibious Transport CTD that occurred when attempting to embark in an enemy Land + Sea hex (Randomluck).
 - Fixed an MPPs and Strategic Bombing graphs page errors that was not always showing accurate values (LoneRunner).
@@ -350,7 +350,7 @@ GAME ENGINE CHANGES
 - Removed 'Town' from list of resources via the mouse hover tip in the REPORTS screen as they are not included (Narisomo).EDITOR CHANGES
 
 
-v1.21.00 
+v1.21.00
 
 GAME ENGINE CHANGES
 - Fixed a controlled unit movement error that led to a CTD when attempting to end the move along several hidden enemy units (EQFL_Sapare).
@@ -368,8 +368,8 @@ GAME ENGINE CHANGES
 - Mods with zero cost units can now have units upgraded and purchased (stalkerbrumikcz).
 - Enemy targets and estimated losses for fully visible units/resources can now be highlighted when selecting a friendly unit to attack via the OPTIONS->ADVANCED settings.
 - Units can now be put to sleep for one turn via the Sleep Tool mouse hover and pressing the space bar instead of a left mouse button click (EQFL_Sapare).
-- Units set to sleep will now also be skipped by the AI when it is controlling friendly countries and units on your turn (EQFL_Sapare).  
-	- Left mouse button click will still perform the regular 'sleep' function.  
+- Units set to sleep will now also be skipped by the AI when it is controlling friendly countries and units on your turn (EQFL_Sapare).
+	- Left mouse button click will still perform the regular 'sleep' function.
 	- Units set to sleep for one turn will have this indicated with a black dot instead of a white dot which indicates regular 'sleep'.
 - Naval units can now have a maximum supply that matches the max port strength providing supply, previously naval units were capped at 10 supply even if a port provided 12 supply.  All other naval supply rules remain the same, e.g. a 5 strength port can still provide maximum 10 supply to naval units.
 - Air units will now gain maximum supply from any source, so long as they are attached to an HQ (Pocus).
@@ -387,22 +387,22 @@ GAME ENGINE CHANGES
            - HQ supply > 5 will have a distribution supply value of 10.
     - HQ boosting can only be achieved if the first HQ has a supply value >= 3 (previously it was > 0).
            - The HQ to be boosted must have a supply value < 5 and is now automatically increased to a supply value of 5 which caps its distribution supply at 8.
-           - This will improve distribution supply for boosted HQs that were at 3 or 4 supply (from 6 to 8), and more importantly, will allow them to 'operate' and 'upgrade' now that they are at 5 supply. 
+           - This will improve distribution supply for boosted HQs that were at 3 or 4 supply (from 6 to 8), and more importantly, will allow them to 'operate' and 'upgrade' now that they are at 5 supply.
     - LOW SUPPLY HQ boosting can only be achieved if the source HQ has a supply value >= 1 and < 3.
-           - The HQ to be boosted must have a supply value < 3 and is now automatically increased to a supply value of 5 which caps its distribution supply at 6.	
+           - The HQ to be boosted must have a supply value < 3 and is now automatically increased to a supply value of 5 which caps its distribution supply at 6.
     - Between two HQs, the higher rated HQ receives the boost, the lower rated HQ is the source of the boost.
-    - Source HQs of a supply boost to another HQ are now highlighted with a yellow hex outline, indicating they are the source of the supply boost, when clicking on the recipient HQ.	
+    - Source HQs of a supply boost to another HQ are now highlighted with a yellow hex outline, indicating they are the source of the supply boost, when clicking on the recipient HQ.
     - Air units do not receive supply from an HQ unless they are attached.
       - Under supplied Air units, due to not being attached to an HQ, will be indicated by a red hatch beneath the applicable Air unit.
       - Under supplied Air units, attached to an HQ but not to the most optimal supply giving HQ, will be indicated by a purple hatch beneath the applicable Air unit.
-      
+
 EDITOR CHANGES
 - The following have been adjusted from 5 point increments to 1 point increments for more precision when customizing campaigns (Elessar2).
     - Combat Target Data, Raid Multiplier (MPPs), Enemy NM Losses (Per Raid)
     - Upgrade Increments Data (per research level), Raid Multiplier (MPPs), Enemy NM Losses (Per Raid)
     - Automatic Increments Data (per research level), Raid Multiplier (MPPs), Enemy NM Losses (Per Raid)
-    - Strength/Reinforce/Reformation Data, % Cost Per Reinforcement Point, % Cost Per Elite Reinforcement Point 
-    
+    - Strength/Reinforce/Reformation Data, % Cost Per Reinforcement Point, % Cost Per Elite Reinforcement Point
+
 1939 Campaign
 - France's starting MPPs increased from 75 to 90.
 - French 2nd Army at Verdun and 9th Army at 155,82 increased in strength from 5 to 8, 1st Army at 153,81 increased in strength from 5 to 6, XLIV Corps at Epinal; IX Corps at Belfort increased in strength from 5 to 6. This is the equivalent of 100 MPPs worth of reinforcements.
@@ -424,7 +424,7 @@ All Campaigns
 - USSR's Corps and Army statistics corrected (Gilber).
 
 1939 and 1940 Strategy Guides
-- An explanation including a map on Italian Mobilization added (with special thanks to OldCrowBalthazor). 
+- An explanation including a map on Italian Mobilization added (with special thanks to OldCrowBalthazor).
 
 
 v1.20.00
@@ -477,7 +477,7 @@ All Campaigns
 v1.19.00
 
 GAME ENGINE CHANGES
-- Fixed a Maritime Bomber error that did not take into account its ASW when attacking a sub (Mithrilotter). 
+- Fixed a Maritime Bomber error that did not take into account its ASW when attacking a sub (Mithrilotter).
 - Fixed a FoW error that would cause subs to disappear from the screen when they were in Silent mode and within a shroud lifted area after a friendly Carrier would move within spotting range but not adjacent to the sub (Mithrilloter).
 - Fixed a convoy path checking error that did not consider control of Land + Sea hexes when checking for proper convoy path validity (sschnar1).
 - Fixed a combat error that did not have friendly artillery return fire from an controlled Heavy Artillery attack if within range (Mithrilotter).
@@ -502,11 +502,11 @@ GAME ENGINE CHANGES
            - HQ supply > 5 will have a distribution supply value of 10.
     - HQ boosting can only be achieved if the first HQ has a supply value >= 3 (previously it was > 0).
            - the HQ to be boosted must have a supply value < 5 and is now automatically increased to a supply value of 5 which caps its distribution supply at 8.
-           - this will improve distribution supply for boosted HQs that were at 3 or 4 supply (from 6 to 8), and more importantly, will allow them to 'operate' and 'upgrade' now that they are at 5 supply. 
+           - this will improve distribution supply for boosted HQs that were at 3 or 4 supply (from 6 to 8), and more importantly, will allow them to 'operate' and 'upgrade' now that they are at 5 supply.
     - LOW SUPPLY HQ boosting can only be achieved if the source HQ has a supply value >= 1 and < 3.
-           - the HQ to be boosted must have a supply value < 3 and is now automatically increased to a supply value of 5 which caps its distribution supply at 6.	
+           - the HQ to be boosted must have a supply value < 3 and is now automatically increased to a supply value of 5 which caps its distribution supply at 6.
     - Between two HQs, the higher rated HQ receives the boost, the lower rated HQ is the source of the boost.
-    - Source HQs of a supply boost to another HQ are now highlighted with a yellow hex outline, indicating they are the source of the supply boost, when clicking on the recipient HQ.	
+    - Source HQs of a supply boost to another HQ are now highlighted with a yellow hex outline, indicating they are the source of the supply boost, when clicking on the recipient HQ.
     - Air units do not receive supply from an HQ unless they are attached.
       - Under supplied Air units, due to not being attached to an HQ, will be indicated by a red hatch beneath the applicable Air unit.
       - Under supplied Air units, attached to an HQ but not to the most optimal supply giving HQ, will be indicated by a purple hatch beneath the applicable Air unit.
@@ -552,7 +552,7 @@ All Campaigns
 - Corrected DE 405 for the USSR to form I Polish Corps as previously it was referring to DE 400 (crispy131313).
 
 1943 & 1944 Campaigns
-- Greatly reduced the chance of the AI building some naval unit types (usual2020). 
+- Greatly reduced the chance of the AI building some naval unit types (usual2020).
 
 
 v1.18.00
@@ -581,9 +581,9 @@ GAME ENGINE CHANGES
 All Campaigns
 - Germany's base HQ Build Limit increased from 6 to 7 (Sugar).
 - The London Home Guard may now mobilize in response to Axis Amphibious Transports approaching the UK coast near London.
-- Volkssturm In Konigsberg may now mobilize in response to approaching Allied Amphibious Transports. 
+- Volkssturm In Konigsberg may now mobilize in response to approaching Allied Amphibious Transports.
 - USSR scorched earth settings changed from 30 -> 50%, to 40 -> 50% for Settlements, Towns and Fortified Towns (Taifun).
-- Unit script header text relating to '#DISPLAY_TURN=' updated. 
+- Unit script header text relating to '#DISPLAY_TURN=' updated.
 
 1939 and 1940 Campaigns
 - Mobilization_2 scripts for Finland and Sweden amended so they now check for only Amphibious Transports within 1-2 hexes of key locations.
@@ -634,7 +634,7 @@ GAME ENGINE CHANGES/FIXES
 
 All Campaigns
 - Improved AI RESEARCH and PURCHASE scripts (Armuss).
-- Amended Decision 674 for Operation Axis so that it has Italy's #COUNTRY_ID= rather than Germany's to ensure it fires correctly. 
+- Amended Decision 674 for Operation Axis so that it has Italy's #COUNTRY_ID= rather than Germany's to ensure it fires correctly.
 
 1939 and 1940 Campaigns
 - A French Garrison unit now starts in Oran.
@@ -643,10 +643,10 @@ All Campaigns
 - The Trigger % for Italy to mobilize 1-2% towards the Axis if the Allies abandon positions in the Mediterranean has been reduced from 50 to 40%.
 
 1939-1943 Campaigns
-- Amended Decision 674 for Operation Axis so that it has Italy's #COUNTRY_ID= rather than Germany's to ensure it fires correctly. 
+- Amended Decision 674 for Operation Axis so that it has Italy's #COUNTRY_ID= rather than Germany's to ensure it fires correctly.
 
 1939, 1940, 1941, 1942 and 1944 Campaigns
-- Soviet Corps and Army Combat Target Statistics corrected in all campaigns apart from 1943 as the 1943 campaign did not need correction (Etzel). 
+- Soviet Corps and Army Combat Target Statistics corrected in all campaigns apart from 1943 as the 1943 campaign did not need correction (Etzel).
 
 1939 Campaign
 - Mobilization_1 script #NAME= General Surrenders To Axis (Italy->Axis) now requires Poland to have surrendered for it to fire (PvtBenjamin).
@@ -655,7 +655,7 @@ All Campaigns
 - The Yugoslav Coup triggered by the British Decision Event 104 now has an equal chance of happening on the 3rd March, 4th April or 26th April 1941.
 
 1943 Campaign
-- Reduced the land spotting of all surface combat vessels and regular Transports from 1 to 0 in the 1943 campaign (Markiss). 
+- Reduced the land spotting of all surface combat vessels and regular Transports from 1 to 0 in the 1943 campaign (Markiss).
 
 1944 Campaign
 - Fixed an error where Italy was set to have Aerial Warfare Level-2 where the max for all countries is set to 1 (Armuss).
@@ -675,7 +675,7 @@ GAME ENGINE CHANGES/FIXES
 - Custom campaign strategy guides will now launch from the campaign Manuals folder, previously it was the Docs folder, e.g. Campaigns\_myCustomCampaign\Manuals\Strategy Guide.pdf
 
 All Campaigns
-- Amphibious Transport (Long Range) increased from nil to zero for all applicable nations so as to enable them to increase via Amphibious Warfare research. 
+- Amphibious Transport (Long Range) increased from nil to zero for all applicable nations so as to enable them to increase via Amphibious Warfare research.
 
 1939 and 1940 Campaign
 - DE 301 changed to a 100% trigger from 50% (PvtBenjamin).
@@ -685,7 +685,7 @@ v1.17.00
 
 GAME ENGINE CHANGES/FIXES
 - Fixed an AI air unit attack error that allowed AI units to fly over neutral territory for attacks (greyshaft).
-- Fixed a max UNIT reinforcement error for when available MPPs would give you less than the maximum amount of reinforcement a unit could otherwise have (Mithrilotter). 
+- Fixed a max UNIT reinforcement error for when available MPPs would give you less than the maximum amount of reinforcement a unit could otherwise have (Mithrilotter).
 - Fixed an experience loss reporting error for the UNIT REINFORCEMENT screen when unit experience = 0.
 - Fixed a unit attrition reporting error for non visible (hidden) enemy units.
 - Fixed a convoy raiding error that did not have non submarine raiders gain experience unless they were directly on the convoy line (Gilles).
@@ -705,12 +705,12 @@ GAME ENGINE CHANGES/FIXES
 - Fixed a SURRENDER_2 event firing issue, was not firing in some cases, that was linked to dummy DECISION event.
 - Fixed a custom campaign strategy guide launch error (El Condoro).
 - Added a map scroll speed adjustment bar in the SETTINGS screen.
-- Attacks against Ports will now target the port first and then any Transport unit located within the port with a 100% chance of potentially damaging the Transport.  Previously these attacks would only attack a Transport within a port. 
+- Attacks against Ports will now target the port first and then any Transport unit located within the port with a 100% chance of potentially damaging the Transport.  Previously these attacks would only attack a Transport within a port.
 - Port blockades can now only occur if the blockading unit has a supply value > 0.  Transports can no longer blockade a port (Helsingor).
 - HQ auto and assist attachments will now prioritize stronger units when possible (Tanaka).
 - HQ highlights for assist and manual modes will now show green for attached, red for attached to another HQ, and blue for unattached for all applicable units that are within the attachable range (ArtDen, budd).
 - Improved the handling of New Units placements where it will refocus the game map appropriately on the available placement locations (dhucul2011).
-- Optimized the display of unit Supply values on the map (uneducated). 
+- Optimized the display of unit Supply values on the map (uneducated).
 - Surprise enemy contacts where the defender is favoured will no longer apply the +/- 1 to combat in order to guarantee the predicted result for the defender (Markiss)
 - Amphibious Transports can no longer unload on the same turn they were loaded onto an Amphibious Transport.
 - Source HQs of a supply boost to another HQ are now highlighted with a yellow hex outline, indicating they are the source of the supply boost, when clicking on the recipient HQ (Taxman66).
@@ -745,7 +745,7 @@ All Campaigns
 - All convoys to the British government in exile in Canada now arrive at Yarmouth Port rather than Halifax Port (Gilber).
 - The trigger % for Romania switching sides has been increased from 50% to 75% per turn that the trigger is satisfied (dhucul2011) and it will now fire if other Allied units are present, they no longer have to necessarily be Soviet (Mithrilotter).
 - The trigger % for Bulgaria switching sides has been increased from 25% to 50% per turn that the trigger is satisfied (dhucul2011).
-- Italy losing Milan will now reduce Italian National Morale by 7,500 points rather than 5,000. 
+- Italy losing Milan will now reduce Italian National Morale by 7,500 points rather than 5,000.
 
 
 v1.16.03
@@ -783,7 +783,7 @@ GAME ENGINE CHANGES/FIXES
        - HQ supply > 5 will have a distribution supply value of 10.
 - HQs (boosting recap) can now only be linked if the first HQ has a supply value >= 3.
        - the HQ to be linked must have a supply value < 5 and is now automatically boosted to a supply value of 5 which caps its distribution supply at 8.
-       - this will improve distribution supply for boosted HQs that were at 3 or 4 supply (from 6 to 8), and more importantly, will allow them to 'operate' and 'upgrade' now that they are at 5 supply. 
+       - this will improve distribution supply for boosted HQs that were at 3 or 4 supply (from 6 to 8), and more importantly, will allow them to 'operate' and 'upgrade' now that they are at 5 supply.
 - SUPPLY SCRIPT events such as the Malta Supply Reduction event for Axis resources in North Africa, will require #SOURCE_POSITION units to have a strength >= 5 or the event will not fire.  Suppression as opposed to outright capture of locations such as Malta will now be possible in order to negate the supply reduction effects.
 
 EDITOR CHANGES/FIXES
@@ -845,7 +845,7 @@ EDITOR CHANGES/FIXES
 
 
 
-v1.16 
+v1.16
 
 GAME ENGINE CHANGES/FIXES
 - fixed a spotting issue under fog of war that did not have Amphibious Transports reveal hidden enemy adjacent land unit targets, after they have moved to a coastline, in some cases.
@@ -870,7 +870,7 @@ GAME ENGINE CHANGES/FIXES
 - fixed a Reports screen error that did not count Major Cities and Major Capitals when mouse hovering over the bar chart for Cities.
 - fixed an error that did not take into account an enemy crossing action point penalty value for Major Rivers.
 - fixed an error that did not take into account general action point penalties for River terrains.
-- fixed a Diplomacy screen error where friendly majors not yet at 100% were not showing in the list. 
+- fixed a Diplomacy screen error where friendly majors not yet at 100% were not showing in the list.
 - fixed a Diplomacy screen error that did not list fully mobilized Minor countries that are not yet at war with the currently selected Major.
 - fixed a National Morale error that saw large decreases of National Morale during Strategic Bombing attacks.
 - fixed an HQ attachment error that allowed you to attach/detach units that had attacked but not yet moved.
@@ -916,12 +916,12 @@ GAME ENGINE CHANGES/FIXES
 - players now have the option to play past the default end date via the OPTIONS->ADVANCED screen. All victory scripts designed to run only at the end game date will also be automatically skipped, however those that are set to run at any time once in game conditions are satisfied, will still fire as expected.
 - Amphibious Transports will now display the number of 'strikes' available when selecting or mouse hovering above the unit.
 - Amphibious Transports will now automatically re-calculate and re-highlight any available unload hexes after moving adjacent to a shoreline as well as after attacking a coastal defender.
-- zero supply units, HQs excluded, automatically lose 1 strength point per turn if and only if they are at least one hex beyond traceable supply. 
+- zero supply units, HQs excluded, automatically lose 1 strength point per turn if and only if they are at least one hex beyond traceable supply.
 - automatic interception will now select fighters with an optimal combination of high readiness and advanced aircraft research level.
 - information tips added to Diplomacy screen to help further indicate the diplomatic status of the majors listed at the top of the country list.
 - upper left country flag selection in the game screen will now default to the first non AI controlled friendly major country ID on your side when playing an AI game.
 - selecting a major in the upper left country flag selection area of the game screen will now determine the first major country ID selected when navigating the various interface screens.
-- AI will no longer disproportionately focus on Coastal Guns with its navy, and will try and avoid Kamikaze attacks on enemy subs since they are likely to dive. 
+- AI will no longer disproportionately focus on Coastal Guns with its navy, and will try and avoid Kamikaze attacks on enemy subs since they are likely to dive.
 - POPUPs specific to AI controlled Majors on your side will no longer appear during your turn.
 - FoW will no longer be recalculated before a friendly Major is controlled by the AI on your turn.
 - hidden resources on the map will no longer appear in any reports screens and/or totals.
@@ -969,7 +969,7 @@ GAME ENGINE CHANGES/FIXES
 	  Users\<username>\Documents\My Games\Strategic Command WWII - World at War\Mods\<modfoldername>
 	  Users\<username>\Documents\My Games\Strategic Command WWII - World at War\Mods\<modfoldername>\Bitmaps
 	  Users\<username>\Documents\My Games\Strategic Command WWII - World at War\Mods\<modfoldername>\Interface etc.
-	  
+
 EDITOR CHANGES/FIXES
 - forced march and naval cruise range multipliers are now editable.
 - max strength for resources amended to 15 from 20.

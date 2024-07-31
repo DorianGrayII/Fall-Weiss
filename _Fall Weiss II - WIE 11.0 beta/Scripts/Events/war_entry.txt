@@ -5,11 +5,11 @@
 ; USAGE:
 ;
 ; Basic structure for a war entry event:
-; { 
-; #NAME=  Event name 
+; {
+; #NAME=  Event name
 ;         (this will be shown as a selectable event under an OPTIONS screen within the game)
 ;
-; #POPUP= Event popup text 
+; #POPUP= Event popup text
 ;         (this will be displayed when the event occurs)
 ;
 ; #IMAGE= Event image that will be displayed when event occurs
@@ -28,7 +28,7 @@
 ;
 ; #TYPE= Value range [0, 3]
 ;        Event check type, with all other fields satisfied:
-;        0 = Single check, on or after #DATE 
+;        0 = Single check, on or after #DATE
 ;            (ignores #TRIGGER)
 ;        1 = Multiple checks, on or after #DATE, until #TRIGGER is satisfied
 ;        2 = Multiple checks, on or after #DATE, until end of game (*** not valid for UNIT events ***)
@@ -39,11 +39,11 @@
 ;        0 = Event fires whenever all fields are satisfied for any game type
 ;        1 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis
 ;        2 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied
-;        3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player, 
+;        3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player,
 ;            or on Allied Multiplayer turns
-;        4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player 
+;        4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player
 ;            or on Axis Multiplayer turns
-;        5 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis in Single Player, 
+;        5 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis in Single Player,
 ;            or for AI controlled Axis majors on Axis human player turns
 ;        6 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied in Single Player,
 ;            or for AI controlled Allied majors on Allied human player turns
@@ -60,8 +60,8 @@
 ; #GV=   Does the event activate based on the Global Variable values assigned?
 ;        Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;        Format: GV [min, max]
-;                GV range [1,10] 
-;                min range [1,100] 
+;                GV range [1,10]
+;                min range [1,100]
 ;                max range [1,100]
 ;
 ;        Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
@@ -91,7 +91,7 @@
 ;                   1 = Axis
 ;                   2 = Allied
 ;
-; #DATE=        Date that must be satisfied (in game) for event to occur 
+; #DATE=        Date that must be satisfied (in game) for event to occur
 ;               Format: yyyy/mm/dd
 ;
 ; #VARIABLE_CONDITION= Under what variable conditions will this event occur
@@ -356,9 +356,9 @@
 #TRIGGER= 50
 #ALIGNMENT= 1
 #DATE= 1942/06/01
-; Iraq Axis and not surrendered
-; Turkey Axis and not surrendered
-; Syria Axis and not surrendered
+; Iraq(56) Axis, mobilized and not surrendered
+; Turkey(111) Axis, mobilized and not surrendered
+; Syria(105) Axis and not surrendered
 #VARIABLE_CONDITION= 56 [1] [100] [0]
 #VARIABLE_CONDITION= 111 [1] [100] [0]
 #VARIABLE_CONDITION= 105 [1] [100] [0]
@@ -379,7 +379,7 @@
 #COUNTRY_ID= 93
 #TRIGGER= 35
 #ALIGNMENT= 1
-; Historic Date - 1 month
+; Historic Date minus 1 month
 #DATE= 1940/10/23
 ; Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
@@ -403,6 +403,7 @@
 #DATE= 1942/05/01
 ; Iraq Axis and not surrendered
 ; Turkey Axis and not surrendered
+; Syria(105) Axis
 #VARIABLE_CONDITION= 56 [1] [100] [0]
 #VARIABLE_CONDITION= 111 [1] [100] [0]
 #VARIABLE_CONDITION= 105 [1] [0] [0]
@@ -467,27 +468,6 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
-; Fall Weiss II
-; Finland declared war on the USSR shortly after Barbarossa was launched 1941/06/22
-{
-#NAME= DE 450 - Finland: Finland DoW On The USSR
-#POPUP= Finland Enters The War Against The USSR
-#IMAGE= finlandenterswar.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 450[1]
-#COUNTRY_ID= 39
-#TRIGGER= 100
-#ALIGNMENT= 1
-#DATE= 1939/09/01
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-}
-
 {
 #NAME= DE 603 - Spain: Spain Joins The Axis
 #POPUP=
@@ -503,10 +483,13 @@
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1939/09/03
+; Spain(99)
 #VARIABLE_CONDITION= 99 [1] [0] [0]
 }
 
 ; Historic Date: 1941/03
+; https://en.wikipedia.org/wiki/Bulgaria_during_World_War_II
+; https://history.army.mil/books/wwii/balkan/20_260_1.htm
 {
 #NAME= DE 611 - Bulgaria: Bulgaria Joins The Axis (1)
 #POPUP= Bulgaria Signs Military Pact With Axis
@@ -548,6 +531,7 @@
 #VARIABLE_CONDITION= 19 [1] [0] [0]
 }
 
+; TODO - revisit later
 ; Historic Date: 1940/11/20
 {
 #NAME= DE 611 - Hungary: Hungary Joins The Axis (1) (50%)
@@ -559,17 +543,18 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-; Resolve Territorial Disputes In Hungary's Favor
+; Territorial Disputes Resolved In Hungary's Favor
 #LINK= 611[1]
 #COUNTRY_ID= 52
-#TRIGGER= 50
+#TRIGGER= 100
 #ALIGNMENT= 1
-; Historic Date - 1 Month
+; Historic Date minus 1 Month
 #DATE= 1940/10/20
 ; Hungary(52) Axis
 #VARIABLE_CONDITION= 52 [1] [0] [0]
 }
 
+; TODO - revisit later
 ; Historic Date: 1940/11/20
 {
 #NAME= DE 611 - Hungary: Hungary Joins The Axis (2) (35%)
@@ -581,12 +566,12 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-; Resolve Territorial Disputes In Romania's Favor
+; Territorial Disputes Resolved In Romania's Favor
 #LINK= 611[0]
 #COUNTRY_ID= 52
 #TRIGGER= 35
 #ALIGNMENT= 1
-#DATE= 1940/11/20
+#DATE= 1940/12/01
 ; Hungary(52) Axis
 #VARIABLE_CONDITION= 52 [1] [0] [0]
 }
@@ -675,7 +660,7 @@
 
 ; Fall Weiss II
 {
-#NAME= DE 846 - Spain: The Allies DoW On Spain
+#NAME= [FW]DE 846 - Spain: The Allies DoW On Spain
 #POPUP= The Allies Declare War On Spain
 #IMAGE=
 #SOUND= war1.ogg
@@ -691,27 +676,6 @@
 #DATE= 1941/01/01
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 87 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= DE 917 - Bulgaria: Bulgaria Joins The Allies
-#POPUP= Bulgaria Joins The Allies
-#IMAGE= 
-#SOUND= war1.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-; Greek Concessions?
-#LINK= 917[1]
-#COUNTRY_ID= 19
-#TRIGGER= 100
-#ALIGNMENT= 2
-#DATE= 1940/09/01
-#VARIABLE_CONDITION= 111 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 }
 
@@ -756,4 +720,46 @@
 ; Finland(39) Axis
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [0] [0]
+}
+
+; Fall Weiss II
+; Finland declared war on the USSR shortly after Barbarossa was launched 1941/06/22
+{
+#NAME= [FW]DE 450 - Finland: Finland DoW On The USSR
+#POPUP= Finland Enters The War Against The USSR
+#IMAGE= finlandenterswar.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 450[1]
+#COUNTRY_ID= 39
+#TRIGGER= 100
+#ALIGNMENT= 1
+#DATE= 1939/09/01
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+}
+
+; Fall Weiss II
+{
+#NAME= [FW]DE 917 - Bulgaria: Bulgaria Joins The Allies
+#POPUP= Bulgaria Joins The Allies
+#IMAGE=
+#SOUND= war1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; Greek Concessions?
+#LINK= 917[1]
+#COUNTRY_ID= 19
+#TRIGGER= 100
+#ALIGNMENT= 2
+#DATE= 1940/09/01
+#VARIABLE_CONDITION= 111 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
 }
