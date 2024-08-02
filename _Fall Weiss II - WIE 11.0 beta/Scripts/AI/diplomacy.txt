@@ -374,7 +374,7 @@
 
 ; Fall Weiss II
 {
-#NAME= [FW]France Presses Spain (1939 - )
+#NAME= [FW]France Presses Spain (1939 - FORCED)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -399,7 +399,7 @@
 }
 
 {
-#NAME= Germany Presses Hungary (1939 - ) (25%)
+#NAME= Germany Presses Hungary (1939 - FORCED) (25%)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -446,7 +446,7 @@
 
 ; Fall Weiss II
 {
-#NAME= [FW]Germany Presses Ireland (1939 - ) (25%)
+#NAME= [FW]Germany Presses Ireland (1939 - FORCED) (25%)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -469,7 +469,7 @@
 }
 
 {
-#NAME= Germany Presses Romania (1939 - ) (25%)
+#NAME= Germany Presses Romania (1939 - FORCED) (25%)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -518,6 +518,7 @@
 #NAME= Germany Presses Spain (1939 - ) (50%)
 #POPUP=
 #FLAG= 1
+; Reoccurring check until end of game
 #TYPE= 2
 #COUNTRY_ID= 45
 #TRIGGER= 50
@@ -526,7 +527,7 @@
 #LINK= 0[0]
 #SKIP_FUNDS_CHECK= 0
 #DIPLOMATIC_ID= 99
-#DATE= 1940/01/01
+#DATE= 1939/01/01
 ; Berlin(173,74)
 #FRIENDLY_POSITION= 173,74
 ; Germany(45) Axis and fully mobilized
@@ -538,9 +539,55 @@
 }
 
 {
-#NAME= Germany Presses Turkey (1942 - )
+#NAME= Germany Presses Spain (1942 - FORCED) (25%)
 #POPUP=
 #FLAG= 1
+; Reoccurring check until end of game
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 5[51,75]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+#DIPLOMATIC_ID= 99
+#DATE= 1942/01/01
+; Berlin(173,74)
+#FRIENDLY_POSITION= 173,74
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Presses Sweden (1941 - FORCED)
+#POPUP=
+#FLAG= 1
+; Reoccurring check until end of game
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 25
+#LEVEL= 0
+#GV= 7[26,50]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+#DIPLOMATIC_ID= 103
+#DATE= 1941/07/01
+#FRIENDLY_POSITION= 173,74
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= Germany Presses Turkey (1942 - FORCED) (20%)
+#POPUP=
+#FLAG= 1
+; Reoccurring check until end of game
 #TYPE= 2
 #COUNTRY_ID= 45
 #TRIGGER= 25
@@ -561,32 +608,10 @@
 }
 
 {
-#NAME= Germany Presses Turkey (1942 - ) (50%)
+#NAME= Germany Presses Vichy Algeria (1940 - FORCED) (25%)
 #POPUP=
 #FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 50
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-#DIPLOMATIC_ID= 111
-#DATE= 1942/01/01
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Turkey(111) Allied and not surrendered
-#VARIABLE_CONDITION= 111 [2] [50] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= Germany Presses Vichy Algeria (1940 - ) (25%)
-#POPUP=
-#FLAG= 1
+; Reoccurring check until end of game
 #TYPE= 2
 #COUNTRY_ID= 45
 #TRIGGER= 25
@@ -609,9 +634,10 @@
 }
 
 {
-#NAME= Germany Presses Vichy France (1940 - ) (25%)
+#NAME= Germany Presses Vichy France (1940 - FORCED) (25%)
 #POPUP=
 #FLAG= 1
+; Reoccurring check until end of game
 #TYPE= 2
 #COUNTRY_ID= 45
 #TRIGGER= 25
@@ -623,10 +649,8 @@
 #DATE= 1940/01/01
 ; Berlin(173,74)
 #FRIENDLY_POSITION= 173,74
-; Germany(45) Axis fully mobilized
 ; France(40) Allied and surrendered
 ; Vichy France(118) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 118 [1] [75] [0]
 ; Berlin(173,74) not tactically threatened (dummy condition)
@@ -636,9 +660,36 @@
 }
 
 {
-#NAME= Italy Presses Algeria (1940 - ) (25%)
+#NAME= Germany Presses Vichy Tunisia (1940 - FORCED)
 #POPUP=
 #FLAG= 1
+; Reoccurring check until end of game
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 25
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+#DIPLOMATIC_ID= 110
+#DATE= 1940/01/01
+#FRIENDLY_POSITION= 173,74
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#VARIABLE_CONDITION= 118 [1] [100] [0]
+#VARIABLE_CONDITION= 4 [1] [100] [0]
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Fall Weiss II AXIS SCRIPTS - Italy
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+{
+#NAME= [FW]Italy Presses Algeria (1940 - ) (25%)
+#POPUP=
+#FLAG= 1
+; Reoccurring check until end of game
 #TYPE= 2
 #COUNTRY_ID= 59
 #TRIGGER= 25
@@ -660,21 +711,18 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Fall Weiss II AXIS SCRIPTS - Italy
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
 {
-#NAME= [FW]Italy Presses Spain (1940 - ) (25%)
+#NAME= Italy Presses Spain (1940 - ) (25%)
 #POPUP=
 #FLAG= 1
+; Reoccurring check until end of game
 #TYPE= 2
 #COUNTRY_ID= 59
 #TRIGGER= 25
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
+#SKIP_FUNDS_CHECK= 0
 #DIPLOMATIC_ID= 99
 #DATE= 1940/09/01
 ; Berlin(173,74)
@@ -691,6 +739,7 @@
 #NAME= [FW]Italy Presses Vichy France (1940 - ) (25%)
 #POPUP=
 #FLAG= 1
+; Reoccurring check until end of game
 #TYPE= 2
 #COUNTRY_ID= 59
 #TRIGGER= 25
@@ -717,6 +766,7 @@
 #NAME= [FW]UK Presses Algeria (1940 - ) (25%)
 #POPUP=
 #FLAG= 1
+; Reoccurring check until end of game
 #TYPE= 2
 #COUNTRY_ID= 112
 #TRIGGER= 25
@@ -768,6 +818,7 @@
 #NAME= [FW]UK Presses Portugal (1940 - ) (10%)
 #POPUP=
 #FLAG= 1
+; Reoccurring check until end of game
 #TYPE= 2
 #COUNTRY_ID= 112
 #TRIGGER= 10
@@ -788,34 +839,10 @@
 }
 
 {
-#NAME= UK Presses Spain (1940 - )
+#NAME= UK Presses Spain (1941 - ) (25%)
 #POPUP=
 #FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-#DIPLOMATIC_ID= 99
-#DATE= 1940/01/01
-; London(147,77)
-#FRIENDLY_POSITION= 147,77
-; UK(112) Allied and fully mobilized
-; Spain(99) Axis and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 99 [1] [50] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= UK Presses Spain (1940 - ) (25%)
-#POPUP=
-#FLAG= 1
+; Reoccurring check until end of game
 #TYPE= 2
 #COUNTRY_ID= 112
 #TRIGGER= 25
@@ -824,13 +851,13 @@
 #LINK= 0[0]
 #SKIP_FUNDS_CHECK= 0
 #DIPLOMATIC_ID= 99
-#DATE= 1940/01/01
+#DATE= 1941/01/01
 ; London(147,77)
 #FRIENDLY_POSITION= 147,77
 ; UK(112) Allied and fully mobilized
 ; Spain(99) Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 99 [1] [15] [0]
+#VARIABLE_CONDITION= 99 [1] [40] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
@@ -856,7 +883,7 @@
 ; UK(112) Allied and fully mobilized
 ; Sweden(103) Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 103 [1] [0] [0]
+#VARIABLE_CONDITION= 103 [1] [20] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
@@ -868,6 +895,7 @@
 #NAME= [FW]UK Presses Switzerland (1940 - ) (10%)
 #POPUP=
 #FLAG= 1
+; Reoccurring check until end of game
 #TYPE= 2
 #COUNTRY_ID= 112
 #TRIGGER= 10
@@ -1119,7 +1147,7 @@
 #LINK= 0[0]
 #SKIP_FUNDS_CHECK= 0
 #DIPLOMATIC_ID= 99
-#DATE= 1942/01/01
+#DATE= 1942/06/01
 ; Washington DC(4,108)
 #FRIENDLY_POSITION= 4,108
 ; USA(115) Allied and fully mobilized
@@ -1133,7 +1161,7 @@
 }
 
 {
-#NAME= USA Presses Sweden (1942 - ) (50%)
+#NAME= USA Presses Sweden (1942 - FORCED) (50%)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -1150,7 +1178,7 @@
 ; USA(115) Allied and fully mobilized
 ; Sweden(103) Axis and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 103 [1] [0] [0]
+#VARIABLE_CONDITION= 103 [1] [20] [0]
 ; Washington DC(4,108) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 4,108 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
@@ -1158,7 +1186,7 @@
 }
 
 {
-#NAME= USA Presses Turkey (1942 - ) (1) (50%)
+#NAME= USA Presses Turkey (1943 - FORCED) (1) (50%)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -1169,12 +1197,10 @@
 #LINK= 0[0]
 #SKIP_FUNDS_CHECK= 1
 #DIPLOMATIC_ID= 111
-#DATE= 1942/01/01
-; Washington DC(4,108)
+#DATE= 1943/01/01
 #FRIENDLY_POSITION= 4,108
-; USA(115) Allied and fully mobilized
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened (dummy condition)
+#VARIABLE_CONDITION= 111 [2] [50] [0]
 #TACTICAL_CONDITION= 4,108 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
@@ -1204,7 +1230,7 @@
 }
 
 {
-#NAME= USSR Presses Sweden (25%)
+#NAME= [FW]USSR Presses Sweden (1941) (25%)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -1213,40 +1239,15 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
+#SKIP_FUNDS_CHECK= 0
 #DIPLOMATIC_ID= 103
 #DATE= 1941/06/01
 ; London(147,77)
 #FRIENDLY_POSITION= 147,77
 ; USSR(116) Allied and fully mobilized
-; Sweden(103) Allied
+; Sweden(103) Axis
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 103 [1] [60] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Presses Turkey (1942 - FORCED) (1) (75%)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 116
-#TRIGGER= 75
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-#DIPLOMATIC_ID= 111
-#DATE= 1942/01/01
-; London(147,77)
-#FRIENDLY_POSITION= 147,77
-; USSR(116) Allied and not surrendered
-; Turkey(111) Allied
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 111 [2] [0] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
