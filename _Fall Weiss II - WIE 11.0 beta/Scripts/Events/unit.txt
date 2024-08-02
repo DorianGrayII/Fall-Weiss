@@ -472,7 +472,7 @@
 
 ; Canada (Army)
 {
-#NAME= Canada(AI): Army - Halifax - 1942
+#NAME= Canada(AI): Army - Halifax - 1942 (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -650,7 +650,7 @@
 
 ; France (Corps)
 {
-#NAME= France(AI): Corps - Paris - 1939
+#NAME= France(AI): Corps - Paris - 1939 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -999,9 +999,7 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 1
 #LEVEL= 0
@@ -1310,9 +1308,7 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 5
 #LEVEL= 0
@@ -1656,9 +1652,7 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 5
 #LEVEL= 2
@@ -1671,6 +1665,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1941/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Stettin(175,72)
 #DESTINATION_RESOURCE= 175,72
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1710,9 +1705,7 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 5
 #LEVEL= 2
@@ -2190,6 +2183,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1940/03/23
 #FAILSAFE_DATE= 1948/01/01
+; Stettin(175,72)
 #DESTINATION_RESOURCE= 175,72
 #VARIABLE_CONDITION= 78 [1] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2238,6 +2232,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1940/03/23
 #FAILSAFE_DATE= 1948/01/01
+; Stettin(175,72)
 #DESTINATION_RESOURCE= 175,72
 #VARIABLE_CONDITION= 78 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2922,9 +2917,7 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 2
 #LEVEL= 2
@@ -2946,7 +2939,7 @@
 
 ; UK (Garrison)
 {
-#NAME= UK(AI): Artillery, Corps, Army - Suez - 1941
+#NAME= UK(AI): Artillery, Corps, Army - Suez - 1941 (Novice)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -3002,7 +2995,7 @@
 
 ; UK (Garrison)
 {
-#NAME= UK(AI): Corps - El Arish - 1941
+#NAME= UK(AI): Corps - El Arish - 1941 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -3054,7 +3047,7 @@
 }
 
 {
-#NAME= UK(AI): Corps - Oxford - 1940
+#NAME= UK(AI): Corps - Oxford - 1940 (Novice)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -3075,12 +3068,12 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ; Inf Corps(4)
-#UNIT= 4 [10] [0] []
+#UNIT= 4 [10] [0] [Oxford]
 }
 
 ; Currently Off
 {
-#NAME= UK(AI): Corps - Plymouth- 1940
+#NAME= UK(AI): Corps - Plymouth - 1940
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -3104,17 +3097,15 @@
 #UNIT= 4 [10] [0] []
 }
 
-; Currently turned off
 {
-#NAME= UK(AI): Corps - Portsmouth- 1940
+#NAME= UK(AI): Corps - Portsmouth - 1940 (Novice)
 #POPUP=
 #IMAGE=
 #SOUND=
-; currently disabled in Fall Weiss II
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 2
-#LEVEL= 0
+#LEVEL= 1
 #GV= 1[1,100]
 #LINK= 0[0]
 #COUNTRY_ID= 112
@@ -3127,18 +3118,18 @@
 #DESTINATION_RESOURCE= 144,79
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 4 [10] [0] []
+#UNIT= 4 [10] [0] [Portsmouth]
 }
 
 {
-#NAME= UK(AI): Corps - Sheffield - 1940
+#NAME= UK(AI): Corps - Sheffield - 1940 (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
 #TYPE= 1
 #AI= 2
-#LEVEL= 0
+#LEVEL= 3
 #GV= 1[1,100]
 #LINK= 0[0]
 #COUNTRY_ID= 112
@@ -3152,13 +3143,13 @@
 #DESTINATION_RESOURCE= 144,73
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Axis units in the UK
-#CONDITION_POSITION= 147,77 [20,20] [1,1] [1] [0]
-#UNIT= 4 [10] [0] []
+#CONDITION_POSITION= 147,77 [20,20] [0,0] [1] [0]
+#UNIT= 4 [10] [0] [Sheffield]
 }
 
 ; UK (Cruiser)
 {
-#NAME= UK(AI): Cruiser - Gibraltar - 1942
+#NAME= UK(AI): Cruiser - Gibraltar - 1942 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -3183,13 +3174,11 @@
 
 ; UK (Garrison)
 {
-#NAME= UK(AI): Destroyer - Glasgow - 1942 (Intermediate)
+#NAME= UK(AI): Destroyers - Glasgow - 1942 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 2
 #LEVEL= 2
@@ -3211,14 +3200,14 @@
 
 ; UK (Garrison)
 {
-#NAME= UK(AI): Division - Alexandria - 1940
+#NAME= UK(AI): Engineers - Alexandria - 1940 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
 #TYPE= 1
-#AI= 2
-#LEVEL= 0
+#AI= 6
+#LEVEL= 2
 #GV= 1[1,100]
 #LINK= 0[0]
 #COUNTRY_ID= 112
@@ -3226,18 +3215,18 @@
 #PRIVATE= 0
 #DISPLAY_TURN= 0
 #FULL_RESEARCH= 1
-#DATE= 1940/01/01
+#DATE= 1940/03/01
 #FAILSAFE_DATE= 1948/01/01
 ; Alexandria(206,124)
 #DESTINATION_RESOURCE= 206,124
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; No Allied units in Alexandria(206,124)
-#CONDITION_POSITION= 206,124 [0,0] [0,0] [2] [0]
-#UNIT= 3 [10] [0] [Alexandria]
+#CONDITION_POSITION= 151,84 [4,4] [1,1] [1] [0]
+#UNIT= 8 [5] [0] []
 }
 
 {
-#NAME= UK(AI): Division- Glasgow - 1940
+#NAME= UK(AI): Garrison - Alexandria - 1940
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -3252,13 +3241,38 @@
 #PRIVATE= 0
 #DISPLAY_TURN= 0
 #FULL_RESEARCH= 0
-#DATE= 1940/09/01
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 206,124
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 203,125 [0,0] [1,1] [2] [0]
+#UNIT= 1 [5] [0] [Alexandria]
+}
+
+{
+#NAME= UK(AI): Corps - Glasgow - 1940 (Veteran)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 2
+#LEVEL= 3
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 0
+#DATE= 1940/11/01
 #FAILSAFE_DATE= 1940/09/01
 ; Glasgow(138,65)
 #DESTINATION_RESOURCE= 138,65
+#DESTINATION_RESOURCE= 138,65
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 3 [10] [0] [Glasgow]
+#CONDITION_POSITION= 147,77 [20,20] [0,0] [1] [0]
+#UNIT= 4 [10] [0] [Glasgow]
 }
 
 ; Egypt (AI Helper)
@@ -3287,7 +3301,6 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
-; Axis unit in Malta
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 0 [10] [0] []
 }
@@ -3320,33 +3333,6 @@
 #UNIT= 26 [13] [3] []
 #UNIT= 6 [13] [3] []
 #UNIT= 0 [10] [0] []
-}
-
-; Replacement Script
-; UK (Engineers)
-{
-#NAME= UK(AI): Engineers - Alexandria - 1940
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 2
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1940/01/01
-#FAILSAFE_DATE= 1948/01/01
-; Alexandria(206,124)
-#DESTINATION_RESOURCE= 206,124
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 8 [5] [0] []
 }
 
 ; UK (Garrison)
@@ -3404,7 +3390,6 @@
 #UNIT= 1 [5] [0] [Crete]
 }
 
-; UK (HQ)
 {
 #NAME= UK(AI): HQ - Manchester - 1940
 #POPUP=
@@ -3429,9 +3414,8 @@
 #UNIT= 0 [10] [0] []
 }
 
-; UK (1943 D-Day Helper)
 {
-#NAME= UK(AI): HQ/Corps/Army - Sheffield - 1943 (Intermediate)
+#NAME= UK(AI): HQ/Corps/Army - Sheffield - 1943 (Intermediate) (25%)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -3459,35 +3443,6 @@
 #UNIT= 5 [10] [0] []
 }
 
-; Fall Weiss II
-; Allied AI Navy Helper Howe (UK)
-{
-#NAME= UK(AI): Howe AI Helper
-#POPUP=
-#IMAGE=
-#SOUND=
-; currently disabled in Fall Weiss II
-#FLAG= 0
-#TYPE= 1
-#AI= 2
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1942/08/01
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 137,65
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 40 [11] [1] []
-}
-
-; UK (Iraqi Garrison)
 {
 #NAME= UK(AI): Iraqi Garrison - 1941
 #POPUP=
@@ -3538,7 +3493,6 @@
 #UNIT= 3 [10] [0] [Portsmouth]
 }
 
-; UK (Medium Bomber)
 {
 #NAME= UK(AI): Medium Bomber - Oxford - 1943
 #POPUP=
@@ -3565,7 +3519,6 @@
 #UNIT= 31 [10] [0.5] []
 }
 
-; UK (Medium Bomber)
 {
 #NAME= UK(AI): Medium Bomber - Oxford - 1944
 #POPUP=
@@ -3696,7 +3649,6 @@
 #UNIT= 36 [10] [0] []
 }
 
-; UK (Naval Reinforcements)
 {
 #NAME= UK(AI): Naval Reinforcements - Port Said - 1940
 #POPUP=
@@ -3722,7 +3674,6 @@
 #UNIT= 40 [10] [0] []
 }
 
-; UK (Naval Reinforcements)
 {
 #NAME= UK(AI): Naval Reinforcements - Rosyth - 1940
 #POPUP=
@@ -3762,7 +3713,6 @@
 #UNIT= 40 [10] [0] []
 }
 
-; UK (Paratroops)
 {
 #NAME= UK(AI): Paratroops - Portsmouth - 1943
 #POPUP=
@@ -3792,7 +3742,6 @@
 #UNIT= 30 [10] [0.5] []
 }
 
-; UK (Paratroops)
 {
 #NAME= UK(AI): Paratroops - Portsmouth - 1944
 #POPUP=
@@ -3850,7 +3799,6 @@
 #UNIT= 31 [11] [1] [Desert AF]
 }
 
-; UK (Syrian Garrison)
 {
 #NAME= UK(AI): Syrian Garrison - 1941
 #POPUP=
@@ -3875,7 +3823,6 @@
 #UNIT= 1 [5] [0] [Syrian]
 }
 
-; UK (Syrian Garrison)
 {
 #NAME= UK(AI): Syrian Garrison - Beirut
 #POPUP=
@@ -3901,7 +3848,6 @@
 #UNIT= 1 [5] [0] [Beirut]
 }
 
-; UK (Syrian Garrison)
 {
 #NAME= UK(AI): Syrian Garrison - Tripoli
 #POPUP=
@@ -6669,34 +6615,6 @@
 }
 
 ; Fall Weiss II
-; Allied AI Navy Helper Duke of York (UK)
-{
-#NAME= [FW]UK(AI): Duke Of York AI Helper
-#POPUP=
-#IMAGE=
-#SOUND=
-; currently disabled in Fall Weiss II
-#FLAG= 0
-#TYPE= 1
-#AI= 2
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1941/11/01
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 137,65
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 40 [11] [1] []
-}
-
-; Fall Weiss II
 ; Duke Of York Battleship (UK)
 {
 #NAME= [FW]UK: Battleship HMS Duke Of York
@@ -9022,7 +8940,7 @@
 }
 
 {
-#NAME= DE 265 - Germany(AI): Defensive Corps
+#NAME= DE 261 - Germany(AI): Defensive Corps
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -10265,7 +10183,7 @@
 ;
 ; New Zealand Unit Arrives in Egypt
 {
-#NAME= DE 107 - UK: Leclerc Force
+#NAME= DE 475 - UK: Leclerc Force
 #POPUP= Free French Forces From West Africa Arrive At Siwa
 #IMAGE=
 #SOUND=
@@ -11492,7 +11410,7 @@
 }
 
 {
-#NAME= DE 615 - Germany: Italian Fascist Corps Formed(Bologna)
+#NAME= DE 615 - Germany: Italian Fascist Corps Formed(Bologna) (90%)
 #POPUP= Italian National Republican Army Corps Forced
 #IMAGE= italian_fascistunit.png
 #SOUND=
@@ -12279,6 +12197,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/03
 #FAILSAFE_DATE= 1948/01/01
+; Stettin(175,72)
 #DESTINATION_RESOURCE= 175,72
 ; Germany(45) Axis and fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -12501,6 +12420,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/03
 #FAILSAFE_DATE= 1948/01/01
+; Stettin(175,72)
 #DESTINATION_RESOURCE= 175,72
 ; Germany(45) Axis and fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -12973,6 +12893,32 @@
 }
 
 {
+#NAME= DE 673 - Germany: Germany Atlantic Wall Defenses (1)
+#POPUP= Germany Constructs Atlantic Wall Defenses
+#IMAGE= coastalgun.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 673[1]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 0
+#DATE= 1942/01/01
+#FAILSAFE_DATE= 1948/01/01
+; Calais(152,79)
+#DESTINATION_RESOURCE= 152,79
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 20 [10] [0] [Calais]
+}
+
+{
 #NAME= DE 673 - Germany: Atlantic Wall Defenses (2)
 #POPUP=
 #IMAGE=
@@ -13045,31 +12991,6 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 20 [10] [0] [Brest]
-}
-
-{
-#NAME= DE 673 - Germany: Germany Constructs Atlantic Wall Defenses (1)
-#POPUP= Germany Constructs Atlantic Wall Defenses
-#IMAGE= coastalgun.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 673[1]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 0
-#DATE= 1942/01/01
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 152,79
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 20 [10] [0] [Calais]
 }
 
 {
@@ -13307,14 +13228,14 @@
 
 ; Germany (Post Italian Surrender)
 {
-#NAME= DE 753 - Germany(AI): Post Italian Surrender - Innsbruck
+#NAME= DE 753 - Germany(AI): Post Italian Surrender - Innsbruck (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
 #TYPE= 1
 #AI= 1
-#LEVEL= 0
+#LEVEL= 2
 #GV= 1[1,100]
 #LINK= 753[1]
 #COUNTRY_ID= 45
@@ -15551,7 +15472,7 @@
 ; Fall Weiss II
 ; Axis Prepare for Fall Blau (Germany)
 {
-#NAME= [FW]DE 815 - Germany: Axis Prepare for Fall Blau
+#NAME= [FW]DE 916 - Germany: Axis Prepare for Fall Blau
 #POPUP= Germany Reinforces The Eastern Front For Summer Offensive
 #IMAGE=
 #SOUND=
@@ -16292,6 +16213,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/03
 #FAILSAFE_DATE= 1948/01/01
+; Stettin(175,72)
 #DESTINATION_RESOURCE= 175,72
 ; Germany(45) Axis and fully mobilized
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -16302,7 +16224,7 @@
 ; Fall Weiss II
 ; German Military Exports To Turkey (Corps)
 {
-#NAME= [FW]DE 911 - Turkey: Military Equipment From Germany (Infantry Corps)
+#NAME= [FW]DE 960 - Turkey: Military Equipment From Germany (Infantry Corps)
 #POPUP=
 #IMAGE=
 #SOUND=
