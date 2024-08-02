@@ -1,0 +1,1664 @@
+﻿;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; AMPHIBIOUS SCRIPT (Handle AI Planning)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; USAGE:
+;
+; Basic structure of an AI planning event:
+; {
+; #NAME=  Event name
+;         (this will be shown as a selectable event under an OPTIONS screen within the game)
+;
+; #POPUP= Event popup text
+;         (this will be displayed when the event occurs)
+;
+; #FLAG= Value range [0, 1]
+;        Event default state:
+;        0 = Disabled
+;        1 = Enabled
+;
+; #TYPE= Value range [0, 3]
+;        Event check type, with all other fields satisfied:
+;        0 = Single check, on or after #DATE
+;            (ignores #TRIGGER)
+;        1 = Multiple checks, on or after #DATE, until #TRIGGER is satisfied
+;        2 = Multiple checks, on or after #DATE, until end of game (*** not valid for UNIT events ***)
+;            (not removed from event queue)
+;        3 = Single check, only on #DATE
+;
+; #LEVEL= Value range [-1, 4]
+;       What minimum skill level, as selected from the AI difficulty level screen in game, with this event apply to?
+;       -1 = a script that should only fire for AI friendly controlled majors on your turn
+;        0 = Green
+;        1 = Novice
+;        2 = Intermediate
+;        3 = Veteran
+;        4 = Expert
+;
+; #GV=   Does the event activate based on the Global Variable values assigned?
+;        Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
+;        Format: GV [min, max]
+;                GV range [1, 10]
+;                min range [1, 100]
+;                max range [min+1, 100]
+;
+;        Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
+;        Example B - #GV= 4[71,100] will trigger 30% per game
+;
+; #LINK= Does the event activate based on the Link values assigned?
+;        A campaign can have up to 1100 Decision events and is referenced by other events via this parameter
+;        Format: decision[response]
+;                decision range [1, 1100]
+;                response range [0, 1]
+;                   0 = NO
+;                   1 = YES
+;
+;        Example A - #LINK= 0[0] will always trigger as formal DECISION events can only be from 1-1100
+;        Example B - #LINK= 1[0] will trigger whenever #DECISION= 1 is not accepted
+;        Example C - #LINK= 3[1] will trigger whenever #DECISION= 3 is accepted
+;
+; #TRIGGER=     Value range [0, 100]
+;               Percentage chance that the event will occur
+;
+; #COUNTRY_ID=  Value range [1, 120]
+;               Country that will be owner of this event
+;
+; #SIZE= How many units should be assigned to this plan?
+;        Format: min_size, max_size
+;
+; #BUILD_LENGTH= How many game turns (Axis or Allied) do you want the build up period of the plan to last?
+;
+; #LENGTH= How many game turns (Axis or Allied) should pass before the plan (post #BUILD_LENGTH period) is cancelled?
+;
+; #RANGE= How many hexes should we search for units to fulfill this plan?
+;         Range checks from both the first listed #FRIENDLY_POSITION and then the #GOAL_POSITION if needed.
+;
+; #LONG_RANGE= Should the plan use regular transports or check for long range transports as they are available? (values range [0, 1]; Regular= 0; Long Range= 1)
+;
+; #GOAL_POSITION= What is the map position that is the objective of this plan?
+;
+; #COASTAL_POSITION= From what coastal position should the transports attempt to disembark towards #GOAL_POSITION?
+;
+; #DATE= Date that must be satisfied (in game) for event to occur (format yyyy/mm/dd or yyyy/mm/dd [=]).
+;        if [=] is used, only apply for year specified.
+;
+; #STEAL= Value range [0, 3]
+;         Set priority by stealing units from other plans
+;           0 = False
+;           1 = Steal_Offensive
+;           2 = Steal_Defensive
+;           3 = Steal_Offensive_Or_Defensive
+;
+; #FRIENDLY_POSITION= Positions that must be under friendly control in order for event to occur
+;
+; #VARIABLE_CONDITION= Under what variable conditions will this event occur
+;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
+;                              country_id range [1, 120]
+;                              political_alignment range [0, 2]
+;                                  0 = Neutral
+;                                  1 = Axis
+;                                  2 = Allied
+;                              mobilization range [0, 100]
+;                              surrendered_flag range [0, 1]
+;                                  0 = False
+;                                  1 = True (has surrendered)
+;
+; #TACTICAL_CONDITION=  Tactical map position (resource) that currently MUST NOT be threatened for event to
+;                       occur, i.e. plan owner should have tactical advantage over this position
+;                       Format: x,y [tactical_flag]
+;
+; #ACTIVATE_POSITION=   Condition positions that will serve to ACTIVATE the event.
+;                       Looks at distance as well as a selected number of Axis/Allied units as specified by 'alignment' flag
+;                       Format: x,y [min_range, max_range] [min_units, max_units] [alignment]
+;
+; #CANCEL_POSITION=     Condition positions that will serve to CANCEL the event.
+;                       Looks at distance as well as a selected number of Axis/Allied units as specified by 'alignment' flag
+;                       Format: x,y [min_range, max_range] [min_units, max_units] [alignment]
+; }
+;
+; NOTES:
+;
+; Each event must be preceded by a '{' and end with a '}'
+;
+; Plan identity is determined by #COUNTRY_ID and #GOAL_POSITION.  A country can only have a
+; single plan based on this criteria and will be assigned the first valid plan regardless of duplicate
+; script entries (even if the remaining control '#' values are different).
+; Note:  This will also allow you to set up a variety of plans with the same identity but different
+; control '#' parameters where the first 'event' satisfied will be the fist plan assigned (for added variability).
+;
+; BUILD_UP_AMPHIBIOUS - These plans will only be assigned to fully activated countries and only if the
+; #BUILD_LENGTH value > 0. AI will automatically declare war (as applicable) whenever at least 50% of their transports
+; are within range of the #COASTAL_POSITION. AI will also only load units onto transports only if their strength > 5.
+; Automatic protection routines send transports with strength <= 5 back to the nearest port.
+; Note:  Understrength units will still be assigned to these plans just not loaded onto transports until they have a
+;        strength > 5.
+;
+; BUILD_UP_AMPHIBIOUS - These plans WILL include HQs as a part of their plan (if available).
+;
+; #SIZE - This value must be satisfied or the event will not occur.  For example, if the game engine cannot find enough
+; enough units to satisfy the #SIZE requirement the event will not be added to the active plan list.
+; Note:  #SIZE values refer to the number of units assigned to a plan except for non-core units including:
+;              HQ, Anti-Air, Artillery, Rail Gun, Coastal Gun, Rockets, Armoured Train, Anti-Tank, Airships, Fighters,
+;              Tactical Bombers, Medium Bombers, Strategic Bombers, Maritime Bombers, Kamikazes
+;        These non-core units are added to the plan (closest available unit without a plan) after all other land units.
+;        Therefore, a plan set to #SIZE= 5 would, in fact, end up being a plan with a size equal to 6 after the game engine
+;        includes an HQ and so on.  Essentially, in order to have the plan satisfy the #SIZE requirement keep in mind the
+;        original count does not include available HQ, Rockets, Air Fleet and Bombers as these are added in after the
+;        #SIZE value is satisfied.
+;
+; #BUILD_LENGTH= - How long do you want the build up period of the plan to last?  For example, a
+; BUILD_UP_AMPHIBIOUS plan that has a #LENGTH= 3 will (after 3 AI turns) automatically become an AMPHIBIOUS plan.
+;
+; #LENGTH - How long do you want the plan (post #BUILD_LENGTH period) to last?
+;
+; #GOAL_POSITION - This must be either a Town, City, Capital or Fortress etc.
+; Note:  If more than one #GOAL_POSITION is listed, these secondary #GOAL_POSITIONs will be considered WAYPOINTS with
+;        the top (first) #GOAL_POSITION still representing the final destination position.  For example, this is useful
+;        when using NAVAL LOOPs to send units to a specific WAYPOINT or NAVAL LOOP position before continuing to the final
+;        #GOAL_POSITION.  If #BUILD_LENGTH > 0 then the transports will gather at the second listed #GOAL_POSITION until
+;        the #BUILD_LENGTH period expires.  This is useful to help ensure units move as a group after loading.
+;
+; #COASTAL_POSITION - This refers to a coastal hex within 5 hexes of #GOAL_POSITION.
+;
+; #STEAL - Do we steal units available from other plans?
+; Note:  This flag will only allow you to steal units from existing OFFENSIVE or DEFENSIVE plans.
+;        See STEAL ID REFERENCE VALUES for more details.
+;
+; #FRIENDLY_POSITION - First position must refer to a coastal tile, subsequent positions can refer to either land or coastal tiles.
+; Note:  More than one #FRIENDLY_POSITION can be set.  #FRIENDLY_POSITION refers to the current side associated with this
+;        plan.  Each #FRIENDLY_POSITION will be read using AND logic.
+;
+;        For all AI scripts that use the #FRIENDLY_POSITION field, the AI picks available units closest to and connected to
+;        the first #FRIENDLY_POSITION, within #RANGE, and then sends them to the nearest available position for the script;
+;        e.g., a city for a GUARD script, a port for a TRANSPORT script, etc.  All AI scripts require that the first
+;        #FRIENDLY_POSITION be a land tile, with the exception of Fleet scripts.
+;
+; #VARIABLE_CONDITION - More than one can be set. You can also list countries that have not yet fully
+;   entered the war. For example by listing an activation % less than 100% you are providing a check
+;   where the country must meet a minimum activation % (but is not yet at 100%) in order for the event
+;   to occur. To check for a fully activated country simply list the activation % at 100%.
+;
+; Each #VARIABLE_CONDITION line will be read using AND logic.
+;
+; More than one #TACTICAL_CONDITION can be set.  #TACTICAL_CONDITION refers to the current side, i.e.
+; country associated with this plan having tactical superiority over the specified map position.
+; Tactical superiority can be fine tuned via the TACTICAL_ID flag.  Each #TACTICAL_CONDITION line will
+; be read using AND logic.
+; Note:  TACTICAL_ID= SEA implies that the port or city in question has an adjacent enemy unit in order for it
+;        to be threatened.  For example a land locked city can never be threated by SEA so this can be used as a
+;        dummy position.
+;
+; More than one #ACTIVATE_POSITION can be set.  Distance or range checks will be based on the
+; specified x,y position.  For example if the x,y position is a coastal tile then range checks will
+; be made on sea tiles, otherwise if it is a land tile, range checks will be made on land tiles only.
+; Each #ACTIVATE_POSITION line will be read using OR logic.
+; Note: Once a plan has been properly activated then all references to #ACTIVATE_POSITION are removed
+;       from the plan as these conditions have been satisfied.  Use #CANCEL_POSITION to set the CANCEL conditions
+;       based on unit positions for the event.
+;
+; You can set dummy activate position (no units at position 0,0) as follows:
+;   #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+;
+; More than one #CANCEL_POSITION can be set.  Distance or range checks will be based on the
+; specified x,y position.  For example if the x,y position is a coastal tile then range checks will
+; be made on sea tiles, otherwise if it is a land tile, range checks will be made on land tiles only.
+; Each #CANCEL_POSITION line will be read using OR logic.
+;
+; Use the reference values provided for #COUNTRY_ID and not the country names
+; Use the reference values provided for TACTICAL_ID and not tactical names
+; Use the reference values provided for POLITICAL ALIGNMENT and not names
+; Use the reference values provided for SURRENDER flags and not names
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; COUNTRY ID REFERENCE VALUES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Country IDs
+; #COUNTRY_ID_0= Neutral
+; #COUNTRY_ID_1= Abyssinia
+; #COUNTRY_ID_2= Afghanistan
+; #COUNTRY_ID_3= Albania
+; #COUNTRY_ID_4= Algeria
+; #COUNTRY_ID_5= Argentina
+; #COUNTRY_ID_6= Australia
+; #COUNTRY_ID_7= Austria
+; #COUNTRY_ID_8= Baltic States
+; #COUNTRY_ID_9= Belgian Congo
+; #COUNTRY_ID_10= Belgium
+; #COUNTRY_ID_11= Benelux
+; #COUNTRY_ID_12= Bhutan
+; #COUNTRY_ID_13= Black
+; #COUNTRY_ID_14= Bolivia
+; #COUNTRY_ID_15= Borneo
+; #COUNTRY_ID_16= Brazil
+; #COUNTRY_ID_17= British Somaliland
+; #COUNTRY_ID_18= Brunei
+; #COUNTRY_ID_19= Bulgaria
+; #COUNTRY_ID_20= Burma
+; #COUNTRY_ID_21= Canada
+; #COUNTRY_ID_22= Chile
+; #COUNTRY_ID_23= China
+; #COUNTRY_ID_24= Colombia
+; #COUNTRY_ID_25= Communist China
+; #COUNTRY_ID_26= Costa Rica
+; #COUNTRY_ID_27= Croatia
+; #COUNTRY_ID_28= Cuba
+; #COUNTRY_ID_29= Curaçao
+; #COUNTRY_ID_30= Czechoslovakia
+; #COUNTRY_ID_31= Denmark
+; #COUNTRY_ID_32= Dominican Republic
+; #COUNTRY_ID_33= Dutch East Indies
+; #COUNTRY_ID_34= Dutch Guiana
+; #COUNTRY_ID_35= Ecuador
+; #COUNTRY_ID_36= Egypt
+; #COUNTRY_ID_37= El Salvador
+; #COUNTRY_ID_38= Estonia
+; #COUNTRY_ID_39= Finland
+; #COUNTRY_ID_40= France
+; #COUNTRY_ID_41= Free City of Danzig
+; #COUNTRY_ID_42= French Equatorial Africa
+; #COUNTRY_ID_43= French Somaliland
+; #COUNTRY_ID_44= French West Africa
+; #COUNTRY_ID_45= Germany
+; #COUNTRY_ID_46= Greece
+; #COUNTRY_ID_47= Greenland
+; #COUNTRY_ID_48= Guatemala
+; #COUNTRY_ID_49= Haiti
+; #COUNTRY_ID_50= Honduras
+; #COUNTRY_ID_51= Hong Kong
+; #COUNTRY_ID_52= Hungary
+; #COUNTRY_ID_53= Iceland
+; #COUNTRY_ID_54= British Empire*
+; #COUNTRY_ID_55= Indochina
+; #COUNTRY_ID_56= Iraq
+; #COUNTRY_ID_57= Ireland
+; #COUNTRY_ID_58= Italian East Africa
+; #COUNTRY_ID_59= Italy
+; #COUNTRY_ID_60= Japan
+; #COUNTRY_ID_61= Latvia
+; #COUNTRY_ID_62= Liberia
+; #COUNTRY_ID_63= Libya
+; #COUNTRY_ID_64= Lithuania
+; #COUNTRY_ID_65= Luxembourg
+; #COUNTRY_ID_66= Malaya
+; #COUNTRY_ID_67= Manchukuo
+; #COUNTRY_ID_68= Mexico
+; #COUNTRY_ID_69= Mongolia
+; #COUNTRY_ID_70= Morocco
+; #COUNTRY_ID_71= Nanjing
+; #COUNTRY_ID_72= Nepal
+; #COUNTRY_ID_73= Netherlands
+; #COUNTRY_ID_74= New Zealand
+; #COUNTRY_ID_75= Newfoundland
+; #COUNTRY_ID_76= Nicaragua
+; #COUNTRY_ID_77= Nigeria
+; #COUNTRY_ID_78= Norway
+; #COUNTRY_ID_79= Palestine
+; #COUNTRY_ID_80= Panama
+; #COUNTRY_ID_81= Paraguay
+; #COUNTRY_ID_82= Persia
+; #COUNTRY_ID_83= Peru
+; #COUNTRY_ID_84= Philippines
+; #COUNTRY_ID_85= Poland
+; #COUNTRY_ID_86= Polynesia
+; #COUNTRY_ID_87= Portugal
+; #COUNTRY_ID_88= Portuguese East Africa
+; #COUNTRY_ID_89= Portuguese Timor
+; #COUNTRY_ID_90= Portuguese West Africa
+; #COUNTRY_ID_91= Red
+; #COUNTRY_ID_92= Rhodesia
+; #COUNTRY_ID_93= Romania
+; #COUNTRY_ID_94= Sarawak
+; #COUNTRY_ID_95= Saudi Arabia
+; #COUNTRY_ID_96= Slovakia
+; #COUNTRY_ID_97= Solomons
+; #COUNTRY_ID_98= South Africa
+; #COUNTRY_ID_99= Spain
+; #COUNTRY_ID_100= Spanish Guinea
+; #COUNTRY_ID_101= Spanish Republic
+; #COUNTRY_ID_102= Sudan
+; #COUNTRY_ID_103= Sweden
+; #COUNTRY_ID_104= Switzerland
+; #COUNTRY_ID_105= Syria
+; #COUNTRY_ID_106= Tannu Tuva
+; #COUNTRY_ID_107= Thailand
+; #COUNTRY_ID_108= Tibet
+; #COUNTRY_ID_109= Transjordan
+; #COUNTRY_ID_110= Tunisia
+; #COUNTRY_ID_111= Turkey
+; #COUNTRY_ID_112= UK
+; #COUNTRY_ID_113= Ukraine
+; #COUNTRY_ID_114= Uruguay
+; #COUNTRY_ID_115= USA
+; #COUNTRY_ID_116= USSR
+; #COUNTRY_ID_117= Venezuela
+; #COUNTRY_ID_118= Vichy France
+; #COUNTRY_ID_119= Yemen
+; #COUNTRY_ID_120= Yugoslavia
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; STEAL ID REFERENCE VALUES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; FALSE= 0
+; STEAL_OFFENSIVE= 1
+; STEAL_DEFENSIVE= 2
+; STEAL_OFFENSIVE_OR_DEFENSIVE= 3
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; TACTICAL ID REFERENCE VALUES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; ANY= 0
+; LAND= 1
+; AIR= 2
+; NAVAL= 3
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; POLITICAL ALIGNMENT REFERENCE VALUES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; NEUTRAL= 0
+; AXIS= 1
+; ALLIED= 2
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; SURRENDERED FLAG REFERENCE VALUES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; NOT_SURRENDERED= 0
+; SURRENDERED= 1
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; AXIS SCRIPTS - Build Up Amphibious (Germany)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Germany prepares to attack UK:
+{
+#NAME= Germany Build Up Amphibious - UK
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 5,5
+#BUILD_LENGTH= 5
+#LENGTH= 5
+#RANGE= 25
+#LONG_RANGE= 1
+; London(147,77)
+#GOAL_POSITION= 147,77
+#COASTAL_POSITION= 147,79
+#DATE= 1943/01/01
+#STEAL= 1
+; Brussels(155,80)
+; Berlin(173,74)
+; Paris(151,84)
+; Brest(138,86)
+; Bordeaux
+; Rome(171,101)
+; Taranto(180,105)
+; Palermo
+#FRIENDLY_POSITION= 155,80
+#FRIENDLY_POSITION= 173,74
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 138,86
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 171,101
+#FRIENDLY_POSITION= 179,104
+#FRIENDLY_POSITION= 173,109
+; France(40) Allied and surrendered AND
+; USSR(116) Allied and surrendered AND
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#VARIABLE_CONDITION= 116 [2] [100] [1]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Berlin(173,74) not tactically threatened AND
+; Rome(171,101) not tactically threatened AND
+; Paris(151,84) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#TACTICAL_CONDITION= 171,101 [1]
+#TACTICAL_CONDITION= 151,84 [1]
+; Axis units in position
+#ACTIVATE_POSITION= 153,78 [2,2] [5,5] [1]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; AXIS SCRIPTS - Build Up Amphibious (Italy)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; Italy prepares to attack North Afrika:
+{
+#NAME= Italy Build Up Amphibious - North Africa (Benghazi)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 5,8
+#BUILD_LENGTH= 2
+#LENGTH= 10
+#RANGE= 25
+#LONG_RANGE= 1
+; Benghazi
+#GOAL_POSITION= 186,122
+#COASTAL_POSITION= 186,121
+#DATE= 1940/01/01
+#STEAL= 1
+; Brussels(155,80)
+; Berlin(173,74)
+; Paris(151,84)
+; Brest(138,86)
+; Bordeaux
+; Rome(171,101)
+; Taranto(180,105)
+; Palermo
+; Athens
+#FRIENDLY_POSITION= 155,80
+#FRIENDLY_POSITION= 173,74
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 138,86
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 171,101
+#FRIENDLY_POSITION= 179,104
+#FRIENDLY_POSITION= 173,109
+#FRIENDLY_POSITION= 193,109
+; France(40) Allied and surrendered AND
+; USSR(116) Allied and surrendered AND
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#VARIABLE_CONDITION= 116 [2] [100] [1]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Berlin(173,74) not tactically threatened AND
+; Rome(171,101) not tactically threatened AND
+; Paris(151,84) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#TACTICAL_CONDITION= 171,101 [1]
+#TACTICAL_CONDITION= 151,84 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Italy prepares to attack North Afrika:
+{
+#NAME= Italy Build Up Amphibious - North Afrika (Tobruk)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,5
+#BUILD_LENGTH= 2
+#LENGTH= 10
+#RANGE= 25
+#LONG_RANGE= 1
+; Tobruk
+#GOAL_POSITION= 194,122
+#COASTAL_POSITION= 193,121
+#DATE= 1940/01/01
+#STEAL= 1
+; Brussels(155,80)
+; Berlin(173,74)
+; Paris(151,84)
+; Brest(138,86)
+; Bordeaux
+; Rome(171,101)
+; Taranto(180,105)
+; Palermo
+; Athens
+#FRIENDLY_POSITION= 155,80
+#FRIENDLY_POSITION= 173,74
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 138,86
+#FRIENDLY_POSITION= 151,84
+#FRIENDLY_POSITION= 171,101
+#FRIENDLY_POSITION= 179,104
+#FRIENDLY_POSITION= 173,109
+#FRIENDLY_POSITION= 193,109
+; France(40) Allied and surrendered AND
+; USSR(116) Allied and surrendered AND
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#VARIABLE_CONDITION= 116 [2] [100] [1]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Berlin(173,74) not tactically threatened AND
+; Rome(171,101) not tactically threatened AND
+; Paris(151,84) not tactically threatened
+#TACTICAL_CONDITION= 173,74 [1]
+#TACTICAL_CONDITION= 171,101 [1]
+#TACTICAL_CONDITION= 151,84 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; ALLIED SCRIPTS - Build Up Amphibious (UK)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+{
+#NAME= UK Build Up Amphibious (Canada) - Catanzaro (North Africa)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 21
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,4
+#BUILD_LENGTH= 3
+#LENGTH= 5
+#RANGE= 25
+#LONG_RANGE= 1
+; Taranto(180,105)
+#GOAL_POSITION= 179,107
+#GOAL_POSITION= 181,112
+#COASTAL_POSITION= 180,108
+#DATE= 1941/01/01
+#STEAL= 3
+; Tunis(167,112)
+; Tripoli(172,121)
+#FRIENDLY_POSITION= 167,112
+#FRIENDLY_POSITION= 172,121
+; UK(112) Allied and not surrendered AND
+; USA(115) Allied and fully active AND
+; Italy(59) Axis and fully active
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Tripoli(172,121) not tactically threatened
+#TACTICAL_CONDITION= 172,121 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= UK Build Up Amphibious (Canada) - Palermo (North Africa)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 21
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,4
+#BUILD_LENGTH= 3
+#LENGTH= 5
+#RANGE= 25
+#LONG_RANGE= 1
+; Palermo
+#GOAL_POSITION= 173,109
+#GOAL_POSITION= 172,114
+#COASTAL_POSITION= 174,112
+#DATE= 1941/01/01
+#STEAL= 3
+; Tunis(167,112)
+; Tripoli(172,121)
+#FRIENDLY_POSITION= 167,112
+#FRIENDLY_POSITION= 172,121
+; UK(112) Allied and not surrendered AND
+; USA(115) Allied and fully active AND
+; Italy(59) Axis and fully active
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Tripoli(172,121) not tactically threatened
+#TACTICAL_CONDITION= 172,121 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= UK Build Up Amphibious (Canada) - Rome (North Africa)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 21
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,4
+#BUILD_LENGTH= 3
+#LENGTH= 5
+#RANGE= 25
+#LONG_RANGE= 1
+; Rome(171,101)
+#GOAL_POSITION= 171,101
+#GOAL_POSITION= 170,107
+#COASTAL_POSITION= 170,102
+#DATE= 1941/01/01
+#STEAL= 3
+; Tunis(167,112)
+; Tripoli(172,121)
+#FRIENDLY_POSITION= 167,112
+#FRIENDLY_POSITION= 172,121
+; UK(112) Allied and not surrendered AND
+; USA(115) Allied and fully active AND
+; Italy(59) Axis and fully active
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Tripoli(172,121) not tactically threatened
+#TACTICAL_CONDITION= 172,121 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= UK Build Up Amphibious - Catanzaro (North Africa)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 2,4
+#BUILD_LENGTH= 3
+#LENGTH= 5
+#RANGE= 25
+#LONG_RANGE= 1
+; Taranto(180,105)
+#GOAL_POSITION= 179,107
+#GOAL_POSITION= 181,112
+#COASTAL_POSITION= 180,108
+#DATE= 1941/01/01
+#STEAL= 3
+; Tunis(167,112)
+; Tripoli(172,121)
+#FRIENDLY_POSITION= 167,112
+#FRIENDLY_POSITION= 172,121
+; UK(112) Allied and not surrendered AND
+; USA(115) Allied and fully active AND
+; Italy(59) Axis and fully active
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Tripoli(172,121) not tactically threatened
+#TACTICAL_CONDITION= 172,121 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; UK prepares to attack France:
+; This will trigger the possible targeting of Cherbourg by Bombers
+{
+#NAME= UK Build Up Amphibious - Cherbourg (D-Day) (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,8
+#BUILD_LENGTH= 3.0
+#LENGTH= 5
+#RANGE= 25
+#LONG_RANGE= 1
+; Cherbourg
+#GOAL_POSITION= 143,82
+#GOAL_POSITION= 139,80
+#COASTAL_POSITION= 143,81
+#DATE= 1944/01/21
+#STEAL= 0
+; Sheffield
+; London(147,77)
+#FRIENDLY_POSITION= 144,73
+#FRIENDLY_POSITION= 147,77
+; UK(112) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; 20 Allied units in England
+#ACTIVATE_POSITION= 147,77 [20,20] [20,20] [2]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+; UK prepares to attack France:
+; This will trigger the possible targeting of Cherbourg by Bombers
+{
+#NAME= UK Build Up Amphibious - Cherbourg (D-Day) (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 3
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,8
+#BUILD_LENGTH= 3.0
+#LENGTH= 5
+#RANGE= 25
+#LONG_RANGE= 1
+; Cherbourg
+#GOAL_POSITION= 143,82
+#GOAL_POSITION= 139,80
+#COASTAL_POSITION= 143,81
+#DATE= 1943/02/25
+#STEAL= 0
+; Sheffield
+; London(147,77)
+#FRIENDLY_POSITION= 144,73
+#FRIENDLY_POSITION= 147,77
+; UK(112) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; 30 Allied Units in the UK
+#ACTIVATE_POSITION= 147,77 [20,20] [30,30] [2]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+; UK prepares to attack France:
+{
+#NAME= UK Build Up Amphibious - Le Havre (D-Day) (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,10
+#BUILD_LENGTH= 3.0
+#LENGTH= 5
+#RANGE= 25
+#LONG_RANGE= 1
+; Le Havre
+#GOAL_POSITION= 147,82
+#GOAL_POSITION= 147,79
+#COASTAL_POSITION= 147,81
+#DATE= 1944/01/21
+#STEAL= 0
+; Edinburgh(140,65)
+; London(147,77)
+#FRIENDLY_POSITION= 140,65
+#FRIENDLY_POSITION= 144,73
+; UK(112) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; 20 Allied units in England
+#ACTIVATE_POSITION= 147,77 [20,20] [20,20] [2]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+; UK prepares to attack France:
+{
+#NAME= UK Build Up Amphibious - Le Havre (D-Day) (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 3
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,10
+#BUILD_LENGTH= 3.0
+#LENGTH= 5
+#RANGE= 25
+#LONG_RANGE= 1
+; Le Havre
+#GOAL_POSITION= 147,82
+#GOAL_POSITION= 147,79
+#COASTAL_POSITION= 147,81
+#DATE= 1943/02/25
+#STEAL= 0
+; Edinburgh(140,65)
+; London(147,77)
+#FRIENDLY_POSITION= 140,65
+#FRIENDLY_POSITION= 144,73
+; UK(112) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; 30 Allied Units in the UK
+#ACTIVATE_POSITION= 147,77 [20,20] [30,30] [2]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+; UK prepares to attack Italy:
+{
+#NAME= UK Build Up Amphibious - Palermo (North Africa)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 2,4
+#BUILD_LENGTH= 3
+#LENGTH= 5
+#RANGE= 25
+#LONG_RANGE= 1
+; Palermo
+#GOAL_POSITION= 173,109
+#GOAL_POSITION= 172,114
+#COASTAL_POSITION= 174,112
+#DATE= 1941/01/01
+#STEAL= 3
+; Tunis(167,112)
+; Tripoli(172,121)
+#FRIENDLY_POSITION= 167,112
+#FRIENDLY_POSITION= 172,121
+; UK(112) Allied and not surrendered AND
+; USA(115) Allied and fully active AND
+; Italy(59) Axis and fully active
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Tripoli(172,121) not tactically threatened
+#TACTICAL_CONDITION= 172,121 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= UK Build Up Amphibious - Rome (North Africa)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 2,4
+#BUILD_LENGTH= 3
+#LENGTH= 5
+#RANGE= 25
+#LONG_RANGE= 1
+; Rome(171,101)
+#GOAL_POSITION= 171,101
+#GOAL_POSITION= 170,107
+#COASTAL_POSITION= 170,102
+#DATE= 1941/01/01
+#STEAL= 3
+; Tunis(167,112)
+; Tripoli(172,121)
+#FRIENDLY_POSITION= 167,112
+#FRIENDLY_POSITION= 172,121
+; UK(112) Allied and not surrendered AND
+; USA(115) Allied and fully active AND
+; Italy(59) Axis and fully active
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Tripoli(172,121) not tactically threatened
+#TACTICAL_CONDITION= 172,121 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; UK prepares to attack France:
+{
+#NAME= UK Build Up Amphibious Minor (Canada) - Brest (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 21
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 3.0
+#LENGTH= 5
+#RANGE= 25
+#LONG_RANGE= 0
+; Brest(138,86)
+#GOAL_POSITION= 138,86
+#GOAL_POSITION= 136,82
+#COASTAL_POSITION= 138,85
+#DATE= 1944/01/21
+#STEAL= 0
+; Edinburgh(140,65)
+; London(147,77)
+#FRIENDLY_POSITION= 140,65
+#FRIENDLY_POSITION= 144,73
+; UK(112) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; 20 Allied units in England
+#ACTIVATE_POSITION= 147,77 [20,20] [20,20] [2]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+; UK prepares to attack France:
+{
+#NAME= UK Build Up Amphibious Minor (Canada) - Brest (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 3
+#COUNTRY_ID= 21
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 1,5
+#BUILD_LENGTH= 3.0
+#LENGTH= 5
+#RANGE= 25
+#LONG_RANGE= 0
+; Brest(138,86)
+#GOAL_POSITION= 138,86
+#GOAL_POSITION= 136,82
+#COASTAL_POSITION= 138,85
+#DATE= 1943/02/25
+#STEAL= 0
+; Edinburgh(140,65)
+; London(147,77)
+#FRIENDLY_POSITION= 140,65
+#FRIENDLY_POSITION= 144,73
+; UK(112) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; 30 Allied Units in the UK
+#ACTIVATE_POSITION= 147,77 [20,20] [30,30] [2]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+; 75% Algiers - Gibraltar not held by Axis
+; 20% Casablanca - Gibraltar not held by Allies
+; 20% Lagos - Gibraltar not held by Allies
+; 20% Porto - Gibraltar not held by Allies
+; 20% Bordeaux - Gibraltar not held by Allies
+; 20% Nothing - Gibraltar not held by Allies
+{
+#NAME= USA Build Up Amphibious - Algiers (Torch) (75%)
+#POPUP=
+#FLAG= 1
+#TYPE= 3
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 3[1,75]
+#LINK= 0[0]
+#SIZE= 5,5
+#BUILD_LENGTH= 3
+#LENGTH= 10
+#RANGE= 25
+#LONG_RANGE= 1
+; Algiers
+#GOAL_POSITION= 152,113
+#GOAL_POSITION= 10,108
+#GOAL_POSITION= 29,110
+#GOAL_POSITION= 48,110
+#GOAL_POSITION= 148,111
+#COASTAL_POSITION= 151,112
+; Date set to post arrival of US HQ/Navy via P/Q
+#DATE= 1942/06/28
+#STEAL= 0
+; New York(10,104)
+; Gibraltar(136,114)
+#FRIENDLY_POSITION= 10,104
+#FRIENDLY_POSITION= 136,114
+; USA(115) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Washington DC(4,108) not tactically threatened
+#TACTICAL_CONDITION= 4,108 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; 1 Axis unit in England OR
+; 0 Allied units in England OR
+; 1 Axis unit within range of Washington DC(4,108) OR
+; 1 Axis unit within range of Gibraltar OR
+; 0 Allied units at Gibraltar
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+#CANCEL_POSITION= 147,77 [20,20] [0,0] [2]
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+#CANCEL_POSITION= 136,114 [1,1] [1,1] [1]
+#CANCEL_POSITION= 136,114 [0,0] [0,0] [2]
+}
+
+; USA prepares to attack:
+{
+#NAME= USA Build Up Amphibious - Bordeaux (Torch) (20%)
+#POPUP=
+#FLAG= 1
+#TYPE= 3
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 3[61,80]
+#LINK= 0[0]
+#SIZE= 5,5
+#BUILD_LENGTH= 3
+#LENGTH= 8
+#RANGE= 25
+#LONG_RANGE= 1
+; Bordeaux
+#GOAL_POSITION= 145,94
+#GOAL_POSITION= 10,110
+#GOAL_POSITION= 29,110
+#GOAL_POSITION= 48,110
+#GOAL_POSITION= 137,94
+#COASTAL_POSITION= 143,95
+; Date set to post arrival of US HQ/Navy via P/Q
+#DATE= 1942/06/28
+#STEAL= 0
+; New York(10,104)
+#FRIENDLY_POSITION= 10,104
+; USA(115) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Washington DC(4,108) not tactically threatened
+#TACTICAL_CONDITION= 4,108 [1]
+; Axis have taken Gibraltar
+#ACTIVATE_POSITION= 136,114 [0,0] [0,0] [2]
+; 1 Axis unit in England OR
+; 0 Allied units in England OR
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+#CANCEL_POSITION= 147,77 [20,20] [0,0] [2]
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+; USA prepares to attack:
+{
+#NAME= USA Build Up Amphibious - Casablanca (Torch) (20%)
+#POPUP=
+#FLAG= 1
+#TYPE= 3
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 3[1,20]
+#LINK= 0[0]
+#SIZE= 5,5
+#BUILD_LENGTH= 3
+#LENGTH= 8
+#RANGE= 25
+#LONG_RANGE= 1
+; Casablanca
+#GOAL_POSITION= 131,119
+#GOAL_POSITION= 10,108
+#GOAL_POSITION= 29,110
+#GOAL_POSITION= 48,110
+#GOAL_POSITION= 127,116
+#COASTAL_POSITION= 131,118
+; Date set to post arrival of US HQ/Navy via P/Q
+#DATE= 1942/06/28
+#STEAL= 0
+; New York(10,104)
+#FRIENDLY_POSITION= 10,104
+; USA(115) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Washington DC(4,108) not tactically threatened
+#TACTICAL_CONDITION= 4,108 [1]
+; Axis have taken Gibraltar
+#ACTIVATE_POSITION= 136,114 [0,0] [0,0] [2]
+; 1 Axis unit in England OR
+; 0 Allied units in England OR
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+#CANCEL_POSITION= 147,77 [20,20] [0,0] [2]
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+; USA prepares to attack:
+{
+#NAME= USA Build Up Amphibious - Lagos (Torch) (20%)
+#POPUP=
+#FLAG= 1
+#TYPE= 3
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 3[21,40]
+#LINK= 0[0]
+#SIZE= 5,5
+#BUILD_LENGTH= 3
+#LENGTH= 8
+#RANGE= 25
+#LONG_RANGE= 1
+; Lagos
+#GOAL_POSITION= 130,112
+#GOAL_POSITION= 10,110
+#GOAL_POSITION= 29,110
+#GOAL_POSITION= 48,110
+#GOAL_POSITION= 124,113
+#COASTAL_POSITION= 129,112
+; Date set to post arrival of US HQ/Navy via P/Q
+#DATE= 1942/06/28
+#STEAL= 0
+; New York(10,104)
+#FRIENDLY_POSITION= 10,104
+; USA(115) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Washington DC(4,108) not tactically threatened
+#TACTICAL_CONDITION= 4,108 [1]
+; Axis have taken Gibraltar
+#ACTIVATE_POSITION= 136,114 [0,0] [0,0] [2]
+; 1 Axis unit in England OR
+; 0 Allied units in England OR
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+#CANCEL_POSITION= 147,77 [20,20] [0,0] [2]
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+; USA prepares to attack Italy:
+{
+#NAME= USA Build Up Amphibious - Palermo (North Africa)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 2,4
+#BUILD_LENGTH= 3
+#LENGTH= 5
+#RANGE= 25
+#LONG_RANGE= 1
+; Palermo
+#GOAL_POSITION= 173,109
+#GOAL_POSITION= 172,114
+#COASTAL_POSITION= 174,112
+#DATE= 1943/01/14
+#STEAL= 3
+; Tunis(167,112)
+; Tripoli(172,121)
+; Algiers(152,113)
+#FRIENDLY_POSITION= 167,112
+#FRIENDLY_POSITION= 172,121
+#FRIENDLY_POSITION= 152,113
+; USA(115) Allied and not surrendered AND
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Tripoli(172,121) not tactically threatened
+#TACTICAL_CONDITION= 172,121 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; USA prepares to attack:
+{
+#NAME= USA Build Up Amphibious - Porto (Torch) (20%)
+#POPUP=
+#FLAG= 1
+#TYPE= 3
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 3[41,60]
+#LINK= 0[0]
+#SIZE= 5,5
+#BUILD_LENGTH= 3
+#LENGTH= 8
+#RANGE= 25
+#LONG_RANGE= 1
+; Porto
+#GOAL_POSITION= 130,103
+#GOAL_POSITION= 10,110
+#GOAL_POSITION= 29,110
+#GOAL_POSITION= 48,110
+#GOAL_POSITION= 122,103
+#COASTAL_POSITION= 129,104
+; Date set to post arrival of US HQ/Navy via P/Q
+#DATE= 1942/06/28
+#STEAL= 0
+; New York(10,104)
+#FRIENDLY_POSITION= 10,104
+; USA(115) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Washington DC(4,108) not tactically threatened
+#TACTICAL_CONDITION= 4,108 [1]
+; Axis have taken Gibraltar
+#ACTIVATE_POSITION= 136,114 [0,0] [0,0] [2]
+; 1 Axis unit in England OR
+; 0 Allied units in England OR
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+#CANCEL_POSITION= 147,77 [20,20] [0,0] [2]
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+; USA prepares to attack Italy:
+{
+#NAME= USA Build Up Amphibious - Rome (Palermo)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 2,4
+#BUILD_LENGTH= 2
+#LENGTH= 4
+#RANGE= 10
+#LONG_RANGE= 1
+; Rome(171,101)
+#GOAL_POSITION= 171,101
+#COASTAL_POSITION= 170,102
+#DATE= 1943/01/14
+#STEAL= 3
+; Palermo
+; Tunis(167,112)
+; Tripoli(172,121)
+; Algiers(152,113)
+#FRIENDLY_POSITION= 173,109
+#FRIENDLY_POSITION= 167,112
+#FRIENDLY_POSITION= 172,121
+#FRIENDLY_POSITION= 152,113
+; USA(115) Allied and not surrendered AND
+; Italy(59) Axis and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Tripoli(172,121) not tactically threatened
+#TACTICAL_CONDITION= 172,121 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; USA prepares to attack France:
+{
+#NAME= USA Build Up Amphibious - St. Malo (D-Day) (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 4,15
+#BUILD_LENGTH= 3.0
+#LENGTH= 5
+#RANGE= 25
+#LONG_RANGE= 1
+; St. Malo
+#GOAL_POSITION= 141,85
+#GOAL_POSITION= 138,82
+#COASTAL_POSITION= 139,84
+#DATE= 1944/01/21
+#STEAL= 0
+; Bristol
+#FRIENDLY_POSITION= 142,78
+; USA(115) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Washington DC(4,108) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+; 20 Allied units in England
+#ACTIVATE_POSITION= 147,77 [20,20] [20,20] [2]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+; USA prepares to attack France:
+{
+#NAME= USA Build Up Amphibious - St. Malo (D-Day) (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 3
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 4,15
+#BUILD_LENGTH= 3.0
+#LENGTH= 5
+#RANGE= 25
+#LONG_RANGE= 1
+; St. Malo
+#GOAL_POSITION= 141,85
+#GOAL_POSITION= 138,82
+#COASTAL_POSITION= 139,84
+#DATE= 1943/02/25
+#STEAL= 0
+; Bristol
+#FRIENDLY_POSITION= 142,78
+; USA(115) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Washington DC(4,108) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+; 30 Allied Units in the UK
+#ACTIVATE_POSITION= 147,77 [20,20] [30,30] [2]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+; USA prepares to attack UK:
+{
+#NAME= USA Build Up Amphibious - Washington D.C. -> Cardiff (Liberate UK) (DE 1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 1[1]
+#SIZE= 5,5
+#BUILD_LENGTH= 3
+#LENGTH= 8
+#RANGE= 25
+#LONG_RANGE= 1
+; Cardiff
+#GOAL_POSITION= 140,77
+#GOAL_POSITION= 9,109
+#GOAL_POSITION= 126,84
+#COASTAL_POSITION= 137,78
+#DATE= 1941/09/23
+#STEAL= 0
+; Washington DC(4,108)
+#FRIENDLY_POSITION= 4,108
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened
+#TACTICAL_CONDITION= 4,108 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+; USA prepares to attack UK:
+{
+#NAME= USA Build Up Amphibious - Washington D.C. -> Ft. William (Liberate UK) (DE 1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 1[1]
+#SIZE= 5,5
+#BUILD_LENGTH= 3
+#LENGTH= 8
+#RANGE= 25
+#LONG_RANGE= 1
+; Fort William
+#GOAL_POSITION= 136,62
+#GOAL_POSITION= 10,108
+#COASTAL_POSITION= 134,62
+#DATE= 1942/07/12
+#STEAL= 0
+; Washington DC(4,108)
+#FRIENDLY_POSITION= 4,108
+; USA(115) Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Washington DC(4,108) not tactically threatened
+#TACTICAL_CONDITION= 4,108 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+; Fall Weiss II
+; UK prepares to attack France:
+{
+#NAME= [FW]UK Build Up Amphibious - Calais (D-Day) (3)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,4
+#BUILD_LENGTH= 3
+#LENGTH= 3
+#RANGE= 10
+#LONG_RANGE= 1
+; Calais(151,79)
+#GOAL_POSITION= 151,79
+#GOAL_POSITION= 147,79
+#COASTAL_POSITION= 151,78
+#DATE= 1944/04/01
+#STEAL= 0
+; Edinburgh(140,65)
+; London(147,77)
+#FRIENDLY_POSITION= 140,65
+#FRIENDLY_POSITION= 144,73
+; UK(112) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; 15 Allied units in England
+#ACTIVATE_POSITION= 147,77 [20,20] [15,15] [2]
+; 1 Axis unit within range of London
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+}
+
+; Fall Weiss II
+; USA prepares to attack:
+{
+#NAME= [FW]USA Build Up Amphibious - Bordeaux (Torch) (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 5,5
+#BUILD_LENGTH= 3
+#LENGTH= 15
+#RANGE= 25
+#LONG_RANGE= 1
+; Bordeaux
+#GOAL_POSITION= 145,94
+#GOAL_POSITION= 10,108
+#GOAL_POSITION= 29,110
+#GOAL_POSITION= 48,110
+#GOAL_POSITION= 137,94
+#COASTAL_POSITION= 143,95
+#DATE= 1944/09/01
+#STEAL= 0
+; New York(10,104)
+#FRIENDLY_POSITION= 10,104
+; USA(115) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Washington DC(4,108) not tactically threatened
+#TACTICAL_CONDITION= 4,108 [1]
+; Axis units hold Paris
+#ACTIVATE_POSITION= 151,84 [0,0] [1,1] [1]
+; 1 Axis unit in England OR
+; 0 Allied units in England OR
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+#CANCEL_POSITION= 147,77 [20,20] [0,0] [2]
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+; Fall Weiss II
+; USA prepares to attack:
+{
+#NAME= [FW]USA Build Up Amphibious - Lagos (Torch) (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,5
+#BUILD_LENGTH= 3
+#LENGTH= 15
+#RANGE= 25
+#LONG_RANGE= 1
+; Lagos
+#GOAL_POSITION= 130,112
+#GOAL_POSITION= 10,108
+#GOAL_POSITION= 29,110
+#GOAL_POSITION= 48,110
+#GOAL_POSITION= 124,113
+#COASTAL_POSITION= 129,112
+#DATE= 1944/06/01
+#STEAL= 0
+; New York(10,104)
+#FRIENDLY_POSITION= 10,104
+; USA(115) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Washington DC(4,108) not tactically threatened
+#TACTICAL_CONDITION= 4,108 [1]
+; Axis units hold Cherbourg
+#ACTIVATE_POSITION= 143,82 [0,0] [1,1] [1]
+; 1 Axis unit in England OR
+; 0 Allied units in England OR
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+#CANCEL_POSITION= 147,77 [20,20] [0,0] [2]
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+; Fall Weiss II
+; USA prepares to attack:
+{
+#NAME= [FW]USA Build Up Amphibious - Porto (Torch) (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SIZE= 3,5
+#BUILD_LENGTH= 3
+#LENGTH= 15
+#RANGE= 25
+#LONG_RANGE= 1
+; Porto
+#GOAL_POSITION= 130,103
+#GOAL_POSITION= 10,108
+#GOAL_POSITION= 29,110
+#GOAL_POSITION= 48,110
+#GOAL_POSITION= 122,103
+#COASTAL_POSITION= 129,104
+#DATE= 1944/06/01
+#STEAL= 0
+; New York(10,104)
+#FRIENDLY_POSITION= 10,104
+; USA(115) Allied and not surrendered AND
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Washington DC(4,108) not tactically threatened
+#TACTICAL_CONDITION= 4,108 [1]
+; Axis units hold Cherbourg
+#ACTIVATE_POSITION= 143,82 [0,0] [1,1] [1]
+; 1 Axis unit in England OR
+; 0 Allied units in England OR
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
+#CANCEL_POSITION= 147,77 [20,20] [0,0] [2]
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
+; Fall Weiss II
+{
+#NAME= [FW]USA Build Up Amphibious - Washington D.C. -> Saint John(Liberate UK) (DE 1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 54
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 1[1]
+#SIZE= 3,3
+#BUILD_LENGTH= 3
+#LENGTH= 8
+#RANGE= 25
+#LONG_RANGE= 1
+; Cardiff
+#GOAL_POSITION= 140,77
+#GOAL_POSITION= 9,109
+#GOAL_POSITION= 126,84
+#COASTAL_POSITION= 137,78
+#DATE= 1941/09/23
+#STEAL= 0
+; Saint John.
+#FRIENDLY_POSITION= 25,93
+; USA(115), British Empire Allied and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 54 [2] [100] [0]
+; Washington DC(4,108), Washington D.C. not tactically threatened
+#TACTICAL_CONDITION= 4,108 [1]
+#TACTICAL_CONDITION= 25,93 [1]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; 1 Axis unit within range of Washington DC(4,108)
+#CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
+}
+
