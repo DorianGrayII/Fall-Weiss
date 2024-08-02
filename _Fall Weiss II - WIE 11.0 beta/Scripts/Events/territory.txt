@@ -261,7 +261,6 @@
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;
 {
 #NAME= German Occupation of Danzig
 #POPUP=
@@ -311,7 +310,6 @@
 #MAP_POSITION= 161,87
 }
 
-;
 {
 #NAME= DE 100 - Free French Forces Liberate St Pierre Et Miquelon Near Newfoundland
 #POPUP= Free French Forces Liberate St Pierre Et Miquelon Near Newfoundland
@@ -333,7 +331,6 @@
 #MAP_POSITION= 44,89
 }
 
-;
 {
 #NAME= DE 101 - Destroyers for Bases
 #POPUP=
@@ -378,7 +375,6 @@
 #MAP_POSITION= 242,127
 }
 
-;
 {
 #NAME= DE 106 - UK Returns Basra to Iraq following the Iraqi Surrender
 #POPUP=
@@ -401,7 +397,6 @@
 #MAP_POSITION= 242,127
 }
 
-;
 {
 #NAME= DE 116 - Azores Island Treaty With Portugal - UK Leases Azores
 #POPUP= Prime Minister Salazar Of Portugal Leases Bases In The Azores To The British
@@ -434,7 +429,6 @@
 #MAP_POSITION= 88,108
 }
 
-;
 {
 #NAME= DE 117 - Azores Island Treaty With Portugal - UK Leases Azores
 #POPUP= Azores Island Treaty - Salazar Leases Bases In The Azores To The British
@@ -467,10 +461,10 @@
 #MAP_POSITION= 88,108
 }
 
-;
+; Ireland Joins Allies
 {
-#NAME= DE 124 - The Royal Navy Occupies The Ports Of Cork And Wexford In Ireland
-#POPUP= The Royal Navy Occupies The Ports Of Cork And Waterford In Ireland
+#NAME= DE 124 - Ports Of Cork And Wexford Return to Ireland if Ireland joins the Allies
+#POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -479,34 +473,12 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 124[1]
-#COUNTRY_ID= 57
-#RECIPIENT_ID= 112
-#REMOVE= 0
-#TRIGGER= 100
-#DATE= 1939/09/01
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#MAP_POSITION= 130,77
-#MAP_POSITION= 133,75
-}
-
-; UK Surrenders
-{
-#NAME= DE 124 - Ports Of Cork And Wexford Return to Ireland if the UK surrenders
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 05
-#GV= 1[1,100]
-#LINK= 124[1]
 #COUNTRY_ID= 112
 #RECIPIENT_ID= 57
 #REMOVE= 0
 #TRIGGER= 100
 #DATE= 1939/10/15
-#VARIABLE_CONDITION= 112 [2] [100] [1]
+#VARIABLE_CONDITION= 57 [2] [100] [0]
 #MAP_POSITION= 130,77
 #MAP_POSITION= 133,75
 }
@@ -533,10 +505,31 @@
 #MAP_POSITION= 133,75
 }
 
-; Ireland Joins Allies
+; UK Surrenders
 {
-#NAME= DE 124 - Ports Of Cork And Wexford Return to Ireland if Ireland joins the Allies
+#NAME= DE 124 - Ports Of Cork And Wexford Return to Ireland if the UK surrenders
 #POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 05
+#GV= 1[1,100]
+#LINK= 124[1]
+#COUNTRY_ID= 112
+#RECIPIENT_ID= 57
+#REMOVE= 0
+#TRIGGER= 100
+#DATE= 1939/10/15
+#VARIABLE_CONDITION= 112 [2] [100] [1]
+#MAP_POSITION= 130,77
+#MAP_POSITION= 133,75
+}
+
+{
+#NAME= DE 124 - The Royal Navy Occupies The Ports Of Cork And Wexford In Ireland
+#POPUP= The Royal Navy Occupies The Ports Of Cork And Waterford In Ireland
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -545,40 +538,19 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 124[1]
-#COUNTRY_ID= 112
-#RECIPIENT_ID= 57
-#REMOVE= 0
-#TRIGGER= 100
-#DATE= 1939/10/15
-#VARIABLE_CONDITION= 57 [2] [100] [0]
-#MAP_POSITION= 130,77
-#MAP_POSITION= 133,75
-}
-
-{
-#NAME= DE 125 - The Royal Navy Occupies The Port Of Limerick In Ireland
-#POPUP= The Royal Navy Occupies The Port Of Limerick In Ireland
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 125[1]
 #COUNTRY_ID= 57
 #RECIPIENT_ID= 112
 #REMOVE= 0
 #TRIGGER= 100
-#DATE= 1941/03/24
+#DATE= 1939/09/01
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-#MAP_POSITION= 129,73
-#MAP_POSITION= 128,74
+#MAP_POSITION= 130,77
+#MAP_POSITION= 133,75
 }
 
-; UK Surrenders
+; Ireland Joins Allies
 {
-#NAME= DE 125 - The Port of Limerick Returns to Ireland if the UK surrenders
+#NAME= DE 125 - Ireland: The Port of Limerick Returns to (Allied) Ireland
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -593,7 +565,7 @@
 #REMOVE= 0
 #TRIGGER= 100
 #DATE= 1941/03/24
-#VARIABLE_CONDITION= 112 [2] [100] [1]
+#VARIABLE_CONDITION= 57 [2] [100] [0]
 #MAP_POSITION= 129,73
 #MAP_POSITION= 128,74
 }
@@ -620,9 +592,9 @@
 #MAP_POSITION= 128,74
 }
 
-; Ireland Joins Allies
+; UK Surrenders
 {
-#NAME= DE 125 - Ireland: The Port of Limerick Returns to (Allied) Ireland
+#NAME= DE 125 - The Port of Limerick Returns to Ireland if the UK surrenders
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -637,12 +609,32 @@
 #REMOVE= 0
 #TRIGGER= 100
 #DATE= 1941/03/24
-#VARIABLE_CONDITION= 57 [2] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [1]
 #MAP_POSITION= 129,73
 #MAP_POSITION= 128,74
 }
 
-;
+{
+#NAME= DE 125 - The Royal Navy Occupies The Port Of Limerick In Ireland
+#POPUP= The Royal Navy Occupies The Port Of Limerick In Ireland
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 125[1]
+#COUNTRY_ID= 57
+#RECIPIENT_ID= 112
+#REMOVE= 0
+#TRIGGER= 100
+#DATE= 1941/03/24
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#MAP_POSITION= 129,73
+#MAP_POSITION= 128,74
+}
+
 {
 #NAME= DE 126 - The UK Launches Operation Fork To Garrison Iceland (Iceland->Allies)
 #POPUP= The UK Launches Operation Fork To Garrison Iceland
@@ -874,7 +866,7 @@
 }
 
 {
-#NAME= DE 137 - Soviet Naval Base At Cyprus
+#NAME= [FW]DE 137 - Soviet Naval Base At Cyprus
 #POPUP= UK Grants Permission For A Wartime Soviet Naval Base At Cyprus
 #IMAGE=
 #SOUND=
@@ -1070,104 +1062,6 @@
 #MAP_POSITION= 165,101
 #MAP_POSITION= 165,102
 #MAP_POSITION= 165,100
-}
-
-{
-#NAME= DE 314 - Operation Countenance - The UK Gains Southern Persia
-#POPUP= Britain Secures The Persian Oilfield At Maidan-I-Naftun
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-; DE 314 - USSR: Operation Countenance: Join with the UK in Invading (Allied) Persia?
-#LINK= 314[1]
-; Persia(82)
-#COUNTRY_ID= 82
-; UK(112)
-#RECIPIENT_ID= 112
-#REMOVE= 0
-#TRIGGER= 100
-#DATE= 1939/09/01
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#MAP_POSITION= 244,127
-#MAP_POSITION= 244,126
-#MAP_POSITION= 243,125
-#MAP_POSITION= 242,125
-#MAP_POSITION= 243,124
-#MAP_POSITION= 242,124
-#MAP_POSITION= 243,123
-#MAP_POSITION= 244,123
-#MAP_POSITION= 243,122
-#MAP_POSITION= 244,122
-#MAP_POSITION= 245,122
-#MAP_POSITION= 246,123
-#MAP_POSITION= 247,123
-#MAP_POSITION= 247,124
-#MAP_POSITION= 248,124
-#MAP_POSITION= 248,125
-#MAP_POSITION= 248,126
-#MAP_POSITION= 247,125
-#MAP_POSITION= 246,126
-#MAP_POSITION= 245,126
-#MAP_POSITION= 245,125
-#MAP_POSITION= 246,125
-#MAP_POSITION= 246,124
-#MAP_POSITION= 245,123
-#MAP_POSITION= 244,124
-#MAP_POSITION= 244,125
-#MAP_POSITION= 245,124
-}
-
-{
-#NAME= DE 315 - Operation Countenance - The UK Gains Southern Persia
-#POPUP= Britain Secures The Persian Oilfield At Maidan-I-Naftun
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-; DE 315 - USSR: Operation Countenance: Join with the UK in Invading (Axis) Persia?
-#LINK= 315[1]
-; Persia(82)
-#COUNTRY_ID= 82
-; UK(112)
-#RECIPIENT_ID= 112
-#REMOVE= 0
-#TRIGGER= 100
-#DATE= 1939/09/01
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#MAP_POSITION= 244,127
-#MAP_POSITION= 244,126
-#MAP_POSITION= 243,125
-#MAP_POSITION= 242,125
-#MAP_POSITION= 243,124
-#MAP_POSITION= 242,124
-#MAP_POSITION= 243,123
-#MAP_POSITION= 244,123
-#MAP_POSITION= 243,122
-#MAP_POSITION= 244,122
-#MAP_POSITION= 245,122
-#MAP_POSITION= 246,123
-#MAP_POSITION= 247,123
-#MAP_POSITION= 247,124
-#MAP_POSITION= 248,124
-#MAP_POSITION= 248,125
-#MAP_POSITION= 248,126
-#MAP_POSITION= 247,125
-#MAP_POSITION= 246,126
-#MAP_POSITION= 245,126
-#MAP_POSITION= 245,125
-#MAP_POSITION= 246,125
-#MAP_POSITION= 246,124
-#MAP_POSITION= 245,123
-#MAP_POSITION= 244,124
-#MAP_POSITION= 244,125
-#MAP_POSITION= 245,124
 }
 
 ; https://www.wikiwand.com/en/Moscow_Peace_Treaty
@@ -1466,11 +1360,109 @@
 #MAP_POSITION= 15,102
 }
 
+{
+#NAME= [FW]DE 314 - Operation Countenance - The UK Gains Southern Persia
+#POPUP= Britain Secures The Persian Oilfield At Maidan-I-Naftun
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; DE 314 - USSR: Operation Countenance: Join with the UK in Invading (Allied) Persia?
+#LINK= 314[1]
+; Persia(82)
+#COUNTRY_ID= 82
+; UK(112)
+#RECIPIENT_ID= 112
+#REMOVE= 0
+#TRIGGER= 100
+#DATE= 1939/09/01
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#MAP_POSITION= 244,127
+#MAP_POSITION= 244,126
+#MAP_POSITION= 243,125
+#MAP_POSITION= 242,125
+#MAP_POSITION= 243,124
+#MAP_POSITION= 242,124
+#MAP_POSITION= 243,123
+#MAP_POSITION= 244,123
+#MAP_POSITION= 243,122
+#MAP_POSITION= 244,122
+#MAP_POSITION= 245,122
+#MAP_POSITION= 246,123
+#MAP_POSITION= 247,123
+#MAP_POSITION= 247,124
+#MAP_POSITION= 248,124
+#MAP_POSITION= 248,125
+#MAP_POSITION= 248,126
+#MAP_POSITION= 247,125
+#MAP_POSITION= 246,126
+#MAP_POSITION= 245,126
+#MAP_POSITION= 245,125
+#MAP_POSITION= 246,125
+#MAP_POSITION= 246,124
+#MAP_POSITION= 245,123
+#MAP_POSITION= 244,124
+#MAP_POSITION= 244,125
+#MAP_POSITION= 245,124
+}
+
+{
+#NAME= [FW]DE 315 - Operation Countenance - The UK Gains Southern Persia
+#POPUP= Britain Secures The Persian Oilfield At Maidan-I-Naftun
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; DE 315 - USSR: Operation Countenance: Join with the UK in Invading (Axis) Persia?
+#LINK= 315[1]
+; Persia(82)
+#COUNTRY_ID= 82
+; UK(112)
+#RECIPIENT_ID= 112
+#REMOVE= 0
+#TRIGGER= 100
+#DATE= 1939/09/01
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#MAP_POSITION= 244,127
+#MAP_POSITION= 244,126
+#MAP_POSITION= 243,125
+#MAP_POSITION= 242,125
+#MAP_POSITION= 243,124
+#MAP_POSITION= 242,124
+#MAP_POSITION= 243,123
+#MAP_POSITION= 244,123
+#MAP_POSITION= 243,122
+#MAP_POSITION= 244,122
+#MAP_POSITION= 245,122
+#MAP_POSITION= 246,123
+#MAP_POSITION= 247,123
+#MAP_POSITION= 247,124
+#MAP_POSITION= 248,124
+#MAP_POSITION= 248,125
+#MAP_POSITION= 248,126
+#MAP_POSITION= 247,125
+#MAP_POSITION= 246,126
+#MAP_POSITION= 245,126
+#MAP_POSITION= 245,125
+#MAP_POSITION= 246,125
+#MAP_POSITION= 246,124
+#MAP_POSITION= 245,123
+#MAP_POSITION= 244,124
+#MAP_POSITION= 244,125
+#MAP_POSITION= 245,124
+}
+
 ;
 ; Henrik Kauffmann signs agreement with US Government
 ; Historical date of event was 1941/04/09
 {
-#NAME= DE 312 - Greenland Becomes US Protectorate (Denmark Surrendered)
+#NAME= DE 354 - Greenland Becomes US Protectorate (Denmark Surrendered)
 #POPUP= Greenland Becomes A US Protectorate As The Danish Ambassador Allows The Presence Of US Troops
 #IMAGE=
 #SOUND=
@@ -3773,7 +3765,7 @@
 }
 
 {
-#NAME= DE 533 - Allied Invasion Of Egypt
+#NAME= [FW]DE 533 - Allied Invasion Of Egypt
 #POPUP= Commonwealth Forces Invade Egypt From Sudan
 #IMAGE=
 #SOUND= tank_movement1.ogg
@@ -3830,34 +3822,8 @@
 #MAP_POSITION= 217,137
 }
 
-;NEW
-;
 {
-#NAME= DE 543 - The Port of Limerick Returns to Ireland if UK Occupies The Country
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 543[1]
-#COUNTRY_ID= 112
-#RECIPIENT_ID= 57
-#REMOVE= 0
-#TRIGGER= 100
-#DATE= 1941/03/24
-#VARIABLE_CONDITION= 57 [1] [100] [1]
-#MAP_POSITION= 129,73
-#MAP_POSITION= 128,74
-}
-
-
-;NEW
-;
-{
-#NAME= DE 543 - Ports Of Cork And Wexford Return to Ireland if UK Occupies The Country
+#NAME= [FW]DE 543 - Ports Of Cork And Wexford Return to Ireland if UK Occupies The Country
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -3877,10 +3843,9 @@
 #MAP_POSITION= 133,75
 }
 
-;
 {
-#NAME= DE 600 - The USSR Transfers Former Polish Territory Around Wilno To Lithuania
-#POPUP= The USSR Transfers Former Polish Territory Around Wilno To Lithuania
+#NAME= [FW]DE 543 - The Port of Limerick Returns to Ireland if UK Occupies The Country
+#POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -3888,23 +3853,17 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-; The Molotov-Ribbentrop Pact?
-#LINK= 600[1]
-#COUNTRY_ID= 116
-#RECIPIENT_ID= 64
+#LINK= 543[1]
+#COUNTRY_ID= 112
+#RECIPIENT_ID= 57
 #REMOVE= 0
 #TRIGGER= 100
-#DATE= 1939/10/27
-#VARIABLE_CONDITION= 64 [2] [0] [0]
-#MAP_POSITION= 198,67
-#MAP_POSITION= 197,68
-#MAP_POSITION= 196,68
-#MAP_POSITION= 197,67
-#MAP_POSITION= 196,69
-#MAP_POSITION= 195,69
+#DATE= 1941/03/24
+#VARIABLE_CONDITION= 57 [1] [100] [1]
+#MAP_POSITION= 129,73
+#MAP_POSITION= 128,74
 }
 
-;
 {
 #NAME= DE 600 - Germany Transfers Former Polish Territory Around Wilno To Lithuania
 #POPUP= Germany Transfers Former Polish Territory Around Wilno To Lithuania
@@ -3931,7 +3890,32 @@
 #MAP_POSITION= 195,69
 }
 
-;
+{
+#NAME= DE 600 - The USSR Transfers Former Polish Territory Around Wilno To Lithuania
+#POPUP= The USSR Transfers Former Polish Territory Around Wilno To Lithuania
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; The Molotov-Ribbentrop Pact?
+#LINK= 600[1]
+#COUNTRY_ID= 116
+#RECIPIENT_ID= 64
+#REMOVE= 0
+#TRIGGER= 100
+#DATE= 1939/10/27
+#VARIABLE_CONDITION= 64 [2] [0] [0]
+#MAP_POSITION= 198,67
+#MAP_POSITION= 197,68
+#MAP_POSITION= 196,68
+#MAP_POSITION= 197,67
+#MAP_POSITION= 196,69
+#MAP_POSITION= 195,69
+}
+
 {
 #NAME= DE 601 - The UK Launches Operation Valentine To Occupy The Faroe Islands (Denmark Annexed)
 #POPUP= Winston Churchill Orders Operation Valentine To Occupy The Faroe Islands
@@ -3957,7 +3941,6 @@
 #MAP_POSITION= 133,47
 }
 
-;
 {
 #NAME= DE 601 - The UK Launches Operation Valentine To Occupy The Faroe Islands (Denmark Not Annexed)
 #POPUP= Winston Churchill Orders Operation Valentine To Secure The Faroe Islands
@@ -3985,10 +3968,9 @@
 #MAP_POSITION= 133,47
 }
 
-;
 {
-#NAME= DE 603 - Spain Annexes Vichy French Territory in Algeria (Vichy isn't formed)
-#POPUP= Spain Annexes French Morocco With Axis Assistance
+#NAME= DE 603 - Spain Annexes Vichy French Territory in Algeria (Vichy is formed)
+#POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -3997,13 +3979,14 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 603[1]
-#COUNTRY_ID= 40
+#COUNTRY_ID= 4
 #RECIPIENT_ID= 99
 #REMOVE= 0
 #TRIGGER= 100
 #DATE= 1940/10/23
-; France(40) Allied and Surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Algeria(4) Allied and Surrendered
+#VARIABLE_CONDITION= 4 [2] [100] [1]
+; Spain(99) Axis
 #VARIABLE_CONDITION= 99 [1] [100] [0]
 #MAP_POSITION= 143,116
 #MAP_POSITION= 143,115
@@ -4162,9 +4145,10 @@
 #MAP_POSITION= 125,128
 }
 
+;
 {
-#NAME= DE 603 - Spain Annexes Vichy French Territory in Algeria (Vichy is formed)
-#POPUP=
+#NAME= DE 603 - Spain Annexes Vichy French Territory in Algeria (Vichy isn't formed)
+#POPUP= Spain Annexes French Morocco With Axis Assistance
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -4173,14 +4157,13 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 603[1]
-#COUNTRY_ID= 4
+#COUNTRY_ID= 40
 #RECIPIENT_ID= 99
 #REMOVE= 0
 #TRIGGER= 100
 #DATE= 1940/10/23
-; Algeria(4) Allied and Surrendered
-#VARIABLE_CONDITION= 4 [2] [100] [1]
-; Spain(99) Axis
+; France(40) Allied and Surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 99 [1] [100] [0]
 #MAP_POSITION= 143,116
 #MAP_POSITION= 143,115
@@ -4361,6 +4344,32 @@
 }
 
 ;
+; Bulgaria Obtains Southern Dobruja From Romania
+; Historical Date: 1940/09/07
+; but we've set an earlier date to tie it in properly to DE 611
+{
+#NAME= DE 611 - Bulgaria Obtains Part Of Southern Dobruja From Romania
+#POPUP= Bulgaria Obtains Part Of Southern Dobruja From Romania
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 611[1]
+#COUNTRY_ID= 93
+#RECIPIENT_ID= 19
+#REMOVE= 0
+#TRIGGER= 100
+#DATE= 1939/09/01
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#MAP_POSITION= 200,97
+#MAP_POSITION= 201,97
+#MAP_POSITION= 202,98
+}
+
+;
 ; Hungary Obtains Northern Transylvania from Romania
 ; Historical Date: 1940/08/30
 {
@@ -4403,134 +4412,6 @@
 #MAP_POSITION= 196,90
 }
 
-;
-; Bulgaria Obtains Southern Dobruja From Romania
-; Historical Date: 1940/09/07
-; but we've set an earlier date to tie it in properly to DE 611
-{
-#NAME= DE 611 - Bulgaria Obtains Part Of Southern Dobruja From Romania
-#POPUP= Bulgaria Obtains Part Of Southern Dobruja From Romania
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 611[1]
-#COUNTRY_ID= 93
-#RECIPIENT_ID= 19
-#REMOVE= 0
-#TRIGGER= 100
-#DATE= 1939/09/01
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#MAP_POSITION= 200,97
-#MAP_POSITION= 201,97
-#MAP_POSITION= 202,98
-}
-
-{
-#NAME= DE 621 - Hungary Annexes Parts of Former Yugoslavia
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-; Croatia as an Independent State?
-#LINK= 621[1]
-#COUNTRY_ID= 120
-#RECIPIENT_ID= 52
-#REMOVE= 0
-#TRIGGER= 100
-#DATE= 1939/09/01
-#VARIABLE_CONDITION= 52 [1] [100] [0]
-#MAP_POSITION= 184,92
-#MAP_POSITION= 184,93
-#MAP_POSITION= 185,91
-#MAP_POSITION= 185,92
-; Nova Sad(185,93)
-#MAP_POSITION= 185,93
-#MAP_POSITION= 186,92
-#MAP_POSITION= 186,93
-}
-
-{
-#NAME= DE 621 - Germany Annexes Parts of Former Yugoslavia
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-; Croatia as an Independent State?
-#LINK= 621[1]
-#COUNTRY_ID= 120
-#RECIPIENT_ID= 45
-#REMOVE= 0
-#TRIGGER= 100
-#DATE= 1939/09/01
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#MAP_POSITION= 177,90
-#MAP_POSITION= 178,90
-}
-
-{
-#NAME= DE 621 - Italy Annexes Parts of Former Yugoslavia
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-; Croatia as an Independent State?
-#LINK= 621[1]
-#COUNTRY_ID= 120
-#RECIPIENT_ID= 59
-#REMOVE= 0
-#TRIGGER= 100
-#DATE= 1939/09/01
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#MAP_POSITION= 175,90
-#MAP_POSITION= 175,91
-; Ljubljana(176,91)
-#MAP_POSITION= 176,91
-#MAP_POSITION= 176,92
-#MAP_POSITION= 176,93
-
-; Split(179,97)
-#MAP_POSITION= 179,97
-#MAP_POSITION= 178,98
-#MAP_POSITION= 178,97
-
-; Adriatic Islands
-#MAP_POSITION= 180,99
-#MAP_POSITION= 179,98
-#MAP_POSITION= 177,97
-#MAP_POSITION= 175,95
-#MAP_POSITION= 175,96
-#MAP_POSITION= 176,97
-
-; Cetinje Port(183,100)
-#MAP_POSITION= 183,100
-#MAP_POSITION= 184,100
-#MAP_POSITION= 185,99
-; Pec(186,99)
-#MAP_POSITION= 186,99
-#MAP_POSITION= 187,98
-#MAP_POSITION= 187,99
-; Pristina(188,99)
-#MAP_POSITION= 188,99
-#MAP_POSITION= 188,100
-}
-
-
 {
 #NAME= DE 621 - Bulgaria Annexes Parts of Former Yugoslavia
 #POPUP=
@@ -4560,6 +4441,28 @@
 #MAP_POSITION= 190,103
 #MAP_POSITION= 191,101
 #MAP_POSITION= 191,102
+}
+
+{
+#NAME= DE 621 - Germany Annexes Parts of Former Yugoslavia
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; Croatia as an Independent State?
+#LINK= 621[1]
+#COUNTRY_ID= 120
+#RECIPIENT_ID= 45
+#REMOVE= 0
+#TRIGGER= 100
+#DATE= 1939/09/01
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#MAP_POSITION= 177,90
+#MAP_POSITION= 178,90
 }
 
 ; https://www.wikiwand.com/en/Independent_State_of_Croatia
@@ -4629,6 +4532,85 @@
 }
 
 {
+#NAME= DE 621 - Hungary Annexes Parts of Former Yugoslavia
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; Croatia as an Independent State?
+#LINK= 621[1]
+#COUNTRY_ID= 120
+#RECIPIENT_ID= 52
+#REMOVE= 0
+#TRIGGER= 100
+#DATE= 1939/09/01
+#VARIABLE_CONDITION= 52 [1] [100] [0]
+#MAP_POSITION= 184,92
+#MAP_POSITION= 184,93
+#MAP_POSITION= 185,91
+#MAP_POSITION= 185,92
+; Nova Sad(185,93)
+#MAP_POSITION= 185,93
+#MAP_POSITION= 186,92
+#MAP_POSITION= 186,93
+}
+
+{
+#NAME= DE 621 - Italy Annexes Parts of Former Yugoslavia
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; Croatia as an Independent State?
+#LINK= 621[1]
+#COUNTRY_ID= 120
+#RECIPIENT_ID= 59
+#REMOVE= 0
+#TRIGGER= 100
+#DATE= 1939/09/01
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+#MAP_POSITION= 175,90
+#MAP_POSITION= 175,91
+; Ljubljana(176,91)
+#MAP_POSITION= 176,91
+#MAP_POSITION= 176,92
+#MAP_POSITION= 176,93
+
+; Split(179,97)
+#MAP_POSITION= 179,97
+#MAP_POSITION= 178,98
+#MAP_POSITION= 178,97
+
+; Adriatic Islands
+#MAP_POSITION= 180,99
+#MAP_POSITION= 179,98
+#MAP_POSITION= 177,97
+#MAP_POSITION= 175,95
+#MAP_POSITION= 175,96
+#MAP_POSITION= 176,97
+
+; Cetinje Port(183,100)
+#MAP_POSITION= 183,100
+#MAP_POSITION= 184,100
+#MAP_POSITION= 185,99
+; Pec(186,99)
+#MAP_POSITION= 186,99
+#MAP_POSITION= 187,98
+#MAP_POSITION= 187,99
+; Pristina(188,99)
+#MAP_POSITION= 188,99
+#MAP_POSITION= 188,100
+}
+
+{
 #NAME= DE 654 - Spain Regains The Ports Of Vigo And Santa Cruz
 #POPUP=
 #IMAGE=
@@ -4649,7 +4631,6 @@
 #MAP_POSITION= 112,128
 }
 
-;
 {
 #NAME= DE 656 - Germany Occupies The Channel Islands
 #POPUP= Germany Occupies The Channel Islands
@@ -4671,7 +4652,6 @@
 #MAP_POSITION= 142,84
 }
 
-;
 {
 #NAME= DE 659 - Germany Gains Access To The Ports Of Vigo And Santa Cruz
 #POPUP=
@@ -4693,7 +4673,6 @@
 #MAP_POSITION= 112,128
 }
 
-;
 {
 #NAME= DE 660 - Spain Regains The Ports Of Vigo And Santa Cruz
 #POPUP=
@@ -4715,7 +4694,6 @@
 #MAP_POSITION= 112,128
 }
 
-;
 {
 #NAME= DE 661 - Spain Regains The Ports Of Vigo And Santa Cruz
 #POPUP=
@@ -4737,7 +4715,6 @@
 #MAP_POSITION= 112,128
 }
 
-;
 {
 #NAME= DE 662 - Spain Regains The Ports Of Vigo And Santa Cruz
 #POPUP=
@@ -4784,7 +4761,7 @@
 }
 
 {
-#NAME= DE 825 - Dummy Script Turkish Blockade
+#NAME= [FW]DE 825 - Dummy Script Turkish Blockade
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -4805,7 +4782,7 @@
 
 ; Romania Annexes Bessarabia from USSR
 {
-#NAME= DE 857 - Romania Annexes Bessarabia From The USSR
+#NAME= [FW]DE 857 - Romania Annexes Bessarabia From The USSR
 #POPUP= Romania Annexes Bessarabia From The USSR
 #IMAGE=
 #SOUND= tank_movement1.ogg
@@ -4855,10 +4832,9 @@
 #MAP_POSITION= 203,91
 }
 
-;
 {
-#NAME= DE 858 - Finland: Reincorporate Lost Territory
-#POPUP= Finland Reincorporate Territory Lost In The Winter War
+#NAME= [FW]DE 858 - Finland: Reincorporate Lost Territory
+#POPUP= Finland Reincorporate Territory Lost From The Winter War
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -4936,7 +4912,7 @@
 }
 
 {
-#NAME= DE 859 - Finland: Reincorporate Lost Territory
+#NAME= [FW]DE 859 - Finland: Reincorporate Lost Territory
 #POPUP= Finland Reincorporate Territory Lost In The Winter War
 #IMAGE=
 #SOUND=
@@ -5015,7 +4991,7 @@
 }
 
 {
-#NAME= DE 875 - Iraq Makes Territorial Concessions To Turkey
+#NAME= [FW]DE 875 - Iraq Makes Territorial Concessions To Turkey
 #POPUP= Iraq Makes Territorial Concessions To Turkey
 #IMAGE=
 #SOUND=
@@ -5053,7 +5029,7 @@
 }
 
 {
-#NAME= DE 917 - Bulgarian Concessions
+#NAME= [FW]DE 917 - Bulgarian Concessions
 #POPUP= Greece Claims Macedonian Territory From Bulgaria
 #IMAGE=
 #SOUND=
@@ -5077,7 +5053,7 @@
 }
 
 {
-#NAME= DE 917 - Italian Albanian Concessions
+#NAME= [FW]DE 917 - Italian Albanian Concessions
 #POPUP= Greece Claims Northern Epiros From Italian Albania
 #IMAGE=
 #SOUND=
@@ -5101,8 +5077,8 @@
 }
 
 {
-#NAME= DE 970 - USSR Occupies The Turkish Straits
-#POPUP= USSR Forcefully Takes Control Of The Turkish Straits
+#NAME= [FW]DE 970 - Turkey Overruns Soviet Defenses In The Turkish Straits
+#POPUP= Turkey Overruns Soviet Defenses In The Turkish Straits
 #IMAGE=
 #SOUND= tank_movement1.ogg
 #FLAG= 1
@@ -5110,22 +5086,22 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-; USSR(116): Forcibly Occupies Turkish Straits
 #LINK= 970[1]
-#COUNTRY_ID= 111
-#RECIPIENT_ID= 116
-#REMOVE= 0
+#COUNTRY_ID= 116
+#RECIPIENT_ID= 111
+#REMOVE= 3
 #TRIGGER= 100
 #DATE= 1939/09/01
-#VARIABLE_CONDITION= 111 [2] [0] [0]
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Turkish Straits
+; Requires USSR and Turkey full mobilized
+#VARIABLE_CONDITION= 111 [1] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
 #MAP_POSITION= 204,103
 #MAP_POSITION= 199,104
+#MAP_POSITION= 203,103
 }
 
 {
-#NAME= DE 970 - USSR Naval Base In Turkish Straits
+#NAME= [FW]DE 970 - USSR Naval Base In Turkish Straits
 #POPUP= A Soviet Naval Base Is Established In The Turkish Straits
 #IMAGE=
 #SOUND= mine.ogg
@@ -5148,8 +5124,8 @@
 }
 
 {
-#NAME= DE 970 - Turkey Overruns Soviet Defenses In The Turkish Straits
-#POPUP= Turkey Overruns Soviet Defenses In The Turkish Straits
+#NAME= [FW]DE 970 - USSR Occupies The Turkish Straits
+#POPUP= USSR Forcefully Takes Control Of The Turkish Straits
 #IMAGE=
 #SOUND= tank_movement1.ogg
 #FLAG= 1
@@ -5157,16 +5133,16 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; USSR(116): Forcibly Occupies Turkish Straits
 #LINK= 970[1]
-#COUNTRY_ID= 116
-#RECIPIENT_ID= 111
-#REMOVE= 3
+#COUNTRY_ID= 111
+#RECIPIENT_ID= 116
+#REMOVE= 0
 #TRIGGER= 100
 #DATE= 1939/09/01
-; Requires USSR and Turkey full mobilized
-#VARIABLE_CONDITION= 111 [1] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 111 [2] [0] [0]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Turkish Straits
 #MAP_POSITION= 204,103
 #MAP_POSITION= 199,104
-#MAP_POSITION= 203,103
 }

@@ -298,29 +298,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 {
-#NAME= UK DoW On Germany
-#POPUP= The United Kingdom Declares War On Germany
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#TRIGGER= 100
-#COUNTRY_ID= 112
-#BELLIGERENCE_ID= 45
-#DATE= 1939/09/03
-#FAILSAFE_DATE= 1948/01/01
-; UK(112) Allied, mobilized and not surrendered AND
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Poland(85) and Germany(45) are belligerent
-#BELLIGERENCE_CONDITION= [85,45]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
 #NAME= France DoW On Germany
 #POPUP= France Declares War On Germany
 #IMAGE=
@@ -338,6 +315,279 @@
 #FAILSAFE_DATE= 1948/01/01
 ; France(40) Allied, mobilized and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
+; Poland(85) and Germany(45) are belligerent
+#BELLIGERENCE_CONDITION= [85,45]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;
+; Germany honors the Tripartite Pact with Japan once the USA is fully mobilized
+{
+#NAME= Germany(AI): Germany DoW On The USA (50%)
+#POPUP= Germany Honors Tripartite Pact - Declares War On The United States
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 1
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#TRIGGER= 50
+#COUNTRY_ID= 45
+#BELLIGERENCE_ID= 115
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+; USA(115) Allied, mobilized and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; UK(112) and Germany(45) are belligerent
+#BELLIGERENCE_CONDITION= [112,45]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Italy DoW On France (France Surrendered)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#TRIGGER= 100
+#COUNTRY_ID= 59
+#BELLIGERENCE_ID= 40
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+; France(40) Allied and surrendered
+; Italy(59) Axis, mobilized and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; France(40) and Germany(45) are belligerent
+#BELLIGERENCE_CONDITION= [40,45]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Italy DoW On Poland (Poland Surrendered)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#TRIGGER= 100
+#COUNTRY_ID= 59
+#BELLIGERENCE_ID= 85
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+; Poland(85) Allied and surrendered
+; Italy(59) Axis, mobilized and not surrendered
+#VARIABLE_CONDITION= 85 [2] [100] [1]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Poland(85) and Germany(45) are belligerent
+#BELLIGERENCE_CONDITION= [85,45]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Italy DoW On The Allies (France)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#TRIGGER= 100
+#COUNTRY_ID= 59
+#BELLIGERENCE_ID= 40
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+; France(40) Allied. mobilized and not surrendered AND
+; Italy(59) Axis, mobilized and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; UK(112) and Germany(45) are belligerent
+#BELLIGERENCE_CONDITION= [112,45]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Italy DoW On The Allies (UK)
+#POPUP= Italy Declares War On The Allies
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#TRIGGER= 100
+#COUNTRY_ID= 59
+#BELLIGERENCE_ID= 112
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+; UK(112) Allied, mobilized and not surrendered AND
+; Italy(59) Axis, mobilized and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; UK(112) and Germany are belligerent
+#BELLIGERENCE_CONDITION= [112,45]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Italy DoW On The Allies (USA)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#TRIGGER= 100
+#COUNTRY_ID= 59
+#BELLIGERENCE_ID= 115
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+; USA(115) Allied. mobilized and not surrendered AND
+; Italy(59) Axis, mobilized and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; USSR(116) and Germany(45) are belligerent
+#BELLIGERENCE_CONDITION= [116,45]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Italy DoW On The Allies (USSR)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#TRIGGER= 100
+#COUNTRY_ID= 59
+#BELLIGERENCE_ID= 116
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+; USSR(116) Allied. mobilized and not surrendered AND
+; Italy(59) Axis, mobilized and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; USSR(116) and Germany(45) are belligerent
+#BELLIGERENCE_CONDITION= [116,45]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Italy DoW On UK (UK Surrendered)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#TRIGGER= 100
+#COUNTRY_ID= 59
+#BELLIGERENCE_ID= 112
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+; UK(112) Allied, mobilized and surrendered
+; Italy(59) Axis, mobilized and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [1]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; UK(112) and Germany(45) are belligerent
+#BELLIGERENCE_CONDITION= [112,45]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Italy DoW On USA (USA Surrendered)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#TRIGGER= 100
+#COUNTRY_ID= 59
+#BELLIGERENCE_ID= 115
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+; USA(115) Allied and surrendered
+; Italy(59) Axis, mobilized and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [1]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; USA(115) and Germany(45) are belligerent
+#BELLIGERENCE_CONDITION= [115,45]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Italy DoW On USSR (USSR Surrendered)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#TRIGGER= 100
+#COUNTRY_ID= 59
+#BELLIGERENCE_ID= 116
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1948/01/01
+; USSR(116) Allied and surrendered
+; Italy(59) Axis, mobilized and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [1]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; USSR(116) and Germany(45) are belligerent
+#BELLIGERENCE_CONDITION= [116,45]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= UK DoW On Germany
+#POPUP= The United Kingdom Declares War On Germany
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#TRIGGER= 100
+#COUNTRY_ID= 112
+#BELLIGERENCE_ID= 45
+#DATE= 1939/09/03
+#FAILSAFE_DATE= 1948/01/01
+; UK(112) Allied, mobilized and not surrendered AND
+#VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Poland(85) and Germany(45) are belligerent
 #BELLIGERENCE_CONDITION= [85,45]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -439,257 +689,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-{
-#NAME= Italy DoW On The Allies (UK)
-#POPUP= Italy Declares War On The Allies
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#TRIGGER= 100
-#COUNTRY_ID= 59
-#BELLIGERENCE_ID= 112
-#DATE= 1939/09/01
-#FAILSAFE_DATE= 1948/01/01
-; UK(112) Allied, mobilized and not surrendered AND
-; Italy(59) Axis, mobilized and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; UK(112) and Germany are belligerent
-#BELLIGERENCE_CONDITION= [112,45]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Italy DoW On The Allies (France)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#TRIGGER= 100
-#COUNTRY_ID= 59
-#BELLIGERENCE_ID= 40
-#DATE= 1939/09/01
-#FAILSAFE_DATE= 1948/01/01
-; France(40) Allied. mobilized and not surrendered AND
-; Italy(59) Axis, mobilized and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; UK(112) and Germany(45) are belligerent
-#BELLIGERENCE_CONDITION= [112,45]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Italy DoW On The Allies (USSR)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#TRIGGER= 100
-#COUNTRY_ID= 59
-#BELLIGERENCE_ID= 116
-#DATE= 1939/09/01
-#FAILSAFE_DATE= 1948/01/01
-; USSR(116) Allied. mobilized and not surrendered AND
-; Italy(59) Axis, mobilized and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; USSR(116) and Germany(45) are belligerent
-#BELLIGERENCE_CONDITION= [116,45]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Italy DoW On The Allies (USA)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#TRIGGER= 100
-#COUNTRY_ID= 59
-#BELLIGERENCE_ID= 115
-#DATE= 1939/09/01
-#FAILSAFE_DATE= 1948/01/01
-; USA(115) Allied. mobilized and not surrendered AND
-; Italy(59) Axis, mobilized and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; USSR(116) and Germany(45) are belligerent
-#BELLIGERENCE_CONDITION= [116,45]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Italy DoW On UK (UK Surrendered)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#TRIGGER= 100
-#COUNTRY_ID= 59
-#BELLIGERENCE_ID= 112
-#DATE= 1939/09/01
-#FAILSAFE_DATE= 1948/01/01
-; UK(112) Allied, mobilized and surrendered
-; Italy(59) Axis, mobilized and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [1]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; UK(112) and Germany(45) are belligerent
-#BELLIGERENCE_CONDITION= [112,45]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Italy DoW On France (France Surrendered)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#TRIGGER= 100
-#COUNTRY_ID= 59
-#BELLIGERENCE_ID= 40
-#DATE= 1939/09/01
-#FAILSAFE_DATE= 1948/01/01
-; France(40) Allied and surrendered
-; Italy(59) Axis, mobilized and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; France(40) and Germany(45) are belligerent
-#BELLIGERENCE_CONDITION= [40,45]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Italy DoW On USA (USA Surrendered)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#TRIGGER= 100
-#COUNTRY_ID= 59
-#BELLIGERENCE_ID= 115
-#DATE= 1939/09/01
-#FAILSAFE_DATE= 1948/01/01
-; USA(115) Allied and surrendered
-; Italy(59) Axis, mobilized and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [1]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; USA(115) and Germany(45) are belligerent
-#BELLIGERENCE_CONDITION= [115,45]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Italy DoW On USSR (USSR Surrendered)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#TRIGGER= 100
-#COUNTRY_ID= 59
-#BELLIGERENCE_ID= 116
-#DATE= 1939/09/01
-#FAILSAFE_DATE= 1948/01/01
-; USSR(116) Allied and surrendered
-; Italy(59) Axis, mobilized and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [1]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; USSR(116) and Germany(45) are belligerent
-#BELLIGERENCE_CONDITION= [116,45]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Italy DoW On Poland (Poland Surrendered)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#TRIGGER= 100
-#COUNTRY_ID= 59
-#BELLIGERENCE_ID= 85
-#DATE= 1939/09/01
-#FAILSAFE_DATE= 1948/01/01
-; Poland(85) Allied and surrendered
-; Italy(59) Axis, mobilized and not surrendered
-#VARIABLE_CONDITION= 85 [2] [100] [1]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Poland(85) and Germany(45) are belligerent
-#BELLIGERENCE_CONDITION= [85,45]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-;
-;
-; Germany honors the Tripartite Pact with Japan once the USA is fully mobilized
-{
-#NAME= Germany(AI): Germany DoW On The USA (50%)
-#POPUP= Germany Honors Tripartite Pact - Declares War On The United States
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 1
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#TRIGGER= 50
-#COUNTRY_ID= 45
-#BELLIGERENCE_ID= 115
-#DATE= 1939/09/01
-#FAILSAFE_DATE= 1948/01/01
-; USA(115) Allied, mobilized and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; UK(112) and Germany(45) are belligerent
-#BELLIGERENCE_CONDITION= [112,45]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
 ; Fall Weiss II
 {
 #NAME= [FW]Finland DoW On USSR
@@ -718,7 +717,7 @@
 
 ; Fall Weiss II
 {
-#NAME= [FW]DE 847 - Finland DoW On USA
+#NAME= [FW]DE 842 - Germany DoW on Ireland
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -727,25 +726,23 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 847[1]
+#LINK= 842[1]
 #TRIGGER= 100
-#COUNTRY_ID= 39
-#BELLIGERENCE_ID= 115
+#COUNTRY_ID= 45
+#BELLIGERENCE_ID= 57
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; USA(115) Allied. mobilized and not surrendered AND
-; Finland(39) Axis, mobilized and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 39 [1] [100] [0]
-; USA(115) and Germany(45) are belligerent
-#BELLIGERENCE_CONDITION= [115,45]
+; Ireland(57) Allied, mobilized and not surrendered
+#VARIABLE_CONDITION= 57 [2] [100] [0]
+; Germany(45) and UK(112) are belligerent
+#BELLIGERENCE_CONDITION= [45,112]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 ; Fall Weiss II
 {
-#NAME= [FW]DE 847 - Finland DoW On The Allies (UK)
-#POPUP= Finland Declares War On The Allies
+#NAME= [FW]DE 842 - Italy DoW on Ireland
+#POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -753,18 +750,18 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 847[1]
+#LINK= 842[1]
 #TRIGGER= 100
-#COUNTRY_ID= 39
-#BELLIGERENCE_ID= 112
+#COUNTRY_ID= 59
+#BELLIGERENCE_ID= 57
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; UK(112) Allied, mobilized and not surrendered AND
-; Finland(39) Axis, mobilized and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 39 [1] [100] [0]
-; UK(112) and Germany(45) are belligerent
-#BELLIGERENCE_CONDITION= [112,45]
+; Ireland(57) Allied, mobilized and not surrendered
+; Italy(59) Axis, mobilized and not surrendered AND
+#VARIABLE_CONDITION= 57 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Italy(59) and UK(112) are belligerent
+#BELLIGERENCE_CONDITION= [59,112]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -822,8 +819,8 @@
 
 ; Fall Weiss II
 {
-#NAME= [FW]DE 842 - Germany DoW on Ireland
-#POPUP=
+#NAME= [FW]DE 847 - Finland DoW On The Allies (UK)
+#POPUP= Finland Declares War On The Allies
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -831,22 +828,24 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 842[1]
+#LINK= 847[1]
 #TRIGGER= 100
-#COUNTRY_ID= 45
-#BELLIGERENCE_ID= 57
+#COUNTRY_ID= 39
+#BELLIGERENCE_ID= 112
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; Ireland(57) Allied, mobilized and not surrendered
-#VARIABLE_CONDITION= 57 [2] [100] [0]
-; Germany(45) and UK(112) are belligerent
-#BELLIGERENCE_CONDITION= [45,112]
+; UK(112) Allied, mobilized and not surrendered AND
+; Finland(39) Axis, mobilized and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 39 [1] [100] [0]
+; UK(112) and Germany(45) are belligerent
+#BELLIGERENCE_CONDITION= [112,45]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 ; Fall Weiss II
 {
-#NAME= [FW]DE 842 - Italy DoW on Ireland
+#NAME= [FW]DE 847 - Finland DoW On USA
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -855,17 +854,17 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 842[1]
+#LINK= 847[1]
 #TRIGGER= 100
-#COUNTRY_ID= 59
-#BELLIGERENCE_ID= 57
+#COUNTRY_ID= 39
+#BELLIGERENCE_ID= 115
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; Ireland(57) Allied, mobilized and not surrendered
-; Italy(59) Axis, mobilized and not surrendered AND
-#VARIABLE_CONDITION= 57 [2] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Italy(59) and UK(112) are belligerent
-#BELLIGERENCE_CONDITION= [59,112]
+; USA(115) Allied. mobilized and not surrendered AND
+; Finland(39) Axis, mobilized and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 39 [1] [100] [0]
+; USA(115) and Germany(45) are belligerent
+#BELLIGERENCE_CONDITION= [115,45]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }

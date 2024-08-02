@@ -561,52 +561,6 @@ l
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; Fall Weiss II
-; German Industry Activation
-{
-#NAME= [FW]Germany Expands Ruhr Industry
-#POPUP= Germany Expands Ruhr Industry for Continuing War
-#IMAGE=
-#SOUND= industry.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#DATE= 1939/09/09
-#FAILSAFE_DATE= 1948/01/01
-#RESOURCE= 161,77
-; Poland(85) Allied and Surrendered
-#VARIABLE_CONDITION= 85 [2] [100] [1]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; Fall Weiss II
-; German Industry Activation
-{
-#NAME= [FW]Germany Further Expands Ruhr Industry
-#POPUP= Germany Further Expands Ruhr Industry for Continuing War
-#IMAGE=
-#SOUND= industry.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#DATE= 1939/09/09
-#FAILSAFE_DATE= 1948/01/01
-#RESOURCE= 162,78
-; Russia Allied and fully mobilized
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
 {
 #NAME= Soviet Industrial Mobilization (1)
 #POPUP= The USSR Steps Up Its Military Production
@@ -738,6 +692,52 @@ l
 #FAILSAFE_DATE= 1948/01/01
 #RESOURCE= 266,61
 ; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; Fall Weiss II
+; German Industry Activation
+{
+#NAME= [FW]Germany Expands Ruhr Industry
+#POPUP= Germany Expands Ruhr Industry for Continuing War
+#IMAGE=
+#SOUND= industry.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#DATE= 1939/09/09
+#FAILSAFE_DATE= 1948/01/01
+#RESOURCE= 161,77
+; Poland(85) Allied and Surrendered
+#VARIABLE_CONDITION= 85 [2] [100] [1]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; Fall Weiss II
+; German Industry Activation
+{
+#NAME= [FW]Germany Further Expands Ruhr Industry
+#POPUP= Germany Further Expands Ruhr Industry for Continuing War
+#IMAGE=
+#SOUND= industry.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#DATE= 1939/09/09
+#FAILSAFE_DATE= 1948/01/01
+#RESOURCE= 162,78
+; Russia Allied and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }

@@ -423,37 +423,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 {
-#NAME= Axis At Start Message
-#POPUP= Report On Axis War Aims
-#MESSAGE=
-#IMAGE= germanystartmessage.png
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 0
-#AI= 4
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-; Axis Turn
-#DISPLAY_TURN= 1
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1939/09/01
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
 #NAME= Allied At Start Message
 #POPUP= Report On Allied War Aims
 #MESSAGE=
@@ -481,6 +450,128 @@
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Allied Mediterranean Positions - Cairo (1)
+#POPUP=
+#MESSAGE= Keep a unit within 5 hexes of here to avoid increasing Italian Mobilization
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 3
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 2.15
+#MESSAGE_STYLE= 0
+#DATE= 1939/09/01
+#TEXT_RGB= 255,255,255
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION= 208,126
+; Cairo(208,126) is Allied
+#ALIGNMENT_POSITION= 208,126 [2]
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Allied Mediterranean Positions - Cairo (2)
+#POPUP=
+#MESSAGE= Keep a unit within 5 hexes of here to avoid increasing Italian Mobilization
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 3
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 2.14
+#MESSAGE_STYLE= 0
+#DATE= 1939/09/01
+#TEXT_RGB= 255,255,255
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION= 208,126
+; Cairo(208,126) is Allied
+#ALIGNMENT_POSITION= 208,126 [2]
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; UK(112) abandons Cairo
+#CONDITION_POSITION= 208,126 [5,5] [0,0] [2] [0]
+}
+
+{
+#NAME= Allied Mediterranean Positions - Damascus (1)
+#POPUP=
+#MESSAGE= Keep a unit within 5 hexes of here to avoid increasing Italian Mobilization
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 3
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 40
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 2.15
+#MESSAGE_STYLE= 0
+#DATE= 1939/09/01
+#TEXT_RGB= 255,255,255
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION= 218,119
+; Damascus is Allied
+#ALIGNMENT_POSITION= 218,119 [2]
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Allied Mediterranean Positions - Damascus (2)
+#POPUP=
+#MESSAGE= Keep a unit within 5 hexes of here to avoid increasing Italian Mobilization
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 3
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 40
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 2.14
+#MESSAGE_STYLE= 0
+#DATE= 1939/09/01
+#TEXT_RGB= 255,255,255
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION= 218,119
+; Damascus is Allied
+#ALIGNMENT_POSITION= 218,119 [2]
+#VARIABLE_CONDITION= 59 [1] [0] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; France(40) abandons Damascus
+#CONDITION_POSITION= 218,119 [5,5] [0,0] [2] [0]
 }
 
 {
@@ -606,67 +697,6 @@
 }
 
 {
-#NAME= Allied Mediterranean Positions - Cairo (1)
-#POPUP=
-#MESSAGE= Keep a unit within 5 hexes of here to avoid increasing Italian Mobilization
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 3
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 2.15
-#MESSAGE_STYLE= 0
-#DATE= 1939/09/01
-#TEXT_RGB= 255,255,255
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION= 208,126
-; Cairo(208,126) is Allied
-#ALIGNMENT_POSITION= 208,126 [2]
-#VARIABLE_CONDITION= 59 [1] [0] [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Allied Mediterranean Positions - Cairo (2)
-#POPUP=
-#MESSAGE= Keep a unit within 5 hexes of here to avoid increasing Italian Mobilization
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 3
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 2.14
-#MESSAGE_STYLE= 0
-#DATE= 1939/09/01
-#TEXT_RGB= 255,255,255
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION= 208,126
-; Cairo(208,126) is Allied
-#ALIGNMENT_POSITION= 208,126 [2]
-#VARIABLE_CONDITION= 59 [1] [0] [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; UK(112) abandons Cairo
-#CONDITION_POSITION= 208,126 [5,5] [0,0] [2] [0]
-}
-
-{
 #NAME= Allied Mediterranean Positions - Tunis (1)
 #POPUP=
 #MESSAGE= Keep a unit within 5 hexes of here to avoid increasing Italian Mobilization
@@ -728,64 +758,135 @@
 }
 
 {
-#NAME= Allied Mediterranean Positions - Damascus (1)
-#POPUP=
-#MESSAGE= Keep a unit within 5 hexes of here to avoid increasing Italian Mobilization
-#IMAGE=
-#SOUND=
+#NAME= Axis At Start Message
+#POPUP= Report On Axis War Aims
+#MESSAGE=
+#IMAGE= germanystartmessage.png
+#SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
-#TYPE= 2
-#AI= 3
+#TYPE= 0
+#AI= 4
+#LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 40
+#COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 1
 #DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 2.15
+; Axis Turn
+#DISPLAY_TURN= 1
+#DISPLAY_STYLE= 1
 #MESSAGE_STYLE= 0
-#DATE= 1939/09/01
-#TEXT_RGB= 255,255,255
+#TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-#MAP_POSITION= 218,119
-; Damascus is Allied
-#ALIGNMENT_POSITION= 218,119 [2]
-#VARIABLE_CONDITION= 59 [1] [0] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [0]
+#MAP_POSITION=
+#DATE= 1939/09/01
+; Berlin(173,74) is Axis
+#ALIGNMENT_POSITION= 173,74 [1]
+; Germany(45) Axis and not surrendered (dummy condition)
+#VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 {
-#NAME= Allied Mediterranean Positions - Damascus (2)
-#POPUP=
-#MESSAGE= Keep a unit within 5 hexes of here to avoid increasing Italian Mobilization
-#IMAGE=
-#SOUND=
+#NAME= British Mediterranean Report
+#POPUP= UK Mediterranean Report
+#MESSAGE=
+#IMAGE= uk_report_1939_1.png
+#SOUND= report.ogg
 #FLAG= 1
-#TYPE= 2
+#TYPE= 1
 #AI= 3
 #GV= 1[1,100]
 #LINK= 0[0]
 #LEVEL= 0
-#COUNTRY_ID= 40
+#COUNTRY_ID= 112
 #TRIGGER= 100
 #PRIVATE= 1
 #DISPLAY_ORDER= 1
 #DISPLAY_TURN= 2
-#DISPLAY_STYLE= 2.14
+#DISPLAY_STYLE= 1
 #MESSAGE_STYLE= 0
-#DATE= 1939/09/01
-#TEXT_RGB= 255,255,255
+#TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-#MAP_POSITION= 218,119
-; Damascus is Allied
-#ALIGNMENT_POSITION= 218,119 [2]
-#VARIABLE_CONDITION= 59 [1] [0] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-; France(40) abandons Damascus
-#CONDITION_POSITION= 218,119 [5,5] [0,0] [2] [0]
+#MAP_POSITION=
+#DATE= 1939/09/08
+; Paris(151,84) is Allied
+#ALIGNMENT_POSITION= 151,84 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; Text inspired/sourced from Marxists Internet Archive
+{
+#NAME= Comrade Stalin Broadcasts To The Citizens Of The USSR
+#POPUP= Radio Broadcast
+#MESSAGE=
+#IMAGE= soviet_communication_barbarossa.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1939/09/01
+; Moscow(221,65) is Allied
+#ALIGNMENT_POSITION= 221,65 [2]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; 1 Axis unit within 8 hexes of Smolensk
+#CONDITION_POSITION= 209,68 [8,8] [1,1] [1] [0]
+; 1 Axis unit within 5 hexes of Luga
+#CONDITION_POSITION= 205,56 [5,5] [1,1] [1] [0]
+; 1 Axis unit within 5 hexes of Kiev
+#CONDITION_POSITION= 207,80 [5,5] [1,1] [1] [0]
+; 1 Axis unit within 1 hex of Odessa
+#CONDITION_POSITION= 207,90 [1,1] [1,1] [1] [0]
+}
+
+{
+#NAME= German Report On Mussolini's Advice To Invade Cyprus
+#POPUP= Report To The German High Command
+#MESSAGE=
+#IMAGE= german_report_cyprus1.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 4
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 1
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1940/01/01
+; Crete is Axis
+#ALIGNMENT_POSITION= 196,116 [1]
+; Nicosia is Allied
+#ALIGNMENT_POSITION= 213,115 [2]
+; Jerusalem is Allied
+#ALIGNMENT_POSITION= 216,123 [2]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+#VARIABLE_CONDITION= 105 [1] [0] [0]
+; No Axis units already in Cyprus
+#CONDITION_POSITION= 213,115 [2,2] [0,0] [1] [0]
 }
 
 {
@@ -810,6 +911,64 @@
 #TEXT_RGB= 255,255,255
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION= 188,76
+#DATE= 1940/01/01 [=]
+; Warsaw(188,76) is Axis
+#ALIGNMENT_POSITION= 188,76 [1]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Axis have less than 2 units within 10 hexes of Warsaw(188,76)
+#CONDITION_POSITION= 188,76 [10,10] [2,2] [1] [0] [<]
+}
+
+{
+#NAME= German/Soviet Front Garrison Update Map Symbols 1940 (0-1 units)
+#POPUP=
+#MESSAGE= Ensure that we have at least two units within 10 hexes of Warsaw
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 4
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 1
+; Blue Hash, Red Exclamation
+#DISPLAY_STYLE= 2.14
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 255,255,255
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION= 186,74
+#MAP_POSITION= 189,66
+#MAP_POSITION= 191,67
+#MAP_POSITION= 193,68
+#MAP_POSITION= 195,69
+#MAP_POSITION= 197,70
+#MAP_POSITION= 198,72
+#MAP_POSITION= 198,74
+#MAP_POSITION= 198,76
+#MAP_POSITION= 198,78
+#MAP_POSITION= 198,80
+#MAP_POSITION= 197,81
+#MAP_POSITION= 195,82
+#MAP_POSITION= 193,83
+#MAP_POSITION= 191,84
+#MAP_POSITION= 189,85
+#MAP_POSITION= 187,85
+#MAP_POSITION= 185,84
+#MAP_POSITION= 183,83
+#MAP_POSITION= 181,82
+#MAP_POSITION= 179,81
+#MAP_POSITION= 178,80
+#MAP_POSITION= 178,78
+#MAP_POSITION= 178,76
+#MAP_POSITION= 178,74
+#MAP_POSITION= 178,72
+#MAP_POSITION= 179,70
+#MAP_POSITION= 181,69
 #DATE= 1940/01/01 [=]
 ; Warsaw(188,76) is Axis
 #ALIGNMENT_POSITION= 188,76 [1]
@@ -877,64 +1036,6 @@
 }
 
 {
-#NAME= German/Soviet Front Garrison Update Map Symbols 1940 (0-1 units)
-#POPUP=
-#MESSAGE= Ensure that we have at least two units within 10 hexes of Warsaw
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 4
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 1
-; Blue Hash, Red Exclamation
-#DISPLAY_STYLE= 2.14
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 255,255,255
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION= 186,74
-#MAP_POSITION= 189,66
-#MAP_POSITION= 191,67
-#MAP_POSITION= 193,68
-#MAP_POSITION= 195,69
-#MAP_POSITION= 197,70
-#MAP_POSITION= 198,72
-#MAP_POSITION= 198,74
-#MAP_POSITION= 198,76
-#MAP_POSITION= 198,78
-#MAP_POSITION= 198,80
-#MAP_POSITION= 197,81
-#MAP_POSITION= 195,82
-#MAP_POSITION= 193,83
-#MAP_POSITION= 191,84
-#MAP_POSITION= 189,85
-#MAP_POSITION= 187,85
-#MAP_POSITION= 185,84
-#MAP_POSITION= 183,83
-#MAP_POSITION= 181,82
-#MAP_POSITION= 179,81
-#MAP_POSITION= 178,80
-#MAP_POSITION= 178,78
-#MAP_POSITION= 178,76
-#MAP_POSITION= 178,74
-#MAP_POSITION= 178,72
-#MAP_POSITION= 179,70
-#MAP_POSITION= 181,69
-#DATE= 1940/01/01 [=]
-; Warsaw(188,76) is Axis
-#ALIGNMENT_POSITION= 188,76 [1]
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Axis have less than 2 units within 10 hexes of Warsaw(188,76)
-#CONDITION_POSITION= 188,76 [10,10] [2,2] [1] [0] [<]
-}
-
-{
 #NAME= German/Soviet Front Garrison Update Map Symbols 1941 (0-3 units)
 #POPUP=
 #MESSAGE= Ensure that we have at least four units within 10 hexes of Warsaw
@@ -990,64 +1091,6 @@
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; Axis have less than 4 units within 10 hexes of Warsaw(188,76)
 #CONDITION_POSITION= 188,76 [10,10] [4,4] [1] [0] [<]
-}
-
-{
-#NAME= German/Soviet Front Garrison Update Map Symbols 1941 (4 units)
-#POPUP=
-#MESSAGE= Ensure that we have at least four units within 10 hexes of Warsaw
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 4
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 1
-; Blue Hash, Blue Exclamation
-#DISPLAY_STYLE= 2.15
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 255,255,255
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION= 186,74
-#MAP_POSITION= 189,66
-#MAP_POSITION= 191,67
-#MAP_POSITION= 193,68
-#MAP_POSITION= 195,69
-#MAP_POSITION= 197,70
-#MAP_POSITION= 198,72
-#MAP_POSITION= 198,74
-#MAP_POSITION= 198,76
-#MAP_POSITION= 198,78
-#MAP_POSITION= 198,80
-#MAP_POSITION= 197,81
-#MAP_POSITION= 195,82
-#MAP_POSITION= 193,83
-#MAP_POSITION= 191,84
-#MAP_POSITION= 189,85
-#MAP_POSITION= 187,85
-#MAP_POSITION= 185,84
-#MAP_POSITION= 183,83
-#MAP_POSITION= 181,82
-#MAP_POSITION= 179,81
-#MAP_POSITION= 178,80
-#MAP_POSITION= 178,78
-#MAP_POSITION= 178,76
-#MAP_POSITION= 178,74
-#MAP_POSITION= 178,72
-#MAP_POSITION= 179,70
-#MAP_POSITION= 181,69
-#DATE= 1941/01/01
-; Warsaw(188,76) is Axis
-#ALIGNMENT_POSITION= 188,76 [1]
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Axis have 4 units within 10 hexes of Warsaw(188,76)
-#CONDITION_POSITION= 188,76 [10,10] [4,4] [1] [0]
 }
 
 {
@@ -1109,6 +1152,64 @@
 }
 
 {
+#NAME= German/Soviet Front Garrison Update Map Symbols 1941 (4 units)
+#POPUP=
+#MESSAGE= Ensure that we have at least four units within 10 hexes of Warsaw
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 2
+#AI= 4
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 1
+; Blue Hash, Blue Exclamation
+#DISPLAY_STYLE= 2.15
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 255,255,255
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION= 186,74
+#MAP_POSITION= 189,66
+#MAP_POSITION= 191,67
+#MAP_POSITION= 193,68
+#MAP_POSITION= 195,69
+#MAP_POSITION= 197,70
+#MAP_POSITION= 198,72
+#MAP_POSITION= 198,74
+#MAP_POSITION= 198,76
+#MAP_POSITION= 198,78
+#MAP_POSITION= 198,80
+#MAP_POSITION= 197,81
+#MAP_POSITION= 195,82
+#MAP_POSITION= 193,83
+#MAP_POSITION= 191,84
+#MAP_POSITION= 189,85
+#MAP_POSITION= 187,85
+#MAP_POSITION= 185,84
+#MAP_POSITION= 183,83
+#MAP_POSITION= 181,82
+#MAP_POSITION= 179,81
+#MAP_POSITION= 178,80
+#MAP_POSITION= 178,78
+#MAP_POSITION= 178,76
+#MAP_POSITION= 178,74
+#MAP_POSITION= 178,72
+#MAP_POSITION= 179,70
+#MAP_POSITION= 181,69
+#DATE= 1941/01/01
+; Warsaw(188,76) is Axis
+#ALIGNMENT_POSITION= 188,76 [1]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Axis have 4 units within 10 hexes of Warsaw(188,76)
+#CONDITION_POSITION= 188,76 [10,10] [4,4] [1] [0]
+}
+
+{
 #NAME= German/Soviet Front Garrison Update Map Symbols 1941 (more than 18 units)
 #POPUP=
 #MESSAGE= Having more than 18 units within 10 hexes of Warsaw increases Soviet Mobilization
@@ -1167,48 +1268,13 @@
 }
 
 {
-#NAME= German Report On Mussolini's Advice To Invade Cyprus
-#POPUP= Report To The German High Command
-#MESSAGE=
-#IMAGE= german_report_cyprus1.png
-#SOUND= report.ogg
+#NAME= Italian Mobilization Trigger Zone (Amphibious)
+#POPUP=
+#MESSAGE= <<TAG_184>>
+#IMAGE=
+#SOUND=
 #FLAG= 1
-#TYPE= 1
-#AI= 4
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 1
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/01/01
-; Crete is Axis
-#ALIGNMENT_POSITION= 196,116 [1]
-; Nicosia is Allied
-#ALIGNMENT_POSITION= 213,115 [2]
-; Jerusalem is Allied
-#ALIGNMENT_POSITION= 216,123 [2]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#VARIABLE_CONDITION= 105 [1] [0] [0]
-; No Axis units already in Cyprus
-#CONDITION_POSITION= 213,115 [2,2] [0,0] [1] [0]
-}
-
-{
-#NAME= British Mediterranean Report
-#POPUP= UK Mediterranean Report
-#MESSAGE=
-#IMAGE= uk_report_1939_1.png
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 1
+#TYPE= 2
 #AI= 3
 #GV= 1[1,100]
 #LINK= 0[0]
@@ -1218,15 +1284,34 @@
 #PRIVATE= 1
 #DISPLAY_ORDER= 1
 #DISPLAY_TURN= 2
-#DISPLAY_STYLE= 1
+; yellow hash
+#DISPLAY_STYLE= 2.3
 #MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
+#DATE= 1939/09/01
+#TEXT_RGB= 255,255,255
 #SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1939/09/08
-; Paris(151,84) is Allied
-#ALIGNMENT_POSITION= 151,84 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
+#MAP_POSITION= 207,113
+#MAP_POSITION= 207,114
+#MAP_POSITION= 207,115
+#MAP_POSITION= 207,116
+#MAP_POSITION= 207,117
+#MAP_POSITION= 207,118
+#MAP_POSITION= 207,119
+#MAP_POSITION= 207,120
+#MAP_POSITION= 207,121
+#MAP_POSITION= 207,122
+#MAP_POSITION= 147,105
+#MAP_POSITION= 147,106
+#MAP_POSITION= 147,107
+#MAP_POSITION= 147,108
+#MAP_POSITION= 147,109
+#MAP_POSITION= 147,110
+#MAP_POSITION= 147,111
+#MAP_POSITION= 147,112
+#MAP_POSITION= 147,113
+; Berlin(173,74) is Axis
+#ALIGNMENT_POSITION= 173,74 [1]
+#VARIABLE_CONDITION= 59 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -1284,65 +1369,17 @@
 }
 
 {
-#NAME= Italian Mobilization Trigger Zone (Amphibious)
-#POPUP=
-#MESSAGE= <<TAG_184>>
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 3
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
-; yellow hash
-#DISPLAY_STYLE= 2.3
-#MESSAGE_STYLE= 0
-#DATE= 1939/09/01
-#TEXT_RGB= 255,255,255
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION= 207,113
-#MAP_POSITION= 207,114
-#MAP_POSITION= 207,115
-#MAP_POSITION= 207,116
-#MAP_POSITION= 207,117
-#MAP_POSITION= 207,118
-#MAP_POSITION= 207,119
-#MAP_POSITION= 207,120
-#MAP_POSITION= 207,121
-#MAP_POSITION= 207,122
-#MAP_POSITION= 147,105
-#MAP_POSITION= 147,106
-#MAP_POSITION= 147,107
-#MAP_POSITION= 147,108
-#MAP_POSITION= 147,109
-#MAP_POSITION= 147,110
-#MAP_POSITION= 147,111
-#MAP_POSITION= 147,112
-#MAP_POSITION= 147,113
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-#VARIABLE_CONDITION= 59 [1] [0] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Soviet UK/Moscow Intelligence Dispatch 1941
-#POPUP= Communication Delivered By The British Ambassador
+#NAME= Soviet Report To Comrade Stalin On The Situation In The Far East
+#POPUP= Soviet Report To Comrade Stalin On The Situation In The Far East
 #MESSAGE=
-#IMAGE= uk_communication_1941_1.png
+#IMAGE= ussr_report_richardsorge.png
 #SOUND= report.ogg
 #FLAG= 1
-#TYPE= 0
+#TYPE= 3
 #AI= 3
-#LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
+#LEVEL= 0
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #PRIVATE= 1
@@ -1353,50 +1390,11 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1941/06/01
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; 12 Axis units within 5 hexes of Warsaw(188,76)
-#CONDITION_POSITION= 188,76 [5,5] [12,12] [1] [0]
-}
-
-; Text inspired/sourced from Marxists Internet Archive
-{
-#NAME= Comrade Stalin Broadcasts To The Citizens Of The USSR
-#POPUP= Radio Broadcast
-#MESSAGE=
-#IMAGE= soviet_communication_barbarossa.png
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 3
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1939/09/01
-; Moscow(221,65) is Allied
-#ALIGNMENT_POSITION= 221,65 [2]
+#DATE= 1941/10/01
+; Perm(257,58) is Allied
+#ALIGNMENT_POSITION= 257,58 [2]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; 1 Axis unit within 8 hexes of Smolensk
-#CONDITION_POSITION= 209,68 [8,8] [1,1] [1] [0]
-; 1 Axis unit within 5 hexes of Luga
-#CONDITION_POSITION= 205,56 [5,5] [1,1] [1] [0]
-; 1 Axis unit within 5 hexes of Kiev
-#CONDITION_POSITION= 207,80 [5,5] [1,1] [1] [0]
-; 1 Axis unit within 1 hex of Odessa
-#CONDITION_POSITION= 207,90 [1,1] [1,1] [1] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 {
@@ -1434,17 +1432,17 @@
 }
 
 {
-#NAME= Soviet Report To Comrade Stalin On The Situation In The Far East
-#POPUP= Soviet Report To Comrade Stalin On The Situation In The Far East
+#NAME= Soviet UK/Moscow Intelligence Dispatch 1941
+#POPUP= Communication Delivered By The British Ambassador
 #MESSAGE=
-#IMAGE= ussr_report_richardsorge.png
+#IMAGE= uk_communication_1941_1.png
 #SOUND= report.ogg
 #FLAG= 1
-#TYPE= 3
+#TYPE= 0
 #AI= 3
+#LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#LEVEL= 0
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #PRIVATE= 1
@@ -1455,11 +1453,13 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1941/10/01
-; Perm(257,58) is Allied
-#ALIGNMENT_POSITION= 257,58 [2]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#DATE= 1941/06/01
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; 12 Axis units within 5 hexes of Warsaw(188,76)
+#CONDITION_POSITION= 188,76 [5,5] [12,12] [1] [0]
 }
 
 ; Fall Weiss II
@@ -1493,32 +1493,20 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-; DE 50 Events
-;
-; These are informational only, for flavor and can be turned off, globally
-;  via "DE 50 - Disable to Hide All Historical Popups"
-;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-; US Industry Ramps Up
-; Activation Date on Surrender of Japan
 {
-#NAME= USA Victory in the Pacific
-#POPUP= US Industry Mobilizes For Total War In Europe
+#NAME= 34 Die And Hundreds Are Injured In Race Riots In Detroit (Historical)
+#POPUP= 34 Die And Hundreds Are Injured In Race Riots In Detroit
 #MESSAGE=
-#IMAGE= american_industry_1.png, american_industry_2.png, american_industry_3.png
-#SOUND= industry.ogg
+#IMAGE=
+#SOUND=
 #FLAG= 1
 #TYPE= 0
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-; DE 50 - Disable to Hide All Historical Popups
 #LINK= 50[1]
 #COUNTRY_ID= 115
-#TRIGGER= 100
+#TRIGGER= 40
 #PRIVATE= 0
 #DISPLAY_ORDER= 0
 #DISPLAY_TURN= 0
@@ -1527,21 +1515,83 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1945/08/15
-; Washington DC(4,108) is Allied
-#ALIGNMENT_POSITION= 4,108 [2]
+#DATE= 1943/06/20
+; New York is Allied
+#ALIGNMENT_POSITION= 10,104 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;
-; Soviet Japanese Neutrality Pact:
-; Historical date of event was 1941/04/13
 {
-#NAME= The USSR Signs A Non-Aggression Pact With Japan
-#POPUP= The USSR Signs A Non-Aggression Pact With Japan
+#NAME= Admiral Canaris And Air General Wolfram Von Richthofen Visit Spain (Historical)
+#POPUP= Admiral Canaris And Air General Wolfram Von Richthofen Visit Spain
 #MESSAGE=
-#IMAGE= soviet_japan_pact.png
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 45
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1940/07/21
+; Madrid is in Neutral hands
+#ALIGNMENT_POSITION= 139,104 [0]
+#VARIABLE_CONDITION= 99 [1] [0] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Admiral Canaris Is Arrested And The Abwehr Is Abolished (Historical)
+#POPUP= Admiral Canaris Is Arrested And The Abwehr Is Abolished
+#MESSAGE=
+#IMAGE= admiralcanaris.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 45
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1944/02/18
+; Ottawa(6,93) is Allied
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Japan
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;
+; Operation Vengeance
+{
+#NAME= Admiral Yamamoto Is Shot Down By US Aircraft (Historical)
+#POPUP= Admiral Yamamoto Is Shot Down By US Aircraft
+#MESSAGE=
+#IMAGE= yamamoto.png
 #SOUND=
 #FLAG= 1
 #TYPE= 0
@@ -1559,28 +1609,537 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1941/04/13
-; Ottawa(6,93) is Allied
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+#DATE= 1943/04/18
+; Washington DC(4,108) is Allied
+#ALIGNMENT_POSITION= 4,108 [2]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; Yalta Conference:
-; Historical date of event was 1945/02/04
 {
-#NAME= Yalta Conference (Historical)
-#POPUP= Allied Leaders Meet In Yalta To Discuss The Future Of Europe
+#NAME= African Americans Launch The Double V Campaign: For Victory Over Fascism And Against Discrimination (Historical)
+#POPUP= African Americans Launch The Double V Campaign: For Victory Over Fascism And Against Discrimination
 #MESSAGE=
-#IMAGE= yalta.png
+#IMAGE= doublev.png
 #SOUND=
 #FLAG= 1
-#TYPE= 3
+#TYPE= 0
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 50[1]
-#COUNTRY_ID= 116
+#COUNTRY_ID= 115
+#TRIGGER= 40
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/10/10
+; Washington DC(4,108) is Allied
+#ALIGNMENT_POSITION= 4,108 [2]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Al Bowlly Is Killed In London (Historical)
+#POPUP= The Popular Singer Al Bowlly Dies During An Air Raid
+#MESSAGE=
+#IMAGE= albowlly.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 112
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1941/04/17
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Allied Governments Sign The Declaration Of The United Nations Calling For Complete Victory Over The Axis (Historical)
+#POPUP= Allied Governments Sign The Declaration Of The United Nations Calling For Complete Victory Over The Axis
+#MESSAGE=
+#IMAGE= unitednations.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/01/01
+; Ottawa(6,93) is Allied
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Arthur Koestler's Darkness At Noon Is Published In The UK (Historical)
+#POPUP= Arthur Koestler's Darkness At Noon Is Published In The UK
+#MESSAGE=
+#IMAGE= darknessatnoon.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 112
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1940/12/25
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;
+; Historical date of event was 1941/08/14
+{
+#NAME= Atlantic Charter: Joint Declaration By Churchill And Roosevelt As A First Statement Of War Aims (Historical)
+#POPUP= Atlantic Charter: Joint Declaration By Churchill And Roosevelt As A First Statement Of War Aims
+#MESSAGE=
+#IMAGE= atlanticcharter.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1941/01/01
+; Washington DC(4,108) is Allied
+#ALIGNMENT_POSITION= 4,108 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [50] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Atomic Bomb Dropped On Hiroshima (Historical)
+#POPUP= Atomic Bomb Dropped On Hiroshima
+#MESSAGE=
+#IMAGE= abomb.png
+#SOUND= abomb.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1945/08/06
+; Washington DC(4,108) is Allied
+#ALIGNMENT_POSITION= 4,108 [2]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Basil Rathbone And Nigel Bruce Star In The Propaganda Film Sherlock Holmes And The Secret Weapon (Historical)
+#POPUP= Basil Rathbone And Nigel Bruce Star In The Propaganda Film Sherlock Holmes And The Secret Weapon
+#MESSAGE=
+#IMAGE= sherlockholmes.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 3
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 112
+#TRIGGER= 35
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1943/02/12
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Battle of Guadalcanal (Historical)
+#POPUP= US Marines Assault Japanese Held Islands Of Guadalcanal
+#MESSAGE=
+#IMAGE= guadalcanal_1.png, Guadalcanal_2.png, Guadalcanal_3.png
+#SOUND= combat2.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/08/07
+; Washington DC(4,108) is Allied
+#ALIGNMENT_POSITION= 4,108 [2]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Battle of Kwajalein (Historical)
+#POPUP= Heavy Fighting On The Marshall Islands - US Forces Close In On Japan
+#MESSAGE=
+#IMAGE= kwajalein.png
+#SOUND= combat1.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1944/01/31
+; Washington DC(4,108) is Allied
+#ALIGNMENT_POSITION= 4,108 [2]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Battle of Makin and Tarawa (Historical)
+#POPUP= US Marines Assault Japanese Positions In The Gilbert Islands
+#MESSAGE=
+#IMAGE= gilbert.png
+#SOUND= combat2.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1943/11/20
+; Washington DC(4,108) is Allied
+#ALIGNMENT_POSITION= 4,108 [2]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Battle of Midway (Historical)
+#POPUP= The Japanese Navy Is Hammered In The Battle Of Midway
+#MESSAGE=
+#IMAGE= midwayvictory.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 60
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/06/07
+; Washington DC(4,108) is Allied
+#ALIGNMENT_POSITION= 4,108 [2]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Bing Crosby Singing Irving Berlin's "White Christmas" Tops The US Charts (Historical)
+#POPUP= Bing Crosby Singing Irving Berlin's "White Christmas" Tops The US Charts
+#MESSAGE=
+#IMAGE= bingcrosby.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 115
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/10/25
+; Washington DC(4,108) is Allied
+#ALIGNMENT_POSITION= 4,108 [2]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Brazil DoW On Germany And Starts Raising A Force To Fight In Europe (Historical)
+#POPUP= Brazil Declares War On Germany And Starts Raising A Force To Fight In Europe
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 16
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/08/22
+; Ottawa(6,93) is Allied
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Britain's Forces' Sweetheart Vera Lynn Stars In We'll Meet Again (Historical)
+#POPUP= Britain's Forces' Sweetheart Vera Lynn Stars In We'll Meet Again
+#MESSAGE=
+#IMAGE= veralynn.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 3
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 112
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1943/01/18
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= British Communists Lead The Campaign Calling For A Second Front Now! (Historical)
+#POPUP= British Communists Lead The Campaign Calling For A Second Front Now!
+#MESSAGE=
+#IMAGE= secondfrontnow.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 91
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/03/29
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
+; Paris(151,84) is Axis
+#ALIGNMENT_POSITION= 151,84 [1]
+; Smolensk(209,68) is Axis
+#ALIGNMENT_POSITION= 209,68 [1]
+; Kharkov(218,82) is Axis
+#ALIGNMENT_POSITION= 218,82 [1]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; No Allied units within 8 hexes of Orleans
+#CONDITION_POSITION= 150,87 [8,8] [0,0] [2] [0]
+}
+
+{
+#NAME= British Soldiers In The Cairo Forces Parliament Call For Nationalization Of The UK Economy (Historical)
+#POPUP= British Soldiers In The Cairo Forces Parliament Call For Nationalization Of The UK Economy
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 3
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 112
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1944/02/10
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+; No Axis units within 10 hexes of Cairo
+#CONDITION_POSITION= 208,126 [10,10] [0,0] [1] [0]
+}
+
+{
+#NAME= Canadians Vote In A Plebiscite To Allow Conscription (Historical)
+#POPUP= Canadians Vote In A Plebiscite To Allow Conscription
+#MESSAGE=
+#IMAGE= canadaplebiscite.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 21
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/04/27
+; Ottawa(6,93) is Allied
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 21 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Casablanca Conference (Historical)
+#POPUP= FDR and Churchill Meet In Casablanca And Demand Unconditional Surrender
+#MESSAGE=
+#IMAGE= casablanca.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 115
 #TRIGGER= 100
 #PRIVATE= 0
 #DISPLAY_ORDER= 0
@@ -1590,34 +2149,178 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1945/02/04
-; Sevastopol is Allied
-#ALIGNMENT_POSITION= 212,96 [2]
-; Simferopol is Allied
-#ALIGNMENT_POSITION= 214,94 [2]
+#DATE= 1943/01/14
+; Casablanca is Allied
+#ALIGNMENT_POSITION= 131,119 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; No Axis units within 5 hexes of Sevastopol
-#CONDITION_POSITION= 212,96 [5,5] [0,0] [1] [0]
+; No Axis units within 4 hexes of Casablanca
+#CONDITION_POSITION= 131,119 [4,4] [0,0] [1] [0]
 }
 
-; Soviets Enter Berlin:
-; Historical date of event was 1945/05/02
-; Sounds - BBC Archive
 {
-#NAME= Soviets Enter Berlin (Historical)
-#POPUP= Soviet Soldiers Celebrate The Fall Of Berlin
+#NAME= Clandestine Slovak National Council Formed Favouring Reincorporation Into Czechoslovakia (Historical)
+#POPUP= Clandestine Slovak National Council Formed Favouring Reincorporation Into Czechoslovakia
 #MESSAGE=
-#IMAGE= redflag_berlin.png
-#SOUND= red_army_in_berlin.ogg
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 96
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1943/12/10
+; Ottawa(6,93) is Allied
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 96 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Don Juan's Lausanne Manifesto Attacks Franco And Calls For The Monarchy To Be Restored (Historical)
+#POPUP= Don Juan's Lausanne Manifesto Attacks Franco And Calls For The Monarchy To Be Restored
+#MESSAGE=
+#IMAGE=
+#SOUND=
 #FLAG= 1
 #TYPE= 0
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 50[1]
-#COUNTRY_ID= 116
+#COUNTRY_ID= 99
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1945/03/19
+; Madrid is in Neutral hands
+#ALIGNMENT_POSITION= 139,104 [0]
+#VARIABLE_CONDITION= 99 [1] [0] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Douglas Bader Is Shot Down Over France And Taken Prisoner, Later Ending Up In Colditz (Historical)
+#POPUP= Douglas Bader Is Shot Down Over France And Taken Prisoner, Later Ending Up In Colditz
+#MESSAGE=
+#IMAGE= douglasbader.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 112
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1941/08/09
+; Paris(151,84) is Axis
+#ALIGNMENT_POSITION= 151,84 [1]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Enver Hoxha's Communist Party Forms The Albanian National Liberation Front (Historical)
+#POPUP= Enver Hoxha's Communist Party Forms The Albanian National Liberation Front
+#MESSAGE=
+#IMAGE= enverhoxha.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 3
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/09/16
+; Tirana(185,102) is Axis
+#ALIGNMENT_POSITION= 185,102 [1]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Ernest Hemingway's "For Whom The Bell Tolls" Is Published (Historical)
+#POPUP= Ernest Hemingway's "For Whom The Bell Tolls" Is Published
+#MESSAGE=
+#IMAGE= hemingway.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 115
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1940/10/21
+; Ottawa(6,93) is Allied
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;
+; Fall Of France:
+; Historical date of event was 1940/06/22
+{
+#NAME= Fall Of France (Historical)
+#POPUP= UK Prepares For Possible Axis Invasion
+#MESSAGE=
+#IMAGE= uk_stands_alone.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 4
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 112
 #TRIGGER= 100
 #PRIVATE= 0
 #DISPLAY_ORDER= 0
@@ -1628,29 +2331,26 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/03
-; Berlin(173,74) is Allied
-#ALIGNMENT_POSITION= 173,74 [2]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Soviets in Berlin
-#CONDITION_POSITION= 173,74 [0,0] [1,1] [2] [116]
+; Paris(151,84) is Axis
+#ALIGNMENT_POSITION= 151,84 [1]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; No Axis units within 16 hexes of Newcastle(143,67)
+#CONDITION_POSITION= 143,67 [16,16] [0,0] [1] [0]
 }
 
-;
-; Sikorski dies in a plane crash:
-; Historical date of event was 1943/07/04
 {
-#NAME= The Polish Leader General Sikorski Is Killed In A Plane Crash (Historical)
-#POPUP= The Polish Leader General Sikorski Is Killed In A Plane Crash
+#NAME= Fall of Singapore (Historical)
+#POPUP= Fall Of Singapore - Allied Stronghold Surrenders To Japan
 #MESSAGE=
-#IMAGE= sikorski.png
-#SOUND=
+#IMAGE= singapore_1.png, singapore_2.png
+#SOUND= report.ogg
 #FLAG= 1
 #TYPE= 0
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 50[1]
-#COUNTRY_ID= 85
+#COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
 #DISPLAY_ORDER= 0
@@ -1660,32 +2360,331 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1943/07/04
+#DATE= 1942/02/15
 ; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
-; Poland(85) Surrendered
-#VARIABLE_CONDITION= 85 [2] [100] [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 99 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;
-; Tangier Occupation
-; Historical date of event was 1940/06/14
 {
-#NAME= Spanish Forces Enter The International Protectorate Of Tangier (Historical)
-#POPUP= Spanish Forces Enter The International Protectorate Of Tangier
+#NAME= Fighting Breaks Out At Mass Demonstrations In Lyon And Marseille On Bastille Day (Historical)
+#POPUP= Fighting Breaks Out At Mass Demonstrations In Lyon And Marseille On Bastille Day
 #MESSAGE=
-#IMAGE=
-#SOUND= report.ogg
+#IMAGE= marseillesbastilleday.png
+#SOUND=
 #FLAG= 1
-#TYPE= 1
+#TYPE= 0
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 50[1]
-#COUNTRY_ID= 99
+#COUNTRY_ID= 40
+#TRIGGER= 40
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/07/14
+; Paris(151,84) is Axis
+#ALIGNMENT_POSITION= 151,84 [1]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#VARIABLE_CONDITION= 118 [1] [0] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Following The Death of Metaxas, Alexandros Koryzis Succeeds Him As Greek Prime Minister (Historical)
+#POPUP= Following The Death of Metaxas, Alexandros Koryzis Succeeds Him As Greek Prime Minister
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 46
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1941/01/29
+; London(147,77) is Allied (dummy condition)
+#ALIGNMENT_POSITION= 147,77 [2]
+; Greece Axis and has not surrendered
+#VARIABLE_CONDITION= 46 [1] [1] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Following The Death of Metaxas, Alexandros Koryzis Succeeds Him As Greek Prime Minister (Historical)
+#POPUP= Following The Death of Metaxas, Alexandros Koryzis Succeeds Him As Greek Prime Minister
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 46
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1941/01/29
+; London(147,77) is Allied (dummy condition)
+#ALIGNMENT_POSITION= 147,77 [2]
+; Greece Allied and has not surrendered
+#VARIABLE_CONDITION= 46 [2] [1] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Former British Prime Minister Neville Chamberlain Dies (Historical)
+#POPUP= Former British Prime Minister Neville Chamberlain Dies
+#MESSAGE=
+#IMAGE= nevillechamberlain.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 112
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1940/11/09
+; Ottawa(6,93) is Allied
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Gary Cooper And Ingrid Bergman Star In Hemingway's "For Whom The Bell Tolls" (Historical)
+#POPUP= Gary Cooper And Ingrid Bergman Star In Hemingway's "For Whom The Bell Tolls"
+#MESSAGE=
+#IMAGE= forwhomthebelltolls.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 115
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1943/07/14
+; Washington DC(4,108) is Allied
+#ALIGNMENT_POSITION= 4,108 [2]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= General Slim Defeats The Japanese in Burma, Liberating Mandalay (Historical)
+#POPUP= The Allies Defeat The Japanese in Burma, Liberating Mandalay
+#MESSAGE=
+#IMAGE= burma.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 60
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1945/03/08
+; Ottawa(6,93) is Allied
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= George Elser Attempts To Kill Hitler (Historical)
+#POPUP= George Elser Attempts To Kill Hitler In The Munich Beer Hall Putsch Commemoration
+#MESSAGE=
+#IMAGE= georgeelser.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 45
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1939/11/08
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= George Formby Entertains The Troops To Raise Morale (Historical)
+#POPUP= George Formby Entertains The Troops To Raise Morale
+#MESSAGE=
+#IMAGE= georgeformby.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 3
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 112
+#TRIGGER= 40
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1940/10/01
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= George Orwell's "Animal Farm" Is Published In The UK (Historical)
+#POPUP= George Orwell's "Animal Farm" Is Published In The UK
+#MESSAGE=
+#IMAGE= animalfarm.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1945/08/17
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;
+; Blitzkrieg:
+{
+#NAME= German Blitzkrieg Continues Towards Paris (Historical)
+#POPUP= German Blitzkrieg Continues Towards Paris
+#MESSAGE=
+#IMAGE= blitzkrieg.png, rommel_in_france.png
+#SOUND= tank_movement1.ogg, tank_movement2.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 4
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1939/09/03
+; Berlin(173,74) is Axis
+#ALIGNMENT_POSITION= 173,74 [1]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 10 [2] [100] [1]
+; Germany controls Lille OR
+; Germany controls Reims OR
+; Germany controls Amiens
+#CONDITION_POSITION= 153,80 [0,0] [1,1] [1] [0]
+#CONDITION_POSITION= 154,83 [0,0] [1,1] [1] [0]
+#CONDITION_POSITION= 151,81 [0,0] [1,1] [1] [0]
+}
+
+;
+; Eben Emael:
+{
+#NAME= German Forces Capture Eben Emael (Historical)
+#POPUP= German Forces Capture Eben Emael
+#MESSAGE=
+#IMAGE= eben_emael.png
+#SOUND= combat3.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
 #DISPLAY_ORDER= 0
@@ -1696,11 +2695,103 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1939/09/01
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-#VARIABLE_CONDITION= 99 [1] [0] [0]
-; Axis troops enter Paris
-#CONDITION_POSITION= 151,84 [0,0] [1,1] [1] [0]
+; Eban Emael is Axis
+#ALIGNMENT_POSITION= 156,80 [1]
+#VARIABLE_CONDITION= 10 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;
+; Operation Mercury:
+; Historical date of event was 1941/05/20
+{
+#NAME= German Paratroops Assault Crete (Historical)
+#POPUP= Germany Launches Operation Mercury - Paratroops Assault Crete
+#MESSAGE=
+#IMAGE= crete_1.png, crete_2.png, crete_3.png
+#SOUND= combat3.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 45
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1940/01/01
+; Heraklion(196,116) is Axis
+#ALIGNMENT_POSITION= 196,116 [1]
+; Greece Surrendered
+#VARIABLE_CONDITION= 46 [2] [100] [1]
+; German unit within 3 hexes of Heraklion(196,116)
+#CONDITION_POSITION= 196,116 [3,3] [1,1] [1] [45]
+}
+
+{
+#NAME= German Radio Starts Broadcasting "Charlie And His Orchestra" To Listeners In The UK (Historical)
+#POPUP= German Radio Starts Broadcasting "Charlie And His Orchestra" To Listeners In The UK
+#MESSAGE=
+#IMAGE= charlieorchestra.png
+#SOUND=
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 45
+#TRIGGER= 60
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1941/03/01
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= German Security Forces Finally Track Down And Defeat The Polish Resistance Group Led By Hubal (Historical)
+#POPUP= German Security Forces Finally Track Down And Defeat The Polish Resistance Group Led By Hubal
+#MESSAGE=
+#IMAGE= hubal.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 85
+#TRIGGER= 40
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1940/04/30
+; Warsaw(188,76) is Axis
+#ALIGNMENT_POSITION= 188,76 [1]
+; Poland(85) Surrendered
+#VARIABLE_CONDITION= 85 [2] [100] [1]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 ;
@@ -1742,77 +2833,11 @@
 #CONDITION_POSITION= 139,104 [5,5] [0,0] [2] [0]
 }
 
-;
-; Tripartite Pact:
-; Historical date of event was 1940/09/27
 {
-#NAME= Tripartite Pact (Historical)
-#POPUP= Germany, Italy And Japan Sign Tripartite Pact
+#NAME= Glenn Miller's Plane Goes Missing Over The English Channel (Historical)
+#POPUP= Glenn Miller's Plane Goes Missing Over The English Channel
 #MESSAGE=
-#IMAGE= tripartite_pact.png
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/09/27
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-;
-; Operation Mercury:
-; Historical date of event was 1941/05/20
-{
-#NAME= German Paratroops Assault Crete (Historical)
-#POPUP= Germany Launches Operation Mercury - Paratroops Assault Crete
-#MESSAGE=
-#IMAGE= crete_1.png, crete_2.png, crete_3.png
-#SOUND= combat3.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/01/01
-; Heraklion(196,116) is Axis
-#ALIGNMENT_POSITION= 196,116 [1]
-; Greece Surrendered
-#VARIABLE_CONDITION= 46 [2] [100] [1]
-; German unit within 3 hexes of Heraklion(196,116)
-#CONDITION_POSITION= 196,116 [3,3] [1,1] [1] [45]
-}
-
-{
-#NAME= Admiral Canaris Is Arrested And The Abwehr Is Abolished (Historical)
-#POPUP= Admiral Canaris Is Arrested And The Abwehr Is Abolished
-#MESSAGE=
-#IMAGE= admiralcanaris.png
+#IMAGE= glennmiller.png
 #SOUND=
 #FLAG= 1
 #TYPE= 0
@@ -1820,8 +2845,38 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 50[1]
-#COUNTRY_ID= 45
-#TRIGGER= 30
+#COUNTRY_ID= 115
+#TRIGGER= 40
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1944/12/15
+; Paris(151,84) is Allied
+#ALIGNMENT_POSITION= 151,84 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Gone With The Wind Is Released In US Cinemas (Historical)
+#POPUP= Gone With The Wind Is Released In US Cinemas
+#MESSAGE=
+#IMAGE= gonewiththewind.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 115
+#TRIGGER= 40
 #PRIVATE= 0
 #DISPLAY_ORDER= 0
 #DISPLAY_TURN= 0
@@ -1830,10 +2885,10 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1944/02/18
-; Ottawa(6,93) is Allied
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
+#DATE= 1939/12/19
+; Washington DC(4,108) is Allied
+#ALIGNMENT_POSITION= 4,108 [2]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -1909,6 +2964,94 @@
 }
 
 {
+#NAME= Hitler's Deputy Rudolf Hess Flies To The UK To Negotiate Peace Terms (Historical)
+#POPUP= Hitler's Deputy Rudolf Hess Flies To The UK To Negotiate Peace Terms
+#MESSAGE=
+#IMAGE= rudolfhess.png
+#SOUND=
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1941/05/10
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Hitler's Sister-In-Law Bridget Dowling Shows Her Support For The Allied War Effort (Historical)
+#POPUP= Hitler's Sister-In-Law Bridget Dowling Shows Her Support For The Allied War Effort
+#MESSAGE=
+#IMAGE= bridgetdowling.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 3
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 112
+#TRIGGER= 35
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1941/03/01
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= IRA Bombs Explode In Birmingham And London (Historical)
+#POPUP= IRA Bombs Explode In Birmingham And London
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 57
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1940/03/18
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
 #NAME= Irish Prime Minister De Valera Expresses His Condolences At The German Embassy (Historical)
 #POPUP= Irish Prime Minister De Valera Expresses His Condolences At The German Embassy
 #MESSAGE=
@@ -1942,17 +3085,11 @@
 #CONDITION_POSITION= 173,74 [3,3] [3,3] [2] [0]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Japan
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-;
-; Operation Vengeance
 {
-#NAME= Admiral Yamamoto Is Shot Down By US Aircraft (Historical)
-#POPUP= Admiral Yamamoto Is Shot Down By US Aircraft
+#NAME= Japan Surrenders (Historical)
+#POPUP= Japan Surrenders - MacArthur Accepts Formal Surrender On The USS Missouri
 #MESSAGE=
-#IMAGE= yamamoto.png
+#IMAGE= japan_surrenders_1.png, japan_surrenders_2.png
 #SOUND=
 #FLAG= 1
 #TYPE= 0
@@ -1970,7 +3107,7 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1943/04/18
+#DATE= 1945/08/15
 ; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
@@ -1978,11 +3115,11 @@
 }
 
 {
-#NAME= Operation Ichi-Go: Japan Launches A Large Scale Offensive Into China (Historical)
-#POPUP= Operation Ichi-Go: Japan Launches A Large Scale Offensive Into China
+#NAME= Japanese Attack On Pearl Harbor (Historical)
+#POPUP= Pearl Harbor Attacked By Japanese Forces
 #MESSAGE=
-#IMAGE= ichigo.png
-#SOUND=
+#IMAGE= pearl_harbour_1.png, pearl_harbour_2.png, pearl_harbour_3.png, pearl_harbour_4.png
+#SOUND= infamy.ogg, pearl_harbour.ogg
 #FLAG= 1
 #TYPE= 0
 #AI= 0
@@ -1999,19 +3136,19 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1944/04/19
-; Ottawa(6,93) is Allied
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
+#DATE= 1941/12/07
+; Washington DC(4,108) is Allied
+#ALIGNMENT_POSITION= 4,108 [2]
+#VARIABLE_CONDITION= 115 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 {
-#NAME= The Japanese Invasion Of India Is Defeated At The Battles Of Kohima And Imphal (Historical)
-#POPUP= The Japanese Invasion Of India Is Defeated At The Battles Of Kohima And Imphal
+#NAME= Japanese Forces Attack The French In Indochina Inflicting Heavy Casualties (Historical)
+#POPUP= Japanese Forces Attack The French In Indochina Inflicting Heavy Casualties
 #MESSAGE=
-#IMAGE= kohima.png
-#SOUND=
+#IMAGE=
+#SOUND= coup.ogg
 #FLAG= 1
 #TYPE= 0
 #AI= 0
@@ -2028,10 +3165,10 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1944/06/22
+#DATE= 1940/09/15
 ; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2065,10 +3202,215 @@
 }
 
 {
-#NAME= General Slim Defeats The Japanese in Burma, Liberating Mandalay (Historical)
-#POPUP= The Allies Defeat The Japanese in Burma, Liberating Mandalay
+#NAME= Joe DiMaggio Begins His Hitting Streak In US Baseball (Historical)
+#POPUP= Joe DiMaggio Begins His Hitting Streak In US Baseball
 #MESSAGE=
-#IMAGE= burma.png
+#IMAGE= joedimaggio.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 115
+#TRIGGER= 40
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1941/05/15
+; Washington DC(4,108) is Allied
+#ALIGNMENT_POSITION= 4,108 [2]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Kaiser Wilhelm II Dies In Exile In The Netherlands (Historical)
+#POPUP= Kaiser Wilhelm II Dies In Exile In The Netherlands
+#MESSAGE=
+#IMAGE= kaiserwilhelm.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 45
+#TRIGGER= 40
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1941/06/04
+; Ottawa(6,93) is Allied
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Leslie Howard's Plane is Shot Down over the Bay of Biscay (Historical)
+#POPUP= Leslie Howard's Plane is Shot Down over the Bay of Biscay
+#MESSAGE=
+#IMAGE= lesliehoward.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 112
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1943/06/01
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= MacArthur Returns To The Philippines (Historical)
+#POPUP= MacArthur Returns To The Philippines
+#MESSAGE=
+#IMAGE= macarthurreturns.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1944/10/20
+; Washington DC(4,108) is Allied
+#ALIGNMENT_POSITION= 4,108 [2]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Marlene Dietrich Records Lili Marlene And Visits Wounded Soldiers To Raise Morale (Historical)
+#POPUP= Marlene Dietrich Records Lili Marlene And Visits Wounded Soldiers To Raise Morale
+#MESSAGE=
+#IMAGE= marlenedietrich.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 115
+#TRIGGER= 35
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1944/04/15
+; Ottawa(6,93) is Allied
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Normandie Liner Sunk (Historical)
+#POPUP= The Normandie Ocean Liner Mysteriously Sinks In New York Harbor
+#MESSAGE=
+#IMAGE= uss_lafayette_1.png, uss_lafayette_2.png, uss_lafayette_3.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/02/09
+; New York is Allied
+#ALIGNMENT_POSITION= 10,104 [2]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= OXFAM Is Founded In The UK To Provide Famine Relief To Those Starving In Europe (Historical)
+#POPUP= OXFAM Is Founded In The UK To Provide Famine Relief To Those Starving In Europe
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 112
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/05/15
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Operation Ichi-Go: Japan Launches A Large Scale Offensive Into China (Historical)
+#POPUP= Operation Ichi-Go: Japan Launches A Large Scale Offensive Into China
+#MESSAGE=
+#IMAGE= ichigo.png
 #SOUND=
 #FLAG= 1
 #TYPE= 0
@@ -2086,10 +3428,378 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1945/03/08
+#DATE= 1944/04/19
 ; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;
+; Allies Land In North Africa:
+; Historical date of event was 1942/11/08
+{
+#NAME= Operation Torch (Historical)
+#POPUP= US Troops Land In North Africa
+#MESSAGE=
+#IMAGE= torch.png
+#SOUND= combat2.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 4
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/06/01
+; Washington DC(4,108) is Allied
+#ALIGNMENT_POSITION= 4,108 [2]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Allies in North Africa
+#CONDITION_POSITION= 152,113 [12,12] [3,3] [2] [115]
+#CONDITION_POSITION= 131,119 [8,8] [3,3] [2] [115]
+}
+
+{
+#NAME= Parisians Clash With Police During Armistice Day Commemorations (Historical)
+#POPUP= Parisians Clash With Police During Armistice Day Commemorations
+#MESSAGE=
+#IMAGE=
+#SOUND= coup.ogg
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 40
+#TRIGGER= 50
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1940/11/11
+; Paris(151,84) is Axis
+#ALIGNMENT_POSITION= 151,84 [1]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Peron Begins His Rise To Power As A Military Coup Overthrows The Government Of Argentina (Historical)
+#POPUP= Peron Begins His Rise To Power As A Military Coup Overthrows The Government Of Argentina
+#MESSAGE=
+#IMAGE= peron.png
+#SOUND= coup.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 5
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1943/06/04
+; Ottawa(6,93) is Allied
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= President Franklin D. Roosevelt Is Re-Elected With 55% Of The Vote (Historical)
+#POPUP= President Franklin D. Roosevelt Is Re-Elected With 55% Of The Vote
+#MESSAGE=
+#IMAGE= fdrelection.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 115
+#TRIGGER= 50
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1940/11/05
+; Washington DC(4,108) is Allied
+#ALIGNMENT_POSITION= 4,108 [2]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Pro-Independence Demonstrations In Algeria Lead To Fighting (Historical)
+#POPUP= Pro-Independence Demonstrations In Algeria Lead To Fighting
+#MESSAGE=
+#IMAGE= algerianprotest.png
+#SOUND= coup.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 40
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1945/05/08
+; Algiers is Allied
+#ALIGNMENT_POSITION= 152,113 [2]
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; No Axis units within 10 hexes of Algiers(152,113)
+#CONDITION_POSITION= 152,113 [10,10] [0,0] [1] [0]
+}
+
+{
+#NAME= Ramón Mercader Assassinates Leon Trotsky In Mexico  (Historical)
+#POPUP= Ramón Mercader Assassinates Leon Trotsky In Mexico
+#MESSAGE=
+#IMAGE= trotsky.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 91
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1940/08/21
+; Ottawa(6,93) is Allied
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Sir Oswald Mosley Is Interned As The Emergency Powers Act Comes Into Force (Historical)
+#POPUP= Sir Oswald Mosley Is Interned As The Emergency Powers Act Comes Into Force
+#MESSAGE=
+#IMAGE= oswaldmosley.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 112
+#TRIGGER= 35
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1940/05/23
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Six Peace Pledge Union Members Are Tried For Encouraging Disaffection In The British Army (Historical)
+#POPUP= Six Peace Pledge Union Members Are Tried For Encouraging Disaffection In The British Army
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 112
+#TRIGGER= 10
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1940/06/01
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; Soviets Enter Berlin:
+; Historical date of event was 1945/05/02
+; Sounds - BBC Archive
+{
+#NAME= Soviets Enter Berlin (Historical)
+#POPUP= Soviet Soldiers Celebrate The Fall Of Berlin
+#MESSAGE=
+#IMAGE= redflag_berlin.png
+#SOUND= red_army_in_berlin.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1939/09/03
+; Berlin(173,74) is Allied
+#ALIGNMENT_POSITION= 173,74 [2]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Soviets in Berlin
+#CONDITION_POSITION= 173,74 [0,0] [1,1] [2] [116]
+}
+
+{
+#NAME= Spanish Falangists Attack The British Embassy In Madrid (Historical)
+#POPUP= Spanish Falangists Attack The British Embassy In Madrid
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1939/09/01
+; Madrid is in Neutral hands
+#ALIGNMENT_POSITION= 139,104 [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 99 [1] [25] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;
+; Tangier Occupation
+; Historical date of event was 1940/06/14
+{
+#NAME= Spanish Forces Enter The International Protectorate Of Tangier (Historical)
+#POPUP= Spanish Forces Enter The International Protectorate Of Tangier
+#MESSAGE=
+#IMAGE=
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 99
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1939/09/01
+; Berlin(173,74) is Axis
+#ALIGNMENT_POSITION= 173,74 [1]
+#VARIABLE_CONDITION= 99 [1] [0] [0]
+; Axis troops enter Paris
+#CONDITION_POSITION= 151,84 [0,0] [1,1] [1] [0]
+}
+
+{
+#NAME= Spanish Republicans Imprisoned In Mauthausen Welcome Their Liberators (Historical)
+#POPUP= Spanish Republicans Imprisoned In Mauthausen Welcome Their Liberators
+#MESSAGE=
+#IMAGE= mauthausen.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 101
+#TRIGGER= 50
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1943/01/01
+; Linz is Allied
+#ALIGNMENT_POSITION= 175,85 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2131,14 +3841,106 @@
 #CONDITION_POSITION= 149,99 [4,4] [0,0] [1] [0]
 }
 
-;
-; Eben Emael:
 {
-#NAME= German Forces Capture Eben Emael (Historical)
-#POPUP= German Forces Capture Eben Emael
+#NAME= Swedish Radio Reports That Himmler Is Attempting To Negotiate With The Allies (Historical)
+#POPUP= Swedish Radio Reports That Himmler Is Attempting To Negotiate With The Allies
 #MESSAGE=
-#IMAGE= eben_emael.png
-#SOUND= combat3.ogg
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 4
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 45
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 1
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1943/01/01
+; Washington DC(4,108) is Allied
+#ALIGNMENT_POSITION= 4,108 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Allied Forces Approach Berlin
+#CONDITION_POSITION= 173,74 [3,3] [2,2] [2] [0]
+}
+
+{
+#NAME= Terrace Mutiny: Some Canadian Soldiers Protest At Having To Serve Overseas (Historical)
+#POPUP= Terrace Mutiny: Some Canadian Soldiers Protest At Having To Serve Overseas
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 21
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1944/11/24
+; Ottawa(6,93) is Allied
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 21 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= The Actor And USAAF Officer James Stewart Is Awarded The Croix De Guerre (Historical)
+#POPUP= The Actor And USAAF Officer James Stewart Is Awarded The Croix De Guerre
+#MESSAGE=
+#IMAGE= jamesstewart.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 115
+#TRIGGER= 75
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1944/01/01
+; Washington DC(4,108) is Allied
+#ALIGNMENT_POSITION= 4,108 [2]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; No Axis units within 6 hexes of Paris(151,84)
+#CONDITION_POSITION= 151,84 [6,6] [0,0] [1] [0]
+}
+
+{
+#NAME= The Air Ace Adolf Galland Is Appointed The Luftwaffe's Inspector Of Fighters (Historical)
+#POPUP= The Air Ace Adolf Galland Is Appointed The Luftwaffe's Inspector Of Fighters
+#MESSAGE=
+#IMAGE= adolfgalland.png
+#SOUND=
 #FLAG= 1
 #TYPE= 0
 #AI= 0
@@ -2146,7 +3948,7 @@
 #GV= 1[1,100]
 #LINK= 50[1]
 #COUNTRY_ID= 45
-#TRIGGER= 100
+#TRIGGER= 30
 #PRIVATE= 0
 #DISPLAY_ORDER= 0
 #DISPLAY_TURN= 0
@@ -2155,29 +3957,27 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1939/09/01
-; Eban Emael is Axis
-#ALIGNMENT_POSITION= 156,80 [1]
-#VARIABLE_CONDITION= 10 [2] [100] [0]
+#DATE= 1941/12/05
+; Berlin(173,74) is Axis
+#ALIGNMENT_POSITION= 173,74 [1]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;
-; Blitzkrieg:
 {
-#NAME= German Blitzkrieg Continues Towards Paris (Historical)
-#POPUP= German Blitzkrieg Continues Towards Paris
+#NAME= The America First Committee Is Formed To Keep The USA Out Of The War (Historical)
+#POPUP= The America First Committee Is Formed To Keep The USA Out Of The War
 #MESSAGE=
-#IMAGE= blitzkrieg.png, rommel_in_france.png
-#SOUND= tank_movement1.ogg, tank_movement2.ogg
+#IMAGE=
+#SOUND=
 #FLAG= 1
 #TYPE= 0
-#AI= 4
+#AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 50[1]
-#COUNTRY_ID= 45
-#TRIGGER= 100
+#COUNTRY_ID= 115
+#TRIGGER= 30
 #PRIVATE= 0
 #DISPLAY_ORDER= 0
 #DISPLAY_TURN= 0
@@ -2186,37 +3986,86 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1939/09/03
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 10 [2] [100] [1]
-; Germany controls Lille OR
-; Germany controls Reims OR
-; Germany controls Amiens
-#CONDITION_POSITION= 153,80 [0,0] [1,1] [1] [0]
-#CONDITION_POSITION= 154,83 [0,0] [1,1] [1] [0]
-#CONDITION_POSITION= 151,81 [0,0] [1,1] [1] [0]
+#DATE= 1940/09/10
+; Washington DC(4,108) is Allied
+#ALIGNMENT_POSITION= 4,108 [2]
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;
-; Fall Of France:
-; Historical date of event was 1940/06/22
 {
-#NAME= Fall Of France (Historical)
-#POPUP= UK Prepares For Possible Axis Invasion
+#NAME= The American Poet Ezra Pound Is Indicted For Treason For Broadcasting For Italy (Historical)
+#POPUP= The American Poet Ezra Pound Is Indicted For Treason For Broadcasting For Italy
 #MESSAGE=
-#IMAGE= uk_stands_alone.png
+#IMAGE= ezrapound.png
 #SOUND=
 #FLAG= 1
 #TYPE= 0
-#AI= 4
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 115
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1943/07/10
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= The Andrews Sisters Release "Don't Sit Under the Apple Tree (with Anyone Else but Me)" (Historical)
+#POPUP= The Andrews Sisters Release "Don't Sit Under the Apple Tree (with Anyone Else but Me)"
+#MESSAGE=
+#IMAGE= andrewssisters.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 115
+#TRIGGER= 35
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/02/15
+; Ottawa(6,93) is Allied
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= The Beveridge Report Is Published In The UK Calling for Greater Social Security (Historical)
+#POPUP= The Beveridge Report Is Published In The UK Calling for Greater Social Security
+#MESSAGE=
+#IMAGE= beveridge.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 3
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 50[1]
 #COUNTRY_ID= 112
-#TRIGGER= 100
+#TRIGGER= 30
 #PRIVATE= 0
 #DISPLAY_ORDER= 0
 #DISPLAY_TURN= 0
@@ -2225,21 +4074,47 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1939/09/03
-; Paris(151,84) is Axis
-#ALIGNMENT_POSITION= 151,84 [1]
+#DATE= 1942/12/02
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; No Axis units within 16 hexes of Newcastle(143,67)
-#CONDITION_POSITION= 143,67 [16,16] [0,0] [1] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;
-; Historical date of event was 1941/08/14
 {
-#NAME= Atlantic Charter: Joint Declaration By Churchill And Roosevelt As A First Statement Of War Aims (Historical)
-#POPUP= Atlantic Charter: Joint Declaration By Churchill And Roosevelt As A First Statement Of War Aims
+#NAME= The Bolshoi Theater Performs Shostakovich's 7th Symphony In Leningrad (Historical)
+#POPUP= The Bolshoi Theater Performs Shostakovich's 7th Symphony In Leningrad
 #MESSAGE=
-#IMAGE= atlanticcharter.png
+#IMAGE= shostakovich.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 3
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 116
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/03/05
+; Leningrad(206,52) is Allied
+#ALIGNMENT_POSITION= 206,52 [2]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= The Bulgarian Communist Party Forms The Fatherland Front Opposition Movement (Historical)
+#POPUP= The Bulgarian Communist Party Forms The Fatherland Front Opposition Movement
+#MESSAGE=
+#IMAGE=
 #SOUND=
 #FLAG= 1
 #TYPE= 0
@@ -2247,38 +4122,8 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1941/01/01
-; Washington DC(4,108) is Allied
-#ALIGNMENT_POSITION= 4,108 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [50] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Allied Governments Sign The Declaration Of The United Nations Calling For Complete Victory Over The Axis (Historical)
-#POPUP= Allied Governments Sign The Declaration Of The United Nations Calling For Complete Victory Over The Axis
-#MESSAGE=
-#IMAGE= unitednations.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 100
+#COUNTRY_ID= 91
+#TRIGGER= 50
 #PRIVATE= 0
 #DISPLAY_ORDER= 0
 #DISPLAY_TURN= 0
@@ -2287,12 +4132,127 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1942/01/01
-; Ottawa(6,93) is Allied
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
+#DATE= 1942/07/01
+; Berlin(173,74) is Axis
+#ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 19 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= The Citizens Of Luxembourg Reject Unification With Germany In A Plebiscite (Historical)
+#POPUP= The Citizens Of Luxembourg Reject Unification With Germany In A Plebiscite
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 65
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1941/10/15
+; Luxembourg(159,82) is Axis
+#ALIGNMENT_POSITION= 159,82 [1]
+#VARIABLE_CONDITION= 65 [2] [100] [1]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= The Common Wealth Party Gains Ground In The UK, Winning Their First Election (Historical)
+#POPUP= The Common Wealth Party Gains Ground In The UK, Winning Their First Election
+#MESSAGE=
+#IMAGE= ukelection.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 3
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 112
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1943/04/07
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= The Common Wealth Party Is Formed In The UK To Challenge The Electoral Pact (Historical)
+#POPUP= The Common Wealth Party Is Formed In The UK To Challenge The Electoral Pact
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 3
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 112
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/07/01
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= The Editors Of War Commentary Are Tried For Inciting Disaffection In The British Armed Forces (Historical)
+#POPUP= The Editors Of War Commentary Are Tried For Inciting Disaffection In The British Armed Forces
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 13
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1945/04/23
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2327,87 +4287,20 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-;
-; Allies Land In North Africa:
-; Historical date of event was 1942/11/08
 {
-#NAME= Operation Torch (Historical)
-#POPUP= US Troops Land In North Africa
+#NAME= The French Resistance Leader Jean Moulin Is Arrested (Historical)
+#POPUP= The French Resistance Leader Jean Moulin Is Arrested
 #MESSAGE=
-#IMAGE= torch.png
-#SOUND= combat2.ogg
-#FLAG= 1
-#TYPE= 0
-#AI= 4
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/06/01
-; Washington DC(4,108) is Allied
-#ALIGNMENT_POSITION= 4,108 [2]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Allies in North Africa
-#CONDITION_POSITION= 152,113 [12,12] [3,3] [2] [115]
-#CONDITION_POSITION= 131,119 [8,8] [3,3] [2] [115]
-}
-
-{
-#NAME= Weygand Becomes French CinC And Calls On France To Evoke The Spirit Of 1789 And 1914 (Historical)
-#POPUP= Weygand Becomes French CinC And Calls On France To Evoke The Spirit Of 1789 And 1914
-#MESSAGE=
-#IMAGE= weygandmay1940.png
+#IMAGE= jeanmoulin.png
 #SOUND=
 #FLAG= 1
-#TYPE= 0
-#AI= 3
+#TYPE= 1
+#AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 50[1]
 #COUNTRY_ID= 40
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/01/01
-; Paris(151,84) is Allied
-#ALIGNMENT_POSITION= 151,84 [2]
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-; Axis units are within 5 hexes of Paris(151,84)
-#CONDITION_POSITION= 151,84 [5,5] [1,1] [1] [0]
-; Axis units are within 2 hexes of Nancy(158,85)
-#CONDITION_POSITION= 158,85 [2,2] [1,1] [1] [0]
-}
-
-{
-#NAME= The New York Herald Tribune Calls On The USA To Enter The War (Historical)
-#POPUP= The New York Herald Tribune Calls On The USA To Enter The War
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 35
+#TRIGGER= 100
 #PRIVATE= 0
 #DISPLAY_ORDER= 0
 #DISPLAY_TURN= 0
@@ -2416,88 +4309,28 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1940/01/01
-; Paris(151,84) is Allied
-#ALIGNMENT_POSITION= 151,84 [2]
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [0] [0]
-; Axis units are within 3 hexes of Paris(151,84)(151,84)
-#CONDITION_POSITION= 151,84 [3,3] [1,1] [1] [0]
-}
-
-{
-#NAME= Former British Prime Minister Neville Chamberlain Dies (Historical)
-#POPUP= Former British Prime Minister Neville Chamberlain Dies
-#MESSAGE=
-#IMAGE= nevillechamberlain.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 112
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/11/09
-; Ottawa(6,93) is Allied
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Al Bowlly Is Killed In London (Historical)
-#POPUP= The Popular Singer Al Bowlly Dies During An Air Raid
-#MESSAGE=
-#IMAGE= albowlly.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 112
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1941/04/17
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
+#DATE= 1943/06/21
+; Paris(151,84) is Axis
+#ALIGNMENT_POSITION= 151,84 [1]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; No Allied units within 8 hexes of Orleans
+#CONDITION_POSITION= 150,87 [8,8] [0,0] [2] [0]
 }
 
 {
-#NAME= The Common Wealth Party Is Formed In The UK To Challenge The Electoral Pact (Historical)
-#POPUP= The Common Wealth Party Is Formed In The UK To Challenge The Electoral Pact
+#NAME= The Grand Mufti of Jerusalem Haj Amin al-Husseini Flees For Berlin (Historical)
+#POPUP= The Grand Mufti of Jerusalem Haj Amin al-Husseini Flees Iraq For Berlin
 #MESSAGE=
-#IMAGE=
+#IMAGE= grandmufti.png
 #SOUND=
 #FLAG= 1
 #TYPE= 0
-#AI= 3
+#AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 50[1]
-#COUNTRY_ID= 112
-#TRIGGER= 30
+#COUNTRY_ID= 45
+#TRIGGER= 50
 #PRIVATE= 0
 #DISPLAY_ORDER= 0
 #DISPLAY_TURN= 0
@@ -2506,27 +4339,28 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1942/07/01
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
+#DATE= 1940/01/01
+; Berlin(173,74) is Axis
+#ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 56 [1] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 {
-#NAME= The Common Wealth Party Gains Ground In The UK, Winning Their First Election (Historical)
-#POPUP= The Common Wealth Party Gains Ground In The UK, Winning Their First Election
+#NAME= The Great Escape: 76 Prisoners Of War Escape From Stalag Luft III (Historical)
+#POPUP= The Great Escape: 76 Prisoners Of War Escape From Stalag Luft III
 #MESSAGE=
-#IMAGE= ukelection.png
+#IMAGE= greatescape.png
 #SOUND=
 #FLAG= 1
 #TYPE= 0
-#AI= 3
+#AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 50[1]
 #COUNTRY_ID= 112
-#TRIGGER= 30
+#TRIGGER= 100
 #PRIVATE= 0
 #DISPLAY_ORDER= 0
 #DISPLAY_TURN= 0
@@ -2535,10 +4369,14 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1943/04/07
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
+#DATE= 1944/03/25
+; Dresden is Axis
+#ALIGNMENT_POSITION= 173,79 [1]
+; Frankfurt is Axis
+#ALIGNMENT_POSITION= 175,75 [1]
+; Glogau is Axis
+#ALIGNMENT_POSITION= 179,77 [1]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -2601,10 +4439,10 @@
 }
 
 {
-#NAME= IRA Bombs Explode In Birmingham And London (Historical)
-#POPUP= IRA Bombs Explode In Birmingham And London
+#NAME= The Japanese Complete Their Conquest Of The Philippines As Corregidor Falls (Historical)
+#POPUP= The Japanese Complete Their Conquest Of The Philippines As Corregidor Falls
 #MESSAGE=
-#IMAGE=
+#IMAGE= philippinesconquest.png
 #SOUND=
 #FLAG= 1
 #TYPE= 0
@@ -2612,65 +4450,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 50[1]
-#COUNTRY_ID= 57
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/03/18
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Hitler's Sister-In-Law Bridget Dowling Shows Her Support For The Allied War Effort (Historical)
-#POPUP= Hitler's Sister-In-Law Bridget Dowling Shows Her Support For The Allied War Effort
-#MESSAGE=
-#IMAGE= bridgetdowling.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 3
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 112
-#TRIGGER= 35
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1941/03/01
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Warsaw Ghetto Rising (Historical)
-#POPUP= Warsaw Ghetto Rising
-#MESSAGE=
-#IMAGE= warsawghetto.png
-#SOUND= battle2.ogg
-#FLAG= 1
-#TYPE= 3
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 85
+#COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
 #DISPLAY_ORDER= 0
@@ -2680,732 +4460,18 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1943/04/19
-; Warsaw(188,76) is Axis
-#ALIGNMENT_POSITION= 188,76 [1]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= George Elser Attempts To Kill Hitler (Historical)
-#POPUP= George Elser Attempts To Kill Hitler In The Munich Beer Hall Putsch Commemoration
-#MESSAGE=
-#IMAGE= georgeelser.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 45
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1939/11/08
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= The Bulgarian Communist Party Forms The Fatherland Front Opposition Movement (Historical)
-#POPUP= The Bulgarian Communist Party Forms The Fatherland Front Opposition Movement
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 91
-#TRIGGER= 50
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/07/01
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 19 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Ramón Mercader Assassinates Leon Trotsky In Mexico  (Historical)
-#POPUP= Ramón Mercader Assassinates Leon Trotsky In Mexico
-#MESSAGE=
-#IMAGE= trotsky.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 91
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/08/21
-; Ottawa(6,93) is Allied
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Spanish Falangists Attack The British Embassy In Madrid (Historical)
-#POPUP= Spanish Falangists Attack The British Embassy In Madrid
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 99
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1939/09/01
-; Madrid is in Neutral hands
-#ALIGNMENT_POSITION= 139,104 [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 99 [1] [25] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Don Juan's Lausanne Manifesto Attacks Franco And Calls For The Monarchy To Be Restored (Historical)
-#POPUP= Don Juan's Lausanne Manifesto Attacks Franco And Calls For The Monarchy To Be Restored
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 99
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1945/03/19
-; Madrid is in Neutral hands
-#ALIGNMENT_POSITION= 139,104 [0]
-#VARIABLE_CONDITION= 99 [1] [0] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Admiral Canaris And Air General Wolfram Von Richthofen Visit Spain (Historical)
-#POPUP= Admiral Canaris And Air General Wolfram Von Richthofen Visit Spain
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 45
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/07/21
-; Madrid is in Neutral hands
-#ALIGNMENT_POSITION= 139,104 [0]
-#VARIABLE_CONDITION= 99 [1] [0] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Arthur Koestler's Darkness At Noon Is Published In The UK (Historical)
-#POPUP= Arthur Koestler's Darkness At Noon Is Published In The UK
-#MESSAGE=
-#IMAGE= darknessatnoon.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 112
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/12/25
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= The Great Escape: 76 Prisoners Of War Escape From Stalag Luft III (Historical)
-#POPUP= The Great Escape: 76 Prisoners Of War Escape From Stalag Luft III
-#MESSAGE=
-#IMAGE= greatescape.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1944/03/25
-; Dresden is Axis
-#ALIGNMENT_POSITION= 173,79 [1]
-; Frankfurt is Axis
-#ALIGNMENT_POSITION= 175,75 [1]
-; Glogau is Axis
-#ALIGNMENT_POSITION= 179,77 [1]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Glenn Miller's Plane Goes Missing Over The English Channel (Historical)
-#POPUP= Glenn Miller's Plane Goes Missing Over The English Channel
-#MESSAGE=
-#IMAGE= glennmiller.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 40
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1944/12/15
-; Paris(151,84) is Allied
-#ALIGNMENT_POSITION= 151,84 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Douglas Bader Is Shot Down Over France And Taken Prisoner, Later Ending Up In Colditz (Historical)
-#POPUP= Douglas Bader Is Shot Down Over France And Taken Prisoner, Later Ending Up In Colditz
-#MESSAGE=
-#IMAGE= douglasbader.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 112
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1941/08/09
-; Paris(151,84) is Axis
-#ALIGNMENT_POSITION= 151,84 [1]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Werwolf Activity: The Mayor of Aachen, Franz Oppenhoff, Is Assassinated (Historical)
-#POPUP= Werwolf Activity: The Mayor of Aachen, Franz Oppenhoff, Is Assassinated
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 45
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1945/03/25
-; Luxembourg is Allied
-#ALIGNMENT_POSITION= 159,82 [2]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-; Three Allied Units within 2 hexes of Coblenz
-#CONDITION_POSITION= 161,80 [2,2] [3,3] [2] [0]
-}
-
-{
-#NAME= The Air Ace Adolf Galland Is Appointed The Luftwaffe's Inspector Of Fighters (Historical)
-#POPUP= The Air Ace Adolf Galland Is Appointed The Luftwaffe's Inspector Of Fighters
-#MESSAGE=
-#IMAGE= adolfgalland.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 45
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1941/12/05
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Six Peace Pledge Union Members Are Tried For Encouraging Disaffection In The British Army (Historical)
-#POPUP= Six Peace Pledge Union Members Are Tried For Encouraging Disaffection In The British Army
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 112
-#TRIGGER= 10
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/06/01
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= The Editors Of War Commentary Are Tried For Inciting Disaffection In The British Armed Forces (Historical)
-#POPUP= The Editors Of War Commentary Are Tried For Inciting Disaffection In The British Armed Forces
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 13
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1945/04/23
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Following The Death of Metaxas, Alexandros Koryzis Succeeds Him As Greek Prime Minister (Historical)
-#POPUP= Following The Death of Metaxas, Alexandros Koryzis Succeeds Him As Greek Prime Minister
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 46
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1941/01/29
-; London(147,77) is Allied (dummy condition)
-#ALIGNMENT_POSITION= 147,77 [2]
-; Greece Axis and has not surrendered
-#VARIABLE_CONDITION= 46 [1] [1] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Following The Death of Metaxas, Alexandros Koryzis Succeeds Him As Greek Prime Minister (Historical)
-#POPUP= Following The Death of Metaxas, Alexandros Koryzis Succeeds Him As Greek Prime Minister
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 46
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1941/01/29
-; London(147,77) is Allied (dummy condition)
-#ALIGNMENT_POSITION= 147,77 [2]
-; Greece Allied and has not surrendered
-#VARIABLE_CONDITION= 46 [2] [1] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Basil Rathbone And Nigel Bruce Star In The Propaganda Film Sherlock Holmes And The Secret Weapon (Historical)
-#POPUP= Basil Rathbone And Nigel Bruce Star In The Propaganda Film Sherlock Holmes And The Secret Weapon
-#MESSAGE=
-#IMAGE= sherlockholmes.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 3
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 112
-#TRIGGER= 35
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1943/02/12
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= The Andrews Sisters Release "Don't Sit Under the Apple Tree (with Anyone Else but Me)" (Historical)
-#POPUP= The Andrews Sisters Release "Don't Sit Under the Apple Tree (with Anyone Else but Me)"
-#MESSAGE=
-#IMAGE= andrewssisters.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 35
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/02/15
-; Ottawa(6,93) is Allied
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Marlene Dietrich Records Lili Marlene And Visits Wounded Soldiers To Raise Morale (Historical)
-#POPUP= Marlene Dietrich Records Lili Marlene And Visits Wounded Soldiers To Raise Morale
-#MESSAGE=
-#IMAGE= marlenedietrich.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 35
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1944/04/15
-; Ottawa(6,93) is Allied
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Enver Hoxha's Communist Party Forms The Albanian National Liberation Front (Historical)
-#POPUP= Enver Hoxha's Communist Party Forms The Albanian National Liberation Front
-#MESSAGE=
-#IMAGE= enverhoxha.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 3
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/09/16
-; Tirana(185,102) is Axis
-#ALIGNMENT_POSITION= 185,102 [1]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Canadians Vote In A Plebiscite To Allow Conscription (Historical)
-#POPUP= Canadians Vote In A Plebiscite To Allow Conscription
-#MESSAGE=
-#IMAGE= canadaplebiscite.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 21
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/04/27
-; Ottawa(6,93) is Allied
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 21 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Terrace Mutiny: Some Canadian Soldiers Protest At Having To Serve Overseas (Historical)
-#POPUP= Terrace Mutiny: Some Canadian Soldiers Protest At Having To Serve Overseas
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 21
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1944/11/24
-; Ottawa(6,93) is Allied
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 21 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= The Red Orchestra Espionage Group Is Broken Up In Berlin (Historical)
-#POPUP= The Red Orchestra Espionage Group Is Broken Up In Berlin
-#MESSAGE=
-#IMAGE= redorchestra.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 91
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/08/30
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Joe DiMaggio Begins His Hitting Streak In US Baseball (Historical)
-#POPUP= Joe DiMaggio Begins His Hitting Streak In US Baseball
-#MESSAGE=
-#IMAGE= joedimaggio.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 40
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1941/05/15
+#DATE= 1942/05/08
 ; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 {
-#NAME= Ernest Hemingway's "For Whom The Bell Tolls" Is Published (Historical)
-#POPUP= Ernest Hemingway's "For Whom The Bell Tolls" Is Published
+#NAME= The Japanese Invasion Of India Is Defeated At The Battles Of Kohima And Imphal (Historical)
+#POPUP= The Japanese Invasion Of India Is Defeated At The Battles Of Kohima And Imphal
 #MESSAGE=
-#IMAGE= hemingway.png
+#IMAGE= kohima.png
 #SOUND=
 #FLAG= 1
 #TYPE= 0
@@ -3413,8 +4479,8 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 30
+#COUNTRY_ID= 60
+#TRIGGER= 100
 #PRIVATE= 0
 #DISPLAY_ORDER= 0
 #DISPLAY_TURN= 0
@@ -3423,99 +4489,10 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1940/10/21
+#DATE= 1944/06/22
 ; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= German Security Forces Finally Track Down And Defeat The Polish Resistance Group Led By Hubal (Historical)
-#POPUP= German Security Forces Finally Track Down And Defeat The Polish Resistance Group Led By Hubal
-#MESSAGE=
-#IMAGE= hubal.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 85
-#TRIGGER= 40
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/04/30
-; Warsaw(188,76) is Axis
-#ALIGNMENT_POSITION= 188,76 [1]
-; Poland(85) Surrendered
-#VARIABLE_CONDITION= 85 [2] [100] [1]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Sir Oswald Mosley Is Interned As The Emergency Powers Act Comes Into Force (Historical)
-#POPUP= Sir Oswald Mosley Is Interned As The Emergency Powers Act Comes Into Force
-#MESSAGE=
-#IMAGE= oswaldmosley.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 112
-#TRIGGER= 35
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/05/23
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= The Grand Mufti of Jerusalem Haj Amin al-Husseini Flees For Berlin (Historical)
-#POPUP= The Grand Mufti of Jerusalem Haj Amin al-Husseini Flees Iraq For Berlin
-#MESSAGE=
-#IMAGE= grandmufti.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 45
-#TRIGGER= 50
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/01/01
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 56 [1] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -3553,360 +4530,8 @@
 }
 
 {
-#NAME= Leslie Howard's Plane is Shot Down over the Bay of Biscay (Historical)
-#POPUP= Leslie Howard's Plane is Shot Down over the Bay of Biscay
-#MESSAGE=
-#IMAGE= lesliehoward.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 112
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1943/06/01
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= British Soldiers In The Cairo Forces Parliament Call For Nationalization Of The UK Economy (Historical)
-#POPUP= British Soldiers In The Cairo Forces Parliament Call For Nationalization Of The UK Economy
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 3
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 112
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1944/02/10
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 36 [2] [100] [0]
-; No Axis units within 10 hexes of Cairo
-#CONDITION_POSITION= 208,126 [10,10] [0,0] [1] [0]
-}
-
-{
-#NAME= The American Poet Ezra Pound Is Indicted For Treason For Broadcasting For Italy (Historical)
-#POPUP= The American Poet Ezra Pound Is Indicted For Treason For Broadcasting For Italy
-#MESSAGE=
-#IMAGE= ezrapound.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1943/07/10
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Britain's Forces' Sweetheart Vera Lynn Stars In We'll Meet Again (Historical)
-#POPUP= Britain's Forces' Sweetheart Vera Lynn Stars In We'll Meet Again
-#MESSAGE=
-#IMAGE= veralynn.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 3
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 112
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1943/01/18
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Gary Cooper And Ingrid Bergman Star In Hemingway's "For Whom The Bell Tolls" (Historical)
-#POPUP= Gary Cooper And Ingrid Bergman Star In Hemingway's "For Whom The Bell Tolls"
-#MESSAGE=
-#IMAGE= forwhomthebelltolls.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1943/07/14
-; Washington DC(4,108) is Allied
-#ALIGNMENT_POSITION= 4,108 [2]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= The Beveridge Report Is Published In The UK Calling for Greater Social Security (Historical)
-#POPUP= The Beveridge Report Is Published In The UK Calling for Greater Social Security
-#MESSAGE=
-#IMAGE= beveridge.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 3
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 112
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/12/02
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= George Orwell's "Animal Farm" Is Published In The UK (Historical)
-#POPUP= George Orwell's "Animal Farm" Is Published In The UK
-#MESSAGE=
-#IMAGE= animalfarm.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1945/08/17
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= The Bolshoi Theater Performs Shostakovich's 7th Symphony In Leningrad (Historical)
-#POPUP= The Bolshoi Theater Performs Shostakovich's 7th Symphony In Leningrad
-#MESSAGE=
-#IMAGE= shostakovich.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 3
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 116
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/03/05
-; Leningrad(206,52) is Allied
-#ALIGNMENT_POSITION= 206,52 [2]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= George Formby Entertains The Troops To Raise Morale (Historical)
-#POPUP= George Formby Entertains The Troops To Raise Morale
-#MESSAGE=
-#IMAGE= georgeformby.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 3
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 112
-#TRIGGER= 40
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/10/01
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= German Radio Starts Broadcasting "Charlie And His Orchestra" To Listeners In The UK (Historical)
-#POPUP= German Radio Starts Broadcasting "Charlie And His Orchestra" To Listeners In The UK
-#MESSAGE=
-#IMAGE= charlieorchestra.png
-#SOUND=
-#FLAG= 1
-#TYPE= 3
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 45
-#TRIGGER= 60
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1941/03/01
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Zoot Suit Riots Break Out In Los Angeles (Historical)
-#POPUP= Zoot Suit Riots Break Out In Los Angeles
-#MESSAGE=
-#IMAGE= zoot.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1943/06/03
-; New York is Allied
-#ALIGNMENT_POSITION= 10,104 [2]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Tsar Boris III Of Bulgaria Dies And Is Succeeded By His Six Year Old Son Simeon III (Historical)
-#POPUP= Tsar Boris III Of Bulgaria Dies And Is Succeeded By His Six Year Old Son Simeon III
-#MESSAGE=
-#IMAGE= tsarboris.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 19
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1943/08/28
-; Ottawa(6,93) is Allied
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 19 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= 34 Die And Hundreds Are Injured In Race Riots In Detroit (Historical)
-#POPUP= 34 Die And Hundreds Are Injured In Race Riots In Detroit
+#NAME= The New York Herald Tribune Calls On The USA To Enter The War (Historical)
+#POPUP= The New York Herald Tribune Calls On The USA To Enter The War
 #MESSAGE=
 #IMAGE=
 #SOUND=
@@ -3917,67 +4542,7 @@
 #GV= 1[1,100]
 #LINK= 50[1]
 #COUNTRY_ID= 115
-#TRIGGER= 40
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1943/06/20
-; New York is Allied
-#ALIGNMENT_POSITION= 10,104 [2]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Spanish Republicans Imprisoned In Mauthausen Welcome Their Liberators (Historical)
-#POPUP= Spanish Republicans Imprisoned In Mauthausen Welcome Their Liberators
-#MESSAGE=
-#IMAGE= mauthausen.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 101
-#TRIGGER= 50
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1943/01/01
-; Linz is Allied
-#ALIGNMENT_POSITION= 175,85 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Vidkun Quisling Proclaims Himself Prime Minister Of Norway (Historical)
-#POPUP= Vidkun Quisling Proclaims Himself Prime Minister Of Norway
-#MESSAGE=
-#IMAGE= vidkunquisling.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 78
-#TRIGGER= 100
+#TRIGGER= 35
 #PRIVATE= 0
 #DISPLAY_ORDER= 0
 #DISPLAY_TURN= 0
@@ -3987,10 +4552,12 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1940/01/01
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-#VARIABLE_CONDITION= 78 [2] [100] [1]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Paris(151,84) is Allied
+#ALIGNMENT_POSITION= 151,84 [2]
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; Axis units are within 3 hexes of Paris(151,84)(151,84)
+#CONDITION_POSITION= 151,84 [3,3] [1,1] [1] [0]
 }
 
 {
@@ -4022,78 +4589,22 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+;
+; Sikorski dies in a plane crash:
+; Historical date of event was 1943/07/04
 {
-#NAME= Parisians Clash With Police During Armistice Day Commemorations (Historical)
-#POPUP= Parisians Clash With Police During Armistice Day Commemorations
+#NAME= The Polish Leader General Sikorski Is Killed In A Plane Crash (Historical)
+#POPUP= The Polish Leader General Sikorski Is Killed In A Plane Crash
 #MESSAGE=
-#IMAGE=
-#SOUND= coup.ogg
-#FLAG= 1
-#TYPE= 3
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 40
-#TRIGGER= 50
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/11/11
-; Paris(151,84) is Axis
-#ALIGNMENT_POSITION= 151,84 [1]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Pro-Independence Demonstrations In Algeria Lead To Fighting (Historical)
-#POPUP= Pro-Independence Demonstrations In Algeria Lead To Fighting
-#MESSAGE=
-#IMAGE= algerianprotest.png
-#SOUND= coup.ogg
+#IMAGE= sikorski.png
+#SOUND=
 #FLAG= 1
 #TYPE= 0
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 50[1]
-#COUNTRY_ID= 40
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1945/05/08
-; Algiers is Allied
-#ALIGNMENT_POSITION= 152,113 [2]
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-; No Axis units within 10 hexes of Algiers(152,113)
-#CONDITION_POSITION= 152,113 [10,10] [0,0] [1] [0]
-}
-
-{
-#NAME= The French Resistance Leader Jean Moulin Is Arrested (Historical)
-#POPUP= The French Resistance Leader Jean Moulin Is Arrested
-#MESSAGE=
-#IMAGE= jeanmoulin.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 40
+#COUNTRY_ID= 85
 #TRIGGER= 100
 #PRIVATE= 0
 #DISPLAY_ORDER= 0
@@ -4103,167 +4614,21 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1943/06/21
-; Paris(151,84) is Axis
-#ALIGNMENT_POSITION= 151,84 [1]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-; No Allied units within 8 hexes of Orleans
-#CONDITION_POSITION= 150,87 [8,8] [0,0] [2] [0]
-}
-
-{
-#NAME= Fighting Breaks Out At Mass Demonstrations In Lyon And Marseille On Bastille Day (Historical)
-#POPUP= Fighting Breaks Out At Mass Demonstrations In Lyon And Marseille On Bastille Day
-#MESSAGE=
-#IMAGE= marseillesbastilleday.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 40
-#TRIGGER= 40
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/07/14
-; Paris(151,84) is Axis
-#ALIGNMENT_POSITION= 151,84 [1]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-#VARIABLE_CONDITION= 118 [1] [0] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Hitler's Deputy Rudolf Hess Flies To The UK To Negotiate Peace Terms (Historical)
-#POPUP= Hitler's Deputy Rudolf Hess Flies To The UK To Negotiate Peace Terms
-#MESSAGE=
-#IMAGE= rudolfhess.png
-#SOUND=
-#FLAG= 1
-#TYPE= 3
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1941/05/10
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Kaiser Wilhelm II Dies In Exile In The Netherlands (Historical)
-#POPUP= Kaiser Wilhelm II Dies In Exile In The Netherlands
-#MESSAGE=
-#IMAGE= kaiserwilhelm.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 45
-#TRIGGER= 40
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1941/06/04
+#DATE= 1943/07/04
 ; Ottawa(6,93) is Allied
 #ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Gone With The Wind Is Released In US Cinemas (Historical)
-#POPUP= Gone With The Wind Is Released In US Cinemas
-#MESSAGE=
-#IMAGE= gonewiththewind.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 40
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1939/12/19
-; Washington DC(4,108) is Allied
-#ALIGNMENT_POSITION= 4,108 [2]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= OXFAM Is Founded In The UK To Provide Famine Relief To Those Starving In Europe (Historical)
-#POPUP= OXFAM Is Founded In The UK To Provide Famine Relief To Those Starving In Europe
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 112
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/05/15
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
+; Poland(85) Surrendered
+#VARIABLE_CONDITION= 85 [2] [100] [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
+#VARIABLE_CONDITION= 99 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 {
-#NAME= British Communists Lead The Campaign Calling For A Second Front Now! (Historical)
-#POPUP= British Communists Lead The Campaign Calling For A Second Front Now!
+#NAME= The Red Orchestra Espionage Group Is Broken Up In Berlin (Historical)
+#POPUP= The Red Orchestra Espionage Group Is Broken Up In Berlin
 #MESSAGE=
-#IMAGE= secondfrontnow.png
+#IMAGE= redorchestra.png
 #SOUND=
 #FLAG= 1
 #TYPE= 0
@@ -4272,249 +4637,6 @@
 #GV= 1[1,100]
 #LINK= 50[1]
 #COUNTRY_ID= 91
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/03/29
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-; Paris(151,84) is Axis
-#ALIGNMENT_POSITION= 151,84 [1]
-; Smolensk(209,68) is Axis
-#ALIGNMENT_POSITION= 209,68 [1]
-; Kharkov(218,82) is Axis
-#ALIGNMENT_POSITION= 218,82 [1]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-; No Allied units within 8 hexes of Orleans
-#CONDITION_POSITION= 150,87 [8,8] [0,0] [2] [0]
-}
-
-{
-#NAME= The America First Committee Is Formed To Keep The USA Out Of The War (Historical)
-#POPUP= The America First Committee Is Formed To Keep The USA Out Of The War
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/09/10
-; Washington DC(4,108) is Allied
-#ALIGNMENT_POSITION= 4,108 [2]
-#VARIABLE_CONDITION= 115 [2] [0] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= African Americans Launch The Double V Campaign: For Victory Over Fascism And Against Discrimination (Historical)
-#POPUP= African Americans Launch The Double V Campaign: For Victory Over Fascism And Against Discrimination
-#MESSAGE=
-#IMAGE= doublev.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 40
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/10/10
-; Washington DC(4,108) is Allied
-#ALIGNMENT_POSITION= 4,108 [2]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Bing Crosby Singing Irving Berlin's "White Christmas" Tops The US Charts (Historical)
-#POPUP= Bing Crosby Singing Irving Berlin's "White Christmas" Tops The US Charts
-#MESSAGE=
-#IMAGE= bingcrosby.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/10/25
-; Washington DC(4,108) is Allied
-#ALIGNMENT_POSITION= 4,108 [2]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= The Actor And USAAF Officer James Stewart Is Awarded The Croix De Guerre (Historical)
-#POPUP= The Actor And USAAF Officer James Stewart Is Awarded The Croix De Guerre
-#MESSAGE=
-#IMAGE= jamesstewart.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 75
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1944/01/01
-; Washington DC(4,108) is Allied
-#ALIGNMENT_POSITION= 4,108 [2]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-; No Axis units within 6 hexes of Paris(151,84)
-#CONDITION_POSITION= 151,84 [6,6] [0,0] [1] [0]
-}
-
-{
-#NAME= President Franklin D. Roosevelt Is Re-Elected With 55% Of The Vote (Historical)
-#POPUP= President Franklin D. Roosevelt Is Re-Elected With 55% Of The Vote
-#MESSAGE=
-#IMAGE= fdrelection.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 50
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/11/05
-; Washington DC(4,108) is Allied
-#ALIGNMENT_POSITION= 4,108 [2]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Peron Begins His Rise To Power As A Military Coup Overthrows The Government Of Argentina (Historical)
-#POPUP= Peron Begins His Rise To Power As A Military Coup Overthrows The Government Of Argentina
-#MESSAGE=
-#IMAGE= peron.png
-#SOUND= coup.ogg
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 5
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1943/06/04
-; Ottawa(6,93) is Allied
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= The Citizens Of Luxembourg Reject Unification With Germany In A Plebiscite (Historical)
-#POPUP= The Citizens Of Luxembourg Reject Unification With Germany In A Plebiscite
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 65
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1941/10/15
-; Luxembourg(159,82) is Axis
-#ALIGNMENT_POSITION= 159,82 [1]
-#VARIABLE_CONDITION= 65 [2] [100] [1]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Brazil DoW On Germany And Starts Raising A Force To Fight In Europe (Historical)
-#POPUP= Brazil Declares War On Germany And Starts Raising A Force To Fight In Europe
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 16
 #TRIGGER= 100
 #PRIVATE= 0
 #DISPLAY_ORDER= 0
@@ -4524,164 +4646,9 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1942/08/22
-; Ottawa(6,93) is Allied
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Clandestine Slovak National Council Formed Favouring Reincorporation Into Czechoslovakia (Historical)
-#POPUP= Clandestine Slovak National Council Formed Favouring Reincorporation Into Czechoslovakia
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 96
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1943/12/10
-; Ottawa(6,93) is Allied
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 96 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Ukrainian Nationalists Form The Clandestine Ukrainian Insurgent Army To Fight For Independence (Historical)
-#POPUP= Ukrainian Nationalists Form The Clandestine Ukrainian Insurgent Army To Fight For Independence
-#MESSAGE=
-#IMAGE= ukrainiannationalist.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 113
-#TRIGGER= 50
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/10/14
-; Kiev(207,80) is Axis
-#ALIGNMENT_POSITION= 207,80 [1]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Swedish Radio Reports That Himmler Is Attempting To Negotiate With The Allies (Historical)
-#POPUP= Swedish Radio Reports That Himmler Is Attempting To Negotiate With The Allies
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 4
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 45
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 1
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1943/01/01
-; Washington DC(4,108) is Allied
-#ALIGNMENT_POSITION= 4,108 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Allied Forces Approach Berlin
-#CONDITION_POSITION= 173,74 [3,3] [2,2] [2] [0]
-}
-
-{
-#NAME= William Joyce Is Arrested (Historical)
-#POPUP= "Lord Haw Haw" The British Traitor William Joyce Is Captured
-#MESSAGE=
-#IMAGE= william_joyce.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 112
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1943/01/01
-; Ottawa(6,93) is Allied
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 10 [2] [100] [0]
-#VARIABLE_CONDITION= 73 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Japanese Forces Attack The French In Indochina Inflicting Heavy Casualties (Historical)
-#POPUP= Japanese Forces Attack The French In Indochina Inflicting Heavy Casualties
-#MESSAGE=
-#IMAGE=
-#SOUND= coup.ogg
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 60
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/09/15
-; Ottawa(6,93) is Allied
-#ALIGNMENT_POSITION= 6,93 [2]
+#DATE= 1942/08/30
+; Berlin(173,74) is Axis
+#ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -4716,11 +4683,46 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+;
+; Soviet Japanese Neutrality Pact:
+; Historical date of event was 1941/04/13
 {
-#NAME= Fall of Singapore (Historical)
-#POPUP= Fall Of Singapore - Allied Stronghold Surrenders To Japan
+#NAME= The USSR Signs A Non-Aggression Pact With Japan
+#POPUP= The USSR Signs A Non-Aggression Pact With Japan
 #MESSAGE=
-#IMAGE= singapore_1.png, singapore_2.png
+#IMAGE= soviet_japan_pact.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 60
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1941/04/13
+; Ottawa(6,93) is Allied
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;
+; Tripartite Pact:
+; Historical date of event was 1940/09/27
+{
+#NAME= Tripartite Pact (Historical)
+#POPUP= Germany, Italy And Japan Sign Tripartite Pact
+#MESSAGE=
+#IMAGE= tripartite_pact.png
 #SOUND= report.ogg
 #FLAG= 1
 #TYPE= 0
@@ -4728,7 +4730,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 50[1]
-#COUNTRY_ID= 60
+#COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
 #DISPLAY_ORDER= 0
@@ -4738,27 +4740,27 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1942/02/15
-; Ottawa(6,93) is Allied
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
+#DATE= 1940/09/27
+; Berlin(173,74) is Axis
+#ALIGNMENT_POSITION= 173,74 [1]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 {
-#NAME= Japanese Attack On Pearl Harbor (Historical)
-#POPUP= Pearl Harbor Attacked By Japanese Forces
+#NAME= Tsar Boris III Of Bulgaria Dies And Is Succeeded By His Six Year Old Son Simeon III (Historical)
+#POPUP= Tsar Boris III Of Bulgaria Dies And Is Succeeded By His Six Year Old Son Simeon III
 #MESSAGE=
-#IMAGE= pearl_harbour_1.png, pearl_harbour_2.png, pearl_harbour_3.png, pearl_harbour_4.png
-#SOUND= infamy.ogg, pearl_harbour.ogg
+#IMAGE= tsarboris.png
+#SOUND=
 #FLAG= 1
 #TYPE= 0
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 50[1]
-#COUNTRY_ID= 60
-#TRIGGER= 100
+#COUNTRY_ID= 19
+#TRIGGER= 30
 #PRIVATE= 0
 #DISPLAY_ORDER= 0
 #DISPLAY_TURN= 0
@@ -4767,10 +4769,10 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1941/12/07
-; Washington DC(4,108) is Allied
-#ALIGNMENT_POSITION= 4,108 [2]
-#VARIABLE_CONDITION= 115 [2] [0] [0]
+#DATE= 1943/08/28
+; Ottawa(6,93) is Allied
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 19 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -4803,180 +4805,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-{
-#NAME= The Japanese Complete Their Conquest Of The Philippines As Corregidor Falls (Historical)
-#POPUP= The Japanese Complete Their Conquest Of The Philippines As Corregidor Falls
-#MESSAGE=
-#IMAGE= philippinesconquest.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 60
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/05/08
-; Washington DC(4,108) is Allied
-#ALIGNMENT_POSITION= 4,108 [2]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Battle of Midway (Historical)
-#POPUP= The Japanese Navy Is Hammered In The Battle Of Midway
-#MESSAGE=
-#IMAGE= midwayvictory.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 60
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/06/07
-; Washington DC(4,108) is Allied
-#ALIGNMENT_POSITION= 4,108 [2]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Battle of Guadalcanal (Historical)
-#POPUP= US Marines Assault Japanese Held Islands Of Guadalcanal
-#MESSAGE=
-#IMAGE= guadalcanal_1.png, Guadalcanal_2.png, Guadalcanal_3.png
-#SOUND= combat2.ogg
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/08/07
-; Washington DC(4,108) is Allied
-#ALIGNMENT_POSITION= 4,108 [2]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Normandie Liner Sunk (Historical)
-#POPUP= The Normandie Ocean Liner Mysteriously Sinks In New York Harbor
-#MESSAGE=
-#IMAGE= uss_lafayette_1.png, uss_lafayette_2.png, uss_lafayette_3.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/02/09
-; New York is Allied
-#ALIGNMENT_POSITION= 10,104 [2]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Battle of Makin and Tarawa (Historical)
-#POPUP= US Marines Assault Japanese Positions In The Gilbert Islands
-#MESSAGE=
-#IMAGE= gilbert.png
-#SOUND= combat2.ogg
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1943/11/20
-; Washington DC(4,108) is Allied
-#ALIGNMENT_POSITION= 4,108 [2]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Battle of Kwajalein (Historical)
-#POPUP= Heavy Fighting On The Marshall Islands - US Forces Close In On Japan
-#MESSAGE=
-#IMAGE= kwajalein.png
-#SOUND= combat1.ogg
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1944/01/31
-; Washington DC(4,108) is Allied
-#ALIGNMENT_POSITION= 4,108 [2]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
 ; Historical date of event was 1945/02/23
 {
 #NAME= US Landing On Iwo Jima (Historical)
@@ -5001,66 +4829,6 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1945/02/23
-; Washington DC(4,108) is Allied
-#ALIGNMENT_POSITION= 4,108 [2]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Casablanca Conference (Historical)
-#POPUP= FDR and Churchill Meet In Casablanca And Demand Unconditional Surrender
-#MESSAGE=
-#IMAGE= casablanca.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1943/01/14
-; Casablanca is Allied
-#ALIGNMENT_POSITION= 131,119 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; No Axis units within 4 hexes of Casablanca
-#CONDITION_POSITION= 131,119 [4,4] [0,0] [1] [0]
-}
-
-{
-#NAME= MacArthur Returns To The Philippines (Historical)
-#POPUP= MacArthur Returns To The Philippines
-#MESSAGE=
-#IMAGE= macarthurreturns.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1944/10/20
 ; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
@@ -5126,48 +4894,31 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; DE 50 Events
+;
+; These are informational only, for flavor and can be turned off, globally
+;  via "DE 50 - Disable to Hide All Historical Popups"
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; US Industry Ramps Up
+; Activation Date on Surrender of Japan
 {
-#NAME= Atomic Bomb Dropped On Hiroshima (Historical)
-#POPUP= Atomic Bomb Dropped On Hiroshima
+#NAME= USA Victory in the Pacific
+#POPUP= US Industry Mobilizes For Total War In Europe
 #MESSAGE=
-#IMAGE= abomb.png
-#SOUND= abomb.ogg
+#IMAGE= american_industry_1.png, american_industry_2.png, american_industry_3.png
+#SOUND= industry.ogg
 #FLAG= 1
 #TYPE= 0
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; DE 50 - Disable to Hide All Historical Popups
 #LINK= 50[1]
 #COUNTRY_ID= 115
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1945/08/06
-; Washington DC(4,108) is Allied
-#ALIGNMENT_POSITION= 4,108 [2]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Japan Surrenders (Historical)
-#POPUP= Japan Surrenders - MacArthur Accepts Formal Surrender On The USS Missouri
-#MESSAGE=
-#IMAGE= japan_surrenders_1.png, japan_surrenders_2.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 50[1]
-#COUNTRY_ID= 60
 #TRIGGER= 100
 #PRIVATE= 0
 #DISPLAY_ORDER= 0
@@ -5180,6 +4931,255 @@
 #DATE= 1945/08/15
 ; Washington DC(4,108) is Allied
 #ALIGNMENT_POSITION= 4,108 [2]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Ukrainian Nationalists Form The Clandestine Ukrainian Insurgent Army To Fight For Independence (Historical)
+#POPUP= Ukrainian Nationalists Form The Clandestine Ukrainian Insurgent Army To Fight For Independence
+#MESSAGE=
+#IMAGE= ukrainiannationalist.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 113
+#TRIGGER= 50
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/10/14
+; Kiev(207,80) is Axis
+#ALIGNMENT_POSITION= 207,80 [1]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Vidkun Quisling Proclaims Himself Prime Minister Of Norway (Historical)
+#POPUP= Vidkun Quisling Proclaims Himself Prime Minister Of Norway
+#MESSAGE=
+#IMAGE= vidkunquisling.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 78
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1940/01/01
+; Berlin(173,74) is Axis
+#ALIGNMENT_POSITION= 173,74 [1]
+#VARIABLE_CONDITION= 78 [2] [100] [1]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Warsaw Ghetto Rising (Historical)
+#POPUP= Warsaw Ghetto Rising
+#MESSAGE=
+#IMAGE= warsawghetto.png
+#SOUND= battle2.ogg
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 85
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1943/04/19
+; Warsaw(188,76) is Axis
+#ALIGNMENT_POSITION= 188,76 [1]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= Werwolf Activity: The Mayor of Aachen, Franz Oppenhoff, Is Assassinated (Historical)
+#POPUP= Werwolf Activity: The Mayor of Aachen, Franz Oppenhoff, Is Assassinated
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 45
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1945/03/25
+; Luxembourg is Allied
+#ALIGNMENT_POSITION= 159,82 [2]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; Three Allied Units within 2 hexes of Coblenz
+#CONDITION_POSITION= 161,80 [2,2] [3,3] [2] [0]
+}
+
+{
+#NAME= Weygand Becomes French CinC And Calls On France To Evoke The Spirit Of 1789 And 1914 (Historical)
+#POPUP= Weygand Becomes French CinC And Calls On France To Evoke The Spirit Of 1789 And 1914
+#MESSAGE=
+#IMAGE= weygandmay1940.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 3
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 40
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1940/01/01
+; Paris(151,84) is Allied
+#ALIGNMENT_POSITION= 151,84 [2]
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; Axis units are within 5 hexes of Paris(151,84)
+#CONDITION_POSITION= 151,84 [5,5] [1,1] [1] [0]
+; Axis units are within 2 hexes of Nancy(158,85)
+#CONDITION_POSITION= 158,85 [2,2] [1,1] [1] [0]
+}
+
+{
+#NAME= William Joyce Is Arrested (Historical)
+#POPUP= "Lord Haw Haw" The British Traitor William Joyce Is Captured
+#MESSAGE=
+#IMAGE= william_joyce.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 112
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1943/01/01
+; Ottawa(6,93) is Allied
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 10 [2] [100] [0]
+#VARIABLE_CONDITION= 73 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; Yalta Conference:
+; Historical date of event was 1945/02/04
+{
+#NAME= Yalta Conference (Historical)
+#POPUP= Allied Leaders Meet In Yalta To Discuss The Future Of Europe
+#MESSAGE=
+#IMAGE= yalta.png
+#SOUND=
+#FLAG= 1
+#TYPE= 3
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1945/02/04
+; Sevastopol is Allied
+#ALIGNMENT_POSITION= 212,96 [2]
+; Simferopol is Allied
+#ALIGNMENT_POSITION= 214,94 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; No Axis units within 5 hexes of Sevastopol
+#CONDITION_POSITION= 212,96 [5,5] [0,0] [1] [0]
+}
+
+{
+#NAME= Zoot Suit Riots Break Out In Los Angeles (Historical)
+#POPUP= Zoot Suit Riots Break Out In Los Angeles
+#MESSAGE=
+#IMAGE= zoot.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 50[1]
+#COUNTRY_ID= 115
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1943/06/03
+; New York is Allied
+#ALIGNMENT_POSITION= 10,104 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5217,76 +5217,6 @@
 }
 
 ;
-; Informing the Axis Player that Finland is pro-Allied
-{
-#NAME= Germany Is Advised To Use Diplomacy Against Finland
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= german_report_finland1.png
-#SOUND= teletype_1.ogg, teletype_2.ogg
-; Turned off for Fall Weiss II
-#FLAG= 0
-#TYPE= 1
-#AI= 4
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 51[1]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 1
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/05/06
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-; Finland(39) Allied but not fully mobilized
-#VARIABLE_CONDITION= 39 [2] [0] [0]
-; USSR(116) Allied but not fully mobilized
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-;
-; Informing the Axis Player that Finland is pro-Axis
-{
-#NAME= Germany Is Advised When Finland Will Enter The War
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= german_report_finland2.png
-#SOUND= teletype_1.ogg, teletype_2.ogg
-; Turned off for Fall Weiss II
-#FLAG= 0
-#TYPE= 1
-#AI= 4
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 51[1]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 1
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/05/06
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-; Finland(39) Axis but not fully mobilized
-#VARIABLE_CONDITION= 39 [1] [0] [0]
-; USSR(116) Allied but not fully mobilized
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-;
 ; Informing the Axis Player of the potential gains from raiding
 {
 #NAME= Axis Coastal Raiding/Shipping Information (2)
@@ -5316,6 +5246,264 @@
 ; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= British Advice To Invest In Diplomacy In Spain
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= ukspainwarning.png
+#SOUND= report.ogg
+; currently disabled in Fall Weiss II
+#FLAG= 0
+#TYPE= 1
+#AI= 3
+#LEVEL= 0
+#GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1939/09/01
+; Gibraltar(136,114) is Allied
+#ALIGNMENT_POSITION= 136,114 [2]
+#VARIABLE_CONDITION= 99 [1] [55] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= British Advice To Invest In Diplomacy In Turkey
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= ukturkeywarning.png
+#SOUND= report.ogg
+; currently disabled in Fall Weiss II
+#FLAG= 0
+#TYPE= 1
+#AI= 3
+#LEVEL= 0
+#GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1939/09/01
+; Jerusalem is Allied
+#ALIGNMENT_POSITION= 216,123 [2]
+#VARIABLE_CONDITION= 111 [1] [55] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= British Report On Winning The Intelligence War
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= uk_communication_bletchley.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#LEVEL= 0
+#GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1941/10/21
+; Ottawa(6,93) is Allied
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= British Report To Consider Invading Norway
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= uk_communication_norway1.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#LEVEL= 0
+#GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/05/01
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
+; Portsmouth is Allied
+#ALIGNMENT_POSITION= 144,79 [2]
+; Bristol(142,78) is Allied
+#ALIGNMENT_POSITION= 142,78 [2]
+; Narvik is Axis
+#ALIGNMENT_POSITION= 181,18 [1]
+; Trondheim is Axis
+#ALIGNMENT_POSITION= 167,40 [1]
+; Bergen is Axis
+#ALIGNMENT_POSITION= 157,50 [1]
+; Stavanger is Axis
+#ALIGNMENT_POSITION= 158,55 [1]
+; Kristiansand is Axis
+#ALIGNMENT_POSITION= 162,58 [1]
+#VARIABLE_CONDITION= 78 [2] [100] [1]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; No Allied units in Southern Norway or Western Sweden OR
+#CONDITION_POSITION= 164,46 [14,14] [0,0] [2] [0]
+; No Allied units in Southern Norway or Western Sweden OR
+#CONDITION_POSITION= 164,46 [14,14] [0,0] [2] [0]
+; No Allied units in Middle Norway or Western Sweden OR
+#CONDITION_POSITION= 172,30 [14,14] [0,0] [2] [0]
+; No Allied units in Northern Norway or Western Sweden
+#CONDITION_POSITION= 181,18 [14,14] [0,0] [2] [0]
+}
+
+{
+#NAME= British Report To Consider Invading Syria
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= uk_communication_syria1.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#LEVEL= 0
+#GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1941/05/01
+; Jerusalem is Allied
+#ALIGNMENT_POSITION= 216,123 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+#VARIABLE_CONDITION= 56 [1] [100] [1]
+#VARIABLE_CONDITION= 105 [1] [0] [0]
+; No Axis units within 6 hexes of Cairo(208,126)
+#CONDITION_POSITION= 208,126 [6,6] [0,0] [1] [0]
+}
+
+{
+#NAME= British Report To Consider Invading The Balkans (25%)
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= uk_communication_balkans1.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#LEVEL= 0
+#GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
+#COUNTRY_ID= 112
+#TRIGGER= 25
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1943/01/01
+; Tripoli(172,121) is Allied
+#ALIGNMENT_POSITION= 172,121 [2]
+; Warsaw(188,76) is Axis
+#ALIGNMENT_POSITION= 188,76 [1]
+; Sofia(192,100) is Axis
+#ALIGNMENT_POSITION= 192,100 [1]
+; Tirana(185,102) is Axis
+#ALIGNMENT_POSITION= 185,102 [1]
+; Bucharest(198,95) is Axis
+#ALIGNMENT_POSITION= 198,95 [1]
+; Lwow(194,82) is Axis
+#ALIGNMENT_POSITION= 194,82 [1]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+#VARIABLE_CONDITION= 46 [2] [100] [1]
+; No Allied units within 10 hexes of 189,101
+#CONDITION_POSITION= 189,101 [10,10] [0,0] [2] [0]
+}
+
+{
+#NAME= British Report To Consider Invading The Dodecanese
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= uk_communication_dodecanese1.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#LEVEL= 0
+#GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1943/01/01
+; Cyprus is Allied
+#ALIGNMENT_POSITION= 213,115 [2]
+; Rhodes is Axis
+#ALIGNMENT_POSITION= 202,113 [1]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+#VARIABLE_CONDITION= 111 [1] [0] [0]
+; No Axis units in Central Egypt
+#CONDITION_POSITION= 208,126 [6,6] [0,0] [1] [0]
 }
 
 {
@@ -5519,231 +5707,73 @@
 #CONDITION_POSITION= 181,96 [1,1] [0,0] [1] [0]
 }
 
+;
+; Informing the Axis Player that Finland is pro-Allied
 {
-#NAME= British Report On Winning The Intelligence War
+#NAME= Germany Is Advised To Use Diplomacy Against Finland
 #POPUP= Strategic Advice
 #MESSAGE=
-#IMAGE= uk_communication_bletchley.png
-#SOUND= report.ogg
-#FLAG= 1
+#IMAGE= german_report_finland1.png
+#SOUND= teletype_1.ogg, teletype_2.ogg
+; Turned off for Fall Weiss II
+#FLAG= 0
 #TYPE= 1
-#AI= 3
+#AI= 4
 #LEVEL= 0
 #GV= 1[1,100]
-; DE 51 - Disable to Remove All Strategic Advice Popups
 #LINK= 51[1]
-#COUNTRY_ID= 112
+#COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 1
 #DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
+#DISPLAY_TURN= 1
 #DISPLAY_STYLE= 1
 #MESSAGE_STYLE= 0
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1941/10/21
-; Ottawa(6,93) is Allied
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
+#DATE= 1940/05/06
+; Berlin(173,74) is Axis
+#ALIGNMENT_POSITION= 173,74 [1]
+; Finland(39) Allied but not fully mobilized
+#VARIABLE_CONDITION= 39 [2] [0] [0]
+; USSR(116) Allied but not fully mobilized
+#VARIABLE_CONDITION= 116 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+;
+; Informing the Axis Player that Finland is pro-Axis
 {
-#NAME= British Report To Consider Invading Syria
+#NAME= Germany Is Advised When Finland Will Enter The War
 #POPUP= Strategic Advice
 #MESSAGE=
-#IMAGE= uk_communication_syria1.png
-#SOUND= report.ogg
-#FLAG= 1
+#IMAGE= german_report_finland2.png
+#SOUND= teletype_1.ogg, teletype_2.ogg
+; Turned off for Fall Weiss II
+#FLAG= 0
 #TYPE= 1
-#AI= 3
+#AI= 4
 #LEVEL= 0
 #GV= 1[1,100]
-; DE 51 - Disable to Remove All Strategic Advice Popups
 #LINK= 51[1]
-#COUNTRY_ID= 112
+#COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 1
 #DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
+#DISPLAY_TURN= 1
 #DISPLAY_STYLE= 1
 #MESSAGE_STYLE= 0
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1941/05/01
-; Jerusalem is Allied
-#ALIGNMENT_POSITION= 216,123 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 36 [2] [100] [0]
-#VARIABLE_CONDITION= 56 [1] [100] [1]
-#VARIABLE_CONDITION= 105 [1] [0] [0]
-; No Axis units within 6 hexes of Cairo(208,126)
-#CONDITION_POSITION= 208,126 [6,6] [0,0] [1] [0]
-}
-
-{
-#NAME= British Report To Consider Invading Norway
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= uk_communication_norway1.png
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 3
-#LEVEL= 0
-#GV= 1[1,100]
-; DE 51 - Disable to Remove All Strategic Advice Popups
-#LINK= 51[1]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/05/01
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-; Portsmouth is Allied
-#ALIGNMENT_POSITION= 144,79 [2]
-; Bristol(142,78) is Allied
-#ALIGNMENT_POSITION= 142,78 [2]
-; Narvik is Axis
-#ALIGNMENT_POSITION= 181,18 [1]
-; Trondheim is Axis
-#ALIGNMENT_POSITION= 167,40 [1]
-; Bergen is Axis
-#ALIGNMENT_POSITION= 157,50 [1]
-; Stavanger is Axis
-#ALIGNMENT_POSITION= 158,55 [1]
-; Kristiansand is Axis
-#ALIGNMENT_POSITION= 162,58 [1]
-#VARIABLE_CONDITION= 78 [2] [100] [1]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; No Allied units in Southern Norway or Western Sweden OR
-#CONDITION_POSITION= 164,46 [14,14] [0,0] [2] [0]
-; No Allied units in Southern Norway or Western Sweden OR
-#CONDITION_POSITION= 164,46 [14,14] [0,0] [2] [0]
-; No Allied units in Middle Norway or Western Sweden OR
-#CONDITION_POSITION= 172,30 [14,14] [0,0] [2] [0]
-; No Allied units in Northern Norway or Western Sweden
-#CONDITION_POSITION= 181,18 [14,14] [0,0] [2] [0]
-}
-
-{
-#NAME= British Report To Consider Invading The Dodecanese
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= uk_communication_dodecanese1.png
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 3
-#LEVEL= 0
-#GV= 1[1,100]
-; DE 51 - Disable to Remove All Strategic Advice Popups
-#LINK= 51[1]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1943/01/01
-; Cyprus is Allied
-#ALIGNMENT_POSITION= 213,115 [2]
-; Rhodes is Axis
-#ALIGNMENT_POSITION= 202,113 [1]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 36 [2] [100] [0]
-#VARIABLE_CONDITION= 111 [1] [0] [0]
-; No Axis units in Central Egypt
-#CONDITION_POSITION= 208,126 [6,6] [0,0] [1] [0]
-}
-
-{
-#NAME= British Report To Consider Invading The Balkans (25%)
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= uk_communication_balkans1.png
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 3
-#LEVEL= 0
-#GV= 1[1,100]
-; DE 51 - Disable to Remove All Strategic Advice Popups
-#LINK= 51[1]
-#COUNTRY_ID= 112
-#TRIGGER= 25
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1943/01/01
-; Tripoli(172,121) is Allied
-#ALIGNMENT_POSITION= 172,121 [2]
-; Warsaw(188,76) is Axis
-#ALIGNMENT_POSITION= 188,76 [1]
-; Sofia(192,100) is Axis
-#ALIGNMENT_POSITION= 192,100 [1]
-; Tirana(185,102) is Axis
-#ALIGNMENT_POSITION= 185,102 [1]
-; Bucharest(198,95) is Axis
-#ALIGNMENT_POSITION= 198,95 [1]
-; Lwow(194,82) is Axis
-#ALIGNMENT_POSITION= 194,82 [1]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 36 [2] [100] [0]
-#VARIABLE_CONDITION= 46 [2] [100] [1]
-; No Allied units within 10 hexes of 189,101
-#CONDITION_POSITION= 189,101 [10,10] [0,0] [2] [0]
-}
-
-;REMOVE1943 with Saudi Arabia providing a convoy to the USA
-{
-#NAME= US Report On The Importance Of Saudi Arabia
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= usa_communication_saudiarabia1.png
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 3
-#LEVEL= 0
-#GV= 1[1,100]
-; DE 51 - Disable to Remove All Strategic Advice Popups
-#LINK= 51[1]
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/01/01
-; Ottawa(6,93) is Allied
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 95 [1] [0] [0]
+#DATE= 1940/05/06
+; Berlin(173,74) is Axis
+#ALIGNMENT_POSITION= 173,74 [1]
+; Finland(39) Axis but not fully mobilized
+#VARIABLE_CONDITION= 39 [1] [0] [0]
+; USSR(116) Allied but not fully mobilized
+#VARIABLE_CONDITION= 116 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5785,6 +5815,38 @@
 #CONDITION_POSITION= 139,104 [5,5] [0,0] [2] [0]
 }
 
+;REMOVE1943 with Saudi Arabia providing a convoy to the USA
+{
+#NAME= US Report On The Importance Of Saudi Arabia
+#POPUP= Strategic Advice
+#MESSAGE=
+#IMAGE= usa_communication_saudiarabia1.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#LEVEL= 0
+#GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 1
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/01/01
+; Ottawa(6,93) is Allied
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 95 [1] [0] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
 {
 #NAME= US Report On The Importance Of Sweden's Political Status
 #POPUP= Strategic Advice
@@ -5815,68 +5877,6 @@
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 103 [1] [0] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= British Advice To Invest In Diplomacy In Spain
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= ukspainwarning.png
-#SOUND= report.ogg
-; currently disabled in Fall Weiss II
-#FLAG= 0
-#TYPE= 1
-#AI= 3
-#LEVEL= 0
-#GV= 1[1,100]
-; DE 51 - Disable to Remove All Strategic Advice Popups
-#LINK= 51[1]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1939/09/01
-; Gibraltar(136,114) is Allied
-#ALIGNMENT_POSITION= 136,114 [2]
-#VARIABLE_CONDITION= 99 [1] [55] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= British Advice To Invest In Diplomacy In Turkey
-#POPUP= Strategic Advice
-#MESSAGE=
-#IMAGE= ukturkeywarning.png
-#SOUND= report.ogg
-; currently disabled in Fall Weiss II
-#FLAG= 0
-#TYPE= 1
-#AI= 3
-#LEVEL= 0
-#GV= 1[1,100]
-; DE 51 - Disable to Remove All Strategic Advice Popups
-#LINK= 51[1]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 1
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1939/09/01
-; Jerusalem is Allied
-#ALIGNMENT_POSITION= 216,123 [2]
-#VARIABLE_CONDITION= 111 [1] [55] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5913,6 +5913,36 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+{
+#NAME= DE 100 - British Troops Invade Madagascar
+#POPUP= British Troops Invade Madagascar
+#MESSAGE=
+#IMAGE= madagascarinvasion.png
+#SOUND= transport_movement.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 100[1]
+#COUNTRY_ID= 118
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/05/05
+; Ottawa(6,93) is Allied
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 118 [1] [0] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
 ;
 ; Free French Government In Exile Formed In London
 {
@@ -5941,6 +5971,36 @@
 ; London(147,77) is Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 100 - Mass Demonstrations Throughout Vichy France Proclaim Their Support For De Gaulle
+#POPUP= Mass Demonstrations Throughout Vichy France Proclaim Their Support For De Gaulle
+#MESSAGE=
+#IMAGE=
+#SOUND= coup.ogg
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 100[1]
+#COUNTRY_ID= 40
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1942/05/01
+; Paris(151,84) is Axis
+#ALIGNMENT_POSITION= 151,84 [1]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#VARIABLE_CONDITION= 118 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -5976,11 +6036,11 @@
 }
 
 {
-#NAME= DE 100 - Mass Demonstrations Throughout Vichy France Proclaim Their Support For De Gaulle
-#POPUP= Mass Demonstrations Throughout Vichy France Proclaim Their Support For De Gaulle
+#NAME= DE 100 - The Free French Seize Power In The Cameroons And The French Congo
+#POPUP= The Free French Seize Power In The Cameroons And The French Congo
 #MESSAGE=
-#IMAGE=
-#SOUND= coup.ogg
+#IMAGE= bangui1940.png
+#SOUND=
 #FLAG= 1
 #TYPE= 0
 #AI= 0
@@ -5997,41 +6057,10 @@
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1942/05/01
-; Paris(151,84) is Axis
-#ALIGNMENT_POSITION= 151,84 [1]
+#DATE= 1940/08/31
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-#VARIABLE_CONDITION= 118 [1] [0] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= DE 100 - British Troops Invade Madagascar
-#POPUP= British Troops Invade Madagascar
-#MESSAGE=
-#IMAGE= madagascarinvasion.png
-#SOUND= transport_movement.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 100[1]
-#COUNTRY_ID= 118
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1942/05/05
-; Ottawa(6,93) is Allied
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 118 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6062,35 +6091,6 @@
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 118 [1] [0] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= DE 100 - The Free French Seize Power In The Cameroons And The French Congo
-#POPUP= The Free French Seize Power In The Cameroons And The French Congo
-#MESSAGE=
-#IMAGE= bangui1940.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 100[1]
-#COUNTRY_ID= 40
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/08/31
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6196,37 +6196,6 @@
 }
 
 ;
-; Image courtesy of Duncan Jones, proprietor of http://nunehamcourtenay.info/
-{
-#NAME= DE 111 - The British Strengthen Their Home Guard
-#POPUP= The British Strengthen Their Home Guard
-#MESSAGE=
-#IMAGE= home_guard_nuneham_courtenay.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 3
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 111[1]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1939/09/01
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-;
 ; British Home Guard Stand Down
 ; Historical date of event was 1944/12/03
 ; images courtesy of Stephen Lewins, CART County Information Officer for Northumberland
@@ -6266,34 +6235,33 @@
 }
 
 ;
-; Italian Victory in East Africa
+; Image courtesy of Duncan Jones, proprietor of http://nunehamcourtenay.info/
 {
-#NAME= DE 112 - Italian Forces Invade The Sudan
-#POPUP= Italian Forces Invade The Sudan
+#NAME= DE 111 - The British Strengthen Their Home Guard
+#POPUP= The British Strengthen Their Home Guard
 #MESSAGE=
-#IMAGE= italiansudan.png
+#IMAGE= home_guard_nuneham_courtenay.png
 #SOUND=
 #FLAG= 1
 #TYPE= 1
-#AI= 0
+#AI= 3
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 112[0]
-#COUNTRY_ID= 59
+#LINK= 111[1]
+#COUNTRY_ID= 112
 #TRIGGER= 100
 #PRIVATE= 0
 #DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
+#DISPLAY_TURN= 2
 #DISPLAY_STYLE= 0
 #MESSAGE_STYLE= 0
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
-#DATE= 1940/12/01
-; Rome(171,101) is Axis
-#ALIGNMENT_POSITION= 171,101 [1]
+#DATE= 1939/09/01
+; London(147,77) is Allied
+#ALIGNMENT_POSITION= 147,77 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6324,6 +6292,38 @@
 ; Rome(171,101) is Axis
 #ALIGNMENT_POSITION= 171,101 [1]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+;
+; Italian Victory in East Africa
+{
+#NAME= DE 112 - Italian Forces Invade The Sudan
+#POPUP= Italian Forces Invade The Sudan
+#MESSAGE=
+#IMAGE= italiansudan.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 112[0]
+#COUNTRY_ID= 59
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1940/12/01
+; Rome(171,101) is Axis
+#ALIGNMENT_POSITION= 171,101 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -6422,16 +6422,16 @@
 }
 
 {
-#NAME= DE 119 - British And Free French Units Fail To Capture Dakar (80%)
-#POPUP= British And Free French Units Fail To Capture Dakar
+#NAME= DE 119 - British And Free French Units Capture Dakar (20%)
+#POPUP= De Gaulle Celebrates As British And Free French Units Capture Dakar
 #MESSAGE=
-#IMAGE= dakar_raidfailure.png
+#IMAGE= dakar_raidsuccess1.png, dakar_raidsuccess2.png
 #SOUND=
 #FLAG= 1
 #TYPE= 1
 #AI= 3
 #LEVEL= 0
-#GV= 7[1,80]
+#GV= 7[81,100]
 #LINK= 119[1]
 #COUNTRY_ID= 112
 #TRIGGER= 100
@@ -6452,16 +6452,16 @@
 }
 
 {
-#NAME= DE 119 - British And Free French Units Capture Dakar (20%)
-#POPUP= De Gaulle Celebrates As British And Free French Units Capture Dakar
+#NAME= DE 119 - British And Free French Units Fail To Capture Dakar (80%)
+#POPUP= British And Free French Units Fail To Capture Dakar
 #MESSAGE=
-#IMAGE= dakar_raidsuccess1.png, dakar_raidsuccess2.png
+#IMAGE= dakar_raidfailure.png
 #SOUND=
 #FLAG= 1
 #TYPE= 1
 #AI= 3
 #LEVEL= 0
-#GV= 7[81,100]
+#GV= 7[1,80]
 #LINK= 119[1]
 #COUNTRY_ID= 112
 #TRIGGER= 100
@@ -7013,6 +7013,36 @@
 }
 
 {
+#NAME= DE 355 - The French Resistance Provides Intelligence To the SOE (30%)
+#POPUP= The French Resistance Provides Intelligence To the SOE
+#MESSAGE=
+#IMAGE= frenchresistancereport1.png
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 3
+#GV= 1[1,100]
+#LINK= 355[1]
+#LEVEL= 0
+#COUNTRY_ID= 40
+#TRIGGER= 30
+#PRIVATE= 1
+#DISPLAY_ORDER= 1
+#DISPLAY_TURN= 2
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1944/01/01
+; Marseille(157,97) is Axis
+#ALIGNMENT_POSITION= 157,97 [1]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; No Axis units within 3 hexes of Marseille
+#CONDITION_POSITION= 157,97 [3,3] [0,0] [1] [0]
+}
+
+{
 #NAME= DE 355 - The Greek Resistance Provides Information To the SOE (30%)
 #POPUP= The Greek Resistance Provides Information To the SOE
 #MESSAGE=
@@ -7077,36 +7107,6 @@
 #CONDITION_POSITION= 167,40 [3,3] [0,0] [1] [0]
 ; No Axis units within 3 hexes of Narvik
 #CONDITION_POSITION= 181,18 [3,3] [0,0] [1] [0]
-}
-
-{
-#NAME= DE 355 - The French Resistance Provides Intelligence To the SOE (30%)
-#POPUP= The French Resistance Provides Intelligence To the SOE
-#MESSAGE=
-#IMAGE= frenchresistancereport1.png
-#SOUND= report.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 3
-#GV= 1[1,100]
-#LINK= 355[1]
-#LEVEL= 0
-#COUNTRY_ID= 40
-#TRIGGER= 30
-#PRIVATE= 1
-#DISPLAY_ORDER= 1
-#DISPLAY_TURN= 2
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1944/01/01
-; Marseille(157,97) is Axis
-#ALIGNMENT_POSITION= 157,97 [1]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; No Axis units within 3 hexes of Marseille
-#CONDITION_POSITION= 157,97 [3,3] [0,0] [1] [0]
 }
 
 {
@@ -7257,6 +7257,35 @@
 }
 
 {
+#NAME= DE 406 - British Communist Leader Harry Pollitt Resigns In Protest At The Soviet Invasion Of Poland
+#POPUP= British Communist Leader Harry Pollitt Resigns In Protest At The Soviet Invasion Of Poland
+#MESSAGE=
+#IMAGE= harrypollitt.png
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 406[1]
+#COUNTRY_ID= 91
+#TRIGGER= 30
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1939/10/01
+; Ottawa(6,93) is Allied
+#ALIGNMENT_POSITION= 6,93 [2]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
 #NAME= DE 406 - Soviet STAVKA Report
 #POPUP= Soviet STAVKA Report
 #MESSAGE=
@@ -7283,35 +7312,6 @@
 #ALIGNMENT_POSITION= 6,93 [2]
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= DE 406 - British Communist Leader Harry Pollitt Resigns In Protest At The Soviet Invasion Of Poland
-#POPUP= British Communist Leader Harry Pollitt Resigns In Protest At The Soviet Invasion Of Poland
-#MESSAGE=
-#IMAGE= harrypollitt.png
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 406[1]
-#COUNTRY_ID= 91
-#TRIGGER= 30
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1939/10/01
-; Ottawa(6,93) is Allied
-#ALIGNMENT_POSITION= 6,93 [2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7474,35 +7474,6 @@
 }
 
 {
-#NAME= DE 601 - The Danish Resistance Form A Freedom Council To Better Organize Its Activities
-#POPUP= The Danish Resistance Form A Freedom Council To Better Organize Its Activities
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 601[1]
-#COUNTRY_ID= 31
-#TRIGGER= 50
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1943/09/15
-; Copenhagen(171,65) is Axis
-#ALIGNMENT_POSITION= 171,65 [1]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
 #NAME= DE 601 - The Danish Government Sign The Anti-Comintern Pact
 #POPUP= The Danish Government Sign The Anti-Comintern Pact
 #MESSAGE=
@@ -7528,6 +7499,35 @@
 ; Copenhagen(171,65) is Axis
 #ALIGNMENT_POSITION= 171,65 [1]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 601 - The Danish Resistance Form A Freedom Council To Better Organize Its Activities
+#POPUP= The Danish Resistance Form A Freedom Council To Better Organize Its Activities
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 601[1]
+#COUNTRY_ID= 31
+#TRIGGER= 50
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1943/09/15
+; Copenhagen(171,65) is Axis
+#ALIGNMENT_POSITION= 171,65 [1]
+#VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -7561,36 +7561,6 @@
 }
 
 {
-#NAME= DE 602 - Pierre Laval Is Shot And Injured By Paul Collette At Versailles
-#POPUP= Pierre Laval Is Shot And Injured By Paul Collette At Versailles
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 602[1]
-#COUNTRY_ID= 40
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1941/08/27
-; Paris(151,84) is Axis
-#ALIGNMENT_POSITION= 151,84 [1]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-#VARIABLE_CONDITION= 118 [1] [0] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
 #NAME= DE 602 - Pierre Laval Becomes Prime Minister Of Vichy France (30%)
 #POPUP= Pierre Laval Becomes Prime Minister Of Vichy France
 #MESSAGE=
@@ -7613,6 +7583,36 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/04/18
+; Paris(151,84) is Axis
+#ALIGNMENT_POSITION= 151,84 [1]
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+#VARIABLE_CONDITION= 118 [1] [0] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 602 - Pierre Laval Is Shot And Injured By Paul Collette At Versailles
+#POPUP= Pierre Laval Is Shot And Injured By Paul Collette At Versailles
+#MESSAGE=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 602[1]
+#COUNTRY_ID= 40
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1941/08/27
 ; Paris(151,84) is Axis
 #ALIGNMENT_POSITION= 151,84 [1]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
@@ -7652,35 +7652,6 @@
 }
 
 {
-#NAME= DE 611 - King Carol II Is Forced To Abdicate, And Michael I Replaces Him On The Throne
-#POPUP= King Carol II Is Forced To Abdicate, And Michael I Replaces Him On The Throne
-#MESSAGE=
-#IMAGE= michaelofromania.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 611[1]
-#COUNTRY_ID= 93
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 0
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 0
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/09/06
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
 #NAME= DE 611 - General Antonescu Crushes The Iron Guard's Rebellion In Romania
 #POPUP= General Antonescu Crushes The Iron Guard's Rebellion In Romania
 #MESSAGE=
@@ -7703,6 +7674,35 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1941/01/21
+; Berlin(173,74) is Axis
+#ALIGNMENT_POSITION= 173,74 [1]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 611 - King Carol II Is Forced To Abdicate, And Michael I Replaces Him On The Throne
+#POPUP= King Carol II Is Forced To Abdicate, And Michael I Replaces Him On The Throne
+#MESSAGE=
+#IMAGE= michaelofromania.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 611[1]
+#COUNTRY_ID= 93
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_ORDER= 0
+#DISPLAY_TURN= 0
+#DISPLAY_STYLE= 0
+#MESSAGE_STYLE= 0
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+#MAP_POSITION=
+#DATE= 1940/09/06
 ; Berlin(173,74) is Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]

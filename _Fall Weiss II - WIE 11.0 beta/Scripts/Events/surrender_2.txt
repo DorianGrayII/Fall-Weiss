@@ -303,6 +303,30 @@
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+{
+#NAME= Germany(AI): Germany Occupies Luxembourg
+#POPUP= Germany Occupies Luxembourg
+#IMAGE=
+#SOUND= transport_movement.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 1
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 65
+#RECIPIENT_ID= 45
+#ARMISTICE= 0
+#REMOVE= 3
+#TRIGGER= 100
+#DATE= 1939/09/01
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+; Belgium(10) Allied, Surrendered
+#VARIABLE_CONDITION= 10 [2] [100] [1]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
 ;
 ; Italy Surrenders
 ; Historical Date: 1943/09/08
@@ -363,31 +387,7 @@
 }
 
 {
-#NAME= Germany(AI): Germany Occupies Luxembourg
-#POPUP= Germany Occupies Luxembourg
-#IMAGE=
-#SOUND= transport_movement.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 1
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 65
-#RECIPIENT_ID= 45
-#ARMISTICE= 0
-#REMOVE= 3
-#TRIGGER= 100
-#DATE= 1939/09/01
-; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-; Belgium(10) Allied, Surrendered
-#VARIABLE_CONDITION= 10 [2] [100] [1]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= DE 131 - British and Free French Forces Occupy Syria
+#NAME= [FW]DE 131 - British and Free French Forces Occupy Syria
 #POPUP= UK and FF Forces Occupy Syria - General De Gaulle Promises End To French Mandate
 #IMAGE= ukoccupysyria.png
 #SOUND= combat1.ogg
@@ -469,7 +469,7 @@
 }
 
 {
-#NAME= DE 314 - British And Soviet Forces Launch Operation Countenance (Historical)
+#NAME= [FW]DE 314 - British And Soviet Forces Launch Operation Countenance (Historical)
 #POPUP= British And Soviet Forces Launch Operation Countenance - Persia Surrenders
 #IMAGE= operationcountenance.png
 #SOUND= combat1.ogg
@@ -492,7 +492,7 @@
 }
 
 {
-#NAME= DE 315 - British And Soviet Forces Launch Operation Countenance (Historical)
+#NAME= [FW]DE 315 - British And Soviet Forces Launch Operation Countenance (Historical)
 #POPUP= British And Soviet Forces Launch Operation Countenance - Persia Surrenders
 #IMAGE= operationcountenance.png
 #SOUND= combat1.ogg
@@ -564,7 +564,7 @@
 }
 
 {
-#NAME= DE 543 - UK Occupies Ireland
+#NAME= [FW]DE 543 - UK Occupies Ireland
 #POPUP= Scottish And Welsh Forces March Into Ireland
 #IMAGE=
 #SOUND= hq_movement1.ogg, hq_movement2.ogg
@@ -856,7 +856,7 @@
 }
 
 {
-#NAME= DE 897 - Franco Betrays Hitler And Takes Spain Into The Allied Camp
+#NAME= [FW]DE 897 - Franco Betrays Hitler And Takes Spain Into The Allied Camp
 #POPUP= Franco Betrays Hitler And Takes Spain Into The Allied Camp
 #IMAGE=
 #SOUND=

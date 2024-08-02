@@ -468,6 +468,27 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
+; Fall Weiss II
+; Finland declared war on the USSR shortly after Barbarossa was launched 1941/06/22
+{
+#NAME= [FW]DE 450 - Finland: Finland DoW On The USSR
+#POPUP= Finland Enters The War Against The USSR
+#IMAGE= finlandenterswar.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 450[1]
+#COUNTRY_ID= 39
+#TRIGGER= 100
+#ALIGNMENT= 1
+#DATE= 1939/09/01
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+}
+
 {
 #NAME= DE 603 - Spain: Spain Joins The Axis
 #POPUP=
@@ -679,8 +700,29 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 }
 
+; Fall Weiss II
 {
-#NAME= DE 989 - Spain: The Allies DoW On Spain
+#NAME= [FW]DE 917 - Bulgaria: Bulgaria Joins The Allies
+#POPUP= Bulgaria Joins The Allies
+#IMAGE=
+#SOUND= war1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; Greek Concessions?
+#LINK= 917[1]
+#COUNTRY_ID= 19
+#TRIGGER= 100
+#ALIGNMENT= 2
+#DATE= 1940/09/01
+#VARIABLE_CONDITION= 111 [2] [100] [0]
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+}
+
+{
+#NAME= [FW]DE 989 - Spain: The Allies DoW On Spain
 #POPUP= The Allies Declare War On Spain
 #IMAGE=
 #SOUND= war1.ogg
@@ -720,46 +762,4 @@
 ; Finland(39) Axis
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [0] [0]
-}
-
-; Fall Weiss II
-; Finland declared war on the USSR shortly after Barbarossa was launched 1941/06/22
-{
-#NAME= [FW]DE 450 - Finland: Finland DoW On The USSR
-#POPUP= Finland Enters The War Against The USSR
-#IMAGE= finlandenterswar.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 450[1]
-#COUNTRY_ID= 39
-#TRIGGER= 100
-#ALIGNMENT= 1
-#DATE= 1939/09/01
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 917 - Bulgaria: Bulgaria Joins The Allies
-#POPUP= Bulgaria Joins The Allies
-#IMAGE=
-#SOUND= war1.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-; Greek Concessions?
-#LINK= 917[1]
-#COUNTRY_ID= 19
-#TRIGGER= 100
-#ALIGNMENT= 2
-#DATE= 1940/09/01
-#VARIABLE_CONDITION= 111 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
 }

@@ -5,11 +5,11 @@
 ; USAGE:
 ;
 ; Basic structure for an annexation event:
-; { 
-; #NAME=  Event name 
+; {
+; #NAME=  Event name
 ;         (this will be shown as a selectable event under an OPTIONS screen within the game)
 ;
-; #POPUP= Event popup text 
+; #POPUP= Event popup text
 ;         (this will be displayed when the event occurs)
 ;
 ; #IMAGE= Event image that will be displayed when event occurs
@@ -28,7 +28,7 @@
 ;
 ; #TYPE= Value range [0, 3]
 ;        Event check type, with all other fields satisfied:
-;        0 = Single check, on or after #DATE 
+;        0 = Single check, on or after #DATE
 ;            (ignores #TRIGGER)
 ;        1 = Multiple checks, on or after #DATE, until #TRIGGER is satisfied
 ;        2 = Multiple checks, on or after #DATE, until end of game (*** not valid for UNIT events ***)
@@ -39,11 +39,11 @@
 ;        0 = Event fires whenever all fields are satisfied for any game type
 ;        1 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis
 ;        2 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied
-;        3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player, 
+;        3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player,
 ;            or on Allied Multiplayer turns
-;        4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player 
+;        4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player
 ;            or on Axis Multiplayer turns
-;        5 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis in Single Player, 
+;        5 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis in Single Player,
 ;            or for AI controlled Axis majors on Axis human player turns
 ;        6 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied in Single Player,
 ;            or for AI controlled Allied majors on Allied human player turns
@@ -60,8 +60,8 @@
 ; #GV=   Does the event activate based on the Global Variable values assigned?
 ;        Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;        Format: GV [min, max]
-;                GV range [1,10] 
-;                min range [1,100] 
+;                GV range [1,10]
+;                min range [1,100]
 ;                max range [1,100]
 ;
 ;        Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
@@ -99,12 +99,12 @@
 ; #COUNTRY_ID must be an inactive Minor otherwise event will not occur.
 ;
 ; #RECIPIENT_ID must be a Major country.
-; 
-; Annexed territory will not provide partisans for the country specified under #RECIPIENT_ID. 
+;
+; Annexed territory will not provide partisans for the country specified under #RECIPIENT_ID.
 ; For example if the Baltic States are annexed by the USSR then Axis partisans will not appear
 ; in the Baltic States
 ;
-; Use the reference values provided for #COUNTRY_ID and #RECIPIENT_ID and not the country names 
+; Use the reference values provided for #COUNTRY_ID and #RECIPIENT_ID and not the country names
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -238,9 +238,65 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; DECISION EVENTS
+; EVENTS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
+; USSR Annexes Baltic States
+; Historical date: 1940/06/15
+{
+#NAME= DE 414 - USSR: Soviet Annexation of Estonia
+#POPUP= USSR Annexes The Baltic States
+#IMAGE= sovietbaltic.png
+#SOUND= tank_movement1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; USSR: Annex the Baltic States = YES
+#LINK= 414[1]
+#COUNTRY_ID= 38
+#RECIPIENT_ID= 116
+#TRIGGER= 100
+#DATE= 1940/06/15
+}
+
+{
+#NAME= DE 414 - USSR: Soviet Annexation of Latvia
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; USSR: Annex the Baltic States = YES
+#LINK= 414[1]
+#COUNTRY_ID= 61
+#RECIPIENT_ID= 116
+#TRIGGER= 100
+#DATE= 1940/06/15
+}
+
+{
+#NAME= DE 414 - USSR: Soviet Annexation of Lithuania
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; USSR: Annex the Baltic States = YES
+#LINK= 414[1]
+#COUNTRY_ID= 64
+#RECIPIENT_ID= 116
+#TRIGGER= 100
+#DATE= 1940/06/15
+}
+
 {
 #NAME= DE 610 - Germany: Annexation of Lithuania
 #POPUP= German Forces March Into Lithuania
@@ -307,65 +363,4 @@
 #RECIPIENT_ID= 45
 #TRIGGER= 100
 #DATE= 1940/03/01
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; EVENTS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;
-;
-; USSR Annexes Baltic States
-; Historical date of event was 1940/06/15
-{
-#NAME= DE 414 - USSR: Soviet Annexation of Estonia
-#POPUP= USSR Annexes The Baltic States
-#IMAGE= sovietbaltic.png
-#SOUND= tank_movement1.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-; USSR: Annex the Baltic States = YES
-#LINK= 414[1]
-#COUNTRY_ID= 38
-#RECIPIENT_ID= 116
-#TRIGGER= 100
-#DATE= 1940/06/15
-}
-
-{
-#NAME= DE 414 - USSR: Soviet Annexation of Latvia
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-; USSR: Annex the Baltic States = YES
-#LINK= 414[1]
-#COUNTRY_ID= 61
-#RECIPIENT_ID= 116
-#TRIGGER= 100
-#DATE= 1940/06/15
-}
-
-{
-#NAME= DE 414 - USSR: Soviet Annexation of Lithuania
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-; USSR: Annex the Baltic States = YES
-#LINK= 414[1]
-#COUNTRY_ID= 64
-#RECIPIENT_ID= 116
-#TRIGGER= 100
-#DATE= 1940/06/15
 }

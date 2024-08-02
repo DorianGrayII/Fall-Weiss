@@ -974,28 +974,6 @@
 
 ;
 ; Allies Declares War on Persia resulting in a
-; random 10-15% increase in Vichy France mobilization towards Axis:
-{
-#NAME= Allies DoW On Persia (Vichy France->Axis) (25%)
-#POPUP= Vichy France Protest Allied Aggression Toward Persia
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 118
-#TRIGGER= 25
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; Allies declares war on Persia(82)
-#CONDITION= 82 [1] [2]
-}
-
-;
-; Allies Declares War on Persia resulting in a
 ; random 10-15% increase in Turkish mobilization towards Axis:
 {
 #NAME= Allies DoW On Persia (Turkey->Axis) (50%)
@@ -1013,6 +991,28 @@
 ; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
 ; Allies Declares war on Persia
+#CONDITION= 82 [1] [2]
+}
+
+;
+; Allies Declares War on Persia resulting in a
+; random 10-15% increase in Vichy France mobilization towards Axis:
+{
+#NAME= Allies DoW On Persia (Vichy France->Axis) (25%)
+#POPUP= Vichy France Protest Allied Aggression Toward Persia
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 118
+#TRIGGER= 25
+; 10-15% mobilization increase towards Axis
+#MOBILIZATION= [10,15] [1]
+; Allies declares war on Persia(82)
 #CONDITION= 82 [1] [2]
 }
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2516,6 +2516,28 @@
 #CONDITION= 95 [1] [1]
 }
 
+;
+; Axis Declare War on Spain resulting in a
+; random 30-40% increase in Algeria's mobilization towards Allies:
+{
+#NAME= Axis DoW On Spain (Algeria->>Allies) (50%)
+#POPUP= Algeria Alarmed After Axis Attack On Spain
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 4
+#TRIGGER= 50
+; 30-40% mobilization increase towards Allies
+#MOBILIZATION= [30,40] [2]
+; Spain declared war on by Axis
+#CONDITION= 99 [1] [1]
+}
+
 ; Axis Declare War on Spain resulting in a
 ; 55-65% increase in Portuguese mobilization towards Allies:
 {
@@ -2600,28 +2622,6 @@
 #TRIGGER= 100
 ; 8-15% mobilization increase towards Allies
 #MOBILIZATION= [8,15] [2]
-; Spain declared war on by Axis
-#CONDITION= 99 [1] [1]
-}
-
-;
-; Axis Declare War on Spain resulting in a
-; random 30-40% increase in Algeria's mobilization towards Allies:
-{
-#NAME= Axis DoW On Spain (Algeria->>Allies) (50%)
-#POPUP= Algeria Alarmed After Axis Attack On Spain
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 4
-#TRIGGER= 50
-; 30-40% mobilization increase towards Allies
-#MOBILIZATION= [30,40] [2]
 ; Spain declared war on by Axis
 #CONDITION= 99 [1] [1]
 }
@@ -3539,7 +3539,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; GENERAL DOW CHECKS
 ;
-;
 ; General Declarations Of War By Axis resulting in a
 ; 2-4% increase in USSR mobilization towards Allies:
 {
@@ -3626,7 +3625,7 @@
 }
 
 ; Fall Weiss II
-; Axis Declare War on Bulgaria resulting in a
+; Axis Declare War on Bulgaria
 {
 #NAME= [FW]DE 917 - Axis DoW On Bulgaria (USSR->>Allies)
 #POPUP= USSR Honours Defensive Pact With Bulgaria

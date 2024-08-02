@@ -313,29 +313,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 {
-#NAME= Germany(AI): Polish Battlefield Losses (Intermediate)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 1
-#LEVEL= 2
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#FLAG_ID= 85
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1939/09/01
-#MAP_POSITION= 188,76 [10,10] [0,0] [-25,-50] [2] [85]
-; Poland(85) Allied
-#VARIABLE_CONDITION= 85 [2] [100] [0]
-; 2 Axis units within 3 hexes of Warsaw(188,76)
-#CONDITION_POSITION= 188,76 [3,3] [2,2] [1] [0]
-}
-
-{
 #NAME= Germany(AI): German Bombers Raid Warsaw (AI Helper)
 #POPUP= German Bombers Raid The Polish Defenders Near Warsaw
 #IMAGE=
@@ -355,33 +332,6 @@
 ; Poland(85) Allied
 #VARIABLE_CONDITION= 85 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= Germany(AI): German Morale Is Boosted As The Maginot Line Is Outflanked (Intermediate)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 1
-#LEVEL= 2
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#FLAG_ID= 45
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1939/09/01
-#MAP_POSITION= 154,83 [6,6] [0,0] [10,10] [1] [0]
-; USA(115) Allied but not fully mobilized
-#VARIABLE_CONDITION= 115 [2] [0] [0]
-; France(40) Allied and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-; 2 Axis units are within 2 hexes of Reims(154,83) OR
-#CONDITION_POSITION= 154,83 [2,2] [2,2] [1] [0]
-; 3 Axis units are within 3 hexes of Amiens(151,81)
-#CONDITION_POSITION= 151,81 [3,3] [2,2] [1] [0]
 }
 
 {
@@ -412,7 +362,7 @@
 }
 
 {
-#NAME= Germany(AI): The German Advance Spreads Fear Through French Forces (Intermediate)
+#NAME= Germany(AI): German Morale Is Boosted As The Maginot Line Is Outflanked (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -420,6 +370,56 @@
 #TYPE= 1
 #AI= 1
 #LEVEL= 2
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#FLAG_ID= 45
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 154,83 [6,6] [0,0] [10,10] [1] [0]
+; USA(115) Allied but not fully mobilized
+#VARIABLE_CONDITION= 115 [2] [0] [0]
+; France(40) Allied and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+; 2 Axis units are within 2 hexes of Reims(154,83) OR
+#CONDITION_POSITION= 154,83 [2,2] [2,2] [1] [0]
+; 3 Axis units are within 3 hexes of Amiens(151,81)
+#CONDITION_POSITION= 151,81 [3,3] [2,2] [1] [0]
+}
+
+{
+#NAME= Germany(AI): Polish Battlefield Losses (Intermediate)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 1
+#LEVEL= 2
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 45
+#FLAG_ID= 85
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 188,76 [10,10] [0,0] [-25,-50] [2] [85]
+; Poland(85) Allied
+#VARIABLE_CONDITION= 85 [2] [100] [0]
+; 2 Axis units within 3 hexes of Warsaw(188,76)
+#CONDITION_POSITION= 188,76 [3,3] [2,2] [1] [0]
+}
+
+{
+#NAME= Germany(AI): The German Advance Spreads Fear Through French Forces (Expert)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 1
+#LEVEL= 4
 #GV= 1[1,100]
 #LINK= 0[0]
 #COUNTRY_ID= 45
@@ -439,14 +439,14 @@
 }
 
 {
-#NAME= Germany(AI): The German Advance Spreads Fear Through French Forces (Expert)
+#NAME= Germany(AI): The German Advance Spreads Fear Through French Forces (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
 #TYPE= 1
 #AI= 1
-#LEVEL= 4
+#LEVEL= 2
 #GV= 1[1,100]
 #LINK= 0[0]
 #COUNTRY_ID= 45
@@ -994,12 +994,12 @@
 }
 
 {
-#NAME= DE 455 - USSR: The Road Of Life Provides Food And Fuel To The Defenders Of Leningrad (Pop Up)
-#POPUP= The Road Of Life Provides Food And Fuel To The Defenders Of Leningrad
-#IMAGE= roadoflife1.png, roadoflife2.png, roadoflife3.png
+#NAME= DE 455 - USSR: The Road Of Life (Summer)
+#POPUP=
+#IMAGE=
 #SOUND=
 #FLAG= 1
-#TYPE= 1
+#TYPE= 2
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
@@ -1007,10 +1007,10 @@
 #COUNTRY_ID= 116
 #FLAG_ID= 116
 #TRIGGER= 100
-#SEASON_FLAG= 4
+#SEASON_FLAG= 0
 #DATE= 1939/09/01
 ; Leningrad(206,52)
-#MAP_POSITION= 206,52 [2,2] [0,0] [1,1] [2] [116]
+#MAP_POSITION= 206,52 [2,2] [0,0] [15,25] [2] [116]
 ; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1040,12 +1040,12 @@
 }
 
 {
-#NAME= DE 455 - USSR: The Road Of Life (Summer)
-#POPUP=
-#IMAGE=
+#NAME= DE 455 - USSR: The Road Of Life Provides Food And Fuel To The Defenders Of Leningrad (Pop Up)
+#POPUP= The Road Of Life Provides Food And Fuel To The Defenders Of Leningrad
+#IMAGE= roadoflife1.png, roadoflife2.png, roadoflife3.png
 #SOUND=
 #FLAG= 1
-#TYPE= 2
+#TYPE= 1
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
@@ -1053,33 +1053,12 @@
 #COUNTRY_ID= 116
 #FLAG_ID= 116
 #TRIGGER= 100
-#SEASON_FLAG= 0
+#SEASON_FLAG= 4
 #DATE= 1939/09/01
 ; Leningrad(206,52)
-#MAP_POSITION= 206,52 [2,2] [0,0] [15,25] [2] [116]
+#MAP_POSITION= 206,52 [2,2] [0,0] [1,1] [2] [116]
 ; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= DE 603 - UK: Franco's War Entry Causes Unrest
-#POPUP= General Aranda Launches A Coup Against Franco's Decision To Enter The War
-#IMAGE=
-#SOUND= coup.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 603[1]
-#COUNTRY_ID= 112
-#FLAG_ID= 99
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1939/09/01
-#MAP_POSITION= 139,104 [10,15] [0,0] [10,25] [1] [99]
-#VARIABLE_CONDITION= 99 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -1100,6 +1079,27 @@
 #SEASON_FLAG= 0
 #DATE= 1939/09/01
 #MAP_POSITION= 139,104 [10,15] [0,1] [0,0] [1] [99]
+#VARIABLE_CONDITION= 99 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 603 - UK: Franco's War Entry Causes Unrest
+#POPUP= General Aranda Launches A Coup Against Franco's Decision To Enter The War
+#IMAGE=
+#SOUND= coup.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 603[1]
+#COUNTRY_ID= 112
+#FLAG_ID= 99
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1939/09/01
+#MAP_POSITION= 139,104 [10,15] [0,0] [10,25] [1] [99]
 #VARIABLE_CONDITION= 99 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1187,6 +1187,72 @@
 #VARIABLE_CONDITION= 46 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 704 - Italy: Human Torpedoes Attack Allied Shipping At Alexandria!
+#POPUP= Italian Human Torpedoes Attack Allied Shipping At Alexandria!
+#IMAGE= humantorpedo.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 704[1]
+#COUNTRY_ID= 59
+#FLAG_ID= 59
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1940/08/01
+#MAP_POSITION= 205,123 [0,0] [0,5] [-15,-30] [2] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Allied shipping is in the port
+#CONDITION_POSITION= 205,123 [0,0] [1,1] [2] [0]
+}
+
+{
+#NAME= DE 704 - Italy: Human Torpedoes Attack Allied Shipping At Algiers!
+#POPUP= Italian Human Torpedoes Attack Allied Shipping At Algiers!
+#IMAGE= humantorpedo.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 704[1]
+#COUNTRY_ID= 59
+#FLAG_ID= 59
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1940/08/01
+#MAP_POSITION= 152,112 [0,0] [0,5] [-15,-30] [2] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Allied shipping is in the port
+#CONDITION_POSITION= 152,112 [0,0] [1,1] [2] [0]
+}
+
+{
+#NAME= DE 704 - Italy: Human Torpedoes Attack Allied Shipping At Benghazi!
+#POPUP= Italian Human Torpedoes Attack Allied Shipping At Benghazi!
+#IMAGE= humantorpedo.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 704[1]
+#COUNTRY_ID= 59
+#FLAG_ID= 59
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1940/08/01
+#MAP_POSITION= 185,122 [0,0] [0,5] [-15,-30] [2] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Allied shipping is in the port
+#CONDITION_POSITION= 185,122 [0,0] [1,1] [2] [0]
 }
 
 {
@@ -1278,116 +1344,6 @@
 }
 
 {
-#NAME= DE 704 - Italy: Human Torpedoes Attack Allied Shipping At Algiers!
-#POPUP= Italian Human Torpedoes Attack Allied Shipping At Algiers!
-#IMAGE= humantorpedo.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 704[1]
-#COUNTRY_ID= 59
-#FLAG_ID= 59
-#TRIGGER= 2
-#SEASON_FLAG= 0
-#DATE= 1940/08/01
-#MAP_POSITION= 152,112 [0,0] [0,5] [-15,-30] [2] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Allied shipping is in the port
-#CONDITION_POSITION= 152,112 [0,0] [1,1] [2] [0]
-}
-
-{
-#NAME= DE 704 - Italy: Human Torpedoes Attack Allied Shipping At Tunis!
-#POPUP= Italian Human Torpedoes Attack Allied Shipping At Tunis!
-#IMAGE= humantorpedo.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 704[1]
-#COUNTRY_ID= 59
-#FLAG_ID= 59
-#TRIGGER= 2
-#SEASON_FLAG= 0
-#DATE= 1940/08/01
-#MAP_POSITION= 167,111 [0,0] [0,5] [-15,-30] [2] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Allied shipping is in the port
-#CONDITION_POSITION= 167,111 [0,0] [1,1] [2] [0]
-}
-
-{
-#NAME= DE 704 - Italy: Human Torpedoes Attack Allied Shipping At Tripoli!
-#POPUP= Italian Human Torpedoes Attack Allied Shipping At Tripoli!
-#IMAGE= humantorpedo.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 704[1]
-#COUNTRY_ID= 59
-#FLAG_ID= 59
-#TRIGGER= 2
-#SEASON_FLAG= 0
-#DATE= 1940/08/01
-#MAP_POSITION= 172,120 [0,0] [0,5] [-15,-30] [2] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Allied shipping is in the port
-#CONDITION_POSITION= 172,120 [0,0] [1,1] [2] [0]
-}
-
-{
-#NAME= DE 704 - Italy: Human Torpedoes Attack Allied Shipping At Benghazi!
-#POPUP= Italian Human Torpedoes Attack Allied Shipping At Benghazi!
-#IMAGE= humantorpedo.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 704[1]
-#COUNTRY_ID= 59
-#FLAG_ID= 59
-#TRIGGER= 2
-#SEASON_FLAG= 0
-#DATE= 1940/08/01
-#MAP_POSITION= 185,122 [0,0] [0,5] [-15,-30] [2] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Allied shipping is in the port
-#CONDITION_POSITION= 185,122 [0,0] [1,1] [2] [0]
-}
-
-{
-#NAME= DE 704 - Italy: Human Torpedoes Attack Allied Shipping At Alexandria!
-#POPUP= Italian Human Torpedoes Attack Allied Shipping At Alexandria!
-#IMAGE= humantorpedo.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 704[1]
-#COUNTRY_ID= 59
-#FLAG_ID= 59
-#TRIGGER= 2
-#SEASON_FLAG= 0
-#DATE= 1940/08/01
-#MAP_POSITION= 205,123 [0,0] [0,5] [-15,-30] [2] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-; Allied shipping is in the port
-#CONDITION_POSITION= 205,123 [0,0] [1,1] [2] [0]
-}
-
-{
 #NAME= DE 704 - Italy: Human Torpedoes Attack Allied Shipping At Port Said!
 #POPUP= Italian Human Torpedoes Attack Allied Shipping At Port Said!
 #IMAGE= humantorpedo.png
@@ -1430,6 +1386,50 @@
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Allied shipping is in the port
 #CONDITION_POSITION= 195,121 [0,0] [1,1] [2] [0]
+}
+
+{
+#NAME= DE 704 - Italy: Human Torpedoes Attack Allied Shipping At Tripoli!
+#POPUP= Italian Human Torpedoes Attack Allied Shipping At Tripoli!
+#IMAGE= humantorpedo.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 704[1]
+#COUNTRY_ID= 59
+#FLAG_ID= 59
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1940/08/01
+#MAP_POSITION= 172,120 [0,0] [0,5] [-15,-30] [2] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Allied shipping is in the port
+#CONDITION_POSITION= 172,120 [0,0] [1,1] [2] [0]
+}
+
+{
+#NAME= DE 704 - Italy: Human Torpedoes Attack Allied Shipping At Tunis!
+#POPUP= Italian Human Torpedoes Attack Allied Shipping At Tunis!
+#IMAGE= humantorpedo.png
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 704[1]
+#COUNTRY_ID= 59
+#FLAG_ID= 59
+#TRIGGER= 2
+#SEASON_FLAG= 0
+#DATE= 1940/08/01
+#MAP_POSITION= 167,111 [0,0] [0,5] [-15,-30] [2] [0]
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+; Allied shipping is in the port
+#CONDITION_POSITION= 167,111 [0,0] [1,1] [2] [0]
 }
 
 {

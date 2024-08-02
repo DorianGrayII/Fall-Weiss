@@ -6,10 +6,10 @@
 ;
 ; Basic structure for an mobilization event:
 ; {
-; #NAME=  Event name 
+; #NAME=  Event name
 ;         (this will be shown as a selectable event under an OPTIONS screen within the game)
 ;
-; #POPUP= Event popup text 
+; #POPUP= Event popup text
 ;         (this will be displayed when the event occurs)
 ;
 ; #IMAGE= Event image that will be displayed when event occurs
@@ -28,7 +28,7 @@
 ;
 ; #TYPE= Value range [0, 3]
 ;        Event check type, with all other fields satisfied:
-;        0 = Single check, on or after #DATE 
+;        0 = Single check, on or after #DATE
 ;            (ignores #TRIGGER)
 ;        1 = Multiple checks, on or after #DATE, until #TRIGGER is satisfied
 ;        2 = Multiple checks, on or after #DATE, until end of game (*** not valid for UNIT events ***)
@@ -39,11 +39,11 @@
 ;        0 = Event fires whenever all fields are satisfied for any game type
 ;        1 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis
 ;        2 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied
-;        3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player, 
+;        3 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Axis in Single Player,
 ;            or on Allied Multiplayer turns
-;        4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player 
+;        4 = Event fires whenever all fields are satisfied, for any game type, and only when the AI is Allied in Single Player
 ;            or on Axis Multiplayer turns
-;        5 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis in Single Player, 
+;        5 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Axis in Single Player,
 ;            or for AI controlled Axis majors on Axis human player turns
 ;        6 = Event fires whenever all fields are satisfied, for Single Player games only, and only when the AI is Allied in Single Player,
 ;            or for AI controlled Allied majors on Allied human player turns
@@ -60,8 +60,8 @@
 ; #GV=   Does the event activate based on the Global Variable values assigned?
 ;        Ten random Global Variables are assigned at the start of the campaign each with a value between [1,100]
 ;        Format: GV [min, max]
-;                GV range [1,10] 
-;                min range [1,100] 
+;                GV range [1,10]
+;                min range [1,100]
 ;                max range [1,100]
 ;
 ;        Example A - #GV= 1[1,100] will always trigger because Global Variable #1 will always have a value between [1,100]
@@ -84,7 +84,7 @@
 ;
 ; #ALIGNMENT= Collective control status of #MAP_POSITIONs
 ;
-; #DATE=        Date that must be satisfied (in game) for event to occur 
+; #DATE=        Date that must be satisfied (in game) for event to occur
 ;               Format: yyyy/mm/dd
 ;
 ; #MAP_POSITION= Map positions that must be controlled relative to #ALIGNMENT in order to satisfy the event
@@ -101,7 +101,7 @@
 ; More than one #MAP_POSITION can be set
 ;
 ; More than one #NATIONAL_MORALE_TRIGGER can be set and the event checks for a value less than the
-; 'national_morale_percentage' when 'above_or_below' is set to [0] and a value greater than or 
+; 'national_morale_percentage' when 'above_or_below' is set to [0] and a value greater than or
 ; equal to 'national_morale_percentage' when 'above_or_below' is set to [1]
 ; Each #NATIONAL_MORALE_TRIGGER line will be read using AND logic.
 ;
@@ -117,6 +117,490 @@
 ; ALLIED= 2
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Allied Decisive Victory
+{
+#NAME= Allied Decisive Victory (Berlin, Rome, Warsaw, Paris, London, Moscow, Washington D.C.)
+#POPUP= ALLIED DECISIVE VICTORY
+#IMAGE= axis_surrender_4.png
+#SOUND= theme.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#TRIGGER= 100
+#ALIGNMENT= 2
+#VICTORY_PERCENTAGE= 100
+#DATE= 1939/09/01
+; Allies control -> Berlin, Rome, Warsaw, Paris, London, Moscow, Washington D.C.
+#MAP_POSITION= 173,74
+#MAP_POSITION= 171,101
+#MAP_POSITION= 188,76
+#MAP_POSITION= 151,84
+#MAP_POSITION= 147,77
+#MAP_POSITION= 221,65
+#MAP_POSITION= 4,108
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
+}
+
+; Axis Decisive Victory
+; Replacement Script
+{
+#NAME= Axis Decisive Victory (Berlin, Rome, Warsaw, Paris, London, Moscow, Leningrad, Stalingrad, Baku, Cairo)
+#POPUP= AXIS DECISIVE VICTORY
+#IMAGE= allies_surrender_1.png
+#SOUND= theme.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#TRIGGER= 100
+#ALIGNMENT= 1
+#VICTORY_PERCENTAGE= 100
+#DATE= 1939/09/01
+; Axis control -> Berlin, Rome, Warsaw, Paris, London, Moscow, Leningrad, Stalingrad, Baku, Cairo
+#MAP_POSITION= 173,74
+#MAP_POSITION= 171,101
+#MAP_POSITION= 188,76
+#MAP_POSITION= 151,84
+#MAP_POSITION= 147,77
+#MAP_POSITION= 221,65
+; Leningrad(206,52)
+#MAP_POSITION= 206,52
+#MAP_POSITION= 234,85
+; Baku(245,104)
+#MAP_POSITION= 245,104
+#MAP_POSITION= 208,126
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
+}
+
+; Axis Decisive Victory
+; Replacement Script
+{
+#NAME= Axis Decisive Victory (Berlin, Rome, Warsaw, Paris, London, Moscow, Leningrad, Stalingrad, Baku, Cairo)
+#POPUP= AXIS DECISIVE VICTORY
+#IMAGE= allies_surrender_1.png
+#SOUND= theme.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#TRIGGER= 100
+#ALIGNMENT= 1
+#VICTORY_PERCENTAGE= 100
+#DATE= 1939/09/01
+; Axis control -> Berlin, Rome, Warsaw, Paris, London, Moscow, Leningrad, Stalingrad, Baku, Cairo
+#MAP_POSITION= 173,74
+#MAP_POSITION= 171,101
+#MAP_POSITION= 188,76
+#MAP_POSITION= 151,84
+#MAP_POSITION= 147,77
+#MAP_POSITION= 221,65
+; Leningrad(206,52)
+#MAP_POSITION= 206,52
+#MAP_POSITION= 234,85
+; Baku(245,104)
+#MAP_POSITION= 245,104
+#MAP_POSITION= 208,126
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
+}
+
+; Axis Decisive Victory
+; Additional Script
+{
+#NAME= Axis Decisive Victory (Berlin, Rome, Warsaw, Paris, London, Moscow, Leningrad, Stalingrad, Cairo, Baghdad)
+#POPUP= AXIS DECISIVE VICTORY
+#IMAGE= allies_surrender_1.png
+#SOUND= theme.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#TRIGGER= 100
+#ALIGNMENT= 1
+#VICTORY_PERCENTAGE= 80
+#DATE= 1939/09/01
+; Axis control -> Berlin, Rome, Warsaw, Paris, London, Moscow, Leningrad, Stalingrad, Baku, Cairo, Baghdad
+#MAP_POSITION= 173,74
+#MAP_POSITION= 171,101
+#MAP_POSITION= 188,76
+#MAP_POSITION= 151,84
+#MAP_POSITION= 147,77
+#MAP_POSITION= 221,65
+; Leningrad(206,52)
+#MAP_POSITION= 206,52
+#MAP_POSITION= 234,85
+#MAP_POSITION= 208,126
+#MAP_POSITION= 234,120
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
+}
+
+; Axis Decisive Victory
+; Additional Script
+{
+#NAME= Axis Decisive Victory (Berlin, Rome, Warsaw, Paris, London, Moscow, Leningrad, Stalingrad, Cairo, Baghdad)
+#POPUP= AXIS DECISIVE VICTORY
+#IMAGE= allies_surrender_1.png
+#SOUND= theme.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#TRIGGER= 100
+#ALIGNMENT= 1
+#VICTORY_PERCENTAGE= 100
+#DATE= 1939/09/01
+; Axis control -> Berlin, Rome, Warsaw, Paris, London, Moscow, Leningrad, Stalingrad, Baku, Cairo, Baghdad
+#MAP_POSITION= 173,74
+#MAP_POSITION= 171,101
+#MAP_POSITION= 188,76
+#MAP_POSITION= 151,84
+#MAP_POSITION= 147,77
+#MAP_POSITION= 221,65
+; Leningrad(206,52)
+#MAP_POSITION= 206,52
+#MAP_POSITION= 234,85
+#MAP_POSITION= 208,126
+#MAP_POSITION= 234,120
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
+}
+
+; Axis Minor Victory
+; Replacement Script
+{
+#NAME= Axis Major Victory (Berlin, Rome, Warsaw, Paris, London) - 1945
+#POPUP= AXIS MAJOR VICTORY
+#IMAGE= allies_surrender_3.png
+#SOUND= theme.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 141[0]
+#TRIGGER= 100
+#ALIGNMENT= 1
+#VICTORY_PERCENTAGE= 90
+#DATE= 1945/05/07
+; Axis control -> Berlin, Rome, Warsaw, Paris, London
+#MAP_POSITION= 173,74
+#MAP_POSITION= 171,101
+#MAP_POSITION= 188,76
+#MAP_POSITION= 151,84
+#MAP_POSITION= 147,77
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
+}
+
+; Axis Minor Victory
+; Replacement Script
+{
+#NAME= Axis Major Victory (Berlin, Rome, Warsaw, Paris, Moscow) - 1945
+#POPUP= AXIS MAJOR VICTORY
+#IMAGE= allies_surrender_3.png
+#SOUND= theme.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 141[0]
+#TRIGGER= 100
+#ALIGNMENT= 1
+#VICTORY_PERCENTAGE= 90
+#DATE= 1945/05/07
+; Axis control -> Berlin, Rome, Warsaw, Paris, Moscow
+#MAP_POSITION= 173,74
+#MAP_POSITION= 171,101
+#MAP_POSITION= 188,76
+#MAP_POSITION= 151,84
+#MAP_POSITION= 221,65
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
+}
+
+; Axis Minor Victory
+; Replacement Script
+{
+#NAME= Axis Marginal Victory (Berlin) - 1945
+#POPUP= AXIS MARGINAL VICTORY
+#IMAGE= allies_surrender_3.png
+#SOUND= theme.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 141[0]
+#TRIGGER= 100
+#ALIGNMENT= 1
+#VICTORY_PERCENTAGE= 60
+#DATE= 1945/12/31
+; Axis control -> Berlin
+#MAP_POSITION= 173,74
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
+}
+
+; Axis Minor Victory
+; Replacement Script
+{
+#NAME= Axis Minor Victory (Berlin, Warsaw, Paris) - 1945
+#POPUP= AXIS MINOR VICTORY
+#IMAGE= allies_surrender_3.png
+#SOUND= theme.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 141[0]
+#TRIGGER= 100
+#ALIGNMENT= 1
+#VICTORY_PERCENTAGE= 70
+#DATE= 1945/05/07
+; Axis control -> Berlin, Warsaw, Paris
+#MAP_POSITION= 173,74
+#MAP_POSITION= 188,76
+#MAP_POSITION= 151,84
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
+}
+
+; Axis Minor Victory
+; Additional Script
+{
+#NAME= Axis Tactical Victory (Berlin, Rome, Warsaw, Paris) - 1945
+#POPUP= AXIS TACTICAL VICTORY
+#IMAGE= allies_surrender_3.png
+#SOUND= theme.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 141[0]
+#TRIGGER= 100
+#ALIGNMENT= 1
+#VICTORY_PERCENTAGE= 80
+#DATE= 1945/05/07
+; Axis control -> Berlin, Rome, Warsaw, Paris
+#MAP_POSITION= 173,74
+#MAP_POSITION= 171,101
+#MAP_POSITION= 188,76
+#MAP_POSITION= 151,84
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
+}
+
+; Axis Minor Victory
+; Replacement Script
+{
+#NAME= Axis Major Victory (Berlin, Rome, Warsaw, Paris, London) - 1945
+#POPUP= AXIS MAJOR VICTORY
+#IMAGE= allies_surrender_3.png
+#SOUND= theme.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 142[0]
+#TRIGGER= 100
+#ALIGNMENT= 1
+#VICTORY_PERCENTAGE= 90
+#DATE= 1945/05/07
+; Axis control -> Berlin, Rome, Warsaw, Paris, London
+#MAP_POSITION= 173,74
+#MAP_POSITION= 171,101
+#MAP_POSITION= 188,76
+#MAP_POSITION= 151,84
+#MAP_POSITION= 147,77
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
+}
+
+; Axis Minor Victory
+; Replacement Script
+{
+#NAME= Axis Major Victory (Berlin, Rome, Warsaw, Paris, Moscow) - 1945
+#POPUP= AXIS MAJOR VICTORY
+#IMAGE= allies_surrender_3.png
+#SOUND= theme.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 142[0]
+#TRIGGER= 100
+#ALIGNMENT= 1
+#VICTORY_PERCENTAGE= 90
+#DATE= 1945/05/07
+; Axis control -> Berlin, Rome, Warsaw, Paris, Moscow
+#MAP_POSITION= 173,74
+#MAP_POSITION= 171,101
+#MAP_POSITION= 188,76
+#MAP_POSITION= 151,84
+#MAP_POSITION= 221,65
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
+}
+
+; Axis Minor Victory
+; Replacement Script
+{
+#NAME= Axis Marginal Victory (Berlin) - 1945
+#POPUP= AXIS MARGINAL VICTORY
+#IMAGE= allies_surrender_3.png
+#SOUND= theme.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 142[0]
+#TRIGGER= 100
+#ALIGNMENT= 1
+#VICTORY_PERCENTAGE= 60
+#DATE= 1945/12/31
+; Axis control -> Berlin
+#MAP_POSITION= 173,74
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
+}
+
+; Axis Minor Victory
+; Replacement Script
+{
+#NAME= Axis Minor Victory (Berlin, Warsaw, Paris) - 1945
+#POPUP= AXIS MINOR VICTORY
+#IMAGE= allies_surrender_3.png
+#SOUND= theme.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 142[0]
+#TRIGGER= 100
+#ALIGNMENT= 1
+#VICTORY_PERCENTAGE= 70
+#DATE= 1945/05/07
+; Axis control -> Berlin, Warsaw, Paris
+#MAP_POSITION= 173,74
+#MAP_POSITION= 188,76
+#MAP_POSITION= 151,84
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
+}
+
+; Axis Minor Victory
+; Additional Script
+{
+#NAME= Axis Tactical Victory (Berlin, Rome, Warsaw, Paris) - 1945
+#POPUP= AXIS TACTICAL VICTORY
+#IMAGE= allies_surrender_3.png
+#SOUND= theme.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 142[0]
+#TRIGGER= 100
+#ALIGNMENT= 1
+#VICTORY_PERCENTAGE= 80
+#DATE= 1945/05/07
+; Axis control -> Berlin, Rome, Warsaw, Paris
+#MAP_POSITION= 173,74
+#MAP_POSITION= 171,101
+#MAP_POSITION= 188,76
+#MAP_POSITION= 151,84
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
+}
+
+; Axis Victory
+{
+#NAME= Axis Victory (Berlin) - 1948
+#POPUP= AXIS VICTORY
+#IMAGE= allies_surrender_3.png
+#SOUND= theme.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 142[1]
+#TRIGGER= 100
+#ALIGNMENT= 1
+#VICTORY_PERCENTAGE= 100
+#DATE= 1947/05/07
+; Axis control -> Berlin
+#MAP_POSITION= 173,74
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
+}
+
+; Axis Victory
+{
+#NAME= Axis Victory (Munich) - 1948
+#POPUP= AXIS VICTORY
+#IMAGE= allies_surrender_3.png
+#SOUND= theme.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 142[1]
+#TRIGGER= 100
+#ALIGNMENT= 1
+#VICTORY_PERCENTAGE= 100
+#DATE= 1947/05/07
+; Axis control -> Munich
+#MAP_POSITION= 169,86
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
+}
+
+; Axis Victory
+{
+#NAME= Axis Victory (Rome) - 1948
+#POPUP= AXIS VICTORY
+#IMAGE= allies_surrender_3.png
+#SOUND= theme.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 142[1]
+#TRIGGER= 100
+#ALIGNMENT= 1
+#VICTORY_PERCENTAGE= 100
+#DATE= 1947/05/07
+; Rome(171,101) is Axis
+#MAP_POSITION= 171,101
+;Set National Morale Trigger (dummy value)
+#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
+}
 
 ; Axis Major Victory
 {
@@ -184,486 +668,3 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0] [0]
 }
 
-; Axis Decisive Victory
-; Replacement Script
-{
-#NAME= Axis Decisive Victory (Berlin, Rome, Warsaw, Paris, London, Moscow, Leningrad, Stalingrad, Baku, Cairo)
-#POPUP= AXIS DECISIVE VICTORY
-#IMAGE= allies_surrender_1.png
-#SOUND= theme.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#TRIGGER= 100
-#ALIGNMENT= 1
-#VICTORY_PERCENTAGE= 100
-#DATE= 1939/09/01
-; Axis control -> Berlin, Rome, Warsaw, Paris, London, Moscow, Leningrad, Stalingrad, Baku, Cairo
-#MAP_POSITION= 173,74
-#MAP_POSITION= 171,101
-#MAP_POSITION= 188,76
-#MAP_POSITION= 151,84
-#MAP_POSITION= 147,77
-#MAP_POSITION= 221,65
-; Leningrad(206,52)
-#MAP_POSITION= 206,52
-#MAP_POSITION= 234,85
-; Baku(245,104)
-#MAP_POSITION= 245,104
-#MAP_POSITION= 208,126
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
-}
-
-; Axis Decisive Victory
-; Additional Script
-{
-#NAME= Axis Decisive Victory (Berlin, Rome, Warsaw, Paris, London, Moscow, Leningrad, Stalingrad, Cairo, Baghdad)
-#POPUP= AXIS DECISIVE VICTORY
-#IMAGE= allies_surrender_1.png
-#SOUND= theme.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#TRIGGER= 100
-#ALIGNMENT= 1
-#VICTORY_PERCENTAGE= 80
-#DATE= 1939/09/01
-; Axis control -> Berlin, Rome, Warsaw, Paris, London, Moscow, Leningrad, Stalingrad, Baku, Cairo, Baghdad
-#MAP_POSITION= 173,74
-#MAP_POSITION= 171,101
-#MAP_POSITION= 188,76
-#MAP_POSITION= 151,84
-#MAP_POSITION= 147,77
-#MAP_POSITION= 221,65
-; Leningrad(206,52)
-#MAP_POSITION= 206,52
-#MAP_POSITION= 234,85
-#MAP_POSITION= 208,126
-#MAP_POSITION= 234,120
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
-}
-
-; Axis Minor Victory
-; Replacement Script
-{
-#NAME= Axis Major Victory (Berlin, Rome, Warsaw, Paris, London) - 1945
-#POPUP= AXIS MAJOR VICTORY
-#IMAGE= allies_surrender_3.png
-#SOUND= theme.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 141[0]
-#TRIGGER= 100
-#ALIGNMENT= 1
-#VICTORY_PERCENTAGE= 90
-#DATE= 1945/05/07
-; Axis control -> Berlin, Rome, Warsaw, Paris, London
-#MAP_POSITION= 173,74
-#MAP_POSITION= 171,101
-#MAP_POSITION= 188,76
-#MAP_POSITION= 151,84
-#MAP_POSITION= 147,77
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
-}
-
-; Axis Minor Victory
-; Replacement Script
-{
-#NAME= Axis Major Victory (Berlin, Rome, Warsaw, Paris, Moscow) - 1945
-#POPUP= AXIS MAJOR VICTORY
-#IMAGE= allies_surrender_3.png
-#SOUND= theme.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 141[0]
-#TRIGGER= 100
-#ALIGNMENT= 1
-#VICTORY_PERCENTAGE= 90
-#DATE= 1945/05/07
-; Axis control -> Berlin, Rome, Warsaw, Paris, Moscow
-#MAP_POSITION= 173,74
-#MAP_POSITION= 171,101
-#MAP_POSITION= 188,76
-#MAP_POSITION= 151,84
-#MAP_POSITION= 221,65
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
-}
-
-; Axis Minor Victory
-; Additional Script
-{
-#NAME= Axis Tactical Victory (Berlin, Rome, Warsaw, Paris) - 1945
-#POPUP= AXIS TACTICAL VICTORY
-#IMAGE= allies_surrender_3.png
-#SOUND= theme.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 141[0]
-#TRIGGER= 100
-#ALIGNMENT= 1
-#VICTORY_PERCENTAGE= 80
-#DATE= 1945/05/07
-; Axis control -> Berlin, Rome, Warsaw, Paris
-#MAP_POSITION= 173,74
-#MAP_POSITION= 171,101
-#MAP_POSITION= 188,76
-#MAP_POSITION= 151,84
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
-}
-
-; Axis Minor Victory
-; Replacement Script
-{
-#NAME= Axis Minor Victory (Berlin, Warsaw, Paris) - 1945
-#POPUP= AXIS MINOR VICTORY
-#IMAGE= allies_surrender_3.png
-#SOUND= theme.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 141[0]
-#TRIGGER= 100
-#ALIGNMENT= 1
-#VICTORY_PERCENTAGE= 70
-#DATE= 1945/05/07
-; Axis control -> Berlin, Warsaw, Paris
-#MAP_POSITION= 173,74
-#MAP_POSITION= 188,76
-#MAP_POSITION= 151,84
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
-}
-
-; Axis Minor Victory
-; Replacement Script
-{
-#NAME= Axis Marginal Victory (Berlin) - 1945
-#POPUP= AXIS MARGINAL VICTORY
-#IMAGE= allies_surrender_3.png
-#SOUND= theme.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 141[0]
-#TRIGGER= 100
-#ALIGNMENT= 1
-#VICTORY_PERCENTAGE= 60
-#DATE= 1945/12/31
-; Axis control -> Berlin
-#MAP_POSITION= 173,74
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
-}
-
-; Axis Decisive Victory
-; Replacement Script
-{
-#NAME= Axis Decisive Victory (Berlin, Rome, Warsaw, Paris, London, Moscow, Leningrad, Stalingrad, Baku, Cairo)
-#POPUP= AXIS DECISIVE VICTORY
-#IMAGE= allies_surrender_1.png
-#SOUND= theme.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#TRIGGER= 100
-#ALIGNMENT= 1
-#VICTORY_PERCENTAGE= 100
-#DATE= 1939/09/01
-; Axis control -> Berlin, Rome, Warsaw, Paris, London, Moscow, Leningrad, Stalingrad, Baku, Cairo
-#MAP_POSITION= 173,74
-#MAP_POSITION= 171,101
-#MAP_POSITION= 188,76
-#MAP_POSITION= 151,84
-#MAP_POSITION= 147,77
-#MAP_POSITION= 221,65
-; Leningrad(206,52)
-#MAP_POSITION= 206,52
-#MAP_POSITION= 234,85
-; Baku(245,104)
-#MAP_POSITION= 245,104
-#MAP_POSITION= 208,126
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
-}
-
-; Axis Decisive Victory
-; Additional Script
-{
-#NAME= Axis Decisive Victory (Berlin, Rome, Warsaw, Paris, London, Moscow, Leningrad, Stalingrad, Cairo, Baghdad)
-#POPUP= AXIS DECISIVE VICTORY
-#IMAGE= allies_surrender_1.png
-#SOUND= theme.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#TRIGGER= 100
-#ALIGNMENT= 1
-#VICTORY_PERCENTAGE= 100
-#DATE= 1939/09/01
-; Axis control -> Berlin, Rome, Warsaw, Paris, London, Moscow, Leningrad, Stalingrad, Baku, Cairo, Baghdad
-#MAP_POSITION= 173,74
-#MAP_POSITION= 171,101
-#MAP_POSITION= 188,76
-#MAP_POSITION= 151,84
-#MAP_POSITION= 147,77
-#MAP_POSITION= 221,65
-; Leningrad(206,52)
-#MAP_POSITION= 206,52
-#MAP_POSITION= 234,85
-#MAP_POSITION= 208,126
-#MAP_POSITION= 234,120
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
-}
-
-; Axis Minor Victory
-; Replacement Script
-{
-#NAME= Axis Major Victory (Berlin, Rome, Warsaw, Paris, London) - 1945
-#POPUP= AXIS MAJOR VICTORY
-#IMAGE= allies_surrender_3.png
-#SOUND= theme.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 142[0]
-#TRIGGER= 100
-#ALIGNMENT= 1
-#VICTORY_PERCENTAGE= 90
-#DATE= 1945/05/07
-; Axis control -> Berlin, Rome, Warsaw, Paris, London
-#MAP_POSITION= 173,74
-#MAP_POSITION= 171,101
-#MAP_POSITION= 188,76
-#MAP_POSITION= 151,84
-#MAP_POSITION= 147,77
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
-}
-
-; Axis Minor Victory
-; Replacement Script
-{
-#NAME= Axis Major Victory (Berlin, Rome, Warsaw, Paris, Moscow) - 1945
-#POPUP= AXIS MAJOR VICTORY
-#IMAGE= allies_surrender_3.png
-#SOUND= theme.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 142[0]
-#TRIGGER= 100
-#ALIGNMENT= 1
-#VICTORY_PERCENTAGE= 90
-#DATE= 1945/05/07
-; Axis control -> Berlin, Rome, Warsaw, Paris, Moscow
-#MAP_POSITION= 173,74
-#MAP_POSITION= 171,101
-#MAP_POSITION= 188,76
-#MAP_POSITION= 151,84
-#MAP_POSITION= 221,65
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
-}
-
-; Axis Minor Victory
-; Additional Script
-{
-#NAME= Axis Tactical Victory (Berlin, Rome, Warsaw, Paris) - 1945
-#POPUP= AXIS TACTICAL VICTORY
-#IMAGE= allies_surrender_3.png
-#SOUND= theme.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 142[0]
-#TRIGGER= 100
-#ALIGNMENT= 1
-#VICTORY_PERCENTAGE= 80
-#DATE= 1945/05/07
-; Axis control -> Berlin, Rome, Warsaw, Paris
-#MAP_POSITION= 173,74
-#MAP_POSITION= 171,101
-#MAP_POSITION= 188,76
-#MAP_POSITION= 151,84
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
-}
-
-; Axis Minor Victory
-; Replacement Script
-{
-#NAME= Axis Minor Victory (Berlin, Warsaw, Paris) - 1945
-#POPUP= AXIS MINOR VICTORY
-#IMAGE= allies_surrender_3.png
-#SOUND= theme.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 142[0]
-#TRIGGER= 100
-#ALIGNMENT= 1
-#VICTORY_PERCENTAGE= 70
-#DATE= 1945/05/07
-; Axis control -> Berlin, Warsaw, Paris
-#MAP_POSITION= 173,74
-#MAP_POSITION= 188,76
-#MAP_POSITION= 151,84
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
-}
-
-; Axis Minor Victory
-; Replacement Script
-{
-#NAME= Axis Marginal Victory (Berlin) - 1945
-#POPUP= AXIS MARGINAL VICTORY
-#IMAGE= allies_surrender_3.png
-#SOUND= theme.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 142[0]
-#TRIGGER= 100
-#ALIGNMENT= 1
-#VICTORY_PERCENTAGE= 60
-#DATE= 1945/12/31
-; Axis control -> Berlin
-#MAP_POSITION= 173,74
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
-}
-
-; Allied Decisive Victory
-{
-#NAME= Allied Decisive Victory (Berlin, Rome, Warsaw, Paris, London, Moscow, Washington D.C.)
-#POPUP= ALLIED DECISIVE VICTORY
-#IMAGE= axis_surrender_4.png
-#SOUND= theme.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#TRIGGER= 100
-#ALIGNMENT= 2
-#VICTORY_PERCENTAGE= 100
-#DATE= 1939/09/01
-; Allies control -> Berlin, Rome, Warsaw, Paris, London, Moscow, Washington D.C.
-#MAP_POSITION= 173,74
-#MAP_POSITION= 171,101
-#MAP_POSITION= 188,76
-#MAP_POSITION= 151,84
-#MAP_POSITION= 147,77
-#MAP_POSITION= 221,65
-#MAP_POSITION= 4,108
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
-}
-
-; Axis Victory
-{
-#NAME= Axis Victory (Berlin) - 1948
-#POPUP= AXIS VICTORY
-#IMAGE= allies_surrender_3.png
-#SOUND= theme.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 142[1]
-#TRIGGER= 100
-#ALIGNMENT= 1
-#VICTORY_PERCENTAGE= 100
-#DATE= 1947/05/07
-; Axis control -> Berlin
-#MAP_POSITION= 173,74
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
-}
-
-; Axis Victory
-{
-#NAME= Axis Victory (Rome) - 1948
-#POPUP= AXIS VICTORY
-#IMAGE= allies_surrender_3.png
-#SOUND= theme.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 142[1]
-#TRIGGER= 100
-#ALIGNMENT= 1
-#VICTORY_PERCENTAGE= 100
-#DATE= 1947/05/07
-; Rome(171,101) is Axis
-#MAP_POSITION= 171,101
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
-}
-
-; Axis Victory
-{
-#NAME= Axis Victory (Munich) - 1948
-#POPUP= AXIS VICTORY
-#IMAGE= allies_surrender_3.png
-#SOUND= theme.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 142[1]
-#TRIGGER= 100
-#ALIGNMENT= 1
-#VICTORY_PERCENTAGE= 100
-#DATE= 1947/05/07
-; Axis control -> Munich
-#MAP_POSITION= 169,86
-;Set National Morale Trigger (dummy value)
-#NATIONAL_MORALE_TRIGGER= 0 [0] [0]
-}

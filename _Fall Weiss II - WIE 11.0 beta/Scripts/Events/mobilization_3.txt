@@ -383,28 +383,6 @@
 #VARIABLE_CONDITION= 19 [1] [100] [1]
 }
 
-; Fall Weiss II
-; Event for decreased Spanish mobilization:
-{
-#NAME= [FW]Franco Continues To Display A Reluctance To Join The Conflict In Europe (Spain->Allies) (10%)
-#POPUP= Franco Continues To Display A Reluctance To Join The Conflict In Europe
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 99
-#TRIGGER= 10
-#DATE= 1940/01/01
-; 4-8% mobilization increase towards Allies
-#MOBILIZATION= [4,8] [2]
-; Spain(99) Axis leaning
-#VARIABLE_CONDITION= 99 [1] [75] [0]
-}
-
 ;
 ; Event for increased Spanish mobilization:
 {
@@ -600,27 +578,6 @@
 #MOBILIZATION= [15,20] [2]
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]Portugal Protests Germany's Invasion of Poland (Portugal->Allies)
-#POPUP= Portugal Protests Germany's Invasion of Poland
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 87
-#TRIGGER= 100
-#DATE= 1939/09/03
-; 2-4% activation increase towards Allies
-#MOBILIZATION= [2,4] [2]
-; Poland(85) is Allied, Fully Active and Not surrendered
-#VARIABLE_CONDITION= 85 [2] [100] [0]
 }
 
 {
@@ -850,6 +807,138 @@
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 }
 
+;
+; Event for increased US mobilization:
+{
+#NAME= Yugoslavia Surrendered To Axis (USA->Allies)
+#POPUP= The USA Grows Concerned Over The Axis Conquest of Yugoslavia
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+; USA(115)
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 3-5% mobilization increase towards Allies
+#MOBILIZATION= [3,5] [2]
+; UK(112) Allied and not surrendered AND
+; Yugoslavia(120) Allied and surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 120 [2] [100] [1]
+}
+
+; Fall Weiss II
+; Event for decreased Spanish mobilization:
+{
+#NAME= [FW]Franco Continues To Display A Reluctance To Join The Conflict In Europe (Spain->Allies) (10%)
+#POPUP= Franco Continues To Display A Reluctance To Join The Conflict In Europe
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 99
+#TRIGGER= 10
+#DATE= 1940/01/01
+; 4-8% mobilization increase towards Allies
+#MOBILIZATION= [4,8] [2]
+; Spain(99) Axis leaning
+#VARIABLE_CONDITION= 99 [1] [75] [0]
+}
+
+; Fall Weiss II
+{
+#NAME= [FW]Portugal Protests Germany's Invasion of Poland (Portugal->Allies)
+#POPUP= Portugal Protests Germany's Invasion of Poland
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 87
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 2-4% activation increase towards Allies
+#MOBILIZATION= [2,4] [2]
+; Poland(85) is Allied, Fully Active and Not surrendered
+#VARIABLE_CONDITION= 85 [2] [100] [0]
+}
+
+; Fall Weiss II
+{
+#NAME= [FW]Saudi Arabia Severs Diplomatic Contacts With Germany (Saudi Arabia->Allies)
+#POPUP= Saudi Arabia Severs Diplomatic Contacts With Germany
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 95
+#TRIGGER= 100
+; Change to historical date of Sept 11, 1939
+#DATE= 1939/09/11
+; 10% activation increase towards Allies
+#MOBILIZATION= [10,10] [2]
+; German Axis and Fully Mobilized
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+; Fall Weiss II
+{
+#NAME= [FW]Swedish Military Capability Improves (Sweden->Allies)
+#POPUP= Sweden Begins Resisting German Influence Due To Improved Military Capabilities
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 103
+#TRIGGER= 100
+#DATE= 1943/06/01
+; 1-5% mobilization increase towards Allies
+#MOBILIZATION= [1,5] [2]
+; Sweden(103) Axis
+#VARIABLE_CONDITION= 103 [1] [0] [0]
+}
+
+; Fall Weiss II
+{
+#NAME= [FW]Turkey Signs Mutual Pact With France And Britain To Protect Neutrality (Turkey->Allies)
+#POPUP= Turkey Signs Mutual Pact With France And Britain To Protect Neutrality
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#LEVEL= 0
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 8-10% activation increase towards Allies
+#MOBILIZATION= [8,10] [2]
+; German Active And Fully Mobilized
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
 ; Fall Weiss II
 ; Historic Date: 03/1941
 {
@@ -877,31 +966,6 @@
 #VARIABLE_CONDITION= 93 [1] [100] [0]
 #VARIABLE_CONDITION= 52 [1] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-}
-
-;
-; Event for increased US mobilization:
-{
-#NAME= Yugoslavia Surrendered To Axis (USA->Allies)
-#POPUP= The USA Grows Concerned Over The Axis Conquest of Yugoslavia
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-; USA(115)
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#DATE= 1939/09/03
-; 3-5% mobilization increase towards Allies
-#MOBILIZATION= [3,5] [2]
-; UK(112) Allied and not surrendered AND
-; Yugoslavia(120) Allied and surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 120 [2] [100] [1]
 }
 
 {
@@ -1504,70 +1568,6 @@
 
 ; Fall Weiss II
 {
-#NAME= [FW]Saudi Arabia Severs Diplomatic Contacts With Germany (Saudi Arabia->Allies)
-#POPUP= Saudi Arabia Severs Diplomatic Contacts With Germany
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 95
-#TRIGGER= 100
-; Change to historical date of Sept 11, 1939
-#DATE= 1939/09/11
-; 10% activation increase towards Allies
-#MOBILIZATION= [10,10] [2]
-; German Axis and Fully Mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]Swedish Military Capability Improves (Sweden->Allies)
-#POPUP= Sweden Begins Resisting German Influence Due To Improved Military Capabilities
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 103
-#TRIGGER= 100
-#DATE= 1943/06/01
-; 1-5% mobilization increase towards Allies
-#MOBILIZATION= [1,5] [2]
-; Sweden(103) Axis
-#VARIABLE_CONDITION= 103 [1] [0] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]Turkey Signs Mutual Pact With France And Britain To Protect Neutrality (Turkey->Allies)
-#POPUP= Turkey Signs Mutual Pact With France And Britain To Protect Neutrality
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-#COUNTRY_ID= 111
-#TRIGGER= 100
-#DATE= 1939/09/03
-; 8-10% activation increase towards Allies
-#MOBILIZATION= [8,10] [2]
-; German Active And Fully Mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-; Fall Weiss II
-{
 #NAME= [FW]DE 130 - Turkey Signs The Tripartite Pact (Turkey->>Axis)
 #POPUP= Von Ribbentrop Travels To Ankara To Form An Alliance With Turkey
 #IMAGE=
@@ -1780,7 +1780,7 @@
 ; Fall Weiss II
 ; Turkey Resists Allied Diplomacy
 {
-#NAME= DE 149 - Turkey Resists Allied Diplomacy (Egypt surrendered) (Turkey->Axis)
+#NAME= [FW]DE 149 - Turkey Resists Allied Diplomacy (Egypt surrendered) (Turkey->Axis)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1804,7 +1804,7 @@
 ; Fall Weiss II
 ; Turkey Resists Allied Diplomacy
 {
-#NAME= DE 149 - Turkey Resists Allied Diplomacy (Turkey->Axis)
+#NAME= [FW]DE 149 - Turkey Resists Allied Diplomacy (Turkey->Axis)
 #POPUP= The Turkish Government Displays Strong Resistance Against Entering War With Germany
 #IMAGE=
 #SOUND=
@@ -2726,7 +2726,7 @@
 ; Fall Weiss II
 ; UK Military Exports To Turkey
 {
-#NAME= DE 807 - UK Military Exports to Turkey (Turkey->Allies)
+#NAME= [FW]DE 807 - UK Military Exports to Turkey (Turkey->Allies)
 #POPUP= Allied Military Exports Begin To Arrive In Turkey
 #IMAGE=
 #SOUND=
@@ -2748,7 +2748,7 @@
 ; Fall Weiss II
 ; USA Military Exports To Turkey
 {
-#NAME= DE 808 - USA Military Exports to Turkey (Turkey->Allies)
+#NAME= [FW]DE 808 - USA Military Exports to Turkey (Turkey->Allies)
 #POPUP= USA Directs Military Supplies To Turkey Through Lend Lease
 #IMAGE=
 #SOUND=
@@ -2792,7 +2792,7 @@
 ; Fall Weiss II
 ; Aircraft Delivery To Sweden
 {
-#NAME= DE 811 - USA Fails To Deliver Promised Aircraft To Sweden (Sweden->Axis)
+#NAME= [FW]DE 811 - USA Fails To Deliver Promised Aircraft To Sweden (Sweden->Axis)
 #POPUP= Sweden Is Disappointed With USA's Failure To Deliver Promised Aircraft
 #IMAGE=
 #SOUND=
@@ -2815,7 +2815,7 @@
 ; Fall Weiss II
 ; Aircraft Delivery To Sweden
 {
-#NAME= DE 812 - Italian Military Exports To Sweden (Sweden->Axis)
+#NAME= [FW]DE 812 - Italian Military Exports To Sweden (Sweden->Axis)
 #POPUP= The Italian Sale Of Aircraft To Sweden Improves Their Relations With The Axis
 #IMAGE=
 #SOUND=
@@ -2837,7 +2837,7 @@
 ; Fall Weiss II
 ; Swedish Convoy
 {
-#NAME= DE 813 - Allies Exert Diplomatic Pressure To Stop Swedish Convoys (Sweden->Allies)
+#NAME= [FW]DE 813 - Allies Exert Diplomatic Pressure To Stop Swedish Convoys (Sweden->Allies)
 #POPUP= The Swedish Relent to Allied Pressure away from Axis Influence
 #IMAGE=
 #SOUND=
@@ -2859,7 +2859,7 @@
 ; Fall Weiss II
 ; Swedish Convoy
 {
-#NAME= DE 813 - Allies Intervene To Stop Swedish Convoys (Sweden->Allies)
+#NAME= [FW]DE 813 - Allies Intervene To Stop Swedish Convoys (Sweden->Allies)
 #POPUP= The Allies Intervene To Sway Sweden To End Convoys To Germany
 #IMAGE=
 #SOUND=
@@ -2881,7 +2881,7 @@
 ; Fall Weiss II
 ; UK Delegates To Switzerland
 {
-#NAME= DE 820 - UK Delegates To Switzerland (Switzerland->Allies) (25%)
+#NAME= [FW]DE 820 - UK Delegates To Switzerland (Switzerland->Allies) (25%)
 #POPUP= Allied Political Pressure Exposes Axis Corruption In Switzerland
 #IMAGE=
 #SOUND=
@@ -2903,7 +2903,7 @@
 ; Fall Weiss II
 ; UK Delegates To Portugal
 {
-#NAME= DE 821 - UK Delegates To Portugal (Portugal->Allies) (50%)
+#NAME= [FW]DE 821 - UK Delegates To Portugal (Portugal->Allies) (50%)
 #POPUP= Portugal Leans Towards The Allies But Maintains Trade With Germany
 #IMAGE=
 #SOUND=
@@ -2925,7 +2925,7 @@
 ; Fall Weiss II
 ; UK Payments to Switzerland
 {
-#NAME= DE 822 - UK Payments To Switzerland (Switzerland->>Allies)
+#NAME= [FW]DE 822 - UK Payments To Switzerland (Switzerland->>Allies)
 #POPUP= Allied Intervention Leads to Switzerland Ending Axis Relations
 #IMAGE=
 #SOUND=
@@ -3715,28 +3715,6 @@
 #VARIABLE_CONDITION= 46 [1] [100] [0]
 }
 
-; Fall Weiss II
-{
-#NAME= [FW]DE 970 - USSR Forcibly Occupies Turkish Straits (USA->Allies)
-#POPUP= Western Powers Protest Soviet Aggression Against Turkey
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-; USSR(116): Forcibly Occupies Turkish Straits
-#LINK= 970[1]
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#DATE= 1939/10/14
-; 2-4% mobilization increase towards Axis
-#MOBILIZATION= [2,4] [1]
-; USA(115) Allied, and not surrendered
-#VARIABLE_CONDITION= 115 [2] [0] [0]
-}
-
 ; NEW(7/14/2023)
 ; Fall Weiss II
 {
@@ -3758,6 +3736,28 @@
 #MOBILIZATION= [30,50] [1]
 ; USSR(116) Allied, and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
+}
+
+; Fall Weiss II
+{
+#NAME= [FW]DE 970 - USSR Forcibly Occupies Turkish Straits (USA->Allies)
+#POPUP= Western Powers Protest Soviet Aggression Against Turkey
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; USSR(116): Forcibly Occupies Turkish Straits
+#LINK= 970[1]
+#COUNTRY_ID= 115
+#TRIGGER= 100
+#DATE= 1939/10/14
+; 2-4% mobilization increase towards Axis
+#MOBILIZATION= [2,4] [1]
+; USA(115) Allied, and not surrendered
+#VARIABLE_CONDITION= 115 [2] [0] [0]
 }
 
 ; Fall Weiss II
