@@ -715,89 +715,6 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-; Fall Weiss II
-{
-#NAME= [FW]Romania Fortification - Bucharest(1)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 93
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-; South East
-#EDGE= 2
-#EDGE= 3
-#EDGE= 4
-; Coastal
-#GOAL_POSITION= 199,94
-#DATE= 1939/09/01
-; Bucharest(198,95)
-#FRIENDLY_POSITION= 198,95
-; Romania Axis and fully mobilized
-#VARIABLE_CONDITION= 93 [1] [100] [0]
-; Bucharest(198,95) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 198,95 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]Romania Fortification - Bucharest(3)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 93
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-; South East
-#EDGE= 2
-#EDGE= 3
-#EDGE= 4
-; Coastal
-#GOAL_POSITION= 201,92
-#DATE= 1939/09/01
-; Bucharest(198,95)
-#FRIENDLY_POSITION= 198,95
-; Germany(45) Allied and not surrendered
-#VARIABLE_CONDITION= 93 [1] [100] [0]
-; Bucharest(198,95) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 198,95 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= [FW]Romania Fortification - Bucharest(4)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 93
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-; South East
-#EDGE= 2
-#EDGE= 3
-#EDGE= 4
-; Coastal
-#GOAL_POSITION= 203,93
-#DATE= 1939/09/01
-; Bucharest(198,95)
-#FRIENDLY_POSITION= 198,95
-; Germany(45) Allied and not surrendered
-#VARIABLE_CONDITION= 93 [1] [100] [0]
-; Bucharest(198,95) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 198,95 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
 {
 #NAME= UK Fortification - El Alamein Position (1)
 #POPUP=
@@ -910,32 +827,6 @@
 }
 
 {
-#NAME= UK Fortification - South West Alexandria Position (1)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-; South West + South
-#EDGE= 5
-#EDGE= 4
-; South West Alexandria Position
-#GOAL_POSITION= 205,124
-#DATE= 1939/09/01
-; Alexandria
-#FRIENDLY_POSITION= 206,124
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-; Alexandria not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 206,124 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
 #NAME= UK Fortification - South Alexandria Position (2)
 #POPUP=
 #FLAG= 1
@@ -988,7 +879,33 @@
 }
 
 {
-#NAME= USSR Fortification - Leningrad (1) - (Pre-Entry)
+#NAME= UK Fortification - South West Alexandria Position (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+; South West + South
+#EDGE= 5
+#EDGE= 4
+; South West Alexandria Position
+#GOAL_POSITION= 205,124
+#DATE= 1939/09/01
+; Alexandria
+#FRIENDLY_POSITION= 206,124
+; UK(112) Allied and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+; Alexandria not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 206,124 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Leningrad (1) - (Pre-Entry) (Veteran)
 #POPUP=
 #FLAG= 1
 #TYPE= 1
@@ -1016,7 +933,7 @@
 }
 
 {
-#NAME= USSR Fortification - Leningrad (2) - (Pre-Entry)
+#NAME= USSR Fortification - Leningrad (2) - (Pre-Entry) (Veteran)
 #POPUP=
 #FLAG= 1
 #TYPE= 1
@@ -1084,6 +1001,60 @@
 #EDGE= 6
 ; Moscow
 #GOAL_POSITION= 219,66
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied (not fully active) and not surrendered
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Moscow (10) - (Post-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+; North + North East + East
+#EDGE= 2
+#EDGE= 3
+#EDGE= 4
+; Moscow
+#GOAL_POSITION= 222,66
+#DATE= 1939/09/01
+; Moscow(221,65)
+#FRIENDLY_POSITION= 221,65
+; USSR(116) Allied and not surrendered
+#VARIABLE_CONDITION= 116 [2] [100] [0]
+; Moscow(221,65) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 221,65 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USSR Fortification - Moscow (10) - (Pre-Entry)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 116
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+; North + North East + East
+#EDGE= 2
+#EDGE= 3
+#EDGE= 4
+; Moscow
+#GOAL_POSITION= 222,66
 #DATE= 1939/09/01
 ; Moscow(221,65)
 #FRIENDLY_POSITION= 221,65
@@ -1522,60 +1493,6 @@
 }
 
 {
-#NAME= USSR Fortification - Moscow (10) - (Post-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-; North + North East + East
-#EDGE= 2
-#EDGE= 3
-#EDGE= 4
-; Moscow
-#GOAL_POSITION= 222,66
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USSR Fortification - Moscow (10) - (Pre-Entry)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-; North + North East + East
-#EDGE= 2
-#EDGE= 3
-#EDGE= 4
-; Moscow
-#GOAL_POSITION= 222,66
-#DATE= 1939/09/01
-; Moscow(221,65)
-#FRIENDLY_POSITION= 221,65
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-; Moscow(221,65) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 221,65 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
 #NAME= USSR Fortification - Stalingrad (1)
 #POPUP=
 #FLAG= 1
@@ -1704,6 +1621,89 @@
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 195,51 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fall Weiss II
+{
+#NAME= [FW]Romania Fortification - Bucharest(1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 93
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+; South East
+#EDGE= 2
+#EDGE= 3
+#EDGE= 4
+; Coastal
+#GOAL_POSITION= 199,94
+#DATE= 1939/09/01
+; Bucharest(198,95)
+#FRIENDLY_POSITION= 198,95
+; Romania Axis and fully mobilized
+#VARIABLE_CONDITION= 93 [1] [100] [0]
+; Bucharest(198,95) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 198,95 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+; Fall Weiss II
+{
+#NAME= [FW]Romania Fortification - Bucharest(3)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 93
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+; South East
+#EDGE= 2
+#EDGE= 3
+#EDGE= 4
+; Coastal
+#GOAL_POSITION= 201,92
+#DATE= 1939/09/01
+; Bucharest(198,95)
+#FRIENDLY_POSITION= 198,95
+; Germany(45) Allied and not surrendered
+#VARIABLE_CONDITION= 93 [1] [100] [0]
+; Bucharest(198,95) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 198,95 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= [FW]Romania Fortification - Bucharest(4)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 93
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+; South East
+#EDGE= 2
+#EDGE= 3
+#EDGE= 4
+; Coastal
+#GOAL_POSITION= 203,93
+#DATE= 1939/09/01
+; Bucharest(198,95)
+#FRIENDLY_POSITION= 198,95
+; Germany(45) Allied and not surrendered
+#VARIABLE_CONDITION= 93 [1] [100] [0]
+; Bucharest(198,95) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 198,95 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }

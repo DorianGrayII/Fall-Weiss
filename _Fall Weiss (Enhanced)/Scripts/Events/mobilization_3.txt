@@ -601,7 +601,7 @@
 }
 
 {
-#NAME= Turkey Swayed by Axis Victories (Turkey->>Axis) (25%)
+#NAME= Turkey(AI): Turkey Swayed by Axis Victories (Turkey->>Axis) (25%)
 #POPUP= The Prime Minister of Turkey Visits Berlin
 #IMAGE=
 #SOUND=
@@ -1293,8 +1293,9 @@
 
 ;
 ; Allied Mers-El-Kebir attack on Pro-Vichy Fleet
+; Operation Catapult
 {
-#NAME= DE 118 - Attack On Mers-El-Kebir (Algeria->Axis)
+#NAME= DE 118 - Algerian outrage regarding the attack On Mers-El-Kebir (Algeria->Axis)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1304,6 +1305,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 118[1]
+; Algeria(4)
 #COUNTRY_ID= 4
 #TRIGGER= 100
 #DATE= 1939/09/03
@@ -1315,8 +1317,9 @@
 
 ;
 ; Allied Mers-El-Kebir attack on Pro-Vichy Fleet
+; Operation Catapult
 {
-#NAME= DE 118 - Attack On Mers-El-Kebir (Tunisia->Axis)
+#NAME= DE 118 - Tunisian outrage regarding the attack On Mers-El-Kebir (Tunisia->Axis)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1338,7 +1341,7 @@
 ;
 ; Allied Mers-El-Kebir attack on Pro-Vichy Fleet
 {
-#NAME= DE 118 - Attack On Mers-El-Kebir (Vichy France->>Axis)
+#NAME= DE 118 - French outrage regarding the attack on Mers-El-Kebir (Vichy France->>Axis)
 #POPUP= Operation Catapult - The Royal Navy Attacks The Vichy Fleet At Mers-El-Kebir
 #IMAGE= mers_el_kebir_1.png, mers_el_kebir_2.png
 #SOUND= ship_sinking.ogg, war1.ogg
@@ -1373,6 +1376,28 @@
 #DATE= 1939/09/03
 ; 5-15% mobilization increase towards Axis
 #MOBILIZATION= [5,15] [1]
+; France(40) Allied and surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+}
+
+; new 2024/8/3
+{
+#NAME= [FW]DE 118 - Attack On Mers-El-Kebir (Turkey->Allies)
+#POPUP= The bombing of the French fleet set aside the Turkish growing anxiety of it falling into Axis hands
+#IMAGE=
+#SOUND= report.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 118[1]
+; Turkey(111)
+#COUNTRY_ID= 111
+#TRIGGER= 100
+#DATE= 1939/09/03
+; 5-15% mobilization increase towards Allies
+#MOBILIZATION= [5,15] [2]
 ; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 }

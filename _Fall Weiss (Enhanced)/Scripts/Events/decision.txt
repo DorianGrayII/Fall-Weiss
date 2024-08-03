@@ -1136,6 +1136,9 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; Operation Catapult
+; https://en.wikipedia.org/wiki/Attack_on_Mers-el-K%C3%A9bir
+; https://arastirmax.com/en/system/files/dergiler/286582/makaleler/1/37/arastirmax-diplomatic-maneuvers-turkey-world-war-ii.pdf
 {
 #NAME= DE 118 - UK: Launch Operation Catapult against the Vichy Fleet? (AI - 50%)
 #POPUP=
@@ -1156,7 +1159,7 @@
 #MPP_UPDOWN= -35
 #MPP_TURNS= 1
 #MPP_TEXT= Operation Catapult
-#NOTES= %N%N This act would definitely sour relations between us and the new Vichy authorities, but the consequences of not doing so could be far worse, as the presence of the French fleet on the Axis side could possibly tip the war at sea in their favour.%N%N If you say %B(YES), then the French fleet at Mers-el-Kebir will be attacked.%N%N In response, Vichy France, Algeria and Tunisia will move 35-50% towards the Axis, and French bombers based in Algeria will retaliate by bombing Gibraltar.%N%N If you say %B(NO), then should Vichy Algeria subsequently join the Axis or be conquered by the Axis, a German strength 5 Battleship at Casablanca and a full strength Battleship at Algiers will be created.
+#NOTES= %N%N This act would definitely sour relations between us and the new Vichy authorities, but the consequences of not doing so could be far worse, as the presence of the French fleet on the Axis side could possibly tip the war at sea in their favour.%N%N If you say %B(YES), then the French fleet at Mers-el-Kebir will be attacked.%N%N In response, Vichy France, Algeria and Tunisia will move 35-50% towards the Axis, and French bombers based in Algeria will retaliate by bombing Gibraltar. %N%N However, the Turks attached enormous importances to the issue of the French fleet and would be positively influence by the operation. %N%N If you say %B(NO), then should Vichy Algeria subsequently join the Axis or be conquered by the Axis, a German strength 5 Battleship at Casablanca and a full strength Battleship at Algiers will be created.
 #NOTES_POSITION= 144,115
 ; Set AI acceptance % (AI will accept 50% of the time)
 #AI_RESPONSE= 50
@@ -5165,7 +5168,7 @@
 }
 
 {
-#NAME= DE 365 - USA: Dummy Event for the US Convoy to the USSR (DE 105 = 1) (AI - 100%)
+#NAME= DE 365 - USA: Dummy Event for the US Convoy to the USSR (Capital->Egypt) (AI - 100%)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -5175,6 +5178,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Capital Moved To Egypt
 #LINK= 105[1]
 #COUNTRY_ID= 115
 #TRIGGER= 100
@@ -5214,7 +5218,7 @@
 }
 
 {
-#NAME= DE 366 - USA: Dummy Event for the US Convoy to the USSR (DE 105 = 0) (AI - 100%)
+#NAME= DE 366 - USA: Dummy Event for the US Convoy to the USSR (Capital->Canada) (AI - 100%)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -5224,6 +5228,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Capital Moved To Canada
 #LINK= 105[0]
 #COUNTRY_ID= 115
 #TRIGGER= 100
@@ -5345,6 +5350,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Capital Moved to Canada
 #LINK= 105[0]
 #COUNTRY_ID= 115
 #TRIGGER= 100
@@ -6657,7 +6663,7 @@
 }
 
 {
-#NAME= DE 451 - USSR(AI): Urals Transfer AI Boost 1 (AI - 100%)
+#NAME= DE 451 - USSR(AI): Urals Transfer AI Boost 1 (AI - 100%) (Intermediate)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -6691,7 +6697,7 @@
 }
 
 {
-#NAME= DE 452 - USSR(AI): Urals Transfer AI Boost 2 (AI - 100%)
+#NAME= DE 452 - USSR(AI): Urals Transfer AI Boost 2 (AI - 100%) (Expert)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -9354,7 +9360,7 @@
 #ALIGNMENT_POSITION= 172,121 [1]
 ; Palermo is Axis
 #ALIGNMENT_POSITION= 173,109 [1]
-; Syracuse is Axis
+; Syracuse(176,112) is Axis
 #ALIGNMENT_POSITION= 176,112 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Tunisia Axis but not fully mobilized
@@ -9401,7 +9407,7 @@
 #ALIGNMENT_POSITION= 172,121 [1]
 ; Palermo is Axis
 #ALIGNMENT_POSITION= 173,109 [1]
-; Syracuse is Axis
+; Syracuse(176,112)is Axis
 #ALIGNMENT_POSITION= 176,112 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Tunisia Allied but not fully mobilized
@@ -13101,7 +13107,8 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; Fall Weiss II
+; Light Cruiser Etna
+; https://en.wikipedia.org/wiki/Etna-class_cruiser_(1941)
 {
 #NAME= [FW]DE 827 - Italy: Sale of Naval Assets (AI - 50%)
 #POPUP=
@@ -13141,7 +13148,7 @@
 {
 #NAME= [FW]DE 828 - Italy: Heavy Investment In Aircraft Industry Development? (AI - 25%)
 #POPUP=
-#MESSAGE=Commander in Chief %N%N %BRe: %BAircraft %BIndustry %N%N Il Duce, our air force dwarfs in comparison to other major powers and will continue to be hampered by the local aircraft industry which uses obsolete construction methods.  Even with technical assistance from Germany the situation is expected to improve very little without significant expenditures.  Planned development work of long range bombers and an expanded air fleet will require significant investment into the industry if we would expect to produce at an effective scale. %N%N Our advisors suggest that the present is the only time to begin investing into infrastructure necessary to produce air fleets which will be effective over the course of the war. The total cost of this investment would be %B1000 MPPs (25 MPPs for 40 turns). %N%N Il Duce, should we begin significantly investing into our nations aircraft industry %B(YES)?
+#MESSAGE=Commander in Chief %N%N %BRe: %BAircraft %BIndustry %N%N Il Duce, our air force dwarfs in comparison to other major powers and will continue to be hampered by the local aircraft industry which uses obsolete construction methods.  Even with technical assistance from Germany the situation is expected to improve very little without significant expenditures.  Planned development work of long range bombers and an expanded air fleet will require significant investment into the industry if we would expect to produce at an effective scale. %N%N Our advisors suggest that the present is the only time to begin investing into infrastructure necessary to produce air fleets which will be effective over the course of the war. The total cost of this investment would be %B1000 MPPs (20 MPPs for 40 turns). %N%N Il Duce, should we begin significantly investing into our nations aircraft industry %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -13154,10 +13161,10 @@
 #TRIGGER= 100
 #DISPLAY_ORDER= 0
 #DECISION= 828
-#MPP_UPDOWN= -25
+#MPP_UPDOWN= -20
 #MPP_TURNS= 40
 #MPP_TEXT= Aircraft Industry Development
-#NOTES= %N%N While numerically still a force to be reckoned with, the Regia Aeronautica was hampered by the local aircraft industry which was using obsolete production methods. Technical assistance provided by its German ally did little to improve the situation. %N%N If you say %B(YES) and choose to significantly invest in the Regia Aeronautica, Italy will deploy the following fully upgraded units each with +1 Experience Near Rome: %N%N%T - Fighter (June 1941) %N%T - Medium Bomber (September 1941) %N%T - Tactical Bomber (December 1941) %N%T - Strategic Bomber (March 1942) %N%N Alternatively, the total production cost for these aircraft would be 1200 MPPs if manually constructed.  However, the investment costs for the Air Industry Development will consume approximately 20-25% of Italy's total production over the next 2.5 years.
+#NOTES= %N%N While numerically still a force to be reckoned with, the Regia Aeronautica was hampered by the local aircraft industry which was using obsolete production methods. Technical assistance provided by its German ally did little to improve the situation. %N%N If you say %B(YES) and choose to significantly invest in the Regia Aeronautica, Italy will deploy the following fully upgraded units each with +1 Experience Near Rome: %N%N%T - Fighter (June 1941) %N%T - Medium Bomber (September 1941) %N%T - Tactical Bomber (December 1941) %N%N Alternatively, the total production cost for these aircraft would be 800 MPPs if manually constructed.  However, the investment costs for the Air Industry Development will consume approximately 15-20% of Italy's total production over the next 2.5 years.
 #NOTES_POSITION= 171,101
 ; Set AI acceptance % (AI will accept 25% of the time)
 #AI_RESPONSE= 25
@@ -13246,43 +13253,6 @@
 ; Italy(59) is Axis and fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 831 - USSR: Reinforce Murmansk Or Moscow District? (AI - 75% YES)
-#POPUP=
-#MESSAGE=Red Army Headquarters %N%N %BRe: %BMurmansk %BDistrict %N%N Now that Finland has joined the war it is possible that our Northern supply route will come under attack from Finnish and German forces. %N%N We should consider sending reinforcements to the area to keep our supply lines open so that we can accept military aid from the Western Allies. %N%N Should we send reinforcements to the Murmansk district %B(YES) or the Moscow District %B(NO)?
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#DECISION= 831
-#MPP_UPDOWN= 0
-#MPP_TURNS= 0
-#MPP_TEXT=
-#NOTES= If you select %B(YES), a fully upgraded HQ and Infantry Corps will deploy at Murmansk. %N%N If you select %B(NO), a fully upgraded HQ and Infantry Corps will deploy at Moscow instead.
-#NOTES_POSITION= 211,16
-#AI_RESPONSE= 75
-#AI_RESPONSE_POPUP=
-#DATE= 1939/09/03
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Moscow(221,65) is Allied
-#ALIGNMENT_POSITION= 221,65 [2]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied and fully mobilized
-; Finland(39) is Axis and fully mobilized
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 39 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -14722,7 +14692,7 @@
 #ALIGNMENT_POSITION= 172,121 [1]
 ; Palermo is Axis
 #ALIGNMENT_POSITION= 173,109 [1]
-; Syracuse is Axis
+; Syracuse(176,112)is Axis
 #ALIGNMENT_POSITION= 176,112 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USA(115) Allied and not surrendered
@@ -16361,7 +16331,7 @@
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT=
-#NOTES= %N%N If you select %B(YES), Italy will receive 15 MPPs per turn.  However, it will cost Germany 25 MPPs to redirect its resources to her less efficient Ally in Italy. %N%N Italy will continue receiving resources from Germany each turn so long as USSR remains neutral.
+#NOTES= %N%N Historically, Germany supplied Italy with about one million tons of coal a month beginning in the spring of 1940, an amount that exceeded even Mussolini's demand of August 1939 that Italy receive six million tons of coal for its first twelve months of war. %N%N If you select %B(YES), Italy will receive 15 MPPs per turn.  However, it will cost Germany 25 MPPs to redirect its resources to her less efficient Ally in Italy. %N%N Italy will continue receiving resources from Germany each turn so long as USSR remains neutral.
 #NOTES_POSITION= 171,101
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP= Germany Begins Coal Exports To Italy
@@ -17053,54 +17023,6 @@
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; 3 US units is within 6 hexes of Lisbon(128,108)
 #CONDITION_POSITION= 128,108 [6,6] [3,3] [2] [115]
-}
-
-;NEW 10.0 Beta
-; Fall Weiss II
-{
-#NAME= [FW]DE 994 - Germany: Strategic Reserves In France (AI - 100%)
-#POPUP=
-#MESSAGE=Führerhauptquartier %N%N While we battle along the Eastern Front we are forced to consider the defense of France should the Allies successfully open up a second front in the West.%N%N It is therefore paramount that we strengthen our mainland defenses by transferring forces from the Eastern Front to ward off any Allied invasion plans or to push them back into the sea.%N%N There is ongoing debate within High Command whether these reserve units should be consolidated into stronger centralized units ready to smash the Allies as they advance inland or should they be spread out to cover a wider defensive area.  These units could prove crucial in repelling any invasion and positioning of these reserves should be considered carefully.%N%N The total cost of construction will be %B800 MPPs (100 MPPs for 8 turns).%N%N Would you like to consolidate these reserves or spread them out further across France?
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 3
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#DECISION= 994
-#MPP_UPDOWN= -100
-#MPP_TURNS= 8
-#MPP_TEXT= Strategic Reserves In France
-#NOTES= Germany will deploy one of two strategic reserve defenses when the Allies land in France or even bolder the coast of Germany based on your selection below.%N%N If you select %B(YES), the following reserves will each deploy at Dijon: %N%N%T - 1 HQ %N%T - 1 Tank Corps (+2 Experience) %N%T - 1 Infantry Army (+2 Experience) %N%T - 1 Paratrooper (8 strength) %N%N If you select %B(NO), the following reserves will deploy across Poitiers, Bourges and Dijon in France: %N%N%T - 1 HQ %N%T - 2 Tank Divisions (+0.5 Experience) %N%T - 3 Infantry Divisions (+0.5 Experience) %N%T - 1 Paratrooper (8 strength) %N%T - 1 Mechanized Division (5 strength)
-#NOTES_POSITION= 156,88
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1942/12/24
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-; Bristol(142,78) is Allied
-#ALIGNMENT_POSITION= 142,78 [2]
-; Calais(151,79) is Axis
-#ALIGNMENT_POSITION= 151,79 [1]
-; Amiens(151,81) is Axis
-#ALIGNMENT_POSITION= 151,81 [1]
-; Le Havre(147,82) is Axis
-#ALIGNMENT_POSITION= 147,82 [1]
-; Brest(138,86) is Axis
-#ALIGNMENT_POSITION= 138,86 [1]
-; Dijon(156,88) is Axis
-#ALIGNMENT_POSITION= 156,88 [1]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 ;NEW 10.0 Beta

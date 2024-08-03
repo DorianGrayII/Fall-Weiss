@@ -566,7 +566,7 @@
 #TEXT_RGB= 255,255,255
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION= 218,119
-; Damascus is Allied
+; Damascus(218,119) is Allied
 #ALIGNMENT_POSITION= 218,119 [2]
 #VARIABLE_CONDITION= 59 [1] [0] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
@@ -865,7 +865,8 @@
 #AI= 4
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 0[0]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 1
@@ -1378,7 +1379,8 @@
 #TYPE= 3
 #AI= 3
 #GV= 1[1,100]
-#LINK= 0[0]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
 #LEVEL= 0
 #COUNTRY_ID= 116
 #TRIGGER= 100
@@ -1407,7 +1409,8 @@
 #TYPE= 1
 #AI= 3
 #GV= 1[1,100]
-#LINK= 0[0]
+; DE 51 - Disable to Remove All Strategic Advice Popups
+#LINK= 51[1]
 #LEVEL= 0
 #COUNTRY_ID= 116
 #TRIGGER= 100
@@ -5197,6 +5200,7 @@
 #AI= 4
 #LEVEL= 0
 #GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
 #LINK= 51[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -5229,6 +5233,7 @@
 #AI= 4
 #LEVEL= 0
 #GV= 1[1,100]
+; DE 51 - Disable to Remove All Strategic Advice Popups
 #LINK= 51[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -6267,8 +6272,8 @@
 
 ; Italian Defeat in East Africa (1)
 {
-#NAME= DE 112 - Ethiopia Is Liberated As Haile Selassie Returns To Addis Ababa
-#POPUP= Ethiopia Is Liberated As Haile Selassie Returns To Addis Ababa
+#NAME= DE 112 - Ethiopia Is Liberated As Haile Selassie Returns To Abyssinia
+#POPUP= Ethiopia Is Liberated As Haile Selassie Returns To Addis Abyssinia
 #MESSAGE=
 #IMAGE= addisababaliberation.png
 #SOUND=
@@ -6278,6 +6283,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 112[1]
+; Abyssinia(1)
 #COUNTRY_ID= 1
 #TRIGGER= 100
 #PRIVATE= 0
@@ -6484,7 +6490,7 @@
 ;
 ; The Long Range Desert Group Reports A Significant Enemy Presence Near Benghazi
 {
-#NAME= DE 112 - British Report To The Commander-in-Chief of Middle East Command (LRDG1) (15%)
+#NAME= DE 121 - British Report To The Commander-in-Chief of Middle East Command (LRDG1) (15%)
 #POPUP= Report To The Commander-in-Chief of Middle East Command
 #MESSAGE=
 #IMAGE= lrdg1a.png, lrdg1b.png, lrdg1c.png, lrdg1d.png, lrdg1e.png

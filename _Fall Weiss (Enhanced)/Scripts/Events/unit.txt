@@ -396,7 +396,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 {
-#NAME= Algeria: Fighter Deployed (Algiers)
+#NAME= Algeria: Fighter (Algiers)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -414,7 +414,33 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1939/09/01
 #DESTINATION_RESOURCE= 145,115
+; Algeria(4) Allied
 #VARIABLE_CONDITION= 4 [2] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 29 [10] [0] [1st AF]
+}
+
+{
+#NAME= Algeria: Fighter (Algiers)
+#POPUP=
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 4
+#TRIGGER= 100
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 0
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1939/09/01
+#DESTINATION_RESOURCE= 145,115
+; Algeria(4) Axis
+#VARIABLE_CONDITION= 4 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 29 [10] [0] [1st AF]
 }
@@ -422,7 +448,7 @@
 ; Vichy France (Algiers Corps)
 ; This event will be called (by the game engine) when Vichy France is DoW'd upon
 {
-#NAME= Algeria: Infantry Corps Deployed (Algiers XIX Corps)
+#NAME= Algeria: Infantry Corps (Algiers XIX Corps)
 #POPUP= Vichy French Forces In Algiers Show Increased Resolve To Resist The Axis
 #IMAGE=
 #SOUND=
@@ -440,9 +466,37 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1939/09/01
 #DESTINATION_RESOURCE= 152,113
+; Algeria(4), Allied
 #VARIABLE_CONDITION= 4 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 4 [10] [0] [XIX]
+#UNIT= 4 [5] [0] [XIX]
+}
+
+; Vichy France (Algiers Corps)
+; This event will be called (by the game engine) when Vichy France is DoW'd upon by the Allies
+{
+#NAME= Algeria: Infantry Corps (Algiers XIX Corps) (35%)
+#POPUP= Vichy French Forces In Algiers Show Increased Resolve To Resist The Allies
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 4
+#TRIGGER= 35
+#PRIVATE= 0
+#DISPLAY_TURN= 0
+#FULL_RESEARCH= 0
+#DATE= 1939/09/01
+#FAILSAFE_DATE= 1939/09/01
+#DESTINATION_RESOURCE= 152,113
+; Algeria(4) Axis
+#VARIABLE_CONDITION= 4 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+#UNIT= 4 [5] [0] [XIX]
 }
 
 ; Canada (Army)
@@ -521,16 +575,15 @@
 #UNIT= 2 [10] [0] []
 }
 
-; Finland (Corps)
 {
-#NAME= [FW]Finland(AI): (Axis) Corps - Turku - 1941
+#NAME= Finland(AI): (Axis) Corps - Turku - 1941 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
 #TYPE= 1
-#AI= 1
-#LEVEL= 0
+#AI= 5
+#LEVEL= 2
 #GV= 1[1,100]
 #LINK= 0[0]
 #COUNTRY_ID= 39
@@ -549,7 +602,7 @@
 
 ; Finland as Allied
 {
-#NAME= [FW]Finland: The (Allied) Finnish Army Deploys
+#NAME= Finland: The (Allied) Finnish Army Deploys
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -574,7 +627,7 @@
 }
 
 {
-#NAME= [FW]Finland: The (Allied) Finnish Army Deploys
+#NAME= Finland: The (Allied) Finnish Army Deploys
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -599,7 +652,7 @@
 }
 
 {
-#NAME= [FW]Finland: The (Allied) Finnish Army Deploys
+#NAME= Finland: The (Allied) Finnish Army Deploys
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -624,7 +677,7 @@
 }
 
 {
-#NAME= [FW]Finland: The (Axis) Finnish Army Deploys (2) (Irrespective of Winter War)
+#NAME= Finland: The (Axis) Finnish Army Deploys (2) (Irrespective of Winter War)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -698,7 +751,7 @@
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; No Axis units within 5 hexes of Paris(151,84)
 #CONDITION_POSITION= 151,84 [5,5] [0,0] [1] [0]
-#UNIT= 0 [5] [0] [de Lattre de Tassigny]
+#UNIT= 0 [5] [0] [Lattre de Tassigny]
 }
 
 ; Germany (Tank)
@@ -733,9 +786,7 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 5
 #LEVEL= 0
@@ -758,7 +809,7 @@
 
 ; Germany (Barbarossa)
 {
-#NAME= Germany(AI): Barbarossa HQ - Siauliai - 1941
+#NAME= Germany(AI): Barbarossa HQ - Siauliai - 1941 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -838,7 +889,7 @@
 
 ; Germany (Corps)
 {
-#NAME= Germany(AI): Corps - Berlin - 1942
+#NAME= Germany(AI): Corps - Berlin - 1942 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1053,7 +1104,7 @@
 #SOUND=
 #FLAG= 1
 #TYPE= 1
-#AI= 1
+#AI= 5
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
@@ -1130,7 +1181,7 @@
 #SOUND=
 #FLAG= 1
 #TYPE= 1
-#AI= 1
+#AI= 5
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
@@ -1252,7 +1303,7 @@
 
 ; Germany (Garrison)
 {
-#NAME= Germany(AI): Garrison - Caen - 1943
+#NAME= Germany(AI): Garrison - Caen - 1943 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1382,7 +1433,7 @@
 
 ; Germany (Garrison)
 {
-#NAME= Germany(AI): Garrison - Le Havre - 1943
+#NAME= Germany(AI): Garrison - Le Havre - 1943 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1518,9 +1569,7 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 5
 #LEVEL= 2
@@ -1543,7 +1592,7 @@
 
 ; Germany (Rennes)
 {
-#NAME= Germany(AI): Garrison - Rennes - 1943
+#NAME= Germany(AI): Garrison - Rennes - 1943 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1730,9 +1779,7 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 5
 #LEVEL= 2
@@ -1754,7 +1801,7 @@
 
 ; Germany (Barbarossa)
 {
-#NAME= Germany(AI): Garrison Reserves - Warsaw - 1942
+#NAME= Germany(AI): Garrison Reserves - Warsaw - 1942 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1880,14 +1927,14 @@
 
 ; Germany (Post Italian Surrender)
 {
-#NAME= Germany(AI): Munich Defense
+#NAME= Germany(AI): Munich Defense (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
 #TYPE= 1
 #AI= 1
-#LEVEL= 0
+#LEVEL= 2
 #GV= 1[1,100]
 #LINK= 0[0]
 #COUNTRY_ID= 45
@@ -1913,7 +1960,7 @@
 
 ; Berlin decides to reinforce Rommel
 {
-#NAME= Germany(AI): North Africa Reinforcements - 1941 (25%)
+#NAME= Germany(AI): North Africa Reinforcements - 1941 (25%) (Intermediate)
 #POPUP= Berlin Reinforces Rommel - Ferdinand Schörner Arrives In Libya
 #IMAGE=
 #SOUND=
@@ -2005,7 +2052,7 @@
 #SOUND=
 #FLAG= 1
 #TYPE= 1
-#AI= 1
+#AI= 5
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
@@ -2025,7 +2072,7 @@
 
 ; Germany (Sub)
 {
-#NAME= Germany(AI): Sub - Arcachon - 1942
+#NAME= Germany(AI): Sub - Arcachon - 1942 (Expert)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2116,7 +2163,7 @@
 
 ; Germany (Barbarossa)
 {
-#NAME= Germany(AI): Tank Reserves - Warsaw - 1942
+#NAME= Germany(AI): Tank Reserves - Warsaw - 1942 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2329,7 +2376,7 @@
 
 ; Italian AI Helper - North Africa (Italy)
 {
-#NAME= Italy(AI): AI Helper
+#NAME= Italy(AI): Corps - Rome - 1939
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2410,9 +2457,7 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 5
 #LEVEL= 0
@@ -2438,9 +2483,7 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 1
 #LEVEL= 0
@@ -2453,6 +2496,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1943/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Syracuse(176,112)
 #DESTINATION_RESOURCE= 176,112
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2465,9 +2509,7 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 5
 #LEVEL= 0
@@ -2488,9 +2530,8 @@
 #UNIT= 1 [5] [0] [2nd Trieste]
 }
 
-; Italy (Tactical Bomber)
 {
-#NAME= Italy(AI): Greece Reserves - Bitola - 1941
+#NAME= Italy(AI): Army - Bitola - 1941
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2559,10 +2600,11 @@
 #FULL_RESEARCH= 1
 #DATE= 1940/12/01
 #FAILSAFE_DATE= 1948/01/01
+; Syracuse(176,112)
 #DESTINATION_RESOURCE= 176,112
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 4 [10] [0] []
+#UNIT= 4 [10] [0] [1st Syracuse]
 }
 
 ; Italy (Tactical Bomber)
@@ -2625,9 +2667,7 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 0
 #GV= 1[1,100]
@@ -2653,9 +2693,7 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 0
 #GV= 1[1,100]
@@ -2681,9 +2719,7 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 0
 #GV= 1[1,100]
@@ -2709,9 +2745,7 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 0
 #GV= 1[1,100]
@@ -2724,6 +2758,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Syracuse(176,112)
 #DESTINATION_RESOURCE= 176,112
 ; USA(115) Allied but not yet fully mobilized
 #VARIABLE_CONDITION= 115 [2] [0] [0]
@@ -2879,6 +2914,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1939/09/01
+; Damascus(218,119)
 #DESTINATION_RESOURCE= 218,119
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2937,7 +2973,6 @@
 #UNIT= 5 [10] [0.5] []
 }
 
-; UK (Garrison)
 {
 #NAME= UK(AI): Artillery, Corps, Army - Suez - 1941 (Novice)
 #POPUP=
@@ -2946,7 +2981,7 @@
 #FLAG= 1
 #TYPE= 1
 #AI= 2
-#LEVEL= 0
+#LEVEL= 1
 #GV= 1[1,100]
 #LINK= 0[0]
 #COUNTRY_ID= 112
@@ -2959,21 +2994,20 @@
 ; Suez(210,126)
 #DESTINATION_RESOURCE= 210,126
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; No Allied units in Alexandria
+; No Allied units in Alexandria(206,124)
 #CONDITION_POSITION= 206,124 [0,0] [0,0] [2] [0]
 #UNIT= 17 [10] [0] []
 #UNIT= 4 [10] [0] []
 #UNIT= 5 [10] [0] []
 }
 
-;
-; British Forces Mobilize In Egypt (AI Helper)
 {
-#NAME= UK(AI): British Forces Mobilize In Egypt (25%)
+#NAME= UK(AI): British Forces Mobilize In Egypt (25%) - 1941
 #POPUP=
 #IMAGE=
 #SOUND=
-#FLAG= 1
+; disabled goofy event awarding Strat Bomber, seriously?
+#FLAG= 0
 #TYPE= 1
 #AI= 2
 #LEVEL= 0
@@ -2993,7 +3027,6 @@
 #UNIT= 32 [10] [0.8] [Desert]
 }
 
-; UK (Garrison)
 {
 #NAME= UK(AI): Corps - El Arish - 1941 (Intermediate)
 #POPUP=
@@ -3019,7 +3052,6 @@
 #UNIT= 4 [10] [0] []
 }
 
-; UK (Corps)
 {
 #NAME= UK(AI): Corps - Mersa Matruh - 1940
 #POPUP=
@@ -3071,7 +3103,6 @@
 #UNIT= 4 [10] [0] [Oxford]
 }
 
-; Currently Off
 {
 #NAME= UK(AI): Corps - Plymouth - 1940
 #POPUP=
@@ -3114,7 +3145,7 @@
 #DISPLAY_TURN= 0
 #FULL_RESEARCH= 0
 #DATE= 1940/01/01
-#FAILSAFE_DATE= 1940/09/01
+#FAILSAFE_DATE= 1940/01/01
 #DESTINATION_RESOURCE= 144,79
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3137,7 +3168,7 @@
 #PRIVATE= 0
 #DISPLAY_TURN= 0
 #FULL_RESEARCH= 0
-#DATE= 1940/09/01
+#DATE= 1940/11/01
 #FAILSAFE_DATE= 1948/01/01
 ; Sheffield(144,73)
 #DESTINATION_RESOURCE= 144,73
@@ -3277,7 +3308,7 @@
 
 ; Egypt (AI Helper)
 {
-#NAME= UK(AI): Egypt HQ Benghazi
+#NAME= UK(AI): HQ - Benghazi - 1940
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -3307,7 +3338,7 @@
 
 ; Egypt (AI Helper)
 {
-#NAME= UK(AI): Egypt Mobile Units
+#NAME= UK(AI): Egypt Mobile Units - El Alamein
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -3363,7 +3394,7 @@
 }
 
 {
-#NAME= UK(AI): Garrison - Heraklion (25%)
+#NAME= UK(AI): Garrison - Heraklion (25%) (Intermediate)
 #POPUP= Allies Send An Emergency Garrison To Crete
 #IMAGE=
 #SOUND=
@@ -3391,14 +3422,14 @@
 }
 
 {
-#NAME= UK(AI): HQ - Manchester - 1940
+#NAME= UK(AI): HQ - Manchester - 1940 (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
 #TYPE= 1
 #AI= 2
-#LEVEL= 0
+#LEVEL= 3
 #GV= 1[1,100]
 #LINK= 0[0]
 #COUNTRY_ID= 112
@@ -3415,13 +3446,11 @@
 }
 
 {
-#NAME= UK(AI): HQ/Corps/Army - Sheffield - 1943 (Intermediate) (25%)
+#NAME= UK(AI): HQ/Corps/Army - Sheffield - 1943 (25%) (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 2
 #LEVEL= 2
@@ -3494,7 +3523,7 @@
 }
 
 {
-#NAME= UK(AI): Medium Bomber - Oxford - 1943
+#NAME= UK(AI): Medium Bomber - Oxford - 1943 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -3520,7 +3549,7 @@
 }
 
 {
-#NAME= UK(AI): Medium Bomber - Oxford - 1944
+#NAME= UK(AI): Medium Bomber - Oxford - 1944 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -3650,14 +3679,14 @@
 }
 
 {
-#NAME= UK(AI): Naval Reinforcements - Port Said - 1940
+#NAME= UK(AI): Naval Reinforcements - Port Said - 1940 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
 #TYPE= 1
 #AI= 2
-#LEVEL= 0
+#LEVEL= 2
 #GV= 1[1,100]
 #LINK= 0[0]
 #COUNTRY_ID= 112
@@ -3675,14 +3704,14 @@
 }
 
 {
-#NAME= UK(AI): Naval Reinforcements - Rosyth - 1940
+#NAME= UK(AI): Naval Reinforcements - Rosyth - 1940 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
 #TYPE= 1
 #AI= 2
-#LEVEL= 0
+#LEVEL= 2
 #GV= 1[1,100]
 #LINK= 0[0]
 #COUNTRY_ID= 112
@@ -3800,7 +3829,7 @@
 }
 
 {
-#NAME= UK(AI): Syrian Garrison - 1941
+#NAME= UK(AI): Syrian Garrison - Levant - 1941
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -3817,6 +3846,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1939/09/01
+; Demascus(218,119)
 #DESTINATION_RESOURCE= 218,119
 #VARIABLE_CONDITION= 105 [1] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3903,7 +3933,7 @@
 ; replacement script
 ; British Forces Mobilize In Egypt
 {
-#NAME= UK: British Forces Mobilize In Egypt
+#NAME= UK: British Forces Mobilize In Egypt - Cairo - 1941 (75%)
 #POPUP= British Forces Mobilize In Egypt
 #IMAGE= westerndesertaf.png
 #SOUND=
@@ -3914,7 +3944,7 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #COUNTRY_ID= 112
-#TRIGGER= 100
+#TRIGGER= 75
 #PRIVATE= 0
 #DISPLAY_TURN= 0
 #FULL_RESEARCH= 1
@@ -4110,7 +4140,7 @@
 
 ; USA (HQ/Tactical/Medium Bomber)
 {
-#NAME= USA(AI): HQ/Tactical/Medium Bomber - Plymouth - 1943
+#NAME= USA(AI): HQ/Tactical/Medium Bomber - Plymouth - 1943 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -4139,7 +4169,7 @@
 
 ; USA (HQ/Tactical/Medium Bomber)
 {
-#NAME= USA(AI): HQ/Tactical/Medium Bomber - Plymouth - 1944
+#NAME= USA(AI): HQ/Tactical/Medium Bomber - Plymouth - 1944 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -4206,7 +4236,7 @@
 ; USA
 ; This event will be called (by the game engine) when Axis units occupy Spain
 {
-#NAME= USA(AI): Naval Assets Transferred From The Pacific
+#NAME= USA(AI): Naval Assets Transferred From The Pacific (Veteran)
 #POPUP= USA Transfers Naval Assets From The Pacific
 #IMAGE=
 #SOUND= naval_movement.ogg
@@ -4261,7 +4291,7 @@
 
 ; USA
 {
-#NAME= USA(AI): Naval Reinforcements - Norfolk - 1943
+#NAME= USA(AI): Naval Reinforcements - Norfolk - 1943 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -4425,8 +4455,8 @@
 #DESTINATION_RESOURCE= 6,112
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 36 [10] [1] [New York]
-#UNIT= 36 [10] [1] [Arkansas]
+#UNIT= 36 [10] [0] [New York]
+#UNIT= 36 [10] [0] [Arkansas]
 }
 
 ;
@@ -4453,8 +4483,8 @@
 #DESTINATION_RESOURCE= 15,102
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 38 [10] [1] [Tuscaloosa]
-#UNIT= 39 [10] [1] [Brooklyn]
+#UNIT= 38 [10] [0] [Tuscaloosa]
+#UNIT= 39 [10] [0] [Brooklyn]
 }
 
 ;
@@ -4481,9 +4511,9 @@
 #DESTINATION_RESOURCE= 17,99
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 36 [10] [1] [Texas]
-#UNIT= 40 [10] [1] [Wainwright]
-#UNIT= 40 [10] [1] [Leary]
+#UNIT= 36 [10] [0] [Texas]
+#UNIT= 40 [10] [0] [Wainwright]
+#UNIT= 40 [10] [0] [Leary]
 }
 
 ; USA
@@ -4581,9 +4611,8 @@
 #UNIT= 5 [10] [0] [1st Baku]
 }
 
-; USSR (Army)
 {
-#NAME= USSR(AI): Army - Grozny
+#NAME= USSR(AI): Army(s) - Grozny
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -4611,9 +4640,8 @@
 #UNIT= 5 [10] [0] [2nd Grozny]
 }
 
-; USSR (Army)
 {
-#NAME= USSR(AI): Army - Leningrad
+#NAME= USSR(AI): Army - Leningrad (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -4634,7 +4662,7 @@
 #DESTINATION_RESOURCE= 206,52
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis unit within 3 hexes of Pskov OR
-; Axis unit within 3 hexes of Tartu OR
+; Axis unit within 3 hexes of Tartu(199,57) OR
 ; Axis unit within 5 hexes of Novgorod OR
 ; Axis unit within 5 hexes of Leningrad (north)
 #CONDITION_POSITION= 202,59 [3,3] [1,1] [1] [0]
@@ -4666,7 +4694,7 @@
 #DESTINATION_RESOURCE= 205,56
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis unit within 3 hexes of Pskov OR
-; Axis unit within 3 hexes of Tartu OR
+; Axis unit within 3 hexes of Tartu(199,57) OR
 ; Axis unit within 5 hexes of Novgorod
 #CONDITION_POSITION= 202,59 [3,3] [1,1] [1] [0]
 #CONDITION_POSITION= 199,57 [3,3] [1,1] [1] [0]
@@ -4747,7 +4775,7 @@
 #DESTINATION_RESOURCE= 202,54
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis unit within 3 hexes of Pskov OR
-; Axis unit within 3 hexes of Tartu OR
+; Axis unit within 3 hexes of Tartu(199,57) OR
 ; Axis unit within 5 hexes of Novgorod
 #CONDITION_POSITION= 202,59 [3,3] [1,1] [1] [0]
 #CONDITION_POSITION= 199,57 [3,3] [1,1] [1] [0]
@@ -4757,7 +4785,7 @@
 
 ; USSR (Army)
 {
-#NAME= USSR(AI): Army - Stalingrad
+#NAME= USSR(AI): Army - Stalingrad (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -4782,7 +4810,8 @@
 #CONDITION_POSITION= 224,85 [5,5] [1,1] [1] [0]
 #CONDITION_POSITION= 236,98 [8,8] [1,1] [1] [0]
 #UNIT= 5 [10] [0] []
-#UNIT= 2 [10] [0] []
+#UNIT= 5 [10] [0] []
+#UNIT= 5 [10] [0] []
 }
 
 ; USSR (Army)
@@ -4810,11 +4839,12 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ; Infantry Army(5)
 #UNIT= 5 [10] [0] []
+#UNIT= 5 [10] [0] []
 }
 
 ; USSR (Army)
 {
-#NAME= USSR(AI): Army - Tbilisi
+#NAME= USSR(AI): Army - Tbilisi (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -4843,7 +4873,7 @@
 
 ; USSR (reinforcements)
 {
-#NAME= USSR(AI): Army/Corps - Rzhev
+#NAME= USSR(AI): Army/Corps - Rzhev (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -4872,7 +4902,7 @@
 
 ; USSR (Army)
 {
-#NAME= USSR(AI): Artillery - Leningrad
+#NAME= USSR(AI): Corps - Leningrad (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -4892,20 +4922,22 @@
 #DESTINATION_RESOURCE= 206,51
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis unit within 3 hexes of Pskov OR
-; Axis unit within 3 hexes of Tartu OR
+; Axis unit within 3 hexes of Tartu(199,57) OR
 ; Axis unit within 5 hexes of Novgorod OR
 ; Axis unit within 5 hexes of Leningrad (north)
 #CONDITION_POSITION= 202,59 [3,3] [1,1] [1] [0]
 #CONDITION_POSITION= 199,57 [3,3] [1,1] [1] [0]
 #CONDITION_POSITION= 208,57 [5,5] [1,1] [1] [0]
 #CONDITION_POSITION= 206,51 [5,5] [1,1] [1] [0]
-#UNIT= 16 [10] [0] []
+#UNIT= 4 [10] [0] []
+#UNIT= 4 [10] [0] []
+#UNIT= 4 [10] [0] []
 }
 
 ; modified by Fall Weiss II
 ; USSR (Caucasus Defense)
 {
-#NAME= USSR(AI): Caucasus Defense - Tbilisi
+#NAME= USSR(AI): Caucasus Defense - Tbilisi (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -4931,9 +4963,8 @@
 #CONDITION_POSITION= 229,102 [8,8] [1,1] [1] [0]
 #UNIT= 0 [10] [0] []
 #UNIT= 4 [10] [0] [1st Tbilisi Rifle]
-; following removed by Fall Weiss II?
-; UNIT= 4 [10] [0] []
-; UNIT= 5 [10] [0] []
+#UNIT= 4 [10] [0] []
+#UNIT= 5 [10] [0] []
 #UNIT= 5 [10] [0] [1st Tbilisi]
 #UNIT= 26 [10] [0] [1st Tbilisi]
 #UNIT= 29 [10] [0] [1st Tbilisi]
@@ -4968,7 +4999,7 @@
 
 ; USSR (reinforcements)
 {
-#NAME= USSR(AI): Corps - Leningrad
+#NAME= USSR(AI): Corps - Leningrad (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -4988,7 +5019,7 @@
 #DESTINATION_RESOURCE= 206,51
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis unit within 3 hexes of Pskov OR
-; Axis unit within 3 hexes of Tartu OR
+; Axis unit within 3 hexes of Tartu(199,57) OR
 ; Axis unit within 5 hexes of Novgorod OR
 ; Axis unit within 5 hexes of Leningrad (north)
 #CONDITION_POSITION= 202,59 [3,3] [1,1] [1] [0]
@@ -5001,12 +5032,11 @@
 
 ; USSR (Corps)
 {
-#NAME= USSR(AI): Corps - Stalingrad - 1942
+#NAME= USSR(AI): Corps - Stalingrad - 1942 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
-; Disabled in Fall Weiss II
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 2
 #LEVEL= 2
@@ -5111,7 +5141,7 @@
 
 ; USSR (Corps)
 {
-#NAME= USSR(AI): Corps/Army - Kamyshin - 1942
+#NAME= USSR(AI): Corps/Army - Kamyshin - 1942 (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5140,7 +5170,7 @@
 
 ; USSR (reinforcements)
 {
-#NAME= USSR(AI): Corps/Division - Pskov
+#NAME= USSR(AI): Corps/Division - Pskov (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5162,7 +5192,7 @@
 ; Axis units within 2 hexes of Riga
 #CONDITION_POSITION= 194,62 [2,2] [1,1] [1] [0]
 #UNIT= 4 [10] [0] [1st Pskov Rifle]
-#UNIT= 2 [10] [0] []
+#UNIT= 5 [10] [0] []
 }
 
 ; USSR (Destroyers)
@@ -5192,7 +5222,7 @@
 
 ; USSR (reinforcements)
 {
-#NAME= USSR(AI): Divisions - Orel
+#NAME= USSR(AI): Corps/Army - Orel (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5214,13 +5244,14 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis units within 5 hexes of Orel
 #CONDITION_POSITION= 214,73 [5,5] [1,1] [1] [0]
-#UNIT= 2 [10] [0] [1st Orel]
-#UNIT= 2 [10] [0] [2nd Orel]
+#UNIT= 4 [10] [0] [1st Orel]
+#UNIT= 4 [10] [0] [2nd Orel]
+#UNIT= 5 [10] [0] []
 }
 
 ; USSR (Engineers)
 {
-#NAME= USSR(AI): Engineers - Leningrad - 1940
+#NAME= USSR(AI): Engineers - Leningrad - 1940 (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5246,7 +5277,7 @@
 
 ; USSR (Army)
 {
-#NAME= USSR(AI): Fighter - Volkhov
+#NAME= USSR(AI): Fighter - Volkhov (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5266,7 +5297,7 @@
 #DESTINATION_RESOURCE= 210,52
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis unit within 3 hexes of Pskov OR
-; Axis unit within 3 hexes of Tartu OR
+; Axis unit within 3 hexes of Tartu(199,57) OR
 ; Axis unit within 5 hexes of Novgorod
 #CONDITION_POSITION= 202,59 [3,3] [1,1] [1] [0]
 #CONDITION_POSITION= 199,57 [3,3] [1,1] [1] [0]
@@ -5276,7 +5307,7 @@
 
 ; USSR (Fighters)
 {
-#NAME= USSR(AI): Fighters - Stalingrad - 1942
+#NAME= USSR(AI): Fighters - Stalingrad - 1942 (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5302,7 +5333,7 @@
 
 ; USSR (reinforcements)
 {
-#NAME= USSR(AI): Garrison - Kandalaksha
+#NAME= USSR(AI): Garrison - Kandalaksha (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5327,7 +5358,7 @@
 
 ; USSR (reinforcements)
 {
-#NAME= USSR(AI): Garrison - Kestenga
+#NAME= USSR(AI): Garrison - Kestenga (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5377,7 +5408,7 @@
 
 ; USSR (Army)
 {
-#NAME= USSR(AI): HQ - Volkhov
+#NAME= USSR(AI): HQ - Volkhov (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5397,7 +5428,7 @@
 #DESTINATION_RESOURCE= 210,52
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis unit within 3 hexes of Pskov OR
-; Axis unit within 3 hexes of Tartu OR
+; Axis unit within 3 hexes of Tartu(199,57) OR
 ; Axis unit within 5 hexes of Novgorod
 #CONDITION_POSITION= 202,59 [3,3] [1,1] [1] [0]
 #CONDITION_POSITION= 199,57 [3,3] [1,1] [1] [0]
@@ -5407,7 +5438,7 @@
 
 ; USSR (Reinforcements)
 {
-#NAME= USSR(AI): HQ/Corps/Army - Cherepovets - 1942
+#NAME= USSR(AI): HQ/Corps/Army - Cherepovets - 1942 (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5496,7 +5527,7 @@
 
 ; USSR
 {
-#NAME= USSR(AI): Kerch
+#NAME= USSR(AI): Kerch (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5549,9 +5580,8 @@
 #UNIT= 5 [10] [0.5] []
 }
 
-; USSR (reinforcements)
 {
-#NAME= USSR(AI): Mech Division - Kem
+#NAME= USSR(AI): Corps - Kem
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5571,12 +5601,12 @@
 #DESTINATION_RESOURCE= 214,34
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 3 [8] [0] [1st Kem]
+#UNIT= 4 [8] [0] [1st Kem]
 }
 
 ; USSR (reinforcements)
 {
-#NAME= USSR(AI): Mech Division - Kondopoga
+#NAME= USSR(AI): Corps - Kondopoga (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5597,12 +5627,12 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 3 [8] [0] [1st Kondopoga]
+#UNIT= 4 [8] [0] [1st Kondopoga]
 }
 
 ; USSR (reinforcements)
 {
-#NAME= USSR(AI): Mech Division - Repola
+#NAME= USSR(AI): Corps - Repola
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5623,7 +5653,7 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 3 [8] [0] [1st Repola]
+#UNIT= 4 [8] [0] [1st Repola]
 }
 
 ; USSR (reinforcements will head towards Dnepropetrovsk)
@@ -5655,10 +5685,8 @@
 #UNIT= 4 [10] [0] [1st Dneprop Rifle]
 }
 
-; modified by Fall Weiss II
-; USSR (reinforcements will head towards Moscow)
 {
-#NAME= USSR(AI): Reinforcements - Gorki
+#NAME= USSR(AI): Reinforcements - Gorki (Expert)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5690,16 +5718,15 @@
 #UNIT= 14 [10] [0.5] []
 #UNIT= 14 [10] [0.5] []
 #UNIT= 26 [10] [0.5] []
-; following removed by Fall Weiss II ?
-; UNIT= 4 [10] [0] []
-; UNIT= 5 [10] [0] []
-; UNIT= 5 [10] [0] []
+#UNIT= 4 [10] [0] []
+#UNIT= 5 [10] [0] []
+#UNIT= 5 [10] [0] []
 #UNIT= 7 [10] [0] []
 }
 
 ; USSR (reinforcements will head towards Dnepropetrovsk)
 {
-#NAME= USSR(AI): Reinforcements - Kharkov
+#NAME= USSR(AI): Reinforcements - Kharkov (Expert)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5726,19 +5753,23 @@
 #UNIT= 0 [10] [0] []
 #UNIT= 4 [10] [0] [1st Kharkov Rifle]
 #UNIT= 5 [10] [0] [1st Kharkov]
+#UNIT= 5 [10] [0] [2nd Kharkov]
+#UNIT= 26 [10] [0] []
+#UNIT= 29 [10] [0] []
+#UNIT= 30 [10] [0] []
 }
 
 ; modified by Fall Weiss II
 ; USSR (Corps)
 {
-#NAME= USSR(AI): Reinforcements - Sverdlovsk - 1943
+#NAME= USSR(AI): Reinforcements - Sverdlovsk - 1943 (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
 #TYPE= 1
 #AI= 6
-#LEVEL= 2
+#LEVEL= 3
 #GV= 1[1,100]
 #LINK= 0[0]
 #COUNTRY_ID= 116
@@ -5764,16 +5795,15 @@
 #UNIT= 26 [10] [0] [1st Sverdlovsk]
 #UNIT= 4 [10] [0] [1st Sverdlovsk Rifle]
 #UNIT= 5 [10] [0] [1st Sverdlovsk]
-; following removed by Fall Weiss II
-; UNIT= 29 [10] [0] []
-; UNIT= 30 [10] [0] []
-; UNIT= 6 [10] [0] []
+#UNIT= 29 [10] [0] []
+#UNIT= 30 [10] [0] []
+#UNIT= 6 [10] [0] []
 }
 
 ; modified by Fall Weiss II
 ; USSR (reinforcements)
 {
-#NAME= USSR(AI): Reinforcements - Voronezh
+#NAME= USSR(AI): Reinforcements - Voronezh (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5801,15 +5831,13 @@
 #UNIT= 16 [10] [0] []
 #UNIT= 26 [10] [0] [1st Voronezh]
 #UNIT= 4 [10] [0] [1st Voronezh Rifle]
+#UNIT= 4 [10] [0] [2nd Voronezh Rifle]
 #UNIT= 7 [10] [0] []
-; following removed by Fall Weiss II ?
-; UNIT= 4 [10] [0] []
-; UNIT= 5 [10] [0] []
-
+#UNIT= 5 [10] [0] []
 }
 
 {
-#NAME= USSR(AI): Soviet AI Helper I
+#NAME= USSR(AI): Soviet AI Helper I (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5838,7 +5866,7 @@
 }
 
 {
-#NAME= USSR(AI): Soviet AI Helper II
+#NAME= USSR(AI): Soviet AI Helper II (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5867,7 +5895,7 @@
 }
 
 {
-#NAME= USSR(AI): Soviet AI Helper III
+#NAME= USSR(AI): Soviet AI Helper III (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5897,12 +5925,11 @@
 }
 
 {
-#NAME= USSR(AI): Soviet AI Helper IV
+#NAME= USSR(AI): Soviet AI Helper IV (Expert)
 #POPUP=
 #IMAGE=
 #SOUND=
-; currently disabled in Fall Weiss II
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 2
 #LEVEL= 4
@@ -5927,7 +5954,7 @@
 }
 
 {
-#NAME= USSR(AI): Soviet AI Helper V
+#NAME= USSR(AI): Soviet AI Helper V (Expert)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5957,7 +5984,7 @@
 }
 
 {
-#NAME= USSR(AI): Soviet AI Helper VI
+#NAME= USSR(AI): Soviet AI Helper VI (Expert)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5988,7 +6015,7 @@
 
 ; USSR (Tactical Bomber)
 {
-#NAME= USSR(AI): Tactical Bomber - Stalingrad - 1942
+#NAME= USSR(AI): Tactical Bomber - Stalingrad - 1942 (Expert)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -6010,11 +6037,12 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 30 [10] [0] [1st Stalingrad]
+#UNIT= 30 [10] [0] [2nd Stalingrad]
 }
 
 ; USSR (Tank)
 {
-#NAME= USSR(AI): Tank/Air - Borisoglebsk - 1942
+#NAME= USSR(AI): Tank/Air - Borisoglebsk - 1942 (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -6038,6 +6066,7 @@
 #UNIT= 30 [10] [0] [1st Borisoglebsk]
 ; Tank Corps(26)
 #UNIT= 26 [10] [0] [1st Borisoglebsk]
+#UNIT= 26 [10] [0] [2nd Borisoglebsk]
 }
 
 {
@@ -6144,7 +6173,7 @@
 }
 
 {
-#NAME= USSR: Long Range Air Force
+#NAME= USSR: Long Range Air Force - Gorky - 1942
 #POPUP= The Soviet Union Re-Organizes Strategic Bombers Into The Long Range Air Force
 #IMAGE=
 #SOUND=
@@ -6528,7 +6557,7 @@
 ; Fall Weiss II
 ; Germany strengthens Afrika Korps (Germany AI)
 {
-#NAME= [FW]Germany(AI): Strengthens Afrika Korps
+#NAME= [FW]Germany(AI): Strengthens Afrika Korps (Expert)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -6579,8 +6608,7 @@
 #DESTINATION_RESOURCE= 145,93
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 43 [10] [0] []
-#UNIT= 43 [10] [0] []
+#UNIT= 43 [10] [0] [Arcachon]
 }
 
 ; Fall Weiss II
@@ -8047,7 +8075,7 @@
 
 ; UK (Syrian Garrison)
 {
-#NAME= [FW]DE 131 - UK(PBEM): Syrian Garrison
+#NAME= [FW]DE 131 - UK(PBEM): Syrian Garrison - Demascus
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -8064,6 +8092,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1939/09/01
+; Demascus (218,119)
 #DESTINATION_RESOURCE= 218,119
 #VARIABLE_CONDITION= 105 [1] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -8492,9 +8521,9 @@
 #UNIT= 2 [5] [0] [2nd Stalingrad Res]
 }
 
-; Germany (Post D-Day Frontier Defense)
+
 {
-#NAME= DE 151 - Germany(AI): Berlin Defense
+#NAME= DE 151 - Germany(AI): Post D-Day Frontier Defense - Berlin
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -8602,7 +8631,7 @@
 ;
 ; 7th Armoured formed in Manchester
 {
-#NAME= DE 169 - UK: 7th Armoured Formed In Manchester
+#NAME= DE 169 - UK: 7th Armoured Formed - Manchester
 #POPUP= <<TAG_9>>
 #IMAGE= 7tharmoureduk.png
 #SOUND=
@@ -8758,7 +8787,7 @@
 }
 
 {
-#NAME= DE 200 - France: Polish I Corps
+#NAME= DE 200 - France: Polish I Corps - Le Mans
 #POPUP= Polish I Corps Formed In France
 #IMAGE= polisharmyinfrance.png
 #SOUND=
@@ -8858,7 +8887,7 @@
 }
 
 {
-#NAME= DE 260 - Germany: Defensive Corps
+#NAME= DE 260 - Germany: Defensive Corps - Berlin - 1943
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -8884,35 +8913,7 @@
 }
 
 {
-#NAME= DE 261 - Germany(AI): Defensive Corps
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 1
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 261[1]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1943/01/01
-#FAILSAFE_DATE= 1948/01/01
-; Berlin(173,74)
-#DESTINATION_RESOURCE= 173,74
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 0 [10] [0] []
-#UNIT= 4 [10] [0] []
-#UNIT= 4 [10] [0] []
-}
-
-{
-#NAME= DE 261 - Germany: Defensive Corps
+#NAME= DE 261 - Germany: Defensive Units - Berlin - 1943
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -8940,7 +8941,7 @@
 }
 
 {
-#NAME= DE 261 - Germany(AI): Defensive Corps
+#NAME= DE 261 - Germany(AI): Defensive HQ and Corps - Berlin - 1943
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -8968,7 +8969,7 @@
 }
 
 {
-#NAME= DE 262 - Germany(AI): Defensive Corps
+#NAME= DE 262 - Germany(AI): Defensive HQ and Corps - Berlin - 1943
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -8996,7 +8997,7 @@
 }
 
 {
-#NAME= DE 262 - Germany: Defensive Corps
+#NAME= DE 262 - Germany: Defensive Corps - Berlin - 1943
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9022,7 +9023,7 @@
 }
 
 {
-#NAME= DE 263 - Germany: Defensive Corps
+#NAME= DE 263 - Germany: Defensive Corps - Berlin - 1943
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9048,7 +9049,7 @@
 }
 
 {
-#NAME= DE 264 - Germany: Defensive Corps
+#NAME= DE 264 - Germany: Defensive Corps - Berlin - 1943
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9075,7 +9076,7 @@
 }
 
 {
-#NAME= DE 265 - Germany: Defensive Corps
+#NAME= DE 265 - Germany: Defensive Corps - Berlin - 1943
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9103,7 +9104,7 @@
 }
 
 {
-#NAME= DE 266 - Germany: Defensive Corps
+#NAME= DE 266 - Germany: Defensive Corps - Berlin - 1943
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9129,7 +9130,7 @@
 }
 
 {
-#NAME= DE 267 - Germany: Defensive Corps
+#NAME= DE 267 - Germany: Defensive Corps - Berlin - 1943
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9155,7 +9156,7 @@
 }
 
 {
-#NAME= DE 268 - USSR(AI): Offensive Units
+#NAME= DE 268 - USSR(AI): Offensive Units - Kazan - 1944
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9185,7 +9186,7 @@
 }
 
 {
-#NAME= DE 269 - USSR(AI): Offensive Units
+#NAME= DE 269 - USSR(AI): Offensive Units - Kuybyshev - 1944
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9202,6 +9203,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1944/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Kuybyshev(245,72)
 #DESTINATION_RESOURCE= 245,72
 ; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -9214,7 +9216,7 @@
 }
 
 {
-#NAME= DE 270 - UK(AI): Offensive Units
+#NAME= DE 270 - UK(AI): Offensive Units - London - 1945
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9244,7 +9246,7 @@
 }
 
 {
-#NAME= DE 271 - USA(AI): Offensive Units
+#NAME= DE 271 - USA(AI): Offensive Bomber Units - London - 1944
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9261,6 +9263,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1944/11/28
 #FAILSAFE_DATE= 1948/01/01
+; London(147,77)
 #DESTINATION_RESOURCE= 147,77
 ; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
@@ -9301,7 +9304,7 @@
 ;
 ; Canada Receives a Maritime Bomber from French Orders
 {
-#NAME= DE 301 - Canada: Bomber In St Johns
+#NAME= DE 301 - Canada: Maritime Bomber - St Johns
 #POPUP= The US Delivers Aircraft To St. John's In Newfoundland
 #IMAGE=
 #SOUND=
@@ -9328,7 +9331,7 @@
 ;
 ; The UK Receives a Tactical Bomber from French Orders
 {
-#NAME= DE 301 - UK: Tactical Bomber In Liverpool
+#NAME= DE 301 - UK: Tactical Bomber - Liverpool
 #POPUP= The US Delivers Aircraft To Liverpool
 #IMAGE=
 #SOUND=
@@ -9356,7 +9359,7 @@
 ;
 ; The US Receives a Medium Bomber from French Orders
 {
-#NAME= DE 301 - USA: Bomber In New York
+#NAME= DE 301 - USA: Medium Bomber - New York
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9374,8 +9377,8 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 11,103
-; Changed from France(40)->USSR(115) in Fall Weiss II?
-; USSR(115) Allied and not surrendered
+; Changed from France(40)->USA(115) in Fall Weiss II?
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 31 [10] [0] [1st]
@@ -9384,7 +9387,7 @@
 ;
 ; The US Receives a Tactical Bomber from French Orders
 {
-#NAME= DE 301 - USA: Tactical Bomber In New York
+#NAME= DE 301 - USA: Tactical Bomber - New York
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9402,7 +9405,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 11,103
-; USSR(115) Allied and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 30 [10] [0] [5th]
@@ -9428,10 +9431,10 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Norfolk(5,111)
 #DESTINATION_RESOURCE= 5,111
-; USSR(115) Allied and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 4 [10] [0] [Brazilian]
+#UNIT= 4 [10] [0] [1st Brazilian]
 }
 
 {
@@ -9454,10 +9457,10 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Norfolk(5,111)
 #DESTINATION_RESOURCE= 5,111
-; USSR(115) Allied and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 4 [5] [0] [Brazilian]
+#UNIT= 4 [5] [0] [1st Brazilian]
 }
 
 {
@@ -9479,14 +9482,14 @@
 #DATE= 1941/07/07
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 104,37
-; USSR(115) Allied but not fully mobilized
+; USA(115) Allied but not fully mobilized
 #VARIABLE_CONDITION= 115 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 1 [5] [0] [1st Provisional]
 }
 
 {
-#NAME= DE 359 - Czech: Slovak Forces In Banska Bystrica
+#NAME= DE 359 - Czech: Corps - Banska Bystrica - 1944
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9511,7 +9514,7 @@
 }
 
 {
-#NAME= DE 360 - Czech: Czechoslovak Forces In Prague
+#NAME= DE 360 - Czech: Corps - Prague - 1944
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9674,7 +9677,7 @@
 
 ; Germany (Barbarossa)
 {
-#NAME= DE 406 - Germany(AI): Barbarossa Reserves - Baranowicze - 1941
+#NAME= DE 406 - Germany(AI): Barbarossa Reserves - Baranowicze - 1941 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9750,6 +9753,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+#DESTINATION_RESOURCE= 193,63
 #DESTINATION_RESOURCE= 202,84
 ; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -9814,6 +9818,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 193,63
+#DESTINATION_RESOURCE= 202,62
 ; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -10010,7 +10015,7 @@
 #DATE= 1944/01/21
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 142,72
-; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 7 [12] [2] []
@@ -10037,7 +10042,7 @@
 #DATE= 1939/09/09
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 147,77
-; UK(112) Allied and not surrendered
+; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [5] [0] []
@@ -10346,7 +10351,7 @@
 
 ; Germany (Barbarossa)
 {
-#NAME= DE 600 - Germany(AI): Barbarossa Reserves - Baranowicze - 1941
+#NAME= DE 600 - Germany(AI): Barbarossa Reserves - Baranowicze - 1941 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -10355,7 +10360,7 @@
 #AI= 1
 #LEVEL= 2
 #GV= 1[1,100]
-; The Molotov-Ribbentrop Pact?
+; The Molotov-Ribbentrop Pact not honored
 #LINK= 600[0]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -10380,7 +10385,7 @@
 
 ; Germany (Barbarossa)
 {
-#NAME= DE 600 - Germany(AI): Barbarossa Reserves - Warsaw - 1941
+#NAME= DE 600 - Germany(AI): Barbarossa Reserves - Warsaw - 1941 (Intermediate)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -10822,62 +10827,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 40 [10] [0] []
 #UNIT= 43 [10] [0] []
-}
-
-; https://en.wikipedia.org/wiki/Littorio-class_battleship
-; Littorio : 1940/05/06
-; Vittorio Veneto: 1940/05/15
-; Roma : 1942/06/14
-{
-#NAME= DE 602 - Italy: Commissions Littorio Class Battleships
-#POPUP= Italy Commissions Littorio Class Battleships
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 602[1]
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1939/08/22
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 174,95
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 36 [10] [0.5] [Littorio]
-#UNIT= 36 [10] [0.5] [Vittorio Veneto]
-}
-
-{
-#NAME= DE 602 - Italy: Commissions Littorio Class Battleships
-#POPUP= Italy Commissions Littorio Class Battleships
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 602[0]
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1939/08/22
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 174,95
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 36 [10] [0.5] [Littorio]
-#UNIT= 36 [10] [0.5] [Vittorio Veneto]
 }
 
 {
@@ -14125,33 +14074,6 @@
 ; Fall Weiss II
 ; Aircraft Industry Expansion (Italy)
 {
-#NAME= [FW]DE 828 - Italy: Strategic Bombers
-#POPUP= Italy Deploys New Strategic Bombers
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 828[1]
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1942/03/01
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 171,101
-; Italy(59) Axis and not surrendered
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 32 [11] [1] []
-}
-
-; Fall Weiss II
-; Aircraft Industry Expansion (Italy)
-{
 #NAME= [FW]DE 828 - Italy: Tactical Bombers
 #POPUP= Italy Deploys New Tactical Bombers
 #IMAGE=
@@ -14229,63 +14151,6 @@
 #VARIABLE_CONDITION= 95 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 2 [5] [0] []
-}
-
-; Fall Weiss II
-; Moscow
-{
-#NAME= [FW]DE 831 - USSR: Murmansk Reinforcements (Moscow)
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 831[0]
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_TURN= 2
-#FULL_RESEARCH= 1
-#DATE= 1939/09/01
-#FAILSAFE_DATE= 1948/01/01
-; Moscow(221,65)
-#DESTINATION_RESOURCE= 221,65
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 0 [10] [0] [Popov]
-#UNIT= 4 [10] [0] []
-}
-
-; Fall Weiss II
-; Murmansk
-{
-#NAME= [FW]DE 831 - USSR: Murmansk Reinforcements (Murmansk)
-#POPUP= Soviet Reinforcements Arrive In Murmansk District
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 831[1]
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_TURN= 2
-#FULL_RESEARCH= 1
-#DATE= 1939/09/01
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 211,16
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 4 [10] [0] []
-#UNIT= 0 [10] [0] [Popov]
 }
 
 ; Fall Weiss II
@@ -15180,11 +15045,11 @@
 ; Infantry Army(5)
 #UNIT= 5 [10] [1] [24th "Siberian"]
 #UNIT= 5 [10] [1] [25th "Far East"]
+#UNIT= 5 [10] [1] [5th "Transbaikal"]
 ; Shock Army(14)
 #UNIT= 14 [10] [1] [1st]
 #UNIT= 14 [10] [1] [3rd]
-; Mech Corps(6)
-#UNIT= 6 [10] [1] [5th "Transbaikal"]
+#UNIT= 26 [10] [1] []
 ; Tank Army(27)
 #UNIT= 27 [10] [1] [3rd Guards]
 ; Fighter(29)
@@ -16246,161 +16111,6 @@
 #VARIABLE_CONDITION= 111 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [10] [0] [Bursa]
-}
-
-; Strategic Reserves in France (Germany)
-{
-#NAME= [FW]DE 994 - Germany: Strategic Reserves in France
-#POPUP= German Strategic Reserves Are Called Into Action In France
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 994[1]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1941/06/01
-#FAILSAFE_DATE= 1948/01/01
-; Dijon(156,88)
-#DESTINATION_RESOURCE= 156,88
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Allies within 2 hexes of Paris(151,84) OR
-; Allies within 2 hexes of Dusseldorf OR
-; Allies within 7 hexes of Hamburg OR
-; Allies within 7 hexes of Bordeaux OR
-; Allies within 7 hexes of Brest
-#CONDITION_POSITION= 151,84 [7,7] [2,2] [2] [0]
-#CONDITION_POSITION= 166,72 [7,7] [2,2] [2] [0]
-#CONDITION_POSITION= 160,78 [7,7] [2,2] [2] [0]
-#CONDITION_POSITION= 145,94 [7,7] [2,2] [2] [0]
-#CONDITION_POSITION= 138,86 [7,7] [2,2] [2] [0]
-#UNIT= 0 [10] [0] []
-#UNIT= 26 [12] [2] []
-#UNIT= 5 [12] [2] []
-#UNIT= 9 [8] [0] []
-}
-
-; Fall Weiss II
-; Strategic Reserves in France (Germany)
-{
-#NAME= [FW]DE 994 - Germany: Strategic Reserves in France
-#POPUP= German Strategic Reserves Are Called Into Action In France
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 994[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1941/06/01
-#FAILSAFE_DATE= 1948/01/01
-; Dijon(156,88)
-#DESTINATION_RESOURCE= 156,88
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Allies within 7 hexes of Paris(151,84) OR
-; Allies within 7 hexes of Dusseldorf OR
-; Allies within 7 hexes of Hamburg OR
-; Allies within 7 hexes of Bordeaux OR
-; Allies within 7 hexes of Brest
-#CONDITION_POSITION= 151,84 [7,7] [2,2] [2] [0]
-#CONDITION_POSITION= 166,72 [7,7] [2,2] [2] [0]
-#CONDITION_POSITION= 160,78 [7,7] [2,2] [2] [0]
-#CONDITION_POSITION= 145,94 [7,7] [2,2] [2] [0]
-#CONDITION_POSITION= 138,86 [7,7] [2,2] [2] [0]
-#UNIT= 0 [10] [0] []
-#UNIT= 25 [10] [0.5] []
-#UNIT= 25 [10] [0.5] []
-#UNIT= 9 [8] [0] []
-}
-
-; Fall Weiss II
-; Strategic Reserves in France (Germany)
-{
-#NAME= [FW]DE 994 - Germany: Strategic Reserves in France
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 994[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1941/06/01
-#FAILSAFE_DATE= 1948/01/01
-; Amiens(151,89)
-#DESTINATION_RESOURCE= 151,89
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Allies within 7 hexes of Paris(151,84) OR
-; Allies within 7 hexes of Dusseldorf OR
-; Allies within 7 hexes of Hamburg OR
-; Allies within 7 hexes of Bordeaux OR
-; Allies within 7 hexes of Brest
-#CONDITION_POSITION= 151,84 [7,7] [2,2] [2] [0]
-#CONDITION_POSITION= 166,72 [7,7] [2,2] [2] [0]
-#CONDITION_POSITION= 160,78 [7,7] [2,2] [2] [0]
-#CONDITION_POSITION= 145,94 [7,7] [2,2] [2] [0]
-#CONDITION_POSITION= 138,86 [7,7] [2,2] [2] [0]
-#UNIT= 2 [10] [0.5] [1st Amiens Res]
-#UNIT= 3 [5] [0] [1st Amiens Res]
-}
-
-; Fall Weiss II
-; Strategic Reserves in France (Germany)
-{
-#NAME= [FW]DE 994 - Germany: Strategic Reserves in France
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 994[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1941/06/01
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 147,89
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Dummy condition position (always satisfied)
-; Allies within 7 hexes of Paris(151,84) OR
-; Allies within 7 hexes of Dusseldorf OR
-; Allies within 7 hexes of Hamburg OR
-; Allies within 7 hexes of Bordeaux OR
-; Allies within 7 hexes of Brest
-#CONDITION_POSITION= 151,84 [7,7] [2,2] [2] [0]
-#CONDITION_POSITION= 166,72 [7,7] [2,2] [2] [0]
-#CONDITION_POSITION= 160,78 [7,7] [2,2] [2] [0]
-#CONDITION_POSITION= 145,94 [7,7] [2,2] [2] [0]
-#CONDITION_POSITION= 138,86 [7,7] [2,2] [2] [0]
-#UNIT= 2 [10] [0.5] []
-#UNIT= 2 [10] [0.5] []
 }
 
 ; Fall Weiss II

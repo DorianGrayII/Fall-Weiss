@@ -459,7 +459,7 @@
 ; 0% increase in Norwegian mobilization towards Axis
 ; This is for informational purposes only
 {
-#NAME= AXIS AI: Allied Naval Presence Near Norwegian Convoy Lines (Norway->Axis)
+#NAME= Norway(AI): Allied Naval Presence Near Norwegian Convoy Lines (Norway->Axis)
 #POPUP= Norway Demands The Allies Respect Their Territorial Waters
 #IMAGE=
 #SOUND=
@@ -547,7 +547,7 @@
 #CONDITION_POSITION= 208,126 [10,10] [0,0] [2] [0]
 ; France(40) abandons Tunis OR
 #CONDITION_POSITION= 167,112 [5,5] [0,0] [2] [0]
-; France(40) abandons Damascus
+; France(40) abandons Damascus(218,119)
 #CONDITION_POSITION= 218,119 [5,5] [0,0] [2] [0]
 }
 
@@ -595,7 +595,7 @@
 #MOBILIZATION= [0,0] [1]
 ; France(40) Allied and not surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; France(40) abandons Damascus
+; France(40) abandons Damascus(218,119)
 #CONDITION_POSITION= 218,119 [5,5] [0,0] [2] [0]
 }
 
@@ -1101,7 +1101,7 @@
 }
 
 {
-#NAME= Fall of Moscow to Axis (Turkey->Axis) (5%)
+#NAME= Turkey(AI): Fall of Moscow to Axis Impresses Turkey (Turkey->Axis) (5%)
 #POPUP= Turkish Parliament Debates Joining the Axis
 #IMAGE=
 #SOUND=
@@ -1287,9 +1287,6 @@
 #CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
 }
 
-
-;NEW
-;
 {
 #NAME= Italy Mobilizes In Response To Allied Invasion Preparations (Italy->Axis) (33%)
 #POPUP= <<TAG_42>>
@@ -1335,7 +1332,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; Axis successes in Egypt inspire Franco
+; Axis successes in Egypt inspires Franco
 ; 6-12% increase in Spanish mobilization towards Axis:
 {
 #NAME= Sealion (Spain->Axis)
@@ -1394,7 +1391,7 @@
 ; Axis land units in England resulting in a
 ; 45-55% increase in Turkish mobilization towards Axis:
 {
-#NAME= Sealion (Turkey->Axis) (10%)
+#NAME= Sealion (Turkey->>Axis) (10%)
 #POPUP= Turkey Strengthens Pro-Axis Relations
 #IMAGE=
 #SOUND=
@@ -1477,11 +1474,8 @@
 #CONDITION_POSITION= 140,65 [1,2] [1,1] [1] [0]
 }
 
-;
-; Axis land units in England supplementary reduction of
-; mobilization effect for GREEN level Axis players
 {
-#NAME= Sealion (USSR->Allies) (Green)
+#NAME= USSR(AI): Sealion (USSR->Allies) (Green)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1496,8 +1490,8 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #DATE= 1940/01/01
-; 10% mobilization increase towards Axis
-#MOBILIZATION= [10,10] [1]
+; 10% mobilization increase towards Allies
+#MOBILIZATION= [10,10] [2]
 ; Germany(45) Axis and not surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis land RND(1,2) units in the UK within RND(1,2) hexes of London(147,77) OR
@@ -1508,11 +1502,8 @@
 #CONDITION_POSITION= 140,65 [1,2] [1,1] [1] [0]
 }
 
-;
-; Axis land units in England supplementary reduction of
-; mobilization effect for NOVICE level Axis players
 {
-#NAME= Sealion (USSR->Allies) (Novice)
+#NAME= USSR(AI): Sealion (USSR->Allies) (Novice)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1528,7 +1519,7 @@
 #TRIGGER= 100
 #DATE= 1940/01/01
 ; 5% mobilization increase towards Axis
-#MOBILIZATION= [5,5] [1]
+#MOBILIZATION= [5,5] [2]
 ; Germany(45) Axis and not surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis land RND(1,2) units in the UK within RND(1,2) hexes of London(147,77) OR
