@@ -371,8 +371,8 @@
 ; #UNIT_ID_31= Medium Bombers
 ; #UNIT_ID_32= Strategic Bombers
 ; #UNIT_ID_33= Maritime Bombers
-; #UNIT_ID_34= Kamikazes
-; #UNIT_ID_35= Dreadnought
+; #UNIT_ID_34= -
+; #UNIT_ID_35= Dreadnought (WW1)*
 ; #UNIT_ID_36= Battleship
 ; #UNIT_ID_37= Battle Cruiser
 ; #UNIT_ID_38= Heavy Cruiser
@@ -572,6 +572,7 @@
 #VARIABLE_CONDITION= 21 [2] [100] [0]
 ; 1 Axis unit in England
 #CONDITION_POSITION= 147,77 [7,7] [1,1] [1] [0]
+; Infantry Division(2)
 #UNIT= 2 [10] [0] []
 }
 
@@ -677,7 +678,7 @@
 }
 
 {
-#NAME= Finland: The (Axis) Finnish Army Deploys (2) (Irrespective of Winter War)
+#NAME= Finland: The (Axis) Finnish Garrison Deploys (2) (Irrespective of Winter War)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1169,6 +1170,7 @@
 #DESTINATION_RESOURCE= 175,71
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Destroyer(40)
 #UNIT= 40 [10] [0] []
 #UNIT= 40 [10] [0] []
 }
@@ -1891,7 +1893,7 @@
 #UNIT= 8 [10] [1] [6th Pioneer]
 #UNIT= 9 [10] [1] []
 #UNIT= 15 [10] [1] [Naples Flakkorps]
-#UNIT= 18 [10] [0] []
+#UNIT= 18 [10] [0] [Naples]
 }
 
 ; Germany (Corps)
@@ -1922,7 +1924,7 @@
 #UNIT= 4 [10] [0] []
 #UNIT= 5 [10] [0] []
 #UNIT= 5 [10] [0] []
-#UNIT= 26 [10] [0] []
+#UNIT= 25 [10] [0] []
 }
 
 ; Germany (Post Italian Surrender)
@@ -1944,8 +1946,8 @@
 #FULL_RESEARCH= 1
 #DATE= 1943/01/01
 #FAILSAFE_DATE= 1948/01/01
-; Berlin(173,74)
-#DESTINATION_RESOURCE= 173,74
+; Munich(169,86)
+#DESTINATION_RESOURCE= 169,86
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Allies within 5 hexes of Trento
 #CONDITION_POSITION= 168,91 [5,5] [3,3] [2] [0]
@@ -1987,7 +1989,7 @@
 #UNIT= 0 [10] [2] [Schörner]
 #UNIT= 4 [10] [2] [Afrika II]
 #UNIT= 9 [10] [2] [Afrika II]
-#UNIT= 26 [10] [2] [Afrika II]
+#UNIT= 25 [10] [2] [Afrika II]
 #UNIT= 30 [10] [2] [Afrika II]
 }
 
@@ -2126,12 +2128,11 @@
 #VARIABLE_CONDITION= 120 [2] [0] [0]
 ; 1 Axis unit in Paris(151,84)
 #CONDITION_POSITION= 151,84 [0,0] [1,1] [1] [0]
-#UNIT= 26 [10] [0] []
+#UNIT= 25 [10] [0] []
 }
 
-; Germany (Tank)
 {
-#NAME= Germany(AI): Tank - Yugoslavian Invasion Helper - 1941 (2)
+#NAME= Germany(AI): Tank Corps - Yugoslavian Invasion Helper - 1941 (2)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2158,7 +2159,7 @@
 #VARIABLE_CONDITION= 120 [1] [0] [0]
 ; 1 Axis unit in Paris(151,84)
 #CONDITION_POSITION= 151,84 [0,0] [1,1] [1] [0]
-#UNIT= 26 [10] [0] []
+#UNIT= 25 [10] [0] []
 }
 
 ; Germany (Barbarossa)
@@ -2315,6 +2316,7 @@
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 10 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Infantry Division(2)
 #UNIT= 2 [5] [3] [French]
 }
 
@@ -2790,6 +2792,7 @@
 #DESTINATION_RESOURCE= 141,63
 #VARIABLE_CONDITION= 85 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Destroyer(40)
 #UNIT= 40 [5] [0] [ORP Blyskawica]
 }
 
@@ -3200,6 +3203,7 @@
 #DESTINATION_RESOURCE= 137,114
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Light Cruiser(39)
 #UNIT= 39 [10] [0] []
 }
 
@@ -3225,6 +3229,7 @@
 #DESTINATION_RESOURCE= 137,65
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Destroyer(40)
 #UNIT= 40 [10] [0.5] []
 #UNIT= 40 [10] [0.5] []
 }
@@ -3439,6 +3444,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1940/09/01
 #FAILSAFE_DATE= 1940/09/01
+; Manchester(142,72)
 #DESTINATION_RESOURCE= 142,72
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3464,6 +3470,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1943/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Sheffield(144,73)
 #DESTINATION_RESOURCE= 144,73
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -3596,6 +3603,7 @@
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Light Cruiser(39)
 #UNIT= 39 [10] [1] []
 }
 
@@ -3648,6 +3656,7 @@
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Battleship(36)
 #UNIT= 36 [10] [1] []
 }
 
@@ -3674,7 +3683,9 @@
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Aircraft Carrier(42)
 #UNIT= 42 [11] [1] []
+; Battleship(36)
 #UNIT= 36 [10] [0] []
 }
 
@@ -3700,6 +3711,7 @@
 #DESTINATION_RESOURCE= 209,122
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Destroyer(40)
 #UNIT= 40 [10] [0] []
 }
 
@@ -3738,7 +3750,9 @@
 #CONDITION_POSITION= 131,80 [5,5] [2,2] [1] [0]
 #CONDITION_POSITION= 138,82 [5,5] [2,2] [1] [0]
 #UNIT= 38 [10] [0] []
+; Light Cruiser(39)
 #UNIT= 39 [10] [0] []
+; Destroyer(40)
 #UNIT= 40 [10] [0] []
 }
 
@@ -3925,6 +3939,7 @@
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 147,77 [20,20] [1,1] [1] [0]
+; Infantry Division(2)
 #UNIT= 2 [5] [0] []
 #UNIT= 4 [5] [0] []
 #UNIT= 5 [5] [0] []
@@ -4079,7 +4094,9 @@
 ; D-Day assault imminent
 #CONDITION_POSITION= 147,77 [20,20] [30,30] [2] [0]
 #UNIT= 29 [10] [0.5] []
+; Strategic Bomber(32)
 #UNIT= 32 [10] [0.5] []
+; Strategic Bomber(30)
 #UNIT= 32 [10] [0.5] []
 }
 
@@ -4109,7 +4126,9 @@
 ; D-Day assault imminent (no Allied units yet in France)
 #CONDITION_POSITION= 151,84 [14,14] [0,0] [2] [0]
 #UNIT= 29 [10] [0.5] []
+; Strategic Bomber(32)
 #UNIT= 32 [10] [0.5] []
+; Strategic Bomber(32)
 #UNIT= 32 [10] [0.5] []
 }
 
@@ -4220,15 +4239,19 @@
 ; 0 Allied units in England
 #CONDITION_POSITION= 147,77 [20,20] [1,1] [1] [0]
 #CONDITION_POSITION= 147,77 [20,20] [0,0] [2] [0]
+; Battleship(36)
 #UNIT= 36 [10] [1] [Indiana]
 #UNIT= 36 [10] [1] [Montana]
 #UNIT= 37 [10] [1] [Cleveland]
 #UNIT= 38 [10] [1] [Portland]
+; ; Destroyer(40)
 #UNIT= 39 [10] [1] [Oakland]
+; Destroyer(40)
 #UNIT= 40 [10] [1] [Pringle]
 #UNIT= 40 [10] [1] [Kane]
 #UNIT= 40 [10] [1] [Balch]
 #UNIT= 41 [10] [1] [Ticonderoga]
+; UNIT_ID_42= Aircraft Carrier
 #UNIT= 42 [10] [1] [Essex]
 #UNIT= 42 [10] [1] [Yorktown]
 }
@@ -4257,8 +4280,11 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis units RND(1,3) hexes of Madrid(139,104)
 #CONDITION_POSITION= 139,104 [1,3] [1,1] [1] [0]
-#UNIT= 36 [10] [1] [Colorado]
+; Dreadnought(WWI)(35)
+#UNIT= 35 [10] [1] [Colorado]
+; Light Cruiser(39)
 #UNIT= 39 [10] [1] [Cleveland]
+; Destroyer(40)
 #UNIT= 40 [10] [1] [Taylor]
 #UNIT= 42 [10] [1] [Ranger]
 }
@@ -4285,7 +4311,9 @@
 #DESTINATION_RESOURCE= 12,103
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Destroyer(40)
 #UNIT= 40 [10] [1] []
+; Light Cruiser(39)
 #UNIT= 39 [10] [1] []
 }
 
@@ -4314,6 +4342,7 @@
 #CONDITION_POSITION= 147,77 [20,20] [0,0] [1] [0]
 #UNIT= 36 [10] [1] []
 #UNIT= 38 [10] [1] []
+; Light Cruiser
 #UNIT= 39 [10] [1] []
 #UNIT= 42 [10] [1] []
 }
@@ -4428,6 +4457,7 @@
 #DESTINATION_RESOURCE= 17,99
 #VARIABLE_CONDITION= 115 [2] [50] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Destroyer(40)
 #UNIT= 40 [10] [0] [Somers]
 }
 
@@ -4456,7 +4486,8 @@
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 36 [10] [0] [New York]
-#UNIT= 36 [10] [0] [Arkansas]
+; Dreadnought (WWI)(35)
+#UNIT= 35 [10] [0] [Arkansas]
 }
 
 ;
@@ -4484,6 +4515,7 @@
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 38 [10] [0] [Tuscaloosa]
+; Light Cruiser(39)
 #UNIT= 39 [10] [0] [Brooklyn]
 }
 
@@ -4511,7 +4543,9 @@
 #DESTINATION_RESOURCE= 17,99
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 36 [10] [0] [Texas]
+; Dreadnought (WWI)(35)
+#UNIT= 35 [10] [0] [Texas]
+; Destroyer(40)
 #UNIT= 40 [10] [0] [Wainwright]
 #UNIT= 40 [10] [0] [Leary]
 }
@@ -4578,6 +4612,7 @@
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 43 [10] [2] []
+; Destroyer(40)
 #UNIT= 40 [10] [2] []
 #UNIT= 42 [10] [2] []
 }
@@ -5217,6 +5252,7 @@
 #DESTINATION_RESOURCE= 226,35
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Destroyer(40)
 #UNIT= 40 [10] [0] []
 }
 
@@ -6008,7 +6044,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 5 [11] [1.5] []
 #UNIT= 6 [11] [1.5] []
-#UNIT= 26 [11] [1.5] []
+#UNIT= 26 [11] [1.5] [1st Perm]
 #UNIT= 27 [11] [1.5] []
 #UNIT= 0 [10] [0] []
 }
@@ -6195,6 +6231,7 @@
 ; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Strategic Bomber(32)
 #UNIT= 32 [10] [0.5] []
 }
 
@@ -6386,7 +6423,9 @@
 ; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 36 [10] [0] [Marat]
+; #UNIT_ID_35= Dreadnought (WW1)*
+#UNIT= 35 [10] [0] [Marat]
+; #UNIT_ID_39= Light Cruiser
 #UNIT= 39 [10] [0] [Maxim Gorky]
 #UNIT= 43 [10] [0] [S-4]
 }
@@ -6550,6 +6589,7 @@
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 0 [10] [0] [Heinrichs]
+; Infantry Division(2)
 #UNIT= 2 [10] [0.5] []
 #UNIT= 4 [10] [0.5] []
 }
@@ -6580,7 +6620,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 0 [10] [0] []
 #UNIT= 6 [12] [2] [Afrika II]
-#UNIT= 26 [12] [2] [Afrika II]
+#UNIT= 25 [12] [2] [Afrika II]
 #UNIT= 29 [10] [0] [Afrika II]
 }
 
@@ -6642,60 +6682,6 @@
 #UNIT= 30 [5] [0.8] [Desert AF]
 }
 
-; Fall Weiss II
-; Duke Of York Battleship (UK)
-{
-#NAME= [FW]UK: Battleship HMS Duke Of York
-#POPUP= UK Commissions The Battleship HMS Duke of York
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1941/11/01
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 137,65
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 36 [11] [1] [Duke of York]
-}
-
-; Fall Weiss II
-; HMS Howe Battleship (UK)
-{
-#NAME= [FW]UK: Battleship HMS Howe
-#POPUP= UK Commissions The Battleship HMS Howe
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1942/08/01
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 137,65
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 36 [11] [1] [Howe]
-}
-
 {
 #NAME= DE 1 - USA(AI): Liberate UK Destroyers - Norfolk - 1941 (1)
 #POPUP=
@@ -6721,6 +6707,7 @@
 #DESTINATION_RESOURCE= 6,112
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Destroyer(40)
 #UNIT= 40 [10] [0] []
 #UNIT= 40 [10] [0] []
 }
@@ -6750,6 +6737,7 @@
 #DESTINATION_RESOURCE= 6,112
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Destroyer(40)
 #UNIT= 40 [10] [0] []
 #UNIT= 40 [10] [0] []
 }
@@ -6807,6 +6795,7 @@
 #UNIT= 36 [10] [1] [Montana]
 #UNIT= 37 [10] [1] [Cleveland]
 #UNIT= 38 [10] [1] [Portland]
+; Destroyer(40)
 #UNIT= 40 [10] [1] [Balch]
 #UNIT= 42 [10] [1] [Yorktown]
 }
@@ -6816,9 +6805,7 @@
 #POPUP=
 #IMAGE=
 #SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 2
 #LEVEL= 2
@@ -6833,12 +6820,14 @@
 ; arrive on Axis turn
 #DATE= 1941/09/16
 #FAILSAFE_DATE= 1948/01/01
+; Boston(17,99)
 #DESTINATION_RESOURCE= 17,99
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 36 [10] [0] [Montana]
 #UNIT= 37 [10] [0] [Cleveland]
 #UNIT= 38 [10] [0] [Portland]
+; Destroyer(40)
 #UNIT= 40 [10] [0] [Balch]
 #UNIT= 42 [10] [0] [Yorktown]
 }
@@ -6870,6 +6859,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 36 [10] [0] [Indiana]
 #UNIT= 39 [10] [0] [Oakland]
+; Destroyer(40)
 #UNIT= 40 [10] [0] [Pringle]
 #UNIT= 40 [10] [0] [Kane]
 #UNIT= 41 [10] [0] [Ticonderoga]
@@ -6902,6 +6892,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 36 [10] [1] [Indiana]
 #UNIT= 39 [10] [1] [Oakland]
+; Destroyer(40)
 #UNIT= 40 [10] [1] [Pringle]
 #UNIT= 40 [10] [1] [Kane]
 #UNIT= 41 [10] [1] [Ticonderoga]
@@ -7048,6 +7039,7 @@
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Light Cruiser(39)
 #UNIT= 39 [5] [0] [FNFL Triomphant]
 }
 
@@ -7217,33 +7209,6 @@
 #UNIT= 40 [6] [0] [Montgomery]
 }
 
-; 7th Armoured formed in Egypt (AI Helper)
-{
-#NAME= DE 102 - UK(AI): 7th Armoured Formed In Egypt
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 2
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 102[1]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1940/10/13
-#FAILSAFE_DATE= 1948/01/01
-; Alexandria(206,124)
-#DESTINATION_RESOURCE= 206,124
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 26 [10] [0.8] [8th Armoured]
-}
-
 {
 #NAME= DE 102 - UK(AI): 7th Armoured Formed In Egypt
 #POPUP=
@@ -7296,7 +7261,8 @@
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 26 [10] [0] [7th Armoured]
+; Armored Division(25)
+#UNIT= 25 [10] [0] [7th Armoured]
 }
 
 ;
@@ -7319,11 +7285,13 @@
 #FULL_RESEARCH= 1
 #DATE= 1940/08/16
 #FAILSAFE_DATE= 1948/01/01
+; Manchester(142,72)
 #DESTINATION_RESOURCE= 142,72
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 26 [10] [0] [7th Armoured]
+; Armored Division(25)
+#UNIT= 25 [10] [0] [7th Armoured]
 }
 
 {
@@ -7488,6 +7456,7 @@
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Infantry Division(2)
 #UNIT= 2 [8] [0.5] [New Zealand]
 }
 
@@ -7673,6 +7642,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Manchester(142,72)
 #DESTINATION_RESOURCE= 142,72
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -7778,6 +7748,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Manchester(142,72)
 #DESTINATION_RESOURCE= 142,72
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -7913,6 +7884,7 @@
 ; Iceland Allied and not surrendered
 #VARIABLE_CONDITION= 53 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Maritime Bombers(33)
 #UNIT= 33 [10] [0] [AHQ Iceland]
 }
 
@@ -8294,6 +8266,7 @@
 #UNIT= 16 [10] [0] []
 #UNIT= 15 [10] [0] []
 #UNIT= 0 [10] [0] []
+; Infantry Division(2)
 #UNIT= 2 [10] [0] [1st Moscow Res]
 #UNIT= 2 [10] [0] [2nd Moscow Res]
 }
@@ -8327,6 +8300,7 @@
 #UNIT= 16 [5] [0] []
 #UNIT= 15 [5] [0] []
 #UNIT= 0 [5] [0] []
+; Infantry Division(2)
 #UNIT= 2 [5] [0] [1st Moscow Res]
 #UNIT= 2 [5] [0] [2nd Moscow Res]
 }
@@ -8389,6 +8363,7 @@
 #UNIT= 5 [5] [0] [1st Stalingrad Res]
 #UNIT= 3 [5] [0] [1st Stalingrad Res]
 #UNIT= 15 [5] [0] []
+; Infantry Division(2)
 #UNIT= 2 [5] [0] [1st Stalingrad Res]
 #UNIT= 2 [5] [0] [2nd Stalingrad REs]
 }
@@ -8451,6 +8426,7 @@
 #UNIT= 5 [5] [0] [1st Moscow Res]
 #UNIT= 3 [5] [0] [1st Moscow Res]
 #UNIT= 15 [5] [0] []
+; Infantry Division(2)
 #UNIT= 2 [5] [0] [1st Moscow Res]
 #UNIT= 2 [5] [0] [2nd Moscow Res]
 }
@@ -8484,6 +8460,7 @@
 #UNIT= 16 [10] [0] []
 #UNIT= 15 [10] [0] []
 #UNIT= 0 [10] [0] []
+; Infantry Division(2)
 #UNIT= 2 [10] [0] [1st Stalingrad Res]
 #UNIT= 2 [10] [0] [2nd Stalingrad Res]
 }
@@ -8575,6 +8552,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1943/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Frankfurt(164,81)
 #DESTINATION_RESOURCE= 164,81
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Allies within 7 hexes of Paris(151,84) OR
@@ -8606,9 +8584,7 @@
 #POPUP= <<TAG_9>>
 #IMAGE= 7tharmoureduk.png
 #SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
@@ -8621,11 +8597,12 @@
 #FULL_RESEARCH= 1
 #DATE= 1940/08/16
 #FAILSAFE_DATE= 1948/01/01
+; Manchester(142,72)
 #DESTINATION_RESOURCE= 142,72
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 26 [10] [0] [7th Armoured]
+#UNIT= 25 [10] [0] [7th Armoured]
 }
 
 ;
@@ -8635,9 +8612,7 @@
 #POPUP= <<TAG_9>>
 #IMAGE= 7tharmoureduk.png
 #SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
@@ -8650,11 +8625,12 @@
 #FULL_RESEARCH= 1
 #DATE= 1940/08/16
 #FAILSAFE_DATE= 1948/01/01
+; Manchester(142,72)
 #DESTINATION_RESOURCE= 142,72
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 26 [10] [0] [7th Armoured]
+#UNIT= 25 [10] [0] [7th Armoured]
 }
 
 {
@@ -9180,7 +9156,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 0 [10] [1] []
 #UNIT= 27 [11] [1] []
-#UNIT= 26 [11] [1] []
+#UNIT= 26 [11] [1] [1st Kazan]
 #UNIT= 6 [11] [1] []
 #UNIT= 14 [11] [1] []
 }
@@ -9210,7 +9186,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 0 [10] [1] []
 #UNIT= 27 [11] [1] []
-#UNIT= 26 [11] [1] []
+#UNIT= 26 [11] [1] [1st Kuybyshev]
 #UNIT= 6 [11] [1] []
 #UNIT= 14 [11] [1] []
 }
@@ -9270,6 +9246,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 30 [12] [2] []
 #UNIT= 29 [12] [2] []
+; Strategic Bomber(32)
 #UNIT= 32 [12] [2] []
 }
 
@@ -9298,7 +9275,7 @@
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 26 [10] [0] [10th Armoured]
+#UNIT= 25 [10] [0] [10th Armoured]
 }
 
 ;
@@ -9325,6 +9302,7 @@
 ; Canada Allied and not surrendered
 #VARIABLE_CONDITION= 21 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Maritime Bombers(33)
 #UNIT= 33 [10] [0] [RCAF Coastal]
 }
 
@@ -9910,6 +9888,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1944/01/21
 #FAILSAFE_DATE= 1948/01/01
+; Manchester(142,72)
 #DESTINATION_RESOURCE= 142,72
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 21 [2] [100] [0]
@@ -9960,6 +9939,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1944/01/21
 #FAILSAFE_DATE= 1948/01/01
+; Manchester(142,72)
 #DESTINATION_RESOURCE= 142,72
 ; UK(112) Allied and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -10014,6 +9994,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1944/01/21
 #FAILSAFE_DATE= 1948/01/01
+; Manchester(142,72)
 #DESTINATION_RESOURCE= 142,72
 ; USA(115) Allied and not surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
@@ -10047,6 +10028,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [5] [0] []
 #UNIT= 9 [5] [0] []
+; Strategic Bomber(32)
 #UNIT= 32 [5] [0] []
 }
 
@@ -10154,6 +10136,7 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 42 [10] [0] [Indomitable]
+; Destroyer(40)
 #UNIT= 40 [10] [0] [Napal]
 }
 
@@ -10798,6 +10781,7 @@
 ; Italy(59) Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Destroyer(40)
 #UNIT= 40 [10] [0] []
 #UNIT= 43 [10] [0] []
 }
@@ -10825,6 +10809,7 @@
 ; Italy(59) Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Destroyer(40)
 #UNIT= 40 [10] [0] []
 #UNIT= 43 [10] [0] []
 }
@@ -11789,6 +11774,7 @@
 #DESTINATION_RESOURCE= 152,112
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Light Cruiser(39)
 #UNIT= 39 [10] [0] [Jean de Vienne]
 }
 
@@ -11839,6 +11825,7 @@
 #DESTINATION_RESOURCE= 152,112
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; #UNIT_ID_36= Battleship
 #UNIT= 36 [10] [0] [Provence]
 }
 
@@ -11863,6 +11850,7 @@
 #DESTINATION_RESOURCE= 152,112
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Light Cruiser(39)
 #UNIT= 39 [10] [0] [Jean de Vienne]
 }
 
@@ -11948,7 +11936,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ; HQ(0), Tank Corps(26), Recon(22), Infantry Corps(4),
 #UNIT= 0 [10] [0.5] [Rommel]
-#UNIT= 26 [5] [0.5] [DAK]
+#UNIT= 25 [5] [0.5] [DAK]
 #UNIT= 22 [5] [0] [Afrika]
 #UNIT= 4 [5] [0.5] [Afrika]
 ; Tac(30), Fighters(29), Arty(17), AntiTank(24)
@@ -12176,6 +12164,7 @@
 #DESTINATION_RESOURCE= 180,19
 #VARIABLE_CONDITION= 78 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Destroyer(40)
 #UNIT= 40 [3] [0] [Z Force]
 }
 
@@ -12399,6 +12388,7 @@
 #DESTINATION_RESOURCE= 180,19
 #VARIABLE_CONDITION= 78 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Destroyer(40)
 #UNIT= 40 [3] [0] [Z Force]
 }
 
@@ -12465,7 +12455,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ; HQ(0), Tank Corps(26), Recon(22), Infantry Corps(4),
 #UNIT= 0 [10] [0.5] [Rommel]
-#UNIT= 26 [5] [0.5] [DAK]
+#UNIT= 25 [5] [0.5] [DAK]
 #UNIT= 22 [5] [0] [Afrika]
 #UNIT= 4 [5] [0.5] [Afrika]
 ; Tac(30), Fighters(29), Arty(17), AntiTank(24)
@@ -12501,7 +12491,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ; HQ(0), Tank Corps(26), Recon(22), Infantry Corps(4),
 #UNIT= 0 [10] [0.5] [Rommel]
-#UNIT= 26 [5] [0.5] [DAK]
+#UNIT= 25 [5] [0.5] [DAK]
 #UNIT= 22 [5] [0] [Afrika]
 #UNIT= 4 [5] [0.5] [Afrika]
 ; Tac(30), Fighters(29), Arty(17), AntiTank(24)
@@ -12545,7 +12535,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ; HQ(0), Tank Corps(26), Recon(22), Infantry Corps(4),
 #UNIT= 0 [10] [0.5] [Rommel]
-#UNIT= 26 [5] [0.5] [DAK]
+#UNIT= 25 [5] [0.5] [DAK]
 #UNIT= 22 [5] [0] [Afrika]
 #UNIT= 4 [5] [0.5] [Afrika]
 ; Tac(30), Fighters(29), Arty(17), AntiTank(24)
@@ -12795,7 +12785,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ; HQ(0), Tank Corps(26), Recon(22), Infantry Corps(4),
 #UNIT= 0 [10] [0.5] [Rommel]
-#UNIT= 26 [5] [0.5] [DAK]
+#UNIT= 25 [5] [0.5] [DAK]
 #UNIT= 22 [5] [0] [Afrika]
 #UNIT= 4 [5] [0.5] [Afrika]
 ; Tac(30), Fighters(29), Arty(17), AntiTank(24)
@@ -12831,7 +12821,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ; HQ(0), Tank Corps(26), Recon(22), Infantry Corps(4)
 #UNIT= 0 [10] [0.5] [Rommel]
-#UNIT= 26 [5] [0.5] [DAK]
+#UNIT= 25 [5] [0.5] [DAK]
 #UNIT= 22 [5] [0] [Afrika]
 #UNIT= 4 [5] [0.5] [Afrika]
 ; Tac(30), Fighters(29), Arty(17), AntiTank(24)
@@ -13029,6 +13019,7 @@
 #TYPE= 1
 #AI= 0
 #GV= 1[1,100]
+; expediate her converstion to Aircraft Carrier
 #LINK= 700[1]
 #LEVEL= 0
 #COUNTRY_ID= 59
@@ -13038,7 +13029,8 @@
 #FULL_RESEARCH= 1
 #DATE= 1943/01/01
 #FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 173,92
+; Genoa Port(164,96)
+#DESTINATION_RESOURCE= 164,96
 ; Italy(59) Axis
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -13046,9 +13038,9 @@
 }
 
 {
-#NAME= DE 700 - Italy: The Battleship Roma
-#POPUP= The Battleship Roma Is Launched By The Regia Marina
-#IMAGE= romabb.png
+#NAME= DE 700 - Italy: Aircraft Carrier Aquila (20%)
+#POPUP= Regia Marina Commissions The Aircraft Carrier Aquila
+#IMAGE=
 #SOUND=
 #FLAG= 1
 #TYPE= 1
@@ -13057,17 +13049,18 @@
 #LINK= 700[0]
 #LEVEL= 0
 #COUNTRY_ID= 59
-#TRIGGER= 100
+#TRIGGER= 20
 #PRIVATE= 0
 #DISPLAY_TURN= 0
 #FULL_RESEARCH= 1
-#DATE= 1942/06/19
+#DATE= 1943/01/01
 #FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 173,92
+; Genoa Port(164,96)
+#DESTINATION_RESOURCE= 164,96
 ; Italy(59) Axis
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 36 [8] [0] [Roma]
+#UNIT= 42 [8] [0] [Aquila]
 }
 
 {
@@ -13145,6 +13138,7 @@
 ; Italy(59) Axis
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Light Cruiser(39)
 #UNIT= 39 [2] [0] [Fr.11]
 }
 
@@ -13255,6 +13249,7 @@
 #VARIABLE_CONDITION= 87 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 0 [5] [0] [Salazar]
+; Infantry Division(2)
 #UNIT= 2 [3] [0] []
 }
 
@@ -13288,7 +13283,7 @@
 ; Fall Weiss II
 ; Spanish Garrison Portugal Border
 {
-#NAME= [FW]DE 800 - Spain: Spanish Garrison Portugal Border
+#NAME= [FW]DE 800 - Spain: Spanish Garrison of Portugal Border
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13309,6 +13304,7 @@
 ; Germany(45) Axis and not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Infantry Division(2)
 #UNIT= 2 [10] [0] []
 }
 
@@ -13906,62 +13902,6 @@
 }
 
 ; Fall Weiss II
-; Rush Troops To Tripoli (Italy)
-{
-#NAME= [FW]DE 823 - Italy: Rush Troops To Tripoli
-#POPUP= Italian Reinforcements Arrive In North Africa
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 823[1]
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1941/01/01
-#FAILSAFE_DATE= 1948/01/01
-; Tripoli(172,121)
-#DESTINATION_RESOURCE= 172,121
-; Italy(59) Allied and not surrendered
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 4 [10] [0] []
-}
-
-; Fall Weiss II
-; Rush Troops To Tripoli (Italy)
-{
-#NAME= [FW]DE 823 - Italy: Rush Troops To Tripoli
-#POPUP= Italian Reinforcements Arrive On The Eastern Front
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 823[0]
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1942/05/01
-#FAILSAFE_DATE= 1948/01/01
-; Warsaw(188,76)
-#DESTINATION_RESOURCE= 188,76
-; Italy(59) Allied and not surrendered
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 5 [10] [0] []
-}
-
-; Fall Weiss II
 ; Heavy Cruiser Petropavlovsk  (USSR)
 {
 #NAME= [FW]DE 826 - USSR: Heavy Cruiser Petropavlovsk
@@ -14010,10 +13950,12 @@
 #FULL_RESEARCH= 1
 #DATE= 1942/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Trieste Port(173,92)
 #DESTINATION_RESOURCE= 173,92
 ; Italy(59) Axis and not surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Light Cruiser(39)
 #UNIT= 39 [10] [0] [Etna]
 }
 
@@ -14180,7 +14122,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 0 [10] [0] []
 #UNIT= 5 [10] [0] []
-#UNIT= 26 [10] [0] []
+#UNIT= 25 [10] [0] []
 }
 
 ; Fall Weiss II
@@ -14235,6 +14177,7 @@
 #VARIABLE_CONDITION= 31 [2] [100] [0]
 #VARIABLE_CONDITION= 103 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Infantry Division(2)
 #UNIT= 2 [10] [0] [Danish Liberation]
 }
 
@@ -14508,7 +14451,7 @@
 #DESTINATION_RESOURCE= 198,95
 #VARIABLE_CONDITION= 93 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 26 [10] [0] [Panzer]
+#UNIT= 25 [10] [0] [Panzer]
 }
 
 ; Fall Weiss II
@@ -14563,111 +14506,6 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 19 [10] [0] [Schwerer Gustav]
-}
-
-; Fall Weiss II
-; German Naval Strategy (Germany)
-{
-#NAME= [FW]DE 851 - Germany: Naval Strategy (Tirpitz)
-#POPUP= Germany Commissions The Battleship Tirpitz
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 851[1]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1941/02/25
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 175,71
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 36 [10] [0] [Tirpitz]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 851 - Germany: Naval Strategy (U-boats)
-#POPUP= Germany Focuses Naval Strategy On U-boats And Expands Fleet
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 851[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 0
-#DATE= 1941/02/25
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 175,71
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 43 [5] [0] []
-#UNIT= 43 [5] [0] []
-}
-
-; Fall Weiss II
-; UK Naval Strategy (UK)
-{
-#NAME= [FW]DE 852 - UK: Naval Strategy (Anson)
-#POPUP= UK Commissions The Battleship HMS Anson
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 852[0]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1942/04/14
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 140,72
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 36 [10] [0] [HMS Anson]
-}
-
-; Fall Weiss II
-; UK Naval Strategy (UK)
-{
-#NAME= [FW]DE 852 - UK: Naval Strategy (Destroyers)
-#POPUP= UK Launches Expanded Destroyer Fleet After Cancelling HMS Anson
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 852[1]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1942/11/21
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 140,72
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 40 [10] [0] []
-#UNIT= 40 [10] [0] []
 }
 
 ; Fall Weiss II
@@ -14858,6 +14696,7 @@
 #VARIABLE_CONDITION= 21 [2] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Infantry Division(2)
 #UNIT= 2 [10] [0] [1st]
 }
 
@@ -14888,6 +14727,7 @@
 #VARIABLE_CONDITION= 21 [2] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Infantry Division(2)
 #UNIT= 2 [10] [0] [1st]
 }
 
@@ -15331,7 +15171,7 @@
 ; Spain(99) Axis and fully mobilized
 #VARIABLE_CONDITION= 99 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 26 [5] [0] [Panzer]
+#UNIT= 25 [5] [0] [Panzer]
 }
 
 ; Fall Weiss II
@@ -15858,117 +15698,6 @@
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 43 [5] [0] []
-}
-
-; Fall Weiss II
-; Germany Prepares for Barbarossa (Germany)
-{
-#NAME= [FW]DE 946 - Germany: Prepares for Barbarossa
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 946[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1940/12/30
-#FAILSAFE_DATE= 1948/01/01
-; Berlin(173,74)
-#DESTINATION_RESOURCE= 173,74
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 0 [10] [0] [Model]
-#UNIT= 26 [10] [0] []
-}
-
-; Fall Weiss II
-; Sealion Ground Forces (Germany)
-{
-#NAME= [FW]DE 946 - Germany: Sealion Ground Forces
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 946[1]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 0
-#DATE= 1940/06/19
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 160,79
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 7 [5] [0] []
-#UNIT= 9 [5] [0] []
-}
-
-; Fall Weiss II
-; Sealion Naval Forces (Germany)
-{
-#NAME= [FW]DE 946 - Germany: Sealion Naval Forces
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 946[1]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 0
-#DATE= 1940/06/19
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 161,72
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 44 [5] [0] []
-}
-
-; Fall Weiss II
-; Sealion Naval Forces (Germany)
-{
-#NAME= [FW]DE 946 - Germany: Sealion Naval Forces
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 946[1]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 0
-#DATE= 1940/06/19
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 163,71
-; Germany(45) Axis and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 44 [5] [0] []
 }
 
 ; Fall Weiss II

@@ -456,15 +456,13 @@
 
 ;
 ; Allies Naval Patrols Near Norway
-; 0% increase in Norwegian mobilization towards Axis
-; This is for informational purposes only
+;
 {
 #NAME= Norway(AI): Allied Naval Presence Near Norwegian Convoy Lines (Norway->Axis)
 #POPUP= Norway Demands The Allies Respect Their Territorial Waters
 #IMAGE=
 #SOUND=
-; Disabled since it is effectively not doing anything
-#FLAG= 0
+#FLAG= 1
 #TYPE= 3
 #AI= 3
 #LEVEL= 0
@@ -473,9 +471,7 @@
 #COUNTRY_ID= 78
 #TRIGGER= 100
 #DATE= 1939/09/01
-; Fall Weiss II changed from 1-4% to 0%
-; 0% mobilization increase towards Axis
-#MOBILIZATION= [0,0] [1]
+#MOBILIZATION= [1,4] [1]
 ; Germany(45) Axis and not surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Allies on the Norwegian convoy line
@@ -1382,7 +1378,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis has captured and holds London OR
 #CONDITION_POSITION= 147,77 [0,0] [1,1] [1] [0]
-; Axis has captured and holds Manchester
+; Axis has captured and holds Manchester(142,72)
 #CONDITION_POSITION= 142,72 [0,0] [1,1] [1] [0]
 ; Axis has captured and holds Liverpool
 #CONDITION_POSITION= 141,72 [0,0] [1,1] [1] [0]
@@ -1410,7 +1406,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis has captured and holds London OR
 #CONDITION_POSITION= 147,77 [0,0] [1,1] [1] [0]
-; Axis has captured and holds Manchester
+; Axis has captured and holds Manchester(142,72)
 #CONDITION_POSITION= 142,72 [0,0] [1,1] [1] [0]
 ; Axis has captured and holds Liverpool
 #CONDITION_POSITION= 141,72 [0,0] [1,1] [1] [0]
@@ -1439,7 +1435,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis land 1 unit in the UK within 2 hexes of London(147,77) OR
 #CONDITION_POSITION= 147,77 [2,2] [1,1] [1] [0]
-; Axis land 1 unit in the UK within 2 hex of Manchester
+; Axis land 1 unit in the UK within 2 hex of Manchester(142,72)
 #CONDITION_POSITION= 142,72 [2,2] [1,1] [1] [0]
 ; Axis land 1 unit in the UK within 2 hex of Edinburgh(140,65)
 #CONDITION_POSITION= 140,65 [2,2] [1,1] [1] [0]
@@ -2056,6 +2052,7 @@
 ; UK(112) Allied and fully mobilized
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 147,77 [0,0] [1,1] [1] [0]
+; Manchester(142,72)
 #CONDITION_POSITION= 142,72 [0,0] [1,1] [1] [0]
 #CONDITION_POSITION= 142,78 [0,0] [1,1] [1] [0]
 #CONDITION_POSITION= 138,65 [0,0] [1,1] [1] [0]

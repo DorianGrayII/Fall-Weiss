@@ -531,7 +531,7 @@
 {
 #NAME= DE 102 - UK: Deploy 7th Armoured In Egypt Or The UK? (AI - 100%)
 #POPUP=
-#MESSAGE=British Minister Of Defence %N Hastings Ismay %N%N Our 7th Armoured Division in Egypt is very incomplete, having only about 65 obsolete vehicles, very few of which are combat worthy.%N%N We are currently in the process of completing 150 new tanks that will soon be ready for service, and given the Axis threat to our position in Egypt, it is recommended that these new tanks be sent there to strengthen 7th Armoured.%N%N However, sending these tanks to Egypt will require a heavily armed naval convoy that will cost %B45 MPPs, and the tanks won't arrive there until mid-October 1940.%N%N Would you like to send these tanks to Egypt in order to reinforce 7th Armoured %B(YES), or would you rather deploy these tanks in the UK for the defence of our home country %B(NO)?
+#MESSAGE=British Minister Of Defence %N Hastings Ismay %N%N Our 7th Armoured Division in Egypt is very incomplete, having only about 65 obsolete vehicles, very few of which are combat worthy.%N%N We are currently in the process of completing 150 new tanks that will soon be ready for service, and given the Axis threat to our position in Egypt, it is recommended that these new tanks be sent there to strengthen 7th Armoured.%N%N However, sending these tanks to Egypt will require a heavily armed naval convoy that will cost %B35 MPPs, and the tanks won't arrive there until mid-October 1940.%N%N Would you like to send these tanks to Egypt in order to reinforce 7th Armoured %B(YES), or would you rather deploy these tanks in the UK for the defence of our home country %B(NO)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -544,10 +544,10 @@
 #TRIGGER= 100
 #DISPLAY_ORDER= 1
 #DECISION= 102
-#MPP_UPDOWN= -45
+#MPP_UPDOWN= -35
 #MPP_TURNS= 1
 #MPP_TEXT= Sending 7th Armoured To Egypt
-#NOTES= It is generally best to say %B(YES) to sending 7th Armoured to Egypt where it will deploy as a Tank Corps, as it is essential to secure the safety of our position there. The only good reason for saying %B(NO) would be if the Axis were invading the UK.%N%N The 7th Armoured, known as the "Desert Rats", saw action in North Africa, Italy and the liberation of North-West Europe, while one Brigade also fought against the Japanese in Burma.
+#NOTES= It is generally best to say %B(YES) to sending 7th Armoured to Egypt where it will deploy as a Tank Division, as it is essential to secure the safety of our position there. The only good reason for saying %B(NO) would be if the Axis were invading the UK.%N%N The 7th Armoured, known as the "Desert Rats", saw action in North Africa, Italy and the liberation of North-West Europe, while one Brigade also fought against the Japanese in Burma.
 #NOTES_POSITION= 206,124
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
@@ -607,7 +607,7 @@
 ; Event based on the coup d'etat in Yugoslavia following Prince Paul of Yugoslavia's
 ; decision to sign the Tripartite Pact.
 {
-#NAME= DE 104 - UK: Support A Pro-Allied Coup In Yugoslavia? (AI - 100%)
+#NAME= DE 104 - UK: Support A Pro-Allied Coup In Yugoslavia? (AI - 85%)
 #POPUP=
 #MESSAGE=Office Of The British Foreign Secretary %N Anthony Eden %N%N %BRe: %BYugoslavia %N%N Intelligence from the Kingdom of Yugoslavia shows that the regent, Prince Paul, is about to sign the Tripartite Pact and join the Axis.%N%N If we wish to stop him from doing so then we need to act now, and an opportunity to do so has fortunately presented itself as Prince Paul's nephew, King Peter II, is planning a coup.%N%N Peter II is totally opposed to the Axis and his success will inevitably bring Yugoslavia into conflict with the Axis, and with our help he may be able to increase his armed forces in time to offer significant resistance to the enemy.%N%N Providing officers and equipment to the Yugoslav armed forces will cost %B60 MPPs (30 MPPs for 2 turns).%N%N Would you like to support Peter II's pro-Allied Coup in Yugoslavia %B(YES)?
 #IMAGE=
@@ -627,7 +627,7 @@
 #MPP_TEXT= Yugoslavian Support
 #NOTES= If you say %B(YES), then Yugoslavia will join the Allies and it will deploy a half strength HQ to command its armed forces.%N%N Politically, if Greece has not yet entered the war, then it will swing 30-40% towards the Allies. Germany will lose 1,000 National Morale points, though it will regain them should Yugoslavia surrender.%N%N If you say %B(NO), then Yugoslavia will sign the Tripartite Pact and join the Axis, and Germany will gain 1,000 National Morale points.
 #NOTES_POSITION= 185,93
-#AI_RESPONSE= 100
+#AI_RESPONSE= 85
 #AI_RESPONSE_POPUP= UK Supports A Military Coup In Yugoslavia
 #DATE= 1941/03/03
 #TEXT_RGB= 0,0,0
@@ -691,7 +691,7 @@
 ; British and Iraqi forces in the spring of 1941.
 ; Historical date was 1941/04/03
 {
-#NAME= DE 106 - UK: Impose Economic Sanctions On Iraq? (AI - 100%)
+#NAME= DE 106 - UK: Impose Economic Sanctions On Iraq? (AI - 85%)
 #POPUP=
 #MESSAGE=Office Of The British Foreign Secretary %N Anthony Eden %N%N %BRe: %BIraq %N%N Intelligence reports indicate that Rashid Ali Al-Gaylani will attempt to overthrow the pro-British Regent of Iraq, Prince Abdul Illah. Having seized power, Al-Gaylani will then bring Iraq into the Axis camp.%N%N We therefore need to prepare for conflict against a pro-Axis Iraq. The measures we can take include seizing the Port of Basra under the terms of the Anglo-Iraqi Defense Treaty, imposing economic sanctions, and preparing the 10th Indian Corps in Calcutta for service in Iraq.%N%N All these measures together, codenamed Operation Sabine, will have a total cost of %B140 MPPs (35 MPPs for 4 turns).%N%N Would you like to give the order to prepare Operation Sabine so that we will be able to counter a pro-Axis coup in Iraq?
 #IMAGE=
@@ -711,7 +711,7 @@
 #MPP_TEXT= Cost Of Iraqi Sanctions
 #NOTES= Irrespective of your decision here, Iraq is going to join the Axis.%N%N If you say %B(YES), then we will be in a much better position to reconquer the country and restore oil production.%N%N Our sanctions will temporarily reduce Axis supply in Baghdad to zero, while our 10th Indian Infantry Corps will annex Basra.%N%N Diplomatically, our action against Iraq may make Syria swing 5-8% towards the Axis.
 #NOTES_POSITION= 237,124
-#AI_RESPONSE= 100
+#AI_RESPONSE= 85
 #AI_RESPONSE_POPUP= The UK Imposes Economic Sanctions On Iraq
 #DATE= 1939/09/01
 #TEXT_RGB= 0,0,0
@@ -733,7 +733,7 @@
 
 ; Event providing the opportunity to change the arrival time of Commonwealth units
 {
-#NAME= DE 107 - UK: Send Australian And New Zealand Reinforcements To Egypt? (AI - 100%)
+#NAME= DE 107 - UK: Rush Australian And New Zealand Reinforcements To Egypt? (AI - 100%)
 #POPUP=
 #MESSAGE=Office Of The British Foreign Secretary %N Lord Halifax %N%N %BRe: %BEgyptian %BReinforcements %N%N With Italy now in the war our position in Egypt could be severely threatened.%N%N Australia and New Zealand are prepared to rush reinforcements to Cairo, but they will arrive as understrength units requiring some equipment and training to bring them up to full strength.%N%N Alternatively we could let them complete their formation and training in their home countries, in which case they will only deploy for service in Egypt in late 1941.%N%N Would you like to rush these reinforcements to Egypt now as understrength units %B(YES), or have them form as previously scheduled by late 1941 %B(NO)?
 #IMAGE=
@@ -844,7 +844,7 @@
 }
 
 {
-#NAME= DE 110 - UK: Form The Polish II Corps? (AI - 100%)
+#NAME= DE 110 - UK: Form The Polish II Corps? (AI - 85%)
 #POPUP=
 #MESSAGE=British War Office %N Sir Percy James Grigg %N%N %BRe: %BThe %BPolish %BI %BCorps %N%N Following the evacuation of Polish soldiers from the USSR last year, General Wladyslaw Anders has been restoring these men to health, fitness and military efficiency so as to form them into an effective fighting organization.%N%N With their training in Iraq nearing completion, these men are ready to be formed into a new and significant fighting formation.%N%N If you agree, we will form these Polish forces in the Middle East into the Polish II Corps. This Corps will then deploy in Kuwait at strength 8, with 0.5 experience and fully upgraded, for a total cost of %B75 MPPs (25 MPPs for 3 turns).%N%N Would you like to create the Polish II Corps?
 #IMAGE=
@@ -864,7 +864,7 @@
 #MPP_TEXT= Polish II Corps
 #NOTES= Saying %B(YES), to form the Polish II Infantry Corps will increase our strength and make use of the Polish soldiers who were evacuated from the USSR and are now ready for active service again.
 #NOTES_POSITION= 237,124
-#AI_RESPONSE= 100
+#AI_RESPONSE= 85
 #AI_RESPONSE_POPUP=
 #DATE= 1943/03/01
 #TEXT_RGB= 0,0,0
@@ -915,11 +915,12 @@
 ; Axis within 2 hexes of Nancy(158,85)
 #CONDITION_POSITION= 158,85 [2,2] [1,1] [1] [0]
 ; Axis units invade the UK
+; Sheffield(144,73)
 #CONDITION_POSITION= 144,73 [7,7] [1,1] [1] [0]
 }
 
 {
-#NAME= DE 112 - UK: Strengthen our Forces in East Africa? (AI - 100%)
+#NAME= DE 112 - UK: Strengthen our Forces in East Africa? (AI - 85%)
 #POPUP= British Strategic Decision
 #MESSAGE=British War Office %N Anthony Eden %N%N %BRe: %BEast %BAfrica %N%N Italy has joined the war and her forces in East Africa are invading British Somaliland.%N%N If we do not take steps to reinforce our position in East Africa then the Italians may proceed to invade the Sudan and possibly even Egypt. If they were to act in conjunction with an advance on Egypt from Libya then our situation in the Middle East would become very grave indeed.%N%N Not only our imperial standing but our imports too would be affected.%N%N It is therefore strongly recommended that we spend %B60 MPPs to strengthen our forces in East Africa.%N%N Would you like to approve this expenditure to secure our position in East Africa?
 #IMAGE=
@@ -939,7 +940,7 @@
 #MPP_TEXT= East African Campaign
 #NOTES= If you say %B(YES), then on the 27th November 1941 the defeat of Italian forces in East Africa will be announced.%N%N However, if you say %B(NO), then Italy will invade the Sudan, and this will cause a small reduction in British National Morale.%N%N In addition, should Axis forces capture Cairo then a half-strength Italian Infantry Corps would march north from the Sudan to reinforce the Axis forces in Egypt.
 #NOTES_POSITION=
-#AI_RESPONSE= 100
+#AI_RESPONSE= 85
 #AI_RESPONSE_POPUP=
 #DATE= 1939/09/01
 #TEXT_RGB= 0,0,0
@@ -1250,9 +1251,9 @@
 }
 
 {
-#NAME= DE 122 - UK: Deploy A Coastal Command Maritime Patrol In Iceland? (AI - 100%)
+#NAME= DE 122 - UK: Deploy A Coastal Command Maritime Patrol In Iceland? (AI - 85%)
 #POPUP=
-#MESSAGE=Air Officer Commanding-in-Chief Coastal Command %N Sir Philip Joubert de la Ferté %N%N %BRe: %BIceland %N%N We could improve the safety of our convoy routes by increasing the strength of Coastal Command through deploying a unit of Maritime Bombers at Reykjavik in Iceland.%N%N With a base there, Coastal Command should be able to make a significant step towards closing the Mid-Atlantic Gap, providing air cover over a larger area of the ocean to assist in the Battle of the Atlantic.%N%N Deploying a unit of Maritime Bombers at Reykjavik will cost a total of %B100 MPPs (50 MPPs for 2 turns).%N%N Would you like to increase Coastal Command's strength by forming this unit in Iceland %B(YES)?
+#MESSAGE=Air Officer Commanding-in-Chief Coastal Command %N Sir Philip Joubert de la Ferté %N%N %BRe: %BIceland %N%N We could improve the safety of our convoy routes by increasing the strength of Coastal Command through deploying a unit of Maritime Bombers at Reykjavik in Iceland.%N%N With a base there, Coastal Command should be able to make a significant step towards closing the Mid-Atlantic Gap, providing air cover over a larger area of the ocean to assist in the Battle of the Atlantic.%N%N Deploying a unit of Maritime Bombers at Reykjavik will cost a total of %B150 MPPs (50 MPPs for 3 turns).%N%N Would you like to increase Coastal Command's strength by forming this unit in Iceland %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -1266,7 +1267,7 @@
 #DISPLAY_ORDER= 0
 #DECISION= 122
 #MPP_UPDOWN= -50
-#MPP_TURNS= 2
+#MPP_TURNS= 3
 #MPP_TEXT= Coastal Maritime Patrol in Iceland
 #NOTES= If you say %B(YES), then you can use this Maritime Bomber to launch reconnaissance missions against likely U-Boat locations.%N%N It will be best to research and upgrade this unit with Long Range Aircraft so as to extend its strike range.%N%N This unit is in Icelandic service and cannot be Operated for use elsewhere.
 #NOTES_POSITION= 104,37
@@ -1320,7 +1321,7 @@
 }
 
 {
-#NAME= DE 124 - UK: Demand Ireland Provides Access to the Treaty Ports? (AI - 100%)
+#NAME= DE 124 - UK: Demand Ireland Provides Access to the Treaty Ports? (AI - 85%)
 #POPUP=
 #MESSAGE=Office Of The British Foreign Secretary %N Lord Halifax %N%N %BRe: %BPorts %Bof %BCork %Band %BWaterford %N%N The First Lord of the Admiralty, Winston Churchill, is pressing for us to occupy two ports in Ireland to provide the Royal Navy with bases in the coming struggle to protect our shipping from U-Boat attack.%N%N These would be along the south coast of Ireland where until last year we had naval bases in accordance with the Anglo-Irish Treaty signed in 1921.%N%N Ireland lacks the military capability to prevent us from re-occupying the Treaty Ports, but there would be a political reaction against us both there and in the USA were we to do so.%N%N However, as well as being of some strategic benefit, a bold and decisive move like this would boost our National Morale.%N%N Would you like to order the Royal Navy to occupy the ports of Cork and Waterford %B(YES)?
 #IMAGE=
@@ -1340,7 +1341,7 @@
 #MPP_TEXT=
 #NOTES= If you say %B(YES), then the ports of Waterford and Cork will switch to our control for the use of our ships, though they would return to Irish control should Ireland enter the war.%N%N The political reaction in Ireland of doing this will move it 10-15% towards the Axis, and the USA will also move between 4-6% away from the Allies.%N%N On the other hand, this decisive action will increase British National Morale by 1,000 points, and the use of these ports will certainly be useful later on.
 #NOTES_POSITION= 132,75
-#AI_RESPONSE= 100
+#AI_RESPONSE= 85
 #AI_RESPONSE_POPUP=
 #DATE= 1939/10/14
 #TEXT_RGB= 0,0,0
@@ -1358,7 +1359,7 @@
 }
 
 {
-#NAME= DE 125 - UK: Demand Ireland Provides us with a Naval Base at Limerick? (AI - 100%)
+#NAME= DE 125 - UK: Demand Ireland Provides us with a Naval Base at Limerick? (AI - 85%)
 #POPUP=
 #MESSAGE=Office Of The British Foreign Secretary %N Anthony Eden %N%N %BRe: %BPort %Bof %BLimerick %N%N The Prime Minister is pressing once again for us to occupy an Irish port. This time he recommends the port of Limerick on the west coast of Ireland.%N%N It is certainly true that using this port could be very useful, but doing so would also cause a strong reaction in Ireland against us. Unlike with the Treaty ports, we have had no claim whatsoever  port since the civil war ended in 1921.%N%N Occupying Limerick will only cost %B25 MPPs, though it will trigger a reaction against us in both Ireland and the USA.%N%N This port could be of significant use, and our bold and decisive action would improve our National Morale by 1,000 points.%N%N Would you like to order the Royal Navy to occupy the port of Limerick %B(YES)?
 #IMAGE=
@@ -1378,7 +1379,7 @@
 #MPP_TEXT= Occupying The Port Of Limerick
 #NOTES= If you say %B(YES), then the port of Limerick will switch to our control for the use of our ships, though it would return to Irish control should Ireland enter the war.%N%N The political reaction in Ireland would move it 18-25% towards the Axis, and the USA would also move between 4-6% away from the Allies.%N%N Nevertheless, this decisive action will increase British National Morale by 1,000 points, as it will show that our government means business.
 #NOTES_POSITION= 129,73
-#AI_RESPONSE= 100
+#AI_RESPONSE= 85
 #AI_RESPONSE_POPUP=
 #DATE= 1941/03/24
 #TEXT_RGB= 0,0,0
@@ -1471,7 +1472,7 @@
 
 ; Fall Weiss II
 {
-#NAME= [FW]DE 130 - Germany: Entice Turkey to Sign The Axis Tripartite Pact? (AI - 100%)
+#NAME= [FW]DE 130 - Germany: Entice Turkey to Sign The Axis Tripartite Pact? (AI - 85%)
 #POPUP= German Diplomatic Decision
 #MESSAGE=Führerhauptquartier %N%N %BRe: %BTurkey %N%N %BRe: %BTurkey %N%N Long standing tensions between the Soviets and Turkey had been suppressed by the 1925 Non-Aggression Pact between both nations.  The Soviets sudden withdrawal from the pact in 1939 and subsequent military occupation of the Turkish Straits has provided an opportunity for Germany to persuade the Turkish Government to join our cause in defeating our common enemy in the East.%N%N Turkey however is woefully unprepared for war, and would require a commitment of significant military resources from Germany if they are to join our war effort.  However, if we can persuade Turkey to sign the Tripartite Pact we will immediately gain access to both the Caucasus and the Middle East so the benefits may outweigh the costs.%N%N Should we commit significant military resources to Turkey so that the country will sign the Tripartite Pact and declare war on USSR %B(YES)?  It will cost a total of %B800 MPPs (200 MPPs for 4 turns).
 #IMAGE=
@@ -1493,7 +1494,7 @@
 #MPP_TEXT= Military Exports To Turkey
 #NOTES= %N%N If you select %B(YES), Turkey will immediately join the Axis.%N%N Note that despite the investment of military resources Turkey will not receive any additional units that have not already been committed to the region.%N%N If you select %B(NO), Turkey will continue to remain under the Allied sphere of influence and will require significant Axis diplomacy and military gains if Turkey should ever be persuaded to join our cause.  As well the Allies will continue to have unimpeded access of the Turkish Straits so long as Turkey remains neutral.
 #NOTES_POSITION= 203,103
-#AI_RESPONSE= 100
+#AI_RESPONSE= 85
 #AI_RESPONSE_POPUP= Germany Sends Military Exports To Turkey
 #DATE= 1939/10/14
 #TEXT_RGB= 0,0,0
@@ -1509,7 +1510,7 @@
 ; Fall Weiss II
 ; https://www.wikiwand.com/en/Syria%E2%80%93Lebanon_campaign
 {
-#NAME= [FW]DE 131 - UK: Invade Syria? (AI - 100%)
+#NAME= [FW]DE 131 - UK: Invade Syria? (AI - 85%)
 #POPUP=
 #MESSAGE=Prime Minister %N Winston Churchill %N%N %BRe: %BOperation %BExporter %N%N Vichy Syria has leaned heavily towards the Axis, and should either Germany or Italy gain a foothold in this region, our positions in the Middle East and Egypt may be severely threatened.%N%N We have therefore devised a plan to immediately attack Syria from both occupied Iraq and from Palestine which is expected to quickly overrun Syria's limited forces.  If we do not act now, should Syria later join the Axis we may no longer be well positioned to quickly occupy the country.  One final consideration is that an attack of Vichy Syria will certainly have negative diplomatic effects and could push the other Vichy States closer to the Axis. %N%N In light of these considerations should we authorize the invasion of Syria %B(YES)? It will cost %B100 MPPs.
 #IMAGE=
@@ -1529,7 +1530,7 @@
 #MPP_TEXT= Invasion of Syria
 #NOTES= %N%N Historically (May 1941), during the Iraq campaign, Admiral Francois Darlan on behalf of Vichy France signed the Paris Protocols, an agreement with the Germans.  The protocols granted Germany access to military facilities in Vichy-controlled Syria. While the protocols remained unratified it led to British occupation of Syria before the situation became dire. Operations against the Vichy regime in Syria could only be conducted with troops withdrawn from the Western Desert, a dispersal that contributed to the defeat of Operation Battleaxe. %N%N If you select %B(YES), British forces will occupy Syria and a British garrison will deploy at Damascus. Other Vichy States will also swing 5-15% towards the Axis in response to Allied Aggression. %N%N If you select %B(NO), Syria will move 15-25% closer to the Axis as a result of continued German pressure on the country.
 #NOTES_POSITION= 218,119
-#AI_RESPONSE= 100
+#AI_RESPONSE= 85
 #AI_RESPONSE_POPUP=
 #DATE= 1939/09/03
 #TEXT_RGB= 0,0,0
@@ -1550,7 +1551,7 @@
 
 ; Fall Weiss II
 {
-#NAME= [FW]DE 132 - USA: Recognize The Vichy France? (AI - 75%)
+#NAME= [FW]DE 132 - USA: Recognize Vichy France? (AI - 75%)
 #POPUP=
 #MESSAGE=Office of the Secretary of War %N Henry L. Stimson %N%N %BRe: %BVichy %BFrance %N%N Now that the Vichy French government has been established, we are prepared to send William D. Leahy to France as an ambassador with the hope to encourage elements of the Vichy government to oppose military collaboration with Germany and any war demands Germany may have. %N%N However this action may further traction the American isolationist movement, as the United States' recognition of Vichy is in direct contrast to British diplomacy, and an anti-war action. %N%N In light of these considerations, should the USA recognize Vichy France %B(YES)?
 #IMAGE=
@@ -2062,7 +2063,7 @@
 
 ; Fall Weiss II
 {
-#NAME= [FW]DE 149 - Germany: Turkey Resists Allied Diplomacy (AI - 100%)
+#NAME= [FW]DE 149 - Germany: Turkey Resists Allied Diplomacy (AI - 85%)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -2082,7 +2083,7 @@
 #MPP_TEXT=
 #NOTES=
 #NOTES_POSITION=
-#AI_RESPONSE= 100
+#AI_RESPONSE= 85
 #AI_RESPONSE_POPUP=
 #DATE= 1939/12/01
 #TEXT_RGB= 0,0,0
@@ -2798,9 +2799,7 @@
 #MESSAGE=
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 3
 #AI= 0
 #LEVEL= 0
@@ -2836,9 +2835,7 @@
 #MESSAGE=
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 3
 #AI= 0
 #LEVEL= 0
@@ -6472,7 +6469,7 @@
 ; Fall Weiss II
 ; Transfer Forces From Siberia
 {
-#NAME= [FW]DE 428 - USSR: Transfer Forces From Siberia (AI - 100%)
+#NAME= [FW]DE 428 - USSR: Transfer Forces From Siberia (Moscow Occupied) (AI - 100%)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -6508,7 +6505,7 @@
 ; Fall Weiss II
 ; Maikop Oil Fields
 {
-#NAME= [FW]DE 429 - Germany: Maikop Oil Fields (AI - 100%)
+#NAME= [FW]DE 429 - Germany: Maikop Oil Fields (Maikop Occupied) (AI - 100%)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -6957,9 +6954,7 @@
 #MESSAGE=
 #IMAGE=
 #SOUND=
-; new event from "1939 Storm Over Europe" campaign
-; currently disabled for Fall Weiss II pending review
-#FLAG= 0
+#FLAG= 1
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
@@ -8086,7 +8081,7 @@
 {
 #NAME= DE 606 - Germany: Continue Work On The Graf Zeppelin Aircraft Carrier? (50%) (AI - 50%)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BThe %BGraf %BZeppelin %N%N The hull of our proposed Aircraft Carrier, the %VDKM %VGraf %VZeppelin, is currently awaiting completion.%N%NCompleting it as an Aircraft Carrier will require a total of %B200 MPPs (25 MPPs for 8 turns), to be ready in January 1942.%N%N Would you like to continue with production as an Aircraft Carrier %B(YES)?
+#MESSAGE=Führerhauptquartier %N%N %BRe: %BThe %BGraf %BZeppelin %N%N The hull of our proposed Aircraft Carrier, the %VGraf %VZeppelin, is currently awaiting completion.%N%NCompleting it as an Aircraft Carrier will require a total of %B200 MPPs (25 MPPs for 8 turns), to be ready in January 1942.%N%N Would you like to continue with production as an Aircraft Carrier %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -8102,7 +8097,7 @@
 #MPP_UPDOWN= -25
 #MPP_TURNS= 8
 #MPP_TEXT= Naval Plan Z
-#NOTES=%N%N Whether it is better to continue working on the %VDKM %VGraf %VZeppelin as an Aircraft Carrier or to save the MPPs and use them elsewhere depends on your overall strategy and whether you can afford the cost of deploying it as an Aircraft Carrier.%N%N If you say %B(YES), then it could serve in either the Baltic or the Atlantic, providing long range air support and reconnaissance to our vessels.%N%N The Germans did have two Carriers in production in the late 1930s, the other being planned was intended to be called the %VDKM %VPeter %VStrasser, but neither were ever finished.
+#NOTES=%N%N Whether it is better to continue working on the %VGraf %VZeppelin as an Aircraft Carrier or to save the MPPs and use them elsewhere depends on your overall strategy and whether you can afford the cost of deploying it as an Aircraft Carrier.%N%N If you say %B(YES), then it could serve in either the Baltic or the Atlantic, providing long range air support and reconnaissance to our vessels.%N%N The Germans did have two Carriers in production in the late 1930s, the other being planned was intended to be called the %VPeter %VStrasser, but neither were ever finished.
 #NOTES_POSITION=
 ; Set AI acceptance % (AI will accept 50% of the time)
 #AI_RESPONSE= 50
@@ -10950,10 +10945,11 @@
 #CONDITION_POSITION= 192,104 [5,5] [0,0] [2] [0]
 }
 
+; https://en.wikipedia.org/wiki/Italian_aircraft_carrier_Aquila
 {
-#NAME= DE 700 - Italy: Complete The Battleship Roma Or Convert Her To An Aircraft Carrier? (AI - 50%)
+#NAME= DE 700 - Italy: Expedite the Construction of Aircraft Carrier Aquila? (AI - 50%)
 #POPUP=
-#MESSAGE=Office of the Navy %N Admiral Cavagnari %N%N %BRe: %BRoma %Bor %BAquila %N%N Work is continuing on the Battleship %VRN %VRoma at Trieste, though it has been suggested that rather than add another Battleship to our fleet, we should instead convert her into an Aircraft Carrier, to be named the %VRN %VAquila.%N%N Converting her into an Aircraft Carrier will take about two and a half years, with a total cost of %B200 MPPs (25 MPPs for 8 turns).%N%N Alternatively, we could simply carry on the work of completing her as a Battleship for free, in which guise she will be ready to enter service in June 1942.%N%N Would you like to convert the %VRoma into the %VAquila Aircraft Carrier for this extra cost %B(YES), or complete her production as a Battleship %B(NO)?
+#MESSAGE=Office of the Navy %N Admiral Cavagnari %N%N %BRe: %BAquila %N%N Work is continuing on converstion of the merchant ship %VSS %VRoma to the %VRN %VAquila, though it has been suggested we should allocate additional resources to expediate her completion.%N%N Expediating the conversion into an Aircraft Carrier will take about two years, with a total cost of %B200 MPPs (25 MPPs for 8 turns).%N%N Alternatively, we could simply carry on the work, in which she will be ready to enter service sometime later in 1943.%N%N Would you like to expedite the conversion of the %VRoma into the %VAquila Aircraft Carrier for this extra cost %B(YES), or complete her at the current rate %B(NO)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -10969,7 +10965,7 @@
 #MPP_UPDOWN= -25
 #MPP_TURNS= 8
 #MPP_TEXT= The Aquila Aircraft Carrier
-#NOTES= Converting the %VRN %VRoma into an Aircraft Carrier will be expensive, and whether or not this is worthwhile really depends on your overall Axis strategy.%N%N If you plan to invade the UK before turning east to knock the USSR out of the war, then this carrier will probably not have a big impact on the war.%N%N But if you wish to dominate the Mediterranean and the Atlantic, then having a carrier to provide mobile air support could be crucial in the struggles ahead against British and US forces in these areas.
+#NOTES= Converting the %VSS %VRoma into an Aircraft Carrier will be expensive, and whether or not this is worthwhile really depends on your overall Axis strategy.%N%N If you plan to invade the UK before turning east to knock the USSR out of the war, then this carrier will probably not have a big impact on the war.%N%N But if you wish to dominate the Mediterranean and the Atlantic, then having a carrier to provide mobile air support could be crucial in the struggles ahead against British and US forces in these areas.
 #NOTES_POSITION= 171,94
 ; Set AI acceptance % (AI will accept 50% of the time)
 #AI_RESPONSE= 50
@@ -11802,7 +11798,7 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Switzerland(104) Axis and not surrendered
 #VARIABLE_CONDITION= 104 [1] [0] [0]
-; 1 Axis unit in Manchester
+; 1 Axis unit in Manchester(147,72)
 #CONDITION_POSITION= 142,72 [0,0] [1,1] [1] [0]
 }
 
@@ -12301,7 +12297,7 @@
 
 ; Fall Weiss II
 {
-#NAME= [FW]DE 807 - UK: Send Military supplies to Turkey? (AI - 100%)
+#NAME= [FW]DE 807 - UK: Send Military supplies to Turkey? (AI - 85%)
 #POPUP=
 #MESSAGE=Prime Minister %N Winston Churchill %N%N %BRe: %BMilitary %BExports %BTo %BTurkey %N%N It is in the military and political interest of our country to maintain a friendly relationship with the Turkish government.  Turkey's proximity to the war in Europe could serve as an excellent prelude to Allied Liberation. %N%N It is therefore advised that we supply Turkey with the military equipment required to defend itself.  This will not only serve as a deterrent for any possible German aggression in the region, but will also move Turkey closer to the Allies. %N%N Should we approve the delivery of military equipment to Turkey?  It will cost a total of %B100 MPPs (25 MPPs for 4 turns).
 #IMAGE=
@@ -12323,7 +12319,7 @@
 #MPP_TEXT= Military Exports To Turkey
 #NOTES= %N%N Lend Lease supplies to Turkey during the conflict in Europe was meant to deter both a possible Axis invasion while also maintaining Turkey firmly in the Allied camp.%N%N If you say %B(YES), Turkey will create a new fully upgraded Infantry Corps at Ankara. The unit will deploy when and if Turkey enters the war for either side. Turkey will also move 4-6% closer to the Allies in response to the military aid.
 #NOTES_POSITION= 211,106
-#AI_RESPONSE= 100
+#AI_RESPONSE= 85
 #AI_RESPONSE_POPUP=
 #DATE= 1941/03/01
 #TEXT_RGB= 0,0,0
@@ -12340,7 +12336,7 @@
 
 ; Fall Weiss II
 {
-#NAME= [FW]DE 808 - USA: Send Military Supplies To Turkey? (AI - 100%)
+#NAME= [FW]DE 808 - USA: Send Military Supplies To Turkey? (AI - 85%)
 #POPUP=
 #MESSAGE=Office of the Secretary of War %N%N %BRe: %BMilitary %BExports %BTo %BTurkey %N%N The United States recognizes that successful Turkish resistance to Germany will be vital to maintain civil order in the Middle East. %N%N The UK has already committed to aiding the Turkish government with military supplies, and we are in position to ask that the UK direct further military aid to Turkey through our lend lease agreement. %N%N Should we insure that Turkey receives additional military aid? It will cost a total of %B175 MPPs (35 MPPs for 5 turns).
 #IMAGE=
@@ -12361,7 +12357,7 @@
 #MPP_TEXT= Military Exports To Turkey
 #NOTES= %N%N In 1941, the USA declared that "the defense of Turkey vital to the defense of the United States".  In sending supply shipments to Turkey, the USA undertook to fill the commitments that Great Britain had already made to keep Turkey firmly in the Allied Camp.%N%N If you say %B(YES), Turkey will create a new fully upgraded Tank Corps unit at Ankara. The unit will deploy when and if Turkey enters the war for either side. Turkey will also move 4-6% closer to the Allies in response to the military aid.
 #NOTES_POSITION= 211,106
-#AI_RESPONSE= 100
+#AI_RESPONSE= 85
 #AI_RESPONSE_POPUP=
 #DATE= 1941/05/31
 #TEXT_RGB= 0,0,0
@@ -12418,7 +12414,7 @@
 
 ; Fall Weiss II
 {
-#NAME= [FW]DE 810 - USA: Commitments to Turkish War Entry (AI - 100%)
+#NAME= [FW]DE 810 - USA: Commitments to Turkish War Entry (AI - 85%)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -12439,7 +12435,7 @@
 #MPP_TEXT= USA Commitments To Allied Turkey
 #NOTES=
 #NOTES_POSITION= 211,106
-#AI_RESPONSE= 100
+#AI_RESPONSE= 85
 #AI_RESPONSE_POPUP= USA Honours Commitment To Send Military Aid To Turkey
 #DATE= 1939/09/01
 #TEXT_RGB= 0,0,0
@@ -12808,7 +12804,7 @@
 
 ; Fall Weiss II
 {
-#NAME= [FW]DE 820 - UK: Pressure Swiss Government (AI - 75%)
+#NAME= [FW]DE 820 - UK: Pressure Swiss Government? (AI - 75%)
 #POPUP=
 #MESSAGE=Prime Minister %N Winston Churchill %N%N %BRe: %BSwitzerland %N%N It has been brought to our attention that, the Swiss Government has been facilitating trade between Germany and Portugal.  In response we are prepared apply economic pressure and incentive for the country to cease their facilitator relationship with Germany. %N%N Given Switzerland's isolation and dependence on Axis trade there is a strong possibility that our efforts will be fruitless and bear no result at all. %N%N Regardless, should we instruct our foreign office in Switzerland to pressure the government and provide incentive for the country to cease its facilitator relationship with Germany %B(YES)?  The attempt will cost %B25 MPPs.
 #IMAGE=
@@ -12893,7 +12889,7 @@
 
 ; Fall Weiss II
 {
-#NAME= [FW]DE 822 - UK: Induce Switzerland To End Axis Relations? (AI - 90%)
+#NAME= [FW]DE 822 - UK: Pressure Switzerland To End Axis Relations? (AI - 90%)
 #POPUP=
 #MESSAGE=Prime Minister %N Winston Churchill %N%N %BRe: %BSwitzerland %N%N Reports indicate that Switzerland could be convinced to end its relationship with the Axis.  Now that the Swiss and German diplomacy is at an all-time low, our government should move quickly to persuade Switzerland to severe ties and end it's relationship as a facilitator for German trade.  The Swiss are confident that Germany will not declare war on their country as a result.%N%N Do we approve payments to Switzerland to sway the government to severe Axis and Swiss relations %B(YES)?  It will cost a total of %B300 MPPs (150 MPPs for 2 turns).
 #IMAGE=
@@ -12926,44 +12922,6 @@
 ; UK(112) Allied and fully mobilized
 #VARIABLE_CONDITION= 104 [2] [1] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 823 - Italy: Rush troops to Tripoli? (AI - 50%)
-#POPUP=
-#MESSAGE=Commander in Chief %N%N %BRe: %BAfrica %N%N Il Duce, our command in Africa is requesting reinforcements.  We have soldiers available but we are training to form a new Italian Army that is not scheduled to take the field until late 1941.  It is possible to rush some forces to Tripoli now, although the formation of a new army will be abandoned. %N%N Alternatively, we could allow it to complete its training and formation, in which case it will deploy at full strength for operations in the Eastern Theatre in mid 1942. %N%N Would you therefore like to rush forces to Tripoli as a Corps for operations in Africa now %B(YES) or let it complete its training so that it will deploy as a full strength Army ready for operations in the Eastern Front in May 1942 %B(NO)?
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#DECISION= 823
-#MPP_UPDOWN= 0
-#MPP_TURNS= 0
-#MPP_TEXT=
-#NOTES= If you say %B(YES), Italy will deploy a full strength Infantry Corps at Tripoli. %N%N If you select %B(NO), Italy will deploy a full strength Infantry Army at Warsaw in May 1942.
-#NOTES_POSITION= 182,54
-; Set AI acceptance % (AI will accept 50% of the time)
-#AI_RESPONSE= 50
-#AI_RESPONSE_POPUP=
-#DATE= 1941/01/01
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-;Set Friendly Position (Rome, Palermo, Tripoli)
-#ALIGNMENT_POSITION= 171,101 [1]
-#ALIGNMENT_POSITION= 173,109 [1]
-#ALIGNMENT_POSITION= 172,121 [1]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; Italy(59) Axis and fully mobilized
-#VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -13148,7 +13106,7 @@
 {
 #NAME= [FW]DE 828 - Italy: Heavy Investment In Aircraft Industry Development? (AI - 25%)
 #POPUP=
-#MESSAGE=Commander in Chief %N%N %BRe: %BAircraft %BIndustry %N%N Il Duce, our air force dwarfs in comparison to other major powers and will continue to be hampered by the local aircraft industry which uses obsolete construction methods.  Even with technical assistance from Germany the situation is expected to improve very little without significant expenditures.  Planned development work of long range bombers and an expanded air fleet will require significant investment into the industry if we would expect to produce at an effective scale. %N%N Our advisors suggest that the present is the only time to begin investing into infrastructure necessary to produce air fleets which will be effective over the course of the war. The total cost of this investment would be %B1000 MPPs (20 MPPs for 40 turns). %N%N Il Duce, should we begin significantly investing into our nations aircraft industry %B(YES)?
+#MESSAGE=Commander in Chief %N%N %BRe: %BAircraft %BIndustry %N%N Il Duce, our air force dwarfs in comparison to other major powers and will continue to be hampered by the local aircraft industry which uses obsolete construction methods.  Even with technical assistance from Germany the situation is expected to improve very little without significant expenditures.  Planned development work of long range bombers and an expanded air fleet will require significant investment into the industry if we would expect to produce at an effective scale. %N%N Our advisors suggest that the present is the only time to begin investing into infrastructure necessary to produce air fleets which will be effective over the course of the war. The total cost of this investment would be %B600 MPPs (20 MPPs for 30 turns). %N%N Il Duce, should we begin significantly investing into our nations aircraft industry %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -13162,9 +13120,9 @@
 #DISPLAY_ORDER= 0
 #DECISION= 828
 #MPP_UPDOWN= -20
-#MPP_TURNS= 40
+#MPP_TURNS= 30
 #MPP_TEXT= Aircraft Industry Development
-#NOTES= %N%N While numerically still a force to be reckoned with, the Regia Aeronautica was hampered by the local aircraft industry which was using obsolete production methods. Technical assistance provided by its German ally did little to improve the situation. %N%N If you say %B(YES) and choose to significantly invest in the Regia Aeronautica, Italy will deploy the following fully upgraded units each with +1 Experience Near Rome: %N%N%T - Fighter (June 1941) %N%T - Medium Bomber (September 1941) %N%T - Tactical Bomber (December 1941) %N%N Alternatively, the total production cost for these aircraft would be 800 MPPs if manually constructed.  However, the investment costs for the Air Industry Development will consume approximately 15-20% of Italy's total production over the next 2.5 years.
+#NOTES= %N%N While numerically still a force to be reckoned with, the Regia Aeronautica was hampered by the local aircraft industry which was using obsolete production methods. Technical assistance provided by its German ally did little to improve the situation. %N%N If you say %B(YES) and choose to significantly invest in the Regia Aeronautica, Italy will deploy the following fully upgraded units each with +1 Experience Near Rome: %N%N%T - Fighter (June 1941) %N%T - Medium Bomber (September 1941) %N%T - Tactical Bomber (December 1941) %N%N Alternatively, the total production cost for these aircraft would be 850 MPPs if manually constructed.  However, the investment costs for the Air Industry Development will consume approximately 15-20% of Italy's total production over the next 2 years.
 #NOTES_POSITION= 171,101
 ; Set AI acceptance % (AI will accept 25% of the time)
 #AI_RESPONSE= 25
@@ -13986,78 +13944,6 @@
 
 ; Fall Weiss II
 {
-#NAME= [FW]DE 851 - Germany: Complete the Battleship Tirpitz or Reallocate Resources toward U-boat Construction? (AI - 50%)
-#POPUP=
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BKriegsmarine %N%N Mein Führer, we currently have the Battleship %VKMS %VTirpitz on schedule to be commissioned in the spring of 1941. %N%N While much of the work of the hull is already complete there remains some skepticism in the Kriegsmarine as to whether we would be better served to abandon construction and redirect our limited naval capacity to building more U-boats for the Atlantic campaign. %N%N Though we must consider that abandoning construction of the %VTirpitz after the elaborate ceremonies surrounding her launch in April of 1939 is certain to reduce the morale of the Kriegsmarine as the %VTirpitz has potential to be the heaviest battleship ever built by a European Navy. %N%N This is a significant opportunity to amend our overall Naval Strategy.  Should we continue with the construction of the %VTirpitz %B(YES) or should we focus our efforts on building more U-boats to support unrestricted submarine warfare? %B(NO) It will cost a total of %B30 MPPs (15 MPPs for 2 turns) to scrap construction of the %VTirpitz and switch our resources to the construction of additional U-boats.
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#DECISION= 851
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#MPP_UPDOWN= 0
-#MPP_TURNS= 0
-#MPP_TEXT=
-#NOTES= %N%N %VTirpitz was the second of two Bismarck-class battleships built for Germany's Kriegsmarine during World War II.  The amount of material, manpower and production capacity that the Battleships consumed was the equivalent of building 80 U-boats. %N%N It is up to historical debate what effect the production of additional U-boats may have had on the early years of the Atlantic campaign. %N%N If you select %B(YES), a full strength Battleship (%VTirpitz) will enter service February 25, 1941 at Stettin. %N%N If you select %B(NO), Germany will receive 2 half strength U-boat groups at Stettin on December 30, 1940 and Germany's National Morale will decrease 500 points as a result of scrapping the celebrated Battleship %VTirpitz.
-#NOTES_POSITION= 173,74
-; Set AI acceptance % (AI will accept 50% of the time)
-#AI_RESPONSE= 50
-#AI_RESPONSE_POPUP=
-#DATE= 1939/11/30
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-;
-; Fall Weiss II
-{
-#NAME= [FW]DE 852 - UK: Abondon Construction of the Battleship HMS Anson for Additional Destroyers? (AI - 50%)
-#POPUP=
-#MESSAGE=First Lord of the Admiralty %N Winston Churchill %N%N %BRe: %BThe %BBattleship %BHMS %BAnson %N%N We currently have plans to launch the %VHMS %VAnson Battleship with an expected completion date of April 14, 1942.  Though there are some within our ranks that suggest we may be better served to redirect some of our resources to the construction of additional destroyers. %N%N We could make the decision to abandon construction of the Battleship and instead begin construction of new destroyers.  The cost of changing plans will be considerably minimal at a total of %B75 MPPs (15 MPPs for 5 turns). %N%N Should we abandon the construction of %VHMS %VAnson and redirect our resources to the completion of Destroyers %B(YES)?
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#DISPLAY_ORDER= 1
-#DECISION= 852
-#MPP_UPDOWN= -15
-#MPP_TURNS= 5
-#MPP_TEXT= UK Naval Strategy
-#NOTES= This decision depends on your overall naval strategy and the perceived threat of a successful Atlantic U-boat campaign by Germany. %N%N If you say %B(YES), the construction of the Battleship %VHMS %VAnson will be abandoned and instead the UK will receive 2 Full Strength Destroyer Groups at Liverpool on November 21, 1942.%N%N If you say (N0), construction will continue on the %VHMS %VAnson with an expected commission date of April 14, 1942.
-#NOTES_POSITION= 147,77
-#AI_RESPONSE= 50
-#AI_RESPONSE_POPUP=
-#DATE= 1939/10/01
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; London(147,77) is Allied
-#ALIGNMENT_POSITION= 147,77 [2]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; UK(112) Allied and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; Fall Weiss II
-{
 #NAME= [FW]DE 853 - USSR: Stalingrad Workers (AI - 100%)
 #POPUP=
 #MESSAGE=Red Army Headquarters %N%N %BRe: %BSouthern %BTheater %N%N The German Army is quickly approaching the gates of Stalingrad.  It is imperative that we hold Stalingrad at all costs.  There are thousands of factory workers who if we choose will take up arms and fight to the end to protect the city. %N%N With your approval Soviet factory workers will be prepared to form defensive positions immediately in the form of 2 understrength Infantry Divisions. %N%N At a cost of %B75 MPPs, should we approve of equipping and deploying Stalingrad's factory workers to the battlefield %B(YES)?
@@ -14094,9 +13980,9 @@
 
 ; Fall Weiss II
 {
-#NAME= [FW]DE 854 - UK: Hunt Down The KMS Admiral Graf Spee? (AI - 50%)
+#NAME= [FW]DE 854 - UK: Hunt Down The Admiral Graf Spee? (AI - 50%)
 #POPUP=
-#MESSAGE=First Lord of the Admiralty %N Winston Churchill %N%N %BRe: %BKMS %BGraf %BSpee %N%N The German Deutschland-class %VKMS %VAdmiral %VGraf %VSpee, is raiding our shipping lanes in the South Atlantic.  Soon we will begin to feel the economic effects of the %VAdmiral %VGraf %VSpee's successes. %N%N Our Naval advisers suggest sending a search fleet to deal with the problem. %N%N Should we pursue the German raider, the %VAdmiral %VGraf %VSpee and maintain naval protection in the South Atlantic thereafter %B(YES)?  It will cost a total of %B250 MPPs (50 MPPs for 5 turns).
+#MESSAGE=First Lord of the Admiralty %N Winston Churchill %N%N %BRe: %BGraf %BSpee %N%N The German Deutschland-class %VAdmiral %VGraf %VSpee, is raiding our shipping lanes in the South Atlantic.  Soon we will begin to feel the economic effects of the %VAdmiral %VGraf %VSpee's successes. %N%N Our Naval advisers suggest sending a search fleet to deal with the problem. %N%N Should we pursue the German raider, the %VAdmiral %VGraf %VSpee and maintain naval protection in the South Atlantic thereafter %B(YES)?  It will cost a total of %B250 MPPs (50 MPPs for 5 turns).
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -14115,7 +14001,7 @@
 #NOTES= Between September and December 1939, the %VAdmiral %VGraf %VSpee sank nine ships in the South Atlantic, before being historically confronted by three British cruisers at the Battle of the River Plate on December 13, 1939.  It took considerable effort on the part of the Allies to hunt down the %VAdmiral %VGraf %VSpee.%N%N If you select %B(YES), then the %VAdmiral %VGraf %VSpee will ultimately be sunk in the South Atlantic. %N%N If you select %B(NO), then then we run the risk of reduced convoys in the short term and the eventual return of the %VAdmiral %VGraf %VSpee to port in Germany.
 #NOTES_POSITION= 147,77
 #AI_RESPONSE= 50
-#AI_RESPONSE_POPUP= The Allies Begin Hunting The German Raider KMS Admiral Graf Spee
+#AI_RESPONSE_POPUP= The Allies Begin Hunting The German Raider Admiral Graf Spee
 #DATE= 1939/09/23
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
@@ -15989,7 +15875,7 @@
 #MPP_UPDOWN= -20
 #MPP_TURNS= 3
 #MPP_TEXT= Construction of Lützow
-#NOTES= %N%N In October 1939, the Soviet Union approached Germany with a request to purchase the then unfinished Admiral Hipper-class cruiser %VKMS %VLützow. As the agreement was never finalized until February 1940, Germany could have denied the request. %N%N If you select %B(YES), USSR will move 4-6% closer to the Allies and Germany will commission the Heavy Cruiser %VLützow in February 1941.%N%N If you select %B(NO), the Heavy Cruiser will be transferred to USSR which will have to refit it to completion at a slightly higher cost.
+#NOTES= %N%N In October 1939, the Soviet Union approached Germany with a request to purchase the then unfinished Admiral Hipper-class cruiser %VLützow. As the agreement was never finalized until February 1940, Germany could have denied the request. %N%N If you select %B(YES), USSR will move 4-6% closer to the Allies and Germany will commission the Heavy Cruiser %VLützow in February 1941.%N%N If you select %B(NO), the Heavy Cruiser will be transferred to USSR which will have to refit it to completion at a slightly higher cost.
 #NOTES_POSITION= 206,52
 ; Set AI acceptance % (AI will accept 50% of the time)
 #AI_RESPONSE= 50
@@ -16584,41 +16470,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; Fall Weiss II
-{
-#NAME= [FW]DE 946 - Germany: Prepare for Operation Sealion or Barbarossa? (AI - 0%)
-#POPUP=
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BOperation %BSealion %N%N Mein Führer, OKW Chief of Staff Alfred Jodl has formally presented his plan for an invasion of Britain, which if successful will ensure victory in Western Europe.  If we consider proceeding then preliminary planning should commence immediately, if it has not already.  The Kriegsmarine, which will support our landing craft can not match the warships of the Royal Navy, so it is imperative that the Luftwaffe gain air superiority.  Once we gain air superiority we must then risk crossing the English Channel. To support an invasion of Britain the delivery of every available assault boat, landing craft and paratrooper should be prioritized. %N%N We must note that opposition to the planned invasion of Britain, codenamed Operation Sealion is very vocal amongst senior staff. With the risk of eventual Soviet intervention while we are at war on British soil, our military resources may become over stretched as we wage war on multiple fronts. Rather then hastily support our amphibious capabilities we could instead focus our military resources on strengthening the Wehrmacht for an eventual war on the Eastern Front.%N%N Mein Führer, should we hastily prepare our amphibious capabilities %B(YES) or continue to strengthen the general Wehrmacht with our available resources %B(NO)?
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#DISPLAY_ORDER= 1
-#DECISION= 946
-#MPP_UPDOWN= 0
-#MPP_TURNS= 0
-#MPP_TEXT=
-#NOTES= %N%N Historically, Führer Directive No. 16 set in motion preparations for the invasion of Britain, but the amphibious invasion never materialized.  While the Luftwaffe were confident that a decisive result could be achieved, the Kriegsmarine were not. The invasion was eventually put on indefinite hold as detailed plans to attack the Soviet Union took precedence. %N%N Ultimately, this is a significant opportunity to direct our military resources to support long term German strategic aims no matter what our immediate plans may be.  If you select %B(YES), Germany will immediately deploy at half strength a Special Forces and Paratrooper unit at Cologne, and Motor Boat Torpedo units in the ports of Cuxhaven and Wilhelmshaven. %N%N If you select %B(NO), Germany will receive a full strength HQ and Tank Corps at Berlin in December 1940.
-#NOTES_POSITION= 147,77
-#AI_RESPONSE= 0
-#AI_RESPONSE_POPUP=
-#DATE= 1940/06/19
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and Fully Actives
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
 ; Replacement Script
 ; Fall Weiss II
 {
@@ -16907,42 +16758,6 @@
 ; USSR(116) Allied
 #VARIABLE_CONDITION= 111 [2] [0] [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 978 - Germany: Complete Battleship Tirpitz or Reallocate Resources toward U-boat Construction? (AI - 100%)
-#POPUP=
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 851[0]
-; 851[0]->978[?]
-#DECISION= 978
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#DISPLAY_ORDER= 1
-#MPP_UPDOWN= -15
-#MPP_TURNS= 2
-#MPP_TEXT= German Naval Strategy
-#NOTES=
-#NOTES_POSITION=
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1939/09/01
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
