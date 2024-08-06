@@ -1,3 +1,78 @@
+v1.29.00
+
+GAME ENGINE
+- Fixed a disappearing AI unit under rare circumstances (Lothos).
+- Fixed an introduced transport issue that did not allow land units to transport when adjacent a 'frozen' port that was not convered in ice.
+- Fixed a MOBILIZATION_4_EVENT error that did not properly structure a DECISION like event that other events could link to (Lothos).
+- Fixed an issue for AI ai units where they could incorrectly fly over NEUTRAL territory to otherwise strike 'unreachable' target hexes (Lothos).
+- Fixed a TERRITORY event crash error for when COUNTRY_ID= 0 (Lothos).
+- Added a new 'windowed mode' in the SETTINGS screen which will allow players to play the game in a moveable window on their desktop.
+
+All Campaigns
+- Added Chapayev and Kalinin as Soviet Light Cruiser names to all foreign language files (Machredsch).
+
+
+v1.28.00
+
+GAME ENGINE
+- Fixed a unit movement error when land operational movement is disabled (El_Condoro)
+- Fixed a rare Diplomacy chit reclamation error that led unusually high influence chits remaining (Tigertony).
+- Fixed a Naval Cruise unit action point value display error when custom Naval Cruise multipliers have been set (CaesarAug).
+- Fixed an Amphibious Transport unload unit error that allowed units to unload on impassable terrain.
+- Fixed an error that allowed Naval Cruise after a unit attacks and the defender is either destroyed or retreats (KorutZelva).
+- Fixed an escort highlight error for some rare cases (ArcturusRising).
+- Fixed a PBEM error under FoW that would possibly center the map on a hidden unit when a replay of the previous turn was about to start (Duedman).
+- Fixed a PBEM first turn error that did not properly list some customized country names (OldCrowBalthazor).
+- Fixed an error for custom campaigns that did not see the 'storms' penalty applied to naval units when the penalty is greater than +1 (Laki). 
+- Fixed a unit retreat hex optimization issue (havoc1371).
+- Fixed an error that did not properly calculate initial unit morale during a dual deployment phase unit at the start of the game (Wilson).
+- Fixed a combat error that did not properly show subs being destroyed when attacked and destroyed via a recon attempt, e.g. after the sub had dove (LLv34Mika).
+- Fixed the display of incorrect mouse hover tool tip info for custom campaigns in the PBEM++ Lobby.
+- Fixed an upgrade unit error that did not always upgrade all upgradeable slots with the 'Upgrade Tool' (Lothos).
+- Subs now attempt to randomly dive between 1 to 2 hexes if possible, but still with a maximum of 4 hexes if no good dive hexes are initially found.
+- Fixed an AI air unit placement issue whereby non belligerent countries tried to place newly purchased air units close to 'enemy' positions (Nolt).
+- Fixed a naval supply map display error that incorrectly showed minor ports starting from supply value 5 instead of stating at 10 (Nginear).
+- Settings list of resolutions now show the resolutions without Windows scaling applied, however scaled resolutions still stored applicably in INI files.
+
+All Campaigns
+- Added Chapayev and Kalinin as Soviet Light Cruiser names (Mithrilotter).
+- Increased the Naval Defense Value of Coastal Guns (Mithrilotter).
+- Monastir in Yugoslavia renamed to Bitola (DarkHorse2).
+- Corrected the tool tips for Infantry Warfare and Armored Warfare research (DarkHorse2).
+- Corrected the Variable Condition in the Guard script Germany Minor Guard – Hungary (DarkHorse2).
+- Corrected the Trigger on the Diplomacy script Germany Presses Spain (1942 – FORCED)  (DarkHorse2).
+- Removed Derna (191,120) from the Supply script Malta Effect (Tobruk, Bardia, Sidi Barrani, Mersa Matruh, El Alamein, Alexandria) (DarkHorse2).
+- The Strategy Guides no longer mentions Scutari as an Albanian Partisan trigger location (Mithrilotter).
+- The Condition Position for Decision 455 has been corrected (DarkHorse2).
+- Changed the Country_ID and Alignment_ID for the Supply scripts for Axis raiders to disrupt US and Canadian shipping (DarkHorse2).
+- From the 1st January 1941, Italy will now gain 20 National Morale points per turn if it holds Tripoli, and 15 for each of Benghazi and Tobruk. 
+  Consequently, if all three are held then they will receive 50 NM points per turn (ElvisJJonesRambo; redrum68).
+- Providing Rome is also in Axis hands, these increases will double to a potential 100 points per turn from the 1st January 1942 (ElvisJJonesRambo; redrum68).
+
+1939 Campaigns
+- Removed the link to 600[1] from the POP UP scripts ALLIED AI: German/Soviet Front Garrison Report 1941 (DarkHorse2).
+- National Morale scripts for the German victory over Poland and the return of Danzig consolidated into one (DarkHorse2).
+
+1939 & 1940 Campaigns
+- The Triomphant will now deploy primarily at Belfast (Taifun).
+- Changed the triggers to 100 for the following Guard scripts: France Guard – Algiers;  France Guard – Oran;  France Guard – Tunis;  France Guard – Syria (DarkHorse2).
+- Removed the duplicated #POPUP line from the Mobilization_2 script Yugoslavia Signs The Tripartite Pact (Yugoslavia?Axis) (DarkHorse2).
+- Removed the duplicated #POPUP line from the Mobilization_3 script DE 104 - Yugoslavia Signs The Tripartite Pact (Yugoslavia->Axis) (DarkHorse2).
+- Corrected the Variable Condition in the National Morale scripts relating to the fighting in East Africa (DarkHorse2).
+- Removed the Territory script connected to DE 212 as it was surplus to requirements (DarkHorse2).
+
+1939-1941 Campaigns
+- Decision 408 corrected so it will now fire (DarkHorse2).
+
+1941 Campaign
+- Connected the Territory script for the return of St Nazaire to France to DE 251 (DarkHorse2).
+
+1941-1943 Campaigns
+- The following Unit scripts are no longer connected to a Decision Event: 
+	ALLIED AI: UK - HQ/Corps - Basra – 1941; 
+	AXIS AI: Germany - Post D-Day Frontier Defense - Frankfurt (Intermediate); 
+	AXIS AI: Germany - Berlin Defense, as well as the Pop Up script Pierre Laval Broadcasts Calling For An Axis Victory Over The USSR (DarkHorse2).
+
 v1.27.00
 
 GAME ENGINE
@@ -39,7 +114,8 @@ GAME ENGINE
 - AI subs will now lock in to Hunt mode if the Fleet script is set to 'Naval Cruise' (Lothos).
 - AI OFFENSIVE 'build up plans' will not automatically trigger versus a minor nation that is mobilized, unless the country owner of the OFFENSIVE plan is already at war with the parent of the minor target (Lothos).
 - AI subs will no longer try and target land based convoys (Chernobyl).
-- The automatic unit morale increase/decrease mechanism for friendly and enemy units upon a country surrender is now halved when more than 15% of the campaign has been played, e.g. the default impact will typically remain within the first year of the campaign.
+- The automatic unit morale increase/decrease mechanism for friendly and enemy units upon a country surrender is now halved when more than 15% of the campaign has been played, 
+  e.g. the default impact will typically remain within the first year of the campaign.
 
 EDITOR
 - Placing a < symbol at the end of the #MAP_POSITION in STRENGTH scripts will allow for targeted units to be destroyed.
@@ -61,7 +137,8 @@ All Campaigns
 
 1939 Campaign
 - National Morale script triggered by the Allied capture of Oslo should Germany invade Norway via DE 644 added (Duedman).
-- Set Lithuania to be 15% pro-Allied and also changed the ALIGNMENT_POSITION checks for DE 457 and DE 458 from Polotsk to Kaunas being in Allied hands, so as to avoid the connected MOBILIZATION_3 scripts from firing when the USSR annexes the Baltic States, but Germany has already annexed the country.
+- Set Lithuania to be 15% pro-Allied and also changed the ALIGNMENT_POSITION checks for DE 457 and DE 458 from Polotsk to Kaunas being in Allied hands, 
+  so as to avoid the connected MOBILIZATION_3 scripts from firing when the USSR annexes the Baltic States, but Germany has already annexed the country.
 - Added a Strength script penalising Polish unit morale against the Axis AI at Intermediate and above (Mithrilotter).
 - DE 601 will now trigger the deployment of a German Garrison unit in Copenhagen (OxfordGuy3).
 - Amended the Strategy Guide to reflect that it is territory near Petsamo that transfers to the USSR if they win the Winter War, rather than Petsamo itself (OxfordGuy3).
@@ -71,7 +148,8 @@ All Campaigns
 - Duplicated DE 604 with DE 678 so that the same DE fires whether or not the UK supports the Free French (jkap).
 - The USSR now receives an AA unit via the Production Queue in July 1940.
 - France's MPP boost on liberation increased from 75 MPPs for 3 turns to 200 MPPs for 3 turns (Mithrilotter).
-- 6 and 10 hexes of Warsaw will now show on the map when relevant. Note that this does not take into account other political actions, e.g. the entrance of Axis Minors into the war, the independence or otherwise of the Baltic States, or whether or not Poland has been divided between Germany and the USSR (taffjones).
+- 6 and 10 hexes of Warsaw will now show on the map when relevant. Note that this does not take into account other political actions, 
+  e.g. the entrance of Axis Minors into the war, the independence or otherwise of the Baltic States, or whether or not Poland has been divided between Germany and the USSR (taffjones).
 - The presence of an Italian naval unit within 10-12 hexes of the port of Southampton while Italy is neutral can now trigger the US mobilizing by 2-5% per turn (HarrySmith).
 
 1939, 1940 & 1941 Campaigns
@@ -138,11 +216,11 @@ All Campaigns
 - The Spanish Republican resistance can now provide intelligence to SOE on an Axis build up in Spain from January 1943 rather than 1944 (wobbleguts).
 - The National Morale scripts for the loss of Manchester and liberation of London will now display text correctly in all languages (Armuss).
 - The following National Morale scripts now require Perm rather than Moscow to be in Allied hands to fire (BigJohn):
-#NAME= USSR - Soviet Morale Improves As The War On The Eastern Front Continues
-#NAME= USSR - Soviet Morale Improves As The War On The Eastern Front Continues (Continuous)
-#NAME= USSR - USSR Morale Boosted From Allied Landings In France
-#NAME= USSR - USSR Morale Boosted From Allied Landings In Italy
-#NAME= USSR - Soviet Morale Is Boosted As Allied Forces Approach Berlin
+	#NAME= USSR - Soviet Morale Improves As The War On The Eastern Front Continues
+	#NAME= USSR - Soviet Morale Improves As The War On The Eastern Front Continues (Continuous)
+	#NAME= USSR - USSR Morale Boosted From Allied Landings In France
+	#NAME= USSR - USSR Morale Boosted From Allied Landings In Italy
+	#NAME= USSR - Soviet Morale Is Boosted As Allied Forces Approach Berlin
 - The National Morale script USSR - Soviet Morale Improves As The War On The Eastern Front Continues (Continuous) now provides 250 rather than 150 points per turn (BigJohn).
 - Turkey is now a Soviet rather than UK Minor (BigJohn).
 - Erzurum is now an alternative Turkish capital (Hebrock).
@@ -151,7 +229,8 @@ All Campaigns
 
 1939 Campaign
 - If the USSR has been offered, and rejected, a Revised Borders Treaty then it will now swing only 3-5% towards the Allies rather than 7-10% if Germany annexes Lithuania via DE 633 or DE 634 (AshFall).
-- If the USSR has been offered, and rejected, a Revised Borders Treaty then it will now swing 7-10% towards the Axis if it annexes Lithuania, should Germany have failed to do so. To make this work, dummy Decisions 457 & 458 have been added, and Lithuania now starts pro-Allied rather than purely neutral, though still at 0% Mobilization. (AshFall).
+- If the USSR has been offered, and rejected, a Revised Borders Treaty then it will now swing 7-10% towards the Axis if it annexes Lithuania, should Germany have failed to do so. 
+  To make this work, dummy Decisions 457 & 458 have been added, and Lithuania now starts pro-Allied rather than purely neutral, though still at 0% Mobilization. (AshFall).
 - Removed the Condition Positions for DE 406 for the USSR to decide if it wants to invade Poland (BigJohn).
 - Fixed Poland and Germany's belligerence status.
 
@@ -215,10 +294,13 @@ All Campaigns
 - Changed the Weather Zones of hexes 232,83 233,83 234,83 235,83 236,84 237,84 238,85 239,85 (north and east of Stalingrad) so that they are now in the same Weather Zone as Stalingrad (BigJohn).
 
 1939 and 1940 Campaigns
-- Changed the Mobilization_2 script #NAME= Collapse of Belgium (Italy->Axis) to be a one time event. To compensate for this, the script #NAME= Collapse of France (Italy->Axis) will now fire when there are 2 Axis units within 3 hexes of Paris - previously it was triggered by 1 Axis unit within 1 hex of Paris (redrum68).
+- Changed the Mobilization_2 script #NAME= Collapse of Belgium (Italy->Axis) to be a one time event. To compensate for this, 
+  the script #NAME= Collapse of France (Italy->Axis) will now fire when there are 2 Axis units within 3 hexes of Paris - previously it was triggered by 1 Axis unit within 1 hex of Paris (redrum68).
 
 1939; 1940 and 1941 Campaigns
-- An Axis declaration of war on the USSR will now reduce Soviet National Morale by 15,000 points. This will be regained by an increase in the bonus when the USA joins the Allies (increased by 5,000 points) when the Siberians arrive (increased by 2,500 points) and if the USSR has not surrendered by the 1st January 1943 (increased by 2,500 points, as well as increasing the per turn bonus from 100 to 150 points providing Moscow is still in Allied hands)(dhucul2011).
+- An Axis declaration of war on the USSR will now reduce Soviet National Morale by 15,000 points. This will be regained by an increase in the bonus when the USA joins the Allies 
+ (increased by 5,000 points) when the Siberians arrive (increased by 2,500 points) and if the USSR has not surrendered by the 1st January 1943 (increased by 2,500 points, as well as increasing the per turn
+ bonus from 100 to 150 points providing Moscow is still in Allied hands)(dhucul2011).
 
 1939-1942 Campaigns
 - Sevastopol is now a National Morale objective worth 5,000 points (Duedman).
@@ -235,7 +317,8 @@ Strategy Guides
 v1.23.00
 
 GAME ENGINE
-- Fixed an issue where active convoy calculations were performed prior to resource strength calculations, which could incorrectly result in some convoys showing as invalid, due to a weakened port, prior to the final resource strength updates (Mithilotter).
+- Fixed an issue where active convoy calculations were performed prior to resource strength calculations, which could incorrectly result in some convoys showing as invalid, 
+  due to a weakened port, prior to the final resource strength updates (Mithilotter).
 - Fixed an issue where renaming your HQ in the PURCHASE screen would not remove the originally named HQ from the list (ArcturusRising).
 - Fixed an issue where a SURRENDER_2 event would incorrectly remove a friendly unit relative to the event recipient ID when located in the capital (petedalby).
 - Removed the GDI+ installed check at runtime.
@@ -291,7 +374,9 @@ EDITOR CHANGES
 - Set France industrial modifier to 130%, was 140% (mkollmann)
 
 All Campaigns
-- Dummy Decision DE 173 added to allow historical Pop Up messages of events during the war to be easily turned OFF by going to Options -> Advanced -> Scripts -> Decision. It is the first one in the list, and unticking the box on the right will mean that 95% of the messages that are only there for historical flavor, won't appear. A small number are tied into other Decision Events to ensure they only appear at the correct time, so they will still appear (Garrison Moratto).
+- Dummy Decision DE 173 added to allow historical Pop Up messages of events during the war to be easily turned OFF by going to Options -> Advanced -> Scripts -> Decision. It is the first one in the list, 
+  and unticking the box on the right will mean that 95% of the messages that are only there for historical flavor, won't appear. A small number are tied into other Decision Events to ensure they only 
+  appear at the correct time, so they will still appear (Garrison Moratto).
 - Changed the terrain to numbers 147 and 498 in hexes 190,13 and 191,12 respectively, as well as changing 191,13 to be a fully land hex, to enable rail traffic to pass to and from Alta in Norway (Scottydawg).
 - Deleted the forest in hex 198,89 to avoid confusion as it couldn't be easily seen (mdsmall).
 - Changed the weather for Late Spring (1st May to 20th June) in Russia (weather zone 5) to have a zero chance of mud (Trooper_One).
@@ -304,7 +389,8 @@ All Campaigns
 - The date of Denmark surrendering via DE 601 has been changed from the 14th April to the 3rd April 1940, as have those scripts relating to Norway's surrender if triggered via DE 643 or 644 that would have also taken place on the 14th April (El_Condoro; havoc1371).
 - Reduced the chance of the Anglo-French Expedition re DE 204 succeeding from 50% to 33% (scum; gilthib).
 - Corrected Soviet Corps and Army Combat Target Statistics (PvtBenjamin).
-- Text added to the Strategy Guides to explain that when the US convoy to the UK, or the UK's convoy to the USSR are re-routed, it may be necessary to amend the % being sent by convoy by going to War Maps -> Convoy Map, clicking on the relevant flag and using the arrow buttons (EarlyDoors).
+- Text added to the Strategy Guides to explain that when the US convoy to the UK, or the UK's convoy to the USSR are re-routed, it may be necessary to amend the % being sent by convoy by going to War Maps -> Convoy Map, 
+  clicking on the relevant flag and using the arrow buttons (EarlyDoors).
 
 1939 Campaign
 - French translated text for sending the Anglo-French Expedition to Norway corrected.
@@ -312,7 +398,8 @@ All Campaigns
 - Reduced USSR bonus UNIT events for the AI at the INTERMEDIATE difficulty level.
 
 1939 and 1940 Campaigns
-- Amended the French Strength script for Panic caused by the Maginot Line being outflanked so that it no longer requires Belgium to be Allied and surrendered. To replace that, a check for 2 Axis units being within 3 hexes of Reims has been added (havoc1371).
+- Amended the French Strength script for Panic caused by the Maginot Line being outflanked so that it no longer requires Belgium to be Allied and surrendered. To replace that, 
+  a check for 2 Axis units being within 3 hexes of Reims has been added (havoc1371).
 - Removed the check for Italy's mobilization status from the Decision Events relating to the deployment of the British 7th Armoured (Gilber).
 - Allied amphibious preparations against Italy while the USA is neutral may now trigger the deployment of up to 4 Garrison units in mainland Italy and Sicily.
 - Added symbols and text to the map showing the Italian mobilization zones, within which 2 Allied Amphibious units or 7 naval units (including regular Transports) could trigger Italian mobilization.
@@ -493,7 +580,8 @@ GAME ENGINE CHANGES
 - User saves versus the AI will now remember the last map position and center on that position when loading the save (John Fireheart).
 - Computer spotting range bonuses, as set in the OPTIONS screen, will no longer include extended spotting of Naval Mines (Hotzn).
 - HQ supply rules, plus boosting/linking rules recap:
-    - HQ units, after amphibiously unloading, start at 10 supply and maintain supply for up to 5 turns with a drop of 2 supply points per turn.  This is similar to Special Forces, and allows the HQ to act as a Mulberry for an initial landing until further supply sources are achieved.
+    - HQ units, after amphibiously unloading, start at 10 supply and maintain supply for up to 5 turns with a drop of 2 supply points per turn.  
+	  This is similar to Special Forces, and allows the HQ to act as a Mulberry for an initial landing until further supply sources are achieved.
     - HQ distribution supply:
            - HQ supply = 0 will have a distribution supply value of 3 (previously it was 5).
            - HQ supply 1 or 2 will have a distribution supply value of 5.
@@ -523,14 +611,17 @@ All Campaigns
 - Moved a British Partisan location from Liverpool to Sheffield (The Land).
 - Railway added joining Yozgat to Erzurum to Kars and Leninakan (Captjohn757).
 - Convoys to Murmansk now have the ownership of every resource checked between Murmansk and Belomorsk, plus Vologda, so that the convoy only works if all of these are in Allied hands (mdsmall).
-- The chance of rain in Weather Zone 3 (British Isles) reduced in Fall from 25 to 20%, in Winter from 30 to 15%, in Late Fall from 35 to 15% and in Late Winter from 35 to 20%. The chance of snow in Late Fall has also been reduced from 30 to 10% (JJRambo).
+- The chance of rain in Weather Zone 3 (British Isles) reduced in Fall from 25 to 20%, in Winter from 30 to 15%, in Late Fall from 35 to 15% and in Late Winter from 35 to 20%. 
+  The chance of snow in Late Fall has also been reduced from 30 to 10% (JJRambo).
 - The chance of rain in Weather Zone 6 (Europe) reduced in Fall from 40 to 20% and in Late Fall from 35 to 20%. The chance of snow in Late Fall has also been reduced from 30 to 10% (JJRambo).
 - Corrected the weather zone that hex 41,126 belongs to (BiteNibbleChomp).
 - Port and Major Port Sub Defense bonus increased to 5 (ReinerAllen).
 - Reduced the attack values for naval units carrying out shore bombardment against aircraft from 1 to zero (canuckgamer).
 - Manchester is now a National Morale Objective (Tanaka).
-- DE 105 now triggers National Morale scripts boosting British National Morale by 10,000 points if London, Birmingham and Manchester are all in Allied hands and there are no Axis units within 10 hexes of Birmingham, i.e. if the Allies liberate the UK (Cpuncher).
-- Providing Moscow is in Allied hands, Germany has not surrendered and the US is in the war, then from January 1943 the USSR will receive 100 National Morale points per turn, in addition to the one-off boost they receive at this time (Jackmck).
+- DE 105 now triggers National Morale scripts boosting British National Morale by 10,000 points if London, Birmingham and Manchester are all in Allied hands and there are no Axis units within 10 hexes of Birmingham, 
+  i.e. if the Allies liberate the UK (Cpuncher).
+- Providing Moscow is in Allied hands, Germany has not surrendered and the US is in the war, then from January 1943 the USSR will receive 100 National Morale points per turn,
+  in addition to the one-off boost they receive at this time (Jackmck).
 - If the British lose Egypt and are driven from it, but then manage to retake Cairo their National Morale will be boosted by 5,000 points (Marcinos1985; pjg100).
 - French liberation helper providing a liberated France with MPPs will now only fire if there are no Axis units within 3 hexes of Paris (Mithrilotter).
 
@@ -546,7 +637,8 @@ All Campaigns
 - The French National Morale script entitled "France - German Blitzkrieg" now requires there to be 2 Axis units within 1 hex of Verdun to fire, whereas previously only 1 was required (Taifun).
 - Limerick will now return to Ireland if Ireland joins the Axis or Allies (The Land).
 - German AI may now invest in diplomacy to swing a neutral but pro-Allied Finland towards the Axis (Mithrilotter).
-- Mobilization_2 script for Italy amended so they now have a 33% chance per turn of swinging 15-25% towards the Axis if there are 2 Allied Amphibious Transports within 30 hexes of Syracuse Port, or 7 or more Allied naval units within 18 hexes of Syracuse Port (OldCrowBalthazor).
+- Mobilization_2 script for Italy amended so they now have a 33% chance per turn of swinging 15-25% towards the Axis if there are 2 Allied Amphibious Transports within 30 hexes of Syracuse Port, 
+  or 7 or more Allied naval units within 18 hexes of Syracuse Port (OldCrowBalthazor).
 
 1939; 1940 and 1941 Campaigns
 - Corrected DE 405 for the USSR to form I Polish Corps as previously it was referring to DE 400 (crispy131313).
@@ -596,14 +688,16 @@ All Campaigns
 - If they had transferred to the UK's control, the Ports of Cork, Wexford and Limerick will now return to Ireland if the UK surrenders (Mithrilotter).
 
 1940 Campaign
-- Decisions 418 and 611 and two POP UP scripts #NAME= ALLIED AI: German/Soviet Front Garrison Report 1941 fixed so that they will now fire, as they were incorrectly only set to fire if DE 600 = yes, but DE 600 does not exist in this campaign (Mithrilotter).
+- Decisions 418 and 611 and two POP UP scripts #NAME= ALLIED AI: German/Soviet Front Garrison Report 1941 fixed so that they will now fire, 
+  as they were incorrectly only set to fire if DE 600 = yes, but DE 600 does not exist in this campaign (Mithrilotter).
 - If it had transferred to the UK's control, the Port of Limerick will now return to Ireland if the UK surrenders (Mithrilotter).
 - <<TAG_77>> and <<TAG_87>> added to the language files relating to the Unit scripts (Mithrilotter).
 
 1939, 1940 and 1941 Campaigns
 - Mobilization_2 scripts for Spain amended so they now check for only US Amphibious Transports within 1-2 hexes of key locations.
 - Removed the experience points from the US navy when it deploys on joining the war, and also from some AI scripted units (Mithrilotter).
-- Mobilization_2 script #NAME= ALLIED AI: Axis Units In The UK (USA->Allies) amended so that it now only moves the US 1-2% towards the Allies rather than 2-4% per turn at all but expert level. At expert level it does move the US 2-4% towards the Allies (Mithrilotter).
+- Mobilization_2 script #NAME= ALLIED AI: Axis Units In The UK (USA->Allies) amended so that it now only moves the US 1-2% towards the Allies rather than 2-4% per turn at all but expert level. 
+  At expert level it does move the US 2-4% towards the Allies (Mithrilotter).
 - An Axis Declaration of War on Latvia or Estonia now swings the USSR 25-40% towards the Allies for each, whereas it was previously 25-35 and 15-20% respectively (smckechnie).
 - Mobilization_4 scripts triggering DE 1009 and DE 1010 added for an Axis Declaration of War on Latvia or Estonia respectively. Each will trigger the mobilization of a half strength Soviet Corps in Leningrad.
 - Mobilization_4 script triggering DE 1005 will now lead to the deployment of a full strength Soviet Army with full research at Leningrad and another at Moscow if Bulgaria is neutral when the Axis declare war on the USSR.
@@ -774,7 +868,8 @@ GAME ENGINE CHANGES/FIXES
 - Spying and Intelligence research bonus can now only be negated by a higher value from fully mobilized enemy Major, i.e. pre war USSR cannot negate the German bonus.
 - Spying and Intelligence research bonus can now only be decreased by a value from a fully mobilized enemy Major, i.e. pre war USSR cannot decrease the German bonus.
 - Spying and Intelligence research bonus for a non mobilized Major, can no longer be affected in any way by a mobilized Major, i.e. Germany cannot decrease a pre war USSR bonus.
-- HQ units, after amphibiously unloading, start at 10 supply and maintain supply for up to 5 turns with a drop of 2 supply points per turn.  This is similar to Special Forces, and allows the HQ to act as a Mulberry for an initial landing until further supply sources are achieved.
+- HQ units, after amphibiously unloading, start at 10 supply and maintain supply for up to 5 turns with a drop of 2 supply points per turn.  
+  This is similar to Special Forces, and allows the HQ to act as a Mulberry for an initial landing until further supply sources are achieved.
 - HQ distribution supply has been changed to the following:
        - HQ supply = 0 will have a distribution supply value of 3 (previously it was 5).
        - HQ supply 1 or 2 will have a distribution supply value of 5.
@@ -784,7 +879,8 @@ GAME ENGINE CHANGES/FIXES
 - HQs (boosting recap) can now only be linked if the first HQ has a supply value >= 3.
        - the HQ to be linked must have a supply value < 5 and is now automatically boosted to a supply value of 5 which caps its distribution supply at 8.
        - this will improve distribution supply for boosted HQs that were at 3 or 4 supply (from 6 to 8), and more importantly, will allow them to 'operate' and 'upgrade' now that they are at 5 supply.
-- SUPPLY SCRIPT events such as the Malta Supply Reduction event for Axis resources in North Africa, will require #SOURCE_POSITION units to have a strength >= 5 or the event will not fire.  Suppression as opposed to outright capture of locations such as Malta will now be possible in order to negate the supply reduction effects.
+- SUPPLY SCRIPT events such as the Malta Supply Reduction event for Axis resources in North Africa, will require #SOURCE_POSITION units to have a strength >= 5 or the event will not fire.  
+  Suppression as opposed to outright capture of locations such as Malta will now be possible in order to negate the supply reduction effects.
 
 EDITOR CHANGES/FIXES
 - fixed an issue where minor nation HQ flag bases were not being properly shown when displaying 3D units.
