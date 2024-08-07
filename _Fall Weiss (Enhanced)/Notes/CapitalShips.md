@@ -84,6 +84,8 @@ Also see:
 
 ## United Kingdom
 
+Of course due to reduced industrial capabilites (manpower losses due to engagements), the Royal Navy gradually renounced the costly battleships (only the King George Vs were completed, all others cancelled), and focused instead on aircraft carriers, cruisers, destroyers and escort vessels.
+
 - [List of British Ships of WWII](https://en.wikipedia.org/wiki/List_of_classes_of_British_ships_of_World_War_II)
 - [List of British Dreadnoughts](https://en.wikipedia.org/wiki/List_of_dreadnought_battleships_of_the_Royal_Navy)
 
@@ -116,7 +118,31 @@ Also see:
 | Indefatigable | Carrier | 3 May 1944 |16 x 4.5 in. | 32.5 knots | 81 x aircraft |
 | [Renown](https://en.wikipedia.org/wiki/HMS_Renown_(1916)) | Battle Cruiser | 28 August 1939 | 6 x 15 in. | 32 knots | 2 x seaplanes |
 
-## USSR
+Capital Ships Constructed During World War II
+-   5 King Georges V class Battleships
+-   2 Roberts class Monitors
+-   3 Illustrious class aircraft carriers (1940)
+-   HMS Indomitable aicraft carrier (1941)
+-   Implacable class aircraft carriers (1944)
+-   Colossus class aircraft carriers (1944)
+-   HMS Unicorn aircraft carrier (1943)
+-   HMS Audacity escort aircraft carrier (1941)
+-   HMS Activity escort aircraft carrier (1942)
+-   HMS Pretoria Castle escort aircraft carrier (1943)
+-   Vindex class escort aircraft carriers (1943)
+-   HMS Archer escort aircraft carrier (1941)
+-   3 Avenger class escort aircraft carriers (1942)
+-   10 Attacker class escort aircraft carrier (1943) -> USA reverse LL 1946
+-   23 Ameer class escort aircraft carrier (1943) -> USA reverse LL 1946
+-   6 Empire Grain class escort aircraft carriers (1942)
+-   13 Empire Oil class escort aircraft carriers (1943)
+-   Dido class cruisers
+-   Fiji class cruisers
+-   Bellona class cruisers
+-   Swiftsure class cruisers
+
+
+## Union of Soviet Socialist Republics (USSR)
 
 [Baltic Fleet](https://en.wikipedia.org/wiki/Baltic_Fleet#World_War_II)
 
