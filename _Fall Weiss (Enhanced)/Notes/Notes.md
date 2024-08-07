@@ -2,8 +2,11 @@
 
 ## Relations and Trade with:
 
-- Turkey
-    - [Allied Relations and Negotiations With Turkey](https://1997-2001.state.gov/www/regions/eur/rpt_9806_ng_turkey.pdf)
+- Italy
+    - [The Italian war economy's contribution to the German war effort (1943-1945)](Docs/HiddenTreasure.pdf)
+- Portugal
+    - [Portugal during World War II](https://www.wikiwand.com/en/Portugal_during_World_War_II)
+    - [Anglo-Portuguese Alliance](https://www.wikiwand.com/en/Anglo-Portuguese_Alliance)
 - Spain
     - [Allied Relations and Negotiations With Spain](https://1997-2001.state.gov/regions/eur/rpt_9806_ng_spain.pdf)
     - [US Economic Warfare In Spain, 1941-1944](Docs/US_Economic_Warfare_In_Spain.pdf)
@@ -12,15 +15,14 @@
 - Sweden
     - [Allied Relations and Negotiations with Sweden](https://1997-2001.state.gov/regions/eur/rpt_9806_ng_sweden.pdf)
     - [Sweden during World War II](https://www.wikiwand.com/en/Sweden_during_World_War_II)
-- Portugal
-    - [Portugal during World War II](https://www.wikiwand.com/en/Portugal_during_World_War_II)
-    - [Anglo-Portuguese Alliance](https://www.wikiwand.com/en/Anglo-Portuguese_Alliance)
 - Soviet Union
     - [Foreign Relations of the United States, The Soviet Union, 1933–1939](https://history.state.gov/historicaldocuments/frus1933-39)
+- Turkey
+    - [Allied Relations and Negotiations With Turkey](https://1997-2001.state.gov/www/regions/eur/rpt_9806_ng_turkey.pdf)
 - [The Economics of Neutrality: Spain, Sweden and Switzerland in the Second World War](https://etheses.lse.ac.uk/178/1/Golson_The_Economics_of_Neutrality.pdf)
 ## ...other...
 - Germany
-    - [A HISTORY OF GERMAN PETROLEUM IN WORLD WAR II](https://apps.dtic.mil/sti/pdfs/AD1020261.pdf)
+    - [A History of German Petrolium in World War II](https://apps.dtic.mil/sti/pdfs/AD1020261.pdf)
     - [German Raw Material Statistics](https://panzerworld.com/german-raw-material-statistics)
     - [German Armed Forces, Eastern Front, June 1941](https://usacac.army.mil/sites/default/files/documents/carl/nafziger/941GFAA.pdf)
     - [Malta: A study of German strategy in the Mediterranean, June 1940 to August 1942](Docs/Malta_Jun1940.pdf)

@@ -322,14 +322,15 @@
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Fall Weiss II
+
 {
-#NAME= [FW]Finland Presses Sweden (1940 - ) (10%)
+#NAME= [FW]Finland Presses Sweden (1940 - ) (20%)
 #POPUP=
 #FLAG= 1
+; Multiple checks, on or after #DATE, until end of game
 #TYPE= 2
 #COUNTRY_ID= 39
-#TRIGGER= 10
+#TRIGGER= 20
 #LEVEL= 0
 #GV= 7[1,100]
 #LINK= 0[0]
@@ -346,11 +347,12 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-; Fall Weiss II
+
 {
 #NAME= [FW]Finland Presses Turkey (1940 - ) (25%)
 #POPUP=
 #FLAG= 1
+; Multiple checks, on or after #DATE, until end of game
 #TYPE= 2
 #COUNTRY_ID= 39
 #TRIGGER= 25
@@ -362,7 +364,7 @@
 #DATE= 1940/09/01
 ; Berlin(173,74)
 #FRIENDLY_POSITION= 173,74
-; Finland(39) Axis and fully mobilized
+; Finland(39) Axis, fully mobilized
 ; Turkey(111) Allied
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 #VARIABLE_CONDITION= 111 [2] [50] [0]
@@ -372,11 +374,65 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-; Fall Weiss II
+{
+#NAME= [FW]DE 800 - France Presses Spain (1939 - FORCED)
+#POPUP=
+#FLAG= 1
+; Multiple checks, on or after #DATE, until #TRIGGER is satisfied
+#TYPE= 1
+#COUNTRY_ID= 40
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+; UK(112): Anglo-Portuguese Alliance?
+#LINK= 800[1]
+#SKIP_FUNDS_CHECK= 1
+#DIPLOMATIC_ID= 99
+#DATE= 1939/09/01
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; France(40) Allied and fully mobilized
+; Spain(99) Axis and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 99 [1] [0] [0]
+; Paris(151,84) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 151,84 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= [FW]DE 836 - France Presses Greece (1939 - FORCED) (25%)
+#POPUP=
+#FLAG= 1
+; Multiple checks, on or after #DATE, until end of game
+#TYPE= 2
+#COUNTRY_ID= 40
+#TRIGGER= 25
+#LEVEL= 0
+#GV= 1[1,100]
+; Germany: Pursue Greek Axis Relations?
+#LINK= 836[1]
+#SKIP_FUNDS_CHECK= 1
+#DIPLOMATIC_ID= 46
+#DATE= 1939/09/01
+; Paris(151,84)
+#FRIENDLY_POSITION= 151,84
+; France(40) Allied and fully mobilized
+; Greece(46) Allied and not surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [0]
+#VARIABLE_CONDITION= 46 [2] [0] [0]
+; Paris(151,84) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 151,84 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
 {
 #NAME= [FW]France Presses Spain (1939 - FORCED) (10%)
 #POPUP=
 #FLAG= 1
+; Multiple checks, on or after #DATE, until end of game
 #TYPE= 2
 #COUNTRY_ID= 40
 #TRIGGER= 10
@@ -388,8 +444,8 @@
 #DATE= 1939/11/01
 ; Paris(151,84)
 #FRIENDLY_POSITION= 151,84
-; France(40) Allied and fully mobilized
-; Spain(99) Axis and not surrendered
+; France(40) Allied, not surrendered
+; Spain(99) Axis
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 99 [1] [15] [0]
 ; Paris(151,84) not tactically threatened (dummy condition)
@@ -398,10 +454,15 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Germany
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 {
 #NAME= Germany Presses Hungary (1939 - FORCED) (25%)
 #POPUP=
 #FLAG= 1
+; Multiple checks, on or after #DATE, until end of game
 #TYPE= 2
 #COUNTRY_ID= 45
 #TRIGGER= 25
@@ -425,6 +486,7 @@
 #NAME= Germany Presses Hungary (1941 - ) (25%)
 #POPUP=
 #FLAG= 1
+; Multiple checks, on or after #DATE, until #TRIGGER is satisfied
 #TYPE= 1
 #COUNTRY_ID= 45
 #TRIGGER= 25
@@ -444,34 +506,11 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-; Fall Weiss II
-{
-#NAME= [FW]Germany Presses Ireland (1939 - FORCED) (25%)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 25
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-#DIPLOMATIC_ID= 57
-#DATE= 1939/01/01
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Ireland(57) Axis and not surrendered
-#VARIABLE_CONDITION= 57 [1] [50] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
 {
 #NAME= Germany Presses Romania (1939 - FORCED) (25%)
 #POPUP=
 #FLAG= 1
+; Multiple checks, on or after #DATE, until end of game
 #TYPE= 2
 #COUNTRY_ID= 45
 #TRIGGER= 25
@@ -495,6 +534,7 @@
 #NAME= Germany Presses Romania (1941 - ) (25%)
 #POPUP=
 #FLAG= 1
+; Multiple checks, on or after #DATE, until #TRIGGER is satisfied
 #TYPE= 1
 #COUNTRY_ID= 45
 #TRIGGER= 25
@@ -682,34 +722,83 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Fall Weiss II AXIS SCRIPTS - Italy
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 {
-#NAME= [FW]Italy Presses Algeria (1940 - ) (25%)
+#NAME= [FW]Germany Presses Ireland (1939 - FORCED) (25%)
 #POPUP=
 #FLAG= 1
-; Reoccurring check until end of game
+; Multiple checks, on or after #DATE, until end of game
 #TYPE= 2
-#COUNTRY_ID= 59
+#COUNTRY_ID= 45
 #TRIGGER= 25
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
 #SKIP_FUNDS_CHECK= 1
-#DIPLOMATIC_ID= 4
-#DATE= 1940/09/01
+#DIPLOMATIC_ID= 57
+#DATE= 1939/01/01
 ; Berlin(173,74)
 #FRIENDLY_POSITION= 173,74
-; Italy(59) Axis and fully mobilized
-; Algeria(4) Axis
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#VARIABLE_CONDITION= 4 [1] [70] [0]
+; Ireland(57) Axis and not surrendered
+#VARIABLE_CONDITION= 57 [1] [50] [0]
 ; Berlin(173,74) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 173,74 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
+
+{
+#NAME= [FW]DE 905 - Germany Presses Switzerland (1940 - FORCED) (10%)
+#POPUP=
+#FLAG= 1
+; Multiple checks, on or after #DATE, until end of game
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 10
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 905[1]
+#SKIP_FUNDS_CHECK= 1
+#DIPLOMATIC_ID= 104
+#DATE= 1940/01/01
+; Berlin(173,74)
+#FRIENDLY_POSITION= 173,74
+; Switzerland(104) Allied
+#VARIABLE_CONDITION= 104 [2] [0] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+
+{
+#NAME= [FW]DE 906 - Germany Presses Portugal (1940 - FORCED) (10%)
+#POPUP=
+#FLAG= 1
+; Multiple checks, on or after #DATE, until end of game
+#TYPE= 2
+#COUNTRY_ID= 45
+#TRIGGER= 10
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 906[1]
+#SKIP_FUNDS_CHECK= 1
+#DIPLOMATIC_ID= 87
+#DATE= 1940/01/01
+; Berlin(173,74)
+#FRIENDLY_POSITION= 173,74
+; Portugal(87) Allied and not surrendered
+#VARIABLE_CONDITION= 87 [2] [0] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Italy
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 {
 #NAME= Italy Presses Spain (1940 - ) (25%)
@@ -736,7 +825,33 @@
 }
 
 {
-#NAME= [FW]Italy Presses Vichy France (1940 - ) (25%)
+#NAME= [FW]Italy Presses Algeria (1940 - FORCED) (25%)
+#POPUP=
+#FLAG= 1
+; Reoccurring check until end of game
+#TYPE= 2
+#COUNTRY_ID= 59
+#TRIGGER= 25
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+#DIPLOMATIC_ID= 4
+#DATE= 1940/09/01
+; Berlin(173,74)
+#FRIENDLY_POSITION= 173,74
+; Italy(59) Axis and fully mobilized
+; Algeria(4) Axis
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+#VARIABLE_CONDITION= 4 [1] [70] [0]
+; Berlin(173,74) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 173,74 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= [FW]Italy Presses Vichy France (1940 - FORCED) (25%)
 #POPUP=
 #FLAG= 1
 ; Reoccurring check until end of game
@@ -761,12 +876,15 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-; Fall Weiss II
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; UK
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 {
-#NAME= [FW]UK Presses Algeria (1940 - ) (25%)
+#NAME= UK Presses Yugoslavia (1941 - ) (25%)
 #POPUP=
 #FLAG= 1
-; Reoccurring check until end of game
+; Multiple checks, on or after #DATE, until end of game
 #TYPE= 2
 #COUNTRY_ID= 112
 #TRIGGER= 25
@@ -774,14 +892,12 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #SKIP_FUNDS_CHECK= 0
-#DIPLOMATIC_ID= 4
-#DATE= 1940/01/01
+#DIPLOMATIC_ID= 120
+#DATE= 1941/06/01
 ; London(147,77)
 #FRIENDLY_POSITION= 147,77
 ; UK(112) Allied and fully mobilized
-; Algeria(4) Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 4 [1] [75] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
@@ -792,6 +908,7 @@
 #NAME= UK Presses Norway (1940 - ) (10%)
 #POPUP=
 #FLAG= 1
+; Multiple checks, on or after #DATE, until #TRIGGER is satisfied
 #TYPE= 1
 #COUNTRY_ID= 112
 #TRIGGER= 10
@@ -807,31 +924,6 @@
 ; Norway(78) Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 78 [1] [0] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]UK Presses Portugal (1940 - ) (10%)
-#POPUP=
-#FLAG= 1
-; Reoccurring check until end of game
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 10
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-#DIPLOMATIC_ID= 87
-#DATE= 1940/06/01
-; London(147,77)
-#FRIENDLY_POSITION= 147,77
-; Portugal(87) Axis
-#VARIABLE_CONDITION= 87 [1] [0] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
@@ -890,35 +982,11 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-; Fall Weiss II
-{
-#NAME= [FW]UK Presses Switzerland (1940 - ) (10%)
-#POPUP=
-#FLAG= 1
-; Reoccurring check until end of game
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 10
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-#DIPLOMATIC_ID= 104
-#DATE= 1940/01/01
-; London(147,77)
-#FRIENDLY_POSITION= 147,77
-; Switzerland(104) Axis
-#VARIABLE_CONDITION= 104 [1] [0] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
 {
 #NAME= UK Presses Turkey (1940 - FORCED) (50%)
 #POPUP=
 #FLAG= 1
+; Multiple checks, on or after #DATE, until end of game
 #TYPE= 2
 #COUNTRY_ID= 112
 #TRIGGER= 50
@@ -944,6 +1012,7 @@
 #NAME= UK Presses Turkey (1941 - ) (10%)
 #POPUP=
 #FLAG= 1
+; Multiple checks, on or after #DATE, until end of game
 #TYPE= 2
 #COUNTRY_ID= 112
 #TRIGGER= 10
@@ -963,11 +1032,59 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-; Fall Weiss II
+{
+#NAME= [FW]UK Presses Portugal (1940 - ) (10%)
+#POPUP=
+#FLAG= 1
+; Reoccurring check until end of game
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 10
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+#DIPLOMATIC_ID= 87
+#DATE= 1940/06/01
+; London(147,77)
+#FRIENDLY_POSITION= 147,77
+; Portugal(87) Axis
+#VARIABLE_CONDITION= 87 [1] [0] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= [FW]UK Presses Switzerland (1940 - ) (10%)
+#POPUP=
+#FLAG= 1
+; Reoccurring check until end of game
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 10
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+#DIPLOMATIC_ID= 104
+#DATE= 1940/01/01
+; London(147,77)
+#FRIENDLY_POSITION= 147,77
+; Switzerland(104) Axis
+#VARIABLE_CONDITION= 104 [1] [0] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
 {
 #NAME= [FW]UK Presses Vichy France (1940 - ) (25%)
 #POPUP=
 #FLAG= 1
+; Multiple checks, on or after #DATE, until end of game
 #TYPE= 2
 #COUNTRY_ID= 112
 #TRIGGER= 25
@@ -990,9 +1107,88 @@
 }
 
 {
-#NAME= UK Presses Yugoslavia (1941 - ) (25%)
+#NAME= [FW]DE 800 - UK Presses Spain (1939 - FORCED)
 #POPUP=
 #FLAG= 1
+; Multiple checks, on or after #DATE, until #TRIGGER is satisfied
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 800[1]
+#SKIP_FUNDS_CHECK= 1
+#DIPLOMATIC_ID= 99
+#DATE= 1939/09/01
+; London(147,77)
+#FRIENDLY_POSITION= 147,77
+; UK(112) Allied and fully mobilized
+; Spain(99) Axis and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 99 [1] [0] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= [FW]DE 836 - UK Presses Greece (1939 - FORCED)
+#POPUP=
+#FLAG= 1
+; Multiple checks, on or after #DATE, until #TRIGGER is satisfied
+#TYPE= 1
+#COUNTRY_ID= 112
+#TRIGGER= 100
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 836[1]
+#SKIP_FUNDS_CHECK= 1
+#DIPLOMATIC_ID= 46
+#DATE= 1939/09/01
+; London(147,77)
+#FRIENDLY_POSITION= 147,77
+; UK(112) Allied and fully mobilized
+; Greece(46) Allied
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 46 [2] [0] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= [FW]DE 836 - UK Presses Greece (1939 - ) (10%)
+#POPUP=
+#FLAG= 1
+; Multiple checks, on or after #DATE, until end of game
+#TYPE= 2
+#COUNTRY_ID= 112
+#TRIGGER= 10
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 836[1]
+#SKIP_FUNDS_CHECK= 0
+#DIPLOMATIC_ID= 46
+#DATE= 1939/09/01
+; London(147,77)
+#FRIENDLY_POSITION= 147,77
+; UK(112) Allied and fully mobilized
+; Greece(46) Allied
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 46 [2] [0] [0]
+; London(147,77) not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= [FW]UK Presses Algeria (1940 - ) (25%)
+#POPUP=
+#FLAG= 1
+; Reoccurring check until end of game
 #TYPE= 2
 #COUNTRY_ID= 112
 #TRIGGER= 25
@@ -1000,23 +1196,253 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #SKIP_FUNDS_CHECK= 0
-#DIPLOMATIC_ID= 120
-#DATE= 1941/06/01
+#DIPLOMATIC_ID= 4
+#DATE= 1940/01/01
 ; London(147,77)
 #FRIENDLY_POSITION= 147,77
 ; UK(112) Allied and fully mobilized
+; Algeria(4) Axis and not surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 4 [1] [75] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-; Fall Weiss II
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; ALLIED SCRIPTS - USA
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
 {
-#NAME= [FW]USA Presses Ireland (1942 - ) (1) (25%)
+#NAME= USA Presses Turkey (1943 - FORCED) (1)
 #POPUP=
 #FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 50
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+#DIPLOMATIC_ID= 111
+#DATE= 1943/01/01
+; Set friendly positions:
+; 1st Line - Washington D.C.
+#FRIENDLY_POSITION= 4,108
+; Set variable conditions:
+; 1st Line - USA politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 111 [2] [50] [0]
+; Set tactical conditions:
+; 1st Line - Washington D.C. not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Presses Turkey (1943 - ) (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 20
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+#DIPLOMATIC_ID= 111
+#DATE= 1943/01/01
+; Set friendly positions:
+; 1st Line - Washington D.C.
+#FRIENDLY_POSITION= 4,108
+; Set variable conditions:
+; 1st Line - USA politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Set tactical conditions:
+; 1st Line - Washington D.C. not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Presses Norway (1942 - FORCED)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 50
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+#DIPLOMATIC_ID= 78
+#DATE= 1942/09/01
+; Set friendly positions:
+; 1st Line - Washington D.C.
+#FRIENDLY_POSITION= 4,108
+; Set variable conditions:
+; 1st Line - USA politically aligned with Allies and not surrendered
+; 2nd Line - Norway politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 78 [1] [0] [0]
+; Set tactical conditions:
+; 1st Line - Washington D.C. not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Presses Sweden (1942 - FORCED)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 50
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+#DIPLOMATIC_ID= 103
+#DATE= 1942/09/01
+; Set friendly positions:
+; 1st Line - Washington D.C.
+#FRIENDLY_POSITION= 4,108
+; Set variable conditions:
+; 1st Line - USA politically aligned with Allies and not surrendered
+; 2nd Line - Sweden politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 103 [1] [20] [0]
+; Set tactical conditions:
+; 1st Line - Washington D.C. not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Presses Spain (1942 - )
+#POPUP=
+#FLAG= 1
+#TYPE= 2
+#COUNTRY_ID= 115
+#TRIGGER= 25
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 0
+#DIPLOMATIC_ID= 99
+#DATE= 1942/06/01
+; Set friendly positions:
+; 1st Line - Washington D.C.
+#FRIENDLY_POSITION= 4,108
+; Set variable conditions:
+; 1st Line - USA politically aligned with Allies and not surrendered
+; 2nd Line - Spain politically aligned with Axis and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+#VARIABLE_CONDITION= 99 [1] [40] [0]
+; Set tactical conditions:
+; 1st Line - Washington D.C. not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Presses Saudi Arabia (1942 - FORCED) (1)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 75
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+#DIPLOMATIC_ID= 95
+#DATE= 1942/05/01
+; Set friendly positions:
+; 1st Line - Washington D.C.
+#FRIENDLY_POSITION= 4,108
+; Set variable conditions:
+; 1st Line - USA politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Set tactical conditions:
+; 1st Line - Washington D.C. not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= USA Presses Saudi Arabia (1942 - FORCED) (2)
+#POPUP=
+#FLAG= 1
+#TYPE= 1
+#COUNTRY_ID= 115
+#TRIGGER= 50
+#LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
+#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
+#LINK= 0[0]
+#SKIP_FUNDS_CHECK= 1
+#DIPLOMATIC_ID= 95
+#DATE= 1942/03/01
+; Set friendly positions:
+; 1st Line - Washington D.C.
+#FRIENDLY_POSITION= 4,108
+; Set variable conditions:
+; 1st Line - USA politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Set tactical conditions:
+; 1st Line - Washington D.C. not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 4,108 [3]
+; Set dummy activate position (no units at position 0,0)
+#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to #CONDITION_POSITION
+#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
+}
+
+{
+#NAME= [FW]USA Presses Ireland (1942 - FORCED) (1) (25%)
+#POPUP=
+#FLAG= 1
+; Multiple checks, on or after #DATE, until #TRIGGER is satisfied
 #TYPE= 1
 #COUNTRY_ID= 115
 #TRIGGER= 25
@@ -1038,11 +1464,11 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-; Fall Weiss II
 {
-#NAME= [FW]USA Presses Ireland (1942 - ) (2) (25%)
+#NAME= [FW]USA Presses Ireland (1942 - FORCED) (2) (25%)
 #POPUP=
 #FLAG= 1
+; Multiple checks, on or after #DATE, until #TRIGGER is satisfied
 #TYPE= 1
 #COUNTRY_ID= 115
 #TRIGGER= 25
@@ -1064,168 +1490,71 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; ALLIED SCRIPTS - USSR
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
 {
-#NAME= USA Presses Norway (1942 - FORCED) (50%)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 50
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-#DIPLOMATIC_ID= 78
-#DATE= 1942/09/01
-; Washington DC(4,108)
-#FRIENDLY_POSITION= 4,108
-; USA(115) Allied and fully mobilized
-; Norway(78) Axis and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 78 [1] [0] [0]
-; Washington DC(4,108) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 4,108 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Presses Saudi Arabia (1942 - FORCED) (1) (25%)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 25
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-#DIPLOMATIC_ID= 95
-#DATE= 1942/05/01
-; Washington DC(4,108)
-#FRIENDLY_POSITION= 4,108
-; USA(115) Allied and fully mobilized
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 4,108 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Presses Saudi Arabia (1942 - FORCED) (2) (25%)
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 115
-#TRIGGER= 25
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-#DIPLOMATIC_ID= 95
-#DATE= 1942/03/01
-; Washington DC(4,108)
-#FRIENDLY_POSITION= 4,108
-; USA(115) Allied and fully mobilized
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 4,108 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Presses Spain (1942 - ) (50%)
+#NAME= USSR Presses Turkey (1943 - FORCED) (1) (75%)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 50
+#COUNTRY_ID= 116
+#TRIGGER= 75
 #LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-#DIPLOMATIC_ID= 99
-#DATE= 1942/06/01
-; Washington DC(4,108)
-#FRIENDLY_POSITION= 4,108
-; USA(115) Allied and fully mobilized
-; Spain(99) Axis and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 99 [1] [40] [0]
-; Washington DC(4,108) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 4,108 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Presses Sweden (1942 - FORCED) (50%)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 50
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 1
-#DIPLOMATIC_ID= 103
-#DATE= 1942/09/01
-; Washington DC(4,108)
-#FRIENDLY_POSITION= 4,108
-; USA(115) Allied and fully mobilized
-; Sweden(103) Axis and not surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 103 [1] [20] [0]
-; Washington DC(4,108) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 4,108 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-{
-#NAME= USA Presses Turkey (1943 - FORCED) (1) (50%)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 50
-#LEVEL= 0
-#GV= 1[1,100]
+; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SKIP_FUNDS_CHECK= 1
 #DIPLOMATIC_ID= 111
 #DATE= 1943/01/01
-#FRIENDLY_POSITION= 4,108
-#VARIABLE_CONDITION= 115 [2] [100] [0]
+; Set friendly positions:
+; 1st Line - London
+#FRIENDLY_POSITION= 147,77
+; Set variable conditions:
+; 1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 111 [2] [50] [0]
-#TACTICAL_CONDITION= 4,108 [3]
+; Set tactical conditions:
+; 1st Line - London not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
 {
-#NAME= USA Presses Turkey (1943 - ) (2) (20%)
+#NAME= USSR Presses Turkey (1943 - ) (2) (10%)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
-#COUNTRY_ID= 115
-#TRIGGER= 20
+#COUNTRY_ID= 116
+#TRIGGER= 10
 #LEVEL= 0
+; Set global variable condition to always trigger (dummy value)
 #GV= 1[1,100]
+; Set link value to always trigger (dummy value)
 #LINK= 0[0]
 #SKIP_FUNDS_CHECK= 0
 #DIPLOMATIC_ID= 111
 #DATE= 1943/01/01
-; Washington DC(4,108)
-#FRIENDLY_POSITION= 4,108
-; USA(115) Allied and fully mobilized
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-; Washington DC(4,108) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 4,108 [3]
+; Set friendly positions:
+; 1st Line - London
+#FRIENDLY_POSITION= 147,77
+; Set variable conditions:
+; 1st Line - UK politically aligned with Allies and not surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 111 [2] [0] [0]
+; Set tactical conditions:
+; 1st Line - London not tactically threatened (dummy condition)
+#TACTICAL_CONDITION= 147,77 [3]
+; Set dummy activate position (no units at position 0,0)
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
+; Set dummy cancel position (single neutral unit at position 0,0). This is not possible as no
+; unit can occupy tile 0,0 so event will not be cancelled due to
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -1233,6 +1562,7 @@
 #NAME= [FW]USSR Presses Sweden (1941) (25%)
 #POPUP=
 #FLAG= 1
+; Multiple checks, on or after #DATE, until end of game
 #TYPE= 2
 #COUNTRY_ID= 116
 #TRIGGER= 25
@@ -1254,307 +1584,4 @@
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
-{
-#NAME= USSR Presses Turkey (1943 - ) (2) (10%)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 116
-#TRIGGER= 10
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#SKIP_FUNDS_CHECK= 0
-#DIPLOMATIC_ID= 111
-#DATE= 1943/01/01
-; London(147,77)
-#FRIENDLY_POSITION= 147,77
-; USSR(116) Allied and fully mobilized
-; Turkey(111) Allied
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 111 [2] [0] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
 
-; Fall Weiss II
-{
-#NAME= [FW]DE 800 - France Presses Spain (1939 - )
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 40
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-; UK(112): Anglo-Portuguese Alliance?
-#LINK= 800[1]
-#SKIP_FUNDS_CHECK= 1
-#DIPLOMATIC_ID= 99
-#DATE= 1939/09/01
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; France(40) Allied and fully mobilized
-; Spain(99) Axis and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 99 [1] [0] [0]
-; Paris(151,84) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 151,84 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 800 - Germany Presses Spain (1939 - )
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-; UK(112): Anglo-Portuguese Alliance?
-#LINK= 800[1]
-#SKIP_FUNDS_CHECK= 1
-#DIPLOMATIC_ID= 99
-#DATE= 1939/09/01
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Spain(99) Allied and fully mobilized
-#VARIABLE_CONDITION= 99 [2] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 800 - UK Presses Spain (1939 - )
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 800[1]
-#SKIP_FUNDS_CHECK= 1
-#DIPLOMATIC_ID= 99
-#DATE= 1939/09/01
-; London(147,77)
-#FRIENDLY_POSITION= 147,77
-; UK(112) Allied and fully mobilized
-; Spain(99) Axis and not surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 99 [1] [0] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 835 - Germany Presses Greece (1939 - )
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-; UK(112): Pressure Greece To Sever Economic Ties With Germany?
-#LINK= 835[0]
-#SKIP_FUNDS_CHECK= 1
-#DIPLOMATIC_ID= 46
-#DATE= 1939/01/01
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Greece(46) Axis and not surrendered
-#VARIABLE_CONDITION= 46 [1] [0] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 836 - France Presses Greece (1939 - ) (25%)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 40
-#TRIGGER= 25
-#LEVEL= 0
-#GV= 1[1,100]
-; Germany: Pursue Greek Axis Relations?
-#LINK= 836[1]
-#SKIP_FUNDS_CHECK= 1
-#DIPLOMATIC_ID= 46
-#DATE= 1939/09/01
-; Paris(151,84)
-#FRIENDLY_POSITION= 151,84
-; France(40) Allied and fully mobilized
-; Greece(46) Allied and not surrendered
-#VARIABLE_CONDITION= 40 [2] [100] [0]
-#VARIABLE_CONDITION= 46 [2] [0] [0]
-; Paris(151,84) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 151,84 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 836 - Germany Presses Greece (1939 - )
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-; Germany: Pursue Greek Axis Relations?
-#LINK= 836[1]
-#SKIP_FUNDS_CHECK= 1
-#DIPLOMATIC_ID= 46
-#DATE= 1939/01/01
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Greece(46) Allied and not surrendered
-#VARIABLE_CONDITION= 46 [2] [0] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 836 - Germany Presses Spain (1939 - )
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-; Germany: Pursue Greek Axis Relations?
-#LINK= 836[0]
-#SKIP_FUNDS_CHECK= 1
-#DIPLOMATIC_ID= 99
-#DATE= 1939/09/01
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Germany(45) Axis and fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 836 - UK Presses Greece (1939 - )
-#POPUP=
-#FLAG= 1
-#TYPE= 1
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 836[1]
-#SKIP_FUNDS_CHECK= 1
-#DIPLOMATIC_ID= 46
-#DATE= 1939/09/01
-; London(147,77)
-#FRIENDLY_POSITION= 147,77
-; UK(112) Allied and fully mobilized
-; Greece(46) Allied
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 46 [2] [0] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 836 - UK Presses Greece (1939 - ) (10%)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 112
-#TRIGGER= 10
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 836[1]
-#SKIP_FUNDS_CHECK= 0
-#DIPLOMATIC_ID= 46
-#DATE= 1939/09/01
-; London(147,77)
-#FRIENDLY_POSITION= 147,77
-; UK(112) Allied and fully mobilized
-; Greece(46) Allied
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 46 [2] [0] [0]
-; London(147,77) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 147,77 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 905 - Germany Presses Switzerland (1940 - ) (10%)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 10
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 905[1]
-#SKIP_FUNDS_CHECK= 1
-#DIPLOMATIC_ID= 104
-#DATE= 1940/01/01
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Switzerland(104) Allied
-#VARIABLE_CONDITION= 104 [2] [0] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 906 - Germany Presses Portugal (1940 - ) (10%)
-#POPUP=
-#FLAG= 1
-#TYPE= 2
-#COUNTRY_ID= 45
-#TRIGGER= 10
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 906[1]
-#SKIP_FUNDS_CHECK= 1
-#DIPLOMATIC_ID= 87
-#DATE= 1940/01/01
-; Berlin(173,74)
-#FRIENDLY_POSITION= 173,74
-; Portugal(87) Allied and not surrendered
-#VARIABLE_CONDITION= 87 [2] [0] [0]
-; Berlin(173,74) not tactically threatened (dummy condition)
-#TACTICAL_CONDITION= 173,74 [3]
-#ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-#CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
-}

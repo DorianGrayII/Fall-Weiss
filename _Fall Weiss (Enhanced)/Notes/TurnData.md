@@ -1,7 +1,7 @@
 |  Axis Turn     | Date         | Major Event                   |
 | :------------- | :----------: | :---------------------------- |
 | 1              |  1939/09/01  |  [Germany Invades Poland](https://www.wikiwand.com/en/Invasion_of_Poland) |
-| 2              |  1939/09/15  |                               |
+| 2              |  1939/09/15  |  [German-Soviet Treaty of Friendship](https://en.wikipedia.org/wiki/German%E2%80%93Soviet_Boundary_and_Friendship_Treaty) |
 | 3              |  1939/10/03  |                               |
 | 4              |  1939/10/25  |                               |
 | 5              |  1939/11/16  |                               |

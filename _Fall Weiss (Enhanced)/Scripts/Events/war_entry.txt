@@ -309,6 +309,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
+; Canada(21)
 #COUNTRY_ID= 21
 #TRIGGER= 50
 #ALIGNMENT= 2
@@ -331,13 +332,15 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
+; Hungary(52)
 #COUNTRY_ID= 52
 #TRIGGER= 35
 #ALIGNMENT= 1
-; Historic Date - 1 month
+; Historic Date minus 1 month
 #DATE= 1940/10/20
 ; Poland(85) Allied and surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
+; Hungarian(52) Axis
 #VARIABLE_CONDITION= 52 [1] [0] [0]
 }
 
@@ -364,6 +367,11 @@
 #VARIABLE_CONDITION= 105 [1] [100] [0]
 }
 
+; The territorial concessions of 1940 produced deep sorrow and resentment among Romanians
+; and hastened the decline in popularity of the regime led by King Carol II of Romania.
+; Three days after the annexation, Romania renounced the 1939 Anglo-French guarantee.
+; A new government of Ion Gigurtu was sworn in on 5 July 1940, which withdrew the country
+; from the League of Nations on 11 July and announced its desire to join the Axis camp on 13 July.
 ; Historic Date: 1940/11/23
 {
 #NAME= Romania: Romania Joins The Axis (35%)
@@ -599,7 +607,7 @@
 
 ; Historic Date: 1940/11/23
 {
-#NAME= DE 611 - Romania: Romania Joins The Axis (1) (50%)
+#NAME= DE 611 - Romania: Romania Joins The Axis (1) (33%)
 #POPUP= Romania Joins The Axis
 #IMAGE= romaniaenters.png
 #SOUND= war1.ogg
@@ -611,16 +619,22 @@
 ; Territory Dispute Resolved In Romania's favor
 #LINK= 611[0]
 #COUNTRY_ID= 93
-#TRIGGER= 50
+#TRIGGER= 33
 #ALIGNMENT= 1
 #DATE= 1940/08/30
 ; Romania(93) Axis
 #VARIABLE_CONDITION= 93 [1] [0] [0]
 }
 
+; The territorial concessions of 1940 produced deep sorrow and resentment among Romanians
+; and hastened the decline in popularity of the regime led by King Carol II of Romania.
+; Three days after the annexation, Romania renounced the 1939 Anglo-French guarantee. A new
+; government of Ion Gigurtu was sworn in on 5 July 1940, which withdrew the country from the
+; League of Nations on 11 July and announced its desire to join the Axis camp on 13 July.
+;
 ; Historic Date: 1940/11/23
 {
-#NAME= DE 611 - Romania: Romania Joins The Axis (2)
+#NAME= DE 611 - Romania: Romania Joins The Axis (2) (33%)
 #POPUP= Romania Joins The Axis
 #IMAGE= romaniaenters.png
 #SOUND= war1.ogg
@@ -632,9 +646,9 @@
 ; Territory Dispute Resolved In Hungary's Favor
 #LINK= 611[1]
 #COUNTRY_ID= 93
-#TRIGGER= 100
+#TRIGGER= 33
 #ALIGNMENT= 1
-#DATE= 1940/11/23
+#DATE= 1940/07/13
 ; Romania(93) Axis
 #VARIABLE_CONDITION= 93 [1] [0] [0]
 }
@@ -697,27 +711,6 @@
 #DATE= 1941/01/01
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 87 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 917 - Bulgaria: Bulgaria Joins The Allies
-#POPUP= Bulgaria Joins The Allies
-#IMAGE=
-#SOUND= war1.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-; Greek Concessions?
-#LINK= 917[1]
-#COUNTRY_ID= 19
-#TRIGGER= 100
-#ALIGNMENT= 2
-#DATE= 1940/09/01
-#VARIABLE_CONDITION= 111 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 }
 

@@ -1887,77 +1887,6 @@
 
 ; Fall Weiss II
 {
-#NAME= [FW]DE 144 - USSR: Strengthen The Strategic Reserve? (AI - 100%)
-#POPUP=
-#MESSAGE=Red Army Headquarters %N%N %BRe: %BStrategic %BReserve %N%N Now that we have begun preparing our strategic reserves to protect a German advance towards both Moscow and Stalingrad, we should now consider whether to invest further resources into their equipment and manpower.%N%N If we choose to further invest into our reserve forces they will deploy at full strength and with modern equipment, otherwise it may take over a month for these forces to be combat ready, time which may be better served to form entrenched defensive positions.%N%N However, we must also consider that by further investing into our reserves we will be diverting our military resources from the front lines, which may speed the German advance.%N%N In light of both these benefits and concerns should we invest further military resources into our Strategic Reserves?  It will cost a total of %B300 MPPs (75 MPPs for 4 turns).
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-; Strategic Reserve Delayed?
-#LINK= 146[1]
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#DECISION= 144
-#MPP_UPDOWN= -75
-#MPP_TURNS= 4
-#MPP_TEXT= Strengthen Reserves
-#NOTES= If you select %B(YES), our Strategic Reserves at both Moscow and Stalingrad will deploy at full strength and with modern equipment.%N%N If you select %B(NO), our strategic reserves will deploy at half strength and require upgrading to be combat ready.%N%N Note that should the German advance never threaten either Moscow or Stalingrad these units will never deploy, and rather be incorporated into our regular army, and the additional investment lost.
-#NOTES_POSITION= 221,65
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1939/09/03
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 145 - USSR: Strengthen The Strategic Reserve? (AI - 100%)
-#POPUP=
-#MESSAGE=Red Army Headquarters %N%N %BRe: %BStrategic %BReserve %N%N Now that we have begun preparing our strategic reserves to protect a German advance towards both Moscow and Stalingrad, we should now consider whether to invest further resources into their equipment and manpower.%N%N If we choose to further invest into our reserve forces they will deploy at full strength and with modern equipment, otherwise it may take over a month for these forces to be combat ready, time which may be better served to form entrenched defensive positions.%N%N However, we must also consider that by further investing into our reserves we will be diverting our military resources from the front lines, which may speed the German advance.%N%N In light of both these benefits and concerns should we invest further military resources into our Strategic Reserves?  It will cost a total of %B300 MPPs (75 MPPs for 4 turns).
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 147[1]
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#DECISION= 145
-#MPP_UPDOWN= -75
-#MPP_TURNS= 4
-#MPP_TEXT= Strengthen Reserves
-#NOTES= If you select %B(YES), our Strategic Reserves at both Moscow and Stalingrad will deploy at full strength and with modern equipment.%N%N If you select %B(NO), our strategic reserves will deploy at half strength and require upgrading to be combat ready.%N%N Note that should the German advance never threaten either Moscow or Stalingrad these units will never deploy, and rather be incorporated into our regular army, and the additional investment lost.
-#NOTES_POSITION= 221,65
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1939/09/03
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; Fall Weiss II
-{
 #NAME= [FW]DE 146 - Germany: Delay Strategic Reserve Decision (AI - 100%)
 #POPUP=
 #MESSAGE=
@@ -5937,8 +5866,9 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; https://en.wikipedia.org/wiki/German%E2%80%93Soviet_Boundary_and_Friendship_Treaty
 {
-#NAME= DE 413 - USSR: Accept the German Offer of a Revised Borders and Friendship Treaty? (AI - 100%)
+#NAME= DE 413 - USSR: Accept the German Offer of a Revised Boundary and Friendship Treaty? (AI - 100%)
 #POPUP= Soviet Strategic Decision
 #MESSAGE=Red Army Headquarters %N%N The German Foreign Minister has sent us proposals to revise some aspects of the Molotov-Ribbentrop Pact.%N%N The main item is that the Germans offer to transfer Lithuania from their sphere of influence to ours.%N%N However, if we agree to Ribbentrop's proposal, then this further sign of our friendship with the Axis would move the USSR 5-8% away from the Allies.%N%N In view of this, would you like to accept this revised Borders and Friendship Treaty %B(YES)?
 #IMAGE=
@@ -5951,6 +5881,7 @@
 #TRIGGER= 100
 #DISPLAY_ORDER= 1
 #GV= 1[1,100]
+; Offer of a Revised Border and Friendship Treaty?
 #LINK= 631[1]
 #DECISION= 413
 #MPP_UPDOWN= 0
@@ -5973,6 +5904,7 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; https://en.wikipedia.org/wiki/Occupation_of_the_Baltic_states
 {
 #NAME= DE 414 - USSR: Annex the Baltic States? (AI - 100%)
 #POPUP= Soviet Strategic Decision
@@ -5987,7 +5919,7 @@
 #TRIGGER= 100
 #DISPLAY_ORDER= 1
 #GV= 1[1,100]
-#LINK= 0[0]
+#LINK= 600[1]
 #DECISION= 414
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
@@ -5996,7 +5928,7 @@
 #NOTES_POSITION= 196,60
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
-#DATE= 1939/09/01
+#DATE= 1940/05/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 ; Polotsk is Allied
@@ -6008,6 +5940,8 @@
 #VARIABLE_CONDITION= 38 [0] [0] [0]
 ; USSR(116) Allied but not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
+; Poland(85) Allied, Surrendered
+#VARIABLE_CONDITION= 85 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -6133,11 +6067,13 @@
 }
 
 ; https://www.wikiwand.com/en/Soviet_occupation_of_Bessarabia_and_Northern_Bukovina
-; Historic Date: 1940/06
+; Historic Date: 26 June 1940
+; Note - this event also depends on the fall of France as
+; a guarantor of Romanian territorial integrity
 {
 #NAME= DE 418 - USSR: Seize Bessarabia? (AI - 50%)
 #POPUP= Soviet Strategic Decision
-#MESSAGE=Red Army Headquarters %N%N %BRe: %BBessarabia %N%N Under the terms of the Molotov-Ribbentrop Pact, Bessarabia falls into our sphere of influence and now would be a good time to seize this territory.%N%N This will provide us with a buffer zone protecting Odessa from attack.%N%N The operation will cost %B15 MPPs with any opposition being swept aside, though it will move Romania 10% towards the Axis.%N%N Would you like to order the Red Army to seize Bessarabia %B(YES)?
+#MESSAGE=Red Army Headquarters %N%N %BRe: %BBessarabia %N%N Under the terms of the Molotov-Ribbentrop Pact, Bessarabia falls into our sphere of influence and now would be a good time to seize this territory.%N%N This will provide us with a buffer zone protecting Odessa from attack.%N%N The operation will cost %B15 MPPs with any opposition being swept aside, though it will move Romania 5-15% towards the Axis.%N%N Would you like to order the Red Army to seize Bessarabia %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -6160,7 +6096,7 @@
 ; Set AI acceptance % (AI will accept 50% of the time)
 #AI_RESPONSE= 50
 #AI_RESPONSE_POPUP=
-#DATE= 1940/06/08
+#DATE= 1940/06/26
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
 ; Berlin(173,74) is Axis
@@ -8292,7 +8228,7 @@
 {
 #NAME= DE 611 - Germany: Resolve Territorial Disputes In Eastern Europe? (AI - 50%)
 #POPUP=
-#MESSAGE=Führerhauptquartier %N%N Romania is under pressure to settle its territorial disputes with its neighbors.%N%N Hungary demands Northern Transylvania, and Bulgaria claims Southern Dobruja.%N%N We could intervene to force Romania to hand over the territories demanded by Hungary and Bulgaria %B(YES) and this will encourage Hungary and Bulgaria to join the Axis sooner than they might have done.%N%N Would you like to enforce a settlement of Romania's territorial disputes in favor of Hungary and Bulgaria?
+#MESSAGE=Führerhauptquartier %N%N Romania is under pressure to settle its territorial disputes with its neighbors.%N%N Hungary demands Northern Transylvania, and Bulgaria claims Southern Dobruja.%N%N We could intervene to force Romania to hand over the territories demanded by Hungary and Bulgaria  and this will encourage Hungary and Bulgaria to join the Axis sooner than they might have done.%N%N Would you like to enforce a settlement of Romania's territorial disputes in favor of Hungary and Bulgaria %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -8301,6 +8237,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 ; USSR(116) Seized Bessarabia
+; 406[1]->600[1]->418[1]
 #LINK= 418[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
@@ -8309,7 +8246,54 @@
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT= None
-#NOTES= If you say %B(YES), Romania will lose Northern Transylvania and Southern Dobruja from the end of August 1940.%N%N King Carol II will be forced to abdicate as Antonescu takes power, and in January 1941 Antonescu will crush the Iron Guard's rebellion. Romania will still join the Axis but it will join later than it would have done.%N%N By saying %B(NO), Romania retains its territorial integrity and may join the Axis slightly earlier, though the war entrance of Hungary and Bulgaria may be slightly delayed.
+#NOTES= If you say %B(YES), Romania will lose Northern Transylvania and Southern Dobruja.%N%N King Carol II will be forced to abdicate as Antonescu takes power, and in January 1941 Antonescu will crush the Iron Guard's rebellion. Romania will still join the Axis but it will join later than it would have done.%N%N By saying %B(NO), Romania retains its territorial integrity and may join the Axis slightly earlier, though the war entrance of Hungary and Bulgaria may be slightly delayed.
+#NOTES_POSITION= 193,92
+; Set AI acceptance % (AI will accept 50% of the time)
+#AI_RESPONSE= 50
+#AI_RESPONSE_POPUP=
+#DATE= 1940/08/30
+#TEXT_RGB= 0,0,0
+#SHADOW_RGB= 0,0,0
+; Berlin(173,74) is Axis
+#ALIGNMENT_POSITION= 173,74 [1]
+#NATIONAL_MORALE_TRIGGER= 0 [0]
+; Romania(93) Axis but not fully mobilized
+#VARIABLE_CONDITION= 93 [1] [0] [0]
+; USSR(116) Allied but not fully mobilized
+#VARIABLE_CONDITION= 116 [2] [0] [0]
+; Poland(85) Allied and surrendered
+#VARIABLE_CONDITION= 85 [2] [100] [1]
+; Bulgaria(19) Axis but not fully mobilized
+#VARIABLE_CONDITION= 19 [1] [0] [0]
+; Hungary(52) Axis but not fully mobilized
+#VARIABLE_CONDITION= 52 [1] [0] [0]
+; Italy(59) Axis, Mobilized
+#VARIABLE_CONDITION= 59 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 611 - Germany: Resolve Territorial Disputes In Eastern Europe? (delayed) (25%) (AI - 50%)
+#POPUP=
+#MESSAGE=Führerhauptquartier %N%N Romania is under pressure to settle its territorial disputes with its neighbors.%N%N Hungary demands Northern Transylvania, and Bulgaria claims Southern Dobruja.%N%N We could intervene to force Romania to hand over the territories demanded by Hungary and Bulgaria  and this will encourage Hungary and Bulgaria to join the Axis sooner than they might have done.%N%N Would you like to enforce a settlement of Romania's territorial disputes in favor of Hungary and Bulgaria %B(YES)?
+#IMAGE=
+#SOUND= teletype_1.ogg, teletype_2.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; USSR(116) did not seize Bessarabia
+; 406[1]->600[1]->418[0]
+#LINK= 418[0]
+#COUNTRY_ID= 45
+#TRIGGER= 25
+#DISPLAY_ORDER= 1
+#DECISION= 611
+#MPP_UPDOWN= 0
+#MPP_TURNS= 0
+#MPP_TEXT= None
+#NOTES= If you say %B(YES), Romania will lose Northern Transylvania and Southern Dobruja.%N%N King Carol II will be forced to abdicate as Antonescu takes power, and in January 1941 Antonescu will crush the Iron Guard's rebellion. Romania will still join the Axis but it will join later than it would have done.%N%N By saying %B(NO), Romania retains its territorial integrity and may join the Axis slightly earlier, though the war entrance of Hungary and Bulgaria may be slightly delayed.
 #NOTES_POSITION= 193,92
 ; Set AI acceptance % (AI will accept 50% of the time)
 #AI_RESPONSE= 50
@@ -10557,7 +10541,7 @@
 {
 #NAME= DE 672 - Germany: Form The Afrika Korps for Service in North Africa? (Benghazi and Trieste in Axis hands, Tripoli and Gazala in Allied hands) (AI - 100%)
 #POPUP=
-#MESSAGE=Fuhrerhauptquartier %N%N %BRe: %BAfrika %BKorps %N%N In order to assist our Italian allies now they have lost Tripoli, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N This formation could spearhead an offensive to recapture Libya and then advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Trieste: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa %B(YES)?
+#MESSAGE=Fuhrerhauptquartier %N%N %BRe: %BAfrika %BKorps %N%N In order to assist our Italian allies now they have lost Tripoli, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N This formation could spearhead an offensive to recapture Libya and then advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Trieste: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Division %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -12528,7 +12512,7 @@
 
 ; Fall Weiss II
 {
-#NAME= [FW]DE 813 - USA: Offer Compensation to Sweden for Convoy losses? (AI - 80%)
+#NAME= [FW]DE 813 - USA: Offer Compensation to Sweden for loss of trade with Germany? (AI - 80%)
 #POPUP=
 #MESSAGE=%N%N Office of the Secretary of War %N%N %BRe: %BSwedish %BTrade %N%N The Swedish government has become increasingly anxious towards the ensuing conflict in Europe and our foreign diplomats report that the Swedish government is ready to abandon its trade with Germany if the Allies offer incentive. %N%N Sweden is reportedly willing to accept payments from the Allies to compensate for the loss of income through reduced trade with Germany.%N%N Should we offer payments to the Swedish government %B(YES)?  It will cost a total of %B500 MPPs (50 MPPs for 10 turns).
 #IMAGE=
@@ -15770,88 +15754,6 @@
 }
 
 ; Fall Weiss II
-{
-#NAME= [FW]DE 916 - Germany: Reinforce Eastern Front for Fall Blau? (AI - 100%)
-#POPUP=
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BSummer %BOffensive %N%N Mein Führer, the summer offensive against the Red Army must take precedence over all other objectives.  Our country will soon face oil shortages and the Soviet oilfields in the Caucasus will provide much needed oil for the continuation of the war.  To ensure our strategic positions in the Caucasus we must make certain that Stalingrad falls, otherwise the Soviets will be in position to flank any footholds we make in this region. %N%N Both the German Army and our allies have made preparations for the summer offensive code named Fall Blau.  However further equipment, formation and logistical costs will require approval so that our reinforcements will be ready for battle. %N%N Mein Führer, do you approve the costs of supplying the German Army and her allies the necessities to reinforce the Eastern Front for our planned offensive Fall Blau?  It will cost a total of %B725 MPPs (125 MPPs for 5 turns).
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#DECISION= 916
-#MPP_UPDOWN= -125
-#MPP_TURNS= 5
-#MPP_TEXT= Reinforce Eastern Front
-#NOTES= %N%N Fall Blau was a continuation of Operation Barbarossa, intended to knock the Soviet Union out of the war, and involved a two-pronged attack against the oil fields of Baku as well as an advance in the direction of Stalingrad along the Volga River, to cover the flanks of the advance towards Baku. %N%N If you select %B(YES), the following reinforcements will deploy throughout the Spring to support the summer offensive: %N%N%T - HQ (Germany) %N%T - Infantry Army (Germany) %N%T - Tank Army (Germany) %N%T - Field Artillery (Germany) %N%T - Infantry Corps (Romania) %N%T - Tank Division (Romania) %N%T - Infantry Corps (Hungary).
-#NOTES_POSITION= 234,85
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1942/02/01
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Warsaw(188,76) is Axis
-#ALIGNMENT_POSITION= 188,76 [1]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; Romania(93) Axis and fully mobilized
-; Hungary(52) Axis and fully mobilized
-; USSR(116) Allied and fully mobilized
-#VARIABLE_CONDITION= 93 [1] [100] [0]
-#VARIABLE_CONDITION= 52 [1] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 917 - Germany: Grant Concessions To Greece To Induce Into Alliance? (AI - 100%)
-#POPUP=
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BGreece %N%N Mein Führer, It has come to our attention that we may be able to persuade Greece to sign the Tripartite Pact.  The Metaxas government is certainly pro-Berlin and also at least sympathetic to improving deteriorating relations with Rome. The Greek government could be persuaded enough to join the Axis if they receive territorial concessions from both Bulgaria and Italian occupied Albania. %N%N However doing so will certainly complicate political relations with Bulgaria, and forcing our Italian ally to make concessions will likely lower the morale of the Italian Forces. %N%N Mein Führer, should we agree to the concessions in the Balkans and permit Greece to sign the Tripartite Pact %B(YES)?
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 0
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#DECISION= 917
-#MPP_UPDOWN= 0
-#MPP_TURNS= 0
-#MPP_TEXT=
-#NOTES= %N%N If you select %B(YES), the territory of southern Albania (Italy), and southern Bulgaria will transfer to Greek control and Greece will join the Axis.%N%N Italian national morale will also be decreased by 3000 and Bulgaria will align defensively with the Allies.
-#NOTES_POSITION= 193,109
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1940/09/01
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-; Tirana(185,102) is Axis
-#ALIGNMENT_POSITION= 185,102 [1]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; Italy(59) Axis and fully mobilized
-; Greece(46) Axis leaning
-; Bulgaria(19) Axis
-; USSR(116) Allied
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#VARIABLE_CONDITION= 46 [1] [10] [0]
-#VARIABLE_CONDITION= 19 [1] [0] [0]
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; Fall Weiss II
 ; https://www.wikiwand.com/en/German_cruiser_L%C3%BCtzow_(1939)
 ; Historic Date (agreement concluded): 1940/02
 {
@@ -15888,88 +15790,6 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 919 - Germany: Reinforce The Deutsches Afrika Korps? (AI - 50%)
-#POPUP=
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BTripoli %BReinforcement %N%N Mein Führer, Russia is swallowing most of our resources, but we have as you ordered in the spring prepared an expedition force to reinforce our position in North Africa.  However, we should consider that these units could remain in Europe to help fight on the Eastern Front.%N%N Should we send reinforcements to the North African Front %B(YES) or strengthen our forces on the Eastern Front %B(NO)? It will cost %B50 MPPs to ship the units to Libya.
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 3
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#DECISION= 919
-#MPP_UPDOWN= -50
-#MPP_TURNS= 1
-#MPP_TEXT= Reinforce North Africa
-#NOTES= %N%N If you select %B(YES), Germany will deploy at Tripoli, a fully upgraded: %N%N%T - Infantry Corps %N%T - Mechanized Division %N%T - Anti-Tank Unit %N%N If you select %B(NO), Germany will deploy the units at Warsaw.
-#NOTES_POSITION= 173,74
-; Set AI acceptance % (AI will accept 50% of the time)
-#AI_RESPONSE= 50
-#AI_RESPONSE_POPUP=
-#DATE= 1942/08/01
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-;Set Friendly Position (Berlin, Rome, Palermo, Tripoli, Warsaw)
-#ALIGNMENT_POSITION= 173,74 [1]
-#ALIGNMENT_POSITION= 171,101 [1]
-#ALIGNMENT_POSITION= 173,109 [1]
-#ALIGNMENT_POSITION= 172,121 [1]
-; Warsaw(188,76) is Axis
-#ALIGNMENT_POSITION= 188,76 [1]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-
-; https://codenames.info/operation/wacht-am-rhein/
-; Fall Weiss II
-{
-#NAME= [FW]DE 921 - Germany: Operation Wacht Am Rhein (AI - 100%)
-#POPUP=
-#MESSAGE=Führerhauptquartier %N%N %BRe: %BOperation %BWacht %BAm %BRhein %N%N Mein Führer, we are facing intense fighting on multiple fronts and now Paris has fallen into the Allies hands.  Our resources are severely limited but as requested we have devised a plan for an offensive in the West and can raise an attack force but doing so will come at staggering costs. %N%N Mein Führer, shall we proceed with the planned offensive through the Ardennes %B(YES)? It will have a total cost of %B1050 MPPs (350 MPPs for 3 turns).
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#DECISION= 921
-#MPP_UPDOWN= -350
-#MPP_TURNS= 3
-#MPP_TEXT= Western Offensive
-#NOTES= %N%N If you select %B(YES), Germany will deploy near Frankfurt: %N%N%T - 1 HQ %N%T - 2 fully upgraded Tank Armies (+2 Experience) %N%T - 1 Infantry Army (+2 Experience) %N%T - 1 Infantry Corps (+2 Experience) %N%N German National Morale will also rise 3,000 points.%N%N The cost of raising this attack force will hamper our ability to reinforce other fronts but an offensive into France may be our last opportunity to push the Allies back out of Western Europe.
-#NOTES_POSITION= 173,74
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1943/01/01
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-;Set Friendly Position (Berlin, Frankfurt)
-#ALIGNMENT_POSITION= 173,74 [1]
-#ALIGNMENT_POSITION= 164,81 [1]
-; Paris(151,84) is Allied
-#ALIGNMENT_POSITION= 151,84 [2]
-; Cherbourg is Allied
-#ALIGNMENT_POSITION= 143,82 [2]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -16359,82 +16179,6 @@
 #CONDITION_POSITION= 139,104 [5,5] [0,0] [2] [0]
 }
 
-; Event allowing for the German Reinforcements on The Eastern Front After USSR Is At War
-; Fall Weiss II
-{
-#NAME= [FW]DE 932 - Germany: Dummy Event To Allow Eastern Front Reinforcements (AI - 100%)
-#POPUP=
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#DECISION= 932
-#MPP_UPDOWN= 0
-#MPP_TURNS= 0
-#MPP_TEXT= None
-#NOTES=
-#NOTES_POSITION=
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1939/10/01
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Warsaw(188,76) is Axis
-#ALIGNMENT_POSITION= 188,76 [1]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 933 - Italy: Deploy Submarines At Bordeaux Or The Mediterranean? (AI - 75%)
-#POPUP=
-#MESSAGE=Commander in Chief %N%N Il Duce, Germany is now calling on the Italian Royal Navy (Regia Marina) to honour our commitment to the Atlantic campaign and establish a submarine base at Bordeaux.  It will cost 15 MPPs to construct the submarine base.%N%N Alternatively, we can deploy the submarine group in the Mediterranean Sea to help protect our surface fleets from the Allied Navy. %N%N Il Duce, should we honour our commitment to Germany and send the remainder of our submarine fleet to Bordeaux for service in the Atlantic %B(YES)?
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 59
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#DECISION= 933
-#MPP_UPDOWN= -15
-#MPP_TURNS= 1
-#MPP_TEXT= Atlantic Submarine Base
-#NOTES= %N%N BETASOM (an Italian language acronym of Bordeaux Sommergibile), was a submarine base established at Bordeaux by the Italian Regia Marina during World War II. From this base, Italian submarines participated in the Battle of the Atlantic.%N%N If you select %B(YES), a half strength submarine unit will deploy at Bordeaux at a cost of 15 MPPs. Note that Italy will not have the opportunity to launch additional naval units from Bordeaux.%N%N If you select %B(NO), a half strength submarine unit will deploy in the Mediterranean.
-#NOTES_POSITION= 171,101
-#AI_RESPONSE= 75
-#AI_RESPONSE_POPUP=
-#DATE= 1940/08/18
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Rome(171,101)
-#ALIGNMENT_POSITION= 171,101 [1]
-; Bordeaux(145,94) is Axis
-#ALIGNMENT_POSITION= 145,94 [1]
-; Bordeaux-Port(145,93) is Axis
-#ALIGNMENT_POSITION= 145,93 [1]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; Italy(59) Axis and not surrendered
-; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#VARIABLE_CONDITION= 40 [2] [100] [1]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
 ; Fall Weiss II
 {
 #NAME= [FW]DE 938 - Finland: Finnish National Morale falls below 50% (AI - 100%)
@@ -16503,45 +16247,6 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 949 - Germany: Reinforcements if Tripoli Is Captured (AI - 100%)
-#POPUP=
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 3
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#DISPLAY_ORDER= 0
-#DECISION= 949
-#MPP_UPDOWN= 0
-#MPP_TURNS= 0
-#MPP_TEXT=
-#NOTES=
-#NOTES_POSITION= 173,74
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1942/08/01
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Berlin(173,74) ia Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-; Warsaw(188,76) is Axis
-#ALIGNMENT_POSITION= 188,76 [1]
-; Tripoli(172,121) is Allied
-#ALIGNMENT_POSITION= 172,121 [2]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and fully mobilized
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -16885,41 +16590,6 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; France(40) Allied and surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 997 - Germany: Dummy Event For Strategic Reserves (AI - 100%)
-#POPUP=
-#MESSAGE=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#DISPLAY_ORDER= 1
-#GV= 1[1,100]
-#LINK= 994[0]
-#DECISION= 997
-#MPP_UPDOWN= -100
-#MPP_TURNS= 8
-#MPP_TEXT= Strategic Reserves In France
-#NOTES=
-#NOTES_POSITION=
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1939/09/01
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Berlin(173,74) is Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; Germany(45) Axis and not surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 

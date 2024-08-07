@@ -601,7 +601,7 @@
 }
 
 {
-#NAME= Turkey(AI): Turkey Swayed by Axis Victories (Turkey->>Axis) (25%)
+#NAME= Turkey(AI): Turkey Swayed by Axis Victories in the Middle East (Turkey->>Axis) (25%)
 #POPUP= The Prime Minister of Turkey Visits Berlin
 #IMAGE=
 #SOUND=
@@ -2050,6 +2050,7 @@
 
 ;
 ; Event for increased Romanian activation:
+; Historic Date: 26 June 1940
 {
 #NAME= DE 418 - The USSR Seizes Bessarabia (Romania->Axis)
 #POPUP= Romania Highly Displeased Over USSR's Seizure Of Bessarabia
@@ -2063,9 +2064,9 @@
 #LEVEL= 0
 #COUNTRY_ID= 93
 #TRIGGER= 100
-#DATE= 1940/06/28
-; 10-10% activation increase towards Axis
-#MOBILIZATION= [10,10] [1]
+#DATE= 1939/09/01
+; 5-15% activation increase towards Axis
+#MOBILIZATION= [5,15] [1]
 ; USSR(116) Allied but not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 }
@@ -2314,7 +2315,7 @@
 ; Event for increased USSR activation:
 {
 #NAME= DE 610 - Lithuania Annexed By Germany (USSR->Allies)
-#POPUP= Stalin Is Alarmed At The German Annexation Of Lithuania
+#POPUP= Stalin Grows Concerned At The German Annexation Of Lithuania
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -2325,9 +2326,9 @@
 #LEVEL= 0
 #COUNTRY_ID= 116
 #TRIGGER= 100
-#DATE= 1940/03/01
-; 7-10% activation increase towards Allies
-#MOBILIZATION= [7,10] [2]
+#DATE= 1939/09/01
+; 6-9% activation increase towards Allies
+#MOBILIZATION= [6,9] [2]
 ; Germany(45) Axis, Mobilized (dummy)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
@@ -2862,11 +2863,12 @@
 ; Fall Weiss II
 ; Swedish Convoy
 {
-#NAME= [FW]DE 813 - Allies Exert Diplomatic Pressure To Stop Swedish Convoys (Sweden->Allies)
+#NAME= [FW]DE 813 - Allies Exert Diplomatic Pressure To Reduce Swedish Exports to Germany (Sweden->Allies)
 #POPUP= The Swedish Relent to Allied Pressure away from Axis Influence
 #IMAGE=
 #SOUND=
 #FLAG= 1
+; Multiple checks, on or after #DATE, until end of game
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
@@ -2877,28 +2879,6 @@
 #DATE= 1939/09/03
 ; 1-5% mobilization increase towards Allies
 #MOBILIZATION= [1,5] [2]
-; Sweden(103) Axis
-#VARIABLE_CONDITION= 103 [1] [20] [0]
-}
-
-; Fall Weiss II
-; Swedish Convoy
-{
-#NAME= [FW]DE 813 - Allies Intervene To Stop Swedish Convoys (Sweden->Allies)
-#POPUP= The Allies Intervene To Sway Sweden To End Convoys To Germany
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 813[1]
-#COUNTRY_ID= 103
-#TRIGGER= 100
-#DATE= 1939/09/03
-; 1% mobilization increase towards Allies (one time)
-#MOBILIZATION= [1,1] [2]
 ; Sweden(103) Axis
 #VARIABLE_CONDITION= 103 [1] [20] [0]
 }
@@ -3489,100 +3469,6 @@
 
 ; Fall Weiss II
 {
-#NAME= [FW]DE 917 - Bulgaria Cedes Territory To Greece (Greece->>Allies)
-#POPUP= Bulgaria Aligns Itself With The USSR After Being Forced To Cede Territory To Greece
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-; Greek Concessions?
-#LINK= 917[1]
-#LEVEL= 0
-#COUNTRY_ID= 19
-#TRIGGER= 100
-#DATE= 1939/09/03
-; 140% activation increase towards Allies
-#MOBILIZATION= [140,140] [2]
-; Bulgaria(19) Axis Leaning
-#VARIABLE_CONDITION= 19 [1] [0] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 917 - Greece Joins The Axis (Greece->>Axis)
-#POPUP= Germany Supports Territorial Concessions In Order To Sway Greece Toward Joining The Axis
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-; Greek Concessions?
-#LINK= 917[1]
-#LEVEL= 0
-#COUNTRY_ID= 46
-#TRIGGER= 100
-#DATE= 1939/09/03
-; 200% activation increase towards Axis
-#MOBILIZATION= [200,200] [1]
-; Greece(46) Axis leaning
-#VARIABLE_CONDITION= 46 [1] [1] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 917 - Stalin Warns Against An Invasion Into Bulgaria (USSR->Allies)
-#POPUP= Stalin Guarantees Bulgarian Sovereignty
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-; Greek Concessions?
-#LINK= 917[1]
-#LEVEL= 0
-#COUNTRY_ID= 116
-#TRIGGER= 100
-#DATE= 1939/09/03
-; 2-5% activation increase towards Allies
-#MOBILIZATION= [2,5] [2]
-; USSR(116) Allied and not fully mobilized
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-}
-
-; Fall Weiss II
-{
-#NAME= [FW]DE 917 - Turkey Greatly Concerned About Complete Balkan Axis Alliance (Turkey->>Allies)
-#POPUP= Turkey Greatly Concerned About Complete Balkan Axis Alliance
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-; Greek Concessions?
-#LINK= 917[1]
-#LEVEL= 0
-#COUNTRY_ID= 111
-#TRIGGER= 100
-#DATE= 1939/09/03
-; 25-30% activation increase towards Allies
-#MOBILIZATION= [25,30] [2]
-; Greece(46) Axis Mobilized
-; Romania(93) Axis Mobilized
-; Hungary(52) Axis Mobilized
-; Yugoslavia(120) Axis Mobilized
-#VARIABLE_CONDITION= 46 [1] [100] [0]
-#VARIABLE_CONDITION= 93 [1] [100] [0]
-#VARIABLE_CONDITION= 52 [1] [100] [0]
-#VARIABLE_CONDITION= 120 [1] [100] [0]
-}
-
-; Fall Weiss II
-{
 #NAME= [FW]DE 918 - German Delivery Of The Heavy Cruiser Lützow (USSR->Allies)
 #POPUP= Stalin Is Wary Of Germany Not Honouring The Sale Of Naval Assets
 #IMAGE=
@@ -3660,8 +3546,8 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #DATE= 1939/09/03
-; 10% mobilization increase towards Allies
-#MOBILIZATION= [10,10] [2]
+; 5-15% mobilization increase towards Allies
+#MOBILIZATION= [5,15] [2]
 ; USSR(116) Allied, and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 }
@@ -3681,8 +3567,8 @@
 #COUNTRY_ID= 116
 #TRIGGER= 100
 #DATE= 1939/09/03
-; 5% mobilization increase towards Axis
-#MOBILIZATION= [5,5] [1]
+; 3-7% mobilization increase towards Axis
+#MOBILIZATION= [3,7] [1]
 ; USSR(116) Allied, and not surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 }

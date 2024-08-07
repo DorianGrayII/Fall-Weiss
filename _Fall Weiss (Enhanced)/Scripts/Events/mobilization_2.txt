@@ -878,7 +878,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 115
 #TRIGGER= 50
-#DATE= 1940/01/01
+#DATE= 1939/09/01
 ; 5-15% mobilization increase towards Allies
 #MOBILIZATION= [5,15] [2]
 ; Germany(45) Axis and not surrendered (dummy condition)
@@ -926,7 +926,7 @@
 #LINK= 0[0]
 #COUNTRY_ID= 115
 #TRIGGER= 100
-#DATE= 1940/01/01
+#DATE= 1939/09/01
 ; 8-12% activation increase towards Allies
 #MOBILIZATION= [8,12] [2]
 ; Germany(45) Axis and not surrendered (dummy condition)
@@ -952,8 +952,8 @@
 #COUNTRY_ID= 10
 #TRIGGER= 100
 #DATE= 1939/09/01
-; 20-20% activation increase towards Allies
-#MOBILIZATION= [20,20] [2]
+; 15-25% activation increase towards Allies
+#MOBILIZATION= [15,25] [2]
 ; Germany(45) Axis and not surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis has 1 unit within 2 hexes of Amsterdam
@@ -978,7 +978,7 @@
 #LINK= 0[0]
 #COUNTRY_ID= 115
 #TRIGGER= 100
-#DATE= 1940/01/01
+#DATE= 1939/09/01
 ; 100% activation increase towards Allies
 #MOBILIZATION= [100,100] [2]
 ; Germany(45) Axis and not surrendered (dummy condition)
@@ -1006,7 +1006,7 @@
 #LINK= 0[0]
 #COUNTRY_ID= 116
 #TRIGGER= 25
-#DATE= 1940/01/01
+#DATE= 1939/09/01
 ; 4-8% activation increase towards Allies
 #MOBILIZATION= [4,8] [2]
 ; Germany(45) Axis and not surrendered (dummy condition)
@@ -1034,7 +1034,7 @@
 #LINK= 0[0]
 #COUNTRY_ID= 115
 #TRIGGER= 50
-#DATE= 1940/01/01
+#DATE= 1939/09/01
 ; 5-10% activation increase towards Allies
 #MOBILIZATION= [5,10] [2]
 ; Germany(45) Axis and not surrendered (dummy condition)
@@ -1063,7 +1063,7 @@
 #LEVEL= 0
 #COUNTRY_ID= 59
 #TRIGGER= 75
-#DATE= 1940/01/01
+#DATE= 1939/09/01
 ; 3-5% mobilization increase towards Axis
 #MOBILIZATION= [3,5] [1]
 ; Belgium(10) Allied and surrendered
@@ -1087,7 +1087,7 @@
 #LINK= 0[0]
 #COUNTRY_ID= 59
 #TRIGGER= 75
-#DATE= 1940/01/01
+#DATE= 1939/09/01
 ; 5-10% activation increase towards Axis
 #MOBILIZATION= [5,10] [1]
 ; Germany(45) Axis and not surrendered (dummy condition)
@@ -1097,7 +1097,7 @@
 }
 
 {
-#NAME= Turkey(AI): Fall of Moscow to Axis Impresses Turkey (Turkey->Axis) (5%)
+#NAME= Turkey(AI): Fall of Moscow to Axis Impresses Turkey (Turkey->Axis) (15%)
 #POPUP= Turkish Parliament Debates Joining the Axis
 #IMAGE=
 #SOUND=
@@ -1108,7 +1108,7 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #COUNTRY_ID= 111
-#TRIGGER= 5
+#TRIGGER= 15
 #DATE= 1939/09/03
 ; 20-40% activation increase towards Axis
 #MOBILIZATION= [20,40] [1]
@@ -1359,7 +1359,7 @@
 ; Axis land units in England resulting in a
 ; 6-12% increase in Spanish mobilization towards Axis:
 {
-#NAME= Sealion (Spain->Axis) (10%)
+#NAME= Sealion (Spain->Axis) (35%)
 #POPUP= Franco Is Impressed By The Axis Success In The UK
 #IMAGE=
 #SOUND=
@@ -1370,8 +1370,8 @@
 #LINK= 0[0]
 #LEVEL= 0
 #COUNTRY_ID= 99
-#TRIGGER= 10
-#DATE= 1941/03/01
+#TRIGGER= 35
+#DATE= 1939/09/01
 ; 6-12% mobilization increase towards Axis
 #MOBILIZATION= [6,12] [1]
 ; Germany(45) Axis and not surrendered (dummy condition)
@@ -1387,8 +1387,8 @@
 ; Axis land units in England resulting in a
 ; 45-55% increase in Turkish mobilization towards Axis:
 {
-#NAME= Sealion (Turkey->>Axis) (10%)
-#POPUP= Turkey Strengthens Pro-Axis Relations
+#NAME= Sealion (Turkey->>Axis) (35%)
+#POPUP= Turkey is impressed by Axis advances in England
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -1398,10 +1398,10 @@
 #GV= 1[1,100]
 #LINK= 0[0]
 #COUNTRY_ID= 111
-#TRIGGER= 10
+#TRIGGER= 35
 #DATE= 1939/09/01
-; 45-55% activation increase towards Axis
-#MOBILIZATION= [45,55] [1]
+; 25-35% activation increase towards Axis
+#MOBILIZATION= [25,35] [1]
 ; Germany(45) Axis and not surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis has captured and holds London OR
@@ -1417,7 +1417,7 @@
 ; 10-15% increase in USA activation towards Allies:
 {
 #NAME= Sealion (USA->Allies)
-#POPUP= The US President Condemns The Axis Landing In The UK
+#POPUP= The US President Condemns The Axis Landings In The UK
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -1428,7 +1428,7 @@
 #LINK= 0[0]
 #COUNTRY_ID= 115
 #TRIGGER= 100
-#DATE= 1940/01/01
+#DATE= 1939/09/01
 ; 10-15% activation increase towards Allies
 #MOBILIZATION= [10,15] [2]
 ; Germany(45) Axis and not surrendered (dummy condition)
@@ -1446,7 +1446,7 @@
 ; 10-15% increase in Soviet mobilization towards Allies:
 {
 #NAME= Sealion (USSR->Allies)
-#POPUP= Stalin Is Concerned By Axis Advances In The UK
+#POPUP= Stalin Grows Concerned By Axis Advances In The UK
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -1556,7 +1556,7 @@
 ; 30-45% increase in Finnish activation towards Axis
 {
 #NAME= Soviet Naval Aggression in the Baltic (Helsinki) (Finland->>Axis) (50%)
-#POPUP= Soviet Naval Manuevers Alert Finnish Defence Forces
+#POPUP= Soviet Naval Manuevers Alert Finnish Defense Forces
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -1664,11 +1664,10 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; Fall Weiss II
 ; Turkey Allied Leaning Before War With the USSR
 {
-#NAME= Turkey Leans Toward Allies While USSR Neutral (Turkey->Allies)
-#POPUP=
+#NAME= [FW]Turkey Leans Toward Allies While USSR Neutral (Turkey->Allies)(35%)
+#POPUP= Turkey's relationship with the Allies improves
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -1678,14 +1677,14 @@
 #LINK= 0[0]
 #LEVEL= 0
 #COUNTRY_ID= 111
-#TRIGGER= 100
+#TRIGGER= 35
 #DATE= 1939/09/03
 ; 5% mobilization increase towards Allies
-#MOBILIZATION= [5,5] [2]
+#MOBILIZATION= [1,5] [2]
 ; USSR(116) aligned Allied and not active
-; Turkey(111) Axis and Not Active
+; Turkey(111) Allied and Not Active
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-#VARIABLE_CONDITION= 111 [1] [0] [0]
+#VARIABLE_CONDITION= 111 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
