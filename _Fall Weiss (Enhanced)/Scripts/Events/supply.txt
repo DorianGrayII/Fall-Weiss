@@ -134,17 +134,18 @@
 ; Each event must be preceded by a '{' and end with a '}'
 ;
 ; #SOURCE_POSITION will trigger the event if and only if the unit located there, as specified by
-; unit_id, matches #COUNTRY_ID. Additionally, for the event to fire the unit must have a strength >= 5.
+;    unit_id, matches #COUNTRY_ID. Additionally, for the event to fire the unit must have a strength >= 5.
 ;
-; #COUNTRY_ID can be set to 0, for any country with alignment matching #ALIGNMENT_ID, as long as there is a #SOURCE_POSITION specified.
+; #COUNTRY_ID can be set to 0, for any country with alignment matching #ALIGNMENT_ID, as long as
+;    there is a #SOURCE_POSITION specified.
 ;
 ; A #SOURCE_POSITION does not have to be specified and can be left blank. In this case the
-; triggering of the supply event will be dependant on #DATE and the applicable #SEASON_FLAG.
-; More than one #SOURCE_POSITION can be set and will be read using OR logic.
+;    triggering of the supply event will be dependant on #DATE and the applicable #SEASON_FLAG.
+;    More than one #SOURCE_POSITION can be set and will be read using OR logic.
 ;
 ; #DESTINATION_RESOURCE's will only be effected if they are under enemy control relative to #COUNTRY_ID.
-; Enemy or occupier must also be fully active.
-; More than one #DESTINATION_RESOURCE can be set.
+;    Enemy or occupier must also be fully active.
+;    More than one #DESTINATION_RESOURCE can be set.
 ;
 ; Under #VARIABLE_CONDITION you can also list countries that have not yet fully entered the war.
 ; For example by listing an mobilization % less than 100% you are providing a check where the
@@ -381,9 +382,9 @@
 #DATE= 1941/05/27
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 153,81 [2,4]
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; France(40) Allied and surrendered
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 }
 
@@ -484,7 +485,7 @@
 #SOURCE_POSITION= 31,96 [-1.6]
 #DESTINATION_RESOURCE= 30,95 [1,2]
 #DESTINATION_RESOURCE= 29,92 [1,2]
-; Canada(21) Allied and not surrendered
+; Canada(21) Allied, Not Surrendered
 #VARIABLE_CONDITION= 21 [2] [100] [0]
 }
 
@@ -509,13 +510,13 @@
 #SOURCE_POSITION= 38,90 [-1.6]
 #SOURCE_POSITION= 38,91 [-1.6]
 #DESTINATION_RESOURCE= 36,91 [1,2]
-; Canada(21) Allied and not surrendered
+; Canada(21) Allied, Not Surrendered
 #VARIABLE_CONDITION= 21 [2] [100] [0]
 }
 
 ; Crete limits Axis supply in the Mediterranean
 {
-#NAME= Crete Effect (Tobruk, Bardia, Derna, Sidi Barrani, Mersa Matruh, El Alamein, Alexandria) (20%)
+#NAME= Crete Effect (Continous) (Tobruk, Bardia, Derna, Sidi Barrani, Mersa Matruh, El Alamein, Alexandria) (20%)
 #POPUP= The Presence Of Allied Troops Hinders Axis Supply In North Africa (Tobruk, El Alamein, Alexandria)
 #IMAGE=
 #SOUND=
@@ -553,8 +554,8 @@
 #DESTINATION_RESOURCE= 200,124 [1,3]
 ; El Alamein(204,125)
 #DESTINATION_RESOURCE= 204,125 [1,3]
-; UK(112) Allied and not surrendered
-; Egypt(36) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
+; Egypt(36) Allied, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -584,6 +585,7 @@
 ; Several ports removed though Amphibious Operations are still possible
 #DESTINATION_RESOURCE= 144,115 [1,2]
 #DESTINATION_RESOURCE= 145,115 [1,2]
+; Algiers-Port(152,112)
 #DESTINATION_RESOURCE= 152,112 [1,2]
 #DESTINATION_RESOURCE= 152,113 [1,2]
 #DESTINATION_RESOURCE= 167,111 [1,2]
@@ -602,7 +604,7 @@
 #DESTINATION_RESOURCE= 194,122 [1,2]
 #DESTINATION_RESOURCE= 195,121 [1,2]
 #DESTINATION_RESOURCE= 205,123 [1,2]
-; Italy(59) is Axis and not surrendered
+; Italy(59) Axis, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 }
 {
@@ -683,11 +685,11 @@
 #DESTINATION_RESOURCE= 155,81 [2,4]
 #DESTINATION_RESOURCE= 151,81 [2,4]
 #DESTINATION_RESOURCE= 154,83 [2,4]
-; Belgium(10) Allied and surrendered
+; Belgium(10) Allied, Surrendered
 #VARIABLE_CONDITION= 10 [2] [100] [1]
 ; USA(115) Allied but not fully mobilized
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; France(40) Allied and not surrendered
+; France(40) Allied, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 }
 
@@ -716,7 +718,6 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [1]
 }
 
@@ -749,15 +750,15 @@
 #DESTINATION_RESOURCE= 200,124 [1,2]
 ; El Alamein(204,125)
 #DESTINATION_RESOURCE= 204,125 [1,2]
-; UK(112) Allied and not surrendered
-; Egypt(36) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
+; Egypt(36) Allied, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 }
 
 ; Malta limits Axis supply in the Mediterranean
 {
-#NAME= Malta Effect (Derna, Msus, Mekili, Gazala) (15%)
+#NAME= Malta Effect (Continuous) (Derna, Msus, Mekili, Gazala) (15%)
 #POPUP= Malta Hinders Axis Supply In the Mediterranean (Derna, Msus, Mekili, Gazala)
 #IMAGE=
 #SOUND=
@@ -784,19 +785,19 @@
 #DESTINATION_RESOURCE= 190,122 [1,2]
 ; Gazala(192,122)
 #DESTINATION_RESOURCE= 192,122 [1,2]
-; Homs(175,121) - Added by Fall Weiss
+; Homs(175,121) - Added by FW
 #DESTINATION_RESOURCE= 175,121 [1,2]
-; Buerat(177,123) - Added by Fall Weiss
+; Buerat(177,123) - Added by FW
 #DESTINATION_RESOURCE= 177,123 [1,2]
-; UK(112) Allied and not surrendered
-; Egypt(36) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
+; Egypt(36) Allied, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 }
 
 ; Malta limits Axis supply in the Mediterranean
 {
-#NAME= Malta Effect (Tobruk, Alexandria, Port Said) (20%)
+#NAME= Malta Effect (Continuous) (Tobruk, Alexandria, Port Said) (20%)
 #POPUP= Malta Hinders Axis Supply In the Mediterranean (Tobruk, Alexandria, Port Said)
 #IMAGE=
 #SOUND=
@@ -815,7 +816,7 @@
 #DATE= 1940/08/01
 ; Malta(175,114) [any unit]
 #SOURCE_POSITION= 175,114 [-1]
-; Tobruk - Port
+; Tobruk-Port
 #DESTINATION_RESOURCE= 195,121 [1,2]
 ; Tobruk(194,122)
 #DESTINATION_RESOURCE= 194,122 [1,2]
@@ -826,8 +827,8 @@
 ; Port Said(209,122)
 #DESTINATION_RESOURCE= 209,122 [1,2]
 #DESTINATION_RESOURCE= 209,123 [1,2]
-; UK(112) Allied and not surrendered
-; Egypt(36) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
+; Egypt(36) Allied, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 }
@@ -835,7 +836,7 @@
 ;
 ; Malta limits Axis supply in the Mediterranean
 {
-#NAME= Malta Effect (Tripoli, Sirte, El Agheila, Benghazi, Derna) (15%)
+#NAME= Malta Effect (Continuous) (Tripoli, Sirte, El Agheila, Benghazi, Derna) (15%)
 #POPUP= Malta Hinders Axis Supply In the Mediterranean (Tripoli, Sirte, El Agheila, Benghazi)
 #IMAGE=
 #SOUND=
@@ -866,15 +867,15 @@
 #DESTINATION_RESOURCE= 186,122 [1,2]
 ; Benghazi(Port)
 #DESTINATION_RESOURCE= 185,122 [1,2]
-; UK(112) Allied and not surrendered
-; Egypt(36) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
+; Egypt(36) Allied, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 }
 
 {
-#NAME= Soviet Bombers Operating From Crimea Attack The Ploesti Oil Fields In Romania (25%)
-#POPUP= Soviet Bombers Operating From Crimea Attack The Ploesti Oil Fields In Romania
+#NAME= Soviet Bombers Operating From Crimea Attack The Ploesti Oil Fields (Continuous) (25%)
+#POPUP= Soviet Bombers Operating From Crimea Attack The Ploesti Oil Fields
 #IMAGE=
 #SOUND= explosion1.ogg
 #FLAG= 1
@@ -885,6 +886,7 @@
 #LINK= 0[0]
 #COUNTRY_ID= 116
 #ALIGNMENT_ID= 0
+; Romania(93)
 #FLAG_ID= 93
 #TRIGGER= 25
 #SEASON_FLAG= 0
@@ -966,7 +968,7 @@
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 139,76 [2,4]
 #DESTINATION_RESOURCE= 144,72 [2,4]
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
@@ -998,7 +1000,7 @@
 #SOURCE_POSITION= 18,99 [-1.6]
 #DESTINATION_RESOURCE= 0,103 [1,2]
 #DESTINATION_RESOURCE= 0,104 [1,2]
-; USA(115) Allied and not surrendered
+; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 }
 
@@ -1046,7 +1048,7 @@
 #DATE= 1941/02/25
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 156,75 [2,3]
-; Netherlands Allied and surrendered
+; Netherlands Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [1]
 }
 
@@ -1069,11 +1071,10 @@
 #DATE= 1943/04/29
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 157,79 [2,3]
-; Netherlands Allied and surrendered
+; Netherlands Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [1]
 }
 
-; Fall Weiss II
 ; Malta limits Axis supply in the Mediterranean
 {
 #NAME= [FW]Malta AF Effect (Tripoli, Tobruk)
@@ -1098,8 +1099,8 @@
 #DESTINATION_RESOURCE= 172,120 [5,5]
 #DESTINATION_RESOURCE= 185,122 [5,5]
 #DESTINATION_RESOURCE= 195,121 [5,5]
-; Italy(59) Axis, Fully Active and not surrendered
-; UK(112) Allied, Fully Active and not surrendered
+; Italy(59) Axis, Mobilized, Not Surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
@@ -1134,7 +1135,7 @@
 #DESTINATION_RESOURCE= 232,118 [5,5]
 #DESTINATION_RESOURCE= 225,120 [5,5]
 #DESTINATION_RESOURCE= 231,114 [5,5]
-; Iraq Axis and not surrendered
+; Iraq Axis, Not Surrendered
 #VARIABLE_CONDITION= 56 [1] [100] [0]
 }
 
@@ -1241,14 +1242,14 @@
 #DATE= 1942/03/28
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 142,89 [8,10]
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
 ; Raid on St Nazaire - continuous
 {
-#NAME= DE 113 - Raid on St Nazaire - St Nazaire destroyed (50%)
-#POPUP=
+#NAME= DE 113 - Raid on St Nazaire - St Nazaire Heavily Damaged (Continuous) (50%)
+#POPUP= UK Raid on St Nazaire Heavily Damages Facilities
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -1265,7 +1266,7 @@
 #DATE= 1942/03/28
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 142,89 [10,10]
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
@@ -1289,7 +1290,7 @@
 #DATE= 1942/03/28
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 142,89 [10,10]
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
@@ -1403,6 +1404,7 @@
 #DATE= 1942/03/01
 #SOURCE_POSITION= 147,77 [-1]
 #DESTINATION_RESOURCE= 181,18 [2,3]
+; Narvik-Port(180,19)
 #DESTINATION_RESOURCE= 180,19 [2,3]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
@@ -1545,6 +1547,7 @@
 #DATE= 1939/09/03
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 181,18 [1,4]
+; Narvik-Port(180,19)
 #DESTINATION_RESOURCE= 180,19 [1,4]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 78 [2] [100] [1]
@@ -1644,7 +1647,7 @@
 }
 
 {
-#NAME= DE 160 - The SAS Attack Axis Supply Lines And Rear Areas Near Mersa Matruh
+#NAME= DE 160 - The SAS Attack Axis Supply Lines And Rear Areas Near Mersa Matruh (Continuos)
 #POPUP= The SAS Attack Axis Supply Lines And Rear Areas Near Mersa Matruh
 #IMAGE= sas5.png
 #SOUND=
@@ -1740,7 +1743,7 @@
 }
 
 {
-#NAME= DE 363 - Spanish Republicans Carry Out Guerrilla Attacks On Installations Near Córdoba
+#NAME= DE 363 - Spanish Republicans Carry Out Guerrilla Attacks On Installations Near Córdoba (Continuous)
 #POPUP= Spanish Republicans Carry Out Guerrilla Attacks On Installations Near Córdoba
 #IMAGE=
 #SOUND=
@@ -1762,7 +1765,7 @@
 }
 
 {
-#NAME= DE 364 - Spanish Republicans Attack Installations In Catalonia
+#NAME= DE 364 - Spanish Republicans Attack Installations In Catalonia (Continuous)
 #POPUP= Spanish Republicans Attack Installations In Catalonia
 #IMAGE=
 #SOUND=
@@ -1784,7 +1787,7 @@
 }
 
 {
-#NAME= [FW]DE 381 - Oil Shortages Hamper Axis Economies (10%)
+#NAME= [FW]DE 381 - Oil Shortages Hamper Axis Economies (10%) (Continuous)
 #POPUP= Oil Shortages Hamper Axis Economies
 #IMAGE=
 #SOUND=
@@ -1867,7 +1870,7 @@
 
 ; Maikop Oil Fields - continuous
 {
-#NAME= [FW]DE 429 - Maikop Oil Fields Destroyed
+#NAME= [FW]DE 429 - Maikop Oil Fields Destroyed (Continuous)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1891,7 +1894,7 @@
 
 ; Stalingrad Supply - continuous
 {
-#NAME= [FW]DE 530 - Stalingrad Supply Reduction
+#NAME= [FW]DE 530 - Stalingrad Supply Reduction (Continuous)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1910,13 +1913,13 @@
 #SOURCE_POSITION=
 ; Stalingrad(234,85)
 #DESTINATION_RESOURCE= 234,85 [10,10]
-; Germany(45) is Axis and not surrendered
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
 ; Stalingrad Supply - continuous
 {
-#NAME= [FW]DE 531 - Stalingrad Supply Reduction
+#NAME= [FW]DE 531 - Stalingrad Supply Reduction (Continuous)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1935,7 +1938,7 @@
 #SOURCE_POSITION=
 ; Stalingrad(234,85)
 #DESTINATION_RESOURCE= 234,85 [10,10]
-; Germany(45) is Axis and not surrendered
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
@@ -1962,7 +1965,7 @@
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 103,36 [10,10]
 #DESTINATION_RESOURCE= 104,37 [10,10]
-; Germany(45) Axis and not surrendered
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
@@ -2037,7 +2040,7 @@
 #DESTINATION_RESOURCE= 195,78 [1,3]
 #DESTINATION_RESOURCE= 193,71 [1,3]
 #DESTINATION_RESOURCE= 192,73 [1,3]
-; Germany(45) Axis and not surrendered
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
@@ -2062,7 +2065,7 @@
 #SOURCE_POSITION=
 ; Warsaw(188,76)
 #DESTINATION_RESOURCE= 188,76 [5,8]
-; Germany(45) Axis and not surrendered
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
@@ -2090,6 +2093,7 @@
 ; Several ports removed so that Amphibious Operations are still possible
 #DESTINATION_RESOURCE= 144,115 [1,2]
 #DESTINATION_RESOURCE= 145,115 [1,2]
+; Algiers-Port(152,112)
 #DESTINATION_RESOURCE= 152,112 [1,2]
 #DESTINATION_RESOURCE= 152,113 [1,2]
 #DESTINATION_RESOURCE= 167,111 [1,2]
@@ -2108,7 +2112,7 @@
 #DESTINATION_RESOURCE= 194,122 [1,2]
 #DESTINATION_RESOURCE= 195,121 [1,2]
 #DESTINATION_RESOURCE= 205,123 [1,2]
-; Germany(45) is Axis and not surrendered
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
@@ -2132,12 +2136,11 @@
 #SOURCE_POSITION=
 ; Naples(175,103)
 #DESTINATION_RESOURCE= 175,103 [1,3]
-; USA(115) Allied and not surrendered
+; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 }
 
 ;
-; Fall Weiss II
 ; Supply Line 1940 North Africa
 {
 #NAME= [FW]DE 832 - Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
@@ -2165,15 +2168,14 @@
 #DESTINATION_RESOURCE= 198,123 [2,4]
 ; Mersa Matruh(200,124)
 #DESTINATION_RESOURCE= 200,124 [3,5]
-; Italy(59) Axis, Fully Active and not surrendered
-; UK(112) Allied, Fully Active and not surrendered
+; Italy(59) Axis, Mobilized, Not Surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 }
 
 ;
-; Fall Weiss II
 ; Supply Line 1940 North Africa
 {
 #NAME= [FW]DE 832 - Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
@@ -2201,15 +2203,14 @@
 #DESTINATION_RESOURCE= 198,123 [2,4]
 ; Mersa Matruh(200,124)
 #DESTINATION_RESOURCE= 200,124 [3,5]
-; Italy(59) Axis, Fully Active and not surrendered
-; UK(112) Allied, Fully Active and not surrendered
+; Italy(59) Axis, Mobilized, Not Surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 }
 
 ;
-; Fall Weiss II
 ; Supply Line 1940 North Africa
 {
 #NAME= [FW]DE 832 - Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
@@ -2237,15 +2238,14 @@
 #DESTINATION_RESOURCE= 198,123 [2,4]
 ; Mersa Matruh(200,124)
 #DESTINATION_RESOURCE= 200,124 [3,5]
-; Italy(59) Axis, Fully Active and not surrendered
-; UK(112) Allied, Fully Active and not surrendered
+; Italy(59) Axis, Mobilized, Not Surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 }
 
 ;
-; Fall Weiss II
 ; Allies In Egypt Support Greece
 {
 #NAME= [FW]DE 838 - Allies In Egypt Support Greece
@@ -2271,12 +2271,11 @@
 #DESTINATION_RESOURCE= 204,125 [2,3]
 #DESTINATION_RESOURCE= 205,123 [3,4]
 #DESTINATION_RESOURCE= 206,123 [2,3]
-; Germany(45) Axis, Fully Active and not surrendered
+; Germany(45) Axis, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
 ;
-; Fall Weiss II
 ; Stop Greece From Reinforcing Yugoslavia
 {
 #NAME= [FW]DE 838 - Stop Greece From Reinforcing Yugoslavia
@@ -2305,10 +2304,9 @@
 }
 
 ;
-; Fall Weiss II
 ; Protests At Helsinki
 {
-#NAME= [FW]DE 847 - Finland: Helsinki Protests (5%)
+#NAME= [FW]DE 847 - Finland: Helsinki Protests (Continuous) (5%)
 #POPUP= Demonstrations Against War With The Western Allies Disrupt Supply In Helsinki
 #IMAGE=
 #SOUND=
@@ -2327,14 +2325,13 @@
 #DATE= 1940/01/01
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 195,51 [2,4]
-; Finland Axis, Fully Active and not surrendered
-; UK(112) Allied, Fully Active and not surrendered
+; Finland Axis, Mobilized, Not Surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
 ;
-; Fall Weiss II
 ; South Atlantic Raiders
 {
 #NAME= [FW]DE 854 - South Atlantic Raiders
@@ -2356,16 +2353,14 @@
 #SOURCE_POSITION=
 ; British Trade
 #DESTINATION_RESOURCE= 0,2 [5,5]
-; Germany(45) Axis, Fully Active and not surrendered
-; UK(112) Allied, Fully Active and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Germany(45) Axis, Mobilized, Not Surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
 ;
-; Fall Weiss II
 {
-#NAME= [FW]DE 871 - Oil Shortages Hamper Axis Economies (15%)
+#NAME= [FW]DE 871 - Oil Shortages Hamper Axis Economies (Continuous) (15%)
 #POPUP= Oil Shortages Hamper Axis Economies
 #IMAGE=
 #SOUND=
@@ -2398,10 +2393,9 @@
 }
 
 ;
-; Fall Weiss II
 {
-#NAME= [FW]DE 890 - Supply Shortages Hamper Spanish Economies (10%)
-#POPUP= Supply Shortages Hamper Spanish Economies
+#NAME= [FW]DE 890 - Spain: Supply Shortages Hampers Economy (Continuous) (10%)
+#POPUP= Supply Shortages Hamper Spanish Economy
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -2443,8 +2437,9 @@
 #SEASON_FLAG= 0
 #DATE= 1944/01/01
 #SOURCE_POSITION=
+; Kiel-Port(167,69)
 #DESTINATION_RESOURCE= 167,69 [10,10]
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
 
@@ -2467,7 +2462,8 @@
 #SEASON_FLAG= 0
 #DATE= 1944/01/01
 #SOURCE_POSITION=
+; Stettin-Port(175,71)
 #DESTINATION_RESOURCE= 175,71 [10,10]
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }

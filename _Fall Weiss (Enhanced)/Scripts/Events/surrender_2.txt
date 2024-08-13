@@ -320,7 +320,7 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1939/09/01
-; France(40) Allied and surrendered
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Belgium(10) Allied, Surrendered
 #VARIABLE_CONDITION= 10 [2] [100] [1]
@@ -336,7 +336,7 @@
 #POPUP= Marshal Badoglio Signs An Armistice With The Allies - Italy Surrenders
 #IMAGE=
 #SOUND= italy_surrender.ogg
-; currently disabled in Fall Weiss II
+; currently disabled in FW
 #FLAG= 0
 #TYPE= 0
 #AI= 0
@@ -349,8 +349,8 @@
 #REMOVE= 3
 #TRIGGER= 50
 #DATE= 1943/09/08
-; USA(115) Allied and not surrendered
-; Italy(59) Axis and not surrendered
+; USA(115) Allied, Not Surrendered
+; Italy(59) Axis, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; No German units in Rome(171,101)
@@ -365,7 +365,7 @@
 #POPUP= UK and FF Forces Occupy Syria - General De Gaulle Promises End To French Mandate
 #IMAGE= ukoccupysyria.png
 #SOUND= combat1.ogg
-; currently disabled in Fall Weiss II
+; currently disabled in FW
 #FLAG= 0
 #TYPE= 0
 #AI= 2
@@ -378,8 +378,8 @@
 #REMOVE= 3
 #TRIGGER= 25
 #DATE= 1941/06/08
-; UK(112) Allied and not surrendered
-; Syria(105) Neutral and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
+; Syria(105) Neutral, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 105 [0] [0] [0]
 ; Allies control Alexandria(206,124)
@@ -402,8 +402,8 @@
 #ARMISTICE= 0
 #REMOVE= 3
 #TRIGGER= 100
-#DATE= 1939/09/03
-; UK(112) Allied and not surrendered
+#DATE= 1939/09/01
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -430,8 +430,8 @@
 #REMOVE= 3
 #TRIGGER= 25
 #DATE= 1939/09/01
-; UK(112) Allied and not surrendered
-; Iraq(56) Axis and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
+; Iraq(56) Axis, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 56 [1] [100] [0]
 ; Allies within range of Baghdad
@@ -460,16 +460,18 @@
 #REMOVE= 3
 #TRIGGER= 75
 #DATE= 1939/09/01
-; UK(112) Allied and not surrendered
-; Iraq(56) Axis and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
+; Iraq(56) Axis, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 56 [1] [100] [0]
 ; Allies within range of Baghdad
 #CONDITION_POSITION= 234,120 [1,1] [2,2] [2] [0]
 }
 
+
+; changed from DE 198 to DE 314
 {
-#NAME= [FW]DE 314 - British And Soviet Forces Launch Operation Countenance (Historical)
+#NAME= DE 314 - British And Soviet Forces Launch Operation Countenance (Historical)
 #POPUP= British And Soviet Forces Launch Operation Countenance - Persia Surrenders
 #IMAGE= operationcountenance.png
 #SOUND= combat1.ogg
@@ -491,8 +493,9 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+; changed from DE 403 to DE 315
 {
-#NAME= [FW]DE 315 - British And Soviet Forces Launch Operation Countenance (Historical)
+#NAME= DE 315 - British And Soviet Forces Launch Operation Countenance (Historical)
 #POPUP= British And Soviet Forces Launch Operation Countenance - Persia Surrenders
 #IMAGE= operationcountenance.png
 #SOUND= combat1.ogg
@@ -531,8 +534,8 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1939/09/01
-; USA(115) Allied and not surrendered
-; Italy(59) Axis and not surrendered
+; USA(115) Allied, Not Surrendered
+; Italy(59) Axis, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; No German unit in Rome(171,101)
@@ -540,7 +543,7 @@
 }
 
 {
-#NAME= DE 480 - Finland Signs An Armistice With The USSR And Withdraws From The War
+#NAME= [FW]DE 480 - Finland Signs An Armistice With The USSR And Withdraws From The War
 #POPUP= Finland Signs An Armistice With The USSR And Withdraws From The War
 #IMAGE=
 #SOUND=
@@ -556,7 +559,7 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1940/01/01
-; Finland(39) Axis and not surrendered
+; Finland(39) Axis, Not Surrendered
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -577,7 +580,7 @@
 #ARMISTICE= 0
 #REMOVE= 3
 #TRIGGER= 100
-#DATE= 1939/09/03
+#DATE= 1939/09/01
 ; UK(112) Allied Active
 ; Ireland Axis Leaning
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -602,7 +605,7 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1940/04/03
-; Denmark(31) neutral and not surrendered
+; Denmark(31) neutral, Not Surrendered
 #VARIABLE_CONDITION= 31 [0] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -624,7 +627,7 @@
 #REMOVE= 1
 #TRIGGER= 25
 #DATE= 1943/01/01
-; Hungary(52) Axis and not surrendered
+; Hungary(52) Axis, Not Surrendered
 #VARIABLE_CONDITION= 52 [1] [100] [0]
 ; 2 Allied units are within 6 hexes of Budapest(184,88)
 #CONDITION_POSITION= 184,88 [6,6] [2,2] [2] [0]
@@ -648,7 +651,7 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1940/01/01
-; Finland(39) Axis and not surrendered
+; Finland(39) Axis, Not Surrendered
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -670,7 +673,7 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1940/01/01
-; Germany(45) Axis and not surrendered
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -692,7 +695,7 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1940/01/01
-; Germany(45) Axis and not surrendered
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -714,7 +717,7 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1940/01/01
-; Germany(45) Axis and not surrendered
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -736,13 +739,13 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1940/01/01
-; Germany(45) Axis and not surrendered
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 {
-#NAME= DE 643 - (Axis) Norway Surrenders To Germany
+#NAME= DE 643 - Norway(Pro-Axis) Surrenders To Germany (50%)
 #POPUP= Germany Invades Norway
 #IMAGE= norway_1.png, norway_2.png
 #SOUND= war1.ogg
@@ -750,21 +753,22 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-#GV= 1[1,100]
+#GV= 6[1,50]
 #LINK= 643[1]
+; Norway(78)
 #COUNTRY_ID= 78
 #RECIPIENT_ID= 45
 #ARMISTICE= 0
 #REMOVE= 3
 #TRIGGER= 100
-#DATE= 1940/04/14
-; Norway(78) Axis (not fully active) and not surrendered
+#DATE= 1940/04/03
+; Norway(78) Axis
 #VARIABLE_CONDITION= 78 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 {
-#NAME= DE 644 - (Allied) Norway Surrenders To Germany
+#NAME= DE 643 - Norway(Pro-Axis) Surrenders To Germany (50%)
 #POPUP= Germany Invades Norway
 #IMAGE= norway_1.png, norway_2.png
 #SOUND= war1.ogg
@@ -772,15 +776,62 @@
 #TYPE= 1
 #AI= 0
 #LEVEL= 0
-#GV= 1[1,100]
-#LINK= 644[1]
+#GV= 6[51,100]
+#LINK= 643[1]
+; Norway(78)
 #COUNTRY_ID= 78
 #RECIPIENT_ID= 45
 #ARMISTICE= 0
 #REMOVE= 3
 #TRIGGER= 100
-#DATE= 1940/04/14
-; Norway(78) Allied but not fully mobilized
+#DATE= 1940/04/25
+; Norway(78) Axis
+#VARIABLE_CONDITION= 78 [1] [0] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 644 - Norway(Pro-Allied) Surrenders To Germany (50%)
+#POPUP= Germany Invades Norway
+#IMAGE= norway_1.png, norway_2.png
+#SOUND= war1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 6[1,50]
+#LINK= 644[1]
+; Norway(78)
+#COUNTRY_ID= 78
+#RECIPIENT_ID= 45
+#ARMISTICE= 0
+#REMOVE= 3
+#TRIGGER= 100
+#DATE= 1940/04/03
+; Norway(78) Allied
+#VARIABLE_CONDITION= 78 [2] [0] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+{
+#NAME= DE 644 - Norway(Pro-Allied) Surrenders To Germany (50%)
+#POPUP= Germany Invades Norway
+#IMAGE= norway_1.png, norway_2.png
+#SOUND= war1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 6[51,100]
+#LINK= 644[1]
+; Norway(78)
+#COUNTRY_ID= 78
+#RECIPIENT_ID= 45
+#ARMISTICE= 0
+#REMOVE= 3
+#TRIGGER= 100
+#DATE= 1940/04/25
+; Norway(78) Allied
 #VARIABLE_CONDITION= 78 [2] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -802,7 +853,7 @@
 #REMOVE= 1
 #TRIGGER= 100
 #DATE= 1943/01/01
-; Romania(93) Axis and not surrendered
+; Romania(93) Axis, Not Surrendered
 #VARIABLE_CONDITION= 93 [1] [100] [0]
 ; No German units within 2 hexes of Bucharest(198,95)
 #CONDITION_POSITION= 198,95 [2,2] [0,0] [1] [45]
@@ -825,7 +876,7 @@
 #REMOVE= 1
 #TRIGGER= 100
 #DATE= 1943/01/01
-; Bulgaria(19) Axis and not surrendered
+; Bulgaria(19) Axis, Not Surrendered
 #VARIABLE_CONDITION= 19 [1] [100] [0]
 ; No German units within 2 hexes of Sofia(192,100)
 #CONDITION_POSITION= 192,100 [2,2] [0,0] [1] [45]
@@ -870,7 +921,7 @@
 #REMOVE= 3
 #TRIGGER= 100
 #DATE= 1943/06/01
-; Spain(99) Axis and not surrendered
+; Spain(99) Axis, Not Surrendered
 #VARIABLE_CONDITION= 99 [1] [100] [0]
 ; Less than 4 German units within 6 hexes of Madrid(139,104)
 #CONDITION_POSITION= 139,104 [6,6] [0,3] [1] [45]

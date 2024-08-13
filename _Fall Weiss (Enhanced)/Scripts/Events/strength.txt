@@ -113,10 +113,7 @@
 ;
 ; #CONDITION_POSITION=  Map positions that will serve to trigger the event as well as distance and
 ;                       number of Axis/Allied unit ranges as specified by 'alignment' flag
-;                       Format: x,y [min_range, max_range] [min_units, max_units] [alignment] [aligned_country_id] OR
-;                               x,y [min_range, max_range] [min_units, max_units] [alignment] [aligned_country_id] [<]
-;                           range = RND(min_range,max_range)
-;                           units = RND(min_units,max_units)
+;                       Format: x,y [min_range, max_range] [min_units, max_units] [alignment] [aligned_country_id]
 ;                           alignment range [0, 2]
 ;                               0 = Neutral
 ;                               1 = Axis
@@ -125,7 +122,7 @@
 ;                               0 = Any country (uses alignment above)
 ;
 ; #MAP_POSITION= Map positions that will be the source of strength/morale loss for units of 'alignment' in range
-;                Format: x,y [min_range, max_range] [min_strength_loss, max_strength_loss] [min_morale_adjustment, max_morale_adjustment] [alignment] [aligned_country_id]
+;                Format: x,y [min_range, max_range] [min_str_loss, max_str_loss] [min_morale_adj, max_morale_adj] [alignment] [aligned_country_id]
 ; }
 ;
 ; NOTES:
@@ -313,7 +310,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 {
-#NAME= Germany(AI): German Bombers Raid Warsaw
+#NAME= Germany(AI): German Bombers Raid Warsaw (Continuous)
 #POPUP= German Bombers Raid The Polish Defenders Near Warsaw
 #IMAGE=
 #SOUND=
@@ -353,7 +350,7 @@
 #MAP_POSITION= 154,83 [6,6] [0,0] [10,10] [1] [0]
 ; USA(115) Allied but not fully mobilized
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; France(40) Allied and not surrendered
+; France(40) Allied, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; 2 Axis units are within 2 hexes of Reims(154,83) OR
 #CONDITION_POSITION= 154,83 [2,2] [2,2] [1] [0]
@@ -380,7 +377,7 @@
 #MAP_POSITION= 154,83 [6,6] [0,0] [10,10] [1] [0]
 ; USA(115) Allied but not fully mobilized
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; France(40) Allied and not surrendered
+; France(40) Allied, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; 2 Axis units are within 2 hexes of Reims(154,83) OR
 #CONDITION_POSITION= 154,83 [2,2] [2,2] [1] [0]
@@ -430,7 +427,7 @@
 #MAP_POSITION= 153,80 [8,10] [0,0] [-10,-10] [2] [40]
 ; USA(115) Allied but not fully mobilized
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; France(40) Allied and not surrendered
+; France(40) Allied, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; 2 Axis units are within 2 hexes of Reims(154,83) OR
 #CONDITION_POSITION= 154,83 [2,2] [2,2] [1] [0]
@@ -457,7 +454,7 @@
 #MAP_POSITION= 153,80 [8,10] [0,0] [-10,-10] [2] [40]
 ; USA(115) Allied but not fully mobilized
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; France(40) Allied and not surrendered
+; France(40) Allied, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; 2 Axis units are within 2 hexes of Reims(154,83) OR
 #CONDITION_POSITION= 154,83 [2,2] [2,2] [1] [0]
@@ -484,7 +481,7 @@
 #MAP_POSITION= 208,126 [1,3] [0,1] [-10,-30] [2] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
-; 2 Axis units within 3 hexes of Cairo
+; 2 Axis units within 3 hexes of Cairo(208,126)
 #CONDITION_POSITION= 208,126 [3,3] [2,2] [1] [0]
 }
 
@@ -505,11 +502,11 @@
 #SEASON_FLAG= 0
 #DATE= 1939/09/01
 #MAP_POSITION= 151,84 [8,10] [0,0] [-30,-30] [2] [40]
-; Belgium(10) Allied and surrendered
+; Belgium(10) Allied, Surrendered
 #VARIABLE_CONDITION= 10 [2] [100] [1]
 ; USA(115) Allied but not fully mobilized
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; France(40) Allied and not surrendered
+; France(40) Allied, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; 2 Axis units are within 2 hexes of Nancy(158,85) OR
 #CONDITION_POSITION= 158,85 [2,2] [2,2] [1] [0]
@@ -558,7 +555,7 @@
 #MAP_POSITION= 154,83 [6,6] [0,0] [25,50] [1] [0]
 ; USA(115) Allied but not fully mobilized
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; France(40) Allied and not surrendered
+; France(40) Allied, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; 2 Axis units are within 2 hexes of Reims(154,83)
 #CONDITION_POSITION= 154,83 [2,2] [2,2] [1] [0]
@@ -585,7 +582,7 @@
 #MAP_POSITION= 153,80 [8,10] [0,0] [-30,-40] [2] [40]
 ; USA(115) Allied but not fully mobilized
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; France(40) Allied and not surrendered
+; France(40) Allied, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; 2 Axis units are within 2 hexes of Reims(154,83) OR
 #CONDITION_POSITION= 154,83 [2,2] [2,2] [1] [0]
@@ -610,7 +607,7 @@
 #SEASON_FLAG= 0
 #DATE= 1943/01/01
 #MAP_POSITION= 207,80 [5,8] [0,1] [-10,-25] [2] [116]
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; 3 Soviet units are within 5 hexes of Kiev(207,80)
 #CONDITION_POSITION= 207,80 [5,5] [3,3] [2] [116]
@@ -656,11 +653,11 @@
 #TRIGGER= 50
 #SEASON_FLAG= 0
 #DATE= 1940/11/11
-; Taranto(180,105)
+; Taranto-Port(180,105)
 #MAP_POSITION= 180,105 [1,1] [1,3] [-50,-75] [1] [0]
-; Italy(59) is Axis and not surrendered
+; Italy(59) Axis, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Allied units in Malta
 #CONDITION_POSITION= 175,114 [0,0] [1,1] [2] [0]
@@ -737,24 +734,24 @@
 #MAP_POSITION= 209,68 [8,8] [0,1] [-10,-45] [1] [0] <
 #MAP_POSITION= 227,35 [8,8] [0,2] [-10,-45] [1] [0] <
 ; Lappeenranta(202,48)
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [45] <
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [59] <
 #MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [19] <
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [93] <
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [45] <
 #MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [52] <
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [59] <
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [93] <
 #MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [96] <
 ; Luga(205,56)
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [45] <
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [59] <
 #MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [19] <
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [93] <
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [45] <
 #MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [52] <
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [59] <
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [93] <
 #MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [96] <
 ; Riga(194,62)
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [45] <
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [59] <
 #MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [19] <
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [45] <
 #MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [52] <
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [59] <
 #MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [93] <
 #MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [96] <
 ; Minsk(201,71)
@@ -770,13 +767,13 @@
 ; Gorky(233,64)
 #MAP_POSITION= 233,64 [8,8] [0,2] [-10,-45] [1] [0] <
 #MAP_POSITION= 224,77 [8,8] [0,2] [-10,-45] [1] [0] <
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 {
-#NAME= DE 202 - Germany: Anti-War Propaganda Spreads Disaffection In The French Army (15%)
+#NAME= DE 202 - Germany: Anti-War Propaganda Spreads Disaffection In The French Army (Continuous) (15%)
 #POPUP= Anti-War Propaganda Spreads Disaffection In The French Army
 #IMAGE=
 #SOUND=
@@ -792,7 +789,7 @@
 #SEASON_FLAG= 0
 #DATE= 1939/10/01
 #MAP_POSITION= 151,84 [11,11] [0,0] [-15,-30] [2] [40]
-; France(40) Allied and not surrendered
+; France(40) Allied, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; USSR(116) Allied but not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
@@ -818,7 +815,7 @@
 #MAP_POSITION= 131,119 [2,2] [0,0] [-35,-60] [1] [4]
 #MAP_POSITION= 145,115 [2,2] [0,0] [-35,-60] [1] [4]
 #MAP_POSITION= 152,113 [2,2] [0,0] [-35,-60] [1] [4]
-; Algeria is Axis and not surrendered
+; Algeria(4) Axis, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 4 [1] [100] [0]
 ; A US unit is within 3 hexes of Casablanca
 #CONDITION_POSITION= 131,119 [3,3] [1,1] [2] [115]
@@ -845,7 +842,7 @@
 #SEASON_FLAG= 0
 #DATE= 1939/09/01
 #MAP_POSITION= 221,65 [50,50] [0,0] [25,25] [2] [116]
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -868,7 +865,7 @@
 #SEASON_FLAG= 0
 #DATE= 1939/09/01
 #MAP_POSITION= 221,65 [50,50] [0,0] [25,25] [2] [116]
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -890,7 +887,7 @@
 #SEASON_FLAG= 0
 #DATE= 1939/09/01
 #MAP_POSITION= 221,65 [50,50] [0,0] [-40,-40] [2] [116]
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; An Axis unit is in Moscow(221,65)
 #CONDITION_POSITION= 221,65 [0,0] [1,1] [1] [0]
@@ -913,7 +910,7 @@
 #SEASON_FLAG= 4
 #DATE= 1941/12/21
 #MAP_POSITION= 221,65 [25,25] [0,0] [-10,-25] [2] [116]
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -935,7 +932,7 @@
 #SEASON_FLAG= 4
 #DATE= 1941/12/21
 #MAP_POSITION= 221,65 [25,25] [0,0] [-10,-25] [2] [116]
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -957,44 +954,44 @@
 #TRIGGER= 25
 #SEASON_FLAG= 4
 #DATE= 1942/12/25
-#MAP_POSITION= 209,68 [8,8] [0,1] [-10,-45] [1] [0]
-#MAP_POSITION= 227,35 [8,8] [0,2] [-10,-45] [1] [0]
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [45]
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [45]
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [45]
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [52]
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [52]
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [52]
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [59]
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [59]
-#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [59]
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [19]
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [19]
 #MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [19]
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [93]
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [93]
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [45]
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [52]
+#MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [59]
 #MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [93]
-#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [96]
-#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [96]
 #MAP_POSITION= 194,62 [5,5] [0,2] [-10,-45] [1] [96]
 #MAP_POSITION= 201,71 [5,5] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [19]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [45]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [52]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [59]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [93]
+#MAP_POSITION= 202,48 [4,4] [0,2] [-10,-45] [1] [96]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [19]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [45]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [52]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [59]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [93]
+#MAP_POSITION= 205,56 [6,6] [0,2] [-10,-45] [1] [96]
 #MAP_POSITION= 207,80 [5,5] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 209,68 [8,8] [0,1] [-10,-45] [1] [0]
 #MAP_POSITION= 211,90 [5,5] [0,2] [-10,-45] [1] [0]
 #MAP_POSITION= 213,86 [8,8] [1,2] [-10,-45] [1] [0]
 #MAP_POSITION= 216,90 [8,8] [0,2] [-10,-45] [1] [0]
 #MAP_POSITION= 218,82 [8,8] [0,2] [-10,-45] [1] [0]
 #MAP_POSITION= 220,65 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 224,77 [8,8] [0,2] [-10,-45] [1] [0]
 #MAP_POSITION= 225,54 [8,8] [0,2] [-10,-45] [1] [0]
 #MAP_POSITION= 225,88 [8,8] [0,2] [-10,-45] [1] [0]
+#MAP_POSITION= 227,35 [8,8] [0,2] [-10,-45] [1] [0]
 #MAP_POSITION= 233,64 [8,8] [0,2] [-10,-45] [1] [0]
-#MAP_POSITION= 224,77 [8,8] [0,2] [-10,-45] [1] [0]
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
 {
-#NAME= DE 455 - USSR: The Road Of Life (Summer)
+#NAME= DE 455 - USSR: The Road Of Life (Continuous) (Summer)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1011,7 +1008,7 @@
 #DATE= 1939/09/01
 ; Leningrad(206,52)
 #MAP_POSITION= 206,52 [2,2] [0,0] [15,25] [2] [116]
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1034,7 +1031,7 @@
 #DATE= 1939/09/01
 ; Leningrad(206,52)
 #MAP_POSITION= 206,52 [2,2] [0,0] [10,15] [2] [116]
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1057,7 +1054,7 @@
 #DATE= 1939/09/01
 ; Leningrad(206,52)
 #MAP_POSITION= 206,52 [2,2] [0,0] [1,1] [2] [116]
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1104,13 +1101,14 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
+
 {
 #NAME= DE 643 - UK: Norwegian Batteries In Oslofjord Inflict Casualties On The German Invasion Force
 #POPUP= Norwegian Batteries In Oslofjord Inflict Casualties On The German Invasion Force
 #IMAGE= bluchersinking.png
 #SOUND=
 #FLAG= 1
-#TYPE= 1
+#TYPE= 0
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
@@ -1120,7 +1118,35 @@
 #TRIGGER= 100
 #SEASON_FLAG= 0
 #DATE= 1940/04/14
+; target Blucher, historically lost during invasion
+; Oslo-Port (167,53)
+#MAP_POSITION= 167,53 [1,1] [6,9] [-15,-15] [1] [0]<
+; Oslo(167,52)
 #MAP_POSITION= 167,52 [0,1] [1,4] [-15,-40] [1] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; https://en.wikipedia.org/wiki/Operation_Weser%C3%BCbung#Course_of_actions
+{
+#NAME= [FW]DE 643 - UK: British Bombers Inflict Casualties On The German Invasion Force
+#POPUP= British Bombers Inflict Casualties On The German Invasion Force
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 643[1]
+#COUNTRY_ID= 112
+#FLAG_ID= 78
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/04/14
+; target Königsberg, historically lost during invasion
+; Bergen-Port (156,51)
+#MAP_POSITION= 156,51 [1,1] [6,9] [-15,-15] [1] [0]<
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1128,10 +1154,10 @@
 {
 #NAME= DE 644 - UK: Norwegian Batteries In Oslofjord Inflict Casualties On The German Invasion Force
 #POPUP= Norwegian Batteries In Oslofjord Inflict Casualties On The German Invasion Force
-#IMAGE=
+#IMAGE= bluchersinking.png
 #SOUND=
 #FLAG= 1
-#TYPE= 1
+#TYPE= 0
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
@@ -1141,7 +1167,35 @@
 #TRIGGER= 100
 #SEASON_FLAG= 0
 #DATE= 1940/04/14
-#MAP_POSITION= 167,52 [0,1] [1,4] [15,40] [1] [0]
+; target Blucher, historically lost during invasion
+; Oslo-Port (167,53)
+#MAP_POSITION= 167,53 [1,1] [6,9] [-15,-15] [1] [0]<
+; Oslo(167,52)
+#MAP_POSITION= 167,52 [0,1] [1,4] [-15,-40] [1] [0]
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+}
+
+; https://en.wikipedia.org/wiki/Operation_Weser%C3%BCbung#Course_of_actions
+{
+#NAME= [FW]DE 644 - UK: British Bombers Inflict Casualties On The German Invasion Force
+#POPUP= British Bombers Inflict Casualties On The German Invasion Force
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 644[1]
+#COUNTRY_ID= 112
+#FLAG_ID= 78
+#TRIGGER= 100
+#SEASON_FLAG= 0
+#DATE= 1940/04/14
+; target Königsberg, historically lost during invasion
+; Bergen-Port (156,51)
+#MAP_POSITION= 156,51 [1,1] [6,9] [-15,-15] [1] [0]<
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1162,6 +1216,7 @@
 #TRIGGER= 100
 #SEASON_FLAG= 0
 #DATE= 1944/08/01
+; Warsaw(188,76)
 #MAP_POSITION= 188,76 [0,0] [3,4] [0,0] [1] [0]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1227,9 +1282,10 @@
 #TRIGGER= 2
 #SEASON_FLAG= 0
 #DATE= 1940/08/01
+; Algiers-Port(152,112)
 #MAP_POSITION= 152,112 [0,0] [0,5] [-15,-30] [2] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
-; Allied shipping is in the port
+; Allied shipping is in Algiers-Port(152,112)
 #CONDITION_POSITION= 152,112 [0,0] [1,1] [2] [0]
 }
 
@@ -1450,7 +1506,7 @@
 #SEASON_FLAG= 0
 #DATE= 1939/09/01
 #MAP_POSITION= 194,75 [50,50] [0,0] [-35,-35] [2] [116]
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }

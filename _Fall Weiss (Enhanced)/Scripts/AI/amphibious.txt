@@ -386,7 +386,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Germany prepares to attack UK:
 {
-#NAME= Germany Build Up Amphibious - UK
+#NAME= Germany Build Up Amphibious - UK (Continuous)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -405,25 +405,24 @@
 #COASTAL_POSITION= 147,79
 #DATE= 1943/01/01
 #STEAL= 1
+; Bordeaux(145,94)
 ; Brussels(155,80)
-; Berlin(173,74)
-; Paris(151,84)
-; Brest(138,86)
-; Bordeaux
-; Rome(171,101)
-; Taranto(180,105)
-; Palermo
 #FRIENDLY_POSITION= 155,80
+; Berlin(173,74)
 #FRIENDLY_POSITION= 173,74
+; Paris(151,84)
 #FRIENDLY_POSITION= 151,84
+; Brest(138,86)
 #FRIENDLY_POSITION= 138,86
-#FRIENDLY_POSITION= 151,84
+; Rome(171,101)
 #FRIENDLY_POSITION= 171,101
+; Taranto(179,104)
 #FRIENDLY_POSITION= 179,104
+; Palermo(173,109)
 #FRIENDLY_POSITION= 173,109
-; France(40) Allied and surrendered AND
-; USSR(116) Allied and surrendered AND
-; Italy(59) Axis and not surrendered
+; France(40) Allied, Surrendered AND
+; USSR(116) Allied, Surrendered AND
+; Italy(59) Axis, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 116 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -433,7 +432,7 @@
 #TACTICAL_CONDITION= 173,74 [1]
 #TACTICAL_CONDITION= 171,101 [1]
 #TACTICAL_CONDITION= 151,84 [1]
-; Axis units in position
+; Axis units in Ypres(153,78)
 #ACTIVATE_POSITION= 153,78 [2,2] [5,5] [1]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
@@ -445,7 +444,7 @@
 ;
 ; Italy prepares to attack North Afrika:
 {
-#NAME= Italy Build Up Amphibious - North Africa (Benghazi)
+#NAME= Italy Build Up Amphibious - North Africa (Continuous) (Benghazi)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -465,26 +464,24 @@
 #DATE= 1940/01/01
 #STEAL= 1
 ; Brussels(155,80)
-; Berlin(173,74)
-; Paris(151,84)
-; Brest(138,86)
-; Bordeaux
-; Rome(171,101)
-; Taranto(180,105)
-; Palermo
-; Athens
 #FRIENDLY_POSITION= 155,80
+; Berlin(173,74)
 #FRIENDLY_POSITION= 173,74
+; Paris(151,84)
 #FRIENDLY_POSITION= 151,84
+; Brest(138,86)
 #FRIENDLY_POSITION= 138,86
-#FRIENDLY_POSITION= 151,84
+; Rome(171,101)
 #FRIENDLY_POSITION= 171,101
+; Taranto(179,104)
 #FRIENDLY_POSITION= 179,104
+; Palermo(173,109)
 #FRIENDLY_POSITION= 173,109
+; Athens(193,109)
 #FRIENDLY_POSITION= 193,109
-; France(40) Allied and surrendered AND
-; USSR(116) Allied and surrendered AND
-; Italy(59) Axis and not surrendered
+; France(40) Allied, Surrendered AND
+; USSR(116) Allied, Surrendered AND
+; Italy(59) Axis, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 116 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -520,26 +517,24 @@
 #DATE= 1940/01/01
 #STEAL= 1
 ; Brussels(155,80)
-; Berlin(173,74)
-; Paris(151,84)
-; Brest(138,86)
-; Bordeaux
-; Rome(171,101)
-; Taranto(180,105)
-; Palermo
-; Athens
 #FRIENDLY_POSITION= 155,80
+; Berlin(173,74)
 #FRIENDLY_POSITION= 173,74
+; Paris(151,84)
 #FRIENDLY_POSITION= 151,84
+; Brest(138,86)
 #FRIENDLY_POSITION= 138,86
-#FRIENDLY_POSITION= 151,84
+; Rome(171,101)
 #FRIENDLY_POSITION= 171,101
+; Taranto(179,104)
 #FRIENDLY_POSITION= 179,104
+; Palermo(173,109)
 #FRIENDLY_POSITION= 173,109
+; Athens(193,109)
 #FRIENDLY_POSITION= 193,109
-; France(40) Allied and surrendered AND
-; USSR(116) Allied and surrendered AND
-; Italy(59) Axis and not surrendered
+; France(40) Allied, Surrendered AND
+; USSR(116) Allied, Surrendered AND
+; Italy(59) Axis, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 116 [2] [100] [1]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -581,9 +576,9 @@
 ; Tripoli(172,121)
 #FRIENDLY_POSITION= 167,112
 #FRIENDLY_POSITION= 172,121
-; UK(112) Allied and not surrendered AND
-; USA(115) Allied and fully active AND
-; Italy(59) Axis and fully active
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; USA(115) Allied, Mobilized AND
+; Italy(59) Axis, Mobilized
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -608,7 +603,7 @@
 #LENGTH= 5
 #RANGE= 25
 #LONG_RANGE= 1
-; Palermo
+; Palermo(173,109)
 #GOAL_POSITION= 173,109
 #GOAL_POSITION= 172,114
 #COASTAL_POSITION= 174,112
@@ -618,9 +613,9 @@
 ; Tripoli(172,121)
 #FRIENDLY_POSITION= 167,112
 #FRIENDLY_POSITION= 172,121
-; UK(112) Allied and not surrendered AND
-; USA(115) Allied and fully active AND
-; Italy(59) Axis and fully active
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; USA(115) Allied, Mobilized AND
+; Italy(59) Axis, Mobilized
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -655,9 +650,9 @@
 ; Tripoli(172,121)
 #FRIENDLY_POSITION= 167,112
 #FRIENDLY_POSITION= 172,121
-; UK(112) Allied and not surrendered AND
-; USA(115) Allied and fully active AND
-; Italy(59) Axis and fully active
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; USA(115) Allied, Mobilized AND
+; Italy(59) Axis, Mobilized
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -692,9 +687,9 @@
 ; Tripoli(172,121)
 #FRIENDLY_POSITION= 167,112
 #FRIENDLY_POSITION= 172,121
-; UK(112) Allied and not surrendered AND
-; USA(115) Allied and fully active AND
-; Italy(59) Axis and fully active
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; USA(115) Allied, Mobilized AND
+; Italy(59) Axis, Mobilized
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -732,8 +727,8 @@
 #FRIENDLY_POSITION= 144,73
 ; London(147,77)
 #FRIENDLY_POSITION= 147,77
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -771,8 +766,8 @@
 #FRIENDLY_POSITION= 144,73
 ; London(147,77)
 #FRIENDLY_POSITION= 147,77
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -809,8 +804,8 @@
 ; London(147,77)
 #FRIENDLY_POSITION= 140,65
 #FRIENDLY_POSITION= 144,73
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -847,8 +842,8 @@
 #FRIENDLY_POSITION= 140,65
 ; Sheffield(144,73)
 #FRIENDLY_POSITION= 144,73
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -875,7 +870,7 @@
 #LENGTH= 5
 #RANGE= 25
 #LONG_RANGE= 1
-; Palermo
+; Palermo(173,109)
 #GOAL_POSITION= 173,109
 #GOAL_POSITION= 172,114
 #COASTAL_POSITION= 174,112
@@ -885,9 +880,9 @@
 ; Tripoli(172,121)
 #FRIENDLY_POSITION= 167,112
 #FRIENDLY_POSITION= 172,121
-; UK(112) Allied and not surrendered AND
-; USA(115) Allied and fully active AND
-; Italy(59) Axis and fully active
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; USA(115) Allied, Mobilized AND
+; Italy(59) Axis, Mobilized
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -922,9 +917,9 @@
 ; Tripoli(172,121)
 #FRIENDLY_POSITION= 167,112
 #FRIENDLY_POSITION= 172,121
-; UK(112) Allied and not surrendered AND
-; USA(115) Allied and fully active AND
-; Italy(59) Axis and fully active
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; USA(115) Allied, Mobilized AND
+; Italy(59) Axis, Mobilized
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -960,8 +955,8 @@
 ; London(147,77)
 #FRIENDLY_POSITION= 140,65
 #FRIENDLY_POSITION= 144,73
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -998,8 +993,8 @@
 #FRIENDLY_POSITION= 140,65
 ; Sheffield(144,73)
 #FRIENDLY_POSITION= 144,73
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -1031,7 +1026,7 @@
 #LENGTH= 10
 #RANGE= 25
 #LONG_RANGE= 1
-; Algiers
+; Algiers(152,113)
 #GOAL_POSITION= 152,113
 #GOAL_POSITION= 10,108
 #GOAL_POSITION= 29,110
@@ -1045,8 +1040,8 @@
 ; Gibraltar(136,114)
 #FRIENDLY_POSITION= 10,104
 #FRIENDLY_POSITION= 136,114
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Washington DC(4,108) not tactically threatened
@@ -1055,8 +1050,8 @@
 ; 1 Axis unit in England OR
 ; 0 Allied units in England OR
 ; 1 Axis unit within range of Washington DC(4,108) OR
-; 1 Axis unit within range of Gibraltar OR
-; 0 Allied units at Gibraltar
+; 1 Axis unit within range of Gibraltar(136,114) OR
+; 0 Allied units at Gibraltar(136,114)
 #CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
 #CANCEL_POSITION= 147,77 [20,20] [0,0] [2]
 #CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
@@ -1080,7 +1075,7 @@
 #LENGTH= 8
 #RANGE= 25
 #LONG_RANGE= 1
-; Bordeaux
+; Bordeaux(145,94)
 #GOAL_POSITION= 145,94
 #GOAL_POSITION= 10,110
 #GOAL_POSITION= 29,110
@@ -1092,13 +1087,13 @@
 #STEAL= 0
 ; New York(10,104)
 #FRIENDLY_POSITION= 10,104
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
-; Axis have taken Gibraltar
+; Axis have taken Gibraltar(136,114)
 #ACTIVATE_POSITION= 136,114 [0,0] [0,0] [2]
 ; 1 Axis unit in England OR
 ; 0 Allied units in England OR
@@ -1136,13 +1131,13 @@
 #STEAL= 0
 ; New York(10,104)
 #FRIENDLY_POSITION= 10,104
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
-; Axis have taken Gibraltar
+; Axis have taken Gibraltar(136,114)
 #ACTIVATE_POSITION= 136,114 [0,0] [0,0] [2]
 ; 1 Axis unit in England OR
 ; 0 Allied units in England OR
@@ -1180,13 +1175,13 @@
 #STEAL= 0
 ; New York(10,104)
 #FRIENDLY_POSITION= 10,104
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
-; Axis have taken Gibraltar
+; Axis have taken Gibraltar(136,114)
 #ACTIVATE_POSITION= 136,114 [0,0] [0,0] [2]
 ; 1 Axis unit in England OR
 ; 0 Allied units in England OR
@@ -1212,7 +1207,7 @@
 #LENGTH= 5
 #RANGE= 25
 #LONG_RANGE= 1
-; Palermo
+; Palermo(173,109)
 #GOAL_POSITION= 173,109
 #GOAL_POSITION= 172,114
 #COASTAL_POSITION= 174,112
@@ -1224,8 +1219,8 @@
 #FRIENDLY_POSITION= 167,112
 #FRIENDLY_POSITION= 172,121
 #FRIENDLY_POSITION= 152,113
-; USA(115) Allied and not surrendered AND
-; Italy(59) Axis and not surrendered
+; USA(115) Allied, Not Surrendered AND
+; Italy(59) Axis, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Tripoli(172,121) not tactically threatened
@@ -1262,13 +1257,13 @@
 #STEAL= 0
 ; New York(10,104)
 #FRIENDLY_POSITION= 10,104
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
-; Axis have taken Gibraltar
+; Axis have taken Gibraltar(136,114)
 #ACTIVATE_POSITION= 136,114 [0,0] [0,0] [2]
 ; 1 Axis unit in England OR
 ; 0 Allied units in England OR
@@ -1299,7 +1294,7 @@
 #COASTAL_POSITION= 170,102
 #DATE= 1943/01/14
 #STEAL= 3
-; Palermo
+; Palermo(173,109)
 ; Tunis(167,112)
 ; Tripoli(172,121)
 ; Algiers(152,113)
@@ -1307,8 +1302,8 @@
 #FRIENDLY_POSITION= 167,112
 #FRIENDLY_POSITION= 172,121
 #FRIENDLY_POSITION= 152,113
-; USA(115) Allied and not surrendered AND
-; Italy(59) Axis and not surrendered
+; USA(115) Allied, Not Surrendered AND
+; Italy(59) Axis, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Tripoli(172,121) not tactically threatened
@@ -1341,8 +1336,8 @@
 #STEAL= 0
 ; Bristol
 #FRIENDLY_POSITION= 142,78
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Washington DC(4,108) not tactically threatened (dummy condition)
@@ -1377,8 +1372,8 @@
 #STEAL= 0
 ; Bristol
 #FRIENDLY_POSITION= 142,78
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Washington DC(4,108) not tactically threatened (dummy condition)
@@ -1415,7 +1410,7 @@
 #STEAL= 0
 ; Washington DC(4,108)
 #FRIENDLY_POSITION= 4,108
-; USA(115) Allied and not surrendered
+; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
@@ -1449,7 +1444,7 @@
 #STEAL= 0
 ; Washington DC(4,108)
 #FRIENDLY_POSITION= 4,108
-; USA(115) Allied and not surrendered
+; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
@@ -1458,7 +1453,6 @@
 #CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
 }
 
-; Fall Weiss II
 ; UK prepares to attack France:
 {
 #NAME= [FW]UK Build Up Amphibious - Calais (D-Day) (3)
@@ -1485,19 +1479,18 @@
 ; London(147,77)
 #FRIENDLY_POSITION= 140,65
 #FRIENDLY_POSITION= 144,73
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
 ; 15 Allied units in England
 #ACTIVATE_POSITION= 147,77 [20,20] [15,15] [2]
-; 1 Axis unit within range of London
+; 1 Axis unit within range of London(147,77)
 #CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
 }
 
-; Fall Weiss II
 ; USA prepares to attack:
 {
 #NAME= [FW]USA Build Up Amphibious - Bordeaux (Torch) (2)
@@ -1525,8 +1518,8 @@
 #STEAL= 0
 ; New York(10,104)
 #FRIENDLY_POSITION= 10,104
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Washington DC(4,108) not tactically threatened
@@ -1541,7 +1534,6 @@
 #CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
 }
 
-; Fall Weiss II
 ; USA prepares to attack:
 {
 #NAME= [FW]USA Build Up Amphibious - Lagos (Torch) (2)
@@ -1569,8 +1561,8 @@
 #STEAL= 0
 ; New York(10,104)
 #FRIENDLY_POSITION= 10,104
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Washington DC(4,108) not tactically threatened
@@ -1585,7 +1577,6 @@
 #CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
 }
 
-; Fall Weiss II
 ; USA prepares to attack:
 {
 #NAME= [FW]USA Build Up Amphibious - Porto (Torch) (2)
@@ -1613,8 +1604,8 @@
 #STEAL= 0
 ; New York(10,104)
 #FRIENDLY_POSITION= 10,104
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Washington DC(4,108) not tactically threatened
@@ -1629,7 +1620,6 @@
 #CANCEL_POSITION= 4,108 [20,20] [1,1] [1]
 }
 
-; Fall Weiss II
 {
 #NAME= [FW]DE 1 - USA Build Up Amphibious - Washington D.C. -> Saint John(Liberate UK)
 #POPUP=
@@ -1655,7 +1645,7 @@
 #STEAL= 0
 ; Saint John.
 #FRIENDLY_POSITION= 25,93
-; USA(115), British Empire Allied and not surrendered
+; USA(115), British Empire Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 54 [2] [100] [0]
 ; Washington DC(4,108), Washington D.C. not tactically threatened

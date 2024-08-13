@@ -275,7 +275,7 @@
 ; Historic Date: 1941/03
 {
 #NAME= Bulgaria: Bulgaria Joins The Axis (35%)
-#POPUP= Bulgaria Signs Military Pact With Axis
+#POPUP= Bulgaria Signs The Tripartite Pact
 #IMAGE= bulgariaenters.png
 #SOUND= war1.ogg
 #FLAG= 1
@@ -289,7 +289,7 @@
 #ALIGNMENT= 1
 ; Historic Date - 1 month
 #DATE= 1941/02/01
-; Poland(85) Allied and surrendered
+; Poland(85) Allied, Surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 ; Bulgaria(19) Axis
 #VARIABLE_CONDITION= 19 [1] [0] [0]
@@ -314,8 +314,8 @@
 #TRIGGER= 50
 #ALIGNMENT= 2
 #DATE= 1939/09/10
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and not surrendered AND
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; France(40) Allied, Not Surrendered AND
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 }
@@ -323,7 +323,7 @@
 ; Historic Date: 1940/11/20
 {
 #NAME= Hungary: Hungary Joins The Axis (35%)
-#POPUP= Hungary Joins The Axis
+#POPUP= Hungary Signs The Tripartite Pact
 #IMAGE= hungaryenters.png
 #SOUND= war1.ogg
 #FLAG= 1
@@ -338,7 +338,7 @@
 #ALIGNMENT= 1
 ; Historic Date minus 1 month
 #DATE= 1940/10/20
-; Poland(85) Allied and surrendered
+; Poland(85) Allied, Surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 ; Hungarian(52) Axis
 #VARIABLE_CONDITION= 52 [1] [0] [0]
@@ -346,7 +346,7 @@
 
 {
 #NAME= Persia(AI): Persia Joins The Axis (50%)
-#POPUP= Persia Joins The Axis
+#POPUP= Persia Signs The Tripartite Pact
 #IMAGE=
 #SOUND= war1.ogg
 #FLAG= 1
@@ -359,9 +359,9 @@
 #TRIGGER= 50
 #ALIGNMENT= 1
 #DATE= 1942/06/01
-; Iraq(56) Axis, mobilized and not surrendered
-; Turkey(111) Axis, mobilized and not surrendered
-; Syria(105) Axis and not surrendered
+; Iraq(56) Axis, Mobilized, Not Surrendered
+; Turkey(111) Axis, Mobilized, Not Surrendered
+; Syria(105) Axis, Not Surrendered
 #VARIABLE_CONDITION= 56 [1] [100] [0]
 #VARIABLE_CONDITION= 111 [1] [100] [0]
 #VARIABLE_CONDITION= 105 [1] [100] [0]
@@ -375,7 +375,7 @@
 ; Historic Date: 1940/11/23
 {
 #NAME= Romania: Romania Joins The Axis (35%)
-#POPUP= Romania Joins The Axis
+#POPUP= Romania Signs The Tripartite Pact
 #IMAGE= romaniaenters.png
 #SOUND= war1.ogg
 #FLAG= 1
@@ -389,14 +389,14 @@
 #ALIGNMENT= 1
 ; Historic Date minus 1 month
 #DATE= 1940/10/23
-; Poland(85) Allied and surrendered
+; Poland(85) Allied, Surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 #VARIABLE_CONDITION= 93 [1] [0] [0]
 }
 
 {
 #NAME= Syria(AI): Syria Joins The Axis (50%)
-#POPUP= Syria Joins The Axis
+#POPUP= Syria Signs The Tripartite Pact
 #IMAGE=
 #SOUND= war1.ogg
 #FLAG= 1
@@ -409,8 +409,8 @@
 #TRIGGER= 50
 #ALIGNMENT= 1
 #DATE= 1942/05/01
-; Iraq Axis and not surrendered
-; Turkey Axis and not surrendered
+; Iraq Axis, Not Surrendered
+; Turkey Axis, Not Surrendered
 ; Syria(105) Axis
 #VARIABLE_CONDITION= 56 [1] [100] [0]
 #VARIABLE_CONDITION= 111 [1] [100] [0]
@@ -476,7 +476,6 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
-; Fall Weiss II
 ; Finland declared war on the USSR shortly after Barbarossa was launched 1941/06/22
 {
 #NAME= [FW]DE 450 - Finland: Finland DoW On The USSR
@@ -493,7 +492,7 @@
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1939/09/01
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 }
 
@@ -507,11 +506,12 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Entice Spain To Enter The War?
 #LINK= 603[1]
 #COUNTRY_ID= 99
 #TRIGGER= 100
 #ALIGNMENT= 1
-#DATE= 1939/09/03
+#DATE= 1939/09/01
 ; Spain(99)
 #VARIABLE_CONDITION= 99 [1] [0] [0]
 }
@@ -521,7 +521,7 @@
 ; https://history.army.mil/books/wwii/balkan/20_260_1.htm
 {
 #NAME= DE 611 - Bulgaria: Bulgaria Joins The Axis (1)
-#POPUP= Bulgaria Signs Military Pact With Axis
+#POPUP= Bulgaria Signs The Tripartite Pact
 #IMAGE= bulgariaenters.png
 #SOUND= war1.ogg
 #FLAG= 1
@@ -542,7 +542,7 @@
 ; Historic Date: 1941/03
 {
 #NAME= DE 611 - Bulgaria: Bulgaria Joins The Axis (2) (35%)
-#POPUP= Bulgaria Signs Military Pact With Axis
+#POPUP= Bulgaria Signs The Tripartite Pact
 #IMAGE= bulgariaenters.png
 #SOUND= war1.ogg
 #FLAG= 1
@@ -564,7 +564,7 @@
 ; Historic Date: 1940/11/20
 {
 #NAME= DE 611 - Hungary: Hungary Joins The Axis (1) (50%)
-#POPUP= Hungary Joins The Axis Alliance
+#POPUP= Hungary Signs The Tripartite Pact
 #IMAGE= hungaryenters.png
 #SOUND= war1.ogg
 #FLAG= 1
@@ -587,7 +587,7 @@
 ; Historic Date: 1940/11/20
 {
 #NAME= DE 611 - Hungary: Hungary Joins The Axis (2) (35%)
-#POPUP= Hungary Joins The Axis Alliance
+#POPUP= Hungary Signs The Tripartite Pact
 #IMAGE= hungaryenters.png
 #SOUND= war1.ogg
 #FLAG= 1
@@ -608,7 +608,7 @@
 ; Historic Date: 1940/11/23
 {
 #NAME= DE 611 - Romania: Romania Joins The Axis (1) (33%)
-#POPUP= Romania Joins The Axis
+#POPUP= Romania Signs The Tripartite Pact
 #IMAGE= romaniaenters.png
 #SOUND= war1.ogg
 #FLAG= 1
@@ -635,7 +635,7 @@
 ; Historic Date: 1940/11/23
 {
 #NAME= DE 611 - Romania: Romania Joins The Axis (2) (33%)
-#POPUP= Romania Joins The Axis
+#POPUP= Romania Signs The Tripartite Pact
 #IMAGE= romaniaenters.png
 #SOUND= war1.ogg
 #FLAG= 1
@@ -656,7 +656,7 @@
 ; Historic Date: 1941/06/15
 {
 #NAME= DE 621 - Croatia: Croatia Joins The Axis
-#POPUP= Croatia Joins The Axis
+#POPUP= Croatia Signs The Tripartite Pact
 #IMAGE= croatiaenters.png
 #SOUND= war1.ogg
 #FLAG= 1
@@ -689,11 +689,10 @@
 #TRIGGER= 100
 #ALIGNMENT= 2
 #DATE= 1940/10/25
-; Italy(59) Axis, Mobilized
+; Italy(59) Axis, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 }
 
-; Fall Weiss II
 {
 #NAME= [FW]DE 846 - Spain: The Allies DoW On Spain
 #POPUP= The Allies Declare War On Spain
@@ -705,11 +704,13 @@
 #GV= 1[1,100]
 #LINK= 846[1]
 #LEVEL= 0
+; Spain(99)
 #COUNTRY_ID= 99
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1941/01/01
 #VARIABLE_CONDITION= 112 [2] [100] [0]
+; Portugal(82)
 #VARIABLE_CONDITION= 87 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 }
@@ -725,11 +726,13 @@
 #GV= 1[1,100]
 #LINK= 989[1]
 #LEVEL= 0
+; Spain(99)
 #COUNTRY_ID= 99
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1944/10/01
 #VARIABLE_CONDITION= 112 [2] [100] [0]
+; Portugal(87), Axis, Surrendered
 #VARIABLE_CONDITION= 87 [1] [100] [1]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 }
@@ -739,7 +742,7 @@
 #POPUP= Finland Enters The War Against The USSR
 #IMAGE= finlandenterswar.png
 #SOUND= war1.ogg
-; currently disabled in Fall Weiss II
+; currently disabled
 #FLAG= 0
 #TYPE= 1
 #AI= 0
@@ -751,7 +754,7 @@
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1939/09/01
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Not Surrendered
 ; Finland(39) Axis
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [0] [0]

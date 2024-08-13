@@ -6,31 +6,31 @@
 
 [List of Kriegsmarine Ships](https://en.wikipedia.org/wiki/List_of_Kriegsmarine_ships)
 
-| Ship | SC Class | Commission Date | Main Battery | Speed | |
+| Ship | SC Class | Commission Date | Main Battery | Speed | Aircraft |
 | ------ | ------ | ------ | ----- | --- | --- |
-| [Bismark](https://en.wikipedia.org/wiki/German_battleship_Bismarck) | Battleship | 24 August 1940 | 8 x 15 in. | 30 knots | 6 × [Arado Ar 196](https://en.wikipedia.org/wiki/Arado_Ar_196) seaplanes |
+| [Bismark](https://en.wikipedia.org/wiki/German_battleship_Bismarck) | Battleship | 24 August 1940 | 8 x 15 in. | 30 knots | 6 × [Arado Ar 196][ar196] seaplanes |
 | [German battleship Tirpitz](https://en.wikipedia.org/wiki/German_battleship_Tirpitz) | Battleship | 25 February 1941 | 8 x 15 in. | 30.8 knots | 6 × Arado Ar 196 seaplanes |
 | [Graf Zeppelin](https://en.wikipedia.org/wiki/German_aircraft_carrier_Graf_Zeppelin) | Carrier | (-) | | 33.8 knots | 42 x aircraft |
 | [Schleswig-Holstein](https://en.wikipedia.org/wiki/SMS_Schleswig-Holstein) | Dreadnought(WWI) | 6 July 1908 | 4 x 11 in. | 19.1 knots |  |
 | [Schlesien](https://en.wikipedia.org/wiki/SMS_Schlesien) | Dreadnought(WWI) | 5 May 1908 | 4 x 11 in. | 18.5 knots | |
 | [Scharnhorst](https://en.wikipedia.org/wiki/German_battleship_Scharnhorst) | Battle Cruiser | 7 January 1939 | 9 x 11 in. | 31.5 knots | 4 × Arado Ar 196 seaplanes |
 | [Gneisenau](https://en.wikipedia.org/wiki/German_battleship_Gneisenau) | Battle Cruiser | 21 May 1938 | 9 x 11 in. | 31.3 knots | 4 × Arado Ar 196 seaplanes |
-| [Deutschland/Lützow](https://en.wikipedia.org/wiki/German_cruiser_Deutschland) | Heavy Cruiser | 1 April 1933 | 6 x 11 in. | 28 knots |  2 × Arado Ar 196 seaplanes |
-| [Admiral Scheer](https://en.wikipedia.org/wiki/German_cruiser_Admiral_Graf_Spee) | Heavy Cruiser | 12 November 1934 | 6 x 11 in. | 28.3 knots | 2 × Arado Ar 196 seaplanes |
-| [Admiral Graf Spee](https://en.wikipedia.org/wiki/German_cruiser_Admiral_Graf_Spee) | Heavy Cruiser | 6 January 1936 | 6 x 11 in. | 29.5 knots | 2 × Arado Ar 196 seaplanes |
+| [Deutschland/Lützow](https://en.wikipedia.org/wiki/German_cruiser_Deutschland) | Heavy Cruiser | 1 April 1933 | 6 x 11 in. | 28 knots | 1-2 × Arado Ar 196 seaplanes |
+| [Admiral Scheer](https://en.wikipedia.org/wiki/German_cruiser_Admiral_Scheer) | Heavy Cruiser | 12 November 1934 | 6 x 11 in. | 28.3 knots | 1-2 × Arado Ar 196 seaplanes |
+| [Admiral Graf Spee](https://en.wikipedia.org/wiki/German_cruiser_Admiral_Graf_Spee) | Heavy Cruiser | 6 January 1936 | 6 x 11 in. | 29.5 knots | 1-2 × Arado Ar 196 seaplanes |
 | [Admiral Hipper](https://en.wikipedia.org/wiki/German_cruiser_Admiral_Hipper) | Heavy Cruiser | 29 April 1939 | 8 x 8 in. | 32 knots | 3 × Arado Ar 196 seaplanes |
-| [Blücher](https://en.wikipedia.org/wiki/German_cruiser_Bl%C3%BCcher) | Heavy Cruiser | 20 September 1939 | 8 x 8 in. | 32 knots | 3 × Arado Ar 196 seaplanes  |
+| [Blücher](https://en.wikipedia.org/wiki/German_cruiser_Bl%C3%BCcher) | Heavy Cruiser | 20 September 1939 | 8 x 8 in. | 32 knots | 2-3 × Arado Ar 196 seaplanes  |
 | [Prinz Eugen](https://en.wikipedia.org/wiki/German_cruiser_Prinz_Eugen) | Heavy Cruiser | 1 August 1940 | 8 x 8 in. | 32 knots | 3 × Arado Ar 196 seaplanes |
 | [Seydlitz](https://en.wikipedia.org/wiki/German_cruiser_Seydlitz) | Heavy Cruiser | | 8 x 8 in. | 32 knots | 3 × Arado Ar 196 seaplanes |
 | &nbsp;&nbsp;&nbsp;&nbsp;*95% complete* | | 1 June 1940 | | | |
 | [Lützow](https://en.wikipedia.org/wiki/German_cruiser_L%C3%BCtzow_(1939)) | Heavy Cruiser | | 8 x 8 in. | 32 knots | 3 × Arado Ar 196 seaplanes |
 | &nbsp;&nbsp;&nbsp;&nbsp;*sold to USSR* | | 11 February 1940 | | | |
 | [Emden](https://en.wikipedia.org/wiki/German_cruiser_Emden) | Light Cruiser | 15 Oct 1925 | 9 x 5.9 in. | 32 knots | |
-| [Königsberg](https://en.wikipedia.org/wiki/German_cruiser_K%C3%B6nigsberg) | Light Cruiser | 17 April 1929 | 9 x 5.9 in. | 32 knots | 2 x floatplanes |
-| [Karlsruhe](https://en.wikipedia.org/wiki/German_cruiser_Karlsruhe) | Light Cruiser | 6 Nov 1929 | 9 x 5.9 in. | 32 knots | 2 x floatplanes |
-| [Köln](https://en.wikipedia.org/wiki/German_cruiser_K%C3%B6ln) | Light Cruiser | 15 Jan 1930 | 9 x 5.9 in. | 32 knots | 2 x floatplanes |
-| [Leipzig](https://en.wikipedia.org/wiki/German_cruiser_Leipzig)  | Light Cruiser | Oct 1931 | 9 x 5.9 in. | 32 knots | 2 x floatplanes |
-| [Nürnberg](https://en.wikipedia.org/wiki/German_cruiser_N%C3%BCrnberg) | Light Cruiser | Nov 1935 | 9 x 5.9 in. | 32 knots | 2 x floatplanes |
+| [Königsberg](https://en.wikipedia.org/wiki/German_cruiser_K%C3%B6nigsberg) | Light Cruiser | 17 April 1929 | 9 x 5.9 in. | 32 knots | 2 x Arado Ar 196 seaplanes  |
+| [Karlsruhe](https://en.wikipedia.org/wiki/German_cruiser_Karlsruhe) | Light Cruiser | 6 Nov 1929 | 9 x 5.9 in. | 32 knots | 2 x Arado Ar 196 seaplanes  |
+| [Köln](https://en.wikipedia.org/wiki/German_cruiser_K%C3%B6ln) | Light Cruiser | 15 Jan 1930 | 9 x 5.9 in. | 32 knots | 2 x Arado Ar 196 seaplanes  |
+| [Leipzig](https://en.wikipedia.org/wiki/German_cruiser_Leipzig)  | Light Cruiser | Oct 1931 | 9 x 5.9 in. | 32 knots | 2 x Arado Ar 196 seaplanes  |
+| [Nürnberg](https://en.wikipedia.org/wiki/German_cruiser_N%C3%BCrnberg) | Light Cruiser | Nov 1935 | 9 x 5.9 in. | 32 knots | 2 x Arado Ar 196 seaplanes  |
 
 ----
 
@@ -45,8 +45,8 @@ The Regia Marina had six battleships with which to contend for control of the Me
 | [Littorio](https://en.wikipedia.org/wiki/Italian_battleship_Littorio) | Battleship | 6 May 1940 | 9 x 15 in. | 30 knots | 3 x seaplanes |
 | [Vittorio Veneto](https://en.wikipedia.org/wiki/Italian_battleship_Vittorio_Veneto) | Battleship | 15 May 1940 | 9 x 15 in. | 30 knots | 3 x seaplanes |
 | [Roma](https://en.wikipedia.org/wiki/Italian_battleship_Roma_(1940)) | Battleship | 14 June 1942 | 9 x 15 in. | 30 knots | 3 x seaplanes |
-| [Conte di Cavour](https://en.wikipedia.org/wiki/Italian_battleship_Conte_di_Cavour) | Dreadnought(WWI) | June 1937 | 10 x 12.6 in. | 27 knots | |
-| [Giulio Cesare](https://en.wikipedia.org/wiki/Italian_battleship_Giulio_Cesare) | Dreadnought(WWI) | October 1937 | 10 x 12.6 in. | 27 knots | |
+| [Conte di Cavour](https://en.wikipedia.org/wiki/Italian_battleship_Conte_di_Cavour) | Dreadnought(WWI) | 1 April 1915<br/>June 1937 | 10 x 12.6 in. | 27 knots | |
+| [Giulio Cesare](https://en.wikipedia.org/wiki/Italian_battleship_Giulio_Cesare) | Dreadnought(WWI) | 7 June 1914<br/>October 1937 | 10 x 12.6 in. | 27 knots | |
 | [Duilio](https://en.wikipedia.org/wiki/Italian_battleship_Duilio) | Dreadnought(WWI) | 15 July 1940 | 10 x 12.6 in. | 26 knots | |
 | [Andrea Doria](https://en.wikipedia.org/wiki/Italian_battleship_Andrea_Doria) | Dreadnought(WWI) | 1 October 1940 | 10 x 12.6 in. | 26 knots | |
 | [Aquila](https://en.wikipedia.org/wiki/Italian_aircraft_carrier_Aquila) | Carrier | (-) | 8 x 5.3 in. | 30 knots | 51 aircraft |
@@ -99,7 +99,7 @@ Of course due to reduced industrial capabilites (manpower losses due to engageme
 | Nelson | Battleship | 15 August 1927 | 9 x 16 in. | 23 knots | |
 | Rodney | Battleship | 10 November 1927 | 9 x 16 in. | 23 knots | |
 | [Queen Elizabeth](https://en.wikipedia.org/wiki/HMS_Queen_Elizabeth_(1913)) | Dreadnought(WWI) | 24 December 1914 | 8 x 15 in. | 24 knots |
-| Warspite | Dreadnought(WWI) | 8 March 1915 | | | |
+| [Warspite](https://en.wikipedia.org/wiki/HMS_Warspite_(03)) | Dreadnought(WWI) | 8 March 1915 <br/> March 1937 | 8 x 15 in. | 23 knots | 2 x [Swordfish](https://en.wikipedia.org/wiki/Fairey_Swordfish) |
 | Barham | Dreadnought(WWI) | 19 October 1915 | | | |
 | Valiant | Dreadnought(WWI) | 13 January 1916 | | | |
 | Malaya | Dreadnought(WWI) | 1 Februrary 1916 | | | |
@@ -161,3 +161,6 @@ Capital Ships Constructed During World War II
 | [Kirov](https://en.wikipedia.org/wiki/Soviet_cruiser_Kirov) |
 | [Voroshilov](https://en.wikipedia.org/wiki/Soviet_cruiser_Voroshilov) |
 
+
+
+[ar196]: https://en.wikipedia.org/wiki/Arado_Ar_196

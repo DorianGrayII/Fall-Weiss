@@ -402,8 +402,8 @@
 #STEAL= 3
 ; Tunis(167,112)
 #FRIENDLY_POSITION= 167,112
-; France(40) Allied and not surrendered
-; Italy(59) Allied and not surrendered
+; France(40) Allied, Mobilized, Not Surrendered
+; Italy(59) Axis, (not fully mobilized), Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [85] [0]
 ; Marseilles(157,97) not tactically threatened (dummy condition)
@@ -444,13 +444,13 @@
 #FRIENDLY_POSITION= 163,83
 #FRIENDLY_POSITION= 160,78
 #FRIENDLY_POSITION= 164,71
-; France(40) Allied and surrendered
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
 ; No allied units in or next to London(147,77)
 #ACTIVATE_POSITION= 147,77 [2,2] [0,0] [2]
-; 1 Allied Ship close to London Port OR
+; 1 Allied Ship close to London-Port OR
 ; Allied unit near London(147,77) OR
 ; 4 or more allied units in the UK OR
 ; 5 or more allied ships within 7 tiles of London Port OR
@@ -488,8 +488,8 @@
 ; Le Havre(147,82)
 #FRIENDLY_POSITION= 147,77
 #FRIENDLY_POSITION= 147,82
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -526,8 +526,8 @@
 ; Le Havre(147,72)
 #FRIENDLY_POSITION= 147,77
 #FRIENDLY_POSITION= 147,82
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -561,8 +561,8 @@
 #STEAL= 0
 ; Sheffield(144,73)
 #FRIENDLY_POSITION= 144,73
-; UK(112) Allied and not surrendered AND
-; Denmark(18) Allied and surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; Denmark(18) Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 18 [2] [100] [1]
 ; London(147,77) not tactically threatened
@@ -571,7 +571,7 @@
 #ACTIVATE_POSITION= 171,65 [2,2] [0,0] [1]
 ; 1 Axis unit in Copenhagen OR
 ; 1 Axis unit near Copenhagen (Sea) OR
-; 1 Axis unit near Kristiansand (Port)
+; 1 Axis unit near Kristiansand -Port
 #CANCEL_POSITION= 171,65 [2,2] [1,1] [1]
 #CANCEL_POSITION= 169,63 [2,2] [1,1] [1]
 #CANCEL_POSITION= 163,58 [6,6] [1,1] [1]
@@ -602,8 +602,8 @@
 #STEAL= 0
 ; Sheffield(144,73)
 #FRIENDLY_POSITION= 144,73
-; UK(112) Allied and not surrendered AND
-; Norway(78) Allied and surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; Norway(78) Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 78 [2] [100] [1]
 ; London(147,77) not tactically threatened
@@ -611,7 +611,7 @@
 ; 0 Axis units in Narvik
 #ACTIVATE_POSITION= 181,18 [2,2] [0,0] [1]
 ; 1 Axis unit in Narvik OR
-; 1 Axis unit near Narvik (Port)
+; 1 Axis unit near Narvik -Port
 #CANCEL_POSITION= 181,18 [2,2] [1,1] [1]
 #CANCEL_POSITION= 258,2 [2,2] [1,1] [1]
 }
@@ -639,8 +639,8 @@
 #STEAL= 0
 ; Sheffield(144,73)
 #FRIENDLY_POSITION= 144,73
-; UK(112) Allied and not surrendered AND
-; Norway(78) Allied and surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; Norway(78) Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 78 [2] [100] [1]
 ; London(147,77) not tactically threatened
@@ -648,9 +648,9 @@
 ; 0 Axis units in Oslo
 #ACTIVATE_POSITION= 167,52 [2,2] [0,0] [1]
 ; 1 Axis unit in Oslo OR
-; 1 Axis unit near Oslo (Port) OR
-; 1 Axis unit near Edinburgh (Port) OR
-; 1 Axis unit near Kristiansand (Port)
+; 1 Axis unit near Oslo-Port OR
+; 1 Axis unit near Edinburgh-Port OR
+; 1 Axis unit near Kristiansand-Port
 #CANCEL_POSITION= 167,52 [2,2] [1,1] [1]
 #CANCEL_POSITION= 167,53 [2,2] [1,1] [1]
 #CANCEL_POSITION= 140,64 [6,6] [1,1] [1]
@@ -680,8 +680,8 @@
 #STEAL= 0
 ; Sheffield(144,73)
 #FRIENDLY_POSITION= 144,73
-; UK(112) Allied and not surrendered AND
-; Netherlands Allied and surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; Netherlands Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 73 [2] [100] [1]
 ; London(147,77) not tactically threatened
@@ -689,7 +689,7 @@
 ; 0 Axis units in The Hague
 #ACTIVATE_POSITION= 155,76 [2,2] [0,0] [1]
 ; 1 Axis unit in The Hague OR
-; 1 Axis unit near The Hague (Port)
+; 1 Axis unit near The Hague-Port
 #CANCEL_POSITION= 155,76 [2,2] [1,1] [1]
 #CANCEL_POSITION= 154,76 [2,2] [1,1] [1]
 }
@@ -717,10 +717,8 @@
 #STEAL= 0
 ; Sheffield(144,73)
 #FRIENDLY_POSITION= 144,73
-; UK(112) Allied and not surrendered AND
-; Germany(45) Axis and not surrendered (dummy condition)
+; UK(112) Allied, Mobilized, Not Surrendered AND
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; London(147,77) not tactically threatened
 #TACTICAL_CONDITION= 147,77 [1]
 ; 0 Axis units in Wilhelmshaven
@@ -734,7 +732,7 @@
 ;
 ; USA prepares to attack France:
 {
-#NAME= USA Build Up Amphibious Minor - Brest (D-Day)
+#NAME= USA Build Up Amphibious Minor - Brest (Continuous) (D-Day)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -755,11 +753,11 @@
 #DATE= 1943/01/01
 #STEAL= 0
 ; Sheffield
-; St. Malo (Port)
+; St. Malo-Port
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 142,85
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Mobilized, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Washington DC(4,108) not tactically threatened (dummy condition)
@@ -796,8 +794,8 @@
 ; Brest(138,86)
 #FRIENDLY_POSITION= 147,77
 #FRIENDLY_POSITION= 138,86
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -834,15 +832,15 @@
 ; Brest(138,86)
 #FRIENDLY_POSITION= 147,77
 #FRIENDLY_POSITION= 138,86
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Mobilized, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
 ; 1 Allied unit already in France
 #ACTIVATE_POSITION= 144,84 [3,3] [1,1] [2]
-; 1 Axis unit within range of London
+; 1 Axis unit within range of London(147,77)
 #CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
 }
 
@@ -870,7 +868,7 @@
 #STEAL= 3
 ; Rostov
 #FRIENDLY_POSITION= 225,88
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Washington DC(4,108) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 4,108 [3]

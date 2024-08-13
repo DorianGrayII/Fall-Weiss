@@ -303,7 +303,7 @@ l
 ; Manchester(142,72)
 #RESOURCE= 142,72
 #RESOURCE= 139,76
-; UK(112) Allied and not surrendered AND
+; UK(112) Allied, Mobilized, Not Surrendered AND
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -325,7 +325,7 @@ l
 #FAILSAFE_DATE= 1939/12/01
 #RESOURCE= 0,0
 #RESOURCE= 0,1
-; UK(112) Allied and not surrendered AND
+; UK(112) Allied, Mobilized, Not Surrendered AND
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -347,7 +347,7 @@ l
 #FAILSAFE_DATE= 1939/12/01
 #RESOURCE= 215,121
 #RESOURCE= 214,124
-; UK(112) Allied and not surrendered AND
+; UK(112) Allied, Mobilized, Not Surrendered AND
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -372,14 +372,14 @@ l
 #RESOURCE= 144,98
 #RESOURCE= 149,92
 #RESOURCE= 154,91
-; France(40) Allied and not surrendered AND
-; Poland(85) Allied and surrendered
+; France(40) Allied, Not Surrendered AND
+; Poland(85) Allied, Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; modified by Fall Weiss II
+; modified by FW
 {
 #NAME= France: Industrial Mobilization On Entering The War
 #POPUP= France Increases Industrial Mobilization On Entering The War
@@ -401,13 +401,14 @@ l
 #RESOURCE= 145,115
 #RESOURCE= 152,113
 #RESOURCE= 167,112
+; Marseille(157,97)
 #RESOURCE= 157,97
-; France(40) Allied and not surrendered AND
+; France(40) Allied, Not Surrendered AND
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; modified by Fall Weiss II
+; modified by FW
 {
 #NAME= France: Industrial Mobilization With The Fall Of Poland
 #POPUP= <<TAG_3>>
@@ -424,8 +425,8 @@ l
 #DATE= 1939/12/08
 #FAILSAFE_DATE= 1940/02/01
 #RESOURCE= 155,93
-; France(40) Allied and not surrendered AND
-; Poland(85) Allied and surrendered
+; France(40) Allied, Not Surrendered AND
+; Poland(85) Allied, Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -436,7 +437,7 @@ l
 #POPUP= German Industry Starts Increasing Its Military Production
 #IMAGE=
 #SOUND= industry.ogg
-; currently disabled in Fall Weiss II
+; currently disabled in FW
 #FLAG= 0
 #TYPE= 1
 #AI= 0
@@ -454,7 +455,7 @@ l
 ; Prague(175,81)
 #RESOURCE= 175,81
 #RESOURCE= 169,86
-; Germany(45) is Axis and not surrendered
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -464,7 +465,7 @@ l
 #POPUP= German Industry Starts Increasing Its Military Production
 #IMAGE=
 #SOUND= industry.ogg
-; currently disabled in Fall Weiss II
+; currently disabled in FW
 #FLAG= 0
 #TYPE= 1
 #AI= 0
@@ -482,7 +483,7 @@ l
 ; Prague(175,81)
 #RESOURCE= 175,81
 #RESOURCE= 169,86
-; Germany(45) is Axis and not surrendered
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -492,7 +493,7 @@ l
 #POPUP= German Industry Starts Increasing Its Military Production
 #IMAGE=
 #SOUND= industry.ogg
-; currently disabled in Fall Weiss II
+; currently disabled in FW
 #FLAG= 0
 #TYPE= 1
 #AI= 0
@@ -510,7 +511,7 @@ l
 ; Prague(175,81)
 #RESOURCE= 175,81
 #RESOURCE= 169,86
-; Germany(45) is Axis and not surrendered
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -520,7 +521,7 @@ l
 #POPUP= German Industry Starts Increasing Its Military Production
 #IMAGE=
 #SOUND= industry.ogg
-; currently disabled in Fall Weiss II
+; currently disabled in FW
 #FLAG= 0
 #TYPE= 1
 #AI= 0
@@ -538,7 +539,7 @@ l
 ; Prague(175,81)
 #RESOURCE= 175,81
 #RESOURCE= 169,86
-; Germany(45) is Axis and not surrendered
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -548,7 +549,7 @@ l
 #POPUP= German Industry Starts Increasing Its Military Production
 #IMAGE=
 #SOUND= industry.ogg
-; currently disabled in Fall Weiss II
+; currently disabled in FW
 #FLAG= 0
 #TYPE= 1
 #AI= 0
@@ -566,7 +567,7 @@ l
 ; Prague(175,81)
 #RESOURCE= 175,81
 #RESOURCE= 169,86
-; Germany(45) is Axis and not surrendered
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -593,7 +594,7 @@ l
 #RESOURCE= 213,86
 #RESOURCE= 212,87
 #RESOURCE= 218,82
-; Germany(45) is Axis but not surrendered
+; Germany(45) Axis but not surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -654,7 +655,7 @@ l
 #RESOURCE= 0,103
 #RESOURCE= 0,104
 #RESOURCE= 0,105
-; USA(115) Allied and not surrendered
+; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -678,7 +679,7 @@ l
 #RESOURCE= 267,61
 #RESOURCE= 266,62
 #RESOURCE= 267,62
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -689,7 +690,7 @@ l
 #IMAGE=
 #SOUND=
 ; New event from 1939 Storm Over Europe campaign
-; Disabled in Fall Weiss II pending review
+; Disabled in FW pending review
 #FLAG= 0
 #TYPE= 1
 #AI= 2
@@ -701,12 +702,11 @@ l
 #DATE= 1941/10/01
 #FAILSAFE_DATE= 1948/01/01
 #RESOURCE= 266,61
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; Fall Weiss II
 ; German Industry Activation
 {
 #NAME= [FW]Germany: Ruhr Industry Expansion - Poland Surrended
@@ -725,12 +725,11 @@ l
 #FAILSAFE_DATE= 1948/01/01
 ; Essen(161,77)
 #RESOURCE= 161,77
-; Poland(85) Allied and Surrendered
+; Poland(85) Allied, Surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; Fall Weiss II
 ; German Industry Activation
 {
 #NAME= [FW]Germany: Ruhr Industry Expansion - USSR Mobilized
@@ -748,7 +747,7 @@ l
 #DATE= 1939/09/09
 #FAILSAFE_DATE= 1948/01/01
 #RESOURCE= 162,78
-; Russia Allied and fully mobilized
+; Russia Allied, Mobilized
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -773,7 +772,7 @@ l
 #RESOURCE= 267,58
 #RESOURCE= 267,59
 #RESOURCE= 267,60
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -795,7 +794,7 @@ l
 #FAILSAFE_DATE= 1948/01/01
 #RESOURCE= 266,59
 #RESOURCE= 266,60
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -817,12 +816,11 @@ l
 #FAILSAFE_DATE= 1948/01/01
 #RESOURCE= 266,58
 #RESOURCE= 266,57
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; Fall Weiss II
 {
 #NAME= [FW]DE 907 - Spain: Wolfram Mines
 #POPUP=
@@ -836,7 +834,7 @@ l
 #LINK= 907[1]
 #COUNTRY_ID= 99
 #TRIGGER= 100
-#DATE= 1939/09/03
+#DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #RESOURCE= 135,97
 #VARIABLE_CONDITION= 45 [1] [100] [0]

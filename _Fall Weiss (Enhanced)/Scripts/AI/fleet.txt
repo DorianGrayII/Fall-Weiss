@@ -389,7 +389,7 @@
 #DATE= 1940/01/01
 ; Cherbourg
 #FRIENDLY_POSITION= 144,82
-; France(40) Allied and not surrendered
+; France(40) Allied, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Paris(151,84) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 151,84 [3]
@@ -418,7 +418,7 @@
 #DATE= 1939/09/01
 ; St. Nazaire
 #FRIENDLY_POSITION= 142,89
-; France(40) Allied and not surrendered
+; France(40) Allied, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Paris(151,84) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 151,84 [3]
@@ -445,9 +445,9 @@
 ; Cherbourg
 #GOAL_POSITION= 145,82
 #DATE= 1939/09/01
-; Marseilles(157,97)
+; Marseilles-Port(157,98)
 #FRIENDLY_POSITION= 157,98
-; France(40) Allied and not surrendered
+; France(40) Allied, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Paris(151,84) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 151,84 [3]
@@ -477,7 +477,7 @@
 #DATE= 1939/09/01
 ; St. Nazaire
 #FRIENDLY_POSITION= 142,89
-; France(40) Allied and not surrendered
+; France(40) Allied, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Paris(151,84) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 151,84 [3]
@@ -507,7 +507,7 @@
 #DATE= 1939/09/01
 ; Algiers(152,113)
 #FRIENDLY_POSITION= 152,112
-; France(40) Allied and not surrendered
+; France(40) Allied, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Paris(151,84) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 151,84 [3]
@@ -545,7 +545,7 @@
 #DATE= 1940/04/01
 ; Marseilles(157,97)
 #FRIENDLY_POSITION= 157,98
-; France(40) Allied and not surrendered
+; France(40) Allied, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; Paris(151,84) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 151,84 [3]
@@ -570,16 +570,15 @@
 #RANGE= 10
 #NAVAL_CRUISE= 0
 #UNIT_ID= 0
-; Narvik
+; Narvik-Port(180,19)
 #GOAL_POSITION= 180,19
 #GOAL_POSITION= 157,25
 #GOAL_POSITION= 161,18
 #DATE= 1942/08/16
-; Narvik
+; Narvik-Port(180,19)
 #FRIENDLY_POSITION= 180,19
-; Germany(45) Axis and not surrendered AND
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Germany(45) Axis, Not Surrendered AND
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -609,7 +608,7 @@
 #DATE= 1940/01/01
 ; St. Nazaire
 #FRIENDLY_POSITION= 142,89
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -639,7 +638,7 @@
 #DATE= 1940/01/01
 ; St. Nazaire
 #FRIENDLY_POSITION= 142,89
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -669,7 +668,7 @@
 #DATE= 1940/01/01
 ; St. Nazaire
 #FRIENDLY_POSITION= 142,89
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -698,7 +697,7 @@
 #DATE= 1940/01/01
 ; English Channel
 #FRIENDLY_POSITION= 137,82
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -724,6 +723,7 @@
 #UNIT_ID= 43
 ; North Atlantic
 #GOAL_POSITION= 92,46
+; NW of Denmark
 #GOAL_POSITION= 161,62
 #GOAL_POSITION= 154,53
 #GOAL_POSITION= 157,40
@@ -732,9 +732,9 @@
 #GOAL_POSITION= 116,40
 #GOAL_POSITION= 104,42
 #DATE= 1939/09/01
-; Konigsberg
+; Konigsberg-Port(186,69)
 #FRIENDLY_POSITION= 186,69
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -761,7 +761,7 @@
 #UNIT_ID= 43
 ; North Atlantic
 #GOAL_POSITION= 92,46
-#GOAL_POSITION= 167,69
+; Kiel-Port(167,69)
 #GOAL_POSITION= 167,69
 #GOAL_POSITION= 161,62
 #GOAL_POSITION= 154,53
@@ -771,9 +771,9 @@
 #GOAL_POSITION= 116,40
 #GOAL_POSITION= 104,42
 #DATE= 1939/09/01
-; Konigsberg
+; Konigsberg-Port(186,69)
 #FRIENDLY_POSITION= 186,69
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -808,7 +808,7 @@
 #DATE= 1939/09/01
 ; North Sea
 #FRIENDLY_POSITION= 151,61
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -843,7 +843,7 @@
 #DATE= 1939/09/01
 ; North Sea
 #FRIENDLY_POSITION= 151,61
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -878,7 +878,7 @@
 #DATE= 1939/09/01
 ; North Sea
 #FRIENDLY_POSITION= 151,61
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -904,15 +904,15 @@
 #UNIT_ID= 43
 ; North Atlantic
 #GOAL_POSITION= 151,35
-#GOAL_POSITION= 167,69
+; Kiel-Port(167,69)
 #GOAL_POSITION= 167,69
 #GOAL_POSITION= 161,62
 #GOAL_POSITION= 154,53
 #GOAL_POSITION= 157,40
 #DATE= 1940/01/01
-; Stettin
+; Stettin-Port(175,71)
 #FRIENDLY_POSITION= 175,71
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -938,7 +938,7 @@
 #UNIT_ID= 43
 ; North Atlantic
 #GOAL_POSITION= 102,90
-#GOAL_POSITION= 167,69
+; Kiel-Port(167,69)
 #GOAL_POSITION= 167,69
 #GOAL_POSITION= 161,62
 #GOAL_POSITION= 154,53
@@ -948,9 +948,9 @@
 #GOAL_POSITION= 116,40
 #GOAL_POSITION= 104,42
 #DATE= 1940/01/01
-; Stettin
+; Stettin-Port(175,71)
 #FRIENDLY_POSITION= 175,71
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -976,15 +976,15 @@
 #UNIT_ID= 43
 ; North Atlantic
 #GOAL_POSITION= 141,40
-#GOAL_POSITION= 167,69
+; Kiel-Port(167,69)
 #GOAL_POSITION= 167,69
 #GOAL_POSITION= 161,62
 #GOAL_POSITION= 154,53
 #GOAL_POSITION= 157,40
 #DATE= 1940/01/01
-; Stettin
+; Stettin-Port(175,71)
 #FRIENDLY_POSITION= 175,71
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -1010,15 +1010,15 @@
 #UNIT_ID= 43
 ; North Atlantic
 #GOAL_POSITION= 151,28
-#GOAL_POSITION= 167,69
+; Kiel-Port(167,69)
 #GOAL_POSITION= 167,69
 #GOAL_POSITION= 161,62
 #GOAL_POSITION= 154,53
 #GOAL_POSITION= 157,40
 #DATE= 1940/01/01
-; Stettin
+; Stettin-Port(175,71)
 #FRIENDLY_POSITION= 175,71
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -1048,7 +1048,7 @@
 #DATE= 1939/09/01
 ; U-30 starting position
 #FRIENDLY_POSITION= 81,59
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -1083,7 +1083,7 @@
 #DATE= 1939/09/01
 ; U-32 starting position
 #FRIENDLY_POSITION= 158,61
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -1119,7 +1119,7 @@
 #DATE= 1939/09/01
 ; U-32 starting position
 #FRIENDLY_POSITION= 158,61
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -1144,7 +1144,7 @@
 #RANGE= 25
 #NAVAL_CRUISE= 0
 #UNIT_ID= 0
-; Stettin
+; Stettin-Port(175,71)
 #GOAL_POSITION= 175,71
 #GOAL_POSITION= 185,60
 #GOAL_POSITION= 189,52
@@ -1156,11 +1156,10 @@
 #GOAL_POSITION= 189,52
 #GOAL_POSITION= 185,60
 #DATE= 1941/06/01
-; Stettin
+; Stettin-Port(175,71)
 #FRIENDLY_POSITION= 175,71
-; Germany(45) Axis and not surrendered AND
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Germany(45) Axis, Not Surrendered AND
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -1205,7 +1204,7 @@
 #DATE= 1939/09/01
 ; Deutschland (start sea position)
 #FRIENDLY_POSITION= 81,58
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -1232,9 +1231,9 @@
 ; North Atlantic
 #GOAL_POSITION= 84,72
 #DATE= 1940/01/01
-; Gibraltar (Port)(137,114)
+; Gibraltar-Port(137,114)
 #FRIENDLY_POSITION= 137,114
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -1261,9 +1260,9 @@
 ; North Atlantic
 #GOAL_POSITION= 100,65
 #DATE= 1940/01/01
-; Gibraltar (Port)(137,114)
+; Gibraltar-Port(137,114)
 #FRIENDLY_POSITION= 137,114
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -1293,7 +1292,7 @@
 #DATE= 1941/01/01
 ; Bergen
 #FRIENDLY_POSITION= 156,51
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -1328,7 +1327,7 @@
 #DATE= 1941/09/02
 ; Palermo (Port Area)
 #FRIENDLY_POSITION= 173,107
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -1353,7 +1352,7 @@
 #RANGE= 25
 #NAVAL_CRUISE= 0
 #UNIT_ID= 0
-; Bordeaux
+; Bordeaux-Port(145,93)
 #GOAL_POSITION= 145,93
 #GOAL_POSITION= 161,61
 #GOAL_POSITION= 154,48
@@ -1363,11 +1362,10 @@
 #GOAL_POSITION= 104,60
 #GOAL_POSITION= 108,74
 #DATE= 1940/12/01
-; Konigsberg
+; Konigsberg-Port(186,69)
 #FRIENDLY_POSITION= 186,69
-; Germany(45) Axis and not surrendered AND
-; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Germany(45) Axis, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -1392,7 +1390,7 @@
 #RANGE= 25
 #NAVAL_CRUISE= 0
 #UNIT_ID= 0
-; Bordeaux
+; Bordeaux-Port(145,93)
 #GOAL_POSITION= 145,93
 #GOAL_POSITION= 187,56
 #GOAL_POSITION= 187,56
@@ -1406,9 +1404,8 @@
 #DATE= 1941/12/01
 ; Baltic Sea
 #FRIENDLY_POSITION= 187,56
-; Germany(45) Axis and not surrendered AND
-; France(40) Allied and surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Germany(45) Axis, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -1433,7 +1430,7 @@
 #RANGE= 25
 #NAVAL_CRUISE= 0
 #UNIT_ID= 0
-; Bordeaux
+; Bordeaux-Port(145,93)
 #GOAL_POSITION= 145,93
 #GOAL_POSITION= 161,61
 #GOAL_POSITION= 154,48
@@ -1443,11 +1440,10 @@
 #GOAL_POSITION= 104,60
 #GOAL_POSITION= 108,74
 #DATE= 1942/08/16
-; Stettin
+; Stettin-Port(175,71)
 #FRIENDLY_POSITION= 175,71
-; Germany(45) Axis and not surrendered AND
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Germany(45) Axis, Not Surrendered AND
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -1478,9 +1474,8 @@
 #DATE= 1939/09/01
 ; Straslund/Rostock naval area
 #FRIENDLY_POSITION= 171,69
-; Germany(45) Axis and not surrendered AND
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Germany(45) Axis, Not Surrendered AND
+; USSR(116) Allied (not fully active), Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -1512,9 +1507,8 @@
 #DATE= 1939/09/01
 ; Straslund/Rostock naval area
 #FRIENDLY_POSITION= 171,69
-; Germany(45) Axis and not surrendered AND
-; USSR(116) Allied (not fully active) and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Germany(45) Axis, Not Surrendered AND
+; USSR(116) Allied (not fully active), Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -1541,6 +1535,7 @@
 #NAVAL_CRUISE= 0
 #UNIT_ID= 37
 ; Battle Cruisers to Konigsberg
+; Konigsberg-Port(186,69)
 #GOAL_POSITION= 186,69
 #GOAL_POSITION= 186,56
 #GOAL_POSITION= 186,56
@@ -1560,9 +1555,9 @@
 #GOAL_POSITION= 186,56
 #GOAL_POSITION= 186,56
 #DATE= 1939/09/01
-; Kiel
+; Kiel-Port(167,69)
 #FRIENDLY_POSITION= 167,69
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -1607,9 +1602,9 @@
 #GOAL_POSITION= 186,56
 #GOAL_POSITION= 186,56
 #DATE= 1939/09/01
-; Kiel
+; Kiel-Port(167,69)
 #FRIENDLY_POSITION= 167,69
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -1655,9 +1650,9 @@
 #GOAL_POSITION= 186,56
 #GOAL_POSITION= 186,56
 #DATE= 1939/09/01
-; Kiel
+; Kiel-Port(167,69)
 #FRIENDLY_POSITION= 167,69
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -1692,9 +1687,9 @@
 #GOAL_POSITION= 186,56
 #GOAL_POSITION= 186,56
 #DATE= 1939/09/01
-; Kiel
+; Kiel-Port(167,69)
 #FRIENDLY_POSITION= 167,69
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -1719,20 +1714,19 @@
 #RANGE= 25
 #NAVAL_CRUISE= 0
 #UNIT_ID= 0
-; Narvik
+; Narvik-Port(180,19)
 #GOAL_POSITION= 180,19
 #GOAL_POSITION= 161,61
 #GOAL_POSITION= 154,48
 #GOAL_POSITION= 157,25
 #GOAL_POSITION= 161,18
 #DATE= 1942/08/16
-; Stettin
-; Narvik
+; Stettin-Port(175,71)
 #FRIENDLY_POSITION= 175,71
+; Narvik-Port(180,19)
 #FRIENDLY_POSITION= 180,19
-; Germany(45) Axis and not surrendered AND
-; USSR(116) Allied and not surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
+; Germany(45) Axis, Not Surrendered AND
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -1757,12 +1751,12 @@
 #RANGE= 5
 #NAVAL_CRUISE= 0
 #UNIT_ID= 36
-; Venice (Port)
+; Venice-Port
 #GOAL_POSITION= 171,94
 #DATE= 1939/09/01
-; Taranto(180,105)
+; Taranto-Port(180,105)
 #FRIENDLY_POSITION= 180,105
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Rome(171,101) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 171,101 [3]
@@ -1787,12 +1781,12 @@
 #RANGE= 5
 #NAVAL_CRUISE= 0
 #UNIT_ID= 39
-; Trieste (Port)
+; Trieste-Port
 #GOAL_POSITION= 172,93
 #DATE= 1939/09/01
 ; Genoa
 #FRIENDLY_POSITION= 164,96
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Rome(171,101) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 171,101 [3]
@@ -1823,12 +1817,12 @@
 #NAVAL_CRUISE= 0
 ; Destroyer(40)
 #UNIT_ID= 40
-; Ancona (Port)
+; Ancona-Port
 #GOAL_POSITION= 172,94
 #DATE= 1939/09/01
 ; Ancona
 #FRIENDLY_POSITION= 174,98
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Rome(171,101) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 171,101 [3]
@@ -1864,7 +1858,7 @@
 #DATE= 1940/01/01
 ; Palermo (Port Area)
 #FRIENDLY_POSITION= 173,107
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
@@ -1889,12 +1883,12 @@
 #RANGE= 5
 #NAVAL_CRUISE= 0
 #UNIT_ID= 43
-; Ancona (Port)
+; Ancona-Port
 #GOAL_POSITION= 174,98
 #DATE= 1939/09/01
 ; Palermo
 #FRIENDLY_POSITION= 174,109
-; Germany(45) Axis and not surrendered (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Rome(171,101) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 171,101 [3]
@@ -1919,16 +1913,16 @@
 #RANGE= 25
 #NAVAL_CRUISE= 0
 #UNIT_ID= 0
-; Venice (Port)
+; Venice-Port
 #GOAL_POSITION= 171,94
 #DATE= 1940/01/01
-; Pola (Port)
+; Pola-Port
 ; Rome(171,101)
 ; Berlin(173,74)
 ; Brest
 ; Paris(151,84)
-; Bordeaux
-; Palermo
+; Bordeaux(145,94)
+; Palermo(173,109)
 ; Taranto(180,105)
 ; Benghazi
 ; Belgrade (pulls Italian units away early otherwise)
@@ -1944,8 +1938,8 @@
 #FRIENDLY_POSITION= 186,122
 #FRIENDLY_POSITION= 187,94
 #FRIENDLY_POSITION= 176,91
-; France(40) Allied and surrendered AND
-; Germany(45) Axis and not surrendered
+; France(40) Allied, Surrendered AND
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened AND
@@ -1974,15 +1968,13 @@
 #RANGE= 25
 #NAVAL_CRUISE= 0
 #UNIT_ID= 0
-; Tobruk (Port)
+; Tobruk-Port
 #GOAL_POSITION= 195,121
 #DATE= 1941/06/01
 ; Venice
 #FRIENDLY_POSITION= 171,94
-; France(40) Allied and surrendered AND
-; Germany(45) Axis and not surrendered
+; France(40) Allied, Surrendered AND
 #VARIABLE_CONDITION= 40 [2] [100] [1]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Rome(171,101) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 171,101 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
@@ -2007,13 +1999,13 @@
 #RANGE= 25
 #NAVAL_CRUISE= 0
 #UNIT_ID= 0
-; Tobruk (Port)
+; Tobruk-Port
 #GOAL_POSITION= 195,121
 #DATE= 1941/11/01
 ; Venice
 #FRIENDLY_POSITION= 171,94
-; France(40) Allied and surrendered AND
-; Germany(45) Axis and not surrendered
+; France(40) Allied, Surrendered AND
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Rome(171,101) not tactically threatened (dummy condition)
@@ -2045,14 +2037,13 @@
 #GOAL_POSITION= 51,96
 #GOAL_POSITION= 70,92
 #DATE= 1939/09/01
-; Halifax (Port)
+; Halifax-Port
 #FRIENDLY_POSITION= 30,96
-; Canada(21) Allied and not surrendered
+; Canada(21) Allied, Not Surrendered
 #VARIABLE_CONDITION= 21 [2] [100] [0]
 ; Ottawa not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 6,93 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set dummy cancel position
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
 
@@ -2083,8 +2074,8 @@
 #DATE= 1943/12/20
 ; Rosyth
 #FRIENDLY_POSITION= 140,64
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -2118,8 +2109,8 @@
 #DATE= 1943/12/20
 ; Mid Atlantic
 #FRIENDLY_POSITION= 97,76
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -2153,8 +2144,8 @@
 #DATE= 1942/12/13
 ; Rosyth
 #FRIENDLY_POSITION= 140,64
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -2187,8 +2178,8 @@
 #DATE= 1942/12/13
 ; Mid Atlantic
 #FRIENDLY_POSITION= 97,76
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -2234,7 +2225,7 @@
 #FRIENDLY_POSITION= 205,123
 #FRIENDLY_POSITION= 167,112
 #FRIENDLY_POSITION= 172,121
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
@@ -2262,9 +2253,9 @@
 ; Liverpool
 #GOAL_POSITION= 139,71
 #DATE= 1940/05/25
-; Bristol (Port)
+; Bristol-Port
 #FRIENDLY_POSITION= 141,77
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
@@ -2298,13 +2289,13 @@
 #DATE= 1940/05/01
 ; Liverpool
 #FRIENDLY_POSITION= 140,72
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
-; 2 Axis units within range of Brest (Port) OR
-; 2 Axis units within range of Cherbourg (Port) OR
-; 2 Axis units within range of Calais (Port) OR
+; 2 Axis units within range of Brest-Port OR
+; 2 Axis units within range of Cherbourg-Port OR
+; 2 Axis units within range of Calais-Port OR
 ; 2 Axis units within range of St Gerorge's Channel OR
 ; 2 Axis units within range of English Channel
 #ACTIVATE_POSITION= 138,87 [5,5] [2,2] [1]
@@ -2333,12 +2324,12 @@
 #RANGE= 5
 #NAVAL_CRUISE= 0
 #UNIT_ID= 0
-; Port Said (Hold Fleet Here)
+;-Port Said (Hold Fleet Here)
 #GOAL_POSITION= 209,122
 #DATE= 1939/09/01
 ; Alexandria
 #FRIENDLY_POSITION= 205,123
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
@@ -2369,16 +2360,16 @@
 #GOAL_POSITION= 137,114
 #GOAL_POSITION= 126,87
 #DATE= 1941/01/01
-; Suez (Port)
-; Gibraltar (Port)(137,114)
+; Suez-Port
+; Gibraltar-Port(137,114)
 #FRIENDLY_POSITION= 210,127
 #FRIENDLY_POSITION= 137,114
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened
 #TACTICAL_CONDITION= 147,77 [3]
 ; 1 or more Axis units within range of Alexandria OR
-; 1 or more units within range of Cairo
+; 1 or more units within range of Cairo(208,126)
 #ACTIVATE_POSITION= 206,124 [1,1] [1,1] [1]
 #ACTIVATE_POSITION= 208,126 [2,2] [2,2] [1]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
@@ -2404,14 +2395,14 @@
 #GOAL_POSITION= 136,72
 #GOAL_POSITION= 218,136
 #DATE= 1941/01/01
-; Suez (Port)
+; Suez-Port
 #FRIENDLY_POSITION= 210,127
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened
 #TACTICAL_CONDITION= 147,77 [3]
 ; 1 or more Axis units within range of Alexandria OR
-; 1 or more units within range of Cairo
+; 1 or more units within range of Cairo(208,126)
 #ACTIVATE_POSITION= 206,124 [1,1] [1,1] [1]
 #ACTIVATE_POSITION= 208,126 [2,2] [2,2] [1]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
@@ -2439,7 +2430,7 @@
 #DATE= 1941/01/01
 ; Red Sea
 #FRIENDLY_POSITION= 214,131
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened
 #TACTICAL_CONDITION= 147,77 [3]
@@ -2470,9 +2461,9 @@
 #GOAL_POSITION= 205,123
 #GOAL_POSITION= 175,115
 #DATE= 1939/09/01
-; Gibraltar (Port)(137,114)
+; Gibraltar-Port(137,114)
 #FRIENDLY_POSITION= 137,114
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
@@ -2505,10 +2496,10 @@
 #GOAL_POSITION= 125,69
 #GOAL_POSITION= 131,56
 #DATE= 1941/06/09
-; Gibraltar (Port)(137,114)
+; Gibraltar-Port(137,114)
 #FRIENDLY_POSITION= 137,114
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -2538,9 +2529,9 @@
 ; Scapa Flow
 #GOAL_POSITION= 140,56
 #DATE= 1939/09/01
-; Glasgow (Port)
+; Glasgow-Port
 #FRIENDLY_POSITION= 137,65
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
@@ -2570,8 +2561,8 @@
 #DATE= 1941/06/09
 ; Halfax
 #FRIENDLY_POSITION= 30,96
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -2603,8 +2594,8 @@
 #DATE= 1941/06/09
 ; Reykjavik
 #FRIENDLY_POSITION= 103,36
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -2645,15 +2636,15 @@
 #DATE= 1940/07/01
 ; Alexandria
 #FRIENDLY_POSITION= 205,123
-; UK(112) Allied and not surrendered AND
-; Italy(59) Axis and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; Italy(59) Axis, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 ; Axis units in range of Alexandria OR
-; Axis units in range of Cairo
+; Axis units in range of Cairo(208,126)
 #CANCEL_POSITION= 206,124 [1,1] [1,1] [1]
 #CANCEL_POSITION= 208,126 [2,2] [1,1] [1]
 }
@@ -2689,15 +2680,15 @@
 #DATE= 1941/06/09
 ; Alexandria
 #FRIENDLY_POSITION= 205,123
-; UK(112) Allied and not surrendered AND
-; Italy(59) Axis and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; Italy(59) Axis, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 ; Axis units in range of Alexandria OR
-; Axis units in range of Cairo
+; Axis units in range of Cairo(208,126)
 #CANCEL_POSITION= 206,124 [1,1] [1,1] [1]
 #CANCEL_POSITION= 208,126 [2,2] [1,1] [1]
 }
@@ -2735,15 +2726,15 @@
 ; Malta
 #FRIENDLY_POSITION= 205,123
 #FRIENDLY_POSITION= 175,114
-; UK(112) Allied and not surrendered AND
-; Italy(59) Axis and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; Italy(59) Axis, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 ; Axis units in range of Alexandria OR
-; Axis units in range of Cairo
+; Axis units in range of Cairo(208,126)
 #CANCEL_POSITION= 206,124 [1,1] [1,1] [1]
 #CANCEL_POSITION= 208,126 [2,2] [1,1] [1]
 }
@@ -2765,12 +2756,12 @@
 #RANGE= 5
 #NAVAL_CRUISE= 0
 #UNIT_ID= 43
-; Suez Port(210,127)
+; Suez-Port(210,127)
 #GOAL_POSITION= 210,127
 #DATE= 1939/09/01
 ; Suez
 #FRIENDLY_POSITION= 210,127
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
@@ -2810,13 +2801,13 @@
 #DATE= 1940/01/01
 ; Malta
 #FRIENDLY_POSITION= 176,115
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 ; Axis units in range of Alexandria OR
-; Axis units in range of Cairo
+; Axis units in range of Cairo(208,126)
 #CANCEL_POSITION= 206,124 [1,1] [1,1] [1]
 #CANCEL_POSITION= 208,126 [2,2] [1,1] [1]
 }
@@ -2856,18 +2847,18 @@
 #DATE= 1939/09/01
 ; Clydeside
 #FRIENDLY_POSITION= 137,65
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 2 Axis units within range of Brest (Port) OR
-; 2 Axis units within range of Cherbourg (Port) OR
-; 2 Axis units within range of Calais (Port) OR
+; 2 Axis units within range of Brest-Port OR
+; 2 Axis units within range of Cherbourg-Port OR
+; 2 Axis units within range of Calais-Port OR
 ; 2 Axis units within range of St Gerorge's Channel OR
 ; 2 Axis units within range of English Channel OR
-; 2 Axis units within range of Antwerp (Port) OR
-; 2 Axis units within range of The Hague (Port)
+; 2 Axis units within range of Antwerp-Port OR
+; 2 Axis units within range of The Hague-Port
 #CANCEL_POSITION= 138,87 [5,5] [2,2] [1]
 #CANCEL_POSITION= 144,82 [5,5] [2,2] [1]
 #CANCEL_POSITION= 150,80 [3,3] [2,2] [1]
@@ -2911,18 +2902,18 @@
 #DATE= 1939/09/01
 ; Plymouth
 #FRIENDLY_POSITION= 137,80
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 2 Axis units within range of Brest (Port) OR
-; 2 Axis units within range of Cherbourg (Port) OR
-; 2 Axis units within range of Calais (Port) OR
+; 2 Axis units within range of Brest-Port OR
+; 2 Axis units within range of Cherbourg-Port OR
+; 2 Axis units within range of Calais-Port OR
 ; 2 Axis units within range of St Gerorge's Channel OR
 ; 2 Axis units within range of English Channel OR
-; 2 Axis units within range of Antwerp (Port) OR
-; 2 Axis units within range of The Hague (Port)
+; 2 Axis units within range of Antwerp-Port OR
+; 2 Axis units within range of The Hague-Port
 #CANCEL_POSITION= 138,87 [5,5] [2,2] [1]
 #CANCEL_POSITION= 144,82 [5,5] [2,2] [1]
 #CANCEL_POSITION= 150,80 [3,3] [2,2] [1]
@@ -2958,11 +2949,11 @@
 #DATE= 1941/01/01
 ; Rosyth
 #FRIENDLY_POSITION= 140,64
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
-; 3 Axis units within range of Kristiansand (Port)
+; 3 Axis units within range of Kristiansand-Port
 #ACTIVATE_POSITION= 163,58 [8,8] [3,3] [1]
 ; Preparing for Amphibious Assaults, routines at the top will run instead
 #CANCEL_POSITION= 147,77 [20,20] [20,20] [2]
@@ -2994,12 +2985,12 @@
 #DATE= 1940/05/01
 ; Rosyth
 #FRIENDLY_POSITION= 140,64
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
-; 2 Axis units within range of Antwerp (Port) OR
-; 2 Axis units within range of The Hague (Port)
+; 2 Axis units within range of Antwerp-Port OR
+; 2 Axis units within range of The Hague-Port
 #ACTIVATE_POSITION= 154,78 [5,5] [2,2] [1]
 #ACTIVATE_POSITION= 154,76 [5,5] [2,2] [1]
 ; Preparing for Amphibious Assaults, routines at the top will run instead
@@ -3034,21 +3025,21 @@
 #GOAL_POSITION= 53,66
 #GOAL_POSITION= 81,119
 #GOAL_POSITION= 81,98
-#DATE= 1942/1/21
+#DATE= 1942/01/21
 ; Scapa Flow
 #FRIENDLY_POSITION= 141,56
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 2 Axis units within range of Brest (Port) OR
-; 2 Axis units within range of Cherbourg (Port) OR
-; 2 Axis units within range of Calais (Port) OR
+; 2 Axis units within range of Brest-Port OR
+; 2 Axis units within range of Cherbourg-Port OR
+; 2 Axis units within range of Calais-Port OR
 ; 2 Axis units within range of Le Havre OR
 ; 2 Axis units within range of St. Malo OR
-; 2 Axis units within range of Antwerp (Port) OR
-; 2 Axis units within range of The Hague (Port)
+; 2 Axis units within range of Antwerp-Port OR
+; 2 Axis units within range of The Hague-Port
 #CANCEL_POSITION= 138,87 [2,2] [2,2] [1]
 #CANCEL_POSITION= 144,82 [2,2] [2,2] [1]
 #CANCEL_POSITION= 150,80 [2,2] [2,2] [1]
@@ -3078,20 +3069,20 @@
 ; Liverpool (Port Area)
 #GOAL_POSITION= 139,70
 #DATE= 1941/01/01
-; Portsmouth (Port)
+; Portsmouth-Port
 #FRIENDLY_POSITION= 143,79
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 2 Axis units within range of Antwerp (Port) OR
-; 2 Axis units within range of The Hague (Port)
+; 2 Axis units within range of Antwerp-Port OR
+; 2 Axis units within range of The Hague-Port
 #CANCEL_POSITION= 154,78 [5,5] [2,2] [1]
 #CANCEL_POSITION= 154,76 [5,5] [2,2] [1]
-; 2 Axis units within range of Brest (Port) OR
-; 2 Axis units within range of Cherbourg (Port) OR
-; 2 Axis units within range of Calais (Port) OR
+; 2 Axis units within range of Brest-Port OR
+; 2 Axis units within range of Cherbourg-Port OR
+; 2 Axis units within range of Calais-Port OR
 ; 2 Axis units within range of St Gerorge's Channel OR
 ; 2 Axis units within range of English Channel
 #CANCEL_POSITION= 138,87 [5,5] [2,2] [1]
@@ -3121,9 +3112,9 @@
 ; Rosyth (Port Area)
 #GOAL_POSITION= 142,63
 #DATE= 1939/09/01
-; Portsmouth (Port)
+; Portsmouth-Port
 #FRIENDLY_POSITION= 143,79
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
@@ -3153,7 +3144,7 @@
 #DATE= 1942/09/06
 ; Scapa Flow
 #FRIENDLY_POSITION= 141,56
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
@@ -3183,7 +3174,7 @@
 #DATE= 1942/09/06
 ; Scapa Flow
 #FRIENDLY_POSITION= 141,56
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
@@ -3214,7 +3205,7 @@
 #DATE= 1939/09/01
 ; Liverpool
 #FRIENDLY_POSITION= 140,72
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
@@ -3245,7 +3236,7 @@
 #DATE= 1939/09/01
 ; Scapa Flow
 #FRIENDLY_POSITION= 141,56
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
@@ -3275,8 +3266,8 @@
 #DATE= 1941/06/09
 ; St. Johns
 #FRIENDLY_POSITION= 52,89
-; UK(112) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; UK(112) Allied, Mobilized, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -3308,7 +3299,7 @@
 #DATE= 1939/09/01
 ; Valletta
 #FRIENDLY_POSITION= 176,115
-; UK(112) Allied and not surrendered
+; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 147,77 [3]
@@ -3318,7 +3309,7 @@
 }
 
 ; 75% Algiers - Gibraltar not held by Axis
-; 20% Casablanca - Gibraltar not held by Allies
+; 20% Casablanca(131,119) - Gibraltar not held by Allies
 ; 20% Lagos - Gibraltar not held by Allies
 ; 20% Porto - Gibraltar not held by Allies
 ; 20% Bordeaux - Gibraltar not held by Allies
@@ -3346,12 +3337,12 @@
 #GOAL_POSITION= 57,110
 ; Date set to after Vichy amphibious events
 #DATE= 1942/06/28
-; New York(10,104) (Port)
-; Gibraltar (Port)(137,114)
+; New York-Port(10,105)
+; Gibraltar-Port(137,114)
 #FRIENDLY_POSITION= 10,105
 #FRIENDLY_POSITION= 137,114
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Washington DC(4,108) not tactically threatened
@@ -3401,8 +3392,8 @@
 #DATE= 1943/12/20
 ; Liverpool
 #FRIENDLY_POSITION= 140,72
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -3435,8 +3426,8 @@
 #DATE= 1943/12/20
 ; Mid Atlantic
 #FRIENDLY_POSITION= 87,89
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -3478,8 +3469,8 @@
 #DATE= 1942/12/13
 ; Liverpool
 #FRIENDLY_POSITION= 140,72
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -3512,8 +3503,8 @@
 #DATE= 1942/12/13
 ; Mid Atlantic
 #FRIENDLY_POSITION= 87,89
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -3546,8 +3537,8 @@
 #DATE= 1943/01/01
 ; South Atlantic
 #FRIENDLY_POSITION= 110,113
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -3585,10 +3576,10 @@
 #GOAL_POSITION= 141,94
 ; Date set to after Vichy amphibious events
 #DATE= 1942/06/28
-; New York(10,104) (Port)
+; New York-Port(10,105)
 #FRIENDLY_POSITION= 10,105
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Washington DC(4,108) not tactically threatened
@@ -3619,7 +3610,7 @@
 #RANGE= 40
 #NAVAL_CRUISE= 0
 #UNIT_ID= 0
-; Casablanca (off shore)
+; Casablanca(131,119) (off shore)
 #GOAL_POSITION= 131,115
 #GOAL_POSITION= 19,108
 #GOAL_POSITION= 38,110
@@ -3630,10 +3621,10 @@
 #GOAL_POSITION= 131,115
 ; Date set to after Vichy amphibious events
 #DATE= 1942/06/28
-; New York(10,104) (Port)
+; New York-Port(10,105)
 #FRIENDLY_POSITION= 10,105
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Washington DC(4,108) not tactically threatened
@@ -3675,10 +3666,10 @@
 #GOAL_POSITION= 130,115
 ; Date set to after Vichy amphibious events
 #DATE= 1942/06/28
-; New York(10,104) (Port)
+; New York-Port(10,105)
 #FRIENDLY_POSITION= 10,105
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Washington DC(4,108) not tactically threatened
@@ -3716,14 +3707,14 @@
 #GOAL_POSITION= 183,109
 ; Date set to after Vichy amphibious events
 #DATE= 1942/06/28
-; Algiers(152,113) (Port)
+; Algiers-Port(152,112)
 ; Tunis(167,112)
 ; Tripoli(172,121)
 #FRIENDLY_POSITION= 152,112
 #FRIENDLY_POSITION= 167,112
 #FRIENDLY_POSITION= 172,121
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Washington DC(4,108) not tactically threatened
@@ -3764,10 +3755,10 @@
 #GOAL_POSITION= 125,102
 ; Date set to after Vichy amphibious events
 #DATE= 1942/06/28
-; New York(10,104) (Port)
+; New York-Port(10,105)
 #FRIENDLY_POSITION= 10,105
-; USA(115) Allied and not surrendered AND
-; France(40) Allied and surrendered
+; USA(115) Allied, Not Surrendered AND
+; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Washington DC(4,108) not tactically threatened
@@ -3802,9 +3793,9 @@
 ; Boston (offshore)
 #GOAL_POSITION= 19,100
 #DATE= 1943/01/01
-; Reykyavik (Port)
+; Reykyavik-Port
 #FRIENDLY_POSITION= 103,36
-; USA(115) Allied and not surrendered
+; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
@@ -3833,9 +3824,9 @@
 ; Boston (offshore)
 #GOAL_POSITION= 19,99
 #DATE= 1943/01/01
-; St. John's (Port)
+; St. John's-Port
 #FRIENDLY_POSITION= 52,89
-; USA(115) Allied and not surrendered
+; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
@@ -3874,9 +3865,9 @@
 ; Date set to a little after Vichy Amphibious
 ; events so they don't interfere with each other
 #DATE= 1942/08/09
-; New York(10,104) (Port)
+; New York-Port(10,105)
 #FRIENDLY_POSITION= 10,105
-; USA(115) Allied and not surrendered
+; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
@@ -3916,9 +3907,9 @@
 ; Date set to a little after Vichy Amphibious
 ; events so they don't interfere with each other
 #DATE= 1943/01/01
-; New York(10,104) (Port)
+; New York-Port(10,105)
 #FRIENDLY_POSITION= 10,105
-; USA(115) Allied and not surrendered
+; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
@@ -3957,10 +3948,10 @@
 #GOAL_POSITION= 129,63
 ; Date set for later transport events
 #DATE= 1943/02/25
-; New York(10,104) (Port)
+; New York-Port(10,105)
 #FRIENDLY_POSITION= 10,105
 #FRIENDLY_POSITION= 137,65
-; USA(115) Allied and not surrendered
+; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
@@ -3999,10 +3990,10 @@
 #GOAL_POSITION= 129,63
 ; Date set for later transport events
 #DATE= 1943/02/25
-; New York(10,104) (Port)
+; New York-Port(10,105)
 #FRIENDLY_POSITION= 10,105
 #FRIENDLY_POSITION= 137,65
-; USA(115) Allied and not surrendered
+; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
@@ -4041,9 +4032,9 @@
 ; Date set to a little after Vichy Amphibious
 ; events so they don't interfere with each other
 #DATE= 1943/02/25
-; New York(10,104) (Port)
+; New York-Port(10,105)
 #FRIENDLY_POSITION= 10,105
-; USA(115) Allied and not surrendered
+; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
@@ -4078,9 +4069,9 @@
 #GOAL_POSITION= 173,4
 #GOAL_POSITION= 161,18
 #DATE= 1941/01/01
-; Archangel (Port)
+; Archangel-Port
 #FRIENDLY_POSITION= 226,35
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Perm(257,58) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 257,58 [3]
@@ -4113,9 +4104,9 @@
 #GOAL_POSITION= 173,4
 #GOAL_POSITION= 161,18
 #DATE= 1942/01/01
-; Archangel (Port)
+; Archangel-Port
 #FRIENDLY_POSITION= 226,35
-; USSR(116) Allied and not surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Perm(257,58) not tactically threatened (dummy condition)
 #TACTICAL_CONDITION= 257,58 [3]
@@ -4154,9 +4145,9 @@
 #GOAL_POSITION= 133,82
 #GOAL_POSITION= 133,78
 #DATE= 1941/09/23
-; Halifax (Port)
+; Halifax-Port
 #FRIENDLY_POSITION= 30,96
-; USA(115) Allied and not surrendered
+; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
@@ -4195,9 +4186,9 @@
 #GOAL_POSITION= 131,63
 #GOAL_POSITION= 131,63
 #DATE= 1942/07/12
-; Halifax (Port)
+; Halifax-Port
 #FRIENDLY_POSITION= 30,96
-; USA(115) Allied and not surrendered
+; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
@@ -4242,7 +4233,7 @@
 #DATE= 1941/09/23
 ; Irish Sea
 #FRIENDLY_POSITION= 136,71
-; USA(115) Allied and not surrendered
+; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
@@ -4284,9 +4275,9 @@
 #GOAL_POSITION= 133,82
 #GOAL_POSITION= 133,78
 #DATE= 1941/09/23
-; New York(10,104) (Port)
+; New York-Port(10,105)
 #FRIENDLY_POSITION= 10,105
-; USA(115) Allied and not surrendered
+; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
@@ -4325,9 +4316,9 @@
 #GOAL_POSITION= 131,63
 #GOAL_POSITION= 131,63
 #DATE= 1942/07/12
-; New York(10,104) (Port)
+; New York-Port(10,105)
 #FRIENDLY_POSITION= 10,105
-; USA(115) Allied and not surrendered
+; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
@@ -4363,11 +4354,11 @@
 #GOAL_POSITION= 133,66
 #GOAL_POSITION= 133,66
 #DATE= 1941/01/20
-; New York(10,104) (Port)
-; Glasgow (Port)
+; New York-Port(10,105)
+; Glasgow-Port
 #FRIENDLY_POSITION= 10,105
 #FRIENDLY_POSITION= 137,65
-; USA(115) Allied and not surrendered
+; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
@@ -4403,12 +4394,11 @@
 #GOAL_POSITION= 144,65
 #GOAL_POSITION= 145,59
 #DATE= 1941/04/26
-; Set friendly positions
-; New York(10,104) (Port)
-; Inverness (Port)
+; New York-Port(10,105)
+; Inverness-Port
 #FRIENDLY_POSITION= 10,105
 #FRIENDLY_POSITION= 139,59
-; USA(115) Allied and not surrendered
+; USA(115) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
