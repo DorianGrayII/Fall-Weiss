@@ -272,6 +272,8 @@
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+; This event has 35% chance to fire beginning 1941/02/01
+;
 ; Historic Date: 1941/03
 {
 #NAME= Bulgaria: Bulgaria Joins The Axis (35%)
@@ -315,11 +317,13 @@
 #ALIGNMENT= 2
 #DATE= 1939/09/10
 ; UK(112) Allied, Mobilized, Not Surrendered AND
-; France(40) Allied, Not Surrendered AND
+; France(40) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 }
 
+; This event has 35% chance to fire beginning 1940/10/20
+;
 ; Historic Date: 1940/11/20
 {
 #NAME= Hungary: Hungary Joins The Axis (35%)
@@ -367,6 +371,8 @@
 #VARIABLE_CONDITION= 105 [1] [100] [0]
 }
 
+;  This event has 35% chance to fire beginning 1940/10/23
+;
 ; The territorial concessions of 1940 produced deep sorrow and resentment among Romanians
 ; and hastened the decline in popularity of the regime led by King Carol II of Romania.
 ; Three days after the annexation, Romania renounced the 1939 Anglo-French guarantee.
@@ -391,6 +397,7 @@
 #DATE= 1940/10/23
 ; Poland(85) Allied, Surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
+; Romania(93) Axis
 #VARIABLE_CONDITION= 93 [1] [0] [0]
 }
 
@@ -409,8 +416,8 @@
 #TRIGGER= 50
 #ALIGNMENT= 1
 #DATE= 1942/05/01
-; Iraq Axis, Not Surrendered
-; Turkey Axis, Not Surrendered
+; Iraq Axis, Mobilized, Not Surrendered
+; Turkey Axis, Mobilized, Not Surrendered
 ; Syria(105) Axis
 #VARIABLE_CONDITION= 56 [1] [100] [0]
 #VARIABLE_CONDITION= 111 [1] [100] [0]
@@ -488,11 +495,12 @@
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 450[1]
+; Finland(39)
 #COUNTRY_ID= 39
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1939/09/01
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 }
 
@@ -508,6 +516,7 @@
 #GV= 1[1,100]
 ; Entice Spain To Enter The War?
 #LINK= 603[1]
+; Spain(99)
 #COUNTRY_ID= 99
 #TRIGGER= 100
 #ALIGNMENT= 1
@@ -517,6 +526,7 @@
 }
 
 ; Historic Date: 1941/03
+;
 ; https://en.wikipedia.org/wiki/Bulgaria_during_World_War_II
 ; https://history.army.mil/books/wwii/balkan/20_260_1.htm
 {
@@ -540,6 +550,8 @@
 }
 
 ; Historic Date: 1941/03
+;
+; This event has 35% to fire beginning 1941/03/01
 {
 #NAME= DE 611 - Bulgaria: Bulgaria Joins The Axis (2) (35%)
 #POPUP= Bulgaria Signs The Tripartite Pact
@@ -712,7 +724,6 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Portugal(82)
 #VARIABLE_CONDITION= 87 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
 }
 
 {
@@ -734,7 +745,6 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Portugal(87), Axis, Surrendered
 #VARIABLE_CONDITION= 87 [1] [100] [1]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
 }
 
 {
@@ -754,7 +764,7 @@
 #TRIGGER= 100
 #ALIGNMENT= 1
 #DATE= 1939/09/01
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 ; Finland(39) Axis
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [0] [0]

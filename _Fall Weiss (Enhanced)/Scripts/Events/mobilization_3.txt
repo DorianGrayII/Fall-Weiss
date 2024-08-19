@@ -277,8 +277,8 @@
 
 
 {
-#NAME= Latvia Surrendered To Axis (Continuous) (USSR->Allies)
-#POPUP= USSR grows concerned regarding Axis aggression towards Latvia
+#NAME= Latvia Conquered by the Axis (Continuous) (USSR->Allies) (90%)
+#POPUP= USSR grows concerned regarding the Axis Conquest of Latvia
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -289,7 +289,7 @@
 #LEVEL= 0
 ; USSR(116)
 #COUNTRY_ID= 116
-#TRIGGER= 100
+#TRIGGER= 90
 #DATE= 1939/09/01
 ; 1-3% mobilization increase towards Allies
 #MOBILIZATION= [1,3] [2]
@@ -299,8 +299,8 @@
 
 
 {
-#NAME= Lithuania Surrendered To Axis (Continuous) (USSR->Allies)
-#POPUP= USSR grows concerned regarding Axis aggression towards Lithuania
+#NAME= Lithuania Conquered by the Axis (Continuous) (USSR->Allies) (90%)
+#POPUP= USSR grows concerned regarding the Axis  Conquest of Lithuania
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -311,7 +311,7 @@
 #LEVEL= 0
 ; USSR(116)
 #COUNTRY_ID= 116
-#TRIGGER= 100
+#TRIGGER= 90
 #DATE= 1939/09/01
 ; 1-3% mobilization increase towards Allies
 #MOBILIZATION= [1,3] [2]
@@ -320,8 +320,8 @@
 }
 
 {
-#NAME= [FW]Estonia Surrendered To Axis (Continuous) (USSR->Allies)
-#POPUP= USSR grows concerned regarding the Axis aggression towards Estonia
+#NAME= [FW]Estonia Conquered Axis (Continuous) (USSR->Allies) (90%)
+#POPUP= USSR grows concerned regarding the Axis Conquest of Estonia
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -332,7 +332,7 @@
 #LEVEL= 0
 ; USSR(116)
 #COUNTRY_ID= 116
-#TRIGGER= 100
+#TRIGGER= 90
 #DATE= 1939/09/01
 ; 1-3% mobilization increase towards Allies
 #MOBILIZATION= [1,3] [2]
@@ -400,8 +400,8 @@
 #COUNTRY_ID= 120
 #TRIGGER= 100
 #DATE= 1939/09/01
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
+; 8-12% mobilization increase towards Axis
+#MOBILIZATION= [8,12] [1]
 ; Bulgaria(19) Axis, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 19 [1] [100] [0]
 }
@@ -421,8 +421,8 @@
 #COUNTRY_ID= 120
 #TRIGGER= 100
 #DATE= 1939/09/01
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
+; 8-12% mobilization increase towards Axis
+#MOBILIZATION= [8,12] [1]
 ; Romania(93) Axis, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 93 [1] [100] [0]
 }
@@ -442,8 +442,8 @@
 #COUNTRY_ID= 120
 #TRIGGER= 100
 #DATE= 1939/09/01
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
+; 8-12% mobilization increase towards Axis
+#MOBILIZATION= [8,12] [1]
 ; Italy(59) Axis, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 }
@@ -457,16 +457,39 @@
 #TYPE= 1
 #AI= 0
 #GV= 1[1,100]
+; Resolved in favor of Romania
 #LINK= 611[0]
 #LEVEL= 0
 ; Yugoslavia(120)
 #COUNTRY_ID= 120
 #TRIGGER= 100
 #DATE= 1939/09/01
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
+; 8-12% mobilization increase towards Axis
+#MOBILIZATION= [8,12] [1]
 ; Germany(45) Axis, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= [FW]DE 611 - Yugoslavia Swings Towards The Axis With The Second Vienna Award (Yugoslavia->Axis)
+#POPUP= Yugoslavia Swings Towards The Axis With The Second Vienna Award
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+; Resolved in favor of Hungary
+#LINK= 611[1]
+#LEVEL= 0
+; Yugoslavia(120)
+#COUNTRY_ID= 120
+#TRIGGER= 100
+#DATE= 1939/09/01
+; 8-12% mobilization increase towards Axis
+#MOBILIZATION= [8,12] [1]
+; France(40) Allied, Surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
 }
 
 {
@@ -484,31 +507,10 @@
 #COUNTRY_ID= 120
 #TRIGGER= 100
 #DATE= 1939/09/01
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
+; 8-12% mobilization increase towards Axis
+#MOBILIZATION= [8,12] [1]
 ; Greece(46) Allied, Surrendered
 #VARIABLE_CONDITION= 46 [2] [100] [1]
-}
-
-{
-#NAME= [FW]DE 611 - Yugoslavia Swings Towards The Axis With The Second Vienna Award (Yugoslavia->Axis)
-#POPUP= Yugoslavia Swings Towards The Axis With The Second Vienna Award
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#GV= 1[1,100]
-#LINK= 611[1]
-#LEVEL= 0
-; Yugoslavia(120)
-#COUNTRY_ID= 120
-#TRIGGER= 100
-#DATE= 1939/09/01
-; 10-15% mobilization increase towards Axis
-#MOBILIZATION= [10,15] [1]
-; Germany(45) Axis, Mobilized, Not Surrendered
-#VARIABLE_CONDITION= 45 [1] [100] [0]
 }
 
 {
@@ -557,7 +559,7 @@
 
 {
 #NAME= Italian 1940 Mobilization (1) (Continuous) (Italy->Axis)
-#POPUP= TEST: Italian 1940 Mobilization (1) (Continuous) (Italy->Axis)
+#POPUP=
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -618,7 +620,6 @@
 #VARIABLE_CONDITION= 59 [1] [100] [1]
 }
 
-
 {
 #NAME= Italy's Surrender Reduces Franco's Enthusiasm For The Axis (Spain->Allies)
 #POPUP= Italy's Surrender Reduces Franco's Enthusiasm For The Axis
@@ -658,7 +659,6 @@
 ; Italy(59) Axis, Surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [1]
 }
-
 
 {
 #NAME= Pearl Harbor Attack (USA->Allies)
@@ -718,7 +718,7 @@
 #MOBILIZATION= [20,90] [1]
 ; Egypt(36) Allied, Surrendered AND
 ; Vichy Syria Allied, Surrendered AND
-; Iraq(56) Axis, Not Surrendered
+; Iraq(56) Axis, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 36 [2] [100] [1]
 #VARIABLE_CONDITION= 105 [2] [100] [1]
 #VARIABLE_CONDITION= 56 [1] [100] [0]
@@ -818,10 +818,9 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 }
 
-
 ;   Poland - Has not surrendered
 {
-#NAME= USSR Mobilization 1939-40 (Continuous) (USSR->Allies)
+#NAME= USSR Mobilization 1940 (Continuous) (USSR->Allies)
 #POPUP= TEST: USSR Mobilization 1939-40 (Continuous) (USSR->Allies)
 #IMAGE=
 #SOUND=
@@ -842,7 +841,7 @@
 }
 
 
-;   Poland - has not surrendered
+;   Poland - surrendered
 {
 #NAME= USSR Mobilization 1941 (Continuous) (USSR->Allies) (90%)
 #POPUP= TEST: USSR Mobilization 1941 (Continuous) (USSR->Allies) (90%)
@@ -864,8 +863,6 @@
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 }
 
-;
-; Event for increased USSR mobilization:
 {
 #NAME= USSR Mobilization 1942 (Continuous) (USSR->Allies)
 #POPUP=
@@ -994,10 +991,9 @@
 #DATE= 1939/09/11
 ; 10% activation increase towards Allies
 #MOBILIZATION= [10,10] [2]
-; German Axis and Fully Mobilized
+; German Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 }
-
 
 
 {

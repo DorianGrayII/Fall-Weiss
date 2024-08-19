@@ -456,7 +456,7 @@
 ; Rome(171,101) not tactically threatened AND
 ; Paris(151,84) not tactically threatened AND
 ; Benghazi not tactically threatened (by sea) AND
-; Taranto(180,105) not tactically threatened (by sea)
+; Taranto-Port(180,105) not tactically threatened (by sea)
 #TACTICAL_CONDITION= 173,74 [1]
 #TACTICAL_CONDITION= 171,101 [1]
 #TACTICAL_CONDITION= 151,84 [1]
@@ -596,7 +596,7 @@
 #LENGTH= 10
 #RANGE= 25
 #NAVAL_CRUISE= 1
-; Suez(Port)
+; Suez-Port
 #GOAL_POSITION= 210,127
 #GOAL_POSITION= 49,96
 #GOAL_POSITION= 95,135
@@ -606,7 +606,7 @@
 ;  Ottawa
 ; Suez-Port
 ; El Alamein
-; Alexandria
+; Alexandria(206,124)
 ; Cairo(208,126)
 #FRIENDLY_POSITION= 30,95
 #FRIENDLY_POSITION= 6,93
@@ -642,7 +642,7 @@
 #LENGTH= 10
 #RANGE= 15
 #NAVAL_CRUISE= 1
-; Benghazi(Port)
+; Benghazi-Port(185,122)
 #GOAL_POSITION= 185,122
 #DATE= 1940/01/01
 #STEAL= 3
@@ -968,13 +968,13 @@
 #LENGTH= 10
 #RANGE= 15
 #NAVAL_CRUISE= 1
-; Benghazi(Port)
+; Benghazi-Port(185,122)
 #GOAL_POSITION= 185,122
 #DATE= 1940/01/01
 #STEAL= 3
 ; Jerusalem
 ; Cairo(208,126)
-; Alexandria
+; Alexandria(206,124)
 ; El Alamein
 ; Tobruk(194,122)
 ; Benghazi
@@ -1014,7 +1014,7 @@
 #STEAL= 3
 ; Jerusalem
 ; Cairo(208,126)
-; Alexandria
+; Alexandria(206,124)
 ; El Alamein
 ; Tobruk(194,122)
 ; Tripoli(172,121)
@@ -1048,7 +1048,7 @@
 #LENGTH= 10
 #RANGE= 25
 #NAVAL_CRUISE= 1
-; Suez(Port)
+; Suez-Port(210,127)
 #GOAL_POSITION= 210,127
 #GOAL_POSITION= 95,135
 #DATE= 1940/04/03
@@ -1060,7 +1060,7 @@
 #FRIENDLY_POSITION= 143,86
 #FRIENDLY_POSITION= 141,85
 ; UK(112) Allied, Mobilized, Not Surrendered AND
-; USSR(116) Allied (not fully active), Not Surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -1107,7 +1107,7 @@
 #FRIENDLY_POSITION= 143,86
 #FRIENDLY_POSITION= 141,85
 ; UK(112) Allied, Mobilized, Not Surrendered AND
-; USSR(116) Allied (not fully active), Not Surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; London(147,77) not tactically threatened (dummy condition)
@@ -1272,13 +1272,13 @@
 #LENGTH= 10
 #RANGE= 25
 #NAVAL_CRUISE= 1
-; Le Havre-Port
+; Le Havre-Port(146,82)
 #GOAL_POSITION= 146,82
 ; Date set to post arrival of US HQ/Navy via P/Q
 #DATE= 1942/06/10
 #STEAL= 0
 ; Sheffield
-; Le Havre
+; Le Havre(147,82)
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 147,82
 #FRIENDLY_POSITION= 149,82
@@ -1715,13 +1715,13 @@
 #LENGTH= 10
 #RANGE= 15
 #NAVAL_CRUISE= 1
-; Benghazi(Port)
+; Benghazi-Port(185,122)
 #GOAL_POSITION= 185,122
 #DATE= 1940/01/01
 #STEAL= 3
 ; Jerusalem
 ; Cairo(208,126)
-; Alexandria
+; Alexandria(206,124)
 ; El Alamein
 ; Tobruk(194,122)
 ; Benghazi
@@ -1761,7 +1761,7 @@
 #STEAL= 3
 ; Jerusalem
 ; Cairo(208,126)
-; Alexandria
+; Alexandria(206,124)
 ; El Alamein
 ; Tobruk(194,122)
 ; Tripoli(172,121)
@@ -2271,14 +2271,14 @@
 #LENGTH= 5
 #RANGE= 25
 #NAVAL_CRUISE= 1
-; Le Havre-Port
+; Le Havre-Port(146,82)
 #GOAL_POSITION= 146,82
 ; Date set to a little after Vichy Amphibious
 ; events so they don't interfere with each other
 #DATE= 1942/08/09
 #STEAL= 0
 ; Sheffield(144,73)
-; Le Havre
+; Le Havre(147,82)
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 147,82
 #FRIENDLY_POSITION= 149,82
@@ -2593,7 +2593,7 @@
 #LENGTH= 4
 #RANGE= 25
 #NAVAL_CRUISE= 1
-; Le Havre-Port
+; Le Havre-Port(146,82)
 #GOAL_POSITION= 146,82
 #GOAL_POSITION= 15,107
 #GOAL_POSITION= 54,108
@@ -2603,7 +2603,7 @@
 #DATE= 1942/08/09
 #STEAL= 0
 ; Washington DC(4,108)
-; Le Havre
+; Le Havre(147,82)
 #FRIENDLY_POSITION= 4,108
 #FRIENDLY_POSITION= 147,82
 #FRIENDLY_POSITION= 149,82
@@ -2798,14 +2798,14 @@
 #LENGTH= 10
 #RANGE= 25
 #NAVAL_CRUISE= 1
-; Lisbon-Port
+; Lisbon-Port(127,108)
 #GOAL_POSITION= 127,108
 ; Date set to a little after Vichy Amphibious
 ; events so they don't interfere with each other
 #DATE= 1941/01/01
 #STEAL= 0
 ; Sheffield(144,73)
-; Lisbon(128,108)-Port
+; Lisbon-Port(127,108)
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 127,108
 ; UK(112) Allied, Mobilized, Not Surrendered
@@ -2834,14 +2834,14 @@
 #LENGTH= 10
 #RANGE= 25
 #NAVAL_CRUISE= 1
-; Lisbon-Port
+; Lisbon-Port(127,108)
 #GOAL_POSITION= 127,108
 ; Date set to a little after Vichy Amphibious
 ; events so they don't interfere with each other
 #DATE= 1941/01/01
 #STEAL= 0
 ; Sheffield(144,73)
-; Lisbon(128,108)-Port
+; Lisbon-Port(127,108)
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 127,108
 ; UK(112) Allied, Mobilized, Not Surrendered

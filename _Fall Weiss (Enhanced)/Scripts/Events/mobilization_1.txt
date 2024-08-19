@@ -2142,7 +2142,7 @@
 ; random 50-75% increase in Turkish mobilization towards Allies:
 {
 #NAME= Axis DoW On Iraq (Turkey->>Allies) (25%)
-#POPUP= Turkey Reconsiders Relationship With Axis
+#POPUP= Turkey Reconsiders Its Relationship With The Axis
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -2254,7 +2254,7 @@
 ; random 8-15% increase in USSR mobilization towards Allies:
 {
 #NAME= Axis DoW On Lithuania (USSR->Allies)
-#POPUP= Stalin Alarmed By Axis Aggression - Abandons Molotov-Ribbentrop Pact
+#POPUP= Stalin Is Concerned By The Axis Declaration of War On Lithuania
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -2389,7 +2389,7 @@
 ; random 10-15% increase in Swiss mobilization towards Allies:
 {
 #NAME= Axis DoW On Portugal (Switzerland->Allies) (25%)
-#POPUP= Swiss Government Condemns Latest Axis Act Of Aggression
+#POPUP= Swiss Government Condemns Latest Axis Act Of Aggression Against Portugal
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -2523,7 +2523,7 @@
 ; random 10-15% increase in Swiss mobilization towards Allies:
 {
 #NAME= Axis DoW On Spain (Switzerland->Allies) (25%)
-#POPUP= Switzerland Alarmed By Axis Invasion Of Nearby Spain
+#POPUP= Switzerland Is Concerned By Axis Invasion Of Nearby Spain
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -2567,7 +2567,7 @@
 ; 8-15% increase in US mobilization towards Allies:
 {
 #NAME= Axis DoW On Spain (USA->Allies)
-#POPUP= The US Denounces Axis Aggression In Spain
+#POPUP= The USA Denounces Axis Aggression In Spain
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -2680,7 +2680,7 @@
 ; random 5-10% increase in Spanish mobilization towards Allies:
 {
 #NAME= Axis DoW On Switzerland (Spain->Allies) (75%)
-#POPUP= Franco Is Unhappy With The Axis Decision To Invade Switzerland
+#POPUP= Franco Is Concerned Over The Axis Decision To Invade Switzerland
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -2701,7 +2701,7 @@
 ; random 10-15% increase in Swedish mobilization towards Allies:
 {
 #NAME= Axis DoW On Switzerland (Sweden->Allies) (25%)
-#POPUP= Sweden's Government Vigorously Protests Axis Attack On Switzerland
+#POPUP= Sweden's Government Protests Axis Attack On Switzerland
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -2724,7 +2724,7 @@
 ; 8-15% increase in US mobilization towards Allies:
 {
 #NAME= Axis DoW On Switzerland (USA->Allies)
-#POPUP= US Condemns Axis Assault On Switzerland
+#POPUP= USA Condemns The Axis Assault On Switzerland
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -2836,7 +2836,7 @@
 ; 8-15% increase in US mobilization towards Allies:
 {
 #NAME= Axis DoW On Syria (USA->Allies)
-#POPUP= USA Strongly Protests Axis Intervention In Syria
+#POPUP= USA Protests Axis Intervention In Syria
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -2970,7 +2970,7 @@
 ; random 30-50% increase in Iraqi mobilization towards Allies:
 {
 #NAME= Axis DoW On Turkey (Iraq->>Allies)
-#POPUP= Iraq The Axis Attack On Turkey
+#POPUP= Iraq Vigorously Condemns The Axis Attack On Turkey
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -3198,7 +3198,7 @@
 ; random 3-5% increase in Spanish mobilization towards Allies:
 {
 #NAME= Axis DoW On Vichy France (Spain->Allies) (50%)
-#POPUP= The Spanish Government Is Seriously Concerned Over Nearby Axis Aggression
+#POPUP= The Spanish Government Is Concerned Over Axis Aggression Against Vichy France
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -3282,6 +3282,7 @@
 #CONDITION= 118 [1] [1]
 }
 
+; modified by FW
 ;
 ; Axis Declare War on Vichy France resulting in a
 ; random 8-15% increase in US mobilization towards Allies:
@@ -3294,12 +3295,37 @@
 #TYPE= 0
 #AI= 0
 #GV= 1[1,100]
-#LINK= 0[0]
+; changed to depend on USA's recognition by FW
+; USA recognized Vichy France
+#LINK= 132[1]
 #LEVEL= 0
 #COUNTRY_ID= 115
 #TRIGGER= 100
 ; 8-15% mobilization increase towards Allies
 #MOBILIZATION= [8,15] [2]
+; Vichy France(118) declared war on by Axis
+#CONDITION= 118 [1] [1]
+}
+
+;
+; Axis Declare War on Vichy France resulting in a
+; random 4-7% increase in US mobilization towards Allies:
+{
+#NAME= [FW]Axis DoW On Vichy France (USA->Allies)
+#POPUP= US and UK Issue Joint Condemnation Of Axis Betrayal Of Sovereign Vichy
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 0
+#AI= 0
+#GV= 1[1,100]
+; USA did not recognize Vichy France
+#LINK= 132[0]
+#LEVEL= 0
+#COUNTRY_ID= 115
+#TRIGGER= 100
+; 8-15% mobilization increase towards Allies
+#MOBILIZATION= [4,7] [2]
 ; Vichy France(118) declared war on by Axis
 #CONDITION= 118 [1] [1]
 }
@@ -3499,6 +3525,8 @@
 #CONDITION= 40 [0] [1]
 }
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; GENERAL DOW CHECKS
 ;
 ; General Declarations of War by Allies resulting in a
 ; 5-15% increase in Italian mobilization towards Axis:
@@ -3522,8 +3550,6 @@
 #CONDITION= 0 [1] [2]
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; GENERAL DOW CHECKS
 ;
 ; General Declarations Of War By Axis resulting in a
 ; 2-4% increase in USSR mobilization towards Allies:

@@ -799,7 +799,7 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; France(40) Allied, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
@@ -1617,7 +1617,7 @@
 ; Berlin(173,74) Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1652,7 +1652,7 @@
 ; Berlin(173,74) Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1687,7 +1687,7 @@
 ; Berlin(173,74) Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1865,7 +1865,7 @@
 ; Berlin(173,74) Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1899,7 +1899,7 @@
 ; Berlin(173,74) Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -1933,7 +1933,7 @@
 ; Helsinki(195,51) Axis
 #ALIGNMENT_POSITION= 195,51 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -2869,7 +2869,7 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5227,7 +5227,7 @@
 #DATE= 1939/09/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Toronto Allied
+; Toronto(1,96) Allied
 #ALIGNMENT_POSITION= 1,96 [2]
 ;Set National Morale Trigger (dummy value)
 #NATIONAL_MORALE_TRIGGER= 0 [0]
@@ -5382,7 +5382,7 @@
 ; Smolensk(209,68) Allied
 #ALIGNMENT_POSITION= 209,68 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 85 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5453,7 +5453,7 @@
 ; Perm(257,58) Allied
 #ALIGNMENT_POSITION= 257,58 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis units within 10 hexes of Voronezh
 #CONDITION_POSITION= 224,77 [10,10] [1,1] [1] [0]
@@ -5539,7 +5539,7 @@
 ; Kuybyshev is Allied
 #ALIGNMENT_POSITION= 245,72 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -5989,7 +5989,7 @@
 #ALIGNMENT_POSITION= 244,105 [1]
 #ALIGNMENT_POSITION= 243,104 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [1]
@@ -6254,46 +6254,6 @@
 }
 
 {
-#NAME= [FW]DE 426 - UK: Operation Sledgehammer or Overlord? (AI - 100%)
-#POPUP=
-#MESSAGE=Prime Minister %N Winston Churchill %N%N Operation Sledgehammer or Operation Overlord %N%N As the USSR fights the German Army along the Eastern Front, Stalin has urged the Western Allies to open a second front in France. We agree that if successful a cross channel invasion of occupied France could lead to a decisive victory against the Axis. %N%N To prepare for this full scale invasion the Western Allies have set forth in motion specialized training in landing craft, amphibious warfare, airborne forces and aerial bombing.  It is imperative to have built our strength so that we not only secure beachheads but also drive the Germans out of France entirely. In effect, we have devised two different proposed dates for the invasion named Operation Sledgehammer and Operation Overlord.  Operation Sledgehammer is a proposed cross channel invasion to commence in 1943, and Operation Overlord to commence in 1944.%N%N Should we hastily prepare our forces for Operation Sledgehammer %B(YES), or continue our preparations for Operation Overlord, which is favoured amongst our other Western Allies %B(NO)? It will cost the USA %B300 MPPs (100 MPPs for 3 turns) and UK %B225 MPPs (75 MPPs for 3) turns to rush the plans for Operation Sledgehammer.
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 3
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#DISPLAY_ORDER= 1
-#DECISION= 426
-#MPP_UPDOWN= -75
-#MPP_TURNS= 3
-#MPP_TEXT= Operation Sledgehammer
-#NOTES= If you select %B(YES), and would like the option of being better prepared for a possible cross channel invasion of occupied France this year, the below forces will deploy fully upgraded on British soil, but at half strength to represent the haste of our preparations and training. %N%N%T - 1 HQ (UK) %N%T - 1 Medium Bomber (UK) %N%T - 2 Infantry Corps (UK, USA) %N%T - 1 Paratroops Division (USA) %N%T - 1 Strategic Bomber (USA) %N%T - 1 Infantry Division (Canada) %N%N If you select %B(NO), these forces will deploy in early 1944, the Infantry Corps will rather be Special Forces and all units will be fully combat ready with +2 experience.
-#NOTES_POSITION= 147,77
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP=
-#DATE= 1943/01/14
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; London, Washington, Ottawa is Allied
-; Paris(151,84) Axis
-#ALIGNMENT_POSITION= 147,77 [2]
-#ALIGNMENT_POSITION= 4,108 [2]
-#ALIGNMENT_POSITION= 6,93 [2]
-#ALIGNMENT_POSITION= 151,84 [1]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; UK(112), USA, Canada Allied, Not Surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#VARIABLE_CONDITION= 21 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
 #NAME= [FW]DE 427 - Germany: Learn the Lessons of the Soviet Winter? (AI - 100%)
 #POPUP=
 #MESSAGE=Führerhauptquartier %N%N %BRe: %BSoviet %BWinter %N%N Following the winter of 1941-42 in the Soviet Union, it was apparent that our soldiers were under equipped for winter warfare, and as a result, they suffered significant losses.%N%N Given that a prolonged war with the USSR is now expected, it would be useful to take advantage of our recent experiences to better prepare our forces for winter warfare.%N%N If we set a process in motion now, we could stockpile winter clothing and equipment to distribute to our forces along the Eastern Front. Through this investment we will avoid suffering unduly from sicknesses during the upcoming winter.%N%N Would you like to prepare the Army to fight more effectively during the upcoming winter %B(YES)?  Given our general unpreparedness the investment will be significant at a cost a total of %B150 MPPs (50 MPPs for 3 turns).
@@ -6544,7 +6504,7 @@
 ; Perm(257,58) Allied
 #ALIGNMENT_POSITION= 257,58 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -6578,7 +6538,7 @@
 ; Perm(257,58) Allied
 #ALIGNMENT_POSITION= 257,58 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -7023,7 +6983,7 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Poland(85) Allied, Surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
@@ -7571,7 +7531,7 @@
 ; Perm(257,58) Allied
 #ALIGNMENT_POSITION= 257,58 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -7639,7 +7599,7 @@
 ; Perm(257,58) Allied
 #ALIGNMENT_POSITION= 257,58 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -7976,7 +7936,7 @@
 ; Berlin(173,74) Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
@@ -8023,7 +7983,7 @@
 ; Berlin(173,74) Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
@@ -8202,7 +8162,7 @@
 #VARIABLE_CONDITION= 19 [1] [0] [0]
 ; Hungary(52) Axis but not fully mobilized
 #VARIABLE_CONDITION= 52 [1] [0] [0]
-; Italy(59) Axis, Mobilized
+; Italy(59) Axis, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -8250,7 +8210,7 @@
 #VARIABLE_CONDITION= 19 [1] [0] [0]
 ; Hungary(52) Axis but not fully mobilized
 #VARIABLE_CONDITION= 52 [1] [0] [0]
-; Italy(59) Axis, Mobilized
+; Italy(59) Axis, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -8287,7 +8247,7 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Romania(93) Axis, Not Surrendered
 #VARIABLE_CONDITION= 93 [1] [100] [0]
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Hungary(52) Axis, Not Surrendered
 #VARIABLE_CONDITION= 52 [1] [100] [0]
@@ -8626,7 +8586,7 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Hungary(52) Axis, Mobilized
 #VARIABLE_CONDITION= 52 [1] [100] [0]
-; Italy(59) Axis, Mobilized
+; Italy(59) Axis, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Yugoslavia(120) Allied, Surrendered
 #VARIABLE_CONDITION= 120 [2] [100] [1]
@@ -9408,7 +9368,7 @@
 ; Tripoli(172,121) Axis
 #ALIGNMENT_POSITION= 172,121 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Italy(59) Axis, Mobilized
+; Italy(59) Axis, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -9858,7 +9818,7 @@
 #DATE= 1939/09/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Toronto is Allied
+; Toronto(1,96) Allied
 #ALIGNMENT_POSITION= 1,96 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Spain(99) Allied, Mobilized
@@ -10144,7 +10104,7 @@
 #DATE= 1939/09/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Toronto is Allied
+; Toronto(1,96) Allied
 #ALIGNMENT_POSITION= 1,96 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Spain(99) Allied
@@ -10933,7 +10893,7 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Italy(59) Axis, Not Surrendered
 ; France(40) Allied, Surrendered
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -11191,7 +11151,7 @@
 ; Tirana(185,102) Axis
 #ALIGNMENT_POSITION= 185,102 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Italy(59) Axis, Mobilized
+; Italy(59) Axis, Mobilized, Not Surrendered
 ; Greece(46) Allied but not fully mobilized
 ; France(40) Allied, Surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -11707,7 +11667,7 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Switzerland(104) Axis, Not Surrendered
 #VARIABLE_CONDITION= 104 [1] [0] [0]
-; 1 Axis unit in Manchester(147,72)
+; 1 Axis unit in Manchester(142,72)
 #CONDITION_POSITION= 142,72 [0,0] [1,1] [1] [0]
 }
 
@@ -12188,7 +12148,7 @@
 ; Rome(171,101) Axis
 #ALIGNMENT_POSITION= 171,101 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Italy(59) Axis, Mobilized
+; Italy(59) Axis, Mobilized, Not Surrendered
 ; Spain(99) Axis, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 99 [1] [1] [0]
@@ -12415,12 +12375,12 @@
 ; London(147,77) Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied, Mobilized
-; USA(115) Allied, Mobilized
 ; UK(112) Allied, Mobilized
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
+; USA(115) Allied, Mobilized
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; USSR(116) Allied, Mobilized
+#VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -12453,12 +12413,12 @@
 ; London(147,77) Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied, Mobilized
-; USA(115) Allied, Mobilized
 ; UK(112) Allied, Mobilized
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
+; USA(115) Allied, Mobilized
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; USSR(116) Allied, Mobilized
+#VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -12491,12 +12451,12 @@
 ; London(147,77) Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied, Mobilized
-; USA(115) Allied, Mobilized
 ; UK(112) Allied, Mobilized
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
+; USA(115) Allied, Mobilized
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; USSR(116) Allied, Mobilized
+#VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -12529,12 +12489,12 @@
 ; London(147,77) Allied
 #ALIGNMENT_POSITION= 147,77 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied, Mobilized
-; USA(115) Allied, Mobilized
 ; UK(112) Allied, Mobilized
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
+; USA(115) Allied, Mobilized
+#VARIABLE_CONDITION= 115 [2] [100] [0]
+; USSR(116) Allied, Mobilized
+#VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
@@ -12935,7 +12895,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied, Not Surrendered
-; Italy(59) Axis, Mobilized
+; Italy(59) Axis, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -12970,7 +12930,7 @@
 ; Tobruk(194,122) Axis
 #ALIGNMENT_POSITION= 194,122 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Italy(59) Axis, Mobilized
+; Italy(59) Axis, Mobilized, Not Surrendered
 ; USSR(116) Allied
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [0] [0]
@@ -13244,7 +13204,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 #ALIGNMENT_POSITION= 198,94 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Italy(59) Axis, Mobilized
+; Italy(59) Axis, Mobilized, Not Surrendered
 ; Romania(93) Axis, Mobilized
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 93 [1] [100] [0]
@@ -13281,7 +13241,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 #ALIGNMENT_POSITION= 198,94 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Italy(59) Axis, Mobilized
+; Italy(59) Axis, Mobilized, Not Surrendered
 ; Romania(93) Axis, Mobilized
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 93 [1] [100] [0]
@@ -13318,7 +13278,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 #ALIGNMENT_POSITION= 198,94 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Italy(59) Axis, Mobilized
+; Italy(59) Axis, Mobilized, Not Surrendered
 ; Romania(93) Axis, Mobilized
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 93 [1] [100] [0]
@@ -14389,7 +14349,7 @@
 ; Berlin(173,74) Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Italy(59) Axis, Mobilized
+; Italy(59) Axis, Mobilized, Not Surrendered
 ; Vichy France(118) Axis
 ; Algeria(4) Axis
 ; France(40) Allied, Surrendered
@@ -14612,7 +14572,7 @@
 ; Berlin(173,74) Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 227,35 [2,3] [1,2] [1] [0]
 #CONDITION_POSITION= 225,54 [2,3] [1,2] [1] [0]
@@ -14692,7 +14652,7 @@
 ; Rome(171,101) Axis
 #ALIGNMENT_POSITION= 171,101 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Italy(59) Axis, Mobilized
+; Italy(59) Axis, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
@@ -15093,7 +15053,7 @@
 ; Berlin(173,74) Axis
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Italy(59) Axis, Mobilized
+; Italy(59) Axis, Mobilized, Not Surrendered
 ; Spain(99) Axis, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 99 [1] [0] [0]
@@ -15754,7 +15714,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied, Not Surrendered
-; Italy(59) Axis, Mobilized
+; Italy(59) Axis, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -15790,7 +15750,7 @@
 #ALIGNMENT_POSITION= 173,74 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied, Not Surrendered
-; Italy(59) Axis, Mobilized
+; Italy(59) Axis, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -16238,7 +16198,7 @@
 #ALIGNMENT_POSITION= 151,79 [1]
 ; Amiens(151,81) Axis
 #ALIGNMENT_POSITION= 151,81 [1]
-; Le Havre is Axis
+; Le Havre(147,82) Axis
 #ALIGNMENT_POSITION= 147,82 [1]
 ; Brest(138,86) Axis
 #ALIGNMENT_POSITION= 138,86 [1]

@@ -389,81 +389,6 @@
 }
 
 {
-#NAME= British Strategic Bombers Continue Night Raids On Berlin (2)
-#POPUP= British Strategic Bombers Continue Night Raids On Berlin
-#IMAGE=
-#SOUND= explosion1.ogg
-#FLAG= 1
-#TYPE= 3
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 112
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1940/09/09
-; London(147,77) [any unit]
-#SOURCE_POSITION= 147,77 [-1]
-; Berlin(173,74)
-#DESTINATION_RESOURCE= 173,74 [1,2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-{
-#NAME= British Strategic Bombers Continue Night Raids On Berlin (3)
-#POPUP= British Strategic Bombers Continue Night Raids On Berlin
-#IMAGE=
-#SOUND= explosion1.ogg
-#FLAG= 1
-#TYPE= 3
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 112
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1940/09/23
-; London(147,77) [any unit]
-#SOURCE_POSITION= 147,77 [-1]
-; Berlin(173,74)
-#DESTINATION_RESOURCE= 173,74 [1,2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-{
-#NAME= British Strategic Bombers Launch Night Raids On Berlin (1)
-#POPUP= British Strategic Bombers Launch Night Raids On Berlin
-#IMAGE=
-#SOUND= explosion1.ogg
-#FLAG= 1
-#TYPE= 3
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 112
-#TRIGGER= 100
-#SEASON_FLAG= 0
-#DATE= 1940/08/26
-; London(147,77) [any unit]
-#SOURCE_POSITION= 147,77 [-1]
-; Berlin(173,74)
-#DESTINATION_RESOURCE= 173,74 [1,2]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-}
-
-{
 #NAME= Canadian Shipping Near Halifax Disrupted By Axis Raiders (Continuous)
 #POPUP= Axis Raiders Disrupt Production At The Springhill Mines And Halifax
 #IMAGE=
@@ -516,7 +441,7 @@
 
 ; Crete limits Axis supply in the Mediterranean
 {
-#NAME= Crete Effect (Continous) (Tobruk, Bardia, Derna, Sidi Barrani, Mersa Matruh, El Alamein, Alexandria) (20%)
+#NAME= [FW]Crete Effect (Continous) (Tobruk, Bardia, Derna, Sidi Barrani, Mersa Matruh, El Alamein, Alexandria) (20%)
 #POPUP= The Presence Of Allied Troops Hinders Axis Supply In North Africa (Tobruk, El Alamein, Alexandria)
 #IMAGE=
 #SOUND=
@@ -538,11 +463,13 @@
 #DESTINATION_RESOURCE= 195,121 [1,3]
 ; Tobruk(194,122)
 #DESTINATION_RESOURCE= 194,122 [1,3]
+; Alexandria-Port(205,123)
 #DESTINATION_RESOURCE= 205,123 [1,3]
 ; Alexandria(206,124)
 #DESTINATION_RESOURCE= 206,124 [1,3]
-; Port Said(209,122)
+; Port Said-Port(209,122)
 #DESTINATION_RESOURCE= 209,122 [1,3]
+; Port Said(209,123)
 #DESTINATION_RESOURCE= 209,123 [1,3]
 ; Derna(191,120)
 #DESTINATION_RESOURCE= 191,120 [1,3]
@@ -603,10 +530,12 @@
 ; Tobruk(194,122)
 #DESTINATION_RESOURCE= 194,122 [1,2]
 #DESTINATION_RESOURCE= 195,121 [1,2]
+; Alexandria-Port(205,123)
 #DESTINATION_RESOURCE= 205,123 [1,2]
 ; Italy(59) Axis, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 }
+
 {
 #NAME= Fighting Breaks Out In Greece Between Monarchists And Communists
 #POPUP= Fighting Breaks Out In Greece Between Monarchists And Communists
@@ -647,7 +576,7 @@
 #LINK= 0[0]
 #COUNTRY_ID= 45
 #ALIGNMENT_ID= 0
-#FLAG_ID= 46
+#FLAG_ID= 112
 #TRIGGER= 100
 #SEASON_FLAG= 0
 #DATE= 1944/12/20
@@ -695,7 +624,7 @@
 
 ; Pro-Allied Italian Resistance Activity (Post Surrender)
 {
-#NAME= Italian Partisans (Pro-Allied After Italy Surrenders) (8%)
+#NAME= Italian Partisans (Continuous) (Pro-Allied After Italy Surrenders) (8%)
 #POPUP= Italian Pro-Allied Resistance Activity Hinders Axis Supply
 #IMAGE= partisans_in_milan.png, partisans_in_bologna.png
 #SOUND= battle2.ogg
@@ -723,8 +652,8 @@
 
 ; Malta limits Axis supply in the Mediterranean
 {
-#NAME= Malta Effect (Bardia, Sidi Barrani, Mersa Matruh, El Alamein) (20%)
-#POPUP= Malta Hinders Axis Supply In the Mediterranean (Bardia, Sidi Barrani, Mersa Matruh, El Alamein)
+#NAME= Malta Effect (Continuous) (Bardia, Sidi Barrani) (20%)
+#POPUP= Malta Hinders Axis Supply In the Mediterranean (Bardia, Sidi Barrani)
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -742,24 +671,22 @@
 #DATE= 1940/08/01
 ; Malta(175,114) [any unit]
 #SOURCE_POSITION= 175,114 [-1]
+
 ; Bardia(196,123)
 #DESTINATION_RESOURCE= 196,123 [1,2]
 ; Sidi Barrani(198,123)
 #DESTINATION_RESOURCE= 198,123 [1,2]
-; Mersa Matruh(200,124)
-#DESTINATION_RESOURCE= 200,124 [1,2]
-; El Alamein(204,125)
-#DESTINATION_RESOURCE= 204,125 [1,2]
+
 ; UK(112) Allied, Mobilized, Not Surrendered
-; Egypt(36) Allied, Not Surrendered
+; Egypt(36) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 }
 
 ; Malta limits Axis supply in the Mediterranean
 {
-#NAME= Malta Effect (Continuous) (Derna, Msus, Mekili, Gazala) (15%)
-#POPUP= Malta Hinders Axis Supply In the Mediterranean (Derna, Msus, Mekili, Gazala)
+#NAME= Malta Effect (Continuous) (Mersa Matruh, El Alamein) (20%)
+#POPUP= Malta Hinders Axis Supply In the Mediterranean (Mersa Matruh, El Alamein)
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -772,28 +699,23 @@
 #COUNTRY_ID= 112
 #ALIGNMENT_ID= 0
 #FLAG_ID= 112
-#TRIGGER= 15
+#TRIGGER= 20
 #SEASON_FLAG= 0
-#DATE= 1941/01/01
+#DATE= 1940/08/01
 ; Malta(175,114) [any unit]
 #SOURCE_POSITION= 175,114 [-1]
-; Derna(191,120)
-#DESTINATION_RESOURCE= 191,120 [1,2]
-; Msus(188,124)
-#DESTINATION_RESOURCE= 188,124 [1,2]
-; Mekili(190,122)
-#DESTINATION_RESOURCE= 190,122 [1,2]
-; Gazala(192,122)
-#DESTINATION_RESOURCE= 192,122 [1,2]
-; Homs(175,121) - Added by FW
-#DESTINATION_RESOURCE= 175,121 [1,2]
-; Buerat(177,123) - Added by FW
-#DESTINATION_RESOURCE= 177,123 [1,2]
+
+; Mersa Matruh(200,124)
+#DESTINATION_RESOURCE= 200,124 [1,2]
+; El Alamein(204,125)
+#DESTINATION_RESOURCE= 204,125 [1,2]
+
 ; UK(112) Allied, Mobilized, Not Surrendered
-; Egypt(36) Allied, Not Surrendered
+; Egypt(36) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 }
+
 
 ; Malta limits Axis supply in the Mediterranean
 {
@@ -816,28 +738,30 @@
 #DATE= 1940/08/01
 ; Malta(175,114) [any unit]
 #SOURCE_POSITION= 175,114 [-1]
-; Tobruk-Port
+
+; Tobruk-Port(195,121)
 #DESTINATION_RESOURCE= 195,121 [1,2]
 ; Tobruk(194,122)
 #DESTINATION_RESOURCE= 194,122 [1,2]
-; Alexandria(Port)
+; Alexandria-Port(205,123)
 #DESTINATION_RESOURCE= 205,123 [1,2]
 ; Alexandria(206,124)
 #DESTINATION_RESOURCE= 206,124 [1,2]
-; Port Said(209,122)
+; Port Said-Port(209,122)
 #DESTINATION_RESOURCE= 209,122 [1,2]
+; Port Said(209,123)
 #DESTINATION_RESOURCE= 209,123 [1,2]
+
 ; UK(112) Allied, Mobilized, Not Surrendered
-; Egypt(36) Allied, Not Surrendered
+; Egypt(36) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 }
 
-;
 ; Malta limits Axis supply in the Mediterranean
 {
-#NAME= Malta Effect (Continuous) (Tripoli, Sirte, El Agheila, Benghazi, Derna) (15%)
-#POPUP= Malta Hinders Axis Supply In the Mediterranean (Tripoli, Sirte, El Agheila, Benghazi)
+#NAME= Malta Effect (Continuous) (Derna, Msus, Mekili) (15%)
+#POPUP= Malta Hinders Axis Supply In the Mediterranean (Derna, Msus, Mekili)
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -855,72 +779,123 @@
 #DATE= 1941/01/01
 ; Malta(175,114) [any unit]
 #SOURCE_POSITION= 175,114 [-1]
-; Tripoli(172,121)
-#DESTINATION_RESOURCE= 172,121 [1,2]
-; Tripoli Port
-#DESTINATION_RESOURCE= 172,120 [1,2]
-; Sirte(179,124)
-#DESTINATION_RESOURCE= 179,124 [1,2]
-; El Agheila(184,126)
-#DESTINATION_RESOURCE= 184,126 [1,2]
-; Benghazi(186,122)
-#DESTINATION_RESOURCE= 186,122 [1,2]
-; Benghazi(Port)
-#DESTINATION_RESOURCE= 185,122 [1,2]
+
+; Derna(191,120)
+#DESTINATION_RESOURCE= 191,120 [1,2]
+; Msus(188,124)
+#DESTINATION_RESOURCE= 188,124 [1,2]
+; Mekili(190,122)
+#DESTINATION_RESOURCE= 190,122 [1,2]
+
 ; UK(112) Allied, Mobilized, Not Surrendered
-; Egypt(36) Allied, Not Surrendered
+; Egypt(36) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
 }
 
+; Malta limits Axis supply in the Mediterranean
 {
-#NAME= Soviet Bombers Operating From Crimea Attack The Ploesti Oil Fields (Continuous) (25%)
-#POPUP= Soviet Bombers Operating From Crimea Attack The Ploesti Oil Fields
+#NAME= Malta Effect (Continuous) (Gazala, Homs, Buerat) (15%)
+#POPUP= Malta Hinders Axis Supply In the Mediterranean (Gazala, Homs, Buerat)
 #IMAGE=
-#SOUND= explosion1.ogg
+#SOUND=
 #FLAG= 1
+; 2 = Reoccurring check until end of game
 #TYPE= 2
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#COUNTRY_ID= 116
+#COUNTRY_ID= 112
 #ALIGNMENT_ID= 0
-; Romania(93)
-#FLAG_ID= 93
-#TRIGGER= 25
+#FLAG_ID= 112
+#TRIGGER= 15
 #SEASON_FLAG= 0
-#DATE= 1939/09/01
-; Simferopol [any unit]
-#SOURCE_POSITION= 214,94 [-1]
-#DESTINATION_RESOURCE= 198,94 [1,2]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 93 [1] [100] [0]
-#VARIABLE_CONDITION= 115 [2] [0] [0]
+#DATE= 1941/01/01
+; Malta(175,114) [any unit]
+#SOURCE_POSITION= 175,114 [-1]
+
+; Gazala(192,122)
+#DESTINATION_RESOURCE= 192,122 [1,2]
+; Homs(175,121) - Added by FW
+#DESTINATION_RESOURCE= 175,121 [1,2]
+; Buerat(177,123) - Added by FW
+#DESTINATION_RESOURCE= 177,123 [1,2]
+
+; UK(112) Allied, Mobilized, Not Surrendered
+; Egypt(36) Allied, Mobilized, Not Surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 36 [2] [100] [0]
 }
 
+; Malta limits Axis supply in the Mediterranean
 {
-#NAME= Soviet Strategic Bombers Raid Berlin
-#POPUP= Soviet Strategic Bombers Raid Berlin
+#NAME= Malta Effect (Continuous) (Tripoli, Sirte) (15%)
+#POPUP= Malta Hinders Axis Supply In the Mediterranean (Tripoli, Sirte)
 #IMAGE=
-#SOUND= explosion1.ogg
+#SOUND=
 #FLAG= 1
-#TYPE= 3
+; 2 = Reoccurring check until end of game
+#TYPE= 2
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
 #LINK= 0[0]
-#COUNTRY_ID= 116
+#COUNTRY_ID= 112
 #ALIGNMENT_ID= 0
-#FLAG_ID= 45
-#TRIGGER= 100
+#FLAG_ID= 112
+#TRIGGER= 15
 #SEASON_FLAG= 0
-#DATE= 1941/08/13
-; Leningrad(206,52) [any unit]
-#SOURCE_POSITION= 206,52 [-1]
-; Berlin(173,74)
-#DESTINATION_RESOURCE= 173,74 [1,2]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
+#DATE= 1941/01/01
+; Malta(175,114) [any unit]
+#SOURCE_POSITION= 175,114 [-1]
+
+; Tripoli(172,121)
+#DESTINATION_RESOURCE= 172,121 [1,2]
+; Tripoli-Port(172,120)
+#DESTINATION_RESOURCE= 172,120 [1,2]
+; Sirte(179,124)
+#DESTINATION_RESOURCE= 179,124 [1,2]
+
+; UK(112) Allied, Mobilized, Not Surrendered
+; Egypt(36) Allied, Mobilized, Not Surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 36 [2] [100] [0]
+}
+
+; Malta limits Axis supply in the Mediterranean
+{
+#NAME= Malta Effect (Continuous) (El Agheila, Benghazi) (15%)
+#POPUP= Malta Hinders Axis Supply In the Mediterranean (El Agheila, Benghazi)
+#IMAGE=
+#SOUND=
+#FLAG= 1
+; 2 = Reoccurring check until end of game
+#TYPE= 2
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+#LINK= 0[0]
+#COUNTRY_ID= 112
+#ALIGNMENT_ID= 0
+#FLAG_ID= 112
+#TRIGGER= 15
+#SEASON_FLAG= 0
+#DATE= 1941/01/01
+; Malta(175,114) [any unit]
+#SOURCE_POSITION= 175,114 [-1]
+
+; El Agheila(184,126)
+#DESTINATION_RESOURCE= 184,126 [1,2]
+; Benghazi(186,122)
+#DESTINATION_RESOURCE= 186,122 [1,2]
+; Benghazi-Port(185,122)
+#DESTINATION_RESOURCE= 185,122 [1,2]
+
+; UK(112) Allied, Mobilized, Not Surrendered
+; Egypt(36) Allied, Mobilized, Not Surrendered
+#VARIABLE_CONDITION= 112 [2] [100] [0]
+#VARIABLE_CONDITION= 36 [2] [100] [0]
 }
 
 {
@@ -1075,36 +1050,6 @@
 #VARIABLE_CONDITION= 112 [2] [100] [1]
 }
 
-; Malta limits Axis supply in the Mediterranean
-{
-#NAME= [FW]Malta AF Effect (Tripoli, Tobruk)
-#POPUP= Allied Navy Hinders Axis Reinforcing North Africa
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#ALIGNMENT_ID= 0
-#FLAG_ID= 59
-#TRIGGER= 100
-; all seasons
-#SEASON_FLAG= 0
-#DATE= 1939/09/03
-; Malta(175,114) [any unit]
-#SOURCE_POSITION= 175,114 [-1]
-#DESTINATION_RESOURCE= 172,120 [5,5]
-#DESTINATION_RESOURCE= 185,122 [5,5]
-#DESTINATION_RESOURCE= 195,121 [5,5]
-; Italy(59) Axis, Mobilized, Not Surrendered
-; UK(112) Allied, Mobilized, Not Surrendered
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-}
-
 ;
 ; Effect of reduced supply in Baghdad
 {
@@ -1185,10 +1130,10 @@
 #DESTINATION_RESOURCE= 156,77 [1,4]
 #DESTINATION_RESOURCE= 155,76 [1,4]
 #DESTINATION_RESOURCE= 156,75 [1,4]
-; Belgium(10) aligned Allied, fully mobilized
-; France(10) aligned Allied, fully mobilized
-; UK(112) aligned Allied, fully mobilized
-; USA(115) aligned Allied, fully mobilized
+; Belgium(10) Allied, fully mobilized
+; France(10) Allied, fully mobilized
+; UK(112) Allied, fully mobilized
+; USA(115) Allied, fully mobilized
 #VARIABLE_CONDITION= 10 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -1273,7 +1218,7 @@
 ; Raid on St Nazaire - first message
 {
 #NAME= DE 113 - Raid on St Nazaire - St Nazaire destroyed (50%)
-#POPUP= HMS Campbeltown Destroys The Normandie Dock: St Nazaire Is Out Of Action!
+#POPUP= HMS Campbeltown Puts The Normandie Dock Out Of Action!
 #IMAGE= campbeltown1.png, campbeltown2.png, campbeltown3.png, campbeltown4.png
 #SOUND=
 #FLAG= 1
@@ -1554,7 +1499,7 @@
 }
 
 {
-#NAME= DE 156 - The SAS Attack Axis Supply Lines And Rear Areas Near Tobruk
+#NAME= DE 156 - The SAS Attack Axis Supply Lines And Rear Areas Near Tobruk (Continuous)
 #POPUP= The SAS Attack Axis Supply Lines And Rear Areas Near Tobruk
 #IMAGE= sas6.png, sas7.png
 #SOUND=
@@ -1578,7 +1523,7 @@
 }
 
 {
-#NAME= DE 157 - The SAS Attack Axis Supply Lines And Rear Areas Near Benghazi
+#NAME= DE 157 - The SAS Attack Axis Supply Lines And Rear Areas Near Benghazi (Continuous)
 #POPUP= The SAS Attack Axis Supply Lines And Rear Areas Near Benghazi
 #IMAGE= sas1.png, sas2.png
 #SOUND=
@@ -1601,7 +1546,7 @@
 }
 
 {
-#NAME= DE 158 - The SAS Attack Axis Supply Lines And Rear Areas Near Tripoli
+#NAME= DE 158 - The SAS Attack Axis Supply Lines And Rear Areas Near Tripoli (Continuous)
 #POPUP= The SAS Attack Axis Supply Lines And Rear Areas Near Tripoli
 #IMAGE= sas3.png
 #SOUND=
@@ -1624,7 +1569,7 @@
 }
 
 {
-#NAME= DE 159 - The SAS Attack Axis Supply Lines And Rear Areas Near El Agheila
+#NAME= DE 159 - The SAS Attack Axis Supply Lines And Rear Areas Near El Agheila (Continuous)
 #POPUP= The SAS Attack Axis Supply Lines And Rear Areas Near El Agheila
 #IMAGE= sas4.png
 #SOUND=
@@ -2111,6 +2056,7 @@
 ; Tobruk(194,122)
 #DESTINATION_RESOURCE= 194,122 [1,2]
 #DESTINATION_RESOURCE= 195,121 [1,2]
+; Alexandria-Port(205,123)
 #DESTINATION_RESOURCE= 205,123 [1,2]
 ; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -2269,6 +2215,7 @@
 #DESTINATION_RESOURCE= 206,124 [3,4]
 ; El Alamein(204,125)
 #DESTINATION_RESOURCE= 204,125 [2,3]
+; Alexandria-Port(205,123)
 #DESTINATION_RESOURCE= 205,123 [3,4]
 #DESTINATION_RESOURCE= 206,123 [2,3]
 ; Germany(45) Axis, Mobilized, Not Surrendered

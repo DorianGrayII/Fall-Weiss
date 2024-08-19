@@ -2129,7 +2129,7 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Szeged
 #DESTINATION_RESOURCE= 186,91
-; USSR(116) Allied (not fully active), Not Surrendered AND
+; USSR(116) Allied, Not Surrendered AND
 ; Hungary(52) Axis, Not Surrendered AND
 ; Yugoslavia(120) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
@@ -2160,7 +2160,7 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Szeged
 #DESTINATION_RESOURCE= 186,91
-; USSR(116) Allied (not fully active), Not Surrendered AND
+; USSR(116) Allied, Not Surrendered AND
 ; Hungary(52) Axis, Not Surrendered AND
 ; Yugoslavia(120) Axis, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
@@ -2365,7 +2365,7 @@
 
 ; Italian AI Helper - North Africa (Italy)
 {
-#NAME= Italy(AI): Corps - Rome - 1939
+#NAME= [FW]Italy(AI): Corps - Homs - 1939
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2382,7 +2382,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; Rome(175,121)
+; Homs(175,101)
 #DESTINATION_RESOURCE= 175,121
 ; Italy(59) Axis, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
@@ -2409,6 +2409,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/03/01
 #FAILSAFE_DATE= 1941/03/01
+; Rome(171,101)
 #DESTINATION_RESOURCE= 171,101
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2673,7 +2674,7 @@
 #DESTINATION_RESOURCE= 181,104
 ; USA(115) Allied but not yet fully mobilized
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; 2 Allied Amphibious units within 30 hexes of Syracuse Port(177,112)
+; 2 Allied Amphibious units within 30 hexes of Syracuse-Port(177,112)
 #CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
 #UNIT= 1 [5] [0] [Brindisi]
 }
@@ -2699,7 +2700,7 @@
 #DESTINATION_RESOURCE= 164,95
 ; USA(115) Allied but not yet fully mobilized
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; 2 Allied Amphibious units within 30 hexes of Syracuse Port(177,112)
+; 2 Allied Amphibious units within 30 hexes of Syracuse-Port(177,112)
 #CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
 #UNIT= 1 [5] [0] [Genoa]
 }
@@ -2725,7 +2726,7 @@
 #DESTINATION_RESOURCE= 171,101
 ; USA(115) Allied but not yet fully mobilized
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; 2 Allied Amphibious units within 30 hexes of Syracuse Port(177,112)
+; 2 Allied Amphibious units within 30 hexes of Syracuse-Port(177,112)
 #CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
 #UNIT= 1 [5] [0] [Rome]
 }
@@ -2752,7 +2753,7 @@
 #DESTINATION_RESOURCE= 176,112
 ; USA(115) Allied but not yet fully mobilized
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; 2 Allied Amphibious units within 30 hexes of Syracuse Port(177,112)
+; 2 Allied Amphibious units within 30 hexes of Syracuse-Port(177,112)
 #CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
 #UNIT= 1 [5] [0] [Syracuse]
 }
@@ -3670,7 +3671,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1940/06/01
 #FAILSAFE_DATE= 1948/01/01
-; Port Said(209,122)
+; Port Said-Port(209,122)
 #DESTINATION_RESOURCE= 209,122
 ; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -3853,7 +3854,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1939/09/01
-; Demascus(218,119)
+; Damascus(218,119)
 #DESTINATION_RESOURCE= 218,119
 #VARIABLE_CONDITION= 105 [1] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5710,7 +5711,7 @@
 #DESTINATION_RESOURCE= 215,85
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis units within 2 hexes of Kiev(207,80) OR
-; Axis units within 2 hexes of Kirovograd
+; Axis units within 2 hexes of Kirovograd(210,86)
 #CONDITION_POSITION= 207,80 [2,2] [1,1] [1] [0]
 #CONDITION_POSITION= 210,86 [2,2] [1,1] [1] [0]
 #UNIT= 4 [10] [0] [1st Dneprop Rifle]
@@ -5736,7 +5737,7 @@
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 233,64
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Axis units within 1 hex of Rzhev(214,65) OR
+; Axis units within 1 hex of Rzhev(214,64) OR
 ; Axis units within 1 hex of Vyazma(214,67) OR
 ; Axis units within 2 hexes of Kaluga(218,69) OR
 ; Axis units within 3 hexes of Tula(220,70)
@@ -5745,14 +5746,14 @@
 #CONDITION_POSITION= 218,69 [2,2] [1,1] [1] [0]
 #CONDITION_POSITION= 220,70 [3,3] [1,1] [1] [0]
 #UNIT= 0 [10] [0] [Moscow]
-#UNIT= 16 [10] [0] []
-#UNIT= 14 [10] [0.5] []
-#UNIT= 14 [10] [0.5] []
-#UNIT= 26 [10] [0.5] []
 #UNIT= 4 [10] [0] []
 #UNIT= 5 [10] [0] []
 #UNIT= 5 [10] [0] []
 #UNIT= 7 [10] [0] []
+#UNIT= 14 [10] [0.5] []
+#UNIT= 14 [10] [0.5] []
+#UNIT= 16 [10] [0] []
+#UNIT= 26 [10] [0.5] []
 }
 
 ; USSR (reinforcements will head towards Dnepropetrovsk)
@@ -5888,7 +5889,7 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Stalingrad(234,85)
 #DESTINATION_RESOURCE= 234,85
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 5 [11] [1.5] []
@@ -5918,7 +5919,7 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Moscow(221,65)
 #DESTINATION_RESOURCE= 221,65
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 5 [11] [1.5] []
@@ -5946,9 +5947,9 @@
 #FULL_RESEARCH= 1
 #DATE= 1942/06/30
 #FAILSAFE_DATE= 1948/01/01
-; Gorky
+; Gorky(233,64)
 #DESTINATION_RESOURCE= 233,64
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 5 [11] [1.5] []
@@ -5978,7 +5979,7 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Saratov(237,77)
 #DESTINATION_RESOURCE= 237,77
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 5 [11] [1.5] []
@@ -6007,7 +6008,7 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Perm(257,58)
 #DESTINATION_RESOURCE= 257,58
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 5 [11] [1.5] []
@@ -6037,7 +6038,7 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Perm(257,58)
 #DESTINATION_RESOURCE= 257,58
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 5 [11] [1.5] []
@@ -6123,7 +6124,7 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Moscow(221,65)
 #DESTINATION_RESOURCE= 221,65
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [7] [0] []
@@ -6148,7 +6149,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 225,88
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [7] [0] []
@@ -6174,7 +6175,7 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Stalingrad(234,85)
 #DESTINATION_RESOURCE= 234,85
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [7] [0] []
@@ -6199,7 +6200,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 206,51
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 0 [7] [0] [Voroshilov]
@@ -6224,9 +6225,9 @@
 #FULL_RESEARCH= 1
 #DATE= 1942/03/05
 #FAILSAFE_DATE= 1948/01/01
-; Gorky
+; Gorky(233,64)
 #DESTINATION_RESOURCE= 233,64
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ; Strategic Bomber(32)
@@ -6365,7 +6366,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 202,62
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 25 [7] [0] [1st Ostrov]
@@ -6390,7 +6391,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 203,81
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 25 [7] [0] [1st Zhitomir]
@@ -6419,7 +6420,7 @@
 ; Hanko-Port(192,52)
 #DESTINATION_RESOURCE= 192,52
 #DESTINATION_RESOURCE= 195,53
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ; #UNIT_ID_35= Dreadnought (WW1)*
@@ -7043,7 +7044,7 @@
 }
 
 ;
-; UK Forces Capture in Alexandria the Vichy French Battleship Lorraine
+; UK Forces Capture the Vichy French Battleship Lorraine
 ; Based on Operation Catapult in June 1940
 {
 #NAME= DE 100 - UK: Vichy French Battleship Lorraine Joins The Allies
@@ -7063,6 +7064,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1943/05/31
 #FAILSAFE_DATE= 1948/01/01
+; Alexandria-Port(205,123)
 #DESTINATION_RESOURCE= 205,123
 ; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -7090,6 +7092,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1941/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Halifax-Port(30,96)
 #DESTINATION_RESOURCE= 30,96
 ; Canada Allied, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -7780,7 +7783,7 @@
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Egypt Allied, Surrendered
 #VARIABLE_CONDITION= 36 [2] [100] [1]
-; No Allied units within 3 hexes of Cairo(208,12)
+; No Allied units within 3 hexes of Cairo(208,126)
 #CONDITION_POSITION= 208,126 [3,3] [0,0] [2] [0]
 #UNIT= 4 [5] [1] [East African]
 }
@@ -8049,7 +8052,7 @@
 
 ; UK (Syrian Garrison)
 {
-#NAME= [FW]DE 131 - UK(PBEM): Syrian Garrison - Demascus
+#NAME= [FW]DE 131 - UK(PBEM): Syrian Garrison - Damascus
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -8066,7 +8069,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1939/09/01
-; Demascus (218,119)
+; Damascus(218,119)
 #DESTINATION_RESOURCE= 218,119
 #VARIABLE_CONDITION= 105 [1] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -8148,7 +8151,7 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Kiev(207,80)
 #DESTINATION_RESOURCE= 207,80
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 26 [12] [2] [1st Kiev]
@@ -8177,7 +8180,7 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Moscow(221,65)
 #DESTINATION_RESOURCE= 221,65
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 26 [12] [2] [1st Moscow]
@@ -8204,7 +8207,7 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Moscow(221,65)
 #DESTINATION_RESOURCE= 221,65
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 26 [12] [2] [1st Moscow]
@@ -8231,7 +8234,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 209,68
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 26 [12] [2] [1st Smolensk]
@@ -8892,7 +8895,7 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Kazan(243,66)
 #DESTINATION_RESOURCE= 243,66
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 0 [10] [1] []
@@ -8922,7 +8925,7 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Kuybyshev(245,72)
 #DESTINATION_RESOURCE= 245,72
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 0 [10] [1] []
@@ -9278,7 +9281,7 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Minsk(201,71)
 #DESTINATION_RESOURCE= 201,71
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 5 [8] [0] [1st Polish]
@@ -9390,7 +9393,7 @@
 #DATE= 1942/04/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 245,72
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [8] [0] [I Polish]
@@ -9476,7 +9479,7 @@
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 193,63
 #DESTINATION_RESOURCE= 202,84
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [7] [0] [IV Rifle]
@@ -9506,7 +9509,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 199,83
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [7] [0] [XV Rifle]
@@ -9540,7 +9543,7 @@
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 193,63
 #DESTINATION_RESOURCE= 202,62
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [7] [0] [XVI Rifle]
@@ -9571,7 +9574,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 202,62
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [7] [0] [XVI Rifle]
@@ -9611,169 +9614,6 @@
 #UNIT= 24 [5] [0] []
 #UNIT= 24 [5] [0] []
 #UNIT= 24 [5] [0] []
-}
-
-{
-#NAME= [FW]DE 426 - Canada: Operation Overlord
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 426[0]
-#COUNTRY_ID= 21
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1944/01/21
-#FAILSAFE_DATE= 1948/01/01
-; Manchester(142,72)
-#DESTINATION_RESOURCE= 142,72
-; UK(112) Allied, Mobilized, Not Surrendered
-#VARIABLE_CONDITION= 21 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 2 [12] [2] []
-}
-
-{
-#NAME= [FW]DE 426 - Canada: Operation Sledgehammer
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 426[1]
-#COUNTRY_ID= 21
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1939/09/09
-#FAILSAFE_DATE= 1948/01/01
-; London(147,77)
-#DESTINATION_RESOURCE= 147,77
-; UK(112) Allied, Mobilized, Not Surrendered
-#VARIABLE_CONDITION= 21 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 2 [5] [0] []
-}
-
-{
-#NAME= [FW]DE 426 - UK: Operation Overlord
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 426[0]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1944/01/21
-#FAILSAFE_DATE= 1948/01/01
-; Manchester(142,72)
-#DESTINATION_RESOURCE= 142,72
-; UK(112) Allied, Mobilized, Not Surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 0 [10] [2] []
-#UNIT= 31 [12] [2] []
-#UNIT= 7 [12] [2] []
-}
-
-{
-#NAME= [FW]DE 426 - UK: Operation Sledgehammer
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 426[1]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1939/09/09
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 147,77
-; UK(112) Allied, Mobilized, Not Surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 0 [5] [0] []
-#UNIT= 31 [5] [0] []
-#UNIT= 4 [5] [0] []
-}
-
-{
-#NAME= [FW]DE 426 - USA: Operation Overlord
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 426[0]
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1944/01/21
-#FAILSAFE_DATE= 1948/01/01
-; Manchester(142,72)
-#DESTINATION_RESOURCE= 142,72
-; USA(115) Allied, Not Surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 7 [12] [2] []
-#UNIT= 9 [12] [2] []
-#UNIT= 32 [12] [2] []
-}
-
-{
-#NAME= [FW]DE 426 - USA: Operation Sledgehammer
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 426[1]
-#COUNTRY_ID= 115
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1939/09/09
-#FAILSAFE_DATE= 1948/01/01
-#DESTINATION_RESOURCE= 147,77
-; USA(115) Allied, Not Surrendered
-#VARIABLE_CONDITION= 115 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 4 [5] [0] []
-#UNIT= 9 [5] [0] []
-; Strategic Bomber(32)
-#UNIT= 32 [5] [0] []
 }
 
 {
@@ -10217,7 +10057,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 192,73
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [7] [0] [IV Rifle]
@@ -10248,7 +10088,7 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Lwow(194,82)
 #DESTINATION_RESOURCE= 194,82
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [7] [0] [XV Rifle]
@@ -10278,7 +10118,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 202,84
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [7] [0] [IV Rifle]
@@ -10308,7 +10148,7 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 199,83
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [7] [0] [XV Rifle]
@@ -11365,7 +11205,7 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Minsk(201,71)
 #DESTINATION_RESOURCE= 201,71
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 4 [10] [0] [ROA]
@@ -11545,7 +11385,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; Marsaeille(157,97)
+; Marseille(157,97)
 #DESTINATION_RESOURCE= 157,97
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -11741,7 +11581,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1940/04/14
 #FAILSAFE_DATE= 1948/01/01
-; Bergen Port(156,51)
+; Bergen-Port(156,51)
 #DESTINATION_RESOURCE= 156,51
 ; Norway(78)
 #VARIABLE_CONDITION= 78 [2] [100] [1]
@@ -11848,7 +11688,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1940/04/14
 #FAILSAFE_DATE= 1948/01/01
-; Oslo-Port (167,53)
+; Oslo-Port(167,53)
 #DESTINATION_RESOURCE= 167,53
 ; Norway(78)
 #VARIABLE_CONDITION= 78 [2] [100] [1]
@@ -12483,7 +12323,7 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Bucharest(198,95)
 #DESTINATION_RESOURCE= 198,95
-; Romania(93) aligned Allied, Mobilized
+; Romania(93) Allied, Mobilized
 #VARIABLE_CONDITION= 93 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 ; Infantry Army(5)
@@ -12690,7 +12530,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1942/01/01
 #FAILSAFE_DATE= 1948/01/01
-; Calais(152,79)
+; West of Calais(151,79)
 #DESTINATION_RESOURCE= 152,79
 ; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -13057,7 +12897,7 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Moscow(221,65)
 #DESTINATION_RESOURCE= 221,65
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 8 [3] [0] [Muscovite]
@@ -13443,7 +13283,7 @@
 #FAILSAFE_DATE= 1948/01/01
 ; Pittsburgh(1,104)
 #DESTINATION_RESOURCE= 1,104
-; USA(115) aligned Allied
+; USA(115) Allied
 #VARIABLE_CONDITION= 115 [2] [1] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 29 [5] [0] []
@@ -13517,6 +13357,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Italy Keeps the Fighters
 #LINK= 812[0]
 #COUNTRY_ID= 59
 #TRIGGER= 100
@@ -13706,6 +13547,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Heavy Investment In Aircraft Industry
 #LINK= 828[1]
 #COUNTRY_ID= 59
 #TRIGGER= 100
@@ -13732,6 +13574,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Heavy Investment In Aircraft Industry
 #LINK= 828[1]
 #COUNTRY_ID= 59
 #TRIGGER= 100
@@ -13758,6 +13601,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
+; Heavy Investment In Aircraft Industry
 #LINK= 828[1]
 #COUNTRY_ID= 59
 #TRIGGER= 100
@@ -14244,7 +14088,7 @@
 #DATE= 1940/01/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 234,85
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 2 [5] [0] [Factory Workers]
@@ -14645,6 +14489,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Helsinki(195,51)
 #DESTINATION_RESOURCE= 195,51
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -14697,6 +14542,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Helsinki(195,51)
 #DESTINATION_RESOURCE= 195,51
 #VARIABLE_CONDITION= 39 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -15082,7 +14928,7 @@
 ; Leningrad(206,52)
 #DESTINATION_RESOURCE= 206,52
 #DESTINATION_RESOURCE= 210,52
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Bulgaria(19) Axis
 #VARIABLE_CONDITION= 19 [1] [0] [0]
@@ -15113,7 +14959,7 @@
 ; Moscow(221,65)
 #DESTINATION_RESOURCE= 221,65
 #DESTINATION_RESOURCE= 225,68
-; USSR(116) Allied, Not Surrendered
+; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Bulgaria(19) Axis
 #VARIABLE_CONDITION= 19 [1] [0] [0]

@@ -1174,9 +1174,9 @@
 #MOBILIZATION= [5,12] [1]
 ; Italy(59) Axis, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [0] [0]
-; 2 Allied Amphibious units within 30 hexes of Syracuse Port(177,112)
+; 2 Allied Amphibious units within 30 hexes of Syracuse-Port(177,112)
 #CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
-; 7 or more Allied naval units within 18 hexes of Syracuse Port(177,112)
+; 7 or more Allied naval units within 18 hexes of Syracuse-Port(177,112)
 #CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
 }
 
@@ -1200,9 +1200,9 @@
 #MOBILIZATION= [5,12] [1]
 ; Italy(59) Axis, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [0] [0]
-; 2 Allied Amphibious units within 30 hexes of Syracuse Port(177,112)
+; 2 Allied Amphibious units within 30 hexes of Syracuse-Port(177,112)
 #CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48> OR
-; 7 or more Allied naval units within 18 hexes of Syracuse Port(177,112)
+; 7 or more Allied naval units within 18 hexes of Syracuse-Port(177,112)
 #CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
 }
 
@@ -1225,7 +1225,7 @@
 #DATE= 1939/09/03
 ; 45-55% mobilization increase towards Axis
 #MOBILIZATION= [45,55] [1]
-; USA(115) Allied (not fully active), Not Surrendered
+; USA(115) Allied, Not Surrendered
 ; France(40) Allied, Mobilized, Surrendered
 ; UK(112) Allied, Mobilized, Not Surrendered
 ; Egypt(36) Allied, Mobilized, Not Surrendered
@@ -1255,7 +1255,7 @@
 #MOBILIZATION= [2,5] [2]
 ; Italy(59) Axis but not fully mobilized
 #VARIABLE_CONDITION= 59 [1] [0] [0]
-; Italian naval unit within RND(10,12) hexes of Southampton port
+; Italian naval unit within RND(10,12) hexes of Southampton-Port
 #CONDITION_POSITION= 143,79 [10,12] [1,1] [1] [59]
 }
 
@@ -1277,9 +1277,9 @@
 #MOBILIZATION= [15,25] [1]
 ; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2 Allied Amphibious units within 30 hexes of Syracuse Port(177,112)
+; 2 Allied Amphibious units within 30 hexes of Syracuse-Port(177,112)
 #CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
-; 7 or more Allied naval units within 18 hexes of Syracuse Port(177,112)
+; 7 or more Allied naval units within 18 hexes of Syracuse-Port(177,112)
 #CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
 }
 
@@ -1301,9 +1301,9 @@
 #MOBILIZATION= [15,25] [1]
 ; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; 2 Allied Amphibious units within 30 hexes of Syracuse Port(177,112)
+; 2 Allied Amphibious units within 30 hexes of Syracuse-Port(177,112)
 #CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
-; 7 or more Allied naval units within 18 hexes of Syracuse Port(177,112)
+; 7 or more Allied naval units within 18 hexes of Syracuse-Port(177,112)
 #CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
 }
 
@@ -1546,9 +1546,9 @@
 #DATE= 1939/09/03
 ; 15-20% activation increase towards Axis
 #MOBILIZATION= [15,20] [1]
-; USSR(116) Allied (not fully active), Not Surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; Soviets have 1 Amphibious unit within RND(2,3) hexes range east of Copenhagen port
+; Soviets have 1 Amphibious unit within RND(2,3) hexes range east of Copenhagen-Port
 #CONDITION_POSITION= 171,66 [2,3] [1,1] [2] [116] <47,48>
 }
 
@@ -1571,7 +1571,7 @@
 #DATE= 1939/09/03
 ; 30-45% activation increase towards Axis
 #MOBILIZATION= [30,45] [1]
-; USSR(116) Allied (not fully active), Not Surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; Soviets have 1 Amphibious unit within RND(2,3) hexes range of Helsinki-Port(196,52)
 #CONDITION_POSITION= 196,52 [2,3] [1,1] [2] [116] <47,48>
@@ -1600,7 +1600,7 @@
 #MOBILIZATION= [30,45] [1]
 ; 1st Line - USSR Allied (fully active), Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Soviets have 1 Amphibious unit within 2-3 hexes wrange of Helsinki port
+; Soviets have 1 Amphibious unit within 2-3 hexes wrange of Helsinki-Port
 #CONDITION_POSITION= 196,52 [2,3] [1,1] [2] [116] <47,48>
 }
 
@@ -1623,9 +1623,9 @@
 #DATE= 1939/09/03
 ; 40-55% activation increase towards Axis
 #MOBILIZATION= [40,55] [1]
-; USSR(116) Allied (not fully active), Not Surrendered
+; USSR(116) Allied, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; Soviets have 1 naval unit within 1 hex range of Stockholm port
+; Soviets have 1 naval unit within 1 hex range of Stockholm-Port
 #CONDITION_POSITION= 183,54 [1,2] [1,1] [2] [116]
 }
 
@@ -1710,57 +1710,7 @@
 #DATE= 1939/09/03
 ; 1-5% mobilization increase towards Allies
 #MOBILIZATION= [1,5] [2]
-; USSR(116) Allied and not active
-; Turkey(111) Allied and Not Active
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-#VARIABLE_CONDITION= 111 [2] [0] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#PRIVATE= 1
-}
-
-; Turkey Allied Leaning Before War With the USSR
-{
-#NAME= [FW]Turkey Leans Toward Allies While USSR Neutral (Continuous) (Turkey->Allies)(35%)
-#POPUP= TEST: Turkey's relationship with the Allies improves (35%)
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-; Turkey(111)
-#COUNTRY_ID= 111
-#TRIGGER= 35
-#DATE= 1939/09/03
-#MOBILIZATION= [0,0] [2]
-; USSR(116) Allied and not active
-; Turkey(111) Allied and Not Active
-#VARIABLE_CONDITION= 116 [2] [0] [0]
-#VARIABLE_CONDITION= 111 [2] [0] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#PRIVATE= 1
-}
-
-; Turkey Allied Leaning Before War With the USSR
-{
-#NAME= [FW]Turkey Leans Toward Allies While USSR Neutral (Continuous) (Turkey->Allies)(35%)
-#POPUP= TEST: Turkey's relationship with the Allies improves (50%)
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 2
-#AI= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#LEVEL= 0
-; Turkey(111)
-#COUNTRY_ID= 111
-#TRIGGER= 50
-#DATE= 1939/09/03
-#MOBILIZATION= [0,0] [2]
-; USSR(116) Allied and not active
+; USSR(116) Allied
 ; Turkey(111) Allied and Not Active
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 #VARIABLE_CONDITION= 111 [2] [0] [0]
@@ -1787,7 +1737,7 @@
 #DATE= 1939/09/03
 ; 20-30% activation increase towards Axis
 #MOBILIZATION= [20,30] [1]
-; USA(115) Allied (not fully active), Not Surrendered
+; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [0] [0]
 ; Norway(78) Axis, Surrendered
 #VARIABLE_CONDITION= 78 [1] [100] [1]
@@ -1814,7 +1764,7 @@
 #DATE= 1939/09/03
 ; 20-35% activation increase towards Axis
 #MOBILIZATION= [20,35] [1]
-; USA(115) Allied (not fully active), Not Surrendered
+; USA(115) Allied, Not Surrendered
 ; Norway(78) Axis, Surrendered
 #VARIABLE_CONDITION= 115 [2] [0] [0]
 #VARIABLE_CONDITION= 78 [1] [100] [1]
@@ -1841,7 +1791,7 @@
 #DATE= 1939/09/01
 ; 3-5% mobilization increase towards Axis
 #MOBILIZATION= [3,5] [1]
-; USA(115) Allied (not fully active), Not Surrendered
+; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [0] [0]
 #CONDITION_POSITION= 152,10 [23,23] [1,1] [2] [115]
 }
@@ -1865,19 +1815,19 @@
 #DATE= 1939/09/01
 ; 25-35% mobilization increase towards Axis
 #MOBILIZATION= [25,35] [1]
-; USA(115) Allied (not fully active), Not Surrendered
+; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [0] [0]
 ; US has 1 naval unit within 2 hex range of Narvik-Port(180,19) OR
 #CONDITION_POSITION= 180,19 [2,2] [1,1] [2] [115]
-; US has 1 naval unit within 2 hex range of Trondheim port OR
+; US has 1 naval unit within 2 hex range of Trondheim-Port OR
 #CONDITION_POSITION= 167,39 [2,2] [1,1] [2] [115]
-; US has 1 naval unit within 2 hex range of Bergen port OR
+; US has 1 naval unit within 2 hex range of Bergen-Port OR
 #CONDITION_POSITION= 154,51 [2,2] [1,1] [2] [115]
-; US has 1 naval unit within 2 hex range of Stavanger port OR
+; US has 1 naval unit within 2 hex range of Stavanger-Port OR
 #CONDITION_POSITION= 157,55 [2,2] [1,1] [2] [115]
-; US has 1 naval unit within 2 hex range of Kristiansand port OR
+; US has 1 naval unit within 2 hex range of Kristiansand-Port OR
 #CONDITION_POSITION= 163,58 [2,2] [1,1] [2] [115]
-; US has 1 naval unit within 3 hex range of Oslo port
+; US has 1 naval unit within 3 hex range of Oslo-Port
 #CONDITION_POSITION= 167,53 [3,3] [1,1] [2] [115]
 }
 
@@ -1901,15 +1851,15 @@
 #DATE= 1939/09/01
 ; 10-15% mobilization increase towards Axis
 #MOBILIZATION= [10,15] [1]
-; USA(115) Allied (not fully active), Not Surrendered
+; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; US has 1 Amphibious unit within RND(1,2) hexes of Bilbao port OR
+; US has 1 Amphibious unit within RND(1,2) hexes of Bilbao-Port OR
 #CONDITION_POSITION= 141,97 [1,2] [1,1] [2] [115] <47,48>
-; US has 1 Amphibious unit within RND(1,2) hexes of Lisbon port OR
+; US has 1 Amphibious unit within RND(1,2) hexes of Lisbon-Port(127,108) OR
 #CONDITION_POSITION= 127,108 [1,2] [1,1] [2] [115] <47,48>
-; US has 1 Amphibious unit within RND(1,2) hexes of Valencia port OR
+; US has 1 Amphibious unit within RND(1,2) hexes of Valencia-Port(146,107) OR
 #CONDITION_POSITION= 146,107 [1,2] [1,1] [2] [115] <47,48>
-; US has 1 Amphibious unit within RND(1,2) hexes of Barcelona port OR
+; US has 1 Amphibious unit within RND(1,2) hexes of Barcelona-Port OR
 #CONDITION_POSITION= 151,102 [1,2] [1,1] [2] [115] <47,48>
 }
 
@@ -1931,9 +1881,9 @@
 #MOBILIZATION= [5,12] [1]
 ; Italy(59) Axis, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [0] [0]
-; 2 Allied Amphibious units within 30 hexes of Syracuse Port(177,112)
+; 2 Allied Amphibious units within 30 hexes of Syracuse-Port(177,112)
 #CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
-; 7 or more Allied naval units within 18 hexes of Syracuse Port(177,112)
+; 7 or more Allied naval units within 18 hexes of Syracuse-Port(177,112)
 #CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
 }
 
@@ -1955,9 +1905,9 @@
 #MOBILIZATION= [5,12] [1]
 ; Italy(59) Axis, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [0] [0]
-; 2 Allied Amphibious units within 30 hexes of Syracuse Port(177,112)
+; 2 Allied Amphibious units within 30 hexes of Syracuse-Port(177,112)
 #CONDITION_POSITION= 177,112 [30,30] [2,2] [2] [0] <47,48>
-; 7 or more Allied naval units within 18 hexes of Syracuse Port(177,112)
+; 7 or more Allied naval units within 18 hexes of Syracuse-Port(177,112)
 #CONDITION_POSITION= 177,112 [18,18] [7,7] [2] [0]
 }
 
