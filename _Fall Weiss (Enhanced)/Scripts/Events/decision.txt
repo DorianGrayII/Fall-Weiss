@@ -1692,49 +1692,6 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 
-; This decision event only triggers if DE 130=1 (Turkey Joins Axis)
-{
-#NAME= [FW]DE 137 - UK: Soviet Naval Base At Cyprus (AI - 100%)
-#POPUP=
-#MESSAGE=Middle East Command to 10 Downing Street %N%N %BRe: %BCyprus %N%N Now that Turkey has joined the Axis and re-occupied the Turkish Straits there may be some elements of the Soviet's Black Sea Navy trapped in the Mediterranean Sea.%N%N If this is the case, we should consider offering the Soviets a dedicated naval base of operations at Cyprus, which could be of mutual benefit and assist in protecting our positions in Egypt from the Italian Navy.%N%N Should we grant the Soviet Navy a dedicated base of operations at Cyprus?
-#IMAGE=
-#SOUND= teletype_1.ogg, teletype_2.ogg
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 130[1]
-#DECISION= 137
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#DISPLAY_ORDER= 1
-#MPP_UPDOWN= 0
-#MPP_TURNS= 0
-#MPP_TEXT=
-#NOTES= If you select %B(YES), the USSR will take control of the southern port on Cyprus.%N%N If you select %B(NO), and Soviet Naval units are currently present in the Black Sea, they will have to travel to Murmansk for re-supply.
-#NOTES_POSITION= 211,117
-#AI_RESPONSE= 100
-#AI_RESPONSE_POPUP= UK Grants The Soviet Navy Permission To Re-supply At Cyprus
-#DATE= 1939/09/03
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-; Cairo(208,126), Limassol are in Allied hands
-#ALIGNMENT_POSITION= 208,126 [2]
-#ALIGNMENT_POSITION= 212,117 [2]
-; Alexandria(206,124) Allied
-#ALIGNMENT_POSITION= 206,124 [2]
-#ALIGNMENT_POSITION= 211,117 [2]
-#NATIONAL_MORALE_TRIGGER= 0 [0]
-; UK(112), USSR(116), Egypt(36) Allied, Not Surrendered
-; Turkey(111) Axis, Mobilized
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 36 [2] [100] [0]
-#VARIABLE_CONDITION= 116 [2] [100] [0]
-#VARIABLE_CONDITION= 111 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
 {
 #NAME= [FW]DE 141 - UK: Offer Extended Game-play (AI - 100%)
 #POPUP=

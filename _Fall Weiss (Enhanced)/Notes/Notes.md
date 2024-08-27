@@ -36,3 +36,4 @@
 - United Kingdom
     - [Distribution of British Divisions In the Middle East and Mediterranean Theater, October 1941](https://usacac.army.mil/sites/default/files/documents/carl/nafziger/941BJAA.pdf)
 - [Axis Forces in Sicily, 10 July 1943](https://usacac.army.mil/sites/default/files/documents/carl/nafziger/943GGAD.pdf)
+- [Example of Finnish economic dependency on Germany, 1942](https://history.state.gov/historicaldocuments/frus1943v03/d167)
