@@ -1,3 +1,5 @@
+Note - Division (SOE) data is included for comparison purposes only.
+
 
 <h2 align="center">
   Unit Attack Values

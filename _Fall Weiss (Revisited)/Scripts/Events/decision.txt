@@ -138,7 +138,7 @@
 ;                           Format: country_id [national_morale_percentage]
 ;
 ; #VARIABLE_CONDITION= Variable condition requirements for the event
-;                      Format: country_id [political_alignment] [mobilization%] [surrendered_flag]
+;                      Format: country_id [political_alignment] [mobilization] [surrendered_flag]
 ;                              country_id range [1, 120]
 ;                              political_alignment range [0, 2]
 ;                                  0 = Neutral
@@ -531,7 +531,7 @@
 {
 #NAME= DE 102 - UK: Deploy 7th Armoured In Egypt Or The UK? (AI - 100%)
 #POPUP=
-#MESSAGE=British Minister Of Defence %N Hastings Ismay %N%N Our 7th Armoured Division in Egypt is very incomplete, having only about 65 obsolete vehicles, very few of which are combat worthy.%N%N We are currently in the process of completing 150 new tanks that will soon be ready for service, and given the Axis threat to our position in Egypt, it is recommended that these new tanks be sent there to strengthen 7th Armoured.%N%N However, sending these tanks to Egypt will require a heavily armed naval convoy that will cost %B35 MPPs, and the tanks won't arrive there until mid-October 1940.%N%N Would you like to send these tanks to Egypt in order to reinforce 7th Armoured %B(YES), or would you rather deploy these tanks in the UK for the defence of our home country %B(NO)?
+#MESSAGE=British Minister Of Defense %N Hastings Ismay %N%N Our 7th Armoured Division in Egypt is very incomplete, having only about 65 obsolete vehicles, very few of which are combat worthy.%N%N We are currently in the process of completing 150 new tanks that will soon be ready for service, and given the Axis threat to our position in Egypt, it is recommended that these new tanks be sent there to strengthen 7th Armoured.%N%N However, sending these tanks to Egypt will require a heavily armed naval convoy that will cost %B35 MPPs, and the tanks won't arrive there until mid-October 1940.%N%N Would you like to send these tanks to Egypt in order to reinforce 7th Armoured %B(YES), or would you rather deploy these tanks in the UK for the defense of our home country %B(NO)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -878,7 +878,7 @@
 {
 #NAME= DE 111 - UK: Transform The LDV Into The Home Guard? (AI - 100%)
 #POPUP=
-#MESSAGE=British War Office %N Anthony Eden %N%N There are now tens of thousands of enthusiastic Local Defence Volunteers (LDV) preparing to sell their lives dearly should the Germans invade.%N%N With an investment in training and equipment of %B35 MPPs, we could turn the LDV into an efficient fighting force capable of taking a heavy toll of any Germans foolish enough to land.%N%N Winston Churchill has also suggested renaming them as the Home Guard.%N%N Would you like to transform the LDV into a Home Guard with better training and equipment?
+#MESSAGE=British War Office %N Anthony Eden %N%N There are now tens of thousands of enthusiastic Local Defense Volunteers (LDV) preparing to sell their lives dearly should the Germans invade.%N%N With an investment in training and equipment of %B35 MPPs, we could turn the LDV into an efficient fighting force capable of taking a heavy toll of any Germans foolish enough to land.%N%N Winston Churchill has also suggested renaming them as the Home Guard.%N%N Would you like to transform the LDV into a Home Guard with better training and equipment?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -894,7 +894,7 @@
 #MPP_UPDOWN= -35
 #MPP_TURNS= 1
 #MPP_TEXT= The Home Guard
-#NOTES= If you say %B(YES), then British National Morale will increase by 1,000 points, and should the Home Guard ever deploy in the event of an invasion, they will deploy at strength 6 with 1 experience point.%N%N Whereas if you say %B(NO), then should the UK be invaded, Local Defence Volunteer units will deploy at strength 5 with no experience.%N%N The difference between both options could make all the difference should the Axis invade. %N%N%CRecommendations: %N%N Only say %B(NO) if you are certain that an invasion won't take place.
+#NOTES= If you say %B(YES), then British National Morale will increase by 1,000 points, and should the Home Guard ever deploy in the event of an invasion, they will deploy at strength 6 with 1 experience point.%N%N Whereas if you say %B(NO), then should the UK be invaded, Local Defense Volunteer units will deploy at strength 5 with no experience.%N%N The difference between both options could make all the difference should the Axis invade. %N%N%CRecommendations: %N%N Only say %B(NO) if you are certain that an invasion won't take place.
 #NOTES_POSITION= 147,77
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
@@ -1157,7 +1157,7 @@
 #MPP_UPDOWN= -35
 #MPP_TURNS= 1
 #MPP_TEXT= Operation Catapult
-#NOTES= %N%N This act would definitely sour relations between us and the new Vichy authorities, but the consequences of not doing so could be far worse, as the presence of the French fleet on the Axis side could possibly tip the war at sea in their favour.%N%N If you say %B(YES), then the French fleet at Mers-el-Kebir will be attacked.%N%N In response, Vichy France, Algeria and Tunisia will move 35-50% towards the Axis, and French bombers based in Algeria will retaliate by bombing Gibraltar. %N%N However, the Turks attached enormous importances to the issue of the French fleet and would be positively influence by the operation. %N%N If you say %B(NO), then should Vichy Algeria subsequently join the Axis or be conquered by the Axis, a German strength 5 Battleship at Casablanca and a full strength Battleship at Algiers will be created.
+#NOTES= %N%N This act would definitely sour relations between us and the new Vichy authorities, but the consequences of not doing so could be far worse, as the presence of the French fleet on the Axis side could possibly tip the war at sea in their favour.%N%N If you say %B(YES), then the French fleet at Mers-el-Kebir will be attacked.%N%N In response, Vichy France, Algeria and Tunisia will move 35-50% towards the Axis, and French bombers based in Algeria will retaliate by bombing Gibraltar. %N%N However, the Turks attached enormous importance to the issue of the French fleet and would be positively influence by the operation. %N%N If you say %B(NO), then should Vichy Algeria subsequently join the Axis or be conquered by the Axis, a German strength 5 Battleship at Casablanca and a full strength Battleship at Algiers will be created.
 #NOTES_POSITION= 144,115
 ; Set AI acceptance % (AI will accept 50% of the time)
 #AI_RESPONSE= 50
@@ -7308,7 +7308,7 @@
 }
 
 {
-#NAME= [FW]DE 548 - Germany: War Economy (AI - 100% Yes)
+#NAME= [FW]DE 548 - Germany: War Economy (AI - 100%)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -7345,7 +7345,7 @@
 }
 
 {
-#NAME= [FW]DE 549 - Germany: War Economy (AI - 100% Yes)
+#NAME= [FW]DE 549 - Germany: War Economy (AI - 100%)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -7488,7 +7488,7 @@
 }
 
 {
-#NAME= [FW]DE 553 - Germany: Dummy Event After USSR Prioritizes Industry Over Civilians(AI - 100%)
+#NAME= [FW]DE 553 - Germany: Dummy Event After USSR Prioritizes Industry Over Civilians (AI - 100%)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -9286,7 +9286,7 @@
 }
 
 {
-#NAME= DE 642 - Germany: Form The Afrika Korps for Service in North Africa? (Benghazi, Gazala and Tripoli in Axis hands) (AI - 100%)
+#NAME= DE 642 - Germany: Form The Afrika Korps for Service in North Africa?(Benghazi(Axis), Gazala(Axis), Tripoli(Axis)) (AI - 100%)
 #POPUP=
 #MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies in North Africa, it is suggested that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Benghazi: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a total cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa %B(YES)?
 #IMAGE=
@@ -9462,7 +9462,7 @@
 }
 
 {
-#NAME= DE 647 - Germany: Form The Afrika Korps for Service in North Africa? (Benghazi and Tripoli in Axis hands, Gazala in Allied hands) (AI - 100%)
+#NAME= DE 647 - Germany: Form The Afrika Korps for Service in North Africa?(Benghazi(Axis), Tripoli(Axis), Gazala(Allied)) (AI - 100%)
 #POPUP=
 #MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies in North Africa, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Tripoli: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa %B(YES)?
 #IMAGE=
@@ -9502,7 +9502,7 @@
 }
 
 {
-#NAME= DE 648 - Germany: Form The Afrika Korps for Service in North Africa? (Tripoli in Allied hands and Trieste in Axis hands) (AI - 100%)
+#NAME= DE 648 - Germany: Form The Afrika Korps for Service in North Africa?(Tripoli(Allied), Trieste(Axis)) (AI - 100%)
 #POPUP=
 #MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies now they have lost Tripoli, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N This formation could spearhead an offensive to recapture Libya and then advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Trieste: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in the Mediterranean %B(YES)?
 #IMAGE=
@@ -9542,7 +9542,7 @@
 }
 
 {
-#NAME= DE 649 - Germany: Form The Afrika Korps for Service in North Africa? (Benghazi in Allied hands, Tripoli in Axis hands) (AI - 100%)
+#NAME= DE 649 - Germany: Form The Afrika Korps for Service in North Africa?(Benghazi(Allied), Tripoli(Axis)) (AI - 100%)
 #POPUP=
 #MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies in North Africa, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Tripoli: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa %B(YES)?
 #IMAGE=
@@ -9885,7 +9885,7 @@
 }
 
 {
-#NAME= DE 658 - Germany: Imports From Switzerland (AI - 100% Yes)
+#NAME= DE 658 - Germany: Imports From Switzerland (AI - 100%)
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -10956,7 +10956,7 @@
 ; Rome(171,101) Axis
 #ALIGNMENT_POSITION= 171,101 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
-; Italy(59) Axis
+; Italy(59) Axis, Mobilized
 ; Egypt(36) Allied, Not Surrendered
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
@@ -12871,7 +12871,7 @@
 #MPP_UPDOWN= -35
 #MPP_TURNS= 8
 #MPP_TEXT= Reinforce North Africa
-#NOTES= %N%N Historically, the Italians fared poorly in North Africa almost from the beginning. Italian Command complained to Mussolini that the North African forces were not properly equipped for such an operation, and that an attack into Egypt could not possibly succeed; nevertheless, Mussolini ordered his Command to proceed. %N%N If you select %B(YES), a half strength Mechanized Corps will deploy at Tobruk. %N%N If you select %B(NO), Italy can expect significant supply reductions in the regions of Bardia, Sidi Barrani, and Mersa Matruh until supply lines can be better established in the beginning of 1941.
+#NOTES= %N%N Historically, the Italians faired poorly in North Africa almost from the beginning. Italian Command complained to Mussolini that the North African forces were not properly equipped for such an operation, and that an attack into Egypt could not possibly succeed; nevertheless, Mussolini ordered his Command to proceed. %N%N If you select %B(YES), a half strength Mechanized Corps will deploy at Tobruk. %N%N If you select %B(NO), Italy can expect significant supply reductions in the regions of Bardia, Sidi Barrani, and Mersa Matruh until supply lines can be better established in the beginning of 1941.
 #NOTES_POSITION=
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP= Italy Reinforces North African Front Near Tobruk

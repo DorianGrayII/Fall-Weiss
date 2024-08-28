@@ -1,4 +1,4 @@
-# Capital Ships
+# Capital Ships (work in progress...)
 
 [List of Ships of WWII](https://en.wikipedia.org/wiki/List_of_ships_of_World_War_II)
 
@@ -170,24 +170,28 @@ Capital Ships Constructed During World War II
 
 ## Spain
 
--Heavy Cruiser Canarias (1936)
--Three Alfonso class cruisers (1923)
--Mendez Nunez (taken in hand in 1944 for reconstruction)
--Three Alsedo class destroyers (1922)
--Thirteen Churucca class destroyers (1926-33)
--Four Aquila class destroyers (ex-Italian, transferred 1938)
--Two Castillo class gunboats (1922)
--Seven 177 tons TBs (1917)
--Holland type Submarine B2 (used for training)
--Two C class submarines (1928)
--Gunboat calvo Sotelo (1934)
--Four Jupiter class Gunboat/Minelayers (1935-36)
--Two Eolo class minelayers (1939)
--40 misc. ships: M1 class CMBs, DAR ex-G5 soviet type MTBs, ex-Italian MAS transferred 1937, LT class ex-German S-Boote MTBs,locally built LT-27 class (completed from 1944 and well after the war).
+- Cruisers
+    - Heavy Cruiser Canarias (1936)
+    - Three Alfonso class cruisers (1923)
+    - Mendez Nunez (taken in hand in 1944 for reconstruction)
+- Destroyers
+    - Three Alsedo class destroyers (1922)
+    - Thirteen Churucca class destroyers (1926-33)
+    - Four Aquila class destroyers (ex-Italian, transferred 1938)
+- Motor Torpedo Boats (or equilvalents)
+    - Two Castillo class gunboats (1922)
+    - Seven 177 tons TBs (1917)
+- Submarines
+    - Holland type Submarine B2 (used for training)
+    - Two C class submarines (1928)
+- Gunboat calvo Sotelo (1934)
+- Four Jupiter class Gunboat/Minelayers (1935-36)
+- Two Eolo class minelayers (1939)
+- 40 misc. ships: M1 class CMBs, DAR ex-G5 soviet type MTBs, ex-Italian MAS transferred 1937, LT class ex-German S-Boote MTBs,locally built LT-27 class (completed from 1944 and well after the war).
 
 In construction:
--Eight Pizarro class gunboats (1944) completed postwar
--Three D class submarines (German design, 1944), completed postwar
--Seven Bidasoa class minesweeprs (German M-Boat design 1943-44) completed postwa
+- Eight Pizarro class gunboats (1944) completed postwar
+- Three D class submarines (German design, 1944), completed postwar
+- Seven Bidasoa class minesweeprs (German M-Boat design 1943-44) completed postwa
 
 [ar196]: https://en.wikipedia.org/wiki/Arado_Ar_196
