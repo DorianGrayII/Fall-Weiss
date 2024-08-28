@@ -1,5 +1,4 @@
 # Changelog
-All notable changes (from baseline Fall Weiss II WIE - 11 Beta (June 4, 2023)) will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
@@ -12,8 +11,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - "German/Soviet Front Garrison Update Map Symbols 1941 (0-3 units)"
     - "German/Soviet Front Garrison Update Map Symbols 1941 (4 units)"
     - "German/Soviet Front Garrison Update Map Symbols 1941 (16 units)"
-- Added Turkish hostile reactions should the Soviets forcibly occupy the Turkish straits
-    - "DE 970 - USSR Forcibly Occupies Turkish Straits (Turkey->>Axis)" ([mobilization_3.txt])
 - Added Clodius Trade Agreement via Greece where Greece joins Axis in lieu of Bulgaria
     - "DE 681 - Germany: Chrome Imports From Turkey (via Greece)" ([decision.txt])
     - "DE 961 - Germany and Turkey Trade Agreement" ([mobilization_3.txt])
@@ -84,8 +81,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
         - "Malta Effect (Bardia, Sidi Barrani, Mersa Matruh, El Alamein) (20%)"
     - Pearl Harbor Attack (USA->Allies)
         - Reverted back to #MOBILIZATION= [15,20] [2] (from 25,30)
-    - "DE 917 - Germany: Grant Concessions To Greece To Induce Into Alliance?"
-        - now requires Greece is Axis(10%) or more
 - Scenario Data:
     - Albania(3) annexed by Italy(59)
         - control of all Albanian hexes given to Italy (same as was originally done for Libya)
@@ -144,7 +139,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - Saying yes to DE 103 reduces the % sent by convoy from Egypt & Iraq from 80% to 65%, as does saying no to DE 105 and yes to DE 164 (Duedman) ([convoy.txt])
     - Added "Axis Occupy Sevastopol (Turkey->Axis)" ([mobilization_2.txt])
     - "Collapse of Belgium (Italy->Axis)"
-        - reverted to SOE version 
+        - reverted to SOE version
     - "Axis Conquer Egypt (Turkey->Axis)"
         - #DATE reverted back to 1939/09/01
     - "Sealion (Turkey->Axis) (10%)"
@@ -226,12 +221,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - #DATEs changed to 1940/01/01 to allow event to be triggered after conquest of Yugoslavia
     - Italy now acquires Split and Adriatic Islands
 - Corrected City Name
-    - Monastir -> Bitola 
-- Fixed "Derna(191,120) is getting hit twice in Malta supply interdiction scripts" 
+    - Monastir -> Bitola
+- Fixed "Derna(191,120) is getting hit twice in Malta supply interdiction scripts"
     - (see - https://www.matrixgames.com/forums/viewtopic.php?f=10647&t=396958)
-- Fixed "Incorrect #LINK= in German/Soviet Garrison Reports" 
+- Fixed "Incorrect #LINK= in German/Soviet Garrison Reports"
     - (see - https://www.matrixgames.com/forums/viewtopic.php?f=10647&t=397073)
-- Fixed "events linked to a non-existent DECISIONs" 
+- Fixed "events linked to a non-existent DECISIONs"
     - (see - https://www.matrixgames.com/forums/viewtopic.php?f=10647&t=396845 & https://www.matrixgames.com/forums/viewtopic.php?f=10647&t=396893)
 
 [//]: # (These are reference links used in the body of this file)
