@@ -359,7 +359,7 @@
 ; #UNIT_ID_14= Shock Army*
 ; #UNIT_ID_15= Anti-Air
 ; #UNIT_ID_16= Rocket Artillery
-; #UNIT_ID_17= Artillery
+; #UNIT_ID_17= Field Artillery
 ; #UNIT_ID_18= Heavy Artillery
 ; #UNIT_ID_19= Rail Gun
 ; #UNIT_ID_20= Coastal Gun
@@ -401,7 +401,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 {
-#NAME= Algeria(Allied): Fighter - Algiers
+#NAME= Algeria(Allied): Fighter - Oran
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -418,6 +418,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1939/09/01
+; Oran(145,115)
 #DESTINATION_RESOURCE= 145,115
 ; Algeria(4) Allied
 #VARIABLE_CONDITION= 4 [2] [100] [0]
@@ -427,7 +428,7 @@
 }
 
 {
-#NAME= Algeria(Axis): Fighter - Algiers
+#NAME= Algeria(Axis): Fighter - Oran
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -444,6 +445,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1939/09/01
+; Oran(145,115)
 #DESTINATION_RESOURCE= 145,115
 ; Algeria(4) Axis
 #VARIABLE_CONDITION= 4 [1] [100] [0]
@@ -472,6 +474,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1939/09/01
+; Algiers(152,113)
 #DESTINATION_RESOURCE= 152,113
 ; Algeria(4), Allied
 #VARIABLE_CONDITION= 4 [2] [100] [0]
@@ -499,6 +502,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1939/09/01
+; Algiers(152,113)
 #DESTINATION_RESOURCE= 152,113
 ; Algeria(4) Axis
 #VARIABLE_CONDITION= 4 [1] [100] [0]
@@ -678,7 +682,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; Hanko
+; Hanko(192,51)
 #DESTINATION_RESOURCE= 192,51
 #VARIABLE_CONDITION= 39 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -710,7 +714,6 @@
 #UNIT= 1 [5] [0] [Petsamo]
 }
 
-; France (Corps)
 {
 #NAME= France(AI): Corps - Paris - 1939 (Intermediate)
 #POPUP=
@@ -763,7 +766,6 @@
 #UNIT= 0 [5] [0] [Lattre de Tassigny]
 }
 
-; Germany (Tank)
 {
 #NAME= Germany(AI): Army - Coblenz - 1940
 #POPUP=
@@ -789,7 +791,6 @@
 #UNIT= 5 [10] [1] []
 }
 
-; Germany (Army)
 {
 #NAME= Germany(AI): Army - Paris - 1941
 #POPUP=
@@ -816,7 +817,6 @@
 #UNIT= 5 [10] [0] []
 }
 
-; Germany (Barbarossa)
 {
 #NAME= Germany(AI): Barbarossa HQ - Siauliai - 1941 (Intermediate)
 #POPUP=
@@ -835,14 +835,14 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/06/01
 #FAILSAFE_DATE= 1948/01/01
+; Siauliai(192,65)
 #DESTINATION_RESOURCE= 192,65
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Axis units in Siauliai
+; 1 Axis units in Siauliai(192,65)
 #CONDITION_POSITION= 192,65 [0,0] [1,1] [1] [0]
 #UNIT= 0 [10] [0] []
 }
 
-; Germany (Corps)
 {
 #NAME= Germany(AI): Corps - Antwerp - 1939
 #POPUP=
@@ -861,6 +861,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Antwerp(155,78)
 #DESTINATION_RESOURCE= 155,78
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; No Allied units within 20 hexes of Paris(151,84) (French surrender and clearing of all Allied units from the area)
@@ -868,7 +869,6 @@
 #UNIT= 4 [5] [0] []
 }
 
-; Germany (Corps)
 {
 #NAME= Germany(AI): Corps - Banja Luka - Yugoslavian Partisan Helper - 1941
 #POPUP=
@@ -894,7 +894,6 @@
 #UNIT= 4 [10] [0] [Banja Luka]
 }
 
-; Germany (Corps)
 {
 #NAME= Germany(AI): Corps - Berlin - 1942 (Intermediate)
 #POPUP=
@@ -920,7 +919,6 @@
 #UNIT= 4 [10] [0] []
 }
 
-; Germany (Corps)
 {
 #NAME= Germany(AI): Corps - Brest - 1939
 #POPUP=
@@ -946,7 +944,6 @@
 #UNIT= 4 [5] [0] []
 }
 
-; Germany (Corps)
 {
 #NAME= Germany(AI): Corps - Brussels - 1939
 #POPUP=
@@ -965,6 +962,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Brussels(155,80)
 #DESTINATION_RESOURCE= 155,80
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; No Allied units within 20 hexes of Paris(151,84) (French surrender and clearing of all Allied units from the area)
@@ -972,7 +970,6 @@
 #UNIT= 4 [5] [0] []
 }
 
-; Germany (Corps)
 {
 #NAME= Germany(AI): Corps - Calais - 1939
 #POPUP=
@@ -998,7 +995,6 @@
 #UNIT= 4 [5] [0] []
 }
 
-; Germany (Corps)
 {
 #NAME= Germany(AI): Corps - Cherbourg - 1939
 #POPUP=
@@ -1017,6 +1013,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Cherbourg(143,82)
 #DESTINATION_RESOURCE= 143,82
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; No Allied units within 20 hexes of Paris(151,84) (French surrender and clearing of all Allied units from the area)
@@ -1024,7 +1021,6 @@
 #UNIT= 4 [5] [0] []
 }
 
-; Germany (Corps)
 {
 #NAME= Germany(AI): Corps - Leningrad - 1941
 #POPUP=
@@ -1051,7 +1047,6 @@
 #UNIT= 4 [10] [0] []
 }
 
-; Germany (Corps)
 {
 #NAME= Germany(AI): Corps - Rome - 1942
 #POPUP=
@@ -1078,7 +1073,6 @@
 #UNIT= 4 [10] [0] []
 }
 
-; Germany (Corps)
 {
 #NAME= Germany(AI): Corps - The Hague - 1939
 #POPUP=
@@ -1104,7 +1098,6 @@
 #UNIT= 4 [5] [0] []
 }
 
-; Germany (Corps)
 {
 #NAME= Germany(AI): Corps - Tilsit - 1941
 #POPUP=
@@ -1130,7 +1123,6 @@
 #UNIT= 4 [10] [0] []
 }
 
-; Germany (Corps)
 {
 #NAME= Germany(AI): Corps - Zagreb - Yugoslavian Partisan Helper - 1941
 #POPUP=
@@ -1155,7 +1147,6 @@
 #UNIT= 4 [10] [0] [Zagreb]
 }
 
-; Germany (Destroyers)
 {
 #NAME= Germany(AI): Destroyers - Stettin - 1941
 #POPUP=
@@ -1183,7 +1174,6 @@
 #UNIT= 40 [10] [0] []
 }
 
-; Germany (Engineer)
 {
 #NAME= Germany(AI): Engineer - Siegfried Line
 #POPUP=
@@ -1202,6 +1192,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1942/09/01
 #FAILSAFE_DATE= 1942/09/01
+; Dusseldorf(160,78)
 #DESTINATION_RESOURCE= 160,78
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1226,6 +1217,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Dusseldorf(160,78)
 #DESTINATION_RESOURCE= 160,78
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Axis units in Minsk
@@ -1251,6 +1243,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Belgrade(187,94)
 #DESTINATION_RESOURCE= 187,94
 #VARIABLE_CONDITION= 120 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -1352,6 +1345,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/03/01
 #FAILSAFE_DATE= 1948/01/01
+; Cuxhaven(164,71)
 #DESTINATION_RESOURCE= 164,71
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; 1 Axis unit in Paris(151,84)
@@ -1631,6 +1625,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1942/01/01
 #FAILSAFE_DATE= 1942/01/01
+; Rouen(149,82)
 #DESTINATION_RESOURCE= 149,82
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; 1 Axis unit in Paris(151,84)
@@ -1836,7 +1831,7 @@
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 174,102
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Allies within 10 hexes of Tunis OR
+; Allies within 10 hexes of Tunis(167,112) OR
 ; Allies within 10 hexes of Tripoli OR
 ; Allies within 8 hexes of Catanzaro
 #CONDITION_POSITION= 167,112 [10,10] [3,3] [2] [0]
@@ -1869,7 +1864,7 @@
 ; Naples(175,103)
 #DESTINATION_RESOURCE= 175,103
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Allies within 10 hexes of Tunis OR
+; Allies within 10 hexes of Tunis(167,112) OR
 ; Allies within 10 hexes of Tripoli OR
 ; Allies within 8 hexes of Catanzaro
 #CONDITION_POSITION= 167,112 [10,10] [3,3] [2] [0]
@@ -1879,6 +1874,7 @@
 #UNIT= 8 [10] [1] [6th Pioneer]
 #UNIT= 9 [10] [1] []
 #UNIT= 15 [10] [1] [Naples Flakkorps]
+; Heavy Artillery(18)
 #UNIT= 18 [10] [0] [Naples]
 }
 
@@ -1902,7 +1898,7 @@
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 189,101
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Belgrade has an Axis unit
+; Belgrade(187,94) has an Axis unit
 ; This way either Yugoslavia is an ally or conquered to activate the attack on Greece
 #CONDITION_POSITION= 187,94 [0,0] [1,1] [1] [0]
 #UNIT= 0 [10] [0] [List]
@@ -1942,6 +1938,7 @@
 #UNIT= 5 [10] [1] []
 #UNIT= 5 [10] [1] []
 #UNIT= 15 [10] [1] [Munich Flakkorps]
+; Heavy Artillery(18)
 #UNIT= 18 [10] [0] []
 }
 
@@ -2167,6 +2164,7 @@
 #DESTINATION_RESOURCE= 188,76
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Tank Corps(26)
 #UNIT= 26 [10] [0] []
 #UNIT= 26 [10] [0] []
 }
@@ -2338,7 +2336,7 @@
 
 ; Italian AI Helper - North Africa (Italy)
 {
-#NAME= [FW]Italy(AI): Corps - Homs - 1939
+#NAME= [FW] Italy(AI): Corps - Homs - 1939
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2590,10 +2588,12 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/03/01
 #FAILSAFE_DATE= 1941/03/01
+; Belgrade(187,94)
 #DESTINATION_RESOURCE= 187,94
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 120 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Tac Bomber(30)
 #UNIT= 30 [10] [0] []
 }
 
@@ -2907,6 +2907,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1939/09/01
+; Tunis(167,112)
 #DESTINATION_RESOURCE= 167,112
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -2961,6 +2962,7 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; No Allied units in Alexandria(206,124)
 #CONDITION_POSITION= 206,124 [0,0] [0,0] [2] [0]
+; Artillery(17)
 #UNIT= 17 [10] [0] []
 #UNIT= 4 [10] [0] []
 #UNIT= 5 [10] [0] []
@@ -3219,7 +3221,7 @@
 ; Alexandria(206,124)
 #DESTINATION_RESOURCE= 206,124
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; No Allied units in Alexandria(206,124)
+; Axis units in range of Paris(151,84)
 #CONDITION_POSITION= 151,84 [4,4] [1,1] [1] [0]
 #UNIT= 8 [5] [0] []
 }
@@ -3242,6 +3244,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Alexandria(206,124)
 #DESTINATION_RESOURCE= 206,124
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 203,125 [0,0] [1,1] [2] [0]
@@ -3267,7 +3270,6 @@
 #DATE= 1940/11/01
 #FAILSAFE_DATE= 1940/09/01
 ; Glasgow(138,65)
-#DESTINATION_RESOURCE= 138,65
 #DESTINATION_RESOURCE= 138,65
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 147,77 [20,20] [0,0] [1] [0]
@@ -3301,36 +3303,6 @@
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 ; Dummy condition position (always satisfied)
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 0 [10] [0] []
-}
-
-; Egypt (AI Helper)
-{
-#NAME= UK(AI): Egypt Mobile Units - El Alamein
-#POPUP=
-#IMAGE=
-#SOUND=
-; currently disabled in FW
-#FLAG= 0
-#TYPE= 1
-#AI= 2
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 112
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1939/11/03
-#FAILSAFE_DATE= 1948/01/01
-; El Alamein(204,125)
-#DESTINATION_RESOURCE= 204,125
-; UK(112) Allied, Mobilized, Not Surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 26 [13] [3] []
-#UNIT= 6 [13] [3] []
 #UNIT= 0 [10] [0] []
 }
 
@@ -3379,12 +3351,13 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Heraklion(196,116)
 #DESTINATION_RESOURCE= 196,116
 ; UK(112) Allied, Mobilized, Not Surrendered
 ; Greece(46) Allied, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 46 [2] [100] [0]
-; No Axis units on Crete
+; No Axis units in Heraklion(196,116)
 #CONDITION_POSITION= 196,116 [1,1] [0,0] [1] [0]
 #UNIT= 1 [5] [0] [Crete]
 }
@@ -3936,6 +3909,7 @@
 #DESTINATION_RESOURCE= 208,126
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 204,125 [7,7] [1,1] [1] [0]
+; Artillery(17)
 #UNIT= 17 [5] [0.8] [Desert]
 #UNIT= 22 [5] [0.8] [Desert]
 #UNIT= 24 [5] [0.8] [Desert]
@@ -4545,7 +4519,7 @@
 ; Axis units within 7 hexes of Washington DC(4,108)
 ; Axis units within 3 hexes of Ottawa
 ; Axis units within 3 hexes of Halifax
-; Axis units within 3 hexes of St. John's
+; Axis units within 3 hexes of St. John's(51,88)
 #CONDITION_POSITION= 4,108 [7,7] [1,1] [1] [0]
 #CONDITION_POSITION= 6,93 [3,3] [1,1] [1] [0]
 #CONDITION_POSITION= 30,95 [3,3] [1,1] [1] [0]
@@ -4667,7 +4641,7 @@
 ; Axis unit within 3 hexes of Pskov(202,59) OR
 ; Axis unit within 3 hexes of Tartu(199,57) OR
 ; Axis unit within 5 hexes of Novgorod OR
-; Axis unit within 5 hexes of Leningrad (north)
+; Axis unit within 5 hexes of Leningrad-North(206,51)
 #CONDITION_POSITION= 202,59 [3,3] [1,1] [1] [0]
 #CONDITION_POSITION= 199,57 [3,3] [1,1] [1] [0]
 #CONDITION_POSITION= 208,57 [5,5] [1,1] [1] [0]
@@ -4897,7 +4871,7 @@
 }
 
 {
-#NAME= USSR(AI): Corps - Leningrad (Veteran)
+#NAME= USSR(AI): Corps - Leningrad-North (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -4914,12 +4888,13 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+Leningrad-North(206,51)
 #DESTINATION_RESOURCE= 206,51
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis unit within 3 hexes of Pskov(202,59) OR
 ; Axis unit within 3 hexes of Tartu(199,57) OR
 ; Axis unit within 5 hexes of Novgorod OR
-; Axis unit within 5 hexes of Leningrad (north)
+; Axis unit within 5 hexes of Leningrad-North(206,51)
 #CONDITION_POSITION= 202,59 [3,3] [1,1] [1] [0]
 #CONDITION_POSITION= 199,57 [3,3] [1,1] [1] [0]
 #CONDITION_POSITION= 208,57 [5,5] [1,1] [1] [0]
@@ -4949,18 +4924,19 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; Tbilisi (235,101)
+; Tbilisi(235,101)
 #DESTINATION_RESOURCE= 235,101
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis units within 8 hexes of Kirovabad OR
-; Axis units within 8 hexes of Batumi
+; Axis units within 8 hexes of Batumi(229,101)
 #CONDITION_POSITION= 238,104 [8,8] [1,1] [1] [0]
-#CONDITION_POSITION= 229,102 [8,8] [1,1] [1] [0]
+#CONDITION_POSITION= 229,101 [8,8] [1,1] [1] [0]
 #UNIT= 0 [10] [0] []
 #UNIT= 4 [10] [0] [1st Tbilisi Rifle]
 #UNIT= 4 [10] [0] []
 #UNIT= 5 [10] [0] []
 #UNIT= 5 [10] [0] [1st Tbilisi]
+; Tank Corps(26)
 #UNIT= 26 [10] [0] [1st Tbilisi]
 #UNIT= 29 [10] [0] [1st Tbilisi]
 #UNIT= 30 [10] [0] [1st Tbilisi]
@@ -4994,7 +4970,7 @@
 
 ; USSR (reinforcements)
 {
-#NAME= USSR(AI): Corps - Leningrad (Veteran)
+#NAME= USSR(AI): Corps - Leningrad-North (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5011,12 +4987,13 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+Leningrad-North(206,51)
 #DESTINATION_RESOURCE= 206,51
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Axis unit within 3 hexes of Pskov(202,59) OR
 ; Axis unit within 3 hexes of Tartu(199,57) OR
 ; Axis unit within 5 hexes of Novgorod OR
-; Axis unit within 5 hexes of Leningrad (north)
+; Axis unit within 5 hexes of Leningrad-North(206,51)
 #CONDITION_POSITION= 202,59 [3,3] [1,1] [1] [0]
 #CONDITION_POSITION= 199,57 [3,3] [1,1] [1] [0]
 #CONDITION_POSITION= 208,57 [5,5] [1,1] [1] [0]
@@ -5446,7 +5423,7 @@
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 221,54
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Axis units have occupied Leningrad
+; Axis units have occupied Leningrad(206,52)
 #CONDITION_POSITION= 206,52 [0,0] [1,1] [1] [0]
 #UNIT= 0 [10] [0] []
 #UNIT= 4 [10] [0] [1st Cherepovets Rifle]
@@ -5473,7 +5450,7 @@
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 233,64
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Axis units have occupied Moscow
+; Axis units have occupied Moscow(221,65)
 #CONDITION_POSITION= 221,65 [0,0] [1,1] [1] [0]
 #UNIT= 0 [10] [0] []
 #UNIT= 4 [10] [0] [1st Gorki Rifle]
@@ -5539,7 +5516,7 @@
 
 ; Leningrad (AI Helper)
 {
-#NAME= USSR(AI): Army - Leningrad (Finland Defense)
+#NAME= USSR(AI): Army - Leningrad-North (Finland Defense)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5556,7 +5533,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; City North of Leningrad(206,52)
+; Leningrad-North(206,51)
 #DESTINATION_RESOURCE= 206,51
 ; USSR(116) Allied, Mobilized
 ; Finland(39) Axis, Mobilized
@@ -5823,7 +5800,7 @@
 }
 
 {
-#NAME= USSR(AI): Soviet AI Helper I (Veteran)
+#NAME= USSR(AI): Soviet AI Helper(1) (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5853,7 +5830,7 @@
 }
 
 {
-#NAME= USSR(AI): Soviet AI Helper II (Veteran)
+#NAME= USSR(AI): Soviet AI Helper(2) (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5883,7 +5860,7 @@
 }
 
 {
-#NAME= USSR(AI): Soviet AI Helper III (Veteran)
+#NAME= USSR(AI): Soviet AI Helper(3) (Veteran)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5914,7 +5891,7 @@
 }
 
 {
-#NAME= USSR(AI): Soviet AI Helper IV (Expert)
+#NAME= USSR(AI): Soviet AI Helper(4) (Expert)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5943,7 +5920,7 @@
 }
 
 {
-#NAME= USSR(AI): Soviet AI Helper V (Expert)
+#NAME= USSR(AI): Soviet AI Helper(5) (Expert)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5973,7 +5950,7 @@
 }
 
 {
-#NAME= USSR(AI): Soviet AI Helper VI (Expert)
+#NAME= USSR(AI): Soviet AI Helper(6) (Expert)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -6002,7 +5979,6 @@
 #UNIT= 0 [10] [0] []
 }
 
-; USSR (Tactical Bomber)
 {
 #NAME= USSR(AI): Tactical Bombers - Stalingrad - 1942 (Expert)
 #POPUP=
@@ -6029,7 +6005,6 @@
 #UNIT= 30 [10] [0] [2nd Stalingrad]
 }
 
-; USSR (Tank)
 {
 #NAME= USSR(AI): Tank Corps/Air - Borisoglebsk - 1942 (Veteran)
 #POPUP=
@@ -6102,6 +6077,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Rostov(225,88)
 #DESTINATION_RESOURCE= 225,88
 ; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -6136,7 +6112,7 @@
 }
 
 {
-#NAME= USSR: HQ/Corps - Leningrad (Barbarossa)
+#NAME= USSR: HQ/Corps - Leningrad-North (Barbarossa)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -6153,6 +6129,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+Leningrad-North(206,51)
 #DESTINATION_RESOURCE= 206,51
 ; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -6190,7 +6167,7 @@
 
 ; Leningrad
 {
-#NAME= USSR: Soviet Division Mobilize At Leningrad (40%)
+#NAME= USSR: Soviet Division Mobilize - Leningrad (40%)
 #POPUP= Soviet Reserves Mobilize At Leningrad
 #IMAGE=
 #SOUND=
@@ -6219,7 +6196,7 @@
 
 ; Moscow
 {
-#NAME= USSR: Soviet Army Mobilize At Moscow (40%)
+#NAME= USSR: Soviet Army Mobilize - Moscow (40%)
 #POPUP= Soviet Reserves Mobilize At Moscow
 #IMAGE=
 #SOUND=
@@ -6248,7 +6225,7 @@
 
 ; Stalingrad
 {
-#NAME= USSR: Soviet Reserves Mobilize At Stalingrad (40%)
+#NAME= USSR: Soviet Cavalry Corps - Stalingrad (40%)
 #POPUP= Soviet Reserves Mobilize At Stalingrad
 #IMAGE=
 #SOUND=
@@ -6276,7 +6253,7 @@
 }
 
 {
-#NAME= USSR: Soviet Tank Division Mobilize at Minsk (Barbarossa)
+#NAME= USSR: Soviet Tank Division - Minsk (Barbarossa)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -6302,7 +6279,7 @@
 }
 
 {
-#NAME= USSR: Soviet Tank Division Mobilize at Ostrov (Barbarossa)
+#NAME= USSR: Soviet Tank Division - Ostrov (Barbarossa)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -6327,7 +6304,7 @@
 }
 
 {
-#NAME= USSR: Soviet Tank Division Mobilize at Zhitomir (Barbarossa)
+#NAME= USSR: Soviet Tank Division - Zhitomir (Barbarossa)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -6521,7 +6498,7 @@
 }
 
 {
-#NAME= [FW]Finland: Division/Corps
+#NAME= [FW] Finland: Division/Corps - Joensuu
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -6549,7 +6526,7 @@
 
 ; Germany strengthens Afrika Korps (Germany AI)
 {
-#NAME= [FW]Germany(AI): Strengthens Afrika Korps (Expert)
+#NAME= [FW] Germany(AI): Strengthens Afrika Korps (Expert)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -6578,7 +6555,7 @@
 
 ; Germany (Submarine)
 {
-#NAME= [FW]Germany(AI): Submarine - Arcachon - 1941
+#NAME= [FW] Germany(AI): Submarine - Arcachon - 1941
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -6604,7 +6581,7 @@
 
 ; British Forces Mobilize In Egypt
 {
-#NAME= [FW]UK(AI): British Forces Mobilize In Egypt
+#NAME= [FW] UK(AI): British Forces Mobilize - Cairo
 #POPUP= British Forces Mobilize In Egypt
 #IMAGE= westerndesertaf.png
 #SOUND=
@@ -6625,6 +6602,7 @@
 #DESTINATION_RESOURCE= 208,126
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 204,125 [7,7] [1,1] [1] [0]
+; Artillery(17)
 #UNIT= 17 [5] [0.8] [Desert]
 #UNIT= 22 [5] [0.8] [Desert]
 #UNIT= 24 [5] [0.8] [Desert]
@@ -6851,7 +6829,6 @@
 #UNIT= 42 [10] [1] [Essex]
 }
 
-; USA (Liberate UK Support)
 {
 #NAME= DE 1 - USA(AI): Liberate UK Support - New York - 1942
 #POPUP=
@@ -6883,7 +6860,6 @@
 #UNIT= 26 [10] [0] []
 }
 
-; USA (Liberate UK Support)
 {
 #NAME= DE 1 - USA(AI): Liberate UK Support - New York - 1942 (Novice)
 #POPUP=
@@ -7000,7 +6976,7 @@
 ; UK Forces Capture the Vichy French Battleship Lorraine
 ; Based on Operation Catapult in June 1940
 {
-#NAME= DE 100 - UK: Vichy French Battleship Lorraine Joins The Allies
+#NAME= DE 100 - UK: Vichy French Battleship Lorraine - Alexandria-Port
 #POPUP= French Battleship Lorraine Joins The Allies
 #IMAGE=
 #SOUND=
@@ -7028,7 +7004,7 @@
 ;
 ; Canada Receives a Destroyer from the Destroyers for Bases Agreement
 {
-#NAME= DE 101 - Canada: Destroyer In Halifax
+#NAME= DE 101 - Canada: Destroyer - Halifax-Port
 #POPUP= Destroyers For Bases Agreement - HMCS Columbia Commissioned In Halifax
 #IMAGE=
 #SOUND=
@@ -7056,7 +7032,7 @@
 ;
 ; Canada Receives a Destroyer from the Destroyers for Bases Agreement
 {
-#NAME= DE 101 - Canada: Destroyer In St. John's
+#NAME= DE 101 - Canada: Destroyer - St. John's
 #POPUP= Destroyers For Bases Agreement - HMCS Annapolis Commissioned In St. John's
 #IMAGE=
 #SOUND=
@@ -7084,7 +7060,7 @@
 ; UK Receives a Destroyer from the Destroyers for Bases Agreement
 ; One time check for if France is still in the war
 {
-#NAME= DE 101 - UK: Destroyer In Liverpool
+#NAME= DE 101 - UK: Destroyer - Liverpool
 #POPUP= Destroyers For Bases Agreement - HMS Castleton Commissioned At Liverpool
 #IMAGE= castleton.png
 #SOUND=
@@ -7113,7 +7089,7 @@
 ;
 ; UK Receives a Destroyer from the Destroyers for Bases Agreement
 {
-#NAME= DE 101 - UK: Destroyer In Rosyth
+#NAME= DE 101 - UK: Destroyer - Rosyth
 #POPUP= Destroyers For Bases Agreement - HMS Lancaster Commissioned In Rosyth
 #IMAGE=
 #SOUND=
@@ -7140,7 +7116,7 @@
 ;
 ; UK Receives a Destroyer from the Destroyers for Bases Agreement
 {
-#NAME= DE 101 - UK: Destroyer In Scapa Flow
+#NAME= DE 101 - UK: Destroyer - Scapa Flow
 #POPUP= Destroyers For Bases Agreement - HMS Montgomery Commissioned At Scapa Flow
 #IMAGE= hmsmontgomery.png
 #SOUND=
@@ -7165,7 +7141,7 @@
 }
 
 {
-#NAME= DE 102 - UK(AI): 7th Armoured Formed In Egypt
+#NAME= DE 102 - UK(AI): HQ - Mersa Matruh
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -7193,7 +7169,7 @@
 ;
 ; 7th Armoured formed in Egypt
 {
-#NAME= DE 102 - UK: 7th Armoured Formed In Egypt
+#NAME= DE 102 - UK: 7th Armoured Division - Alexandria
 #POPUP= 7th Armoured Formed In Egypt
 #IMAGE= 7tharmouredegypt.png
 #SOUND=
@@ -7220,10 +7196,8 @@
 #UNIT= 25 [10] [0] [7th Armoured]
 }
 
-;
-; 7th Armoured formed in Manchester
 {
-#NAME= DE 102 - UK: 7th Armoured Formed In Manchester
+#NAME= DE 102 - UK: 7th Armoured Division - Manchester
 #POPUP= 7th Armoured Formed In Manchester
 #IMAGE= 7tharmoureduk.png
 #SOUND=
@@ -7250,7 +7224,7 @@
 }
 
 {
-#NAME= DE 104 - Yugoslavia: Simovic HQ In Belgrade (HQ)
+#NAME= DE 104 - Yugoslavia: Simovic HQ - Belgrade
 #POPUP= Paul II Takes Control In Belgrade With Allied Help
 #IMAGE=
 #SOUND=
@@ -7303,7 +7277,7 @@
 
 ;REMOVE1941 after implementing (place them at Baghdad?)
 {
-#NAME= DE 106 - UK: XIII Indian Corps Lands At Basra (West India Corps)
+#NAME= DE 106 - UK: XIII Indian Corps - Basra
 #POPUP= XIII Indian Corps Lands At Basra
 #IMAGE= xiiiindiancorps.png
 #SOUND=
@@ -7327,10 +7301,8 @@
 #UNIT= 4 [10] [0.5] [XIII Indian]
 }
 
-;
-; Australian Unit
 {
-#NAME= DE 107 - UK: Australian Reinforcements
+#NAME= DE 107 - UK: I Australian Infantry Corps - Cairo
 #POPUP= Australian Reinforcements Arrive In Egypt
 #IMAGE= australianegypt.png
 #SOUND=
@@ -7356,10 +7328,8 @@
 #UNIT= 4 [10] [0.5] [I Australian]
 }
 
-;
-; Australian Unit Arrives in Egypt
 {
-#NAME= DE 107 - UK: Australian Reinforcements Arrive In Egypt
+#NAME= DE 107 - UK: I Australian Infantry Corps - Cairo
 #POPUP= Australian Reinforcements Arrive In Egypt
 #IMAGE= australianegypt.png
 #SOUND=
@@ -7385,10 +7355,8 @@
 #UNIT= 4 [3] [1] [I Australian]
 }
 
-;
-; New Zealand Unit Arrives in Egypt
 {
-#NAME= DE 107 - UK: New Zealand Contributes Forces To Egypt
+#NAME= DE 107 - UK: New Zealand Infantry Division - Cairo
 #POPUP= New Zealand Contributes Forces To Defense Of Egypt
 #IMAGE= newzealandegypt.png
 #SOUND=
@@ -7418,7 +7386,7 @@
 ; https://nzhistory.govt.nz/war/the-north-african-campaign/background
 ; New Zealand Unit
 {
-#NAME= DE 107 - UK: New Zealand Reinforcements
+#NAME= DE 107 - UK: 2NZEF Infantry Corps - Cairo
 #POPUP= New Zealand Contributes Forces To Defense Of Egypt
 #IMAGE= newzealandegypt.png
 #SOUND=
@@ -7446,7 +7414,7 @@
 }
 
 {
-#NAME= DE 109 - UK: Polish I Corps
+#NAME= DE 109 - UK: Polish I Corps - Oxford
 #POPUP= Polish I Corps Forms In England
 #IMAGE= polisharmyinuk.png
 #SOUND=
@@ -7499,7 +7467,7 @@
 }
 
 {
-#NAME= DE 111 - UK: British Home Guard In Edinburgh
+#NAME= DE 111 - UK: British Home Guard - Edinburgh
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -7525,7 +7493,7 @@
 }
 
 {
-#NAME= DE 111 - UK: British Home Guard In Glasgow
+#NAME= DE 111 - UK: British Home Guard - Glasgow
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -7542,6 +7510,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Glasgow(138,65)
 #DESTINATION_RESOURCE= 138,65
 ; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -7552,7 +7521,7 @@
 ;
 ; images courtesy of Stephen Lewins, CART County Information Officer for Northumberland
 {
-#NAME= DE 111 - UK: British Home Guard In London
+#NAME= DE 111 - UK: British Home Guard - London
 #POPUP= Home Guard Mobilized In London
 #IMAGE= home_guard_1.png, home_guard_2.png, home_guard_3.png
 #SOUND=
@@ -7581,7 +7550,7 @@
 }
 
 {
-#NAME= DE 111 - UK: British Home Guard In Manchester
+#NAME= DE 111 - UK: British Home Guard - Manchester
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -7607,7 +7576,7 @@
 }
 
 {
-#NAME= DE 111 - UK: British LDV In Edinburgh
+#NAME= DE 111 - UK: British LDV - Edinburgh
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -7633,7 +7602,7 @@
 }
 
 {
-#NAME= DE 111 - UK: British LDV In Glasgow
+#NAME= DE 111 - UK: British LDV - Glasgow
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -7661,8 +7630,8 @@
 ;
 ; images courtesy of Stephen Lewins, CART County Information Officer for Northumberland
 {
-#NAME= DE 111 - UK: British LDV In London
-#POPUP= Local Defence Volunteers Mobilize In London
+#NAME= DE 111 - UK: British LDV - London
+#POPUP= Local Defense Volunteers Mobilize In London
 #IMAGE= home_guard_1.png, home_guard_2.png, home_guard_3.png
 #SOUND=
 #FLAG= 1
@@ -7687,7 +7656,7 @@
 }
 
 {
-#NAME= DE 111 - UK: British LDV In Manchester
+#NAME= DE 111 - UK: British LDV - Manchester
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -7742,7 +7711,7 @@
 }
 
 {
-#NAME= DE 115 - UK: Polish I Corps
+#NAME= DE 115 - UK: Polish I Corps - Oxford
 #POPUP= Polish I Corps Forms In England
 #IMAGE= polisharmyinuk.png
 #SOUND=
@@ -7821,7 +7790,7 @@
 }
 
 {
-#NAME= DE 122 - Iceland: Coastal Command AHQ Iceland Formed
+#NAME= DE 122 - Iceland: Coastal Command AHQ Maritime Bombers Arrives in Iceland
 #POPUP= Coastal Command AHQ Iceland Formed
 #IMAGE= coastalcommandiceland.png
 #SOUND=
@@ -7847,7 +7816,7 @@
 }
 
 {
-#NAME= DE 123 - UK: British Expeditionary Force Arrives In France(1)
+#NAME= DE 123 - UK: BEF Arrives In France(1)
 #POPUP= The British Expeditionary Force Arrives In France
 #IMAGE= bef1940.png, bef1940a.png, bef1940b.png, bef1940c.png
 #SOUND=
@@ -7864,6 +7833,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/10/01
 #FAILSAFE_DATE= 1948/01/01
+; Rouen(149,82)
 #DESTINATION_RESOURCE= 149,82
 ; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -7874,7 +7844,7 @@
 }
 
 {
-#NAME= DE 123 - UK: British Expeditionary Force Arrives In France(2)
+#NAME= DE 123 - UK: BEF Arrives In France(2)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -7899,7 +7869,7 @@
 }
 
 {
-#NAME= DE 123 - UK: British Expeditionary Force Deploys In The UK
+#NAME= DE 123 - UK: BEF Deploys In The UK
 #POPUP= The British Expeditionary Force Deploys In The UK
 #IMAGE= befuk1940.png
 #SOUND=
@@ -7929,7 +7899,7 @@
 
 ; UK (Syrian Garrison)
 {
-#NAME= [FW]DE 131 - UK(PBEM): Syrian Garrison - Damascus
+#NAME= [FW] DE 131 - UK(PBEM): Syrian Garrison - Damascus
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -7954,7 +7924,7 @@
 }
 
 {
-#NAME= [FW]DE 133 - UK: 1st South African Corps Transfer to Egypt
+#NAME= [FW] DE 133 - UK: 1st South African Corps Transfer to Egypt
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -7982,7 +7952,7 @@
 
 ; UK (East African Forces Transfer to Egypt)
 {
-#NAME= [FW]DE 133 - UK: East African Forces Transfer to Egypt
+#NAME= [FW] DE 133 - UK: East African Forces Transfer to Egypt
 #POPUP= UK Transfers Forces From Ethiopia To Egypt
 #IMAGE=
 #SOUND=
@@ -8008,7 +7978,7 @@
 
 ; Kiev Tanks
 {
-#NAME= [FW]DE 136 - USSR: Modern Soviet Tanks (Kiev)
+#NAME= [FW] DE 136 - USSR: Modern Soviet Tanks (Kiev)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -8038,7 +8008,7 @@
 
 ; Moscow Tanks
 {
-#NAME= [FW]DE 136 - USSR: Modern Soviet Tanks (Moscow)
+#NAME= [FW] DE 136 - USSR: Modern Soviet Tanks (Moscow)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -8065,7 +8035,7 @@
 
 ; Moscow Tanks
 {
-#NAME= [FW]DE 136 - USSR: Modern Soviet Tanks (Moscow)
+#NAME= [FW] DE 136 - USSR: Modern Soviet Tanks (Moscow)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -8092,7 +8062,7 @@
 
 ; Smolensk Tanks
 {
-#NAME= [FW]DE 136 - USSR: Modern Soviet Tanks (Smolensk)
+#NAME= [FW] DE 136 - USSR: Modern Soviet Tanks (Smolensk)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -8150,6 +8120,7 @@
 #UNIT= 5 [10] [1] []
 #UNIT= 5 [10] [1] []
 #UNIT= 15 [10] [1] [Berlin Flakkorps]
+; Heavy Artillery(18)
 #UNIT= 18 [10] [0] []
 }
 
@@ -8176,7 +8147,7 @@
 #DESTINATION_RESOURCE= 164,81
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Allies within 7 hexes of Paris(151,84) OR
-; Allies within 7 hexes of Dusseldorf OR
+; Allies within 7 hexes of Dusseldorf(160,78) OR
 ; Allies within 7 hexes of Hamburg OR
 ; Allies within 7 hexes of Bordeaux(145,94)
 #CONDITION_POSITION= 151,84 [7,7] [3,3] [2] [0]
@@ -8190,6 +8161,7 @@
 #UNIT= 5 [10] [1] []
 #UNIT= 5 [10] [1] []
 #UNIT= 15 [10] [1] [Frankfurt Flakkorps]
+; Heavy Artillery(18)
 #UNIT= 18 [10] [0] []
 #UNIT= 26 [10] [1] []
 ; Tank Army(27)
@@ -8298,6 +8270,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/10/01
 #FAILSAFE_DATE= 1948/01/01
+; Kristiansand(162,58)
 #DESTINATION_RESOURCE= 162,58
 ; Norway(78) Axis, Surrendered
 #VARIABLE_CONDITION= 78 [1] [100] [1]
@@ -8484,7 +8457,7 @@
 }
 
 {
-#NAME= DE 260 - Germany: Defensive Corps - Berlin - 1943
+#NAME= DE 223 - Germany: Defensive Corps - Berlin - 1943
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -8493,7 +8466,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 260[1]
+#LINK= 223[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -8510,7 +8483,7 @@
 }
 
 {
-#NAME= DE 261 - Germany: Defensive Units - Berlin - 1943
+#NAME= DE 224 - Germany: Defensive Units - Berlin - 1943
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -8519,7 +8492,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 261[1]
+#LINK= 224[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -8539,7 +8512,7 @@
 }
 
 {
-#NAME= DE 261 - Germany(AI): Defensive HQ and Corps - Berlin - 1943
+#NAME= DE 225 - Germany(AI): Defensive HQ and Corps - Berlin - 1943
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -8548,7 +8521,7 @@
 #AI= 1
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 261[1]
+#LINK= 225[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -8567,35 +8540,7 @@
 }
 
 {
-#NAME= DE 262 - Germany(AI): Defensive HQ and Corps - Berlin - 1943
-#POPUP=
-#IMAGE=
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 1
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 262[1]
-#COUNTRY_ID= 45
-#TRIGGER= 100
-#PRIVATE= 0
-#DISPLAY_TURN= 0
-#FULL_RESEARCH= 1
-#DATE= 1943/01/01
-#FAILSAFE_DATE= 1948/01/01
-; Berlin(173,74)
-#DESTINATION_RESOURCE= 173,74
-; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
-#VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 0 [10] [0] []
-#UNIT= 4 [10] [0] []
-#UNIT= 4 [10] [0] []
-}
-
-{
-#NAME= DE 262 - Germany: Defensive Corps - Berlin - 1943
+#NAME= DE 225 - Germany: Defensive Corps - Berlin - 1943
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -8604,7 +8549,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 262[1]
+#LINK= 225[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -8621,7 +8566,7 @@
 }
 
 {
-#NAME= DE 263 - Germany: Defensive Corps - Berlin - 1943
+#NAME= DE 226 - Germany: Defensive Corps - Berlin - 1943
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -8630,7 +8575,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 263[1]
+#LINK= 226[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -8647,7 +8592,7 @@
 }
 
 {
-#NAME= DE 264 - Germany: Defensive Corps - Berlin - 1943
+#NAME= DE 227 - Germany: Defensive Corps - Berlin - 1943
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -8657,7 +8602,7 @@
 #LEVEL= 0
 #GV= 1[1,100]
 ; Germany: Defensive Corps?
-#LINK= 264[1]
+#LINK= 227[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -8674,7 +8619,7 @@
 }
 
 {
-#NAME= DE 265 - Germany: Defensive Corps - Berlin - 1943
+#NAME= DE 228 - Germany: Defensive Corps - Berlin - 1943
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -8683,7 +8628,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 265[1]
+#LINK= 228[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -8702,7 +8647,7 @@
 }
 
 {
-#NAME= DE 266 - Germany: Defensive Corps - Berlin - 1943
+#NAME= DE 229 - Germany: Defensive Corps - Berlin - 1943
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -8711,7 +8656,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 266[1]
+#LINK= 229[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -8728,7 +8673,7 @@
 }
 
 {
-#NAME= DE 267 - Germany: Defensive Corps - Berlin - 1943
+#NAME= DE 230 - Germany: Defensive Corps - Berlin - 1943
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -8737,7 +8682,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 267[1]
+#LINK= 230[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -8897,6 +8842,7 @@
 ; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Tank Division(25)
 #UNIT= 25 [10] [0] [10th Armoured]
 }
 
@@ -8920,6 +8866,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; St. John's(51,88)
 #DESTINATION_RESOURCE= 51,88
 ; Canada Allied, Not Surrendered
 #VARIABLE_CONDITION= 21 [2] [100] [0]
@@ -9240,7 +9187,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
-; Lappeenranta
+; Lappeenranta(202,48)
 #DESTINATION_RESOURCE= 202,48
 ; Lahti - Spillover location
 #DESTINATION_RESOURCE= 197,48
@@ -9299,7 +9246,7 @@
 #FAILSAFE_DATE= 1941/06/01
 #DESTINATION_RESOURCE= 198,73
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis units in Belgrade
+; Axis units in Belgrade(187,94)
 #CONDITION_POSITION= 187,94 [0,0] [1,1] [1] [0]
 #UNIT= 26 [10] [1] []
 #UNIT= 5 [10] [1] []
@@ -9330,9 +9277,10 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Johannisburg(190,71)
 #DESTINATION_RESOURCE= 190,71
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; No Axis units within 2 hexes of Johannisburg
+; No Axis units within 2 hexes of Johannisburg(190,71)
 #CONDITION_POSITION= 190,71 [2,2] [0,0] [1] [0]
 #UNIT= 4 [10] [0] []
 }
@@ -9495,7 +9443,7 @@
 }
 
 {
-#NAME= [FW]DE 428 - USSR(AI): Transfers Additional Siberian Forces To The Eastern Front
+#NAME= [FW] DE 428 - USSR(AI): Transfers Additional Siberian Forces To The Eastern Front
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9516,12 +9464,12 @@
 #DESTINATION_RESOURCE= 243,66
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 26 [11] [1] []
+#UNIT= 26 [11] [1] [2nd Siberian]
 #UNIT= 6 [11] [1] []
 }
 
 {
-#NAME= [FW]DE 428 - USSR: Transfers Additional Siberian Forces To The Eastern Front (40%)
+#NAME= [FW] DE 428 - USSR: Transfers Additional Siberian Forces To The Eastern Front (40%)
 #POPUP= USSR Transfers Additional Siberian Forces To The Eastern Front
 #IMAGE=
 #SOUND= transport_movement.ogg
@@ -9544,12 +9492,12 @@
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 0 [10] [1] []
 #UNIT= 5 [10] [1] []
-#UNIT= 26 [10] [1] []
+#UNIT= 26 [10] [1] [3rd Siberian]
 #UNIT= 29 [10] [1] []
 }
 
 {
-#NAME= [FW]DE 430 - UK: British Empire Fleet
+#NAME= [FW] DE 430 - UK: British Empire Fleet
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9577,7 +9525,7 @@
 }
 
 {
-#NAME= [FW]DE 430 - UK: British Pacific Fleet
+#NAME= [FW] DE 430 - UK: British Pacific Fleet
 #POPUP= Elements Of The British Pacific Fleet Transfer To The Atlantic
 #IMAGE=
 #SOUND=
@@ -9604,7 +9552,7 @@
 }
 
 {
-#NAME= [FW]DE 430 - UK: Commonwealth Liberate UK
+#NAME= [FW] DE 430 - UK: Commonwealth Liberate UK
 #POPUP= The British Empire Organizes Forces In Canada For Deployment To Europe
 #IMAGE=
 #SOUND=
@@ -9660,7 +9608,7 @@
 
 ; Commonwealth Invades Egypt
 {
-#NAME= [FW]DE 533 - UK: Commonwealth Invades Egypt
+#NAME= [FW] DE 533 - UK: Commonwealth Invades Egypt
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9688,7 +9636,7 @@
 
 ; Commonwealth Invades Egypt
 {
-#NAME= [FW]DE 533 - UK: Commonwealth Invades Egypt - HQ
+#NAME= [FW] DE 533 - UK: Commonwealth Invades Egypt - HQ
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9714,7 +9662,7 @@
 
 ; Commonwealth Invades Egypt
 {
-#NAME= [FW]DE 533 - UK: Commonwealth Invades Egypt - Special Forces
+#NAME= [FW] DE 533 - UK: Commonwealth Invades Egypt - Special Forces
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9740,7 +9688,7 @@
 
 
 {
-#NAME= [FW]DE 543 - UK: UK Occupies Ireland
+#NAME= [FW] DE 543 - UK: UK Occupies Ireland
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -9768,7 +9716,7 @@
 ; https://www.wikiwand.com/en/13th_Waffen_Mountain_Division_of_the_SS_Handschar_(1st_Croatian)
 ; Historic Date: 9 October 1943
 {
-#NAME= [FW]DE 544 - Croatia: Mountain Infantry Division
+#NAME= [FW] DE 544 - Croatia: Mountain Infantry Division
 #POPUP= Croatia Raises A Mountain Infantry Division For Anti-Partisan Operations
 #IMAGE=
 #SOUND=
@@ -9828,7 +9776,6 @@
 #UNIT= 5 [10] [1] []
 }
 
-; Germany (Barbarossa)
 {
 #NAME= DE 600 - Germany(AI): Barbarossa Reserves - Warsaw - 1941 (Intermediate)
 #POPUP=
@@ -9863,7 +9810,6 @@
 #UNIT= 5 [10] [1] []
 }
 
-; Germany (Corps)
 {
 #NAME= DE 600 - Germany(AI): Corps - Johannisburg - 1941
 #POPUP=
@@ -9883,6 +9829,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Johannisburg(190,71)
 #DESTINATION_RESOURCE= 190,71
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; No Axis units within 2 hexes of Johannisburg(190,71)
@@ -9890,7 +9837,6 @@
 #UNIT= 4 [10] [0] []
 }
 
-; Germany (Corps)
 {
 #NAME= DE 600 - Germany(AI): Corps - Siedlice - 1941
 #POPUP=
@@ -10163,6 +10109,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Algiers(152,113)
 #DESTINATION_RESOURCE= 152,113
 ; France(40) Allied, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
@@ -10188,6 +10135,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1940/06/20
 #FAILSAFE_DATE= 1940/10/01
+; Algiers(152,113)
 #DESTINATION_RESOURCE= 152,113
 ; France(40) Allied, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
@@ -10213,6 +10161,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1940/06/03
 #FAILSAFE_DATE= 1940/09/01
+; Algiers(152,113)
 #DESTINATION_RESOURCE= 152,113
 ; France(40) Allied, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
@@ -10220,7 +10169,6 @@
 #UNIT= 29 [10] [0] [1st]
 }
 
-; Italian Navy AI Helper
 {
 #NAME= DE 602 - Italy(AI): Navy AI Helper
 #POPUP=
@@ -10231,6 +10179,7 @@
 #AI= 1
 #LEVEL= 0
 #GV= 1[1,100]
+; Form Vichy France?
 #LINK= 602[1]
 #COUNTRY_ID= 59
 #TRIGGER= 100
@@ -10248,7 +10197,6 @@
 #UNIT= 43 [10] [0] []
 }
 
-; Italian Navy AI Helper
 {
 #NAME= DE 602 - Italy(AI): Navy AI Helper
 #POPUP=
@@ -10704,7 +10652,7 @@
 
 ; Germany (Corps)
 {
-#NAME= DE 610 - Germany(AI): Corps - Siauliai - 1941
+#NAME= DE 231 - Germany(AI): Corps - Siauliai - 1941
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -10713,7 +10661,7 @@
 #AI= 1
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 610[1]
+#LINK= 231[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -10721,6 +10669,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Siauliai(192,65)
 #DESTINATION_RESOURCE= 192,65
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; No Axis units within 4 hexes of Siauliai(192,65)
@@ -11056,6 +11005,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1942/03/15
 #FAILSAFE_DATE= 1948/01/01
+; Rostov(225,88)
 #DESTINATION_RESOURCE= 225,88
 ; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -11108,6 +11058,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Siauliai(192,65)
 #DESTINATION_RESOURCE= 192,65
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; No Axis units within 4 hexes of Siauliai(192,65), Lithuania
@@ -11134,6 +11085,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Siauliai(192,65)
 #DESTINATION_RESOURCE= 192,65
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; No Axis units within 4 hexes of Siauliai(192,65), Lithuania
@@ -11160,6 +11112,7 @@
 #FULL_RESEARCH= 1
 #DATE= 1941/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Siauliai(192,65)
 #DESTINATION_RESOURCE= 192,65
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; No Axis units within 4 hexes of Siauliai(192,65)
@@ -11341,6 +11294,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1940/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Tunis(167,112)
 #DESTINATION_RESOURCE= 167,112
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -11365,6 +11319,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1940/01/01
 #FAILSAFE_DATE= 1948/01/01
+; Tunis(167,112)
 #DESTINATION_RESOURCE= 167,112
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -11442,7 +11397,7 @@
 }
 
 {
-#NAME= [FW]DE 643 - Germany: Light Cruiser Secures Bergen Port
+#NAME= [FW] DE 643 - Germany: Light Cruiser Secures Bergen Port
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -11486,6 +11441,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1940/04/14
 #FAILSAFE_DATE= 1948/01/01
+; Kristiansand(162,58)
 #DESTINATION_RESOURCE= 162,58
 ; Norway(78)
 #VARIABLE_CONDITION= 78 [2] [100] [1]
@@ -11549,7 +11505,7 @@
 }
 
 {
-#NAME= [FW]DE 643 - Germany: Heavy Cruiser Secures Oslo Port
+#NAME= [FW] DE 643 - Germany: Heavy Cruiser Secures Oslo Port
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -11659,7 +11615,7 @@
 
 ; Norway(78)not invaded
 {
-#NAME= [FW]DE 643 - Germany: Ground Forces Earmarked for Norway are now available
+#NAME= [FW] DE 643 - Germany: Ground Forces Earmarked for Norway are now available
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -11690,7 +11646,7 @@
 
 ; Norway(Pro-Axis)
 {
-#NAME= [FW]DE 643 - Germany: Destroyer Secures Narvik Port
+#NAME= [FW] DE 643 - Germany: Destroyer Secures Narvik Port
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -11761,6 +11717,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1940/04/14
 #FAILSAFE_DATE= 1948/01/01
+; Kristiansand(162,58)
 #DESTINATION_RESOURCE= 162,58
 #VARIABLE_CONDITION= 78 [2] [100] [1]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -11819,7 +11776,7 @@
 
 ; Norway(Pro-Allied)
 {
-#NAME= [FW]DE 644 - Germany: Destroyer Secures Narvik Port
+#NAME= [FW] DE 644 - Germany: Destroyer Secures Narvik Port
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -11894,7 +11851,7 @@
 
 ; Norway(78)not invaded
 {
-#NAME= [FW]DE 644 - Germany: Naval Forces Earmarked For Norway are now available
+#NAME= [FW] DE 644 - Germany: Naval Forces Earmarked For Norway are now available
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -11923,7 +11880,7 @@
 
 
 {
-#NAME= [FW]DE 644 - Germany: Ground Forces Earmarked For Norway are now available
+#NAME= [FW] DE 644 - Germany: Ground Forces Earmarked For Norway are now available
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -12280,6 +12237,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1939/09/01
+; Frankfurt(164,81)
 #DESTINATION_RESOURCE= 164,81
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -12304,6 +12262,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1939/09/01
+; Johannisburg(190,71)
 #DESTINATION_RESOURCE= 190,71
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -12492,7 +12451,7 @@
 }
 
 {
-#NAME= [FW]DE 679 - Germany: Garrisons Egypt(1)
+#NAME= [FW] DE 679 - Germany: Garrisons Egypt(1)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -12518,7 +12477,7 @@
 }
 
 {
-#NAME= [FW]DE 679 - Germany: Garrisons Egypt(2)
+#NAME= [FW] DE 679 - Germany: Garrisons Egypt(2)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -12544,7 +12503,7 @@
 }
 
 {
-#NAME= [FW]DE 679 - Germany: Garrisons Egypt(3)
+#NAME= [FW] DE 679 - Germany: Garrisons Egypt(3)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -12756,7 +12715,7 @@
 }
 
 {
-#NAME= [FW]DE 793 - USSR: Civilian Engineers
+#NAME= [FW] DE 793 - USSR: Civilian Engineers
 #POPUP= Civilian Engineers Are Deployed At Moscow
 #IMAGE=
 #SOUND=
@@ -12783,7 +12742,7 @@
 
 ; Anglo-Portuguese Alliance
 {
-#NAME= [FW]DE 800 - Portugal: Salazar Deployment Announces Spanish Troop Movement
+#NAME= [FW] DE 800 - Portugal: Salazar Deployment Announces Spanish Troop Movement
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -12812,7 +12771,7 @@
 
 ; Spanish Garrison Portugal Border
 {
-#NAME= [FW]DE 800 - Spain: Spanish Garrison Portugal Border
+#NAME= [FW] DE 800 - Spain: Spanish Garrison Portugal Border
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -12839,7 +12798,7 @@
 
 ; Spanish Garrison Portugal Border
 {
-#NAME= [FW]DE 800 - Spain: Spanish Garrison of Portugal Border
+#NAME= [FW] DE 800 - Spain: Spanish Garrison of Portugal Border
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -12866,7 +12825,7 @@
 
 ; Valencia Corps (Spain)
 {
-#NAME= [FW]DE 800 - Spain: Valencia Corps
+#NAME= [FW] DE 800 - Spain: Valencia Corps
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -12892,7 +12851,7 @@
 
 ; Anglo-Portuguese Alliance
 {
-#NAME= [FW]DE 800 - UK(AI): Portugal Declares War On Spain
+#NAME= [FW] DE 800 - UK(AI): Portugal Declares War On Spain
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -12926,7 +12885,7 @@
 
 ; Anglo-Portuguese Alliance
 {
-#NAME= [FW]DE 800 - UK: Division Arrives In Portugal
+#NAME= [FW] DE 800 - UK: Division Arrives In Portugal
 #POPUP= Salazar Permits UK Troops In Lisbon
 #IMAGE=
 #SOUND=
@@ -12954,7 +12913,7 @@
 
 ; UK Military Exports To Portugal (HQ, Corps - Lisbon)
 {
-#NAME= [FW]DE 805 - UK: Military Exports To Portugal(1)
+#NAME= [FW] DE 805 - UK: Military Exports To Portugal(1)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -12981,7 +12940,7 @@
 
 ; UK Military Exports To Portugal (Garrison - Porto)
 {
-#NAME= [FW]DE 805 - UK: Military Exports To Portugal(2)
+#NAME= [FW] DE 805 - UK: Military Exports To Portugal(2)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13007,7 +12966,7 @@
 
 ; UK Military Exports To Portugal (Garrison - Evora)
 {
-#NAME= [FW]DE 805 - UK: Military Exports To Portugal(3)
+#NAME= [FW] DE 805 - UK: Military Exports To Portugal(3)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13033,7 +12992,7 @@
 
 ; Italy Military Exports To Spain (Garrison - Vigo)
 {
-#NAME= [FW]DE 806 - Italy: Military Exports To Spain
+#NAME= [FW] DE 806 - Italy: Military Exports To Spain
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13060,7 +13019,7 @@
 ; USA Military Exports To Sweden (Fighters)
 ; Italy Does Not Get Option To Sell To Sweden
 {
-#NAME= [FW]DE 811 - Italy: Military Exports to Sweden
+#NAME= [FW] DE 811 - Italy: Military Exports to Sweden
 #POPUP= Italy Deploys New Fighters
 #IMAGE=
 #SOUND=
@@ -13088,7 +13047,7 @@
 ; USA Military Exports To Sweden (Fighters)
 ; Sweden (Allied)
 {
-#NAME= [FW]DE 811 - USA: Military Exports to (Allied) Sweden
+#NAME= [FW] DE 811 - USA: Military Exports to (Allied) Sweden
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13116,7 +13075,7 @@
 ; USA Military Exports To Sweden (Fighters)
 ; Sweden (Axis)
 {
-#NAME= [FW]DE 811 - USA: Military Exports to (Axis) Sweden
+#NAME= [FW] DE 811 - USA: Military Exports to (Axis) Sweden
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13144,7 +13103,7 @@
 ; USA Military Exports To Sweden (Fighters)
 ; USA Keeps the fighters
 {
-#NAME= [FW]DE 811 - USA: Military Exports to Sweden
+#NAME= [FW] DE 811 - USA: Military Exports to Sweden
 #POPUP= USA Keeps Military Aircraft That Were Earmarked For Sweden
 #IMAGE=
 #SOUND=
@@ -13172,7 +13131,7 @@
 ; Italy Military Exports To Sweden (Fighters)
 ; Sweden (Allied)
 {
-#NAME= [FW]DE 812 - Italy: Military Exports to (Allied) Sweden
+#NAME= [FW] DE 812 - Italy: Military Exports to (Allied) Sweden
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13200,7 +13159,7 @@
 ; Italy Military Exports To Sweden (Fighters)
 ; Sweden (Axis)
 {
-#NAME= [FW]DE 812 - Italy: Military Exports to (Axis) Sweden
+#NAME= [FW] DE 812 - Italy: Military Exports to (Axis) Sweden
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13228,7 +13187,7 @@
 ; Italy Military Exports To Sweden (Fighters)
 ; Italy Keeps the fighters
 {
-#NAME= [FW]DE 812 - Italy: Military Exports to Sweden
+#NAME= [FW] DE 812 - Italy: Military Exports to Sweden
 #POPUP= Italy Deploys New Fighters
 #IMAGE=
 #SOUND=
@@ -13257,7 +13216,7 @@
 ; USA Military Exports To Turkey (Army)
 ; Turkey (Allied)
 {
-#NAME= [FW]DE 814 - Allied Military Exports to (Allied) Turkey
+#NAME= [FW] DE 814 - Allied Military Exports to (Allied) Turkey
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13284,7 +13243,7 @@
 ; USA Military Exports To Turkey (Army)
 ; Turkey (Axis)
 {
-#NAME= [FW]DE 814 - Allied Military Exports to (Axis) Turkey
+#NAME= [FW] DE 814 - Allied Military Exports to (Axis) Turkey
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13310,7 +13269,7 @@
 
 ; USA Military Exports To Turkey (Army)
 {
-#NAME= [FW]DE 815 - Allied Military Exports to (Allied) Turkey
+#NAME= [FW] DE 815 - Allied Military Exports to (Allied) Turkey
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13336,7 +13295,7 @@
 
 ; USA Military Exports To Turkey (Army)
 {
-#NAME= [FW]DE 815 - Allied Military Exports to (Axis) Turkey
+#NAME= [FW] DE 815 - Allied Military Exports to (Axis) Turkey
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13362,7 +13321,7 @@
 
 ; Heavy Cruiser Petropavlovsk  (USSR)
 {
-#NAME= [FW]DE 826 - USSR: Heavy Cruiser Petropavlovsk
+#NAME= [FW] DE 826 - USSR: Heavy Cruiser Petropavlovsk
 #POPUP= USSR Commissions The Heavy Cruiser Petropavlovsk
 #IMAGE=
 #SOUND=
@@ -13390,7 +13349,7 @@
 
 ; Light Cruiser Etna (Italy)
 {
-#NAME= [FW]DE 827 - Italy: Light Cruiser Etna
+#NAME= [FW] DE 827 - Italy: Light Cruiser Etna
 #POPUP= Italy Commissions The Light Cruiser Etna
 #IMAGE=
 #SOUND=
@@ -13418,7 +13377,7 @@
 
 ; Aircraft Industry Expansion (Italy)
 {
-#NAME= [FW]DE 828 - Italy: Fighter Squadron
+#NAME= [FW] DE 828 - Italy: Fighter Squadron
 #POPUP= Italy Deploys New Fighters
 #IMAGE=
 #SOUND=
@@ -13445,7 +13404,7 @@
 
 ; Aircraft Industry Expansion (Italy)
 {
-#NAME= [FW]DE 828 - Italy: Medium Bombers
+#NAME= [FW] DE 828 - Italy: Medium Bombers
 #POPUP= Italy Deploys New Medium Bombers
 #IMAGE=
 #SOUND=
@@ -13472,7 +13431,7 @@
 
 ; Aircraft Industry Expansion (Italy)
 {
-#NAME= [FW]DE 828 - Italy: Tactical Bombers
+#NAME= [FW] DE 828 - Italy: Tactical Bombers
 #POPUP= Italy Deploys New Tactical Bombers
 #IMAGE=
 #SOUND=
@@ -13498,7 +13457,7 @@
 }
 
 {
-#NAME= [FW]DE 829 - Divison Lend Lease to (Allied) Saudi Arabia
+#NAME= [FW] DE 829 - Division Lend Lease to (Allied) Saudi Arabia
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13526,7 +13485,7 @@
 
 ; Lend Lease to Saudi Arabia (Saudi Arabia)
 {
-#NAME= [FW]DE 829 - Lend Lease to (Axis) Saudi Arabia
+#NAME= [FW] DE 829 - Lend Lease to (Axis) Saudi Arabia
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13553,7 +13512,7 @@
 
 ; Mechanized Infantry - North Africa (Italy)
 {
-#NAME= [FW]DE 832 - Italy(AI): Mechanized Infantry - North Africa
+#NAME= [FW] DE 832 - Italy(AI): Mechanized Infantry - North Africa
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13582,7 +13541,7 @@
 
 ; Mechanized Infantry - North Africa (Italy)
 {
-#NAME= [FW]DE 832 - Italy: Mechanized Infantry - North Africa
+#NAME= [FW] DE 832 - Italy: Mechanized Infantry - North Africa
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13609,7 +13568,7 @@
 
 ; Danish Liberation Division
 {
-#NAME= [FW]DE 833 - Danish Liberation Division
+#NAME= [FW] DE 833 - Danish Liberation Division
 #POPUP= Danish Forces Return From Sweden
 #IMAGE=
 #SOUND=
@@ -13636,7 +13595,7 @@
 
 ; Norwegian Liberation Division
 {
-#NAME= [FW]DE 833 - Norwegian Liberation Division
+#NAME= [FW] DE 833 - Norwegian Liberation Division
 #POPUP= Norwegian Forces Return From Sweden
 #IMAGE=
 #SOUND=
@@ -13664,7 +13623,7 @@
 
 ; Malta Anti-Aircraft - Regular
 {
-#NAME= [FW]DE 834 - UK: Malta Anti-Aircraft
+#NAME= [FW] DE 834 - UK: Malta Anti-Aircraft
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13690,7 +13649,7 @@
 
 ; Malta Anti-Aircraft - Stronger
 {
-#NAME= [FW]DE 834 - UK: Malta Anti-Aircraft
+#NAME= [FW] DE 834 - UK: Malta Anti-Aircraft
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13715,7 +13674,7 @@
 }
 
 {
-#NAME= [FW]DE 838 - UK: Reinforces Greece
+#NAME= [FW] DE 838 - UK: Reinforces Greece
 #POPUP= Allied Reinforcements Are Rushed To Athens
 #IMAGE=
 #SOUND=
@@ -13732,6 +13691,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Athens(193,109)
 #DESTINATION_RESOURCE= 193,109
 ; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -13741,7 +13701,7 @@
 }
 
 {
-#NAME= [FW]DE 838 - UK: Supports Greek HQ
+#NAME= [FW] DE 838 - UK: Supports Greek HQ
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -13758,6 +13718,7 @@
 #FULL_RESEARCH= 0
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
+; Athens(193,109)
 #DESTINATION_RESOURCE= 193,109
 ; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -13767,7 +13728,7 @@
 }
 
 {
-#NAME= [FW]DE 842 - UK: RAF In Ireland
+#NAME= [FW] DE 842 - UK: RAF In Ireland
 #POPUP= RAF Re-stations To Airfields In Ireland
 #IMAGE=
 #SOUND=
@@ -13794,7 +13755,7 @@
 
 ; German Military Equipment Begins To Arrive In Finland
 {
-#NAME= [FW]DE 847 - Finland: Military Equipment From Germany (Light Tanks)
+#NAME= [FW] DE 847 - Finland: Military Equipment From Germany (Light Tanks)
 #POPUP= German Military Equipment Begins to Arrive In Finland
 #IMAGE=
 #SOUND=
@@ -13820,7 +13781,7 @@
 
 ; Sweden Sends Military Aid to Finland
 {
-#NAME= [FW]DE 848 - Finland: Military Aid From Sweden (Heavy Artillery)
+#NAME= [FW] DE 848 - Finland: Military Aid From Sweden (Heavy Artillery)
 #POPUP= Swedish Military Equipment Begins to Arrive In Finland
 #IMAGE=
 #SOUND=
@@ -13842,12 +13803,13 @@
 ; Finland(39) Axis
 #VARIABLE_CONDITION= 39 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
+; Heavy Artillery(18)
 #UNIT= 18 [5] [0] [Nordic]
 }
 
 ; German Military Equipment Arrives in Romania
 {
-#NAME= [FW]DE 849 - Romania: Military Equipment From Germany (Anti-Tank)
+#NAME= [FW] DE 849 - Romania: Military Equipment From Germany (Anti-Tank)
 #POPUP= German Anti-Tank Equipment Is Delivered To Romania
 #IMAGE=
 #SOUND=
@@ -13874,7 +13836,7 @@
 
 ; German Military Equipment Arrives in Romania
 {
-#NAME= [FW]DE 849 - Romania: Military Equipment From Germany (Tanks)
+#NAME= [FW] DE 849 - Romania: Military Equipment From Germany (Tanks)
 #POPUP= German Designed Tanks Are Delivered To Romania
 #IMAGE=
 #SOUND=
@@ -13901,7 +13863,7 @@
 
 ; Schwerer Gustav Gun (Germany)
 {
-#NAME= [FW]DE 850 - Germany: Schwerer Gustav Gun
+#NAME= [FW] DE 850 - Germany: Schwerer Gustav Gun
 #POPUP= Germany Commissions Super Railway Gun Schwerer Gustav
 #IMAGE=
 #SOUND=
@@ -13927,7 +13889,7 @@
 
 ; Schwerer Gustav Gun (Germany)
 {
-#NAME= [FW]DE 850 - Germany: Schwerer Gustav Gun (Early)
+#NAME= [FW] DE 850 - Germany: Schwerer Gustav Gun (Early)
 #POPUP= Germany Commissions Railway Gun Schwerer Gustav
 #IMAGE=
 #SOUND=
@@ -13952,7 +13914,7 @@
 }
 
 {
-#NAME= [FW]DE 853 - USSR: Stalingrad Workers Forms Infantry Divisions
+#NAME= [FW] DE 853 - USSR: Stalingrad Workers Forms Infantry Divisions
 #POPUP= Stalingrad Factory Workers Prepare To Defend The City
 #IMAGE=
 #SOUND=
@@ -13979,7 +13941,7 @@
 
 ; Graf Spee (Germany)
 {
-#NAME= [FW]DE 854 - Germany: Heavy Cruiser Graf Spee
+#NAME= [FW] DE 854 - Germany: Heavy Cruiser Graf Spee
 #POPUP= Heavy Cruiser Graf Spee Returns To Port From South Atlantic
 #IMAGE=
 #SOUND=
@@ -14006,7 +13968,7 @@
 
 ; Romanian Engineers
 {
-#NAME= [FW]DE 856 - Romania: Engineers
+#NAME= [FW] DE 856 - Romania: Engineers
 #POPUP= Romania Raises An Engineer Corps
 #IMAGE=
 #SOUND=
@@ -14033,7 +13995,7 @@
 
 ; Romanian Engineers
 {
-#NAME= [FW]DE 864 - Romania: Engineers
+#NAME= [FW] DE 864 - Romania: Engineers
 #POPUP= Romania Raises An Engineer Corps
 #IMAGE=
 #SOUND=
@@ -14058,7 +14020,7 @@
 }
 
 {
-#NAME= [FW]DE 872 - Germany(AI): Tripoli Reinforcement
+#NAME= [FW] DE 872 - Germany(AI): Tripoli Reinforcement
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -14085,7 +14047,7 @@
 }
 
 {
-#NAME= [FW]DE 872 - Italy(AI): Tripoli Reinforcement
+#NAME= [FW] DE 872 - Italy(AI): Tripoli Reinforcement
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -14111,7 +14073,7 @@
 
 ; 1st Canadian Division Deploys in Bristol
 {
-#NAME= [FW]DE 873 - Canada: 1st Canadian Division (Bristol)
+#NAME= [FW] DE 873 - Canada: 1st Canadian Division (Bristol)
 #POPUP= The 1st Canadian Infantry Division Arrives In Bristol
 #IMAGE=
 #SOUND=
@@ -14141,7 +14103,7 @@
 
 ; 1st Canadian Division Deploys in Canada
 {
-#NAME= [FW]DE 873 - Canada: 1st Canadian Division (Canada)
+#NAME= [FW] DE 873 - Canada: 1st Canadian Division (Canada)
 #POPUP= Canada Mobilizes The 1st Canadian Infantry Division At Halifax
 #IMAGE=
 #SOUND=
@@ -14168,9 +14130,8 @@
 #UNIT= 2 [10] [0] [1st]
 }
 
-; Vichy France Imports From Germany
 {
-#NAME= [FW]DE 874 - Vichy France: Imports From Germany
+#NAME= [FW] DE 874 - Vichy France: Imports From Germany
 #POPUP= The Vichy French Army Receives New Equipment From Germany
 #IMAGE=
 #SOUND=
@@ -14198,7 +14159,7 @@
 
 ; German Reinforcements Arrive In Iraq
 {
-#NAME= [FW]DE 875 - Germany: Reinforcements Arrive In Iraq
+#NAME= [FW] DE 875 - Germany: Reinforcements Arrive In Iraq
 #POPUP= German Light Infantry Arrive In Baghdad
 #IMAGE=
 #SOUND=
@@ -14225,7 +14186,7 @@
 
 ; Germany Provides Equipment To Iraqi Forces
 {
-#NAME= [FW]DE 875 - Iraq: Germany Provides Equipment To Iraqi Forces
+#NAME= [FW] DE 875 - Iraq: Germany Provides Equipment To Iraqi Forces
 #POPUP= Iraq Raises Security Forces With German Assistance
 #IMAGE=
 #SOUND=
@@ -14250,7 +14211,7 @@
 }
 
 {
-#NAME= [FW]DE 876 - Germany: War Production
+#NAME= [FW] DE 876 - Germany: War Production
 #POPUP= German War Production Dramatically Increases Under Watch Of Albert Speer
 #IMAGE=
 #SOUND=
@@ -14284,7 +14245,7 @@
 ; 3rd Guards Tank Army
 ;
 {
-#NAME= [FW]DE 885 - USSR: Siberian Reserves
+#NAME= [FW] DE 885 - USSR: Siberian Reserves
 #POPUP= USSR Transfers Siberian Troops
 #IMAGE= siberian.png
 #SOUND= transport_movement.ogg
@@ -14329,7 +14290,7 @@
 
 ; Finland Engineers
 {
-#NAME= [FW]DE 892 - Finland: Engineers Raised
+#NAME= [FW] DE 892 - Finland: Engineers Raised
 #POPUP= Finland Raises An Engineer Corps
 #IMAGE=
 #SOUND=
@@ -14354,7 +14315,7 @@
 
 ; German Anti-Tank Equipment Begins To Arrive In Finland
 {
-#NAME= [FW]DE 893 - Finland: Military Equipment From Germany (Anti-Tank)
+#NAME= [FW] DE 893 - Finland: Military Equipment From Germany (Anti-Tank)
 #POPUP= German Anti-Tank Guns Begin To Arrive In Finland
 #IMAGE=
 #SOUND=
@@ -14380,7 +14341,7 @@
 
 ; German Reinforcements At Berlin
 {
-#NAME= [FW]DE 893 - Germany: Division/AntiTank - Berlin
+#NAME= [FW] DE 893 - Germany: Division/AntiTank - Berlin
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -14407,7 +14368,7 @@
 
 ; German Reinforcements In Finland
 {
-#NAME= [FW]DE 893 - Germany: 122nd Division - Helsinki
+#NAME= [FW] DE 893 - Germany: 122nd Division - Helsinki
 #POPUP= German Reinforcements Arrive In Finland
 #IMAGE=
 #SOUND=
@@ -14433,7 +14394,7 @@
 }
 
 {
-#NAME= [FW]DE 897 - Germany: Spanish Military Reorganizes in Germany (Berlin)
+#NAME= [FW] DE 897 - Germany: Spanish Military Reorganizes in Germany (Berlin)
 #POPUP= Pro-Axis Elements Of The Spanish Military In Occupied Europe Reorganize In Germany
 #IMAGE=
 #SOUND=
@@ -14461,7 +14422,7 @@
 }
 
 {
-#NAME= [FW]DE 897 - Spain: Allied Armies (Madrid)
+#NAME= [FW] DE 897 - Spain: Allied Armies (Madrid)
 #POPUP= Spanish Forces Reorganize Near Madrid
 #IMAGE=
 #SOUND=
@@ -14489,7 +14450,7 @@
 
 ; Greek Army In Exile
 {
-#NAME= [FW]DE 899 - UK: Greek Army In Exile Flees To Egypt
+#NAME= [FW] DE 899 - UK: Greek Army In Exile Flees To Egypt
 #POPUP= The Greek Army In Exile Forms A Unit In Egypt
 #IMAGE=
 #SOUND=
@@ -14516,7 +14477,7 @@
 
 ; Replacement Script
 {
-#NAME= [FW]DE 902 - Germany: Blue Division Formed In Spain For Axis
+#NAME= [FW] DE 902 - Germany: Blue Division Formed In Spain For Axis
 #POPUP= Franco Sends The "Blue Division" To Support The Axis
 #IMAGE=
 #SOUND=
@@ -14544,9 +14505,8 @@
 #UNIT= 2 [10] [1] [250th "Blue"]
 }
 
-; German Military Exports To Spain (Corps)
 {
-#NAME= [FW]DE 903 - Spain: Military Equipment From Germany (Infantry Corps)
+#NAME= [FW] DE 903 - Spain: Military Equipment From Germany (Infantry Corps)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -14570,9 +14530,8 @@
 #UNIT= 4 [10] [0] [Madrid II]
 }
 
-; German Military Exports To Spain (Tanks)
 {
-#NAME= [FW]DE 903 - Spain: Military Equipment From Germany (Panzer)
+#NAME= [FW] DE 903 - Spain: Tank Division From Germany
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -14598,7 +14557,7 @@
 
 ; Heavy Cruiser Lützow (Germany)
 {
-#NAME= [FW]DE 918 - Germany: Heavy Cruiser Lützow
+#NAME= [FW] DE 918 - Germany: Heavy Cruiser Lützow
 #POPUP= Germany Commissions The Heavy Cruiser Lützow
 #IMAGE=
 #SOUND=
@@ -14627,7 +14586,7 @@
 
 ; 163rd Infantry Division (Germany)
 {
-#NAME= [FW]DE 927 - Germany: Transit of 163rd Infantry Division
+#NAME= [FW] DE 927 - Germany: Transit of 163rd Infantry Division
 #POPUP= Engelbrecht Division Arrives In Finland
 #IMAGE=
 #SOUND=
@@ -14654,7 +14613,7 @@
 
 ; Germany Military Equipment Arrives In Moscow (USSR)
 {
-#NAME= [FW]DE 947 - USSR: German Military Equipment Arrives In Moscow
+#NAME= [FW] DE 947 - USSR: German Military Equipment Arrives In Moscow
 #POPUP= USSR Receives Deliveries Of German Military Equipment
 #IMAGE=
 #SOUND=
@@ -14677,13 +14636,13 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 24 [3] [3] [German]
+; Heavy Artillery(18)
 #UNIT= 18 [3] [3] [German]
 #UNIT= 29 [3] [3] [German]
 }
 
-; Germany Forms A Naval Infantry Division At Kiel
 {
-#NAME= [FW]DE 950 - Germany: Forms A Naval Infantry Division At Kiel
+#NAME= [FW] DE 950 - Germany: Forms A Naval Infantry Division At Kiel
 #POPUP= Germany Forms A Naval Infantry Division At Kiel
 #IMAGE=
 #SOUND=
@@ -14701,15 +14660,14 @@
 #DATE= 1939/09/01
 #FAILSAFE_DATE= 1948/01/01
 #DESTINATION_RESOURCE= 166,70
-; Germany(45) Axis, Mobilized, Not Surrended (dummy condition)
+; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 #UNIT= 2 [5] [0] [2nd Naval]
 }
 
-; Germany Forms A Naval Infantry Division At Stettin
 {
-#NAME= [FW]DE 951 - Germany: Forms A Naval Infantry Division At Stettin
+#NAME= [FW] DE 951 - Germany: Forms A Naval Infantry Division At Stettin
 #POPUP= Germany Forms A Naval Infantry Division At Stettin
 #IMAGE=
 #SOUND=
@@ -14734,9 +14692,8 @@
 #UNIT= 2 [5] [0] [1st Naval]
 }
 
-; German Military Exports To Turkey (Corps)
 {
-#NAME= [FW]DE 960 - Turkey: Military Equipment From Germany (Infantry Corps)
+#NAME= [FW] DE 960 - Turkey: Infantry Corps From Germany
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -14762,7 +14719,7 @@
 
 ; Ostbataillonen in France (Germany)
 {
-#NAME= [FW]DE 995 - Germany: Ostbataillonen in France
+#NAME= [FW] DE 995 - Germany: Ostbataillonen in France
 #POPUP= Germany Conscripts POWs From Across Europe Into German Divisions In France
 #IMAGE=
 #SOUND=

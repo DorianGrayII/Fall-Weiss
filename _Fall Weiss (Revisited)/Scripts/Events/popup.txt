@@ -718,6 +718,7 @@
 #DATE= 1939/09/01
 #TEXT_RGB= 255,255,255
 #SHADOW_RGB= 0,0,0
+; Tunis(167,112)
 #MAP_POSITION= 167,112
 ; Tunis(167,112) Allied
 #ALIGNMENT_POSITION= 167,112 [2]
@@ -1480,7 +1481,7 @@
 }
 
 {
-#NAME= [FW]Axis Relations with Turkey
+#NAME= [FW] Axis Relations with Turkey
 #POPUP= Diplomatic Advice
 #MESSAGE=%N%N %BRe: %BAxis %BRelations %BWith %BTurkey %N%N The recently signed Anglo-French-Turkish mutual assistance pact provides for British and French assistance to Turkey in the event of Axis aggression.  The treaty also provides that Turkey would aid the British and French, but by all accounts the treaty is determined to have no practical value as it is Britain and France which have acted in aggression towards Germany! %N%N However the treaty's very existence will for the time being keep Turkey under Allied influence despite any of our diplomatic efforts. %N%N %N%N%CRecommendations: %N%N Do not over invest diplomacy in Turkey prior to war with the USSR except to counter Allied diplomacy.
 #IMAGE= communication.png
@@ -2679,16 +2680,14 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 10 [2] [100] [1]
-; Germany controls Lille OR
+; Germany controls Lille(153,80) OR
 ; Germany controls Reims OR
-; Germany controls Amiens
+; Germany controls Amiens(151,81)
 #CONDITION_POSITION= 153,80 [0,0] [1,1] [1] [0]
 #CONDITION_POSITION= 154,83 [0,0] [1,1] [1] [0]
 #CONDITION_POSITION= 151,81 [0,0] [1,1] [1] [0]
 }
 
-;
-; Eben Emael:
 {
 #NAME= German Forces Capture Eben Emael (Historical)
 #POPUP= German Forces Capture Eben Emael
@@ -3485,6 +3484,7 @@
 ; USA(115) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Allies in North Africa
+; Algiers(152,113)
 #CONDITION_POSITION= 152,113 [12,12] [3,3] [2] [115]
 #CONDITION_POSITION= 131,119 [8,8] [3,3] [2] [115]
 }
@@ -4541,9 +4541,9 @@
 ; Danzig(183,69) Axis
 #ALIGNMENT_POSITION= 183,69 [1]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; Red Army units are within 3 hexes of Danzig(183,69) OR
+; Red Army units within 3 hexes of Danzig(183,69) OR
 #CONDITION_POSITION= 183,69 [3,3] [1,1] [2] [116]
-; Red Army units are within 8 hexes of Stettin(175,72)
+; Red Army units within 8 hexes of Stettin(175,72)
 #CONDITION_POSITION= 175,72 [8,8] [1,1] [2] [116]
 }
 
@@ -4574,7 +4574,7 @@
 #ALIGNMENT_POSITION= 151,84 [2]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [0] [0]
-; Axis units are within 3 hexes of Paris(151,84)
+; Axis units within 3 hexes of Paris(151,84)
 #CONDITION_POSITION= 151,84 [3,3] [1,1] [1] [0]
 }
 
@@ -5097,9 +5097,9 @@
 ; Paris(151,84) Allied
 #ALIGNMENT_POSITION= 151,84 [2]
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; Axis units are within 5 hexes of Paris(151,84)
+; Axis units within 5 hexes of Paris(151,84)
 #CONDITION_POSITION= 151,84 [5,5] [1,1] [1] [0]
-; Axis units are within 2 hexes of Nancy(158,85)
+; Axis units within 2 hexes of Nancy(158,85)
 #CONDITION_POSITION= 158,85 [2,2] [1,1] [1] [0]
 }
 
@@ -5398,7 +5398,7 @@
 #ALIGNMENT_POSITION= 157,50 [1]
 ; Stavanger is Axis
 #ALIGNMENT_POSITION= 158,55 [1]
-; Kristiansand is Axis
+; Kristiansand(162,58) is Axis
 #ALIGNMENT_POSITION= 162,58 [1]
 ; Norway(78), Allied, Surrended
 #VARIABLE_CONDITION= 78 [2] [100] [1]
@@ -5903,7 +5903,7 @@
 }
 
 {
-#NAME= [FW]German Garrison Of Egypt
+#NAME= [FW] German Garrison Of Egypt
 #POPUP= Strategic Advice
 #MESSAGE=%N%N %BRe: %BEgyptian %BGarrison %N%N Though we have successfully occupied Egypt, the Italian defeat in East Africa means we are still adjacent to Commonwealth forces in Sudan. %N%N Therefore there will be a continuous risk of an Allied offensive into Egypt should our position appear weak. %N%N %N%N%CRecommendations: %N%N Maintain a garrison of no less than 4 units within 6 hexes of Cairo.
 #IMAGE= communication.png
@@ -6532,12 +6532,12 @@
 #ALIGNMENT_POSITION= 198,129 [2]
 ; Benghazi(186,122) Axis
 #ALIGNMENT_POSITION= 186,122 [1]
-; El Agheila is Axis
+; El Agheila(184,126) Axis
 #ALIGNMENT_POSITION= 184,126 [1]
 ; Gazala is Axis
 #ALIGNMENT_POSITION= 192,122 [1]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; 2 Axis units within 3 hexes of Benghazi
+; 2 Axis units within 3 hexes of Benghazi(186,122)
 #CONDITION_POSITION= 186,122 [3,3] [2,2] [1] [0]
 }
 
@@ -6646,7 +6646,7 @@
 #ALIGNMENT_POSITION= 186,122 [1]
 ; Sirte is Axis
 #ALIGNMENT_POSITION= 179,124 [1]
-; El Agheila is Axis
+; El Agheila(184,126) Axis
 #ALIGNMENT_POSITION= 184,126 [1]
 ; Tripoli(172,121) Axis
 #ALIGNMENT_POSITION= 172,121 [1]
@@ -6757,7 +6757,7 @@
 }
 
 {
-#NAME= [FW]DE 142 - The Axis Player Has Agreed To Extend The Game
+#NAME= [FW] DE 221 - The Axis Player Has Agreed To Extend The Game
 #POPUP= The Axis Player Has Agreed To Extend The Game
 #MESSAGE=
 #IMAGE=
@@ -6767,7 +6767,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 142[1]
+#LINK= 221[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -6786,7 +6786,7 @@
 }
 
 {
-#NAME= [FW]DE 142 - The Axis Player Has Not Agreed To Extend The Game
+#NAME= [FW] DE 221 - The Axis Player Has Not Agreed To Extend The Game
 #POPUP= The Axis Player Has Not Agreed To Extend The Game
 #MESSAGE=
 #IMAGE=
@@ -6796,7 +6796,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 142[0]
+#LINK= 221[0]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #PRIVATE= 0
@@ -6877,8 +6877,11 @@
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Allies in France
+; Paris(151,84)
 #CONDITION_POSITION= 151,84 [5,5] [3,3] [2] [0]
+; Rennes(143,86)
 #CONDITION_POSITION= 143,86 [5,5] [3,3] [2] [0]
+; Amiens(151,81)
 #CONDITION_POSITION= 151,81 [5,5] [3,3] [2] [0]
 }
 
@@ -7090,7 +7093,7 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; Greece has surrendered
 #VARIABLE_CONDITION= 46 [2] [100] [1]
-; No Axis units within 3 hexes of Athens
+; No Axis units within 3 hexes of Athens(193,109)
 #CONDITION_POSITION= 193,109 [3,3] [0,0] [1] [0]
 }
 
@@ -7218,7 +7221,7 @@
 
 ; Winter War
 {
-#NAME= [FW]DE 401 - Finnish Deployment Upon War Entry
+#NAME= [FW] DE 401 - Finnish Deployment Upon War Entry
 #POPUP= Finnish Deployment Upon War Entry
 #MESSAGE=%N%N As we prepare for a potential war with the USSR note the following units will deploy upon war entry: %N%N%T - Heinrichs HQ (Joensuu) %N%T - II Infantry Corps (Joensuu) %N%T - 1st Infantry Division (Joensuu) %N%T - Isthus Infantry Army (Lappeenranta) %N%T - IV Infantry Corps (Lappeenranta) %N%T - V Infantry Corps (Lappeenranta) %N%T - Garrison (Petsamo) %N%N Due to the losses suffered in the Winter War with The USSR, the units deployed at Lappeenranta will deploy at half strength.
 #IMAGE= communication.png
@@ -7248,7 +7251,7 @@
 }
 
 {
-#NAME= [FW]DE 401 - Finnish Deployment Upon War Entry
+#NAME= [FW] DE 401 - Finnish Deployment Upon War Entry
 #POPUP= Finnish Deployment Upon War Entry
 #MESSAGE=%N%N As we prepare for a potential war with the USSR note the following units will deploy upon war entry: %N%N%T - Heinrichs HQ (Joensuu) %N%T - II Infantry Corps (Joensuu) %N%T - 1st Infantry Division (Joensuu) %N%T - Isthus Infantry Army (Vyborg) %N%T - IV Infantry Corps (Vyborg) %N%T - V Infantry Corps (Vyborg) %N%T - Garrison (Petsamo)
 #IMAGE= communication.png
@@ -7336,7 +7339,7 @@
 }
 
 {
-#NAME= [FW]DE 559 - Axis Influence In Syria
+#NAME= [FW] DE 559 - Axis Influence In Syria
 #POPUP= Axis Influence In Syria
 #MESSAGE=%N%N %BRe: %BSyria %N%N As a result of the Paris Protocol which granted Germany access to military facilities in Vichy-controlled Syria, German and Italian Aircraft are using the country to refuel aircraft with intention to supply the Iraqi coup d'état. %N%N German influence and interest in the state will continue to grow as long as Rashid Ali remains in power in Iraq so it is imperative that we overthrow the Ali regime quickly.  After the Ali regime is overthrown and a British puppet government is installed we will be well positioned for an invasion of Syria. %N%N %N%N%CRecommendations: %N%N Quickly overthrow the Ali regime to avoid Syria joining the Axis.
 #IMAGE= communication.png
@@ -7640,7 +7643,7 @@
 }
 
 {
-#NAME= [FW]DE 602 - Vichy Collaboration Policy
+#NAME= [FW] DE 602 - Vichy Collaboration Policy
 #POPUP= Vichy Collaboration Policy
 #MESSAGE=%N%N It has been brought to our attention that one of the conditions of establishing Vichy France was the Vichy Collaboration Policy which provides Germany with essential materials to continue their war effort. %N%N As long as Vichy France remains Axis leaning we should expect the collaborative policy to continue, however should Vichy France have a Pro-Allied leaning the Vichy French could revolt and severely disrupt the imports to Germany. %N%N %N%N%CRecommendations: %N%N Invest in Vichy French diplomacy if we have not already damaged our relations beyond repair.
 #IMAGE= communication.png
@@ -7670,7 +7673,7 @@
 }
 
 {
-#NAME= DE 611 - General Antonescu Crushes The Iron Guard's Rebellion In Romania
+#NAME= DE 233 - General Antonescu Crushes The Iron Guard's Rebellion In Romania
 #POPUP= General Antonescu Crushes The Iron Guard's Rebellion In Romania
 #MESSAGE=
 #IMAGE= ironguard.png
@@ -7680,7 +7683,8 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 611[1]
+; Territory Dispute Resolved in Hungary's Favor, USSR did not seize Bessarabia
+#LINK= 233[1]
 #COUNTRY_ID= 93
 #TRIGGER= 100
 #PRIVATE= 0
@@ -7699,7 +7703,7 @@
 }
 
 {
-#NAME= DE 611 - King Carol II Is Forced To Abdicate, And Michael I Replaces Him On The Throne
+#NAME= DE 233 - King Carol II Is Forced To Abdicate, And Michael I Replaces Him On The Throne
 #POPUP= King Carol II Is Forced To Abdicate, And Michael I Replaces Him On The Throne
 #MESSAGE=
 #IMAGE= michaelofromania.png
@@ -7709,7 +7713,8 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 611[1]
+; Territory Dispute Resolved in Hungary's Favor, USSR did not seize Bessarabia
+#LINK= 233[1]
 #COUNTRY_ID= 93
 #TRIGGER= 100
 #PRIVATE= 0
@@ -8022,9 +8027,9 @@
 }
 
 {
-#NAME= [FW]DE 708 - British Report On The Stategic Importance Of Greece
+#NAME= [FW] DE 708 - British Report On The Stategic Importance Of Greece
 #POPUP= Strategic Advice
-#MESSAGE=%N%N %BRe: %BThe %BDefense %Bof %BGreece %N%N Now that Greece has entered the war, we should consider reinforcing their position by sending at least one British unit to Greece. %N%N Doing so would provide a boost to their army's morale, continuing for as long as we have a British presence.  This would increase their ability to defend their country. %N%N If the Greeks can hold out, then we could even consider building up for an advance through the Balkans into southern Europe, something the Prime Minister would definitively be in favor of. %N%N %N%N%CRecommendations: %N%N Send at least one British unit to Greece to assist in its defence.
+#MESSAGE=%N%N %BRe: %BThe %BDefense %Bof %BGreece %N%N Now that Greece has entered the war, we should consider reinforcing their position by sending at least one British unit to Greece. %N%N Doing so would provide a boost to their army's morale, continuing for as long as we have a British presence.  This would increase their ability to defend their country. %N%N If the Greeks can hold out, then we could even consider building up for an advance through the Balkans into southern Europe, something the Prime Minister would definitively be in favor of. %N%N %N%N%CRecommendations: %N%N Send at least one British unit to Greece to assist in its defense.
 #IMAGE= communication.png
 #SOUND=
 #FLAG= 1
@@ -8052,7 +8057,7 @@
 }
 
 {
-#NAME= [FW]DE 836 - Greek Neutrality
+#NAME= [FW] DE 836 - Greek Neutrality
 #POPUP= Diplomatic Advice
 #MESSAGE=%N%N %BRe: %BGreek %BNeutrality %N%N Despite our recently successful efforts to encourage Greece to severe ties with Germany, our enemy has continued to press relations with the Metaxas Government in Athens. %N%N We must be prudent in dissuading Axis influence over Metaxas or we could in the future see Greece side with Germany should the war spread into the Balkans. %N%N%CRecommendations: %N%N Counter any diplomatic efforts by Germany to sway Greece towards Axis influence.
 #IMAGE= communication.png
@@ -8085,7 +8090,7 @@
 ; Admiral Graf Spee:
 ; Historical date of event was 1939/12/17
 {
-#NAME= [FW]DE 855 - Admiral Graf Spee Scuttled (Historical)
+#NAME= [FW] DE 855 - Admiral Graf Spee Scuttled (Historical)
 #POPUP= Admiral Graf Spee Scuttled Following The Battle Of The River Plate
 #MESSAGE=
 #IMAGE= graf_spee_1.png, graf_spee_2.png
@@ -8114,7 +8119,7 @@
 }
 
 {
-#NAME= [FW]DE 876 - Germany Switches To War Economy To Boost Military Production
+#NAME= [FW] DE 876 - Germany Switches To War Economy To Boost Military Production
 #POPUP= Germany Switches To A War Economy To Boost Military Production
 #MESSAGE=
 #IMAGE=
@@ -8143,7 +8148,7 @@
 }
 
 {
-#NAME= [FW]DE 878 - Germany Moves Vital Facilities Underground To Boost Military Production
+#NAME= [FW] DE 878 - Germany Moves Vital Facilities Underground To Boost Military Production
 #POPUP= Germany Moves Vital Facilities Underground To Boost Military Production
 #MESSAGE=
 #IMAGE=
@@ -8172,7 +8177,7 @@
 }
 
 {
-#NAME= [FW]DE 904 - Portuguese Neutrality
+#NAME= [FW] DE 904 - Portuguese Neutrality
 #POPUP= Diplomatic Advice
 #MESSAGE=%N%N %BRe: %BPortuguese %BNeutrality %N%N Despite protesting the invasion of Poland, the Portuguese Government under Antonio Salazar has reportedly shown sympathy for Germany, evident by continued diplomatic relations with our enemy. %N%N While our wavering influence over the country is not of current concern, it would be prudent to eliminate any further Axis relations. %N%N Otherwise neighboring Spain's affiliations with Germany could facilitate German-Portuguese trade which would weaken the effectiveness of Allied blockades, or worse should Spain begin to mobilize for war Portugal may not proactively allow the Allies to take up arms on Portuguese soil. %N%N%CRecommendations: %N%N Invest in diplomacy to eliminate any further Axis influence in Portugal.
 #IMAGE= communication.png

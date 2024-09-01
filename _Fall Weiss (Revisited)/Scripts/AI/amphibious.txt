@@ -405,7 +405,6 @@
 #COASTAL_POSITION= 147,79
 #DATE= 1943/01/01
 #STEAL= 1
-; Bordeaux(145,94)
 ; Brussels(155,80)
 #FRIENDLY_POSITION= 155,80
 ; Berlin(173,74)
@@ -458,7 +457,7 @@
 #LENGTH= 10
 #RANGE= 25
 #LONG_RANGE= 1
-; Benghazi
+; Benghazi(186,122)
 #GOAL_POSITION= 186,122
 #COASTAL_POSITION= 186,121
 #DATE= 1940/01/01
@@ -497,7 +496,7 @@
 
 ; Italy prepares to attack North Afrika:
 {
-#NAME= Italy Build Up Amphibious - North Afrika (Tobruk)
+#NAME= Italy Build Up Amphibious - North Afrika (Continuous) (Tobruk)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -716,7 +715,7 @@
 #LENGTH= 5
 #RANGE= 25
 #LONG_RANGE= 1
-; Cherbourg
+
 #GOAL_POSITION= 143,82
 #GOAL_POSITION= 139,80
 #COASTAL_POSITION= 143,81
@@ -756,7 +755,7 @@
 #LENGTH= 5
 #RANGE= 25
 #LONG_RANGE= 1
-; Cherbourg
+; Cherbourg(143,82)
 #GOAL_POSITION= 143,82
 #GOAL_POSITION= 139,80
 #COASTAL_POSITION= 143,81
@@ -1455,7 +1454,7 @@
 
 ; UK prepares to attack France:
 {
-#NAME= [FW]UK Build Up Amphibious - Calais (D-Day)(3)
+#NAME= [FW] UK Build Up Amphibious - Calais (Continuous) (D-Day)(3)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -1493,7 +1492,7 @@
 
 ; USA prepares to attack:
 {
-#NAME= [FW]USA Build Up Amphibious - Bordeaux (Torch)(2)
+#NAME= [FW] USA Build Up Amphibious - Bordeaux (Torch)(2)
 #POPUP=
 #FLAG= 1
 #TYPE= 0
@@ -1507,7 +1506,7 @@
 #LENGTH= 15
 #RANGE= 25
 #LONG_RANGE= 1
-; Bordeaux
+; Bordeaux(145,94)
 #GOAL_POSITION= 145,94
 #GOAL_POSITION= 10,108
 #GOAL_POSITION= 29,110
@@ -1524,7 +1523,7 @@
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Washington DC(4,108) not tactically threatened
 #TACTICAL_CONDITION= 4,108 [1]
-; Axis units hold Paris
+; Axis units hold Paris(151,84)
 #ACTIVATE_POSITION= 151,84 [0,0] [1,1] [1]
 ; 1 Axis unit in England OR
 ; 0 Allied units in England OR
@@ -1536,7 +1535,7 @@
 
 ; USA prepares to attack:
 {
-#NAME= [FW]USA Build Up Amphibious - Lagos (Torch)(2)
+#NAME= [FW] USA Build Up Amphibious - Lagos (Torch)(2)
 #POPUP=
 #FLAG= 1
 #TYPE= 0
@@ -1579,7 +1578,7 @@
 
 ; USA prepares to attack:
 {
-#NAME= [FW]USA Build Up Amphibious - Porto (Torch)(2)
+#NAME= [FW] USA Build Up Amphibious - Porto (Torch)(2)
 #POPUP=
 #FLAG= 1
 #TYPE= 0
@@ -1612,7 +1611,7 @@
 #TACTICAL_CONDITION= 4,108 [1]
 ; Axis units hold Cherbourg
 #ACTIVATE_POSITION= 143,82 [0,0] [1,1] [1]
-; 1 Axis unit in England OR
+; 1 Axis unit within 20 hexes of London(147,77) OR
 ; 0 Allied units in England OR
 ; 1 Axis unit within range of Washington DC(4,108)
 #CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
@@ -1621,7 +1620,7 @@
 }
 
 {
-#NAME= [FW]DE 1 - USA Build Up Amphibious - Washington D.C. -> Saint John(Liberate UK)
+#NAME= [FW] DE 1 - USA Build Up Amphibious - Washington D.C. -> Saint John(Liberate UK)
 #POPUP=
 #FLAG= 1
 #TYPE= 1

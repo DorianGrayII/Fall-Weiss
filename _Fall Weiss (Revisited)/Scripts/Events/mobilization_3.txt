@@ -275,7 +275,6 @@
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
 {
 #NAME= Latvia Conquered by the Axis (Continuous) (USSR->Allies) (90%)
 #POPUP= USSR grows concerned regarding the Axis Conquest of Latvia
@@ -320,7 +319,7 @@
 }
 
 {
-#NAME= [FW]Estonia Conquered Axis (Continuous) (USSR->Allies) (90%)
+#NAME= [FW] Estonia Conquered Axis (Continuous) (USSR->Allies) (90%)
 #POPUP= USSR grows concerned regarding the Axis Conquest of Estonia
 #IMAGE=
 #SOUND=
@@ -386,7 +385,7 @@
 }
 
 {
-#NAME= [FW]Yugoslavia Swings Towards The Axis With Bulgaria Signing Tripartite Pact (Yugoslavia->Axis)
+#NAME= [FW] Yugoslavia Swings Towards The Axis With Bulgaria Signing Tripartite Pact (Yugoslavia->Axis)
 #POPUP= Yugoslavia Growing More Isolated with Bulgaria Signing the Tripartite Pact
 #IMAGE=
 #SOUND=
@@ -407,7 +406,7 @@
 }
 
 {
-#NAME= [FW]Yugoslavia Swings Towards The Axis With Romania Signing Tripartite Pact (Yugoslavia->Axis)
+#NAME= [FW] Yugoslavia Swings Towards The Axis With Romania Signing Tripartite Pact (Yugoslavia->Axis)
 #POPUP= Yugoslavia Grows More Isolated with Romania Signing the Tripartite Pact
 #IMAGE=
 #SOUND=
@@ -428,7 +427,7 @@
 }
 
 {
-#NAME= [FW]Yugoslavia Swings Towards The Axis With Italy Signing Tripartite Pact (Yugoslavia->Axis)
+#NAME= [FW] Yugoslavia Swings Towards The Axis With Italy Signing Tripartite Pact (Yugoslavia->Axis)
 #POPUP= Yugoslavia Grows More Isolated with Italy Signing the Tripartite Pact
 #IMAGE=
 #SOUND=
@@ -448,8 +447,16 @@
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 }
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;  Regarding DE 233, 234 it does not matter what the outcome.  That fact
+;  that Germany/Italy were defacto power brokers regarding territorial disputes
+;  pushed Yugoslavia further into their camp.
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 {
-#NAME= [FW]DE 611 - Yugoslavia Swings Towards The Axis With The Second Vienna Award (Yugoslavia->Axis)
+#NAME= [FW] DE 233 - Yugoslavia Swings Towards The Axis With The Second Vienna Award(1) (Yugoslavia->Axis)
 #POPUP= Yugoslavia Swings Towards The Axis With The Second Vienna Award
 #IMAGE=
 #SOUND=
@@ -457,8 +464,8 @@
 #TYPE= 1
 #AI= 0
 #GV= 1[1,100]
-; Resolved in favor of Romania
-#LINK= 611[0]
+; Territory Dispute Resolved in Romania's Favor, USSR did not seize Bessarabia
+#LINK= 233[0]
 #LEVEL= 0
 ; Yugoslavia(120)
 #COUNTRY_ID= 120
@@ -471,7 +478,7 @@
 }
 
 {
-#NAME= [FW]DE 611 - Yugoslavia Swings Towards The Axis With The Second Vienna Award (Yugoslavia->Axis)
+#NAME= [FW] DE 233 - Yugoslavia Swings Towards The Axis With The Second Vienna Award(2) (Yugoslavia->Axis)
 #POPUP= Yugoslavia Swings Towards The Axis With The Second Vienna Award
 #IMAGE=
 #SOUND=
@@ -479,8 +486,8 @@
 #TYPE= 1
 #AI= 0
 #GV= 1[1,100]
-; Resolved in favor of Hungary
-#LINK= 611[1]
+; Territory Dispute Resolved in Hungary's Favor, USSR did not seize Bessarabia
+#LINK= 233[1]
 #LEVEL= 0
 ; Yugoslavia(120)
 #COUNTRY_ID= 120
@@ -493,7 +500,52 @@
 }
 
 {
-#NAME= [FW]Yugoslavia Swings Towards The Axis With The Fall Of Greece (Yugoslavia->Axis)
+#NAME= [FW] DE 234 - Yugoslavia Swings Towards The Axis With The Second Vienna Award(3) (Yugoslavia->Axis)
+#POPUP= Yugoslavia Swings Towards The Axis With The Second Vienna Award
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+; Territory Dispute Resolved in Romania's Favor, USSR seized Bessarabia
+#LINK= 234[0]
+#LEVEL= 0
+; Yugoslavia(120)
+#COUNTRY_ID= 120
+#TRIGGER= 100
+#DATE= 1939/09/01
+; 8-12% mobilization increase towards Axis
+#MOBILIZATION= [8,12] [1]
+; Germany(45) Axis, Mobilized, Not Surrendered
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+}
+
+{
+#NAME= [FW] DE 234 - Yugoslavia Swings Towards The Axis With The Second Vienna Award(4) (Yugoslavia->Axis)
+#POPUP= Yugoslavia Swings Towards The Axis With The Second Vienna Award
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#GV= 1[1,100]
+; Territory Dispute Resolved in Hungary's Favor, USSR seized Bessarabia
+#LINK= 234[1]
+#LEVEL= 0
+; Yugoslavia(120)
+#COUNTRY_ID= 120
+#TRIGGER= 100
+#DATE= 1939/09/01
+; 8-12% mobilization increase towards Axis
+#MOBILIZATION= [8,12] [1]
+; France(40) Allied, Surrendered
+#VARIABLE_CONDITION= 40 [2] [100] [1]
+}
+
+
+{
+#NAME= [FW] Yugoslavia Swings Towards The Axis With The Fall Of Greece (Yugoslavia->Axis)
 #POPUP= Yugoslavia Swings Towards The Axis With The Fall Of Greece
 #IMAGE=
 #SOUND=
@@ -934,7 +986,7 @@
 
 ; Event for decreased Spanish mobilization:
 {
-#NAME= [FW]Franco Continues To Display A Reluctance To Join The Conflict In Europe (Spain->Allies) (10%)
+#NAME= [FW] Franco Continues To Display A Reluctance To Join The Conflict In Europe (Spain->Allies) (10%)
 #POPUP= Franco Continues To Display A Reluctance To Join The Conflict In Europe
 #IMAGE=
 #SOUND=
@@ -954,7 +1006,7 @@
 }
 
 {
-#NAME= [FW]Portugal Protests Germany's Invasion of Poland (Portugal->Allies)(90%)
+#NAME= [FW] Portugal Protests Germany's Invasion of Poland (Portugal->Allies)(90%)
 #POPUP= Portugal Protests Germany's Invasion of Poland
 #IMAGE=
 #SOUND=
@@ -974,7 +1026,7 @@
 }
 
 {
-#NAME= [FW]Saudi Arabia Severs Diplomatic Contacts With Germany (Saudi Arabia->Allies) (90%)
+#NAME= [FW] Saudi Arabia Severs Diplomatic Contacts With Germany (Saudi Arabia->Allies) (90%)
 #POPUP= Saudi Arabia Severs Diplomatic Contacts With Germany
 #IMAGE=
 #SOUND=
@@ -997,7 +1049,7 @@
 
 
 {
-#NAME= [FW]Swedish Military Capability Improves (Sweden->Allies)
+#NAME= [FW] Swedish Military Capability Improves (Sweden->Allies)
 #POPUP= Sweden Begins Resisting German Influence Due To Improved Military Capabilities
 #IMAGE=
 #SOUND=
@@ -1020,7 +1072,7 @@
 ; Historic Date: 1939/10/19
 ; https://history.state.gov/historicaldocuments/frus1951v05/d643
 {
-#NAME= [FW]Turkey Signs British-French-Turkish Mutual Assistance Treaty of 1939 (Turkey->Allies) (90%)
+#NAME= [FW] Turkey Signs British-French-Turkish Mutual Assistance Treaty of 1939 (Turkey->Allies) (90%)
 #POPUP= Turkey Signs The British-French-Turkish Mutual Assistance Treaty
 #IMAGE=
 #SOUND=
@@ -1046,7 +1098,7 @@
 ; https://en.wikipedia.org/wiki/World_War_II_in_Yugoslavia
 ; https://en.wikipedia.org/wiki/Yugoslav_accession_to_the_Tripartite_Pact
 {
-#NAME= [FW]Yugoslavia Joins The Axis (Yugoslavia->>Axis) (50%)
+#NAME= [FW] Yugoslavia Joins The Axis (Yugoslavia->>Axis) (50%)
 #POPUP= Surrounded By Axis Nations, Yugoslavia Signs Tripartite Pact
 #IMAGE=
 #SOUND=
@@ -1463,7 +1515,7 @@
 
 ; new 2024/8/3
 {
-#NAME= [FW]DE 118 - Attack On Mers-El-Kebir (Turkey->Allies)
+#NAME= [FW] DE 118 - Attack On Mers-El-Kebir (Turkey->Allies)
 #POPUP= The bombing of the French fleet set aside the Turkish growing anxiety of it falling into Axis hands
 #IMAGE=
 #SOUND= report.ogg
@@ -1673,7 +1725,7 @@
 }
 
 {
-#NAME= [FW]DE 131 - UK Does Not Invade Syria (Syria->Axis)
+#NAME= [FW] DE 131 - UK Does Not Invade Syria (Syria->Axis)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1693,7 +1745,7 @@
 }
 
 {
-#NAME= [FW]DE 131 - UK Invades Syria (Algeria->Axis)
+#NAME= [FW] DE 131 - UK Invades Syria (Algeria->Axis)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1713,7 +1765,7 @@
 }
 
 {
-#NAME= [FW]DE 131 - UK Invades Syria (Tunisia->Axis)
+#NAME= [FW] DE 131 - UK Invades Syria (Tunisia->Axis)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1733,7 +1785,7 @@
 }
 
 {
-#NAME= [FW]DE 131 - UK Invades Syria (Vichy France->Axis)
+#NAME= [FW] DE 131 - UK Invades Syria (Vichy France->Axis)
 #POPUP= Vichy French Protest The Allied Occupation of Syria
 #IMAGE=
 #SOUND=
@@ -1753,7 +1805,7 @@
 }
 
 {
-#NAME= [FW]DE 132 - USA Does Not Recognize Vichy France (Algeria->Axis)
+#NAME= [FW] DE 132 - USA Does Not Recognize Vichy France (Algeria->Axis)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1773,7 +1825,7 @@
 }
 
 {
-#NAME= [FW]DE 132 - USA Does Not Recognize Vichy France (Syria->Axis)
+#NAME= [FW] DE 132 - USA Does Not Recognize Vichy France (Syria->Axis)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1793,7 +1845,7 @@
 }
 
 {
-#NAME= [FW]DE 132 - USA Does Not Recognize Vichy France (Tunisia->Axis)
+#NAME= [FW] DE 132 - USA Does Not Recognize Vichy France (Tunisia->Axis)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1813,7 +1865,7 @@
 }
 
 {
-#NAME= [FW]DE 132 - USA Does Not Recognize Vichy France (Vichy France->Axis)
+#NAME= [FW] DE 132 - USA Does Not Recognize Vichy France (Vichy France->Axis)
 #POPUP= USA Refuses To Recognize The Vichy French Government
 #IMAGE=
 #SOUND=
@@ -1833,7 +1885,7 @@
 }
 
 {
-#NAME= [FW]DE 132 - USA Recognizes Vichy France (USA->Axis)
+#NAME= [FW] DE 132 - USA Recognizes Vichy France (USA->Axis)
 #POPUP= USA Recognizes The Vichy French Government
 #IMAGE=
 #SOUND=
@@ -1852,9 +1904,8 @@
 #VARIABLE_CONDITION= 115 [2] [0] [0]
 }
 
-; Turkey Resists Allied Diplomacy
 {
-#NAME= [FW]DE 149 - Turkey Resists Allied Diplomacy (Continuous) (Egypt surrendered) (Turkey->Axis)
+#NAME= [FW] DE 222 - Turkey Resists Allied Diplomacy (Continuous) (Egypt surrendered) (Turkey->Axis)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1863,7 +1914,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 149[1]
+#LINK= 222[1]
 #COUNTRY_ID= 111
 #TRIGGER= 100
 #DATE= 1939/09/03
@@ -1875,9 +1926,8 @@
 #VARIABLE_CONDITION= 36 [2] [100] [1]
 }
 
-; Turkey Resists Allied Diplomacy
 {
-#NAME= [FW]DE 149 - Turkey Resists Allied Diplomacy (Turkey->Axis)
+#NAME= [FW] DE 222 - Turkey Resists Allied Diplomacy (Turkey->Axis)
 #POPUP= The Turkish Government Displays Strong Resistance Against Entering War With Germany
 #IMAGE=
 #SOUND=
@@ -1886,7 +1936,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 149[1]
+#LINK= 222[1]
 #COUNTRY_ID= 111
 #TRIGGER= 100
 #DATE= 1939/09/03
@@ -1962,7 +2012,7 @@
 }
 
 {
-#NAME= DE 250 - Franco's Enthusiasm For The Axis Weakens Slightly As France Is Liberated (Spain->Allies)
+#NAME= DE 210 - Franco's Enthusiasm For The Axis Weakens Slightly As France Is Liberated (Spain->Allies)
 #POPUP= Franco's Enthusiasm For The Axis Is Diminished As France Is Liberated
 #IMAGE=
 #SOUND=
@@ -1970,14 +2020,15 @@
 #TYPE= 1
 #AI= 0
 #GV= 1[1,100]
-#LINK= 250[1]
+; Allies Liberate Paris
+#LINK= 210[1]
 #LEVEL= 0
 #COUNTRY_ID= 99
 #TRIGGER= 100
 #DATE= 1939/09/01
 ; 8-15% mobilization increase towards Allies
 #MOBILIZATION= [8,15] [2]
-; France(40) Allied, Not Surrendered
+; France(40) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 }
 
@@ -2108,7 +2159,6 @@
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 }
 
-; Event for increased USSR activation:
 {
 #NAME= DE 457 - USSR Annexes Lithuania(1) (USSR->Axis)
 #POPUP=
@@ -2137,7 +2187,7 @@
 #IMAGE=
 #SOUND=
 ; new event from "1939 Storm Over Europe" campaign
-; currently disabled for FW pending review
+; currently disabled pending review
 #FLAG= 0
 #TYPE= 1
 #AI= 0
@@ -2154,7 +2204,7 @@
 }
 
 {
-#NAME= [FW]DE 540 - Germany Threatens Switzerland (Switzerland->Allies)
+#NAME= [FW] DE 540 - Germany Threatens Switzerland (Switzerland->Allies)
 #POPUP= Switzerland Is Concerned Over German Threats In Response To German Aircraft Being Shot-down
 #IMAGE=
 #SOUND=
@@ -2174,7 +2224,7 @@
 }
 
 {
-#NAME= [FW]DE 542 - Success Of IRA In Ireland (Ireland->>Axis) (20%)
+#NAME= [FW] DE 542 - Success Of IRA In Ireland (Ireland->>Axis) (20%)
 #POPUP= Building On Recent Attacks, The IRA Gains Momentum In Demanding UK Withdrawal From Northern Ireland
 #IMAGE=
 #SOUND=
@@ -2194,7 +2244,7 @@
 }
 
 {
-#NAME= [FW]DE 543 - UK Occupies Ireland (USA->Axis)
+#NAME= [FW] DE 543 - UK Occupies Ireland (USA->Axis)
 #POPUP= The USA Views The Occupation Of Ireland As A Hostile Move
 #IMAGE=
 #SOUND=
@@ -2214,7 +2264,7 @@
 }
 
 {
-#NAME= [FW]DE 545 - Irish Defence Force Defects (Ireland->Axis)
+#NAME= [FW] DE 545 - Irish Defense Force Defects (Ireland->Axis)
 #POPUP= Pro-Allied Voices In Ireland Diminish From Defections
 #IMAGE=
 #SOUND=
@@ -2234,7 +2284,7 @@
 }
 
 {
-#NAME= [FW]DE 546 - Military Exports From Germany (Sweden->Axis)
+#NAME= [FW] DE 546 - Military Exports From Germany (Sweden->Axis)
 #POPUP= Sweden Grows Closer To The Axis After Receiving Military Equipment From Germany
 #IMAGE=
 #SOUND=
@@ -2255,7 +2305,7 @@
 }
 
 {
-#NAME= [FW]DE 547 - Baltic State Gold Reserves (Sweden->Axis)
+#NAME= [FW] DE 547 - Baltic State Gold Reserves (Sweden->Axis)
 #POPUP= USSR's Demands For The Baltic State Gold Reserves Further Alienates Sweden
 #IMAGE=
 #SOUND=
@@ -2299,7 +2349,7 @@
 
 ; Event for increased Turkey mobilization
 {
-#NAME= [FW]DE 600 - The Turkish Government Is Concerned Over The Ribbentrop-Molotov Pact (Turkey->Allies)
+#NAME= [FW] DE 600 - The Turkish Government Is Concerned Over The Ribbentrop-Molotov Pact (Turkey->Allies)
 #POPUP= The Turkish Government Is Concerned Over The The Ribbentrop-Molotov Pact
 #IMAGE=
 #SOUND=
@@ -2343,7 +2393,7 @@
 
 ;
 {
-#NAME= DE 610 - Germany Annexes Lithuania (USSR->Allies)
+#NAME= DE 231 - Germany Annexes Lithuania (USSR->Allies)
 #POPUP= Stalin Grows Concerned At The German Annexation Of Lithuania
 #IMAGE=
 #SOUND=
@@ -2351,7 +2401,7 @@
 #TYPE= 1
 #AI= 0
 #GV= 1[1,100]
-#LINK= 610[1]
+#LINK= 231[1]
 #LEVEL= 0
 #COUNTRY_ID= 116
 #TRIGGER= 100
@@ -2384,7 +2434,7 @@
 }
 
 {
-#NAME= [FW]DE 624 - Syria Leans Towards Axis After Iraqi Coup (Continuous) (Syria->Axis)
+#NAME= [FW] DE 624 - Syria Leans Towards Axis After Iraqi Coup (Continuous) (Syria->Axis)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2559,7 +2609,7 @@
 }
 
 {
-#NAME= [FW]DE 800 - Italy Joins The Axis (Italy->>Axis)
+#NAME= [FW] DE 800 - Italy Joins The Axis (Italy->>Axis)
 #POPUP= In Response to the Anglo-Portuguese Alliance, Mussolini Hastily Joins The Axis
 #IMAGE=
 #SOUND=
@@ -2580,7 +2630,7 @@
 }
 
 {
-#NAME= [FW]DE 800 - The Anglo-Portuguese Alliance (Portugal->>Allies)
+#NAME= [FW] DE 800 - The Anglo-Portuguese Alliance (Portugal->>Allies)
 #POPUP= Portugal Honors The Anglo-Portuguese Alliance
 #IMAGE=
 #SOUND=
@@ -2599,7 +2649,7 @@
 }
 
 {
-#NAME= [FW]DE 800 - The Anglo-Portuguese Alliance (Spain->>Axis)
+#NAME= [FW] DE 800 - The Anglo-Portuguese Alliance (Spain->>Axis)
 #POPUP= Franco Grows Highly Concerned Over Portuguese Troop Deployments
 #IMAGE=
 #SOUND= report.ogg
@@ -2621,7 +2671,7 @@
 }
 
 {
-#NAME= [FW]DE 801 - Italian Exports To Spain (Spain->Axis)
+#NAME= [FW] DE 801 - Italian Exports To Spain (Spain->Axis)
 #POPUP= Franco Is Pleased With The Civil Aid Italy Is Providing Spain
 #IMAGE=
 #SOUND=
@@ -2641,7 +2691,7 @@
 }
 
 {
-#NAME= [FW]DE 803 - UK Threatens To Blockade Imports To Spain (Portugal->Axis)
+#NAME= [FW] DE 803 - UK Threatens To Blockade Imports To Spain (Portugal->Axis)
 #POPUP= Portuguese Population Is Angered By Threats Of Blockades Against The Iberian Peninsula
 #IMAGE=
 #SOUND=
@@ -2665,7 +2715,7 @@
 }
 
 {
-#NAME= [FW]DE 803 - UK Threatens To Blockade Imports To Spain (Spain->Allies)
+#NAME= [FW] DE 803 - UK Threatens To Blockade Imports To Spain (Spain->Allies)
 #POPUP= Franco Grows Leary Of Relations With The Axis In Response To Possible Allied Blockades
 #IMAGE=
 #SOUND=
@@ -2685,7 +2735,7 @@
 }
 
 {
-#NAME= [FW]DE 803 - UK Threatens To Blockade Imports To Spain (USA->Axis)
+#NAME= [FW] DE 803 - UK Threatens To Blockade Imports To Spain (USA->Axis)
 #POPUP= USA Reacts Negatively To Threats Against International Shipping
 #IMAGE=
 #SOUND=
@@ -2706,7 +2756,7 @@
 }
 
 {
-#NAME= [FW]DE 804 - UK Condemns The Spanish Blue Division (Spain->Axis)
+#NAME= [FW] DE 804 - UK Condemns The Spanish Blue Division (Spain->Axis)
 #POPUP= Franco Grows Closer With The Axis After The UK Condemns The Blue Division Deployment
 #IMAGE=
 #SOUND=
@@ -2726,7 +2776,7 @@
 }
 
 {
-#NAME= [FW]DE 805 - UK Strengthens Portugal (Spain->Axis)
+#NAME= [FW] DE 805 - UK Strengthens Portugal (Spain->Axis)
 #POPUP= Franco Alerted by Portuguese Military Build Up
 #IMAGE=
 #SOUND= report.ogg
@@ -2748,7 +2798,7 @@
 }
 
 {
-#NAME= [FW]DE 806 - Italian Military Exports To Spain (Spain->Axis)
+#NAME= [FW] DE 806 - Italian Military Exports To Spain (Spain->Axis)
 #POPUP= Franco Is Pleased When Italian Military Exports Begin To Arrive In Spain
 #IMAGE=
 #SOUND=
@@ -2769,7 +2819,7 @@
 
 ; Aircraft Delivery To Sweden
 {
-#NAME= [FW]DE 811 - USA Fails To Deliver Promised Aircraft To Sweden (Sweden->Axis)
+#NAME= [FW] DE 811 - USA Fails To Deliver Promised Aircraft To Sweden (Sweden->Axis)
 #POPUP= Sweden Is Disappointed With USA's Failure To Deliver Promised Aircraft
 #IMAGE=
 #SOUND=
@@ -2792,7 +2842,7 @@
 
 ; Aircraft Delivery To Sweden
 {
-#NAME= [FW]DE 812 - Italian Military Exports To Sweden (Sweden->Axis)
+#NAME= [FW] DE 812 - Italian Military Exports To Sweden (Sweden->Axis)
 #POPUP= The Italian Sale Of Aircraft To Sweden Improves Their Relations With The Axis
 #IMAGE=
 #SOUND=
@@ -2814,7 +2864,7 @@
 
 ; Swedish Convoy
 {
-#NAME= [FW]DE 813 - Allies Exert Diplomatic Pressure To Reduce Swedish Exports to Germany (Continuous) (Sweden->Allies)
+#NAME= [FW] DE 813 - Allies Exert Diplomatic Pressure To Reduce Swedish Exports to Germany (Continuous) (Sweden->Allies)
 #POPUP= The Swedish Relent to Allied Pressure away from Axis Influence
 #IMAGE=
 #SOUND=
@@ -2836,7 +2886,7 @@
 
 ; UK Delegates To Switzerland
 {
-#NAME= [FW]DE 820 - UK Delegates To Switzerland (Switzerland->Allies) (25%)
+#NAME= [FW] DE 820 - UK Delegates To Switzerland (Switzerland->Allies) (25%)
 #POPUP= Allied Political Pressure Exposes Axis Corruption In Switzerland
 #IMAGE=
 #SOUND=
@@ -2857,7 +2907,7 @@
 
 ; UK Delegates To Portugal
 {
-#NAME= [FW]DE 821 - UK Delegates To Portugal (Portugal->Allies) (50%)
+#NAME= [FW] DE 821 - UK Delegates To Portugal (Portugal->Allies) (50%)
 #POPUP= Portugal Leans Towards The Allies But Maintains Trade With Germany
 #IMAGE=
 #SOUND=
@@ -2878,7 +2928,7 @@
 
 ; UK Payments to Switzerland
 {
-#NAME= [FW]DE 822 - UK Payments To Switzerland (Switzerland->>Allies)
+#NAME= [FW] DE 822 - UK Payments To Switzerland (Switzerland->>Allies)
 #POPUP= Allied Intervention Leads to Switzerland Ending Axis Relations
 #IMAGE=
 #SOUND=
@@ -2898,7 +2948,7 @@
 }
 
 {
-#NAME= [FW]DE 825 - UK Threatens Turkey With Blockades (Turkey->Axis)
+#NAME= [FW] DE 825 - UK Threatens Turkey With Blockades (Turkey->Axis)
 #POPUP= Turkey Ends Trade Agreement With Germany After Allies Threaten Blockades
 #IMAGE=
 #SOUND=
@@ -2918,7 +2968,7 @@
 
 ; Naval Asset Delivery To Sweden
 {
-#NAME= [FW]DE 827 - Italian Naval Exports To Sweden (Sweden->Axis)
+#NAME= [FW] DE 827 - Italian Naval Exports To Sweden (Sweden->Axis)
 #POPUP= Sweden's Relations With The Axis Improves After Italy Agrees To The Sale of Naval Assets
 #IMAGE=
 #SOUND=
@@ -2940,7 +2990,7 @@
 ; Lend Lease to Saudi Arabia
 ; One-time boost in Saudi Arabian leanings toward Allies
 {
-#NAME= [FW]DE 829 - Lend Lease to Saudi Arabia (Saudi Arabia->>Allies) (%5)
+#NAME= [FW] DE 829 - Lend Lease to Saudi Arabia (Saudi Arabia->>Allies) (%5)
 #POPUP= Saudi Arabia Aligns Closely With USA As A Result of Lend Lease
 #IMAGE=
 #SOUND=
@@ -2963,7 +3013,7 @@
 
 ; Lend Lease to Saudi Arabia
 {
-#NAME= [FW]DE 829 - Lend Lease to Saudi Arabia (Saudi Arabia->Allies)
+#NAME= [FW] DE 829 - Lend Lease to Saudi Arabia (Saudi Arabia->Allies)
 #POPUP= USA Extends Lend Lease To Saudi Arabia
 #IMAGE=
 #SOUND=
@@ -2985,7 +3035,7 @@
 }
 
 {
-#NAME= [FW]DE 835 - Greece Severs Ties With Germany (Greece->>Allies)
+#NAME= [FW] DE 835 - Greece Severs Ties With Germany (Greece->>Allies)
 #POPUP= Greece Severs Economic Ties With Germany
 #IMAGE=
 #SOUND= report.ogg
@@ -3005,7 +3055,7 @@
 }
 
 {
-#NAME= [FW]DE 836 - Von Ribbentrop's Diplomatic Mission To Greece (Greece->Axis)
+#NAME= [FW] DE 836 - Von Ribbentrop's Diplomatic Mission To Greece (Greece->Axis)
 #POPUP= Von Ribbentrop Travels To Greece
 #IMAGE=
 #SOUND= report.ogg
@@ -3025,7 +3075,7 @@
 }
 
 {
-#NAME= [FW]DE 844 - Germany DoW On Switzerland (Switzerland->>Allies)
+#NAME= [FW] DE 844 - Germany DoW On Switzerland (Switzerland->>Allies)
 #POPUP= Germany Declares War On Switzerland
 #IMAGE=
 #SOUND= war1.ogg
@@ -3046,7 +3096,7 @@
 
 ; Sweden Sends Military Aid to Finland
 {
-#NAME= [FW]DE 848 - Sweden Sends Military Aid to Finland (Sweden->Allies)
+#NAME= [FW] DE 848 - Sweden Sends Military Aid to Finland (Sweden->Allies)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -3067,7 +3117,7 @@
 }
 
 {
-#NAME= [FW]DE 874 - Algeria Follows Vichy France And Joins The Axis (Algeria->>Axis) (50%)
+#NAME= [FW] DE 874 - Algeria Follows Vichy France And Joins The Axis (Algeria->>Axis) (50%)
 #POPUP= Admiral Darlan Remains Loyal To Vichy France
 #IMAGE=
 #SOUND=
@@ -3087,7 +3137,7 @@
 }
 
 {
-#NAME= [FW]DE 874 - Syria Joins The Axis (Syria->>Axis) (50%)
+#NAME= [FW] DE 874 - Syria Joins The Axis (Syria->>Axis) (50%)
 #POPUP= Syria Joins The War To Fight For Independence
 #IMAGE=
 #SOUND=
@@ -3111,7 +3161,7 @@
 }
 
 {
-#NAME= [FW]DE 874 - Tunisia Joins The Axis (Tunisia->>Axis) (50%)
+#NAME= [FW] DE 874 - Tunisia Joins The Axis (Tunisia->>Axis) (50%)
 #POPUP= The Tunisian Governor Declares For The Axis
 #IMAGE=
 #SOUND=
@@ -3133,7 +3183,7 @@
 }
 
 {
-#NAME= [FW]DE 874 - Vichy France Joins The Axis (Vichy France->>Axis)
+#NAME= [FW] DE 874 - Vichy France Joins The Axis (Vichy France->>Axis)
 #POPUP= Secret Negotiations Between Germany and Vichy France Conclude
 #IMAGE=
 #SOUND=
@@ -3153,7 +3203,7 @@
 }
 
 {
-#NAME= [FW]DE 875 - The Allies Pressure Turkey To Seize Any Further German Transit (Turkey->Allies)
+#NAME= [FW] DE 875 - The Allies Pressure Turkey To Seize Any Further German Transit (Turkey->Allies)
 #POPUP= The Allies Pressure Turkey To Cease Any Further German Transit
 #IMAGE=
 #SOUND=
@@ -3173,7 +3223,7 @@
 }
 
 {
-#NAME= [FW]DE 900 - German Exports To Spain (Spain->Axis)
+#NAME= [FW] DE 900 - German Exports To Spain (Spain->Axis)
 #POPUP= Franco Welcomes Axis Assistance In Recovering From Civil War
 #IMAGE=
 #SOUND= report.ogg
@@ -3193,7 +3243,7 @@
 }
 
 {
-#NAME= [FW]DE 902 - The Spanish Blue Division (Spain->Allies)
+#NAME= [FW] DE 902 - The Spanish Blue Division (Spain->Allies)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -3212,7 +3262,7 @@
 }
 
 {
-#NAME= [FW]DE 903 - German Exports To Spain (Spain->Axis)
+#NAME= [FW] DE 903 - German Exports To Spain (Spain->Axis)
 #POPUP= German Military Exports Begin To Arrive In Spain
 #IMAGE=
 #SOUND=
@@ -3232,7 +3282,7 @@
 }
 
 {
-#NAME= [FW]DE 904 - Ribbentrop Diplomatic Mission To Portugal (Portugal->Axis)
+#NAME= [FW] DE 904 - Ribbentrop Diplomatic Mission To Portugal (Portugal->Axis)
 #POPUP= Portugal Is Influenced As A Result Of Ribbentrop's Recent Visit
 #IMAGE=
 #SOUND=
@@ -3252,7 +3302,7 @@
 }
 
 {
-#NAME= [FW]DE 905 - Ribbentrop Diplomatic Mission To Switzerland (Switzerland->Axis)
+#NAME= [FW] DE 905 - Ribbentrop Diplomatic Mission To Switzerland (Switzerland->Axis)
 #POPUP= Switzerland Is Influenced As A Result Of Ribbentrop's Recent Visit
 #IMAGE=
 #SOUND=
@@ -3272,7 +3322,7 @@
 }
 
 {
-#NAME= [FW]DE 906 - Portugal and Germany Trade Agreement (Portugal->Axis)
+#NAME= [FW] DE 906 - Portugal and Germany Trade Agreement (Portugal->Axis)
 #POPUP= Germany Reaches Trade Agreement With Portugal
 #IMAGE=
 #SOUND=
@@ -3293,7 +3343,7 @@
 
 ; New(08/05/2023)
 {
-#NAME= [FW]DE 907 - Germany and Spain Wolfram Mine Development Agreement (Spain->Axis)
+#NAME= [FW] DE 907 - Germany and Spain Wolfram Mine Development Agreement (Spain->Axis)
 #POPUP= Franco Welcomes Axis Assistance In The Development Of Its Wolfram Resources
 #IMAGE=
 #SOUND=
@@ -3313,7 +3363,7 @@
 }
 
 {
-#NAME= [FW]DE 908 - Spanish Debt Repayment (Spain->Allies)
+#NAME= [FW] DE 908 - Spanish Debt Repayment (Spain->Allies)
 #POPUP= Spain Is Influenced By Germany's Cooperation Toward A Debt Repayment Plan
 #IMAGE=
 #SOUND=
@@ -3333,7 +3383,7 @@
 }
 
 {
-#NAME= [FW]DE 910 - Treaty of Friendship (Turkey->Axis)
+#NAME= [FW] DE 910 - Treaty of Friendship (Turkey->Axis)
 #POPUP= Germany Signs A Treaty Of Friendship With Turkey
 #IMAGE=
 #SOUND=
@@ -3353,7 +3403,7 @@
 }
 
 {
-#NAME= [FW]DE 912 - Vichy Collaboration Policy (Vichy France->Axis) (2%)
+#NAME= [FW] DE 912 - Vichy Collaboration Policy (Vichy France->Axis) (2%)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -3373,7 +3423,7 @@
 }
 
 {
-#NAME= [FW]DE 912 - Vichy French Population Protest Vichy Collaboration Policy (Continuous) (Vichy France->Allies) (2%)
+#NAME= [FW] DE 912 - Vichy French Population Protest Vichy Collaboration Policy (Continuous) (Vichy France->Allies) (2%)
 #POPUP= Vichy French Population Protest The Vichy Collaboration Policy
 #IMAGE=
 #SOUND=
@@ -3393,7 +3443,7 @@
 }
 
 {
-#NAME= [FW]DE 918 - German Delivery Of The Heavy Cruiser Lützow (USSR->Allies)
+#NAME= [FW] DE 918 - German Delivery Of The Heavy Cruiser Lützow (USSR->Allies)
 #POPUP= Stalin Is Wary Of Germany Not Honouring The Sale Of Naval Assets
 #IMAGE=
 #SOUND=
@@ -3413,7 +3463,7 @@
 }
 
 {
-#NAME= [FW]DE 922 - Germany Imports War Materials From Switzerland (Switzerland->Axis)
+#NAME= [FW] DE 922 - Germany Imports War Materials From Switzerland (Switzerland->Axis)
 #POPUP= Switzerland Begins Exporting War Materials To Germany
 #IMAGE=
 #SOUND=
@@ -3434,7 +3484,7 @@
 
 ; Sweden Permits German Forces Transit
 {
-#NAME= [FW]DE 927 - Sweden Permits The Transit Of German Forces (Sweden->Allies)
+#NAME= [FW] DE 927 - Sweden Permits The Transit Of German Forces (Sweden->Allies)
 #POPUP= Sweden Is Pressured To Allow German Forces To Rail From Norway To Finland
 #IMAGE=
 #SOUND=
@@ -3454,7 +3504,7 @@
 }
 
 {
-#NAME= [FW]DE 947 - Germany Delays Deliveries In Violation of Their Soviet Commercial Agreement (USSR->Allies)
+#NAME= [FW] DE 947 - Germany Delays Deliveries In Violation of Their Soviet Commercial Agreement (USSR->Allies)
 #POPUP= Stalin Grows Suspicious as Deliveries of German Military Equipment is Further Delayed
 #IMAGE=
 #SOUND=
@@ -3474,7 +3524,7 @@
 }
 
 {
-#NAME= [FW]DE 947 - Germany Honors The Terms of Their Soviet Commercial Agreement (USSR->Axis)
+#NAME= [FW] DE 947 - Germany Honors The Terms of Their Soviet Commercial Agreement (USSR->Axis)
 #POPUP= The Terms Of The German-Soviet Commercial Agreement Are Honored
 #IMAGE=
 #SOUND=
@@ -3495,7 +3545,7 @@
 
 ; Bulgaria Axis, Mobilized
 {
-#NAME= [FW]DE 960 - Germany and Turkey Trade Agreement (via Bulgaria) (Turkey->Axis)
+#NAME= [FW] DE 960 - Germany and Turkey Trade Agreement (via Bulgaria) (Turkey->Axis)
 #POPUP= Germany Reaches A Trade Agreement With Turkey (Clodius Agreement)
 #IMAGE=
 #SOUND=
@@ -3522,7 +3572,7 @@
 ; Greece Axis, Mobilized
 ; Yugoslavia Axis controlled
 {
-#NAME= [FW]DE 961 - Germany and Turkey Trade Agreement (via Greece) (Turkey->Axis)
+#NAME= [FW] DE 961 - Germany and Turkey Trade Agreement (via Greece) (Turkey->Axis)
 #POPUP= Germany Reaches A Trade Agreement With Turkey (Clodius Agreement)
 #IMAGE=
 #SOUND=

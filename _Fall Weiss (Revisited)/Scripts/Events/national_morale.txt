@@ -304,7 +304,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 {
-#NAME= [FW]Finland: Loss Of Joensuu
+#NAME= [FW] Finland: Loss Of Joensuu
 #POPUP= Finnish National Morale Suffers From The Loss Of Joensuu
 #IMAGE=
 #SOUND=
@@ -328,7 +328,7 @@
 }
 
 {
-#NAME= [FW]Finland: Loss Of Kajaani
+#NAME= [FW] Finland: Loss Of Kajaani
 #POPUP= Finnish National Morale Suffers From The Loss Of Kajaani
 #IMAGE=
 #SOUND=
@@ -352,7 +352,7 @@
 }
 
 {
-#NAME= [FW]Finland: Loss Of Kemijarvi
+#NAME= [FW] Finland: Loss Of Kemijarvi
 #POPUP= Finnish National Morale Suffers From The Loss Of Kemijarvi
 #IMAGE=
 #SOUND=
@@ -376,7 +376,7 @@
 }
 
 {
-#NAME= [FW]Finland: Loss Of Lappeenranta
+#NAME= [FW] Finland: Loss Of Lappeenranta
 #POPUP= Finnish National Morale Suffers From The Loss Of Lappeenranta
 #IMAGE=
 #SOUND=
@@ -391,6 +391,7 @@
 #NM_UPDOWN= -1250
 #NM_TURNS= 1
 #DATE= 1939/09/01
+; Lappeenranta(202,48)
 #OBJECTIVE_TEXT_POSITION= 202,48
 ; Lappeenranta(202,48) Allied
 #ALIGNMENT_POSITION= 202,48 [2]
@@ -400,7 +401,7 @@
 }
 
 {
-#NAME= [FW]Finland: Loss Of Lappeenranta (Continuous)
+#NAME= [FW] Finland: Loss Of Lappeenranta (Continuous)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -415,6 +416,7 @@
 #NM_UPDOWN= -150
 #NM_TURNS= 1
 #DATE= 1942/01/01
+; Lappeenranta(202,48)
 #OBJECTIVE_TEXT_POSITION= 202,48
 ; Lappeenranta(202,48) Allied
 #ALIGNMENT_POSITION= 202,48 [2]
@@ -424,7 +426,7 @@
 }
 
 {
-#NAME= [FW]Finland: Loss Of Petsamo
+#NAME= [FW] Finland: Loss Of Petsamo
 #POPUP= Finnish National Morale Suffers From The Loss Of Petsamo
 #IMAGE=
 #SOUND=
@@ -449,7 +451,7 @@
 }
 
 {
-#NAME= [FW]Finland: Loss Of Sortavala
+#NAME= [FW] Finland: Loss Of Sortavala
 #POPUP= Finnish National Morale Suffers From The Loss Of Sortavala
 #IMAGE=
 #SOUND=
@@ -474,7 +476,7 @@
 }
 
 {
-#NAME= [FW]Finland: Loss Of Vyborg
+#NAME= [FW] Finland: Loss Of Vyborg
 #POPUP= Finnish National Morale Suffers From The Loss Of Vyborg
 #IMAGE=
 #SOUND=
@@ -669,8 +671,8 @@
 ; France(40) Allied
 #VARIABLE_CONDITION= 40 [2] [100] [0]
 ; 1 Axis unit within 3 hexes of Epinal(159,86) OR
-; 2 Axis units within 1 hex of Verdun OR
-; 1 Axis unit within 1 hex of Lille OR
+; 2 Axis units within 1 hex of Verdun(157,83) OR
+; 1 Axis unit within 1 hex of Lille(153,80) OR
 ; 1 Axis unit within 1 hex of Reims(154,83)
 #CONDITION_POSITION= 159,86 [3,3] [1,1] [1] [0]
 #CONDITION_POSITION= 157,83 [1,1] [2,2] [1] [0]
@@ -745,6 +747,7 @@
 #NM_UPDOWN= -2500
 #NM_TURNS= 1
 #DATE= 1939/09/01
+; Lyon(156,92)
 #OBJECTIVE_TEXT_POSITION= 156,92
 ; Lyon(156,92) Axis
 #ALIGNMENT_POSITION= 156,92 [1]
@@ -822,7 +825,7 @@
 #ALIGNMENT_POSITION= 151,84 [1]
 ; France(40) Allied, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; No British units are within 6 hexes of Paris(151,84)
+; No British units within 6 hexes of Paris(151,84)
 #CONDITION_POSITION= 151,84 [6,6] [0,0] [2] [112]
 }
 
@@ -1290,6 +1293,7 @@
 #NM_UPDOWN= 1000
 #NM_TURNS= 1
 #DATE= 1939/09/01
+; Belgrade(187,94)
 #OBJECTIVE_TEXT_POSITION= 187,94
 ; Belgrade is Axis(187,94)
 #ALIGNMENT_POSITION= 187,94 [1]
@@ -1579,8 +1583,9 @@
 #NM_UPDOWN= -5000
 #NM_TURNS= 1
 #DATE= 1939/09/01
+; Dusseldorf(160,78)
 #OBJECTIVE_TEXT_POSITION= 160,78
-; Düsseldorf is Allied
+; Dusseldorf(160,78) Allied
 #ALIGNMENT_POSITION= 160,78 [2]
 ; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -1699,8 +1704,9 @@
 #NM_UPDOWN= -30
 #NM_TURNS= 1
 #DATE= 1939/09/01
+; Belgrade(187,94)
 #OBJECTIVE_TEXT_POSITION= 187,94
-; Belgrade is Allied
+; Belgrade(187,94) Allied
 #ALIGNMENT_POSITION= 187,94 [2]
 ; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -1799,8 +1805,10 @@
 #DATE= 1943/01/01
 #OBJECTIVE_TEXT_POSITION=
 #ALIGNMENT_POSITION= 138,86 [2]
+; Cherbourg(143,82) Allied
 #ALIGNMENT_POSITION= 143,82 [2]
 #ALIGNMENT_POSITION= 146,84 [2]
+; Rennes(143,86) Allied
 #ALIGNMENT_POSITION= 143,86 [2]
 #ALIGNMENT_POSITION= 141,85 [2]
 #ALIGNMENT_POSITION= 140,87 [2]
@@ -1852,7 +1860,7 @@
 #NM_TURNS= 10
 #DATE= 1943/01/01
 #OBJECTIVE_TEXT_POSITION=
-; Stalingrad(234,85) Axis
+; Moscow(221,65) Axis
 #ALIGNMENT_POSITION= 221,65 [1]
 ; Saratov(237,77) Axis
 #ALIGNMENT_POSITION= 237,77 [1]
@@ -1901,6 +1909,7 @@
 #NM_UPDOWN= 1000
 #NM_TURNS= 1
 #DATE= 1939/09/01
+; Belgrade(187,94)
 #OBJECTIVE_TEXT_POSITION= 187,94
 ; Belgrade(187,94) Axis
 #ALIGNMENT_POSITION= 187,94 [1]
@@ -4351,6 +4360,7 @@
 #NM_UPDOWN= -1000
 #NM_TURNS= 1
 #DATE= 1939/09/01
+; Belgrade(187,94)
 #OBJECTIVE_TEXT_POSITION= 187,94
 ; Belgrade(187,94) Allied
 #ALIGNMENT_POSITION= 187,94 [2]
@@ -4645,6 +4655,7 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
 #CONDITION_POSITION= 146,84 [4,4] [4,4] [2] [0]
+; 4 Allied units within 3 hexes of Amiens(151,81)
 #CONDITION_POSITION= 151,81 [3,3] [4,4] [2] [0]
 #CONDITION_POSITION= 141,85 [5,5] [4,4] [2] [0]
 }
@@ -4728,6 +4739,7 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
 #CONDITION_POSITION= 146,84 [4,4] [4,4] [2] [0]
+; 4 Allied units within 3 hexes of Amiens(151,81)
 #CONDITION_POSITION= 151,81 [3,3] [4,4] [2] [0]
 #CONDITION_POSITION= 141,85 [5,5] [4,4] [2] [0]
 }
@@ -4757,6 +4769,7 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
 #CONDITION_POSITION= 146,84 [4,4] [4,4] [2] [0]
+; 4 Allied units within 3 hexes of Amiens(151,81)
 #CONDITION_POSITION= 151,81 [3,3] [4,4] [2] [0]
 #CONDITION_POSITION= 141,85 [5,5] [4,4] [2] [0]
 }
@@ -4812,6 +4825,7 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
 #CONDITION_POSITION= 146,84 [4,4] [4,4] [2] [0]
+; 4 Allied units within 3 hexes of Amiens(151,81)
 #CONDITION_POSITION= 151,81 [3,3] [4,4] [2] [0]
 #CONDITION_POSITION= 141,85 [5,5] [4,4] [2] [0]
 }
@@ -4842,6 +4856,7 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
 #CONDITION_POSITION= 146,84 [4,4] [4,4] [2] [0]
+; 4 Allied units within 3 hexes of Amiens(151,81)
 #CONDITION_POSITION= 151,81 [3,3] [4,4] [2] [0]
 #CONDITION_POSITION= 141,85 [5,5] [4,4] [2] [0]
 }
@@ -4871,6 +4886,7 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
 #CONDITION_POSITION= 146,84 [4,4] [4,4] [2] [0]
+; 4 Allied units within 3 hexes of Amiens(151,81)
 #CONDITION_POSITION= 151,81 [3,3] [4,4] [2] [0]
 #CONDITION_POSITION= 141,85 [5,5] [4,4] [2] [0]
 }
@@ -5029,7 +5045,7 @@
 }
 
 {
-#NAME= [FW]DE 204 - Finland: Loss Of Sortavala (50%)
+#NAME= [FW] DE 204 - Finland: Loss Of Sortavala (50%)
 #POPUP= Finnish National Morale Falls Upon Occupation Of Sortavala
 #IMAGE=
 #SOUND=
@@ -5054,7 +5070,7 @@
 
 ; If Finland Wins Winter War
 {
-#NAME= [FW]DE 204 - Finland: Loss Of Vyborg (50%)
+#NAME= [FW] DE 204 - Finland: Loss Of Vyborg (50%)
 #POPUP= Finnish National Morale Falls After Losing Vyborg
 #IMAGE=
 #SOUND=
@@ -5078,7 +5094,7 @@
 }
 
 {
-#NAME= [FW]DE 204 - Finland: Winter War Treaty (Anglo-French Expedition Not Sent)
+#NAME= [FW] DE 204 - Finland: Winter War Treaty (Anglo-French Expedition Not Sent)
 #POPUP= Finnish Morale Is Lowered After The Moscow Peace Treaty
 #IMAGE=
 #SOUND=
@@ -5102,7 +5118,7 @@
 }
 
 {
-#NAME= [FW]DE 204 - Finland: Winter War Treaty (Anglo-French Expedition Sent) (50%)
+#NAME= [FW] DE 204 - Finland: Winter War Treaty (Anglo-French Expedition Sent) (50%)
 #POPUP= Finnish Morale Is Lowered After The Moscow Peace Treaty
 #IMAGE=
 #SOUND=
@@ -5199,7 +5215,7 @@
 }
 
 {
-#NAME= DE 250 - Germany: Loss Of Food Imports From France (Continuous)
+#NAME= DE 210 - Germany: Loss Of Food Imports From France (Continuous)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5208,7 +5224,8 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 250[1]
+; Allies Liberate Paris
+#LINK= 210[1]
 #COUNTRY_ID= 45
 #TRIGGER= 100
 #NM_UPDOWN= -30
@@ -5224,7 +5241,7 @@
 
 ; No Winter War
 {
-#NAME= [FW]DE 401 - Finland: Loss Of Sortavala
+#NAME= [FW] DE 401 - Finland: Loss Of Sortavala
 #POPUP= Finnish National Morale Falls Upon Occupation Of Sortavala
 #IMAGE=
 #SOUND=
@@ -5250,7 +5267,7 @@
 
 ; No Winter War
 {
-#NAME= [FW]DE 401 - Finland: Loss Of Vyborg
+#NAME= [FW] DE 401 - Finland: Loss Of Vyborg
 #POPUP= Finnish National Morale Falls After Losing Vyborg
 #IMAGE=
 #SOUND=
@@ -5493,7 +5510,7 @@
 }
 
 {
-#NAME= [FW]DE 463 - UK: Free Dutch and Belgian Forces Escape To Britain
+#NAME= [FW] DE 463 - UK: Free Dutch and Belgian Forces Escape To Britain
 #POPUP= Free Dutch and Belgian Forces Escape To Britain
 #IMAGE=
 #SOUND=
@@ -5517,7 +5534,7 @@
 }
 
 {
-#NAME= [FW]DE 540 - Germany: Fails To Respond To The Swiss Shooting Down German Aircraft
+#NAME= [FW] DE 540 - Germany: Fails To Respond To The Swiss Shooting Down German Aircraft
 #POPUP= German High Command Fails To Respond to The Swiss Shooting Down German Aircraft
 #IMAGE=
 #SOUND=
@@ -5541,7 +5558,7 @@
 }
 
 {
-#NAME= [FW]DE 543 - UK: Morale Is Lowered By The Decision to Occupy Ireland
+#NAME= [FW] DE 543 - UK: Morale Is Lowered By The Decision to Occupy Ireland
 #POPUP= The Controversial Occupation of Ireland Causes Civil Unrest In The UK
 #IMAGE=
 #SOUND=
@@ -5565,8 +5582,8 @@
 }
 
 {
-#NAME= [FW]DE 545 - UK: Morale Is Boosted By Arrival Of Irish Defense Forces
-#POPUP= Thousands Of Members From The Irish Defence Force Defect To Britain
+#NAME= [FW] DE 545 - UK: Morale Is Boosted By Arrival Of Irish Defense Forces
+#POPUP= Thousands Of Members From The Irish Defense Force Defect To Britain
 #IMAGE=
 #SOUND=
 #FLAG= 1
@@ -5929,7 +5946,7 @@
 
 ;Replacement
 {
-#NAME= [FW]DE 792 - USSR: Morale Boosted By The Liberation Of France (Stalingrad Once Occupied)
+#NAME= [FW] DE 792 - USSR: Morale Boosted By The Liberation Of France (Stalingrad Once Occupied)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5956,7 +5973,7 @@
 }
 
 {
-#NAME= [FW]DE 792 - USSR: Morale Boosted From Allied Landings In France (Stalingrad Once Occupied)
+#NAME= [FW] DE 792 - USSR: Morale Boosted From Allied Landings In France (Stalingrad Once Occupied)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -5978,12 +5995,13 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
 #CONDITION_POSITION= 146,84 [4,4] [4,4] [2] [0]
+; 4 Allied units within 3 hexes of Amiens(151,81)
 #CONDITION_POSITION= 151,81 [3,3] [4,4] [2] [0]
 #CONDITION_POSITION= 141,85 [5,5] [4,4] [2] [0]
 }
 
 {
-#NAME= [FW]DE 800 - UK: The Anglo-Portuguese Alliance Boosts Morale
+#NAME= [FW] DE 800 - UK: The Anglo-Portuguese Alliance Boosts Morale
 #POPUP= The Anglo-Portuguese Alliance Boosts British Morale
 #IMAGE=
 #SOUND=
@@ -6007,7 +6025,7 @@
 }
 
 {
-#NAME= [FW]DE 847 - Finland: Tripartite Pact
+#NAME= [FW] DE 847 - Finland: Tripartite Pact
 #POPUP= General Finnish Population Protests War With The Western Allies
 #IMAGE=
 #SOUND=
@@ -6031,7 +6049,7 @@
 }
 
 {
-#NAME= [FW]DE 848 - Finland: Swedish Volunteers
+#NAME= [FW] DE 848 - Finland: Swedish Volunteers
 #POPUP= The Arrival Of Swedish Volunteers Improves Finnish Morale
 #IMAGE=
 #SOUND=
@@ -6055,7 +6073,7 @@
 }
 
 {
-#NAME= [FW]DE 858 - Finland: Reclaims Lost Territory
+#NAME= [FW] DE 858 - Finland: Reclaims Lost Territory
 #POPUP= Finnish Morale Improves On Reclamation Of Lost Territory
 #IMAGE=
 #SOUND=
@@ -6079,7 +6097,7 @@
 }
 
 {
-#NAME= [FW]DE 874 - Italy: Mussolini Harshly Protests Against A German Alliance With Vichy
+#NAME= [FW] DE 874 - Italy: Mussolini Harshly Protests Against A German Alliance With Vichy
 #POPUP= Mussolini Harshly Protests Against A German Alliance With Vichy
 #IMAGE=
 #SOUND=
@@ -6105,7 +6123,7 @@
 }
 
 {
-#NAME= [FW]DE 885 - USSR: Morale Is Boosted As Reinforcements Arrive From Siberia
+#NAME= [FW] DE 885 - USSR: Morale Is Boosted As Reinforcements Arrive From Siberia
 #POPUP= Soviet Morale Is Boosted As Reinforcements Arrive From Siberia
 #IMAGE=
 #SOUND=
@@ -6129,7 +6147,7 @@
 }
 
 {
-#NAME= [FW]DE 891 - Italy: Radio Broadcasts The Presence Of German Forces In East Africa
+#NAME= [FW] DE 891 - Italy: Radio Broadcasts The Presence Of German Forces In East Africa
 #POPUP= Italian Radio Broadcasts The Presence Of German Forces In East Africa
 #IMAGE=
 #SOUND=
@@ -6153,7 +6171,7 @@
 }
 
 {
-#NAME= [FW]DE 892 - Finland: Engineers
+#NAME= [FW] DE 892 - Finland: Engineers
 #POPUP= Finish Morale Falls As Domestic Resources Are Diverted To Military Production
 #IMAGE=
 #SOUND=
@@ -6177,7 +6195,7 @@
 }
 
 {
-#NAME= [FW]DE 892 - Finland: Engineers
+#NAME= [FW] DE 892 - Finland: Engineers
 #POPUP= Finland Diverts Some Military Personnel To General Industries To Improve Morale
 #IMAGE=
 #SOUND=
@@ -6201,7 +6219,7 @@
 }
 
 {
-#NAME= [FW]DE 893 - Finland: Anti-Tank Units
+#NAME= [FW] DE 893 - Finland: Anti-Tank Units
 #POPUP= Finnish Morale Improves Upon Arrival Of German Equipment
 #IMAGE=
 #SOUND=
@@ -6225,7 +6243,7 @@
 }
 
 {
-#NAME= [FW]DE 903 - Germany: Spain Remains Neutral
+#NAME= [FW] DE 903 - Germany: Spain Remains Neutral
 #POPUP= Hitler Feels Betrayed Over Continued Spanish Neutrality
 #IMAGE=
 #SOUND=
@@ -6250,7 +6268,7 @@
 
 ;Replacement
 {
-#NAME= [FW]DE 998 - USSR: Liberation Of France (Moscow Once Occupied)
+#NAME= [FW] DE 998 - USSR: Liberation Of France (Moscow Once Occupied)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -6277,7 +6295,7 @@
 }
 
 {
-#NAME= [FW]DE 998 - USSR: Morale Boosted From Allied Landings In France (Moscow once Occupied)
+#NAME= [FW] DE 998 - USSR: Morale Boosted From Allied Landings In France (Moscow once Occupied)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -6299,13 +6317,14 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Allies in France
 #CONDITION_POSITION= 146,84 [4,4] [4,4] [2] [0]
+; Amiens(151,81)
 #CONDITION_POSITION= 151,81 [3,3] [4,4] [2] [0]
 #CONDITION_POSITION= 141,85 [5,5] [4,4] [2] [0]
 }
 
 ;Replacement - Only occurs if Moscow was once occupied
 {
-#NAME= [FW]DE 998 - USSR: Morale Boosted From Allied Landings In Italy
+#NAME= [FW] DE 998 - USSR: Morale Boosted From Allied Landings In Italy
 #POPUP=
 #IMAGE=
 #SOUND=

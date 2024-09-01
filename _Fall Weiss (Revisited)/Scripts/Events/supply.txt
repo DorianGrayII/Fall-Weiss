@@ -106,7 +106,8 @@
 ;               Format: yyyy/mm/dd
 ;
 ; #SOURCE_POSITION= Map position that could also trigger the event
-;                   Format: x,y [unit_id]
+;                   Format: x,y [unit_id] OR
+;                           x.y [unit_id.xx]
 ;                   unit_id.xx is a mouse hover style where xx refers to the sprite index of the symbol_sprites.png
 ;                       file that will be shown at #SOURCE_POSITION.
 ;                       If unit_id.xx is used then the mouse hover information text will show the #POPUP text.
@@ -439,59 +440,10 @@
 #VARIABLE_CONDITION= 21 [2] [100] [0]
 }
 
-; Crete limits Axis supply in the Mediterranean
-{
-#NAME= [FW]Crete Effect (Continous) (Tobruk, Bardia, Derna, Sidi Barrani, Mersa Matruh, El Alamein, Alexandria) (20%)
-#POPUP= The Presence Of Allied Troops Hinders Axis Supply In North Africa (Tobruk, El Alamein, Alexandria)
-#IMAGE=
-#SOUND=
-#FLAG= 1
-; 2 = Reoccurring check until end of game
-#TYPE= 2
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 0[0]
-#COUNTRY_ID= 0
-#ALIGNMENT_ID= 2
-#FLAG_ID= 112
-#TRIGGER= 20
-#SEASON_FLAG= 0
-#DATE= 1940/06/01
-; Heraklion(196,116) [any unit]
-#SOURCE_POSITION= 196,116 [-1.5]
-#DESTINATION_RESOURCE= 195,121 [1,3]
-; Tobruk(194,122)
-#DESTINATION_RESOURCE= 194,122 [1,3]
-; Alexandria-Port(205,123)
-#DESTINATION_RESOURCE= 205,123 [1,3]
-; Alexandria(206,124)
-#DESTINATION_RESOURCE= 206,124 [1,3]
-; Port Said-Port(209,122)
-#DESTINATION_RESOURCE= 209,122 [1,3]
-; Port Said(209,123)
-#DESTINATION_RESOURCE= 209,123 [1,3]
-; Derna(191,120)
-#DESTINATION_RESOURCE= 191,120 [1,3]
-; Bardia(196,123)
-#DESTINATION_RESOURCE= 196,123 [1,3]
-; Sidi Barrani(198,123)
-#DESTINATION_RESOURCE= 198,123 [1,3]
-; Mersa Matruh(200,124)
-#DESTINATION_RESOURCE= 200,124 [1,3]
-; El Alamein(204,125)
-#DESTINATION_RESOURCE= 204,125 [1,3]
-; UK(112) Allied, Mobilized, Not Surrendered
-; Egypt(36) Allied, Not Surrendered
-#VARIABLE_CONDITION= 112 [2] [100] [0]
-#VARIABLE_CONDITION= 36 [2] [100] [0]
-#VARIABLE_CONDITION= 59 [1] [100] [0]
-}
-
 ;
 ; Fall of Gibraltar
 {
-#NAME= Fall Of Gibraltar (Italian Occupied) (25%)
+#NAME= Fall Of Gibraltar (Italian Occupied) (Continuous) (25%)
 #POPUP= Axis Control Of Gibraltar Hinders Allied Supply In the Mediterranean
 #IMAGE=
 #SOUND=
@@ -511,11 +463,13 @@
 #SOURCE_POSITION= 136,114 [-1]
 ; Several ports removed though Amphibious Operations are still possible
 #DESTINATION_RESOURCE= 144,115 [1,2]
+; Oran(145,115)
 #DESTINATION_RESOURCE= 145,115 [1,2]
 ; Algiers-Port(152,112)
 #DESTINATION_RESOURCE= 152,112 [1,2]
 #DESTINATION_RESOURCE= 152,113 [1,2]
 #DESTINATION_RESOURCE= 167,111 [1,2]
+; Tunis(167,112)
 #DESTINATION_RESOURCE= 167,112 [1,2]
 #DESTINATION_RESOURCE= 172,120 [1,2]
 ; Tripoli(172,121)
@@ -554,6 +508,7 @@
 #SEASON_FLAG= 0
 #DATE= 1944/12/09
 #SOURCE_POSITION=
+; Athens(193,109)
 #DESTINATION_RESOURCE= 193,109 [1,4]
 #DESTINATION_RESOURCE= 191,106 [1,4]
 #DESTINATION_RESOURCE= 192,104 [1,4]
@@ -581,6 +536,7 @@
 #SEASON_FLAG= 0
 #DATE= 1944/12/20
 #SOURCE_POSITION=
+; Athens(193,109)
 #DESTINATION_RESOURCE= 193,109 [1,2]
 #DESTINATION_RESOURCE= 191,106 [1,2]
 #DESTINATION_RESOURCE= 192,104 [1,2]
@@ -608,11 +564,14 @@
 #SEASON_FLAG= 0
 #DATE= 1939/09/01
 #SOURCE_POSITION=
+; Lille(153,80)
 #DESTINATION_RESOURCE= 153,80 [2,4]
 #DESTINATION_RESOURCE= 151,79 [2,4]
 #DESTINATION_RESOURCE= 153,78 [2,4]
 #DESTINATION_RESOURCE= 155,81 [2,4]
+; Amiens(151,81)
 #DESTINATION_RESOURCE= 151,81 [2,4]
+; Reims(154,83)
 #DESTINATION_RESOURCE= 154,83 [2,4]
 ; Belgium(10) Allied, Surrendered
 #VARIABLE_CONDITION= 10 [2] [100] [1]
@@ -884,14 +843,12 @@
 #DATE= 1941/01/01
 ; Malta(175,114) [any unit]
 #SOURCE_POSITION= 175,114 [-1]
-
 ; El Agheila(184,126)
 #DESTINATION_RESOURCE= 184,126 [1,2]
 ; Benghazi(186,122)
 #DESTINATION_RESOURCE= 186,122 [1,2]
 ; Benghazi-Port(185,122)
 #DESTINATION_RESOURCE= 185,122 [1,2]
-
 ; UK(112) Allied, Mobilized, Not Surrendered
 ; Egypt(36) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -911,11 +868,13 @@
 #LINK= 0[0]
 #COUNTRY_ID= 112
 #ALIGNMENT_ID= 0
+; Red(91)
 #FLAG_ID= 91
 #TRIGGER= 35
 #SEASON_FLAG= 0
 #DATE= 1943/01/01
 #SOURCE_POSITION=
+; Turin(162,94)
 #DESTINATION_RESOURCE= 162,94 [2,4]
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #VARIABLE_CONDITION= 36 [2] [100] [0]
@@ -936,6 +895,7 @@
 #LINK= 0[0]
 #COUNTRY_ID= 45
 #ALIGNMENT_ID= 0
+; Red(91)
 #FLAG_ID= 91
 #TRIGGER= 100
 #SEASON_FLAG= 0
@@ -992,6 +952,7 @@
 #LINK= 0[0]
 #COUNTRY_ID= 112
 #ALIGNMENT_ID= 0
+; Red(91)
 #FLAG_ID= 91
 #TRIGGER= 35
 #SEASON_FLAG= 0
@@ -1186,6 +1147,7 @@
 #SEASON_FLAG= 0
 #DATE= 1942/03/28
 #SOURCE_POSITION=
+; St Nazaire(142,89)
 #DESTINATION_RESOURCE= 142,89 [8,10]
 ; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -1210,6 +1172,7 @@
 #SEASON_FLAG= 0
 #DATE= 1942/03/28
 #SOURCE_POSITION=
+; St Nazaire(142,89)
 #DESTINATION_RESOURCE= 142,89 [10,10]
 ; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -1234,6 +1197,7 @@
 #SEASON_FLAG= 0
 #DATE= 1942/03/28
 #SOURCE_POSITION=
+; St Nazaire(142,89)
 #DESTINATION_RESOURCE= 142,89 [10,10]
 ; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -1541,6 +1505,7 @@
 #SEASON_FLAG= 0
 #DATE= 1941/08/01
 #SOURCE_POSITION=
+; Benghazi(186,122)
 #DESTINATION_RESOURCE= 186,122 [1,3]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
@@ -1587,6 +1552,7 @@
 #SEASON_FLAG= 0
 #DATE= 1941/08/01
 #SOURCE_POSITION=
+; El Agheila(184,126)
 #DESTINATION_RESOURCE= 184,126 [1,3]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 }
@@ -1643,7 +1609,7 @@
 ;
 ; Spanish Republican Resistance
 {
-#NAME= DE 361 - Spanish Republicans Carry Out Guerrilla Attacks On Installations In Asturias
+#NAME= DE 361 - Spanish Republicans Carry Out Guerrilla Attacks On Installations In Asturias (Continuous)
 #POPUP= Spanish Republicans Carry Out Guerrilla Attacks On Installations In Asturias
 #IMAGE=
 #SOUND=
@@ -1666,7 +1632,7 @@
 }
 
 {
-#NAME= DE 362 - Spanish Republicans Launch Attacks On Installations Near Granada
+#NAME= DE 362 - Spanish Republicans Launch Attacks On Installations Near Granada (Continuous)
 #POPUP= Spanish Republicans Launch Attacks On Installations Near Granada
 #IMAGE=
 #SOUND=
@@ -1732,7 +1698,7 @@
 }
 
 {
-#NAME= [FW]DE 381 - Oil Shortages Hamper Axis Economies (10%) (Continuous)
+#NAME= [FW] DE 381 - Oil Shortages Hamper Axis Economies (Continuous) (10%)
 #POPUP= Oil Shortages Hamper Axis Economies
 #IMAGE=
 #SOUND=
@@ -1792,7 +1758,7 @@
 
 ; Maikop Oil Fields - first message
 {
-#NAME= [FW]DE 429 - Maikop Oil Fields Destroyed
+#NAME= [FW] DE 429 - Maikop Oil Fields Destroyed
 #POPUP= German Engineers Find The Maikop Oil Fields An Irreparable Ruin
 #IMAGE=
 #SOUND=
@@ -1815,7 +1781,7 @@
 
 ; Maikop Oil Fields - continuous
 {
-#NAME= [FW]DE 429 - Maikop Oil Fields Destroyed (Continuous)
+#NAME= [FW] DE 429 - Maikop Oil Fields Destroyed (Continuous)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1839,7 +1805,7 @@
 
 ; Stalingrad Supply - continuous
 {
-#NAME= [FW]DE 530 - Stalingrad Supply Reduction (Continuous)
+#NAME= [FW] DE 530 - Stalingrad Supply Reduction (Continuous)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1864,7 +1830,7 @@
 
 ; Stalingrad Supply - continuous
 {
-#NAME= [FW]DE 531 - Stalingrad Supply Reduction (Continuous)
+#NAME= [FW] DE 531 - Stalingrad Supply Reduction (Continuous)
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1983,6 +1949,7 @@
 #DATE= 1944/08/01
 #SOURCE_POSITION=
 #DESTINATION_RESOURCE= 195,78 [1,3]
+; Grodno(193,71)
 #DESTINATION_RESOURCE= 193,71 [1,3]
 #DESTINATION_RESOURCE= 192,73 [1,3]
 ; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
@@ -2017,7 +1984,7 @@
 ;
 ; Fall of Gibraltar
 {
-#NAME= DE 676 - Fall Of Gibraltar (German Occupied) (25%)
+#NAME= DE 676 - Fall Of Gibraltar (German Occupied) (Continuous) (25%)
 #POPUP= Axis Control Of Gibraltar Hinders Allied Supply In the Mediterranean
 #IMAGE=
 #SOUND=
@@ -2037,11 +2004,13 @@
 #SOURCE_POSITION=
 ; Several ports removed so that Amphibious Operations are still possible
 #DESTINATION_RESOURCE= 144,115 [1,2]
+; Oran(145,115)
 #DESTINATION_RESOURCE= 145,115 [1,2]
 ; Algiers-Port(152,112)
 #DESTINATION_RESOURCE= 152,112 [1,2]
 #DESTINATION_RESOURCE= 152,113 [1,2]
 #DESTINATION_RESOURCE= 167,111 [1,2]
+; Tunis(167,112)
 #DESTINATION_RESOURCE= 167,112 [1,2]
 #DESTINATION_RESOURCE= 172,120 [1,2]
 ; Tripoli(172,121)
@@ -2089,7 +2058,7 @@
 ;
 ; Supply Line 1940 North Africa
 {
-#NAME= [FW]DE 832 - Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
+#NAME= [FW] DE 832 - Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
 #POPUP= Italian Supply Line Are Severely Stretched East Of Tobruk
 #IMAGE=
 #SOUND=
@@ -2124,7 +2093,7 @@
 ;
 ; Supply Line 1940 North Africa
 {
-#NAME= [FW]DE 832 - Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
+#NAME= [FW] DE 832 - Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
 #POPUP= Italian Supply Line Are Severely Restricted East Of Tobruk (Bardia, Sidi Barrani, Mersa Matruh)
 #IMAGE=
 #SOUND=
@@ -2159,7 +2128,7 @@
 ;
 ; Supply Line 1940 North Africa
 {
-#NAME= [FW]DE 832 - Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
+#NAME= [FW] DE 832 - Supply Line Effect (Bardia, Sidi Barrani, Mersa Matruh)
 #POPUP= Italian Supply Line Are Severely Stretched East Of Tobruk
 #IMAGE=
 #SOUND=
@@ -2194,7 +2163,7 @@
 ;
 ; Allies In Egypt Support Greece
 {
-#NAME= [FW]DE 838 - Allies In Egypt Support Greece
+#NAME= [FW] DE 838 - Allies In Egypt Support Greece
 #POPUP= Impromptu Allied Expedition To Greece Disrupts Supply-chain In Egypt
 #IMAGE=
 #SOUND=
@@ -2225,7 +2194,7 @@
 ;
 ; Stop Greece From Reinforcing Yugoslavia
 {
-#NAME= [FW]DE 838 - Stop Greece From Reinforcing Yugoslavia
+#NAME= [FW] DE 838 - Stop Greece From Reinforcing Yugoslavia
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -2253,7 +2222,7 @@
 ;
 ; Protests At Helsinki
 {
-#NAME= [FW]DE 847 - Finland: Helsinki Protests (Continuous) (5%)
+#NAME= [FW] DE 847 - Finland: Helsinki Protests (Continuous) (5%)
 #POPUP= Demonstrations Against War With The Western Allies Disrupt Supply In Helsinki
 #IMAGE=
 #SOUND=
@@ -2281,7 +2250,7 @@
 ;
 ; South Atlantic Raiders
 {
-#NAME= [FW]DE 854 - South Atlantic Raiders
+#NAME= [FW] DE 854 - South Atlantic Raiders
 #POPUP= Admiral Graf Spee Disrupts South Atlantic Convoys
 #IMAGE=
 #SOUND=
@@ -2307,7 +2276,7 @@
 
 ;
 {
-#NAME= [FW]DE 871 - Oil Shortages Hamper Axis Economies (Continuous) (15%)
+#NAME= [FW] DE 871 - Oil Shortages Hamper Axis Economies (Continuous) (15%)
 #POPUP= Oil Shortages Hamper Axis Economies
 #IMAGE=
 #SOUND=
@@ -2341,7 +2310,7 @@
 
 ;
 {
-#NAME= [FW]DE 890 - Spain: Supply Shortages Hampers Economy (Continuous) (10%)
+#NAME= [FW] DE 890 - Spain: Supply Shortages Hampers Economy (Continuous) (10%)
 #POPUP= Supply Shortages Hamper Spanish Economy
 #IMAGE=
 #SOUND=
@@ -2367,7 +2336,7 @@
 
 ; The Port of Kiel Is Stripped Of Kriegsmarine Personnel
 {
-#NAME= [FW]DE 950 - Germany: The Port of Kiel Is Stripped Of Kriegsmarine Personnel
+#NAME= [FW] DE 950 - Germany: The Port of Kiel Is Stripped Of Kriegsmarine Personnel
 #POPUP= The Port of Kiel Is Stripped Of Kriegsmarine Personnel
 #IMAGE=
 #SOUND=
@@ -2392,7 +2361,7 @@
 
 ; The Port of Stettin Is Stripped Of Kriegsmarine Personnel
 {
-#NAME= [FW]DE 951 - Germany: The Port of Stettin Is Stripped Of Kriegsmarine Personnel
+#NAME= [FW] DE 951 - Germany: The Port of Stettin Is Stripped Of Kriegsmarine Personnel
 #POPUP= The Port of Stettin Is Stripped Of Kriegsmarine Personnel
 #IMAGE=
 #SOUND=

@@ -485,7 +485,7 @@
 
 ; Finland declared war on the USSR shortly after Barbarossa was launched 1941/06/22
 {
-#NAME= [FW]DE 450 - Finland: Finland DoW On The USSR
+#NAME= [FW] DE 450 - Finland: Finland DoW On The USSR
 #POPUP= Finland Enters The War Against The USSR
 #IMAGE= finlandenterswar.png
 #SOUND=
@@ -530,7 +530,7 @@
 ; https://en.wikipedia.org/wiki/Bulgaria_during_World_War_II
 ; https://history.army.mil/books/wwii/balkan/20_260_1.htm
 {
-#NAME= DE 611 - Bulgaria: Bulgaria Joins The Axis(1)
+#NAME= DE 233 - Bulgaria: Bulgaria Joins The Axis(1)
 #POPUP= Bulgaria Signs The Tripartite Pact
 #IMAGE= bulgariaenters.png
 #SOUND= war1.ogg
@@ -539,8 +539,8 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-; Territory Dispute Resolved in Bulgaria's Favor
-#LINK= 611[1]
+; Territory Dispute Resolved in Bulgaria's Favor, USSR did not seize Bessarabia
+#LINK= 233[1]
 #COUNTRY_ID= 19
 #TRIGGER= 100
 #ALIGNMENT= 1
@@ -553,7 +553,7 @@
 ;
 ; This event has 35% to fire beginning 1941/03/01
 {
-#NAME= DE 611 - Bulgaria: Bulgaria Joins The Axis(2) (35%)
+#NAME= DE 233 - Bulgaria: Bulgaria Joins The Axis(2) (35%)
 #POPUP= Bulgaria Signs The Tripartite Pact
 #IMAGE= bulgariaenters.png
 #SOUND= war1.ogg
@@ -562,8 +562,8 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-; Territory Dispute Resolved in Romania's Favor
-#LINK= 611[0]
+; Territory Dispute Resolved in Romania's Favor, USSR did not seize Bessarabia
+#LINK= 233[0]
 #COUNTRY_ID= 19
 #TRIGGER= 35
 #ALIGNMENT= 1
@@ -575,7 +575,7 @@
 ; TODO - revisit later
 ; Historic Date: 1940/11/20
 {
-#NAME= DE 611 - Hungary: Hungary Joins The Axis(1) (50%)
+#NAME= DE 233 - Hungary: Hungary Joins The Axis(1) (50%)
 #POPUP= Hungary Signs The Tripartite Pact
 #IMAGE= hungaryenters.png
 #SOUND= war1.ogg
@@ -584,8 +584,8 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-; Territorial Disputes Resolved In Hungary's Favor
-#LINK= 611[1]
+; Territory Dispute Resolved in Hungary's Favor, USSR did not seize Bessarabia
+#LINK= 233[1]
 #COUNTRY_ID= 52
 #TRIGGER= 100
 #ALIGNMENT= 1
@@ -598,7 +598,7 @@
 ; TODO - revisit later
 ; Historic Date: 1940/11/20
 {
-#NAME= DE 611 - Hungary: Hungary Joins The Axis(2) (35%)
+#NAME= DE 233 - Hungary: Hungary Joins The Axis(2) (35%)
 #POPUP= Hungary Signs The Tripartite Pact
 #IMAGE= hungaryenters.png
 #SOUND= war1.ogg
@@ -607,8 +607,8 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-; Territorial Disputes Resolved In Romania's Favor
-#LINK= 611[0]
+; Territory Dispute Resolved in Romania's Favor, USSR did not seize Bessarabia
+#LINK= 233[0]
 #COUNTRY_ID= 52
 #TRIGGER= 35
 #ALIGNMENT= 1
@@ -619,7 +619,7 @@
 
 ; Historic Date: 1940/11/23
 {
-#NAME= DE 611 - Romania: Romania Joins The Axis(1) (33%)
+#NAME= DE 233 - Romania: Romania Joins The Axis(1) (33%)
 #POPUP= Romania Signs The Tripartite Pact
 #IMAGE= romaniaenters.png
 #SOUND= war1.ogg
@@ -628,8 +628,148 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-; Territory Dispute Resolved In Romania's favor
-#LINK= 611[0]
+; Territory Dispute Resolved in Romania's Favor, USSR did not seize Bessarabia
+#LINK= 233[0]
+#COUNTRY_ID= 93
+#TRIGGER= 33
+#ALIGNMENT= 1
+#DATE= 1940/08/30
+; Romania(93) Axis
+#VARIABLE_CONDITION= 93 [1] [0] [0]
+}
+
+; The territorial concessions of 1940 produced deep sorrow and resentment among Romanians
+; and hastened the decline in popularity of the regime led by King Carol II of Romania.
+; Three days after the annexation [of Bessarabia by the USSR], Romania renounced the 1939 Anglo-French guarantee.
+; A new government of Ion Gigurtu was sworn in on 5 July 1940, which withdrew the country from the
+; League of Nations on 11 July and announced its desire to join the Axis camp on 13 July.
+;
+; https://en.wikipedia.org/wiki/Soviet_occupation_of_Bessarabia_and_Northern_Bukovina
+;
+; Historic Date: 1940/11/23
+{
+#NAME= DE 233 - Romania: Romania Joins The Axis(2) (33%)
+#POPUP= Romania Signs The Tripartite Pact
+#IMAGE= romaniaenters.png
+#SOUND= war1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; Territory Dispute Resolved in Hungary's Favor, USSR did not seize Bessarabia
+#LINK= 233[1]
+#COUNTRY_ID= 93
+#TRIGGER= 33
+#ALIGNMENT= 1
+#DATE= 1940/07/13
+; Romania(93) Axis
+#VARIABLE_CONDITION= 93 [1] [0] [0]
+}
+
+; Historic Date: 1941/03
+;
+; https://en.wikipedia.org/wiki/Bulgaria_during_World_War_II
+; https://history.army.mil/books/wwii/balkan/20_260_1.htm
+{
+#NAME= DE 234 - Bulgaria: Bulgaria Joins The Axis(1)
+#POPUP= Bulgaria Signs The Tripartite Pact
+#IMAGE= bulgariaenters.png
+#SOUND= war1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; Territory Dispute Resolved in Bulgaria's Favor, USSR seized Bessarabia
+#LINK= 234[1]
+#COUNTRY_ID= 19
+#TRIGGER= 100
+#ALIGNMENT= 1
+#DATE= 1941/03/01
+; Bulgaria(19) Axis
+#VARIABLE_CONDITION= 19 [1] [0] [0]
+}
+
+; Historic Date: 1941/03
+;
+; This event has 35% to fire beginning 1941/03/01
+{
+#NAME= DE 234 - Bulgaria: Bulgaria Joins The Axis(2) (35%)
+#POPUP= Bulgaria Signs The Tripartite Pact
+#IMAGE= bulgariaenters.png
+#SOUND= war1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; Territory Dispute Resolved in Romania's Favor, USSR seized Bessarabia
+#LINK= 234[0]
+#COUNTRY_ID= 19
+#TRIGGER= 35
+#ALIGNMENT= 1
+#DATE= 1941/03/01
+; Bulgaria(19) Axis
+#VARIABLE_CONDITION= 19 [1] [0] [0]
+}
+
+; Historic Date: 1940/11/20
+{
+#NAME= DE 234 - Hungary: Hungary Joins The Axis(1) (50%)
+#POPUP= Hungary Signs The Tripartite Pact
+#IMAGE= hungaryenters.png
+#SOUND= war1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; Territory Dispute Resolved in Hungary's Favor, USSR seized Bessarabia
+#LINK= 234[1]
+#COUNTRY_ID= 52
+#TRIGGER= 100
+#ALIGNMENT= 1
+; Historic Date minus 1 Month
+#DATE= 1940/10/20
+; Hungary(52) Axis
+#VARIABLE_CONDITION= 52 [1] [0] [0]
+}
+
+; Historic Date: 1940/11/20
+{
+#NAME= DE 234 - Hungary: Hungary Joins The Axis(2) (35%)
+#POPUP= Hungary Signs The Tripartite Pact
+#IMAGE= hungaryenters.png
+#SOUND= war1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; Territory Dispute Resolved in Romania's Favor, USSR seized Bessarabia
+#LINK= 234[0]
+#COUNTRY_ID= 52
+#TRIGGER= 35
+#ALIGNMENT= 1
+#DATE= 1940/12/01
+; Hungary(52) Axis
+#VARIABLE_CONDITION= 52 [1] [0] [0]
+}
+
+; Historic Date: 1940/11/23
+{
+#NAME= DE 234 - Romania: Romania Joins The Axis(1) (33%)
+#POPUP= Romania Signs The Tripartite Pact
+#IMAGE= romaniaenters.png
+#SOUND= war1.ogg
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; Territory Dispute Resolved in Romania's Favor, USSR seized Bessarabia
+#LINK= 234[0]
 #COUNTRY_ID= 93
 #TRIGGER= 33
 #ALIGNMENT= 1
@@ -646,7 +786,7 @@
 ;
 ; Historic Date: 1940/11/23
 {
-#NAME= DE 611 - Romania: Romania Joins The Axis(2) (33%)
+#NAME= DE 234 - Romania: Romania Joins The Axis(2) (33%)
 #POPUP= Romania Signs The Tripartite Pact
 #IMAGE= romaniaenters.png
 #SOUND= war1.ogg
@@ -655,11 +795,12 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-; Territory Dispute Resolved In Hungary's Favor
-#LINK= 611[1]
+; Territory Dispute Resolved in Hungary's Favor, USSR seized Bessarabia
+#LINK= 234[1]
 #COUNTRY_ID= 93
 #TRIGGER= 33
 #ALIGNMENT= 1
+; this event chain leads to an earlier entry of Romania into the Axis camp
 #DATE= 1940/07/13
 ; Romania(93) Axis
 #VARIABLE_CONDITION= 93 [1] [0] [0]
@@ -706,7 +847,7 @@
 }
 
 {
-#NAME= [FW]DE 846 - Spain: The Allies DoW On Spain
+#NAME= [FW] DE 846 - Spain: The Allies DoW On Spain
 #POPUP= The Allies Declare War On Spain
 #IMAGE=
 #SOUND= war1.ogg
@@ -727,7 +868,7 @@
 }
 
 {
-#NAME= [FW]DE 989 - Spain: The Allies DoW On Spain
+#NAME= [FW] DE 989 - Spain: The Allies DoW On Spain
 #POPUP= The Allies Declare War On Spain
 #IMAGE=
 #SOUND= war1.ogg

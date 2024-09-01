@@ -14,7 +14,7 @@ However, the project has grown and diverged to the point of it becoming fundamen
 It has subsequently evolved to also include:
 - changes to the scenario core data:
     - introduces Dreadnought(WWI) ships to the represent the older class of Battleships
-    - Changes to unit data [Unit Data](Notes\UnitData.md); most notably -
+    - Changes to [Unit Data](Notes\UnitData.md); most notably -
         - Mountain Division stats changed from FWII
         - CLs have a nominal anti-sub rating
         - Dreadnought(WWI) have ratings that put them below a Battleship of WWII
@@ -23,7 +23,7 @@ It has subsequently evolved to also include:
     - overall increase in ship build times
     - updated initial ship deployments, especially Germany / Italy
     - Albania is considered annexed by Italy
-        - Tirania now has a base supply of 8
+        - Tirana now has a base supply of 8
     - New ports added to eastern Great Britain to support historic ship construction launch sites
 - changes to the scripting events:
     - changes to the Norway invasion scripts to allow a more random losses inflicted on the Kriegsmarine

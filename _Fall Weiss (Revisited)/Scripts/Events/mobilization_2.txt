@@ -355,7 +355,7 @@
 #MOBILIZATION= [2,2] [1]
 ; Poland(85) Allied, Surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
-; 2 Axis units are within 10 hexes of Warsaw(188,76)
+; 2 Axis units within 10 hexes of Warsaw(188,76)
 #CONDITION_POSITION= 188,76 [10,10] [2,2] [1] [0]
 }
 
@@ -402,7 +402,7 @@
 #MOBILIZATION= [2,2] [1]
 ; Poland(85) Allied, Surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
-; 4 Axis units are within 10 hexes of Warsaw(188,76)
+; 4 Axis units within 10 hexes of Warsaw(188,76)
 #CONDITION_POSITION= 188,76 [10,10] [4,4] [1] [0]
 }
 
@@ -425,7 +425,7 @@
 #MOBILIZATION= [5,10] [2]
 ; Poland(85) Allied, Surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
-; 19 Axis units are within 10 hexes of Warsaw(188,76)
+; 19 Axis units within 10 hexes of Warsaw(188,76)
 #CONDITION_POSITION= 188,76 [10,10] [19,19] [1] [0]
 #PRIVATE= 1
 }
@@ -450,7 +450,7 @@
 #MOBILIZATION= [3,5] [1]
 ; Poland(85) Allied, Surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [1]
-; 19 Axis units are within 10 hexes of Warsaw(188,76)
+; 19 Axis units within 10 hexes of Warsaw(188,76)
 #CONDITION_POSITION= 188,76 [10,10] [19,19] [1] [0]
 }
 
@@ -541,7 +541,7 @@
 #CONDITION_POSITION= 175,114 [0,0] [0,0] [2] [0]
 ; UK(112) abandons Cairo(208,126) OR
 #CONDITION_POSITION= 208,126 [10,10] [0,0] [2] [0]
-; France(40) abandons Tunis OR
+; France(40) abandons Tunis(167,112) OR
 #CONDITION_POSITION= 167,112 [5,5] [0,0] [2] [0]
 ; France(40) abandons Damascus(218,119)
 #CONDITION_POSITION= 218,119 [5,5] [0,0] [2] [0]
@@ -665,7 +665,7 @@
 #MOBILIZATION= [0,0] [1]
 ; France(40) Allied, Not Surrendered
 #VARIABLE_CONDITION= 40 [2] [100] [0]
-; France(40) abandons Tunis
+; France(40) abandons Tunis(167,112)
 #CONDITION_POSITION= 167,112 [5,5] [0,0] [2] [0]
 }
 
@@ -956,9 +956,9 @@
 #MOBILIZATION= [15,25] [2]
 ; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-; Axis has 1 unit within 2 hexes of Amsterdam
+; 1 Axis unit within 2 hexes of Amsterdam
 #CONDITION_POSITION= 156,75 [2,2] [1,1] [1] [0]
-; Axis has 1 unit within 2 hexes of Antwerp
+; 1 Axis unit within 2 hexes of Antwerp(155,78)
 #CONDITION_POSITION= 155,78 [2,2] [1,1] [1] [0]
 }
 
@@ -1694,7 +1694,7 @@
 
 ; Turkey Allied Leaning Before War With the USSR
 {
-#NAME= [FW]Turkey Leans Toward Allies While USSR Neutral (Continuous) (Turkey->Allies)(35%)
+#NAME= [FW] Turkey Leans Toward Allies While USSR Neutral (Continuous) (Turkey->Allies) (35%)
 #POPUP= TEST: Turkey's relationship with the Allies improves (15%)
 #IMAGE=
 #SOUND=
@@ -2064,7 +2064,7 @@
 }
 
 {
-#NAME= [FW]DE 842 - Operation Sealion (Ireland->>Allies)
+#NAME= [FW] DE 842 - Operation Sealion (Ireland->>Allies)
 #POPUP= Secret Emergency Protocol - Ireland Joins The Allies
 #IMAGE=
 #SOUND=
@@ -2085,6 +2085,8 @@
 ; Manchester(142,72)
 #CONDITION_POSITION= 142,72 [0,0] [1,1] [1] [0]
 #CONDITION_POSITION= 142,78 [0,0] [1,1] [1] [0]
+; Glasgow(138,65)
 #CONDITION_POSITION= 138,65 [0,0] [1,1] [1] [0]
+; Edinburgh(140,65)
 #CONDITION_POSITION= 140,65 [0,0] [1,1] [1] [0]
 }

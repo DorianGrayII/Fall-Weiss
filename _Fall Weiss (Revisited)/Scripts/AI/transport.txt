@@ -426,7 +426,7 @@
 #LENGTH= 10
 #RANGE= 25
 #NAVAL_CRUISE= 1
-; Benghazi
+; Benghazi-Port(185,122)
 #GOAL_POSITION= 185,122
 #DATE= 1941/03/01
 #STEAL= 1
@@ -434,10 +434,9 @@
 ; Berlin(173,74)
 ; Brest(138,86)
 ; Paris(151,84)
-; Bordeaux(145,94)
 ; Palermo(173,109)
 ; Taranto-Port(180,105)
-; Benghazi
+; Benghazi(186,122)
 ; Belgrade (pulls Italian units away early otherwise)
 ; Ljubljana (pulls Italian units away early otherwise)
 #FRIENDLY_POSITION= 171,101
@@ -448,6 +447,7 @@
 #FRIENDLY_POSITION= 173,109
 #FRIENDLY_POSITION= 179,104
 #FRIENDLY_POSITION= 186,122
+; Belgrade(187,94)
 #FRIENDLY_POSITION= 187,94
 #FRIENDLY_POSITION= 176,91
 ; France(40) Allied, Surrendered AND
@@ -455,7 +455,7 @@
 ; Berlin(173,74) not tactically threatened AND
 ; Rome(171,101) not tactically threatened AND
 ; Paris(151,84) not tactically threatened AND
-; Benghazi not tactically threatened (by sea) AND
+; Benghazi(186,122) not tactically threatened (by sea) AND
 ; Taranto-Port(180,105) not tactically threatened (by sea)
 #TACTICAL_CONDITION= 173,74 [1]
 #TACTICAL_CONDITION= 171,101 [1]
@@ -523,11 +523,11 @@
 ; Brest(138,86)
 ; Lorient
 ; St. Malo
-; Rennes
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 138,86
 #FRIENDLY_POSITION= 140,87
 #FRIENDLY_POSITION= 141,85
+; Rennes(143,86)
 #FRIENDLY_POSITION= 143,86
 ; UK(112) Allied, Mobilized, Not Surrendered
 ; USA(115) Allied, Not Surrendered
@@ -556,14 +556,14 @@
 #LENGTH= 10
 #RANGE= 25
 #NAVAL_CRUISE= 1
-; Cherbourg-Port
+; Cherbourg-Port(144,82)
 #GOAL_POSITION= 144,82
 ; Date set to post arrival of US HQ/Navy via P/Q
 #DATE= 1942/06/10
 #STEAL= 0
 ; Sheffield(144,73)
-; Cherbourg
 #FRIENDLY_POSITION= 144,73
+; Cherbourg(143,82)
 #FRIENDLY_POSITION= 143,82
 #FRIENDLY_POSITION= 146,84
 #FRIENDLY_POSITION= 147,82
@@ -647,7 +647,7 @@
 #DATE= 1940/01/01
 #STEAL= 3
 ; Jerusalem
-; Benghazi
+; Benghazi(186,122)
 #FRIENDLY_POSITION= 216,123
 #FRIENDLY_POSITION= 186,122
 ; Canada(21) Allied, Not Surrendered
@@ -751,10 +751,10 @@
 #DATE= 1940/01/01
 #STEAL= 3
 ; Gabes
-; Tripoli
-; Tunis
+; Tripoli(172,121)
 #FRIENDLY_POSITION= 166,119
 #FRIENDLY_POSITION= 172,121
+; Tunis(167,112)
 #FRIENDLY_POSITION= 167,112
 ; Canada(21) Allied, Not Surrendered
 #VARIABLE_CONDITION= 21 [2] [100] [0]
@@ -785,7 +785,7 @@
 #DATE= 1940/01/01
 #STEAL= 3
 ; Gabes
-; Tripoli
+; Tripoli(172,121)
 ; Tunis
 #FRIENDLY_POSITION= 166,119
 #FRIENDLY_POSITION= 172,121
@@ -819,7 +819,7 @@
 #DATE= 1940/01/01
 #STEAL= 3
 ; Gabes
-; Tripoli
+; Tripoli(172,121)
 ; Tunis
 #FRIENDLY_POSITION= 166,119
 #FRIENDLY_POSITION= 172,121
@@ -934,8 +934,8 @@
 #DATE= 1942/06/10
 #STEAL= 0
 ; Sheffield
-; Cherbourg
 #FRIENDLY_POSITION= 144,73
+; Cherbourg(143,82)
 #FRIENDLY_POSITION= 143,82
 #FRIENDLY_POSITION= 146,84
 #FRIENDLY_POSITION= 147,82
@@ -977,7 +977,7 @@
 ; Alexandria(206,124)
 ; El Alamein
 ; Tobruk(194,122)
-; Benghazi
+; Benghazi(186,122)
 #FRIENDLY_POSITION= 216,123
 #FRIENDLY_POSITION= 208,126
 #FRIENDLY_POSITION= 206,124
@@ -1053,7 +1053,7 @@
 #GOAL_POSITION= 95,135
 #DATE= 1940/04/03
 #STEAL= 3
-; Cherbourg
+; Cherbourg(143,82)
 #FRIENDLY_POSITION= 143,82
 #FRIENDLY_POSITION= 146,84
 #FRIENDLY_POSITION= 147,82
@@ -1100,7 +1100,7 @@
 #GOAL_POSITION= 140,72
 #DATE= 1940/04/03
 #STEAL= 3
-; Cherbourg
+; Cherbourg(143,82)
 #FRIENDLY_POSITION= 143,82
 #FRIENDLY_POSITION= 146,84
 #FRIENDLY_POSITION= 147,82
@@ -1281,8 +1281,10 @@
 ; Le Havre(147,82)
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 147,82
+; Rouen(149,82)
 #FRIENDLY_POSITION= 149,82
 #FRIENDLY_POSITION= 146,84
+; Cherbourg(143,82)
 #FRIENDLY_POSITION= 143,82
 ; UK(112) Allied, Mobilized, Not Surrendered
 ; USA(115) Allied, Not Surrendered
@@ -1311,14 +1313,14 @@
 #LENGTH= 10
 #RANGE= 25
 #NAVAL_CRUISE= 1
-; Porto-Port
+; Porto-Port(129,103)
 #GOAL_POSITION= 129,103
 ; Date set to a little after Vichy Amphibious
 ; events so they don't interfere with each other
 #DATE= 1942/08/09
 #STEAL= 0
 ; Sheffield(144,73)
-; Porto-Port
+; Porto-Port(129,103)
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 129,103
 ; UK(112) Allied, Mobilized, Not Surrendered
@@ -1390,7 +1392,7 @@
 #DATE= 1940/01/01
 #STEAL= 3
 ; Gabes
-; Tripoli
+; Tripoli(172,121)
 ; Tunis
 #FRIENDLY_POSITION= 166,119
 #FRIENDLY_POSITION= 172,121
@@ -1424,7 +1426,7 @@
 #DATE= 1940/01/01
 #STEAL= 3
 ; Gabes
-; Tripoli
+; Tripoli(172,121)
 ; Tunis
 #FRIENDLY_POSITION= 166,119
 #FRIENDLY_POSITION= 172,121
@@ -1458,7 +1460,7 @@
 #DATE= 1940/01/01
 #STEAL= 3
 ; Gabes
-; Tripoli
+; Tripoli(172,121)
 ; Tunis
 #FRIENDLY_POSITION= 166,119
 #FRIENDLY_POSITION= 172,121
@@ -1586,7 +1588,7 @@
 }
 
 {
-#NAME= [FW]USA Build Up Transport - Bristol(1942/03) (Build Up In England)
+#NAME= [FW] USA Build Up Transport - Bristol(1942/03) (Build Up In England)
 #POPUP=
 #FLAG= 1
 #TYPE= 1
@@ -1624,7 +1626,7 @@
 }
 
 {
-#NAME= [FW]USA Build Up Transport - Bristol(1942/08) (Build Up In England)
+#NAME= [FW] USA Build Up Transport - Bristol(1942/08) (Build Up In England)
 #POPUP=
 #FLAG= 1
 #TYPE= 1
@@ -1662,7 +1664,7 @@
 }
 
 {
-#NAME= [FW]USA Build Up Transport - Bristol(1943/01) (Build Up In England)
+#NAME= [FW] USA Build Up Transport - Bristol(1943/01) (Build Up In England)
 #POPUP=
 #FLAG= 1
 #TYPE= 1
@@ -1724,7 +1726,7 @@
 ; Alexandria(206,124)
 ; El Alamein
 ; Tobruk(194,122)
-; Benghazi
+; Benghazi(186,122)
 #FRIENDLY_POSITION= 216,123
 #FRIENDLY_POSITION= 208,126
 #FRIENDLY_POSITION= 206,124
@@ -1983,7 +1985,7 @@
 ; events so they don't interfere with each other
 #DATE= 1942/08/09
 #STEAL= 0
-; St. John's
+; St. John's(51,88)
 ; Liverpool
 #FRIENDLY_POSITION= 51,88
 #FRIENDLY_POSITION= 141,72
@@ -2016,7 +2018,7 @@
 #DATE= 1940/01/01
 #STEAL= 3
 ; Philippeville
-; Tripoli
+; Tripoli(172,121)
 ; Tunis
 #FRIENDLY_POSITION= 159,112
 #FRIENDLY_POSITION= 172,121
@@ -2050,7 +2052,7 @@
 #DATE= 1940/01/01
 #STEAL= 3
 ; Philippeville
-; Tripoli
+; Tripoli(172,121)
 ; Tunis
 #FRIENDLY_POSITION= 159,112
 #FRIENDLY_POSITION= 172,121
@@ -2084,7 +2086,7 @@
 #DATE= 1940/01/01
 #STEAL= 3
 ; Philippeville
-; Tripoli
+; Tripoli(172,121)
 ; Tunis
 #FRIENDLY_POSITION= 159,112
 #FRIENDLY_POSITION= 172,121
@@ -2199,8 +2201,8 @@
 #DATE= 1942/08/09
 #STEAL= 0
 ; Sheffield(144,73)
-; Cherbourg
 #FRIENDLY_POSITION= 144,73
+; Cherbourg(143,82)
 #FRIENDLY_POSITION= 143,82
 #FRIENDLY_POSITION= 146,84
 #FRIENDLY_POSITION= 147,82
@@ -2281,8 +2283,10 @@
 ; Le Havre(147,82)
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 147,82
+; Rouen(149,82)
 #FRIENDLY_POSITION= 149,82
 #FRIENDLY_POSITION= 146,84
+; Cherbourg(143,82)
 #FRIENDLY_POSITION= 143,82
 ; UK(112) Allied, Mobilized, Not Surrendered
 ; USA(115) Allied, Not Surrendered
@@ -2311,14 +2315,14 @@
 #LENGTH= 5
 #RANGE= 25
 #NAVAL_CRUISE= 1
-; Porto-Port
+; Porto-Port(129,103)
 #GOAL_POSITION= 129,103
 ; Date set to a little after Vichy Amphibious
 ; events so they don't interfere with each other
 #DATE= 1942/08/09
 #STEAL= 0
 ; Sheffield
-; Porto-Port
+; Porto-Port(129,103)
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 129,103
 ; UK(112) Allied, Mobilized, Not Surrendered
@@ -2373,7 +2377,7 @@
 }
 
 {
-#NAME= [FW]USA Build Up Transport - USA -> Algiers (Reinforcement In Algiers) (25%)
+#NAME= [FW] USA Build Up Transport - USA -> Algiers (Reinforcement In Algiers) (25%)
 #POPUP=
 #FLAG= 1
 #TYPE= 1
@@ -2520,8 +2524,8 @@
 #DATE= 1942/08/09
 #STEAL= 0
 ; Washington DC(4,108)
-; Cherbourg
 #FRIENDLY_POSITION= 4,108
+; Cherbourg(143,82)
 #FRIENDLY_POSITION= 143,82
 #FRIENDLY_POSITION= 146,84
 #FRIENDLY_POSITION= 147,82
@@ -2606,8 +2610,10 @@
 ; Le Havre(147,82)
 #FRIENDLY_POSITION= 4,108
 #FRIENDLY_POSITION= 147,82
+; Rouen(149,82)
 #FRIENDLY_POSITION= 149,82
 #FRIENDLY_POSITION= 146,84
+; Cherbourg(143,82)
 #FRIENDLY_POSITION= 143,82
 ; UK(112) Allied, Mobilized, Not Surrendered
 ; USA(115) Allied, Not Surrendered
@@ -2636,7 +2642,7 @@
 #LENGTH= 4
 #RANGE= 25
 #NAVAL_CRUISE= 1
-; Porto-Port
+; Porto-Port(129,103)
 #GOAL_POSITION= 129,103
 #GOAL_POSITION= 15,110
 #GOAL_POSITION= 33,107
@@ -2645,7 +2651,7 @@
 #DATE= 1942/08/09
 #STEAL= 0
 ; Washington DC(4,108)
-; Porto-Port
+; Porto-Port(129,103)
 #FRIENDLY_POSITION= 4,108
 #FRIENDLY_POSITION= 129,103
 ; UK(112) Allied, Mobilized, Not Surrendered
@@ -2784,7 +2790,7 @@
 
 ; UK reinforces Portugal
 {
-#NAME= [FW]DE 846 - UK Build Up Transport - Lisbon (Continual Reinforcement In Portugal) (10%)
+#NAME= [FW] DE 846 - UK Build Up Transport - Lisbon (Continual Reinforcement In Portugal) (10%)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -2812,7 +2818,7 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened
 #TACTICAL_CONDITION= 147,77 [1]
-; Allies near Porto
+; 1 Allied unit within 1 hex of Lisbon(128,108)
 #ACTIVATE_POSITION= 128,108 [1,1] [1,1] [2]
 ; 1 Axis unit within range of London
 #CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
@@ -2820,7 +2826,7 @@
 
 ; UK reinforces Portugal
 {
-#NAME= [FW]DE 846 - UK Build Up Transport - Lisbon (Continual Reinforcement In Portugal)
+#NAME= [FW] DE 846 - UK Build Up Transport - Lisbon (Continuous) (Reinforcement In Portugal)
 #POPUP=
 #FLAG= 1
 #TYPE= 1
@@ -2848,7 +2854,7 @@
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 ; London(147,77) not tactically threatened
 #TACTICAL_CONDITION= 147,77 [1]
-; Allies near Porto
+ 1 Allied unit within 1 hex of Lisbon(128,108)
 #ACTIVATE_POSITION= 128,108 [1,1] [1,1] [2]
 ; 1 Axis unit within range of London
 #CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
@@ -2856,7 +2862,7 @@
 
 ; UK reinforces Portugal
 {
-#NAME= [FW]DE 846 - UK Build Up Transport - Porto (Continual Reinforcement In Portugal) (10%)
+#NAME= [FW] DE 846 - UK Build Up Transport - Porto (Continuous) (Reinforcement In Portugal) (10%)
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -2870,14 +2876,14 @@
 #LENGTH= 10
 #RANGE= 25
 #NAVAL_CRUISE= 1
-; Porto-Port
+; Porto-Port(129,103)
 #GOAL_POSITION= 129,103
 ; Date set to a little after Vichy Amphibious
 ; events so they don't interfere with each other
 #DATE= 1941/01/01
 #STEAL= 0
 ; Sheffield(144,73)
-; Porto-Port
+; Porto-Port(129,103)
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 129,103
 ; UK(112) Allied, Mobilized, Not Surrendered
@@ -2892,7 +2898,7 @@
 
 ; UK reinforces Portugal
 {
-#NAME= [FW]DE 846 - UK Build Up Transport - Porto (Continual Reinforcement In Portugal)
+#NAME= [FW] DE 846 - UK Build Up Transport - Porto (Continual Reinforcement In Portugal)
 #POPUP=
 #FLAG= 1
 #TYPE= 1
@@ -2906,14 +2912,14 @@
 #LENGTH= 10
 #RANGE= 25
 #NAVAL_CRUISE= 1
-; Porto-Port
+; Porto-Port(129,103)
 #GOAL_POSITION= 129,103
 ; Date set to a little after Vichy Amphibious
 ; events so they don't interfere with each other
 #DATE= 1941/01/01
 #STEAL= 0
 ; Sheffield(144,73)
-; Porto-Port
+; Porto-Port(129,103)
 #FRIENDLY_POSITION= 144,73
 #FRIENDLY_POSITION= 129,103
 ; UK(112) Allied, Mobilized, Not Surrendered

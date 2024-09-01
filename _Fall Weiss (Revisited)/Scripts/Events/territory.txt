@@ -993,6 +993,7 @@
 #MAP_POSITION= 155,97
 #MAP_POSITION= 156,90
 #MAP_POSITION= 156,91
+; Lyon(156,92)
 #MAP_POSITION= 156,92
 #MAP_POSITION= 156,93
 #MAP_POSITION= 156,94
@@ -1011,11 +1012,13 @@
 #MAP_POSITION= 157,97
 #MAP_POSITION= 157,98
 #MAP_POSITION= 158,92
+; Grenoble(158,93)
 #MAP_POSITION= 158,93
 #MAP_POSITION= 158,94
 #MAP_POSITION= 158,95
 #MAP_POSITION= 158,96
 #MAP_POSITION= 158,97
+; Toulon(158,98)
 #MAP_POSITION= 158,98
 #MAP_POSITION= 158,99
 #MAP_POSITION= 159,92
@@ -1029,6 +1032,7 @@
 #MAP_POSITION= 160,93
 #MAP_POSITION= 160,95
 #MAP_POSITION= 160,96
+; Nice(160,97)
 #MAP_POSITION= 160,97
 #MAP_POSITION= 160,98
 #MAP_POSITION= 161,95
@@ -1065,6 +1069,7 @@
 #TRIGGER= 100
 #DATE= 1940/03/12
 #VARIABLE_CONDITION= 116 [2] [0] [0]
+; Hanko(192,51)
 #MAP_POSITION= 192,51
 ; Hanko-Port(192,52)
 #MAP_POSITION= 192,52
@@ -1146,6 +1151,7 @@
 #TRIGGER= 100
 #DATE= 1940/03/12
 #VARIABLE_CONDITION= 45 [1] [100] [0]
+; Hanko(192,51)
 #MAP_POSITION= 192,51
 ; Hanko-Port(192,52)
 #MAP_POSITION= 192,52
@@ -1211,7 +1217,7 @@
 }
 
 {
-#NAME= DE 250 - St Pierre et Miquelon return to France following The Liberation
+#NAME= DE 210 - St Pierre et Miquelon return to France following The Liberation
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -1220,7 +1226,8 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 250[1]
+; Allies Liberate Paris
+#LINK= 210[1]
 #COUNTRY_ID= 112
 #RECIPIENT_ID= 40
 #REMOVE= 0
@@ -1232,7 +1239,7 @@
 }
 
 {
-#NAME= DE 251 - France Retakes Control Of The Port Of St. Nazaire
+#NAME= DE 211 - France Retakes Control Of The Port Of St. Nazaire
 #POPUP= France Retakes Control Of The Port Of St. Nazaire
 #IMAGE=
 #SOUND= mine.ogg
@@ -1241,18 +1248,20 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 251[1]
+; Allies Return St. Nazaire To French Control
+#LINK= 211[1]
 #COUNTRY_ID= 45
 #RECIPIENT_ID= 40
 #REMOVE= 0
 #TRIGGER= 100
 #DATE= 1939/09/01
 #VARIABLE_CONDITION= 40 [2] [100] [0]
+; St Nazaire(142,89)
 #MAP_POSITION= 142,89
 }
 
 {
-#NAME= DE 252 - Alsace Is Reunited With France
+#NAME= DE 212 - Alsace Is Reunited With France
 #POPUP= Alsace Is Reunited With France
 #IMAGE=
 #SOUND= mine.ogg
@@ -1261,7 +1270,8 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 252[1]
+; Alsace Is Reunited With France
+#LINK= 212[1]
 #COUNTRY_ID= 45
 #RECIPIENT_ID= 40
 #REMOVE= 0
@@ -1279,7 +1289,7 @@
 }
 
 {
-#NAME= DE 253 - Alsace Is Reunited With France
+#NAME= DE 213 - Alsace Is Reunited With France
 #POPUP= Alsace Is Reunited With France
 #IMAGE=
 #SOUND= mine.ogg
@@ -1288,7 +1298,7 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 253[1]
+#LINK= 213[1]
 #COUNTRY_ID= 45
 #RECIPIENT_ID= 40
 #REMOVE= 0
@@ -3756,7 +3766,7 @@
 }
 
 {
-#NAME= [FW]DE 533 - Allied Invasion Of Egypt
+#NAME= [FW] DE 533 - Allied Invasion Of Egypt
 #POPUP= Commonwealth Forces Invade Egypt From Sudan
 #IMAGE=
 #SOUND= tank_movement1.ogg
@@ -3814,7 +3824,7 @@
 }
 
 {
-#NAME= [FW]DE 543 - Ports Of Cork And Wexford Return to Ireland if UK Occupies The Country
+#NAME= [FW] DE 543 - Ports Of Cork And Wexford Return to Ireland if UK Occupies The Country
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -3835,7 +3845,7 @@
 }
 
 {
-#NAME= [FW]DE 543 - The Port of Limerick Returns to Ireland if UK Occupies The Country
+#NAME= [FW] DE 543 - The Port of Limerick Returns to Ireland if UK Occupies The Country
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -4137,7 +4147,6 @@
 #MAP_POSITION= 125,128
 }
 
-;
 {
 #NAME= DE 603 - Spain Annexes Vichy French Territory in Algeria (Vichy isn't formed)
 #POPUP= Spain Annexes French Morocco With Axis Assistance
@@ -4332,15 +4341,16 @@
 #TRIGGER= 100
 #DATE= 1939/09/01
 #VARIABLE_CONDITION= 45 [1] [100] [0]
+; St Nazaire(142,89)
 #MAP_POSITION= 142,89
 }
 
 ;
 ; Bulgaria Obtains Southern Dobruja From Romania
 ; Historical Date: 1940/09/07
-; but we've set an earlier date to tie it in properly to DE 611
+; but we've set an earlier date to tie it in properly to DE 233
 {
-#NAME= DE 611 - Bulgaria Obtains Part Of Southern Dobruja From Romania
+#NAME= DE 233 - Bulgaria Obtains Part Of Southern Dobruja From Romania
 #POPUP= Bulgaria Obtains Part Of Southern Dobruja From Romania
 #IMAGE=
 #SOUND=
@@ -4349,7 +4359,8 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 611[1]
+; Territory Dispute Resolved in Hungary's Favor, USSR did not seize Bessarabia
+#LINK= 233[1]
 #COUNTRY_ID= 93
 #RECIPIENT_ID= 19
 #REMOVE= 0
@@ -4365,7 +4376,7 @@
 ; Hungary Obtains Northern Transylvania from Romania
 ; Historical Date: 1940/08/30
 {
-#NAME= DE 611 - Hungary Obtains Northern Transylvania From Romania
+#NAME= DE 233 - Hungary Obtains Northern Transylvania From Romania
 #POPUP= Hungary Obtains Northern Transylvania From Romania
 #IMAGE=
 #SOUND=
@@ -4374,34 +4385,106 @@
 #AI= 0
 #LEVEL= 0
 #GV= 1[1,100]
-#LINK= 611[1]
+; Territory Dispute Resolved in Hungary's Favor, USSR did not seize Bessarabia
+#LINK= 233[1]
 #COUNTRY_ID= 93
 #RECIPIENT_ID= 52
 #REMOVE= 0
 #TRIGGER= 100
 #DATE= 1939/09/01
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-#MAP_POSITION= 193,87
-#MAP_POSITION= 194,88
-#MAP_POSITION= 192,88
-#MAP_POSITION= 191,88
 #MAP_POSITION= 190,89
+#MAP_POSITION= 191,88
+#MAP_POSITION= 192,88
 #MAP_POSITION= 192,89
+#MAP_POSITION= 193,87
 #MAP_POSITION= 193,88
+#MAP_POSITION= 193,89
+#MAP_POSITION= 194,88
 #MAP_POSITION= 194,89
 #MAP_POSITION= 195,88
 #MAP_POSITION= 195,89
-#MAP_POSITION= 193,89
 #MAP_POSITION= 195,90
-#MAP_POSITION= 196,91
-#MAP_POSITION= 196,92
-#MAP_POSITION= 197,92
-#MAP_POSITION= 198,92
-#MAP_POSITION= 197,91
-#MAP_POSITION= 197,90
-#MAP_POSITION= 197,89
 #MAP_POSITION= 196,89
 #MAP_POSITION= 196,90
+#MAP_POSITION= 196,91
+#MAP_POSITION= 196,92
+#MAP_POSITION= 197,89
+#MAP_POSITION= 197,90
+#MAP_POSITION= 197,91
+#MAP_POSITION= 197,92
+#MAP_POSITION= 198,92
+}
+
+;
+; Bulgaria Obtains Southern Dobruja From Romania
+; Historical Date: 1940/09/07
+; but we've set an earlier date to tie it in properly to DE 233
+{
+#NAME= [FW] DE 234 - Bulgaria Obtains Part Of Southern Dobruja From Romania
+#POPUP= Bulgaria Obtains Part Of Southern Dobruja From Romania
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; Territory Dispute Resolved in Hungary's Favor, USSR seized Bessarabia
+#LINK= 234[1]
+#COUNTRY_ID= 93
+#RECIPIENT_ID= 19
+#REMOVE= 0
+#TRIGGER= 100
+#DATE= 1939/09/01
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#MAP_POSITION= 200,97
+#MAP_POSITION= 201,97
+#MAP_POSITION= 202,98
+}
+
+;
+; Hungary Obtains Northern Transylvania from Romania
+; Historical Date: 1940/08/30
+{
+#NAME= [FW] DE 234 - Hungary Obtains Northern Transylvania From Romania
+#POPUP= Hungary Obtains Northern Transylvania From Romania
+#IMAGE=
+#SOUND=
+#FLAG= 1
+#TYPE= 1
+#AI= 0
+#LEVEL= 0
+#GV= 1[1,100]
+; Territory Dispute Resolved in Hungary's Favor, USSR seized Bessarabia
+#LINK= 234[1]
+#COUNTRY_ID= 93
+#RECIPIENT_ID= 52
+#REMOVE= 0
+#TRIGGER= 100
+#DATE= 1939/09/01
+#VARIABLE_CONDITION= 45 [1] [100] [0]
+#MAP_POSITION= 190,89
+#MAP_POSITION= 191,88
+#MAP_POSITION= 192,88
+#MAP_POSITION= 192,89
+#MAP_POSITION= 193,87
+#MAP_POSITION= 193,88
+#MAP_POSITION= 193,89
+#MAP_POSITION= 194,88
+#MAP_POSITION= 194,89
+#MAP_POSITION= 195,88
+#MAP_POSITION= 195,89
+#MAP_POSITION= 195,90
+#MAP_POSITION= 196,89
+#MAP_POSITION= 196,90
+#MAP_POSITION= 196,91
+#MAP_POSITION= 196,92
+#MAP_POSITION= 197,89
+#MAP_POSITION= 197,90
+#MAP_POSITION= 197,91
+#MAP_POSITION= 197,92
+#MAP_POSITION= 198,92
 }
 
 {
@@ -4793,7 +4876,7 @@
 }
 
 {
-#NAME= [FW]DE 825 - Dummy Script Turkish Blockade
+#NAME= [FW] DE 825 - Dummy Script Turkish Blockade
 #POPUP=
 #IMAGE=
 #SOUND=
@@ -4814,7 +4897,7 @@
 
 ; Romania Annexes Bessarabia from USSR
 {
-#NAME= [FW]DE 857 - Romania Annexes Bessarabia From The USSR
+#NAME= [FW] DE 857 - Romania Annexes Bessarabia From The USSR
 #POPUP= Romania Annexes Bessarabia From The USSR
 #IMAGE=
 #SOUND= tank_movement1.ogg
@@ -4865,7 +4948,7 @@
 }
 
 {
-#NAME= [FW]DE 858 - Finland: Reincorporate Lost Territory
+#NAME= [FW] DE 858 - Finland: Reincorporate Lost Territory
 #POPUP= Finland Reincorporate Territory Lost From The Winter War
 #IMAGE=
 #SOUND=
@@ -4882,6 +4965,7 @@
 #DATE= 1939/09/01
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
+; Hanko(192,51)
 #MAP_POSITION= 192,51
 ; Hanko-Port(192,52)
 #MAP_POSITION= 192,52
@@ -4945,7 +5029,7 @@
 }
 
 {
-#NAME= [FW]DE 859 - Finland: Reincorporate Lost Territory
+#NAME= [FW] DE 859 - Finland: Reincorporate Lost Territory
 #POPUP= Finland Reincorporate Territory Lost In The Winter War
 #IMAGE=
 #SOUND=
@@ -4962,6 +5046,7 @@
 #DATE= 1939/09/01
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 #VARIABLE_CONDITION= 39 [1] [100] [0]
+; Hanko(192,51)
 #MAP_POSITION= 192,51
 ; Hanko-Port(192,52)
 #MAP_POSITION= 192,52
@@ -5025,7 +5110,7 @@
 }
 
 {
-#NAME= [FW]DE 875 - Iraq Makes Territorial Concessions To Turkey
+#NAME= [FW] DE 875 - Iraq Makes Territorial Concessions To Turkey
 #POPUP= Iraq Makes Territorial Concessions To Turkey
 #IMAGE=
 #SOUND=
