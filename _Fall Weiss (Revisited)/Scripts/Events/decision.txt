@@ -748,7 +748,7 @@
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT=
-#NOTES= If you say %B(YES), then Commonwealth forces will arrive straight away in Egypt, consisting of a strength 8 New Zealand Infantry Division, and a strength 3 Australian Infantry Corps.%N%N If you say %B(NO), then Commonwealth forces will arrive in Egypt on the 1st September 1941, consisting of a strength 10 New Zealand Infantry Corps, and a strength 10 Australian Infantry Corps.
+#NOTES= If you say %B(YES), then Commonwealth forces will arrive straight away in Egypt, consisting of a strength 8 New Zealand Infantry Division, and a strength 3 Australian Infantry Division.%N%N If you say %B(NO), then Commonwealth forces will arrive in Egypt on the 1st September 1941, consisting of a strength 10 New Zealand Infantry Division, and a strength 10 Australian Infantry Division.
 #NOTES_POSITION= 206,124
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP= Australia And New Zealand Prepare Rushed Reinforcements For Egypt
@@ -1411,6 +1411,7 @@
 #MPP_TURNS= 1
 #MPP_TEXT= Occupying Iceland
 #NOTES= %N%N Saying %B(YES) will place Iceland under our control, though with no troops in it.%N%N Reykjavik could then be put to good use as an air and naval base to assist us in the Battle of the Atlantic, and in January 1942 we will have the opportunity to deploy a unit of Maritime Bombers here.
+Reykjavik(104,37)
 #NOTES_POSITION= 104,37
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
@@ -1424,7 +1425,7 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
-; No Axis ground units within 3 hexes of Reykjavik
+; No Axis ground units within 3 hexes of Reykjavik(104,37)
 #CONDITION_POSITION= 104,37 [3,3] [0,0] [1] [0]
 }
 
@@ -2618,7 +2619,7 @@
 #DATE= 1939/09/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 228,221,198
-; Baghdad is Axis
+; Baghdad(234,120) Axis
 #ALIGNMENT_POSITION= 234,120 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; UK(112) Allied, Mobilized, Not Surrendered
@@ -2972,7 +2973,7 @@
 #VARIABLE_CONDITION= 78 [2] [100] [1]
 ; USSR(116) Allied but not fully mobilized
 #VARIABLE_CONDITION= 116 [2] [0] [0]
-; A French unit is at Dundee
+; A French unit is at Dundee(140,63)
 #CONDITION_POSITION= 140,63 [0,0] [1,1] [2] [40]
 }
 
@@ -3666,7 +3667,7 @@
 }
 
 {
-#NAME= [FW] DE 270 - UK(AI): Offensive Units
+#NAME= [FW] DE 270 - UK(AI): Offensive Units - 1944/11
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -3702,7 +3703,7 @@
 }
 
 {
-#NAME= [FW] DE 271 - USA(AI): Offensive Units
+#NAME= [FW] DE 271 - USA(AI): Offensive Units - 1944/11
 #POPUP=
 #MESSAGE=
 #IMAGE=
@@ -4869,11 +4870,11 @@
 #DATE= 1944/01/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Banska Bystrica is Axis
+; Banska Bystrica(185,85) is Axis
 #ALIGNMENT_POSITION= 185,85 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; There is no Axis unit in Banska Bystrica
+; There is no Axis unit in Banska Bystrica(185,85)
 #CONDITION_POSITION= 185,85 [0,0] [0,0] [1] [0]
 }
 
@@ -5430,7 +5431,7 @@
 #MPP_UPDOWN= 0
 #MPP_TURNS= 0
 #MPP_TEXT=
-#NOTES= Though our relationship with both the Allies and Sweden will suffer slightly by doing this, it will not cost anything, and if we are successful the territory should become ours in early 1940.%N%N The only thing that could prevent us from succeeding against Finland would be if an Anglo-French Expedition were to arrive in time to support the Finns.%N%N By saying %B(YES), should Finland later join the Axis then some of her units will start at half-strength, rather than full strength, though with one experience point rather than just half a point.%N%N We will later have an opportunity to prepare the Red Army for winter warfare, and if you say %B(YES) to attacking Finland, then the lessons learned from fighting the Finns will reduce the cost at that time of preparing our soldiers for winter warfare.
+#NOTES= Though our relationship with both the Allies and Sweden will suffer slightly by doing this, it will not cost anything, and if we are successful the territory should become ours in early 1940.%N%N The only thing that could prevent us from succeeding against Finland would be if an Anglo-French Expedition were to arrive in time to support the Finns.%N%N By saying %B(YES), we will later have an opportunity to prepare the Red Army for winter warfare, and if you say %B(YES) to attacking Finland, then the lessons learned from fighting the Finns will reduce the cost at that time of preparing our soldiers for winter warfare.
 #NOTES_POSITION= 206,52
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
@@ -5559,7 +5560,7 @@
 #DATE= 1942/04/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Kuybyshev is Allied
+; Kuybyshev(245,72) is Allied
 #ALIGNMENT_POSITION= 245,72 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; USSR(116) Allied, Mobilized, Not Surrendered
@@ -5587,6 +5588,7 @@
 #MPP_TURNS= 0
 #MPP_TEXT=
 #NOTES= This decision will play a key role in determining the boundaries between Germany and the USSR after Poland has fallen, and if we do not advance into Poland then the Germans will have a good starting point from which to invade the USSR.%N%N Given our current poor state of readiness for war, saying %B(NO) could put us in a very compromising situation.%N%N Saying %B(YES) and advancing into Poland will also provide us with the possibility of increasing our income by capturing Lwow, and by holding the fortress of Brest-Litovsk we will be able to slow the German invasion that is bound to come within the next few years.%N%N Note that even if we do say %B(YES) and invade, it is possible that the Germans will refuse to honor the Molotov-Ribbentrop Pact and force us to withdraw from Poland.%N%N Designer's Note: this advance is fully handled by the engine, so it is neither possible nor required to manually move any Red Army forces into Poland.
+; Brest-Litovsk(194,75)
 #NOTES_POSITION= 194,75
 #AI_RESPONSE= 100
 #AI_RESPONSE_POPUP=
@@ -6991,7 +6993,7 @@
 #SHADOW_RGB= 0,0,0
 ; Tehran is Allied
 #ALIGNMENT_POSITION= 248,115 [2]
-; Kuybyshev is Allied
+; Kuybyshev(245,72) is Allied
 #ALIGNMENT_POSITION= 245,72 [2]
 ; Kuwait(241,128) Allied
 #ALIGNMENT_POSITION= 241,128 [2]
@@ -7680,6 +7682,7 @@
 #MPP_TURNS= 0
 #MPP_TEXT=
 #NOTES= If we say %B(YES), then our economy will benefit significantly from imports from the USSR.%N%N If we say %B(NO), then we will have a better launching point for a future invasion of the USSR.%N%N However, by saying %B(NO) we will have to invade sooner than we might have wished due to the anger we will trigger in the USSR by not honoring the Pact.%N%N We will also only have an opportunity to annex Lithuania in the spring of 1940 if we say %B(YES). Otherwise we would have to invade that country if we wish to seize it, and doing so would swing the USSR dramatically towards the Allies.
+; Brest-Litovsk(194,75)
 #NOTES_POSITION= 194,75
 #AI_RESPONSE= 75
 #AI_RESPONSE_POPUP= Germany Honors The German-Soviet Non-Aggression Pact
@@ -7842,7 +7845,7 @@
 #DATE= 1939/09/01
 #TEXT_RGB= 0,0,0
 #SHADOW_RGB= 0,0,0
-; Toulon is Axis
+; Toulon-Port(158,99) is Axis
 #ALIGNMENT_POSITION= 158,99 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Vichy France(118) Allied, Surrendered
@@ -8122,7 +8125,7 @@
 #SHADOW_RGB= 0,0,0
 ; Vienna(179,86) Axis
 #ALIGNMENT_POSITION= 179,86 [1]
-; Pola is Axis
+; Pola-Port(174,95) is Axis
 #ALIGNMENT_POSITION= 174,95 [1]
 ; Trieste(174,92) Axis
 #ALIGNMENT_POSITION= 174,92 [1]
@@ -9178,7 +9181,7 @@
 {
 #NAME= DE 642 - Germany: Form The Afrika Korps for Service in North Africa? (Benghazi, Gazala, Tripoli - Axis)
 #POPUP=
-#MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies in North Africa, it is suggested that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Benghazi: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a total cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa %B(YES)?
+#MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies in North Africa, it is suggested that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Benghazi: %N%N%T - Anti-Air %N%T - Reconnaissance %N%T - Field Artillery %N%T - 2 Tank Divisions %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a total cost of %B750 MPPs (150 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9192,7 +9195,7 @@
 #TRIGGER= 100
 #DISPLAY_ORDER= 1
 #DECISION= 642
-#MPP_UPDOWN= -175
+#MPP_UPDOWN= -150
 #MPP_TURNS= 5
 #MPP_TEXT= Afrika Korps
 #NOTES= The effect that a successful advance into Egypt would have on Britain could be decisive in winning the war, as with the Middle East in our hands we could even consider an advance into the USSR from the south. %N%N %N%N%CRecommendations: %N%N Say %B(YES) and deploy the Afrika Korps.
@@ -9354,7 +9357,7 @@
 {
 #NAME= DE 647 - Germany: Form The Afrika Korps for Service in North Africa? (Benghazi, Tripoli - Axis)
 #POPUP=
-#MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies in North Africa, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Tripoli: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa %B(YES)?
+#MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies in North Africa, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Tripoli: %N%N%T - Anti-Air %N%T - Reconnaissance %N%T - Field Artillery %N%T - 2 Tank Divisions %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B750 MPPs (150 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9369,7 +9372,7 @@
 #DISPLAY_ORDER= 1
 #DECISION= 647
 ; Increased from -100
-#MPP_UPDOWN= -175
+#MPP_UPDOWN= -150
 #MPP_TURNS= 5
 #MPP_TEXT= Afrika Korps
 #NOTES= The effect that a successful advance into Egypt would have on Britain could be decisive in winning the war, as with the Middle East in our hands we could even consider an advance into the USSR from the south.%N%N %N%N%CRecommendations: %N%N Say %B(YES) to deploy the Afrika Korps.
@@ -9394,7 +9397,7 @@
 {
 #NAME= DE 648 - Germany: Form The Afrika Korps for Service in North Africa? (Trieste - Axis)
 #POPUP=
-#MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies now they have lost Tripoli, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N This formation could spearhead an offensive to recapture Libya and then advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Trieste: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in the Mediterranean %B(YES)?
+#MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies now they have lost Tripoli, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N This formation could spearhead an offensive to recapture Libya and then advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Trieste: %N%N%T - Anti-Air %N%T - Reconnaissance %N%T - Field Artillery %N%T - 2 Tank Divisions %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B750 MPPs (150 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in the Mediterranean %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9409,7 +9412,7 @@
 #DISPLAY_ORDER= 1
 #DECISION= 648
 ; Increased from -100
-#MPP_UPDOWN= -175
+#MPP_UPDOWN= -150
 #MPP_TURNS= 5
 #MPP_TEXT= Afrika Korps
 #NOTES= The loss of Libya leaves Italy exposed to invasion, so we can use the Afrika Korps to either regain the initiative in North Africa, or to assist in the defense of Italy.%N%N %N%N%CRecommendations: %N%N Say %B(YES) to deploy the Afrika Korps.
@@ -9434,7 +9437,7 @@
 {
 #NAME= DE 649 - Germany: Form The Afrika Korps for Service in North Africa? (Tripoli - Axis)
 #POPUP=
-#MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies in North Africa, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Tripoli: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa %B(YES)?
+#MESSAGE=Fuhrerhauptquartier %N%N In order to assist our Italian allies in North Africa, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Tripoli: %N%N%T - Anti-Air %N%T - Reconnaissance %N%T - Field Artillery %N%T - 2 Tank Divisions %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B750 MPPs (150 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -9448,7 +9451,7 @@
 #TRIGGER= 100
 #DISPLAY_ORDER= 1
 #DECISION= 649
-#MPP_UPDOWN= -175
+#MPP_UPDOWN= -150
 #MPP_TURNS= 5
 #MPP_TEXT= Afrika Korps
 #NOTES= The effect that a successful advance into Egypt would have on Britain could be decisive in winning the war, as with the Middle East in our hands we could even consider an advance into the USSR from the south.%N%N %N%N%CRecommendations: %N%N Say %B(YES) to deploy the Afrika Korps.
@@ -10241,7 +10244,7 @@
 {
 #NAME= DE 671 - Germany: Form The Afrika Korps for Service in North Africa? (Benghazi and Gazala in Axis hands and Tripoli in Allied hands)
 #POPUP=
-#MESSAGE=Fuhrerhauptquartier %N%N %BRe: %BAfrika %BKorps %N%N In order to assist our Italian allies in North Africa, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Benghazi: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Corps %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa %B(YES)?
+#MESSAGE=Fuhrerhauptquartier %N%N %BRe: %BAfrika %BKorps %N%N In order to assist our Italian allies in North Africa, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N If successful, this formation could spearhead the way for an advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Benghazi: %N%N%T - Anti-Air %N%T - Reconnaissance %N%T - Field Artillery %N%T - 2 Tank Divisions %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B750 MPPs (150 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -10256,7 +10259,7 @@
 #DISPLAY_ORDER= 1
 #DECISION= 671
 ; Increased from -100
-#MPP_UPDOWN= -175
+#MPP_UPDOWN= -150
 #MPP_TURNS= 5
 #MPP_TEXT= Afrika Korps
 #NOTES= The effect that a successful advance into Egypt would have on Britain could be decisive in winning the war, as with the Middle East in our hands we could even consider an advance into the USSR from the south.%N%N %N%N%CRecommendations: %N%N Say %B(YES) to deploy the Afrika Korps.
@@ -10281,7 +10284,7 @@
 {
 #NAME= DE 672 - Germany: Form The Afrika Korps for Service in North Africa? (Benghazi and Trieste in Axis hands, Tripoli and Gazala in Allied hands)
 #POPUP=
-#MESSAGE=Fuhrerhauptquartier %N%N %BRe: %BAfrika %BKorps %N%N In order to assist our Italian allies now they have lost Tripoli, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N This formation could spearhead an offensive to recapture Libya and then advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Trieste: %N%N%T - Infantry Corps %N%T - Anti-Tank %N%T - Reconnaissance %N%T - Artillery %N%T - Tank Division %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B875 MPPs (175 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa %B(YES)?
+#MESSAGE=Fuhrerhauptquartier %N%N %BRe: %BAfrika %BKorps %N%N In order to assist our Italian allies now they have lost Tripoli, it is recommended that we send some German forces, to be known as the Deutsches Afrikakorps, to deal with the British.%N%N This formation could spearhead an offensive to recapture Libya and then advance into Egypt and beyond.%N%N If you say %B(YES), then a full strength Headquarters and the following half strength units will deploy at Trieste: %N%N%T - Anti-Air %N%T - Reconnaissance %N%T - Field Artillery %N%T - 2 Tank Divisions %N%T - Fighter %N%T - Tactical Bomber %N%N They will arrive with full research for a cost of %B750 MPPs (150 MPPs for 5 turns).%N%N Would you like to form the Afrika Korps for service in North Africa %B(YES)?
 #IMAGE=
 #SOUND= teletype_1.ogg, teletype_2.ogg
 #FLAG= 1
@@ -10296,7 +10299,7 @@
 #DISPLAY_ORDER= 1
 #DECISION= 672
 ; Increased from -100
-#MPP_UPDOWN= -175
+#MPP_UPDOWN= -150
 #MPP_TURNS= 5
 #MPP_TEXT= Afrika Korps
 #NOTES= The loss of much of Libya leaves Italy exposed to invasion, so we can use the Afrika Korps to either regain the initiative in North Africa, or to assist in the defense of Italy.%N%N %N%N%CRecommendations: %N%N Say %B(YES) to deploy the Afrika Korps.
@@ -10662,7 +10665,7 @@
 #CONDITION_POSITION= 192,100 [5,5] [0,0] [2] [0]
 ; No Allied units within 5 hexes of Bucharest(198,95)
 #CONDITION_POSITION= 198,95 [5,5] [0,0] [2] [0]
-; No Allied units within 5 hexes of Thessaloniki
+; No Allied units within 5 hexes of Thessaloniki(192,104)
 #CONDITION_POSITION= 192,104 [5,5] [0,0] [2] [0]
 }
 
@@ -10760,6 +10763,7 @@
 #MPP_TURNS= 1
 #MPP_TEXT= Raising the Light Cruiser Jean de Vienne
 #NOTES= The French managed to scuttle many ships when the Axis invaded Vichy France, and much work had to be done to salvage and repair those that could be made serviceable again.%N%N Although this ship will require further expenditure to make it combat worthy, her addition to the Italian fleet will increase your ability to threaten Allied shipping in the Mediterranean.
+; Toulon-Port(158,99)
 #NOTES_POSITION= 158,99
 #AI_RESPONSE= 50
 #AI_RESPONSE_POPUP=
@@ -10870,6 +10874,7 @@
 #MPP_TURNS= 1
 #MPP_TEXT= Raising the Light Cruiser Jean de Vienne
 #NOTES= The French managed to scuttle many ships when the Axis invaded Vichy France, and much work had to be done to salvage and repair those that could be made serviceable again.%N%N Although this ship will require further expenditure to make it combat worthy, her addition to the Italian fleet will increase your ability to threaten Allied shipping in the Mediterranean.
+; Toulon-Port(158,99)
 #NOTES_POSITION= 158,99
 #AI_RESPONSE= 50
 #AI_RESPONSE_POPUP=
@@ -11430,7 +11435,7 @@
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Switzerland(104) Axis, Not Surrendered
 #VARIABLE_CONDITION= 104 [1] [0] [0]
-; 1 Axis unit in Smolensk
+; 1 Axis unit in Smolensk(209,68)
 #CONDITION_POSITION= 209,68 [0,0] [1,1] [1] [0]
 }
 
@@ -12603,6 +12608,7 @@
 #MPP_TURNS= 5
 #MPP_TEXT= Sale Of Naval Assets
 #NOTES= %N%N If you say %B(YES), Sweden will move 4-6% closer to the Axis and Italy will receive 20 MPPs per turn for 5 turns in payments for continuing construction of naval assets for foreign sale. Though should Italy join the war in Europe it is unlikely these naval assets will ever be completed.%N%N If you say %B(NO), then the scheduled construction of the Light Cruiser %VEtna will continue with an expected commission date of January 1942.
+; Rome(171,101)
 #NOTES_POSITION= 171,101
 #AI_RESPONSE= 50
 #AI_RESPONSE_POPUP= Italy Sells Naval Assets To Sweden
@@ -13535,7 +13541,7 @@
 #ALIGNMENT_POSITION= 207,90 [1]
 ; Uman is Axis
 #ALIGNMENT_POSITION= 206,86 [1]
-; Cernauti is Axis
+; Cernauti(197,86) is Axis
 #ALIGNMENT_POSITION= 197,86 [1]
 ; Constanta is Axis
 #ALIGNMENT_POSITION= 202,96 [1]
@@ -13580,25 +13586,18 @@
 #SHADOW_RGB= 0,0,0
 ; Bucharest(198,95) Axis
 #ALIGNMENT_POSITION= 198,95 [1]
-; Bucharest is Axis
+; Cernauti(197,86)
 #ALIGNMENT_POSITION= 197,86 [1]
-; Bucharest is Axis
 #ALIGNMENT_POSITION= 199,90 [1]
-; Bucharest is Axis
 #ALIGNMENT_POSITION= 202,93 [1]
-; Bucharest is Axis
 #ALIGNMENT_POSITION= 201,89 [1]
-; Bucharest is Axis
 #ALIGNMENT_POSITION= 203,89 [1]
-; Bucharest is Axis
 #ALIGNMENT_POSITION= 207,90 [1]
-; Bucharest is Axis
 #ALIGNMENT_POSITION= 206,86 [1]
-; Bucharest is Axis
+; Vinnitsa(202,84)
 #ALIGNMENT_POSITION= 202,84 [1]
-; Bucharest is Axis
+; Proskurov(199,83)
 #ALIGNMENT_POSITION= 199,83 [1]
-; Bucharest is Axis
 #ALIGNMENT_POSITION= 209,89 [1]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Romania(93) Axis, Mobilized
@@ -13745,7 +13744,7 @@
 #ALIGNMENT_POSITION= 207,90 [1]
 ; Uman is Axis
 #ALIGNMENT_POSITION= 206,86 [1]
-; Cernauti is Axis
+; Cernauti(197,86) is Axis
 #ALIGNMENT_POSITION= 197,86 [1]
 ; Constanta is Axis
 #ALIGNMENT_POSITION= 202,96 [1]
@@ -14099,7 +14098,7 @@
 #ALIGNMENT_POSITION= 147,77 [2]
 ; Bristol(142,78) Allied
 #ALIGNMENT_POSITION= 142,78 [2]
-; Halifax is Allied
+; Halifax(30,95) Allied
 #ALIGNMENT_POSITION= 30,95 [2]
 #NATIONAL_MORALE_TRIGGER= 0 [0]
 ; Canada(21) Allied, Not Surrendered

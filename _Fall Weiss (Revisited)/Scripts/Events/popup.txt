@@ -1212,8 +1212,7 @@
 #MAP_POSITION= 178,72
 #MAP_POSITION= 179,70
 #MAP_POSITION= 181,69
-;TEST DATE= 1941/01/01
-#DATE= 1940/01/01
+#DATE= 1941/01/01
 ; Warsaw(188,76) Axis
 #ALIGNMENT_POSITION= 188,76 [1]
 ; USSR(116) Allied
@@ -3386,7 +3385,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1942/02/09
-; New York is Allied
+; New York(10,104) Allied
 #ALIGNMENT_POSITION= 10,104 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5162,14 +5161,14 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1945/02/04
-; Sevastopol is Allied
+; Sevastopol(212,96) Allied
 #ALIGNMENT_POSITION= 212,96 [2]
-; Simferopol is Allied
+; Simferopol(214,94) Allied
 #ALIGNMENT_POSITION= 214,94 [2]
 #VARIABLE_CONDITION= 112 [2] [100] [0]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 116 [2] [100] [0]
-; No Axis units within 5 hexes of Sevastopol
+; No Axis units within 5 hexes of Sevastopol(212,96)
 #CONDITION_POSITION= 212,96 [5,5] [0,0] [1] [0]
 }
 
@@ -5196,7 +5195,7 @@
 #SHADOW_RGB= 0,0,0
 #MAP_POSITION=
 #DATE= 1943/06/03
-; New York is Allied
+; New York(10,104) Allied
 #ALIGNMENT_POSITION= 10,104 [2]
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
@@ -5386,7 +5385,7 @@
 #DATE= 1942/05/01
 ; London(147,77) Allied
 #ALIGNMENT_POSITION= 147,77 [2]
-; Portsmouth is Allied
+; Portsmouth(144,79) Allied
 #ALIGNMENT_POSITION= 144,79 [2]
 ; Bristol(142,78) Allied
 #ALIGNMENT_POSITION= 142,78 [2]
@@ -7216,66 +7215,6 @@
 ; Leningrad(206,52) Allied
 #ALIGNMENT_POSITION= 206,52 [2]
 #VARIABLE_CONDITION= 45 [1] [100] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-; Winter War
-{
-#NAME= [FW] DE 401 - Finnish Deployment Upon War Entry
-#POPUP= Finnish Deployment Upon War Entry
-#MESSAGE=%N%N As we prepare for a potential war with the USSR note the following units will deploy upon war entry: %N%N%T - Heinrichs HQ (Joensuu) %N%T - II Infantry Corps (Joensuu) %N%T - 1st Infantry Division (Joensuu) %N%T - Isthus Infantry Army (Lappeenranta) %N%T - IV Infantry Corps (Lappeenranta) %N%T - V Infantry Corps (Lappeenranta) %N%T - Garrison (Petsamo) %N%N Due to the losses suffered in the Winter War with The USSR, the units deployed at Lappeenranta will deploy at half strength.
-#IMAGE= communication.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 401[1]
-#COUNTRY_ID= 39
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 1
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 2
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/10/25
-; Berlin(173,74) Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-; Finland(39), Axis
-#VARIABLE_CONDITION= 39 [1] [0] [0]
-#CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-}
-
-{
-#NAME= [FW] DE 401 - Finnish Deployment Upon War Entry
-#POPUP= Finnish Deployment Upon War Entry
-#MESSAGE=%N%N As we prepare for a potential war with the USSR note the following units will deploy upon war entry: %N%N%T - Heinrichs HQ (Joensuu) %N%T - II Infantry Corps (Joensuu) %N%T - 1st Infantry Division (Joensuu) %N%T - Isthus Infantry Army (Vyborg) %N%T - IV Infantry Corps (Vyborg) %N%T - V Infantry Corps (Vyborg) %N%T - Garrison (Petsamo)
-#IMAGE= communication.png
-#SOUND=
-#FLAG= 1
-#TYPE= 1
-#AI= 0
-#LEVEL= 0
-#GV= 1[1,100]
-#LINK= 401[0]
-#COUNTRY_ID= 39
-#TRIGGER= 100
-#PRIVATE= 1
-#DISPLAY_ORDER= 0
-#DISPLAY_TURN= 1
-#DISPLAY_STYLE= 0
-#MESSAGE_STYLE= 2
-#TEXT_RGB= 0,0,0
-#SHADOW_RGB= 0,0,0
-#MAP_POSITION=
-#DATE= 1940/10/25
-; Berlin(173,74) Axis
-#ALIGNMENT_POSITION= 173,74 [1]
-#VARIABLE_CONDITION= 39 [1] [0] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
 }
 

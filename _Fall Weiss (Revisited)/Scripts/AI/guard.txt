@@ -1374,6 +1374,7 @@
 ; Rennes(143,86)
 #GOAL_POSITION= 143,86
 #GOAL_POSITION= 146,84
+; Le Havre(147,82)
 #GOAL_POSITION= 147,82
 #DATE= 1943/01/01
 #STEAL= 0
@@ -1524,7 +1525,7 @@
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
 ; Allies within range of Tunis(167,112) OR
-; Allies within range of Tripoli OR
+; Allies within range of Tripoli(172,121) OR
 ; Allies within range of Catanzaro
 #ACTIVATE_POSITION= 167,112 [10,10] [3,3] [2]
 #ACTIVATE_POSITION= 172,121 [10,10] [3,3] [2]
@@ -1699,6 +1700,7 @@
 #LENGTH= 1
 #HOLD= 3
 #ADD_HQ= 0
+; Oslo(167,52)
 #GOAL_POSITION= 167,52
 #GOAL_POSITION= 157,50
 #GOAL_POSITION= 181,18
@@ -2009,6 +2011,7 @@
 #GOAL_POSITION= 207,65
 #GOAL_POSITION= 214,57
 #GOAL_POSITION= 211,65
+; Smolensk(209,68)
 #GOAL_POSITION= 209,68
 #GOAL_POSITION= 209,71
 #GOAL_POSITION= 201,73
@@ -2103,6 +2106,7 @@
 #LENGTH= 1
 #HOLD= 0
 #ADD_HQ= 0
+; Sevastopol(212,96)
 #GOAL_POSITION= 212,96
 #DATE= 1939/09/01
 #STEAL= 0
@@ -2128,6 +2132,7 @@
 #LENGTH= 1
 #HOLD= 0
 #ADD_HQ= 0
+; Konigsberg(186,68)
 #GOAL_POSITION= 187,68
 ; Warsaw(188,76)
 #GOAL_POSITION= 188,76
@@ -2176,7 +2181,7 @@
 }
 
 {
-#NAME= Germany Guard Minor - Algeria
+#NAME= Germany Guard Minor - Algiers
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -2244,7 +2249,7 @@
 #GOAL_POSITION= 200,49
 #DATE= 1939/09/01
 #STEAL= 0
-; Helsinki(195,1)
+; Helsinki(195,51)
 #FRIENDLY_POSITION= 195,51
 ; Finland(39) Axis, Not Surrendered
 #VARIABLE_CONDITION= 39 [1] [100] [0]
@@ -2373,7 +2378,7 @@
 }
 
 {
-#NAME= Germany Guard Minor - Greece
+#NAME= Germany Guard Minor - Athens
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -2400,7 +2405,7 @@
 }
 
 {
-#NAME= Germany Guard Minor - Hungary
+#NAME= Germany Guard Minor - Budapest
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -2426,7 +2431,7 @@
 }
 
 {
-#NAME= Germany Guard Minor - Iceland
+#NAME= Germany Guard Minor - Reykjavik
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -2438,10 +2443,11 @@
 #LENGTH= 1
 #HOLD= 0
 #ADD_HQ= 0
+; Reykjavik(104,37)
 #GOAL_POSITION= 104,37
 #DATE= 1939/09/01
 #STEAL= 0
-; Reykjavik
+Reykjavik(104,37)
 #FRIENDLY_POSITION= 104,37
 ; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -2452,7 +2458,7 @@
 }
 
 {
-#NAME= Germany Guard Minor - Iraq
+#NAME= Germany Guard Minor - Baghdad
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -2464,10 +2470,11 @@
 #LENGTH= 1
 #HOLD= 3
 #ADD_HQ= 0
+; Baghdad(234,120)
 #GOAL_POSITION= 234,120
 #DATE= 1939/09/01
 #STEAL= 0
-; Baghdad
+; Baghdad(234,120)
 #FRIENDLY_POSITION= 234,120
 ; Germany(45) Axis, Mobilized, Not Surrendered (dummy condition)
 #VARIABLE_CONDITION= 45 [1] [100] [0]
@@ -2478,7 +2485,7 @@
 }
 
 {
-#NAME= Germany Guard Minor - Portugal
+#NAME= Germany Guard Minor - Lisbon
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -2504,7 +2511,7 @@
 }
 
 {
-#NAME= Germany Guard Minor - Romania
+#NAME= Germany Guard Minor - Bucharest
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -2530,7 +2537,7 @@
 }
 
 {
-#NAME= Germany Guard Minor - Slovakia (Bratislava)
+#NAME= Germany Guard Minor - Bratislava
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -2542,7 +2549,7 @@
 #LENGTH= 1
 #HOLD= 3
 #ADD_HQ= 0
-; Bratislava
+; Bratislava(181,86)
 #GOAL_POSITION= 181,86
 #DATE= 1939/09/01
 #STEAL= 0
@@ -2571,6 +2578,7 @@
 #ADD_HQ= 0
 ; Lisbon
 #GOAL_POSITION= 128,108
+; Porto(130,103)
 #GOAL_POSITION= 130,103
 #GOAL_POSITION= 130,112
 #DATE= 1939/09/01
@@ -2742,6 +2750,7 @@
 #HOLD= 3
 #ADD_HQ= 1
 #GOAL_POSITION= 211,106
+; Istanbul(203,102)
 #GOAL_POSITION= 203,102
 #GOAL_POSITION= 205,103
 #GOAL_POSITION= 212,106
@@ -2870,7 +2879,7 @@
 #TACTICAL_CONDITION= 173,74 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 ; DAK arrives at Benghazi OR
-; DAK arrives at Tripoli
+; DAK arrives at ; Tripoli(172,121)
 #CANCEL_POSITION= 186,122 [1,1] [4,4] [1]
 #CANCEL_POSITION= 172,121 [1,1] [4,4] [1]
 }
@@ -3028,11 +3037,13 @@
 #LENGTH= 1
 #HOLD= 3
 #ADD_HQ= 0
+; Rome(171,101)
 #GOAL_POSITION= 171,101
 ; Naples(175,103)
 #GOAL_POSITION= 175,103
 ; Palermo(173,109)
 #GOAL_POSITION= 173,109
+; Tripoli(172,121)
 #GOAL_POSITION= 172,121
 ; Benghazi(186,122)
 #GOAL_POSITION= 186,122
@@ -3067,12 +3078,14 @@
 #GOAL_POSITION= 175,103
 ; Palermo(173,109)
 #GOAL_POSITION= 173,109
+; Tripoli(172,121)
 #GOAL_POSITION= 172,121
 ; Benghazi(186,122)
 #GOAL_POSITION= 186,122
 ; El Agheila(184,126)
 #GOAL_POSITION= 184,126
 #GOAL_POSITION= 194,122
+; Tirana(185,102)
 #GOAL_POSITION= 185,102
 #GOAL_POSITION= 192,122
 #GOAL_POSITION= 196,123
@@ -3101,6 +3114,7 @@
 #LENGTH= 1
 #HOLD= 0
 #ADD_HQ= 0
+; Tirana(185,102)
 #GOAL_POSITION= 185,102
 #DATE= 1939/09/01
 #STEAL= 0
@@ -3188,6 +3202,7 @@
 #LENGTH= 1
 #HOLD= 5
 #ADD_HQ= 0
+; Modlin(187,75)
 #GOAL_POSITION= 187,75
 #DATE= 1939/09/01
 #STEAL= 0
@@ -3195,10 +3210,9 @@
 #FRIENDLY_POSITION= 188,76
 ; Poland(85) Allied, Not Surrendered
 #VARIABLE_CONDITION= 85 [2] [100] [0]
-; Warsaw not tactically threatened
+; Warsaw(188,76) not tactically threatened
 #TACTICAL_CONDITION= 188,76 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set condition position:
 ; No Allied units within range Fortress
 #CANCEL_POSITION= 187,75 [0,0] [0,0] [2]
 }
@@ -3232,8 +3246,7 @@
 ; Warsaw(188,76) not tactically threatened
 #TACTICAL_CONDITION= 188,76 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; Set condition position:
-; No Axis units within range of Warsaw
+; No Axis units within 6 hexes of Warsaw
 #CANCEL_POSITION= 188,76 [6,6] [0,0] [1]
 }
 
@@ -3262,8 +3275,7 @@
 #TACTICAL_CONDITION= 188,76 [3]
 ; Polish unit in position southwest of Warsaw
 #ACTIVATE_POSITION= 187,76 [0,0] [1,1] [2]
-; Set condition position:
-; No Axis units within range of Warsaw(188,76)
+; No Axis units within 6 hexes of Warsaw(188,76)
 #CANCEL_POSITION= 188,76 [6,6] [0,0] [1]
 }
 
@@ -3569,7 +3581,7 @@
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; London(147,77) not tactically threatened
 #TACTICAL_CONDITION= 147,77 [3]
-; Unit in position
+; Unit in Portsmouth(144,79)
 #ACTIVATE_POSITION= 144,79 [0,0] [1,1] [2]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
@@ -3609,7 +3621,7 @@
 }
 
 {
-#NAME= UK Guard - Egypt (Alexandria)
+#NAME= UK Guard - Alexandria
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -3636,7 +3648,7 @@
 }
 
 {
-#NAME= UK Guard - Egypt (Cairo)
+#NAME= UK Guard - Cairo
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -3700,7 +3712,7 @@
 }
 
 {
-#NAME= UK Guard - Egypt (El Alamein)
+#NAME= UK Guard - El Alamein
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -3731,7 +3743,7 @@
 }
 
 {
-#NAME= UK Guard - Egypt (Mersa Matruh)
+#NAME= UK Guard - Mersa Matruh
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -3743,7 +3755,7 @@
 #LENGTH= 1
 #HOLD= 3
 #ADD_HQ= 1
-; Mersa Matruh
+; Mersa Matruh(200,124)
 #GOAL_POSITION= 200,124
 #DATE= 1939/09/01
 #STEAL= 0
@@ -3795,7 +3807,7 @@
 }
 
 {
-#NAME= UK Guard - Egypt (Tobruk)
+#NAME= UK Guard - Tobruk2
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -3807,7 +3819,7 @@
 #LENGTH= 1
 #HOLD= 0
 #ADD_HQ= 0
-; Tobruk
+; Tobruk(194,122)
 #GOAL_POSITION= 194,122
 #DATE= 1939/09/01
 #STEAL= 0
@@ -3932,6 +3944,7 @@
 #GOAL_POSITION= 141,72
 #GOAL_POSITION= 142,79
 #GOAL_POSITION= 143,78
+; Portsmouth(144,79)
 #GOAL_POSITION= 144,79
 #GOAL_POSITION= 142,80
 #GOAL_POSITION= 149,76
@@ -3956,7 +3969,7 @@
 ; 20 Allied units in the UK OR
 ; Allied units in range of Algiers(152,113) OR
 ; Allied units in range of Lagos OR
-; Allied units in range of Porto OR
+; Allied units in range of Porto(130,103) OR
 ; Allied units in range of Bordeaux(145,94)
 #CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
 #CANCEL_POSITION= 147,77 [20,20] [20,20] [2]
@@ -3993,6 +4006,7 @@
 #GOAL_POSITION= 141,72
 #GOAL_POSITION= 142,79
 #GOAL_POSITION= 143,78
+; Portsmouth(144,79)
 #GOAL_POSITION= 144,79
 #GOAL_POSITION= 142,80
 #GOAL_POSITION= 149,76
@@ -4036,6 +4050,7 @@
 #ADD_HQ= 1
 #GOAL_POSITION= 142,78
 #GOAL_POSITION= 138,80
+; Exeter(140,80)
 #GOAL_POSITION= 140,80
 #DATE= 1940/06/01
 #STEAL= 0
@@ -4160,7 +4175,9 @@
 #ADD_HQ= 1
 #GOAL_POSITION= 149,74
 #GOAL_POSITION= 148,79
+; Portsmouth(144,79)
 #GOAL_POSITION= 144,79
+; Exeter(140,80)
 #GOAL_POSITION= 140,80
 #GOAL_POSITION= 138,80
 #GOAL_POSITION= 142,78
@@ -4234,9 +4251,9 @@
 #LENGTH= 1
 #HOLD= 0
 #ADD_HQ= 1
-; Tripoli
 ; Benghazi(186,122)
 #GOAL_POSITION= 186,122
+; Tripoli(172,121)
 #GOAL_POSITION= 172,121
 ; Transport Positions (For Bari)
 #GOAL_POSITION= 186,123
@@ -4497,7 +4514,7 @@
 #LENGTH= 1
 #HOLD= 2
 #ADD_HQ= 0
-; Portsmouth
+; Portsmouth(144,79)
 #GOAL_POSITION= 144,79
 #DATE= 1939/09/01
 #STEAL= 0
@@ -4509,7 +4526,7 @@
 #VARIABLE_CONDITION= 116 [2] [0] [0]
 ; London(147,77) not tactically threatened
 #TACTICAL_CONDITION= 147,77 [3]
-; Unit in position
+; No Allied unit in Portsmouth(144,79)
 #ACTIVATE_POSITION= 144,79 [0,0] [1,1] [2]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
@@ -4542,7 +4559,7 @@
 }
 
 {
-#NAME= UK Guard Minor (Canada) - Egypt (Mersa Matruh)
+#NAME= UK Guard Minor (Canada) - Mersa Matruh
 #POPUP=
 #FLAG= 1
 #TYPE= 2
@@ -4554,11 +4571,11 @@
 #LENGTH= 1
 #HOLD= 3
 #ADD_HQ= 1
-; Mersa Matruh
+; Mersa Matruh(200,124)
 #GOAL_POSITION= 200,124
 #DATE= 1939/09/01
 #STEAL= 0
-; Mersa Matruh
+; Mersa Matruh(200,124)
 #FRIENDLY_POSITION= 200,124
 ; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -4566,8 +4583,8 @@
 #TACTICAL_CONDITION= 208,126 [3]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
 ; Set cancel condition:
-; 1 Allied unit within range of Tobruk OR
-; 1 Allied unit within range of Mersa Matruh
+; 1 Allied unit within 3 hexes of Tobruk OR
+; 1 Allied unit within 1 hex of Mersa Matruh(200,124)
 #CANCEL_POSITION= 194,122 [3,3] [1,1] [2]
 #CANCEL_POSITION= 200,124 [1,1] [1,1] [2]
 }
@@ -4585,7 +4602,7 @@
 #LENGTH= 1
 #HOLD= 0
 #ADD_HQ= 0
-; Halifax (used to launch Corps, Army)
+; Halifax(30,95)
 #GOAL_POSITION= 30,95
 #DATE= 1939/09/01
 #STEAL= 0
@@ -4847,6 +4864,7 @@
 ; Athens(193,109)
 #GOAL_POSITION= 193,109
 #GOAL_POSITION= 192,103
+; Thessaloniki(192,104)
 #GOAL_POSITION= 192,104
 #DATE= 1939/09/01
 #STEAL= 0
@@ -4927,6 +4945,7 @@
 #LENGTH= 1
 #HOLD= 0
 #ADD_HQ= 0
+; Oslo(167,52)
 #GOAL_POSITION= 167,52
 #GOAL_POSITION= 157,50
 #GOAL_POSITION= 181,18
@@ -5078,6 +5097,7 @@
 #LENGTH= 1
 #HOLD= 0
 #ADD_HQ= 0
+; Vichy(154,91)
 #GOAL_POSITION= 154,91
 #GOAL_POSITION= 157,97
 #DATE= 1939/09/01
@@ -5214,8 +5234,10 @@
 #HOLD= 0
 #ADD_HQ= 0
 #GOAL_POSITION= 4,108
+; New York(10,104)
 #GOAL_POSITION= 10,104
 #GOAL_POSITION= 16,100
+; New York(11,103)
 #GOAL_POSITION= 11,103
 #DATE= 1939/09/01
 #STEAL= 0
@@ -5243,8 +5265,10 @@
 #HOLD= 0
 #ADD_HQ= 0
 #GOAL_POSITION= 4,108
+; New York(10,104)
 #GOAL_POSITION= 10,104
 #GOAL_POSITION= 16,100
+; East New York(11,103)
 #GOAL_POSITION= 11,103
 #DATE= 1939/09/01
 #STEAL= 0
@@ -5282,6 +5306,7 @@
 #GOAL_POSITION= 4,107
 #GOAL_POSITION= 5,108
 #GOAL_POSITION= 4,106
+; New York(10,104)
 #GOAL_POSITION= 10,104
 #GOAL_POSITION= 16,100
 #DATE= 1939/09/01
@@ -5367,16 +5392,17 @@
 #LENGTH= 1
 #HOLD= 0
 #ADD_HQ= 0
+; Porto(130,103)
 #GOAL_POSITION= 130,103
 #DATE= 1939/09/01
 #STEAL= 0
-; Porto
+; Porto(130,103)
 #FRIENDLY_POSITION= 130,103
 ; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 ; Washington not tactically threatened
 #TACTICAL_CONDITION= 4,108 [3]
-; Unit in position
+; Unit in Porto(130,103)
 #ACTIVATE_POSITION= 130,103 [0,0] [1,1] [2]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
@@ -5394,6 +5420,7 @@
 #LENGTH= 1
 #HOLD= 0
 #ADD_HQ= 0
+; Rome(171,101)
 #GOAL_POSITION= 171,101
 #DATE= 1939/09/01
 #STEAL= 0
@@ -6137,7 +6164,9 @@
 #LENGTH= 40
 #HOLD= 1
 #ADD_HQ= 0
+; Brest-Litovsk(194,75)
 #GOAL_POSITION= 194,75
+; Przemysl(191,82)
 #GOAL_POSITION= 191,82
 #DATE= 1939/09/01
 #STEAL= 0
@@ -6331,7 +6360,7 @@
 #GOAL_POSITION= 236,81
 #DATE= 1939/09/01
 #STEAL= 0
-; Kuybyshev
+; Kuybyshev(245,72)
 #FRIENDLY_POSITION= 245,72
 ; USSR(116) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 116 [2] [100] [0]
@@ -6362,6 +6391,7 @@
 #GOAL_POSITION= 206,71
 #GOAL_POSITION= 204,73
 #GOAL_POSITION= 206,69
+; Proskurov(199,83)
 #GOAL_POSITION= 199,83
 #GOAL_POSITION= 203,81
 #GOAL_POSITION= 207,90
@@ -6590,6 +6620,7 @@
 #LENGTH= 10
 #HOLD= 2
 #ADD_HQ= 0
+; Velikiye Luki(207,63)
 #GOAL_POSITION= 207,63
 #DATE= 1939/09/01
 #STEAL= 0
@@ -6599,7 +6630,7 @@
 #VARIABLE_CONDITION= 116 [2] [100] [0]
 ; Perm(257,58) not tactically threatened
 #TACTICAL_CONDITION= 257,58 [3]
-; Axis units near position
+; Axis units near Velikiye Luki(207,63)
 #ACTIVATE_POSITION= 207,63 [5,5] [1,1] [1]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
@@ -6668,8 +6699,7 @@
 ; Axis units near Voronezh
 #ACTIVATE_POSITION= 221,75 [4,4] [1,1] [1]
 #ACTIVATE_POSITION= 221,80 [4,4] [1,1] [1]
-; Allied units in range of Le Mans (France, D-Day)
-; Le Mans(147,86)
+; 8 Allied units within 5 hexes of Le Mans(147,86) (France, D-Day)
 #CANCEL_POSITION= 147,86 [8,8] [5,5] [2]
 }
 
@@ -6794,6 +6824,7 @@
 #HOLD= 1
 #ADD_HQ= 1
 #GOAL_POSITION= 211,106
+; Istanbul(203,102)
 #GOAL_POSITION= 203,102
 #GOAL_POSITION= 205,103
 #GOAL_POSITION= 212,106
@@ -6856,6 +6887,7 @@
 #LENGTH= 1
 #HOLD= 0
 #ADD_HQ= 0
+; Copenhagen(171,65)
 #GOAL_POSITION= 171,65
 #DATE= 1939/09/01
 #STEAL= 0
@@ -7756,7 +7788,7 @@
 #VARIABLE_CONDITION= 45 [1] [100] [0]
 ; Berlin(173,74) not tactically threatened
 #TACTICAL_CONDITION= 173,74 [3]
-; DAK in position
+; DAK in Tripoli(172,121)
 #ACTIVATE_POSITION= 172,121 [1,1] [5,5] [1]
 #CANCEL_POSITION= 0,0 [0,0] [1,1] [0]
 }
@@ -7920,6 +7952,7 @@
 #ADD_HQ= 0
 #GOAL_POSITION= 169,95
 #GOAL_POSITION= 164,95
+; Tirana(185,102)
 #GOAL_POSITION= 185,102
 #DATE= 1939/09/01
 #STEAL= 0
@@ -8058,7 +8091,7 @@
 #LENGTH= 1
 #HOLD= 0
 #ADD_HQ= 0
-; Porto
+; Porto(130,103)
 #GOAL_POSITION= 130,103
 #DATE= 1939/09/01
 #STEAL= 0

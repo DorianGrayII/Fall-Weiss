@@ -4,7 +4,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## Added
 
-- Many new unit names have been added for Germany, Soviet Union
+- Many new unit names have been added for Germany, Soviet Union, Italy
 - "More than 18 Axis Units Near Warsaw From January 1941" ([mobilization_2.txt])
     - now alerts player with "The USSR grows uneasy over the build up of Axis troops along its Polish border" when unit number is exceeded
 - Added display of warning map symbols for Warsaw Garrison when player is close to exceeding 18 units on Polish Border ([popup.txt])
@@ -96,14 +96,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
         - 50% of Mountain Terrain bonus now applies to Hill Terrain
     - Mech Div +1 Hard, +1 Lt Armor Attack (1->2), +1 Tank Attack (0->1) (for comparison, Mech Corp have 3 HA, 3 LAA, 3 TA)
     - Coastal Gun +1 Naval Defense (0->1)
-        - This change was also made to all scenarios as part of most recent SC3 patch (July 2023)
-    - Italy +1 Maritime Bomber build limits (1->2) (equal to UK) (historically, Italy had a significant number of torpedo / naval aircraft)
+        - This change was also made to all scenarios as part of most recent SOE patch (July 2023)
     - Romania +1 Tactical Bomber build limits (0->1) (equal to Spain) (historically, Romania had a number of ground support aircraft)
     - German +2 Light Cruiser build limits (0->2) (for comparison, USSR can build 6!)
 
 ## Fixed
 
-- Merged in many changes / fixes from 1939 Storm Across Europe (July, 2023) from ([SOE VERSION CHANGES.txt]) to include:
+- Merged in many changes / fixes from 1939 Storm Across Europe (July, 2023) from ([SOE VERSION CHANGES.md]) to include:
     - The cost of Anti-Aircraft Defense research reduced from 125 to 110 MPPs
     - Anti-Tank research has been reduced from 150 to 125 MPPs for the USSR and Germany, and from 100 to 95 MPPs for all other countries (Mithrilotter)
     - Anti-Air units’s Strat. Bomber attack and defense values now increase by 1.5 per level of Anti-Aircraft Defense research (HarrySmith)
@@ -177,7 +176,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 - "Italy Declares War On The Allies (USA)" ([belligerence.txt])
     - #BELLIGERENCE_CONDITION= [116,45] changed to [115,45]
     - USSR-Germany at War to USA-Germany
-- "DE 408 - USSR: Should Stalin Stay in Moscow to Lead its Defence?" ([decision.txt])
+- "DE 408 - USSR: Should Stalin Stay in Moscow to Lead its Defense?" ([decision.txt])
     - #DECISION= 407 changed to 408
     - 407 was incorrect and caused linked events to never trigger
 - "DE 650 - Germany: Wolfram Imports From Spain" ([decision.txt])
@@ -230,19 +229,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
     - (see - https://www.matrixgames.com/forums/viewtopic.php?f=10647&t=396845 & https://www.matrixgames.com/forums/viewtopic.php?f=10647&t=396893)
 
 [//]: # (These are reference links used in the body of this file)
-[localization.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/localization.txt
-[UnitData.md]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Notes/UnitData.md
-[SOE VERSION CHANGES.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Notes/SOE%20VERSION%20CHANGES.txt
-[belligerence.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/belligerence.txt
-[popup.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/popup.txt
-[convoy.txt]:./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/convoy.txt
-[decision.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/decision.txt
-[unit.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/unit.txt
-[mobilization_1.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/mobilization_1.txt
-[mobilization_2.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/mobilization_2.txt
-[mobilization_3.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/mobilization_3.txt
-[mobilization_4.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/mobilization_4.txt
-[strength.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/strength.txt
-[supply.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/supply.txt
-[territory.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/territory.txt
-[national_morale.txt]: ./_Fall%20Weiss%20II%20-%20WIE%2011.0%20beta/Scripts/Events/national_morale.txt
+[localization.txt]: ./localization.txt
+[UnitData.md]: ./Notes/UnitData.md
+[SOE VERSION CHANGES.md]: ./Notes/SOE%20VERSION%20CHANGES.md
+[belligerence.txt]: ./Scripts/Events/belligerence.txt
+[popup.txt]: ./Scripts/Events/popup.txt
+[convoy.txt]:./Scripts/Events/convoy.txt
+[decision.txt]: ./Scripts/Events/decision.txt
+[unit.txt]: ./Scripts/Events/unit.txt
+[mobilization_1.txt]: ./Scripts/Events/mobilization_1.txt
+[mobilization_2.txt]: ./Scripts/Events/mobilization_2.txt
+[mobilization_3.txt]: ./Scripts/Events/mobilization_3.txt
+[mobilization_4.txt]: ./Scripts/Events/mobilization_4.txt
+[strength.txt]: ./Scripts/Events/strength.txt
+[supply.txt]: ./Scripts/Events/supply.txt
+[territory.txt]: ./Scripts/Events/territory.txt
+[national_morale.txt]: ./Scripts/Events/national_morale.txt

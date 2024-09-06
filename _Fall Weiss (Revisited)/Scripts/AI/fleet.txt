@@ -1916,7 +1916,7 @@
 ; Venice-Port
 #GOAL_POSITION= 171,94
 #DATE= 1940/01/01
-; Pola-Port
+; Pola-Port(174,95)
 ; Rome(171,101)
 ; Berlin(173,74)
 ; Brest
@@ -2185,7 +2185,7 @@
 #TACTICAL_CONDITION= 147,77 [3]
 ; 30 Allied Units in the UK
 #ACTIVATE_POSITION= 147,77 [20,20] [30,30] [2]
-; 1 Axis unit within range of London(147,77)
+; 1 Axis unit within 20 hexes of London(147,77)
 #CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
 }
 
@@ -2206,7 +2206,7 @@
 #RANGE= 40
 #NAVAL_CRUISE= 0
 #UNIT_ID= 0
-; Malta
+; Malta-SEPort(176,115)
 #GOAL_POSITION= 176,115
 #GOAL_POSITION= 192,118
 #GOAL_POSITION= 183,109
@@ -2458,6 +2458,7 @@
 #UNIT_ID= 0
 ; Alexandria-Port(205,123) (Hold Fleet Here)
 #GOAL_POSITION= 205,123
+; Malta-Port(175,115)
 #GOAL_POSITION= 175,115
 #DATE= 1939/09/01
 ; Gibraltar-Port(137,114)
@@ -2528,7 +2529,7 @@
 ; Scapa Flow
 #GOAL_POSITION= 140,56
 #DATE= 1939/09/01
-; Glasgow-Port
+; Glasgow-Port(137,65)
 #FRIENDLY_POSITION= 137,65
 ; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -2709,7 +2710,7 @@
 #RANGE= 40
 #NAVAL_CRUISE= 0
 #UNIT_ID= 0
-; Malta
+; Malta-SEPort(176,115)
 #GOAL_POSITION= 176,115
 #GOAL_POSITION= 192,118
 #GOAL_POSITION= 183,109
@@ -2798,7 +2799,7 @@
 #GOAL_POSITION= 179,120
 #GOAL_POSITION= 192,118
 #DATE= 1940/01/01
-; Malta
+; Malta-SEPort(176,115)
 #FRIENDLY_POSITION= 176,115
 ; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -2844,7 +2845,7 @@
 #GOAL_POSITION= 149,55
 #GOAL_POSITION= 142,54
 #DATE= 1939/09/01
-; Clydeside
+; Glasgow-Port(137,65)
 #FRIENDLY_POSITION= 137,65
 ; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -2899,7 +2900,7 @@
 #GOAL_POSITION= 152,61
 #GOAL_POSITION= 144,65
 #DATE= 1939/09/01
-; Plymouth
+; Plymouth-Port(137,80)
 #FRIENDLY_POSITION= 137,80
 ; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -2978,6 +2979,7 @@
 ; Scapa Flow
 #GOAL_POSITION= 141,56
 #GOAL_POSITION= 152,74
+; London-Port(148,77)
 #GOAL_POSITION= 148,77
 #GOAL_POSITION= 154,71
 #GOAL_POSITION= 152,74
@@ -3068,7 +3070,7 @@
 ; Liverpool (Port Area)
 #GOAL_POSITION= 139,70
 #DATE= 1941/01/01
-; Portsmouth-Port
+; Southampton-Port(143,79)
 #FRIENDLY_POSITION= 143,79
 ; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -3111,7 +3113,7 @@
 ; Rosyth (Port Area)
 #GOAL_POSITION= 142,63
 #DATE= 1939/09/01
-; Portsmouth-Port
+; Southampton-Port(143,79)
 #FRIENDLY_POSITION= 143,79
 ; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -3294,9 +3296,10 @@
 #UNIT_ID= 0
 ; Alexandria (Port Area)
 #GOAL_POSITION= 206,123
+; Malta-Port(175,115)
 #GOAL_POSITION= 175,115
 #DATE= 1939/09/01
-; Valletta
+; Malta-SEPort(176,115)
 #FRIENDLY_POSITION= 176,115
 ; UK(112) Allied, Mobilized, Not Surrendered
 #VARIABLE_CONDITION= 112 [2] [100] [0]
@@ -3717,10 +3720,11 @@
 #VARIABLE_CONDITION= 115 [2] [100] [0]
 #VARIABLE_CONDITION= 40 [2] [100] [1]
 ; Washington DC(4,108) not tactically threatened
+; New York-Port(10,105)
 #TACTICAL_CONDITION= 10,105 [1]
 #ACTIVATE_POSITION= 0,0 [0,0] [0,0] [0]
-; 1 Axis unit in England OR
-; 0 Allied units in England OR
+; 1 Axis unit within 20 hexes of London(147,77)
+; 0 Allied units within 20 hexes of London(147,77) OR
 ; 1 Axis unit within range of Washington DC(4,108)
 #CANCEL_POSITION= 147,77 [20,20] [1,1] [1]
 #CANCEL_POSITION= 147,77 [20,20] [0,0] [2]
@@ -3949,6 +3953,7 @@
 #DATE= 1943/02/25
 ; New York-Port(10,105)
 #FRIENDLY_POSITION= 10,105
+; Glasgow-Port(137,65)
 #FRIENDLY_POSITION= 137,65
 ; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
@@ -3991,6 +3996,7 @@
 #DATE= 1943/02/25
 ; New York-Port(10,105)
 #FRIENDLY_POSITION= 10,105
+; Glasgow-Port(137,65)
 #FRIENDLY_POSITION= 137,65
 ; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]
@@ -4354,8 +4360,8 @@
 #GOAL_POSITION= 133,66
 #DATE= 1941/01/20
 ; New York-Port(10,105)
-; Glasgow-Port
 #FRIENDLY_POSITION= 10,105
+; Glasgow-Port(137,65)
 #FRIENDLY_POSITION= 137,65
 ; USA(115) Allied, Not Surrendered
 #VARIABLE_CONDITION= 115 [2] [100] [0]

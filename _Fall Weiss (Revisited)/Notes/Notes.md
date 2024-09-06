@@ -22,7 +22,7 @@
 - [The Economics of Neutrality: Spain, Sweden and Switzerland in the Second World War](https://etheses.lse.ac.uk/178/1/Golson_The_Economics_of_Neutrality.pdf)
 ## ...other...
 - Germany
-    - [A History of German Petrolium in World War II](https://apps.dtic.mil/sti/pdfs/AD1020261.pdf)
+    - [A History of German Petroleum in World War II](https://apps.dtic.mil/sti/pdfs/AD1020261.pdf)
     - [German Raw Material Statistics](https://panzerworld.com/german-raw-material-statistics)
     - [German Armed Forces, Eastern Front, June 1941](https://usacac.army.mil/sites/default/files/documents/carl/nafziger/941GFAA.pdf)
     - [Malta: A study of German strategy in the Mediterranean, June 1940 to August 1942](Docs/Malta_Jun1940.pdf)
