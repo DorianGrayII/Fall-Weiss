@@ -9195,7 +9195,7 @@ Leningrad-North(206,51)
 }
 
 {
-#NAME= DE 400 - USSR: Polish 1st And 2nd Armies
+#NAME= [FW] DE 400 - USSR: Polish 1st And 2nd Armies
 #POPUP= Polish 1st And 2nd Armies Formed At Minsk
 #IMAGE= polisharmyussr.png
 #SOUND=
@@ -12681,8 +12681,8 @@ Leningrad-North(206,51)
 }
 
 {
-#NAME= DE 701 - Italy: Italian Expeditionary Force
-#POPUP= Italian Expeditionary Force Formed In The East
+#NAME= DE 701 - Italy: CSIR
+#POPUP= Italian Expeditionary CSIR Formed In The East
 #IMAGE= italian_expeditionary.png
 #SOUND=
 #FLAG= 1
@@ -12703,9 +12703,12 @@ Leningrad-North(206,51)
 ; Italy(59) Axis
 #VARIABLE_CONDITION= 59 [1] [100] [0]
 #CONDITION_POSITION= 0,0 [0,0] [0,0] [0] [0]
-#UNIT= 0 [10] [0] [Messe]
-#UNIT= 4 [10] [0] [Expeditionary]
-#UNIT= 4 [10] [0] [Amedeo]
+#UNIT= 0 [10] [0] [CSIR]
+; Infantry Division(2)
+#UNIT= 2 [10] [0] [9th "Pasubio"]
+#UNIT= 2 [10] [0] [52nd "Torino"]
+; Cavalry Division(11)
+#UNIT= 11 [10] [0] [3rd "Principe Amedeo Duca d'Aosta"]
 }
 
 {
@@ -14580,17 +14583,17 @@ Leningrad-North(206,51)
 #UNIT= 4 [8] [0] []
 }
 
-; Greek Army In Exile
 {
-#NAME= [FW] DE 899 - UK: Greek Army In Exile Flees To Egypt
-#POPUP= The Greek Army In Exile Forms A Unit In Egypt
+#NAME= [FW] DE 898 - UK: Greek Garrison from Army In Exile Arrives In Cairo
+#POPUP= Greek Garrison from Army In Exile Arrives In Cairo
 #IMAGE=
 #SOUND=
 #FLAG= 1
 #TYPE= 1
 #AI= 0
 #GV= 1[1,100]
-#LINK= 899[1]
+; Form a Garrison from The Greek Army In Exile?
+#LINK= 898[1]
 #LEVEL= 0
 #COUNTRY_ID= 112
 #TRIGGER= 100
