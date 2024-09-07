@@ -40,8 +40,9 @@ However, the project has grown and diverged to the point of it becoming fundamen
 
 ## Documentation
 - Although not entirely comprehensive, a more complete list of changes exists here: [ChangeLog](Documentation\ChangeLog.md)
+- [Game Notes](Documentation\Notes.md)
 - Player Aids
     - [Turn Data](Documentation\TurnData.md)
     - [Capital Ships](Documentation\CapitalShips.md)
-    - [Decision Graph](Documentation\Graphs\decision.gv.svg?sanitize=true)
-    - [Decision Graph](https://github.com/DorianGrayII/Fall-Weiss/blob/90cc12b325234a3f06e90c2e8e17107125f8b587/_Fall%20Weiss%20(Revisited)/Documentation/Graphs/decision.gv.svg)
+    - [Unit Data](Documentation\UnitData.md)
+    - [Decision Graph](https://github.com/DorianGrayII/Fall-Weiss/blob/90cc12b325234a3f06e90c2e8e17107125f8b587/_Fall%20Weiss%20(Revisited)/Documentation/Graphs/decision.gv.svg?sanitize=true)
