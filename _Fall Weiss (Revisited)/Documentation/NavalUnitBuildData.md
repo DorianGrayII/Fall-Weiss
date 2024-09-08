@@ -1,7 +1,7 @@
 # New Naval Builds / Deployments
 
 | Country    | Ship Type          | Build Limits |
-| -----------| ------------------ | ------------ |
+| -----------| ------------------ | :----------: |
 | UK         | Dreadnought(WWI)   | 3*           |
 | USA        | Dreadnought(WWI)   | via events   |
 | USSR       | Dreadnought(WWI)   | via events   |

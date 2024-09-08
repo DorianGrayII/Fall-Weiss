@@ -91,7 +91,7 @@ Submersibles: 78
 
 ## United Kingdom
 
-Of course due to reduced industrial capabilites (manpower losses due to engagements), the Royal Navy gradually renounced the costly battleships (only the King George Vs were completed, all others cancelled), and focused instead on aircraft carriers, cruisers, destroyers and escort vessels.
+Of course due to reduced industrial capabilities (manpower losses due to engagements), the Royal Navy gradually renounced the costly battleships (only the King George Vs were completed, all others cancelled), and focused instead on aircraft carriers, cruisers, destroyers and escort vessels.
 
 - [List of British Ships of WWII](https://en.wikipedia.org/wiki/List_of_classes_of_British_ships_of_World_War_II)
 - [List of British Dreadnoughts](https://en.wikipedia.org/wiki/List_of_dreadnought_battleships_of_the_Royal_Navy)
@@ -109,7 +109,7 @@ Of course due to reduced industrial capabilites (manpower losses due to engageme
 | [Warspite](https://en.wikipedia.org/wiki/HMS_Warspite_(03)) | Dreadnought(WWI) | 8 March 1915 <br/> March 1937 | 8 x 15 in. | 23 knots | 2 x [Swordfish](https://en.wikipedia.org/wiki/Fairey_Swordfish) |
 | Barham | Dreadnought(WWI) | 19 October 1915 | | | |
 | Valiant | Dreadnought(WWI) | 13 January 1916 | | | |
-| Malaya | Dreadnought(WWI) | 1 Februrary 1916 | | | |
+| Malaya | Dreadnought(WWI) | 1 February 1916 | | | |
 | [Revenge](https://en.wikipedia.org/wiki/HMS_Revenge_(06)) | Dreadnought(WWI) | 1 February 1916 | 8 x 15 in. | 21.9 knots | |
 | Royal Oak | Dreadnought(WWI) | 1 May 1916 | | |
 | Royal Sovereign | Dreadnought(WWI) | 18 April 1916 | | |
@@ -129,7 +129,7 @@ Capital Ships Constructed During World War II
 -   5 King Georges V class Battleships
 -   2 Roberts class Monitors
 -   3 Illustrious class aircraft carriers (1940)
--   HMS Indomitable aicraft carrier (1941)
+-   HMS Indomitable aircraft carrier (1941)
 -   Implacable class aircraft carriers (1944)
 -   Colossus class aircraft carriers (1944)
 -   HMS Unicorn aircraft carrier (1943)
@@ -178,7 +178,7 @@ Capital Ships Constructed During World War II
     - Three Alsedo class destroyers (1922)
     - Thirteen Churucca class destroyers (1926-33)
     - Four Aquila class destroyers (ex-Italian, transferred 1938)
-- Motor Torpedo Boats (or equilvalents)
+- Motor Torpedo Boats (or equivalents)
     - Two Castillo class gunboats (1922)
     - Seven 177 tons TBs (1917)
 - Submarines
@@ -192,6 +192,6 @@ Capital Ships Constructed During World War II
 In construction:
 - Eight Pizarro class gunboats (1944) completed postwar
 - Three D class submarines (German design, 1944), completed postwar
-- Seven Bidasoa class minesweeprs (German M-Boat design 1943-44) completed postwa
+- Seven Bidasoa class minesweepers (German M-Boat design 1943-44) completed postwar
 
 [ar196]: https://en.wikipedia.org/wiki/Arado_Ar_196

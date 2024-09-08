@@ -28,6 +28,8 @@ However, the project has grown and diverged to the point of it becoming fundamen
             - Tirana now has a base supply of 8
         - Great Britain
             - New ports added to eastern Great Britain to support historic ship construction launch sites
+                - New Castle Port(144,67)
+                - Hull Port(146,70)
 - Scripts
     - Operation Weserübung (German Invasion of Norway)
         - this was to allow more random losses inflicted on the Kriegsmarine
