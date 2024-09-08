@@ -15,13 +15,14 @@ However, the project has grown and diverged to the point of it becoming fundamen
 - Core Scenario Data:
     - Units
         - Changes to [Unit Data](Documentation\UnitData.md); most notably -
-        - Introduction of Dreadnought(WWI) ships to the represent the older class of Battleships, with rating moderately below that of a WWII Battleship in the ship vs ship arena.
-        - Mountain Division stats changed from FWII
+        - Introduction of Dreadnought(WWI) ships to represent the older class of Battleships, with rating moderately below that of a WWII Battleship in the ship vs ship arena.
+        - Mountain Division stats changed from FW II
         - Light Cruisers have a nominal anti-sub rating
-        - various unit name changes
-        - updated initial Finnish deployments and force pool to be more inline with historic deployments
-        - overall increase in ship build times
-        - updated initial ship deployments, especially Germany / Italy
+        - Various historic unit names have been added
+        - Updated initial Finnish deployments and force pool to be more inline with historic deployments
+        - Overall increase in [Naval Production Delays](Documentation\NavalProductionDelays.md)
+        - A change in some of the [Naval Unit Build Data](Documentation\NavalUnitBuildData.md) and/or initial Naval Unit deployments.
+        - Various ships were removed from event scripts and added to the Country Production Queue instead
     - Map
         - Albania is considered annexed by Italy (similar to Libya)
             - Tirana now has a base supply of 8
@@ -31,18 +32,21 @@ However, the project has grown and diverged to the point of it becoming fundamen
     - Operation Weserübung (German Invasion of Norway)
         - this was to allow more random losses inflicted on the Kriegsmarine
     - Yugoslavian mobilization and subsequent Coup
-    - a general toning down of new units added via events
+    - A general toning down of new units added via events
+        - Various Tank and Infantry Corps changed to their historic Divisions where appropriate
+        - No Tank Army is added via any script event
+        - Afrika Korps and Western Defense Force notably toned down
     - many of the 100% trigger events changed to 90% as some level of randomness is more interesting
     - a number of the more 'fanciful' events deleted entirely (i.e. Soviets gaining control of the [Dardanelles](https://en.wikipedia.org/wiki/Dardanelles))
 - fixes:
-    - merging / incorporating fixes from the "1939 Storm Across Europe (July 2023) baseline scenario" [SOE Version Changes](Documentation\SOEVersionChanges.md)
+    - merging / incorporating various fixes from the [1939 Storm Across Europe (July 2023) Scenario](Documentation\SOEVersionChanges.md)
     - as well as other fixes and enhancements
 
 ## Documentation
-- Although not entirely comprehensive, a more complete list of changes exists here: [ChangeLog](Documentation\ChangeLog.md)
-- [Game Notes](Documentation\Notes.md)
+- Although not entirely comprehensive, a [more complete list of changes](Documentation\ChangeLog.md)
 - Player Aids
+    - [Historical References and Background Documentation](Documentation\Notes.md)
     - [Turn Data](Documentation\TurnData.md)
-    - [Capital Ships](Documentation\CapitalShips.md)
+    - [WWII Capital Ships](Documentation\CapitalShips.md) (still a work in progress...)
     - [Unit Data](Documentation\UnitData.md)
-    - [Decision Graph](https://github.com/DorianGrayII/Fall-Weiss/blob/90cc12b325234a3f06e90c2e8e17107125f8b587/_Fall%20Weiss%20(Revisited)/Documentation/Graphs/decision.gv.svg?sanitize=true)
+    - [Decision Dependency Graph](https://github.com/DorianGrayII/Fall-Weiss/blob/90cc12b325234a3f06e90c2e8e17107125f8b587/_Fall%20Weiss%20(Revisited)/Documentation/Graphs/decision.gv.svg?sanitize=true)
