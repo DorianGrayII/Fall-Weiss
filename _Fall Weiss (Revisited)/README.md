@@ -1,3 +1,10 @@
+| <!--     --> | <!--                     --> |
+| ------------ | ---------------------------- |
+| **Author:**  | Dorian Gray II               |
+| **Email:**   | doriangray_thatsme@yahoo.com |
+| **Date:**    | September 9, 2024            |
+| **Version:** | 0.9.0                        |
+
 # Fall-Weiss (Revisited)
 
 This is a customized Strategic Command War In Europe 1939-1945 scenario that was originally based on Fall Weiss II (June 2023). I take no credit for that original body of work.
