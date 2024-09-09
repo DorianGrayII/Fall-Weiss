@@ -4,6 +4,8 @@
 
 - Italy
     - [The Italian war economy's contribution to the German war effort (1943-1945)](Docs/HiddenTreasure.pdf)
+- Finland
+    - [Example of Finnish Economic Dependence on Germany, 1942](https://history.state.gov/historicaldocuments/frus1943v03/d167)
 - Portugal
     - [Portugal during World War II](https://www.wikiwand.com/en/Portugal_during_World_War_II)
     - [Anglo-Portuguese Alliance](https://www.wikiwand.com/en/Anglo-Portuguese_Alliance)
@@ -19,7 +21,8 @@
     - [Foreign Relations of the United States, The Soviet Union, 1933–1939](https://history.state.gov/historicaldocuments/frus1933-39)
 - Turkey
     - [Allied Relations and Negotiations With Turkey](https://1997-2001.state.gov/www/regions/eur/rpt_9806_ng_turkey.pdf)
-- [The Economics of Neutrality: Spain, Sweden and Switzerland in the Second World War](https://etheses.lse.ac.uk/178/1/Golson_The_Economics_of_Neutrality.pdf)
+- Other
+    - [The Economics of Neutrality: Spain, Sweden and Switzerland in the Second World War](https://etheses.lse.ac.uk/178/1/Golson_The_Economics_of_Neutrality.pdf)
 ## ...other...
 - Germany
     - [A History of German Petroleum in World War II](https://apps.dtic.mil/sti/pdfs/AD1020261.pdf)
@@ -31,9 +34,10 @@
     - [The Blue Division](https://www.wikiwand.com/en/Blue_Division)
 - Italy
     - [Italian 8th Army in Russia, August 1941](https://usacac.army.mil/sites/default/files/documents/carl/nafziger/941IHRA.pdf)
+    - [Axis Forces in Sicily, 10 July 1943](Docs/AxisForcesInSicily_10Jul1943.pdf)
 - Soviet Union
     - [Soviet Army and Air Forces, 22 June 1941](https://usacac.army.mil/sites/default/files/documents/carl/nafziger/941RFCC.pdf)
 - United Kingdom
-    - [Distribution of British Divisions In the Middle East and Mediterranean Theater, October 1941](https://usacac.army.mil/sites/default/files/documents/carl/nafziger/941BJAA.pdf)
-- [Axis Forces in Sicily, 10 July 1943](https://usacac.army.mil/sites/default/files/documents/carl/nafziger/943GGAD.pdf)
-- [Example of Finnish economic dependency on Germany, 1942](https://history.state.gov/historicaldocuments/frus1943v03/d167)
+    - [Distribution of British Divisions In the Middle East and Mediterranean Theater, October 1941](Docs/BritishDivsInTheMed_Oct1941.pdf)
+
+
