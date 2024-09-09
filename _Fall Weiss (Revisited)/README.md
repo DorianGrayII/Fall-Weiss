@@ -54,7 +54,7 @@ However, the project has grown and diverged to the point of it becoming fundamen
 ## Documentation
 - Although not entirely comprehensive, a [more complete list of changes](Documentation\ChangeLog.md)
 - Player Aids
-    - [Historical References and Background Documentation](Documentation\Notes.md)
+    - [Historical References and Background Documentation](Documentation\HistoricNotes.md)
     - [Turn Data](Documentation\TurnData.md)
     - [WWII Capital Ships](Documentation\CapitalShips.md) (still a work in progress...)
     - [Unit Data](Documentation\UnitData.md)
