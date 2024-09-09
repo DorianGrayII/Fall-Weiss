@@ -30,13 +30,13 @@
     - [German Armed Forces, Eastern Front, June 1941](https://usacac.army.mil/sites/default/files/documents/carl/nafziger/941GFAA.pdf)
     - [Malta: A study of German strategy in the Mediterranean, June 1940 to August 1942](Docs/Malta_Jun1940.pdf)
     - [German Organization of Field Forces](https://www.ibiblio.org/hyperwar/Germany/HB/HB-2.html)
-    - [Panzer Army Afrika, 12 Nov 1942](https://usacac.army.mil/sites/default/files/documents/carl/nafziger/942GKME.pdf)
+    - [Panzer Army Afrika, 12 Nov 1942](Docs/PanzerArmyAfrika_12Nov1942.pdf)
     - [The Blue Division](https://www.wikiwand.com/en/Blue_Division)
 - Italy
     - [Italian 8th Army in Russia, August 1941](https://usacac.army.mil/sites/default/files/documents/carl/nafziger/941IHRA.pdf)
     - [Axis Forces in Sicily, 10 July 1943](Docs/AxisForcesInSicily_10Jul1943.pdf)
 - Soviet Union
-    - [Soviet Army and Air Forces, 22 June 1941](https://usacac.army.mil/sites/default/files/documents/carl/nafziger/941RFCC.pdf)
+    - [Soviet Army and Air Forces, 22 June 1941](Docs/SovietArmyAndAirForces_22Jun1941.pdf)
 - United Kingdom
     - [Distribution of British Divisions In the Middle East and Mediterranean Theater, October 1941](Docs/BritishDivsInTheMed_Oct1941.pdf)
 
